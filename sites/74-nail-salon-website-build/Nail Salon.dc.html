@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Cormorant+SC:wght@400;500&amp;family=Noto+Sans+JP:wght@300;400&amp;family=Pinyon+Script&amp;family=Shippori+Mincho:wght@500&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#faf7f3;color:#4a4340;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#7b6a9b;text-decoration:none}
+a:hover{color:#5f4f80}
+*{box-sizing:border-box}image-slot[src]::part(ring){display:none}html,body,#dc-root,.sc-host{height:auto!important;min-height:100%}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+</style>
+</helmet>
+
+<dc-import name="SiteHeader" current="home" style="position:sticky;top:0;z-index:30;display:block" hint-size="100%,124px"></dc-import>
+
+<main style="overflow:hidden">
+<!-- 01 HERO -->
+<section id="top" data-screen-label="01 Hero" style="position:relative;padding:{{ heroSecPad }};background:#faf7f3">
+  <sc-if value="{{ showPattern }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(176,146,124,.13) 1.4px,transparent 2px),radial-gradient(rgba(176,146,124,.09) 1px,transparent 1.6px);background-size:22px 22px,22px 22px;background-position:0 0,11px 11px"></div></sc-if>
+  <div style="position:relative;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:{{ heroCols }};align-items:stretch">
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:8px 0;opacity:{{ heroOp }};transform:{{ heroTy }};transition:opacity 1.4s .5s,transform 1.4s .5s cubic-bezier(.2,.7,.2,1)">
+        <h1 style="margin:0;writing-mode:vertical-rl;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(22px,2.4vw,32px);letter-spacing:.36em;color:#2f2b29;line-height:1.5">指先から、私らしさを。</h1>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#7b6a9b">— 2026</span>
+      </div>
+    </sc-if>
+
+    <div style="position:relative">
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;top:22px;left:22px;right:-22px;bottom:-22px;border:1px solid #b9aec7;pointer-events:none"></div></sc-if>
+      <div style="position:relative;width:100%;aspect-ratio:{{ heroAspect }};overflow:hidden;background:#ece6df">
+        <div style="position:absolute;inset:0;transform:{{ heroScale }};transition:transform 3.2s cubic-bezier(.2,.7,.2,1)"><image-slot id="hero-main" src="uploads/photo-01.jpg" shape="rect" placeholder="Hero photo — hands with nail art, editorial close-up"></image-slot></div>
+        <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(40,30,30,0) 45%,rgba(40,30,30,.42) 100%)"></div>
+        <div style="position:absolute;left:clamp(20px,4vw,48px);bottom:clamp(20px,4vw,44px);right:20px;pointer-events:none;color:#fff;display:flex;flex-direction:column;gap:10px;opacity:{{ heroOp }};transform:{{ heroTy }};transition:opacity 1.4s .2s,transform 1.4s .2s cubic-bezier(.2,.7,.2,1)">
+          <span style="font-family:'Cormorant SC',serif;font-size:13px;letter-spacing:.34em">nail &amp; beauty salon</span>
+          <span style="font-family:'Pinyon Script',cursive;font-size:clamp(54px,8vw,104px);line-height:.9;text-shadow:0 2px 24px rgba(0,0,0,.25)">Salon Name</span>
+          <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><p style="margin:6px 0 0;font-family:'Shippori Mincho',serif;font-size:21px;letter-spacing:.18em">指先から、私らしさを。</p></sc-if>
+        </div>
+      </div>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute;right:-28px;bottom:-72px;width:26%;aspect-ratio:3 / 4;border:8px solid #faf7f3;background:#ece6df;box-shadow:0 20px 40px rgba(74,67,64,.12);opacity:{{ heroOp }};transition:opacity 1.6s .9s">
+          <image-slot id="hero-sub" src="uploads/photo-09.jpg" shape="rect" placeholder="Detail — nail polish / single nail close-up"></image-slot>
+        </div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:28px;padding-top:8px">
+        <span style="writing-mode:vertical-rl;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;letter-spacing:.16em;color:#4a4340">Express Your Style, Down to Your Fingertips.</span>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="position:relative;max-width:1180px;margin:{{ heroCtaMargin }};padding:0 24px;display:flex;flex-wrap:wrap;align-items:center;gap:28px 40px;justify-content:{{ heroCtaJustify }}">
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><p style="margin:0;width:100%;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#4a4340">Express Your Style, Down to Your Fingertips.</p></sc-if>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px">
+      <a href="Reservation.dc.html" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:230px;height:60px;padding:0 28px;background:#7b6a9b;color:#fff;transition:background .3s,transform .3s" style-hover="background:#66568a;color:#fff;transform:translateY(-2px)">
+        <span style="font-size:14px;letter-spacing:.18em">ご予約はこちら</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.12em;opacity:.9">Book an Appointment</span>
+        <span style="position:absolute;right:3px;bottom:3px;border-left:8px solid transparent;border-bottom:8px solid #fff"></span>
+      </a>
+      <a href="Design.dc.html" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:230px;height:60px;padding:0 28px;border:1px solid #4a4340;color:#4a4340;background:rgba(255,255,255,.6);transition:background .3s,color .3s" style-hover="background:#4a4340;color:#fff">
+        <span style="font-size:14px;letter-spacing:.18em">ネイルデザインを見る</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.12em">View Nail Designs</span>
+        <span style="position:absolute;right:3px;bottom:3px;border-left:8px solid transparent;border-bottom:8px solid #4a4340"></span>
+      </a>
+    </div>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <a href="#concept" style="display:flex;align-items:center;gap:14px;color:#4a4340;font-family:'Cormorant SC',serif;font-size:13px;letter-spacing:.3em">
+        <span style="position:relative;width:1px;height:56px;background:rgba(185,174,199,.35);overflow:hidden">{{ scrollLine }}</span>scroll
+      </a>
+    </sc-if>
+  </div>
+</section>
+
+<sc-if value="{{ showMarquee }}" hint-placeholder-val="{{ true }}">
+  <div aria-hidden="true" style="background:#fff;border-top:1px solid #ece4dc;border-bottom:1px solid #ece4dc;overflow:hidden;padding:18px 0">{{ marquee }}</div>
+</sc-if>
+
+<!-- 02 CONCEPT -->
+<section id="concept" data-screen-label="02 Concept" style="position:relative;scroll-margin-top:64px;background:#fff;padding:{{ secPad }} 0">
+  <div style="max-width:1000px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:{{ splitCols }};align-items:start">
+    <div data-reveal="" style="position:relative;z-index:2;width:100%">
+      <div style="position:absolute;top:-20px;left:-20px;width:60%;height:60%;background:#f3e3d7"></div>
+      <div style="position:relative;aspect-ratio:1 / 1;overflow:hidden"><image-slot id="concept-hands" src="uploads/photo-19.jpg" shape="rect" placeholder="Hands with natural nails, close-up"></image-slot></div>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <p style="position:absolute;left:-58px;top:0;margin:0;writing-mode:vertical-rl;font-family:'Cormorant SC',serif;font-size:12px;letter-spacing:.4em;color:#7b6a9b">— about the salon</p>
+      </sc-if>
+    </div>
+    <div data-reveal="" style="position:relative;z-index:1">
+      <div style="position:relative;padding:{{ conceptTitlePad }}">
+        <span aria-hidden="true" style="position:absolute;left:{{ wmLeft }};top:-0.62em;font-family:'Cormorant SC',serif;font-size:clamp(80px,12vw,168px);line-height:1;color:rgba(123,106,155,.07);white-space:nowrap;pointer-events:none">concept</span>
+        <div style="position:relative;display:flex;align-items:center;gap:14px;margin-bottom:10px"><span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;color:#7b6a9b">01</span><span style="width:40px;height:1px;background:#b9aec7"></span><span style="font-size:11px;letter-spacing:.2em;color:#6f6560">コンセプト</span></div>
+        <h2 style="position:relative;margin:0;font-family:'Cormorant SC',serif;font-weight:500;font-size:clamp(30px,4vw,44px);letter-spacing:.04em;color:#4a4340;line-height:1.1"><span style="color:#7b6a9b">S</span>alon Concept</h2>
+      </div>
+      <div style="position:relative;margin:{{ panelMargin }};padding:{{ panelPad }};background:#bcc1bb">
+        <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.4vw,27px);letter-spacing:.14em;color:#2f2b29;line-height:1.6">あなたらしさを、指先に。</p>
+        <p style="margin:6px 0 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#3c3735">Your Personality, Expressed Through Nail Art.</p>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:18px;font-size:14px;font-weight:300;line-height:2.1;letter-spacing:.06em;color:#2f2b29;text-wrap:pretty;max-width:440px">
+          <p style="margin:0">ネイルは、その日の気分や装いにそっと寄り添う、いちばん身近なおしゃれ。</p>
+          <p style="margin:0">好きな色、爪のかたち、お仕事や暮らしのこと、次の予定まで。ゆっくりお話をうかがいながら、お一人おひとりに似合うデザインをご提案します。</p>
+          <p style="margin:0">丁寧なケアと確かな技術、肌にやさしい上質な材料で、美しさが長く続く指先を。</p>
+        </div>
+        <p style="margin:30px 0 10px;font-size:11px;letter-spacing:.16em;color:#2f2b29">ご相談いただけること</p>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;max-width:460px">
+          <sc-for list="{{ consult }}" as="c" hint-placeholder-count="7">
+            <li style="padding:6px 14px;border:1px solid rgba(47,43,41,.35);font-size:12px;letter-spacing:.08em;color:#2f2b29;background:rgba(255,255,255,.25)">{{ c }}</li>
+          </sc-for>
+        </ul>
+        <a href="Concept.dc.html" style="position:relative;margin-top:36px;display:flex;align-items:center;justify-content:center;width:150px;height:44px;border:1px solid #fff;color:#fff;font-family:'Cormorant SC',serif;font-size:15px;letter-spacing:.16em;background:rgba(255,255,255,.08);transition:background .3s,color .3s" style-hover="background:#fff;color:#4a4340">more<span style="position:absolute;right:2px;bottom:2px;border-left:7px solid transparent;border-bottom:7px solid #fff"></span></a>
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+          <div style="position:absolute;right:{{ subRight }};bottom:-104px;width:24%;aspect-ratio:3 / 4;border:8px solid #fff;background:#ece6df;box-shadow:0 18px 36px rgba(74,67,64,.12)"><image-slot id="concept-sub" src="uploads/photo-13.jpg" shape="rect" placeholder="Polish bottles, still life"></image-slot></div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 DESIGN / MENU -->
+<section id="design" data-screen-label="03 Design &amp; Menu" style="scroll-margin-top:64px;background:#fff;padding-top:64px">
+  <div style="max-width:1120px;margin:0 auto;padding:0 24px">
+    <div data-reveal="" style="position:relative;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px">
+      <span aria-hidden="true" style="position:absolute;left:-0.04em;top:-0.62em;font-family:'Cormorant SC',serif;font-size:clamp(80px,12vw,168px);line-height:1;color:rgba(123,106,155,.07);white-space:nowrap;pointer-events:none">design</span>
+      <div style="position:relative">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px"><span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;color:#7b6a9b">02</span><span style="width:40px;height:1px;background:#b9aec7"></span><span style="font-size:11px;letter-spacing:.2em;color:#6f6560">デザイン・メニュー</span></div>
+        <h2 style="margin:0 0 -0.2em;font-family:'Cormorant SC',serif;font-weight:500;font-size:clamp(30px,4vw,44px);letter-spacing:.04em;color:#4a4340;line-height:1"><span style="color:#7b6a9b">N</span>ail Design &amp; Menu</h2>
+      </div>
+      <p style="position:relative;margin:0 0 4px;font-size:13px;font-weight:300;letter-spacing:.08em;color:#4a4340">毎日に馴染むシンプルネイルから、特別な日のためのデザインまで。</p>
+    </div>
+  </div>
+  <div style="position:relative;background:#f3e3d7;margin-top:28px;padding:64px 0 {{ bandBottom }}">
+    <sc-if value="{{ showPattern }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.55) 1.4px,transparent 2px),radial-gradient(rgba(255,255,255,.35) 1px,transparent 1.6px);background-size:22px 22px,22px 22px;background-position:0 0,11px 11px"></div></sc-if>
+    <div style="position:relative;max-width:1120px;margin:0 auto;padding:0 24px">
+      <div style="display:grid;grid-template-columns:{{ designCols }};gap:24px;align-items:start">
+        <sc-for list="{{ designs }}" as="d" hint-placeholder-count="4">
+          <article data-reveal="" style="position:relative;margin-top:{{ d.offset }};background:rgba(255,255,255,.88);display:flex;flex-direction:column;transition:box-shadow .5s" style-hover="box-shadow:0 18px 36px rgba(120,90,70,.14)">
+            <div style="position:relative;aspect-ratio:4 / 5;overflow:hidden">
+              <div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.06)"><image-slot id="{{ d.slot }}" src="{{ d.src }}" shape="rect" placeholder="{{ d.ph }}"></image-slot></div>
+              <span style="position:absolute;left:0;bottom:12px;padding:5px 16px 5px 12px;background:#d9dcd6;color:#3c3735;font-family:'Cormorant SC',serif;font-size:12px;letter-spacing:.12em;pointer-events:none">{{ d.cat }}</span>
+              <span style="position:absolute;right:14px;top:10px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.25);pointer-events:none">{{ d.no }}</span>
+            </div>
+            <div style="padding:20px 20px 28px;display:flex;flex-direction:column;gap:8px;flex:1">
+              <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.08em;color:#2f2b29">{{ d.name }}</h3>
+              <p style="margin:0;font-size:12.5px;font-weight:300;line-height:1.9;letter-spacing:.04em;color:#4a4340;flex:1;text-wrap:pretty">{{ d.desc }}</p>
+              <p style="margin:6px 0 0;font-family:'Cormorant Garamond',serif;font-size:19px;color:#a35d4c;letter-spacing:.04em">{{ d.price }}</p>
+            </div>
+            <span style="position:absolute;right:4px;bottom:4px;border-left:9px solid transparent;border-bottom:9px solid #e6d3c6"></span>
+          </article>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:center;margin-top:56px"><a href="Design.dc.html" style="position:relative;display:flex;align-items:center;justify-content:center;min-width:200px;height:44px;padding:0 24px;border:1px solid #4a4340;background:rgba(255,255,255,.6);color:#4a4340;font-family:'Cormorant SC',serif;font-size:15px;letter-spacing:.16em;transition:background .3s,color .3s" style-hover="background:#4a4340;color:#fff">view gallery<span style="position:absolute;right:2px;bottom:2px;border-left:7px solid transparent;border-bottom:7px solid #4a4340"></span></a></div>
+    </div>
+  </div>
+
+  <div id="menu" style="scroll-margin-top:64px;max-width:1000px;margin:0 auto;padding:{{ secPad }} 24px">
+    <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))">
+      <div style="position:relative;background:#b9705d;color:#fff;padding:52px clamp(24px,5vw,60px) 44px;display:flex;flex-direction:column;gap:20px">
+        <div style="text-align:center">
+          <h3 style="margin:-0.86em 0 0;font-family:'Cormorant SC',serif;font-weight:500;font-size:clamp(30px,3.8vw,42px);letter-spacing:.04em;line-height:1">Seasonal Selection</h3>
+          <p style="margin:10px 0 0;font-size:11px;letter-spacing:.3em">季節の定額デザイン</p>
+        </div>
+        <div style="font-size:13.5px;line-height:2.1;letter-spacing:.06em;text-wrap:pretty">
+          <p style="margin:0">毎月セレクトする季節のデザインからお選びいただける定額コース。旬のアートを気軽に楽しみたい方におすすめです。</p>
+          <p style="margin:12px 0 0">お色の変更もお気軽にご相談ください。</p>
+        </div>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.04em">¥0,000 <span style="font-size:13px">（税込）</span></p>
+        <span style="position:absolute;right:28px;bottom:14px;font-family:'Pinyon Script',cursive;font-size:24px;transform:rotate(-24deg);opacity:.9">Check!</span>
+        <span style="position:absolute;right:6px;bottom:6px;border-left:10px solid transparent;border-bottom:10px solid #fff"></span>
+      </div>
+      <div style="position:relative;min-height:340px;overflow:hidden"><image-slot id="menu-seasonal" src="uploads/photo-14.jpg" shape="rect" placeholder="This month's seasonal nail tips on marble"></image-slot></div>
+    </div>
+    <dl data-reveal="" style="margin:64px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));column-gap:56px">
+      <sc-for list="{{ menu }}" as="m" hint-placeholder-count="6">
+        <div style="display:flex;align-items:baseline;gap:12px;padding:16px 0;border-bottom:1px solid #ece4dc">
+          <dt style="font-size:14px;letter-spacing:.06em;color:#2f2b29">{{ m.name }}</dt>
+          <span style="flex:1;border-bottom:1px dotted #cfc4b9;transform:translateY(-4px)"></span>
+          <dd style="margin:0;font-family:'Cormorant Garamond',serif;font-size:18px;color:#2f2b29">{{ m.price }}</dd>
+        </div>
+      </sc-for>
+    </dl>
+    <p style="margin:14px 0 0;font-size:11px;color:#6f6560;letter-spacing:.06em">※ 価格はすべて仮のものです。実際の料金に差し替えてください。</p>
+    <div style="display:flex;justify-content:center;margin-top:48px"><a href="Menu.dc.html" style="position:relative;display:flex;align-items:center;justify-content:center;min-width:200px;height:44px;padding:0 24px;border:1px solid #4a4340;color:#4a4340;font-family:'Cormorant SC',serif;font-size:15px;letter-spacing:.16em;transition:background .3s,color .3s" style-hover="background:#4a4340;color:#fff">full menu<span style="position:absolute;right:2px;bottom:2px;border-left:7px solid transparent;border-bottom:7px solid #4a4340"></span></a></div>
+  </div>
+</section>
+
+<!-- 04 SALON / ARTIST -->
+<section id="salon" data-screen-label="04 Salon &amp; Artist" style="scroll-margin-top:64px;background:#fff">
+  <div style="position:relative;min-height:480px;display:flex;align-items:center;justify-content:center;overflow:hidden">
+    <div data-parallax="" style="position:absolute;left:0;right:0;top:-18%;bottom:-18%;filter:grayscale(1)"><image-slot id="salon-band" src="uploads/photo-16.jpg" shape="rect" placeholder="Wide interior or nail polish still life (shown greyscale)"></image-slot></div>
+    <div style="position:absolute;inset:0;background:rgba(236,235,232,.7);pointer-events:none"></div>
+    <div data-reveal="" style="position:relative;pointer-events:none;text-align:center;padding:88px 24px;display:flex;flex-direction:column;align-items:center;gap:14px">
+      <div style="display:flex;align-items:center;gap:14px"><span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;color:#5f4f80">03</span><span style="width:40px;height:1px;background:#7b6a9b"></span><span style="font-family:'Cormorant SC',serif;font-size:14px;letter-spacing:.3em;color:#2f2b29">salon &amp; artist</span></div>
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(22px,3.2vw,36px);letter-spacing:.16em;line-height:1.8;color:#2f2b29;text-wrap:balance">美しさだけでなく、<br>心まで満たす時間を。</h2>
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:#3c3735">A Beautiful Experience, From Start to Finish.</p>
+    </div>
+  </div>
+
+  <div style="max-width:1000px;margin:0 auto;padding:{{ secPad }} 24px;display:grid;grid-template-columns:{{ splitColsRev }};align-items:start">
+    <div data-reveal="" style="position:relative;z-index:1;order:{{ artistTextOrder }}">
+      <div style="position:relative;padding:{{ artistTitlePad }};text-align:{{ artistTitleAlign }}">
+        <span aria-hidden="true" style="position:absolute;right:{{ wmRight }};top:-0.5em;font-family:'Pinyon Script',cursive;font-size:clamp(70px,10vw,140px);line-height:1;color:rgba(185,112,93,.12);white-space:nowrap;pointer-events:none">Artist</span>
+        <h3 style="position:relative;margin:0;font-family:'Cormorant SC',serif;font-weight:500;font-size:clamp(28px,3.6vw,40px);letter-spacing:.04em;color:#4a4340;line-height:1.1"><span style="color:#7b6a9b">N</span>ail Artist</h3>
+      </div>
+      <div style="margin:{{ artistPanelMargin }};padding:{{ artistPanelPad }};background:#f3e3d7">
+        <p style="margin:0;font-size:11px;letter-spacing:.2em;color:#6f6560">ネイリスト</p>
+        <p style="margin:6px 0 0;font-family:'Shippori Mincho',serif;font-size:24px;letter-spacing:.14em;color:#2f2b29">氏名 <span style="font-family:'Cormorant SC',serif;font-size:16px;letter-spacing:.14em;color:#5a524d">artist name</span></p>
+        <div style="margin-top:22px;display:flex;flex-direction:column;gap:14px;font-size:14px;font-weight:300;line-height:2.1;letter-spacing:.06em;color:#3c3735;text-wrap:pretty">
+          <p style="margin:0">派手すぎず、でも少しだけ個性を。ふと指先が目に入ったとき、気分が上がるようなデザインを大切にしています。</p>
+          <p style="margin:0">爪の状態やお仕事のご事情も含めてうかがい、無理なく続けられるご提案を心がけています。</p>
+        </div>
+        <dl style="margin:26px 0 0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:13px;letter-spacing:.06em">
+          <dt style="font-family:'Cormorant SC',serif;font-size:14px;letter-spacing:.12em;color:#5f4f80">career</dt><dd style="margin:0;color:#2f2b29">ネイリスト歴 00年</dd>
+          <dt style="font-family:'Cormorant SC',serif;font-size:14px;letter-spacing:.12em;color:#5f4f80">license</dt><dd style="margin:0;color:#2f2b29">保有資格をここに記載</dd>
+          <dt style="font-family:'Cormorant SC',serif;font-size:14px;letter-spacing:.12em;color:#5f4f80">favorite</dt><dd style="margin:0;color:#2f2b29">ニュアンスアート / フレンチ / マグネット</dd>
+        </dl>
+      </div>
+    </div>
+    <div data-reveal="" style="position:relative;z-index:2;width:100%;order:{{ artistImgOrder }}">
+      <div style="position:absolute;top:22px;right:-22px;bottom:-22px;left:22px;border:1px solid #d8b3a6;pointer-events:none"></div>
+      <div style="position:relative;aspect-ratio:4 / 5;overflow:hidden"><image-slot id="artist-portrait" src="uploads/photo-05.jpg" shape="rect" placeholder="Nail artist at work, hands in focus"></image-slot></div>
+    </div>
+  </div>
+
+  <div style="max-width:1120px;margin:0 auto;padding:0 24px {{ secPad }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;align-items:start">
+      <sc-for list="{{ experience }}" as="e" hint-placeholder-count="3">
+        <div data-reveal="" style="display:flex;flex-direction:column;gap:16px;margin-top:{{ e.offset }}">
+          <div style="position:relative;aspect-ratio:4 / 3;overflow:hidden"><div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.06)"><image-slot id="{{ e.slot }}" src="{{ e.src }}" shape="rect" placeholder="{{ e.ph }}"></image-slot></div></div>
+          <div style="display:flex;align-items:baseline;gap:12px"><span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;color:#9a8fae;line-height:1">{{ e.no }}</span><span style="font-family:'Cormorant SC',serif;font-size:15px;letter-spacing:.18em;color:#7b6a9b">{{ e.en }}</span></div>
+          <h4 style="margin:-6px 0 0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.1em;color:#2f2b29">{{ e.title }}</h4>
+          <p style="margin:0;font-size:13px;font-weight:300;line-height:2;letter-spacing:.05em;color:#4a4340;text-wrap:pretty">{{ e.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:56px"><a href="Salon.dc.html" style="position:relative;display:flex;align-items:center;justify-content:center;min-width:200px;height:44px;padding:0 24px;border:1px solid #4a4340;color:#4a4340;font-family:'Cormorant SC',serif;font-size:15px;letter-spacing:.16em;transition:background .3s,color .3s" style-hover="background:#4a4340;color:#fff">about the salon<span style="position:absolute;right:2px;bottom:2px;border-left:7px solid transparent;border-bottom:7px solid #4a4340"></span></a></div>
+  </div>
+</section>
+
+<!-- 05 RESERVATION / ACCESS -->
+<section id="reservation" data-screen-label="05 Reservation" style="position:relative;scroll-margin-top:64px;background:#dfe2da;padding:{{ secPad }} 0;overflow:hidden">
+  <span aria-hidden="true" style="position:absolute;left:50%;top:clamp(20px,4vw,48px);transform:translateX(-50%);font-family:'Pinyon Script',cursive;font-size:clamp(90px,16vw,220px);line-height:1;color:rgba(255,255,255,.6);white-space:nowrap;pointer-events:none">Reservation</span>
+  <div style="position:relative;max-width:1000px;margin:0 auto;padding:0 24px">
+    <div data-reveal="" style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px">
+      <div style="display:flex;align-items:center;gap:14px"><span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;color:#5f4f80">04</span><span style="width:40px;height:1px;background:#7b6a9b"></span><span style="font-size:11px;letter-spacing:.2em;color:#3c3735">ご予約・アクセス</span></div>
+      <h2 style="margin:0;font-family:'Cormorant SC',serif;font-weight:500;font-size:clamp(30px,4vw,44px);letter-spacing:.04em;color:#4a4340;line-height:1"><span style="color:#7b6a9b">R</span>eservation</h2>
+      <p style="margin:12px 0 0;font-family:'Shippori Mincho',serif;font-size:clamp(22px,3vw,30px);letter-spacing:.16em;color:#2f2b29">次のネイルを、ここから。</p>
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:#3c3735">Your Next Nail Story Starts Here.</p>
+    </div>
+
+    <div data-reveal="" style="margin:44px auto 0;max-width:760px;padding:10px;border:1px solid rgba(123,106,155,.4)">
+      <div style="background:#fff;padding:40px clamp(20px,4vw,48px);display:flex;flex-direction:column;align-items:center;gap:24px">
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:16px">
+          <a href="Reservation.dc.html" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:min(100%,340px);height:84px;background:#7b6a9b;color:#fff;box-shadow:0 10px 30px rgba(95,79,128,.22);transition:background .3s,transform .3s" style-hover="background:#66568a;color:#fff;transform:translateY(-2px)">
+            <span style="font-size:17px;letter-spacing:.22em">ご予約はこちら</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.14em">Book Your Appointment</span>
+            <span style="position:absolute;right:4px;bottom:4px;border-left:10px solid transparent;border-bottom:10px solid #fff"></span>
+          </a>
+          <a href="https://instagram.com/" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:min(100%,240px);height:84px;border:1px solid #4a4340;background:#fff;color:#4a4340;transition:background .3s,color .3s" style-hover="background:#4a4340;color:#fff">
+            <span style="font-size:14px;letter-spacing:.18em">Instagramを見る</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.12em">View Instagram · @account</span>
+          </a>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+          <span style="font-size:11px;letter-spacing:.14em;color:#3c3735">お電話でのお問い合わせ</span>
+          <a href="tel:000-000-0000" style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,42px);letter-spacing:.06em;color:#2f2b29;line-height:1.2">000-000-0000</a>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal="" style="margin-top:72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px;align-items:stretch">
+      <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;align-content:start;font-size:13.5px;letter-spacing:.06em;line-height:1.9">
+        <sc-for list="{{ info }}" as="i" hint-placeholder-count="6">
+          <dt style="padding:14px 24px 14px 0;border-bottom:1px solid rgba(74,67,64,.18);font-family:'Cormorant SC',serif;font-size:15px;letter-spacing:.12em;color:#5f4f80">{{ i.k }}</dt>
+          <dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(74,67,64,.18);color:#2f2b29">{{ i.v }}</dd>
+        </sc-for>
+      </dl>
+      <div style="position:relative;min-height:320px;background:#eef0ea;background-image:repeating-linear-gradient(135deg,rgba(74,67,64,.06) 0 1px,transparent 1px 12px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(74,67,64,.15)">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;color:#5a524d">GOOGLE MAPS EMBED</span>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:48px"><a href="Reservation.dc.html" style="position:relative;display:flex;align-items:center;justify-content:center;min-width:200px;height:44px;padding:0 24px;border:1px solid #4a4340;color:#4a4340;font-family:'Cormorant SC',serif;font-size:15px;letter-spacing:.16em;transition:background .3s,color .3s" style-hover="background:#4a4340;color:#fff">access &amp; booking guide<span style="position:absolute;right:2px;bottom:2px;border-left:7px solid transparent;border-bottom:7px solid #4a4340"></span></a></div>
+  </div>
+</section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showPattern&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;marquee&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;parallax&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: window.innerWidth, loaded: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+    requestAnimationFrame(() => setTimeout(() => this.setState({ loaded: true }), 60));
+    this.onScroll = () => {
+      if ((this.props.parallax ?? true) === false) return;
+      document.querySelectorAll('[data-parallax]').forEach(el => {
+        const r = el.parentElement.getBoundingClientRect();
+        el.style.transform = `translateY(${(r.top + r.height / 2 - innerHeight / 2) * -0.14}px)`;
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+    this.setupReveal();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    this.io && this.io.disconnect();
+  }
+  setupReveal() {
+    if ((this.props.reveal ?? true) === false || !('IntersectionObserver' in window)) return;
+    this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+    }), { threshold: 0.12 });
+    setTimeout(() => document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.style.opacity = '0'; el.style.transform = 'translateY(32px)';
+      el.style.transition = 'opacity 1.2s cubic-bezier(.2,.7,.2,1), transform 1.2s cubic-bezier(.2,.7,.2,1)';
+      el.style.transitionDelay = (el.tagName === 'ARTICLE' ? (i % 4) * 0.12 : 0) + 's';
+      this.io.observe(el);
+    }), 50);
+  }
+  renderVals() {
+    const m = this.state.w < 860, L = this.state.loaded, h = React.createElement;
+    const words = ['Simple', 'Natural', 'Trend', 'Art', 'Special', 'Bridal', 'Care', 'Nail & Beauty'];
+    const run = k => h('span', { key: k, style: { display: 'flex', gap: '48px', paddingRight: '48px' } },
+      words.map((w, i) => h('span', { key: i, style: { display: 'flex', alignItems: 'center', gap: '48px', fontFamily: "'Cormorant Garamond',serif", fontStyle: i % 2 ? 'italic' : 'normal', fontSize: m ? '28px' : '40px', letterSpacing: '.06em', color: i % 2 ? '#b9705d' : '#4a4340', whiteSpace: 'nowrap' } },
+        w, h('span', { style: { width: '6px', height: '6px', background: '#b9aec7', transform: 'rotate(45deg)' } }))));
+    return {
+      isMobile: m, isDesktop: !m,
+      showPattern: this.props.showPattern ?? true,
+      showMarquee: this.props.marquee ?? true,
+      marquee: h('div', { style: { display: 'flex', width: 'max-content', animation: 'mq 48s linear infinite' } }, run('a'), run('b')),
+      scrollLine: h('span', { style: { position: 'absolute', inset: 0, background: '#7b6a9b', animation: 'drop 2.4s cubic-bezier(.6,0,.4,1) infinite' } }),
+      heroScale: L ? 'scale(1)' : 'scale(1.1)',
+      heroOp: L ? 1 : 0,
+      heroTy: L ? 'none' : 'translateY(18px)',
+      heroSecPad: m ? '0 0 56px' : '40px 24px 72px',
+      heroCols: m ? '1fr' : '96px 1fr 96px',
+      heroAspect: m ? '4 / 5' : '16 / 10',
+      heroCtaMargin: m ? '28px auto 0' : '72px auto 0',
+      heroCtaJustify: m ? 'center' : 'space-between',
+      secPad: m ? '80px' : '140px',
+      bandBottom: m ? '72px' : '96px',
+      designCols: this.state.w < 600 ? '1fr' : this.state.w < 1080 ? 'repeat(2,1fr)' : 'repeat(4,1fr)',
+      subRight: this.state.w < 1080 ? '-12px' : '-36px',
+      splitCols: m ? '1fr' : '37% 1fr',
+      splitColsRev: m ? '1fr' : '1fr 40%',
+      wmLeft: m ? '-0.04em' : '0.2em', wmRight: m ? 'auto' : '0.3em',
+      conceptTitlePad: m ? '40px 0 20px' : '0 0 18px 48px',
+      panelMargin: m ? '0' : '0 0 -40px -18%',
+      panelPad: m ? '32px 24px' : '52px 56px 56px calc(18% + 52px)',
+      artistTextOrder: m ? 2 : 1, artistImgOrder: m ? 1 : 2,
+      artistTitlePad: m ? '40px 0 16px' : '0 48px 18px 0',
+      artistTitleAlign: m ? 'left' : 'right',
+      artistPanelMargin: m ? '0' : '0 -14% -40px 0',
+      artistPanelPad: m ? '32px 24px' : '48px calc(14% + 48px) 48px 52px',
+      consult: ['好きなカラー', '爪のかたち', 'ライフスタイル', 'ファッション', 'イベント', 'なりたい雰囲気', 'お好み'],
+      designs: [
+        { slot: 'design-simple', src: 'uploads/photo-03.jpg', no: '01', cat: 'simple / natural', name: 'ワンカラー・フレンチ', desc: '素爪のように自然な艶から、上品なフレンチまで。毎日に馴染むミニマルな指先に。', price: '¥0,000〜', ph: 'Sheer one-color / French nails' },
+        { slot: 'design-trend', src: 'uploads/photo-06.jpg', no: '02', cat: 'trend / art', name: 'トレンド・アート', desc: '季節の色や旬のモチーフを、その日の装いに合わせて自由にアレンジします。', price: '¥0,000〜', ph: 'Seasonal art nails, close-up' },
+        { slot: 'design-special', src: 'uploads/photo-10.jpg', no: '03', cat: 'special / event', name: 'ブライダル・イベント', desc: '結婚式やパーティー、特別な一日のために。ドレスやテーマに合わせて一からデザイン。', price: '¥0,000〜', ph: 'Bridal nails with jewelry' },
+        { slot: 'design-care', src: 'uploads/photo-20.jpg', no: '04', cat: 'care', name: 'ネイル・ハンドケア', desc: '甘皮ケアや爪の補修、保湿まで。美しいネイルを支える土台を整えます。', price: '¥0,000〜', ph: 'Cuticle care in progress' }
+      ].map((d, i) => ({ ...d, offset: !m && i % 2 ? '56px' : '0' })),
+      menu: [
+        { name: 'ジェル ワンカラー', price: '¥0,000' },
+        { name: 'ジェル フレンチ / グラデーション', price: '¥0,000' },
+        { name: 'ジェル アート（定額）', price: '¥0,000〜' },
+        { name: 'ブライダル デザイン', price: '¥0,000〜' },
+        { name: 'ネイルケア / ハンドケア', price: '¥0,000' },
+        { name: 'ジェルオフ', price: '¥0,000' }
+      ],
+      experience: [
+        { slot: 'exp-private', src: 'uploads/photo-21.jpg', no: '01', en: 'private space', title: '落ち着いたプライベート空間', text: '周りを気にせず過ごせる、ゆったりとしたリクライニングシートでお迎えします。', ph: 'Reclining chair, soft light' },
+        { slot: 'exp-consult', src: 'uploads/photo-18.jpg', no: '02', en: 'consultation', title: '丁寧なカウンセリング', text: '施術の前に、デザインのご希望や爪のお悩みをじっくりうかがいます。', ph: 'Color samples on the table' },
+        { slot: 'exp-hygiene', src: 'uploads/photo-17.jpg', no: '03', en: 'hygiene', title: '清潔な道具と環境', text: '器具はお客様ごとに消毒・交換し、清潔な状態を保っています。', ph: 'Tools neatly arranged' }
+      ].map((e, i) => ({ ...e, offset: !m && i === 1 ? '64px' : '0' })),
+      info: [
+        { k: 'address', v: '〒000-0000 住所をここに記載' },
+        { k: 'station', v: '最寄駅名　○○線「○○駅」' },
+        { k: 'access', v: '○○駅 ○番出口より徒歩0分' },
+        { k: 'hours', v: '00:00 – 00:00（最終受付 00:00）' },
+        { k: 'closed', v: '不定休' },
+        { k: 'booking', v: '完全予約制・オンライン予約は24時間受付' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

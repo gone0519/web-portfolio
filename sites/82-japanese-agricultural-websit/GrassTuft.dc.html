@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div aria-hidden="true" ref="{{ root }}" style="position:relative;width:{{ w }};height:{{ h }};pointer-events:none">
+  <sc-for list="{{ blades }}" as="b" hint-placeholder-count="0">
+    <span style="position:absolute;bottom:0;left:{{ b.x }};width:{{ b.w }};height:{{ b.h }};background:{{ b.c }};clip-path:polygon(50% 0,100% 100%,0 100%);transform-origin:50% 100%;rotate:{{ b.r }}"></span>
+  </sc-for>
+  <sc-for list="{{ ears }}" as="e" hint-placeholder-count="0">
+    <span style="position:absolute;bottom:0;left:{{ e.x }};width:1.5px;height:{{ e.h }};background:{{ e.c }};transform-origin:50% 100%;rotate:{{ e.r }}">
+      <sc-for list="{{ e.grains }}" as="g" hint-placeholder-count="0">
+        <span style="position:absolute;top:{{ g.y }};left:{{ g.x }};width:4px;height:9px;border-radius:50%;background:{{ e.c }};rotate:{{ g.r }}"></span>
+      </sc-for>
+    </span>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;200px&quot;,&quot;height&quot;:&quot;160px&quot;},&quot;color&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#d9d5ca&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;count&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:14,&quot;tsType&quot;:&quot;number&quot;},&quot;ears&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:2,&quot;tsType&quot;:&quot;number&quot;},&quot;height&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:120,&quot;tsType&quot;:&quot;number&quot;},&quot;width&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:160,&quot;tsType&quot;:&quot;number&quot;},&quot;seed&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  root = React.createRef();
+  componentDidMount() {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !this.root.current) return;
+    [...this.root.current.children].forEach((el, i) => {
+      const r = parseFloat(el.style.rotate) || 0, amp = 3 + (i % 4) * 1.5;
+      el.animate([{ rotate: `${r - amp}deg` }, { rotate: `${r + amp}deg` }], { duration: 2600 + (i % 5) * 700, delay: -(i * 380), iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' });
+    });
+  }
+  build() {
+    let s = this.props.seed ?? 3, rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+    const n = this.props.count ?? 14, H = this.props.height ?? 120, c = this.props.color ?? '#d9d5ca';
+    const blades = Array.from({ length: n }, () => {
+      const x = 10 + rnd() * 80;
+      return { x: x + '%', w: (3 + rnd() * 4).toFixed(1) + 'px', h: Math.round(H * (0.35 + rnd() * 0.65)) + 'px', r: ((x - 50) * 0.5 + (rnd() - 0.5) * 14).toFixed(1) + 'deg', c };
+    });
+    const ears = Array.from({ length: this.props.ears ?? 2 }, () => {
+      const h = H * (0.85 + rnd() * 0.3);
+      return { x: (30 + rnd() * 40) + '%', h: Math.round(h) + 'px', r: ((rnd() - 0.5) * 24).toFixed(1) + 'deg', c,
+        grains: Array.from({ length: 7 }, (_, j) => ({ y: (j * 8 - 4) + 'px', x: j % 2 ? '-4px' : '1px', r: (j % 2 ? -28 : 28) + 'deg' })) };
+    });
+    return { blades, ears };
+  }
+  renderVals() {
+    const k = JSON.stringify([this.props.seed, this.props.count, this.props.height, this.props.color, this.props.ears]);
+    if (this._k !== k) { this._k = k; this._v = this.build(); }
+    return { root: this.root, w: (this.props.width ?? 160) + 'px', h: (this.props.height ?? 120) + 'px', ...this._v };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#33241a;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+*{box-sizing:border-box}
+a{color:#ee6a17;text-decoration:none}
+a:hover{color:#b84a06}
+button{font-family:inherit}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="doctor" hint-size="100%,150px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+
+<main id="top">
+<section data-hero="" data-screen-label="Doctor Title" style="position:relative;overflow:hidden;background:linear-gradient(110deg,#fbf3e6 0%,#f4e2c6 45%,#f8ecd9 100%)">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 40% 70% at 8% 20%,rgba(255,255,255,0.85),transparent 70%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(56px,6vw,96px) clamp(16px,3vw,40px);display:flex;flex-direction:column;gap:12px">
+    <p style="margin:0;font-size:15px;letter-spacing:0.3em;color:#ee6a17;font-weight:600">Doctor &amp; Case</p>
+    <h1 style="margin:0;font-size:clamp(30px,3vw,44px);font-weight:500;letter-spacing:0.2em">医師紹介・症例紹介</h1>
+  </div>
+</section>
+<nav aria-label="パンくず" style="max-width:1200px;margin:0 auto;padding:16px clamp(16px,3vw,40px);font-size:13px;letter-spacing:0.08em;display:flex;gap:10px"><a href="index.dc.html">トップ</a><span>›</span><span>医師紹介・症例紹介</span></nav>
+
+<section data-screen-label="Doctor Profile" style="padding:clamp(40px,5vw,72px) clamp(16px,3vw,40px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,64px);align-items:flex-start">
+    <div style="flex:0 1 380px;width:100%;display:flex;flex-direction:column;gap:16px">
+      <div style="aspect-ratio:4/5;position:relative;overflow:hidden;border-radius:8px"><img data-photo="" src="images/11.jpg" alt="院長 美岡 彩" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+        <span style="font-size:14px;letter-spacing:0.12em;color:#6d5a4d">院長</span>
+        <span style="font-size:26px;letter-spacing:0.24em">美岡 彩</span>
+        <span style="font-size:13px;letter-spacing:0.2em;color:#ee6a17">Aya Mioka</span>
+      </div>
+    </div>
+    <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <h2 style="margin:0;font-size:clamp(22px,2.2vw,30px);font-weight:500;letter-spacing:0.12em;color:#ee6a17;line-height:1.6">「この治療は必要か」を、<br>一緒に考える医師でありたい。</h2>
+        <p style="margin:0;font-size:15.5px;line-height:2.1;letter-spacing:0.08em;text-wrap:pretty">大学病院と総合病院の皮膚科で12年間、多くの肌のお悩みに向き合ってきました。美容医療は、正しい診断があってこそ安全に行えるものです。<br>当院では、治療のメリットだけでなく、リスクや費用、通院の負担もあらかじめご説明します。ご自身が納得されたうえで選んでいただくことを大切にしています。</p>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <h3 style="margin:0 0 6px;font-size:17px;font-weight:500;letter-spacing:0.14em;padding:10px 16px;background:linear-gradient(90deg,#f7801a,#f25c05);color:#fff">経歴</h3>
+        <sc-for list="{{ career }}" as="c" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:90px 1fr;gap:16px;padding:12px 4px;border-bottom:1px dashed #edd9c3;font-size:14.5px;line-height:1.7;letter-spacing:0.06em"><span style="color:#ee6a17">{{ c.y }}</span><span>{{ c.t }}</span></div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <h3 style="margin:0 0 6px;font-size:17px;font-weight:500;letter-spacing:0.14em;padding:10px 16px;background:linear-gradient(90deg,#f7801a,#f25c05);color:#fff">資格・所属学会</h3>
+        <sc-for list="{{ quals }}" as="q" hint-placeholder-count="4">
+          <div style="padding:12px 4px;border-bottom:1px dashed #edd9c3;font-size:14.5px;letter-spacing:0.06em">{{ q }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cases" data-screen-label="Cases" style="padding:clamp(56px,6vw,88px) clamp(12px,3vw,40px);background:linear-gradient(115deg,#f8f3ea 0%,#efe4d2 50%,#f6eee1 100%)">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center">
+      <h2 style="margin:0;font-size:clamp(26px,2.4vw,34px);font-weight:500;letter-spacing:0.24em;color:#ee6a17">症例紹介</h2>
+      <p style="margin:0;font-size:14px;letter-spacing:0.28em;font-weight:600;color:#6d5a4d">Case</p>
+    </div>
+    <div role="tablist" style="margin-top:28px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
+        <button role="tab" aria-selected="{{ c.on }}" onClick="{{ c.pick }}" style="min-height:46px;padding:0 22px;border:1px solid #ee6a17;border-radius:30px;background:{{ c.bg }};color:{{ c.fg }};font-size:15px;letter-spacing:0.1em;cursor:pointer">{{ c.label }}</button>
+      </sc-for>
+    </div>
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:clamp(16px,2.5vw,28px)">
+      <sc-for list="{{ shownCases }}" as="c" hint-placeholder-count="4">
+        <figure style="margin:0;background:#fff;border-radius:12px;padding:clamp(16px,2vw,24px);display:flex;flex-direction:column;gap:14px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+            <div style="position:relative;aspect-ratio:4/5;min-width:0;overflow:hidden"><image-slot id="{{ c.a }}" shape="rect" placeholder="施術前"></image-slot><span style="position:absolute;left:0;top:0;background:#6d5a4d;color:#fff;font-size:13px;letter-spacing:0.12em;padding:4px 12px;pointer-events:none">施術前</span></div>
+            <div style="position:relative;aspect-ratio:4/5;min-width:0;overflow:hidden"><image-slot id="{{ c.b }}" shape="rect" placeholder="施術後"></image-slot><span style="position:absolute;left:0;top:0;background:#ee6a17;color:#fff;font-size:13px;letter-spacing:0.12em;padding:4px 12px;pointer-events:none">施術後</span></div>
+          </div>
+          <figcaption style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;line-height:1.8;letter-spacing:0.05em">
+            <strong style="font-weight:500;font-size:17px;color:#ee6a17;letter-spacing:0.12em;padding-bottom:8px;border-bottom:1px dashed #ee6a17">{{ c.title }}</strong>
+            <span>{{ c.detail }}</span>
+            <span style="color:#6d5a4d;font-size:12.5px">主なリスク・副作用：{{ c.risk }}</span>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+    <p style="margin:24px 0 0;font-size:12.5px;line-height:1.8;color:#6d5a4d;text-align:center">※写真はご本人の同意を得て掲載しています。効果には個人差があり、結果を保証するものではありません。</p>
+  </div>
+</section>
+
+<section id="voice" data-screen-label="Voices" style="padding:clamp(56px,6vw,88px) clamp(12px,3vw,40px)">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center">
+      <h2 style="margin:0;font-size:clamp(26px,2.4vw,34px);font-weight:500;letter-spacing:0.24em;color:#ee6a17">患者様の声</h2>
+      <p style="margin:0;font-size:14px;letter-spacing:0.28em;font-weight:600;color:#6d5a4d">Voice</p>
+    </div>
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:15px">
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="6">
+        <blockquote style="margin:0;background:linear-gradient(180deg,#f6f2eb 0%,#fbf9f6 100%);border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;gap:14px">
+          <span style="align-self:flex-start;padding:4px 14px;border:1px solid #ee6a17;color:#ee6a17;font-size:13px;letter-spacing:0.1em;background:#fff">{{ v.topic }}</span>
+          <p style="margin:0;font-size:14.5px;line-height:2;letter-spacing:0.08em;text-wrap:pretty">{{ v.q }}</p>
+          <footer style="margin-top:auto;padding-top:12px;border-top:1px dashed #ee6a17;font-size:13px;letter-spacing:0.08em;color:#6d5a4d">{{ v.who }}</footer>
+        </blockquote>
+      </sc-for>
+    </div>
+    <p style="margin:18px 0 0;font-size:12.5px;color:#6d5a4d;text-align:center">※個人の感想であり、効果・効能を示すものではありません。</p>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,700px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: 'all' };
+  renderVals() {
+    const cases = [
+      { cat: 'acne', a: 'd-case1-b', b: 'd-case1-a', title: 'ニキビ跡治療', detail: '20代女性／フラクショナルレーザー 5回（6ヶ月）／1回 33,000円（税込）', risk: '赤み、腫れ、一時的な色素沈着、かさぶた' },
+      { cat: 'spot', a: 'd-case2-b', b: 'd-case2-a', title: 'シミ・肝斑治療', detail: '40代女性／レーザートーニング 8回（4ヶ月）／1回 16,500円（税込）', risk: '赤み、乾燥、一時的な色素の濃さの増加' },
+      { cat: 'aging', a: 'd-case3-b', b: 'd-case3-a', title: '目尻のしわ', detail: '50代女性／ボトックス 1回／13,200円（税込）', risk: '内出血、腫れ、左右差' },
+      { cat: 'spot', a: 'd-case4-b', b: 'd-case4-a', title: '赤ら顔治療', detail: '30代男性／Vビーム 4回（4ヶ月）／1回 22,000円（税込）', risk: '赤み、腫れ、内出血' }
+    ];
+    const cats = [['all', 'すべて'], ['acne', 'ニキビ跡'], ['spot', 'シミ・赤み'], ['aging', 'しわ・たるみ']];
+    const cur = this.state.cat;
+    return {
+      career: [
+        { y: '2008年', t: '東京医科大学 医学部 卒業' }, { y: '2010年', t: '慶應義塾大学病院 皮膚科 入局' },
+        { y: '2014年', t: '総合病院 皮膚科 医長' }, { y: '2020年', t: '都内美容皮膚科クリニック 勤務' },
+        { y: '2023年', t: 'みおか皮ふ科・美容クリニック 開院' }
+      ],
+      quals: ['日本皮膚科学会認定 皮膚科専門医', '日本美容皮膚科学会 会員', '日本レーザー医学会 会員', 'ボトックスビスタ 認定医'],
+      cats: cats.map(([k, label]) => ({ label, on: k === cur, bg: k === cur ? '#ee6a17' : '#fff', fg: k === cur ? '#fff' : '#ee6a17', pick: () => this.setState({ cat: k }) })),
+      shownCases: cases.filter(c => cur === 'all' || c.cat === cur),
+      voices: [
+        { topic: 'カウンセリング', q: '先生が時間をかけて話を聞いてくださり、無理にすすめられることもなく、安心して治療方針を決められました。', who: '30代 女性' },
+        { topic: 'スタッフ・院内', q: 'スタッフの方が毎回次の流れを説明してくれます。個室なので、初めてでも緊張せずに過ごせました。', who: '40代 女性' },
+        { topic: '施術', q: '初めてのレーザーで不安でしたが、施術中も声をかけていただき、アフターケアの説明も丁寧でした。', who: '30代 男性' },
+        { topic: 'カウンセリング', q: '費用や回数の目安を最初に教えてもらえたので、予算を立てやすかったです。', who: '20代 女性' },
+        { topic: '院内', q: '待合室が落ち着いていて、施術後にメイクを直せるパウダールームもありがたかったです。', who: '50代 女性' },
+        { topic: 'スタッフ', q: '予約の変更にも丁寧に対応していただき、仕事帰りでも通いやすいと感じています。', who: '30代 女性' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

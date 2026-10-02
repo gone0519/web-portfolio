@@ -1,0 +1,36 @@
+/* Shared responsive tweaks for all Trattoria Shiki pages. */
+h1, h2 { text-wrap: balance; }
+
+/* Placeholder ring stays visible otherwise once a slot has a photo */
+image-slot[src]::part(ring) { display: none; }
+
+/* Home concept: stagger the second column only when the grid really has two columns */
+@media (min-width: 1000px) {
+  .stagger-col { padding-top: 140px; }
+}
+
+/* Side-by-side blocks that wrap on tablets: let the wrapped block fill the row */
+@media (max-width: 1100px) {
+  .grow-wrap { flex-grow: 1 !important; }
+}
+
+@media (max-width: 859px) {
+  /* Home hero badge would sit behind the full-width red card */
+  .hero-badge { top: -44px !important; bottom: auto !important; }
+
+  /* iOS zooms into inputs smaller than 16px */
+  .res-form input, .res-form select, .res-form textarea { font-size: 16px !important; }
+}
+
+@media (max-width: 600px) {
+  /* Dot patterns drift with parallax and end up on top of text on narrow screens */
+  main [aria-hidden="true"][style*="radial-gradient"] { display: none; }
+
+  /* Chef career: vertical timeline instead of stacked horizontal rules */
+  .timeline li { border-top: 0 !important; border-left: 3px solid var(--c) !important; padding: 0 0 32px 26px !important; }
+  .timeline li:last-child { padding-bottom: 0 !important; }
+  .timeline li > span:first-child { top: 0 !important; left: -10px !important; }
+
+  /* Four-season cards don't need desktop height when stacked */
+  .season { min-height: 200px !important; }
+}

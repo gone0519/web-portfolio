@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div aria-hidden="true" ref="{{ root }}" style="position:relative;width:100%;height:{{ h }};pointer-events:none;transform:{{ flip }}">
+  <div data-sway="back" style="position:absolute;inset:0;background:{{ color }};opacity:0.4;clip-path:{{ back }};transform-origin:50% 100%"></div>
+  <div data-sway="front" style="position:absolute;inset:0;background:{{ color }};clip-path:{{ front }};transform-origin:50% 100%"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;800px&quot;,&quot;height&quot;:&quot;80px&quot;},&quot;color&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#141412&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;height&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:56,&quot;tsType&quot;:&quot;number&quot;},&quot;seed&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:7,&quot;tsType&quot;:&quot;number&quot;},&quot;density&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:170,&quot;tsType&quot;:&quot;number&quot;},&quot;flip&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;sway&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  root = React.createRef();
+  componentDidMount() {
+    if (this.props.sway === false || matchMedia('(prefers-reduced-motion: reduce)').matches || !this.root.current) return;
+    const [b, f] = this.root.current.children;
+    b.animate([{ transform: 'skewX(-4deg)' }, { transform: 'skewX(4deg)' }], { duration: 4200, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' });
+    f.animate([{ transform: 'skewX(1.6deg)' }, { transform: 'skewX(-1.6deg)' }], { duration: 5600, delay: -1800, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' });
+  }
+  poly(seed, density, tallChance, lift) {
+    let s = seed, rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+    const step = 100 / density, pts = ['0% 100%'];
+    for (let x = 0; x < 100; x += step) {
+      const tall = rnd() < tallChance;
+      const tip = tall ? rnd() * 22 : lift + rnd() * (88 - lift);
+      pts.push(`${(x + rnd() * step * 0.3).toFixed(2)}% ${tip.toFixed(1)}%`);
+      pts.push(`${(x + step * 0.55).toFixed(2)}% ${(86 + rnd() * 14).toFixed(1)}%`);
+    }
+    pts.push('100% 100%');
+    return `polygon(${pts.join(',')})`;
+  }
+  renderVals() {
+    const seed = this.props.seed ?? 7, d = this.props.density ?? 170;
+    if (this._k !== seed + '-' + d) { this._k = seed + '-' + d; this._f = this.poly(seed, d, 0.14, 40); this._b = this.poly(seed + 31, d * 0.8, 0.3, 10); }
+    return { root: this.root, h: (this.props.height ?? 56) + 'px', color: this.props.color ?? '#ffffff', flip: this.props.flip ? 'scaleY(-1)' : 'none', front: this._f, back: this._b };
+  }
+}
+</script>
+</body>
+</html>

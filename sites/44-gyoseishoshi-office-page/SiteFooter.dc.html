@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="font-family:'Noto Sans JP',sans-serif;color:#222">
+  <sc-if value="{{ showCta }}" hint-placeholder-val="{{ true }}">
+    <section aria-label="ご相談" style="max-width:1600px;margin:0 auto;background:#e3fdfe;border-top:1px solid #00c4c8;padding:clamp(64px,7vw,90px) clamp(20px,4vw,48px) clamp(56px,6vw,72px);display:flex;flex-direction:column;align-items:center;text-align:center">
+      <h2 data-reveal="up" style="margin:0;font-size:clamp(28px,2.4vw,36px);font-weight:900;letter-spacing:0.04em"><span style="color:#00b3b8">ご相談</span>は<span style="position:relative;padding-bottom:2px">こちら<span data-reveal="bar" data-delay="500" data-origin="left" style="position:absolute;left:0;right:0;bottom:-2px;height:3px;background:#222"></span></span></h2>
+      <p data-reveal="up" data-delay="200" style="margin:28px 0 0;font-size:15px;line-height:1.9;letter-spacing:0.06em">まずはお気軽にご相談ください。<br>ご状況を伺い、必要な手続きと進め方を<br>わかりやすくご案内します。</p>
+      <div data-stagger="140" class="ft-boxes" style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px 16px;width:100%;max-width:660px">
+        <sc-for list="{{ boxes }}" as="b" hint-placeholder-count="3">
+          <a data-reveal="zoom" href="{{ b.href }}" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:#222;text-decoration:none">
+            <span class="ft-box" style="width:100%;border:3px solid #00c4c8;background:#fff;padding:8px 0;font-size:20px;font-weight:700;letter-spacing:0.06em;color:#00b3b8;transition:background .35s,color .35s,transform .35s" style-hover="background:#00c4c8;color:#fff;transform:translateY(-4px)">{{ b.title }}</span>
+            <span class="ft-cap" style="font-size:13px">{{ b.cap }}</span>
+          </a>
+        </sc-for>
+      </div>
+      <a href="Contact.dc.html" data-reveal="up" data-delay="300" style="margin-top:32px;position:relative;overflow:hidden;width:100%;max-width:400px;min-height:60px;border-radius:999px;background:#00c4c8;color:#fff;font-size:17px;font-weight:700;letter-spacing:0.08em;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .3s" style-hover="background:#1f3a5c;color:#fff"><span data-loop="pulse" style="position:absolute;inset:0;border-radius:999px;pointer-events:none"></span>お問い合わせはこちら<span data-loop="shimmer" aria-hidden="true" style="position:absolute;top:0;left:0;width:28%;height:100%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.45),rgba(255,255,255,0));pointer-events:none"></span></a>
+      <span style="margin-top:10px;font-size:13px">初回相談（60分）無料・予約制／駐車場完備</span>
+    </section>
+  </sc-if>
+  <div style="max-width:1600px;margin:0 auto;background:#00c4c8;color:#fff;padding:clamp(28px,3vw,36px) clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-around;gap:24px">
+    <div data-reveal="left" class="ft-info" style="display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.8;text-align:center;font-weight:500">
+      <span style="font-weight:700"><span class="nb" style="margin:0 .5em">行政書士 あおば法務事務所</span><span class="nb" style="margin:0 .5em">〒420-0000 静岡県静岡市葵区〇〇町1丁目2番3号</span></span>
+      <span><span class="nb">月〜金曜日　9:00 – 18:00</span><span class="nb">（土・日・祝日除く）</span></span>
+      <span><span class="nb">（ご予約により、夜間・土日の</span><span class="nb">ご相談も承ります）</span></span>
+    </div>
+    <div data-reveal="right" data-delay="200" style="display:flex;flex-direction:column;align-items:center;gap:6px">
+      <a href="tel:0540000000" style="font-family:Lato,sans-serif;font-weight:900;font-size:clamp(28px,3vw,42px);color:#fff;letter-spacing:0.02em;text-decoration:none" style-hover="color:#1f3a5c">TEL. 054-000-0000</a>
+      <a href="mailto:info@example.jp" style="font-size:14px;color:#fff;letter-spacing:0.04em;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.7)" style-hover="color:#1f3a5c">info@example.jp</a>
+    </div>
+  </div>
+  <footer style="max-width:1600px;margin:0 auto">
+    <div class="ft-cols" style="padding:48px clamp(24px,6vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:32px">
+      <sc-for list="{{ cols }}" as="c" hint-placeholder-count="6">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="{{ c.href }}" style="font-size:13px;font-weight:700;color:#222;text-decoration:none" style-hover="color:#00a7ad">{{ c.title }}</a>
+          <sc-for list="{{ c.links }}" as="l" hint-placeholder-count="3">
+            <a href="{{ l.href }}" style="font-size:12px;color:#444;text-decoration:none" style-hover="color:#00a7ad">- {{ l.label }}</a>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background:#333;color:#fff;text-align:center;padding:14px 16px;font-family:Lato,sans-serif;font-size:12px;letter-spacing:0.04em">Copyright © AOBA Gyoseishoshi Office. All Rights Reserved.</div>
+  </footer>
+  <a href="#top" data-totop="" aria-label="ページの先頭へ" style="position:fixed;right:clamp(16px,2vw,28px);bottom:clamp(16px,2vw,28px);z-index:60;width:52px;height:52px;border-radius:50%;background:#00c4c8;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Lato,sans-serif;font-weight:900;font-size:18px;text-decoration:none;opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .4s,transform .4s,background .3s" style-hover="background:#1f3a5c;color:#fff">↑</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;900px&quot;},&quot;showCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const L = (label, href) => ({ label, href });
+    return {
+      showCta: this.props.showCta !== false,
+      boxes: [
+        { title: '許認可申請', cap: '要件の確認から', href: 'Services.dc.html#svc-2' },
+        { title: '法人設立', cap: '定款の作成から', href: 'Services.dc.html#svc-1' },
+        { title: '在留資格', cap: '申請取次まで', href: 'Services.dc.html#svc-3' }
+      ],
+      cols: [
+        { title: 'ホーム', href: 'Top.dc.html', links: [] },
+        { title: '事務所について', href: 'About.dc.html', links: [L('当事務所の想い', 'About.dc.html#message'), L('大切にしていること', 'About.dc.html#values'), L('事務所概要', 'About.dc.html#outline')] },
+        { title: '業務内容', href: 'Services.dc.html', links: [L('法人設立・事業サポート', 'Services.dc.html#svc-1'), L('建設業・各種許認可', 'Services.dc.html#svc-2'), L('在留資格・国際業務', 'Services.dc.html#svc-3'), L('相続・遺言・契約書', 'Services.dc.html#svc-4')] },
+        { title: '行政書士紹介', href: 'Profile.dc.html', links: [L('代表メッセージ', 'Profile.dc.html#message'), L('経歴・資格', 'Profile.dc.html#career')] },
+        { title: 'ご相談の流れ・料金', href: 'Flow.dc.html', links: [L('ご相談の流れ', 'Flow.dc.html#flow'), L('料金表', 'Flow.dc.html#fee')] },
+        { title: 'お問い合わせ・アクセス', href: 'Contact.dc.html', links: [L('ご相談フォーム', 'Contact.dc.html#form'), L('アクセス', 'Contact.dc.html#access')] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header data-intro="down" style="position:fixed;top:0;left:0;right:0;z-index:50;height:{{ hh }};display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,3vw,40px);background:{{ hbg }};backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08);font-family:'Noto Sans JP',sans-serif;color:#f2f3f5;transition:height .45s cubic-bezier(.19,1,.22,1),background .45s">
+  <div ref="{{ progRef }}" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:-1px;height:2px;background:linear-gradient(90deg,#2446e6,#8fa6ff);transform-origin:left;transform:scaleX(0);pointer-events:none"></div>
+  <a href="KANAME%20Construction.dc.html" aria-label="要建設 トップへ" style="display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none">
+    <span style="position:relative;width:34px;height:34px;display:block">
+      <span style="position:absolute;inset:0;background:#2446e6;clip-path:polygon(0 100%,38% 0,100% 0,62% 100%)"></span>
+      <span style="position:absolute;inset:0;background:#8fa6ff;clip-path:polygon(0 100%,24% 44%,48% 44%,24% 100%)"></span>
+    </span>
+    <span style="display:flex;flex-direction:column;line-height:1">
+      <span style="font-family:Jost,sans-serif;font-weight:600;font-size:21px;letter-spacing:.14em">KANAME</span>
+      <span style="font-size:10px;font-weight:700;letter-spacing:.62em;margin-top:5px">総合建設</span>
+    </span>
+  </a>
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+      <div style="display:flex;align-items:center;gap:18px">
+        <a href="tel:0312345678" style="display:flex;align-items:baseline;gap:8px;font-family:Jost,sans-serif;font-size:19px;letter-spacing:.08em;font-weight:500;color:#f2f3f5;text-decoration:none"><span style="font-size:11px;letter-spacing:.2em;color:#8fa6ff">TEL</span>03-1234-5678</a>
+        <a href="KANAME%20Construction.dc.html#contact" style="display:flex;align-items:center;height:30px;padding:0 18px;border:1px solid rgba(255,255,255,.7);font-size:12px;font-weight:700;letter-spacing:.08em;color:#f2f3f5;text-decoration:none;transition:background .25s,border-color .25s" style-hover="background:#2446e6;border-color:#2446e6;color:#fff">お問い合わせ</a>
+      </div>
+      <nav aria-label="メインナビゲーション" style="display:flex;gap:26px;font-size:12px;font-weight:700;letter-spacing:.08em">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="color:{{ n.color }};text-decoration:none;padding-bottom:3px;border-bottom:1px solid {{ n.line }};transition:color .2s" style-hover="color:#8fa6ff">{{ n.ja }}</a>
+        </sc-for>
+      </nav>
+    </div>
+  </sc-if>
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <button type="button" onClick="{{ toggleMenu }}" aria-label="メニューを開く" aria-expanded="{{ menuOpen }}" style="width:48px;height:48px;border:1px solid rgba(255,255,255,.6);background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer">
+      <span style="width:20px;height:1.5px;background:#fff;display:block"></span>
+      <span style="width:20px;height:1.5px;background:#fff;display:block"></span>
+      <span style="width:12px;height:1.5px;background:#8fa6ff;display:block;margin-left:8px"></span>
+    </button>
+  </sc-if>
+</header>
+<sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+  <div class="menu-dialog" role="dialog" aria-label="メニュー" style="position:fixed;inset:0;z-index:60;background:rgba(12,14,18,.98);display:flex;flex-direction:column;padding:24px clamp(20px,6vw,40px);font-family:'Noto Sans JP',sans-serif;color:#f2f3f5">
+    <div style="display:flex;justify-content:flex-end">
+      <button type="button" onClick="{{ toggleMenu }}" aria-label="メニューを閉じる" style="width:48px;height:48px;border:1px solid rgba(255,255,255,.6);background:transparent;color:#fff;font-family:Jost,sans-serif;font-size:22px;cursor:pointer">×</button>
+    </div>
+    <nav style="display:flex;flex-direction:column;margin-top:24px">
+      <a href="KANAME%20Construction.dc.html" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.14);color:#f2f3f5;text-decoration:none">
+        <span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:700;letter-spacing:.06em">トップ</span><span style="font-family:Jost,sans-serif;font-size:11px;letter-spacing:.24em;color:#8fa6ff">HOME</span></span>
+        <span style="font-family:Jost,sans-serif;font-size:18px">→</span>
+      </a>
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.14);color:#f2f3f5;text-decoration:none">
+          <span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:700;letter-spacing:.06em">{{ n.ja }}</span><span style="font-family:Jost,sans-serif;font-size:11px;letter-spacing:.24em;color:#8fa6ff">{{ n.en }}</span></span>
+          <span style="font-family:Jost,sans-serif;font-size:18px">→</span>
+        </a>
+      </sc-for>
+    </nav>
+    <a href="tel:0312345678" style="margin-top:auto;display:flex;align-items:center;justify-content:center;gap:10px;height:60px;background:#2446e6;color:#fff;font-family:Jost,sans-serif;font-size:20px;letter-spacing:.08em;text-decoration:none"><span style="font-size:11px;letter-spacing:.2em">TEL</span>03-1234-5678</a>
+  </div>
+</sc-if>
+<a href="#top" aria-label="ページの先頭へ" style="position:fixed;right:16px;bottom:16px;z-index:40;width:48px;height:48px;background:#2446e6;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Jost,sans-serif;font-size:18px;text-decoration:none;transition:background .25s" style-hover="background:#1633b8;color:#fff">↑</a>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;about&quot;,&quot;services&quot;,&quot;works&quot;,&quot;strengths&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { narrow: false, menuOpen: false, scrolled: false };
+  componentDidMount() {
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+    this.initReveal();
+  }
+  // メニュー表示中は背面のページをスクロールさせない
+  componentDidUpdate() {
+    document.body.style.overflow = this.state.narrow && this.state.menuOpen ? 'hidden' : '';
+  }
+  componentWillUnmount() {
+    document.body.style.overflow = '';
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+  }
+  onResize = () => {
+    const n = window.innerWidth < 1000;
+    if (n !== this.state.narrow) this.setState({ narrow: n, menuOpen: n ? this.state.menuOpen : false });
+  };
+  // 共通モーション（motion.js）を読み込み、スクロール連動のヘッダー縮小・進捗バーを制御
+  initReveal() {
+    if (window.KanameMotion) { window.KanameMotion.init(); }
+    else if (!document.querySelector('script[data-kaname-motion]')) {
+      const s = document.createElement('script');
+      s.src = './motion.js'; s.setAttribute('data-kaname-motion', '1');
+      s.onload = () => window.KanameMotion && window.KanameMotion.init();
+      document.head.appendChild(s);
+    }
+    this.onScroll();
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+  }
+  progRef = React.createRef();
+  onScroll = () => {
+    const y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+    if (this.progRef.current) this.progRef.current.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
+    const s = y > 40;
+    if (s !== this.state.scrolled) this.setState({ scrolled: s });
+  };
+  renderVals() {
+    const { narrow, menuOpen } = this.state;
+    const cur = this.props.current;
+    const items = [
+      { key: 'about', href: 'About.dc.html', ja: '私たちについて', en: 'ABOUT' },
+      { key: 'services', href: 'Services.dc.html', ja: '事業内容', en: 'SERVICES' },
+      { key: 'works', href: 'Works.dc.html', ja: '施工実績', en: 'WORKS' },
+      { key: 'strengths', href: 'Strengths.dc.html', ja: '私たちの強み', en: 'STRENGTHS' },
+      { key: 'contact', href: 'KANAME%20Construction.dc.html#contact', ja: 'お問い合わせ', en: 'CONTACT' },
+    ].map(n => ({ ...n, color: n.key === cur ? '#8fa6ff' : '#f2f3f5', line: n.key === cur ? '#8fa6ff' : 'transparent', aria: n.key === cur ? 'page' : undefined }));
+    const sc = this.state.scrolled;
+    return {
+      progRef: this.progRef, hh: sc || narrow ? '64px' : '84px', hbg: sc ? 'rgba(12,14,18,.92)' : 'rgba(12,14,18,.35)',
+      narrow, wide: !narrow, menuOpen, menuVisible: narrow && menuOpen, navItems: items,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

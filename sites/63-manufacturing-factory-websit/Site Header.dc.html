@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="display:flex;align-items:stretch;justify-content:space-between;height:72px;background:{{ headerBg }};backdrop-filter:{{ headerBlur }};transition:background .4s ease;font-family:'Plus Jakarta Sans','Noto Sans JP',sans-serif;color:#fff">
+  <a href="Home.dc.html" style="display:flex;flex-direction:column;justify-content:center;padding:0 clamp(20px,3vw,48px);gap:3px;color:#fff;text-decoration:none">
+    <span style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:26px;letter-spacing:-0.02em;line-height:1"><span style="display:block;width:16px;height:22px;background:#d0101b;transform:skewX(-24deg)"></span>AOBA</span>
+    <span style="font-size:9px;font-weight:600;letter-spacing:.22em;opacity:.8">PRECISION WORKS</span>
+  </a>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="Main" style="display:flex;align-items:stretch">
+      <div style="display:flex;align-items:center;gap:28px;padding:0 40px 0 56px;background:rgba(255,255,255,.94);clip-path:polygon(28px 0,100% 0,100% 100%,0 100%);margin:14px -18px 14px 0">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" style="position:relative;color:{{ n.color }};font-size:12px;font-weight:600;letter-spacing:.06em;font-style:italic;text-decoration:none;transition:color .25s;padding:6px 0" style-hover="color:#d0101b">{{ n.label }}<span style="position:absolute;left:0;bottom:0;height:2px;width:{{ n.bar }};background:#d0101b"></span></a>
+        </sc-for>
+      </div>
+      <a href="Contact.dc.html" style="display:flex;align-items:center;padding:0 40px 0 48px;background:#d0101b;color:#fff;font-weight:600;font-size:15px;text-decoration:none;clip-path:polygon(24px 0,100% 0,100% 100%,0 100%);transition:background .25s" style-hover="background:#a80a14">Contact Us</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpen }}" style="width:72px;height:72px;border:0;background:#d0101b;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer">
+      <span style="display:block;width:24px;height:2px;background:#fff"></span>
+      <span style="display:block;width:24px;height:2px;background:#fff"></span>
+      <span style="display:block;width:16px;height:2px;background:#fff;margin-left:8px"></span>
+    </button>
+  </sc-if>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:72px 0 0 0;background:#0b1638;padding:32px 28px;display:flex;flex-direction:column;gap:4px;overflow:auto;font-family:'Plus Jakarta Sans','Noto Sans JP',sans-serif">
+    <sc-for list="{{ navAll }}" as="n" hint-placeholder-count="6">
+      <a href="{{ n.href }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14);color:{{ n.mcolor }};text-decoration:none">
+        <span style="font-size:26px;font-weight:700;letter-spacing:-0.02em">{{ n.label }}</span>
+        <span style="font-size:12px;opacity:.75;letter-spacing:.1em">{{ n.jp }}</span>
+      </a>
+    </sc-for>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:72},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;factory&quot;,&quot;technology&quot;,&quot;quality&quot;,&quot;company&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: window.innerWidth, scrolled: false, menuOpen: false };
+  componentDidMount() {
+    this.r = () => this.setState({ w: window.innerWidth, menuOpen: window.innerWidth < 1080 && this.state.menuOpen });
+    this.s = () => { const v = window.scrollY > 40; if (v !== this.state.scrolled) this.setState({ scrolled: v }); };
+    window.addEventListener('resize', this.r); window.addEventListener('scroll', this.s, { passive: true }); this.s();
+  }
+  componentDidUpdate() { document.body.style.overflow = this.state.menuOpen && this.state.w < 1080 ? 'hidden' : ''; }
+  componentWillUnmount() { window.removeEventListener('resize', this.r); window.removeEventListener('scroll', this.s); document.body.style.overflow = ''; }
+  renderVals() {
+    const cur = this.props.current ?? 'home', mobile = this.state.w < 1080;
+    const items = [
+      ['home', 'HOME', 'ホーム', 'Home'], ['factory', 'OUR FACTORY', '工場紹介', 'Factory'], ['technology', 'TECHNOLOGY', '技術・製造', 'Technology'],
+      ['quality', 'QUALITY', '品質・強み', 'Quality'], ['company', 'COMPANY', '会社概要', 'Company'], ['contact', 'CONTACT', 'お問い合わせ', 'Contact']
+    ].map(([id, label, jp, f]) => ({ id, label, jp, href: f + '.dc.html', color: id === cur ? '#d0101b' : '#12245a', mcolor: id === cur ? '#ff5a63' : '#fff', bar: id === cur ? '100%' : '0%' }));
+    return {
+      isDesktop: !mobile, isMobile: mobile, menuOpen: mobile && this.state.menuOpen,
+      headerBg: this.state.scrolled || this.state.menuOpen ? 'rgba(11,22,56,.92)' : 'rgba(11,22,56,0)',
+      headerBlur: this.state.scrolled ? 'blur(10px)' : 'none',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      nav: items.slice(0, 5), navAll: items
+    };
+  }
+}
+</script>
+</body>
+</html>

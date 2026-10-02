@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F5F3EF;color:#151515;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#151515;text-decoration:none}
+a:hover{color:#E4462B}
+/* --- responsive --- */
+.sec-head{flex-wrap:wrap}
+@media (max-width:460px){
+  .tr-dl{grid-template-columns:62px 1fr!important}
+}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="trainers" hint-size="100%,77px"></dc-import>
+<main>
+<section data-screen-label="Trainers hero" style="background:#151515;color:#F5F3EF">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(40px,5vw,64px) clamp(20px,4vw,48px) clamp(56px,7vw,96px)">
+    <div style="font-family:'Barlow Condensed';font-weight:600;font-size:14px;letter-spacing:2px;color:#9A958C"><a href="Top.dc.html" style="color:#9A958C">トップ</a> / トレーナー</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;align-items:end;margin-top:24px">
+      <h1 data-reveal="1" style="margin:0;font-weight:900;font-size:clamp(48px,7.4vw,112px);line-height:1.1;letter-spacing:2px">トレーナー</h1>
+      <div data-reveal="1" style="min-width:0;padding-bottom:8px">
+        <p style="margin:0;font-size:clamp(20px,2.2vw,28px);font-weight:900;letter-spacing:1px">経験豊富なトレーナーのみ在籍。</p>
+        <p style="margin:12px 0 0;font-size:14px;line-height:2;color:#CFCAC1">資格と指導実績、そして人柄。目標に合う担当者をお選びします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Trainer list" style="padding:clamp(80px,10vw,140px) 0">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div class="sec-head" style="display:flex;justify-content:space-between;gap:20px;border-top:1px solid#151515;padding-top:16px;font-family:'Barlow Condensed';font-weight:600;font-size:15px;letter-spacing:2px"><span>(01) トレーナー紹介</span><span style="color:#6B6760">4名在籍</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:72px clamp(32px,5vw,72px);margin-top:clamp(40px,5vw,64px)">
+      <sc-for list="{{ trainers }}" as="t" hint-placeholder-count="4">
+        <article data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px;align-items:start">
+          <div style="min-width:0;aspect-ratio:3/4"><image-slot id="v2-trainer-{{ t.key }}" shape="rect" src="{{ t.src }}" placeholder="トレーナー写真"></image-slot></div>
+          <div style="min-width:0">
+            <div style="font-size:13px;font-weight:700;color:#E4462B">{{ t.roleEn }}</div>
+            <h3 style="margin:10px 0 0;font-size:26px;font-weight:900;letter-spacing:2px">{{ t.name }}</h3>
+            <p style="margin:18px 0 0;font-size:14px;line-height:2.05;color:#3A3732">{{ t.bio }}</p>
+            <dl class="tr-dl" style="margin:20px 0 0;display:grid;grid-template-columns:72px 1fr;font-size:13px;line-height:1.8;border-top:1px solid #151515">
+              <dt style="font-weight:900;padding:12px 0;border-bottom:1px solid #D9D5CE">資格</dt><dd style="margin:0;padding:12px 0;border-bottom:1px solid #D9D5CE">{{ t.cert }}</dd>
+              <dt style="font-weight:900;padding:12px 0;border-bottom:1px solid #D9D5CE">得意分野</dt><dd style="margin:0;padding:12px 0;border-bottom:1px solid #D9D5CE">{{ t.spec }}</dd>
+            </dl>
+            <p style="margin:18px 0 0;font-size:14px;font-weight:700;line-height:1.9">— {{ t.msg }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      trainers: [
+        { key: 't1', roleEn: '代表 / ヘッドトレーナー', name: '高橋 誠', en: 'MAKOTO TAKAHASHI', src: 'images/9.jpg', bio: 'トレーナー歴15年。延べ3,000名以上のダイエット・ボディメイクを担当。RISEのプログラム設計とトレーナー育成を統括し、現在も現場でお客様を指導しています。', cert: 'NSCA-CSCS / 健康運動指導士', spec: 'ボディメイク、筋力トレーニング', msg: '一度身につけた習慣は、一生の財産になります。' },
+        { key: 't2', roleEn: 'シニアトレーナー', name: '中村 さくら', en: 'SAKURA NAKAMURA', src: 'images/7.jpg', bio: '管理栄養士の資格を持つトレーナー。食事とトレーニングの両面から、女性の体づくりをサポート。産後のボディケアにも対応します。', cert: '管理栄養士 / NESTA-PFT', spec: 'ダイエット、食事指導、ヒップライン', msg: '我慢しすぎない食事で、きれいに変わりましょう。' },
+        { key: 't3', roleEn: 'TRAINER', name: '佐藤 健太', en: 'KENTA SATO', src: 'images/10.jpg', bio: '元・大学アメフト部のストレングスコーチ。動作分析をもとにした姿勢改善とファンクショナルトレーニングを得意とし、腰痛・肩こりに悩む方を多く担当。', cert: 'NSCA-CPT / 柔道整復師', spec: '姿勢改善、ファンクショナル', msg: '痛みのない体で、毎日を軽くしましょう。' },
+        { key: 't4', roleEn: 'TRAINER', name: '小林 美咲', en: 'MISAKI KOBAYASHI', src: 'images/27.jpg', bio: 'フィットネス大会での入賞経験を持つトレーナー。運動初心者の女性を中心に、無理のないペースでのボディメイクを得意としています。', cert: 'NESTA-PFT / JATI-ATI', spec: 'ボディメイク、初心者指導', msg: '運動が苦手な方ほど、一緒に楽しみながら進めます。' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

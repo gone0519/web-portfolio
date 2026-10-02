@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>サービス｜あおば税理士事務所</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>html{scroll-behavior:smooth}body{margin:0;background:#17457f;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#2f8fd0;text-decoration:none}a:hover{color:#17457f}h1,h2,h3,dt,dd,li,label,button,[style*="text-align: center"] p:not([style*="text-align: left"]),p[style*="text-align: center"]{word-break:auto-phrase}[data-stat]>div{display:flex;flex-direction:column;justify-content:space-between}@media (max-width:767px){[data-stat] dd{flex-direction:column;align-items:center!important}}h1,h2,h3{text-wrap:balance}@media (max-width:1023px){[data-deco]{display:none!important}}@media (max-width:767px){[data-btns]{flex-direction:column;align-items:stretch}[data-btns]>a{justify-content:center}}</style>
+</helmet>
+<div lang="ja" style="font-family:'Zen Maru Gothic',sans-serif;color:#24395a;background:#17457f;padding:0 10px;min-height:100vh">
+<div style="background:#fff;overflow:clip">
+<dc-import name="SiteHeader" current="services" hint-size="100%,72px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+<main>
+<dc-import name="PageHero" en="Services" title="サービス内容" lead="税務だけでは終わらない、経営を支えるサポート。事業のステージやお悩みに合わせてお選びいただけます。" hint-size="100%,380px"></dc-import>
+
+<nav aria-label="サービス一覧" data-reveal="" style="max-width:960px;margin:40px auto 0;padding:0 clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fill,minmax(max(140px,calc((100% - 20px) / 3)),1fr));gap:clamp(8px,1.5vw,10px)">
+  <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+    <a href="{{ s.anchor }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:54px;padding:10px clamp(14px,3vw,20px);border-radius:clamp(14px,4vw,999px);background:#f2f9fb;color:#17457f;font-size:clamp(12.5px,3.4vw,14px);font-weight:700;line-height:1.45;letter-spacing:.06em;word-break:auto-phrase;transition:background .2s ease" style-hover="background:#d4ebf2;color:#17457f"><span>{{ s.title }}</span><span style="font-family:Quicksand,sans-serif;color:#2f8fd0">↓</span></a>
+  </sc-for>
+</nav>
+
+<div style="max-width:1080px;margin:0 auto;padding:clamp(16px,4vw,40px) clamp(16px,4vw,40px) clamp(72px,11vw,120px);display:flex;flex-direction:column">
+  <sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
+    <article id="{{ s.id }}" data-reveal="" style="scroll-margin-top:90px;padding:clamp(44px,8vw,70px) 0;border-bottom:1px solid #e0ecf1;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(32px,5vw,64px);align-items:start">
+      <div style="aspect-ratio:3/2;border-radius:10px;overflow:hidden;box-shadow:0 10px 28px rgba(23,69,127,.12)"><image-slot id="{{ s.slot }}" src="{{ s.img }}" shape="rounded" radius="10" placeholder="{{ s.ph }}"></image-slot></div>
+      <div>
+        <span style="font-family:Quicksand,sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;color:#2f8fd0">{{ s.no }}</span>
+        <h2 style="margin:4px 0 0;font-size:clamp(22px,2.4vw,26px);font-weight:700;letter-spacing:.12em;color:#17457f">{{ s.title }}</h2>
+        <p style="margin:16px 0 0;font-size:14.5px;line-height:2.1;letter-spacing:.04em;text-wrap:pretty">{{ s.text }}</p>
+        <h3 style="margin:26px 0 0;font-size:13px;font-weight:700;letter-spacing:.12em;color:#eba52c">主なサポート内容</h3>
+        <ul style="margin:10px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="3">
+            <li style="padding:6px 13px;border-radius:4px;background:#e3f1f4;font-size:12.5px;color:#17457f;letter-spacing:.06em">{{ it }}</li>
+          </sc-for>
+        </ul>
+        <div style="margin-top:22px;border:1.5px dashed #6aaee0;border-radius:10px;padding:16px 20px">
+          <p style="margin:0;font-size:12px;font-weight:700;letter-spacing:.12em;color:#2f8fd0">こんな方におすすめ</p>
+          <p style="margin:6px 0 0;font-size:13.5px;line-height:1.9;letter-spacing:.04em">{{ s.for }}</p>
+        </div>
+      </div>
+    </article>
+  </sc-for>
+  <div data-reveal="" data-btns="" style="margin-top:clamp(44px,7vw,64px);display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+    <a href="Pricing.dc.html" style="display:inline-flex;align-items:center;gap:12px;height:52px;padding:0 32px;border-radius:999px;background:#3a9ad8;color:#fff;font-size:14px;font-weight:700;letter-spacing:.08em;transition:background .2s ease,transform .2s ease" style-hover="background:#17457f;color:#fff;transform:translateX(3px)">料金プランを見る<span style="font-family:Quicksand,sans-serif">›</span></a>
+    <a href="Strengths.dc.html" style="display:inline-flex;align-items:center;gap:12px;height:52px;padding:0 32px;border-radius:999px;border:1.5px solid #3a9ad8;color:#2f8fd0;font-size:14px;font-weight:700;letter-spacing:.08em;transition:background .2s ease" style-hover="background:#e3f1f4;color:#17457f">私たちの強み<span style="font-family:Quicksand,sans-serif">›</span></a>
+  </div>
+</div>
+</main>
+<dc-import name="SiteCta" hint-size="100%,440px"></dc-import>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { setTimeout(() => this.reveal(), 60); }
+  componentWillUnmount() { this.io && this.io.disconnect(); }
+  reveal() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const els = document.querySelectorAll('[data-reveal]');
+    this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); } }), { threshold: 0.08 });
+    els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(26px)'; el.style.transition = 'opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)'; this.io.observe(el); });
+  }
+  renderVals() {
+    const IMG = { advisory: 'laptop', filing: 'tax-return', inheritance: 'family-consult', startup: 'handshake', management: 'team-confident', planning: 'calc-man' };
+    const s = (id, no, title, ph, text, items, forWho) => ({ id, anchor: '#' + id, slot: 'svc-p-' + id, img: 'images/' + IMG[id] + '.jpg', no, title, ph, text, items, for: forWho });
+    return {
+      services: [
+        s('advisory', 'Service.01', '税務顧問', '税務顧問：書類を確認する手元・タブレット', '毎月の記帳確認や試算表の作成、税務に関する日々のご相談まで、定期的な面談を通して継続的にサポートします。数字の変化をいち早くお伝えし、先回りの対策をご提案します。', ['月次の記帳・試算表確認', '定期面談', '税務相談（随時）', '年末調整・給与計算'], '日々の経理や税務の判断に不安がある方、相談できる専門家を身近に置きたい方'),
+        s('filing', 'Service.02', '確定申告・法人税申告', '確定申告：書類とカレンダー', '個人の確定申告から法人の決算・申告まで対応します。必要書類の整理からお手伝いし、期限に追われることなく、正確で無理のない申告を進めます。', ['個人の確定申告', '法人決算・法人税申告', '消費税申告', 'インボイス対応'], '毎年の申告作業に時間を取られている方、初めての申告で進め方が分からない方'),
+        s('inheritance', 'Service.03', '相続税・贈与税', '相続：家族で相談する様子', '相続税の申告はもちろん、生前贈与や事業承継を見据えた対策までご相談いただけます。ご家族の状況に合わせて、大切な財産を守る方法を一緒に考えます。', ['相続税申告', '生前贈与のご相談', '財産評価', '事業承継対策'], '相続が発生した方、将来の相続に備えて早めに準備を始めたい方'),
+        s('startup', 'Service.04', '会社設立支援', '会社設立：面談で説明する税理士', '法人化のタイミングの検討から、設立手続き、創業融資のご準備まで。個人事業からの法人成りも含めて、スタートの一歩を安心して踏み出せるようお手伝いします。', ['法人化シミュレーション', '設立手続きのサポート', '創業融資', '設立後の届出'], 'これから起業する方、個人事業から法人化を検討している方'),
+        s('management', 'Service.05', '経営サポート', '経営サポート：ホワイトボードで計画を話し合う様子', '事業計画の作成や資金繰りの見通し、金融機関との打ち合わせまで。試算表の数字を経営判断に活かせるよう、実務に即したアドバイスを行います。', ['事業計画の作成', '資金繰り表', '融資・補助金のご相談', '経営分析'], '売上や利益の見通しを立てたい方、融資や設備投資を検討している方'),
+        s('planning', 'Service.06', '節税・税務相談', '節税相談：電卓と資料', '役員報酬の設定や設備投資のタイミングなど、状況に合わせた節税の選択肢を分かりやすくご提案します。目先だけでなく、将来の税負担まで見据えて計画します。', ['節税プランの立案', '役員報酬の検討', '税務調査への対応', 'セカンドオピニオン'], '税負担が大きいと感じている方、今の税務処理が適切か確認したい方')
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

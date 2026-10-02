@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<link href="./site.css" rel="stylesheet">
+<style>html{scroll-behavior:smooth}body{margin:0;background:#fff;color:#0b2e7e;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#0b2e7e}a:hover{color:#1d47a8}h1,h2,h3,h4,p{word-break:auto-phrase}</style>
+</helmet>
+<dc-import name="Header" active="treat" hint-size="100%,150px"></dc-import>
+<dc-import name="PageHero" title="施術内容" en="TREATMENTS" img-id="treat-hero" src="images/neck-treatment.jpg" placeholder="施術風景の写真" hint-size="100%,360px"></dc-import>
+
+<section data-screen-label="Treatments" style="padding:clamp(40px,6vw,70px) 24px 0">
+  <div data-reveal="" style="max-width:860px;margin:0 auto;text-align:center">
+    <p style="display:block;width:fit-content;margin:0 auto 14px;font-weight:900;font-size:clamp(34px,5vw,54px);line-height:1.05;letter-spacing:.06em;color:#0b2e7e;background:linear-gradient(transparent 62%,#ffe100 62%);padding:0 8px">MENU</p>
+    <h2 style="margin:0 0 20px;font-size:clamp(20px,2.5vw,26px);font-weight:900;color:#0b2e7e;letter-spacing:.06em">こんなお悩みはありませんか</h2>
+    <p class="pc-br" style="margin:0;font-size:14px;line-height:2.2;color:#0b2e7e">慢性的な肩こりや腰痛、スポーツでのケガ、交通事故後の不調まで幅広くご相談いただけます。<br>どの施術が合うかわからない場合も、まずはお気軽にご相談ください。</p>
+  </div>
+</section>
+
+<section style="padding:clamp(48px,7vw,80px) 0 0">
+  <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+    <div data-reveal="" style="max-width:1100px;margin:0 auto 48px;padding:0 24px;display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,48px);align-items:center">
+      <div style="flex:1 1 380px;height:clamp(240px,28vw,340px);position:relative"><image-slot id="treat-{{ s.id }}" shape="rect" src="{{ s.src }}" placeholder="{{ s.img }}"></image-slot></div>
+      <div style="flex:1 1 420px">
+        <span style="display:inline-block;font-weight:900;font-size:clamp(40px,5vw,56px);line-height:1;letter-spacing:.02em;color:#0b2e7e;background:linear-gradient(transparent 62%,#ffe100 62%);padding:0 6px">{{ s.num }}</span>
+        <h3 style="margin:4px 0 16px;font-size:clamp(20px,2.3vw,25px);font-weight:900;letter-spacing:.06em">{{ s.title }}</h3>
+        <p style="margin:0 0 18px;font-size:14px;line-height:2;color:#0b2e7e">{{ s.body }}</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:2px;background:#0b2e7e;border:2px solid #0b2e7e;margin-bottom:20px">
+          <div style="background:#fff;padding:14px 16px"><p style="margin:0 0 6px;font-size:13px;font-weight:900;color:#0b2e7e">主なお悩み</p><p style="margin:0;font-size:13px;line-height:1.8;color:#0b2e7e">{{ s.concerns }}</p></div>
+          <div style="background:#fff;padding:14px 16px"><p style="margin:0 0 6px;font-size:13px;font-weight:900;color:#0b2e7e">こんな方に</p><p style="margin:0;font-size:13px;line-height:1.8;color:#0b2e7e">{{ s.who }}</p></div>
+        </div>
+        <a href="Access.dc.html#form" style="display:inline-flex;align-items:center;gap:12px;background:#0b2e7e;color:#fff;text-decoration:none;padding:8px 12px 8px 16px;font-size:13px;font-weight:700" style-hover="background:#1d47a8;color:#fff">この施術を予約する <span style="width:18px;height:18px;border-radius:50%;background:#fff;color:#0b2e7e;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900">›</span></a>
+      </div>
+    </div>
+  </sc-for>
+</section>
+
+<section style="padding:clamp(24px,4vw,40px) 24px 0">
+  <div data-reveal="" style="max-width:1000px;margin:0 auto">
+    <div style="background:#0b2e7e;color:#fff;padding:12px 20px;font-size:14px;font-weight:700;letter-spacing:.1em;display:flex;align-items:center;gap:12px;margin-bottom:24px"><span style="width:14px;height:2px;background:#ffe100"></span>その他の施術</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:24px">
+      <sc-for list="{{ extras }}" as="x" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;transition:transform .3s" style-hover="transform:translateY(-4px)">
+          <div style="height:140px;position:relative"><image-slot id="treat-ex-{{ x.id }}" shape="rect" src="{{ x.src }}" placeholder="{{ x.title }}の写真"></image-slot></div>
+          <div style="background:#ffe100;padding:9px 12px;text-align:center;position:relative" style-after="content:'';position:absolute;right:0;bottom:0;border-style:solid;border-width:0 0 12px 12px;border-color:transparent transparent #fff transparent"><span style="font-size:16px;font-weight:900;color:#0b2e7e">{{ x.title }}</span></div>
+          <p style="margin:10px 0 0;font-size:13px;line-height:1.85;color:#0b2e7e">{{ x.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:28px 0 0;font-size:12.5px;line-height:1.8;color:#3d5a9e">※健康保険は、骨折・脱臼・打撲・捻挫・挫傷など原因がはっきりしたケガが対象です。慢性的な肩こりや疲労回復は自費施術となります。</p>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,700px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      services: [
+        { id: 'neck', num: '01', title: '肩こり・首や背中の痛み', img: '首・肩の施術風景', src: 'images/spine-neck.jpg', body: 'デスクワークやスマートフォンの使用、ストレスなどで硬くなった筋肉をやさしくほぐし、首・肩・背中まわりの動きを整えます。', concerns: '慢性的な肩こり、首が回りにくい、緊張からくる頭の重さ', who: 'デスクワークの方、運転が多い方、子育て中の方' },
+        { id: 'back', num: '02', title: '腰痛・骨盤の歪み', img: '腰・骨盤の検査風景', src: 'images/spine-lumbar.jpg', body: '腰だけでなく股関節・骨盤・背骨のつながりを確認し、腰に負担がかかっている原因にアプローチします。', concerns: 'くり返す腰痛、ぎっくり腰、股関節の違和感、産後の骨盤', who: '座り仕事・立ち仕事が長い方、重い物を持つ方' },
+        { id: 'sports', num: '03', title: 'スポーツ障害・関節の痛み', img: 'スポーツ障害のケア', src: 'images/leg-exam.jpg', body: '捻挫や肉離れ、使いすぎによる痛みの施術から、競技復帰に向けたトレーニング指導まで一貫してサポートします。', concerns: '膝・足首の痛み、肩や肘の痛み、肉離れ、成長期の痛み', who: '部活動に励む学生、ランナー、競技者' },
+        { id: 'accident', num: '04', title: '交通事故治療・リハビリ', img: 'リハビリの様子', src: 'images/side-stretch.jpg', body: 'むち打ちなど事故によるケガの施術を行います。保険会社とのやり取りや、医療機関との併用についてもご相談ください。', concerns: 'むち打ち、首・腰の痛み、事故後の頭痛や不調', who: '交通事故に遭われた方、ケガ後の回復期の方' }
+      ],
+      extras: [
+        { id: 'posture', title: '姿勢改善', body: '猫背・反り腰・左右差などを確認し、整えます。', src: 'images/explain-spine.jpg' },
+        { id: 'muscle', title: '筋肉の緊張ケア', body: '仕事や運動で疲れた筋肉をほぐします。', src: 'images/shoulder-treatment.jpg' },
+        { id: 'exercise', title: '運動指導', body: '再発予防のための体操・トレーニングをお伝えします。', src: 'images/hip-stretch.jpg' },
+        { id: 'postnatal', title: '産後ケア', body: '出産後の骨盤まわりの不調をケアします。', src: 'images/hip-pain.jpg' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

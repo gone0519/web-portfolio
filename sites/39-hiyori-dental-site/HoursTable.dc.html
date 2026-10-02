@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="display:flex;flex-direction:column;gap:20px">
+  <div role="table" aria-label="診療時間" style="display:flex;flex-direction:column">
+    <div role="row" style="display:grid;grid-template-columns:minmax(96px,1.6fr) repeat(7,minmax(0,1fr));padding:0 0 12px;border-bottom:1px solid #e3d9cb;font-size:12px;letter-spacing:.1em;color:#5c5349">
+      <span role="columnheader" style="font-size:11px;color:#9c7547">診療時間</span>
+      <sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+        <span role="columnheader" style="text-align:center">{{ d }}</span>
+      </sc-for>
+    </div>
+    <sc-for list="{{ hours }}" as="h" hint-placeholder-count="2">
+      <div role="row" style="display:grid;grid-template-columns:minmax(96px,1.6fr) repeat(7,minmax(0,1fr));align-items:center;padding:16px 0;border-bottom:1px solid #e3d9cb">
+        <span role="rowheader" style="font-family:Jost,sans-serif;font-size:13px;letter-spacing:.04em;white-space:nowrap">{{ h.time }}</span>
+        <sc-for list="{{ h.cells }}" as="c" hint-placeholder-count="7">
+          <span role="cell" aria-label="{{ c.label }}" style="display:flex;justify-content:center;align-items:center;height:16px">
+            <sc-if value="{{ c.dot }}"><span style="width:9px;height:9px;border-radius:50%;background:#b08a5b"></span></sc-if>
+            <sc-if value="{{ c.star }}"><span style="color:#b08a5b;font-size:13px">★</span></sc-if>
+            <sc-if value="{{ c.off }}"><span style="width:12px;height:1px;background:#c2b6a6"></span></sc-if>
+          </span>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;line-height:1.9;letter-spacing:.05em;color:#5c5349">
+    <span><span style="color:#b08a5b">★</span> 土曜日は 9:30〜14:00</span>
+    <span>※ 最終受付は各診療終了の30分前です</span>
+    <span>休診日：木曜・日曜・祝日</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:520,&quot;height&quot;:240}}">
+class Component extends DCLogic {
+  renderVals() {
+    const D = { dot: true, label: '診療' }, S = { star: true, label: '午前のみ' }, O = { off: true, label: '休診' };
+    return {
+      days: ['月', '火', '水', '木', '金', '土', '日'],
+      hours: [
+        { time: '09:30 – 13:00', cells: [D, D, D, O, D, S, O] },
+        { time: '14:30 – 18:30', cells: [D, D, D, O, D, O, O] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

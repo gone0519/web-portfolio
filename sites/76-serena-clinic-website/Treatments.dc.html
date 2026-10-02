@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#4b4340;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#4b4340;text-decoration:none}
+a:hover{color:#a8876f}
+button{font-family:inherit}
+</style>
+</helmet>
+<dc-import name="Site Header" current="menu" title-en="Treatment" title-ja="診療メニュー" lead="肌質やお悩み、ライフスタイルに合わせて、医師が最適な治療をご提案します。" slot-id="menu-hero" slot-src="images/body-arm.jpg" slot-ph="施術シーン（手元・肌のアップ）" hint-size="100%,620px"></dc-import>
+
+<section data-screen-label="Treatments List" style="background:#f5f2ec;padding:clamp(70px,8vw,110px) 0 clamp(80px,9vw,130px)">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:44px">
+    <div data-reveal="up" style="display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center">
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center"><span style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.3em;color:#bfa77a">SEARCH BY CONCERN</span><span style="font-size:15px;letter-spacing:.16em">お悩みから探す</span></div>
+      <div role="tablist" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px">
+        <sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="6">
+          <button role="tab" aria-selected="{{ tb.on }}" onClick="{{ tb.pick }}" style="min-height:44px;padding:10px 22px;border:1px solid {{ tb.bd }};background:{{ tb.bg }};color:{{ tb.fg }};font-size:13px;letter-spacing:.1em;cursor:pointer;transition:all .3s" style-hover="border-color:#6e5a4e">{{ tb.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:28px">
+      <sc-for list="{{ items }}" as="t" hint-placeholder-count="6">
+        <article data-zoom data-reveal="up" style="background:#fff;display:flex;flex-direction:column;transition:transform .5s,box-shadow .5s" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px rgba(110,90,78,.08)">
+          <div style="aspect-ratio:3/2;overflow:hidden"><image-slot id="{{ t.id }}" src="{{ t.src }}" shape="rect" placeholder="{{ t.ph }}"></image-slot></div>
+          <div style="padding:28px 28px 30px;display:flex;flex-direction:column;gap:14px;flex:1">
+            <div style="display:flex;flex-direction:column;gap:4px"><h3 style="margin:0;font-weight:500;font-size:18px;letter-spacing:.1em">{{ t.name }}</h3><span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#d4a7a1;letter-spacing:.05em">{{ t.en }}</span></div>
+            <p style="margin:0;font-size:13px;line-height:2;letter-spacing:.05em;text-wrap:pretty">{{ t.desc }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ t.concerns }}" as="c" hint-placeholder-count="3"><span style="font-size:11.5px;letter-spacing:.06em;padding:4px 12px;background:#fbeeee;color:#6e5a4e">{{ c }}</span></sc-for>
+            </div>
+            <div style="margin-top:auto;padding-top:16px;border-top:1px solid #efe8dd;display:flex;justify-content:space-between;align-items:flex-end;gap:12px">
+              <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:10.5px;color:#9a8f88;letter-spacing:.08em">1回 税込</span><span style="font-family:'Cormorant Garamond',serif;font-size:21px;letter-spacing:.04em">{{ t.price }}</span></span>
+              <a href="{{ t.href }}" style="position:relative;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.08em;padding:0 46px 5px 0;border-bottom:1px solid #b9a88f;transition:padding .4s" style-hover="padding-right:60px" style-after="content:'';position:absolute;right:-4px;bottom:-4px;width:7px;height:7px;border:1px solid #b9a88f;border-radius:50%;background:#fff">View more</a>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <p style="margin:0;font-size:11.5px;line-height:1.9;color:#8f847e;letter-spacing:.04em">※ 自由診療（保険適用外）です。効果には個人差があり、施術内容により赤み・腫れ・内出血などが生じる場合があります。価格は目安です。詳細は<a href="Price.dc.html" style="border-bottom:1px solid #b9a88f">料金表</a>をご確認ください。</p>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,820px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 'all' };
+  renderVals() {
+    const all = [
+      { name: 'スキンケア・肌育治療', en: 'Skin Care', cat: 'skin', desc: '医療機関専売の成分や導入治療で、肌本来の力を整えます。初めての方にもおすすめです。', concerns: ['くすみ', '乾燥', 'ハリ不足'], price: '¥11,000〜', ph: 'スキンケア施術' },
+      { name: 'レーザー・光治療', en: 'Laser & Light', cat: 'tone', desc: '機器と出力を医師が選択し、シミ・肝斑・赤みなど色味のお悩みにアプローチします。', concerns: ['シミ', '肝斑', '赤ら顔'], price: '¥16,500〜', ph: 'レーザー照射', href: 'Laser-Treatment.dc.html' },
+      { name: 'ケミカルピーリング', en: 'Chemical Peel', cat: 'acne', desc: '古い角質をやさしく取り除き、ニキビやざらつきをケアします。', concerns: ['ニキビ', 'ざらつき', '毛穴'], price: '¥8,800〜', ph: 'ピーリング施術' },
+      { name: 'ニキビ・ニキビ跡治療', en: 'Acne & Scar Care', cat: 'acne', desc: '保険診療と自由診療の両面から、今あるニキビと跡のお悩みに向き合います。', concerns: ['繰り返すニキビ', '赤み', 'クレーター'], price: '¥13,200〜', ph: '肌のクローズアップ' },
+      { name: 'ヒアルロン酸注入', en: 'Hyaluronic Acid', cat: 'aging', desc: '表情や骨格とのバランスを見ながら、少量ずつ自然に整えます。', concerns: ['ほうれい線', '目元のくぼみ', '輪郭'], price: '¥66,000〜', ph: '注入治療' },
+      { name: 'ボツリヌス製剤注入', en: 'Botulinum Toxin', cat: 'aging', desc: '表情じわやエラの張りなど、筋肉の動きによるお悩みに。', concerns: ['額・眉間のしわ', 'エラ', '目尻のしわ'], price: '¥27,500〜', ph: '注入治療（額）' },
+      { name: 'HIFU・たるみ治療', en: 'Lifting', cat: 'aging', desc: '超音波の熱エネルギーで、フェイスラインのもたつきにアプローチします。', concerns: ['たるみ', 'フェイスライン', '二重あご'], price: '¥44,000〜', ph: 'HIFU施術' },
+      { name: '毛穴・肌質ケア', en: 'Pore & Texture', cat: 'skin', desc: 'ダーマペンやフラクショナルレーザーで、毛穴やキメの乱れを整えます。', concerns: ['毛穴の開き', '黒ずみ', 'キメ'], price: '¥22,000〜', ph: '毛穴ケア施術' },
+      { name: 'ボディ治療', en: 'Body Treatment', cat: 'body', desc: '背中ニキビのケアや、部分的な引き締めのご相談を承ります。', concerns: ['背中ニキビ', '二の腕', 'セルライト'], price: '¥16,500〜', ph: 'ボディ施術' },
+    ].map((t, i) => ({ ...t, id: 'menu-' + (i + 1), src: ["images/woman-hands-face.jpg","images/woman-mirror-skin.jpg","images/facial-treatment.jpg","images/skin-check-mirror.jpg","images/doctor-exam-face.jpg","images/forehead-injection.jpg","images/jawline.jpg","images/skin-closeup-smile.jpg","images/body-injection.jpg"][i], href: t.href || 'Price.dc.html' }));
+    const tabDefs = [['all', 'すべて'], ['skin', '肌質・ハリ'], ['tone', 'シミ・色味'], ['aging', 'しわ・たるみ'], ['acne', 'ニキビ・毛穴'], ['body', 'ボディ']];
+    const tab = this.state.tab;
+    return {
+      tabs: tabDefs.map(([k, label]) => { const on = k === tab; return { label, on, bg: on ? '#6e5a4e' : '#fff', fg: on ? '#fff' : '#4b4340', bd: on ? '#6e5a4e' : '#ddd3c5', pick: () => this.setState({ tab: k }) }; }),
+      items: tab === 'all' ? all : all.filter(t => t.cat === tab),
+    };
+  }
+}
+</script>
+</body>
+</html>

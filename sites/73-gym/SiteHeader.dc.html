@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+h1,h2,h3,p,dd,li{word-break:auto-phrase}
+@media (max-width:767px){
+  .alt-img{order:0 !important}
+  .pc-br{display:none}
+}
+</style>
+</helmet>
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(16px,3vw,32px);height:64px;background:{{ headerBg }};transition:background .4s ease">
+  <a href="Home.dc.html" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none">
+    <span style="font-family:'Oswald',sans-serif;font-weight:400;font-size:26px;letter-spacing:.14em;color:#fff">STRIDE</span>
+    <span style="display:flex;flex-direction:column;border-left:1px solid rgba(255,255,255,.5);padding-left:10px;font-family:'Oswald',sans-serif;font-size:9px;letter-spacing:.14em;line-height:1.4;color:#fff">PERSONAL<br>TRAINING GYM</span>
+  </a>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;align-items:center;gap:26px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="color:#fff;text-decoration:none;font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.12em;padding:6px 0;border-bottom:1px solid {{ n.line }}" style-hover="opacity:.6">{{ n.en }}</a>
+      </sc-for>
+      <a href="Contact.dc.html#form" style="display:flex;align-items:center;gap:8px;background:#c8102e;color:#fff;text-decoration:none;font-size:12px;font-weight:500;padding:10px 18px;letter-spacing:.06em;transition:background .3s" style-hover="background:#a00c24;color:#fff">無料体験トレーニング <span style="font-family:'Oswald',sans-serif">›</span></a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:44px;height:44px;background:none;border:none;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;cursor:pointer;padding:0">
+      <span style="display:block;width:24px;height:1px;background:#fff"></span>
+      <span style="display:block;width:24px;height:1px;background:#fff"></span>
+      <span style="display:block;width:16px;height:1px;background:#fff;margin-left:8px"></span>
+    </button>
+  </sc-if>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#141414;display:flex;flex-direction:column;padding:10px 24px 40px;overflow-y:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center;height:44px">
+      <span style="font-family:'Oswald',sans-serif;font-size:24px;letter-spacing:.14em;color:#fff">STRIDE</span>
+      <button onClick="{{ toggleMenu }}" aria-label="閉じる" style="width:44px;height:44px;background:none;border:none;color:#fff;font-size:28px;font-weight:200;cursor:pointer">×</button>
+    </div>
+    <nav style="display:flex;flex-direction:column;margin-top:28px;border-top:1px solid #333">
+      <a href="Home.dc.html" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid #333;color:#fff;text-decoration:none"><span style="font-family:'Oswald',sans-serif;font-size:22px;letter-spacing:.08em">HOME</span><span style="font-size:11px;color:#aaa">トップ</span></a>
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid #333;color:#fff;text-decoration:none"><span style="font-family:'Oswald',sans-serif;font-size:22px;letter-spacing:.08em">{{ n.en }}</span><span style="font-size:11px;color:#aaa">{{ n.ja }}</span></a>
+      </sc-for>
+    </nav>
+    <a href="Contact.dc.html#form" style="margin-top:auto;display:flex;justify-content:center;align-items:center;height:56px;background:#c8102e;color:#fff;text-decoration:none;font-weight:500;font-size:15px">無料体験トレーニングに申し込む</a>
+  </div>
+</sc-if>
+<sc-if value="{{ hasTitle }}" hint-placeholder-val="{{ false }}">
+  <div style="position:relative;min-height:clamp(300px,40vw,420px);display:flex;align-items:flex-end;background:#242424 url({{ img }}) {{ imgPos }}/cover no-repeat;color:#fff">
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,12,12,.8),rgba(12,12,12,.25))"></div>
+    <div style="position:relative;width:100%;max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px) clamp(40px,6vw,64px)">
+      <p style="margin:0 0 18px;font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.7);display:flex;gap:8px"><a href="Home.dc.html" style="color:rgba(255,255,255,.7);text-decoration:none">HOME</a><span>›</span><span>{{ sub }}</span></p>
+      <h1 style="margin:0;font-family:'Oswald',sans-serif;font-weight:400;font-size:clamp(44px,6.4vw,80px);line-height:1;letter-spacing:.01em">{{ title }}</h1>
+      <p style="margin:12px 0 0;font-size:13px;letter-spacing:.1em;color:rgba(255,255,255,.85)">— {{ sub }}</p>
+    </div>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;concept&quot;,&quot;program&quot;,&quot;trainer&quot;,&quot;results&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;sub&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;img&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;imgPos&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;center&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { scrolled: false, mobile: false, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ mobile: window.innerWidth < 1024 });
+    this.onScroll = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    this.onResize(); this.onScroll();
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+  }
+  renderVals() {
+    const { mobile, scrolled, menuOpen } = this.state;
+    const active = this.props.active ?? '';
+    const items = [
+      ['concept', 'CONCEPT', 'ジムについて', 'Concept.dc.html'],
+      ['program', 'PROGRAM', 'プログラム', 'Program.dc.html'],
+      ['trainer', 'TRAINER', 'トレーナー紹介', 'Trainer.dc.html'],
+      ['results', 'RESULTS & VOICE', '実績・お客様の声', 'Results.dc.html'],
+      ['contact', 'TRIAL & ACCESS', '体験・アクセス', 'Contact.dc.html']
+    ];
+    return {
+      isDesktop: !mobile, isMobile: mobile, menuOpen,
+      headerBg: scrolled || menuOpen ? 'rgba(18,18,18,.92)' : 'rgba(18,18,18,0)',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      nav: items.map(([k, en, ja, href]) => ({ en, ja, href, line: k === active ? '#fff' : 'transparent' })),
+      hasTitle: !!this.props.title,
+      title: this.props.title, sub: this.props.sub,
+      img: this.props.img ?? '', imgPos: this.props.imgPos || 'center'
+    };
+  }
+}
+</script>
+</body>
+</html>

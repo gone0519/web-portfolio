@@ -1,0 +1,53 @@
+/* MERIDIAN 共通レスポンシブ
+   各要素はインラインスタイルで組んでいるため、ブレークポイント内の上書きは !important を付ける */
+
+/* 見出しを文節で改行する（Chrome/Edge。lang="ja" が必要） */
+h1, h2, h3, h4 { word-break: auto-phrase; }
+
+/* ---------- Insights：記事一覧 + サイドバー ---------- */
+.mrd-insights-layout { grid-template-columns: minmax(0, 1fr) 300px !important; }
+.mrd-post { grid-template-columns: 200px minmax(0, 1fr) !important; }
+.mrd-post > :last-child { grid-column: auto !important; }
+
+/* ---------- タブレット以下 ---------- */
+@media (max-width: 860px) {
+  .mrd-insights-layout { grid-template-columns: minmax(0, 1fr) !important; }
+  .mrd-insights-aside { max-width: none !important; }
+}
+
+/* ---------- スマートフォン ---------- */
+@media (max-width: 600px) {
+  /* iOS でフォーカス時に拡大されないよう 16px 以上に */
+  input, select, textarea { font-size: 16px !important; }
+
+  /* Home ヒーロー */
+  .mrd-hero-inner { padding-top: 48px !important; padding-bottom: 48px !important; }
+  .mrd-hero-box { padding: 36px 18px !important; }
+  .mrd-hero-title { font-size: clamp(26px, 7.2vw, 34px) !important; }
+
+  /* ボタン群は縦積み・全幅 */
+  .mrd-btns { flex-direction: column; align-items: stretch !important; }
+  .mrd-btns > a { text-align: center; padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* Home：理由カードの画像とサービスカード */
+  .mrd-why-img { aspect-ratio: 16 / 9 !important; }
+  .mrd-svc-card { padding: 24px 20px !important; }
+
+  /* About：経営チームは横並びカードに */
+  .mrd-leader { display: grid !important; grid-template-columns: 112px minmax(0, 1fr); }
+  .mrd-leader > :first-child { aspect-ratio: auto !important; min-height: 150px; }
+  .mrd-leader > :last-child { padding: 16px 16px 18px !important; }
+
+  /* Cases：指標の数値 */
+  .mrd-metric { padding: 16px 6px !important; }
+  .mrd-metric-v { font-size: 18px !important; }
+
+  /* Insights：記事は縦積み */
+  .mrd-post { grid-template-columns: minmax(0, 1fr) !important; }
+  .mrd-post-thumb { max-width: none !important; }
+  .mrd-post-thumb > div { aspect-ratio: 16 / 9 !important; }
+
+  /* CTA の拠点情報とフッター */
+  .mrd-info > div { padding: 20px !important; }
+  .mrd-footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 28px 16px !important; }
+}

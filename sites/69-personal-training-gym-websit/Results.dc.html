@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',system-ui,sans-serif;color:#1a1a1a;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a1a1a;text-decoration:none}
+a:hover{color:#d9622b}
+@keyframes heroIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="results" hint-size="100%,0px"></dc-import>
+
+<section data-screen-label="Results Title" style="position:relative;background:#111;color:#fff;overflow:hidden;padding:clamp(140px,16vw,190px) clamp(20px,4vw,48px) clamp(56px,7vw,80px)">
+  <div style="position:absolute;inset:0;background:url(images/members-smile.jpg) center 30%/cover,#111"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.9),rgba(10,10,10,.4))"></div>
+  <div aria-hidden="true" style="position:absolute;right:-1vw;bottom:-2vw;font-family:Oswald,'Noto Sans JP';font-weight:700;font-size:clamp(90px,15vw,240px);line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.16);white-space:nowrap;pointer-events:none">RESULTS</div>
+  <div style="position:relative;max-width:1000px;margin:0 auto;animation:heroIn 1s .1s ease-out both">
+    <div style="font-size:11px;letter-spacing:.08em;margin-bottom:24px;display:flex;gap:8px;color:#999"><a href="Personal%20Training%20Gym.dc.html" style="color:#999">TOP</a><span>›</span><span style="color:#f0a04b">実績</span></div>
+    <span style="display:inline-block;font-family:Oswald,'Noto Sans JP';font-size:11px;letter-spacing:.2em;color:#fff;padding:4px 22px;background:linear-gradient(90deg,#d9622b,#f0a04b)">RESULTS</span>
+    <h1 style="margin:16px 0 0;font-size:clamp(30px,4.5vw,48px);font-weight:700;letter-spacing:.06em">実績・お客様の声</h1>
+    <p style="margin:14px 0 0;font-size:13.5px;color:#bbb;line-height:1.9;max-width:520px">会員様の身体の変化と、実際に通われた方の声をご紹介します。</p>
+  </div>
+</section>
+
+<section data-screen-label="Before After" style="padding:clamp(72px,9vw,110px) clamp(20px,4vw,48px);background:#f4f3f1">
+  <div style="text-align:center;margin-bottom:40px">
+    <span style="display:inline-block;font-family:Oswald,'Noto Sans JP';font-size:11px;letter-spacing:.2em;color:#fff;padding:4px 22px;background:linear-gradient(90deg,#d9622b,#f0a04b)">BEFORE / AFTER</span>
+    <h2 style="margin:12px 0 0;font-size:15px;letter-spacing:.08em;font-weight:700">会員様のビフォーアフター</h2>
+  </div>
+  <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+    <sc-for list="{{ results }}" as="r" hint-placeholder-count="6">
+      <article data-reveal="" style="background:#fff;padding:16px;box-shadow:0 4px 14px rgba(0,0,0,.06);transition:transform .4s" style-hover="transform:translateY(-4px)">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+          <div role="img" aria-label="ビフォー写真" style="position:relative;aspect-ratio:3/4;background:url({{ r.b }}) {{ r.bp }}/cover,repeating-linear-gradient(135deg,#e6e4e1 0 10px,#efedea 10px 20px)"><span style="position:absolute;left:0;top:0;background:#141414;color:#fff;font-family:Oswald,'Noto Sans JP';font-size:10px;letter-spacing:.15em;padding:3px 10px">BEFORE</span></div>
+          <div role="img" aria-label="アフター写真" style="position:relative;aspect-ratio:3/4;background:url({{ r.a }}) {{ r.ap }}/cover,repeating-linear-gradient(135deg,#e6e4e1 0 10px,#efedea 10px 20px)"><span style="position:absolute;left:0;top:0;background:linear-gradient(90deg,#d9622b,#f0a04b);color:#fff;font-family:Oswald,'Noto Sans JP';font-size:10px;letter-spacing:.15em;padding:3px 10px">AFTER</span></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin:16px 0 4px"><span style="font-size:13px;font-weight:700">{{ r.who }}</span><span style="font-size:12px;font-weight:700;color:#d9622b">期間 {{ r.period }}</span></div>
+        <div style="font-size:11px;color:#888;margin-bottom:10px">{{ r.plan }}</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #eee">
+          <div style="padding:10px 0;border-right:1px solid #eee;text-align:center"><div style="font-size:10px;color:#888">体重</div><div style="font-family:Oswald,'Noto Sans JP';font-size:22px;font-weight:600;color:#d9622b">{{ r.w }}</div><div style="font-size:10px;color:#999">{{ r.wd }}</div></div>
+          <div style="padding:10px 0;border-right:1px solid #eee;text-align:center"><div style="font-size:10px;color:#888">体脂肪率</div><div style="font-family:Oswald,'Noto Sans JP';font-size:22px;font-weight:600;color:#d9622b">{{ r.f }}</div><div style="font-size:10px;color:#999">{{ r.fd }}</div></div>
+          <div style="padding:10px 0;text-align:center"><div style="font-size:10px;color:#888">ウエスト</div><div style="font-family:Oswald,'Noto Sans JP';font-size:22px;font-weight:600;color:#d9622b">{{ r.c }}</div><div style="font-size:10px;color:#999">{{ r.cd }}</div></div>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+  <p style="max-width:1000px;margin:14px auto 0;font-size:10.5px;color:#888">※効果には個人差があります。</p>
+</section>
+
+<section data-screen-label="Voice" style="padding:clamp(72px,9vw,110px) clamp(20px,4vw,48px)">
+  <div style="text-align:center;margin-bottom:40px">
+    <span style="display:inline-block;font-family:Oswald,'Noto Sans JP';font-size:11px;letter-spacing:.2em;color:#fff;padding:4px 22px;background:linear-gradient(90deg,#d9622b,#f0a04b)">VOICE</span>
+    <h2 style="margin:12px 0 0;font-size:15px;letter-spacing:.08em;font-weight:700">お客様の声</h2>
+  </div>
+  <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+    <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="6">
+      <figure data-reveal="" style="margin:0;background:#fff;border:1px solid #eee;padding:26px 24px;border-top:3px solid #d9622b;display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0;font-size:15px;font-weight:700;color:#d9622b;line-height:1.6">{{ t.head }}</h3>
+        <blockquote style="margin:0;font-size:13px;line-height:1.95;color:#333;text-wrap:pretty">{{ t.quote }}</blockquote>
+        <figcaption style="display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:12px;border-top:1px solid #f0f0f0"><span style="flex:none;width:40px;height:40px;border-radius:50%;background:url({{ t.photo }}) {{ t.pos }}/auto {{ t.zoom }} no-repeat,#e6e4e1"></span><span style="font-size:12px;line-height:1.5"><b>{{ t.name }}</b><br><span style="color:#888">{{ t.meta }}</span></span></figcaption>
+      </figure>
+    </sc-for>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      results: [
+        { who: '30代女性・会社員', period: '3ヶ月', plan: 'ダイエットプログラム / 週2回', w: '−7.2kg', wd: '61.4 → 54.2', f: '−6.8%', fd: '31.2 → 24.4', c: '−9cm', cd: '78 → 69', b: 'images/treadmill-body.jpg', bp: '20% 60%', a: 'images/hydration.jpg', ap: '22% 60%' },
+        { who: '40代男性・管理職', period: '4ヶ月', plan: 'ダイエット + 筋力 / 週2回', w: '−11.5kg', wd: '84.0 → 72.5', f: '−8.1%', fd: '26.3 → 18.2', c: '−12cm', cd: '94 → 82', b: 'images/trainers-team.jpg', bp: '42% 60%', a: 'images/coaching-chest-press.jpg', ap: '88% 60%' },
+        { who: '20代女性・看護師', period: '2ヶ月', plan: 'ボディメイク / 週2回', w: '−4.1kg', wd: '55.8 → 51.7', f: '−4.3%', fd: '27.5 → 23.2', c: '−6cm', cd: '71 → 65', b: 'images/treadmill-woman.jpg', bp: '58% 60%', a: 'images/pec-deck.jpg', ap: '52% 60%' },
+        { who: '50代男性・自営業', period: '6ヶ月', plan: '姿勢改善 + ダイエット / 週1回', w: '−9.8kg', wd: '78.6 → 68.8', f: '−7.0%', fd: '28.9 → 21.9', c: '−10cm', cd: '92 → 82', b: 'images/counseling.jpg', bp: '28% 70%', a: 'images/trainers-team.jpg', ap: '78% 60%' },
+        { who: '30代男性・エンジニア', period: '3ヶ月', plan: 'ボディメイク / 週3回', w: '−5.4kg', wd: '72.1 → 66.7', f: '−6.2%', fd: '22.4 → 16.2', c: '−7cm', cd: '84 → 77', b: 'images/trainer-ishida.jpg', bp: '45% 70%', a: 'images/trainer-kaneda.jpg', ap: '50% 70%' },
+        { who: '40代女性・主婦', period: '4ヶ月', plan: 'ダイエットプログラム / 週2回', w: '−8.3kg', wd: '63.9 → 55.6', f: '−7.5%', fd: '33.0 → 25.5', c: '−11cm', cd: '82 → 71', b: 'images/cable-row.jpg', bp: '60% 50%', a: 'images/member-smile.jpg', ap: '45% 60%' }
+      ],
+      testimonials: [
+        { head: '空腹で辛いと感じることがなかった', quote: '自己流のダイエットは何度も失敗してきました。毎日食事を見てもらえたことが大きく、空腹で辛いと感じることもありませんでした。', name: 'M.Y様', meta: '30代・ダイエットプログラム', photo: 'images/members-smile.jpg', pos: '33% 22%', zoom: '700%' },
+        { head: '腰痛を気にせず動けるように', quote: '腰痛がきっかけで入会しました。3ヶ月で姿勢が変わり、今では不安なくデッドリフトができるようになりました。', name: 'T.K様', meta: '40代・姿勢改善 / 筋力', photo: 'images/trainers-team.jpg', pos: '46% 18%', zoom: '550%' },
+        { head: '初心者でも気軽に始められた', quote: '完全個室なので、運動初心者でも気軽に始められました。一つひとつの種目の意味を説明してもらえるので、モチベーションが続いています。', name: 'S.A様', meta: '20代・ボディメイク', photo: 'images/members-smile.jpg', pos: '52% 25%', zoom: '700%' },
+        { head: '会食が多くても続けられた', quote: '仕事柄、外食がほとんどです。お店ごとのメニューの選び方まで教えてもらえたので、生活を大きく変えずに体重を落とせました。', name: 'H.N様', meta: '50代・ダイエットプログラム', photo: 'images/trainers-team.jpg', pos: '77% 24%', zoom: '550%' },
+        { head: '数字で変化がわかるのが励みに', quote: '毎回の測定結果をグラフで見られるので、停滞期も焦らずに続けられました。トレーナーさんの声かけにも助けられました。', name: 'R.O様', meta: '30代・ボディメイク', photo: 'images/treadmill-woman.jpg', pos: '55% 19%', zoom: '550%' },
+        { head: '産後の体型が戻ってきた', quote: '子どもを預けられる時間に合わせて予約できるのが助かりました。産後に気になっていたお腹まわりが、かなり引き締まりました。', name: 'E.S様', meta: '40代・ダイエットプログラム', photo: 'images/members-smile.jpg', pos: '68% 22%', zoom: '700%' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

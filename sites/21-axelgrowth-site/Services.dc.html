@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #ffffff; -webkit-font-smoothing: antialiased; }
+  a { color: #1a6faf; text-decoration: none; }
+  a:hover { color: #d4000e; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="services" hint-size="100%,140px"></dc-import>
+
+<main style="font-family: 'Zen Kaku Gothic New', sans-serif; color: #1a1a1a;">
+  <section style="position: relative; background-color: #2b3a45; background-image: url(images/analytics-desk.jpg); background-size: cover; background-position: center 45%; padding: clamp(60px, 8vw, 104px) 24px;">
+    <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(0,0,0,0.8), rgba(0,0,0,0.35));"></div>
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) both;">
+      <span style="font-size: 10.5px; letter-spacing: 0.34em; color: #8ccdea;">SERVICES</span>
+      <h1 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(28px, 4vw, 44px); letter-spacing: 0.16em; color: #fff;">サービス</h1>
+      <p style="margin: 0; font-size: 14px; line-height: 2.1; color: rgba(255,255,255,0.85); max-width: 40em; text-wrap: pretty;">戦略設計から実行、計測、内製化支援まで。必要な施策だけを選び、組み合わせて提供します。</p>
+    </div>
+  </section>
+  <div style="border-bottom: 1px solid #e3e3e3; background: #fff;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 14px 24px; font-size: 12px; color: #8c8c8c; display: flex; gap: 10px;">
+      <a href="Home.dc.html" style="color: #8c8c8c;">ホーム</a><span>›</span><span style="color: #1a1a1a;">サービス</span>
+    </div>
+  </div>
+
+  <section style="padding: clamp(64px, 8vw, 104px) 24px;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div data-reveal="" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; margin-bottom: 52px;">
+        <h2 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(25px, 3.2vw, 36px); letter-spacing: 0.22em;">サービス一覧</h2>
+        <span style="font-size: 10.5px; letter-spacing: 0.44em; color: #d4000e;">ALL SERVICES</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: #e3e3e3; border: 1px solid #e3e3e3;">
+        <sc-for list="{{ all }}" as="s" hint-placeholder-count="9">
+          <div data-reveal="rise" style="background: #fff; padding: 32px 28px 36px; display: flex; flex-direction: column; gap: 12px; transition: background .3s;" style-hover="background: #fafafa;">
+            <div style="display: flex; align-items: baseline; gap: 12px;">
+              <span style="font-family: 'Shippori Mincho', serif; font-size: 15px; color: #d4000e; letter-spacing: 0.1em;">{{ s.num }}</span>
+              <h3 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: 19px; letter-spacing: 0.1em;">{{ s.title }}</h3>
+            </div>
+            <span style="font-size: 9.5px; letter-spacing: 0.26em; color: #1a6faf;">{{ s.en }}</span>
+            <p style="margin: 0; font-size: 13px; line-height: 2; color: #575757; text-wrap: pretty;">{{ s.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: clamp(64px, 8vw, 104px) 24px; background: #f2f2f2;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px;">
+      <div data-reveal="" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; margin-bottom: 24px;">
+        <h2 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(25px, 3.2vw, 36px); letter-spacing: 0.22em;">主要サービス詳細</h2>
+        <span style="font-size: 10.5px; letter-spacing: 0.44em; color: #d4000e;">IN DETAIL</span>
+      </div>
+      <sc-for list="{{ detail }}" as="d" hint-placeholder-count="4">
+        <article data-reveal="zoom" id="{{ d.id }}" style="background: #fff; border: 1px solid #e3e3e3; border-top: 3px solid #d4000e; padding: clamp(28px, 4vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(24px, 3vw, 44px);">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <span style="font-size: 10px; letter-spacing: 0.3em; color: #1a6faf;">{{ d.en }}</span>
+            <h3 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(22px, 2.6vw, 30px); letter-spacing: 0.1em; line-height: 1.6;">{{ d.title }}</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 2.1; color: #575757; text-wrap: pretty;">{{ d.overview }}</p>
+            <div style="aspect-ratio: 16 / 9; background-color: #e2e2e2; overflow: hidden;">
+              <img src="{{ d.img }}" alt="{{ d.title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 22px;">
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.14em; color: #1a1a1a; border-left: 3px solid #8ccdea; padding-left: 10px;">提供内容</span>
+              <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column;">
+                <sc-for list="{{ d.features }}" as="f" hint-placeholder-count="4">
+                  <li style="display: flex; gap: 10px; font-size: 13.5px; line-height: 1.9; color: #575757; padding: 6px 0; border-bottom: 1px dashed #e3e3e3;"><span style="color: #d4000e;">▸</span>{{ f }}</li>
+                </sc-for>
+              </ul>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px;">
+              <sc-for list="{{ d.results }}" as="r" hint-placeholder-count="2">
+                <div style="background: #f2f2f2; padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+                  <span data-count="" style="font-family: 'Shippori Mincho', serif; font-size: 25px; color: #d4000e; line-height: 1;">{{ r.value }}</span>
+                  <span style="font-size: 11.5px; color: #6d6d6d; line-height: 1.6;">{{ r.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.14em; border-left: 3px solid #8ccdea; padding-left: 10px;">成果物</span>
+              <p style="margin: 0; font-size: 13px; line-height: 2; color: #575757;">{{ d.deliverables }}</p>
+            </div>
+            <a href="#contact" style="align-self: flex-start; background: #d4000e; color: #fff; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; padding: 15px 30px; border-radius: 3px; display: flex; align-items: center; gap: 10px; transition: background .25s;" style-hover="background: #e60012;">このサービスを相談する<span>›</span></a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding: clamp(64px, 8vw, 104px) 24px;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div data-reveal="" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; margin-bottom: 52px;">
+        <h2 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(25px, 3.2vw, 36px); letter-spacing: 0.22em;">ご依頼の流れ</h2>
+        <span style="font-size: 10.5px; letter-spacing: 0.44em; color: #d4000e;">PROCESS</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+        <sc-for list="{{ steps }}" as="p" hint-placeholder-count="5">
+          <div data-reveal="down" style="border-top: 3px solid #1a6faf; border-right: 1px solid #e3e3e3; border-bottom: 1px solid #e3e3e3; border-left: 1px solid #e3e3e3; padding: 26px 22px 30px; display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-size: 10px; letter-spacing: 0.3em; color: #1a6faf;">{{ p.step }}</span>
+            <h3 style="margin: 0; font-size: 15.5px; font-weight: 700; letter-spacing: 0.06em;">{{ p.title }}</h3>
+            <p style="margin: 0; font-size: 12.5px; line-height: 1.95; color: #575757;">{{ p.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import("./motion.js").then(m => m.initMotion());
+  }
+  renderVals() {
+    return {
+      all: [
+        { num: "01", en: "DIGITAL MARKETING", title: "デジタルマーケティング", body: "獲得から育成まで、チャネル横断で全体設計を行います。部分最適に陥らない投資配分をつくります。" },
+        { num: "02", en: "SEO", title: "S E O 対 策", body: "検索意図の設計、技術要件の改善、コンテンツ制作を一体で推進します。" },
+        { num: "03", en: "GOOGLE ADS / PPC", title: "広告運用・PPC", body: "検索・ディスプレイ・動画を横断し、LTVを基準に入札と予算配分を決めます。" },
+        { num: "04", en: "SOCIAL MEDIA", title: "SNSマーケティング", body: "プラットフォーム別の文脈に合わせた企画・制作・運用を行います。" },
+        { num: "05", en: "WEB DEVELOPMENT", title: "サイト制作・開発", body: "情報設計から実装まで。表示速度と計測性を最初から織り込みます。" },
+        { num: "06", en: "LANDING PAGE", title: "LP制作・改善", body: "訴求仮説を並走で検証し、勝ちパターンを積み上げます。" },
+        { num: "07", en: "BRANDING", title: "ブランディング", body: "誰に何をどう伝えるか。言葉とビジュアルの基準を定義します。" },
+        { num: "08", en: "STRATEGY", title: "マーケティング戦略", body: "市場と自社の強みから、勝てる領域と撤退基準を決めます。" },
+        { num: "09", en: "ANALYTICS", title: "分析・レポーティング", body: "計測設計とダッシュボード構築。数字を信じられる状態をつくります。" }
+      ],
+      detail: [
+        {
+          id: "ads", en: "GOOGLE ADS / PPC", title: "広告運用・PPC",
+          overview: "媒体ごとの最適化ではなく、事業全体の獲得効率を基準に予算を配分します。週次で仮説検証を回し、判断理由をすべてドキュメントに残すため、何が効いたのかが社内資産として残ります。",
+          img: "images/analyst-duo.jpg",
+          features: ["検索・ディスプレイ・動画・SNS広告の横断運用", "LTVベースの入札方針と予算シミュレーション", "クリエイティブ制作と週次ABテスト", "サーバーサイド計測・オフラインCV連携"],
+          results: [{ value: "-42%", label: "平均CPA改善率（6ヶ月）" }, { value: "428%", label: "最高ROAS実績" }],
+          deliverables: "アカウント診断書 / 予算配分シミュレーション / 週次改善ログ / 月次レポート / Looker Studioダッシュボード"
+        },
+        {
+          id: "seo", en: "SEO", title: "S E O 対 策",
+          overview: "検索需要の構造から取るべきキーワード群を決め、技術面・コンテンツ面の両輪で改善します。AI検索の広がりを前提に、指名検索と一次情報を増やす設計を標準にしています。",
+          img: "images/dashboard-devices.jpg",
+          features: ["検索意図マップとキーワード設計", "テクニカル監査（表示速度・構造化データ・内部リンク）", "編集体制の構築と記事制作", "既存記事のリライト・統合設計"],
+          results: [{ value: "3.4倍", label: "自然検索流入（12ヶ月平均）" }, { value: "216本", label: "年間制作記事数" }],
+          deliverables: "SEO監査レポート / キーワード設計書 / 記事構成案 / 月次順位・流入レポート"
+        },
+        {
+          id: "web", en: "WEB DEVELOPMENT", title: "サイト制作・開発",
+          overview: "見た目を整えるだけの制作は行いません。獲得導線と計測要件を情報設計の段階から組み込み、公開後に改善が回る状態で引き渡します。",
+          img: "images/training-monitor.jpg",
+          features: ["情報設計・ワイヤーフレーム", "UIデザインとデザインシステム構築", "Next.js / ヘッドレスCMS実装", "Core Web Vitals最適化とアクセシビリティ対応"],
+          results: [{ value: "1.2秒", label: "平均LCP（実装後）" }, { value: "+68%", label: "CVR改善（リニューアル平均）" }],
+          deliverables: "サイトマップ / ワイヤーフレーム / デザインデータ / 実装一式 / 運用マニュアル"
+        },
+        {
+          id: "analytics", en: "ANALYTICS & STRATEGY", title: "戦略・分析",
+          overview: "施策の前に、数字が信じられる状態をつくります。KPIツリーを事業計画から逆算して定義し、意思決定に必要な数字だけをダッシュボードに残します。",
+          img: "images/strategy-meeting.jpg",
+          features: ["KPIツリー設計とロードマップ策定", "GA4 / GTM / サーバーサイドタグ実装", "Looker Studioダッシュボード構築", "インハウス化支援とチームトレーニング"],
+          results: [{ value: "94%", label: "契約継続率" }, { value: "5営業日", label: "最短検証サイクル" }],
+          deliverables: "KPIツリー / 計測設計書 / ダッシュボード / 月次戦略レビュー資料"
+        }
+      ],
+      steps: [
+        { step: "STEP 01", title: "お問い合わせ", body: "フォームまたはお電話から。課題と予算感を簡単にお聞かせください。" },
+        { step: "STEP 02", title: "無料診断", body: "広告アカウントとサイトを診断し、改善余地を金額換算します。" },
+        { step: "STEP 03", title: "戦略設計", body: "KPIツリーと施策ロードマップ、体制と費用をご提案します。" },
+        { step: "STEP 04", title: "実行・運用", body: "週次で改善を回し、月次で成果と次の打ち手を共有します。" },
+        { step: "STEP 05", title: "拡大・移管", body: "成果が安定した領域は投資拡大、もしくは社内移管を支援します。" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

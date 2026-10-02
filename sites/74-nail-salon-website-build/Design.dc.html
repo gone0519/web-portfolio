@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Cormorant+SC:wght@400;500&amp;family=Noto+Sans+JP:wght@300;400&amp;family=Pinyon+Script&amp;family=Shippori+Mincho:wght@500&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>html{scroll-behavior:smooth}body{margin:0;background:#faf7f3;color:#4a4340;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}a{color:#7b6a9b;text-decoration:none}a:hover{color:#5f4f80}*{box-sizing:border-box}image-slot[src]::part(ring){display:none}html,body,#dc-root,.sc-host{height:auto!important;min-height:100%}</style>
+</helmet>
+<dc-import name="SiteHeader" current="design" style="position:sticky;top:0;z-index:30;display:block" hint-size="100%,124px"></dc-import>
+
+<main>
+<section data-screen-label="Design / Title" style="position:relative;padding:80px 24px 72px;overflow:hidden;text-align:center;background:#faf7f3">
+  <div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(176,146,124,.13) 1.4px,transparent 2px),radial-gradient(rgba(176,146,124,.09) 1px,transparent 1.6px);background-size:22px 22px,22px 22px;background-position:0 0,11px 11px"></div>
+  <span aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-58%);font-family:'Pinyon Script',cursive;font-size:clamp(100px,18vw,240px);line-height:1;color:rgba(123,106,155,.08);white-space:nowrap;pointer-events:none">Design</span>
+  <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:12px">
+    <p style="margin:0;font-size:11px;letter-spacing:.14em;color:#6f6560"><a href="Nail Salon.dc.html" style="color:#6f6560">ホーム</a>　／　デザイン</p>
+    <h1 style="margin:0;font-family:'Cormorant SC',serif;font-weight:500;font-size:clamp(38px,5vw,56px);letter-spacing:.04em;line-height:1;color:#4a4340"><span style="color:#7b6a9b">N</span>ail Design</h1>
+    <span style="font-size:12px;letter-spacing:.3em;color:#6f6560">ネイルデザイン</span>
+    <span style="width:1px;height:48px;background:#b9aec7;margin-top:12px"></span>
+  </div>
+</section>
+
+<section style="position:relative;background:#f3e3d7;padding:64px 24px 96px">
+  <div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.55) 1.4px,transparent 2px),radial-gradient(rgba(255,255,255,.35) 1px,transparent 1.6px);background-size:22px 22px,22px 22px;background-position:0 0,11px 11px"></div>
+  <div style="position:relative;max-width:1120px;margin:0 auto">
+    <div role="tablist" aria-label="カテゴリー" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:44px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <button role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.pick }}" style="height:44px;padding:0 22px;border:1px solid #4a4340;background:{{ t.bg }};color:{{ t.fg }};font-family:'Cormorant SC',serif;font-size:15px;letter-spacing:.14em;cursor:pointer;transition:background .3s,color .3s">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px">
+      <sc-for list="{{ items }}" as="d" hint-placeholder-count="8">
+        <article style="position:relative;background:rgba(255,255,255,.85);display:flex;flex-direction:column;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(120,90,70,.12)">
+          <div style="position:relative;aspect-ratio:1 / 1"><image-slot id="{{ d.slot }}" src="{{ d.src }}" shape="rect" placeholder="{{ d.ph }}"></image-slot>
+            <span style="position:absolute;left:0;bottom:10px;padding:4px 16px 4px 12px;background:#d9dcd6;color:#3c3735;font-family:'Cormorant SC',serif;font-size:12px;letter-spacing:.12em;pointer-events:none">{{ d.catLabel }}</span>
+          </div>
+          <div style="padding:16px 18px 22px;display:flex;flex-direction:column;gap:4px">
+            <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:16px;letter-spacing:.08em;color:#2f2b29">{{ d.name }}</h3>
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:17px;color:#a35d4c">{{ d.price }}</p>
+          </div>
+          <span style="position:absolute;right:4px;bottom:4px;border-left:9px solid transparent;border-bottom:9px solid #e6d3c6"></span>
+        </article>
+      </sc-for>
+    </div>
+    <p style="margin:28px 0 0;font-size:11px;color:#4a4340;letter-spacing:.06em;text-align:center">掲載デザインは、お色や長さに合わせてアレンジできます。価格は仮のものです。</p>
+  </div>
+</section>
+
+<section style="background:#dfe2da;padding:80px 24px;text-align:center">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:20px">
+    <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.6vw,26px);letter-spacing:.16em;color:#2f2b29">気になるデザインは、ご予約時にお伝えください。</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px">
+      <a href="Reservation.dc.html" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:min(100%,300px);height:72px;background:#7b6a9b;color:#fff" style-hover="background:#66568a;color:#fff"><span style="font-size:15px;letter-spacing:.2em">ご予約はこちら</span><span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.12em">Book Your Appointment</span><span style="position:absolute;right:4px;bottom:4px;border-left:9px solid transparent;border-bottom:9px solid #fff"></span></a>
+      <a href="https://instagram.com/" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:min(100%,260px);height:72px;border:1px solid #4a4340;background:#fff;color:#4a4340" style-hover="background:#4a4340;color:#fff"><span style="font-size:14px;letter-spacing:.18em">Instagramを見る</span><span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.12em">More designs · @account</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: 'all' };
+  renderVals() {
+    const cats = [['all', 'all'], ['simple', 'simple / natural'], ['trend', 'trend / art'], ['special', 'special / event'], ['care', 'care']];
+    const label = Object.fromEntries(cats);
+    const all = [
+      ['simple', 'シアーワンカラー', 'Sheer one-color'], ['simple', '細フレンチ', 'Thin French tips'], ['simple', 'ミルキーベージュ', 'Milky beige nails'],
+      ['trend', 'ニュアンスアート', 'Abstract nuance art'], ['trend', 'マグネットネイル', 'Magnet gel shimmer'], ['trend', '季節のフラワー', 'Seasonal floral art'],
+      ['special', 'ブライダル パール', 'Bridal nails with pearls'], ['special', 'パーティー ラメ', 'Party glitter nails'], ['special', 'オーダーメイドアート', 'Custom hand-painted art'],
+      ['care', 'ネイルケア', 'Natural nails after care'], ['care', 'ハンドケア', 'Hand massage'], ['care', '補強ジェル', 'Clear strengthening gel']
+    ];
+    // all と同じ並び（simple×3, trend×3, special×3, care×3）
+    const photos = [3, 19, 16, 9, 4, 8, 10, 7, 2, 20, 21, 22];
+    const items = all.filter(a => this.state.cat === 'all' || a[0] === this.state.cat)
+      .map((a, i) => ({ slot: 'ds-' + a[0] + '-' + all.indexOf(a), catLabel: label[a[0]], name: a[1], ph: a[2], price: '¥0,000〜', src: 'uploads/photo-' + String(photos[all.indexOf(a)]).padStart(2, '0') + '.jpg' }));
+    return {
+      items,
+      tabs: cats.map(([k, l]) => { const s = this.state.cat === k; return { label: l, sel: s ? 'true' : 'false', bg: s ? '#4a4340' : 'rgba(255,255,255,.7)', fg: s ? '#fff' : '#4a4340', pick: () => this.setState({ cat: k }) }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

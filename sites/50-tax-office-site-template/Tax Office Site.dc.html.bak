@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f1f2f3;color:#1c2a36;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#123e66;text-decoration:none}
+a:hover{color:#3aa6d8}
+input,select,textarea,button{font-family:inherit}
+</style>
+</helmet>
+
+<sc-if value="{{ showHeader }}" hint-placeholder-val="{{ false }}">
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,0.96);border-bottom:1px solid #d9dee3;transition:transform .4s ease, opacity .4s ease;transform:{{ headerTransform }};opacity:{{ headerOpacity }}">
+  <div style="max-width:1100px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;color:#123e66">
+      <span style="width:26px;height:26px;border:1px solid #123e66;position:relative;display:block"><span style="position:absolute;right:4px;bottom:4px;width:9px;height:9px;background:#3aa6d8"></span></span>
+      <span style="font-size:14px;font-weight:600;letter-spacing:0.18em">白川税理士事務所</span>
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:26px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" style="font-size:13px;color:#123e66;letter-spacing:0.15em" style-hover="color:#3aa6d8">{{ n.en }}</a>
+        </sc-for>
+        <a href="#contact" style="background:#123e66;color:#fff;font-size:12px;letter-spacing:0.15em;padding:10px 18px" style-hover="background:#3a668b;color:#fff">無料相談</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:44px;height:44px;border:1px solid #123e66;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+        <span style="width:18px;height:1px;background:#123e66;display:block"></span>
+        <span style="width:18px;height:1px;background:#123e66;display:block"></span>
+        <span style="width:18px;height:1px;background:#123e66;display:block"></span>
+      </button>
+    </sc-if>
+  </div>
+</header>
+</sc-if>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#123e66;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+    <button onClick="{{ toggleMenu }}" aria-label="閉じる" style="position:absolute;top:10px;right:20px;width:44px;height:44px;background:none;border:1px solid rgba(255,255,255,0.5);color:#fff;font-size:20px;cursor:pointer">×</button>
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+      <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;flex-direction:column;align-items:center;padding:14px 0;color:#fff">
+        <span style="font-size:22px;letter-spacing:0.2em">{{ n.en }}</span>
+        <span style="font-size:11px;letter-spacing:0.2em;opacity:0.85">{{ n.ja }}</span>
+      </a>
+    </sc-for>
+  </div>
+</sc-if>
+
+<sc-if value="{{ showSideTab }}" hint-placeholder-val="{{ true }}">
+  <a href="#contact" style="position:fixed;right:0;top:120px;z-index:40;background:#fff;border:1px solid #123e66;border-right:none;padding:18px 10px;display:flex;flex-direction:column;align-items:center;gap:10px;color:#123e66;box-shadow:0 4px 14px rgba(18,62,102,0.12)" style-hover="background:#123e66;color:#fff">
+    <span style="writing-mode:vertical-rl;font-size:12px;letter-spacing:0.3em;font-weight:600">無料相談のご予約</span>
+    <span style="width:1px;height:18px;background:#3aa6d8;display:block"></span>
+    <span style="writing-mode:vertical-rl;font-size:12px;letter-spacing:0.3em">お問い合わせ</span>
+  </a>
+</sc-if>
+
+<main>
+<!-- 01 HERO -->
+<section id="top" data-screen-label="01 Hero" style="position:relative;height:100vh;min-height:580px;max-height:900px;background:#2d3842;overflow:hidden">
+  <div style="position:absolute;inset:0"><image-slot id="hero-photo" shape="rect" placeholder="メイン写真：税理士とお客様の対話シーン（横長・全面）"></image-slot></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,28,44,0.25) 0%,rgba(12,28,44,0.45) 100%);pointer-events:none;opacity:{{ overlay }}"></div>
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:clamp(170px,22vw,210px);aspect-ratio:1/0.95;background:#123e66;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;pointer-events:none;box-shadow:0 10px 30px rgba(0,0,0,0.2)">
+    <span style="width:46px;height:46px;border:1px solid #fff;position:relative;display:block"><span style="position:absolute;right:6px;bottom:6px;width:16px;height:16px;background:#3aa6d8"></span></span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.3em">横浜・関内</span>
+    <span style="font-size:14px;font-weight:600;letter-spacing:0.2em">白川税理士事務所</span>
+  </div>
+  <div style="position:absolute;left:0;right:0;top:52%;transform:translateY(-50%);padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:30px;color:#fff;text-align:center;pointer-events:none">
+    <h1 style="margin:0;font-weight:600;font-size:clamp(17px,2.1vw,22px);letter-spacing:0.28em;line-height:2.2;text-shadow:0 2px 12px rgba(0,0,0,0.35);text-wrap:pretty">横浜の経営者に、数字でいちばん近い相談相手を。<br>日々の会計から決算・相続まで、安心してお任せください。</h1>
+    <a href="#contact" style="pointer-events:auto;border:1px solid #fff;color:#fff;font-size:13px;letter-spacing:0.2em;padding:14px 34px;display:flex;align-items:center;gap:14px;background:rgba(18,62,102,0.25);transition:background .3s" style-hover="background:#fff;color:#123e66">初回無料相談のご予約</a>
+  </div>
+  <nav style="position:absolute;left:0;right:0;bottom:0;background:rgba(18,62,102,0.92);min-height:52px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;padding:8px 16px">
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+      <div style="display:flex;align-items:center">
+        <sc-if value="{{ n.slash }}" hint-placeholder-val="{{ true }}"><span style="width:1px;height:22px;background:rgba(255,255,255,0.45);transform:rotate(25deg);display:block;margin:0 clamp(10px,3vw,34px)"></span></sc-if>
+        <a href="{{ n.href }}" style="font-size:13px;color:#fff;letter-spacing:0.2em;padding:6px 0;opacity:0.9" style-hover="color:#8fd3f2;opacity:1">{{ n.en }}</a>
+      </div>
+    </sc-for>
+  </nav>
+</section>
+
+<!-- 02 ABOUT -->
+<section id="about" data-screen-label="02 About" style="background:#5d7686;color:#fff;border-top:4px solid #fff">
+  <div style="height:clamp(160px,22vw,240px);position:relative;filter:grayscale(0.7) contrast(0.95)"><image-slot id="about-band" shape="rect" placeholder="事務所周辺・街並みの写真（横長）"></image-slot></div>
+  <div data-reveal="1" style="max-width:760px;margin:0 auto;padding:clamp(60px,8vw,90px) 24px clamp(70px,9vw,100px);display:flex;flex-direction:column;align-items:center;gap:34px;text-align:center">
+    <h2 style="margin:0;font-weight:600;font-size:clamp(16px,2vw,20px);letter-spacing:0.25em;line-height:1.9;text-wrap:pretty">「数字の向こうにある、経営者の想いを大切に。」</h2>
+    <div style="display:flex;flex-direction:column;gap:18px;font-size:13px;line-height:2.4;letter-spacing:0.14em;text-wrap:pretty">
+      <p style="margin:0">白川税理士事務所は、横浜・関内に拠点を置く税理士事務所です。<br>法人・個人事業主の皆さまの税務申告から日々の会計、事業承継まで、<br>経営の「いま」と「これから」を、数字の面から支えています。</p>
+      <sc-if value="{{ aboutOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <p style="margin:0">私たちが大切にしているのは、正確な申告はもちろん、<br>お客様ご自身が数字を理解し、納得して判断できることです。<br>専門用語に頼らず、わかる言葉でご説明することを心がけています。</p>
+          <p style="margin:0">月に一度の面談を基本としながら、気になることがあれば<br>いつでも気軽にご相談いただける関係を、長く続けていきたいと考えています。</p>
+        </div>
+      </sc-if>
+    </div>
+    <button onClick="{{ toggleAbout }}" style="width:170px;height:38px;background:transparent;border:1px solid #fff;color:#fff;font-size:13px;letter-spacing:0.25em;cursor:pointer;transition:background .3s,color .3s" style-hover="background:#fff;color:#5d7686">{{ aboutLabel }}</button>
+  </div>
+</section>
+
+<!-- 03 SERVICE -->
+<section id="service" data-screen-label="03 Service" style="background:#f1f2f3;border-top:4px solid #fff;padding:clamp(70px,9vw,110px) 24px">
+  <div data-reveal="1" style="max-width:880px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,44px);align-items:flex-start">
+    <div style="flex:0 1 230px;min-width:200px;display:flex;flex-direction:column;gap:22px">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <span style="width:28px;height:2px;background:#3aa6d8;display:block;margin-bottom:14px"></span>
+        <h2 style="margin:0;font-weight:600;font-size:clamp(26px,3.2vw,32px);letter-spacing:0.2em;color:#123e66;line-height:1.3">業務案内</h2>
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.25em;color:#5d7686">私たちがお手伝いできること</span>
+      </div>
+      <div style="height:260px;position:relative"><image-slot id="service-portrait" shape="rect" placeholder="スタッフ写真（全身・切り抜き風）"></image-slot></div>
+    </div>
+    <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:28px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px 18px">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="7">
+          <button onClick="{{ s.select }}" style="min-height:62px;padding:12px 16px 12px 12px;background:{{ s.bg }};color:{{ s.fg }};border:none;border-right:1px solid #123e66;border-bottom:1px solid #123e66;font-size:12.5px;font-weight:700;letter-spacing:0.12em;line-height:1.7;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:background .25s,color .25s" style-hover="background:#e3e8ec">
+            <span style="text-wrap:pretty">{{ s.name }}</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:13px;color:#3aa6d8">{{ s.no }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="background:#fff;border-top:2px solid #123e66;padding:26px 28px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#3aa6d8">{{ current.no }}</span>
+          <h3 style="margin:0;font-size:16px;font-weight:700;letter-spacing:0.15em;color:#123e66">{{ current.name }}</h3>
+        </div>
+        <p style="margin:0;font-size:13px;line-height:2.1;letter-spacing:0.08em;color:#3a4652;text-wrap:pretty">{{ current.desc }}</p>
+        <span style="font-size:11.5px;letter-spacing:0.1em;color:#5d7686">対象：{{ current.for }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 EXPERTISE -->
+<section id="expertise" data-screen-label="04 Expertise" style="background-color:#3a668b;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.025) 0 2px,transparent 2px 6px);color:#fff;border-top:4px solid #fff;padding:clamp(70px,9vw,100px) 24px clamp(40px,5vw,60px)">
+  <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:44px">
+    <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center">
+      <span style="width:24px;height:2px;background:#3aa6d8;display:block;margin-bottom:14px"></span>
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.3em">選ばれる理由</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:13px;color:#8fd3f2">安心してご相談いただくために</span>
+      <h2 style="margin:36px 0 0;font-weight:500;font-size:clamp(16px,2vw,19px);letter-spacing:0.25em;text-wrap:pretty">「はじめてでも、安心してご相談いただける体制」</h2>
+    </div>
+    <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px">
+      <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="3">
+        <article data-reveal="1" style="background:#fff;color:#1c2a36;padding:8px 8px 26px;display:flex;flex-direction:column;box-shadow:0 8px 24px rgba(10,30,50,0.18);transition:transform .35s ease" style-hover="transform:translateY(-4px)">
+          <div style="aspect-ratio:4/3;position:relative"><image-slot id="{{ r.slot }}" shape="rect" placeholder="{{ r.ph }}"></image-slot></div>
+          <span style="align-self:flex-start;margin-top:-11px;position:relative;background:#123e66;color:#fff;font-family:'Cormorant Garamond',serif;font-size:13px;padding:2px 12px 3px;letter-spacing:0.06em">理由 {{ r.no }}</span>
+          <div style="padding:16px 12px 0;display:flex;flex-direction:column;gap:12px">
+            <h3 style="margin:0;font-size:14px;font-weight:700;letter-spacing:0.12em;line-height:1.8;color:#123e66;text-wrap:pretty">{{ r.title }}</h3>
+            <p style="margin:0;font-size:12.5px;line-height:2;letter-spacing:0.06em;color:#3a4652;text-wrap:pretty">{{ r.body }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-reveal="1" style="max-width:1100px;margin:clamp(70px,9vw,100px) auto 0;background:#123e66;outline:1px solid rgba(255,255,255,0.35);outline-offset:-6px;position:relative;overflow:hidden">
+    <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-size:11px;letter-spacing:0.4em;color:rgba(255,255,255,0.7);pointer-events:none">白川税理士事務所　横浜・関内</span>
+    <div style="padding:clamp(56px,7vw,76px) 24px 40px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center">
+      <span style="width:24px;height:2px;background:#3aa6d8;display:block;margin-bottom:14px"></span>
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.3em">代表税理士より</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:13px;color:#8fd3f2">ごあいさつ</span>
+      <h2 style="margin:34px 0 0;font-weight:500;font-size:clamp(17px,2.2vw,21px);letter-spacing:0.25em">はじめて税理士をお探しの方へ</h2>
+    </div>
+    <div style="position:relative;min-height:340px;display:flex;align-items:center;justify-content:center">
+      <div style="position:absolute;inset:0"><image-slot id="message-bg" shape="rect" placeholder="面談風景の写真（書類・PC・手元）"></image-slot></div>
+      <div style="position:absolute;inset:0;background:rgba(14,30,46,0.66);pointer-events:none"></div>
+      <div style="position:relative;max-width:720px;padding:60px 28px;text-align:center;font-size:13px;line-height:2.4;letter-spacing:0.12em;display:flex;flex-direction:column;gap:16px;pointer-events:none;text-wrap:pretty">
+        <p style="margin:0">税理士に相談するのは、少し敷居が高いと感じる方も多いと思います。<br>「こんなことを聞いてもいいのだろうか」という段階でも、どうぞ遠慮なくお話しください。</p>
+        <p style="margin:0">まずは現在の状況をうかがい、必要なサポートと費用の目安をご説明します。<br>ご納得いただけるまで、無理に契約をおすすめすることはありません。</p>
+      </div>
+    </div>
+    <div style="padding:clamp(40px,6vw,60px) clamp(24px,6vw,70px);display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,56px);align-items:center;justify-content:center">
+      <div style="width:180px;height:220px;position:relative;flex:0 0 auto"><image-slot id="profile-photo" shape="rect" placeholder="代表税理士 ポートレート"></image-slot></div>
+      <div style="flex:1 1 320px;max-width:520px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:11.5px;letter-spacing:0.2em;color:#8fd3f2">代表税理士</span>
+          <span style="font-size:22px;font-weight:600;letter-spacing:0.3em">白川 直樹</span>
+          <span style="font-size:12px;letter-spacing:0.3em;opacity:0.85">しらかわ なおき</span>
+        </div>
+        <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 22px;font-size:12.5px;letter-spacing:0.08em;line-height:1.8;border-top:1px solid rgba(255,255,255,0.3);padding-top:18px">
+          <sc-for list="{{ profile }}" as="p" hint-placeholder-count="4">
+            <dt style="color:#8fd3f2">{{ p.k }}</dt>
+            <dd style="margin:0">{{ p.v }}</dd>
+          </sc-for>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CONTACT -->
+<section id="contact" data-screen-label="05 Contact" style="background:#fff;border-top:4px solid #f1f2f3">
+  <div style="max-width:880px;margin:0 auto;padding:clamp(70px,9vw,100px) 24px 0;display:flex;flex-direction:column;gap:clamp(50px,6vw,70px)">
+    <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center">
+      <span style="width:24px;height:2px;background:#3aa6d8;display:block;margin-bottom:14px"></span>
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.3em;color:#123e66">ご相談・お問い合わせ</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:13px;color:#3aa6d8">初回相談無料</span>
+      <h2 style="margin:34px 0 0;font-weight:500;font-size:clamp(17px,2.2vw,21px);letter-spacing:0.25em;color:#123e66">まずは、ご相談から始めませんか</h2>
+      <p style="margin:18px 0 0;font-size:13px;line-height:2.2;letter-spacing:0.1em;color:#3a4652;text-wrap:pretty">初回のご相談は60分無料です。お電話またはフォームより、お気軽にご連絡ください。</p>
+    </div>
+
+    <div data-reveal="1" style="border-top:1px solid #123e66;border-bottom:1px solid #123e66;padding:22px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 28px">
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <span style="font-size:20px;font-weight:600;letter-spacing:0.2em;color:#123e66;line-height:1.2">お問い合わせ</span>
+        <span style="font-size:11px;letter-spacing:0.15em;color:#5d7686">お電話・メールにて承ります</span>
+      </div>
+      <span style="width:1px;height:48px;background:#123e66;transform:rotate(30deg);display:block"></span>
+      <a href="tel:0450000000" style="display:flex;align-items:baseline;gap:10px;color:#123e66" style-hover="color:#3aa6d8">
+        <span style="font-size:13px;letter-spacing:0.15em">電話</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,4vw,36px);letter-spacing:0.03em;line-height:1">045-000-0000</span>
+      </a>
+      <a href="#form" style="flex:0 1 230px;min-width:200px;height:46px;background:#123e66;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:0.25em;transition:background .3s" style-hover="background:#3a668b;color:#fff">メールフォームへ</a>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(36px,5vw,56px);align-items:flex-start">
+      <form id="form" data-reveal="1" onSubmit="{{ submit }}" style="flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:20px;scroll-margin-top:80px">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#f1f2f3;border-top:2px solid #123e66;padding:36px 28px;display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:16px;font-weight:700;letter-spacing:0.15em;color:#123e66">お問い合わせを受け付けました</span>
+            <p style="margin:0;font-size:13px;line-height:2;letter-spacing:0.08em;color:#3a4652">内容を確認のうえ、2営業日以内に担当者よりご連絡いたします。</p>
+            <button type="button" onClick="{{ reset }}" style="align-self:flex-start;margin-top:8px;background:none;border:1px solid #123e66;color:#123e66;padding:10px 22px;font-size:12px;letter-spacing:0.15em;cursor:pointer">入力画面に戻る</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:0.12em;color:#123e66;font-weight:600">お名前 <span style="color:#3aa6d8;font-weight:400;font-size:11px">必須</span>
+                <input required="required" name="name" style="height:46px;border:none;border-bottom:1px solid #9aa9b5;background:#f7f8f9;padding:0 14px;font-size:14px;color:#1c2a36;outline:none" style-focus="border-bottom:1px solid #123e66;background:#eef2f5">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:0.12em;color:#123e66;font-weight:600">会社名・屋号
+                <input name="company" style="height:46px;border:none;border-bottom:1px solid #9aa9b5;background:#f7f8f9;padding:0 14px;font-size:14px;color:#1c2a36;outline:none" style-focus="border-bottom:1px solid #123e66;background:#eef2f5">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:0.12em;color:#123e66;font-weight:600">メールアドレス <span style="color:#3aa6d8;font-weight:400;font-size:11px">必須</span>
+                <input required="required" type="email" name="email" style="height:46px;border:none;border-bottom:1px solid #9aa9b5;background:#f7f8f9;padding:0 14px;font-size:14px;color:#1c2a36;outline:none" style-focus="border-bottom:1px solid #123e66;background:#eef2f5">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:0.12em;color:#123e66;font-weight:600">電話番号
+                <input type="tel" name="tel" style="height:46px;border:none;border-bottom:1px solid #9aa9b5;background:#f7f8f9;padding:0 14px;font-size:14px;color:#1c2a36;outline:none" style-focus="border-bottom:1px solid #123e66;background:#eef2f5">
+              </label>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:0.12em;color:#123e66;font-weight:600">ご相談の種類
+              <select name="topic" style="height:46px;border:none;border-bottom:1px solid #9aa9b5;background:#f7f8f9;padding:0 12px;font-size:14px;color:#1c2a36;outline:none">
+                <sc-for list="{{ services }}" as="s" hint-placeholder-count="7"><option>{{ s.name }}</option></sc-for>
+                <option>その他</option>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:0.12em;color:#123e66;font-weight:600">ご相談内容
+              <textarea name="message" rows="5" placeholder="現在の状況やご質問など、わかる範囲でご記入ください。" style="border:none;border-bottom:1px solid #9aa9b5;background:#f7f8f9;padding:12px 14px;font-size:14px;line-height:1.8;color:#1c2a36;outline:none;resize:vertical"></textarea>
+            </label>
+            <button type="submit" style="align-self:flex-start;min-width:240px;height:52px;background:#123e66;color:#fff;border:none;font-size:13px;letter-spacing:0.25em;cursor:pointer;transition:background .3s" style-hover="background:#3a668b">送信する</button>
+          </div>
+        </sc-if>
+      </form>
+
+      <aside data-reveal="1" style="flex:0 1 300px;min-width:240px;display:flex;flex-direction:column;gap:0;border-top:2px solid #123e66">
+        <sc-for list="{{ info }}" as="i" hint-placeholder-count="4">
+          <div style="padding:18px 4px;border-bottom:1px solid #d9dee3;display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:11.5px;letter-spacing:0.2em;color:#3aa6d8;font-weight:600">{{ i.k }}</span>
+            <span style="font-size:13px;line-height:1.95;letter-spacing:0.08em;color:#1c2a36;white-space:pre-line">{{ i.v }}</span>
+          </div>
+        </sc-for>
+      </aside>
+    </div>
+  </div>
+
+  <div style="margin-top:clamp(60px,8vw,90px);height:clamp(240px,32vw,340px);position:relative"><iframe title="事務所所在地の地図" src="https://maps.google.com/maps?q=%E9%96%A2%E5%86%85%E9%A7%85&amp;z=16&amp;hl=ja&amp;output=embed" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(0.5)"></iframe></div>
+
+  <footer style="background:#f1f2f3;padding:56px 24px 0;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;color:#123e66">
+    <span style="width:40px;height:40px;border:1px solid #123e66;position:relative;display:block"><span style="position:absolute;right:5px;bottom:5px;width:14px;height:14px;background:#3aa6d8"></span></span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.3em">横浜・関内</span>
+    <span style="font-size:15px;font-weight:700;letter-spacing:0.2em">白川税理士事務所</span>
+    <span style="font-size:12px;letter-spacing:0.1em;line-height:1.9;color:#3a4652">〒231-0000　神奈川県横浜市中区〇〇町0-0-0　〇〇ビル 5F</span>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px 22px;font-family:'Cormorant Garamond',serif;font-size:15px">
+      <span style="display:flex;align-items:baseline;gap:8px"><span style="font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:0.15em">電話</span><span style="font-size:22px;font-weight:500">045-000-0000</span></span>
+      <span style="display:flex;align-items:baseline;gap:8px"><span style="font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:0.15em">FAX</span><span style="font-size:22px;font-weight:500">045-000-0001</span></span>
+    </div>
+    <span style="font-size:11.5px;letter-spacing:0.1em;color:#5d7686">受付時間／平日 9:00–18:00</span>
+    <div style="align-self:stretch;margin:36px -24px 0;background:#123e66;color:#fff;padding:22px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 24px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="color:#fff;font-size:11.5px;letter-spacing:0.12em;opacity:0.9" style-hover="color:#8fd3f2">{{ n.ja }}</a>
+      </sc-for>
+      <span style="flex-basis:100%;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.15em;opacity:0.7;margin-top:6px;font-family:'Shippori Mincho',serif">© 白川税理士事務所</span>
+    </div>
+  </footer>
+</section>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;stickyHeader&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showSideTab&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;heroOverlay&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = { scrolled: false, wide: true, menuOpen: false, aboutOpen: false, svc: 0, sent: false };
+  componentDidMount() {
+    this.onScroll = () => {
+      const s = window.scrollY > window.innerHeight * 0.75;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    this.onResize = () => {
+      const w = window.innerWidth >= 780;
+      if (w !== this.state.wide) this.setState({ wide: w, menuOpen: w ? false : this.state.menuOpen });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onResize);
+    this.onScroll(); this.onResize();
+    this.setupReveal();
+  }
+  componentDidUpdate() { this.setupReveal(); }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+    if (this.revealCheck) { window.removeEventListener('scroll', this.revealCheck); window.removeEventListener('resize', this.revealCheck); }
+  }
+  setupReveal() {
+    requestAnimationFrame(() => {
+      const show = el => { el.style.opacity = '1'; el.style.translate = '0 0'; el.removeAttribute('data-hidden'); };
+      document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+        el.setAttribute('data-rv', '1');
+        const r = el.getBoundingClientRect();
+        if (r.height === 0 || r.top < window.innerHeight * 0.9) return;
+        el.setAttribute('data-hidden', '1');
+        el.style.opacity = '0'; el.style.translate = '0 24px';
+        el.style.transition = (el.style.transition ? el.style.transition + ',' : '') + 'opacity .9s ease, translate .9s ease';
+      });
+      if (!this.revealCheck) {
+        this.revealCheck = () => document.querySelectorAll('[data-hidden]').forEach(el => {
+          if (el.getBoundingClientRect().top < window.innerHeight * 0.9) show(el);
+        });
+        window.addEventListener('scroll', this.revealCheck, { passive: true });
+        window.addEventListener('resize', this.revealCheck);
+      }
+      this.revealCheck();
+    });
+  }
+  renderVals() {
+    const p = this.props;
+    const services = [
+      { name: '税務顧問（月次顧問）', desc: '毎月の試算表をもとに面談を行い、業績の推移や税務上の注意点をご報告します。日常的な税務・経理のご質問にも随時お応えします。', for: '法人・個人事業主' },
+      { name: '法人税・消費税申告', desc: '決算書の作成から法人税・消費税・地方税の申告まで一貫して対応します。決算前には納税額の見込みと対策をご提案します。', for: '法人' },
+      { name: '確定申告（個人）', desc: '個人事業主の方、不動産所得や副業収入のある方、医療費控除を受けたい方など、個人の確定申告を丁寧にサポートします。', for: '個人事業主・給与所得者' },
+      { name: '相続税申告・相続対策', desc: '相続財産の評価から申告書の作成、生前の贈与や遺言に関するご相談まで、ご家族の状況に合わせて進めます。', for: '個人・ご家族' },
+      { name: '会社設立・創業支援', desc: '法人化の判断、設立手続き、開業時の届出、創業融資の事業計画づくりまで、事業の立ち上げを支えます。', for: '創業予定の方・個人事業主' },
+      { name: 'クラウド会計導入支援', desc: 'freee・マネーフォワードなどのクラウド会計の導入と運用をお手伝いし、記帳の手間を減らす仕組みをつくります。', for: '法人・個人事業主' },
+      { name: '事業承継・経営計画', desc: '株式の評価や後継者への引継ぎ方法の検討、中長期の経営計画の策定を、税務と経営の両面からご支援します。', for: '法人経営者' }
+    ].map((s, i) => ({
+      ...s, no: String(i + 1).padStart(2, '0'),
+      bg: i === this.state.svc ? '#123e66' : 'transparent',
+      fg: i === this.state.svc ? '#fff' : '#123e66',
+      select: () => this.setState({ svc: i })
+    }));
+    const navBase = [
+      { en: 'トップ', ja: 'トップページ', href: '#top' },
+      { en: '事務所について', ja: '私たちの想い', href: '#about' },
+      { en: '業務案内', ja: 'サービス一覧', href: '#service' },
+      { en: '選ばれる理由', ja: '代表あいさつ', href: '#expertise' },
+      { en: 'お問い合わせ', ja: 'アクセス', href: '#contact' }
+    ];
+    const sticky = p.stickyHeader ?? true;
+    return {
+      nav: navBase.map((n, i) => ({ ...n, slash: i > 0 })),
+      showHeader: sticky,
+      headerTransform: this.state.scrolled ? 'translateY(0)' : 'translateY(-100%)',
+      headerOpacity: this.state.scrolled ? 1 : 0,
+      wide: this.state.wide,
+      narrow: !this.state.wide,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      showSideTab: (p.showSideTab ?? true) && this.state.wide,
+      overlay: p.heroOverlay ?? 1,
+      aboutOpen: this.state.aboutOpen,
+      aboutLabel: this.state.aboutOpen ? '閉じる' : '詳しく見る',
+      toggleAbout: () => this.setState(s => ({ aboutOpen: !s.aboutOpen })),
+      services,
+      current: services[this.state.svc],
+      reasons: [
+        { no: '01', slot: 'reason-1', ph: '面談・説明シーン', title: 'わかる言葉で、丁寧にご説明します', body: '決算書や申告の内容を、専門用語に頼らずご説明します。数字の意味を理解したうえで、経営判断に活かしていただけます。' },
+        { no: '02', slot: 'reason-2', ph: '担当者と書類の手元', title: '同じ担当者が、継続してサポートします', body: 'ご契約から決算・申告まで、原則として同じ担当者が対応します。事業の背景を理解したうえでご相談に応じます。' },
+        { no: '03', slot: 'reason-3', ph: 'チームでの打ち合わせ', title: '事業の段階に合わせた柔軟な対応', body: '創業期の記帳指導から、成長期の資金計画、事業承継まで。必要に応じて司法書士・社労士とも連携します。' }
+      ],
+      profile: [
+        { k: '経歴', v: '都内税理士法人にて法人税務・相続業務に従事したのち独立' },
+        { k: '資格', v: '税理士（〇〇税理士会所属）' },
+        { k: '得意分野', v: '中小企業の法人税務、事業承継、相続税申告' },
+        { k: '趣味', v: '週末のランニングと、港の見える喫茶店巡り' }
+      ],
+      info: [
+        { k: '所在地', v: '〒231-0000\n神奈川県横浜市中区〇〇町0-0-0\n〇〇ビル 5F' },
+        { k: '電話', v: '045-000-0000' },
+        { k: '受付時間', v: '平日 9:00–18:00\n土日祝は事前予約にて対応' },
+        { k: 'アクセス', v: 'JR「関内」駅より徒歩5分\nみなとみらい線「日本大通り」駅より徒歩3分' }
+      ],
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

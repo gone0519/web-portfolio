@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif; color: #1c1a17; background: #fff; }
+  a { color: #1c1a17; text-decoration: none; }
+  a:hover { color: #8a6f00; }
+  @media (max-width: 768px) {
+    .axle-menu-btn { display: flex !important; }
+    .axle-nav { display: none !important; flex: 1 1 100% !important; flex-direction: column; border-top: 1px solid #eae6d9; }
+    .axle-nav.is-open { display: flex !important; }
+    .axle-nav a { border-left: 0 !important; border-bottom: 1px solid #f1eddf; justify-content: flex-start !important; padding: 16px 22px !important; }
+    .axle-logo { padding: 14px 18px !important; }
+  }
+  @media (max-width: 420px) {
+    .axle-tagline { display: none !important; }
+  }
+</style>
+</helmet>
+<div style="width:100%;background:#F5C400;font-family:'Zen Kaku Gothic New',sans-serif">
+  <div style="max-width:1180px;margin:0 auto;padding:10px 24px 0;display:flex;justify-content:flex-end;gap:28px;flex-wrap:wrap">
+    <a href="./Contact.dc.html" style="font-size:12px;letter-spacing:.14em;font-weight:500;display:flex;align-items:center;gap:6px" style-hover="opacity:.6;color:#1c1a17"><span style="font-size:14px">＋</span>採用情報</a>
+    <a href="./Contact.dc.html" style="font-size:12px;letter-spacing:.14em;font-weight:500;display:flex;align-items:center;gap:6px" style-hover="opacity:.6;color:#1c1a17"><span style="font-size:14px">＋</span>お問い合わせ</a>
+  </div>
+  <div style="max-width:1180px;margin:0 auto;padding:10px 24px 0">
+    <div style="background:#fff;display:flex;align-items:stretch;flex-wrap:wrap;box-shadow:6px 6px 0 rgba(0,0,0,.06)">
+      <a href="./Home.dc.html" class="axle-logo" style="display:flex;align-items:center;gap:12px;padding:16px 26px;flex:0 0 auto" style-hover="opacity:.75;color:#1c1a17">
+        <span style="display:flex;align-items:center">
+          <span style="background:#1c1a17;color:#F5C400;font-family:Jost,sans-serif;font-weight:600;font-size:24px;line-height:1;padding:6px 8px 7px;letter-spacing:.02em">A</span>
+          <span style="font-family:Jost,sans-serif;font-weight:600;font-size:24px;line-height:1;letter-spacing:.22em;padding-left:7px">XLE</span>
+        </span>
+        <span class="axle-tagline" style="font-family:Jost,sans-serif;font-size:10px;line-height:1.35;letter-spacing:.06em;color:#6b6559;border-left:1px solid #e2ded2;padding-left:12px">Digital Marketing<br />&amp; Growth Partner</span>
+      </a>
+      <button type="button" class="axle-menu-btn" onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuExpanded }}" style="display:none;margin-left:auto;align-items:center;justify-content:center;width:60px;border:0;border-left:1px solid #eae6d9;background:#fff;cursor:pointer;font-size:22px;line-height:1;color:#1c1a17">{{ menuIcon }}</button>
+      <nav class="{{ navClass }}" style="display:flex;flex:1 1 420px;flex-wrap:wrap">
+        <a href="./Services.dc.html" style="flex:1 1 0;min-width:120px;display:flex;align-items:center;justify-content:center;padding:18px 10px;font-size:14px;font-weight:700;letter-spacing:.1em;border-left:1px solid #eae6d9" style-hover="background:#F5C400;color:#1c1a17">サービス</a>
+        <a href="./CaseStudies.dc.html" style="flex:1 1 0;min-width:120px;display:flex;align-items:center;justify-content:center;padding:18px 10px;font-size:14px;font-weight:700;letter-spacing:.1em;border-left:1px solid #eae6d9" style-hover="background:#F5C400;color:#1c1a17">実績紹介</a>
+        <a href="./About.dc.html" style="flex:1 1 0;min-width:120px;display:flex;align-items:center;justify-content:center;padding:18px 10px;font-size:14px;font-weight:700;letter-spacing:.1em;border-left:1px solid #eae6d9" style-hover="background:#F5C400;color:#1c1a17">会社案内</a>
+        <a href="./Blog.dc.html" style="flex:1 1 0;min-width:120px;display:flex;align-items:center;justify-content:center;padding:18px 10px;font-size:14px;font-weight:700;letter-spacing:.1em;border-left:1px solid #eae6d9" style-hover="background:#F5C400;color:#1c1a17">ブログ</a>
+      </nav>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:140}}">
+class Component extends DCLogic {
+  state = { open: false };
+  renderVals() {
+    const open = this.state.open;
+    return {
+      navClass: open ? 'axle-nav is-open' : 'axle-nav',
+      menuIcon: open ? '×' : '☰',
+      menuLabel: open ? 'メニューを閉じる' : 'メニューを開く',
+      menuExpanded: open ? 'true' : 'false',
+      toggleMenu: () => this.setState(s => ({ open: !s.open }))
+    };
+  }
+}
+</script>
+</body>
+</html>

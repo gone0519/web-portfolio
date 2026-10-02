@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Zen Maru Gothic',sans-serif;color:#4a5560;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#2a8fc4;text-decoration:none}
+a:hover{color:#f08a1c}
+input,textarea,select,button{font-family:inherit}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid #e6f2f6">
+  <div style="max-width:1240px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <a href="#top" style="display:flex;flex-direction:column;gap:2px;color:#2a8fc4">
+      <span style="font-size:10px;letter-spacing:.12em;color:#7a8a96">人と会社の“はたらく”を支える</span>
+      <span style="font-size:19px;font-weight:900;letter-spacing:.06em;color:#2a8fc4">あおば社会保険労務士事務所</span>
+    </a>
+    <sc-if value="{{ desktopNav }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:26px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" style="display:flex;flex-direction:column;align-items:center;gap:2px;color:#3b4a56" style-hover="color:#2a8fc4">
+            <span style="font-family:Montserrat,sans-serif;font-size:9px;font-weight:600;letter-spacing:.14em;color:#4fbcd6">{{ n.en }}</span>
+            <span style="font-size:13px;font-weight:700">{{ n.jp }}</span>
+          </a>
+        </sc-for>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;padding-left:18px;border-left:1px solid #e1eef3">
+          <span style="font-size:10px;color:#f08a1c;font-weight:700">初回相談無料・お気軽にどうぞ</span>
+          <span style="font-family:Montserrat,sans-serif;font-size:20px;font-weight:700;color:#f08a1c;letter-spacing:.02em">03-0000-0000</span>
+          <span style="font-size:10px;color:#7a8a96">受付 平日 9:00–18:00</span>
+        </div>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ mobileNav }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" aria-expanded="{{ menuOpen }}" style="width:48px;height:48px;border-radius:50%;border:none;background:#4fbcd6;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+        <span style="display:block;width:20px;height:2px;background:#fff;border-radius:2px"></span>
+        <span style="display:block;width:20px;height:2px;background:#fff;border-radius:2px"></span>
+        <span style="display:block;width:14px;height:2px;background:#fff;border-radius:2px"></span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+    <nav style="background:#4fbcd6;padding:12px 24px 24px;display:flex;flex-direction:column">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:16px 4px;border-bottom:1px solid rgba(255,255,255,.35);color:#fff;font-weight:700;font-size:16px">
+          <span>{{ n.jp }}</span>
+          <span style="font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:.16em">{{ n.en }}</span>
+        </a>
+      </sc-for>
+      <a href="tel:0300000000" style="margin-top:20px;background:#fff;color:#f08a1c;border-radius:999px;padding:14px;text-align:center;font-family:Montserrat,sans-serif;font-weight:700;font-size:20px">03-0000-0000</a>
+    </nav>
+  </sc-if>
+</header>
+
+<main id="top">
+<!-- 01 HERO -->
+<section data-screen-label="01 Hero" style="position:relative;overflow:hidden;background:#4fbcd6">
+  <sc-if value="{{ showCircles }}" hint-placeholder-val="{{ true }}">
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none">
+      <div style="position:absolute;width:520px;height:520px;border-radius:50%;background:rgba(255,255,255,.14);top:-160px;left:-140px"></div>
+      <div style="position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.18);bottom:-90px;left:32%"></div>
+      <div style="position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.2);top:60px;right:4%"></div>
+      <div style="position:absolute;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.28);top:48%;left:44%"></div>
+    </div>
+  </sc-if>
+  <div style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(48px,7vw,90px) 24px clamp(90px,9vw,120px);display:flex;flex-wrap:wrap;align-items:center;gap:48px">
+    <div data-reveal style="flex:1 1 380px;display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+      <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.24em;color:#fff">LABOR &amp; SOCIAL INSURANCE PARTNER</span>
+      <h1 style="margin:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px">
+        <span style="background:#fff;color:#2a8fc4;font-size:clamp(26px,3.6vw,42px);font-weight:900;line-height:1.3;padding:6px 18px;letter-spacing:.04em">{{ heroLine1 }}</span>
+        <span style="background:#fff;color:#2a8fc4;font-size:clamp(26px,3.6vw,42px);font-weight:900;line-height:1.3;padding:6px 18px;letter-spacing:.04em">{{ heroLine2Pre }}<span style="color:#f08a1c;border-bottom:3px solid #f08a1c">{{ heroLine2Em }}</span>{{ heroLine2Post }}</span>
+      </h1>
+      <p style="margin:12px 0 0;color:#fff;font-size:15px;line-height:2;font-weight:500;max-width:30em;text-wrap:pretty">労務管理、社会保険の手続き、就業規則や人事制度づくりまで。経営者と従業員、どちらの立場にも寄り添いながら、会社の“はたらく”を一緒に整えていく社会保険労務士事務所です。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:14px">
+        <a href="#contact" style="display:flex;align-items:center;gap:14px;background:#f08a1c;color:#fff;font-weight:700;font-size:15px;padding:16px 30px;border-radius:999px;box-shadow:0 6px 0 #c96d0c;transition:transform .2s,box-shadow .2s" style-hover="color:#fff;transform:translateY(3px);box-shadow:0 3px 0 #c96d0c">無料相談を予約する <span style="font-family:Montserrat,sans-serif">→</span></a>
+        <a href="#service" style="display:flex;align-items:center;gap:14px;background:transparent;color:#fff;font-weight:700;font-size:15px;padding:14px 28px;border-radius:999px;border:2px solid #fff;transition:background .2s,color .2s" style-hover="background:#fff;color:#2a8fc4">業務内容を見る</a>
+      </div>
+    </div>
+    <div data-reveal style="flex:1 1 420px;display:flex;justify-content:center">
+      <div style="position:relative;width:min(480px,86vw);aspect-ratio:1">
+        <div style="position:absolute;inset:0;border-radius:50%;border:10px solid #fff;overflow:hidden;background:repeating-linear-gradient(135deg,#e8f6fa 0 10px,#d9f0f6 10px 20px);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(20,90,120,.18)">
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5a8fa3;text-align:center;line-height:1.6">photo<br>代表と経営者の面談風景</span>
+        </div>
+        <div style="position:absolute;top:-2%;left:4%;width:24%;aspect-ratio:1;border-radius:50%;background:#f39a1e;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:clamp(11px,1.4vw,14px);line-height:1.35;box-shadow:0 6px 16px rgba(0,0,0,.12)">労務<br>相談</div>
+        <div style="position:absolute;top:8%;right:-4%;width:22%;aspect-ratio:1;border-radius:50%;background:#2fa15a;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:clamp(11px,1.4vw,14px);line-height:1.35;box-shadow:0 6px 16px rgba(0,0,0,.12)">社会保険<br>手続き</div>
+        <div style="position:absolute;bottom:4%;right:0;width:24%;aspect-ratio:1;border-radius:50%;background:#e8504a;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:clamp(11px,1.4vw,14px);line-height:1.35;box-shadow:0 6px 16px rgba(0,0,0,.12)">人事<br>制度</div>
+        <div style="position:absolute;bottom:10%;left:-6%;width:22%;aspect-ratio:1;border-radius:50%;background:#2b86d0;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:clamp(11px,1.4vw,14px);line-height:1.35;box-shadow:0 6px 16px rgba(0,0,0,.12)">就業<br>規則</div>
+      </div>
+    </div>
+  </div>
+  <a href="#about" aria-label="下へスクロール" style="position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:96px;height:48px;border-radius:96px 96px 0 0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8px;gap:2px;color:#4fbcd6">
+    <span style="font-family:Montserrat,sans-serif;font-size:9px;font-weight:600;letter-spacing:.2em">SCROLL</span>
+    <span style="width:1px;height:12px;background:#4fbcd6"></span>
+  </a>
+</section>
+
+<!-- 02 ABOUT -->
+<section id="about" data-screen-label="02 About" style="position:relative;overflow:hidden;background:#fff;scroll-margin-top:72px">
+  <sc-if value="{{ showCircles }}" hint-placeholder-val="{{ true }}">
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none">
+      <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:#f1f9fb;top:-80px;right:-60px"></div>
+      <div style="position:absolute;width:180px;height:180px;border-radius:50%;background:#f1f9fb;bottom:40px;left:-50px"></div>
+    </div>
+  </sc-if>
+  <div style="position:relative;max-width:1100px;margin:0 auto;padding:clamp(64px,8vw,110px) 24px">
+    <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px 48px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">ABOUT</span>
+        <h2 style="margin:0;font-size:clamp(22px,2.4vw,28px);font-weight:900;color:#2a8fc4;line-height:1.5">あおば社労士事務所の<br>考えかた</h2>
+      </div>
+      <p style="margin:0;font-size:15px;line-height:2.1;color:#3b4a56;font-weight:500;text-wrap:pretty;grid-column:span 2">会社のルールや手続きは、そこで働く人の毎日につながっています。私たちは、制度の正しさだけでなく「現場で無理なく続けられるか」を大切にしてきました。経営者の想いと従業員の声、その両方を聞いたうえで、会社にちょうどいい形を一緒に考えます。</p>
+    </div>
+    <div style="margin-top:64px;display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:12px 8px">
+      <sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+        <div data-reveal style="display:flex;align-items:flex-start;gap:8px">
+          <sc-if value="{{ v.notFirst }}" hint-placeholder-val="{{ false }}">
+            <span aria-hidden="true" style="font-family:Montserrat,sans-serif;font-size:34px;font-weight:500;color:#4fbcd6;margin-top:78px;width:40px;text-align:center">×</span>
+          </sc-if>
+          <div style="width:260px;display:flex;flex-direction:column;align-items:center;gap:18px">
+            <div style="width:190px;height:190px;border-radius:50%;border:2px solid #4fbcd6;padding:8px">
+              <div style="width:100%;height:100%;border-radius:50%;background:repeating-linear-gradient(135deg,#eef8fb 0 8px,#e2f3f8 8px 16px);display:flex;align-items:center;justify-content:center">
+                <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6d9bab;text-align:center;line-height:1.5">{{ v.img }}</span>
+              </div>
+            </div>
+            <h3 style="margin:0;font-size:18px;font-weight:900;color:#f08a1c">{{ v.title }}</h3>
+            <p style="margin:0;font-size:13.5px;line-height:1.95;color:#4a5560;text-wrap:pretty">{{ v.body }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 03 SERVICES -->
+<section id="service" data-screen-label="03 Services" style="background:#4fbcd6;scroll-margin-top:72px">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(64px,8vw,100px) 24px">
+    <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px 48px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.22em;color:#fff">SERVICE</span>
+        <h2 style="margin:0;font-size:clamp(22px,2.4vw,28px);font-weight:900;color:#fff">業務内容</h2>
+      </div>
+      <p style="margin:0;font-size:15px;line-height:2;color:#fff;font-weight:700;grid-column:span 2;text-wrap:pretty">日々の手続きから、制度づくり、職場の相談まで。会社の規模や状況にあわせて、必要な業務だけをお選びいただけます。どこに相談すればよいかわからない段階でも、まずはお声がけください。</p>
+    </div>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px 28px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+        <article data-reveal style="display:flex;flex-direction:column;align-items:center">
+          <div aria-hidden="true" style="width:2px;height:48px;background:#35444f"></div>
+          <div aria-hidden="true" style="width:58px;height:26px;border-radius:30px 30px 4px 4px;background:#35444f;position:relative;z-index:1"></div>
+          <div aria-hidden="true" style="width:14px;height:7px;border-radius:0 0 14px 14px;background:#fff6c9;box-shadow:0 0 18px 6px rgba(255,248,200,.8);position:relative;z-index:1"></div>
+          <div style="position:relative;width:100%;display:flex;justify-content:center;margin-top:-4px">
+            <div aria-hidden="true" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:230px;height:190px;clip-path:polygon(44% 0,56% 0,100% 100%,0 100%);background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0))"></div>
+            <div style="position:relative;margin-top:84px;width:170px;height:170px;border-radius:50%;background:#fff;border:6px solid {{ s.color }};padding:6px;box-shadow:0 12px 26px rgba(18,90,120,.18);transition:transform .35s" style-hover="transform:translateY(-6px)">
+              <div style="width:100%;height:100%;border-radius:50%;background:repeating-linear-gradient(135deg,#f3fafc 0 8px,#e6f4f8 8px 16px);display:flex;align-items:center;justify-content:center">
+                <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6d9bab;text-align:center;line-height:1.5">{{ s.img }}</span>
+              </div>
+            </div>
+          </div>
+          <div style="width:100%;margin-top:28px;display:flex;flex-direction:column;gap:12px;flex:1">
+            <span style="font-family:Montserrat,sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;color:#fff">{{ s.en }}</span>
+            <h3 style="margin:0;font-size:18px;font-weight:900;color:#fff">{{ s.title }}</h3>
+            <p style="margin:0;font-size:13.5px;line-height:1.9;color:#fff;font-weight:500;text-wrap:pretty">{{ s.body }}</p>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ s.tags }}" as="t" hint-placeholder-count="3">
+                <li style="font-size:12px;font-weight:700;color:#2a8fc4;background:#fff;border-radius:999px;padding:4px 12px">{{ t }}</li>
+              </sc-for>
+            </ul>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <div style="margin-top:56px;display:flex;justify-content:center">
+      <a href="#contact" style="display:flex;align-items:center;gap:18px;background:#fff;color:#2a8fc4;font-weight:700;font-size:14px;padding:14px 34px;border-radius:999px;transition:transform .2s" style-hover="color:#f08a1c;transform:translateX(4px)">業務についてのご相談はこちら <span style="display:block;width:28px;height:1px;background:currentColor"></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 04 EXPERTISE -->
+<section id="reason" data-screen-label="04 Expertise" style="position:relative;overflow:hidden;background:#fff;scroll-margin-top:72px">
+  <div style="max-width:1100px;margin:0 auto;padding:clamp(64px,8vw,110px) 24px">
+    <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px 48px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">REASON</span>
+        <h2 style="margin:0;font-size:clamp(22px,2.4vw,28px);font-weight:900;color:#2a8fc4">安心してご相談いただける理由</h2>
+      </div>
+      <p style="margin:0;font-size:15px;line-height:2;color:#3b4a56;font-weight:500;grid-column:span 2;text-wrap:pretty">「こんなことを聞いてもいいのかな」と迷う段階から、気軽に話せる相手でありたいと考えています。</p>
+    </div>
+
+    <div style="margin-top:56px;display:flex;flex-direction:column;gap:72px">
+      <sc-for list="{{ reasonRows }}" as="row" hint-placeholder-count="2">
+        <div data-reveal style="display:flex;flex-wrap:wrap;align-items:center;gap:40px 56px;flex-direction:{{ row.dir }}">
+          <div style="flex:0 1 320px;margin:0 auto">
+            <div style="width:min(320px,76vw);aspect-ratio:1;border-radius:50%;border:2px solid #4fbcd6;padding:12px">
+              <div style="width:100%;height:100%;border-radius:50%;background:repeating-linear-gradient(135deg,#eef8fb 0 10px,#e0f2f7 10px 20px);display:flex;align-items:center;justify-content:center">
+                <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#6d9bab;text-align:center;line-height:1.5">{{ row.img }}</span>
+              </div>
+            </div>
+          </div>
+          <ol style="flex:1 1 380px;margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:32px">
+            <sc-for list="{{ row.items }}" as="r" hint-placeholder-count="3">
+              <li style="display:flex;flex-direction:column;gap:10px">
+                <h3 style="margin:0;display:flex;align-items:baseline;gap:12px;font-size:17px;font-weight:900;color:#2a8fc4;padding-bottom:10px;border-bottom:2px solid #4fbcd6">
+                  <span style="font-family:Montserrat,sans-serif;font-size:13px;font-weight:700;color:#f08a1c">{{ r.no }}</span>{{ r.title }}
+                </h3>
+                <p style="margin:0;font-size:14px;line-height:1.95;color:#4a5560;text-wrap:pretty">{{ r.body }}</p>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+      </sc-for>
+    </div>
+
+    <div data-reveal style="margin-top:88px;background:#4fbcd6;border-radius:24px;padding:clamp(28px,4vw,48px);display:flex;flex-wrap:wrap;gap:32px 48px;align-items:center">
+      <div style="flex:0 0 auto;margin:0 auto;width:200px;height:200px;border-radius:50%;border:8px solid #fff;overflow:hidden;background:repeating-linear-gradient(135deg,#eef8fb 0 8px,#e0f2f7 8px 16px);display:flex;align-items:center;justify-content:center">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5a8fa3;text-align:center;line-height:1.5">portrait<br>代表 写真</span>
+      </div>
+      <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:14px;color:#fff">
+        <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em">CONSULTANT</span>
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px">
+          <span style="font-size:13px;font-weight:700">代表 社会保険労務士</span>
+          <span style="font-size:26px;font-weight:900;letter-spacing:.08em">青葉 真理子</span>
+          <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em">Mariko Aoba</span>
+        </div>
+        <p style="margin:0;font-size:14px;line-height:2;font-weight:500;text-wrap:pretty">事業会社の人事部で採用・労務・制度運用を担当したのち、社会保険労務士として独立。会社の内側で働いた経験をもとに、机上の正解ではなく、現場で回るやり方を一緒に考えることを心がけています。</p>
+        <ul style="margin:4px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ profileTags }}" as="t" hint-placeholder-count="4">
+            <li style="font-size:12px;font-weight:700;color:#2a8fc4;background:#fff;border-radius:999px;padding:5px 14px">{{ t }}</li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CONTACT -->
+<section id="contact" data-screen-label="05 Contact" style="scroll-margin-top:72px">
+  <div style="background:#e9b42c;position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.14);right:-60px;bottom:-110px"></div>
+    <div data-reveal style="position:relative;max-width:1100px;margin:0 auto;padding:clamp(48px,6vw,72px) 24px;display:flex;flex-wrap:wrap;gap:32px 56px;align-items:center">
+      <div style="flex:1 1 420px;display:flex;flex-direction:column;gap:16px;color:#fff">
+        <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.22em">CONTACT</span>
+        <h2 style="margin:0;font-size:clamp(24px,3vw,34px);font-weight:900;line-height:1.5;letter-spacing:.04em">初回のご相談は無料です。<br>職場のこと、まずはお話しください。</h2>
+        <p style="margin:0;font-size:14.5px;line-height:2;font-weight:700;text-wrap:pretty">「手続きのやり方がわからない」「就業規則を見直したい」「従業員との関係で悩んでいる」など、内容がまとまっていなくても大丈夫です。オンラインでのご相談にも対応しています。</p>
+      </div>
+      <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:14px">
+        <a href="mailto:info@example.jp" style="display:flex;align-items:center;gap:16px;background:#fff;border-radius:999px;padding:12px 26px 12px 12px;color:#e0892a;transition:transform .2s" style-hover="color:#e0892a;transform:translateY(-2px)">
+          <span style="width:44px;height:44px;border-radius:50%;background:#f39a1e;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Montserrat,sans-serif;font-weight:700;font-size:13px">@</span>
+          <span style="display:flex;flex-direction:column"><span style="font-size:11px;font-weight:700">メールでのお問い合わせ（24時間受付）</span><span style="font-family:Montserrat,sans-serif;font-size:19px;font-weight:700">info@example.jp</span></span>
+        </a>
+        <a href="tel:0300000000" style="display:flex;align-items:center;gap:16px;background:#fff;border-radius:999px;padding:12px 26px 12px 12px;color:#e0892a;transition:transform .2s" style-hover="color:#e0892a;transform:translateY(-2px)">
+          <span style="width:44px;height:44px;border-radius:50%;background:#f39a1e;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Montserrat,sans-serif;font-weight:700;font-size:13px">TEL</span>
+          <span style="display:flex;flex-direction:column"><span style="font-size:11px;font-weight:700">お電話でのご相談（平日 9:00–18:00）</span><span style="font-family:Montserrat,sans-serif;font-size:22px;font-weight:700">03-0000-0000</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#f3fafc">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(56px,7vw,96px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px">
+      <form data-reveal onSubmit="{{ submit }}" style="background:#fff;border-radius:24px;padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:18px;box-shadow:0 10px 30px rgba(40,120,150,.08)">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">FORM</span>
+          <h3 style="margin:0;font-size:20px;font-weight:900;color:#2a8fc4">ご相談フォーム</h3>
+        </div>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="background:#eaf7fb;border-radius:16px;padding:28px;text-align:center;display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:18px;font-weight:900;color:#2a8fc4">送信ありがとうございました</span>
+            <span style="font-size:14px;line-height:1.9">内容を確認のうえ、2営業日以内に担当よりご連絡いたします。</span>
+            <button type="button" onClick="{{ reset }}" style="align-self:center;margin-top:6px;border:2px solid #4fbcd6;background:#fff;color:#2a8fc4;border-radius:999px;padding:10px 24px;font-weight:700;cursor:pointer">フォームに戻る</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#3b4a56">お名前 <span style="color:#e8504a;font-size:11px">必須</span>
+                <input required name="name" placeholder="山田 太郎" style="height:48px;border:1px solid #cfe6ee;border-radius:10px;padding:0 14px;font-size:15px;background:#fbfeff" style-focus="outline:2px solid #4fbcd6;border-color:#4fbcd6">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#3b4a56">会社名
+                <input name="company" placeholder="株式会社〇〇" style="height:48px;border:1px solid #cfe6ee;border-radius:10px;padding:0 14px;font-size:15px;background:#fbfeff" style-focus="outline:2px solid #4fbcd6;border-color:#4fbcd6">
+              </label>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#3b4a56">メールアドレス <span style="color:#e8504a;font-size:11px">必須</span>
+                <input required type="email" name="email" placeholder="info@example.jp" style="height:48px;border:1px solid #cfe6ee;border-radius:10px;padding:0 14px;font-size:15px;background:#fbfeff" style-focus="outline:2px solid #4fbcd6;border-color:#4fbcd6">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#3b4a56">電話番号
+                <input type="tel" name="tel" placeholder="03-0000-0000" style="height:48px;border:1px solid #cfe6ee;border-radius:10px;padding:0 14px;font-size:15px;background:#fbfeff" style-focus="outline:2px solid #4fbcd6;border-color:#4fbcd6">
+              </label>
+            </div>
+            <fieldset style="border:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px">
+              <legend style="font-size:13px;font-weight:700;color:#3b4a56;margin-bottom:8px">ご相談内容</legend>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ topics }}" as="tp" hint-placeholder-count="5">
+                  <button type="button" onClick="{{ tp.toggle }}" aria-pressed="{{ tp.on }}" style="min-height:40px;border-radius:999px;padding:0 16px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid #4fbcd6;background:{{ tp.bg }};color:{{ tp.fg }};transition:background .2s">{{ tp.label }}</button>
+                </sc-for>
+              </div>
+            </fieldset>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#3b4a56">詳細・ご質問
+              <textarea name="message" rows="5" placeholder="現在のお困りごとや、ご希望の相談方法（来所・オンライン）などをご記入ください。" style="border:1px solid #cfe6ee;border-radius:10px;padding:12px 14px;font-size:15px;line-height:1.8;background:#fbfeff;resize:vertical" style-focus="outline:2px solid #4fbcd6;border-color:#4fbcd6"></textarea>
+            </label>
+            <button type="submit" style="align-self:center;display:flex;align-items:center;gap:14px;border:none;background:#f08a1c;color:#fff;font-weight:700;font-size:15px;padding:16px 44px;border-radius:999px;box-shadow:0 5px 0 #c96d0c;cursor:pointer;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(3px);box-shadow:0 2px 0 #c96d0c">内容を送信する <span style="font-family:Montserrat,sans-serif">→</span></button>
+          </div>
+        </sc-if>
+      </form>
+
+      <div id="access" data-reveal style="display:flex;flex-direction:column;gap:22px;scroll-margin-top:90px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">ACCESS</span>
+          <h3 style="margin:0;font-size:20px;font-weight:900;color:#2a8fc4">事務所のご案内</h3>
+        </div>
+        <div style="aspect-ratio:16/10;border-radius:20px;background:repeating-linear-gradient(135deg,#e6f4f8 0 10px,#dbeef4 10px 20px);display:flex;align-items:center;justify-content:center;border:1px solid #d3eaf1">
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5a8fa3">map embed</span>
+        </div>
+        <dl style="margin:0;display:grid;grid-template-columns:max-content 1fr;gap:0;font-size:14px;line-height:1.8">
+          <sc-for list="{{ office }}" as="o" hint-placeholder-count="5">
+            <dt style="padding:12px 20px 12px 0;border-bottom:1px solid #d9ecf2;font-weight:700;color:#2a8fc4">{{ o.k }}</dt>
+            <dd style="margin:0;padding:12px 0;border-bottom:1px solid #d9ecf2;color:#3b4a56">{{ o.v }}</dd>
+          </sc-for>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:#4fbcd6;color:#fff">
+  <div style="max-width:1100px;margin:0 auto;padding:48px 24px 28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-size:11px;letter-spacing:.12em">人と会社の“はたらく”を支える</span>
+      <span style="font-size:20px;font-weight:900;letter-spacing:.06em">あおば社会保険労務士事務所</span>
+      <span style="font-size:13px;line-height:1.9">〒000-0000 東京都〇〇区〇〇 0-0-0 〇〇ビル 5F<br>TEL 03-0000-0000</span>
+    </div>
+    <nav style="display:grid;grid-template-columns:repeat(2,max-content);gap:10px 36px;align-content:start">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="color:#fff;font-size:13px;font-weight:700" style-hover="color:#fff6c9">― {{ n.jp }}</a>
+      </sc-for>
+    </nav>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,.35);text-align:center;padding:16px;font-family:Montserrat,sans-serif;font-size:11px;letter-spacing:.1em">© 2026 Aoba Social Insurance &amp; Labor Consultant Office</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroCopy&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;一緒に整える&quot;,&quot;人と会社の間に&quot;,&quot;安心して任せる&quot;],&quot;default&quot;:&quot;一緒に整える&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showCircles&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false, sent: false, topics: {} };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+    this.setupReveal();
+  }
+  componentDidUpdate() { this.setupReveal(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); if (this.check) { window.removeEventListener('scroll', this.check); window.removeEventListener('resize', this.check); } }
+  setupReveal() {
+    if (this.props.reveal === false) return;
+    const show = el => { el.style.opacity = '1'; el.style.transform = 'none'; el.setAttribute('data-shown', '1'); };
+    if (!this.check) {
+      this.check = () => {
+        const vh = window.innerHeight || 800;
+        document.querySelectorAll('[data-rv]:not([data-shown])').forEach(el => {
+          const r = el.getBoundingClientRect();
+          if (r.top < vh * 0.92 && r.bottom > 0) show(el);
+        });
+      };
+      window.addEventListener('scroll', this.check, { passive: true });
+      window.addEventListener('resize', this.check);
+      setTimeout(() => document.querySelectorAll('[data-rv]:not([data-shown])').forEach(show), 2500);
+    }
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '1');
+      el.style.opacity = '0'; el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity .8s ease, transform .8s ease';
+    });
+    requestAnimationFrame(() => requestAnimationFrame(this.check));
+  }
+  renderVals() {
+    const mobile = this.state.w < 960;
+    const heroVariants = {
+      '一緒に整える': ['会社の“はたらく”を、', '', '一緒に', '整えていく。'],
+      '人と会社の間に': ['人と会社のあいだに立つ、', '', '身近な', '専門家です。'],
+      '安心して任せる': ['労務の悩みを、', '', '安心して', '任せられる場所。']
+    };
+    const h = heroVariants[this.props.heroCopy] || heroVariants['一緒に整える'];
+    const topicList = ['労務相談', '社会保険・労働保険の手続き', '就業規則', '人事制度・評価', '助成金・その他'];
+    return {
+      desktopNav: !mobile, mobileNav: mobile, menuOpen: this.state.menuOpen, menuVisible: mobile && this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      showCircles: this.props.showCircles ?? true,
+      heroLine1: h[0], heroLine2Pre: h[1], heroLine2Em: h[2], heroLine2Post: h[3],
+      nav: [
+        { en: 'ABOUT', jp: '事務所について', href: '#about' },
+        { en: 'SERVICE', jp: '業務内容', href: '#service' },
+        { en: 'REASON', jp: '選ばれる理由', href: '#reason' },
+        { en: 'ACCESS', jp: 'アクセス', href: '#access' },
+        { en: 'CONTACT', jp: 'お問い合わせ', href: '#contact' }
+      ],
+      values: [
+        { title: '人を見る', img: 'photo<br>従業員との対話', body: '制度の前に、そこで働く人がいます。現場の声に耳を傾け、納得して働ける職場づくりを支えます。' },
+        { title: '会社を知る', img: 'photo<br>経営者との打合せ', body: '業種や規模、これからの方向性。会社ごとの事情を理解したうえで、無理のない提案を行います。' },
+        { title: '長く伴走する', img: 'photo<br>定例ミーティング', body: '一度きりの対応で終わらせず、会社の成長や変化にあわせて、継続的にご相談をお受けします。' }
+      ].map((v, i) => ({ ...v, img: v.img.replace('<br>', ' / '), notFirst: i > 0 })),
+      services: [
+        { en: 'LABOR & HR', title: '労務相談・就業規則', color: '#2b86d0', img: 'photo / 労務相談', body: '日々の労務トラブルの相談から、就業規則や各種規程の作成・見直しまで。法改正にも合わせて整えます。', tags: ['就業規則', '労務相談', '労働時間管理'] },
+        { en: 'SOCIAL INSURANCE', title: '社会保険の手続き', color: '#2fa15a', img: 'photo / 手続き業務', body: '健康保険・厚生年金の資格取得や喪失、算定基礎届など、従業員に関わる手続きを代行します。', tags: ['入退社手続き', '算定・月変', '出産・育児'] },
+        { en: 'LABOR INSURANCE', title: '労働保険の手続き', color: '#f39a1e', img: 'photo / 書類確認', body: '労災保険・雇用保険の加入手続き、年度更新、労災発生時の申請などをサポートします。', tags: ['年度更新', '労災申請', '雇用保険'] },
+        { en: 'CONSULTING', title: '人事制度・職場づくり', color: '#e8504a', img: 'photo / ワークショップ', body: '評価・賃金制度の設計、働き方の見直し、会社設立時の労務体制づくりなど、組織の土台を整えます。', tags: ['評価・賃金制度', '働き方改善', '設立時サポート'] }
+      ],
+      reasonRows: [
+        { dir: 'row', img: 'photo<br>面談の様子'.replace('<br>', ' / '), items: [
+          { no: '01', title: '人事の現場を知る社労士が担当', body: '事業会社の人事部門での実務経験をもとに、運用しやすさまで考えたご提案を行います。' },
+          { no: '02', title: 'むずかしい言葉を使わずに説明', body: '制度や法律の話も、背景や理由からかみくだいてお伝えします。社内での説明資料づくりもお手伝いします。' },
+          { no: '03', title: '経営者と従業員、双方の視点', body: 'どちらか一方に偏らず、会社が長く健やかに続いていくための落としどころを一緒に探します。' }
+        ] },
+        { dir: 'row-reverse', img: 'photo / オンライン相談', items: [
+          { no: '04', title: 'チャットやオンラインで気軽に相談', body: 'メール・チャット・オンライン面談など、御社の働き方にあわせた連絡方法をお選びいただけます。' },
+          { no: '05', title: '手続きから制度づくりまでワンストップ', body: '日々の手続きと、就業規則や人事制度の相談を同じ窓口で。社内事情を知る担当者が一貫して対応します。' },
+          { no: '06', title: '必要に応じて他士業と連携', body: '税務や登記など専門外のご相談は、提携する税理士・司法書士などと連携して対応します。' }
+        ] }
+      ],
+      profileTags: ['特定社会保険労務士', '人事部門 実務経験', '中小企業の労務', '人事評価制度'],
+      topics: topicList.map(label => {
+        const on = !!this.state.topics[label];
+        return { label, on, bg: on ? '#4fbcd6' : '#fff', fg: on ? '#fff' : '#2a8fc4',
+          toggle: () => this.setState(s => ({ topics: { ...s.topics, [label]: !s.topics[label] } })) };
+      }),
+      sent: this.state.sent, notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false, topics: {} }),
+      office: [
+        { k: '所在地', v: '〒000-0000 東京都〇〇区〇〇 0-0-0 〇〇ビル 5F' },
+        { k: 'アクセス', v: '〇〇線「〇〇駅」〇番出口より徒歩3分' },
+        { k: '受付時間', v: '平日 9:00–18:00（土日祝は事前予約制）' },
+        { k: '電話', v: '03-0000-0000' },
+        { k: 'メール', v: 'info@example.jp' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+body { margin: 0; font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif; background: oklch(98% 0.004 240); }
+a { color: oklch(46% 0.10 245); text-decoration: none; }
+a:hover { color: oklch(32% 0.09 248); }
+
+/* ===== レイアウト（レスポンシブ） =====
+   ブレークポイント：1040px＝料金カード2列／680px＝スマホ（料金表をカード表示に切替） */
+.fee-head { max-width: 1200px; margin: 0 auto; padding: 56px 24px 20px; }
+.fee-title { font-size: 32px; font-weight: 700; color: oklch(22% 0.02 250); margin: 0 0 14px; }
+.fee-plans-sec { max-width: 1200px; margin: 0 auto; padding: 24px 24px 56px; }
+.fee-plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.fee-table-sec { max-width: 1200px; margin: 0 auto; padding: 40px 24px 72px; }
+.fee-thead { display: grid; grid-template-columns: 2fr 1fr 1fr; background: oklch(24% 0.03 248); color: #fff; font-size: 13px; font-weight: 700; padding: 14px 22px; }
+.fee-row { display: grid; grid-template-columns: 2fr 1fr 1fr; padding: 14px 22px; font-size: 13px; border-bottom: 1px solid oklch(94% 0.004 240); color: oklch(30% 0.02 245); }
+.fee-cta { padding: 72px 24px; text-align: center; background: oklch(24% 0.03 248); }
+.fee-cta-title { font-size: 26px; font-weight: 700; color: #fff; margin: 0 0 14px; }
+
+@media (max-width: 1040px) {
+  .fee-plans { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .fee-head { padding: 40px 20px 16px; }
+  .fee-title { font-size: 25px; }
+  .fee-plans-sec { padding: 20px 20px 40px; }
+  .fee-plans { grid-template-columns: 1fr; }
+  .fee-table-sec { padding: 32px 20px 48px; }
+  .fee-cta { padding: 52px 20px; }
+  .fee-cta-title { font-size: 21px; }
+  /* 3列の表は幅が足りないので、1行＝1カードに積み替えて見出しを各値に付ける */
+  .fee-thead { display: none; }
+  .fee-row { grid-template-columns: 1fr; gap: 4px; padding: 16px 18px; }
+  .fee-row .fee-item { font-weight: 700; color: oklch(22% 0.02 250); }
+  .fee-row .fee-price::before { content: '目安料金：'; font-weight: 700; color: oklch(46% 0.10 245); }
+  .fee-row .fee-note::before { content: '備考：'; font-weight: 700; color: oklch(46% 0.10 245); }
+}
+</style>
+</helmet>
+<div style="max-width:100vw;overflow-x:hidden;">
+<dc-import name="Header" active="fees" hint-size="100%,64px"></dc-import>
+
+<section class="fee-head">
+  <div style="font-size:12px;color:oklch(55% 0.02 245);margin-bottom:14px;"><a href="Home.dc.html">ホーム</a> ／ 料金</div>
+  <h1 class="fee-title">料金について</h1>
+  <p style="font-size:13px;line-height:1.8;color:oklch(45% 0.02 245);max-width:680px;margin:0;">以下は目安となる料金です。症状や施術内容、保険適用の有無によって金額が異なる場合があります。詳しくはご来院時にご説明いたします。</p>
+</section>
+
+<section class="fee-plans-sec">
+  <div class="fee-plans">
+    <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+      <div style="border:1px solid oklch(91% 0.006 240);border-radius:6px;padding:28px;background:#fff;">
+        <div style="font-size:15px;font-weight:700;color:oklch(22% 0.02 250);margin-bottom:6px;">{{ p.title }}</div>
+        <div style="font-size:12px;color:oklch(48% 0.02 245);margin-bottom:16px;">{{ p.desc }}</div>
+        <div style="font-size:28px;font-weight:700;color:oklch(46% 0.10 245);">{{ p.price }}<span style="font-size:13px;font-weight:500;color:oklch(48% 0.02 245);">　{{ p.unit }}</span></div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section class="fee-table-sec">
+  <h2 style="font-size:22px;font-weight:700;color:oklch(22% 0.02 250);margin:0 0 20px;">施術メニュー別 料金一覧</h2>
+  <div style="border:1px solid oklch(91% 0.006 240);border-radius:6px;overflow:hidden;">
+    <div class="fee-thead">
+      <div>項目</div><div>目安料金</div><div>備考</div>
+    </div>
+    <sc-for list="{{ table }}" as="row" hint-placeholder-count="6">
+      <div class="fee-row">
+        <div class="fee-item">{{ row.item }}</div><div class="fee-price">{{ row.price }}</div>
+        <sc-if value="{{ row.hasNote }}" hint-placeholder-val="{{ true }}">
+          <div class="fee-note" style="color:oklch(48% 0.02 245);">{{ row.note }}</div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <p style="font-size:12px;color:oklch(50% 0.02 245);margin-top:14px;">※上記は目安となる仮の料金です。実際の料金は症状や保険適用の有無により異なります。詳細はお問い合わせください。</p>
+</section>
+
+<section class="fee-cta">
+  <h2 class="fee-cta-title">料金についてもお気軽にご相談ください</h2>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+    <a href="Contact.dc.html" style="background:#fff;color:oklch(24% 0.03 248);padding:16px 36px;border-radius:4px;font-size:15px;font-weight:700;">料金について相談する</a>
+    <a href="Contact.dc.html" style="border:1px solid oklch(60% 0.02 245);color:#fff;padding:16px 36px;border-radius:4px;font-size:15px;font-weight:700;">予約する</a>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+<dc-import name="MobileBar" hint-size="100%,56px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const table = [
+      { item: '初診料（初回のみ）', price: '¥1,000', note: '問診・検査を含む' },
+      { item: '一般施術（肩こり・腰痛など）', price: '¥3,000〜¥4,000', note: '保険適用の場合あり' },
+      { item: 'スポーツ外傷施術', price: '¥3,500〜¥5,000', note: '' },
+      { item: '姿勢改善・骨盤調整コース', price: '¥5,000〜¥8,000', note: '自由施術' },
+      { item: '運動療法・コンディショニング', price: '¥3,000〜', note: '' },
+      { item: '交通事故治療', price: '実質負担なし（自賠責保険適用）', note: '事前にご相談ください' },
+    ];
+    return {
+      plans: [
+        { title: '初回相談・検査', desc: '問診・カウンセリング・検査', price: '¥0', unit: '（施術は別途）' },
+        { title: '通常施術', desc: '2回目以降の施術', price: '¥3,000〜', unit: '／回' },
+        { title: '自由施術プログラム', desc: '姿勢改善・骨盤調整など', price: '¥5,000〜', unit: '／回' },
+      ],
+      // hasNote: 備考が空の行はセルごと出さない（スマホのカード表示で「備考：」だけが残らないように）
+      table: table.map(r => ({ ...r, hasNote: !!r.note })),
+    };
+  }
+}
+</script>
+</body>
+</html>

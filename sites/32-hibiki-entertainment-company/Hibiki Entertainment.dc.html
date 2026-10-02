@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@700;900&family=Archivo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1b1b1b;font-family:'Noto Sans JP',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#a31f24;text-decoration:none}
+a:hover{color:#7d151a}
+input,select,textarea,button{font-family:inherit}
+</style>
+</helmet>
+
+<div style="overflow-x:hidden;position:relative">
+<div data-progress="" style="position:fixed;top:0;left:0;height:3px;width:100%;background:#c4161c;z-index:80;transform-origin:0 50%;transform:scaleX(0)"></div>
+
+<!-- HEADER -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;height:{{ headerH }};display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,48px);background:{{ headerBg }};box-shadow:{{ headerShadow }};transition:background .3s,box-shadow .3s">
+  <a href="#/" style="display:flex;align-items:center;gap:10px;color:#a31f24">
+    <span style="width:26px;height:26px;background:#a31f24;display:flex;align-items:center;justify-content:center"><span style="width:10px;height:10px;background:#fff;transform:rotate(45deg)"></span></span>
+    <span style="display:flex;flex-direction:column;line-height:1">
+      <span style="font-family:Archivo,Helvetica,sans-serif;font-weight:900;font-size:19px;letter-spacing:.14em">HIBIKI</span>
+      <span style="font-size:8px;font-weight:700;letter-spacing:.42em;margin-top:4px;color:#a31f24">響 興 行 株 式 会 社</span>
+    </span>
+  </a>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;align-items:center;gap:36px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+        <a href="{{ n.href }}" style="font-family:Archivo,Helvetica,sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;color:{{ navColor }};display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;border-bottom:2px solid {{ n.line }}" style-hover="opacity:.65">{{ n.en }}</a>
+      </sc-for>
+      <a href="#/contact" style="display:flex;align-items:center;gap:10px;background:#111;color:#fff;font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;padding:12px 20px" style-hover="background:#a31f24;color:#fff">お問い合わせ <span style="width:18px;height:1px;background:#fff"></span></a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:44px;height:44px;border:0;background:transparent;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:6px;cursor:pointer;padding:0">
+      <span style="width:26px;height:2px;background:{{ navColor }}"></span>
+      <span style="width:18px;height:2px;background:{{ navColor }}"></span>
+      <span style="width:26px;height:2px;background:{{ navColor }}"></span>
+    </button>
+  </sc-if>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#a31f24;display:flex;flex-direction:column;justify-content:center;padding:40px 32px;gap:8px">
+    <button onClick="{{ toggleMenu }}" aria-label="閉じる" style="position:absolute;top:16px;right:16px;width:44px;height:44px;border:0;background:transparent;color:#fff;font-size:28px;cursor:pointer">×</button>
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+      <a href="{{ n.href }}" onClick="{{ toggleMenu }}" style="color:#fff;display:flex;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.25)">
+        <span style="font-family:Archivo,Helvetica,sans-serif;font-weight:800;font-size:34px;letter-spacing:.02em">{{ n.en }}</span>
+        <span style="font-size:12px;font-weight:700">{{ n.jp }}</span>
+      </a>
+    </sc-for>
+    <a href="#/contact" onClick="{{ toggleMenu }}" style="margin-top:28px;background:#fff;color:#a31f24;font-weight:700;padding:18px;text-align:center;letter-spacing:.1em">お問い合わせ →</a>
+  </div>
+</sc-if>
+
+<sc-if value="{{ isTop }}" hint-placeholder-val="{{ true }}">
+<!-- 01 HERO -->
+<section id="top" data-screen-label="01 Hero" style="position:relative;min-height:{{ heroH }};background:#a31f24;overflow:hidden;display:flex;align-items:center">
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,#b8232a 0%,#a31f24 45%,#8f1b20 100%)"></div>
+  <div style="position:absolute;left:0;top:0;width:44%;height:100%;background:#fff;clip-path:polygon(0 0,100% 0,0 {{ heroWhiteY }})" data-intro="left" data-d="0"></div>
+  <div style="position:absolute;left:0;bottom:0;width:62%;height:100%;background:#2b2b2d;clip-path:polygon(0 100%,100% 100%,38% 42%)" data-intro="up" data-d="150"></div>
+  <div style="position:absolute;left:0;top:30%;width:{{ heroGrayW }};height:70%;background:#c8c8ca;clip-path:polygon(0 0,100% 100%,0 100%)" data-intro="left" data-d="300"></div>
+  <div style="position:absolute;right:0;bottom:0;width:260px;height:220px;background:repeating-linear-gradient(135deg,transparent 0 22px,#fff 22px 34px);clip-path:polygon(100% 0,100% 100%,0 100%)" data-stripes="" data-intro="right" data-d="500"></div>
+
+  <div data-intro="clip" data-d="350" data-par="0.18" style="position:absolute;left:{{ heroImgLeft }};top:{{ heroImgTop }};height:{{ heroImgH }};width:{{ heroImgW }};clip-path:polygon(0 12%,22% 0,100% 0,100% 88%,78% 100%,0 100%);background:#3a3a3d url(images/16.jpg) center 40%/cover"></div>
+
+  <div style="position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:{{ heroPad }};display:flex;justify-content:flex-end">
+    <div data-intro-group="" style="color:#fff;display:flex;flex-direction:column;gap:14px;max-width:{{ heroTextMax }}">
+      <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:clamp(20px,2.6vw,30px);letter-spacing:.42em">響興行株式会社</div>
+      <div data-ls="" style="font-family:Archivo,Helvetica,sans-serif;font-weight:900;font-size:clamp(52px,7vw,92px);line-height:.9;letter-spacing:.1em">HIBIKI</div>
+      <div style="font-family:Archivo,Helvetica,sans-serif;font-weight:500;font-size:clamp(12px,1.2vw,15px);letter-spacing:.16em">Creating moments that move people</div>
+      <div style="font-family:Archivo,Helvetica,sans-serif;font-weight:500;font-size:clamp(40px,5.2vw,66px);line-height:1;letter-spacing:.01em;margin-top:4px">Next:<span style="font-weight:800">Stage</span> JAPAN</div>
+      <div style="font-weight:700;font-size:clamp(12px,1.2vw,15px);letter-spacing:.36em;text-wrap:pretty">まだ見ぬ感動を、この国の舞台から。</div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:22px">
+        <a href="#/works" style="display:flex;align-items:center;gap:14px;background:#fff;color:#a31f24;font-weight:700;font-size:13px;letter-spacing:.14em;padding:16px 26px" style-hover="background:#111;color:#fff">実績を見る <span style="width:22px;height:1px;background:currentColor"></span></a>
+        <a href="#/about" style="display:flex;align-items:center;gap:14px;border:1px solid #fff;color:#fff;font-weight:700;font-size:13px;letter-spacing:.14em;padding:15px 26px" style-hover="background:rgba(255,255,255,.12);color:#fff">ABOUT US <span style="width:22px;height:1px;background:currentColor"></span></a>
+      </div>
+    </div>
+  </div>
+
+  <div data-intro="pop" data-d="1500" style="position:absolute;right:clamp(16px,6vw,110px);bottom:clamp(20px,5vw,56px);z-index:3;background:#fff;padding:14px 20px;display:flex;flex-direction:column;align-items:center;gap:2px;box-shadow:0 10px 30px rgba(0,0,0,.2)">
+    <span style="font-size:10px;font-weight:700;color:#1b1b1b;letter-spacing:.06em">創業から、公演数</span>
+    <span data-count="3200" style="font-family:Archivo,Helvetica,sans-serif;font-weight:900;font-size:40px;color:#a31f24;line-height:1">3,200<span style="font-size:14px">+</span></span>
+    <span style="font-family:Archivo,Helvetica,sans-serif;font-size:8px;font-weight:800;color:#a31f24;letter-spacing:.22em">SHOWS PRODUCED</span>
+  </div>
+</section>
+
+<sc-if value="{{ showNotice }}" hint-placeholder-val="{{ true }}">
+  <div style="max-width:1000px;margin:36px auto 0;padding:0 20px">
+    <a href="#/news" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;border:1px solid #e3e3e3;padding:14px 18px;color:#1b1b1b" style-hover="border-color:#a31f24;color:#1b1b1b">
+      <span style="display:flex;align-items:center;gap:10px">
+        <span style="width:22px;height:22px;background:#c4161c;color:#fff;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center">!</span>
+        <span style="display:flex;flex-direction:column;line-height:1.2"><span style="font-family:Archivo,Helvetica,sans-serif;font-weight:800;font-size:11px">NEW PROJECT</span><span style="font-size:9px;color:#666">最新情報</span></span>
+      </span>
+      <span style="font-size:12px;color:#666">2026.09.12</span>
+      <span style="font-size:13px;flex:1;min-width:200px">「NEON GARDEN FES 2026」全日程の公演制作を担当しました。</span>
+      <span style="color:#999">⟶</span>
+    </a>
+  </div>
+</sc-if>
+
+<!-- 02 ABOUT -->
+<section id="about" data-screen-label="02 About" style="position:relative;padding:clamp(80px,10vw,130px) 20px">
+  <div style="position:absolute;left:-120px;top:40px;width:420px;height:420px;background:#ececec;transform:rotate(45deg);opacity:.7" data-diamond=""></div>
+  <div style="position:relative;max-width:1000px;margin:0 auto">
+    <div data-reveal="" style="display:flex;align-items:center;gap:16px;margin-bottom:44px">
+      <div data-chev="" style="display:flex;flex-direction:column;gap:3px"><span style="width:20px;height:24px;background:#a31f24;clip-path:polygon(0 0,100% 50%,0 100%)"></span><span style="width:20px;height:24px;background:#c4161c;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-10px"></span></div>
+      <div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(34px,4vw,46px);line-height:1;letter-spacing:.01em">ABOUT</div><div style="font-size:12px;font-weight:700;margin-top:6px">当社について</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(32px,4vw,56px);align-items:start">
+      <div data-reveal="" style="display:flex;flex-direction:column;gap:22px">
+        <div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(36px,4.4vw,48px);color:#a31f24;line-height:1">Next:Stage</div>
+        <div style="font-weight:700;font-size:clamp(17px,1.8vw,20px);line-height:1.7">幕が上がる、その一瞬のために。<br>企画から終演まで、すべてを背負う。</div>
+        <p style="margin:0;font-size:14px;line-height:2.1;color:#333;text-wrap:pretty">響興行は、コンサート、舞台、フェスティバルを手がける興行会社です。<br>会場の空気、照明が落ちる瞬間の静けさ、終演後に残る余韻。観客が持ち帰るもののすべてを設計の対象と考え、企画・制作・運営を一気通貫で担います。</p>
+        <p style="margin:0;font-size:14px;line-height:2.1;color:#333;text-wrap:pretty">アーティストの想いを、観客の記憶へ。次の舞台を、この国から生み出していきます。</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.6vw,20px)">
+        <sc-for list="{{ aboutCards }}" as="c" hint-placeholder-count="4">
+          <a href="#/about" data-reveal="" style="display:flex;flex-direction:column;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.1);color:#1b1b1b;transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 14px 30px rgba(0,0,0,.16);color:#1b1b1b">
+            <div style="position:relative;aspect-ratio:1/0.85;background:#d9d9db url({{ c.photo }}) center/cover;overflow:hidden">
+              <span style="position:absolute;left:0;right:0;bottom:-1px;height:36%;background:#fff;clip-path:polygon(0 100%,100% 18%,100% 100%)"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;padding:0 14px 16px">
+              <div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:13px">{{ c.en }}</div><div style="font-size:10px;color:#666;margin-top:2px">{{ c.jp }}</div></div>
+              <span style="font-size:12px;color:#999">⟶</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 WORKS -->
+<section id="works" data-screen-label="03 Works" style="position:relative;padding:clamp(70px,9vw,120px) 0">
+  <div style="position:absolute;right:-60px;top:80px;width:300px;height:300px;background:#ececec;transform:rotate(45deg);opacity:.7" data-diamond=""></div>
+  <div style="position:relative;max-width:1000px;margin:0 auto 44px;padding:0 20px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <div data-reveal="" style="display:flex;align-items:center;gap:16px">
+      <div data-chev="" style="display:flex;flex-direction:column;gap:3px"><span style="width:20px;height:24px;background:#a31f24;clip-path:polygon(0 0,100% 50%,0 100%)"></span><span style="width:20px;height:24px;background:#c4161c;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-10px"></span></div>
+      <div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(34px,4vw,46px);line-height:1">WORKS</div><div style="font-size:12px;font-weight:700;margin-top:6px">制作実績</div></div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button onClick="{{ prev }}" aria-label="前へ" style="width:46px;height:46px;border:1px solid #1b1b1b;background:#fff;cursor:pointer;font-size:14px" style-hover="background:#1b1b1b;color:#fff">←</button>
+      <button onClick="{{ next }}" aria-label="次へ" style="width:46px;height:46px;border:1px solid #1b1b1b;background:#fff;cursor:pointer;font-size:14px" style-hover="background:#1b1b1b;color:#fff">→</button>
+    </div>
+  </div>
+
+  <div style="position:relative;overflow:hidden;padding:10px 0 30px" onMouseEnter="{{ pause }}" onMouseLeave="{{ resume }}">
+    <div style="display:flex;gap:{{ gapPx }};transform:{{ trackX }};transition:transform .7s cubic-bezier(.65,0,.25,1)">
+      <sc-for list="{{ worksView }}" as="w" hint-placeholder-count="5">
+        <article onClick="{{ w.go }}" style="flex:0 0 {{ cardW }};background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.1);opacity:{{ w.op }};transform:{{ w.sc }};transition:opacity .6s,transform .7s cubic-bezier(.65,0,.25,1);cursor:pointer;display:flex;flex-direction:column">
+          <div style="position:relative;aspect-ratio:16/10.5;background:{{ w.bg }};display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <span style="position:absolute;left:0;top:0;width:62px;height:62px;background:#8c6d1f;clip-path:polygon(0 0,100% 0,0 100%)"></span>
+            <span style="position:absolute;left:6px;top:8px;font-family:Archivo,Helvetica,sans-serif;font-weight:800;font-size:8px;color:#fff;letter-spacing:.06em">{{ w.cat }}</span>
+            <span style="position:absolute;right:0;bottom:0;width:60%;height:26%;background:#fff;clip-path:polygon(100% 0,100% 100%,0 100%)"></span>
+          </div>
+          <div style="padding:18px 22px 22px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+              <h3 style="margin:0;font-size:15px;font-weight:700;line-height:1.5">{{ w.title }}</h3>
+              <span style="font-family:Archivo,Helvetica,sans-serif;font-style:italic;font-weight:800;color:#a31f24;font-size:18px">{{ w.year }}</span>
+            </div>
+            <p style="margin:0;font-size:12px;line-height:1.9;color:#555">{{ w.desc }}</p>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="background:#14233a;color:#fff;font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;padding:6px 8px">DATA</span>
+              <span style="font-size:11px;color:#444">{{ w.data }}</span>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:center;gap:6px;margin-top:10px">
+    <sc-for list="{{ dots }}" as="d" hint-placeholder-count="6">
+      <button onClick="{{ d.go }}" aria-label="{{ d.label }}" style="width:28px;height:14px;border:0;background:transparent;cursor:pointer;padding:0;display:flex;align-items:center"><span style="width:100%;height:2px;background:{{ d.color }};transition:background .3s"></span></button>
+    </sc-for>
+  </div>
+  <div style="display:flex;justify-content:center;margin-top:36px">
+    <a href="#/works" style="display:flex;align-items:center;gap:44px;background:#111;color:#fff;font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:10px;letter-spacing:.12em;padding:15px 44px" style-hover="background:#a31f24;color:#fff;gap:64px">VIEW MORE <span style="width:22px;height:1px;background:#fff"></span></a>
+  </div>
+
+  <div style="max-width:1000px;margin:clamp(80px,9vw,120px) auto 0;padding:0 20px">
+    <div data-reveal="" style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(26px,3vw,34px);line-height:1">NEWS</div>
+    <div style="font-size:11px;font-weight:700;margin:6px 0 28px">最新情報</div>
+    <div style="border-top:1px solid #e3e3e3">
+      <sc-for list="{{ news }}" as="n" hint-placeholder-count="5">
+        <a href="#/news" data-reveal="left" style="display:flex;align-items:center;gap:clamp(16px,3vw,40px);padding:24px 12px;border-bottom:1px solid #e3e3e3;color:#1b1b1b;transition:background .25s" style-hover="background:#f6f6f6;color:#a31f24">
+          <span style="font-family:Archivo,Helvetica,sans-serif;font-size:12px;color:#666;flex:0 0 auto">{{ n.date }}</span>
+          <span style="font-size:13px;flex:1;line-height:1.7">{{ n.text }}</span>
+          <span style="color:#999;font-size:12px">⟶</span>
+        </a>
+      </sc-for>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:44px"><a href="#/news" style="display:flex;align-items:center;gap:44px;background:#111;color:#fff;font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:10px;letter-spacing:.12em;padding:15px 44px" style-hover="background:#a31f24;color:#fff;gap:64px">VIEW MORE <span style="width:22px;height:1px;background:#fff"></span></a></div>
+  </div>
+</section>
+
+<!-- 04 BUSINESS -->
+<section id="business" data-screen-label="04 Business" style="position:relative;padding:clamp(60px,8vw,110px) 0">
+  <div style="position:absolute;left:-80px;top:0;width:260px;height:260px;background:#ececec;transform:rotate(45deg);opacity:.7" data-diamond=""></div>
+  <div data-reveal="" style="position:relative;max-width:1000px;margin:0 auto 44px;padding:0 20px;display:flex;align-items:center;gap:16px">
+    <div data-chev="" style="display:flex;flex-direction:column;gap:3px"><span style="width:20px;height:24px;background:#a31f24;clip-path:polygon(0 0,100% 50%,0 100%)"></span><span style="width:20px;height:24px;background:#c4161c;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-10px"></span></div>
+    <div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(34px,4vw,46px);line-height:1">BUSINESS</div><div style="font-size:12px;font-weight:700;margin-top:6px">事業内容</div></div>
+  </div>
+
+  <div style="position:relative;max-width:1200px;margin:0 auto;min-height:{{ featureH }};display:flex;align-items:center">
+    <div data-reveal="wipe" style="position:absolute;inset:0;left:{{ featureImgLeft }};background:#b9bcc2 url(images/15.jpg) center/cover"></div>
+    <div data-reveal="" style="position:relative;margin:{{ featureCardMargin }};background:#fff;padding:clamp(28px,3.5vw,44px);max-width:480px;box-shadow:0 10px 40px rgba(0,0,0,.08)">
+      <span style="position:absolute;left:-18px;top:-26px;width:1px;height:90px;background:#a31f24;transform:rotate(28deg)" data-reveal="line"></span>
+      <span style="position:absolute;left:-8px;top:-22px;width:1px;height:90px;background:#a31f24;transform:rotate(28deg)" data-reveal="line"></span>
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+        <span style="font-family:Archivo,Helvetica,sans-serif;font-style:italic;font-weight:800;font-size:clamp(34px,4vw,46px);color:#a31f24;line-height:1">LIVE</span>
+        <span style="font-size:13px;color:#a31f24;letter-spacing:.1em">（ライブ）プロダクション</span>
+      </div>
+      <div style="font-family:Archivo,Helvetica,sans-serif;font-size:12px;color:#a31f24;margin-top:8px;letter-spacing:.02em">From the first idea to the final curtain call.</div>
+      <div style="font-weight:700;font-size:15px;line-height:1.8;margin-top:22px">年間200公演超。<br>ホールからスタジアムまで、興行をまるごと。</div>
+      <p style="margin:14px 0 0;font-size:13px;line-height:2;color:#444;text-wrap:pretty">会場手配、チケッティング、演出、舞台監督、警備計画まで。興行に必要な機能を社内に揃え、ひとつのチームで本番を迎えます。</p>
+      <a href="#/business" style="margin-top:28px;display:inline-flex;align-items:center;gap:40px;background:#111;color:#fff;font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:10px;letter-spacing:.12em;padding:14px 32px" style-hover="background:#a31f24;color:#fff;gap:64px">VIEW MORE <span style="width:22px;height:1px;background:#fff"></span></a>
+      <span style="position:absolute;right:-6px;bottom:-40px;width:1px;height:90px;background:#a31f24;transform:rotate(28deg)" data-reveal="line"></span>
+      <span style="position:absolute;right:4px;bottom:-44px;width:1px;height:90px;background:#a31f24;transform:rotate(28deg)" data-reveal="line"></span>
+    </div>
+  </div>
+
+  <div style="max-width:1000px;margin:clamp(60px,7vw,96px) auto 0;padding:0 20px">
+    <div data-reveal="" style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(26px,3vw,34px);line-height:1">OUR SERVICES</div>
+    <div style="font-size:11px;font-weight:700;margin:6px 0 28px">事業領域</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:2px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+        <a href="#/business" data-reveal="" style="display:flex;flex-direction:column;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.08);transition:transform .35s;color:#1b1b1b" style-hover="transform:translateY(-6px);color:#1b1b1b">
+          <div style="position:relative;aspect-ratio:1/0.72;background:#d4d4d6 url({{ s.photo }}) center/cover;overflow:hidden">
+            <span style="position:absolute;left:0;right:0;bottom:-1px;height:34%;background:#fff;clip-path:polygon(0 100%,100% 20%,100% 100%)"></span>
+          </div>
+          <div style="padding:0 16px 18px;display:flex;flex-direction:column;gap:8px">
+            <div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:13px;color:#a31f24">{{ s.en }}</div><div style="font-size:10px;color:#666;margin-top:2px;letter-spacing:.1em">{{ s.jp }}</div></div>
+            <div style="font-size:12px;line-height:1.8;color:#444">{{ s.desc }}</div>
+            <div style="display:flex;justify-content:flex-end;color:#999;font-size:12px">⟶</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+</sc-if>
+
+<sc-if value="{{ isSub }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="{{ pageLabel }}" style="position:relative;min-height:{{ subHeroH }};background:linear-gradient(90deg,#b8232a 0%,#a31f24 45%,#8f1b20 100%);overflow:hidden;display:flex;align-items:flex-end">
+  <div data-intro="left" data-d="0" style="position:absolute;left:0;top:0;width:34%;height:100%;background:#fff;clip-path:polygon(0 0,100% 0,0 {{ subTriY }})"></div>
+  <div data-intro="up" data-d="150" style="position:absolute;left:0;bottom:0;width:50%;height:100%;background:#2b2b2d;clip-path:polygon(0 100%,100% 100%,30% 55%)"></div>
+  <div data-intro="left" data-d="300" style="position:absolute;left:0;top:40%;width:{{ subGrayW }};height:60%;background:#c8c8ca;clip-path:polygon(0 0,100% 100%,0 100%)"></div>
+  <div data-stripes="" data-intro="right" data-d="450" style="position:absolute;right:0;bottom:0;width:220px;height:180px;background:repeating-linear-gradient(135deg,transparent 0 22px,#fff 22px 34px);clip-path:polygon(100% 0,100% 100%,0 100%)"></div>
+  <div data-intro-group="" style="position:relative;z-index:2;width:100%;max-width:1000px;margin:0 auto;padding:0 20px {{ subTextPb }};color:#fff;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:12px;margin-left:{{ subTextLeft }};max-width:{{ subTextMax }}">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.36em">{{ pg.jp }}</div>
+    <div data-ls="" style="font-family:Archivo,Helvetica,sans-serif;font-weight:900;font-size:clamp(52px,7.4vw,96px);line-height:.95;letter-spacing:.1em">{{ pg.en }}</div>
+    <div style="font-weight:700;font-size:clamp(12px,1.3vw,15px);letter-spacing:.24em">{{ pg.lead }}</div>
+  </div>
+</section>
+<div style="max-width:1000px;margin:0 auto;padding:18px 20px;display:flex;gap:12px;font-family:Archivo,Helvetica,sans-serif;font-size:11px;letter-spacing:.08em;color:#777;border-bottom:1px solid #eee"><a href="#/" style="color:#777" style-hover="color:#a31f24">TOP</a><span>›</span><span style="color:#a31f24;font-weight:700">{{ pg.en }}</span></div>
+</sc-if>
+
+<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="About / Message" style="position:relative;padding:clamp(70px,9vw,120px) 20px">
+  <div data-diamond="" style="position:absolute;left:-140px;top:60px;width:320px;height:320px;background:#ececec;transform:rotate(45deg);opacity:.7"></div>
+  <div style="position:relative;max-width:1000px;margin:0 auto">
+    <div data-reveal="" style="display:flex;align-items:center;gap:16px;margin-bottom:40px"><div data-chev="" style="display:flex;flex-direction:column;gap:3px"><span style="width:20px;height:24px;background:#a31f24;clip-path:polygon(0 0,100% 50%,0 100%)"></span><span style="width:20px;height:24px;background:#c4161c;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-10px"></span></div><div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,42px);line-height:1">MESSAGE</div><div style="font-size:12px;font-weight:700;margin-top:6px">代表メッセージ</div></div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(32px,5vw,64px);align-items:start">
+      <div data-reveal="left" style="background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.12)"><div style="position:relative;aspect-ratio:4/5;background:#d4d4d6 url(images/1.jpg) 50% 30%/cover;overflow:hidden"><span style="position:absolute;left:0;right:0;bottom:-1px;height:18%;background:#fff;clip-path:polygon(0 100%,100% 10%,100% 100%)"></span></div></div>
+      <div data-reveal="" style="display:flex;flex-direction:column;gap:22px">
+        <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:clamp(22px,2.6vw,30px);line-height:1.6;color:#a31f24">客席の一人ひとりに、<br>一生ものの夜を。</div>
+        <p style="margin:0;font-size:14px;line-height:2.1;color:#333;text-wrap:pretty">1998年、小さなライブハウスの制作から響興行は始まりました。以来、私たちが大切にしてきたのは、規模ではなく「一人の観客が何を持ち帰るか」という問いです。</p>
+        <p style="margin:0;font-size:14px;line-height:2.1;color:#333;text-wrap:pretty">チケットを買った瞬間から、帰りの電車で余韻を反芻する時間まで。そのすべてが興行だと考えています。アーティストの挑戦を支え、観客の期待を超え、次の世代に誇れる舞台を、この国から生み出し続けます。</p>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;margin-top:8px"><span style="font-size:12px;color:#666">響興行株式会社 代表取締役社長</span><span style="font-size:22px;font-weight:700;letter-spacing:.2em">〇〇 〇〇</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section data-screen-label="About / Philosophy" style="position:relative;background:#f4f4f4;padding:clamp(70px,9vw,120px) 20px">
+  <div style="max-width:1000px;margin:0 auto">
+    <div data-reveal="" style="display:flex;align-items:center;gap:16px;margin-bottom:40px"><div data-chev="" style="display:flex;flex-direction:column;gap:3px"><span style="width:20px;height:24px;background:#a31f24;clip-path:polygon(0 0,100% 50%,0 100%)"></span><span style="width:20px;height:24px;background:#c4161c;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-10px"></span></div><div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,42px);line-height:1">PHILOSOPHY</div><div style="font-size:12px;font-weight:700;margin-top:6px">企業理念</div></div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px">
+      <sc-for list="{{ philosophy }}" as="p" hint-placeholder-count="3">
+        <div data-reveal="" style="position:relative;background:#fff;padding:36px 30px 34px;box-shadow:0 4px 18px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:14px;overflow:hidden;transition:transform .35s" style-hover="transform:translateY(-6px)">
+          <span style="position:absolute;right:0;top:0;width:70px;height:70px;background:#a31f24;clip-path:polygon(0 0,100% 0,100% 100%)"></span>
+          <span style="font-family:Archivo,Helvetica,sans-serif;font-weight:800;font-style:italic;font-size:32px;color:#a31f24;line-height:1">{{ p.en }}</span>
+          <span style="font-weight:700;font-size:17px;line-height:1.6">{{ p.title }}</span>
+          <span style="font-size:13px;line-height:2;color:#555">{{ p.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+<section data-screen-label="About / Company" style="position:relative;padding:clamp(70px,9vw,120px) 20px">
+  <div data-diamond="" style="position:absolute;right:-160px;top:120px;width:320px;height:320px;background:#ececec;transform:rotate(45deg);opacity:.7"></div>
+  <div style="position:relative;max-width:1000px;margin:0 auto">
+    <div data-reveal="" style="display:flex;align-items:center;gap:16px;margin-bottom:40px"><div data-chev="" style="display:flex;flex-direction:column;gap:3px"><span style="width:20px;height:24px;background:#a31f24;clip-path:polygon(0 0,100% 50%,0 100%)"></span><span style="width:20px;height:24px;background:#c4161c;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-10px"></span></div><div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,42px);line-height:1">COMPANY</div><div style="font-size:12px;font-weight:700;margin-top:6px">会社概要</div></div></div>
+    <div style="border-top:2px solid #1b1b1b;background:#fff">
+      <sc-for list="{{ company }}" as="c" hint-placeholder-count="8">
+        <div data-reveal="left" style="display:grid;grid-template-columns:{{ companyCols }};border-bottom:1px solid #e3e3e3">
+          <div style="padding:22px 16px;font-size:13px;font-weight:700;background:#fafafa;display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;background:#a31f24;transform:rotate(45deg);flex:0 0 auto"></span>{{ c.k }}</div>
+          <div style="padding:22px 20px;font-size:13px;line-height:1.9;color:#333">{{ c.v }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+<section data-screen-label="About / Team" style="position:relative;background:#f4f4f4;padding:clamp(70px,9vw,120px) 20px">
+  <div style="max-width:1000px;margin:0 auto">
+    <div data-reveal="" style="display:flex;align-items:center;gap:16px;margin-bottom:40px"><div data-chev="" style="display:flex;flex-direction:column;gap:3px"><span style="width:20px;height:24px;background:#a31f24;clip-path:polygon(0 0,100% 50%,0 100%)"></span><span style="width:20px;height:24px;background:#c4161c;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-10px"></span></div><div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,42px);line-height:1">TEAM</div><div style="font-size:12px;font-weight:700;margin-top:6px">制作体制</div></div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:20px">
+      <sc-for list="{{ team }}" as="t" hint-placeholder-count="4">
+        <div data-reveal="" style="background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.08);display:flex;flex-direction:column;transition:transform .35s" style-hover="transform:translateY(-6px)">
+          <div style="position:relative;aspect-ratio:1/0.8;background:#d4d4d6 url({{ t.photo }}) center 30%/cover;overflow:hidden"><span style="position:absolute;left:0;right:0;bottom:-1px;height:30%;background:#fff;clip-path:polygon(0 100%,100% 10%,100% 100%)"></span></div>
+          <div style="padding:0 18px 22px;display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:12px;color:#a31f24;letter-spacing:.08em">{{ t.en }}</span>
+            <span style="font-weight:700;font-size:15px">{{ t.jp }}</span>
+            <span style="font-size:12px;line-height:1.9;color:#555">{{ t.text }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isWorks }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Works / List" style="position:relative;padding:clamp(70px,9vw,110px) 20px">
+  <div data-diamond="" style="position:absolute;right:-160px;top:40px;width:320px;height:320px;background:#ececec;transform:rotate(45deg);opacity:.7"></div>
+  <div style="position:relative;max-width:1100px;margin:0 auto">
+    <div data-reveal="" style="display:flex;align-items:center;gap:16px;margin-bottom:40px"><div data-chev="" style="display:flex;flex-direction:column;gap:3px"><span style="width:20px;height:24px;background:#a31f24;clip-path:polygon(0 0,100% 50%,0 100%)"></span><span style="width:20px;height:24px;background:#c4161c;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-10px"></span></div><div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,42px);line-height:1">ALL WORKS</div><div style="font-size:12px;font-weight:700;margin-top:6px">制作実績一覧</div></div></div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px">
+      <sc-for list="{{ workCats }}" as="c" hint-placeholder-count="6">
+        <button onClick="{{ c.pick }}" style="border:1px solid #1b1b1b;background:{{ c.bg }};color:{{ c.fg }};font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:11px;letter-spacing:.1em;padding:12px 18px;cursor:pointer">{{ c.label }}</button>
+      </sc-for>
+    </div>
+    <div data-grid="" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:28px">
+      <sc-for list="{{ worksFiltered }}" as="w" hint-placeholder-count="6">
+        <article data-reveal="" style="background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.1);display:flex;flex-direction:column;transition:transform .4s,box-shadow .4s" style-hover="transform:translateY(-8px);box-shadow:0 18px 36px rgba(0,0,0,.16)">
+          <div style="position:relative;aspect-ratio:16/10.5;background:#cfd1d4 url({{ w.photo }}) center/cover;overflow:hidden">
+            <span style="position:absolute;left:0;top:0;width:62px;height:62px;background:#8c6d1f;clip-path:polygon(0 0,100% 0,0 100%)"></span>
+            <span style="position:absolute;left:6px;top:8px;font-family:Archivo,Helvetica,sans-serif;font-weight:800;font-size:8px;color:#fff;letter-spacing:.06em">{{ w.cat }}</span>
+            <span style="position:absolute;right:0;bottom:0;width:60%;height:26%;background:#fff;clip-path:polygon(100% 0,100% 100%,0 100%)"></span>
+          </div>
+          <div style="padding:18px 22px 22px;display:flex;flex-direction:column;gap:12px;flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+              <h3 style="margin:0;font-size:15px;font-weight:700;line-height:1.5">{{ w.title }}</h3>
+              <span style="font-family:Archivo,Helvetica,sans-serif;font-style:italic;font-weight:800;color:#a31f24;font-size:18px">{{ w.year }}</span>
+            </div>
+            <p style="margin:0;font-size:12px;line-height:1.9;color:#555;flex:1">{{ w.desc }}</p>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="background:#14233a;color:#fff;font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;padding:6px 8px">DATA</span>
+              <span style="font-size:11px;color:#444">{{ w.data }}</span>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isBusiness }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Business / Services" style="position:relative;padding:clamp(70px,9vw,110px) 20px">
+  <div data-diamond="" style="position:absolute;left:-160px;top:40px;width:320px;height:320px;background:#ececec;transform:rotate(45deg);opacity:.7"></div>
+  <div style="position:relative;max-width:1000px;margin:0 auto">
+    <div data-reveal="" style="display:flex;align-items:center;gap:16px;margin-bottom:40px"><div data-chev="" style="display:flex;flex-direction:column;gap:3px"><span style="width:20px;height:24px;background:#a31f24;clip-path:polygon(0 0,100% 50%,0 100%)"></span><span style="width:20px;height:24px;background:#c4161c;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-10px"></span></div><div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,42px);line-height:1">SERVICES</div><div style="font-size:12px;font-weight:700;margin-top:6px">事業領域</div></div></div>
+    <div style="display:flex;flex-direction:column;gap:clamp(64px,8vw,110px)">
+      <sc-for list="{{ bizDetail }}" as="b" hint-placeholder-count="4">
+        <div style="display:flex;flex-wrap:wrap;flex-direction:{{ b.dir }};gap:clamp(28px,5vw,64px);align-items:center">
+          <div data-reveal="wipe" style="flex:1 1 380px;min-width:0;box-shadow:0 10px 30px rgba(0,0,0,.1);background:#fff"><div style="position:relative;aspect-ratio:4/3;background:#d4d4d6 url({{ b.photo }}) center/cover;overflow:hidden"><span style="position:absolute;left:0;right:0;bottom:-1px;height:18%;background:#fff;clip-path:polygon(0 100%,100% 10%,100% 100%)"></span></div></div>
+          <div data-reveal="" style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:14px">
+            <span style="font-family:Archivo,Helvetica,sans-serif;font-weight:900;font-size:clamp(56px,6vw,76px);line-height:.9;color:#a31f24">{{ b.num }}</span>
+            <span style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:13px;letter-spacing:.1em;color:#a31f24">{{ b.en }}</span>
+            <span style="font-weight:700;font-size:clamp(20px,2.2vw,26px);line-height:1.5">{{ b.jp }}</span>
+            <p style="margin:0;font-size:13px;line-height:2.1;color:#444;text-wrap:pretty">{{ b.desc }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
+              <sc-for list="{{ b.tags }}" as="t" hint-placeholder-count="4">
+                <span style="border:1px solid #d0d0d0;font-size:11px;padding:6px 12px;color:#333">{{ t }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+<section data-screen-label="Business / Flow" style="position:relative;background:#f4f4f4;padding:clamp(70px,9vw,110px) 20px">
+  <div style="max-width:1000px;margin:0 auto">
+    <div data-reveal="" style="display:flex;align-items:center;gap:16px;margin-bottom:40px"><div data-chev="" style="display:flex;flex-direction:column;gap:3px"><span style="width:20px;height:24px;background:#a31f24;clip-path:polygon(0 0,100% 50%,0 100%)"></span><span style="width:20px;height:24px;background:#c4161c;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-10px"></span></div><div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,42px);line-height:1">FLOW</div><div style="font-size:12px;font-weight:700;margin-top:6px">制作の流れ</div></div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:4px">
+      <sc-for list="{{ flow }}" as="s" hint-placeholder-count="5">
+        <div data-reveal="" style="position:relative;background:#fff;padding:28px 22px 30px;display:flex;flex-direction:column;gap:10px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)">
+          <span style="font-family:Archivo,Helvetica,sans-serif;font-weight:800;font-size:11px;letter-spacing:.14em;color:#a31f24">STEP {{ s.n }}</span>
+          <span style="font-weight:700;font-size:15px">{{ s.t }}</span>
+          <span style="font-size:12px;line-height:1.9;color:#555;padding-right:10px">{{ s.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isNews }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="News / List" style="position:relative;padding:clamp(70px,9vw,110px) 20px">
+  <div data-diamond="" style="position:absolute;right:-160px;top:40px;width:320px;height:320px;background:#ececec;transform:rotate(45deg);opacity:.7"></div>
+  <div style="position:relative;max-width:1000px;margin:0 auto">
+    <div data-reveal="" style="display:flex;align-items:center;gap:16px;margin-bottom:40px"><div data-chev="" style="display:flex;flex-direction:column;gap:3px"><span style="width:20px;height:24px;background:#a31f24;clip-path:polygon(0 0,100% 50%,0 100%)"></span><span style="width:20px;height:24px;background:#c4161c;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-10px"></span></div><div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,42px);line-height:1">NEWS</div><div style="font-size:12px;font-weight:700;margin-top:6px">最新情報</div></div></div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">
+      <sc-for list="{{ newsCats }}" as="c" hint-placeholder-count="4">
+        <button onClick="{{ c.pick }}" style="border:1px solid #1b1b1b;background:{{ c.bg }};color:{{ c.fg }};font-size:12px;font-weight:700;padding:11px 18px;cursor:pointer">{{ c.label }}</button>
+      </sc-for>
+    </div>
+    <div data-grid="" style="border-top:1px solid #1b1b1b;background:#fff">
+      <sc-for list="{{ newsFiltered }}" as="n" hint-placeholder-count="8">
+        <div data-reveal="left" style="border-bottom:1px solid #e3e3e3">
+          <button onClick="{{ n.toggle }}" style="width:100%;display:flex;flex-wrap:wrap;align-items:center;gap:12px clamp(16px,3vw,32px);padding:24px 12px;background:transparent;border:0;text-align:left;cursor:pointer;color:#1b1b1b" style-hover="background:#f7f7f7">
+            <span style="font-family:Archivo,Helvetica,sans-serif;font-size:12px;color:#666">{{ n.date }}</span>
+            <span style="background:{{ n.tagBg }};color:#fff;font-size:10px;font-weight:700;padding:4px 10px;min-width:92px;text-align:center">{{ n.cat }}</span>
+            <span style="font-size:14px;flex:1 1 280px;line-height:1.7">{{ n.text }}</span>
+            <span style="font-family:Archivo,Helvetica,sans-serif;font-size:18px;color:#a31f24;width:20px;text-align:center">{{ n.icon }}</span>
+          </button>
+          <sc-if value="{{ n.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 12px 28px;font-size:13px;line-height:2.1;color:#444;max-width:760px">{{ n.body }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Contact / FAQ" style="position:relative;padding:clamp(70px,9vw,110px) 20px">
+  <div data-diamond="" style="position:absolute;left:-160px;top:40px;width:320px;height:320px;background:#ececec;transform:rotate(45deg);opacity:.7"></div>
+  <div style="position:relative;max-width:1000px;margin:0 auto">
+    <div data-reveal="" style="display:flex;align-items:center;gap:16px;margin-bottom:40px"><div data-chev="" style="display:flex;flex-direction:column;gap:3px"><span style="width:20px;height:24px;background:#a31f24;clip-path:polygon(0 0,100% 50%,0 100%)"></span><span style="width:20px;height:24px;background:#c4161c;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:-10px"></span></div><div><div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,42px);line-height:1">FAQ</div><div style="font-size:12px;font-weight:700;margin-top:6px">よくあるご質問</div></div></div>
+    <div style="border-top:1px solid #1b1b1b;background:#fff">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+        <div data-reveal="" style="border-bottom:1px solid #e3e3e3">
+          <button onClick="{{ q.toggle }}" style="width:100%;display:flex;align-items:center;gap:18px;padding:24px 12px;background:transparent;border:0;text-align:left;cursor:pointer;color:#1b1b1b" style-hover="background:#f7f7f7">
+            <span style="font-family:Archivo,Helvetica,sans-serif;font-weight:900;font-size:22px;color:#a31f24">Q</span>
+            <span style="font-size:14px;font-weight:700;flex:1;line-height:1.7">{{ q.q }}</span>
+            <span style="font-family:Archivo,Helvetica,sans-serif;font-size:18px;color:#a31f24">{{ q.icon }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:18px;padding:0 12px 28px"><span style="font-family:Archivo,Helvetica,sans-serif;font-weight:900;font-size:22px;color:#1b1b1b">A</span><span style="font-size:13px;line-height:2.1;color:#444;padding-top:4px">{{ q.a }}</span></div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ showContact }}" hint-placeholder-val="{{ true }}">
+<!-- 05 CONTACT -->
+<section id="contact" data-screen-label="05 Contact" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+  <div style="position:relative;background:linear-gradient(rgba(22,22,24,.82),rgba(22,22,24,.82)),#1e1e20 url(images/12.jpg) center/cover;color:#fff;padding:clamp(56px,7vw,96px) clamp(24px,5vw,72px);display:flex;flex-direction:column;justify-content:center;gap:22px">
+    <div data-reveal="">
+      <div style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:clamp(34px,4vw,46px);line-height:1">CONTACT US</div>
+      <div style="font-size:12px;font-weight:700;margin-top:8px">お問い合わせ</div>
+    </div>
+    <div data-reveal="" style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:clamp(24px,2.8vw,32px);line-height:1.55;letter-spacing:.04em">次の幕は、<br>あなたと上げたい。</div>
+    <p style="margin:0;font-size:13px;line-height:2;color:#cfcfcf;max-width:420px;text-wrap:pretty">公演の企画段階から、会場探し、出演者のご相談まで。構想が固まる前でも構いません。まずはお聞かせください。</p>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:10px;border-top:1px solid rgba(255,255,255,.18);padding-top:24px">
+      <div style="display:flex;gap:18px;font-size:13px"><span style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:10px;letter-spacing:.14em;width:56px;padding-top:3px;color:#e5989b">TEL</span><span>03-0000-0000（平日 10:00–18:00）</span></div>
+      <div style="display:flex;gap:18px;font-size:13px"><span style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:10px;letter-spacing:.14em;width:56px;padding-top:3px;color:#e5989b">MAIL</span><a href="mailto:info@example.jp" style="color:#fff">info@example.jp</a></div>
+      <div style="display:flex;gap:18px;font-size:13px"><span style="font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:10px;letter-spacing:.14em;width:56px;padding-top:3px;color:#e5989b">OFFICE</span><span style="line-height:1.8">〒000-0000<br>東京都港区〇〇 0-0-0 〇〇ビル 8F</span></div>
+    </div>
+  </div>
+
+  <div style="background:#a31f24;color:#fff;padding:clamp(56px,7vw,96px) clamp(24px,5vw,72px)">
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form data-reveal="right" onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:18px;max-width:520px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.08em">お問い合わせ種別 <span style="font-size:10px;background:#fff;color:#a31f24;padding:1px 6px;margin-left:6px">必須</span></span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ cats }}" as="c" hint-placeholder-count="6">
+              <button type="button" onClick="{{ c.pick }}" style="border:1px solid #fff;background:{{ c.bg }};color:{{ c.fg }};font-size:12px;font-weight:700;padding:10px 14px;cursor:pointer;transition:background .2s">{{ c.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:18px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700">お名前<input required="" placeholder="山田 太郎" style="background:#fff;border:0;padding:14px;font-size:14px;color:#1b1b1b;outline-color:#111"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700">会社名・団体名<input placeholder="株式会社〇〇" style="background:#fff;border:0;padding:14px;font-size:14px;color:#1b1b1b;outline-color:#111"></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700">メールアドレス<input required="" type="email" placeholder="you@example.jp" style="background:#fff;border:0;padding:14px;font-size:14px;color:#1b1b1b;outline-color:#111"></label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700">ご相談内容<textarea rows="5" placeholder="公演時期、会場規模、ご予算感など" style="background:#fff;border:0;padding:14px;font-size:14px;color:#1b1b1b;resize:vertical;outline-color:#111"></textarea></label>
+        <button type="submit" style="margin-top:8px;align-self:flex-start;display:flex;align-items:center;gap:44px;background:#111;color:#fff;border:0;font-family:Archivo,Helvetica,sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;padding:18px 44px;cursor:pointer" style-hover="background:#fff;color:#a31f24;gap:64px">SEND <span style="width:22px;height:1px;background:currentColor"></span></button>
+      </form>
+    </sc-if>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:18px;justify-content:center;min-height:100%">
+        <div style="font-family:Archivo,Helvetica,sans-serif;font-weight:800;font-size:40px">THANK YOU.</div>
+        <p style="margin:0;font-size:14px;line-height:2">お問い合わせを受け付けました。<br>担当者より2営業日以内にご連絡いたします。</p>
+        <button onClick="{{ reset }}" style="align-self:flex-start;border:1px solid #fff;background:transparent;color:#fff;padding:12px 24px;cursor:pointer;font-size:12px">フォームに戻る</button>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+</sc-if>
+
+<footer style="background:#262628;color:#fff;padding:clamp(48px,6vw,72px) 20px 28px">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:26px;height:26px;background:#fff;display:flex;align-items:center;justify-content:center"><span style="width:10px;height:10px;background:#a31f24;transform:rotate(45deg)"></span></span>
+        <span style="font-family:Archivo,Helvetica,sans-serif;font-weight:900;font-size:20px;letter-spacing:.14em">HIBIKI</span>
+      </div>
+      <span style="font-size:11px;color:#bbb;line-height:1.9">響興行株式会社<br>〒000-0000 東京都港区〇〇 0-0-0<br>03-0000-0000</span>
+      <div style="display:flex;gap:10px;margin-top:4px">
+        <a href="#/" style="font-family:Archivo,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;color:#fff;border:1px solid #555;padding:8px 12px" style-hover="border-color:#fff;color:#fff">INSTAGRAM</a>
+        <a href="#/" style="font-family:Archivo,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;color:#fff;border:1px solid #555;padding:8px 12px" style-hover="border-color:#fff;color:#fff">X</a>
+        <a href="#/" style="font-family:Archivo,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;color:#fff;border:1px solid #555;padding:8px 12px" style-hover="border-color:#fff;color:#fff">YOUTUBE</a>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(120px,1fr));gap:18px 48px;align-content:start">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+        <a href="{{ n.href }}" style="color:#fff;display:flex;flex-direction:column;gap:2px" style-hover="color:#e5989b"><span style="font-family:Archivo,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em">› {{ n.en }}</span><span style="font-size:9px;color:#999;margin-left:10px">{{ n.jp }}</span></a>
+      </sc-for>
+    </div>
+  </div>
+  <div style="max-width:1000px;margin:48px auto 0;border-top:1px solid #3a3a3c;padding-top:20px;text-align:center;font-family:Archivo,Helvetica,sans-serif;font-size:10px;color:#888;letter-spacing:.06em">© 2026 Hibiki Kogyo Co., Ltd. All Rights Reserved.</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showNotice&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Works carousel&quot;}}">
+class Component extends DCLogic {
+  pages = ['about', 'works', 'business', 'news', 'contact'];
+  parse() { const h = location.hash.replace(/^#\/?/, ''); return this.pages.includes(h) ? h : 'top'; }
+  state = { w: window.innerWidth, menuOpen: false, idx: 0, paused: false, cat: 0, sent: false, scrolled: false, page: this.parse(), wcat: 'ALL', ncat: 'ALL', openNews: 0, openFaq: 0 };
+  carN = 6;
+  works = [
+    { title: 'NEON GARDEN FES 2026', cat: 'FESTIVAL', year: '2026', desc: '湾岸エリア特設会場にて3日間・延べ9万人を動員した野外音楽フェス。', data: '千葉・特設野外会場 / 3DAYS', photo: 'images/2.jpg' },
+    { title: '舞台『月下の渡り鳥』', cat: 'STAGE', year: '2025', desc: '原作の世界観を回り舞台と映像演出で立ち上げた、全42公演の長期興行。', data: '東京・〇〇劇場 / 42公演', photo: 'images/12.jpg' },
+    { title: 'SORA 全国ホールツアー', cat: 'CONCERT', year: '2025', desc: '18都市を巡るツアーの制作・運営を担当。全公演ソールドアウト。', data: '全国18都市 / 24公演', photo: 'images/3.jpg' },
+    { title: 'TOKYO LIGHT CIRCUS', cat: 'CORPORATE', year: '2024', desc: '企業創立50周年記念イベント。パフォーマーとプロジェクションで演出。', data: '東京・〇〇ホール / 1日', photo: 'images/10.jpg' },
+    { title: '親子ミュージカル「森のうた」', cat: 'STAGE', year: '2024', desc: '全国の文化会館を巡回するファミリー向けミュージカルを企画・制作。', data: '全国巡回 / 36公演', photo: 'images/11.jpg' },
+    { title: 'NEXT MOBILITY 発表会', cat: 'PROMOTION', year: '2023', desc: '新製品発表会の構成・演出・配信を一括で担当。同時視聴12万人。', data: '東京・〇〇ホール / 配信', photo: 'images/6.jpg' },
+    { title: '和太鼓公演「鼓動」欧州ツアー', cat: 'STAGE', year: '2023', desc: '欧州5カ国を巡る和太鼓公演。現地劇場との交渉から輸送まで担当。', data: '欧州5カ国 / 20公演', photo: 'images/16.jpg' },
+    { title: 'SUMMER BEAT 2023', cat: 'FESTIVAL', year: '2023', desc: '地方都市の夏祭りと連動した音楽フェス。地域行政と共同で開催。', data: '〇〇県・〇〇公園 / 2DAYS', photo: 'images/15.jpg' },
+    { title: '全国キックオフミーティング2024', cat: 'CORPORATE', year: '2024', desc: '社員3,000名が集う年次総会を、ライブ演出を取り入れた体験型に刷新。', data: '横浜・〇〇アリーナ / 1日', photo: 'images/17.jpg' },
+  ];
+  newsData = [
+    { date: '2026.09.12', cat: '公演情報', text: '「NEON GARDEN FES 2026」全日程の公演制作を担当しました。', body: '3日間で延べ9万人のお客様にご来場いただきました。出演者、スタッフ、関係各所の皆様に心より御礼申し上げます。' },
+    { date: '2026.07.01', cat: '公演情報', text: '舞台『月下の渡り鳥』再演が決定しました。', body: '2027年春、東京・大阪・福岡の3都市にて再演いたします。詳細は決まり次第お知らせします。' },
+    { date: '2026.04.18', cat: 'お知らせ', text: '大阪オフィスを開設しました。', body: '関西圏での公演制作体制を強化するため、大阪市北区に新オフィスを開設しました。' },
+    { date: '2025.12.05', cat: '公演情報', text: 'SORA 全国ホールツアー 追加公演の制作を担当します。', body: 'ご好評につき、追加公演6本の制作・運営を担当いたします。' },
+    { date: '2025.10.20', cat: 'オーディション', text: '出演者オーディション2026の募集を開始しました。', body: 'ミュージカル・ダンス・パフォーマンスの各部門で出演者を募集しています。応募はお問い合わせフォームより「アーティスト・出演」をお選びください。' },
+    { date: '2025.08.02', cat: 'お知らせ', text: '夏季休業のお知らせ（8月13日〜8月16日）', body: '期間中にいただいたお問い合わせは、8月17日以降順次対応いたします。' },
+    { date: '2025.05.14', cat: '公演情報', text: '和太鼓公演「鼓動」国内凱旋公演が決定しました。', body: '欧州ツアーを経て、国内4都市で凱旋公演を行います。' },
+    { date: '2025.03.01', cat: 'オーディション', text: '舞台制作スタッフの募集を開始しました。', body: '舞台監督助手、制作進行の2職種で募集しています。' },
+  ];
+  cats = ['イベント制作', '公演・舞台', 'アーティスト・出演', '協業・提携', 'その他'];
+  meta = {
+    about: { en: 'ABOUT', jp: '当社について', lead: '幕が上がる、その一瞬のために。' },
+    works: { en: 'WORKS', jp: '制作実績', lead: '記憶に残る、あの夜の仕事。' },
+    business: { en: 'BUSINESS', jp: '事業内容', lead: '企画から終演まで、ひとつのチームで。' },
+    news: { en: 'NEWS', jp: '最新情報', lead: '響興行の、いまの動き。' },
+    contact: { en: 'CONTACT', jp: 'お問い合わせ', lead: '次の幕は、あなたと上げたい。' },
+  };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onScroll = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    this.onHash = () => this.setState({ page: this.parse(), menuOpen: false });
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('hashchange', this.onHash);
+    this.onResize();
+    this.timer = setInterval(() => { if (this.state.page === 'top' && !this.state.paused && (this.props.autoplay ?? true)) this.go(this.state.idx + 1); }, 4500);
+    setTimeout(() => this.initAnim(), 30);
+  }
+  componentDidUpdate(pp, ps) {
+    if (ps.page !== this.state.page) { window.scrollTo({ top: 0, behavior: 'instant' }); setTimeout(() => this.animPage(), 30); }
+    if (ps.wcat !== this.state.wcat || ps.ncat !== this.state.ncat) setTimeout(() => this.regrid(), 20);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('hashchange', this.onHash);
+    window.removeEventListener('scroll', this.scan); window.removeEventListener('resize', this.scan); clearInterval(this.timer);
+  }
+  q(s) { return Array.from(document.querySelectorAll(s)); }
+  initAnim() {
+    const S = 'cubic-bezier(.2,.7,.2,1)', E = 'cubic-bezier(.77,0,.18,1)';
+    this.RK = { '': [{ opacity: 0, transform: 'translateY(46px)' }, { opacity: 1, transform: 'none' }], left: [{ opacity: 0, transform: 'translateX(-50px)' }, { opacity: 1, transform: 'none' }],
+      right: [{ opacity: 0, transform: 'translateX(50px)' }, { opacity: 1, transform: 'none' }], wipe: [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }], line: [{ scale: '1 0' }, { scale: '1 1' }] };
+    this.reveal = el => {
+      if (el.__rv) return; el.__rv = true;
+      const k = el.dataset.reveal || '';
+      const sib = Array.from(el.parentElement.children).filter(c => c.hasAttribute('data-reveal'));
+      const d = Math.min(sib.indexOf(el), 6) * 110 + (k === 'line' ? 500 : 0);
+      el.style.clipPath = ''; el.style.scale = ''; el.style.opacity = '1';
+      try { el.animate(this.RK[k] || this.RK[''], { duration: k === 'wipe' ? 1300 : 950, delay: d, easing: k === 'wipe' ? E : S, fill: 'backwards' }); } catch (e) {}
+    };
+    const prog = document.querySelector('[data-progress]');
+    let tick = false;
+    this.scan = () => {
+      if (tick) return; tick = true;
+      requestAnimationFrame(() => {
+        tick = false;
+        const h = window.innerHeight, y = window.scrollY, max = document.documentElement.scrollHeight - h;
+        if (prog) prog.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
+        this.q('[data-reveal]').forEach(el => { if (el.__rv) return; const r = el.getBoundingClientRect(); if (r.top < h * 0.92 && r.bottom > 0) this.reveal(el); });
+        this.q('[data-par]').forEach(el => { const p = +el.dataset.par; const r = el.getBoundingClientRect(); const off = el.hasAttribute('data-intro') ? y : (r.top + r.height / 2 - h / 2); el.style.translate = '0 ' + (off * p).toFixed(1) + 'px'; });
+      });
+    };
+    window.addEventListener('scroll', this.scan, { passive: true });
+    window.addEventListener('resize', this.scan);
+    this.animPage();
+  }
+  animPage() {
+    if (!this.scan) return;
+    const q = s => this.q(s), S = 'cubic-bezier(.2,.7,.2,1)', E = 'cubic-bezier(.77,0,.18,1)';
+    q('a,button').forEach(el => { if (!el.style.transition) el.style.transition = 'all .35s ' + S; });
+    const IK = { left: [{ transform: 'translateX(-105%)' }, { transform: 'none' }], right: [{ transform: 'translateX(105%)' }, { transform: 'none' }], up: [{ transform: 'translateY(100%)' }, { transform: 'none' }],
+      pop: [{ opacity: 0, transform: 'scale(.5) rotate(-8deg)' }, { opacity: 1, transform: 'scale(1.08) rotate(1deg)', offset: .7 }, { opacity: 1, transform: 'none' }] };
+    q('[data-intro]').forEach(el => {
+      const k = el.dataset.intro, d = +el.dataset.d || 0;
+      if (k === 'clip') el.animate([{ clipPath: 'polygon(0 100%,22% 100%,100% 100%,100% 100%,78% 100%,0 100%)', filter: 'brightness(1.8)' }, { clipPath: getComputedStyle(el).clipPath, filter: 'none' }], { duration: 1500, delay: d, easing: E, fill: 'backwards' });
+      else el.animate(IK[k], { duration: k === 'pop' ? 900 : 1100, delay: d, easing: k === 'pop' ? S : E, fill: 'backwards' });
+    });
+    q('[data-intro-group] > *').forEach((el, i) => el.animate([{ opacity: 0, transform: 'translateY(34px)', filter: 'blur(8px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }], { duration: 1000, delay: 700 + i * 130, easing: S, fill: 'backwards' }));
+    q('[data-ls]').forEach(el => el.animate([{ letterSpacing: '.7em' }, { letterSpacing: getComputedStyle(el).letterSpacing }], { duration: 1800, delay: 800, easing: S, fill: 'backwards' }));
+    q('[data-count]').forEach(el => {
+      const tn = el.firstChild, to = +el.dataset.count, t0 = performance.now() + 1700;
+      const step = t => { const p = Math.min(1, Math.max(0, (t - t0) / 1600)); tn.nodeValue = Math.round(to * (1 - Math.pow(1 - p, 3))).toLocaleString(); if (p < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    });
+    q('[data-stripes]').forEach(el => { if (el.__an) return; el.__an = 1; el.animate([{ backgroundPosition: '0 0' }, { backgroundPosition: '48.08px 0' }], { duration: 2400, iterations: Infinity }); });
+    q('[data-diamond]').forEach((el, i) => { if (el.__an) return; el.__an = 1; el.dataset.par = i % 2 ? '-0.12' : '0.12'; el.animate([{ rotate: '0deg' }, { rotate: '360deg' }], { duration: 70000 + i * 15000, iterations: Infinity, direction: i % 2 ? 'reverse' : 'normal' }); });
+    q('[data-chev]').forEach(el => { if (el.__an) return; el.__an = 1; Array.from(el.children).forEach((c, i) => c.animate([{ translate: '0 0' }, { translate: '7px 0' }, { translate: '0 0' }], { duration: 1600, delay: i * 180, iterations: Infinity, easing: 'ease-in-out' })); });
+    const h0 = window.innerHeight;
+    q('[data-reveal]').forEach(el => {
+      if (el.__rv) return;
+      const r = el.getBoundingClientRect();
+      if (r.top >= h0 * 0.92) { const k = el.dataset.reveal; if (k === 'wipe') el.style.clipPath = 'inset(0 100% 0 0)'; else if (k === 'line') el.style.scale = '1 0'; else el.style.opacity = '0'; }
+    });
+    this.scan();
+  }
+  regrid() {
+    this.q('[data-grid] > *').forEach((el, i) => { el.__rv = true; el.style.opacity = '1'; el.animate([{ opacity: 0, transform: 'translateY(30px) scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 700, delay: Math.min(i, 8) * 70, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }); });
+  }
+  go(i) { const n = this.carN; this.setState({ idx: ((i % n) + n) % n }); }
+  chips(list, cur, key) { return list.map(label => ({ label, bg: label === cur ? '#1b1b1b' : '#fff', fg: label === cur ? '#fff' : '#1b1b1b', pick: () => this.setState({ [key]: label, openNews: -1 }) })); }
+  renderVals() {
+    const { w, idx, cat, scrolled, menuOpen, sent, page, wcat, ncat, openNews, openFaq } = this.state;
+    const mobile = w < 860, sp = w < 600, solid = scrolled || mobile;
+    const cardW = mobile ? Math.min(w * 0.82, 420) : 460;
+    const gap = mobile ? 16 : 40;
+    const offset = w / 2 - cardW / 2 - idx * (cardW + gap);
+    const tagBg = { '公演情報': '#a31f24', 'お知らせ': '#14233a', 'オーディション': '#8c6d1f' };
+    const pg = this.meta[page] || this.meta.about;
+    const nf = this.newsData.filter(n => ncat === 'ALL' || n.cat === ncat);
+    return {
+      isTop: page === 'top', isSub: page !== 'top', isAbout: page === 'about', isWorks: page === 'works', isBusiness: page === 'business', isNews: page === 'news', isContact: page === 'contact',
+      showContact: page === 'top' || page === 'contact',
+      pg, pageLabel: pg.en + ' Page', subHeroH: mobile ? '400px' : '440px', subTextPb: mobile ? '150px' : '72px', subTextLeft: mobile ? '0' : '38%', subTextMax: mobile ? '100%' : 'calc(62% - 200px)', subTriY: mobile ? '26%' : '62%', subGrayW: mobile ? '6%' : '16%',
+      isDesktop: w >= 1024, isMobile: w < 1024, menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      headerH: scrolled ? '64px' : (mobile ? '64px' : '84px'),
+      headerBg: solid ? 'rgba(255,255,255,.96)' : 'transparent',
+      headerShadow: solid ? '0 2px 16px rgba(0,0,0,.08)' : 'none',
+      navColor: solid ? '#1b1b1b' : '#fff',
+      heroH: sp ? '780px' : '720px',
+      heroImgLeft: sp ? '22px' : mobile ? '4%' : '19%', heroImgW: sp ? 'calc(100% - 44px)' : mobile ? '40%' : '26%',
+      heroImgTop: sp ? '84px' : '0', heroImgH: sp ? '240px' : '100%',
+      heroPad: sp ? '350px 22px 170px' : mobile ? '120px 32px 180px' : '110px 40px 80px',
+      heroTextMax: sp ? '100%' : 'min(560px,54%)', heroGrayW: sp ? '8%' : '22%', heroWhiteY: sp ? '32%' : '58%',
+      companyCols: sp ? '118px minmax(0,1fr)' : 'minmax(96px,200px) minmax(0,1fr)',
+      featureH: mobile ? 'auto' : '460px', featureImgLeft: '0',
+      featureCardMargin: mobile ? '220px 20px 0' : '0 0 0 clamp(20px,9vw,110px)',
+      showNotice: this.props.showNotice ?? true,
+      nav: [['ABOUT', '当社について', 'about'], ['WORKS', '制作実績', 'works'], ['BUSINESS', '事業内容', 'business'], ['NEWS', '最新情報', 'news'], ['CONTACT', 'お問い合わせ', 'contact']]
+        .map(([en, jp, p]) => ({ en, jp, href: '#/' + p, line: page === p ? '#c4161c' : 'transparent' })),
+      aboutCards: [
+        { en: 'Message', jp: '代表メッセージ', photo: 'images/1.jpg' },
+        { en: 'Philosophy', jp: '企業理念', photo: 'images/17.jpg' },
+        { en: 'Company', jp: '会社概要', photo: 'images/4.jpg' },
+        { en: 'Team', jp: '制作体制', photo: 'images/8.jpg' },
+      ],
+      services: [
+        { en: 'Event Production', jp: 'イベント制作', desc: 'コンサート、フェス、企業イベントの制作・運営。', photo: 'images/2.jpg' },
+        { en: 'Stage Production', jp: '舞台制作', desc: '演劇・ミュージカルの企画から劇場公演まで。', photo: 'images/12.jpg' },
+        { en: 'Artist Support', jp: 'アーティスト支援', desc: 'マネジメント、キャスティング、出演調整。', photo: 'images/14.jpg' },
+        { en: 'Planning & Creative', jp: '企画・クリエイティブ', desc: '演出、プロモーション、ブランディング。', photo: 'images/9.jpg' },
+      ],
+      news: this.newsData.slice(0, 5),
+      cardW: cardW + 'px', gapPx: gap + 'px', trackX: 'translateX(' + offset + 'px)',
+      worksView: this.works.slice(0, this.carN).map((x, i) => ({ ...x, op: i === idx ? 1 : 0.45, sc: i === idx ? 'scale(1)' : 'scale(.9)', bg: '#cfd1d4 url(' + x.photo + ') center/cover', go: () => this.go(i) })),
+      dots: this.works.slice(0, this.carN).map((_, i) => ({ label: '実績 ' + (i + 1), color: i === idx ? '#a31f24' : '#bdbdbd', go: () => this.go(i) })),
+      prev: () => this.go(idx - 1), next: () => this.go(idx + 1),
+      pause: () => this.setState({ paused: true }), resume: () => this.setState({ paused: false }),
+      cats: this.cats.map((label, i) => ({ label, bg: i === cat ? '#fff' : 'transparent', fg: i === cat ? '#a31f24' : '#fff', pick: () => this.setState({ cat: i }) })),
+      notSent: !sent, sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false }),
+      philosophy: [
+        { en: 'MISSION', title: '心を動かす瞬間を、つくり続ける。', text: '一夜の公演が、誰かの人生の記憶になる。その責任と喜びを、すべての仕事の出発点にします。' },
+        { en: 'VISION', title: '日本の舞台を、世界の客席へ。', text: '国内で磨いた制作力で、日本発のエンターテインメントを海外の観客に届けます。' },
+        { en: 'VALUE', title: '本番に、言い訳をしない。', text: '準備を尽くし、現場で判断し、最後まで逃げない。プロの制作集団としての約束です。' },
+      ],
+      company: [
+        { k: '商号', v: '響興行株式会社（HIBIKI Kogyo Co., Ltd.）' },
+        { k: '設立', v: '1998年4月' },
+        { k: '代表者', v: '代表取締役社長 〇〇 〇〇' },
+        { k: '資本金', v: '0,000万円' },
+        { k: '所在地', v: '〒000-0000 東京都港区〇〇 0-0-0 〇〇ビル 8F' },
+        { k: '事業内容', v: 'コンサート・舞台・イベントの企画制作および運営／アーティストマネジメント／キャスティング／プロモーション' },
+        { k: '従業員数', v: '120名（2026年4月現在）' },
+        { k: '主要取引先', v: '全国の劇場・ホール、放送局、広告代理店、一般企業 ほか' },
+      ],
+      team: [
+        { en: 'PRODUCTION', jp: '制作部', text: '公演全体の予算・進行・渉外を統括します。', photo: 'images/7.jpg' },
+        { en: 'DIRECTION', jp: '演出部', text: '構成・演出・映像で、舞台の世界観をつくります。', photo: 'images/3.jpg' },
+        { en: 'STAGE TECH', jp: '舞台技術部', text: '舞台監督、音響・照明・特効の設計と運用。', photo: 'images/11.jpg' },
+        { en: 'MANAGEMENT', jp: 'マネジメント部', text: '所属アーティストの育成と出演調整。', photo: 'images/14.jpg' },
+      ],
+      workCats: this.chips(['ALL', 'FESTIVAL', 'STAGE', 'CONCERT', 'CORPORATE', 'PROMOTION'], wcat, 'wcat'),
+      worksFiltered: this.works.filter(x => wcat === 'ALL' || x.cat === wcat),
+      bizDetail: [
+        { num: '01', en: 'EVENT PRODUCTION', jp: 'イベント制作', photo: 'images/15.jpg', desc: 'コンサート、フェスティバル、企業イベントの制作・運営。会場選定から許認可、動線・警備計画、当日の進行管理まで、興行に必要なすべてを担います。', tags: ['コンサート', 'フェスティバル', '企業イベント', '周年式典'], dir: 'row' },
+        { num: '02', en: 'STAGE PRODUCTION', jp: '舞台制作', photo: 'images/16.jpg', desc: '演劇・ミュージカル・パフォーマンス公演の企画から劇場公演まで。キャスティング、稽古場運営、ツアー制作にも対応します。', tags: ['演劇', 'ミュージカル', 'ツアー制作', '海外公演'], dir: 'row-reverse' },
+        { num: '03', en: 'ARTIST SUPPORT', jp: 'アーティスト支援', photo: 'images/10.jpg', desc: '所属アーティストのマネジメントに加え、外部の出演者・パフォーマーのキャスティングと出演調整を行います。', tags: ['マネジメント', 'キャスティング', 'オーディション'], dir: 'row' },
+        { num: '04', en: 'PLANNING & CREATIVE', jp: '企画・クリエイティブ', photo: 'images/9.jpg', desc: '公演コンセプトの立案、演出、映像、プロモーションまで。ブランドの体験をライブの形で設計します。', tags: ['企画立案', '演出', '映像制作', 'プロモーション'], dir: 'row-reverse' },
+      ],
+      flow: [
+        { n: '01', t: 'ヒアリング', d: '目的、規模、時期、ご予算を伺います。' },
+        { n: '02', t: '企画・提案', d: 'コンセプトと会場、概算を含めてご提案します。' },
+        { n: '03', t: '制作準備', d: '出演者・会場・技術・チケットを手配します。' },
+        { n: '04', t: '本番運営', d: '舞台監督と制作チームが現場を統括します。' },
+        { n: '05', t: '精算・振り返り', d: '収支報告と次回に向けた改善をまとめます。' },
+      ],
+      newsCats: this.chips(['ALL', 'お知らせ', '公演情報', 'オーディション'], ncat, 'ncat'),
+      newsFiltered: nf.map((n, i) => ({ ...n, tagBg: tagBg[n.cat], open: openNews === i, icon: openNews === i ? '−' : '+', toggle: () => this.setState({ openNews: openNews === i ? -1 : i }) })),
+      faqs: [
+        { q: '構想段階でも相談できますか？', a: 'はい。公演の形が固まる前のご相談がもっとも多く、目的を伺ったうえで規模や会場の選択肢からご提案します。' },
+        { q: '対応できる会場の規模を教えてください。', a: '数百名規模のホールから、数万人規模のアリーナ・スタジアム・野外会場まで対応しています。' },
+        { q: '地方や海外での公演も可能ですか？', a: '全国48都道府県での実績があり、海外公演は現地パートナーと連携して制作します。' },
+        { q: 'アーティストの出演依頼だけでも可能ですか？', a: '可能です。お問い合わせ種別で「アーティスト・出演」を選び、日程とご予算をお知らせください。' },
+      ].map((x, i) => ({ ...x, open: openFaq === i, icon: openFaq === i ? '−' : '+', toggle: () => this.setState({ openFaq: openFaq === i ? -1 : i }) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

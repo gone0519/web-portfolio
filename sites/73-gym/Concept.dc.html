@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1a1a1a;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a1a1a;text-decoration:none}
+a:hover{color:#c8102e}
+</style>
+</helmet>
+<div style="position:relative;overflow-x:hidden">
+<dc-import name="SiteHeader" active="concept" title="CONCEPT" sub="ジムについて" img="images/floor.jpg" hint-size="100%,420px"></dc-import>
+
+<section data-screen-label="Concept Philosophy" style="background:#fff;padding:clamp(72px,10vw,120px) 0">
+  <div style="max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(36px,5vw,64px);align-items:start">
+    <div data-reveal="">
+      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-weight:400;font-size:clamp(30px,3.4vw,40px);letter-spacing:.02em">BRAND CONCEPT</h2>
+      <p style="margin:2px 0 0;font-size:11px;color:#777;letter-spacing:.08em">— ブランドコンセプト</p>
+      <h3 style="margin:32px 0 0;font-size:clamp(22px,2.4vw,28px);font-weight:700;line-height:1.6;letter-spacing:.06em">一歩ずつ、確かに。<br>続けられるカラダづくり。</h3>
+      <p style="margin:24px 0 0;font-size:13px;line-height:2.1;color:#444;text-wrap:pretty">STRIDEという名前には「大きな一歩」という意味を込めました。無理な減量や一時的な変化ではなく、正しいフォームと食習慣を身につけ、自分の力で理想のカラダを維持できるようになること。それが私たちの考えるゴールです。</p>
+      <p style="margin:16px 0 0;font-size:13px;line-height:2.1;color:#444;text-wrap:pretty">初回のカウンセリングでは、目標だけでなく仕事や睡眠、食事のリズムまで伺い、生活の中で続けられるプランを一緒に考えます。</p>
+    </div>
+    <div data-reveal="" style="aspect-ratio:4/5;max-height:560px;background:#ddd url(images/counseling.jpg) 35% center/cover no-repeat"></div>
+  </div>
+</section>
+
+<section data-screen-label="Concept Features" style="background:#f2f2f2;padding:clamp(72px,10vw,120px) 0">
+  <div style="max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px)">
+    <div data-reveal="" style="text-align:center">
+      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-weight:400;font-size:clamp(30px,3.4vw,40px);letter-spacing:.02em">SUPPORT</h2>
+      <p style="margin:2px 0 0;font-size:11px;color:#777;letter-spacing:.08em">STRIDEのサポート体制</p>
+    </div>
+    <div style="display:grid;gap:clamp(40px,6vw,72px);margin-top:clamp(40px,6vw,64px)">
+      <sc-for list="{{ features }}" as="f" hint-placeholder-count="3">
+        <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(28px,4vw,56px);align-items:center">
+          <div class="alt-img" style="order:{{ f.imgOrder }};aspect-ratio:16/10;background:#ddd url({{ f.img }}) center/cover no-repeat"></div>
+          <div>
+            <p style="margin:0;font-size:11px;color:#c8102e;letter-spacing:.08em">{{ f.label }}</p>
+            <h3 style="margin:8px 0 0;font-size:clamp(18px,2vw,22px);font-weight:700;line-height:1.6">{{ f.no }}. {{ f.title }}</h3>
+            <p style="margin:16px 0 0;font-size:13px;line-height:2.1;color:#444;text-wrap:pretty">{{ f.body }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Concept Facility" style="background:#fff;padding:clamp(72px,10vw,120px) 0">
+  <div style="max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px)">
+    <div data-reveal="">
+      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-weight:400;font-size:clamp(30px,3.4vw,40px);letter-spacing:.02em">FACILITY</h2>
+      <p style="margin:2px 0 0;font-size:11px;color:#777;letter-spacing:.08em">— 施設紹介</p>
+    </div>
+    <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(46%,220px),1fr));gap:10px;margin-top:36px">
+      <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="8">
+        <div style="position:relative;aspect-ratio:4/3;background:#ddd url({{ g.img }}) center/cover no-repeat"><span style="position:absolute;left:0;bottom:0;background:rgba(17,17,17,.78);color:#fff;font-size:11px;letter-spacing:.06em;padding:4px 10px">{{ g.label }}</span></div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const f = [
+      { label: 'TRAINING', title: '専属トレーナーによるマンツーマン指導', body: '入会から卒業まで、同じトレーナーが担当します。毎回のトレーニング内容と体の変化を記録し、その日のコンディションに合わせてメニューを調整します。', img: 'images/chest-press-coach.jpg' },
+      { label: 'NUTRITION', title: '生活に合わせた食事サポート', body: '毎日の食事をアプリで共有いただき、トレーナーがアドバイスします。極端な制限ではなく、外食やコンビニでも実践できる選び方をお伝えします。', img: 'images/water-bottle.jpg' },
+      { label: 'CONDITIONING', title: 'ストレッチとケアで、疲れを残さない', body: 'トレーニング後はストレッチとコンディショニングの時間を設けています。姿勢や可動域もチェックし、ケガをしにくいカラダづくりを目指します。', img: 'images/pilates-bar.jpg' }
+    ];
+    return {
+      features: f.map((x, i) => ({ ...x, no: String(i + 1).padStart(2, '0'), imgOrder: i % 2 ? 2 : 0 })),
+      gallery: [
+        ['ラウンジ', 'lounge'], ['トレーニングフロア', 'floor'], ['マシンエリア', 'machines'], ['フリーウェイト', 'dumbbells'],
+        ['カーディオエリア', 'treadmills-dark'], ['トレーニングベンチ', 'bench'], ['シャワールーム', 'shower'], ['ロッカールーム', 'locker']
+      ].map(([label, f]) => ({ label, img: 'images/' + f + '.jpg' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1a1a1a;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a1a1a;text-decoration:none}
+a:hover{color:#c8102e}
+::placeholder{color:#9a9a9a}
+</style>
+</helmet>
+<div style="position:relative;overflow-x:hidden">
+<dc-import name="SiteHeader" active="contact" title="TRIAL &amp; ACCESS" sub="体験・アクセス" img="images/lounge.jpg" hint-size="100%,420px"></dc-import>
+
+<section data-screen-label="Trial Flow" style="background:#f2f2f2;padding:clamp(64px,8vw,96px) 0">
+  <div style="max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px)">
+    <div data-reveal="">
+      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-weight:400;font-size:clamp(30px,3.4vw,40px);letter-spacing:.02em">SERVICE FLOW</h2>
+      <p style="margin:2px 0 0;font-size:11px;color:#777;letter-spacing:.08em">— ご利用の流れ</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;margin-top:36px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div data-reveal="" style="background:#fff;padding:24px 22px">
+          <p style="margin:0;font-family:'Oswald',sans-serif;font-size:28px;font-weight:300;color:#c8102e">{{ s.no }}</p>
+          <p style="margin:8px 0 0;font-size:15px;font-weight:700">{{ s.ja }}</p>
+          <p style="margin:10px 0 0;font-size:12px;line-height:1.9;color:#555;text-wrap:pretty">{{ s.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:24px 0 0;font-size:12px;color:#444;line-height:1.9">持ち物：なし（ウェア・シューズ・タオル・プロテインは無料でご用意しています）</p>
+  </div>
+</section>
+
+<section id="form" data-screen-label="Trial Form" style="scroll-margin-top:64px;background:#fff;padding:clamp(72px,10vw,112px) 0">
+  <div style="max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(48px,6vw,72px);align-items:start">
+    <div data-reveal="">
+      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-weight:400;font-size:clamp(30px,3.4vw,40px);letter-spacing:.02em">TRIAL RESERVATION</h2>
+      <p style="margin:2px 0 0;font-size:11px;color:#777;letter-spacing:.08em">— 無料体験のお申し込み</p>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="margin-top:36px;display:grid;gap:18px">
+          <label style="display:grid;gap:8px;font-size:12px;font-weight:500">お名前<input required="" name="name" autocomplete="name" placeholder="山田 太郎" style="height:50px;border:1px solid #d6d6d6;padding:0 14px;font-size:16px;outline:none;background:#fafafa" style-focus="border-color:#1a1a1a;background:#fff"></label>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px">
+            <label style="display:grid;gap:8px;font-size:12px;font-weight:500">メールアドレス<input required="" type="email" name="email" autocomplete="email" placeholder="example@mail.com" style="height:50px;border:1px solid #d6d6d6;padding:0 14px;font-size:16px;outline:none;background:#fafafa" style-focus="border-color:#1a1a1a;background:#fff"></label>
+            <label style="display:grid;gap:8px;font-size:12px;font-weight:500">電話番号<input required="" type="tel" name="tel" autocomplete="tel" placeholder="090-0000-0000" style="height:50px;border:1px solid #d6d6d6;padding:0 14px;font-size:16px;outline:none;background:#fafafa" style-focus="border-color:#1a1a1a;background:#fff"></label>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px">
+            <label style="display:grid;gap:8px;font-size:12px;font-weight:500">ご希望日<input type="date" name="date" style="height:50px;border:1px solid #d6d6d6;padding:0 14px;font-size:16px;outline:none;background:#fafafa" style-focus="border-color:#1a1a1a;background:#fff"></label>
+            <label style="display:grid;gap:8px;font-size:12px;font-weight:500">目的
+              <select name="goal" style="height:50px;border:1px solid #d6d6d6;padding:0 12px;font-size:16px;outline:none;background:#fafafa">
+                <option>未定・相談したい</option>
+                <option>ボディメイク</option>
+                <option>ダイエット</option>
+                <option>姿勢改善</option>
+                <option>競技力向上</option>
+                <option>筋力トレーニング</option>
+                <option>コンディショニング</option>
+                <option>食事サポート</option>
+                <option>エイジングケア</option>
+              </select>
+            </label>
+          </div>
+          <label style="display:grid;gap:8px;font-size:12px;font-weight:500">ご質問・ご要望<textarea name="msg" rows="5" placeholder="運動経験、気になる部位、ケガの有無などをご記入ください" style="border:1px solid #d6d6d6;padding:12px 14px;font-size:16px;line-height:1.7;outline:none;background:#fafafa;resize:vertical" style-focus="border-color:#1a1a1a;background:#fff"></textarea></label>
+          <button type="submit" style="margin-top:8px;height:56px;border:none;background:#c8102e;color:#fff;font-size:14px;font-weight:500;letter-spacing:.1em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:16px;transition:background .3s" style-hover="background:#a00c24">無料体験を申し込む <span style="font-family:'Oswald',sans-serif">›</span></button>
+          <p style="margin:0;font-size:11px;color:#888;line-height:1.8">送信後、1営業日以内にご連絡いたします。ご希望日は確定ではございません。</p>
+        </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:36px;border:1px solid #1a1a1a;padding:40px 28px">
+          <p style="margin:0;font-family:'Oswald',sans-serif;font-size:22px;letter-spacing:.06em">THANK YOU.</p>
+          <p style="margin:12px 0 0;font-size:13px;line-height:2;color:#444">お申し込みを受け付けました。1営業日以内に担当よりご連絡いたします。</p>
+        </div>
+      </sc-if>
+    </div>
+
+    <div id="access" data-reveal="">
+      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-weight:400;font-size:clamp(30px,3.4vw,40px);letter-spacing:.02em">ACCESS</h2>
+      <p style="margin:2px 0 0;font-size:11px;color:#777;letter-spacing:.08em">— アクセス</p>
+      <div style="margin-top:36px;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#ececec 0 10px,#e4e4e4 10px 20px);display:flex;align-items:flex-end;padding:12px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#888">map — Google Map 埋め込み</span></div>
+      <dl style="margin:24px 0 0;display:grid;grid-template-columns:88px 1fr;font-size:13px;line-height:1.9">
+        <dt style="padding:14px 0;border-top:1px solid #e3e3e3;color:#777;font-size:12px">住所</dt><dd style="margin:0;padding:14px 0;border-top:1px solid #e3e3e3">〒150-0013 東京都渋谷区恵比寿0-0-0<br>STRIDEビル 3F</dd>
+        <dt style="padding:14px 0;border-top:1px solid #e3e3e3;color:#777;font-size:12px">アクセス</dt><dd style="margin:0;padding:14px 0;border-top:1px solid #e3e3e3">JR恵比寿駅 東口より徒歩4分</dd>
+        <dt style="padding:14px 0;border-top:1px solid #e3e3e3;color:#777;font-size:12px">営業時間</dt><dd style="margin:0;padding:14px 0;border-top:1px solid #e3e3e3">7:00 – 23:00（最終受付 22:00）<br>年中無休（年末年始を除く）</dd>
+        <dt style="padding:14px 0;border-top:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3;color:#777;font-size:12px">電話</dt><dd style="margin:0;padding:14px 0;border-top:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3"><a href="tel:0300000000" style="font-family:'Oswald',sans-serif;font-size:18px;letter-spacing:.06em">03-0000-0000</a></dd>
+      </dl>
+      <a href="#" style="display:inline-flex;align-items:center;gap:10px;margin-top:20px;font-size:12px"><span style="font-family:'Oswald',sans-serif;letter-spacing:.1em">INSTAGRAM</span> @stride_gym ›</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hide-cta="{{ true }}" hint-size="100%,240px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false };
+  renderVals() {
+    return {
+      sent: this.state.sent, notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      steps: [
+        { no: '01', ja: '無料体験に参加', body: 'WEB・お電話・LINEからお申し込みください。カウンセリング、体組成測定、体験トレーニングを約60分で行います。' },
+        { no: '02', ja: 'プランを選ぶ', body: '目標と通える頻度に合わせて、最適なプランをご提案します。体験当日に入会を決める必要はありません。' },
+        { no: '03', ja: 'アプリで予約', body: 'ご入会後はアプリから予約・変更が可能です。食事の共有やトレーニング記録の確認もアプリで行えます。' },
+        { no: '04', ja: 'トレーニング開始', body: '専属トレーナーとトレーニングを開始。定期的に体組成を測定し、プランを見直しながら進めます。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

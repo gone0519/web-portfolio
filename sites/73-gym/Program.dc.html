@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1a1a1a;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a1a1a;text-decoration:none}
+a:hover{color:#c8102e}
+</style>
+</helmet>
+<div style="position:relative;overflow-x:hidden">
+<dc-import name="SiteHeader" active="program" title="PROGRAM" sub="プログラム" img="images/machines.jpg" hint-size="100%,420px"></dc-import>
+
+<section data-screen-label="Program List" style="background:#fff;padding:clamp(64px,8vw,96px) 0 clamp(72px,10vw,120px)">
+  <div style="max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px)">
+    <p data-reveal="" style="margin:0 auto;max-width:40em;text-align:center;font-size:13px;line-height:2.1;color:#444;text-wrap:pretty">目的・体力・生活リズムに合わせて、専属トレーナーがプログラムを組み立てます。<br>複数の目的を組み合わせることも可能です。</p>
+    <nav data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:36px">
+      <sc-for list="{{ items }}" as="t" hint-placeholder-count="8">
+        <a href="{{ t.anchor }}" style="border:1px solid #d6d6d6;padding:8px 14px;font-size:12px;display:flex;gap:8px;align-items:center;transition:all .3s" style-hover="border-color:#1a1a1a;color:#1a1a1a">{{ t.ja }} <span style="font-family:'Oswald',sans-serif;color:#c8102e">›</span></a>
+      </sc-for>
+    </nav>
+
+    <div style="display:grid;gap:clamp(56px,7vw,88px);margin-top:clamp(56px,7vw,88px)">
+      <sc-for list="{{ items }}" as="t" hint-placeholder-count="3">
+        <article id="{{ t.id }}" data-reveal="" style="scroll-margin-top:88px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,4vw,56px);align-items:start">
+          <div class="alt-img" style="order:{{ t.imgOrder }};position:relative;aspect-ratio:16/10;background:#3c3c3c url({{ t.img }}) {{ t.pos }}/cover no-repeat">
+            <span style="position:absolute;top:0;left:0;background:#c8102e;color:#fff;font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.12em;padding:4px 10px">{{ t.tag }}</span>
+            <div style="position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,0))"></div>
+            <p style="position:absolute;left:18px;bottom:14px;margin:0;font-family:'Oswald',sans-serif;font-weight:400;font-size:clamp(24px,2.6vw,30px);line-height:1.15;color:#fff">{{ t.en1 }}<br>{{ t.en2 }}</p>
+          </div>
+          <div>
+            <p style="margin:0;font-size:11px;color:#c8102e;letter-spacing:.08em">{{ t.no }}</p>
+            <h2 style="margin:6px 0 0;font-size:clamp(20px,2.2vw,24px);font-weight:700">{{ t.ja }}</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
+              <sc-for list="{{ t.for }}" as="c" hint-placeholder-count="3">
+                <span style="border:1px solid #d6d6d6;font-size:10px;padding:3px 8px;color:#555">{{ c }}</span>
+              </sc-for>
+            </div>
+            <p style="margin:16px 0 0;font-size:13px;line-height:2.1;color:#444;text-wrap:pretty">{{ t.desc }}</p>
+            <dl style="margin:20px 0 0;display:grid;grid-template-columns:96px 1fr;font-size:12px;line-height:1.8">
+              <dt style="padding:10px 0;border-top:1px solid #e3e3e3;color:#777">主な内容</dt><dd style="margin:0;padding:10px 0;border-top:1px solid #e3e3e3">{{ t.menu }}</dd>
+              <dt style="padding:10px 0;border-top:1px solid #e3e3e3;color:#777">推奨頻度</dt><dd style="margin:0;padding:10px 0;border-top:1px solid #e3e3e3">{{ t.freq }}</dd>
+              <dt style="padding:10px 0;border-top:1px solid #e3e3e3;color:#777">期間目安</dt><dd style="margin:0;padding:10px 0;border-top:1px solid #e3e3e3">{{ t.term }}</dd>
+              <dt style="padding:10px 0;border-top:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3;color:#777">料金目安</dt><dd style="margin:0;padding:10px 0;border-top:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3">{{ t.price }}</dd>
+            </dl>
+            <a href="Contact.dc.html#form" style="display:inline-flex;align-items:center;gap:28px;margin-top:20px;height:44px;padding:0 20px;background:#1a1a1a;color:#fff;font-size:12px;transition:background .3s" style-hover="background:#c8102e;color:#fff">このプログラムで体験する <span style="font-family:'Oswald',sans-serif">›</span></a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <p style="margin:64px 0 0;font-size:11px;color:#888;line-height:1.8">※ 表示価格はすべて税込です。効果には個人差があります。持病・既往歴のある方は事前にご相談ください。</p>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const d = [
+      { id: 'bodymake', tag: 'BODY', en1: 'BODY MAKE', en2: 'TRAINING', ja: 'ボディメイク', for: ['引き締め', 'ヒップアップ', '筋力アップ'], photo: 'photo — ボディメイク', desc: '理想の体型をヒアリングし、部位ごとの優先順位を決めてトレーニングを組み立てます。見た目の変化と同時に、日常動作の質も高めます。', menu: 'ウェイトトレーニング／体幹トレーニング', freq: '週1〜2回', term: '3ヶ月〜', price: '¥00,000〜／月' },
+      { id: 'diet', tag: 'DIET', en1: 'DIET', en2: 'PROGRAM', ja: 'ダイエット', for: ['減量', '体脂肪', 'リバウンド予防'], photo: 'photo — 体組成測定', desc: 'トレーニングと食事サポートを組み合わせ、無理のないペースで体脂肪を落としていきます。終了後も続けられる習慣づくりを重視します。', menu: 'ウェイトトレーニング／食事サポート', freq: '週2回', term: '2〜3ヶ月', price: '¥00,000〜／月' },
+      { id: 'posture', tag: 'POSTURE', en1: 'POSTURE', en2: 'CORRECTION', ja: '姿勢改善', for: ['猫背', '反り腰', '肩こり'], photo: 'photo — 姿勢チェック', desc: '姿勢と動きの癖を評価し、硬くなった部位をほぐしながら、支える筋肉を鍛えます。デスクワークの多い方におすすめです。', menu: '姿勢評価／モビリティ／体幹トレーニング', freq: '週1回', term: '2ヶ月〜', price: '¥00,000〜／月' },
+      { id: 'sports', tag: 'SPORTS', en1: 'SPORTS', en2: 'PERFORMANCE', ja: '競技力向上', for: ['ゴルフ', 'ランニング', '球技'], photo: 'photo — アスリート指導', desc: '競技の動作を分析し、必要な筋力・柔軟性・瞬発力を強化します。ケガの予防も含めて、長く競技を楽しむためのサポートを行います。', menu: '動作分析／パワートレーニング', freq: '週1〜2回', term: '3ヶ月〜', price: '¥00,000〜／月' },
+      { id: 'strength', tag: 'STRENGTH', en1: 'STRENGTH', en2: 'TRAINING', ja: '筋力トレーニング', for: ['BIG3', '基礎筋力', 'フォーム習得'], photo: 'photo — パワーラック', desc: 'スクワット・ベンチプレス・デッドリフトなど基本種目のフォームを丁寧に指導します。一人でも安全にトレーニングできる力を身につけます。', menu: 'フリーウェイト／フォーム指導', freq: '週1〜2回', term: '2ヶ月〜', price: '¥00,000〜／月' },
+      { id: 'condition', tag: 'CARE', en1: 'CONDITIONING', en2: '& STRETCH', ja: 'コンディショニング', for: ['柔軟性', '疲労回復', '腰痛予防'], photo: 'photo — ストレッチ', desc: 'パートナーストレッチとモビリティトレーニングで、可動域を広げ疲れにくいカラダを整えます。トレーニング初心者の方にもおすすめです。', menu: 'パートナーストレッチ／モビリティ', freq: '週1回〜', term: '1回から可', price: '¥0,000〜／回' },
+      { id: 'nutrition', tag: 'FOOD', en1: 'NUTRITION', en2: 'COACHING', ja: '食事サポート', for: ['食習慣', '外食', '栄養バランス'], photo: 'photo — 食事写真', desc: '毎日の食事をアプリで共有いただき、トレーナーがフィードバックします。好きなものを我慢しすぎない、続けられる食事の整え方をお伝えします。', menu: 'アプリでの食事共有／面談', freq: '毎日（アプリ）', term: '1ヶ月〜', price: '¥00,000〜／月' },
+      { id: 'active', tag: 'LIFE', en1: 'ACTIVE', en2: 'AGING', ja: 'エイジングケア', for: ['体力維持', 'バランス', '40代から'], photo: 'photo — シニアトレーニング', desc: '年齢とともに低下しやすい筋力やバランス能力を、無理のない強度で鍛えます。日常生活を元気に過ごすためのカラダづくりです。', menu: '自重トレーニング／バランストレーニング', freq: '週1回〜', term: '3ヶ月〜', price: '¥00,000〜／月' }
+    ];
+    const img = {
+      bodymake: ['pec-deck', 'center 30%'], diet: ['treadmill-smile', 'center 30%'], posture: ['cable-row', 'center'],
+      sports: ['run-legs', 'center'], strength: ['dumbbells', 'center'], condition: ['pilates-stretch', 'center'],
+      nutrition: ['water-bottle', 'center'], active: ['chest-press-coach', 'center 30%']
+    };
+    return { items: d.map((x, i) => ({ ...x, img: 'images/' + img[x.id][0] + '.jpg', pos: img[x.id][1], anchor: '#' + x.id, no: 'PROGRAM ' + String(i + 1).padStart(2, '0'), imgOrder: i % 2 ? 2 : 0 })) };
+  }
+}
+</script>
+</body>
+</html>

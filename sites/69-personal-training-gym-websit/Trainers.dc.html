@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',system-ui,sans-serif;color:#1a1a1a;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a1a1a;text-decoration:none}
+a:hover{color:#d9622b}
+@keyframes heroIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (max-width:600px){
+  .tr-photo{aspect-ratio:1!important}
+  .tr-info dl{grid-template-columns:76px 1fr!important}
+}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="trainers" hint-size="100%,0px"></dc-import>
+
+<section data-screen-label="Trainers Title" style="position:relative;background:#111;color:#fff;overflow:hidden;padding:clamp(140px,16vw,190px) clamp(20px,4vw,48px) clamp(56px,7vw,80px)">
+  <div style="position:absolute;inset:0;background:url(images/trainers-team.jpg) center 25%/cover,#111"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.9),rgba(10,10,10,.4))"></div>
+  <div aria-hidden="true" style="position:absolute;right:-1vw;bottom:-2vw;font-family:Oswald,'Noto Sans JP';font-weight:700;font-size:clamp(90px,15vw,240px);line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.16);white-space:nowrap;pointer-events:none">TRAINERS</div>
+  <div style="position:relative;max-width:1000px;margin:0 auto;animation:heroIn 1s .1s ease-out both">
+    <div style="font-size:11px;letter-spacing:.08em;margin-bottom:24px;display:flex;gap:8px;color:#999"><a href="Personal%20Training%20Gym.dc.html" style="color:#999">TOP</a><span>›</span><span style="color:#f0a04b">トレーナー紹介</span></div>
+    <span style="display:inline-block;font-family:Oswald,'Noto Sans JP';font-size:11px;letter-spacing:.2em;color:#fff;padding:4px 22px;background:linear-gradient(90deg,#d9622b,#f0a04b)">TRAINERS</span>
+    <h1 style="margin:16px 0 0;font-size:clamp(30px,4.5vw,48px);font-weight:700;letter-spacing:.06em">トレーナー紹介</h1>
+    <p style="margin:14px 0 0;font-size:13.5px;color:#bbb;line-height:1.9;max-width:520px">資格と指導経験を持つトレーナーが、あなたの目標達成まで伴走します。</p>
+  </div>
+</section>
+
+<section data-screen-label="Trainer List" style="padding:clamp(72px,9vw,120px) clamp(20px,4vw,48px)">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(56px,7vw,88px)">
+    <sc-for list="{{ trainers }}" as="c" hint-placeholder-count="4">
+      <article data-reveal="" style="display:flex;flex-wrap:wrap;flex-direction:{{ c.dir }};gap:clamp(28px,4vw,56px);align-items:flex-start">
+        <div class="tr-photo" style="position:relative;flex:0 1 380px;width:100%;aspect-ratio:4/5;background:url({{ c.photo }}) {{ c.pos }}/cover,repeating-linear-gradient(135deg,#e6e4e1 0 10px,#efedea 10px 20px)" role="img" aria-label="{{ c.name }}"><span style="position:absolute;left:0;bottom:0;padding:8px 18px;background:linear-gradient(90deg,#d9622b,#f0a04b);color:#fff;font-family:Oswald,'Noto Sans JP';font-size:12px;letter-spacing:.2em">{{ c.role }}</span></div>
+        <div class="tr-info" style="flex:1 1 380px">
+          <div style="font-family:Oswald,'Noto Sans JP';font-size:13px;letter-spacing:.25em;color:#999">{{ c.en }}</div>
+          <h2 style="margin:4px 0 20px;font-size:clamp(26px,3vw,34px);font-weight:700;letter-spacing:.1em">{{ c.name }}</h2>
+          <blockquote style="margin:0 0 24px;padding:18px 20px;background:#f4f3f1;font-size:14px;line-height:1.9;font-weight:700;color:#333">{{ c.message }}</blockquote>
+          <dl style="margin:0;display:grid;grid-template-columns:90px 1fr;font-size:13px;line-height:1.8">
+            <dt style="padding:12px 0;border-top:1px solid #eee;font-weight:700;color:#d9622b">資格</dt><dd style="margin:0;padding:12px 0;border-top:1px solid #eee">{{ c.cert }}</dd>
+            <dt style="padding:12px 0;border-top:1px solid #eee;font-weight:700;color:#d9622b">専門分野</dt><dd style="margin:0;padding:12px 0;border-top:1px solid #eee;display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ c.tags }}" as="tag" hint-placeholder-count="2"><span style="font-size:11.5px;padding:2px 10px;border:1px solid #d9622b;color:#d9622b">{{ tag }}</span></sc-for></dd>
+            <dt style="padding:12px 0;border-top:1px solid #eee;border-bottom:1px solid #eee;font-weight:700;color:#d9622b">経歴</dt><dd style="margin:0;padding:12px 0;border-top:1px solid #eee;border-bottom:1px solid #eee;color:#444;text-wrap:pretty">{{ c.bio }}</dd>
+          </dl>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const list = [
+      { role: 'HEAD COACH', en: 'RYO KANEDA', name: '金田 亮', cert: 'NSCA-CSCS / 指導歴12年', tags: ['筋力', 'ボディメイク'], photo: 'images/trainer-kaneda.jpg', pos: '48% 30%', message: '「初めての方こそ、正しいフォームから。安全に、確実に強くなる方法をお伝えします。」', bio: '大学時代はラグビー部に所属。卒業後、都内パーソナルジムで8年間勤務し、延べ600名以上を指導。2021年よりAXISヘッドコーチ。' },
+      { role: 'COACH', en: 'MIKA HAYASHI', name: '林 美香', cert: 'NESTA-PFT / 管理栄養士', tags: ['ダイエット', '食事指導'], photo: 'images/trainer-hayashi.jpg', pos: '58% 30%', message: '「我慢ばかりの食事は続きません。生活に合った食べ方を一緒に見つけましょう。」', bio: '病院の管理栄養士として5年間勤務した後、トレーナーに転身。トレーニングと栄養の両面からのサポートを得意とする。' },
+      { role: 'COACH', en: 'SHO ISHIDA', name: '石田 翔', cert: '柔道整復師（国家資格）', tags: ['姿勢改善', 'ファンクショナル'], photo: 'images/trainer-ishida.jpg', pos: '45% 30%', message: '「痛みや不調があっても大丈夫。身体の状態を見極めて、できることから始めます。」', bio: '整骨院で7年間の臨床経験を持つ。肩こり・腰痛の改善や、シニア世代の体力づくりの指導実績多数。' },
+      { role: 'COACH', en: 'YUNA MORI', name: '森 結菜', cert: 'NSCA-CPT / ピラティス指導者', tags: ['ボディメイク', '産後ケア'], photo: 'images/pilates-coaching.jpg', pos: '58% 20%', message: '「なりたいシルエットを明確にして、ゴールまで最短ルートでご案内します。」', bio: 'ボディメイク大会での入賞経験を持つ。女性のヒップアップやくびれづくり、産後の体型戻しを得意とする。' }
+    ];
+    return { trainers: list.map((c, i) => ({ ...c, dir: i % 2 ? 'row-reverse' : 'row' })) };
+  }
+}
+</script>
+</body>
+</html>

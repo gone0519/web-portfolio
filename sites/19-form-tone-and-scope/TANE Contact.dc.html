@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #FBF6EE; overflow-x: clip; }
+  body { font-family: "Noto Sans JP", system-ui, sans-serif; color: #2A2724; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #C9411F; text-decoration: none; }
+  a:hover { color: #A83217; }
+  input, textarea, select { font-family: inherit; }
+
+  /* ===== responsive ===== */
+  h1, h2, h3 { word-break: auto-phrase; }
+  .t-toggle { display: none; }
+  .t-burger { display: none; }
+  .t-nav-cta { display: none !important; }
+  @media (max-width: 860px) {
+    .t-head { flex-wrap: nowrap !important; gap: 12px !important; padding: 12px 20px !important; }
+    .t-toggle { display: block; position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    .t-burger { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; flex: 0 0 auto; width: 44px; height: 44px; margin-left: auto; border-radius: 50%; background: #fff; border: 1px solid #E3D6C3; cursor: pointer; }
+    .t-burger span { display: block; width: 18px; height: 2px; border-radius: 2px; background: #2A2724; transition: transform .2s ease, opacity .2s ease; }
+    .t-toggle:checked + .t-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .t-toggle:checked + .t-burger span:nth-child(2) { opacity: 0; }
+    .t-toggle:checked + .t-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .t-toggle:focus-visible + .t-burger { outline: 2px solid #C9411F; outline-offset: 2px; }
+    .t-nav { display: none !important; }
+    .t-toggle:checked ~ .t-nav { display: flex !important; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; flex-wrap: nowrap !important; gap: 0 !important; margin: 0 !important; padding: 6px 20px 24px; background: #FBF6EE; border-bottom: 1px solid #EDE2D2; box-shadow: 0 18px 28px rgba(42,39,36,.10); font-size: 16px !important; max-height: calc(100vh - 69px); overflow-y: auto; }
+    .t-nav > a { padding: 15px 4px !important; border-bottom: 1px solid #EDE2D2; }
+    .t-nav > a.t-nav-cta { display: block !important; margin-top: 20px; padding: 16px 20px !important; border: 0; border-radius: 999px; background: #C9411F; color: #fff; text-align: center; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; box-shadow: 0 6px 0 #A83217; }
+    .t-nav > a.t-nav-cta:hover { background: #A83217; color: #fff; }
+    .t-head-cta { font-size: 13px !important; padding: 10px 16px !important; box-shadow: 0 4px 0 #A83217 !important; }
+
+    .t-subnav { top: 69px !important; padding: 12px 0 !important; }
+    .t-subnav-inner { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .t-subnav-inner::-webkit-scrollbar { display: none; }
+    .t-subnav-inner > a { flex: 0 0 auto; white-space: nowrap; }
+    .t-svc-sec { scroll-margin-top: 150px !important; }
+  }
+  @media (max-width: 780px) {
+    .t-blog-aside { order: 3 !important; max-width: none !important; flex-basis: 100% !important; }
+  }
+  @media (max-width: 640px) {
+    input, select, textarea { font-size: 16px !important; }
+    .t-kv { grid-template-columns: 1fr !important; gap: 4px !important; padding: 16px 20px !important; }
+  }
+  @media (max-width: 480px) {
+    .t-head-cta { display: none !important; }
+    .t-hero-stat { padding: 16px !important; }
+    .t-hero-stat > span:first-child { font-size: 30px !important; }
+    .t-hero-stat > span:last-child { font-size: 11px !important; line-height: 1.6 !important; }
+  }
+</style>
+<script>
+  (function () {
+    if (window.__taneMenu) return;
+    window.__taneMenu = true;
+    function closeMenu() {
+      var t = document.getElementById("t-menu");
+      if (t) t.checked = false;
+    }
+    document.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest(".t-nav a")) closeMenu();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+    window.addEventListener("pageshow", closeMenu);
+  })();
+</script>
+</helmet>
+
+<div style="background:#FBF6EE">
+
+  <header style="position:sticky; top:0; z-index:50; background:rgba(251,246,238,.92); backdrop-filter:blur(8px); border-bottom:1px solid #EDE2D2">
+    <div class="t-head" style="max-width:1180px; margin:0 auto; padding:14px 24px; display:flex; flex-wrap:wrap; align-items:center; gap:10px 20px">
+      <a href="TANE%20Home.dc.html" style="display:flex; align-items:center; gap:10px; flex:0 0 auto">
+        <span style="width:30px; height:30px; border-radius:50% 50% 50% 8px; background:#EF5E3C; display:block"></span>
+        <span style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:22px; letter-spacing:.06em; color:#2A2724">TANE</span>
+      </a>
+      <input type="checkbox" id="t-menu" class="t-toggle" aria-label="メニューを開く" />
+      <label for="t-menu" class="t-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+      <nav class="t-nav" aria-label="メインメニュー" style="display:flex; flex-wrap:wrap; gap:4px 18px; margin-left:auto; font-size:14px; font-weight:500">
+        <a href="TANE%20About.dc.html" style="color:#4A443D; padding:6px 0" style-hover="color:#C9411F">私たちについて</a>
+        <a href="TANE%20Services.dc.html" style="color:#4A443D; padding:6px 0" style-hover="color:#C9411F">サービス</a>
+        <a href="TANE%20Works.dc.html" style="color:#4A443D; padding:6px 0" style-hover="color:#C9411F">実績</a>
+        <a href="TANE%20Blog.dc.html" style="color:#4A443D; padding:6px 0" style-hover="color:#C9411F">読みもの</a>
+        <a href="TANE%20Contact.dc.html" style="color:#C9411F; padding:6px 0; font-weight:700" style-hover="color:#A83217">お問い合わせ</a>
+        <a class="t-nav-cta" href="#form">無料相談する</a>
+      </nav>
+      <a class="t-head-cta" href="#form" style="flex:0 0 auto; background:#C9411F; color:#fff; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:14px; padding:11px 22px; border-radius:999px; box-shadow:0 6px 0 #A83217" style-hover="background:#A83217; color:#fff">無料相談する</a>
+    </div>
+  </header>
+
+  <section style="position:relative; padding:clamp(34px,4.67vw,56px) 0 clamp(34px,4.67vw,56px); overflow:hidden">
+    <div style="position:absolute; top:-150px; right:-120px; width:460px; height:460px; border-radius:46% 54% 60% 40%/50% 44% 56% 50%; background:#FDE7D8"></div>
+    <div style="position:relative; max-width:1180px; margin:0 auto; padding:0 24px">
+      <p style="font-size:13px; color:#6F655A; margin:0 0 22px"><a href="TANE%20Home.dc.html" style="color:#6F655A">ホーム</a>　/　お問い合わせ</p>
+      <p style="font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:14px; color:#2F6149; letter-spacing:.1em; margin:0 0 14px">CONTACT</p>
+      <h1 style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:clamp(30px,4.6vw,50px); line-height:1.4; margin:0 0 24px; text-wrap:pretty">30分、<span style="color:#EF5E3C">話すだけ</span>で<br />構いません。</h1>
+      <p style="font-size:16px; line-height:2; color:#4A443D; margin:0; max-width:36em; text-wrap:pretty">現状のサイトや広告アカウントを一緒に見ながら、改善できるところを具体的にお伝えします。その場でご契約を決めていただく必要はありません。営業のご連絡もいたしません。</p>
+    </div>
+  </section>
+
+  <section id="form" style="padding:0 0 clamp(55px,7.67vw,92px)">
+    <div style="max-width:1180px; margin:0 auto; padding:0 24px">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:34px; align-items:start">
+
+        <div style="background:#fff; border:1px solid #EDE2D2; border-radius:30px; padding:clamp(24px,3.33vw,40px) clamp(25px,3.0vw,36px)">
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <div style="text-align:center; padding:clamp(24px,3.33vw,40px) 0">
+              <span style="display:inline-block; width:56px; height:56px; border-radius:50% 50% 50% 14px; background:#F3F7F0; border:1px solid #DCE6D6; margin-bottom:24px"></span>
+              <h2 style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:23px; margin:0 0 16px">送信いたしました</h2>
+              <p style="font-size:14.5px; line-height:2; color:#3A352F; margin:0 0 26px">1営業日以内に担当者よりご連絡いたします。お急ぎの場合はお電話ください。</p>
+              <button type="button" onClick="{{ reset }}" style="background:none; border:2px solid #E3D6C3; color:#3A352F; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:14px; padding:13px 28px; border-radius:999px; cursor:pointer" style-hover="border-color:#C9411F; color:#C9411F">フォームに戻る</button>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+            <div>
+              <h2 style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:23px; margin:0 0 10px">お問い合わせフォーム</h2>
+              <p style="font-size:13.5px; color:#6F655A; margin:0 0 30px; line-height:1.9">＊のついた項目は必須です。ご相談内容が固まっていない段階でも構いません。</p>
+
+              <div style="display:flex; flex-direction:column; gap:22px">
+                <label style="display:block">
+                  <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13.5px; margin-bottom:9px">会社名・屋号　<span style="color:#C9411F">＊</span></span>
+                  <input type="text" required="" placeholder="株式会社サンプル" style="width:100%; font-size:15px; padding:14px 16px; border:1px solid #E3D6C3; border-radius:14px; background:#FBF6EE; color:#2A2724" style-focus="border-color:#C9411F; outline:2px solid #FDE7D8" />
+                </label>
+                <label style="display:block">
+                  <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13.5px; margin-bottom:9px">お名前　<span style="color:#C9411F">＊</span></span>
+                  <input type="text" required="" placeholder="山田 太郎" style="width:100%; font-size:15px; padding:14px 16px; border:1px solid #E3D6C3; border-radius:14px; background:#FBF6EE; color:#2A2724" style-focus="border-color:#C9411F; outline:2px solid #FDE7D8" />
+                </label>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr)); gap:22px">
+                  <label style="display:block; min-width:0">
+                    <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13.5px; margin-bottom:9px">メールアドレス　<span style="color:#C9411F">＊</span></span>
+                    <input type="email" required="" placeholder="name@example.co.jp" style="width:100%; font-size:15px; padding:14px 16px; border:1px solid #E3D6C3; border-radius:14px; background:#FBF6EE; color:#2A2724" style-focus="border-color:#C9411F; outline:2px solid #FDE7D8" />
+                  </label>
+                  <label style="display:block; min-width:0">
+                    <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13.5px; margin-bottom:9px">電話番号</span>
+                    <input type="tel" placeholder="052-000-0000" style="width:100%; font-size:15px; padding:14px 16px; border:1px solid #E3D6C3; border-radius:14px; background:#FBF6EE; color:#2A2724" style-focus="border-color:#C9411F; outline:2px solid #FDE7D8" />
+                  </label>
+                </div>
+                <div>
+                  <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13.5px; margin-bottom:12px">ご相談の内容（複数選択可）</span>
+                  <div style="display:flex; flex-wrap:wrap; gap:9px">
+                    <sc-for list="{{ topics }}" as="t" hint-placeholder-count="6">
+                      <button type="button" onClick="{{ t.toggle }}" style="{{ t.style }}">{{ t.label }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+                <label style="display:block">
+                  <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13.5px; margin-bottom:9px">現在のサイトURL</span>
+                  <input type="url" placeholder="https://" style="width:100%; font-size:15px; padding:14px 16px; border:1px solid #E3D6C3; border-radius:14px; background:#FBF6EE; color:#2A2724" style-focus="border-color:#C9411F; outline:2px solid #FDE7D8" />
+                </label>
+                <label style="display:block">
+                  <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13.5px; margin-bottom:9px">ご予算の目安</span>
+                  <select style="width:100%; font-size:15px; padding:14px 16px; border:1px solid #E3D6C3; border-radius:14px; background:#FBF6EE; color:#2A2724" style-focus="border-color:#C9411F; outline:2px solid #FDE7D8">
+                    <option>まだ決まっていない</option>
+                    <option>月額 5〜10万円</option>
+                    <option>月額 10〜20万円</option>
+                    <option>月額 20万円以上</option>
+                    <option>制作のみ（単発）</option>
+                  </select>
+                </label>
+                <label style="display:block">
+                  <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13.5px; margin-bottom:9px">ご相談内容　<span style="color:#C9411F">＊</span></span>
+                  <textarea required="" rows="6" placeholder="現在困っていること、実現したいことなどをご記入ください。箇条書きでも構いません。" style="width:100%; font-size:15px; line-height:1.9; padding:14px 16px; border:1px solid #E3D6C3; border-radius:14px; background:#FBF6EE; color:#2A2724; resize:vertical" style-focus="border-color:#C9411F; outline:2px solid #FDE7D8"></textarea>
+                </label>
+                <label style="display:flex; gap:12px; align-items:flex-start; font-size:13.5px; line-height:1.9; color:#3A352F">
+                  <input type="checkbox" style="margin-top:5px; width:18px; height:18px; flex:0 0 auto; accent-color:#C9411F" />
+                  <span>個人情報の取り扱いについて同意します。ご相談内容は担当者のみが確認し、第三者に提供することはありません。</span>
+                </label>
+                <button type="button" onClick="{{ submit }}" style="width:100%; background:#C9411F; color:#fff; border:0; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:17px; padding:19px 24px; border-radius:999px; cursor:pointer; box-shadow:0 7px 0 #A83217" style-hover="background:#A83217">送信する</button>
+                <p style="font-size:12.5px; color:#6F655A; margin:0; text-align:center; line-height:1.9">※ このフォームはデザイン確認用です。送信先の設定は実装時に行ってください。</p>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:22px">
+          <div style="background:#2F6149; border-radius:26px; padding:clamp(24px,2.83vw,34px) clamp(21px,2.5vw,30px)">
+            <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; color:#FFFFFF; letter-spacing:.1em; margin-bottom:18px">お電話でのご相談</span>
+            <a href="tel:0520000000" style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:clamp(26px,3.4vw,34px); color:#fff; margin-bottom:12px" style-hover="color:#FCD9C9">052-000-0000</a>
+            <p style="font-size:14px; line-height:1.9; color:#FFFFFF; margin:0">平日 9:30〜18:00（土日祝を除く）<br />担当者が不在の場合は折り返します。</p>
+          </div>
+
+          <div style="background:#fff; border:1px solid #EDE2D2; border-radius:26px; padding:clamp(22px,2.67vw,32px) clamp(21px,2.5vw,30px)">
+            <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; color:#C9411F; letter-spacing:.1em; margin-bottom:20px">OFFICE</span>
+            <div style="display:flex; flex-direction:column; gap:18px">
+              <sc-for list="{{ office }}" as="o" hint-placeholder-count="4">
+                <div>
+                  <span style="display:block; font-size:12px; color:#6F655A; margin-bottom:6px">{{ o.k }}</span>
+                  <span style="display:block; font-size:14.5px; line-height:1.9; color:#2A2724">{{ o.v }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="border-radius:26px; overflow:hidden; border:1px solid #EDE2D2">
+            <div style="aspect-ratio:4/3; background:repeating-linear-gradient(135deg,#E9F0E4 0 12px,#DDE7D6 12px 24px); display:flex; align-items:center; justify-content:center; padding:20px">
+              <span style="font-family:ui-monospace,monospace; font-size:12px; color:#4A5A45; text-align:center; line-height:1.9">Googleマップ埋め込み<br />（事務所所在地）</span>
+            </div>
+            <div style="background:#fff; padding:18px 22px; display:flex; flex-wrap:wrap; gap:10px; align-items:center">
+              <span style="font-size:13px; color:#3A352F; flex:1 1 140px">地下鉄栄駅から徒歩5分</span>
+              <a href="#form" style="font-size:13px; font-weight:700; color:#C9411F">ルートを見る</a>
+            </div>
+          </div>
+
+          <div style="background:#F3F7F0; border:1px solid #DCE6D6; border-radius:26px; padding:clamp(21px,2.5vw,30px)">
+            <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:15px; margin-bottom:16px">ご相談の流れ</span>
+            <div style="display:flex; flex-direction:column; gap:14px">
+              <sc-for list="{{ flow }}" as="f" hint-placeholder-count="4">
+                <div style="display:flex; gap:13px; align-items:baseline">
+                  <span style="flex:0 0 auto; font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:13px; color:#2F6149; width:20px">{{ f.n }}</span>
+                  <span style="flex:1; font-size:14px; line-height:1.9; color:#2A3E33">{{ f.t }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding:0 0 clamp(55px,7.67vw,92px)">
+    <div style="max-width:880px; margin:0 auto; padding:0 24px">
+      <div style="text-align:center; margin-bottom:clamp(26px,3.67vw,44px)">
+        <p style="font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:14px; color:#2F6149; letter-spacing:.1em; margin:0 0 12px">FAQ</p>
+        <h2 style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:clamp(24px,3.4vw,36px); margin:0">お問い合わせ前によくいただくご質問</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+          <div style="background:#fff; border:1px solid #EDE2D2; border-radius:20px; overflow:hidden">
+            <button type="button" onClick="{{ f.toggle }}" style="width:100%; background:none; border:0; text-align:left; padding:22px 24px; display:flex; align-items:center; gap:16px; cursor:pointer; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:16px; color:#2A2724" style-hover="background:#FBF6EE">
+              <span style="flex:0 0 auto; width:26px; height:26px; border-radius:50%; background:#FDE7D8; color:#C9411F; font-size:13px; display:flex; align-items:center; justify-content:center">Q</span>
+              <span style="flex:1">{{ f.q }}</span>
+              <span style="flex:0 0 auto; color:#C9411F; font-size:20px">{{ f.sign }}</span>
+            </button>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0; padding:0 24px 24px clamp(40px,5.5vw,66px); font-size:14px; line-height:2; color:#5A534B">{{ f.a }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#F6EFE3; padding:clamp(53px,7.33vw,88px) 0; border-radius:clamp(33px,5.0vw,60px) clamp(33px,5.0vw,60px) 0 0">
+    <div style="max-width:820px; margin:0 auto; padding:0 24px; text-align:center">
+      <h2 style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:clamp(24px,3.6vw,38px); line-height:1.5; margin:0 0 22px; text-wrap:pretty">迷っているうちに、<br />競合はもう動いています。</h2>
+      <p style="font-size:15.5px; line-height:2; color:#4A443D; margin:0 0 32px">相談は無料です。今の状態を見て、やるべきことだけをお伝えします。</p>
+      <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center">
+        <a href="#form" style="background:#C9411F; color:#fff; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:16px; padding:18px clamp(24px,3.33vw,40px); border-radius:999px; box-shadow:0 7px 0 #A83217" style-hover="background:#A83217; color:#fff">フォームから相談する</a>
+        <a href="tel:0520000000" style="background:#fff; color:#2A2724; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:16px; padding:18px clamp(24px,3.33vw,40px); border-radius:999px; border:2px solid #E3D6C3" style-hover="border-color:#C9411F; color:#C9411F">電話で相談する</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#2F6149; color:#fff; padding:clamp(38px,5.33vw,64px) 0 0">
+    <div style="max-width:1180px; margin:0 auto; padding:0 24px">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr)); gap:36px 24px; padding-bottom:clamp(26px,3.67vw,44px)">
+        <div>
+          <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; letter-spacing:.1em; color:#FFFFFF; margin-bottom:12px">About</span>
+          <a href="TANE%20About.dc.html" style="display:block; font-size:14px; color:#fff; margin-bottom:8px" style-hover="color:#FCD9C9">私たちについて</a>
+          <a href="TANE%20About.dc.html#company" style="display:block; font-size:14px; color:#fff" style-hover="color:#FCD9C9">会社概要</a>
+        </div>
+        <div>
+          <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; letter-spacing:.1em; color:#FFFFFF; margin-bottom:12px">Services</span>
+          <a href="TANE%20Services.dc.html" style="display:block; font-size:14px; color:#fff; margin-bottom:8px" style-hover="color:#FCD9C9">サービス一覧</a>
+          <a href="TANE%20Services.dc.html#process" style="display:block; font-size:14px; color:#fff" style-hover="color:#FCD9C9">進め方</a>
+        </div>
+        <div>
+          <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; letter-spacing:.1em; color:#FFFFFF; margin-bottom:12px">Works</span>
+          <a href="TANE%20Works.dc.html" style="display:block; font-size:14px; color:#fff; margin-bottom:8px" style-hover="color:#FCD9C9">実績</a>
+          <a href="TANE%20Blog.dc.html" style="display:block; font-size:14px; color:#fff" style-hover="color:#FCD9C9">読みもの</a>
+        </div>
+        <div>
+          <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; letter-spacing:.1em; color:#FFFFFF; margin-bottom:12px">Contact</span>
+          <a href="TANE%20Contact.dc.html" style="display:block; font-size:14px; color:#fff; margin-bottom:8px" style-hover="color:#FCD9C9">無料相談</a>
+          <a href="TANE%20Contact.dc.html#faq" style="display:block; font-size:14px; color:#fff" style-hover="color:#FCD9C9">よくあるご質問</a>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.22); padding:26px 0 clamp(21px,2.5vw,30px); font-size:13px; color:#FBF6EE; line-height:2">株式会社TANE　〒460-0000 愛知県名古屋市中区栄0-0-0 サンプルビル5F</div>
+    </div>
+    <div style="background:#FBF6EE; padding:22px 0">
+      <div style="max-width:1180px; margin:0 auto; padding:0 24px; display:flex; flex-wrap:wrap; align-items:center; gap:16px">
+        <span style="display:flex; align-items:center; gap:10px">
+          <span style="width:26px; height:26px; border-radius:50% 50% 50% 8px; background:#EF5E3C; display:block"></span>
+          <span style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:19px; letter-spacing:.06em; color:#2A2724">TANE</span>
+        </span>
+        <span style="margin-left:auto; font-size:12.5px; color:#6F655A">© 2026 TANE Inc. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { sent: false, open: -1, picked: [] };
+
+  toggleTopic(label) {
+    this.setState(s => {
+      const p = s.picked.slice();
+      const i = p.indexOf(label);
+      if (i >= 0) p.splice(i, 1); else p.push(label);
+      return { picked: p };
+    });
+  }
+
+  renderVals() {
+    const topics = ["広告運用", "SEO", "サイト制作", "LP制作", "SNS", "ブランディング", "分析・レポート", "まだ決まっていない"];
+    const tBase = "font-size:13px; font-weight:700; font-family:'Zen Maru Gothic',sans-serif; border-radius:999px; padding:9px 16px; cursor:pointer;";
+
+    const faqSrc = [
+      ["相談したら契約しなければいけませんか？", "いいえ。初回の相談は無料で、その場でお断りいただいて構いません。後日こちらから営業のご連絡をすることもありません。"],
+      ["何を用意して相談すればよいですか？", "特にありません。サイトのURLと、困っていることを口頭でお話しいただければ十分です。広告アカウントやGA4をご覧いただける場合は、より具体的にお伝えできます。"],
+      ["費用はどのくらいかかりますか？", "広告運用は月額8万円から、ホームページ制作は45万円からのご依頼が多いです。作業前に金額を確定させてから着手します。追加請求はいたしません。"],
+      ["契約期間の縛りはありますか？", "ありません。月単位でのご継続なので、合わないと感じた時点で終了できます。終了時は引き継ぎ資料をお渡しします。"],
+      ["遠方でも依頼できますか？", "できます。現在も半数以上のお客様とオンラインでやり取りしています。愛知・岐阜・三重は必要に応じて訪問します。"],
+      ["返信までどのくらいかかりますか？", "1営業日以内にご連絡しています。金曜の夜や連休前にいただいた場合は、翌営業日の対応となります。お急ぎの場合はお電話ください。"]
+    ];
+
+    return {
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      submit: () => this.setState({ sent: true }),
+      reset: () => this.setState({ sent: false }),
+      topics: topics.map(label => {
+        const on = this.state.picked.indexOf(label) >= 0;
+        return {
+          label,
+          toggle: () => this.toggleTopic(label),
+          style: on
+            ? tBase + " background:#C9411F; color:#fff; border:1px solid #C9411F;"
+            : tBase + " background:#FBF6EE; color:#3A352F; border:1px solid #E3D6C3;"
+        };
+      }),
+      office: [
+        { k: "会社名", v: "株式会社TANE" },
+        { k: "所在地", v: "〒460-0000\n愛知県名古屋市中区栄0-0-0 サンプルビル5F" },
+        { k: "営業時間", v: "平日 9:30〜18:00" },
+        { k: "アクセス", v: "地下鉄東山線・名城線「栄」駅 7番出口から徒歩5分" }
+      ],
+      flow: [
+        { n: "01", t: "フォームまたはお電話でご連絡" },
+        { n: "02", t: "1営業日以内に日程調整のご返信" },
+        { n: "03", t: "30〜60分の相談（オンラインまたは訪問）" },
+        { n: "04", t: "必要な場合のみ、後日お見積りをご提示" }
+      ],
+      faqs: faqSrc.map(([q, a], i) => ({
+        q, a,
+        open: this.state.open === i,
+        sign: this.state.open === i ? "−" : "＋",
+        toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i }))
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

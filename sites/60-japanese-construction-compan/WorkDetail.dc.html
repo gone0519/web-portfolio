@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>施工実績詳細｜要建設株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="./site.css">
+<script src="./image-slot.js"></script>
+<script src="./projects.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0c0e12;color:#f2f3f5;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#f2f3f5;text-decoration:none}
+a:hover{color:#8fa6ff}
+::selection{background:#2446e6;color:#fff}
+</style>
+</helmet>
+<div id="top" style="font-family:'Noto Sans JP',sans-serif;color:#f2f3f5;background-color:#0c0e12;background-image:linear-gradient(rgba(255,255,255,.024) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);background-size:72px 36px;overflow-x:hidden;min-height:100vh">
+<dc-import name="SiteHeader" current="works" hint-size="100%,0px"></dc-import>
+<main>
+<section data-screen-label="Work Detail / Hero" aria-labelledby="wd-title" style="position:relative;min-height:max(560px,78vh);display:flex;align-items:flex-end;overflow:hidden">
+  <div data-kenburns="1" style="position:absolute;inset:0"><image-slot id="{{ p.slot }}" src="{{ p.img }}" shape="rect" placeholder="{{ p.ph }}"></image-slot></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(12,14,18,.95) 0%,rgba(12,14,18,.4) 55%,rgba(12,14,18,.25) 100%)"></div>
+  <div style="position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:140px clamp(20px,5vw,48px) clamp(48px,6vw,72px);display:flex;flex-direction:column;gap:18px;pointer-events:none">
+    <nav data-intro="fade" aria-label="パンくずリスト" style="display:flex;flex-wrap:wrap;gap:10px;font-size:11px;letter-spacing:.08em;color:#dfe2e7;pointer-events:auto">
+      <a href="KANAME%20Construction.dc.html" style="color:#dfe2e7">HOME</a><span aria-hidden="true">/</span><a href="Works.dc.html" style="color:#dfe2e7">施工実績</a><span aria-hidden="true">/</span><span aria-current="page" style="color:#8fa6ff">{{ p.name }}</span>
+    </nav>
+    <div data-intro="up" style="display:flex;flex-wrap:wrap;gap:8px"><span style="padding:6px 12px;background:#2446e6;font-size:12px;font-weight:700;letter-spacing:.1em">{{ p.cat }}</span><span style="padding:6px 12px;border:1px solid rgba(255,255,255,.5);font-size:12px;font-weight:700;letter-spacing:.1em">{{ p.type }}</span></div>
+    <p data-intro="up" style="margin:0;display:flex;align-items:center;gap:14px;font-family:Jost,sans-serif;font-size:13px;letter-spacing:.28em;color:#8fa6ff"><span style="width:36px;border-top:3px dotted #5b7cff"></span>WORKS {{ p.num }}</p>
+    <h1 id="wd-title" data-intro="up" style="margin:0;font-size:clamp(28px,4.4vw,56px);font-weight:900;letter-spacing:.05em;line-height:1.4;text-wrap:balance">{{ p.name }}</h1>
+  </div>
+</section>
+
+<section data-screen-label="Work Detail / Overview" aria-label="工事概要" style="max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,88px);align-items:start">
+  <div data-reveal="1" style="display:flex;flex-direction:column;gap:24px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <p style="margin:0;font-family:Jost,sans-serif;font-size:clamp(26px,3.2vw,40px);letter-spacing:.14em;line-height:1">OVERVIEW</p>
+      <h2 style="margin:0;font-size:12px;font-weight:700;letter-spacing:.24em">工事概要</h2>
+      <span style="width:36px;border-top:3px dotted #5b7cff;margin-top:6px"></span>
+    </div>
+    <p style="margin:0;font-size:15px;line-height:2.2;letter-spacing:.04em;color:#dfe2e7;text-wrap:pretty">{{ p.summary }}</p>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
+      <h3 style="margin:0;font-size:14px;font-weight:700;letter-spacing:.1em;color:#8fa6ff">施工のポイント</h3>
+      <ol style="margin:0;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.2)">
+        <sc-for list="{{ points }}" as="pt" hint-placeholder-count="3">
+          <li data-reveal="right" style="display:grid;grid-template-columns:44px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.2);font-size:14px;line-height:1.9"><span style="font-family:Jost,sans-serif;font-size:18px;font-weight:300;color:#8fa6ff">{{ pt.n }}</span>{{ pt.text }}</li>
+        </sc-for>
+      </ol>
+    </div>
+  </div>
+  <dl data-reveal="1" style="margin:0;display:grid;grid-template-columns:minmax(96px,auto) 1fr;font-size:14px;line-height:1.9;background:#15181e;border:1px solid rgba(255,255,255,.08);padding:12px 28px">
+    <dt style="padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700;color:#8fa6ff">工事名</dt><dd style="margin:0;padding:16px 0 16px 16px;border-bottom:1px solid rgba(255,255,255,.12)">{{ p.name }}</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700;color:#8fa6ff">工事区分</dt><dd style="margin:0;padding:16px 0 16px 16px;border-bottom:1px solid rgba(255,255,255,.12)">{{ p.cat }}</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700;color:#8fa6ff">種別</dt><dd style="margin:0;padding:16px 0 16px 16px;border-bottom:1px solid rgba(255,255,255,.12)">{{ p.type }}</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700;color:#8fa6ff">所在地</dt><dd style="margin:0;padding:16px 0 16px 16px;border-bottom:1px solid rgba(255,255,255,.12)">{{ p.loc }}</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700;color:#8fa6ff">発注者</dt><dd style="margin:0;padding:16px 0 16px 16px;border-bottom:1px solid rgba(255,255,255,.12)">{{ p.client }}</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700;color:#8fa6ff">構造・規模</dt><dd style="margin:0;padding:16px 0 16px 16px;border-bottom:1px solid rgba(255,255,255,.12)">{{ p.structure }}</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700;color:#8fa6ff">延床面積</dt><dd style="margin:0;padding:16px 0 16px 16px;border-bottom:1px solid rgba(255,255,255,.12)">{{ p.area }}</dd>
+    <dt style="padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700;color:#8fa6ff">工期</dt><dd style="margin:0;padding:16px 0 16px 16px;border-bottom:1px solid rgba(255,255,255,.12)">{{ p.period }}</dd>
+    <dt style="padding:16px 0;font-weight:700;color:#8fa6ff">竣工</dt><dd style="margin:0;padding:16px 0 16px 16px">{{ p.year }}</dd>
+  </dl>
+</section>
+
+<section class="gallery" data-screen-label="Work Detail / Gallery" aria-label="写真ギャラリー" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px) clamp(72px,9vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:4px">
+  <div data-reveal="1" style="position:relative;aspect-ratio:4/3"><image-slot id="{{ g1 }}" src="{{ g1src }}" shape="rect" placeholder="写真：施工中の様子"></image-slot></div>
+  <div data-reveal="1" style="position:relative;aspect-ratio:4/3"><image-slot id="{{ g2 }}" src="{{ g2src }}" shape="rect" placeholder="写真：ディテール・仕上げ"></image-slot></div>
+  <div data-reveal="1" style="position:relative;aspect-ratio:4/3"><image-slot id="{{ g3 }}" src="{{ g3src }}" shape="rect" placeholder="写真：竣工後の内観"></image-slot></div>
+</section>
+
+<nav class="wd-nav" data-reveal-children="1" aria-label="前後の実績" style="border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+  <a href="{{ prevHref }}" style="display:flex;align-items:center;gap:20px;padding:32px clamp(20px,5vw,48px);transition:background .25s" style-hover="background:#15181e">
+    <span style="width:48px;height:48px;flex:none;border-radius:50%;background:#2446e6;display:flex;align-items:center;justify-content:center;font-family:Jost,sans-serif;color:#fff">←</span>
+    <span style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-family:Jost,sans-serif;font-size:11px;letter-spacing:.24em;color:#8fa6ff">PREV</span><span style="font-size:14px;font-weight:700">{{ prevName }}</span></span>
+  </a>
+  <a href="Works.dc.html" style="display:flex;align-items:center;justify-content:center;padding:32px 20px;border-left:1px solid rgba(255,255,255,.1);border-right:1px solid rgba(255,255,255,.1);font-size:14px;font-weight:700;letter-spacing:.1em;transition:background .25s" style-hover="background:#2446e6;color:#fff">施工実績一覧へ戻る</a>
+  <a href="{{ nextHref }}" style="display:flex;align-items:center;justify-content:flex-end;gap:20px;padding:32px clamp(20px,5vw,48px);text-align:right;transition:background .25s" style-hover="background:#15181e">
+    <span style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-family:Jost,sans-serif;font-size:11px;letter-spacing:.24em;color:#8fa6ff">NEXT</span><span style="font-size:14px;font-weight:700">{{ nextName }}</span></span>
+    <span style="width:48px;height:48px;flex:none;border-radius:50%;background:#2446e6;display:flex;align-items:center;justify-content:center;font-family:Jost,sans-serif;color:#fff">→</span>
+  </a>
+</nav>
+</main>
+<dc-import name="ContactCTA" hint-size="100%,420px"></dc-import>
+<dc-import name="SiteFooter" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;projectId&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:1,&quot;min&quot;:1,&quot;max&quot;:9,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!window.KANAME_PROJECTS) {
+      const s = document.querySelector('script[src*="projects.js"]');
+      s && s.addEventListener('load', () => this.forceUpdate());
+      setTimeout(() => this.forceUpdate(), 400);
+    }
+  }
+  renderVals() {
+    const all = window.KANAME_PROJECTS || [];
+    const id = parseInt(new URLSearchParams(location.search).get('id'), 10) || this.props.projectId || 1;
+    const i = Math.max(0, all.findIndex(x => x.id === id));
+    const raw = all[i] || { id: 1, points: [] };
+    const prev = all[(i - 1 + all.length) % all.length] || raw, next = all[(i + 1) % all.length] || raw;
+    if (raw.name) document.title = raw.name + '｜施工実績｜要建設株式会社';
+    return {
+      p: { ...raw, slot: 'work-' + raw.id, ph: '施工写真：' + (raw.ph || ''), num: String(raw.id).padStart(2, '0') },
+      points: (raw.points || []).map((text, k) => ({ text, n: String(k + 1).padStart(2, '0') })),
+      g1: 'work-' + raw.id + '-g1', g2: 'work-' + raw.id + '-g2', g3: 'work-' + raw.id + '-g3',
+      g1src: (raw.gallery || [])[0] || '', g2src: (raw.gallery || [])[1] || '', g3src: (raw.gallery || [])[2] || '',
+      prevHref: 'WorkDetail.dc.html?id=' + prev.id, prevName: prev.name,
+      nextHref: 'WorkDetail.dc.html?id=' + next.id, nextName: next.name,
+    };
+  }
+}
+</script>
+</body>
+</html>

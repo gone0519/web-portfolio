@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:relative;background:rgba(250,247,243,.96);backdrop-filter:{{ blur }};border-bottom:1px solid #ece4dc">
+  <div style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(176,146,124,.13) 1.4px,transparent 2px),radial-gradient(rgba(176,146,124,.09) 1px,transparent 1.6px);background-size:22px 22px,22px 22px;background-position:0 0,11px 11px"></div>
+  <sc-if value="{{ showTop }}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative;max-width:1100px;margin:0 auto;padding:18px 24px 10px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center">
+      <div></div>
+      <a href="Nail Salon.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;color:#4a4340">
+        <span style="font-family:'Pinyon Script',cursive;font-size:42px;line-height:1">Salon Name</span>
+        <span style="font-family:'Cormorant SC',serif;font-size:11px;letter-spacing:.3em">nail &amp; beauty</span>
+      </a>
+      <div style="justify-self:end;display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+        <a href="tel:000-000-0000" style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#4a4340;letter-spacing:.04em;line-height:1">000-000-0000</a>
+        <span style="font-size:10px;color:#6f6560;letter-spacing:.08em">完全予約制</span>
+        <a href="Reservation.dc.html" style="position:relative;display:flex;align-items:center;justify-content:center;width:150px;height:28px;background:#7b6a9b;color:#fff;font-size:11px;letter-spacing:.14em" style-hover="background:#66568a;color:#fff">予約フォーム<span style="position:absolute;right:2px;bottom:2px;border-left:6px solid transparent;border-bottom:6px solid #fff"></span></a>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メインナビゲーション" style="position:relative;border-top:1px solid #ece4dc">
+      <ul style="list-style:none;margin:0 auto;padding:12px 24px 10px;max-width:980px;display:flex;justify-content:space-between;align-items:center;gap:20px">
+        <sc-if value="{{ compact }}" hint-placeholder-val="{{ false }}"><li><a href="Nail Salon.dc.html" style="font-family:'Pinyon Script',cursive;font-size:28px;color:#4a4340;line-height:1">Salon Name</a></li></sc-if>
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+          <li><a href="{{ n.href }}" aria-current="{{ n.aria }}" style="display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ n.color }};transition:color .3s" style-hover="color:#7b6a9b">
+            <span style="font-family:'Cormorant SC',serif;font-size:17px;letter-spacing:.06em;line-height:1">{{ n.en }}</span>
+            <span style="width:{{ n.bar }};height:1px;background:#9a8fae;transition:width .3s"></span>
+            <span style="font-size:9px;letter-spacing:.12em;color:#6f6560">{{ n.ja }}</span>
+          </a></li>
+        </sc-for>
+        <sc-if value="{{ compact }}" hint-placeholder-val="{{ false }}"><li><a href="Reservation.dc.html" style="display:flex;align-items:center;height:36px;padding:0 18px;background:#7b6a9b;color:#fff;font-size:11px;letter-spacing:.14em" style-hover="background:#66568a;color:#fff">ご予約</a></li></sc-if>
+      </ul>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px">
+      <a href="Nail Salon.dc.html" style="font-family:'Pinyon Script',cursive;font-size:30px;color:#4a4340;line-height:1">Salon Name</a>
+      <div style="display:flex;align-items:center;gap:8px">
+        <a href="Reservation.dc.html" style="display:flex;align-items:center;height:44px;padding:0 16px;background:#7b6a9b;color:#fff;font-size:12px;letter-spacing:.12em">ご予約</a>
+        <button onClick="{{ openMenu }}" aria-label="メニューを開く" style="width:44px;height:44px;border:1px solid #cfc4b9;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer">
+          <span style="width:18px;height:1px;background:#4a4340"></span><span style="width:18px;height:1px;background:#4a4340"></span>
+        </button>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-label="メニュー" style="position:fixed;inset:0;z-index:50;background:#faf7f3;display:flex;flex-direction:column;padding:16px 24px 40px;overflow:auto">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-family:'Pinyon Script',cursive;font-size:30px;color:#4a4340">Salon Name</span>
+        <button onClick="{{ closeMenu }}" aria-label="メニューを閉じる" style="width:44px;height:44px;border:1px solid #cfc4b9;background:transparent;font-family:'Cormorant Garamond',serif;font-size:22px;color:#4a4340;cursor:pointer">×</button>
+      </div>
+      <ul style="list-style:none;margin:40px 0 32px;padding:0;display:flex;flex-direction:column">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+          <li><a href="{{ n.href }}" style="display:flex;align-items:baseline;justify-content:space-between;padding:14px 0;border-bottom:1px solid #e6ddd3;color:{{ n.color }}">
+            <span style="font-family:'Cormorant SC',serif;font-size:28px;letter-spacing:.04em">{{ n.en }}</span>
+            <span style="font-size:11px;letter-spacing:.12em;color:#6f6560">{{ n.ja }}</span>
+          </a></li>
+        </sc-for>
+      </ul>
+      <a href="Reservation.dc.html" style="margin-top:auto;display:flex;align-items:center;justify-content:center;height:56px;background:#7b6a9b;color:#fff;letter-spacing:.16em;font-size:14px">ご予約はこちら</a>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;140px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;concept&quot;,&quot;design&quot;,&quot;menu&quot;,&quot;salon&quot;,&quot;reservation&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: window.innerWidth, y: window.scrollY, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => { this.setState({ w: window.innerWidth }); if (window.innerWidth >= 860 && this.state.menuOpen) this.setMenu(false); };
+    // ヒステリシスで、ヘッダー高さの変化による境界付近のちらつきを防ぐ
+    this.onScroll = () => { const s = window.scrollY, y = this.state.y ? s > 40 : s > 140; if (y !== this.state.y) this.setState({ y }); };
+    this.onKey = e => { if (e.key === 'Escape' && this.state.menuOpen) this.setMenu(false); };
+    this.setState({ y: window.scrollY > 140 });
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('keydown', this.onKey);
+    document.body.style.overflow = '';
+  }
+  setMenu(open) {
+    document.body.style.overflow = open ? 'hidden' : '';
+    this.setState({ menuOpen: open });
+  }
+  renderVals() {
+    const m = this.state.w < 860, cur = this.props.current || 'home', compact = !m && this.state.y === true;
+    const items = [
+      ['home', 'Home', 'ホーム', 'Nail Salon.dc.html'],
+      ['concept', 'Concept', 'コンセプト', 'Concept.dc.html'],
+      ['design', 'Design', 'デザイン', 'Design.dc.html'],
+      ['menu', 'Menu', 'メニュー', 'Menu.dc.html'],
+      ['salon', 'Salon', 'サロン', 'Salon.dc.html'],
+      ['reservation', 'Reservation', 'ご予約・アクセス', 'Reservation.dc.html']
+    ];
+    return {
+      isMobile: m, isDesktop: !m, compact, showTop: !m && !compact,
+      menuOpen: this.state.menuOpen,
+      // backdrop-filter は position:fixed の基準をヘッダー内に閉じ込めるため、メニュー表示中は外す
+      blur: this.state.menuOpen ? 'none' : 'blur(8px)',
+      openMenu: () => this.setMenu(true),
+      closeMenu: () => this.setMenu(false),
+      nav: items.map(([k, en, ja, href]) => ({ en, ja, href, aria: k === cur ? 'page' : undefined, color: k === cur ? '#7b6a9b' : '#4a4340', bar: k === cur ? '28px' : '12px' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

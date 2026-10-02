@@ -1,0 +1,61 @@
+/* ============================================================
+   responsive.css — 画面幅に応じた表示の切り替え
+   ------------------------------------------------------------
+   このサイトのスタイルは各ページの style="..." （インライン指定）が
+   基本です。余白や文字サイズは clamp() でインラインのまま可変に
+   していますが、「画面幅で表示／非表示を切り替える」など
+   インラインでは書けない指定だけをこのファイルにまとめています。
+
+   インライン指定を上書きするため !important が必要です。
+
+   ブレークポイント
+     960px 未満 … タブレット・スマートフォン（ヘッダーがMENUボタンに切替）
+     768px 未満 … スマートフォン（横向き含む）
+     600px 未満 … スマートフォン（縦向き）
+   ============================================================ */
+
+/* --- スマートフォン用の固定フッターバー ------------------------
+   PC（960px以上）ではヘッダーに電話番号・WEB予約があるため非表示。
+   .sp-bar-space は、その固定バーに隠れないための下余白。 */
+@media (min-width: 960px) {
+  .sp-bar,
+  .sp-bar-space {
+    display: none !important;
+  }
+}
+
+/* --- 飾りの英字（縦書きなど） --------------------------------
+   狭い画面では本文やボタンに重なるため非表示にします。 */
+@media (max-width: 767px) {
+  .deco-pc-only {
+    display: none !important;
+  }
+}
+
+/* --- 縦書きの英字ラベル ---------------------------------------
+   スマートフォンでは横書きに切り替え、区切り線も下線に変更。 */
+@media (max-width: 599px) {
+  .vert-label-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .vert-label {
+    writing-mode: horizontal-tb !important;
+    border-left: 0 !important;
+    border-bottom: 1px solid #cfdde9 !important;
+    padding-left: 0 !important;
+    padding-bottom: 8px !important;
+  }
+}
+
+/* --- とくに画面の狭い端末だけに表示する補足文 ------------------
+   （例：診療時間表の「横にスクロールできます」の案内。
+     360px 以上の端末では表が収まるため表示しません） */
+.narrow-only {
+  display: none !important;
+}
+@media (max-width: 359px) {
+  .narrow-only {
+    display: block !important;
+  }
+}

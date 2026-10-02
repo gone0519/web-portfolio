@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<link rel="stylesheet" href="./responsive.css">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#2b3440;font-family:'Shippori Mincho','Yu Mincho','Hiragino Mincho ProN',serif;-webkit-font-smoothing:antialiased;font-feature-settings:"palt"}
+*{box-sizing:border-box}
+a{color:#13396a;text-decoration:none}
+a:hover{color:#3a86bd}
+</style>
+</helmet>
+
+<dc-import name="SiteHeader" current="services" hint-size="100%,72px" style="position:sticky;top:0;z-index:20;display:block"></dc-import>
+
+<main lang="ja">
+<section data-screen-label="Services 01 Title" style="position:relative;height:clamp(260px,32vw,380px);overflow:hidden;background:#dfe6ec">
+  <div data-anim="zoom" style="position:absolute;inset:0"><img src="images/20.jpg" alt="施術の様子" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.78) 45%,rgba(255,255,255,.1) 100%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1040px;height:100%;margin:0 auto;padding:0 20px;display:flex;flex-direction:column;justify-content:center;pointer-events:none">
+    <p aria-hidden="true" style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(52px,7vw,96px);line-height:1;color:rgba(58,134,189,.24)">Treatment</p>
+    <h1 style="margin:-.2em 0 0;font-size:clamp(24px,3vw,34px);font-weight:500;letter-spacing:.2em;color:#13396a">診療案内</h1>
+  </div>
+</section>
+<nav aria-label="パンくず" style="max-width:1040px;margin:0 auto;padding:16px 20px;font-size:11px;letter-spacing:.1em;color:#6b7684;display:flex;gap:10px"><a href="Top.dc.html">HOME</a><span>›</span><span>診療案内</span></nav>
+
+<section data-screen-label="Services 02 Index" style="max-width:1040px;margin:0 auto;padding:clamp(40px,7vw,64px) 20px 0">
+  <div data-reveal="" style="text-align:center">
+    <h2 style="margin:0;font-size:clamp(19px,2.2vw,24px);font-weight:500;line-height:2;letter-spacing:.16em;color:#13396a">どの診療科か迷われたときは、<br>まず一般内科でご相談ください。</h2>
+    <p style="margin:20px auto 0;max-width:640px;font-size:14px;line-height:2.2;letter-spacing:.06em;text-wrap:pretty">症状を伺ったうえで、当院での治療が適しているか、専門医療機関での検査が必要かを判断し、適切な医療へご案内します。</p>
+  </div>
+  <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;margin-top:clamp(24px,5vw,40px)">
+    <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+      <a href="#{{ s.id }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;height:52px;padding:0 16px;border:1px solid #13396a;color:#13396a;font-size:13px;letter-spacing:.12em;transition:all .3s" style-hover="background:#13396a;color:#fff">{{ s.name }}<span style="font-size:10px">▼</span></a>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Services 03 Detail" style="max-width:1040px;margin:0 auto;padding:40px 20px clamp(64px,10vw,110px)">
+  <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+    <article id="{{ s.id }}" data-reveal="" style="scroll-margin-top:100px;padding:clamp(44px,7vw,72px) 0;border-bottom:1px solid #dde6ee;display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,64px);align-items:flex-start;flex-direction:{{ s.dir }}">
+      <div style="flex:1 1 360px;aspect-ratio:4/3;background:#dfe6ec"><img src="{{ s.img }}" alt="{{ s.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div style="flex:1 1 380px">
+        <p style="margin:0;display:flex;align-items:baseline;gap:14px"><span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(38px,7vw,52px);line-height:1;color:#3a86bd">{{ s.no }}</span><span style="font-size:11px;letter-spacing:.24em;color:#3a86bd">{{ s.sub }}</span></p>
+        <h2 style="margin:10px 0 0;font-size:clamp(21px,2.4vw,26px);font-weight:600;letter-spacing:.18em;color:#13396a">{{ s.name }}</h2>
+        <p style="margin:18px 0 0;font-size:14px;line-height:2.2;letter-spacing:.06em;text-wrap:pretty">{{ s.desc }}</p>
+        <p style="margin:24px 0 10px;font-size:12px;letter-spacing:.16em;color:#13396a">主な症状・ご相談</p>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ s.concerns }}" as="c" hint-placeholder-count="4">
+            <li style="padding:6px 14px;border:1px solid #cfdde9;border-radius:999px;background:#f5f8fb;font-size:12px;letter-spacing:.06em;color:#13396a">{{ c }}</li>
+          </sc-for>
+        </ul>
+        <dl style="margin:24px 0 0;display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:13px;line-height:1.9;padding-top:18px;border-top:1px dotted #cfdde9">
+          <dt style="color:#13396a;letter-spacing:.12em">対象</dt><dd style="margin:0">{{ s.target }}</dd>
+          <dt style="color:#13396a;letter-spacing:.12em">備考</dt><dd style="margin:0">{{ s.note }}</dd>
+        </dl>
+        <a href="Contact.dc.html" style="margin-top:26px;display:flex;align-items:center;justify-content:space-between;width:min(240px,100%);height:44px;padding:0 18px;border:1px solid #13396a;color:#13396a;font-size:13px;letter-spacing:.14em;transition:all .3s" style-hover="background:#13396a;color:#fff">{{ s.name }}を予約する<span>▸</span></a>
+      </div>
+    </article>
+  </sc-for>
+</section>
+
+<section data-screen-label="Services 04 Flow" style="position:relative;overflow:hidden;background:#13396a;padding:clamp(56px,9vw,88px) 20px clamp(64px,10vw,100px)">
+  <div aria-hidden="true" style="position:absolute;width:640px;height:640px;border-radius:50%;border:1px solid rgba(255,255,255,.07);top:-260px;right:-200px"></div>
+  <div style="position:relative;max-width:1040px;margin:0 auto">
+    <div data-reveal="" style="text-align:center;color:#fff">
+      <p aria-hidden="true" style="margin:0 0 -.62em;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(64px,9vw,120px);line-height:1;color:rgba(255,255,255,.08);user-select:none">Flow</p>
+      <h2 style="position:relative;margin:0;font-size:clamp(20px,2.4vw,27px);font-weight:500;letter-spacing:.2em">初診の流れ</h2>
+      <p style="margin:8px 0 0;font-size:11px;letter-spacing:.2em;color:#9cc8e6">First visit</p>
+    </div>
+    <ol data-reveal="" style="list-style:none;margin:clamp(32px,6vw,48px) 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px">
+      <sc-for list="{{ flow }}" as="f" hint-placeholder-count="5">
+        <li style="background:#fff;padding:26px 20px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;color:#3a86bd">STEP {{ f.no }}</span>
+          <span style="font-size:16px;font-weight:600;letter-spacing:.12em;color:#13396a">{{ f.title }}</span>
+          <span style="font-size:12px;line-height:1.9;letter-spacing:.04em">{{ f.text }}</span>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section data-screen-label="Services 05 Items" style="max-width:1040px;margin:0 auto;padding:clamp(60px,9vw,100px) 20px clamp(64px,10vw,110px)">
+  <div data-reveal="" style="text-align:center">
+    <p aria-hidden="true" style="margin:0 0 -.62em;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(64px,9vw,120px);line-height:1;color:#e6eff6;user-select:none">Belongings</p>
+    <h2 style="position:relative;margin:0;font-size:clamp(20px,2.4vw,27px);font-weight:500;letter-spacing:.2em;color:#13396a">受診時にお持ちいただくもの</h2>
+  </div>
+  <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;margin-top:clamp(32px,6vw,48px)">
+    <sc-for list="{{ items }}" as="i" hint-placeholder-count="3">
+      <div style="border:1px solid #dde6ee;padding:28px 24px;text-align:center">
+        <p style="margin:0;font-size:16px;font-weight:600;letter-spacing:.12em;color:#13396a">{{ i.title }}</p>
+        <p style="margin:12px 0 0;font-size:13px;line-height:1.9;letter-spacing:.04em">{{ i.text }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,700px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const run = () => import('./site-effects.js').then(m => m.init()).catch(() => {});
+    run(); this.t = setTimeout(run, 500);
+  }
+  componentWillUnmount() { clearTimeout(this.t); }
+  renderVals() {
+    const S = [
+      { name: '一般内科', sub: 'GENERAL MEDICINE', img: 'images/4.jpg', desc: '発熱や咳、のどの痛み、胃腸の不調など、日常的な体調不良の診断と治療を行います。必要に応じて院内で血液検査やレントゲン検査を行い、詳しい検査が必要な場合は専門医療機関へご紹介します。', concerns: ['発熱', '咳・のどの痛み', '腹痛・下痢', '頭痛', 'だるさ', 'めまい'], target: '6歳以上のお子さま〜大人の方', note: '発熱のある方は、来院前にお電話ください。' },
+      { name: '生活習慣病', sub: 'LIFESTYLE-RELATED DISEASE', img: 'images/18.jpg', desc: '高血圧・糖尿病・脂質異常症などは自覚症状が少ないまま進行することがあります。定期的な検査で状態を確認し、お薬と生活習慣の両面から、日々の暮らしに合わせた治療を続けていきます。', concerns: ['高血圧', '糖尿病', '脂質異常症', '高尿酸血症', '肥満', '禁煙のご相談'], target: '成人の方', note: '管理栄養士による食事相談も行っています（予約制）。' },
+      { name: '健康診断', sub: 'HEALTH CHECKUPS', img: 'images/10.jpg', desc: '企業健診・特定健診・個人の健康診断に対応しています。結果は医師が直接ご説明し、再検査が必要な項目や今後気をつけたいことをわかりやすくお伝えします。', concerns: ['企業健診', '特定健診', '雇入時健診', '各種がん検診', '血液検査'], target: '会社員の方、市区町村の健診対象の方', note: '健康診断は予約制です。所要時間は約30〜60分です。' },
+      { name: '予防接種', sub: 'VACCINATION', img: 'images/5.jpg', desc: 'お子さまの定期接種から、インフルエンザ・肺炎球菌・帯状疱疹などの成人向けワクチン、渡航前のワクチンまで対応しています。接種スケジュールのご相談もお気軽にどうぞ。', concerns: ['インフルエンザ', '肺炎球菌', '帯状疱疹', '小児定期接種', '渡航ワクチン'], target: 'お子さま〜ご高齢の方', note: 'ワクチンによっては取り寄せが必要なため、事前にご予約ください。' },
+      { name: '小児科', sub: 'PEDIATRICS', img: 'images/6.jpg', desc: 'お子さまの発熱や鼻水、咳、腹痛、発疹など、よくある症状の診察を行います。お子さまが怖がらないよう声をかけながら診察し、ご家庭での看病のポイントもお伝えします。', concerns: ['発熱', '鼻水・咳', '腹痛・嘔吐', '発疹', '乳幼児健診'], target: '0歳〜中学生のお子さま', note: 'キッズスペースとおむつ替えシートがございます。' },
+      { name: 'アレルギー科', sub: 'ALLERGY', img: 'images/7.jpg', desc: '花粉症やアレルギー性鼻炎、じんましん、食物アレルギーなどの検査と治療を行います。スギ花粉・ダニに対する舌下免疫療法にも対応しています。', concerns: ['花粉症', 'アレルギー性鼻炎', 'じんましん', '食物アレルギー', '舌下免疫療法'], target: '5歳以上のお子さま〜大人の方', note: '舌下免疫療法は、長期間の継続が必要です。詳しくはご相談ください。' }
+    ];
+    return {
+      services: S.map((s, i) => ({ ...s, no: String(i + 1).padStart(2, '0'), id: 'svc-' + (i + 1), dir: i % 2 ? 'row-reverse' : 'row' })),
+      flow: [
+        { no: '01', title: 'ご予約', text: 'WEBまたはお電話でご予約ください。予約なしでも受診いただけます。' },
+        { no: '02', title: '受付・問診', text: '保険証をご提示のうえ、問診票にご記入ください。' },
+        { no: '03', title: '診察', text: '医師がお話を伺い、必要な診察を行います。' },
+        { no: '04', title: '検査・ご説明', text: '必要に応じて検査を行い、結果と治療方針をご説明します。' },
+        { no: '05', title: 'お会計', text: '処方箋をお渡しします。お近くの薬局でお受け取りください。' }
+      ],
+      items: [
+        { title: '保険証・マイナ保険証', text: '毎月初回の受診時にご提示ください。各種医療証もお持ちください。' },
+        { title: 'お薬手帳', text: '現在服用中のお薬を確認するため、お持ちください。' },
+        { title: '紹介状・検査結果', text: '他院からの紹介状や、健診結果があればお持ちください。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

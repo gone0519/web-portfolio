@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="background:rgba(255,255,255,.96);backdrop-filter:blur(6px);box-shadow:0 1px 0 rgba(0,0,0,.04);font-family:'Zen Maru Gothic',sans-serif">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px clamp(16px,3vw,32px);max-width:1440px;margin:0 auto">
+    <a href="index.dc.html" style="display:flex;flex-direction:column;line-height:1.1;color:#e8555b;text-decoration:none">
+      <span style="font-family:'Mochiy Pop One';font-size:12px;letter-spacing:.08em">認定こども園</span>
+      <span style="font-family:'Mochiy Pop One';font-size:22px;letter-spacing:.14em">昭和保育園</span>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:4px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 14px;color:{{ n.fg }};font-size:11px;font-weight:700;border-right:1px solid #eee;text-decoration:none;transition:transform .2s" style-hover="transform:translateY(-2px);color:#e8555b">
+            <span style="width:26px;height:26px;border-radius:50%;background:{{ n.color }};display:grid;place-items:center;color:#fff;font-size:12px;font-family:'Mochiy Pop One'">{{ n.mark }}</span>
+            {{ n.label }}
+          </a>
+        </sc-for>
+        <a href="お問い合わせ.dc.html" style="margin-left:14px;background:#e8555b;color:#fff;font-size:12px;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none;transition:background .2s" style-hover="background:#c93d44">見学を予約する</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:48px;height:48px;border-radius:50%;border:none;background:#e8555b;color:#fff;font-size:11px;font-weight:700;cursor:pointer">{{ menuLabel }}</button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#fff;border-top:1px solid #f1e6e6;padding:8px 20px 20px;display:flex;flex-direction:column">
+      <sc-for list="{{ nav }}" as="n">
+        <a href="{{ n.href }}" style="display:flex;align-items:center;gap:12px;padding:14px 4px;border-bottom:1px dashed #eadede;color:{{ n.fg }};font-weight:700;font-size:15px;text-decoration:none">
+          <span style="width:30px;height:30px;border-radius:50%;background:{{ n.color }};display:grid;place-items:center;color:#fff;font-size:13px;font-family:'Mochiy Pop One'">{{ n.mark }}</span>{{ n.label }}
+        </a>
+      </sc-for>
+      <a href="お問い合わせ.dc.html" style="margin-top:16px;text-align:center;background:#e8555b;color:#fff;font-weight:700;padding:16px;border-radius:999px;text-decoration:none">見学を予約する</a>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1200px&quot;,&quot;height&quot;:&quot;80px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;feature&quot;,&quot;life&quot;,&quot;about&quot;,&quot;admission&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: window.innerWidth, menu: false };
+  componentDidMount() { this.r = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.r); }
+  componentWillUnmount() { window.removeEventListener('resize', this.r); }
+  renderVals() {
+    const m = this.state.w < 900, cur = this.props.current;
+    const nav = [
+      { key: 'feature', label: '園の特色', href: '園の特色.dc.html', color: '#f6c343', mark: '特' },
+      { key: 'life', label: '園の生活', href: '園の生活.dc.html', color: '#7cc5e0', mark: '生' },
+      { key: 'about', label: '園の概要', href: '園の概要.dc.html', color: '#8cc97a', mark: '園' },
+      { key: 'admission', label: '入園案内', href: '入園案内.dc.html', color: '#f39a6b', mark: '入' },
+      { key: 'contact', label: 'お問い合わせ', href: 'お問い合わせ.dc.html', color: '#e8555b', mark: '?' },
+    ].map(n => ({ ...n, fg: n.key === cur ? '#e8555b' : '#3d3a38' }));
+    return {
+      nav, isDesktop: !m, isMobile: m, menuOpen: m && this.state.menu,
+      menuLabel: this.state.menu ? '閉じる' : 'MENU',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+    };
+  }
+}
+</script>
+</body>
+</html>

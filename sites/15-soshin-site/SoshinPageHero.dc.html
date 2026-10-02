@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+  @keyframes so-hero-up { from { transform: translateY(112%); } to { transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+</helmet>
+<section style="position:relative;padding:56px 0 76px;overflow:hidden;background:linear-gradient(180deg,#f7f8f9 0%,#eceef1 100%);font-family:'Noto Sans JP',sans-serif;color:#14161a">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(20,22,26,.045) 1px,transparent 1px),linear-gradient(0deg,rgba(20,22,26,.045) 1px,transparent 1px);background-size:64px 64px"></div>
+  <div style="position:relative;max-width:1080px;margin:0 auto;padding:0 28px">
+    <p style="margin:0;font-size:11px;letter-spacing:.14em;color:#8a929c"><a href="./SOSHIN Home.dc.html" style="color:#5c6570;text-decoration:none" style-hover="color:#3d5f8a">HOME</a><span style="margin:0 10px">/</span>{{ ja }}</p>
+    <div style="overflow:hidden;margin-top:38px;padding-bottom:.04em">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,8.4vw,116px);letter-spacing:.12em;line-height:1;animation:so-hero-up 1.15s cubic-bezier(.16,.84,.28,1) .1s both">{{ en }}</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;margin-top:20px">
+      <span style="flex:0 0 auto;width:34px;height:1px;background:#3d5f8a"></span>
+      <h1 style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(20px,2.4vw,28px);line-height:1.5">{{ ja }}</h1>
+    </div>
+    <p style="margin:26px 0 0;max-width:640px;font-size:13px;line-height:2.1;color:#4a525c">{{ lead }}</p>
+    <sc-if value="{{ img }}">
+      <div style="position:relative;margin-top:48px;height:clamp(200px,30vw,400px);overflow:hidden;background:#dfe3e8;box-shadow:0 24px 60px rgba(20,22,26,.12)">
+        <img src="{{ img }}" alt="" style="{{ imgStyle }}" />
+      </div>
+    </sc-if>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      imgStyle: 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:' + (this.props.pos || 'center')
+    };
+  }
+}
+</script>
+</body>
+</html>

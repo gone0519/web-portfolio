@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Parisienne&display=swap" rel="stylesheet" />
+<style>
+  body { margin:0; background:#101c31; -webkit-font-smoothing:antialiased; }
+  * { box-sizing:border-box; }
+  a { color:#e8744c; text-decoration:none; }
+  a:hover { color:#f39167; }
+  [id] { scroll-margin-top:20px; }
+  summary::-webkit-details-marker { display:none; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible, summary:focus-visible { outline:2px solid #e8744c; outline-offset:2px; }
+  @keyframes hk-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  @keyframes hk-twinkle { 0%,100%{opacity:.35} 50%{opacity:1} }
+  @keyframes hk-twinkle-slow { 0%,100%{opacity:.6} 50%{opacity:.2} }
+  @keyframes hk-shoot { 0%{transform:translate3d(0,0,0) rotate(28deg); opacity:0} 8%{opacity:1} 34%{transform:translate3d(-460px,240px,0) rotate(28deg); opacity:0} 100%{opacity:0} }
+  @keyframes hk-menu-in { from{opacity:0; transform:translateY(-8px)} to{opacity:1; transform:none} }
+  [data-split] { grid-template-columns:minmax(0,1.55fr) minmax(0,1fr); }
+
+  /* Responsive: nav collapses into a menu button at 900px and below. */
+  @media (max-width: 900px) {
+    [data-nav-desktop] { display: none !important; }
+    [data-nav-toggle] { display: inline-flex !important; }
+    [data-split] { grid-template-columns: 1fr !important; }
+  }
+  @media (min-width: 901px) { [data-nav-mobile] { display: none !important; } }
+  @media (max-width: 700px) {
+    [data-svc-row] { grid-template-columns: 1fr !important; }
+    [data-svc-media] { order: 2; }
+  }
+  /* The vertical side CTA becomes a bottom bar on phones. */
+  @media (max-width: 640px) {
+    [data-float-cta] { top: auto !important; bottom: 0; left: 0; flex-direction: row !important; gap: 0 !important; align-items: stretch !important; }
+    [data-float-cta] > a { flex: 1 1 0; writing-mode: horizontal-tb !important; text-align: center; border-radius: 0 !important; padding: 15px 8px !important; font-size: 13px !important; letter-spacing: .08em !important; box-shadow: 0 -4px 16px rgba(0,0,0,.22) !important; }
+    [data-footer] { padding-bottom: 52px !important; }
+    [data-form-row] { grid-template-columns: 1fr !important; }
+    [data-dl-row] { grid-template-columns: 1fr !important; gap: 4px !important; }
+  }
+  @media (max-width: 480px) {
+    [data-cta-row] > a { flex: 1 1 100%; text-align: center; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</helmet>
+
+<div style="font-family:'Zen Maru Gothic','Noto Sans JP',sans-serif; color:#12203a; background:#101c31; overflow-x:hidden; position:relative">
+
+  <!-- ══ 固定サイドCTA ══ -->
+  <sc-if value="{{ showFloatingCta }}" hint-placeholder-val="{{ true }}">
+    <div data-float-cta="" style="position:fixed; right:0; top:26vh; z-index:60; display:flex; flex-direction:column; gap:10px; align-items:flex-end">
+      <a href="Contact.dc.html#form" style="background:#e8744c; color:#fff; writing-mode:vertical-rl; padding:22px 13px; border-radius:14px 0 0 14px; font-size:14px; font-weight:700; letter-spacing:.18em; box-shadow:-4px 6px 18px rgba(0,0,0,.28)" style-hover="background:#d9613a; padding-right:18px">無料相談する</a>
+      <a href="Contact.dc.html?type=download#form" style="background:#fff; color:#12203a; writing-mode:vertical-rl; padding:22px 13px; border-radius:14px 0 0 14px; font-size:14px; font-weight:700; letter-spacing:.18em; box-shadow:-4px 6px 18px rgba(0,0,0,.28)" style-hover="background:#f7f2e7">資料ダウンロード</a>
+    </div>
+  </sc-if>
+
+  <!-- ══ モバイルメニュー ══ -->
+  <sc-if value="{{ menuOpen }}"><div id="mobile-menu" data-nav-mobile="" style="position:fixed; inset:0; z-index:80; overflow-y:auto; background:#101c31; padding:22px clamp(16px,3vw,40px) 40px; display:flex; flex-direction:column; gap:28px; animation:hk-menu-in .3s ease both">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px">
+      <a href="ハルカゼ Home.dc.html" onClick="{{ closeMenu }}" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(255,255,255,.16); border-radius:18px; padding:12px 18px; color:#fff">
+        <span style="width:38px; height:38px; border-radius:50%; border:1.5px solid #e8744c; display:flex; align-items:center; justify-content:center; font-size:15px; color:#e8744c">春</span>
+        <span style="line-height:1.25">
+          <span style="display:block; font-size:16px; font-weight:900; letter-spacing:.08em; color:#fff">ハルカゼ</span>
+          <span style="display:block; font-size:10px; letter-spacing:.24em; color:#8fa4c4; font-family:'Noto Sans JP',sans-serif">HARUKAZE DIGITAL</span>
+        </span>
+      </a>
+      <button type="button" onClick="{{ closeMenu }}" aria-controls="mobile-menu" aria-label="メニューを閉じる" style="position:relative; width:48px; height:48px; flex:0 0 auto; padding:0; border:1px solid rgba(255,255,255,.22); border-radius:50%; background:#101c31; cursor:pointer">
+        <span aria-hidden="true" style="{{ burgerTop }}"></span>
+        <span aria-hidden="true" style="{{ burgerBottom }}"></span>
+      </button>
+    </div>
+    <nav aria-label="メインメニュー" style="display:grid">
+      <a href="ハルカゼ Home.dc.html" onClick="{{ closeMenu }}" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:18px 2px; border-bottom:1px solid rgba(255,255,255,.12); color:#fff"><span style="font-size:clamp(18px,5.4vw,22px); font-weight:700; letter-spacing:.08em">ホーム</span><span style="font-family:'Parisienne',cursive; font-size:20px; color:#e8744c">Home</span></a>
+      <a href="Services.dc.html" onClick="{{ closeMenu }}" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:18px 2px; border-bottom:1px solid rgba(255,255,255,.12); color:#fff"><span style="font-size:clamp(18px,5.4vw,22px); font-weight:700; letter-spacing:.08em">サービス</span><span style="font-family:'Parisienne',cursive; font-size:20px; color:#e8744c">Services</span></a>
+      <a href="Works.dc.html" onClick="{{ closeMenu }}" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:18px 2px; border-bottom:1px solid rgba(255,255,255,.12); color:#fff"><span style="font-size:clamp(18px,5.4vw,22px); font-weight:700; letter-spacing:.08em">実績</span><span style="font-family:'Parisienne',cursive; font-size:20px; color:#e8744c">Case Studies</span></a>
+      <a href="About.dc.html" onClick="{{ closeMenu }}" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:18px 2px; border-bottom:1px solid rgba(255,255,255,.12); color:#fff"><span style="font-size:clamp(18px,5.4vw,22px); font-weight:700; letter-spacing:.08em">会社概要</span><span style="font-family:'Parisienne',cursive; font-size:20px; color:#e8744c">About</span></a>
+      <a href="Blog.dc.html" onClick="{{ closeMenu }}" aria-current="page" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:18px 2px; border-bottom:1px solid rgba(255,255,255,.12); color:#f39167"><span style="font-size:clamp(18px,5.4vw,22px); font-weight:700; letter-spacing:.08em">ブログ</span><span style="font-family:'Parisienne',cursive; font-size:20px; color:#e8744c">Insights</span></a>
+      <a href="Contact.dc.html" onClick="{{ closeMenu }}" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:18px 2px; border-bottom:1px solid rgba(255,255,255,.12); color:#fff"><span style="font-size:clamp(18px,5.4vw,22px); font-weight:700; letter-spacing:.08em">お問い合わせ</span><span style="font-family:'Parisienne',cursive; font-size:20px; color:#e8744c">Contact</span></a>
+    </nav>
+    <div style="display:grid; gap:12px">
+      <a href="Contact.dc.html#form" onClick="{{ closeMenu }}" style="display:block; text-align:center; background:#e8744c; color:#fff; font-size:15px; font-weight:700; padding:17px 24px; border-radius:999px; letter-spacing:.08em">無料でご相談</a>
+      <a href="tel:0365551240" style="display:block; text-align:center; border:1px solid rgba(255,255,255,.32); color:#fff; font-size:17px; font-weight:700; padding:15px 24px; border-radius:999px; letter-spacing:.04em">03-6555-1240</a>
+      <p style="margin:0; text-align:center; font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#8fa4c4; letter-spacing:.06em">受付時間 平日 10:00–19:00</p>
+    </div>
+  </div></sc-if>
+
+  <!-- ══ ヘッダー + ページタイトル ══ -->
+  <header style="position:relative; background:#101c31">
+    <div style="position:absolute; inset:0; background:radial-gradient(1000px 460px at 82% -10%, rgba(63,96,140,.42), transparent 62%), radial-gradient(640px 380px at 6% 40%, rgba(232,116,76,.10), transparent 60%)"></div>
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.62; background-image:radial-gradient(#ffffff 1.3px,transparent 1.3px),radial-gradient(#ffd9a8 1.1px,transparent 1.1px),radial-gradient(rgba(255,255,255,.75) .8px,transparent .8px); background-size:120px 120px,190px 190px,64px 64px; background-position:0 0,60px 40px,22px 30px; animation:hk-twinkle-slow 7s ease-in-out infinite"></div>
+    <div style="position:absolute; inset:0; pointer-events:none; overflow:hidden">
+      <span style="position:absolute; left:58%; top:26%; width:16px; height:16px; background:#fff; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 3.8s ease-in-out infinite"></span>
+      <span style="position:absolute; right:12%; top:58%; width:20px; height:20px; background:#ffd9a8; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 5.2s ease-in-out 1s infinite"></span>
+      <span style="position:absolute; left:8%; bottom:14%; width:10px; height:10px; background:rgba(255,255,255,.8); clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 4.4s ease-in-out 0.4s infinite"></span>
+      <span style="position:absolute; right:28%; top:10%; width:110px; height:2px; background:linear-gradient(90deg,transparent,#fff); border-radius:2px; animation:hk-shoot 11s linear 3s infinite"></span>
+    </div>
+
+    <div style="position:relative; display:flex; align-items:flex-start; justify-content:space-between; gap:24px; padding:22px clamp(16px,3vw,40px) 0; flex-wrap:wrap">
+      <a href="ハルカゼ Home.dc.html" style="display:flex; align-items:center; gap:12px; background:#101c31; border:1px solid rgba(255,255,255,.16); border-radius:18px; padding:12px 18px; color:#fff">
+        <span style="width:38px; height:38px; border-radius:50%; border:1.5px solid #e8744c; display:flex; align-items:center; justify-content:center; font-size:15px; color:#e8744c">春</span>
+        <span style="line-height:1.25">
+          <span style="display:block; font-size:16px; font-weight:900; letter-spacing:.08em; color:#fff">ハルカゼ</span>
+          <span style="display:block; font-size:10px; letter-spacing:.24em; color:#8fa4c4; font-family:'Noto Sans JP',sans-serif">HARUKAZE DIGITAL</span>
+        </span>
+      </a>
+
+      <nav data-nav-desktop="" aria-label="グローバルナビゲーション" style="display:flex; align-items:center; gap:clamp(14px,1.8vw,30px); flex-wrap:wrap; padding-top:14px">
+        <a href="Services.dc.html" style="color:#e7edf7; font-size:14px; letter-spacing:.06em" style-hover="color:#f39167">サービス</a>
+        <a href="Works.dc.html" style="color:#e7edf7; font-size:14px; letter-spacing:.06em" style-hover="color:#f39167">実績</a>
+        <a href="Services.dc.html#flow" style="color:#e7edf7; font-size:14px; letter-spacing:.06em" style-hover="color:#f39167">支援の流れ</a>
+        <a href="About.dc.html" style="color:#e7edf7; font-size:14px; letter-spacing:.06em" style-hover="color:#f39167">会社概要</a>
+        <a href="Blog.dc.html" aria-current="page" style="color:#f39167; font-size:14px; letter-spacing:.06em" style-hover="color:#f39167">ブログ</a>
+        <a href="Contact.dc.html#faq" style="color:#e7edf7; font-size:14px; letter-spacing:.06em" style-hover="color:#f39167">FAQ</a>
+        <a href="Contact.dc.html" style="background:#e8744c; color:#fff; font-size:13px; font-weight:700; padding:13px 22px; border-radius:999px; letter-spacing:.08em; white-space:nowrap" style-hover="background:#d9613a">お問い合わせ</a>
+      </nav>
+      <button type="button" data-nav-toggle="" onClick="{{ toggleMenu }}" aria-controls="mobile-menu" aria-expanded="{{ menuExpanded }}" aria-label="{{ menuLabel }}" style="display:none; position:relative; align-self:center; width:48px; height:48px; flex:0 0 auto; padding:0; border:1px solid rgba(255,255,255,.22); border-radius:50%; background:#101c31; cursor:pointer">
+        <span aria-hidden="true" style="{{ burgerTop }}"></span>
+        <span aria-hidden="true" style="{{ burgerBottom }}"></span>
+      </button>
+    </div>
+
+    <div style="position:relative; max-width:1180px; margin:0 auto; padding:clamp(44px,7vw,96px) clamp(16px,3vw,40px) clamp(60px,8vw,110px)">
+      <nav aria-label="パンくず" style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:clamp(22px,3vw,34px); font-family:'Noto Sans JP',sans-serif; font-size:12px; letter-spacing:.08em; color:#8fa4c4">
+        <a href="ハルカゼ Home.dc.html" style="color:#c3d0e4" style-hover="color:#f39167">ホーム</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page" style="color:#fff">ブログ</span>
+      </nav>
+      <p style="margin:0 0 6px; font-family:'Parisienne',cursive; font-size:clamp(30px,4vw,50px); color:#e8744c; line-height:1.1">Insights</p>
+      <h1 style="margin:0; font-size:clamp(30px,4.6vw,56px); font-weight:900; line-height:1.35; color:#fff; letter-spacing:.06em">ブログ</h1>
+      <div style="width:78px; height:3px; background:#e8744c; border-radius:2px; margin:26px 0 22px"></div>
+      <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:clamp(14px,1.15vw,16px); line-height:2.1; color:#c3d0e4; max-width:40em; text-wrap:pretty">現場で検証したマーケティングの知見を、<br />実務で使える形でお届けします。</p>
+    </div>
+  </header>
+
+  <main>
+
+  <!-- ══ 注目記事・記事一覧（カテゴリで絞り込み） ══ -->
+  <section id="articles" style="position:relative; background:#f7f2e7; padding:clamp(70px,9vw,120px) clamp(16px,3vw,40px)">
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.28; background-image:radial-gradient(#b9ab8f 1.1px,transparent 1.1px),radial-gradient(#d8b79a 1px,transparent 1px); background-size:132px 132px,200px 200px; background-position:0 0,60px 46px"></div>
+    <div style="position:relative; max-width:1180px; margin:0 auto">
+
+      <p style="margin:0 0 14px; font-family:'Parisienne',cursive; font-size:26px; color:#e8744c">Pick up</p>
+      <article style="background:#fff; border-radius:22px; overflow:hidden; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); box-shadow:0 18px 40px rgba(18,32,58,.08); margin-bottom:clamp(60px,8vw,100px)">
+        <div style="position:relative; overflow:hidden; border-radius:0px; aspect-ratio:auto; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0; min-height:280px"><img src="images/team-plants.jpg" alt="生成AI検索とコンテンツ評価" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+        <div style="padding:clamp(24px,4vw,44px); display:flex; flex-direction:column">
+          <p style="margin:0; display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798; letter-spacing:.08em"><span style="background:#e8744c; color:#fff; padding:4px 10px; border-radius:999px; letter-spacing:.12em">注目</span><span style="background:#f7f2e7; color:#6f8f70; padding:4px 10px; border-radius:999px; letter-spacing:.12em">SEO</span>2026.08.20</p>
+          <h2 style="margin:16px 0 0; font-size:clamp(20px,2.4vw,28px); font-weight:900; line-height:1.6">生成AI検索の時代に、<br />コンテンツ評価はどう変わったか</h2>
+          <p style="margin:16px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:2.05; color:#5b6779; flex:1">AIによる要約が検索結果の上部に表示されるようになり、クリックされる記事の条件が変わりつつあります。一次情報・専門性・構造化の3つの観点から、これからのコンテンツ評価を考えます。</p>
+          <div style="display:flex; align-items:center; gap:12px; margin-top:22px; padding-top:18px; border-top:1px solid #eceae4">
+            <span style="position:relative; overflow:hidden; width:44px; height:44px; border-radius:50%; background:#5f7f96; flex:0 0 auto"><img src="images/member-ishida.jpg" alt="石田 湊" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:75% 20%; display:block" /></span>
+            <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:12px; line-height:1.6; color:#5b6779">石田 湊<br />SEO・コンテンツ リード</p>
+            <p style="margin:0 0 0 auto; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798">読了目安 8分</p>
+          </div>
+        </div>
+      </article>
+      <div style="text-align:left; margin-bottom:clamp(34px,4vw,54px)">
+        <p style="margin:0 0 8px; font-family:'Parisienne',cursive; font-size:26px; color:#e8744c">Latest</p>
+        <h2 style="margin:0; font-size:clamp(24px,3.2vw,38px); font-weight:900; letter-spacing:.06em; line-height:1.5">記事一覧</h2>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; margin:-18px 0 clamp(24px,3vw,36px)">
+        <div role="group" aria-label="カテゴリで絞り込む" style="display:flex; gap:10px; flex-wrap:wrap">
+          <button type="button" onClick="{{ filter.all }}" aria-pressed="{{ pressed.all }}" style="{{ chip.all }}">すべて</button>
+          <button type="button" onClick="{{ filter.seo }}" aria-pressed="{{ pressed.seo }}" style="{{ chip.seo }}">SEO</button>
+          <button type="button" onClick="{{ filter.ads }}" aria-pressed="{{ pressed.ads }}" style="{{ chip.ads }}">広告運用</button>
+          <button type="button" onClick="{{ filter.analytics }}" aria-pressed="{{ pressed.analytics }}" style="{{ chip.analytics }}">分析</button>
+          <button type="button" onClick="{{ filter.web }}" aria-pressed="{{ pressed.web }}" style="{{ chip.web }}">制作</button>
+        </div>
+        <p aria-live="polite" style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:13px; color:#5b6779">{{ countLabel }}</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:20px">
+          <sc-if value="{{ show.ads }}">
+            <article style="background:#fff; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; transition:transform .35s ease" style-hover="transform:translateY(-8px)">
+              <div style="position:relative; overflow:hidden; border-radius:0px; aspect-ratio:16/10; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/team-laptops.jpg" alt="ノートPCで広告の設定を確認するチーム" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+              <div style="padding:20px 22px 22px; display:flex; flex-direction:column; flex:1">
+                <p style="margin:0 0 10px; display:flex; align-items:center; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798; letter-spacing:.08em"><span style="background:#f7f2e7; color:#b96f45; padding:4px 10px; border-radius:999px; letter-spacing:.12em">広告運用</span>2026.08.12</p>
+                <h3 style="margin:0 0 10px; font-size:16px; font-weight:700; line-height:1.75">自動入札に任せる前に、必ず揃えておきたい3つの前提</h3>
+                <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:12.5px; line-height:1.95; color:#5b6779; flex:1">自動入札の精度は、入力するデータの質で決まります。コンバージョンの定義・計測の欠損・学習期間の3点を整えてから任せるのが近道です。</p>
+                <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798">読了目安 6分</p>
+              </div>
+            </article>
+          </sc-if>
+          <sc-if value="{{ show.analytics }}">
+            <article style="background:#fff; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; transition:transform .35s ease" style-hover="transform:translateY(-8px)">
+              <div style="position:relative; overflow:hidden; border-radius:0px; aspect-ratio:16/10; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/laptop-charts.jpg" alt="ノートPCとタブレットに表示したグラフ" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+              <div style="padding:20px 22px 22px; display:flex; flex-direction:column; flex:1">
+                <p style="margin:0 0 10px; display:flex; align-items:center; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798; letter-spacing:.08em"><span style="background:#f7f2e7; color:#a98352; padding:4px 10px; border-radius:999px; letter-spacing:.12em">分析</span>2026.07.30</p>
+                <h3 style="margin:0 0 10px; font-size:16px; font-weight:700; line-height:1.75">GA4のデータを、経営会議で使える指標に翻訳する</h3>
+                <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:12.5px; line-height:1.95; color:#5b6779; flex:1">経営会議で必要なのは、セッション数ではなく「投資に対して何が返ってきたか」。GA4の数値を事業指標につなぐ設計手順を解説します。</p>
+                <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798">読了目安 7分</p>
+              </div>
+            </article>
+          </sc-if>
+          <sc-if value="{{ show.web }}">
+            <article style="background:#fff; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; transition:transform .35s ease" style-hover="transform:translateY(-8px)">
+              <div style="position:relative; overflow:hidden; border-radius:0px; aspect-ratio:16/10; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/monitor-review.jpg" alt="モニターでLPを確認するチーム" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+              <div style="padding:20px 22px 22px; display:flex; flex-direction:column; flex:1">
+                <p style="margin:0 0 10px; display:flex; align-items:center; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798; letter-spacing:.08em"><span style="background:#f7f2e7; color:#5f7f96; padding:4px 10px; border-radius:999px; letter-spacing:.12em">制作</span>2026.07.18</p>
+                <h3 style="margin:0 0 10px; font-size:16px; font-weight:700; line-height:1.75">CVRが上がるLPは「2スクロール目」で決まる</h3>
+                <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:12.5px; line-height:1.95; color:#5b6779; flex:1">ファーストビューの改善だけでは、CVRは頭打ちになりがちです。ヒートマップ分析から見えた、2スクロール目の設計ポイントを紹介します。</p>
+                <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798">読了目安 5分</p>
+              </div>
+            </article>
+          </sc-if>
+          <sc-if value="{{ show.ads }}">
+            <article style="background:#fff; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; transition:transform .35s ease" style-hover="transform:translateY(-8px)">
+              <div style="position:relative; overflow:hidden; border-radius:0px; aspect-ratio:16/10; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/dashboard-review.jpg" alt="クリエイティブの検証結果を確認する様子" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+              <div style="padding:20px 22px 22px; display:flex; flex-direction:column; flex:1">
+                <p style="margin:0 0 10px; display:flex; align-items:center; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798; letter-spacing:.08em"><span style="background:#f7f2e7; color:#b96f45; padding:4px 10px; border-radius:999px; letter-spacing:.12em">広告運用</span>2026.07.04</p>
+                <h3 style="margin:0 0 10px; font-size:16px; font-weight:700; line-height:1.75">SNS広告のクリエイティブ検証を、週20本回すチームの作り方</h3>
+                <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:12.5px; line-height:1.95; color:#5b6779; flex:1">検証本数を増やすほど、制作と分析の分業がボトルネックになります。週20本の検証を支えるチーム体制と運用ルールをまとめました。</p>
+                <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798">読了目安 9分</p>
+              </div>
+            </article>
+          </sc-if>
+          <sc-if value="{{ show.seo }}">
+            <article style="background:#fff; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; transition:transform .35s ease" style-hover="transform:translateY(-8px)">
+              <div style="position:relative; overflow:hidden; border-radius:0px; aspect-ratio:16/10; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/meeting-overhead.jpg" alt="サイト構造を検討する会議" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+              <div style="padding:20px 22px 22px; display:flex; flex-direction:column; flex:1">
+                <p style="margin:0 0 10px; display:flex; align-items:center; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798; letter-spacing:.08em"><span style="background:#f7f2e7; color:#6f8f70; padding:4px 10px; border-radius:999px; letter-spacing:.12em">SEO</span>2026.06.21</p>
+                <h3 style="margin:0 0 10px; font-size:16px; font-weight:700; line-height:1.75">記事を増やしても流入が伸びないサイトに共通する、内部リンクの3つの欠陥</h3>
+                <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:12.5px; line-height:1.95; color:#5b6779; flex:1">記事数は十分なのに評価が上がらないサイトには、共通する構造上の問題があります。孤立記事・リンクの偏り・アンカーテキストの3点から点検します。</p>
+                <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798">読了目安 6分</p>
+              </div>
+            </article>
+          </sc-if>
+          <sc-if value="{{ show.analytics }}">
+            <article style="background:#fff; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; transition:transform .35s ease" style-hover="transform:translateY(-8px)">
+              <div style="position:relative; overflow:hidden; border-radius:0px; aspect-ratio:16/10; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/charts-hands.jpg" alt="データを指し示しながら議論する様子" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+              <div style="padding:20px 22px 22px; display:flex; flex-direction:column; flex:1">
+                <p style="margin:0 0 10px; display:flex; align-items:center; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798; letter-spacing:.08em"><span style="background:#f7f2e7; color:#a98352; padding:4px 10px; border-radius:999px; letter-spacing:.12em">分析</span>2026.06.09</p>
+                <h3 style="margin:0 0 10px; font-size:16px; font-weight:700; line-height:1.75">サーバーサイド計測は「導入すべきか」ではなく「いつ導入すべきか」</h3>
+                <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:12.5px; line-height:1.95; color:#5b6779; flex:1">Cookie規制とブラウザの制限で、計測の欠損は年々拡大しています。導入コストと効果を比較し、判断の目安となる条件を整理しました。</p>
+                <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798">読了目安 7分</p>
+              </div>
+            </article>
+          </sc-if>
+          <sc-if value="{{ show.web }}">
+            <article style="background:#fff; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; transition:transform .35s ease" style-hover="transform:translateY(-8px)">
+              <div style="position:relative; overflow:hidden; border-radius:0px; aspect-ratio:16/10; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/team-duo.jpg" alt="採用サイトに登場するスタッフ" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+              <div style="padding:20px 22px 22px; display:flex; flex-direction:column; flex:1">
+                <p style="margin:0 0 10px; display:flex; align-items:center; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798; letter-spacing:.08em"><span style="background:#f7f2e7; color:#5f7f96; padding:4px 10px; border-radius:999px; letter-spacing:.12em">制作</span>2026.05.27</p>
+                <h3 style="margin:0 0 10px; font-size:16px; font-weight:700; line-height:1.75">採用サイトの応募率を2倍にした、求人票の情報設計</h3>
+                <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:12.5px; line-height:1.95; color:#5b6779; flex:1">応募率を左右するのは、デザインよりも情報の順番でした。介護業界の採用サイト改善で見えた、求人票の情報設計のポイントです。</p>
+                <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798">読了目安 5分</p>
+              </div>
+            </article>
+          </sc-if>
+          <sc-if value="{{ show.ads }}">
+            <article style="background:#fff; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; transition:transform .35s ease" style-hover="transform:translateY(-8px)">
+              <div style="position:relative; overflow:hidden; border-radius:0px; aspect-ratio:16/10; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/handshake.jpg" alt="新しいパートナーとの握手" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+              <div style="padding:20px 22px 22px; display:flex; flex-direction:column; flex:1">
+                <p style="margin:0 0 10px; display:flex; align-items:center; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798; letter-spacing:.08em"><span style="background:#f7f2e7; color:#b96f45; padding:4px 10px; border-radius:999px; letter-spacing:.12em">広告運用</span>2026.05.14</p>
+                <h3 style="margin:0 0 10px; font-size:16px; font-weight:700; line-height:1.75">代理店を乗り換える前に確認したい、アカウント診断の10項目</h3>
+                <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:12.5px; line-height:1.95; color:#5b6779; flex:1">乗り換えで成果が落ちる原因の多くは、引き継ぎ時の情報不足です。現状のアカウントで確認しておきたい10項目をチェックリストにしました。</p>
+                <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798">読了目安 8分</p>
+              </div>
+            </article>
+          </sc-if>
+          <sc-if value="{{ show.seo }}">
+            <article style="background:#fff; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; transition:transform .35s ease" style-hover="transform:translateY(-8px)">
+              <div style="position:relative; overflow:hidden; border-radius:0px; aspect-ratio:16/10; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/meeting-tablet.jpg" alt="広告とSEOのデータを共有する会議" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+              <div style="padding:20px 22px 22px; display:flex; flex-direction:column; flex:1">
+                <p style="margin:0 0 10px; display:flex; align-items:center; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798; letter-spacing:.08em"><span style="background:#f7f2e7; color:#6f8f70; padding:4px 10px; border-radius:999px; letter-spacing:.12em">SEO</span>2026.05.02</p>
+                <h3 style="margin:0 0 10px; font-size:16px; font-weight:700; line-height:1.75">指名検索を伸ばすために、広告とSEOのチームが共有すべきデータ</h3>
+                <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:12.5px; line-height:1.95; color:#5b6779; flex:1">広告とSEOを別々のチームが担当していると、指名検索の伸びを正しく評価できません。両チームで共有すべきデータと会議体を紹介します。</p>
+                <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798">読了目安 6分</p>
+              </div>
+            </article>
+          </sc-if>
+      </div>
+    </div>
+  </section>
+  <!-- ══ ホワイトペーパー ══ -->
+  <section id="whitepaper" style="position:relative; background:#101c31; padding:clamp(70px,9vw,120px) clamp(16px,3vw,40px); overflow:hidden">
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.5; background-image:radial-gradient(#ffffff 1.2px,transparent 1.2px),radial-gradient(rgba(255,217,168,.85) 1px,transparent 1px); background-size:138px 138px,80px 80px; background-position:0 0,40px 48px; animation:hk-twinkle-slow 8s ease-in-out infinite"></div>
+    <div style="position:absolute; inset:0; pointer-events:none"><span style="position:absolute; left:6%; top:14%; width:17px; height:17px; background:#fff; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 4.6s ease-in-out infinite"></span><span style="position:absolute; right:8%; bottom:18%; width:13px; height:13px; background:#ffd9a8; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 6.2s ease-in-out 0.9s infinite"></span></div>
+    <div style="position:relative; max-width:1180px; margin:0 auto">
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); gap:clamp(28px,5vw,60px); align-items:center">
+        <div style="position:relative; max-width:440px; width:100%; margin:0 auto">
+          <div style="position:relative; overflow:hidden; border-radius:18px; aspect-ratio:3/4; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#22344f; box-shadow:0 30px 60px rgba(0,0,0,.45)"><img src="images/growth-arrows.jpg" alt="ホワイトペーパーの表紙イメージ" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:40% center; display:block" /></div>
+          <div style="position:absolute; left:18px; right:18px; bottom:18px; background:rgba(16,28,49,.9); border-radius:12px; padding:16px 18px">
+            <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:10px; letter-spacing:.24em; color:#e8744c">WHITE PAPER</p>
+            <p style="margin:6px 0 0; color:#fff; font-size:16px; font-weight:700; line-height:1.6">生成AI時代のSEO<br />実践ガイド 2026</p>
+          </div>
+        </div>
+        <div>
+          <p style="margin:0 0 8px; font-family:'Parisienne',cursive; font-size:26px; color:#e8744c">Download</p>
+          <h2 style="margin:0; color:#fff; font-size:clamp(22px,3vw,34px); font-weight:900; line-height:1.6; letter-spacing:.04em">ホワイトペーパーを<br />無料で公開しています</h2>
+          <p style="margin:18px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:14px; line-height:2.05; color:#c3d0e4">248社の支援から得た知見をもとに、生成AI検索の影響と、いま取り組むべき施策を全42ページにまとめました。</p>
+          <ul style="list-style:none; margin:22px 0 0; padding:0; display:grid; gap:10px"><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#e7edf7"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>AIによる要約表示で、クリックはどう変わったか</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#e7edf7"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>評価されるコンテンツに共通する3つの条件</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#e7edf7"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>すぐに使える、既存記事の点検チェックリスト</span></li></ul>
+          <div style="margin-top:30px"><a href="Contact.dc.html?type=download#form" style="display:inline-block; background:#e8744c; color:#fff; font-size:14px; font-weight:700; letter-spacing:.1em; padding:15px 40px; border-radius:999px; text-align:center" style-hover="background:#d9613a; color:#fff">無料でダウンロード</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ══ 最終CTA ══ -->
+  <section style="position:relative; background:#e8744c; padding:clamp(60px,8vw,100px) clamp(16px,3vw,40px); text-align:center; overflow:hidden">
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.3; background-image:radial-gradient(#ffffff 1.2px,transparent 1.2px),radial-gradient(rgba(255,255,255,.8) 1px,transparent 1px); background-size:132px 132px,76px 76px; background-position:0 0,46px 38px"></div>
+    <div style="position:absolute; inset:0; pointer-events:none">
+      <span style="position:absolute; left:8%; top:24%; width:18px; height:18px; background:rgba(255,255,255,.75); clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 5.1s ease-in-out infinite"></span>
+      <span style="position:absolute; right:9%; bottom:22%; width:13px; height:13px; background:rgba(255,255,255,.75); clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 4s ease-in-out 0.8s infinite"></span>
+    </div>
+    <div style="position:relative; max-width:760px; margin:0 auto">
+      <p style="margin:0 0 12px; font-family:'Parisienne',cursive; font-size:30px; color:rgba(255,255,255,.85)">Let's talk</p>
+      <h2 style="margin:0 0 20px; color:#fff; font-size:clamp(24px,3.4vw,40px); font-weight:900; line-height:1.6; letter-spacing:.04em">まずは現状の数字を、<br />一緒に見るところから。</h2>
+      <p style="margin:0 0 34px; font-family:'Noto Sans JP',sans-serif; font-size:14px; line-height:2.05; color:rgba(255,255,255,.92)">アカウント診断もサイト分析も無料です。売り込みは行いません。<br />課題整理だけのご相談も歓迎しています。</p>
+      <div data-cta-row="" style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap">
+        <a href="Contact.dc.html#form" style="background:#12203a; color:#fff; font-size:15px; font-weight:700; padding:18px 44px; border-radius:999px; letter-spacing:.1em" style-hover="background:#0b1526">無料相談を申し込む</a>
+        <a href="Contact.dc.html?type=download#form" style="background:#fff; color:#12203a; font-size:15px; font-weight:700; padding:18px 44px; border-radius:999px; letter-spacing:.1em" style-hover="background:#f7f2e7">資料をダウンロード</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ フッター ══ -->
+  <footer data-footer="" style="position:relative; background:#101c31; padding:clamp(60px,8vw,96px) clamp(16px,3vw,40px) 0; overflow:hidden">
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.5; background-image:radial-gradient(#ffffff 1.2px,transparent 1.2px),radial-gradient(rgba(255,217,168,.85) 1px,transparent 1px); background-size:140px 140px,76px 76px; background-position:0 0,34px 44px; animation:hk-twinkle-slow 9s ease-in-out infinite"></div>
+    <div style="position:absolute; inset:0; pointer-events:none">
+      <span style="position:absolute; left:8%; top:20%; width:18px; height:18px; background:#fff; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 5.2s ease-in-out infinite"></span>
+      <span style="position:absolute; right:11%; top:12%; width:13px; height:13px; background:#ffd9a8; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 3.8s ease-in-out 0.8s infinite"></span>
+    </div>
+    <div style="position:relative; max-width:1100px; margin:0 auto; text-align:center">
+      <a href="ハルカゼ Home.dc.html" aria-label="ハルカゼ ホーム" style="display:inline-flex; width:58px; height:58px; border-radius:50%; border:1.5px solid #e8744c; align-items:center; justify-content:center; color:#e8744c; font-size:20px">春</a>
+      <p style="margin:16px 0 4px; color:#fff; font-size:19px; font-weight:900; letter-spacing:.14em">株式会社ハルカゼ</p>
+      <p style="margin:0 0 28px; color:#8fa4c4; font-size:10px; letter-spacing:.3em; font-family:'Noto Sans JP',sans-serif">HARUKAZE DIGITAL INC.</p>
+      <p style="margin:0 auto 28px; max-width:36em; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:2.1; color:#c3d0e4">〒150-0001 東京都渋谷区神宮前5-12-8 ハルカゼビル 4F<br />TEL 03-6555-1240（平日 10:00–19:00）／ FAX 03-6555-1241</p>
+      <a href="Contact.dc.html#form" style="display:inline-block; background:#e8744c; color:#fff; font-size:14px; font-weight:700; padding:15px 44px; border-radius:999px; letter-spacing:.1em" style-hover="background:#d9613a">お問い合わせ</a>
+
+      <nav aria-label="フッターナビゲーション" style="display:flex; justify-content:center; gap:clamp(14px,2.5vw,34px); flex-wrap:wrap; margin:44px 0 0; padding-top:28px; border-top:1px solid rgba(255,255,255,.12)">
+        <a href="ハルカゼ Home.dc.html" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">ホーム</a>
+        <a href="Services.dc.html" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">サービス</a>
+        <a href="Works.dc.html" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">実績</a>
+        <a href="Services.dc.html#flow" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">支援の流れ</a>
+        <a href="About.dc.html" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">会社概要</a>
+        <a href="Blog.dc.html" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">ブログ</a>
+        <a href="Contact.dc.html#faq" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">FAQ</a>
+        <a href="#" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">プライバシーポリシー</a>
+      </nav>
+      <p style="margin:0; padding:26px 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.1em; color:#6d80a0">© 2026 HARUKAZE DIGITAL INC. All rights reserved.</p>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showFloatingCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示設定&quot;}}">
+const FILTER_COUNTS = { all: 9, seo: 2, ads: 3, analytics: 2, web: 2 };
+const FILTER_DARK = false;
+const FILTER_UNIT = '件の記事';
+class Component extends DCLogic {
+  state = Object.assign({ menuOpen: false }, { cat: 'all' });
+
+  componentDidMount() {
+    this._menuKey = (e) => { if (e.key === 'Escape') this.setMenu(false); };
+    window.addEventListener('keydown', this._menuKey);
+    if (window.matchMedia) {
+      this._menuMq = window.matchMedia('(min-width: 901px)');
+      this._menuMqChange = (e) => { if (e.matches) this.setMenu(false); };
+      this._menuMq.addEventListener('change', this._menuMqChange);
+    }
+    this.scrollToHash();
+    if (this.pageDidMount) this.pageDidMount();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this._menuKey);
+    if (this._menuMq) this._menuMq.removeEventListener('change', this._menuMqChange);
+    (this._hashTimers || []).forEach(clearTimeout);
+    document.documentElement.style.overflow = '';
+    if (this.pageWillUnmount) this.pageWillUnmount();
+  }
+
+  // The page renders after load, so links like "Services.dc.html#flow" need a manual jump to the anchor.
+  scrollToHash() {
+    if (!location.hash || location.hash.length < 2) return;
+    let id = location.hash.slice(1);
+    try { id = decodeURIComponent(id); } catch (e) {}
+    let landed = null;
+    const go = () => { const el = document.getElementById(id); if (el) { el.scrollIntoView(); landed = window.scrollY; } };
+    this._hashTimers = [
+      setTimeout(go, 60),
+      // Re-align once fonts and images settle, unless the visitor has already scrolled away.
+      setTimeout(() => { if (landed === null || window.scrollY === landed) go(); }, 800)
+    ];
+  }
+
+  setMenu(open) {
+    if (!!this.state.menuOpen === open) return;
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    this.setState({ menuOpen: open });
+  }
+
+  renderVals() {
+    const open = !!this.state.menuOpen;
+    const line = 'position:absolute; left:14px; width:18px; height:2px; border-radius:2px; background:#fff; transition:top .3s ease, transform .3s ease;';
+    return Object.assign({
+      showFloatingCta: this.props.showFloatingCta ?? true,
+      menuOpen: open,
+      menuExpanded: open ? 'true' : 'false',
+      menuLabel: open ? 'メニューを閉じる' : 'メニューを開く',
+      toggleMenu: () => this.setMenu(!this.state.menuOpen),
+      closeMenu: () => this.setMenu(false),
+      burgerTop: line + (open ? 'top:22px; transform:rotate(45deg);' : 'top:18px;'),
+      burgerBottom: line + (open ? 'top:22px; transform:rotate(-45deg);' : 'top:26px;')
+    }, this.pageVals ? this.pageVals() : {});
+  }
+
+  pageVals() {
+    const cat = this.state.cat || 'all';
+    const base = "font-family:'Noto Sans JP',sans-serif; font-size:13px; padding:10px 20px; border-radius:999px; cursor:pointer; letter-spacing:.06em; transition:background .2s ease, color .2s ease, border-color .2s ease;";
+    const off = FILTER_DARK ? 'background:transparent; color:#c3d0e4; border:1px solid rgba(255,255,255,.25);' : 'background:#fff; color:#12203a; border:1px solid #e0d5c0;';
+    const on = 'background:#e8744c; color:#fff; border:1px solid #e8744c;';
+    const chip = {}, filter = {}, pressed = {}, show = {};
+    Object.keys(FILTER_COUNTS).forEach((c) => {
+      const active = c === cat;
+      chip[c] = base + (active ? on : off);
+      filter[c] = () => this.setState({ cat: c });
+      pressed[c] = active ? 'true' : 'false';
+      show[c] = cat === 'all' || cat === c;
+    });
+    return { chip, filter, pressed, show, countLabel: FILTER_COUNTS[cat] + FILTER_UNIT };
+  }
+}
+</script>
+</body>
+</html>

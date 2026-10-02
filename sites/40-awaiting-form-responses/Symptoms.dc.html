@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body { margin: 0; font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif; background: oklch(98% 0.004 240); }
+a { color: oklch(46% 0.10 245); text-decoration: none; }
+a:hover { color: oklch(32% 0.09 248); }
+
+/* <image-slot> の aspect-ratio 由来の最小幅で列が広がらないように */
+image-slot { min-width: 0; }
+/* src を指定したスロットではプレースホルダーの破線枠を消す。
+   image-slot が自分で付ける data-filled 属性が React の再描画で外れてしまい、
+   シャドウ内の :host([data-filled]) .ring{display:none} が効かないため。 */
+image-slot[src]::part(ring) { display: none; }
+
+/* カテゴリごとの症状イメージ（骨模型は fit="contain" で全体を見せるため背景は白）。
+   <image-slot> はカスタム要素なので class 属性は使えない（DCランタイムが className に
+   変換し、classname という属性名で出力されてしまう）。親からの子孫セレクタで指定する。 */
+.sy-body { display: grid; grid-template-columns: 300px 1fr; gap: 24px; align-items: start; }
+.sy-body > image-slot { width: 100%; height: 240px; }
+.sy-body > image-slot::part(frame) { background: #fff; }
+
+/* ===== レイアウト（レスポンシブ） =====
+   ブレークポイント：1040px＝イメージを上に／860px＝カード1列／680px＝スマホ */
+.sy-head { max-width: 1200px; margin: 0 auto; padding: 56px 24px 20px; }
+.sy-title { font-size: 32px; font-weight: 700; color: oklch(22% 0.02 250); margin: 0 0 14px; }
+.sy-sec { max-width: 1200px; margin: 0 auto; padding: 36px 24px; }
+.sy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.sy-cta { padding: 72px 24px; text-align: center; background: oklch(24% 0.03 248); }
+.sy-cta-title { font-size: 24px; font-weight: 700; color: #fff; margin: 0 0 14px; }
+
+@media (max-width: 1040px) {
+  /* 積んだときは写真を引き伸ばさない（骨模型が細長く切れるため） */
+  .sy-body { grid-template-columns: 1fr; gap: 18px; }
+  .sy-body > image-slot { max-width: 320px; height: 200px; }
+}
+@media (max-width: 860px) {
+  .sy-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .sy-head { padding: 40px 20px 16px; }
+  .sy-title { font-size: 25px; }
+  .sy-sec { padding: 28px 20px; }
+  .sy-cta { padding: 52px 20px; }
+  .sy-cta-title { font-size: 21px; }
+}
+</style>
+</helmet>
+<div style="max-width:100vw;overflow-x:hidden;">
+<dc-import name="Header" active="symptoms" hint-size="100%,64px"></dc-import>
+
+<section class="sy-head">
+  <div style="font-size:12px;color:oklch(55% 0.02 245);margin-bottom:14px;"><a href="Home.dc.html">ホーム</a> ／ 症状から探す</div>
+  <h1 class="sy-title">症状から探す</h1>
+  <p style="font-size:13px;line-height:1.8;color:oklch(45% 0.02 245);max-width:680px;margin:0;">気になる症状に近いものをご確認ください。診断ではなく一般的な情報のご案内です。気になる症状がある場合は、早めのご相談をおすすめします。</p>
+</section>
+
+<sc-for list="{{ categories }}" as="cat" hint-placeholder-count="5">
+  <section class="sy-sec">
+    <h2 style="font-size:20px;font-weight:700;color:oklch(22% 0.02 250);margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid oklch(46% 0.10 245);">{{ cat.title }}</h2>
+    <div class="sy-body">
+    <image-slot id="{{ cat.slotId }}" src="{{ cat.img }}" fit="{{ cat.fit }}" shape="rounded" radius="6" placeholder="症状のイメージ"></image-slot>
+    <div class="sy-grid">
+      <sc-for list="{{ cat.items }}" as="item" hint-placeholder-count="3">
+        <div style="border:1px solid oklch(91% 0.006 240);border-radius:6px;padding:22px;background:#fff;">
+          <div style="font-size:15px;font-weight:700;color:oklch(22% 0.02 250);margin-bottom:10px;">{{ item.title }}</div>
+          <div style="font-size:12px;line-height:1.8;color:oklch(42% 0.02 245);margin-bottom:8px;"><span style="font-weight:700;color:oklch(46% 0.10 245);">背景：</span>{{ item.cause }}</div>
+          <div style="font-size:12px;line-height:1.8;color:oklch(42% 0.02 245);margin-bottom:8px;"><span style="font-weight:700;color:oklch(46% 0.10 245);">よくある症状：</span>{{ item.symptom }}</div>
+          <div style="font-size:12px;line-height:1.8;color:oklch(42% 0.02 245);">
+            <span style="font-weight:700;color:oklch(46% 0.10 245);">ご相談のタイミング：</span>{{ item.when }}</div>
+        </div>
+      </sc-for>
+    </div>
+    </div>
+  </section>
+</sc-for>
+
+<section class="sy-cta">
+  <h2 class="sy-cta-title">気になる症状がある方は、まずご相談ください</h2>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+    <a href="Contact.dc.html" style="background:#fff;color:oklch(24% 0.03 248);padding:16px 36px;border-radius:4px;font-size:15px;font-weight:700;">WEB予約はこちら</a>
+    <a href="tel:0120-000-000" style="border:1px solid oklch(60% 0.02 245);color:#fff;padding:16px 36px;border-radius:4px;font-size:15px;font-weight:700;">0120-000-000</a>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+<dc-import name="MobileBar" hint-size="100%,56px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const categories = [
+      { title: '上半身（首・肩・腕）', slotId: 'sy-cat-1', img: 'images/pain-neck.jpg', fit: 'contain', items: [
+        { title: '首の痛み', cause: '長時間のデスクワークや姿勢の崩れなど。', symptom: '首を動かした際の痛みや張り。', when: '痛みが続く、または手先のしびれを伴う場合。' },
+        { title: '肩こり・肩の痛み', cause: '筋肉の緊張や血流の低下。', symptom: '肩まわりの重さ、張り、動かしにくさ。', when: '慢性的に続く、頭痛を伴う場合。' },
+        { title: '腕・手の不快感', cause: '姿勢や使い過ぎによる負担。', symptom: '腕のだるさ、手のしびれ。', when: 'しびれが続く、力が入りにくい場合。' },
+      ] },
+      { title: '腰・骨盤', slotId: 'sy-cat-2', img: 'images/pain-lumbar.jpg', fit: 'contain', items: [
+        { title: '腰痛', cause: '姿勢の崩れ、筋力低下、繰り返しの負担など。', symptom: '腰の張り、動作時の痛み。', when: '痛みが長引く、足にしびれが広がる場合。' },
+        { title: '股関節の不快感', cause: '骨盤の歪みや筋肉のアンバランス。', symptom: '股関節まわりの違和感、動かしにくさ。', when: '歩行時に痛みがある場合。' },
+        { title: '骨盤の歪み', cause: '出産や日常の姿勢の癖。', symptom: '腰や骨盤まわりの不快感。', when: '産後のケアや姿勢の崩れが気になる場合。' },
+      ] },
+      { title: '脚・膝', slotId: 'sy-cat-3', img: 'images/treatment-knee.jpg', fit: 'cover', items: [
+        { title: '膝の痛み', cause: '関節への負担や筋力バランスの乱れ。', symptom: '歩行時・階段昇降時の痛み。', when: '腫れや熱感がある、痛みが続く場合。' },
+        { title: '脚のだるさ・痛み', cause: '血流の低下や筋肉の疲労。', symptom: '脚全体の重さ、だるさ。', when: '痛みが強い、むくみを伴う場合。' },
+        { title: '足首の不快感', cause: '過去の捻挫の影響など。', symptom: '足首の不安定感、動かしにくさ。', when: '繰り返し痛める場合。' },
+      ] },
+      { title: 'スポーツによるケガ', slotId: 'sy-cat-4', img: 'images/treatment-wrist.jpg', fit: 'cover', items: [
+        { title: '捻挫', cause: '関節に急激な負荷がかかった際に発生。', symptom: '患部の痛み、腫れ、動かしにくさ。', when: '受傷直後、腫れが強い場合はできるだけ早めに。' },
+        { title: '肉離れ', cause: '筋肉に急な負荷がかかった際に発生。', symptom: '筋肉の痛み、力が入らない感覚。', when: '受傷直後の早期のご相談をおすすめします。' },
+        { title: 'スポーツ全般の痛み', cause: '練習量の増加や身体の使い方の癖。', symptom: '繰り返し起こる部位の痛み。', when: '練習を続けても改善しない場合。' },
+      ] },
+      { title: 'その他', slotId: 'sy-cat-5', img: 'images/pain-hip.jpg', fit: 'cover', items: [
+        { title: '筋緊張性の頭痛', cause: '肩や首の筋肉の緊張。', symptom: '締め付けられるような頭の痛み。', when: '肩こりと合わせて頭痛が続く場合。' },
+        { title: '姿勢の崩れ（猫背など）', cause: '長時間の同一姿勢や筋力低下。', symptom: '見た目の姿勢の変化、肩や腰への負担。', when: '姿勢の改善を希望される場合。' },
+        { title: '全身の疲労感・不調', cause: '生活習慣や身体の使い方の癖。', symptom: '身体全体の重さ、だるさ。', when: '長引く不調がある場合。' },
+      ] },
+    ];
+    return { categories };
+  }
+}
+</script>
+</body>
+</html>

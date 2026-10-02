@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<section aria-label="{{ ja }}" style="position:relative;min-height:clamp(420px,52vh,560px);display:flex;align-items:center;justify-content:center;overflow:hidden;font-family:'Noto Sans JP',sans-serif;color:#f2f3f5">
+  <div data-parallax="0.2" style="position:absolute;left:0;right:0;top:-16%;bottom:-16%">
+    <div data-kenburns="1" style="position:absolute;inset:0"><image-slot id="{{ slot }}" src="{{ img }}" shape="rect" placeholder="{{ placeholder }}"></image-slot></div>
+  </div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(12,14,18,.55),rgba(12,14,18,.82))"></div>
+  <div class="diag-sm" data-reveal="slide" aria-hidden="true" style="position:absolute;left:0;bottom:0;width:34%;height:140px;background:#2446e6;clip-path:polygon(0 0,100% 55%,0 100%);pointer-events:none"></div>
+  <div style="position:relative;z-index:2;padding:136px clamp(20px,5vw,48px) 80px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;pointer-events:none;max-width:980px">
+    <div class="sec-head" style="display:flex;align-items:center;gap:20px"><span style="width:36px;border-top:3px dotted #5b7cff"></span><h1 data-intro="track" style="margin:0;font-family:Jost,sans-serif;font-weight:400;font-size:clamp(38px,6vw,76px);letter-spacing:.14em;line-height:1">{{ en }}</h1><span style="width:36px;border-top:3px dotted #5b7cff"></span></div>
+    <p data-intro="up" style="margin:0;font-size:13px;font-weight:700;letter-spacing:.26em">{{ ja }}</p>
+    <sc-if value="{{ hasTitle }}" hint-placeholder-val="{{ false }}">
+      <p class="phrase" data-intro="up" style="margin:18px 0 0;font-size:clamp(20px,2.6vw,30px);font-weight:900;letter-spacing:.06em;line-height:1.6;text-wrap:balance">{{ title }}</p>
+    </sc-if>
+  </div>
+  <nav data-intro="fade" aria-label="パンくずリスト" style="position:absolute;z-index:3;right:clamp(20px,4vw,48px);bottom:24px;display:flex;flex-wrap:wrap;gap:10px;font-size:11px;letter-spacing:.08em;color:#dfe2e7">
+    <a href="KANAME%20Construction.dc.html" style="color:#dfe2e7;text-decoration:none" style-hover="color:#8fa6ff">HOME</a>
+    <span aria-hidden="true">/</span>
+    <sc-if value="{{ hasParent }}" hint-placeholder-val="{{ false }}">
+      <a href="{{ parentHref }}" style="color:#dfe2e7;text-decoration:none" style-hover="color:#8fa6ff">{{ parentLabel }}</a>
+      <span aria-hidden="true">/</span>
+    </sc-if>
+    <span aria-current="page" style="color:#8fa6ff">{{ crumb }}</span>
+  </nav>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;en&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ABOUT&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;ja&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;私たちについて&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;slot&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;pagehero&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;img&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;placeholder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ページヘッダー写真&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;parentLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;parentHref&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;crumb&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    return { hasTitle: !!p.title, hasParent: !!p.parentLabel, crumb: p.crumb || p.ja };
+  }
+}
+</script>
+</body>
+</html>

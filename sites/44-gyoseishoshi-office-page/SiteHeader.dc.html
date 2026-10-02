@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header data-header="" style="position:relative;background:rgba(255,255,255,0.96);backdrop-filter:blur(6px);border-bottom:1px solid #f2f2f2;transition:box-shadow .35s;font-family:'Noto Sans JP',sans-serif">
+  <span data-progress="" style="position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:#00c4c8;transform:scaleX(0);transform-origin:left center"></span>
+  <div style="max-width:1600px;margin:0 auto;height:76px;padding:0 clamp(16px,3vw,24px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="Top.dc.html" style="display:flex;align-items:center;gap:12px;color:#222;text-decoration:none">
+      <span style="position:relative;width:30px;height:30px;flex-shrink:0">
+        <span data-loop="spin" style="position:absolute;inset:4px;border:2px solid #00c4c8;transform:rotate(45deg)"></span>
+        <span style="position:absolute;inset:10px;background:#1f3a5c;transform:rotate(45deg)"></span>
+      </span>
+      <span style="display:flex;flex-direction:column;line-height:1.25">
+        <span style="font-size:11px;letter-spacing:0.12em;color:#00a7ad">行政書士事務所</span>
+        <span style="font-size:15px;font-weight:700;letter-spacing:0.08em;color:#00a7ad">あおば法務事務所 <span style="font-size:11px;font-weight:500">静岡</span></span>
+      </span>
+    </a>
+    <nav aria-label="メインナビゲーション" style="display:{{ navDisplay }};align-items:center;gap:clamp(14px,1.8vw,30px)">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="font-size:13px;font-weight:700;letter-spacing:0.06em;color:{{ n.color }};padding:8px 0;border-bottom:2px solid {{ n.line }};text-decoration:none;transition:border-color .25s,color .25s" style-hover="color:#00a7ad;border-bottom-color:#00c4c8">{{ n.label }}</a>
+      </sc-for>
+      <a href="Contact.dc.html" style="font-size:13px;font-weight:700;letter-spacing:0.08em;color:#fff;background:#00c4c8;padding:11px 24px;border-radius:999px;text-decoration:none;transition:background .25s" style-hover="background:#1f3a5c;color:#fff">無料相談のご予約</a>
+    </nav>
+    <button type="button" onClick="{{ toggleMenu }}" aria-label="メニューを開く" aria-expanded="{{ menuOpen }}" style="display:{{ burgerDisplay }};width:48px;height:48px;border:0;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+      <span style="width:24px;height:2px;background:#222"></span>
+      <span style="width:24px;height:2px;background:#222"></span>
+      <span style="width:16px;height:2px;background:#00c4c8;margin-left:8px"></span>
+    </button>
+  </div>
+  <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+    <div style="border-top:1px solid #eee;background:#fff;padding:8px 24px 24px;display:flex;flex-direction:column;animation:menuIn .4s cubic-bezier(.2,.7,.2,1)">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #eee;font-size:15px;font-weight:700;color:{{ n.color }};text-decoration:none">{{ n.label }}<span style="font-family:Lato,sans-serif;font-size:11px;letter-spacing:0.14em;color:#00a7ad">{{ n.en }}</span></a>
+      </sc-for>
+      <a href="Contact.dc.html" style="margin-top:20px;text-align:center;font-size:15px;font-weight:700;color:#fff;background:#00c4c8;padding:16px;border-radius:999px;text-decoration:none">無料相談のご予約</a>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;80px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;about&quot;,&quot;services&quot;,&quot;profile&quot;,&quot;flow&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { narrow: typeof window !== 'undefined' && window.innerWidth < 1000, menu: false };
+  componentDidMount() {
+    this.onResize = () => { const n = window.innerWidth < 1000; if (n !== this.state.narrow) this.setState({ narrow: n, menu: false }); };
+    window.addEventListener('resize', this.onResize); this.onResize();
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const cur = this.props.current || 'top', nw = this.state.narrow;
+    const nav = [
+      ['about', '事務所について', 'ABOUT', 'About.dc.html'],
+      ['services', '業務内容', 'SERVICE', 'Services.dc.html'],
+      ['profile', '行政書士紹介', 'PROFILE', 'Profile.dc.html'],
+      ['flow', 'ご相談の流れ・料金', 'FLOW & FEE', 'Flow.dc.html'],
+      ['contact', 'お問い合わせ・アクセス', 'CONTACT', 'Contact.dc.html']
+    ].map(([k, label, en, href]) => ({ label, en, href, aria: k === cur ? 'page' : undefined,
+      color: k === cur ? '#00a7ad' : '#222', line: k === cur ? '#00c4c8' : 'transparent' }));
+    return {
+      nav, navDisplay: nw ? 'none' : 'flex', burgerDisplay: nw ? 'flex' : 'none',
+      menuOpen: this.state.menu, showMobileMenu: nw && this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu }))
+    };
+  }
+}
+</script>
+</body>
+</html>

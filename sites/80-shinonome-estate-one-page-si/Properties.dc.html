@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>物件一覧｜東雲不動産</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#2c3150;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0f1d5c;text-decoration:none}
+a:hover{color:#3a4a8f}
+::selection{background:#0f1d5c;color:#fff}
+select,button{font-family:inherit}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="properties" hint-size="100%,1px"></dc-import>
+<main>
+<section data-screen-label="Properties Hero" style="position:relative;height:clamp(420px,56vh,560px);background:#0f1d5c;overflow:hidden">
+  <div style="position:absolute;top:72px;left:clamp(20px,17%,240px);right:0;bottom:0;overflow:hidden">
+    <div data-parallax="0.15" style="position:absolute;left:0;right:0;top:-10%;height:120%"><image-slot id="props-hero" src="images/21.jpg" data-kenburns="" shape="rect" placeholder="住宅街・マンション外観（横長）"></image-slot></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,29,92,.8) 0%,rgba(15,29,92,.3) 50%,rgba(15,29,92,0) 75%);pointer-events:none"></div>
+  </div>
+  <div data-reveal="" style="position:absolute;left:clamp(28px,7vw,112px);right:24px;bottom:clamp(48px,9vh,96px);pointer-events:none">
+    <h1 data-split="" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(36px,7vw,104px);line-height:1;letter-spacing:.12em;color:#fff">PROPERTIES</h1>
+    <p style="margin:18px 0 0;font-family:'Shippori Mincho',serif;font-size:clamp(14px,1.3vw,17px);letter-spacing:.24em;color:#fff">物件一覧</p>
+  </div>
+</section>
+<nav aria-label="パンくずリスト" style="max-width:1180px;margin:0 auto;padding:22px clamp(20px,6vw,40px);display:flex;gap:12px;font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.1em;color:#5b6180"><a href="Shinonome%20Estate.dc.html">TOP</a><span>／</span><span>物件一覧</span></nav>
+
+<section data-screen-label="Search" style="padding:clamp(40px,6vw,72px) clamp(20px,6vw,96px) 0">
+  <p data-reveal="" style="margin:0 auto;text-align:center;font-family:'Shippori Mincho',serif;font-size:clamp(18px,1.9vw,24px);line-height:1.9;letter-spacing:.16em;color:#0f1d5c">あなたの理想に合わせた、<br>不動産のご提案。</p>
+  <div data-reveal="" style="max-width:1180px;margin:clamp(40px,5vw,56px) auto 0;background:#f4f4f6;padding:clamp(24px,3vw,36px)">
+    <div role="tablist" aria-label="物件種別" class="se-grid2" style="display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <button role="tab" aria-selected="{{ t.active }}" onClick="{{ t.onClick }}" style="height:48px;padding:0 22px;display:flex;align-items:center;gap:12px;border:1px solid #0f1d5c;background:{{ t.bg }};color:{{ t.fg }};cursor:pointer;transition:background .3s,color .3s">
+          <span style="font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.14em">{{ t.label }}</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:14px">{{ t.count }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;font-family:'Noto Sans JP',sans-serif">
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:.14em;color:#0f1d5c">エリア
+        <select value="{{ area }}" onChange="{{ onArea }}" style="height:48px;border:1px solid #d3d6e2;background:#fff;padding:0 12px;font-size:13px;color:#2c3150">
+          <sc-for list="{{ areas }}" as="a" hint-placeholder-count="5"><option value="{{ a }}">{{ a }}</option></sc-for>
+        </select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:.14em;color:#0f1d5c">並び替え
+        <select value="{{ sort }}" onChange="{{ onSort }}" style="height:48px;border:1px solid #d3d6e2;background:#fff;padding:0 12px;font-size:13px;color:#2c3150">
+          <option value="new">新着順</option>
+          <option value="low">価格の安い順</option>
+          <option value="high">価格の高い順</option>
+        </select>
+      </label>
+      <div style="display:flex;align-items:flex-end;font-size:12px;letter-spacing:.1em;color:#3a3f5c"><span style="height:48px;display:flex;align-items:center;gap:8px">該当物件 <span style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#0f1d5c">{{ resultCount }}</span> 件</span></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="List" style="padding:clamp(56px,7vw,88px) clamp(20px,6vw,96px) clamp(80px,10vw,120px)">
+  <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:clamp(48px,5vw,64px) clamp(24px,3vw,40px)">
+    <sc-for list="{{ list }}" as="p" hint-placeholder-count="6">
+      <a href="PropertyDetail.dc.html" style="display:flex;flex-direction:column;color:#0f1d5c" style-hover="color:#0f1d5c">
+        <div style="position:relative;aspect-ratio:4/3;overflow:hidden">
+          <div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)"><image-slot id="{{ p.slot }}" src="{{ p.img }}" shape="rect" placeholder="{{ p.ph }}"></image-slot></div>
+          <sc-if value="{{ p.isNew }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:0;left:0;background:#fff;color:#0f1d5c;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;padding:6px 14px;pointer-events:none">NEW</span></sc-if>
+        </div>
+        <div style="position:relative;margin:-28px 20px 0 0;background:#fff;padding:20px 22px 0 0">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+            <span style="background:#0f1d5c;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.12em;padding:3px 10px">{{ p.type }}</span>
+            <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.08em;color:#5b6180">{{ p.station }}</span>
+          </div>
+          <h3 style="margin:14px 0 0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:18px;letter-spacing:.14em;color:#0f1d5c">{{ p.name }}</h3>
+          <p style="margin:8px 0 0;font-family:'Noto Sans JP',sans-serif;font-size:12px;letter-spacing:.08em;color:#3a3f5c">{{ p.spec }}</p>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid #e3e5ec;display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <span style="display:flex;align-items:baseline;gap:4px"><span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;color:#3a3f5c">{{ p.prefix }}</span><span style="font-family:'Cormorant Garamond',serif;font-size:32px;line-height:1;color:#0f1d5c">{{ p.priceLabel }}</span><span style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:#0f1d5c">{{ p.unit }}</span></span>
+            <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.08em;color:#5b6180">{{ p.note }}</span>
+          </div>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+  <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:640px;margin:0 auto;text-align:center;padding:48px 24px;background:#f4f4f6">
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.12em;color:#0f1d5c">条件に合う物件が見つかりませんでした。</p>
+      <p style="margin:12px 0 0;font-family:'Noto Sans JP',sans-serif;font-size:13px;line-height:2;color:#3a3f5c">未公開物件もございます。ご希望の条件をお聞かせください。</p>
+    </div>
+  </sc-if>
+</section>
+</main>
+<dc-import name="SiteFooter" cta="{{ true }}" hint-size="100%,720px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const PROPS = [
+  { id: 1, img: 'images/19.jpg', cat: 'residential', type: 'マンション', name: '南青山レジデンス', area: '港区', station: '表参道駅 徒歩5分', spec: '3LDK ／ 82.40㎡ ／ 2026年竣工', price: 12800, isNew: true, ph: '分譲マンション外観' },
+  { id: 2, img: 'images/11.jpg', cat: 'residential', type: '新築戸建て', name: '等々力の家', area: '世田谷区', station: '等々力駅 徒歩8分', spec: '4LDK ／ 105.20㎡ ／ 土地 120.5㎡', price: 9480, isNew: true, ph: '新築戸建て外観' },
+  { id: 3, img: 'images/09.jpg', cat: 'rental', type: '賃貸マンション', name: '代官山テラス', area: '渋谷区', station: '代官山駅 徒歩4分', spec: '1LDK ／ 48.60㎡ ／ 5階', price: 28.5, rent: true, ph: 'リビング・内観' },
+  { id: 4, img: 'images/07.jpg', cat: 'investment', type: '一棟物件', name: '杉並 一棟レジデンス', area: '杉並区', station: '荻窪駅 徒歩9分', spec: '全8戸 ／ RC造 ／ 2012年築', price: 18500, note: '想定利回り 5.8%', ph: '一棟アパート外観' },
+  { id: 5, img: 'images/04.jpg', cat: 'residential', type: '土地', name: '碑文谷 邸宅用地', area: '目黒区', station: '学芸大学駅 徒歩10分', spec: '土地 132.00㎡ ／ 第一種低層', price: 11200, ph: '土地・街並み' },
+  { id: 6, img: 'images/17.jpg', cat: 'rental', type: '賃貸マンション', name: '中目黒ヒルズ', area: '目黒区', station: '中目黒駅 徒歩6分', spec: '2LDK ／ 64.10㎡ ／ 8階', price: 36, rent: true, isNew: true, ph: '眺望・ベッドルーム' },
+  { id: 7, img: 'images/14.jpg', cat: 'investment', type: '投資用マンション', name: '恵比寿 投資用レジデンス', area: '渋谷区', station: '恵比寿駅 徒歩7分', spec: '1K ／ 25.30㎡ ／ 賃貸中', price: 3280, note: '表面利回り 4.6%', ph: '投資用マンション外観' },
+  { id: 8, img: 'images/12.jpg', cat: 'residential', type: '中古戸建て', name: '吉祥寺 緑の邸', area: '武蔵野市', station: '吉祥寺駅 徒歩12分', spec: '3LDK ／ 96.80㎡ ／ 2015年築', price: 7680, ph: '中古戸建て・庭' },
+  { id: 9, img: 'images/20.jpg', cat: 'rental', type: '店舗・オフィス', name: '表参道 路面店舗', area: '港区', station: '表参道駅 徒歩2分', spec: '店舗 38.00㎡ ／ 1階路面', price: 55, rent: true, ph: '路面店舗・ファサード' },
+];
+const CATS = [['all', 'すべて'], ['residential', '住まい'], ['rental', '賃貸'], ['investment', '投資']];
+
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    let cat = 'all';
+    try { const c = new URLSearchParams(window.location.search).get('cat'); if (CATS.some(x => x[0] === c)) cat = c; } catch (e) {}
+    this.state = { cat, area: 'すべてのエリア', sort: 'new' };
+  }
+  renderVals() {
+    const { cat, area, sort } = this.state;
+    const areas = ['すべてのエリア', ...Array.from(new Set(PROPS.map(p => p.area)))];
+    let list = PROPS.filter(p => (cat === 'all' || p.cat === cat) && (area === 'すべてのエリア' || p.area === area));
+    const val = p => p.rent ? p.price * 200 : p.price;
+    if (sort === 'low') list = [...list].sort((a, b) => val(a) - val(b));
+    if (sort === 'high') list = [...list].sort((a, b) => val(b) - val(a));
+    return {
+      tabs: CATS.map(([k, l]) => ({
+        label: l, active: k === cat,
+        count: k === 'all' ? PROPS.length : PROPS.filter(p => p.cat === k).length,
+        bg: k === cat ? '#0f1d5c' : '#fff', fg: k === cat ? '#fff' : '#0f1d5c',
+        onClick: () => this.setState({ cat: k }),
+      })),
+      areas, area, sort,
+      onArea: e => this.setState({ area: e.target.value }),
+      onSort: e => this.setState({ sort: e.target.value }),
+      list: list.map(p => ({
+        ...p, slot: 'prop-card-' + p.id,
+        prefix: p.rent ? '月額' : '',
+        priceLabel: p.rent ? String(p.price) : p.price.toLocaleString('ja-JP'),
+        unit: '万円', note: p.note || '', isNew: !!p.isNew,
+      })),
+      resultCount: list.length, empty: list.length === 0,
+    };
+  }
+}
+</script>
+</body>
+</html>

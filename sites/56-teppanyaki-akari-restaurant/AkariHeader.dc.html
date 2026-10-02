@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="position:absolute;top:0;left:0;right:0;height:0;z-index:50">
+  <a href="Akari%20Top.dc.html" aria-label="鉄板焼 燈 トップへ" style="position:absolute;top:28px;left:clamp(18px,3vw,36px);display:flex;gap:6px;align-items:flex-start;color:#e4dccf">
+    <span style="writing-mode:vertical-rl;font-size:10px;letter-spacing:.3em;color:#b0a592;font-family:'Cormorant Garamond',serif">TEPPANYAKI</span>
+    <span style="writing-mode:vertical-rl;font-size:26px;letter-spacing:.35em;font-weight:500;font-family:'Shippori Mincho',serif">鉄板焼 燈</span>
+  </a>
+</div>
+<div style="position:fixed;top:clamp(14px,2.4vw,26px);right:clamp(14px,2.4vw,30px);z-index:60;display:flex;gap:8px;align-items:stretch">
+  <a href="Akari%20Reservation.dc.html" data-magnet="1" style="display:flex;align-items:center;height:44px;padding:0 18px;background:#b89a5e;color:#15120f;font-size:13px;letter-spacing:.15em;font-family:'Shippori Mincho',serif;transition:background .3s" style-hover="background:#d2b67e;color:#15120f">WEB予約</a>
+  <button onClick="{{ toggleNav }}" aria-label="{{ navLabel }}" aria-expanded="{{ navOpen }}" style="width:44px;height:44px;background:#15120f;border:1px solid rgba(184,154,94,.55);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;cursor:pointer;padding:0">
+    <span style="display:block;width:18px;height:1px;background:#cdb27a;transition:transform .4s;transform:{{ bar1 }}"></span>
+    <span style="display:block;width:18px;height:1px;background:#cdb27a;transition:opacity .3s;opacity:{{ bar2 }}"></span>
+    <span style="display:block;width:18px;height:1px;background:#cdb27a;transition:transform .4s;transform:{{ bar3 }}"></span>
+  </button>
+</div>
+<sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+  <nav aria-label="メインナビゲーション" style="position:fixed;inset:0;z-index:55;background:rgba(15,12,10,.98);display:flex;flex-direction:column;padding:90px clamp(28px,10vw,160px);overflow-y:auto;overscroll-behavior:contain">
+    <div style="margin:auto 0;display:flex;flex-direction:column;gap:clamp(14px,2.6vh,26px)">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px;color:{{ n.color }}" style-hover="color:#cdb27a">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#b89a5e;width:28px">{{ n.num }}</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.6vw,56px);line-height:1.1;letter-spacing:.02em">{{ n.en }}</span>
+          <span style="font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.24em;color:#b0a592">{{ n.ja }}</span>
+        </a>
+      </sc-for>
+      <a href="tel:0368040000" style="margin-top:20px;font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.16em">TEL 03-6804-0000</a>
+    </div>
+  </nav>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;concept&quot;,&quot;menu&quot;,&quot;course&quot;,&quot;craft&quot;,&quot;reserve&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { navOpen: false };
+  setNav(open) {
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    this.setState({ navOpen: open });
+  }
+  componentDidMount() {
+    this.onKey = (e) => { if (e.key === 'Escape' && this.state.navOpen) this.setNav(false); };
+    this.onShow = (e) => { if (e.persisted) this.setNav(false); };
+    window.addEventListener('keydown', this.onKey);
+    window.addEventListener('pageshow', this.onShow);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('pageshow', this.onShow);
+    document.documentElement.style.overflow = '';
+  }
+  renderVals() {
+    const cur = this.props.current || 'top';
+    const items = [
+      ['top', '00', 'Top', 'トップ', 'Akari%20Top.dc.html'],
+      ['concept', '01', 'Concept', 'コンセプト', 'Akari%20Concept.dc.html'],
+      ['menu', '02', 'Menu', 'お料理', 'Akari%20Menu.dc.html'],
+      ['course', '03', 'Course', 'コース', 'Akari%20Course.dc.html'],
+      ['craft', '04', 'Craftsmanship', '職人の技', 'Akari%20Craft.dc.html'],
+      ['reserve', '05', 'Reservation', 'ご予約・アクセス', 'Akari%20Reservation.dc.html']
+    ];
+    const open = this.state.navOpen;
+    return {
+      navOpen: open,
+      navLabel: open ? 'メニューを閉じる' : 'メニューを開く',
+      bar1: open ? 'translateY(6px) rotate(45deg)' : 'none',
+      bar2: open ? 0 : 1,
+      bar3: open ? 'translateY(-6px) rotate(-45deg)' : 'none',
+      toggleNav: () => this.setNav(!open),
+      nav: items.map(([k, num, en, ja, href]) => ({ num, en, ja, href, color: k === cur ? '#cdb27a' : '#e4dccf' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

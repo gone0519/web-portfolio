@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&amp;family=Jost:wght@200;300;400&amp;display=swap" rel="stylesheet" />
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#ffffff;color:#1c1c1c;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1c1c1c;text-decoration:none;transition:color .35s ease,background .35s ease,border-color .35s ease}
+a:hover{color:#5c7b68}
+input,button{font-family:"Zen Kaku Gothic New",sans-serif}
+</style>
+</helmet>
+<dc-import name="SiteHeader" hint-size="100%,72px"></dc-import>
+
+<main style="font-family:'Zen Kaku Gothic New',sans-serif;color:#1c1c1c">
+
+  <section style="max-width:1080px;margin:0 auto;padding:96px 40px 0">
+    <p style="font-family:Jost,sans-serif;font-size:10px;letter-spacing:.32em;color:#6f6d68;margin:0 0 22px">INSIGHTS</p>
+    <h1 style="font-size:30px;font-weight:500;line-height:1.9;letter-spacing:.14em;margin:0 0 32px">インサイト</h1>
+    <p style="font-size:13px;line-height:2.4;color:#5d5d58;max-width:660px;margin:0;text-wrap:pretty">実際の支援で検証した内容だけを記事にしています。一般論ではなく、数値と手順が分かる形でまとめています。</p>
+  </section>
+
+  <section style="max-width:1080px;margin:0 auto;padding:72px 40px 0">
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;border-bottom:1px solid #edebe7;padding-bottom:24px">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11.5px;letter-spacing:.12em">
+        <span style="font-family:Jost,sans-serif;font-size:9.5px;letter-spacing:.24em;color:#73716b;margin-right:10px">CATEGORY</span>
+        <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="5">
+          <button onClick="{{ cat.select }}" style="{{ cat.style }}">{{ cat.label }}</button>
+        </sc-for>
+      </div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:0;border-bottom:1px solid #d9d5cf;min-width:240px">
+        <input value="{{ query }}" onChange="{{ onSearch }}" placeholder="記事を検索" style="border:0;outline:none;padding:10px 4px;font-size:12px;letter-spacing:.08em;background:transparent;flex:1" />
+        <span style="font-family:Jost,sans-serif;font-size:11px;color:#73716b">Q</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1080px;margin:0 auto;padding:80px 40px 0">
+    <a href="Insights.dc.html" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:56px;align-items:center">
+      <div style="height:420px;background:repeating-linear-gradient(135deg,#f2f0ec 0 12px,#ebe9e4 12px 24px);display:flex;align-items:flex-end;padding:20px">
+        <span style="font-family:Jost,sans-serif;font-size:10px;letter-spacing:.2em;color:#6f6d68">特集記事のアイキャッチ画像</span>
+      </div>
+      <div>
+        <p style="font-family:Jost,sans-serif;font-size:9.5px;letter-spacing:.24em;color:#73716b;margin:0 0 16px">FEATURED　/　2026.09.10</p>
+        <h2 style="font-size:21px;font-weight:500;line-height:2;letter-spacing:.1em;margin:0 0 22px">広告費を20%削減しながら商談を増やした、3つの判断基準</h2>
+        <p style="font-size:12.5px;line-height:2.3;color:#5d5d58;margin:0 0 28px;text-wrap:pretty">支援した24社のデータを再分析し、予算を削っても成果が落ちなかったアカウントの共通点を整理しました。判断に使った指標と停止の手順まで公開します。</p>
+        <span style="display:inline-flex;align-items:center;gap:14px;font-size:12px;letter-spacing:.18em;padding-bottom:10px;border-bottom:1px solid #1c1c1c">記事を読む<span style="font-family:Jost,sans-serif;color:#6f6d68">→</span></span>
+      </div>
+    </a>
+  </section>
+
+  <section style="max-width:1080px;margin:0 auto;padding:120px 40px 0">
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 40px">
+      <sc-for list="{{ posts }}" as="p" hint-placeholder-count="9">
+        <a href="Insights.dc.html" style="display:block">
+          <div style="height:200px;background:repeating-linear-gradient(135deg,#f3f1ed 0 10px,#eceae5 10px 20px);display:flex;align-items:flex-end;padding:14px;margin-bottom:20px">
+            <span style="font-family:Jost,sans-serif;font-size:9.5px;letter-spacing:.2em;color:#6f6d68">{{ p.imageNote }}</span>
+          </div>
+          <p style="font-family:Jost,sans-serif;font-size:9.5px;letter-spacing:.22em;color:#73716b;margin:0 0 12px">{{ p.meta }}</p>
+          <h3 style="font-size:14px;font-weight:500;line-height:1.95;letter-spacing:.08em;margin:0 0 12px">{{ p.title }}</h3>
+          <p style="font-size:12px;line-height:2.05;color:#6d6d68;margin:0">{{ p.excerpt }}</p>
+        </a>
+      </sc-for>
+    </div>
+    <p style="font-size:12px;color:#6f6d68;margin:56px 0 0">{{ countLabel }}</p>
+  </section>
+
+  <section style="max-width:1080px;margin:0 auto;padding:140px 40px 0">
+    <div style="display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);gap:56px">
+      <div>
+        <p style="font-family:Jost,sans-serif;font-size:10px;letter-spacing:.3em;color:#6f6d68;margin:0 0 18px">NEWS</p>
+        <h2 style="font-size:20px;font-weight:500;line-height:2.2;letter-spacing:.1em;margin:0">お知らせ</h2>
+      </div>
+      <div>
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:32px;padding:22px 0;border-top:1px solid #edebe7;align-items:baseline">
+          <span style="font-family:Jost,sans-serif;font-size:12px;color:#6f6d68">2026.09.10</span>
+          <span style="font-size:13px;line-height:1.9">2026年下半期の広告市場レポートを公開しました</span>
+        </div>
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:32px;padding:22px 0;border-top:1px solid #edebe7;align-items:baseline">
+          <span style="font-family:Jost,sans-serif;font-size:12px;color:#6f6d68">2026.08.22</span>
+          <span style="font-size:13px;line-height:1.9">名古屋オフィスを開設しました</span>
+        </div>
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:32px;padding:22px 0;border-top:1px solid #edebe7;border-bottom:1px solid #edebe7;align-items:baseline">
+          <span style="font-family:Jost,sans-serif;font-size:12px;color:#6f6d68">2026.07.04</span>
+          <span style="font-size:13px;line-height:1.9">BtoBマーケティング担当者向けの無料セミナーを開催します</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#f7f5f2;margin-top:140px;padding:110px 40px">
+    <div style="max-width:720px;margin:0 auto;text-align:center">
+      <p style="font-family:Jost,sans-serif;font-size:10px;letter-spacing:.3em;color:#6f6d68;margin:0 0 20px">NEWSLETTER</p>
+      <h2 style="font-size:20px;font-weight:500;line-height:2.1;letter-spacing:.12em;margin:0 0 20px">月1回、検証済みの事例だけをお送りします。</h2>
+      <p style="font-size:12.5px;line-height:2.2;color:#6d6d68;margin:0 0 40px">営業のご連絡はいたしません。配信解除はいつでも可能です。</p>
+      <div style="display:flex;gap:0;max-width:480px;margin:0 auto">
+        <input placeholder="メールアドレス" style="flex:1;border:1px solid #d9d5cf;border-right:0;background:#fff;padding:16px 18px;font-size:12.5px;outline:none" />
+        <button style="background:#1c1c1c;color:#fff;border:0;padding:16px 32px;font-size:12px;letter-spacing:.16em;cursor:pointer">登録する</button>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1320px;margin:140px auto 0;padding:0 40px">
+    <div style="background:#1c1c1c;color:#fff;padding:100px 40px;text-align:center">
+      <h2 style="font-size:24px;font-weight:500;line-height:2;letter-spacing:.14em;margin:0 0 24px;color:#fff">記事の内容を、<br />自社の数値に当てて検証しませんか。</h2>
+      <p style="font-size:12.5px;line-height:2.2;color:#c9c9c3;margin:0 0 44px">現状分析は無料です。管理画面の共有だけで実施できます。</p>
+      <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:16px;padding:20px 52px;background:#fff;color:#1c1c1c;font-size:12.5px;letter-spacing:.2em" style-hover="background:#5c7b68;color:#fff">無料相談を申し込む<span style="font-family:Jost,sans-serif">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { filter: "すべて", query: "" };
+
+  allPosts() {
+    return [
+      { cat: "広告", meta: "広告　/　2026.09.02", imageNote: "記事画像 01", title: "入札戦略を切り替える前に確認すべき5つのデータ", excerpt: "自動入札で成果が落ちる原因は、ほぼ計測側にあります。切り替え前の確認手順をまとめました。" },
+      { cat: "SEO", meta: "SEO　/　2026.08.26", imageNote: "記事画像 02", title: "検索順位が上がっても売上が増えない構造的な理由", excerpt: "検索意図と提供価値のずれを、実際のクエリ分析で特定する方法を解説します。" },
+      { cat: "分析", meta: "分析　/　2026.08.12", imageNote: "記事画像 03", title: "受注データを広告に連携するまでの実装手順", excerpt: "CRMと広告媒体をつなぐ際に発生しやすい欠損と、その回避策を整理しました。" },
+      { cat: "トレンド", meta: "トレンド　/　2026.07.29", imageNote: "記事画像 04", title: "生成AI検索が流入に与えた実測値（24社分析）", excerpt: "支援先24社のデータから、参照流入の変化と対応すべき施策を検証しました。" },
+      { cat: "SEO", meta: "SEO　/　2026.07.15", imageNote: "記事画像 05", title: "コンテンツを増やしても効かないときの判断基準", excerpt: "本数ではなく網羅性で評価する方法と、既存記事の統合判断の手順です。" },
+      { cat: "広告", meta: "広告　/　2026.06.30", imageNote: "記事画像 06", title: "LPのA/Bテストで有意差が出ない3つの原因", excerpt: "検証設計の段階で結果が決まっています。サンプル数の目安も掲載しました。" },
+      { cat: "分析", meta: "分析　/　2026.06.18", imageNote: "記事画像 07", title: "ダッシュボードに載せるべき指標は7つで足りる", excerpt: "意思決定に使われなかった指標を削った結果、定例の時間が半分になりました。" },
+      { cat: "トレンド", meta: "トレンド　/　2026.06.04", imageNote: "記事画像 08", title: "プライバシー規制下での計測設計の現在地", excerpt: "同意管理と精度確保の両立について、実装済みの構成例を紹介します。" },
+      { cat: "組織", meta: "組織　/　2026.05.20", imageNote: "記事画像 09", title: "マーケティングを内製化した企業が最初にやったこと", excerpt: "移管が成功した5社に共通していた準備と、担当者の要件を整理しました。" }
+    ];
+  }
+
+  renderVals() {
+    const cats = ["すべて", "広告", "SEO", "分析", "トレンド", "組織"];
+    const active = this.state.filter;
+    const q = this.state.query.trim();
+    const base = "padding:9px 18px;font-size:11.5px;letter-spacing:.14em;cursor:pointer;border:1px solid;transition:all .3s ease;";
+    let posts = active === "すべて" ? this.allPosts() : this.allPosts().filter(p => p.cat === active);
+    if (q) posts = posts.filter(p => (p.title + p.excerpt).includes(q));
+    return {
+      query: this.state.query,
+      onSearch: e => this.setState({ query: e.target.value }),
+      countLabel: posts.length + "件の記事を表示しています",
+      posts,
+      categories: cats.map(label => ({
+        label,
+        select: () => this.setState({ filter: label }),
+        style: base + (label === active
+          ? "background:#1c1c1c;color:#fff;border-color:#1c1c1c;"
+          : "background:#fff;color:#5d5d58;border-color:#e4e2de;")
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#17130f;color:#ece4d6;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#c9a96e;text-decoration:none}
+a:hover{color:#e0c48f}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+</style>
+</helmet>
+<div style="font-family:'Shippori Mincho',serif;background-color:#17130f;background-image:repeating-linear-gradient(90deg,rgba(255,240,220,.018) 0 1px,transparent 1px 7px);color:#ece4d6;min-height:100vh;overflow-x:clip">
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(20px,4vw,48px);background:{{ headerBg }};border-bottom:1px solid {{ headerBorder }};transition:background .5s,border-color .5s;backdrop-filter:{{ headerBlur }}">
+  <a href="#home" onClick="{{ closeMenu }}" style="display:flex;align-items:center;gap:14px;color:#ece4d6">
+    <span style="font-size:28px;font-weight:600;letter-spacing:.14em;line-height:1">灯火</span>
+    <span style="display:flex;flex-direction:column;gap:4px;border-left:1px solid rgba(201,169,110,.5);padding-left:14px">
+      <span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">炭火焼鳥</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.32em;color:#b3a794">TOMOSHIBI</span>
+    </span>
+  </a>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:clamp(20px,2.6vw,40px)">
+      <a href="#home" style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#ece4d6" style-hover="color:#c9a96e">HOME</a>
+      <a href="#concept" style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#ece4d6" style-hover="color:#c9a96e">CONCEPT</a>
+      <a href="#menu" style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#ece4d6" style-hover="color:#c9a96e">MENU</a>
+      <a href="#experience" style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#ece4d6" style-hover="color:#c9a96e">EXPERIENCE</a>
+      <a href="#access" style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#ece4d6" style-hover="color:#c9a96e">ACCESS</a>
+      <a href="#access" style="background:#c9a96e;color:#17130f;font-size:13px;letter-spacing:.22em;padding:12px 26px;transition:background .3s" style-hover="background:#e0c48f;color:#17130f">予約する</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="#access" onClick="{{ closeMenu }}" style="background:#c9a96e;color:#17130f;font-size:12px;letter-spacing:.18em;padding:0 16px;height:44px;display:flex;align-items:center">予約する</a>
+      <button onClick="{{ toggleMenu }}" aria-label="メニューを開閉" aria-expanded="{{ menuOpen }}" style="width:44px;height:44px;border:1px solid #c9a96e;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;padding:0">
+        <span style="display:block;width:18px;height:1px;background:#c9a96e;transition:transform .4s;transform:{{ bar1 }}"></span>
+        <span style="display:block;width:18px;height:1px;background:#c9a96e;transition:opacity .3s;opacity:{{ bar2 }}"></span>
+        <span style="display:block;width:18px;height:1px;background:#c9a96e;transition:transform .4s;transform:{{ bar3 }}"></span>
+      </button>
+    </div>
+  </sc-if>
+</header>
+
+<sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+  <nav aria-label="モバイルナビゲーション" style="position:fixed;inset:0;z-index:40;background:rgba(20,16,12,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;padding:100px 24px 60px">
+    <a href="#home" onClick="{{ closeMenu }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#ece4d6"><span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.26em">HOME</span><span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">ホーム</span></a>
+    <a href="#concept" onClick="{{ closeMenu }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#ece4d6"><span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.26em">CONCEPT</span><span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">こだわり</span></a>
+    <a href="#menu" onClick="{{ closeMenu }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#ece4d6"><span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.26em">MENU</span><span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">お品書き</span></a>
+    <a href="#experience" onClick="{{ closeMenu }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#ece4d6"><span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.26em">EXPERIENCE</span><span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">空間</span></a>
+    <a href="#access" onClick="{{ closeMenu }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#ece4d6"><span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.26em">ACCESS</span><span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">ご予約・アクセス</span></a>
+    <a href="tel:0360000000" style="margin-top:16px;border:1px solid #c9a96e;color:#c9a96e;padding:14px 32px;font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.14em">TEL 03-6000-0000</a>
+  </nav>
+</sc-if>
+
+<main>
+<section id="home" data-screen-label="01 Hero" style="position:relative;height:100svh;min-height:640px;overflow:hidden;display:flex;align-items:center;justify-content:center">
+  <div data-hero-zoom="" style="position:absolute;inset:0;transform:scale(1.08);transition:transform 9s cubic-bezier(.2,.6,.2,1);background:#120f0c">
+    <image-slot id="hero-main" shape="rect" placeholder="HERO — 炭火の上で焼ける串、立ちのぼる煙（横位置・暗め）"></image-slot>
+  </div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(18,14,11,.55) 0%,rgba(18,14,11,.25) 40%,rgba(18,14,11,.45) 72%,#17130f 100%)"></div>
+  <div data-reveal="" style="position:relative;z-index:2;text-align:center;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:28px;pointer-events:none">
+    <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,2vw,24px);letter-spacing:.14em;color:#c9a96e">Charcoal. Chicken. Craft.</p>
+    <h1 style="margin:0;font-weight:500;font-size:clamp(30px,4.6vw,60px);line-height:1.6;letter-spacing:.16em;text-wrap:balance">炭火で焼き上げる、<br>こだわりの焼き鳥。</h1>
+    <p style="margin:0;font-size:clamp(13px,1.2vw,15px);line-height:2.2;letter-spacing:.14em;color:#d9cfbf">備長炭の火で、一本ずつ。<br>焼きたての香ばしさを、カウンター越しに。</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:12px;pointer-events:auto">
+      <a href="#access" style="background:#c9a96e;color:#17130f;font-size:14px;letter-spacing:.22em;padding:17px 44px;transition:background .3s" style-hover="background:#e0c48f;color:#17130f">ご予約はこちら</a>
+      <a href="#menu" style="border:1px solid rgba(236,228,214,.7);color:#ece4d6;font-size:14px;letter-spacing:.22em;padding:16px 44px;transition:all .3s" style-hover="border-color:#c9a96e;color:#c9a96e">メニューを見る</a>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.34em;color:#b3a794">SCROLL</span>
+    <span style="display:block;width:1px;height:56px;background:rgba(201,169,110,.25);position:relative;overflow:hidden">{{ scrollLine }}</span>
+  </div>
+</section>
+
+<section id="concept" data-screen-label="02 Concept" style="scroll-margin-top:60px;padding:clamp(100px,14vw,180px) clamp(20px,5vw,48px) clamp(90px,12vw,160px);display:flex;flex-direction:column;align-items:center">
+  <div data-reveal="" style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.36em;color:#c9a96e">OUR STORY</span>
+    <h2 style="margin:0;font-weight:500;font-size:clamp(26px,3.4vw,42px);letter-spacing:.14em;line-height:1.7">一本の串に、こだわりを。</h2>
+    <span style="width:1px;height:48px;background:rgba(201,169,110,.5);margin:10px 0"></span>
+  </div>
+  <div data-reveal="" style="max-width:640px;text-align:center;display:flex;flex-direction:column;gap:30px;font-size:clamp(14px,1.2vw,15px);line-height:2.5;letter-spacing:.1em;color:#d9cfbf">
+    <p style="margin:0;text-wrap:pretty">素材の持ち味を大切にし、一本一本丁寧に仕込み、炭火で香ばしく焼き上げる。焼き鳥というシンプルな料理だからこそ、素材・火入れ・塩・タレ、そのすべてにこだわっています。</p>
+    <p style="margin:0;text-wrap:pretty">鶏は、その日の朝に届く銘柄鶏を。<br>串打ちは開店前、職人の手で一本ずつ。</p>
+    <p style="margin:0;text-wrap:pretty">塩は数種をブレンドし、タレは継ぎ足しながら守ってきた自家製。<br>紀州備長炭の火が、皮はぱりっと、身はふっくらと焼き上げます。</p>
+  </div>
+  <div style="width:100%;max-width:1120px;margin-top:clamp(64px,9vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(20px,3vw,40px);align-items:start">
+    <figure data-reveal="" style="margin:0;display:flex;flex-direction:column;gap:14px">
+      <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#120f0c">
+        <image-slot id="concept-hands" shape="rect" placeholder="職人の手元 — 串打ちの様子（縦位置）"></image-slot>
+      </div>
+      <figcaption style="font-size:12px;letter-spacing:.2em;color:#b3a794">仕込み — 毎日、開店前に約六百本</figcaption>
+    </figure>
+    <figure data-reveal="" style="margin:0;display:flex;flex-direction:column;gap:14px;padding-top:{{ offsetTop }}">
+      <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#120f0c">
+        <image-slot id="concept-charcoal" shape="rect" placeholder="紀州備長炭 — 赤く熾った炭のクローズアップ"></image-slot>
+      </div>
+      <figcaption style="font-size:12px;letter-spacing:.2em;color:#b3a794">火床 — 紀州備長炭</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="menu" data-screen-label="03 Menu" style="scroll-margin-top:60px;background:#1c1713;border-top:1px solid rgba(201,169,110,.16);border-bottom:1px solid rgba(201,169,110,.16);padding:clamp(100px,12vw,160px) clamp(20px,5vw,48px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(56px,7vw,96px)">
+    <div data-reveal="" style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.36em;color:#c9a96e">MENU</span>
+      <h2 style="margin:0;font-weight:500;font-size:clamp(26px,3.4vw,42px);letter-spacing:.14em">おすすめメニュー</h2>
+      <p style="margin:0;font-size:13px;letter-spacing:.12em;color:#b3a794;line-height:2">仕入れにより、内容が変わる日がございます。</p>
+    </div>
+
+    <article data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(28px,4vw,64px);align-items:center">
+      <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#120f0c">
+        <div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)">
+          <image-slot id="menu-moriawase" shape="rect" placeholder="炭火焼き鳥盛り合わせ — 五本、黒い器に（真俯瞰 or 斜め45°）"></image-slot>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.32em;color:#c9a96e">SIGNATURE</span>
+        <h3 style="margin:0;font-weight:500;font-size:clamp(24px,2.6vw,34px);letter-spacing:.12em;line-height:1.6">炭火焼き鳥盛り合わせ</h3>
+        <p style="margin:0;font-size:14px;line-height:2.3;letter-spacing:.08em;color:#d9cfbf;text-wrap:pretty">ねぎま、もも、かわ、つくね、せせり。はじめての方にまず召し上がっていただきたい五本を、塩とタレで焼き分けてお出しします。</p>
+        <div style="display:flex;align-items:baseline;gap:14px;border-top:1px solid rgba(201,169,110,.28);padding-top:18px">
+          <span style="font-size:13px;letter-spacing:.14em;color:#b3a794">五本</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:.06em;color:#c9a96e">¥1,650</span>
+        </div>
+      </div>
+    </article>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:clamp(36px,4vw,56px) clamp(20px,2.6vw,36px)">
+      <article data-reveal="" style="display:flex;flex-direction:column;gap:16px">
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#120f0c"><div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)"><image-slot id="menu-tsukimi" shape="rect" placeholder="月見つくね — 卵黄にくぐらせる瞬間"></image-slot></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><h3 style="margin:0;font-weight:500;font-size:19px;letter-spacing:.12em">月見つくね</h3><span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#c9a96e">¥495</span></div>
+        <p style="margin:0;font-size:13px;line-height:2.1;letter-spacing:.06em;color:#b3a794">軟骨入りの粗挽きつくねに、濃厚な卵黄を絡めて。</p>
+      </article>
+      <article data-reveal="" style="display:flex;flex-direction:column;gap:16px">
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#120f0c"><div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)"><image-slot id="menu-negima" shape="rect" placeholder="ねぎま — 焼き台の上、脂が滴る"></image-slot></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><h3 style="margin:0;font-weight:500;font-size:19px;letter-spacing:.12em">ねぎま</h3><span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#c9a96e">¥330</span></div>
+        <p style="margin:0;font-size:13px;line-height:2.1;letter-spacing:.06em;color:#b3a794">もも肉と深谷ねぎを交互に。塩でも、タレでも。</p>
+      </article>
+      <article data-reveal="" style="display:flex;flex-direction:column;gap:16px">
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#120f0c"><div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)"><image-slot id="menu-kawa" shape="rect" placeholder="かわ — タレの照り、クローズアップ"></image-slot></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><h3 style="margin:0;font-weight:500;font-size:19px;letter-spacing:.12em">かわ</h3><span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#c9a96e">¥275</span></div>
+        <p style="margin:0;font-size:13px;line-height:2.1;letter-spacing:.06em;color:#b3a794">余分な脂を落としながら、時間をかけてぱりっと。</p>
+      </article>
+      <article data-reveal="" style="display:flex;flex-direction:column;gap:16px">
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#120f0c"><div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)"><image-slot id="menu-seseri" shape="rect" placeholder="せせり — 塩焼き、柚子を添えて"></image-slot></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><h3 style="margin:0;font-weight:500;font-size:19px;letter-spacing:.12em">せせり</h3><span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#c9a96e">¥352</span></div>
+        <p style="margin:0;font-size:13px;line-height:2.1;letter-spacing:.06em;color:#b3a794">首まわりの希少部位。弾力と旨みを、塩で。</p>
+      </article>
+      <article data-reveal="" style="display:flex;flex-direction:column;gap:16px">
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#120f0c"><div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)"><image-slot id="menu-momo" shape="rect" placeholder="鶏もも炭火焼 — 切り口と焼き目"></image-slot></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><h3 style="margin:0;font-weight:500;font-size:19px;letter-spacing:.12em">鶏もも炭火焼</h3><span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#c9a96e">¥1,320</span></div>
+        <p style="margin:0;font-size:13px;line-height:2.1;letter-spacing:.06em;color:#b3a794">大ぶりのもも肉を炭の上で豪快に。柚子胡椒を添えて。</p>
+      </article>
+      <article data-reveal="" style="display:flex;flex-direction:column;gap:16px">
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#120f0c"><div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)"><image-slot id="menu-chazuke" shape="rect" placeholder="鶏出汁茶漬け — 湯気の立つ土鍋"></image-slot></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><h3 style="margin:0;font-weight:500;font-size:19px;letter-spacing:.12em">鶏出汁茶漬け</h3><span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#c9a96e">¥770</span></div>
+        <p style="margin:0;font-size:13px;line-height:2.1;letter-spacing:.06em;color:#b3a794">丸鶏から丁寧に引いた出汁で、〆の一杯を。</p>
+      </article>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(48px,6vw,88px);border-top:1px solid rgba(201,169,110,.28);padding-top:clamp(56px,6vw,80px)">
+      <div data-reveal="" style="display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.32em;color:#c9a96e">YAKITORI</span><h3 style="margin:0;font-weight:500;font-size:20px;letter-spacing:.14em">串焼き</h3><span style="font-size:12px;color:#b3a794;letter-spacing:.1em">一本より</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));column-gap:36px">
+          <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dotted rgba(201,169,110,.3);font-size:15px;letter-spacing:.1em"><span>ねぎま</span><span style="font-family:'Cormorant Garamond',serif;color:#c9a96e">¥330</span></div>
+          <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dotted rgba(201,169,110,.3);font-size:15px;letter-spacing:.1em"><span>もも</span><span style="font-family:'Cormorant Garamond',serif;color:#c9a96e">¥330</span></div>
+          <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dotted rgba(201,169,110,.3);font-size:15px;letter-spacing:.1em"><span>かわ</span><span style="font-family:'Cormorant Garamond',serif;color:#c9a96e">¥275</span></div>
+          <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dotted rgba(201,169,110,.3);font-size:15px;letter-spacing:.1em"><span>つくね</span><span style="font-family:'Cormorant Garamond',serif;color:#c9a96e">¥352</span></div>
+          <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dotted rgba(201,169,110,.3);font-size:15px;letter-spacing:.1em"><span>せせり</span><span style="font-family:'Cormorant Garamond',serif;color:#c9a96e">¥352</span></div>
+          <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dotted rgba(201,169,110,.3);font-size:15px;letter-spacing:.1em"><span>砂肝</span><span style="font-family:'Cormorant Garamond',serif;color:#c9a96e">¥275</span></div>
+          <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dotted rgba(201,169,110,.3);font-size:15px;letter-spacing:.1em"><span>はつ</span><span style="font-family:'Cormorant Garamond',serif;color:#c9a96e">¥308</span></div>
+          <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dotted rgba(201,169,110,.3);font-size:15px;letter-spacing:.1em"><span>レバー</span><span style="font-family:'Cormorant Garamond',serif;color:#c9a96e">¥308</span></div>
+        </div>
+        <p style="margin:0;font-size:12px;color:#b3a794;letter-spacing:.08em;line-height:2">焼きおにぎり ¥440 もご用意しています。価格はすべて税込です。</p>
+      </div>
+      <div data-reveal="" style="display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.32em;color:#c9a96e">COURSE</span><h3 style="margin:0;font-weight:500;font-size:20px;letter-spacing:.14em">コース</h3></div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="border:1px solid rgba(201,169,110,.32);padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:17px;letter-spacing:.12em">焼き鳥コース</span><span style="font-size:12px;color:#b3a794;letter-spacing:.08em">串七本、前菜、〆の茶漬け　全九品</span></div><span style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#c9a96e">¥4,800</span></div>
+          <div style="border:1px solid rgba(201,169,110,.32);padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:17px;letter-spacing:.12em">おまかせコース</span><span style="font-size:12px;color:#b3a794;letter-spacing:.08em">希少部位と季節の一品を含む　全十二品</span></div><span style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#c9a96e">¥7,500</span></div>
+          <div style="border:1px solid rgba(201,169,110,.32);padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:17px;letter-spacing:.12em">飲み放題付きコース</span><span style="font-size:12px;color:#b3a794;letter-spacing:.08em">焼き鳥コースに二時間の飲み放題</span></div><span style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#c9a96e">¥7,000</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" data-screen-label="04 Experience" style="scroll-margin-top:60px">
+  <div style="position:relative;min-height:clamp(560px,86vh,820px);display:flex;align-items:center;overflow:hidden">
+    <div data-parallax="" style="position:absolute;inset:-10% 0;background:#120f0c;will-change:transform">
+      <image-slot id="exp-counter" shape="rect" placeholder="カウンター席 — 焼き台と職人、手前にお客様（夜・暖色）"></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(18,14,11,.9) 0%,rgba(18,14,11,.6) 45%,rgba(18,14,11,.15) 100%)"></div>
+    <div data-reveal="" style="position:relative;z-index:2;padding:80px clamp(24px,8vw,120px);max-width:720px;display:flex;flex-direction:column;gap:24px;pointer-events:none">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.36em;color:#c9a96e">THE EXPERIENCE</span>
+      <h2 style="margin:0;font-weight:500;font-size:clamp(28px,3.8vw,48px);letter-spacing:.14em;line-height:1.6">焼き鳥を楽しむ時間。</h2>
+      <span style="width:64px;height:1px;background:#c9a96e"></span>
+      <p style="margin:0;font-size:clamp(14px,1.2vw,15px);line-height:2.4;letter-spacing:.1em;color:#e2d9ca;text-wrap:pretty">炭のはぜる音、立ちのぼる香り、目の前で焼き上がる一本。<br>カウンターに座れば、そのすべてが料理の一部になります。</p>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(90px,11vw,150px) clamp(20px,5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(56px,6vw,88px) clamp(28px,4vw,64px)">
+    <article data-reveal="" style="display:flex;flex-direction:column;gap:22px">
+      <div style="position:relative;aspect-ratio:3/2;overflow:hidden;background:#120f0c"><div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="exp-fire" shape="rect" placeholder="炭火 — 火床と舞う火の粉"></image-slot></div></div>
+      <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:#c9a96e">01</span><h3 style="margin:0;font-weight:500;font-size:21px;letter-spacing:.14em">炭火へのこだわり</h3></div>
+      <p style="margin:0;font-size:14px;line-height:2.3;letter-spacing:.08em;color:#d9cfbf;text-wrap:pretty">紀州備長炭の火床を、部位ごとに使い分けます。炭の温度を見極め、素材本来の旨みを引き出します。</p>
+    </article>
+    <article data-reveal="" style="display:flex;flex-direction:column;gap:22px;padding-top:{{ offsetTop }}">
+      <div style="position:relative;aspect-ratio:3/2;overflow:hidden;background:#120f0c"><div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="exp-chicken" shape="rect" placeholder="厳選した鶏肉 — 捌きたての銘柄鶏"></image-slot></div></div>
+      <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:#c9a96e">02</span><h3 style="margin:0;font-weight:500;font-size:21px;letter-spacing:.14em">厳選した鶏肉</h3></div>
+      <p style="margin:0;font-size:14px;line-height:2.3;letter-spacing:.08em;color:#d9cfbf;text-wrap:pretty">契約農家から届く鶏を、その日のうちに捌き、串を打ちます。素材の鮮度が、焼き上がりを決めます。</p>
+    </article>
+    <article data-reveal="" style="display:flex;flex-direction:column;gap:22px">
+      <div style="position:relative;aspect-ratio:3/2;overflow:hidden;background:#120f0c"><div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="exp-chef" shape="rect" placeholder="職人の技 — 団扇で火を扇ぐ横顔"></image-slot></div></div>
+      <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:#c9a96e">03</span><h3 style="margin:0;font-weight:500;font-size:21px;letter-spacing:.14em">職人の技</h3></div>
+      <p style="margin:0;font-size:14px;line-height:2.3;letter-spacing:.08em;color:#d9cfbf;text-wrap:pretty">一本ずつ串を打ち、焼き台の前で火と向き合う。焼き加減は、職人の目と手で決めています。</p>
+    </article>
+    <article data-reveal="" style="display:flex;flex-direction:column;gap:22px;padding-top:{{ offsetTop }}">
+      <div style="position:relative;aspect-ratio:3/2;overflow:hidden;background:#120f0c"><div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="exp-interior" shape="rect" placeholder="心地よい空間 — 木のカウンターと個室"></image-slot></div></div>
+      <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:#c9a96e">04</span><h3 style="margin:0;font-weight:500;font-size:21px;letter-spacing:.14em">心地よい空間</h3></div>
+      <p style="margin:0;font-size:14px;line-height:2.3;letter-spacing:.08em;color:#d9cfbf;text-wrap:pretty">木と漆喰のカウンター十席に、個室がひとつ。普段の食事にも、デートや接待、特別な日にも。</p>
+    </article>
+  </div>
+</section>
+
+<section id="access" data-screen-label="05 Reservation" style="scroll-margin-top:60px;border-top:1px solid rgba(201,169,110,.16)">
+  <div data-reveal="" style="padding:clamp(100px,13vw,170px) clamp(20px,5vw,48px) clamp(80px,9vw,120px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.36em;color:#c9a96e">RESERVATION</span>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(40px,6.4vw,88px);line-height:1.1;letter-spacing:.02em;text-wrap:balance">See You at the Counter.</h2>
+    <p style="margin:0;font-size:clamp(20px,2.2vw,26px);letter-spacing:.16em">ご来店をお待ちしております。</p>
+    <p style="margin:0;font-size:14px;line-height:2.3;letter-spacing:.1em;color:#d9cfbf;max-width:520px">焼きたての焼き鳥と、心地よい時間をご用意してお待ちしております。</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:20px">
+      <a href="#access" style="background:#c9a96e;color:#17130f;font-size:15px;letter-spacing:.24em;padding:20px 56px;transition:background .3s" style-hover="background:#e0c48f;color:#17130f">ご予約はこちら</a>
+      <a href="#access" style="border:1px solid #c9a96e;color:#c9a96e;font-size:15px;letter-spacing:.24em;padding:19px 56px;transition:all .3s" style-hover="background:#c9a96e;color:#17130f">お問い合わせ</a>
+    </div>
+    <a href="tel:0360000000" style="display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:10px;color:#ece4d6"><span style="font-size:12px;letter-spacing:.2em;color:#b3a794">お電話でのご予約</span><span style="font-family:'Cormorant Garamond',serif;font-size:30px;letter-spacing:.1em">03-6000-0000</span></a>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px) clamp(90px,10vw,140px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:0;border:1px solid rgba(201,169,110,.2)">
+    <div data-reveal="" style="background:#1f1a15;padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.32em;color:#c9a96e">ACCESS</span><h3 style="margin:0;font-weight:500;font-size:22px;letter-spacing:.14em">炭火焼鳥 灯火</h3></div>
+      <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:18px 28px;font-size:14px;line-height:2;letter-spacing:.08em">
+        <dt style="color:#c9a96e">住所</dt><dd style="margin:0;color:#d9cfbf">〒155-0031<br>東京都世田谷区北沢2-00-0 1F</dd>
+        <dt style="color:#c9a96e">営業時間</dt><dd style="margin:0;color:#d9cfbf">火〜金　17:00 – 24:00（L.O. 23:00）<br>土日祝　16:00 – 23:00（L.O. 22:00）</dd>
+        <dt style="color:#c9a96e">定休日</dt><dd style="margin:0;color:#d9cfbf">月曜日（祝日の場合は翌日）</dd>
+        <dt style="color:#c9a96e">アクセス</dt><dd style="margin:0;color:#d9cfbf">小田急線・京王井の頭線<br>下北沢駅 東口より徒歩4分</dd>
+        <dt style="color:#c9a96e">席数</dt><dd style="margin:0;color:#d9cfbf">カウンター10席・個室1室（〜4名）</dd>
+        <dt style="color:#c9a96e">電話</dt><dd style="margin:0"><a href="tel:0360000000" style="color:#ece4d6">03-6000-0000</a></dd>
+      </dl>
+    </div>
+    <div style="min-height:420px;background:repeating-linear-gradient(135deg,#221c16 0 10px,#1c1712 10px 20px);display:flex;align-items:center;justify-content:center;padding:24px">
+      <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;color:#b3a794;border:1px solid rgba(201,169,110,.3);padding:10px 16px;background:#17130f">MAP — Google Maps 埋め込み</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="border-top:1px solid rgba(201,169,110,.16);padding:56px clamp(20px,5vw,48px) {{ footerPad }};display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><span style="font-size:26px;font-weight:600;letter-spacing:.16em">灯火</span><span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.34em;color:#b3a794">TOMOSHIBI — CHARCOAL YAKITORI</span></div>
+  <nav aria-label="フッターナビゲーション" style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px">
+    <a href="#home" style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;color:#b3a794" style-hover="color:#c9a96e">HOME</a>
+    <a href="#concept" style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;color:#b3a794" style-hover="color:#c9a96e">CONCEPT</a>
+    <a href="#menu" style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;color:#b3a794" style-hover="color:#c9a96e">MENU</a>
+    <a href="#experience" style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;color:#b3a794" style-hover="color:#c9a96e">EXPERIENCE</a>
+    <a href="#access" style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;color:#b3a794" style-hover="color:#c9a96e">ACCESS</a>
+  </nav>
+  <small style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;color:#8f8474">© 2026 TOMOSHIBI</small>
+</footer>
+
+<sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+  <div style="position:fixed;right:24px;bottom:24px;z-index:30;display:flex;gap:8px;opacity:{{ floatOpacity }};transition:opacity .5s;pointer-events:{{ floatEvents }}">
+    <a href="tel:0360000000" style="background:#c9a96e;color:#17130f;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.1em;padding:12px 22px;transition:background .3s" style-hover="background:#e0c48f;color:#17130f">TEL 03-6000-0000</a>
+    <a href="#home" style="border:1px solid #c9a96e;background:rgba(23,19,15,.8);color:#c9a96e;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;padding:12px 18px">TOP</a>
+  </div>
+</sc-if>
+<sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr 1.4fr;border-top:1px solid rgba(201,169,110,.4);transform:{{ barTransform }};transition:transform .5s">
+    <a href="tel:0360000000" style="background:rgba(23,19,15,.96);color:#c9a96e;display:flex;align-items:center;justify-content:center;height:56px;font-size:13px;letter-spacing:.2em">電話する</a>
+    <a href="#access" style="background:#c9a96e;color:#17130f;display:flex;align-items:center;justify-content:center;height:56px;font-size:14px;letter-spacing:.22em">ご予約はこちら</a>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, scrolled: false, past: false, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onScroll = () => {
+      const y = window.scrollY;
+      const scrolled = y > 40, past = y > window.innerHeight * 0.6;
+      if (scrolled !== this.state.scrolled || past !== this.state.past) this.setState({ scrolled, past });
+      if (this.par) {
+        const r = this.par.parentElement.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < window.innerHeight) this.par.style.transform = `translateY(${(r.top + r.height / 2 - window.innerHeight / 2) * -0.08}px)`;
+      }
+    };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.par = document.querySelector('[data-parallax]');
+    const hero = document.querySelector('[data-hero-zoom]');
+    if (hero) requestAnimationFrame(() => requestAnimationFrame(() => { hero.style.transform = 'scale(1)'; }));
+    const show = el => { el.style.opacity = '1'; el.style.transform = 'none'; el.removeAttribute('data-pending'); };
+    this.pending = [];
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.95) return;
+      el.style.opacity = '0'; el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 1.4s cubic-bezier(.2,.7,.2,1), transform 1.4s cubic-bezier(.2,.7,.2,1)';
+      this.pending.push(el);
+    });
+    this.checkReveal = () => {
+      const h = window.innerHeight * 0.92;
+      this.pending = this.pending.filter(el => { if (el.getBoundingClientRect().top < h) { show(el); return false; } return true; });
+    };
+    window.addEventListener('scroll', this.checkReveal, { passive: true });
+    window.addEventListener('resize', this.checkReveal);
+    this.revealTimer = setTimeout(() => { this.pending.forEach(show); this.pending = []; }, 12000);
+    this.onScroll();
+    this.checkReveal();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('scroll', this.checkReveal);
+    window.removeEventListener('resize', this.checkReveal);
+    clearTimeout(this.revealTimer);
+  }
+  renderVals() {
+    const { w, scrolled, past, menuOpen } = this.state;
+    const isMobile = w < 900;
+    const solid = scrolled || (isMobile && menuOpen);
+    return {
+      isMobile, isDesktop: !isMobile,
+      showMobileMenu: isMobile && menuOpen, menuOpen,
+      headerBg: solid ? 'rgba(23,19,15,.92)' : 'transparent',
+      headerBorder: solid ? 'rgba(201,169,110,.18)' : 'transparent',
+      headerBlur: solid ? 'blur(8px)' : 'none',
+      bar1: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none',
+      bar2: menuOpen ? 0 : 1,
+      bar3: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      offsetTop: w >= 900 ? '96px' : '0px',
+      floatOpacity: past ? 1 : 0, floatEvents: past ? 'auto' : 'none',
+      barTransform: past && !menuOpen ? 'none' : 'translateY(100%)',
+      footerPad: isMobile ? '96px' : '56px',
+      scrollLine: React.createElement('span', { style: { position: 'absolute', inset: 0, background: '#c9a96e', animation: 'scrollLine 2.4s cubic-bezier(.6,0,.3,1) infinite' } })
+    };
+  }
+}
+</script>
+</body>
+</html>

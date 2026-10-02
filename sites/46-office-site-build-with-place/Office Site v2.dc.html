@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Zen Maru Gothic',sans-serif;color:#4a5560;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#2a8fc4;text-decoration:none}
+a:hover{color:#f08a1c}
+@keyframes bulbSwing{0%,100%{transform:translateY(-10px) rotate(0)}25%{transform:translateY(-12px) rotate(-8deg)}75%{transform:translateY(-12px) rotate(8deg)}}
+input,textarea,select,button{font-family:inherit}
+html,body{overflow-x:clip}
+img,video{max-width:100%;height:auto}
+@media (max-width:600px){
+  input,textarea,select{font-size:16px!important}
+}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid #e6f2f6">
+  <div style="max-width:1240px;margin:0 auto;padding:12px clamp(16px,4vw,24px);display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <a href="#/" style="display:flex;flex-direction:column;gap:2px;color:#2a8fc4;min-width:0">
+      <span style="font-size:10px;letter-spacing:.12em;color:#7a8a96">人と会社の“はたらく”を支える</span>
+      <span style="font-size:clamp(15px,4.2vw,19px);font-weight:900;letter-spacing:.04em;color:#2a8fc4">あおば社会保険労務士事務所</span>
+    </a>
+    <sc-if value="{{ desktopNav }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:22px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+          <a href="{{ n.href }}" aria-current="{{ n.current }}" style="display:flex;flex-direction:column;align-items:center;gap:2px;color:{{ n.color }};padding-bottom:4px;border-bottom:2px solid {{ n.line }}" style-hover="color:#2a8fc4">
+            <span style="font-family:Montserrat,sans-serif;font-size:9px;font-weight:600;letter-spacing:.14em;color:#4fbcd6">{{ n.en }}</span>
+            <span style="font-size:13px;font-weight:700">{{ n.jp }}</span>
+          </a>
+        </sc-for>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;padding-left:18px;border-left:1px solid #e1eef3">
+          <span style="font-size:10px;color:#f08a1c;font-weight:700">初回相談無料・お気軽にどうぞ</span>
+          <span style="font-family:Montserrat,sans-serif;font-size:20px;font-weight:700;color:#f08a1c;letter-spacing:.02em">03-0000-0000</span>
+          <span style="font-size:10px;color:#7a8a96">受付 平日 9:00–18:00</span>
+        </div>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ mobileNav }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" aria-expanded="{{ menuOpen }}" style="flex:0 0 48px;width:48px;height:48px;border-radius:50%;border:none;background:#4fbcd6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+        <span style="display:block;width:20px;height:2px;background:#fff;border-radius:2px"></span>
+        <span style="display:block;width:20px;height:2px;background:#fff;border-radius:2px"></span>
+        <span style="display:block;width:14px;height:2px;background:#fff;border-radius:2px"></span>
+      </button>
+    </sc-if>
+  </div>
+  <div aria-hidden="true" data-progress style="position:absolute;left:0;bottom:-1px;height:3px;width:0;background:linear-gradient(90deg,#4fbcd6,#f39a1e)"></div>
+  <sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+    <nav style="background:#4fbcd6;padding:12px 24px 24px;display:flex;flex-direction:column">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="display:flex;justify-content:space-between;align-items:center;padding:16px 4px;border-bottom:1px solid rgba(255,255,255,.35);color:#fff;font-weight:700;font-size:16px" style-hover="color:#fff">
+          <span>{{ n.jp }}</span>
+          <span style="font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:.16em">{{ n.en }}</span>
+        </a>
+      </sc-for>
+      <a href="tel:0300000000" style="margin-top:20px;background:#fff;color:#f08a1c;border-radius:999px;padding:14px;text-align:center;font-family:Montserrat,sans-serif;font-weight:700;font-size:20px">03-0000-0000</a>
+    </nav>
+  </sc-if>
+</header>
+
+<main>
+<!-- ================= TOP ================= -->
+<sc-if value="{{ isTop }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="01 Top">
+  <section style="position:relative;overflow:hidden;background:#4fbcd6">
+    <sc-if value="{{ showCircles }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none">
+        <div style="position:absolute;width:520px;height:520px;border-radius:50%;background:rgba(255,255,255,.14);top:-160px;left:-140px"></div>
+        <div style="position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.18);bottom:-90px;left:32%"></div>
+        <div style="position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.2);top:60px;right:4%"></div>
+        <div style="position:absolute;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.28);top:48%;left:44%"></div>
+      </div>
+    </sc-if>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(48px,7vw,90px) clamp(16px,4vw,24px) clamp(90px,9vw,120px);display:flex;flex-wrap:wrap;align-items:center;gap:48px">
+      <div data-reveal style="flex:1 1 min(100%,380px);display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+        <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.24em;color:#fff">LABOR &amp; SOCIAL INSURANCE PARTNER</span>
+        <h1 style="margin:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px">
+          <span style="background:#fff;color:#2a8fc4;font-size:clamp(21px,3.6vw,42px);font-weight:900;line-height:1.3;padding:6px clamp(12px,3vw,18px);letter-spacing:.04em">{{ heroLine1 }}</span>
+          <span style="background:#fff;color:#2a8fc4;font-size:clamp(21px,3.6vw,42px);font-weight:900;line-height:1.3;padding:6px clamp(12px,3vw,18px);letter-spacing:.04em"><span style="color:#f08a1c;border-bottom:3px solid #f08a1c">{{ heroLine2Em }}</span>{{ heroLine2Post }}</span>
+        </h1>
+        <p style="margin:12px 0 0;color:#fff;font-size:15px;line-height:2;font-weight:500;max-width:30em;text-wrap:pretty">労務管理、社会保険の手続き、就業規則や人事制度づくりまで。経営者と従業員、どちらの立場にも寄り添いながら、会社の“はたらく”を一緒に整えていく社会保険労務士事務所です。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:14px">
+          <a href="#/contact" style="display:flex;align-items:center;gap:14px;background:#f08a1c;color:#fff;font-weight:700;font-size:15px;padding:16px 30px;border-radius:999px;box-shadow:0 6px 0 #c96d0c;transition:transform .2s,box-shadow .2s" style-hover="color:#fff;transform:translateY(3px);box-shadow:0 3px 0 #c96d0c">無料相談を予約する <span style="font-family:Montserrat,sans-serif">→</span></a>
+          <a href="#/service" style="display:flex;align-items:center;gap:14px;color:#fff;font-weight:700;font-size:15px;padding:14px 28px;border-radius:999px;border:2px solid #fff;transition:background .2s,color .2s" style-hover="background:#fff;color:#2a8fc4">業務内容を見る</a>
+        </div>
+      </div>
+      <div data-reveal style="flex:1 1 min(100%,420px);display:flex;justify-content:center">
+        <div style="position:relative;width:min(480px,78vw);aspect-ratio:1">
+          <div aria-hidden="true" data-spin style="position:absolute;inset:-28px;border-radius:50%;border:2px dashed rgba(255,255,255,.75)"></div>
+          <div data-breathe style="position:absolute;inset:0;border-radius:50%;border:10px solid #fff;overflow:hidden;background:repeating-linear-gradient(135deg,#e8f6fa 0 10px,#d9f0f6 10px 20px);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(20,90,120,.18)">
+            <img src="images/hero-team.jpg" alt="あおば社会保険労務士事務所のスタッフ" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;object-position:50% 40%">
+          </div>
+          <a href="#/service" style="position:absolute;top:-2%;left:4%;width:24%;aspect-ratio:1;border-radius:50%;background:#f39a1e;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:clamp(11px,1.4vw,14px);line-height:1.35;box-shadow:0 6px 16px rgba(0,0,0,.12);transition:scale .3s cubic-bezier(.3,1.6,.5,1)" style-hover="color:#fff;scale:1.14">労務<br>相談</a>
+          <a href="#/service" style="position:absolute;top:8%;right:-4%;width:22%;aspect-ratio:1;border-radius:50%;background:#2fa15a;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:clamp(11px,1.4vw,14px);line-height:1.35;box-shadow:0 6px 16px rgba(0,0,0,.12);transition:scale .3s cubic-bezier(.3,1.6,.5,1)" style-hover="color:#fff;scale:1.14">社会保険<br>手続き</a>
+          <a href="#/service" style="position:absolute;bottom:4%;right:0;width:24%;aspect-ratio:1;border-radius:50%;background:#e8504a;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:clamp(11px,1.4vw,14px);line-height:1.35;box-shadow:0 6px 16px rgba(0,0,0,.12);transition:scale .3s cubic-bezier(.3,1.6,.5,1)" style-hover="color:#fff;scale:1.14">人事<br>制度</a>
+          <a href="#/service" style="position:absolute;bottom:10%;left:-6%;width:22%;aspect-ratio:1;border-radius:50%;background:#2b86d0;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:clamp(11px,1.4vw,14px);line-height:1.35;box-shadow:0 6px 16px rgba(0,0,0,.12);transition:scale .3s cubic-bezier(.3,1.6,.5,1)" style-hover="color:#fff;scale:1.14">就業<br>規則</a>
+        </div>
+      </div>
+    </div>
+    <div aria-hidden="true" style="position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:96px;height:48px;border-radius:96px 96px 0 0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8px;gap:2px;color:#4fbcd6">
+      <span style="font-family:Montserrat,sans-serif;font-size:9px;font-weight:600;letter-spacing:.2em">SCROLL</span>
+      <span style="width:1px;height:12px;background:#4fbcd6"></span>
+    </div>
+  </section>
+
+  <!-- top: about teaser -->
+  <section style="position:relative;overflow:hidden;background:#fff">
+    <div aria-hidden="true" style="position:absolute;width:300px;height:300px;border-radius:50%;background:#f1f9fb;top:-80px;right:-60px"></div>
+    <div data-reveal style="position:relative;max-width:1100px;margin:0 auto;padding:clamp(64px,8vw,110px) clamp(16px,4vw,24px);display:flex;flex-wrap:wrap;align-items:center;gap:40px 64px">
+      <div style="flex:1 1 min(100%,440px);display:flex;flex-direction:column;gap:18px">
+        <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">ABOUT</span>
+        <h2 style="margin:0;font-size:clamp(22px,2.6vw,30px);font-weight:900;color:#2a8fc4;line-height:1.6">制度の正しさと、<br>現場で続けられること。</h2>
+        <p style="margin:0;font-size:15px;line-height:2.1;color:#3b4a56;font-weight:500;text-wrap:pretty">会社のルールや手続きは、そこで働く人の毎日につながっています。経営者の想いと従業員の声、その両方を聞いたうえで、会社にちょうどいい形を一緒に考えます。</p>
+        <a href="#/about" style="align-self:flex-start;display:flex;align-items:center;gap:18px;border:2px solid #4fbcd6;color:#2a8fc4;font-weight:700;font-size:14px;padding:12px 30px;border-radius:999px;transition:background .2s,color .2s" style-hover="background:#4fbcd6;color:#fff">事務所について <span style="display:block;width:28px;height:1px;background:currentColor"></span></a>
+      </div>
+      <div style="flex:0 1 340px;margin:0 auto;padding-left:14px;display:flex;justify-content:center;align-items:center;gap:0">
+        <sc-for list="{{ valuesShort }}" as="v" hint-placeholder-count="3">
+          <div style="width:clamp(96px,29vw,118px);aspect-ratio:1;margin-left:-14px;border-radius:50%;border:2px solid #4fbcd6;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+            <span style="font-family:Montserrat,sans-serif;font-size:9px;font-weight:600;letter-spacing:.16em;color:#4fbcd6">{{ v.en }}</span>
+            <span style="font-size:clamp(13px,3.6vw,15px);font-weight:900;color:#f08a1c">{{ v.title }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- top: services lamps -->
+  <section style="background:#4fbcd6">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(64px,8vw,100px) clamp(16px,4vw,24px)">
+      <div data-reveal style="display:flex;flex-wrap:wrap;gap:20px 48px;align-items:flex-start">
+        <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:6px">
+          <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.22em;color:#fff">SERVICE</span>
+          <h2 style="margin:0;font-size:clamp(22px,2.4vw,28px);font-weight:900;color:#fff">業務内容</h2>
+        </div>
+        <p style="margin:0;font-size:15px;line-height:2;color:#fff;font-weight:700;flex:2 1 min(100%,440px);text-wrap:pretty">日々の手続きから、制度づくり、職場の相談まで。会社の規模や状況にあわせて、必要な業務だけをお選びいただけます。</p>
+      </div>
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px 28px">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+          <article data-reveal onMouseEnter="{{ s.onEnter }}" onMouseLeave="{{ s.onLeave }}" style="display:flex;flex-direction:column;align-items:center">
+            <div aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;transform-origin:50% 100%;transition:transform .4s cubic-bezier(.3,1.6,.5,1);transform:{{ s.bulbTransform }};animation:{{ s.bulbAnim }}">
+              <div style="width:60px;height:60px;border-radius:50%;transition:box-shadow .35s,filter .35s;filter:{{ s.bulbFilter }};background:radial-gradient(circle at 38% 34%,#fffdf0 0 22%,#ffe98a 60%,#ffd24a 100%);box-shadow:{{ s.bulbGlow }}"></div>
+              <div style="width:26px;height:12px;margin-top:-6px;border-radius:0 0 6px 6px;background:#ffe27a"></div>
+              <div style="width:24px;height:5px;margin-top:2px;border-radius:3px;background:{{ s.color }}"></div>
+              <div style="width:24px;height:5px;margin-top:2px;border-radius:3px;background:{{ s.color }}"></div>
+              <div style="width:12px;height:6px;margin-top:2px;border-radius:0 0 6px 6px;background:#35444f"></div>
+            </div>
+            <div style="position:relative;width:100%;display:flex;justify-content:center">
+              <div style="position:relative;margin-top:14px;width:170px;height:170px;border-radius:50%;background:#fff;border:6px solid {{ s.color }};padding:6px;box-shadow:0 12px 26px rgba(18,90,120,.18);transition:transform .35s" style-hover="transform:translateY(-6px)">
+                <div style="width:100%;height:100%;border-radius:50%;background:repeating-linear-gradient(135deg,#f3fafc 0 8px,#e6f4f8 8px 16px);display:flex;align-items:center;justify-content:center">
+                  <img src="{{ s.img }}" alt="{{ s.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block">
+                </div>
+              </div>
+            </div>
+            <div style="width:100%;margin-top:28px;display:flex;flex-direction:column;gap:12px;flex:1">
+              <span style="font-family:Montserrat,sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;color:#fff">{{ s.en }}</span>
+              <h3 style="margin:0;font-size:18px;font-weight:900;color:#fff">{{ s.title }}</h3>
+              <p style="margin:0;font-size:13.5px;line-height:1.9;color:#fff;font-weight:500;text-wrap:pretty;flex:1">{{ s.body }}</p>
+              <a href="#/service" style="align-self:center;display:flex;align-items:center;gap:14px;border:1.5px solid #fff;color:#fff;font-size:13px;font-weight:700;padding:9px 24px;border-radius:999px;transition:background .2s,color .2s" style-hover="background:#fff;color:#2a8fc4">詳しく見る <span style="display:block;width:22px;height:1px;background:currentColor"></span></a>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- top: reason + price teasers -->
+  <section style="background:#fff">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(64px,8vw,100px) clamp(16px,4vw,24px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px">
+      <a data-reveal href="#/reason" style="display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;padding:clamp(20px,5vw,32px);border-radius:24px;background:#f3fafc;color:#3b4a56;transition:transform .25s,box-shadow .25s" style-hover="color:#3b4a56;transform:translateY(-4px);box-shadow:0 14px 30px rgba(40,120,150,.12)">
+        <div style="flex:0 0 clamp(96px,26vw,130px);aspect-ratio:1;border-radius:50%;border:2px solid #4fbcd6;padding:6px"><div style="width:100%;height:100%;border-radius:50%;background:repeating-linear-gradient(135deg,#eef8fb 0 8px,#e0f2f7 8px 16px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#6d9bab"><img src="images/portrait.jpg" alt="代表 青葉 真理子" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;object-position:62% 30%"></div></div>
+        <div style="flex:1 1 180px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">REASON</span>
+          <span style="font-size:20px;font-weight:900;color:#2a8fc4">選ばれる理由・代表紹介</span>
+          <span style="font-size:13.5px;line-height:1.9">人事の現場を知る社労士が、わかりやすい言葉でご相談をお受けします。</span>
+          <span style="font-size:13px;font-weight:700;color:#f08a1c">詳しく見る →</span>
+        </div>
+      </a>
+      <a data-reveal href="#/price" style="display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;padding:clamp(20px,5vw,32px);border-radius:24px;background:#f3fafc;color:#3b4a56;transition:transform .25s,box-shadow .25s" style-hover="color:#3b4a56;transform:translateY(-4px);box-shadow:0 14px 30px rgba(40,120,150,.12)">
+        <div style="flex:0 0 clamp(96px,26vw,130px);aspect-ratio:1;border-radius:50%;border:2px solid #4fbcd6;padding:6px"><div style="width:100%;height:100%;border-radius:50%;background:repeating-linear-gradient(135deg,#eef8fb 0 8px,#e0f2f7 8px 16px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#6d9bab"><img src="images/price.jpg" alt="社会保険料のイメージ" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block"></div></div>
+        <div style="flex:1 1 180px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">PRICE</span>
+          <span style="font-size:20px;font-weight:900;color:#2a8fc4">料金について</span>
+          <span style="font-size:13.5px;line-height:1.9">顧問契約とスポット対応、ご状況にあわせてお選びいただけます。</span>
+          <span style="font-size:13px;font-weight:700;color:#f08a1c">詳しく見る →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ================= SUB PAGE HEADER ================= -->
+<sc-if value="{{ isSub }}" hint-placeholder-val="{{ false }}">
+  <section style="position:relative;overflow:hidden;background:#4fbcd6">
+    <div aria-hidden="true" style="position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.15);top:-140px;right:8%"></div>
+    <div aria-hidden="true" style="position:absolute;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.2);bottom:-40px;left:12%"></div>
+    <div style="position:relative;max-width:1100px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(16px,4vw,24px) clamp(56px,6vw,84px);display:flex;flex-direction:column;gap:10px;color:#fff">
+      <span style="font-family:Montserrat,sans-serif;font-size:13px;font-weight:600;letter-spacing:.26em">{{ sub.en }}</span>
+      <h1 style="margin:0;font-size:clamp(28px,3.6vw,40px);font-weight:900;letter-spacing:.06em">{{ sub.jp }}</h1>
+      <nav aria-label="パンくず" style="display:flex;gap:10px;font-size:12px;font-weight:700;margin-top:6px">
+        <a href="#/" style="color:#fff" style-hover="color:#fff6c9">トップ</a><span>›</span><span>{{ sub.jp }}</span>
+      </nav>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ================= ABOUT ================= -->
+<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="02 About">
+  <section style="position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;width:260px;height:260px;border-radius:50%;background:#f1f9fb;top:40px;left:-80px"></div>
+    <div style="position:relative;max-width:1100px;margin:0 auto;padding:clamp(64px,8vw,100px) clamp(16px,4vw,24px)">
+      <div data-reveal style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-start">
+        <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:6px">
+          <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">PHILOSOPHY</span>
+          <h2 style="margin:0;font-size:clamp(22px,2.4vw,28px);font-weight:900;color:#2a8fc4;line-height:1.5">わたしたちの<br>考えかた</h2>
+        </div>
+        <div style="flex:2 1 min(100%,440px);display:flex;flex-direction:column;gap:18px;font-size:15px;line-height:2.1;color:#3b4a56;font-weight:500">
+          <p style="margin:0;text-wrap:pretty">会社のルールや手続きは、そこで働く人の毎日につながっています。私たちは、制度の正しさだけでなく「現場で無理なく続けられるか」を大切にしてきました。</p>
+          <p style="margin:0;text-wrap:pretty">経営者の想いと従業員の声、その両方を聞いたうえで、会社にちょうどいい形を一緒に考える。社会保険労務士は、そのための身近な相談相手でありたいと考えています。</p>
+        </div>
+      </div>
+      <div style="margin-top:64px;display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:12px 8px">
+        <sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+          <div data-reveal style="display:flex;align-items:flex-start;gap:8px">
+            <sc-if value="{{ v.notFirst }}" hint-placeholder-val="{{ false }}">
+              <span aria-hidden="true" style="font-family:Montserrat,sans-serif;font-size:34px;font-weight:500;color:#4fbcd6;margin-top:78px;width:40px;text-align:center">×</span>
+            </sc-if>
+            <div style="width:260px;display:flex;flex-direction:column;align-items:center;gap:18px">
+              <div style="width:190px;height:190px;border-radius:50%;border:2px solid #4fbcd6;padding:8px">
+                <div style="width:100%;height:100%;border-radius:50%;background:repeating-linear-gradient(135deg,#eef8fb 0 8px,#e2f3f8 8px 16px);display:flex;align-items:center;justify-content:center">
+                  <img src="{{ v.img }}" alt="{{ v.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block">
+                </div>
+              </div>
+              <h3 style="margin:0;font-size:18px;font-weight:900;color:#f08a1c">{{ v.title }}</h3>
+              <p style="margin:0;font-size:13.5px;line-height:1.95;color:#4a5560;text-wrap:pretty">{{ v.body }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <section style="background:#f3fafc">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(64px,8vw,100px) clamp(16px,4vw,24px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start">
+      <div data-reveal style="display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">OFFICE</span>
+          <h2 style="margin:0;font-size:22px;font-weight:900;color:#2a8fc4">事務所概要</h2>
+        </div>
+        <dl style="margin:0;display:grid;grid-template-columns:max-content 1fr;font-size:14px;line-height:1.8;background:#fff;border-radius:20px;padding:8px 28px">
+          <sc-for list="{{ officeFull }}" as="o" hint-placeholder-count="7">
+            <dt style="padding:14px 24px 14px 0;border-bottom:1px solid #e1eff4;font-weight:700;color:#2a8fc4">{{ o.k }}</dt>
+            <dd style="margin:0;padding:14px 0;border-bottom:1px solid #e1eff4;color:#3b4a56">{{ o.v }}</dd>
+          </sc-for>
+        </dl>
+      </div>
+      <div data-reveal style="display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">ACCESS</span>
+          <h2 style="margin:0;font-size:22px;font-weight:900;color:#2a8fc4">アクセス</h2>
+        </div>
+        <div style="aspect-ratio:16/11;border-radius:20px;background:repeating-linear-gradient(135deg,#e6f4f8 0 10px,#dbeef4 10px 20px);display:flex;align-items:center;justify-content:center;border:1px solid #d3eaf1">
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5a8fa3">map embed</span>
+        </div>
+        <p style="margin:0;font-size:14px;line-height:1.9">〇〇線「〇〇駅」〇番出口より徒歩3分。ビル1階にコンビニがあります。オンラインでのご相談も承っています。</p>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ================= SERVICE ================= -->
+<sc-if value="{{ isService }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="03 Service">
+  <section style="background:#fff">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(56px,7vw,90px) clamp(16px,4vw,24px) clamp(16px,4vw,24px)">
+      <p data-reveal style="margin:0 auto;max-width:44em;text-align:center;font-size:15px;line-height:2.1;color:#3b4a56;font-weight:500;text-wrap:pretty">日々の手続きから、制度づくり、職場の相談まで。必要な業務だけをお選びいただけます。「どこに相談すればいいかわからない」という段階でも、まずはお声がけください。</p>
+      <nav style="margin-top:36px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+          <a href="{{ s.anchor }}" style="display:flex;align-items:center;gap:10px;border:1.5px solid {{ s.color }};color:#3b4a56;font-size:13px;font-weight:700;padding:10px 20px;border-radius:999px;background:#fff" style-hover="color:#3b4a56;background:#f3fafc"><span style="width:10px;height:10px;border-radius:50%;background:{{ s.color }}"></span>{{ s.title }}</a>
+        </sc-for>
+      </nav>
+    </div>
+  </section>
+  <section style="background:#fff">
+    <div style="max-width:1100px;margin:0 auto;padding:40px clamp(16px,4vw,24px) clamp(64px,8vw,100px);display:flex;flex-direction:column;gap:80px">
+      <sc-for list="{{ servicesDetail }}" as="s" hint-placeholder-count="4">
+        <article id="{{ s.id }}" data-reveal style="scroll-margin-top:100px;display:flex;flex-wrap:wrap;align-items:center;gap:40px 64px;flex-direction:{{ s.dir }}">
+          <div style="flex:0 1 300px;margin:0 auto;width:min(300px,76vw);aspect-ratio:1;border-radius:50%;background:#fff;border:8px solid {{ s.color }};padding:10px;box-shadow:0 14px 30px rgba(18,90,120,.12)">
+            <div style="width:100%;height:100%;border-radius:50%;background:repeating-linear-gradient(135deg,#f3fafc 0 10px,#e6f4f8 10px 20px);display:flex;align-items:center;justify-content:center">
+              <img src="{{ s.img }}" alt="{{ s.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block">
+            </div>
+          </div>
+          <div style="flex:1 1 min(100%,420px);display:flex;flex-direction:column;gap:16px">
+            <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.2em;color:{{ s.color }}">{{ s.no }} — {{ s.en }}</span>
+            <h2 style="margin:0;font-size:clamp(22px,2.4vw,28px);font-weight:900;color:#2a8fc4">{{ s.title }}</h2>
+            <p style="margin:0;font-size:15px;line-height:2;color:#3b4a56;text-wrap:pretty">{{ s.long }}</p>
+            <ul style="margin:4px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
+              <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="4">
+                <li style="display:flex;align-items:center;gap:10px;background:#f3fafc;border-radius:12px;padding:12px 16px;font-size:14px;font-weight:700;color:#3b4a56"><span style="flex:0 0 8px;height:8px;border-radius:50%;background:{{ s.color }}"></span>{{ it }}</li>
+              </sc-for>
+            </ul>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+  <section style="background:#4fbcd6">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+      <div data-reveal style="display:flex;flex-direction:column;gap:6px;color:#fff">
+        <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.22em">FLOW</span>
+        <h2 style="margin:0;font-size:clamp(22px,2.4vw,28px);font-weight:900">ご相談の流れ</h2>
+      </div>
+      <ol style="margin:40px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
+        <sc-for list="{{ flow }}" as="f" hint-placeholder-count="4">
+          <li data-reveal style="background:#fff;border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;gap:12px;transition:translate .35s cubic-bezier(.3,1.4,.5,1),box-shadow .35s" style-hover="translate:0 -10px;box-shadow:0 22px 40px rgba(18,90,120,.2)">
+            <span style="width:52px;height:52px;border-radius:50%;background:#f39a1e;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Montserrat,sans-serif;font-weight:700;font-size:16px">{{ f.no }}</span>
+            <h3 style="margin:0;font-size:17px;font-weight:900;color:#2a8fc4">{{ f.title }}</h3>
+            <p style="margin:0;font-size:13.5px;line-height:1.9;text-wrap:pretty">{{ f.body }}</p>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ================= REASON ================= -->
+<sc-if value="{{ isReason }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="04 Reason">
+  <section style="background:#fff">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(64px,8vw,100px) clamp(16px,4vw,24px)">
+      <p data-reveal style="margin:0 auto 56px;max-width:44em;text-align:center;font-size:15px;line-height:2.1;color:#3b4a56;font-weight:500;text-wrap:pretty">「こんなことを聞いてもいいのかな」と迷う段階から、気軽に話せる相手でありたいと考えています。</p>
+      <div style="display:flex;flex-direction:column;gap:72px">
+        <sc-for list="{{ reasonRows }}" as="row" hint-placeholder-count="2">
+          <div data-reveal style="display:flex;flex-wrap:wrap;align-items:center;gap:40px 56px;flex-direction:{{ row.dir }}">
+            <div style="flex:0 1 320px;margin:0 auto">
+              <div style="width:min(320px,76vw);aspect-ratio:1;border-radius:50%;border:2px solid #4fbcd6;padding:12px">
+                <div style="width:100%;height:100%;border-radius:50%;background:repeating-linear-gradient(135deg,#eef8fb 0 10px,#e0f2f7 10px 20px);display:flex;align-items:center;justify-content:center">
+                  <img src="{{ row.img }}" alt="{{ row.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block">
+                </div>
+              </div>
+            </div>
+            <ol style="flex:1 1 min(100%,380px);margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:32px">
+              <sc-for list="{{ row.items }}" as="r" hint-placeholder-count="3">
+                <li style="display:flex;flex-direction:column;gap:10px">
+                  <h3 style="margin:0;display:flex;align-items:baseline;gap:12px;font-size:17px;font-weight:900;color:#2a8fc4;padding-bottom:10px;border-bottom:2px solid #4fbcd6"><span style="font-family:Montserrat,sans-serif;font-size:13px;font-weight:700;color:#f08a1c">{{ r.no }}</span>{{ r.title }}</h3>
+                  <p style="margin:0;font-size:14px;line-height:1.95;color:#4a5560;text-wrap:pretty">{{ r.body }}</p>
+                </li>
+              </sc-for>
+            </ol>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <section style="background:#4fbcd6">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(64px,8vw,100px) clamp(16px,4vw,24px)">
+      <div data-reveal style="display:flex;flex-direction:column;gap:6px;color:#fff;margin-bottom:40px">
+        <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.22em">CONSULTANT</span>
+        <h2 style="margin:0;font-size:clamp(22px,2.4vw,28px);font-weight:900">代表紹介</h2>
+      </div>
+      <div data-reveal style="background:#fff;border-radius:24px;padding:clamp(28px,4vw,48px);display:flex;flex-wrap:wrap;gap:36px 56px;align-items:flex-start">
+        <div style="flex:0 0 auto;margin:0 auto;width:240px;height:240px;border-radius:50%;border:2px solid #4fbcd6;padding:10px">
+          <div style="width:100%;height:100%;border-radius:50%;background:repeating-linear-gradient(135deg,#eef8fb 0 8px,#e0f2f7 8px 16px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5a8fa3"><img src="images/portrait.jpg" alt="代表 青葉 真理子" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;object-position:62% 30%"></div>
+        </div>
+        <div style="flex:1 1 min(100%,400px);display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px">
+            <span style="font-size:13px;font-weight:700;color:#4a5560">代表 特定社会保険労務士</span>
+            <span style="font-size:28px;font-weight:900;letter-spacing:.08em;color:#2a8fc4">青葉 真理子</span>
+            <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;color:#4fbcd6">Mariko Aoba</span>
+          </div>
+          <p style="margin:0;font-size:14.5px;line-height:2;color:#3b4a56;text-wrap:pretty">事業会社の人事部で採用・労務・制度運用を担当したのち、社会保険労務士として独立。会社の内側で働いた経験をもとに、机上の正解ではなく、現場で回るやり方を一緒に考えることを心がけています。</p>
+          <dl style="margin:6px 0 0;display:grid;grid-template-columns:max-content 1fr;font-size:14px;line-height:1.8">
+            <sc-for list="{{ career }}" as="c" hint-placeholder-count="4">
+              <dt style="padding:10px 24px 10px 0;border-bottom:1px solid #e1eff4;font-family:Montserrat,sans-serif;font-weight:700;color:#f08a1c">{{ c.y }}</dt>
+              <dd style="margin:0;padding:10px 0;border-bottom:1px solid #e1eff4">{{ c.t }}</dd>
+            </sc-for>
+          </dl>
+          <ul style="margin:4px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ profileTags }}" as="t" hint-placeholder-count="4">
+              <li style="font-size:12px;font-weight:700;color:#fff;background:#4fbcd6;border-radius:999px;padding:5px 14px">{{ t }}</li>
+            </sc-for>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ================= PRICE ================= -->
+<sc-if value="{{ isPrice }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="05 Price">
+  <section style="background:#fff">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(64px,8vw,100px) clamp(16px,4vw,24px)">
+      <div data-reveal style="display:flex;flex-wrap:wrap;gap:20px 48px;align-items:flex-start">
+        <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:6px">
+          <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">ADVISORY</span>
+          <h2 style="margin:0;font-size:clamp(22px,2.4vw,28px);font-weight:900;color:#2a8fc4">顧問契約</h2>
+        </div>
+        <p style="margin:0;font-size:15px;line-height:2;color:#3b4a56;flex:2 1 min(100%,440px);text-wrap:pretty">継続的な労務相談と各種手続きをまとめてお任せいただくプランです。従業員数と業務範囲にあわせて、お見積りいたします。</p>
+      </div>
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+        <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+          <article data-reveal style="border-radius:24px;border:2px solid {{ p.border }};background:#fff;padding:32px 28px;display:flex;flex-direction:column;gap:14px;position:relative;transition:translate .35s cubic-bezier(.3,1.4,.5,1),box-shadow .35s" style-hover="translate:0 -10px;box-shadow:0 22px 40px rgba(40,120,150,.16)">
+            <span style="align-self:flex-start;font-size:12px;font-weight:700;color:#fff;background:{{ p.color }};border-radius:999px;padding:4px 14px">{{ p.tag }}</span>
+            <h3 style="margin:0;font-size:20px;font-weight:900;color:#2a8fc4">{{ p.name }}</h3>
+            <div style="display:flex;align-items:baseline;gap:4px;color:#3b4a56"><span style="font-size:13px">{{ p.pre }}</span><span style="font-family:Montserrat,sans-serif;font-size:32px;font-weight:700;color:#f08a1c">{{ p.price }}</span><span style="font-size:13px">{{ p.unit }}</span></div>
+            <p style="margin:0;font-size:13.5px;line-height:1.9;text-wrap:pretty">{{ p.body }}</p>
+            <ul style="margin:0;padding:14px 0 0;border-top:1px dashed #cfe6ee;list-style:none;display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ p.items }}" as="it" hint-placeholder-count="3">
+                <li style="display:flex;gap:10px;font-size:13.5px;font-weight:700"><span style="color:{{ p.color }}">●</span>{{ it }}</li>
+              </sc-for>
+            </ul>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <section style="background:#f3fafc">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(64px,8vw,100px) clamp(16px,4vw,24px)">
+      <div data-reveal style="display:flex;flex-direction:column;gap:6px;margin-bottom:32px">
+        <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">SPOT</span>
+        <h2 style="margin:0;font-size:clamp(22px,2.4vw,28px);font-weight:900;color:#2a8fc4">スポット業務</h2>
+      </div>
+      <div data-reveal style="background:#fff;border-radius:24px;padding:8px clamp(20px,3vw,36px)">
+        <sc-for list="{{ spot }}" as="s" hint-placeholder-count="6">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 24px;padding:18px 0;border-bottom:1px solid #e1eff4">
+            <span style="font-size:15px;font-weight:700;color:#3b4a56">{{ s.k }}</span>
+            <span style="font-size:14px;color:#4a5560"><span style="font-family:Montserrat,sans-serif;font-size:18px;font-weight:700;color:#f08a1c">{{ s.v }}</span> 円〜（税込）</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:20px 0 0;font-size:12.5px;line-height:1.9;color:#5f6b75">※ 掲載の金額は目安です。業務内容・従業員数により変動しますので、詳しくはお見積りにてご案内します。</p>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ================= CONTACT ================= -->
+<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="06 Contact">
+  <section style="background:#f3fafc">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(16px,4vw,24px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start">
+      <form data-reveal onSubmit="{{ submit }}" style="background:#fff;border-radius:24px;padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:18px;box-shadow:0 10px 30px rgba(40,120,150,.08)">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">FORM</span>
+          <h2 style="margin:0;font-size:20px;font-weight:900;color:#2a8fc4">ご相談フォーム</h2>
+        </div>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="background:#eaf7fb;border-radius:16px;padding:28px;text-align:center;display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:18px;font-weight:900;color:#2a8fc4">送信ありがとうございました</span>
+            <span style="font-size:14px;line-height:1.9">内容を確認のうえ、2営業日以内に担当よりご連絡いたします。</span>
+            <button type="button" onClick="{{ reset }}" style="align-self:center;margin-top:6px;border:2px solid #4fbcd6;background:#fff;color:#2a8fc4;border-radius:999px;padding:10px 24px;font-weight:700;cursor:pointer">フォームに戻る</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#3b4a56">お名前 <span style="color:#e8504a;font-size:11px">必須</span>
+                <input required name="name" placeholder="山田 太郎" style="height:48px;border:1px solid #cfe6ee;border-radius:10px;padding:0 14px;font-size:15px;background:#fbfeff" style-focus="outline:2px solid #4fbcd6;border-color:#4fbcd6">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#3b4a56">会社名
+                <input name="company" placeholder="株式会社〇〇" style="height:48px;border:1px solid #cfe6ee;border-radius:10px;padding:0 14px;font-size:15px;background:#fbfeff" style-focus="outline:2px solid #4fbcd6;border-color:#4fbcd6">
+              </label>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#3b4a56">メールアドレス <span style="color:#e8504a;font-size:11px">必須</span>
+                <input required type="email" name="email" placeholder="info@example.jp" style="height:48px;border:1px solid #cfe6ee;border-radius:10px;padding:0 14px;font-size:15px;background:#fbfeff" style-focus="outline:2px solid #4fbcd6;border-color:#4fbcd6">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#3b4a56">電話番号
+                <input type="tel" name="tel" placeholder="03-0000-0000" style="height:48px;border:1px solid #cfe6ee;border-radius:10px;padding:0 14px;font-size:15px;background:#fbfeff" style-focus="outline:2px solid #4fbcd6;border-color:#4fbcd6">
+              </label>
+            </div>
+            <fieldset style="border:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px">
+              <legend style="font-size:13px;font-weight:700;color:#3b4a56;margin-bottom:8px">ご相談内容</legend>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ topics }}" as="tp" hint-placeholder-count="5">
+                  <button type="button" onClick="{{ tp.toggle }}" aria-pressed="{{ tp.on }}" style="min-height:40px;border-radius:999px;padding:0 16px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid #4fbcd6;background:{{ tp.bg }};color:{{ tp.fg }};transition:background .2s">{{ tp.label }}</button>
+                </sc-for>
+              </div>
+            </fieldset>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#3b4a56">詳細・ご質問
+              <textarea name="message" rows="5" placeholder="現在のお困りごとや、ご希望の相談方法（来所・オンライン）などをご記入ください。" style="border:1px solid #cfe6ee;border-radius:10px;padding:12px 14px;font-size:15px;line-height:1.8;background:#fbfeff;resize:vertical" style-focus="outline:2px solid #4fbcd6;border-color:#4fbcd6"></textarea>
+            </label>
+            <button type="submit" style="align-self:center;display:flex;align-items:center;gap:14px;border:none;background:#f08a1c;color:#fff;font-weight:700;font-size:15px;padding:16px 44px;border-radius:999px;box-shadow:0 5px 0 #c96d0c;cursor:pointer;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(3px);box-shadow:0 2px 0 #c96d0c">内容を送信する <span style="font-family:Montserrat,sans-serif">→</span></button>
+          </div>
+        </sc-if>
+      </form>
+      <div data-reveal style="display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;color:#4fbcd6">INFORMATION</span>
+          <h2 style="margin:0;font-size:20px;font-weight:900;color:#2a8fc4">お電話・メールでのご相談</h2>
+        </div>
+        <p style="margin:0;font-size:14px;line-height:1.95;text-wrap:pretty">内容がまとまっていなくても大丈夫です。来所・オンラインのどちらでもご相談いただけます。</p>
+        <div style="aspect-ratio:16/10;border-radius:20px;background:repeating-linear-gradient(135deg,#e6f4f8 0 10px,#dbeef4 10px 20px);display:flex;align-items:center;justify-content:center;border:1px solid #d3eaf1">
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5a8fa3">map embed</span>
+        </div>
+        <dl style="margin:0;display:grid;grid-template-columns:max-content 1fr;font-size:14px;line-height:1.8">
+          <sc-for list="{{ office }}" as="o" hint-placeholder-count="5">
+            <dt style="padding:12px 20px 12px 0;border-bottom:1px solid #d9ecf2;font-weight:700;color:#2a8fc4">{{ o.k }}</dt>
+            <dd style="margin:0;padding:12px 0;border-bottom:1px solid #d9ecf2;color:#3b4a56">{{ o.v }}</dd>
+          </sc-for>
+        </dl>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ================= CTA BAND (all pages) ================= -->
+<section style="background:#e9b42c;position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.14);right:-60px;bottom:-110px"></div>
+  <div data-reveal style="position:relative;max-width:1100px;margin:0 auto;padding:clamp(48px,6vw,72px) clamp(16px,4vw,24px);display:flex;flex-wrap:wrap;gap:32px 56px;align-items:center">
+    <div style="flex:1 1 min(100%,420px);display:flex;flex-direction:column;gap:16px;color:#fff">
+      <h2 style="margin:0;font-size:clamp(24px,3vw,34px);font-weight:900;line-height:1.5;letter-spacing:.04em">初回のご相談は無料です。<br>お気軽にご相談ください。</h2>
+      <p style="margin:0;font-size:14.5px;line-height:2;font-weight:700;text-wrap:pretty">「手続きのやり方がわからない」「就業規則を見直したい」など、内容がまとまっていなくても大丈夫です。オンラインでのご相談にも対応しています。</p>
+    </div>
+    <div style="flex:1 1 min(100%,320px);display:flex;flex-direction:column;gap:14px">
+      <a href="#/contact" style="display:flex;align-items:center;gap:16px;background:#fff;border-radius:999px;padding:12px 26px 12px 12px;color:#e0892a;transition:transform .2s" style-hover="color:#e0892a;transform:translateY(-2px)">
+        <span style="width:44px;height:44px;border-radius:50%;background:#f39a1e;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Montserrat,sans-serif;font-weight:700;font-size:13px">@</span>
+        <span style="display:flex;flex-direction:column"><span style="font-size:11px;font-weight:700">フォームでのお問い合わせ（24時間受付）</span><span style="font-size:18px;font-weight:900">ご相談フォームへ</span></span>
+      </a>
+      <a href="tel:0300000000" style="display:flex;align-items:center;gap:16px;background:#fff;border-radius:999px;padding:12px 26px 12px 12px;color:#e0892a;transition:transform .2s" style-hover="color:#e0892a;transform:translateY(-2px)">
+        <span style="width:44px;height:44px;border-radius:50%;background:#f39a1e;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Montserrat,sans-serif;font-weight:700;font-size:13px">TEL</span>
+        <span style="display:flex;flex-direction:column"><span style="font-size:11px;font-weight:700">お電話でのご相談（平日 9:00–18:00）</span><span style="font-family:Montserrat,sans-serif;font-size:22px;font-weight:700">03-0000-0000</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:#4fbcd6;color:#fff">
+  <div style="max-width:1100px;margin:0 auto;padding:48px clamp(16px,4vw,24px) 28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-size:11px;letter-spacing:.12em">人と会社の“はたらく”を支える</span>
+      <span style="font-size:20px;font-weight:900;letter-spacing:.06em">あおば社会保険労務士事務所</span>
+      <span style="font-size:13px;line-height:1.9">〒000-0000 東京都〇〇区〇〇 0-0-0 〇〇ビル 5F<br>TEL 03-0000-0000</span>
+    </div>
+    <nav style="display:grid;grid-template-columns:repeat(2,max-content);gap:10px 36px;align-content:start">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="color:#fff;font-size:13px;font-weight:700" style-hover="color:#fff6c9">― {{ n.jp }}</a>
+      </sc-for>
+    </nav>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,.35);text-align:center;padding:16px;font-family:Montserrat,sans-serif;font-size:11px;letter-spacing:.1em">© 2026 Aoba Social Insurance &amp; Labor Consultant Office</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroCopy&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;一緒に整える&quot;,&quot;人と会社の間に&quot;,&quot;安心して任せる&quot;],&quot;default&quot;:&quot;一緒に整える&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;控えめ&quot;,&quot;標準&quot;,&quot;強め&quot;],&quot;default&quot;:&quot;強め&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showCircles&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false, sent: false, topics: {}, page: this.readPage() };
+  readPage() {
+    const h = (typeof location !== 'undefined' ? location.hash : '').replace(/^#\/?/, '');
+    return ['about', 'service', 'reason', 'price', 'contact'].includes(h) ? h : 'top';
+  }
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onHash = () => {
+      const raw = location.hash.replace(/^#\/?/, '');
+      if (raw.startsWith('svc-')) return;
+      const p = this.readPage();
+      this.setState({ page: p, menuOpen: false });
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('hashchange', this.onHash);
+    this.setupReveal();
+  }
+  componentDidUpdate(pp, ps) {
+    this.setupReveal();
+    if (ps.page !== this.state.page) {
+      const m = document.querySelector('main');
+      m && m.animate && m.animate([{ opacity: 0, transform: 'translateY(40px)' }, { opacity: 1, transform: 'none' }], { duration: 700, easing: 'cubic-bezier(.16,1,.3,1)' });
+    }
+  }
+  motionLevel() { const m = this.props.motion ?? '強め'; return m === '控えめ' ? 0 : m === '標準' ? 0.6 : 1; }
+  setupMotion() {
+    const k = this.motionLevel();
+    if (!k || !Element.prototype.animate) return;
+    const R = Math.random;
+    [...document.querySelectorAll('[aria-hidden="true"], [aria-hidden="true"] > div')]
+      .filter(el => !el.dataset.fl && !el.hasAttribute('data-spin') && el.style.position === 'absolute' && el.style.borderRadius === '50%')
+      .forEach(el => {
+        el.dataset.fl = '1'; el.dataset.par = String((0.08 + R() * 0.18) * k);
+        const dx = (R() * 2 - 1) * 30 * k, dy = (R() * 2 - 1) * 30 * k;
+        el.animate([{ transform: 'translate(0,0) scale(1)' }, { transform: `translate(${dx}px,${dy}px) scale(${1 + 0.08 * k})` }],
+          { duration: 4000 + R() * 4000, direction: 'alternate', iterations: Infinity, easing: 'ease-in-out' });
+      });
+    document.querySelectorAll('[data-spin]:not([data-mo])').forEach(el => {
+      el.dataset.mo = '1';
+      el.animate([{ transform: 'rotate(0)' }, { transform: 'rotate(360deg)' }], { duration: 40000 / k, iterations: Infinity });
+    });
+    document.querySelectorAll('[data-breathe]:not([data-mo])').forEach(el => {
+      el.dataset.mo = '1';
+      el.animate([{ transform: 'scale(1)' }, { transform: `scale(${1 + 0.025 * k})` }], { duration: 3200, direction: 'alternate', iterations: Infinity, easing: 'ease-in-out' });
+    });
+    document.querySelectorAll('a[href="#/service"][style*="position: absolute"]:not([data-mo])').forEach((el, i) => {
+      el.dataset.mo = '1';
+      el.animate([{ transform: 'translateY(0)' }, { transform: `translateY(${-16 * k}px)` }], { duration: 1800 + i * 350, delay: i * 220, direction: 'alternate', iterations: Infinity, easing: 'ease-in-out' });
+      el.animate([{ transform: 'scale(0)', opacity: 0 }, { transform: 'scale(1.15)', opacity: 1, offset: .7 }, { transform: 'scale(1)', opacity: 1 }], { duration: 700, delay: 700 + i * 160, fill: 'backwards', easing: 'ease-out', composite: 'add' });
+    });
+    document.querySelectorAll('h1 > span:not([data-mo])').forEach((el, i) => {
+      el.dataset.mo = '1';
+      el.animate([{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }], { duration: 800, delay: 250 + i * 280, fill: 'backwards', easing: 'cubic-bezier(.7,0,.2,1)' });
+    });
+    document.querySelectorAll('a[href^="tel"] > span:first-child:not([data-mo]), a[href="#/contact"] > span:first-child:not([data-mo])').forEach(el => {
+      if (el.style.borderRadius !== '50%') return;
+      el.dataset.mo = '1';
+      el.animate([{ boxShadow: '0 0 0 0 rgba(243,154,30,.7)' }, { boxShadow: '0 0 0 16px rgba(243,154,30,0)' }], { duration: 1600, iterations: Infinity });
+    });
+    if (!this.onScrollFx) {
+      this.onScrollFx = () => {
+        const y = window.scrollY, vh = window.innerHeight, max = document.documentElement.scrollHeight - vh;
+        const bar = document.querySelector('[data-progress]');
+        if (bar) bar.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+        const hd = document.querySelector('header');
+        if (hd) hd.style.boxShadow = y > 10 ? '0 6px 24px rgba(30,110,140,.12)' : 'none';
+        document.querySelectorAll('[data-fl]').forEach(el => {
+          const p = el.parentElement.getBoundingClientRect();
+          el.style.translate = `0 ${((p.top + p.height / 2) - vh / 2) * -parseFloat(el.dataset.par)}px`;
+        });
+      };
+      window.addEventListener('scroll', this.onScrollFx, { passive: true });
+    }
+    this.onScrollFx();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('hashchange', this.onHash);
+    if (this.check) { window.removeEventListener('scroll', this.check); window.removeEventListener('resize', this.check); }
+  }
+  setupReveal() {
+    const show = el => { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; el.setAttribute('data-shown', '1'); };
+    if (this.props.reveal === false) { document.querySelectorAll('[data-reveal]').forEach(show); return; }
+    if (!this.check) {
+      this.check = () => {
+        const vh = window.innerHeight || 800;
+        document.querySelectorAll('[data-rv]:not([data-shown])').forEach(el => {
+          const r = el.getBoundingClientRect();
+          if (r.top < vh * 0.92 && r.bottom > 0) show(el);
+        });
+      };
+      window.addEventListener('scroll', this.check, { passive: true });
+      window.addEventListener('resize', this.check);
+    }
+    const k = this.motionLevel();
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '1');
+      const sibs = [...el.parentElement.children].filter(c => c.hasAttribute('data-reveal'));
+      const idx = Math.min(sibs.indexOf(el), 5);
+      el.style.opacity = '0';
+      el.style.transform = k ? `translateY(${70 * k}px) scale(${1 - 0.06 * k})` : 'translateY(20px)';
+      if (k) el.style.filter = `blur(${8 * k}px)`;
+      el.style.transition = 'opacity 1s ease, transform 1.2s cubic-bezier(.16,1,.3,1), filter 1s ease';
+      el.style.transitionDelay = (k ? idx * 150 : 0) + 'ms';
+    });
+    this.setupMotion();
+    requestAnimationFrame(() => requestAnimationFrame(this.check));
+    clearTimeout(this.fallback);
+    this.fallback = setTimeout(() => document.querySelectorAll('[data-rv]:not([data-shown])').forEach(show), 2500);
+  }
+  renderVals() {
+    const mobile = this.state.w < 1080;
+    const page = this.state.page;
+    const heroVariants = {
+      '一緒に整える': ['会社の“はたらく”を、', '一緒に', '整えていく。'],
+      '人と会社の間に': ['人と会社のあいだに立つ、', '身近な', '専門家です。'],
+      '安心して任せる': ['労務の悩みを、', '安心して', '任せられる場所。']
+    };
+    const h = heroVariants[this.props.heroCopy] || heroVariants['一緒に整える'];
+    const navDefs = [
+      { key: 'top', en: 'TOP', jp: 'トップ' },
+      { key: 'about', en: 'ABOUT', jp: '事務所について' },
+      { key: 'service', en: 'SERVICE', jp: '業務内容' },
+      { key: 'reason', en: 'REASON', jp: '選ばれる理由' },
+      { key: 'price', en: 'PRICE', jp: '料金' },
+      { key: 'contact', en: 'CONTACT', jp: 'お問い合わせ' }
+    ];
+    const nav = navDefs.map(n => ({ ...n, href: n.key === 'top' ? '#/' : '#/' + n.key, current: n.key === page ? 'page' : undefined,
+      color: n.key === page ? '#2a8fc4' : '#3b4a56', line: n.key === page ? '#4fbcd6' : 'transparent' }));
+    const services = [
+      { id: 'svc-labor', en: 'LABOR & HR', title: '労務相談・就業規則', color: '#2b86d0', img: 'images/service-labor.jpg', body: '日々の労務トラブルの相談から、就業規則や各種規程の作成・見直しまで。法改正にも合わせて整えます。',
+        long: '残業や休暇の扱い、従業員とのトラブルなど、日々の「これで大丈夫？」にお答えします。就業規則は、法令に沿うことはもちろん、実際の運用や社風にあった内容になるよう、ヒアリングを重ねて作成します。',
+        items: ['就業規則の作成・見直し', '賃金規程・育児介護休業規程', '労働時間・休日の管理', '日常の労務相談'] },
+      { id: 'svc-social', en: 'SOCIAL INSURANCE', title: '社会保険の手続き', color: '#2fa15a', img: 'images/service-social.jpg', body: '健康保険・厚生年金の資格取得や喪失、算定基礎届など、従業員に関わる手続きを代行します。',
+        long: '入社・退社にともなう資格取得・喪失の届出から、毎年の算定基礎届、出産・育児に関わる給付の申請まで。電子申請にも対応し、社内のご担当者の負担を減らします。',
+        items: ['資格取得・喪失の届出', '算定基礎届・月額変更届', '出産・育児関連の給付申請', '扶養の追加・変更'] },
+      { id: 'svc-labor-ins', en: 'LABOR INSURANCE', title: '労働保険の手続き', color: '#f39a1e', img: 'images/service-labor-ins.jpg', body: '労災保険・雇用保険の加入手続き、年度更新、労災発生時の申請などをサポートします。',
+        long: '労働保険の成立手続きや毎年の年度更新、雇用保険の各種届出を行います。万一の労災発生時には、必要な手続きと社内での対応を落ち着いてご案内します。',
+        items: ['労働保険の成立手続き', '年度更新', '雇用保険の届出・給付', '労災保険の申請'] },
+      { id: 'svc-consult', en: 'CONSULTING', title: '人事制度・職場づくり', color: '#e8504a', img: 'images/service-consult.jpg', body: '評価・賃金制度の設計、働き方の見直し、会社設立時の労務体制づくりなど、組織の土台を整えます。',
+        long: '評価や賃金のしくみ、働き方のルールなど、会社が成長する段階で必要になる制度づくりを支援します。会社設立時の労務体制の整備や、従業員向けの説明会もお任せください。',
+        items: ['人事評価・賃金制度の設計', '働き方・勤務制度の見直し', '会社設立時の労務体制づくり', 'ハラスメント防止の体制整備'] }
+    ].map((s, i) => {
+      const on = this.state.hoverSvc === i;
+      return { ...s, anchor: '#' + s.id,
+        onEnter: () => this.setState({ hoverSvc: i }),
+        onLeave: () => this.setState(st => st.hoverSvc === i ? { hoverSvc: null } : null),
+        bulbTransform: on ? 'translateY(-10px)' : 'none',
+        bulbAnim: on ? 'bulbSwing 1.6s ease-in-out infinite' : 'none',
+        bulbFilter: on ? 'brightness(1.12) saturate(1.2)' : 'saturate(.55) brightness(.96)',
+        bulbGlow: on ? '0 0 0 10px rgba(255,240,170,.5),0 0 60px 26px rgba(255,236,150,.85)' : '0 0 0 6px rgba(255,240,170,.2),0 0 14px 2px rgba(255,236,150,.3)' };
+    });
+    const topicList = ['労務相談', '社会保険・労働保険の手続き', '就業規則', '人事制度・評価', 'その他'];
+    const subs = {
+      about: { en: 'ABOUT', jp: '事務所について' }, service: { en: 'SERVICE', jp: '業務内容' },
+      reason: { en: 'REASON', jp: '選ばれる理由' }, price: { en: 'PRICE', jp: '料金について' }, contact: { en: 'CONTACT', jp: 'お問い合わせ' }
+    };
+    return {
+      isTop: page === 'top', isSub: page !== 'top', sub: subs[page] || subs.about,
+      isAbout: page === 'about', isService: page === 'service', isReason: page === 'reason', isPrice: page === 'price', isContact: page === 'contact',
+      desktopNav: !mobile, mobileNav: mobile, menuOpen: this.state.menuOpen, menuVisible: mobile && this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      showCircles: this.props.showCircles ?? true,
+      heroLine1: h[0], heroLine2Em: h[1], heroLine2Post: h[2],
+      nav, services,
+      servicesDetail: services.map((s, i) => ({ ...s, no: String(i + 1).padStart(2, '0'), dir: i % 2 ? 'row-reverse' : 'row' })),
+      valuesShort: [{ en: 'PEOPLE', title: '人を見る' }, { en: 'BUSINESS', title: '会社を知る' }, { en: 'PARTNER', title: '伴走する' }],
+      values: [
+        { title: '人を見る', img: 'images/value-people.jpg', body: '制度の前に、そこで働く人がいます。現場の声に耳を傾け、納得して働ける職場づくりを支えます。' },
+        { title: '会社を知る', img: 'images/value-business.jpg', body: '業種や規模、これからの方向性。会社ごとの事情を理解したうえで、無理のない提案を行います。' },
+        { title: '長く伴走する', img: 'images/value-partner.jpg', body: '一度きりの対応で終わらせず、会社の成長や変化にあわせて、継続的にご相談をお受けします。' }
+      ].map((v, i) => ({ ...v, notFirst: i > 0 && this.state.w >= 960 })),
+      flow: [
+        { no: '01', title: 'お問い合わせ', body: 'フォームまたはお電話でご連絡ください。内容がまとまっていなくても構いません。' },
+        { no: '02', title: '無料相談', body: '来所またはオンラインで、現在の状況やお困りごとを伺います。' },
+        { no: '03', title: 'ご提案・お見積り', body: '必要な業務と進め方、費用をわかりやすくご案内します。' },
+        { no: '04', title: 'ご契約・サポート開始', body: 'ご納得いただいたうえで契約し、担当者が継続してサポートします。' }
+      ],
+      reasonRows: [
+        { dir: 'row', img: 'images/reason-meeting.jpg', alt: '相談に応じるスタッフ', items: [
+          { no: '01', title: '人事の現場を知る社労士が担当', body: '事業会社の人事部門での実務経験をもとに、運用しやすさまで考えたご提案を行います。' },
+          { no: '02', title: 'むずかしい言葉を使わずに説明', body: '制度や法律の話も、背景や理由からかみくだいてお伝えします。社内での説明資料づくりもお手伝いします。' },
+          { no: '03', title: '経営者と従業員、双方の視点', body: 'どちらか一方に偏らず、会社が長く健やかに続いていくための落としどころを一緒に探します。' }
+        ] },
+        { dir: 'row-reverse', img: 'images/reason-online.jpg', alt: 'オンラインでの相談', items: [
+          { no: '04', title: 'チャットやオンラインで気軽に相談', body: 'メール・チャット・オンライン面談など、御社の働き方にあわせた連絡方法をお選びいただけます。' },
+          { no: '05', title: '手続きから制度づくりまでワンストップ', body: '日々の手続きと、就業規則や人事制度の相談を同じ窓口で。社内事情を知る担当者が一貫して対応します。' },
+          { no: '06', title: '必要に応じて他士業と連携', body: '税務や登記など専門外のご相談は、提携する税理士・司法書士などと連携して対応します。' }
+        ] }
+      ],
+      career: [
+        { y: '20XX', t: '大学卒業後、メーカーの人事部に入社。採用・労務を担当' },
+        { y: '20XX', t: '社会保険労務士試験に合格' },
+        { y: '20XX', t: 'IT企業にて人事制度の設計・運用に従事' },
+        { y: '20XX', t: 'あおば社会保険労務士事務所を開業' }
+      ],
+      profileTags: ['特定社会保険労務士', '人事部門 実務経験', '中小企業の労務', '人事評価制度'],
+      plans: [
+        { tag: '〜9名', name: 'スモールプラン', price: '22,000', color: '#2fa15a', border: '#d9ecf2', body: '創業期や少人数の会社向け。手続きと日常の相談をまとめてお任せいただけます。', items: ['労務相談（メール・チャット）', '社会保険・労働保険の手続き', '法改正情報のご案内'] },
+        { tag: '10〜29名', name: 'スタンダードプラン', price: '38,500', color: '#f39a1e', border: '#f39a1e', body: '従業員が増えてきた会社向け。定期的な面談で、職場の課題も一緒に整理します。', items: ['スモールプランの内容', '月1回の定例面談', '就業規則の軽微な改定'] },
+        { tag: '30名〜', name: 'プレミアムプラン', price: '要相談', color: '#e8504a', border: '#d9ecf2', body: '人事制度の運用や複数拠点がある会社向け。業務範囲にあわせて個別にお見積りします。', items: ['スタンダードプランの内容', '人事制度の運用サポート', '管理職向け研修'] }
+      ].map(p => p.price === '要相談' ? { ...p, pre: '', unit: '', price: '個別見積り' } : { ...p, pre: '月額', unit: '円〜（税込）' }),
+      spot: [
+        { k: '就業規則の新規作成', v: '220,000' },
+        { k: '就業規則の見直し・改定', v: '110,000' },
+        { k: '社会保険・労働保険の新規適用', v: '55,000' },
+        { k: '算定基礎届・年度更新（単発）', v: '33,000' },
+        { k: '人事評価制度の設計', v: '330,000' },
+        { k: 'スポット相談（1時間）', v: '11,000' }
+      ],
+      topics: topicList.map(label => {
+        const on = !!this.state.topics[label];
+        return { label, on, bg: on ? '#4fbcd6' : '#fff', fg: on ? '#fff' : '#2a8fc4',
+          toggle: () => this.setState(s => ({ topics: { ...s.topics, [label]: !s.topics[label] } })) };
+      }),
+      sent: this.state.sent, notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false, topics: {} }),
+      office: [
+        { k: '所在地', v: '〒000-0000 東京都〇〇区〇〇 0-0-0 〇〇ビル 5F' },
+        { k: 'アクセス', v: '〇〇線「〇〇駅」〇番出口より徒歩3分' },
+        { k: '受付時間', v: '平日 9:00–18:00（土日祝は事前予約制）' },
+        { k: '電話', v: '03-0000-0000' },
+        { k: 'メール', v: 'info@example.jp' }
+      ],
+      officeFull: [
+        { k: '事務所名', v: 'あおば社会保険労務士事務所' },
+        { k: '代表', v: '青葉 真理子（特定社会保険労務士）' },
+        { k: '所在地', v: '〒000-0000 東京都〇〇区〇〇 0-0-0 〇〇ビル 5F' },
+        { k: '電話', v: '03-0000-0000' },
+        { k: 'メール', v: 'info@example.jp' },
+        { k: '受付時間', v: '平日 9:00–18:00（土日祝は事前予約制）' },
+        { k: '登録', v: '〇〇県社会保険労務士会 登録番号 0000000' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

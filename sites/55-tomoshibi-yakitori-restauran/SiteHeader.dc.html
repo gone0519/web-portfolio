@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div data-loader="" aria-hidden="true" style="position:fixed;inset:0;z-index:200;background:#17130f;display:flex;align-items:center;justify-content:center;transition:opacity .9s ease;pointer-events:none;font-family:'Shippori Mincho',serif">
+  <div data-loader-logo="" style="display:flex;flex-direction:column;align-items:center;gap:18px;opacity:0;transform:translateY(12px);transition:opacity 1s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)">
+    <span style="font-size:44px;font-weight:600;letter-spacing:.2em;color:#ece4d6">灯火</span>
+    <span data-loader-line="" style="display:block;width:120px;height:1px;background:#c9a96e;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.7,0,.2,1) .2s"></span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.4em;color:#b3a794">TOMOSHIBI</span>
+  </div>
+</div>
+<header data-site-header="" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(20px,4vw,48px);background:{{ headerBg }};border-bottom:1px solid {{ headerBorder }};transition:background .5s,border-color .5s;backdrop-filter:{{ headerBlur }};font-family:'Shippori Mincho',serif">
+  <span data-progress="" style="position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:#c9a96e;transform-origin:left;transform:scaleX(0);pointer-events:none"></span>
+  <a href="Top.dc.html" style="display:flex;align-items:center;gap:14px;color:#ece4d6;text-decoration:none">
+    <span style="font-size:28px;font-weight:600;letter-spacing:.14em;line-height:1">灯火</span>
+    <sc-if value="{{ showSub }}" hint-placeholder-val="{{ true }}">
+    <span style="display:flex;flex-direction:column;gap:4px;border-left:1px solid rgba(201,169,110,.5);padding-left:14px">
+      <span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">炭火焼鳥</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.32em;color:#b3a794">TOMOSHIBI</span>
+    </span>
+    </sc-if>
+  </a>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:clamp(18px,2.4vw,36px)">
+      <a href="Top.dc.html" style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:{{ c.top }};text-decoration:none" style-hover="color:#c9a96e">HOME</a>
+      <a href="Concept.dc.html" style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:{{ c.concept }};text-decoration:none" style-hover="color:#c9a96e">CONCEPT</a>
+      <a href="Menu.dc.html" style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:{{ c.menu }};text-decoration:none" style-hover="color:#c9a96e">MENU</a>
+      <a href="Course.dc.html" style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:{{ c.course }};text-decoration:none" style-hover="color:#c9a96e">COURSE</a>
+      <a href="Experience.dc.html" style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:{{ c.experience }};text-decoration:none" style-hover="color:#c9a96e">EXPERIENCE</a>
+      <a href="Reservation.dc.html" style="background:#c9a96e;color:#17130f;font-size:13px;letter-spacing:.22em;padding:12px 26px;transition:background .3s;text-decoration:none" style-hover="background:#e0c48f;color:#17130f">予約する</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="Reservation.dc.html" style="background:#c9a96e;color:#17130f;font-size:12px;letter-spacing:.18em;padding:0 16px;height:44px;display:flex;align-items:center;text-decoration:none">予約する</a>
+      <button onClick="{{ toggleMenu }}" aria-label="メニューを開閉" aria-expanded="{{ menuOpen }}" style="width:44px;height:44px;border:1px solid #c9a96e;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;padding:0">
+        <span style="display:block;width:18px;height:1px;background:#c9a96e;transition:transform .4s;transform:{{ bar1 }}"></span>
+        <span style="display:block;width:18px;height:1px;background:#c9a96e;transition:opacity .3s;opacity:{{ bar2 }}"></span>
+        <span style="display:block;width:18px;height:1px;background:#c9a96e;transition:transform .4s;transform:{{ bar3 }}"></span>
+      </button>
+    </div>
+  </sc-if>
+</header>
+<sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+  <nav aria-label="モバイルナビゲーション" style="position:fixed;inset:0;z-index:40;background:rgba(20,16,12,.98);display:flex;flex-direction:column;align-items:center;justify-content:safe center;gap:clamp(14px,3.2vh,26px);padding:100px 24px 60px;overflow-y:auto;overscroll-behavior:contain;font-family:'Shippori Mincho',serif">
+    <a href="Top.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#ece4d6;text-decoration:none"><span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.26em">HOME</span><span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">ホーム</span></a>
+    <a href="Concept.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#ece4d6;text-decoration:none"><span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.26em">CONCEPT</span><span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">こだわり</span></a>
+    <a href="Menu.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#ece4d6;text-decoration:none"><span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.26em">MENU</span><span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">お品書き</span></a>
+    <a href="Course.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#ece4d6;text-decoration:none"><span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.26em">COURSE</span><span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">コース</span></a>
+    <a href="Experience.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#ece4d6;text-decoration:none"><span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.26em">EXPERIENCE</span><span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">空間・お席</span></a>
+    <a href="Reservation.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#ece4d6;text-decoration:none"><span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.26em">RESERVATION</span><span style="font-size:11px;letter-spacing:.3em;color:#c9a96e">ご予約・アクセス</span></a>
+    <a href="tel:0360000000" style="margin-top:12px;border:1px solid #c9a96e;color:#c9a96e;padding:14px 32px;font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.14em;text-decoration:none">TEL 03-6000-0000</a>
+  </nav>
+</sc-if>
+<sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+  <div style="position:fixed;right:24px;bottom:24px;z-index:30;display:flex;gap:8px;opacity:{{ floatOpacity }};transition:opacity .5s;pointer-events:{{ floatEvents }}">
+    <a href="tel:0360000000" style="background:#c9a96e;color:#17130f;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.1em;padding:12px 22px;transition:background .3s;text-decoration:none" style-hover="background:#e0c48f;color:#17130f">TEL 03-6000-0000</a>
+    <button onClick="{{ toTop }}" style="border:1px solid #c9a96e;background:rgba(23,19,15,.8);color:#c9a96e;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;padding:12px 18px;cursor:pointer">TOP</button>
+  </div>
+</sc-if>
+<sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr 1.4fr;border-top:1px solid rgba(201,169,110,.4);transform:{{ barTransform }};transition:transform .5s;font-family:'Shippori Mincho',serif">
+    <a href="tel:0360000000" style="background:rgba(23,19,15,.96);color:#c9a96e;display:flex;align-items:center;justify-content:center;height:56px;font-size:13px;letter-spacing:.2em;text-decoration:none">電話する</a>
+    <a href="Reservation.dc.html" style="background:#c9a96e;color:#17130f;display:flex;align-items:center;justify-content:center;height:56px;font-size:14px;letter-spacing:.22em;text-decoration:none">ご予約はこちら</a>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;concept&quot;,&quot;menu&quot;,&quot;course&quot;,&quot;experience&quot;,&quot;reservation&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: window.innerWidth, scrolled: false, past: false, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onScroll = () => {
+      const y = window.scrollY, scrolled = y > 40, past = y > window.innerHeight * 0.6;
+      if (scrolled !== this.state.scrolled || past !== this.state.past) this.setState({ scrolled, past });
+      const par = document.querySelector('[data-parallax]');
+      if (par) {
+        const r = par.parentElement.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < window.innerHeight) par.style.transform = `translateY(${(r.top + r.height / 2 - window.innerHeight / 2) * -0.08}px)`;
+      }
+      if (this.progress) { const max = document.documentElement.scrollHeight - window.innerHeight; this.progress.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`; }
+      if (this.heroMain && this.hero) {
+        const hh = this.hero.clientHeight;
+        if (y < hh) { this.heroMain.style.transform = `translateY(${y * 0.35}px)`; this.heroMain.style.opacity = String(Math.max(0, 1 - y / (hh * 0.75))); }
+      }
+      this.checkReveal && this.checkReveal();
+    };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    setTimeout(() => this.initFx(), 60);
+  }
+  initFx() {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const ease = 'cubic-bezier(.2,.7,.2,1)', wipe = 'cubic-bezier(.7,0,.2,1)';
+    const raf2 = fn => requestAnimationFrame(() => requestAnimationFrame(fn));
+    // loader / page intro
+    const loader = document.querySelector('[data-loader]');
+    let intro = 0;
+    if (loader) {
+      let first = false;
+      try { first = !sessionStorage.getItem('tmsb-intro'); sessionStorage.setItem('tmsb-intro', '1'); } catch (e) {}
+      if (reduce) loader.style.opacity = '0';
+      else if (first) {
+        const logo = loader.querySelector('[data-loader-logo]'), line = loader.querySelector('[data-loader-line]');
+        raf2(() => { logo.style.opacity = '1'; logo.style.transform = 'none'; line.style.transform = 'scaleX(1)'; });
+        setTimeout(() => { loader.style.opacity = '0'; }, 1600);
+        intro = 1500;
+      } else { setTimeout(() => { loader.style.opacity = '0'; }, 80); intro = 250; }
+      setTimeout(() => { loader.style.opacity = '0'; }, 3000);
+    }
+    this.loader = loader;
+    // page leave transition
+    this.onClick = e => {
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || reduce || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank') return;
+      const href = a.getAttribute('href');
+      if (!href.includes('.dc.html') || !loader) return;
+      e.preventDefault();
+      const logo = loader.querySelector('[data-loader-logo]'); logo.style.opacity = '0';
+      loader.style.transition = 'opacity .5s ease'; loader.style.opacity = '1';
+      setTimeout(() => { window.location.href = href; }, 480);
+    };
+    document.addEventListener('click', this.onClick);
+    this.onShow = e => { if (e.persisted && loader) loader.style.opacity = '0'; };
+    window.addEventListener('pageshow', this.onShow);
+    // header entrance
+    const hdr = document.querySelector('[data-site-header]');
+    if (hdr && !reduce) {
+      hdr.style.transition = 'background .5s, border-color .5s, transform 1.2s ' + ease + ', opacity 1s ease';
+      hdr.style.transform = 'translateY(-24px)'; hdr.style.opacity = '0';
+      setTimeout(() => { hdr.style.transform = 'none'; hdr.style.opacity = '1'; }, intro + 700);
+    }
+    this.progress = document.querySelector('[data-progress]');
+    // hero
+    const zoom = document.querySelector('[data-hero-zoom]');
+    const hero = zoom && zoom.parentElement;
+    this.hero = hero;
+    if (zoom) setTimeout(() => { zoom.style.transform = 'scale(1)'; }, intro);
+    this.heroMain = null;
+    if (hero) {
+      const layers = [...hero.children].filter(c => getComputedStyle(c).zIndex === '2');
+      this.heroMain = layers[0] || null;
+      if (!reduce) {
+        const items = [];
+        layers.forEach(c => [...c.children].forEach(ch => items.push(ch)));
+        items.forEach((ch, i) => {
+          const prevT = ch.style.transform, prevTr = ch.style.transition;
+          const h = ch.tagName === 'H1';
+          ch.style.opacity = '0'; ch.style.transform = (prevT || '') + ' translateY(30px)'; ch.style.filter = 'blur(8px)';
+          if (h) ch.style.clipPath = 'inset(0 0 100% 0)';
+          ch.style.transition = `opacity 1.4s ease, transform 1.8s ${ease}, clip-path 1.8s ${wipe}, filter 1.4s ease`;
+          const d = intro + 300 + i * 200;
+          setTimeout(() => raf2(() => { ch.style.opacity = '1'; ch.style.transform = prevT; ch.style.filter = 'none'; if (h) ch.style.clipPath = 'inset(-10% 0 -10% 0)'; }), d);
+          setTimeout(() => { ch.style.transition = prevTr; ch.style.opacity = ''; ch.style.filter = ''; ch.style.clipPath = ''; }, d + 2000);
+        });
+        this.startEmbers(hero);
+      }
+    }
+    // scroll reveals
+    const isMedia = n => n.tagName === 'IMAGE-SLOT' || (!!n.style && !!n.style.aspectRatio && !!n.querySelector('image-slot'));
+    this.pending = [];
+    if (!reduce) document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (hero && hero.contains(el)) return;
+      let parts;
+      if (isMedia(el)) parts = [{ n: el, media: true }];
+      else { parts = [...el.children].map(n => ({ n, media: isMedia(n) })); if (!parts.length) parts = [{ n: el, media: false }]; }
+      parts.forEach(p => {
+        const n = p.n;
+        p.prev = { t: n.style.transform, tr: n.style.transition };
+        if (p.media) {
+          n.style.clipPath = 'inset(100% 0 0 0)';
+          n.style.transition = `clip-path 1.6s ${wipe}`;
+          const inner = n.firstElementChild;
+          if (inner) { p.inner = inner; p.iprev = { t: inner.style.transform, tr: inner.style.transition }; inner.style.transform = 'scale(1.22)'; inner.style.transition = `transform 2.4s ${ease}`; }
+        } else {
+          n.style.opacity = '0'; n.style.transform = 'translateY(34px)';
+          n.style.transition = `opacity 1.2s ease, transform 1.5s ${ease}`;
+        }
+      });
+      this.pending.push({ el, parts });
+    });
+    const show = (item, g) => item.parts.forEach((p, i) => {
+      const n = p.n, d = g * 140 + i * 120;
+      n.style.transitionDelay = d + 'ms';
+      if (p.media) { n.style.clipPath = 'inset(0 0 0 0)'; if (p.inner) { p.inner.style.transitionDelay = d + 'ms'; p.inner.style.transform = 'scale(1)'; } }
+      else { n.style.opacity = '1'; n.style.transform = p.prev.t || 'none'; }
+      setTimeout(() => {
+        n.style.transition = p.prev.tr; n.style.transitionDelay = ''; n.style.transform = p.prev.t; n.style.opacity = ''; n.style.clipPath = '';
+        if (p.inner) { p.inner.style.transition = p.iprev.tr; p.inner.style.transitionDelay = ''; p.inner.style.transform = p.iprev.t; }
+      }, d + 2600);
+    });
+    this.checkReveal = () => {
+      const h = window.innerHeight * 0.9; let g = 0;
+      this.pending = this.pending.filter(item => {
+        if (item.el.getBoundingClientRect().top < h) { show(item, Math.min(g++, 4)); return false; }
+        return true;
+      });
+    };
+    this.revealTimer = setTimeout(() => { this.pending.forEach(it => show(it, 0)); this.pending = []; }, 14000);
+    setTimeout(() => this.checkReveal(), intro + 200);
+    this.onScroll();
+  }
+  startEmbers(hero) {
+    const cv = document.createElement('canvas');
+    cv.setAttribute('aria-hidden', 'true');
+    Object.assign(cv.style, { position: 'absolute', inset: '0', width: '100%', height: '100%', zIndex: '1', pointerEvents: 'none', mixBlendMode: 'screen' });
+    hero.appendChild(cv);
+    const ctx = cv.getContext('2d');
+    let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), ps = [];
+    const spawn = init => ({ x: Math.random() * W, y: init ? Math.random() * H : H + 10, vy: -(0.25 + Math.random() * 0.9), vx: (Math.random() - 0.5) * 0.3, r: 0.6 + Math.random() * 1.8, a: 0.3 + Math.random() * 0.6, ph: Math.random() * 6.28 });
+    const size = () => { W = hero.clientWidth; H = hero.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); const n = Math.round(W / 28); ps = Array.from({ length: n }, () => spawn(true)); };
+    size();
+    this.emberResize = size; window.addEventListener('resize', size);
+    const tick = t => {
+      this.emberRaf = requestAnimationFrame(tick);
+      if (hero.getBoundingClientRect().bottom < 0) return;
+      ctx.clearRect(0, 0, W, H);
+      ps.forEach((p, i) => {
+        p.y += p.vy; p.x += p.vx + Math.sin(t / 900 + p.ph) * 0.25;
+        const life = Math.max(0, Math.min(1, p.y / H));
+        const fl = p.a * (0.6 + 0.4 * Math.sin(t / 180 + p.ph)) * life;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3.2, 0, 6.283); ctx.fillStyle = `rgba(255,140,60,${fl * 0.12})`; ctx.fill();
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fillStyle = `rgba(255,190,110,${fl})`; ctx.fill();
+        if (p.y < H * 0.15 || p.x < -10 || p.x > W + 10) ps[i] = spawn(false);
+      });
+    };
+    this.emberRaf = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    clearTimeout(this.revealTimer);
+    document.removeEventListener('click', this.onClick);
+    window.removeEventListener('pageshow', this.onShow);
+    cancelAnimationFrame(this.emberRaf);
+    this.emberResize && window.removeEventListener('resize', this.emberResize);
+  }
+  renderVals() {
+    const { w, scrolled, past, menuOpen } = this.state;
+    const cur = this.props.current ?? 'top';
+    // 5 links + CTA need ~1000px; switch to the hamburger below that
+    const isMobile = w < 1080, solid = scrolled || (isMobile && menuOpen);
+    const c = {};
+    ['top', 'concept', 'menu', 'course', 'experience'].forEach(k => c[k] = k === cur ? '#c9a96e' : '#ece4d6');
+    return {
+      c, isMobile, isDesktop: !isMobile, menuOpen, showSub: w >= 400, showMobileMenu: isMobile && menuOpen,
+      headerBg: solid ? 'rgba(23,19,15,.92)' : 'transparent',
+      headerBorder: solid ? 'rgba(201,169,110,.18)' : 'transparent',
+      headerBlur: solid ? 'blur(8px)' : 'none',
+      bar1: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none',
+      bar2: menuOpen ? 0 : 1,
+      bar3: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      toTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+      floatOpacity: past ? 1 : 0, floatEvents: past ? 'auto' : 'none',
+      barTransform: past && !menuOpen && cur !== 'reservation' ? 'none' : 'translateY(100%)'
+    };
+  }
+}
+</script>
+</body>
+</html>

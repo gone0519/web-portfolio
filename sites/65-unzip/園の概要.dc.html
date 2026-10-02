@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+<link href="./site.css" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>html{scroll-behavior:smooth}body{margin:0;color:#3d3a38;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}a{color:#e8555b}a:hover{color:#c93d44}*{box-sizing:border-box}</style>
+</helmet>
+<dc-import name="SiteHeader" current="about" style="position:sticky;top:0;z-index:50;display:block" hint-size="100%,72px"></dc-import>
+<main lang="ja">
+<section data-screen-label="About banner" style="position:relative;background:#dff3f8;padding:56px 16px 96px;text-align:center">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+    <span style="width:44px;height:44px;border-radius:50%;background:#8cc97a;color:#fff;display:grid;place-items:center;font-family:'Mochiy Pop One'">園</span>
+    <h1 style="margin:0;font-family:'Mochiy Pop One';font-weight:400;font-size:clamp(28px,4vw,40px);color:#e8555b;letter-spacing:.1em">園の概要</h1>
+    <span style="font-size:12px;color:#5a8fa3"><a href="index.dc.html" style="color:#5a8fa3">TOP</a> ＞ 園の概要</span>
+  </div>
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;left:0;bottom:-1px;width:100%;height:50px"><path d="M0 30 C 300 0 500 60 720 34 C 960 8 1200 56 1440 24 L1440 60 L0 60 Z" fill="#fff"></path></svg>
+</section>
+
+<section style="padding:64px 16px;max-width:1000px;margin:0 auto;text-align:center">
+  <h2 style="margin:0 0 12px;font-size:clamp(22px,3vw,30px);font-weight:900;color:#e8555b;letter-spacing:.1em">先生紹介</h2>
+  <p style="margin:0 0 40px;font-size:14px;line-height:2">子どもの気持ちに寄り添う先生たちが、毎日を見守っています。</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;text-align:left">
+    <sc-for list="{{ teachers }}" as="tc" hint-placeholder-count="6">
+      <article data-reveal="1" class="r-teacher" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:28px 22px;border:2px solid #fbe1e2;border-radius:20px">
+        <image-slot id="{{ tc.id }}" shape="circle" src="{{ tc.src }}" style="width:112px;height:112px" placeholder="先生の写真"></image-slot>
+        <span style="font-size:12px;font-weight:700;color:#fff;background:{{ tc.color }};padding:3px 12px;border-radius:999px">{{ tc.role }}</span>
+        <strong style="font-size:17px;letter-spacing:.08em">{{ tc.name }}</strong>
+        <p style="margin:0;font-size:13px;line-height:1.9;text-align:left">{{ tc.text }}</p>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section style="background:#dff3f8;padding:72px 16px">
+  <div style="max-width:1000px;margin:0 auto">
+    <h2 data-reveal="1" style="margin:0 0 36px;text-align:center;font-size:clamp(22px,3vw,30px);font-weight:900;color:#e8555b;letter-spacing:.1em">園内紹介</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px">
+      <sc-for list="{{ rooms }}" as="r" hint-placeholder-count="6">
+        <figure data-reveal="1" style="margin:0;background:#fff;border-radius:16px;overflow:hidden">
+          <div style="aspect-ratio:3/2"><image-slot id="{{ r.id }}" shape="rect" src="{{ r.src }}" placeholder="{{ r.title }}の写真"></image-slot></div>
+          <figcaption style="padding:16px 20px 20px;display:flex;flex-direction:column;gap:6px"><strong style="font-size:15px;color:#e8555b">{{ r.title }}</strong><span style="font-size:13px;line-height:1.8">{{ r.text }}</span></figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="padding:72px 16px;max-width:1000px;margin:0 auto">
+  <h2 data-reveal="1" style="margin:0 0 36px;text-align:center;font-size:clamp(22px,3vw,30px);font-weight:900;color:#e8555b;letter-spacing:.1em">保護者の声</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px">
+    <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+      <figure data-reveal="1" style="margin:0;position:relative;background:#fdf6f2;border-radius:20px;padding:30px 24px 22px;display:flex;flex-direction:column;gap:14px">
+        <span style="position:absolute;top:-14px;left:22px;font-family:'Mochiy Pop One';font-size:40px;line-height:1;color:#f39aa0">“</span>
+        <blockquote style="margin:0;font-size:13px;line-height:2">{{ v.text }}</blockquote>
+        <figcaption style="font-size:12px;font-weight:700;color:#c9676b">{{ v.who }}</figcaption>
+      </figure>
+    </sc-for>
+  </div>
+</section>
+
+<section style="background:#fdf6f2;padding:72px 16px">
+  <div style="max-width:800px;margin:0 auto">
+    <h2 data-reveal="1" style="margin:0 0 28px;text-align:center;font-size:clamp(22px,3vw,30px);font-weight:900;color:#e8555b;letter-spacing:.1em">施設概要</h2>
+    <dl data-reveal="1" style="margin:0;background:#fff;border-radius:20px;padding:12px clamp(20px,4vw,40px);display:grid;grid-template-columns:auto 1fr;font-size:14px;line-height:1.8">
+      <sc-for list="{{ info }}" as="i" hint-placeholder-count="8">
+        <dt style="padding:16px 20px 16px 0;font-weight:900;color:#e8555b;border-bottom:1px dashed #eadede;white-space:nowrap">{{ i.k }}</dt>
+        <dd style="margin:0;padding:16px 0;border-bottom:1px dashed #eadede">{{ i.v }}</dd>
+      </sc-for>
+    </dl>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const io = this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'none'; io.unobserve(e.target); } }), { threshold: .12 });
+    setTimeout(() => document.querySelectorAll('[data-reveal]').forEach(el => { if (el.getBoundingClientRect().top < innerHeight) return; const sib = [...el.parentElement.children].filter(c => c.hasAttribute('data-reveal')).indexOf(el); el.style.opacity = 0; el.style.transform = 'translateY(32px) scale(.97)'; el.style.transition = 'opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1)'; el.style.transitionDelay = Math.max(0, sib) * .12 + 's'; io.observe(el); }), 300);
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); }
+  renderVals() {
+    return {
+      teachers: [
+        { id: 'at-1', src: 'images/face-1.jpg', role: '園長', color: '#e8555b', name: '山田 花子', text: '子どもたちの「やってみたい」を大人が先回りせず、そっと支えることを大切にしています。' },
+        { id: 'at-2', src: 'images/face-2.jpg', role: '主任保育士', color: '#7cc5e0', name: '佐藤 美咲', text: 'お迎えのときに、その日の小さな「できた」をご家族と共有できる時間が大好きです。' },
+        { id: 'at-3', src: 'images/face-5.jpg', role: '管理栄養士', color: '#8cc97a', name: '鈴木 健太', text: '旬の食材を使った給食で、食べることの楽しさを伝えています。' },
+        { id: 'at-4', src: 'images/face-3.jpg', role: '0歳児担任', color: '#f39aa0', name: '高橋 あゆみ', text: '一人ひとりの生活リズムを大切に、安心できる居場所づくりを心がけています。' },
+        { id: 'at-5', src: 'images/face-6.jpg', role: '3歳児担任', color: '#f6c343', name: '伊藤 翔', text: '外あそびが大好き。子どもたちと一緒に泥んこになって遊んでいます。' },
+        { id: 'at-6', src: 'images/face-4.jpg', role: '看護師', color: '#b39ad6', name: '渡辺 さくら', text: '日々の健康管理や、体調の変化へのきめ細かな対応を担当しています。' },
+      ],
+      rooms: [
+        { id: 'rm-1', src: 'images/room-slide.jpg', title: '0〜2歳児保育室', text: '床暖房のある明るいお部屋で、はいはいやよちよち歩きも安心です。' },
+        { id: 'rm-2', src: 'images/playroom.jpg', title: '3〜5歳児保育室', text: '製作や集団あそびがのびのびできる、広々としたお部屋です。' },
+        { id: 'rm-3', src: 'images/train-game.jpg', title: 'ホール', text: '発表会や体操教室、雨の日のあそび場として使います。' },
+        { id: 'rm-4', src: 'images/playground.jpg', title: '園庭・畑', text: '砂場や築山、野菜を育てる畑があります。' },
+        { id: 'rm-5', title: 'ランチルーム', text: '調理室でつくった給食を、みんなで囲んでいただきます。' },
+        { id: 'rm-6', title: '午睡室', text: '静かで落ち着いた環境で、ゆっくり体を休めます。' },
+      ],
+      voices: [
+        { text: '人見知りだった息子が、今では「明日も保育園行く！」と言うように。先生が毎日の様子を丁寧に教えてくださるので安心です。', who: '3歳児クラス 保護者さま' },
+        { text: '仕事復帰で不安だらけでしたが、送迎時の会話で子育ての相談にものってもらえて、心強かったです。', who: '1歳児クラス 保護者さま' },
+        { text: '行事がたくさんあって、家では見られない表情に出会えます。発表会で堂々と太鼓を叩く姿に涙が出ました。', who: '5歳児クラス 保護者さま' },
+      ],
+      info: [
+        { k: '園名', v: '認定こども園 昭和保育園' },
+        { k: '種別', v: '幼保連携型認定こども園' },
+        { k: '所在地', v: '〒466-0000 名古屋市昭和区○○町1-1' },
+        { k: '電話', v: '052-000-0000' },
+        { k: '開園時間', v: '月〜土 7:00〜19:00（日祝・年末年始休園）' },
+        { k: '定員', v: '120名（0歳〜就学前）' },
+        { k: '職員', v: '保育教諭・看護師・管理栄養士・調理員 ほか' },
+        { k: '設立', v: '19○○年' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

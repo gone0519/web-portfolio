@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Course — 鉄板焼 燈</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<script src="./image-slot.js"></script>
+<script src="./akari-motion.js"></script>
+<link rel="stylesheet" href="./akari.css">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#1b1713;color:#e4dccf;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#cdb27a;text-decoration:none;transition:color .3s}
+a:hover{color:#e8d3a2}
+</style>
+</helmet>
+<div style="position:relative;overflow-x:hidden;background-color:#1b1713;background-image:repeating-linear-gradient(90deg, rgba(255,240,220,.018) 0 1px, transparent 1px 7px)">
+<dc-import name="AkariHeader" current="course" hint-size="100%,1px"></dc-import>
+<main>
+<dc-import name="AkariPageHero" num="03" en="COURSE" ja="季節を巡る、おまかせコース。" sub="Chef's Tasting Courses" slot="course-hero" img="images/course-plate.jpg" ph="COURSE — コースの一皿と鉄板（横長）" hint-size="100%,640px"></dc-import>
+
+<section data-screen-label="Courses" style="padding:clamp(90px,10vw,140px) clamp(24px,5vw,72px) clamp(40px,5vw,60px)">
+  <div style="max-width:1240px;margin:0 auto">
+    <p data-m="up" style="margin:0 0 clamp(70px,8vw,110px);max-width:560px;font-size:14px;line-height:2.3;letter-spacing:.1em;color:#c4b9a6">コースはすべて、前菜から甘味まで鉄板の前でお楽しみいただけます。苦手な食材やお祝いの趣旨は、ご予約時にお知らせください。</p>
+    <sc-for list="{{ courses }}" as="c" hint-placeholder-count="3">
+      <article class="ak-course-row" style="display:flex;flex-wrap:wrap;flex-direction:{{ c.dir }};gap:clamp(40px,6vw,96px);align-items:center;margin-bottom:clamp(90px,10vw,150px)">
+        <div data-m="img" style="flex:1.3 1 420px;position:relative;aspect-ratio:5/4;background:radial-gradient(ellipse at 50% 70%, #3d2615, #1a1410 72%)">
+          <image-slot id="{{ c.slot }}" src="images/{{ c.slot }}.jpg" shape="rect" placeholder="{{ c.ph }}"></image-slot>
+        </div>
+        <div style="flex:1 1 340px;max-width:480px">
+          <p data-m="label" style="margin:0 0 10px;font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,64px);line-height:1;color:#b89a5e">{{ c.n }}</p>
+          <h2 data-m="title" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.2;letter-spacing:.02em">{{ c.en }}</h2>
+          <p data-m="up" style="margin:12px 0 22px;font-size:14px;letter-spacing:.2em;color:#b0a592">{{ c.ja }}</p>
+          <p data-m="up" style="margin:0 0 26px;font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:.06em;color:#cdb27a">{{ c.price }}</p>
+          <ul data-m="up" style="list-style:none;margin:0;padding:0;border-bottom:1px solid rgba(184,154,94,.22)">
+            <sc-for list="{{ c.items }}" as="it" hint-placeholder-count="6">
+              <li style="border-top:1px solid rgba(184,154,94,.22);padding:11px 0;font-size:13px;letter-spacing:.08em;color:#d6ccbc">{{ it }}</li>
+            </sc-for>
+          </ul>
+        </div>
+      </article>
+    </sc-for>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;padding:32px 0 clamp(60px,8vw,100px);border-top:1px solid rgba(184,154,94,.22)">
+      <p style="margin:0;font-size:11.5px;line-height:2;letter-spacing:.08em;color:#9c917f">価格はすべて税込・サービス料10%別。コースは2名様より、前日までのご予約で承ります。</p>
+      <a href="Akari%20Reservation.dc.html" data-magnet="1" style="display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 36px;background:#b89a5e;color:#15120f;font-size:14px;letter-spacing:.2em" style-hover="background:#d2b67e;color:#15120f">コースを予約する</a>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="AkariNext" href="Akari%20Craft.dc.html" en="Craftsmanship" ja="職人の技" hint-size="100%,360px"></dc-import>
+<dc-import name="AkariFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  courses = [
+    { n: '01', en: 'Special Teppanyaki Course', ja: '特選鉄板焼きコース', price: '¥22,000', slot: 'course-special', ph: 'SPECIAL — 特選和牛フィレの一皿',
+      items: ['季節の前菜', '活鮑の鉄板焼き 肝ソース', '帆立と旬の魚介', '季節野菜の鉄板焼き', '特選和牛フィレ 80g', 'ガーリックライス・赤出汁・香の物', '甘味'] },
+    { n: '02', en: "Seasonal Chef's Course", ja: '季節のおまかせコース', price: '¥16,500', slot: 'course-seasonal', ph: 'SEASONAL — 旬の魚介と焼き野菜',
+      items: ['季節の前菜', '旬の魚介の鉄板焼き', '季節野菜の鉄板焼き', '和牛サーロイン 80g', 'ガーリックライス・赤出汁', '甘味'] },
+    { n: '03', en: 'Anniversary Course', ja: '記念日コース', price: '¥28,000', slot: 'course-anniversary', ph: 'ANNIVERSARY — 伊勢海老とメッセージプレート',
+      items: ['乾杯のシャンパン', '季節の前菜', '伊勢海老の鉄板焼き', '活鮑の鉄板焼き', '特選和牛フィレ 100g', 'ガーリックライス・赤出汁', 'メッセージプレートの甘味'] }
+  ];
+  componentDidMount() { const go = () => window.AkariMotion ? window.AkariMotion.init() : setTimeout(go, 40); go(); }
+  renderVals() { return { courses: this.courses.map((c, i) => ({ ...c, dir: i % 2 ? 'row-reverse' : 'row' })) }; }
+}
+</script>
+</body>
+</html>

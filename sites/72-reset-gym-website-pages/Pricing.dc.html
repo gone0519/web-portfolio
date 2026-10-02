@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./responsive.css">
+  <style id="__om-reset">*{box-sizing:border-box;}body{margin:0;}a{text-decoration:none;color:inherit;}a:hover{opacity:0.75;}</style>
+  <title>料金プラン | RESET GYM</title>
+</helmet>
+<div style="fontFamily:'Noto Sans JP',sans-serif;background:#fdfdf8;color:#17170f;">
+  <dc-import name="Header" current-page="pricing" hint-size="100%,58px"></dc-import>
+
+  <section class="r-px r-pt" style="padding:80px 28px 20px;maxWidth:900px;margin:0 auto;textAlign:center;">
+    <span style="fontFamily:'Oswald',sans-serif;fontSize:13px;letterSpacing:3px;color:#a3934f;">MEMBERSHIP</span>
+    <h1 style="fontSize:clamp(28px,4.5vw,40px);fontWeight:900;margin:16px 0 8px;">料金プラン</h1>
+    <p style="fontSize:13px;color:#8c8a7c;">※記載の料金はサンプルです。実際の料金は店舗にてご案内します。</p>
+  </section>
+
+  <section class="r-px r-py-sm" style="padding:50px 28px;maxWidth:640px;margin:0 auto;">
+    <div class="r-card-lg" style="background:#17170f;color:#fdfdf8;padding:36px 32px;borderRadius:2px;display:flex;justifyContent:space-between;alignItems:center;flexWrap:wrap;gap:16px;">
+      <div>
+        <div style="fontFamily:'Oswald',sans-serif;fontSize:12px;letterSpacing:2px;color:#f4c400;">TRIAL LESSON</div>
+        <div style="fontSize:18px;fontWeight:700;marginTop:8px;">体験レッスン（60分）</div>
+      </div>
+      <div class="r-ta-l" style="textAlign:right;">
+        <div style="fontFamily:'Oswald',sans-serif;fontSize:28px;fontWeight:700;">¥3,300<span style="fontSize:13px;">（税込）</span></div>
+        <a href="Contact.dc.html" style="fontSize:13px;color:#f4c400;fontWeight:700;">予約する ›</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="r-px r-pb" style="padding:20px 28px 90px;maxWidth:1120px;margin:0 auto;">
+    <h2 style="fontSize:22px;fontWeight:900;textAlign:center;marginBottom:36px;">パーソナルトレーニング会員</h2>
+    <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
+      <sc-for list="{{ plans }}" as="pl" hint-placeholder-count="2">
+        <div class="r-card" style="border:{{ pl.border }};padding:36px 28px;position:relative;background:#fdfdf8;">
+          <sc-if value="{{ pl.featured }}" hint-placeholder-val="{{ false }}">
+            <span class="r-badge" style="position:absolute;top:-13px;left:28px;background:#f4c400;color:#17170f;fontSize:11px;fontWeight:700;padding:4px 12px;">おすすめ</span>
+          </sc-if>
+          <div style="fontSize:13px;color:#a3934f;fontWeight:700;">{{ pl.name }}</div>
+          <div style="fontSize:12px;color:#8c8a7c;marginTop:4px;">{{ pl.freq }}</div>
+          <div style="fontFamily:'Oswald',sans-serif;fontSize:32px;fontWeight:700;margin:16px 0;">{{ pl.price }}<span style="fontSize:13px;fontWeight:500;">/月（税込）</span></div>
+          <div style="fontSize:12.5px;color:#5a584c;marginBottom:20px;">1回あたり {{ pl.perSession }}</div>
+          <div style="display:flex;flexDirection:column;gap:9px;marginBottom:24px;">
+            <sc-for list="{{ pl.items }}" as="it" hint-placeholder-count="3">
+              <div style="display:flex;gap:8px;fontSize:13px;color:#4d4b41;"><span style="color:#f4c400;">✓</span><span>{{ it }}</span></div>
+            </sc-for>
+          </div>
+          <a href="Contact.dc.html" style="display:block;textAlign:center;background:{{ pl.btnBg }};color:{{ pl.btnColor }};fontWeight:700;fontSize:14px;padding:13px;borderRadius:2px;">このプランで相談する</a>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section class="r-px r-py-sm" style="background:#f1efe8;padding:70px 28px;">
+    <div style="maxWidth:1120px;margin:0 auto;">
+      <h2 style="fontSize:20px;fontWeight:900;textAlign:center;marginBottom:30px;">オプション・その他費用</h2>
+      <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:#d9d6c9;border:1px solid #d9d6c9;">
+        <sc-for list="{{ options }}" as="op" hint-placeholder-count="4">
+          <div style="background:#fdfdf8;padding:24px;">
+            <div style="fontSize:14px;fontWeight:700;">{{ op.name }}</div>
+            <div style="fontFamily:'Oswald',sans-serif;fontSize:18px;fontWeight:700;marginTop:8px;color:#a3934f;">{{ op.price }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="r-px r-py" style="padding:90px 28px;maxWidth:800px;margin:0 auto;">
+    <h2 style="fontSize:22px;fontWeight:900;textAlign:center;marginBottom:32px;">よくあるご質問</h2>
+    <sc-for list="{{ faqs }}" as="qa" hint-placeholder-count="4">
+      <div style="borderBottom:1px solid #d9d6c9;padding:20px 0;">
+        <div style="fontSize:14.5px;fontWeight:700;display:flex;gap:10px;"><span style="color:#f4c400;">Q</span>{{ qa.q }}</div>
+        <div style="fontSize:13.5px;color:#5a584c;marginTop:10px;display:flex;gap:10px;lineHeight:1.9;"><span style="color:#a3934f;fontWeight:700;">A</span>{{ qa.a }}</div>
+      </div>
+    </sc-for>
+  </section>
+
+  <section class="r-px r-py" style="background:#17170f;color:#fdfdf8;padding:90px 28px;textAlign:center;">
+    <h2 style="fontSize:24px;fontWeight:900;margin:0 0 24px;">まずは体験レッスンから。</h2>
+    <a href="Contact.dc.html" style="background:#f4c400;color:#17170f;fontWeight:700;fontSize:15px;padding:16px 32px;borderRadius:2px;display:inline-block;">無料体験を予約する</a>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      plans: [
+        { name: '月2回コース', freq: '月2回・1回60分', price: '¥28,600', perSession: '¥14,300', items: ['マンツーマン指導', '専用プログラム作成', 'ウエア・タオル レンタル無料'], border: '1px solid #d9d6c9', featured: false, btnBg: 'transparent', btnColor: '#17170f' },
+        { name: '月4回コース', freq: '月4回・1回60分', price: '¥52,800', perSession: '¥13,200', items: ['マンツーマン指導', '専用プログラム作成', '食事アドバイス付き', 'ウエア・タオル レンタル無料'], border: '2px solid #f4c400', featured: true, btnBg: '#f4c400', btnColor: '#17170f' },
+      ],
+      options: [
+        { name: '入会金', price: '¥22,000' },
+        { name: '施設利用料', price: '¥5,500' },
+        { name: 'ウエア・タオル・シューズレンタル', price: '無料' },
+        { name: '追加パーソナル（1回）', price: '¥7,150' },
+      ],
+      faqs: [
+        { q: '運動未経験でも参加できますか？', a: 'はい。トレーナーが体力レベルに合わせてメニューを調整しますので、未経験の方も安心してご参加いただけます。' },
+        { q: '持ち物は何が必要ですか？', a: '飲み物とタオルをご用意ください。ウエア・タオル・シューズは無料レンタルもございます。' },
+        { q: '入会前に見学はできますか？', a: '可能です。事前にご予約のうえ、施設の見学にお越しください。' },
+        { q: '体験レッスンだけの利用もできますか？', a: 'はい。体験レッスンのみのご利用も可能です。まずはお気軽にお試しください。' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

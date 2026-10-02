@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+/* Keep the light triangle clear of the white desktop nav (~800px wide) */
+@media (min-width:1200px){.ph-tri{width:min(34vw,420px,calc(100vw - 780px))!important}}
+</style>
+</helmet>
+<section style="position:relative;height:62svh;min-height:440px;max-height:640px;overflow:hidden;background:#1b1b1b;font-family:'Noto Sans JP',sans-serif">
+  <div data-hero-img="" style="position:absolute;inset:0">
+    <image-slot id="{{ imgId }}" src="{{ src }}" shape="rect" placeholder="{{ ph }}"></image-slot>
+  </div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,.05) 35%,rgba(0,0,0,.75) 100%)"></div>
+  <div data-intro="0" data-intro-fx="tri" class="ph-tri" style="position:absolute;top:0;left:0;width:min(34vw,420px);height:min(46vh,380px);background:#f1f1f1;background-image:var(--noise);clip-path:polygon(0 0,100% 0,0 100%);pointer-events:none;opacity:.95"></div>
+  <div style="position:absolute;left:clamp(16px,4vw,60px);right:16px;bottom:clamp(32px,6vh,56px);display:flex;flex-direction:column;gap:14px;pointer-events:none">
+    <nav data-intro="3" aria-label="パンくずリスト" style="display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.12em;color:rgba(255,255,255,.8);pointer-events:auto">
+      <a href="Top.dc.html" style="color:#fff;text-decoration:none" style-hover="color:#ff4a52">TOP</a>
+      <span style="width:6px;height:6px;transform:rotate(45deg);background:#c4161f"></span>
+      <span>{{ jp }}</span>
+    </nav>
+    <h1 style="margin:0;display:flex;flex-direction:column;gap:10px;font-weight:400">
+      <span data-intro="1" data-intro-fx="clip" style="font-family:'Dela Gothic One',sans-serif;font-size:clamp(38px,8vw,120px);line-height:.95;color:#d0141d;letter-spacing:.02em;transform:skewX(-8deg);transform-origin:left bottom;text-shadow:0 4px 30px rgba(0,0,0,.35)">{{ en }}</span>
+      <span data-intro="2" data-intro-fx="right" style="align-self:flex-start;background:#0e0e0e;color:#fff;padding:4px 16px;font-size:clamp(16px,1.8vw,22px);font-weight:900;letter-spacing:.14em">{{ jp }}</span>
+    </h1>
+  </div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:560},&quot;en&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;PAGE&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;jp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ページ&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;imgId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;page-hero&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;ph&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;PAGE HERO PHOTO&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    return { en: p.en ?? 'PAGE', jp: p.jp ?? 'ページ', imgId: p.imgId ?? 'page-hero', ph: p.ph ?? 'PAGE HERO PHOTO', src: p.src ?? '' };
+  }
+}
+</script>
+</body>
+</html>

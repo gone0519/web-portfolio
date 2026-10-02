@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>施設案内 | Tabi no Ma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;family=Sacramento&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#34393a;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+*{box-sizing:border-box}
+a{color:#34393a;text-decoration:none}
+a:hover{color:#5f9e95}
+::selection{background:#dceae7}
+[style*="aspect-ratio"]{min-width:0}
+@media (max-width:860px){.fitr{aspect-ratio:auto!important}}
+@media (max-width:700px){.sp-hide{display:none!important}.sgrid{grid-template-columns:1fr 1fr!important;height:auto!important}.sgrid>*{aspect-ratio:1/1}.sgrid>*:first-child{grid-column:1/-1;aspect-ratio:16/10}}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="facilities" hint-size="100%,0px"></dc-import>
+<main style="overflow-x:clip">
+<section data-screen-label="Facilities / Hero" style="position:relative;padding-top:min(112px,max(36px,calc(1180px - 100vw)))">
+  <div style="position:relative;margin:0 clamp(20px,4vw,80px) 0 clamp(24px,calc((100vw - 760px) * .36),400px);padding-top:clamp(24px,5vw,72px)">
+    <nav aria-label="パンくずリスト" style="display:flex;gap:10px;font-size:11px;letter-spacing:.16em;color:#5a6163"><a href="Home.dc.html">TOP</a><span>/</span><span>FACILITIES</span></nav>
+    <div data-reveal="1" data-delay="200" style="position:relative;margin-top:28px">
+      <span aria-hidden="true" data-parallax="0.1" style="position:absolute;left:-0.06em;top:-0.42em;font-family:'Sacramento',cursive;font-size:clamp(64px,11vw,180px);line-height:1;color:#d3e6e2;white-space:nowrap;pointer-events:none">Facilities</span>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px;padding-top:clamp(40px,5vw,80px)">
+        <div style="display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.16em;color:#5f9e95"><span style="width:28px;height:1px;background:#7fb9b0"></span>03 — Facilities</div>
+        <h1 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(22px,2.8vw,42px);letter-spacing:.22em;line-height:1.7">泊まる・味わう・くつろぐ</h1>
+        <p style="margin:0;font-size:12px;letter-spacing:.16em;color:#5a6163">Places to Stay, Dine and Unwind.</p>
+      </div>
+    </div>
+  </div>
+  <div data-curtain="1" class="fitr" style="position:relative;margin:clamp(40px,5vw,72px) clamp(0px,2vw,40px) 0 clamp(0px,calc((100vw - 760px) * .36),400px);aspect-ratio:3/1;min-height:240px;overflow:hidden;background:#e9f1ef">
+    <div data-kenburns="1" style="position:absolute;inset:0"><image-slot id="fa-hero" src="images/onsen-autumn-view.jpg" shape="rect" placeholder="施設の外観・夕景（横長）" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+  </div>
+</section>
+
+<section data-screen-label="Facilities / Index" style="padding:clamp(72px,8vw,120px) clamp(24px,6vw,120px) 0;max-width:1440px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px clamp(40px,6vw,110px);align-items:flex-end;justify-content:space-between">
+  <p data-reveal="1" style="flex:1 1 360px;max-width:520px;margin:0;font-size:15px;line-height:2.2;letter-spacing:.08em;text-wrap:pretty">体験のあとは、ゆっくり過ごせる場所へ。宿泊、食事、おみやげ選び、温浴まで、滞在をまるごと楽しめる施設をご紹介します。</p>
+  <nav aria-label="施設の一覧" style="display:flex;flex-wrap:wrap;gap:8px">
+    <sc-for list="{{ facs }}" as="f" hint-placeholder-count="5">
+      <a href="#{{ f.id }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 20px;border:1px solid #34393a;border-radius:999px;font-size:12px;letter-spacing:.12em;background:#fff" style-hover="background:#34393a;color:#fff">{{ f.type }}<span style="font-size:10px">↓</span></a>
+    </sc-for>
+  </nav>
+</section>
+
+<section data-screen-label="Facilities / List" style="position:relative;margin-top:clamp(100px,10vw,150px);background:#f3f7f6;padding:clamp(72px,8vw,120px) 0">
+  <div aria-hidden="true" style="position:absolute;left:-10%;right:-10%;top:-56px;height:112px;border-radius:50%;background:#f3f7f6"></div>
+  <div style="position:relative;display:flex;flex-direction:column;gap:clamp(100px,11vw,170px)">
+    <sc-for list="{{ facs }}" as="f" hint-placeholder-count="2">
+      <article id="{{ f.id }}" style="display:flex;flex-wrap:wrap;flex-direction:{{ f.dir }};align-items:center;row-gap:96px;scroll-margin-top:100px">
+        <div data-curtain="1" style="flex:1 1 560px;position:relative;aspect-ratio:16/11;min-height:300px;background:#e1ebe9">
+          <image-slot id="fa-{{ f.id }}" src="{{ f.img }}" shape="rect" placeholder="{{ f.ph }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+          <div data-parallax="-0.08" style="position:absolute;left:{{ f.subL }};right:{{ f.subR }};bottom:-48px;width:30%;aspect-ratio:4/5;border:6px solid #f3f7f6;background:#e1ebe9"><image-slot id="fa-{{ f.id }}-sub" src="{{ f.img2 }}" shape="rect" placeholder="{{ f.ph2 }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+        </div>
+        <div data-reveal="1" style="flex:1 1 380px;position:relative;padding:0 clamp(24px,6vw,120px)">
+          <span aria-hidden="true" data-parallax="0.12" style="position:absolute;left:clamp(16px,4vw,80px);top:-0.6em;font-family:'Sacramento',cursive;font-size:clamp(80px,8vw,128px);line-height:1;color:#d3e6e2;white-space:nowrap;pointer-events:none">{{ f.en }}</span>
+          <div style="position:relative;display:flex;flex-direction:column;gap:18px;max-width:460px">
+            <span style="font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.3em;color:#5f9e95">{{ f.no }} ／ {{ f.type }}</span>
+            <h2 style="margin:0;font-size:clamp(20px,1.9vw,26px);font-weight:700;letter-spacing:.14em">{{ f.name }}</h2>
+            <p style="margin:0;font-size:14px;line-height:2.1;letter-spacing:.08em;text-wrap:pretty">{{ f.desc }}</p>
+            <dl style="margin:6px 0 0;border-top:1px solid #cfdcd9">
+              <sc-for list="{{ f.specs }}" as="s" hint-placeholder-count="3">
+                <div style="display:grid;grid-template-columns:100px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid #cfdcd9;font-size:13px;letter-spacing:.06em">
+                  <dt style="color:#5f9e95">{{ s.k }}</dt><dd style="margin:0">{{ s.v }}</dd>
+                </div>
+              </sc-for>
+            </dl>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ f.tags }}" as="t" hint-placeholder-count="2">
+                <span style="padding:4px 12px;border:1px solid #9aa3a4;border-radius:999px;font-size:11px;letter-spacing:.06em;background:#fff">{{ t }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Facilities / Map" style="padding:clamp(100px,10vw,150px) clamp(24px,6vw,120px) 0;max-width:1440px;margin:0 auto">
+  <div data-reveal="1" style="display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center">
+    <div style="display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.16em;color:#5f9e95"><span style="width:28px;height:1px;background:#7fb9b0"></span>Map<span style="width:28px;height:1px;background:#7fb9b0"></span></div>
+    <h2 style="margin:0;font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:.16em">施設マップ</h2>
+  </div>
+  <div data-curtain="1" data-dir="up" class="fitr" style="position:relative;margin-top:40px;aspect-ratio:16/8;min-height:280px;background:#f3f7f6">
+    <image-slot id="fa-map" shape="rect" fit="contain" placeholder="施設配置図（イラストマップ）" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const FACS = [
+  { id: 'stay', img: 'images/ryokan-welcome.jpg', type: '泊まる', en: 'Stay', name: '[宿泊施設名]', desc: '[宿泊施設の紹介文が入ります。客室のタイプや眺め、滞在中の過ごし方などを紹介します。]', ph: '宿泊施設の外観', ph2: '客室', specs: [{ k: 'チェックイン', v: '00:00〜' }, { k: 'チェックアウト', v: '〜00:00' }, { k: '客室数', v: '[〇室]' }], tags: ['宿泊', '〇〇エリア'] },
+  { id: 'dine', type: '食べる', en: 'Dine', name: '[レストラン名]', desc: '[レストランの紹介文が入ります。地元の食材や料理のこだわりを紹介します。]', ph: 'レストラン店内', ph2: '料理', specs: [{ k: '営業時間', v: '00:00〜00:00' }, { k: '定休日', v: '[定休日]' }, { k: '席数', v: '[〇席]' }], tags: ['食事', '地元食材'] },
+  { id: 'shop', img: 'images/old-townscape.jpg', type: '買う', en: 'Shop', name: '[ショップ名]', desc: '[ショップの紹介文が入ります。特産品やおみやげなどの品ぞろえを紹介します。]', ph: 'ショップ店内', ph2: '特産品', specs: [{ k: '営業時間', v: '00:00〜00:00' }, { k: '定休日', v: '[定休日]' }], tags: ['ショップ', 'おみやげ'] },
+  { id: 'spa', img: 'images/onsen-autumn-view.jpg', img2: 'images/onsen-friends.jpg', type: 'くつろぐ', en: 'Spa', name: '[温浴施設名]', desc: '[温浴施設の紹介文が入ります。浴場の種類や景色、利用方法などを紹介します。]', ph: '浴場', ph2: '休憩スペース', specs: [{ k: '営業時間', v: '00:00〜00:00' }, { k: '料金', v: '¥〇〇〇〜' }, { k: '定休日', v: '[定休日]' }], tags: ['温泉', 'サウナ'] },
+  { id: 'info', img: 'images/couple-guidebook.jpg', type: '案内所', en: 'Information', name: '[観光案内所名]', desc: '[観光案内所の紹介文が入ります。周辺情報の案内やレンタルサービスなどを紹介します。]', ph: '案内所', ph2: 'レンタル用品', specs: [{ k: '営業時間', v: '00:00〜00:00' }, { k: 'サービス', v: '[レンタサイクル・荷物預かり など]' }], tags: ['観光案内', 'レンタル'] },
+];
+class Component extends DCLogic {
+  componentDidMount() {
+    setTimeout(() => import(new URL('./motion.js', document.baseURI).href).then(m => { this.stop = m.initMotion(); }).catch(() => {}), 120);
+  }
+  componentWillUnmount() { this.stop && this.stop(); }
+  renderVals() {
+    return {
+      facs: FACS.map((f, i) => ({ ...f, no: '0' + (i + 1), dir: i % 2 ? 'row-reverse' : 'row', subL: i % 2 ? 'clamp(-60px,calc(60px - 6vw),12px)' : 'auto', subR: i % 2 ? 'auto' : 'clamp(-60px,calc(60px - 6vw),12px)' })),
+    };
+  }
+}
+</script>
+</body>
+</html>

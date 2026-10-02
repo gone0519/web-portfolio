@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<![CDATA[<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #fff; color: #17202f; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #1b2d4d; text-decoration: none; }
+  a:hover { color: #b0913f; }
+  @keyframes astraUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+  @keyframes astraLeft { from { opacity: 0; transform: translateX(-42px); } to { opacity: 1; transform: none; } }
+  @keyframes astraRight { from { opacity: 0; transform: translateX(42px); } to { opacity: 1; transform: none; } }
+  @keyframes astraScale { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: none; } }
+  @keyframes astraWipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  @keyframes astraFlip { from { opacity: 0; transform: perspective(1100px) rotateX(16deg) translateY(60px) scale(.94); } to { opacity: 1; transform: none; } }
+  @keyframes astraClipUp { from { opacity: 0; clip-path: inset(100% 0 0 0); transform: translateY(40px); } to { opacity: 1; clip-path: inset(0 0 0 0); transform: none; } }
+  @keyframes astraBlurIn { from { opacity: 0; filter: blur(14px); letter-spacing: .34em; transform: translateY(24px); } to { opacity: 1; filter: blur(0); transform: none; } }
+  @keyframes astraZoom { from { opacity: 0; transform: scale(1.18); filter: brightness(1.4); } to { opacity: 1; transform: none; filter: none; } }
+  @media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1 !important; animation: none !important; } }
+  @media (prefers-reduced-motion: reduce) { html.astra-reveal [data-reveal] { opacity: 1 !important; animation: none !important; } }
+  [data-reveal] { opacity: 1; }
+</style>
+</helmet>
+
+<div style="font-family:'Shippori Mincho','Noto Serif JP',serif;color:#17202f;overflow-x:hidden;">
+
+  <div style="{{ progressStyle }}"></div>
+
+  <header style="position:fixed;top:0;left:0;right:0;z-index:90;display:flex;align-items:flex-start;justify-content:space-between;background:linear-gradient(180deg,rgba(11,25,48,.6),rgba(11,25,48,0));">
+    <div style="{{ headerBgStyle }}"></div>
+    <a href="#top" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:14px;background:#fff;padding:16px 32px 16px 24px;box-shadow:0 2px 24px rgba(10,22,44,.16);">
+      <span style="display:block;width:36px;height:44px;background:linear-gradient(160deg,#1b2d4d 0 52%,#b0913f 52% 100%);clip-path:polygon(50% 0,100% 14%,100% 62%,50% 100%,0 62%,0 14%);"></span>
+      <span style="display:block;">
+        <span style="display:block;font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:.2em;color:#1b2d4d;line-height:1;">ASTRA</span>
+        <span style="display:block;margin-top:6px;font-family:'Noto Sans JP',sans-serif;font-size:9px;letter-spacing:.1em;color:#6d7787;">株式会社アストラ デジタルマーケティング</span>
+      </span>
+    </a>
+    <div style="display:flex;align-items:stretch;">
+      <nav style="display:flex;align-items:center;gap:26px;padding:0 26px;font-family:'Noto Sans JP',sans-serif;font-size:12.5px;letter-spacing:.06em;">
+        <a href="#top" onClick="{{ goServices }}" style="color:#fff;padding:6px 0;border-bottom:1px solid transparent;" style-hover="color:#fff;border-bottom:1px solid #b0913f;">サービス</a>
+        <a href="#top" onClick="{{ goWorks }}" style="color:#fff;padding:6px 0;border-bottom:1px solid transparent;" style-hover="color:#fff;border-bottom:1px solid #b0913f;">導入事例</a>
+        <a href="#top" onClick="{{ goAbout }}" style="color:#fff;padding:6px 0;border-bottom:1px solid transparent;" style-hover="color:#fff;border-bottom:1px solid #b0913f;">会社紹介</a>
+        <a href="#top" onClick="{{ goBlog }}" style="color:#fff;padding:6px 0;border-bottom:1px solid transparent;" style-hover="color:#fff;border-bottom:1px solid #b0913f;">インサイト</a>
+        <a href="#top" onClick="{{ goContact }}" style="color:#fff;padding:6px 0;border-bottom:1px solid transparent;" style-hover="color:#fff;border-bottom:1px solid #b0913f;">お問い合わせ</a>
+      </nav>
+      <button type="button" aria-label="メニュー" onClick="{{ toggleMenu }}" style="border:0;cursor:pointer;background:#b0913f;width:72px;height:72px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;" style-hover="background:#c2a252;">
+        <span style="display:block;width:26px;height:1px;background:#fff;"></span>
+        <span style="display:block;width:26px;height:1px;background:#fff;"></span>
+        <span style="display:block;width:26px;height:1px;background:#fff;"></span>
+      </button>
+    </div>
+  </header>
+
+  <div style="{{ menuStyle }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;max-width:900px;margin:0 auto;font-family:'Noto Sans JP',sans-serif;">
+      <a href="#top" onClick="{{ goHome }}" style="background:rgba(255,255,255,.07);color:#fff;padding:24px;font-size:14px;letter-spacing:.08em;" style-hover="background:rgba(255,255,255,.16);color:#fff;">ホーム</a>
+      <a href="#top" onClick="{{ goServices }}" style="background:rgba(255,255,255,.07);color:#fff;padding:24px;font-size:14px;letter-spacing:.08em;" style-hover="background:rgba(255,255,255,.16);color:#fff;">サービス</a>
+      <a href="#top" onClick="{{ goWorks }}" style="background:rgba(255,255,255,.07);color:#fff;padding:24px;font-size:14px;letter-spacing:.08em;" style-hover="background:rgba(255,255,255,.16);color:#fff;">導入事例</a>
+      <a href="#top" onClick="{{ goAbout }}" style="background:rgba(255,255,255,.07);color:#fff;padding:24px;font-size:14px;letter-spacing:.08em;" style-hover="background:rgba(255,255,255,.16);color:#fff;">会社紹介</a>
+      <a href="#top" onClick="{{ goBlog }}" style="background:rgba(255,255,255,.07);color:#fff;padding:24px;font-size:14px;letter-spacing:.08em;" style-hover="background:rgba(255,255,255,.16);color:#fff;">インサイト</a>
+      <a href="#top" onClick="{{ goContact }}" style="background:#b0913f;color:#fff;padding:24px;font-size:14px;letter-spacing:.08em;" style-hover="background:#c2a252;color:#fff;">お問い合わせ</a>
+    </div>
+  </div>
+
+  <a name="top"></a>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <section style="position:relative;min-height:740px;display:flex;align-items:center;justify-content:center;">
+      <div data-hero style="position:absolute;inset:-6%;background:repeating-linear-gradient(135deg,#13294a 0 14px,#173355 14px 28px);will-change:transform;"></div>
+      <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 18%,rgba(126,166,220,.3),rgba(9,19,36,.8) 70%);"></div>
+      <div style="position:absolute;left:24px;bottom:22px;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.55);">[ ヒーロー写真：1920×900 ]</div>
+      <div data-reveal data-parallax="0.22" style="position:relative;text-align:center;padding:150px 24px 0;">
+        <h1 style="margin:0;color:#fff;font-weight:500;font-size:clamp(23px,3.1vw,42px);line-height:2;letter-spacing:.1em;text-shadow:0 2px 30px rgba(0,0,0,.45);">データで導く、確かな成果。<br>次の一手が見える、デジタルマーケティング。</h1>
+        <a href="#top" onClick="{{ goContact }}" style="display:inline-block;margin-top:50px;padding:18px 52px;background:#b0913f;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:13px;letter-spacing:.14em;" style-hover="background:#c2a252;color:#fff;">無料マーケティング診断を申し込む</a>
+      </div>
+    </section>
+
+    <section style="background:#f6f2ea;padding:88px 24px;">
+      <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;align-items:start;">
+        <div data-reveal style="max-width:260px;">
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:34px;letter-spacing:.14em;color:#1b2d4d;font-weight:500;">NEWS</h2>
+          <a href="#top" onClick="{{ goBlog }}" style="display:inline-flex;align-items:center;gap:14px;margin-top:24px;font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.16em;border-bottom:1px solid #1b2d4d;padding-bottom:4px;">VIEW MORE<span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#b0913f;color:#fff;font-size:10px;">›</span></a>
+        </div>
+        <ul data-reveal style="list-style:none;margin:0;padding:0;background:#fff;grid-column:span 2;min-width:0;">
+          <li style="display:grid;grid-template-columns:minmax(100px,140px) minmax(0,1fr);gap:20px;padding:26px 32px;border-bottom:1px solid #eae5db;font-family:'Noto Sans JP',sans-serif;font-size:13.5px;"><span style="color:#8b7a52;letter-spacing:.06em;">2026.09.10</span><a href="#top" onClick="{{ goBlog }}">生成AIを活用した広告クリエイティブ検証サービスの提供を開始しました</a></li>
+          <li style="display:grid;grid-template-columns:minmax(100px,140px) minmax(0,1fr);gap:20px;padding:26px 32px;border-bottom:1px solid #eae5db;font-family:'Noto Sans JP',sans-serif;font-size:13.5px;"><span style="color:#8b7a52;letter-spacing:.06em;">2026.08.26</span><a href="#top" onClick="{{ goBlog }}">シルバーウィーク期間中の運用体制（広告入稿・レポート提出）のお知らせ</a></li>
+          <li style="display:grid;grid-template-columns:minmax(100px,140px) minmax(0,1fr);gap:20px;padding:26px 32px;font-family:'Noto Sans JP',sans-serif;font-size:13.5px;"><span style="color:#8b7a52;letter-spacing:.06em;">2026.08.11</span><a href="#top" onClick="{{ goBlog }}">大阪オフィスを開設し、関西エリアの支援体制を拡充しました</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="padding:118px 24px;">
+      <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:72px;align-items:center;">
+        <div data-reveal style="position:relative;padding-top:34px;">
+          <div style="position:absolute;top:0;left:-40px;width:78%;height:88%;background:#f0ede7;"></div>
+          <div data-reveal data-wipe style="position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#e6e2da 0 12px,#f1eee8 12px 24px);display:flex;align-items:flex-end;padding:18px;"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8b8578;">[ 写真：戦略ミーティング ]</span></div>
+        </div>
+        <div data-reveal>
+          <h2 style="margin:0;font-size:27px;font-weight:500;letter-spacing:.1em;color:#1b2d4d;">会社紹介</h2>
+          <div style="width:42px;height:2px;background:#b0913f;margin:22px 0 32px;"></div>
+          <p style="margin:0 0 26px;font-family:'Noto Sans JP',sans-serif;font-size:14.5px;line-height:2.3;color:#39414f;">私たちは、数値の裏側にある顧客の行動を読み解き<br>事業の成長に直結する施策だけを実行します。</p>
+          <p style="margin:0 0 26px;font-family:'Noto Sans JP',sans-serif;font-size:14.5px;line-height:2.3;color:#39414f;">広告運用、SEO、制作、分析をひとつのチームが担当。<br>部分最適ではなく、売上までの導線全体を設計します。</p>
+          <p style="margin:0 0 40px;font-family:'Noto Sans JP',sans-serif;font-size:14.5px;line-height:2.3;color:#39414f;">創業から12年、支援社数は320社。<br>業界を問わず、成果にコミットしてまいりました。</p>
+          <a href="#top" onClick="{{ goAbout }}" style="display:inline-flex;align-items:center;gap:14px;font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.16em;border-bottom:1px solid #1b2d4d;padding-bottom:4px;">VIEW MORE<span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#b0913f;color:#fff;font-size:10px;">›</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));">
+      <div style="position:relative;padding:82px 6vw;background:repeating-linear-gradient(135deg,#13294a 0 14px,#173355 14px 28px);">
+        <div style="position:absolute;inset:0;background:rgba(10,21,40,.8);"></div>
+        <div data-reveal style="position:relative;">
+          <div style="display:flex;align-items:center;gap:24px;"><h2 style="margin:0;font-size:24px;font-weight:500;letter-spacing:.1em;color:#fff;">事業会社のお客様</h2><span style="flex:1;height:1px;background:rgba(255,255,255,.45);"></span><span style="color:rgba(255,255,255,.75);">→</span></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-top:42px;font-family:'Noto Sans JP',sans-serif;font-size:13px;">
+            <a href="#top" onClick="{{ goServices }}" style="display:flex;align-items:center;justify-content:center;padding:18px 8px;border:1px solid rgba(255,255,255,.55);color:#fff;" style-hover="background:rgba(255,255,255,.14);color:#fff;">リスティング広告</a>
+            <a href="#top" onClick="{{ goServices }}" style="display:flex;align-items:center;justify-content:center;padding:18px 8px;border:1px solid rgba(255,255,255,.55);color:#fff;" style-hover="background:rgba(255,255,255,.14);color:#fff;">SEO対策</a>
+            <a href="#top" onClick="{{ goServices }}" style="display:flex;align-items:center;justify-content:center;padding:18px 8px;border:1px solid rgba(255,255,255,.55);color:#fff;" style-hover="background:rgba(255,255,255,.14);color:#fff;">SNS運用</a>
+            <a href="#top" onClick="{{ goServices }}" style="display:flex;align-items:center;justify-content:center;padding:18px 8px;border:1px solid rgba(255,255,255,.55);color:#fff;" style-hover="background:rgba(255,255,255,.14);color:#fff;">LP制作・改善</a>
+            <a href="#top" onClick="{{ goServices }}" style="display:flex;align-items:center;justify-content:center;padding:18px 8px;border:1px solid rgba(255,255,255,.55);color:#fff;" style-hover="background:rgba(255,255,255,.14);color:#fff;">MA・CRM設計</a>
+            <a href="#top" onClick="{{ goServices }}" style="display:flex;align-items:center;justify-content:center;padding:18px 8px;border:1px solid rgba(255,255,255,.55);color:#fff;" style-hover="background:rgba(255,255,255,.14);color:#fff;">効果測定・分析</a>
+          </div>
+          <p style="margin:18px 0 0;text-align:right;font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(255,255,255,.6);">…etc</p>
+        </div>
+      </div>
+      <div style="position:relative;padding:82px 6vw;background:linear-gradient(140deg,#c0a154,#9c7f38);">
+        <div data-reveal>
+          <div style="display:flex;align-items:center;gap:24px;"><h2 style="margin:0;font-size:24px;font-weight:500;letter-spacing:.1em;color:#fff;">EC・D2Cのお客様</h2><span style="flex:1;height:1px;background:rgba(255,255,255,.6);"></span><span style="color:#fff;">→</span></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-top:42px;font-family:'Noto Sans JP',sans-serif;font-size:13px;">
+            <a href="#top" onClick="{{ goServices }}" style="display:flex;align-items:center;justify-content:center;padding:18px 8px;border:1px solid rgba(255,255,255,.8);color:#fff;" style-hover="background:rgba(255,255,255,.2);color:#fff;">モール運用</a>
+            <a href="#top" onClick="{{ goServices }}" style="display:flex;align-items:center;justify-content:center;padding:18px 8px;border:1px solid rgba(255,255,255,.8);color:#fff;" style-hover="background:rgba(255,255,255,.2);color:#fff;">ブランドサイト構築</a>
+            <a href="#top" onClick="{{ goServices }}" style="display:flex;align-items:center;justify-content:center;padding:18px 8px;border:1px solid rgba(255,255,255,.8);color:#fff;" style-hover="background:rgba(255,255,255,.2);color:#fff;">CRM・LTV改善</a>
+            <a href="#top" onClick="{{ goServices }}" style="display:flex;align-items:center;justify-content:center;padding:18px 8px;border:1px solid rgba(255,255,255,.8);color:#fff;" style-hover="background:rgba(255,255,255,.2);color:#fff;">クリエイティブ制作</a>
+            <a href="#top" onClick="{{ goServices }}" style="display:flex;align-items:center;justify-content:center;padding:18px 8px;border:1px solid rgba(255,255,255,.8);color:#fff;" style-hover="background:rgba(255,255,255,.2);color:#fff;">インフルエンサー施策</a>
+            <a href="#top" onClick="{{ goServices }}" style="display:flex;align-items:center;justify-content:center;padding:18px 8px;border:1px solid rgba(255,255,255,.8);color:#fff;" style-hover="background:rgba(255,255,255,.2);color:#fff;">ブランド戦略</a>
+          </div>
+          <p style="margin:18px 0 0;text-align:right;font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(255,255,255,.78);">…etc</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#f6f2ea;padding:118px 24px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <div data-reveal style="margin-bottom:60px;">
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;letter-spacing:.14em;color:#1b2d4d;font-weight:500;">Service</h2>
+          <p style="margin:10px 0 0;font-size:20px;letter-spacing:.08em;color:#1b2d4d;">成果に直結する、9つの支援領域</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;background:#e5dfd3;">
+          <sc-for list="{{ services }}" as="s" hint-placeholder-count="9">
+            <a href="#top" onClick="{{ goServices }}" style="display:block;background:#fff;padding:44px 36px;transition:transform .45s cubic-bezier(.22,.7,.3,1),box-shadow .45s ease,background .35s ease;" style-hover="background:#fffdf7;color:#17202f;transform:translateY(-6px);box-shadow:0 18px 40px rgba(20,40,74,.12);">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;color:#b0913f;">{{ s.no }}</span>
+              <h3 style="margin:14px 0 16px;font-size:18.5px;font-weight:500;letter-spacing:.06em;color:#1b2d4d;">{{ s.title }}</h3>
+              <p style="margin:0;font-family:'Noto Sans JP',sans-serif;font-size:13px;line-height:2.1;color:#4b5462;">{{ s.body }}</p>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="position:relative;padding:92px 24px;">
+      <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#13294a 0 14px,#173355 14px 28px);"></div>
+      <div style="position:absolute;inset:0;background:rgba(10,21,40,.84);"></div>
+      <div data-reveal data-stats style="position:relative;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:44px;text-align:center;">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+          <div>
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:54px;color:#d6bc77;line-height:1;">{{ s.num }}<span style="font-size:20px;">{{ s.unit }}</span></p>
+            <p style="margin:16px 0 0;font-family:'Noto Sans JP',sans-serif;font-size:12.5px;letter-spacing:.1em;color:rgba(255,255,255,.85);">{{ s.label }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:118px 24px;">
+      <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:72px;align-items:center;">
+        <div data-reveal>
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;letter-spacing:.1em;color:#1b2d4d;font-weight:500;">Flow</h2>
+          <p style="margin:8px 0 34px;font-size:20px;letter-spacing:.08em;color:#1b2d4d;">ご相談から施策開始までの流れ</p>
+          <ol style="margin:0 0 38px;padding:0;list-style:none;font-family:'Noto Sans JP',sans-serif;">
+            <sc-for list="{{ flow }}" as="f" hint-placeholder-count="4">
+              <li style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;padding:18px 0;border-top:1px solid #e7e2d8;">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#b0913f;letter-spacing:.1em;">{{ f.no }}</span>
+                <span style="font-size:13.5px;line-height:2;color:#39414f;"><strong style="font-weight:500;color:#1b2d4d;">{{ f.title }}</strong><br>{{ f.body }}</span>
+              </li>
+            </sc-for>
+          </ol>
+          <p style="margin:0 0 6px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:#4b5462;">まずはご相談のお電話から</p>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:38px;letter-spacing:.04em;color:#1b2d4d;">03-6273-4120</p>
+          <p style="margin:8px 0 32px;font-family:'Noto Sans JP',sans-serif;font-size:12px;color:#6d7787;">＊受付時間：9:00〜19:00（土日祝祭日を除く）</p>
+          <a href="#top" onClick="{{ goContact }}" style="display:inline-flex;align-items:center;gap:14px;font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.16em;border-bottom:1px solid #1b2d4d;padding-bottom:4px;">VIEW MORE<span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#b0913f;color:#fff;font-size:10px;">›</span></a>
+        </div>
+        <div data-reveal style="position:relative;padding-top:34px;">
+          <div style="position:absolute;top:0;right:-40px;width:78%;height:88%;background:#f0ede7;"></div>
+          <div data-reveal data-wipe style="position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#e6e2da 0 12px,#f1eee8 12px 24px);display:flex;align-items:flex-end;padding:18px;"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8b8578;">[ 写真：レポート画面 ]</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#f6f2ea;padding:118px 24px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <div data-reveal style="margin-bottom:56px;">
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;letter-spacing:.14em;color:#1b2d4d;font-weight:500;">Case Study</h2>
+          <p style="margin:10px 0 0;font-size:20px;letter-spacing:.08em;color:#1b2d4d;">数字で語る、支援の成果</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px;">
+          <sc-for list="{{ casesTop }}" as="c" hint-placeholder-count="3">
+            <article data-reveal style="background:#fff;transition:transform .5s cubic-bezier(.22,.7,.3,1),box-shadow .5s ease;" style-hover="transform:translateY(-8px);box-shadow:0 22px 50px rgba(20,40,74,.14);">
+              <div style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#e6e2da 0 12px,#f1eee8 12px 24px);display:flex;align-items:flex-end;padding:16px;"><span style="font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:#8b8578;">{{ c.shot }}</span></div>
+              <div style="padding:30px 28px 34px;">
+                <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.12em;color:#b0913f;">{{ c.industry }}</span>
+                <h3 style="margin:12px 0 16px;font-size:17px;font-weight:500;line-height:1.8;color:#1b2d4d;">{{ c.title }}</h3>
+                <p style="margin:0 0 20px;font-family:'Noto Sans JP',sans-serif;font-size:13px;line-height:2.1;color:#4b5462;">{{ c.body }}</p>
+                <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:28px;color:#1b2d4d;">{{ c.metricLabel }} <span style="color:#b0913f;">{{ c.metricValue }}</span></p>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+        <div data-reveal style="margin-top:48px;"><a href="#top" onClick="{{ goWorks }}" style="display:inline-flex;align-items:center;gap:14px;font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.16em;border-bottom:1px solid #1b2d4d;padding-bottom:4px;">VIEW MORE<span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#b0913f;color:#fff;font-size:10px;">›</span></a></div>
+      </div>
+    </section>
+
+    <section style="padding:118px 24px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <div data-reveal style="margin-bottom:56px;">
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;letter-spacing:.14em;color:#1b2d4d;font-weight:500;">Voice</h2>
+          <p style="margin:10px 0 0;font-size:20px;letter-spacing:.08em;color:#1b2d4d;">お客様の声</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:2px;background:#e9e4da;">
+          <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+            <figure data-reveal style="margin:0;background:#fff;padding:44px 36px;">
+              <p style="margin:0 0 26px;font-family:'Noto Sans JP',sans-serif;font-size:13.5px;line-height:2.2;color:#39414f;">{{ v.quote }}</p>
+              <figcaption style="font-family:'Noto Sans JP',sans-serif;font-size:12px;letter-spacing:.06em;color:#8b7a52;">{{ v.name }}</figcaption>
+            </figure>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#f6f2ea;padding:118px 24px;">
+      <div style="max-width:900px;margin:0 auto;">
+        <div data-reveal style="margin-bottom:48px;">
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;letter-spacing:.14em;color:#1b2d4d;font-weight:500;">FAQ</h2>
+          <p style="margin:10px 0 0;font-size:20px;letter-spacing:.08em;color:#1b2d4d;">よくあるご質問</p>
+        </div>
+        <div data-reveal style="background:#fff;">
+          <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+            <div style="border-bottom:1px solid #eae5db;padding:26px 32px;font-family:'Noto Sans JP',sans-serif;">
+              <p style="margin:0 0 12px;display:flex;gap:14px;font-size:14px;color:#1b2d4d;"><span style="font-family:'Cormorant Garamond',serif;color:#b0913f;">Q.</span>{{ q.q }}</p>
+              <p style="margin:0;display:flex;gap:14px;font-size:13px;line-height:2.1;color:#4b5462;"><span style="font-family:'Cormorant Garamond',serif;color:#98a2b3;">A.</span>{{ q.a }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <div style="{{ pageHeadStyle }}">
+      <div data-reveal style="position:relative;text-align:center;">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.3em;color:#d6bc77;">SERVICE</p>
+        <h1 style="margin:16px 0 0;font-size:32px;font-weight:500;letter-spacing:.14em;color:#fff;">サービス</h1>
+      </div>
+    </div>
+    <section style="padding:100px 24px;">
+      <div style="max-width:1000px;margin:0 auto;">
+        <p data-reveal style="margin:0 0 76px;font-family:'Noto Sans JP',sans-serif;font-size:14.5px;line-height:2.4;color:#39414f;">集客・接客・追客のすべてを同一チームで担当します。単発の施策ではなく、売上までの導線を通して設計するため、施策間の分断が起きません。以下の9領域から、事業フェーズに応じて必要なものだけを組み合わせてご提供します。</p>
+        <sc-for list="{{ serviceDetails }}" as="s" hint-placeholder-count="9">
+          <article data-reveal style="padding:56px 0;border-top:1px solid #e7e2d8;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:48px;">
+            <div>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;color:#b0913f;">{{ s.no }}</span>
+              <h2 style="margin:12px 0 18px;font-size:23px;font-weight:500;letter-spacing:.08em;color:#1b2d4d;">{{ s.title }}</h2>
+              <p style="margin:0;font-family:'Noto Sans JP',sans-serif;font-size:13.5px;line-height:2.2;color:#4b5462;">{{ s.body }}</p>
+            </div>
+            <div style="font-family:'Noto Sans JP',sans-serif;">
+              <p style="margin:0 0 10px;font-size:11.5px;letter-spacing:.14em;color:#8b7a52;">主な提供内容</p>
+              <ul style="margin:0 0 24px;padding:0;list-style:none;display:grid;gap:8px;">
+                <sc-for list="{{ s.features }}" as="f" hint-placeholder-count="3">
+                  <li style="font-size:13px;line-height:1.9;color:#39414f;padding-left:16px;border-left:2px solid #e2d9c2;">{{ f }}</li>
+                </sc-for>
+              </ul>
+              <p style="margin:0 0 10px;font-size:11.5px;letter-spacing:.14em;color:#8b7a52;">成果の目安</p>
+              <p style="margin:0;font-size:13px;line-height:2;color:#39414f;">{{ s.result }}</p>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isWorks }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <div style="{{ pageHeadStyle }}">
+      <div data-reveal style="position:relative;text-align:center;">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.3em;color:#d6bc77;">CASE STUDY</p>
+        <h1 style="margin:16px 0 0;font-size:32px;font-weight:500;letter-spacing:.14em;color:#fff;">導入事例</h1>
+      </div>
+    </div>
+    <section style="padding:88px 24px 120px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <div data-reveal style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:56px;font-family:'Noto Sans JP',sans-serif;font-size:12.5px;">
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+            <button type="button" onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display:grid;gap:2px;background:#e9e4da;">
+          <sc-for list="{{ visibleCases }}" as="c" hint-placeholder-count="4">
+            <article data-reveal style="background:#fff;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;">
+              <div style="min-height:260px;background:repeating-linear-gradient(135deg,#e6e2da 0 12px,#f1eee8 12px 24px);display:flex;align-items:flex-end;padding:18px;"><span style="font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:#8b8578;">{{ c.shot }}</span></div>
+              <div style="padding:48px 44px;">
+                <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.12em;color:#b0913f;">{{ c.industry }}</span>
+                <h2 style="margin:12px 0 22px;font-size:21px;font-weight:500;line-height:1.8;color:#1b2d4d;">{{ c.title }}</h2>
+                <div style="font-family:'Noto Sans JP',sans-serif;display:grid;gap:18px;margin-bottom:28px;">
+                  <p style="margin:0;font-size:13px;line-height:2.1;color:#4b5462;"><strong style="font-weight:500;color:#1b2d4d;">課題：</strong>{{ c.challenge }}</p>
+                  <p style="margin:0;font-size:13px;line-height:2.1;color:#4b5462;"><strong style="font-weight:500;color:#1b2d4d;">戦略：</strong>{{ c.strategy }}</p>
+                  <p style="margin:0;font-size:13px;line-height:2.1;color:#4b5462;"><strong style="font-weight:500;color:#1b2d4d;">施策：</strong>{{ c.solution }}</p>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:34px;padding-top:24px;border-top:1px solid #eae5db;">
+                  <sc-for list="{{ c.metrics }}" as="m" hint-placeholder-count="3">
+                    <div><p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:30px;color:#b0913f;line-height:1;">{{ m.value }}</p><p style="margin:8px 0 0;font-family:'Noto Sans JP',sans-serif;font-size:11.5px;color:#6d7787;">{{ m.label }}</p></div>
+                  </sc-for>
+                </div>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <div style="{{ pageHeadStyle }}">
+      <div data-reveal style="position:relative;text-align:center;">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.3em;color:#d6bc77;">ABOUT</p>
+        <h1 style="margin:16px 0 0;font-size:32px;font-weight:500;letter-spacing:.14em;color:#fff;">会社紹介</h1>
+      </div>
+    </div>
+    <section style="padding:100px 24px;">
+      <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:72px;align-items:center;">
+        <div data-reveal>
+          <h2 style="margin:0 0 24px;font-size:25px;font-weight:500;letter-spacing:.1em;color:#1b2d4d;">私たちの歩み</h2>
+          <div style="width:42px;height:2px;background:#b0913f;margin-bottom:30px;"></div>
+          <p style="margin:0 0 24px;font-family:'Noto Sans JP',sans-serif;font-size:14px;line-height:2.4;color:#39414f;">2014年、広告代理店で運用を担当していた3名が「数字の説明ができる代理店をつくる」という一点で独立し、アストラを設立しました。</p>
+          <p style="margin:0 0 24px;font-family:'Noto Sans JP',sans-serif;font-size:14px;line-height:2.4;color:#39414f;">創業時から掲げているのは、施策の結果をすべて開示すること。うまくいかなかった検証も含めて共有し、次の判断材料にしていただく姿勢を変えていません。</p>
+          <p style="margin:0;font-family:'Noto Sans JP',sans-serif;font-size:14px;line-height:2.4;color:#39414f;">現在は東京・大阪の2拠点、48名の体制で320社の事業成長を支援しています。</p>
+        </div>
+        <div data-reveal style="position:relative;padding-top:34px;">
+          <div style="position:absolute;top:0;right:-40px;width:78%;height:88%;background:#f0ede7;"></div>
+          <div data-reveal data-wipe style="position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#e6e2da 0 12px,#f1eee8 12px 24px);display:flex;align-items:flex-end;padding:18px;"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8b8578;">[ 写真：オフィス外観 ]</span></div>
+        </div>
+      </div>
+    </section>
+    <section style="background:#f6f2ea;padding:100px 24px;">
+      <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;background:#e5dfd3;">
+        <div data-reveal style="background:#fff;padding:52px 40px;">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#b0913f;">MISSION</p>
+          <h3 style="margin:16px 0 18px;font-size:20px;font-weight:500;color:#1b2d4d;">成果の再現性をつくる</h3>
+          <p style="margin:0;font-family:'Noto Sans JP',sans-serif;font-size:13px;line-height:2.1;color:#4b5462;">勘や経験則に頼らず、検証可能な形で施策を設計し、誰が引き継いでも同じ成果を出せる状態を残します。</p>
+        </div>
+        <div data-reveal style="background:#fff;padding:52px 40px;">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#b0913f;">VISION</p>
+          <h3 style="margin:16px 0 18px;font-size:20px;font-weight:500;color:#1b2d4d;">事業の意思決定に最も近い場所へ</h3>
+          <p style="margin:0;font-family:'Noto Sans JP',sans-serif;font-size:13px;line-height:2.1;color:#4b5462;">広告の運用者ではなく、事業計画の相談相手として選ばれるパートナーであり続けます。</p>
+        </div>
+        <div data-reveal style="background:#fff;padding:52px 40px;">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#b0913f;">VALUES</p>
+          <h3 style="margin:16px 0 18px;font-size:20px;font-weight:500;color:#1b2d4d;">数字に誠実であること</h3>
+          <p style="margin:0;font-family:'Noto Sans JP',sans-serif;font-size:13px;line-height:2.1;color:#4b5462;">良い数字も悪い数字もそのまま共有する。判断を早めることが、最終的な成果の差になります。</p>
+        </div>
+      </div>
+    </section>
+    <section style="padding:100px 24px;">
+      <div style="max-width:1000px;margin:0 auto;">
+        <h2 data-reveal style="margin:0 0 48px;font-family:'Cormorant Garamond',serif;font-size:32px;letter-spacing:.14em;color:#1b2d4d;font-weight:500;">Members</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px;">
+          <sc-for list="{{ members }}" as="m" hint-placeholder-count="4">
+            <div data-reveal>
+              <div style="aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#e6e2da 0 12px,#f1eee8 12px 24px);display:flex;align-items:flex-end;padding:14px;"><span style="font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#8b8578;">[ 人物写真 ]</span></div>
+              <p style="margin:18px 0 6px;font-family:'Noto Sans JP',sans-serif;font-size:11.5px;letter-spacing:.1em;color:#b0913f;">{{ m.role }}</p>
+              <p style="margin:0 0 10px;font-size:17px;color:#1b2d4d;">{{ m.name }}</p>
+              <p style="margin:0;font-family:'Noto Sans JP',sans-serif;font-size:12.5px;line-height:2;color:#4b5462;">{{ m.bio }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="background:#f6f2ea;padding:100px 24px;">
+      <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:64px;">
+        <div data-reveal>
+          <h2 style="margin:0 0 36px;font-family:'Cormorant Garamond',serif;font-size:30px;letter-spacing:.14em;color:#1b2d4d;font-weight:500;">History</h2>
+          <ul style="list-style:none;margin:0;padding:0;font-family:'Noto Sans JP',sans-serif;">
+            <sc-for list="{{ history }}" as="h" hint-placeholder-count="5">
+              <li style="display:grid;grid-template-columns:76px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid #e3ddd1;font-size:13px;line-height:1.9;"><span style="color:#b0913f;font-family:'Cormorant Garamond',serif;font-size:16px;">{{ h.year }}</span><span style="color:#39414f;">{{ h.text }}</span></li>
+            </sc-for>
+          </ul>
+        </div>
+        <div data-reveal>
+          <h2 style="margin:0 0 36px;font-family:'Cormorant Garamond',serif;font-size:30px;letter-spacing:.14em;color:#1b2d4d;font-weight:500;">Company</h2>
+          <ul style="list-style:none;margin:0;padding:0;font-family:'Noto Sans JP',sans-serif;">
+            <sc-for list="{{ companyInfo }}" as="c" hint-placeholder-count="6">
+              <li style="display:grid;grid-template-columns:100px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid #e3ddd1;font-size:13px;line-height:1.9;"><span style="color:#8b7a52;">{{ c.k }}</span><span style="color:#39414f;">{{ c.v }}</span></li>
+            </sc-for>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <div style="{{ pageHeadStyle }}">
+      <div data-reveal style="position:relative;text-align:center;">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.3em;color:#d6bc77;">INSIGHTS</p>
+        <h1 style="margin:16px 0 0;font-size:32px;font-weight:500;letter-spacing:.14em;color:#fff;">インサイト</h1>
+      </div>
+    </div>
+    <section style="padding:88px 24px 110px;">
+      <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,280px);gap:64px;align-items:start;">
+        <div style="min-width:0;">
+          <article data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;background:#f6f2ea;margin-bottom:52px;">
+            <div style="min-height:280px;background:repeating-linear-gradient(135deg,#e6e2da 0 12px,#f1eee8 12px 24px);display:flex;align-items:flex-end;padding:16px;"><span style="font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:#8b8578;">[ 特集記事の画像 ]</span></div>
+            <div style="padding:44px 40px;">
+              <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.12em;color:#b0913f;">FEATURED ／ 戦略</span>
+              <h2 style="margin:14px 0 18px;font-size:22px;font-weight:500;line-height:1.8;color:#1b2d4d;">2026年、検索行動はどう変わったか。AI検索時代の流入設計</h2>
+              <p style="margin:0 0 24px;font-family:'Noto Sans JP',sans-serif;font-size:13px;line-height:2.1;color:#4b5462;">生成AIによる検索結果の要約が一般化し、クリックを前提としない情報接触が増えました。320社の流入データから、指名検索とコンテンツ設計の関係を整理します。</p>
+              <p style="margin:0;font-family:'Noto Sans JP',sans-serif;font-size:12px;color:#8b7a52;">2026.09.02</p>
+            </div>
+          </article>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px;">
+            <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+              <article data-reveal>
+                <div style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#e6e2da 0 12px,#f1eee8 12px 24px);display:flex;align-items:flex-end;padding:14px;"><span style="font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#8b8578;">[ 記事画像 ]</span></div>
+                <p style="margin:18px 0 10px;font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.12em;color:#b0913f;">{{ p.cat }}</p>
+                <h3 style="margin:0 0 12px;font-size:16px;font-weight:500;line-height:1.85;color:#1b2d4d;">{{ p.title }}</h3>
+                <p style="margin:0;font-family:'Noto Sans JP',sans-serif;font-size:12px;color:#8b7a52;">{{ p.date }}</p>
+              </article>
+            </sc-for>
+          </div>
+        </div>
+        <aside data-reveal style="font-family:'Noto Sans JP',sans-serif;">
+          <div style="background:#f6f2ea;padding:28px;margin-bottom:28px;">
+            <p style="margin:0 0 14px;font-size:11.5px;letter-spacing:.14em;color:#8b7a52;">SEARCH</p>
+            <input type="search" placeholder="キーワードで探す" style="width:100%;border:1px solid #e0d9cb;background:#fff;padding:12px 14px;font-size:13px;font-family:'Noto Sans JP',sans-serif;color:#17202f;">
+          </div>
+          <div style="background:#f6f2ea;padding:28px;margin-bottom:28px;">
+            <p style="margin:0 0 16px;font-size:11.5px;letter-spacing:.14em;color:#8b7a52;">CATEGORY</p>
+            <ul style="list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:13px;">
+              <sc-for list="{{ categories }}" as="c" hint-placeholder-count="6">
+                <li><a href="#top" style="display:flex;justify-content:space-between;color:#39414f;"><span>{{ c.name }}</span><span style="color:#b0913f;">{{ c.count }}</span></a></li>
+              </sc-for>
+            </ul>
+          </div>
+          <div style="background:#1b2d4d;padding:32px 28px;color:#fff;">
+            <p style="margin:0 0 12px;font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.16em;color:#d6bc77;">NEWSLETTER</p>
+            <p style="margin:0 0 20px;font-size:12.5px;line-height:2;color:rgba(255,255,255,.85);">月2回、運用の現場で得た知見をまとめてお届けします。</p>
+            <input type="email" placeholder="メールアドレス" style="width:100%;border:0;padding:12px 14px;font-size:13px;font-family:'Noto Sans JP',sans-serif;margin-bottom:12px;">
+            <button type="button" style="width:100%;border:0;cursor:pointer;background:#b0913f;color:#fff;padding:13px;font-size:12.5px;letter-spacing:.12em;font-family:'Noto Sans JP',sans-serif;" style-hover="background:#c2a252;">購読する</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <div style="{{ pageHeadStyle }}">
+      <div data-reveal style="position:relative;text-align:center;">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.3em;color:#d6bc77;">CONTACT</p>
+        <h1 style="margin:16px 0 0;font-size:32px;font-weight:500;letter-spacing:.14em;color:#fff;">お問い合わせ</h1>
+      </div>
+    </div>
+    <section style="padding:96px 24px;">
+      <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:64px;align-items:start;">
+        <form data-reveal onSubmit="{{ onSubmit }}" style="font-family:'Noto Sans JP',sans-serif;display:grid;gap:26px;min-width:0;">
+          <p style="margin:0;font-size:13.5px;line-height:2.1;color:#4b5462;">1営業日以内に担当者よりご連絡いたします。広告アカウントの無料診断をご希望の場合は、その旨をご記入ください。</p>
+          <label style="display:grid;gap:8px;font-size:12.5px;color:#1b2d4d;">会社名<span style="color:#b0913f;">必須</span>
+            <input type="text" required style="border:1px solid #ded7c9;padding:14px;font-size:13.5px;font-family:'Noto Sans JP',sans-serif;background:#fff;color:#17202f;">
+          </label>
+          <label style="display:grid;gap:8px;font-size:12.5px;color:#1b2d4d;">お名前<span style="color:#b0913f;">必須</span>
+            <input type="text" required style="border:1px solid #ded7c9;padding:14px;font-size:13.5px;font-family:'Noto Sans JP',sans-serif;background:#fff;color:#17202f;">
+          </label>
+          <label style="display:grid;gap:8px;font-size:12.5px;color:#1b2d4d;">メールアドレス<span style="color:#b0913f;">必須</span>
+            <input type="email" required style="border:1px solid #ded7c9;padding:14px;font-size:13.5px;font-family:'Noto Sans JP',sans-serif;background:#fff;color:#17202f;">
+          </label>
+          <label style="display:grid;gap:8px;font-size:12.5px;color:#1b2d4d;">ご相談内容
+            <select style="border:1px solid #ded7c9;padding:14px;font-size:13.5px;font-family:'Noto Sans JP',sans-serif;background:#fff;color:#17202f;">
+              <option>広告運用のご相談</option>
+              <option>SEO・コンテンツのご相談</option>
+              <option>サイト・LP制作のご相談</option>
+              <option>マーケティング戦略のご相談</option>
+              <option>その他</option>
+            </select>
+          </label>
+          <label style="display:grid;gap:8px;font-size:12.5px;color:#1b2d4d;">詳細
+            <textarea rows="6" style="border:1px solid #ded7c9;padding:14px;font-size:13.5px;font-family:'Noto Sans JP',sans-serif;background:#fff;color:#17202f;resize:vertical;"></textarea>
+          </label>
+          <button type="submit" style="border:0;cursor:pointer;background:#b0913f;color:#fff;padding:18px;font-size:13px;letter-spacing:.14em;font-family:'Noto Sans JP',sans-serif;" style-hover="background:#c2a252;">この内容で送信する</button>
+          <p style="margin:0;font-size:12px;color:#8b7a52;">{{ formNotice }}</p>
+        </form>
+        <div data-reveal style="min-width:0;">
+          <h2 style="margin:0 0 28px;font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:.14em;color:#1b2d4d;font-weight:500;">Office</h2>
+          <div style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#e6e2da 0 12px,#f1eee8 12px 24px);display:flex;align-items:flex-end;padding:16px;margin-bottom:28px;"><span style="font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:#8b8578;">[ Google マップ埋め込み ]</span></div>
+          <ul style="list-style:none;margin:0 0 32px;padding:0;font-family:'Noto Sans JP',sans-serif;">
+            <sc-for list="{{ contactInfo }}" as="c" hint-placeholder-count="4">
+              <li style="display:grid;grid-template-columns:86px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid #eae5db;font-size:13px;line-height:1.9;"><span style="color:#8b7a52;">{{ c.k }}</span><span style="color:#39414f;">{{ c.v }}</span></li>
+            </sc-for>
+          </ul>
+          <div style="background:#f6f2ea;padding:32px;">
+            <p style="margin:0 0 6px;font-family:'Noto Sans JP',sans-serif;font-size:12.5px;color:#4b5462;">お電話でのお問い合わせ</p>
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;color:#1b2d4d;">03-6273-4120</p>
+            <p style="margin:8px 0 0;font-family:'Noto Sans JP',sans-serif;font-size:11.5px;color:#6d7787;">＊受付時間：9:00〜19:00（土日祝祭日を除く）</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <section style="position:relative;padding:110px 24px;text-align:center;">
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#13294a 0 14px,#173355 14px 28px);"></div>
+    <div style="position:absolute;inset:0;background:rgba(10,21,40,.82);"></div>
+    <div data-reveal data-clip style="position:relative;">
+      <h2 style="margin:0;font-size:clamp(20px,2.4vw,30px);font-weight:500;line-height:2;letter-spacing:.1em;color:#fff;">まずは、いまの数字を見せてください。<br>改善余地を無料で診断します。</h2>
+      <a href="#top" onClick="{{ goContact }}" style="display:inline-block;margin-top:42px;padding:18px 54px;background:#b0913f;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:13px;letter-spacing:.14em;" style-hover="background:#c2a252;color:#fff;">無料マーケティング診断を申し込む</a>
+    </div>
+  </section>
+
+  <footer style="background:#fff;padding:78px 24px 0;">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:48px;align-items:start;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:14px;">
+        <span style="display:block;width:52px;height:64px;background:linear-gradient(160deg,#1b2d4d 0 52%,#b0913f 52% 100%);clip-path:polygon(50% 0,100% 14%,100% 62%,50% 100%,0 62%,0 14%);"></span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:30px;letter-spacing:.2em;color:#1b2d4d;">ASTRA</span>
+        <span style="font-family:'Noto Sans JP',sans-serif;font-size:9.5px;letter-spacing:.1em;color:#6d7787;">株式会社アストラ デジタルマーケティング</span>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;font-family:'Noto Sans JP',sans-serif;font-size:13px;">
+        <li style="border-bottom:1px solid #e9e4da;padding:14px 0;"><a href="#top" onClick="{{ goServices }}" style="display:flex;justify-content:space-between;">サービス<span style="color:#b0913f;">›</span></a></li>
+        <li style="border-bottom:1px solid #e9e4da;padding:14px 0;"><a href="#top" onClick="{{ goWorks }}" style="display:flex;justify-content:space-between;">導入事例<span style="color:#b0913f;">›</span></a></li>
+        <li style="border-bottom:1px solid #e9e4da;padding:14px 0;"><a href="#top" onClick="{{ goAbout }}" style="display:flex;justify-content:space-between;">会社紹介<span style="color:#b0913f;">›</span></a></li>
+      </ul>
+      <ul style="list-style:none;margin:0;padding:0;font-family:'Noto Sans JP',sans-serif;font-size:13px;">
+        <li style="border-bottom:1px solid #e9e4da;padding:14px 0;"><a href="#top" onClick="{{ goBlog }}" style="display:flex;justify-content:space-between;">インサイト<span style="color:#b0913f;">›</span></a></li>
+        <li style="border-bottom:1px solid #e9e4da;padding:14px 0;"><a href="#top" onClick="{{ goContact }}" style="display:flex;justify-content:space-between;">お問い合わせ<span style="color:#b0913f;">›</span></a></li>
+        <li style="border-bottom:1px solid #e9e4da;padding:14px 0;"><a href="#top" style="display:flex;justify-content:space-between;">採用情報<span style="color:#b0913f;">›</span></a></li>
+      </ul>
+      <div style="font-family:'Noto Sans JP',sans-serif;font-size:12.5px;color:#4b5462;">
+        <p style="margin:0 0 20px;"><a href="#top">プライバシーポリシー</a></p>
+        <p style="margin:0 0 6px;">お電話でのお問い合わせ</p>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:26px;color:#1b2d4d;">03-6273-4120</p>
+        <p style="margin:6px 0 0;font-size:11px;color:#6d7787;">＊受付時間：9:00〜19:00（土日祝祭日を除く）</p>
+      </div>
+    </div>
+    <div style="max-width:1180px;margin:56px auto 0;padding:24px 0 36px;border-top:1px solid #eae5db;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-family:'Noto Sans JP',sans-serif;font-size:11.5px;color:#6d7787;">
+      <span>〒105-0001　東京都港区虎ノ門一丁目17番1号　虎ノ門ヒルズ ビジネスタワー 27階</span>
+      <span>© ASTRA Digital Marketing Inc.</span>
+    </div>
+  </footer>
+</div>
+]]>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { page: 'home', menu: false, filter: 'すべて', sent: false, progress: 0 };
+
+  componentDidMount() {
+    this.observe();
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const sc = this.scroller();
+        const y = sc === window ? (window.scrollY || document.documentElement.scrollTop || 0) : sc.scrollTop;
+        const h = sc === window ? window.innerHeight : sc.clientHeight;
+        const total = sc === window ? document.documentElement.scrollHeight : sc.scrollHeight;
+        const max = Math.max(1, total - h);
+        this.setState({ progress: Math.min(1, y / max), scrolled: y > 120 });
+        document.querySelectorAll('[data-parallax]').forEach(el => {
+          const k = parseFloat(el.getAttribute('data-parallax')) || 0.2;
+          el.style.transform = 'translate3d(0,' + (y * k).toFixed(1) + 'px,0)';
+          el.style.opacity = String(Math.max(0, 1 - y / 620));
+        });
+        const vc = h / 2;
+        document.querySelectorAll('[data-hero]').forEach(el => {
+          el.style.transform = 'scale(' + (1 + Math.min(0.22, y / 2400)).toFixed(3) + ')';
+          el.style.filter = 'blur(' + Math.min(7, y / 110).toFixed(1) + 'px)';
+        });
+        document.querySelectorAll('[data-wipe].is-in').forEach(el => {
+          const r = el.getBoundingClientRect();
+          const d = (r.top + r.height / 2 - vc) / h;
+          el.style.transform = 'translate3d(0,' + (d * -26).toFixed(1) + 'px,0) scale(1.02)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true, capture: true });
+    this._onScroll();
+  }
+  componentDidUpdate() { this.observe(); }
+
+  play(el, from, dur, delay) {
+    if (!el.animate || this._noClock) { el.classList.add('is-in'); return; }
+    let anim;
+    try {
+      anim = el.animate([from, { opacity: 1, transform: 'none', filter: 'none', clipPath: 'inset(0 0 0 0)' }],
+        { duration: dur, delay: delay, easing: 'cubic-bezier(.19,1,.22,1)', fill: 'both' });
+    } catch (e) { el.classList.add('is-in'); return; }
+    el.classList.add('is-in');
+    anim.onfinish = () => { try { anim.cancel(); } catch (e) {} };
+    setTimeout(() => {
+      try {
+        if (anim.playState !== 'finished' && (anim.currentTime === 0 || anim.currentTime == null)) {
+          this._noClock = true;
+          anim.cancel();
+        }
+      } catch (e) {}
+    }, 350);
+  }
+
+  observe() {
+    if (typeof IntersectionObserver === 'undefined') return;
+    if (!this._io) {
+      this._io = new IntersectionObserver((es) => {
+        es.forEach(e => {
+          if (!e.isIntersecting) return;
+          const el = e.target;
+          const r = el.getBoundingClientRect();
+          const sibs = el.parentElement ? Array.from(el.parentElement.children).filter(n => n.hasAttribute('data-reveal')) : [];
+          const idx = Math.max(0, sibs.indexOf(el));
+          const vw = window.innerWidth;
+          let from = { opacity: 0, transform: 'perspective(1100px) rotateX(16deg) translateY(58px) scale(.95)' }, dur = 1000;
+          if (sibs.length <= 2) {
+            const c = r.left + r.width / 2;
+            if (r.width < vw * 0.62 && c < vw * 0.42) from = { opacity: 0, transform: 'translateX(-46px)' };
+            else if (r.width < vw * 0.62 && c > vw * 0.58) from = { opacity: 0, transform: 'translateX(46px)' };
+            else if (r.height > window.innerHeight * 0.55) { from = { opacity: 0, transform: 'scale(1.16)', filter: 'brightness(1.35)' }; dur = 1250; }
+            else from = { opacity: 0, transform: 'translateY(34px)' };
+          }
+          if (el.tagName === 'H1' || el.tagName === 'H2') { from = { opacity: 0, transform: 'translateY(22px)', filter: 'blur(12px)' }; dur = 1100; }
+          if (el.hasAttribute('data-clip')) { from = { opacity: 0, clipPath: 'inset(100% 0 0 0)', transform: 'translateY(38px)' }; dur = 1150; }
+          if (el.hasAttribute('data-wipe')) { from = { opacity: 1, clipPath: 'inset(0 100% 0 0)' }; dur = 1050; }
+          this.play(el, from, dur, idx * 130);
+          if (el.hasAttribute('data-stats')) this.runCount();
+          this._io.unobserve(el);
+        });
+      }, { rootMargin: '0px 0px -6% 0px', threshold: 0 });
+    }
+    const nodes = document.querySelectorAll('[data-reveal]:not(.is-in)');
+    nodes.forEach(el => this._io.observe(el));
+    setTimeout(() => {
+      document.querySelectorAll('[data-reveal]:not(.is-in)').forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight * 1.2 && r.bottom > 0) this.play(el, { opacity: 0, transform: 'translateY(30px)' }, 900, 0);
+        else el.classList.add('is-in');
+      });
+      this.runCount();
+    }, 1200);
+  }
+
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    window.removeEventListener('scroll', this._onScroll, true);
+  }
+
+  scroller() {
+    const de = document.documentElement;
+    if (de.scrollHeight > de.clientHeight + 4 && (window.scrollY > 0 || de.scrollTop > 0)) return window;
+    const nodes = document.querySelectorAll('div,main,section,body');
+    for (const n of nodes) {
+      const s = getComputedStyle(n);
+      if (/(auto|scroll)/.test(s.overflowY) && n.scrollHeight > n.clientHeight + 40) return n;
+    }
+    return window;
+  }
+
+  runCount() {
+    if (this._counting) return;
+    this._counting = true;
+    const dur = 1500, t0 = performance.now();
+    const tick = (t) => {
+      const k = Math.min(1, (t - t0) / dur);
+      this.setState({ countT: 1 - Math.pow(1 - k, 3) });
+      if (k < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    setTimeout(() => { if ((this.state.countT || 0) < 1) this.setState({ countT: 1 }); }, 2200);
+  }
+
+  go(page) {
+    return (e) => {
+      if (e) e.preventDefault();
+      this.setState({ page, menu: false });
+      const sc = this.scroller();
+      if (sc === window) window.scrollTo({ top: 0, behavior: 'smooth' });
+      else sc.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  }
+
+  renderVals() {
+    const p = this.state.page;
+    const cases = [
+      { id: 'saas', industry: 'BtoB SaaS', shot: '[ 事例画像：SaaS ]', title: '商談化率を落とさずに、リード獲得数を2.4倍へ',
+        body: '検索広告のキーワード構造を再設計し、LPを訴求別に3本へ分割。無駄な流入を削減しました。',
+        challenge: '獲得件数は伸びていたものの、商談化率が低く営業工数が圧迫されていました。',
+        strategy: '受注データから逆算し、商談につながるキーワード群のみに予算を再配分しました。',
+        solution: 'アカウント構造の再設計、訴求別LPの3本制作、フォーム項目の最適化を実施。',
+        metrics: [{ value: '2.4x', label: 'リード獲得数' }, { value: '-42%', label: 'CPA' }, { value: '+18pt', label: '商談化率' }] },
+      { id: 'd2c', industry: 'D2C・化粧品', shot: '[ 事例画像：D2C ]', title: '定期引上率の改善でLTVを1.8倍に',
+        body: '初回購入後のメール・LINE導線を再構築し、離脱の起きる時点に合わせて訴求を出し分けました。',
+        challenge: '新規獲得は好調な一方、2回目の購入に至らず広告費が回収できていませんでした。',
+        strategy: '購入後30日間の行動データから離脱ポイントを特定し、接触設計を組み直しました。',
+        solution: 'LINEステップ配信の刷新、同梱物の改訂、定期プランの見せ方を変更。',
+        metrics: [{ value: '+81%', label: 'LTV' }, { value: '+23pt', label: '定期引上率' }, { value: '1.6x', label: '月商' }] },
+      { id: 'hr', industry: '人材サービス', shot: '[ 事例画像：人材 ]', title: 'SEO刷新で自然検索の応募数が3.1倍',
+        body: '職種×地域のページ設計を見直し、内部リンクと表示速度を改善。半年で主要語の上位化を達成。',
+        challenge: '広告依存度が高く、獲得単価の上昇がそのまま採算悪化につながっていました。',
+        strategy: '検索需要のある職種×地域の組み合わせを洗い出し、ページ設計から作り直しました。',
+        solution: '1,200ページの再構築、内部リンク設計、Core Web Vitalsの改善を実施。',
+        metrics: [{ value: '+214%', label: '自然流入' }, { value: '3.1x', label: '応募数' }, { value: '-36%', label: '広告依存度' }] },
+      { id: 'ec', industry: '小売・EC', shot: '[ 事例画像：小売 ]', title: '実店舗とECの計測統合で、広告の評価軸を刷新',
+        body: '来店データと広告接触を突き合わせ、これまで過小評価されていたチャネルを再評価しました。',
+        challenge: 'EC売上のみで広告を評価しており、来店に貢献した施策が止められていました。',
+        strategy: '来店計測を導入し、オンライン・オフライン双方を含む貢献度で予算を配分。',
+        solution: '計測基盤の構築、ダッシュボード整備、媒体別の評価基準を再定義。',
+        metrics: [{ value: '+47%', label: '全社売上' }, { value: '-29%', label: '無駄配信' }, { value: '2.2x', label: '来店数' }] }
+    ];
+    const filterNames = ['すべて', 'BtoB SaaS', 'D2C・化粧品', '人材サービス', '小売・EC'];
+    const base = 'cursor:pointer;padding:12px 24px;font-size:12.5px;letter-spacing:.06em;font-family:inherit;transition:all .2s;';
+
+    return {
+      isHome: p === 'home', isServices: p === 'services', isWorks: p === 'works',
+      isAbout: p === 'about', isBlog: p === 'blog', isContact: p === 'contact',
+      goHome: this.go('home'), goServices: this.go('services'), goWorks: this.go('works'),
+      goAbout: this.go('about'), goBlog: this.go('blog'), goContact: this.go('contact'),
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      stats: [
+        { target: 320, unit: '社', label: '累計支援社数' },
+        { target: 98, unit: '%', label: '契約継続率' },
+        { target: 218, unit: '%', label: '平均CV成長率（12か月）' },
+        { target: 12, unit: '年', label: '支援実績' }
+      ].map(s => ({ ...s, num: String(Math.round(s.target * (this.state.countT == null ? 1 : this.state.countT))) })),
+      headerBgStyle: `position:absolute;inset:0;background:rgba(12,24,45,.94);backdrop-filter:blur(6px);opacity:${this.state.scrolled ? 1 : 0};transition:opacity .45s ease;pointer-events:none;`,
+      progressStyle: `position:fixed;top:0;left:0;height:2px;z-index:100;background:#b0913f;transform-origin:left;width:100%;transform:scaleX(${(this.state.progress || 0).toFixed(3)});transition:transform .12s linear;`,
+      menuStyle: `position:fixed;inset:0;z-index:85;background:rgba(10,21,40,.96);display:${this.state.menu ? 'flex' : 'none'};align-items:center;justify-content:center;padding:100px 24px 40px;`,
+      pageHeadStyle: "position:relative;min-height:340px;display:flex;align-items:center;justify-content:center;padding:120px 24px 60px;background:repeating-linear-gradient(135deg,#13294a 0 14px,#173355 14px 28px);box-shadow:inset 0 0 0 2000px rgba(10,21,40,.72);",
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      formNotice: this.state.sent ? '送信を受け付けました。1営業日以内にご連絡いたします。（デモ表示）' : '送信いただいた内容は、お問い合わせ対応の目的にのみ利用いたします。',
+
+      services: [
+        { no: '01', title: 'デジタルマーケティング', body: '集客から受注までの導線を一気通貫で設計し、投資対効果の高いチャネルに予算を集中させます。' },
+        { no: '02', title: 'SEO対策', body: '検索意図の分析と技術改善、コンテンツ制作を組み合わせ、指名検索まで含めた自然流入を伸ばします。' },
+        { no: '03', title: 'Google広告・運用型広告', body: '検索・ディスプレイ・動画を横断し、獲得単価と獲得件数の両立を前提に日次で改善を重ねます。' },
+        { no: '04', title: 'SNSマーケティング', body: '各媒体の文脈に合わせた発信設計と広告配信で、認知から指名検索、購入までをつなぎます。' },
+        { no: '05', title: 'Web制作・開発', body: '表示速度と検索性能を担保した実装で、公開後も運用し続けられるサイトを構築します。' },
+        { no: '06', title: 'ランディングページ制作', body: '仮説と検証を前提に構成を設計。公開後のABテストまで含めて成約率を引き上げます。' },
+        { no: '07', title: 'ブランディング', body: '価値の言語化からトーン&マナーの整備まで、事業の独自性が伝わる表現に整えます。' },
+        { no: '08', title: 'マーケティング戦略', body: '市場・競合・顧客の調査をもとに、年間の投資配分と達成シナリオを具体的な数値で描きます。' },
+        { no: '09', title: '分析・レポーティング', body: '計測環境の整備とダッシュボード化により、意思決定に必要な数値を常に確認できる状態にします。' }
+      ],
+      serviceDetails: [
+        { no: '01', title: 'デジタルマーケティング', body: '施策単位ではなく、認知から受注までの一連の流れとして設計します。どの数値がボトルネックかを特定し、改善の優先順位を明確にしたうえで実行に移ります。', features: ['現状分析・KPI設計', 'チャネル別の投資配分', '月次の改善サイクル運用'], result: '3か月で主要KPIの計測基盤を整備し、6か月で改善傾向を数値で確認いただいています。' },
+        { no: '02', title: 'SEO対策', body: '検索エンジンの仕様変更に左右されにくい構造をつくります。技術面の改善とコンテンツの両輪で、中長期の流入基盤を整えます。', features: ['テクニカル監査・改善', 'キーワード設計', '記事制作・リライト'], result: '平均で6か月後に自然流入が1.8倍、12か月で2.7倍まで伸びています。' },
+        { no: '03', title: 'Google広告・運用型広告', body: '入札の自動化が進むなかで差が出るのは、データの入れ方と評価軸です。成果につながる信号を媒体に渡す設計から着手します。', features: ['アカウント構造の再設計', 'コンバージョン計測の最適化', 'クリエイティブ検証'], result: '運用開始から3か月でCPAが平均28%改善しています。' },
+        { no: '04', title: 'SNSマーケティング', body: '媒体ごとにユーザーの期待は異なります。同じ素材を流用せず、それぞれの文脈に合わせて発信と配信を設計します。', features: ['アカウント運用代行', '広告配信', 'インフルエンサー施策'], result: '指名検索数の増加を主要KPIとし、6か月で平均1.9倍を記録しています。' },
+        { no: '05', title: 'Web制作・開発', body: '公開して終わりではなく、運用し続けられることを前提に設計します。更新のしやすさと表示速度を両立させます。', features: ['情報設計・デザイン', 'CMS構築', '表示速度改善'], result: 'Core Web Vitalsの全指標で「良好」を満たした状態で納品しています。' },
+        { no: '06', title: 'ランディングページ制作', body: '訴求は一度で当たるものではありません。検証を前提にした構成と、差し替えやすい実装をセットでご提供します。', features: ['構成・コピー設計', 'デザイン・実装', 'ABテスト運用'], result: '改訂後の成約率は平均1.6倍。検証サイクルは2週間単位で回します。' },
+        { no: '07', title: 'ブランディング', body: '事業の価値を言葉と表現に落とし込みます。社内で共有できる基準をつくることで、発信のぶれを抑えます。', features: ['ブランド調査', 'メッセージ開発', 'ガイドライン策定'], result: '策定後、制作物のレビュー工数が平均4割削減されています。' },
+        { no: '08', title: 'マーケティング戦略', body: '市場・競合・顧客の3方向から現在地を確認し、達成可能な目標と投資配分を数値で提示します。', features: ['市場・競合調査', '顧客インタビュー', '年間計画の策定'], result: '策定した計画に対する達成率は平均92%です。' },
+        { no: '09', title: '分析・レポーティング', body: '数値を見る時間を減らし、判断する時間を増やします。必要な指標だけを毎日確認できる環境を整えます。', features: ['計測環境の構築', 'ダッシュボード設計', '月次レポート・定例会'], result: 'レポート作成にかかる社内工数を平均70%削減しています。' }
+      ],
+      flow: [
+        { no: '01', title: 'お問い合わせ', body: 'フォームまたはお電話で現状の課題をお聞かせください。' },
+        { no: '02', title: '無料診断・ヒアリング', body: '広告アカウントとサイトを無料で診断し、改善余地を提示します。' },
+        { no: '03', title: '戦略設計・ご提案', body: '目標数値から逆算した施策と投資配分をご提案します。' },
+        { no: '04', title: '実行・改善', body: '専任チームが運用を開始。月次で成果を検証し改善を継続します。' }
+      ],
+      casesTop: cases.slice(0, 3).map(c => ({ ...c, metricLabel: c.metrics[1].label, metricValue: c.metrics[1].value })),
+      visibleCases: this.state.filter === 'すべて' ? cases : cases.filter(c => c.industry === this.state.filter),
+      filters: filterNames.map(name => ({
+        label: name,
+        onClick: () => this.setState({ filter: name }),
+        style: base + (this.state.filter === name
+          ? 'background:#1b2d4d;color:#fff;border:1px solid #1b2d4d;'
+          : 'background:#fff;color:#4b5462;border:1px solid #ded7c9;')
+      })),
+      voices: [
+        { quote: '報告のたびに「次に何をするか」が明確でした。うまくいかなかった検証も共有いただけるので、こちらも判断が早くなりました。', name: 'SaaS企業 マーケティング責任者' },
+        { quote: '広告の数字だけでなく、在庫や粗利まで踏まえて提案してくれます。社内の一部門のような距離感で相談できています。', name: 'D2Cブランド 代表取締役' },
+        { quote: '初回の無料診断の時点で、社内で見落としていた問題を3つ指摘されました。依頼するまでの判断が早かったです。', name: '人材サービス企業 事業部長' }
+      ],
+      faqs: [
+        { q: '最低契約期間はありますか。', a: '6か月からのご契約をお願いしています。施策の効果を判断するには、検証と改善を最低2サイクル回す必要があるためです。' },
+        { q: '費用はどのくらいかかりますか。', a: '月額30万円からご支援しています。ご支援範囲と広告予算に応じてお見積りいたしますので、まずはご相談ください。' },
+        { q: '広告アカウントは自社で保有できますか。', a: 'はい。お客様名義のアカウントで運用し、すべてのデータをご確認いただける状態でご支援します。' },
+        { q: '一部の施策だけの依頼も可能ですか。', a: '可能です。ただし全体設計をご一緒したほうが成果につながりやすいため、まず現状の診断をおすすめしています。' },
+        { q: '対応エリアはどこまでですか。', a: '東京・大阪の2拠点を中心に、全国のお客様をオンラインで支援しています。海外案件も実績があります。' }
+      ],
+      members: [
+        { role: '代表取締役', name: '三浦 慎一', bio: '大手代理店で運用部門を統括後、2014年にアストラを設立。' },
+        { role: '執行役員 / 戦略', name: '小島 遥', bio: '事業会社のマーケ責任者を経て参画。戦略設計を担当。' },
+        { role: '運用統括', name: '西野 亮太', bio: '累計運用額120億円。広告アカウント設計の責任者。' },
+        { role: 'クリエイティブ統括', name: '藤本 美咲', bio: 'ブランド開発とLP制作を横断して担当。' }
+      ],
+      history: [
+        { year: '2014', text: '東京・新橋にて創業。広告運用の受託を開始。' },
+        { year: '2017', text: 'SEO・コンテンツ制作部門を新設。' },
+        { year: '2019', text: '支援社数100社を突破。制作部門を内製化。' },
+        { year: '2023', text: 'データ分析基盤の構築支援を開始。' },
+        { year: '2026', text: '大阪オフィスを開設。48名体制に。' }
+      ],
+      companyInfo: [
+        { k: '会社名', v: '株式会社アストラ デジタルマーケティング' },
+        { k: '設立', v: '2014年4月' },
+        { k: '代表者', v: '代表取締役 三浦 慎一' },
+        { k: '資本金', v: '5,000万円' },
+        { k: '従業員数', v: '48名（2026年9月現在）' },
+        { k: '所在地', v: '東京都港区虎ノ門一丁目17番1号 虎ノ門ヒルズ ビジネスタワー 27階' }
+      ],
+      posts: [
+        { cat: 'SEO', title: '内部リンクの設計だけで自然流入が伸びる条件', date: '2026.08.28' },
+        { cat: '広告運用', title: '自動入札に任せてよい範囲、任せてはいけない範囲', date: '2026.08.19' },
+        { cat: '分析', title: '計測漏れを放置したまま評価している3つの指標', date: '2026.08.07' },
+        { cat: 'SNS', title: '指名検索を増やすSNS運用の考え方', date: '2026.07.25' },
+        { cat: '制作', title: 'LPの離脱はどこで起きているか、320本の検証から', date: '2026.07.11' },
+        { cat: '戦略', title: '予算配分を決める前に確認したい4つの数字', date: '2026.06.30' }
+      ],
+      categories: [
+        { name: '広告運用', count: 24 }, { name: 'SEO', count: 18 }, { name: '分析', count: 12 },
+        { name: 'SNS', count: 9 }, { name: '制作', count: 8 }, { name: '戦略', count: 6 }
+      ],
+      contactInfo: [
+        { k: '本社', v: '東京都港区虎ノ門一丁目17番1号 虎ノ門ヒルズ ビジネスタワー 27階' },
+        { k: '大阪', v: '大阪市北区梅田二丁目4番9号 ブリーゼタワー 18階' },
+        { k: 'アクセス', v: '東京メトロ 虎ノ門ヒルズ駅 直結 / 虎ノ門駅 徒歩5分' },
+        { k: '受付時間', v: '9:00〜19:00（土日祝祭日を除く）' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

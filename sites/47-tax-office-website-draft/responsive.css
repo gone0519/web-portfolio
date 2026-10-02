@@ -1,0 +1,35 @@
+/* レスポンシブ調整 — 各ページの <helmet> から読み込み。
+   インラインstyleを上書きするため !important を使用。 */
+
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+
+/* ── トップ：ヒーロー ───────────────────────── */
+@media (max-width:720px){
+  /* 横グラデーションだと文字が写真に乗るため、縦方向に全面を暗くする */
+  [data-hero-scrim]{background:linear-gradient(180deg,rgba(12,38,82,.45) 0%,rgba(12,38,82,.6) 55%,rgba(12,38,82,.75) 100%) !important}
+}
+@media (max-width:480px){
+  [data-hero-cta]>a{flex:1 1 100%;justify-content:center}
+}
+
+/* ── 斜線付き見出し（／ 見出し ＼）：狭い画面では字間と余白を詰める ── */
+@media (max-width:600px){
+  :is(h1,h2,p):has(> span[style*="rotate"]){gap:12px !important;letter-spacing:.08em !important;text-align:center}
+  :is(h1,h2,p):has(> span[style*="rotate"]) > span[style*="rotate"]{flex:none}
+}
+
+/* ── 選ばれる理由：交互レイアウトを縦積み時は常に「写真→本文」の順に ── */
+@media (max-width:780px){
+  article[style*="grid-template-columns"]:has(> div > image-slot){display:flex !important;flex-direction:column;align-items:stretch !important}
+  article[style*="grid-template-columns"]:has(> div > image-slot) > div:has(> image-slot){order:-1}
+}
+
+/* ── 事務所概要などの定義リスト：極小幅では見出しと内容を縦に ── */
+@media (max-width:420px){
+  dl > div[style*="minmax(110px"]{grid-template-columns:1fr !important;gap:4px !important;padding:16px 4px !important}
+}
+
+/* ── フッターナビ：タップしやすい大きさに ── */
+@media (max-width:600px){
+  footer nav a{padding:10px 14px !important}
+}

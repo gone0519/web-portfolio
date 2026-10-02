@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#17130f;color:#ece4d6;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#c9a96e;text-decoration:none}
+a:hover{color:#e0c48f}
+input,select,textarea{color-scheme:dark}
+select option{background:#1f1a15;color:#ece4d6}
+</style>
+</helmet>
+<div style="font-family:'Shippori Mincho',serif;background-color:#17130f;background-image:repeating-linear-gradient(90deg,rgba(255,240,220,.018) 0 1px,transparent 1px 7px);color:#ece4d6;min-height:100vh;overflow-x:clip">
+<dc-import name="SiteHeader" current="reservation" hint-size="100%,0px"></dc-import>
+<main>
+<section data-screen-label="Reservation Hero" style="position:relative;height:clamp(420px,58vh,580px);overflow:hidden;display:flex;align-items:center;justify-content:center">
+  <div data-hero-zoom="" style="position:absolute;inset:0;transform:scale(1.08);transition:transform 9s cubic-bezier(.2,.6,.2,1);background:#120f0c"><image-slot id="res-hero" src="images/lantern-noren.jpg" shape="rect" placeholder="RESERVATION HERO — 暖簾と店先の灯り（夜）"></image-slot></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(18,14,11,.6) 0%,rgba(18,14,11,.4) 50%,#17130f 100%)"></div>
+  <div style="position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;padding:80px 24px 0;pointer-events:none">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.4em;color:#c9a96e">RESERVATION</span>
+    <h1 style="margin:0;font-weight:500;font-size:clamp(30px,4.2vw,52px);letter-spacing:.18em">ご予約・アクセス</h1>
+    <nav aria-label="パンくず" style="display:flex;gap:10px;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;color:#b3a794;pointer-events:auto"><a href="Top.dc.html" style="color:#b3a794">HOME</a><span>/</span><span style="color:#ece4d6">RESERVATION</span></nav>
+  </div>
+</section>
+
+<section data-reveal="" style="padding:clamp(80px,10vw,130px) 24px clamp(48px,6vw,72px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px">
+  <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(38px,5.6vw,76px);line-height:1.1;text-wrap:balance">See You at the Counter.</h2>
+  <p style="margin:0;font-size:clamp(19px,2vw,24px);letter-spacing:.16em">ご来店をお待ちしております。</p>
+  <p style="margin:0;font-size:14px;line-height:2.3;letter-spacing:.1em;color:#d9cfbf">焼きたての焼き鳥と、心地よい時間をご用意してお待ちしております。</p>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px) clamp(90px,11vw,140px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(40px,5vw,72px);align-items:start">
+  <div data-reveal="" style="grid-column:span {{ formSpan }};background:#1f1a15;border:1px solid rgba(201,169,110,.22);padding:clamp(28px,4vw,56px)">
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" novalidate="" style="display:flex;flex-direction:column;gap:32px">
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.32em;color:#c9a96e">WEB RESERVATION</span><h3 style="margin:0;font-weight:500;font-size:22px;letter-spacing:.14em">ご予約フォーム</h3><p style="margin:4px 0 0;font-size:12px;letter-spacing:.08em;color:#b3a794">＊は必須項目です。当日のご予約はお電話にて承ります。</p></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:28px">
+          <label style="display:flex;flex-direction:column;gap:10px;font-size:13px;letter-spacing:.14em;color:#c9a96e">ご来店日＊<input type="date" value="{{ f.date }}" onChange="{{ on.date }}" min="{{ minDate }}" style="background:transparent;border:0;border-bottom:1px solid rgba(201,169,110,.45);color:#ece4d6;font:inherit;font-size:16px;padding:10px 0;outline:none"></label>
+          <label style="display:flex;flex-direction:column;gap:10px;font-size:13px;letter-spacing:.14em;color:#c9a96e">お時間＊<select value="{{ f.time }}" onChange="{{ on.time }}" style="background:transparent;border:0;border-bottom:1px solid rgba(201,169,110,.45);color:#ece4d6;font:inherit;font-size:16px;padding:10px 0;outline:none"><option value="">選択してください</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option></select></label>
+          <label style="display:flex;flex-direction:column;gap:10px;font-size:13px;letter-spacing:.14em;color:#c9a96e">人数＊<select value="{{ f.people }}" onChange="{{ on.people }}" style="background:transparent;border:0;border-bottom:1px solid rgba(201,169,110,.45);color:#ece4d6;font:inherit;font-size:16px;padding:10px 0;outline:none"><option value="">選択してください</option><option>1名</option><option>2名</option><option>3名</option><option>4名</option><option>5名</option><option>6名</option></select></label>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:13px;letter-spacing:.14em;color:#c9a96e">お席</span>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <button type="button" onClick="{{ seatCounter }}" aria-pressed="{{ seatSel.counter }}" style="border:1px solid {{ seatBd.counter }};background:{{ seatBg.counter }};color:{{ seatFg.counter }};font:inherit;font-size:13px;letter-spacing:.16em;padding:12px 26px;cursor:pointer;transition:all .3s">カウンター</button>
+            <button type="button" onClick="{{ seatPrivate }}" aria-pressed="{{ seatSel.private }}" style="border:1px solid {{ seatBd.private }};background:{{ seatBg.private }};color:{{ seatFg.private }};font:inherit;font-size:13px;letter-spacing:.16em;padding:12px 26px;cursor:pointer;transition:all .3s">個室</button>
+            <button type="button" onClick="{{ seatAny }}" aria-pressed="{{ seatSel.any }}" style="border:1px solid {{ seatBd.any }};background:{{ seatBg.any }};color:{{ seatFg.any }};font:inherit;font-size:13px;letter-spacing:.16em;padding:12px 26px;cursor:pointer;transition:all .3s">指定なし</button>
+          </div>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:10px;font-size:13px;letter-spacing:.14em;color:#c9a96e">コース<select value="{{ f.course }}" onChange="{{ on.course }}" style="background:transparent;border:0;border-bottom:1px solid rgba(201,169,110,.45);color:#ece4d6;font:inherit;font-size:16px;padding:10px 0;outline:none"><option>お席のみ（当日アラカルト）</option><option>焼き鳥コース ¥4,800</option><option>おまかせコース ¥7,500</option><option>飲み放題付きコース ¥7,000</option></select></label>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px">
+          <label style="display:flex;flex-direction:column;gap:10px;font-size:13px;letter-spacing:.14em;color:#c9a96e">お名前＊<input type="text" value="{{ f.name }}" onChange="{{ on.name }}" placeholder="灯火 太郎" autocomplete="name" style="background:transparent;border:0;border-bottom:1px solid rgba(201,169,110,.45);color:#ece4d6;font:inherit;font-size:16px;padding:10px 0;outline:none"></label>
+          <label style="display:flex;flex-direction:column;gap:10px;font-size:13px;letter-spacing:.14em;color:#c9a96e">電話番号＊<input type="tel" value="{{ f.phone }}" onChange="{{ on.phone }}" placeholder="090-0000-0000" autocomplete="tel" style="background:transparent;border:0;border-bottom:1px solid rgba(201,169,110,.45);color:#ece4d6;font:inherit;font-size:16px;padding:10px 0;outline:none"></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:10px;font-size:13px;letter-spacing:.14em;color:#c9a96e">メールアドレス<input type="email" value="{{ f.email }}" onChange="{{ on.email }}" placeholder="mail@example.com" autocomplete="email" style="background:transparent;border:0;border-bottom:1px solid rgba(201,169,110,.45);color:#ece4d6;font:inherit;font-size:16px;padding:10px 0;outline:none"></label>
+        <label style="display:flex;flex-direction:column;gap:10px;font-size:13px;letter-spacing:.14em;color:#c9a96e">ご要望・アレルギーなど<textarea value="{{ f.note }}" onChange="{{ on.note }}" rows="3" placeholder="記念日のご利用、苦手な食材など" style="background:transparent;border:1px solid rgba(201,169,110,.3);color:#ece4d6;font:inherit;font-size:16px;padding:14px;outline:none;resize:vertical;line-height:1.9"></textarea></label>
+        <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+          <p role="alert" style="margin:0;font-size:13px;letter-spacing:.08em;color:#e59a82;line-height:1.9">{{ errorText }}</p>
+        </sc-if>
+        <button type="submit" style="align-self:stretch;background:#c9a96e;color:#17130f;border:0;font:inherit;font-size:15px;letter-spacing:.26em;padding:20px;cursor:pointer;transition:background .3s" style-hover="background:#e0c48f">この内容で予約を申し込む</button>
+      </form>
+    </sc-if>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div role="status" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding:40px 0">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.32em;color:#c9a96e">THANK YOU</span>
+        <h3 style="margin:0;font-weight:500;font-size:24px;letter-spacing:.14em">ご予約を承りました。</h3>
+        <p style="margin:0;font-size:14px;line-height:2.3;letter-spacing:.08em;color:#d9cfbf">{{ summary }}<br>確認のご連絡を、店舗より差し上げます。</p>
+        <button type="button" onClick="{{ reset }}" style="border:1px solid #c9a96e;background:transparent;color:#c9a96e;font:inherit;font-size:13px;letter-spacing:.2em;padding:13px 36px;cursor:pointer" style-hover="background:#c9a96e;color:#17130f">内容を変更する</button>
+      </div>
+    </sc-if>
+  </div>
+
+  <aside id="contact" data-reveal="" style="scroll-margin-top:100px;display:flex;flex-direction:column;gap:36px">
+    <div style="display:flex;flex-direction:column;gap:10px;border-bottom:1px solid rgba(201,169,110,.28);padding-bottom:32px">
+      <span style="font-size:13px;letter-spacing:.16em;color:#c9a96e">お電話でのご予約・お問い合わせ</span>
+      <a href="tel:0360000000" style="font-family:'Cormorant Garamond',serif;font-size:38px;letter-spacing:.06em;color:#ece4d6">03-6000-0000</a>
+      <span style="font-size:12px;letter-spacing:.08em;color:#b3a794;line-height:2">受付 15:00 – 23:00（月曜定休）<br>当日のご予約、6名様以上はお電話にて。</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;font-size:13px;line-height:2;letter-spacing:.08em;color:#d9cfbf">
+      <span style="font-size:13px;letter-spacing:.16em;color:#c9a96e">ご予約の際に</span>
+      <p style="margin:0">・お席は2時間制となります。</p>
+      <p style="margin:0">・15分を過ぎてご連絡がない場合、キャンセル扱いとさせていただくことがございます。</p>
+      <p style="margin:0">・前日以降のコースのキャンセルは、料金の50%を頂戴いたします。</p>
+    </div>
+  </aside>
+</section>
+
+<section id="access" style="scroll-margin-top:80px;border-top:1px solid rgba(201,169,110,.16);padding:clamp(90px,11vw,140px) clamp(20px,5vw,48px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,5vw,64px)">
+    <div data-reveal="" style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.36em;color:#c9a96e">ACCESS</span>
+      <h2 style="margin:0;font-weight:500;font-size:clamp(24px,3vw,36px);letter-spacing:.16em">店舗情報</h2>
+    </div>
+    <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));border:1px solid rgba(201,169,110,.2)">
+      <div style="background:#1f1a15;padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:28px">
+        <h3 style="margin:0;font-weight:500;font-size:22px;letter-spacing:.14em">炭火焼鳥 灯火</h3>
+        <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:18px 28px;font-size:14px;line-height:2;letter-spacing:.08em">
+          <dt style="color:#c9a96e">住所</dt><dd style="margin:0;color:#d9cfbf">〒155-0031<br>東京都世田谷区北沢2-00-0 1F</dd>
+          <dt style="color:#c9a96e">営業時間</dt><dd style="margin:0;color:#d9cfbf">火〜金　17:00 – 24:00（L.O. 23:00）<br>土日祝　16:00 – 23:00（L.O. 22:00）</dd>
+          <dt style="color:#c9a96e">定休日</dt><dd style="margin:0;color:#d9cfbf">月曜日（祝日の場合は翌日）</dd>
+          <dt style="color:#c9a96e">アクセス</dt><dd style="margin:0;color:#d9cfbf">小田急線・京王井の頭線<br>下北沢駅 東口より徒歩4分</dd>
+          <dt style="color:#c9a96e">席数</dt><dd style="margin:0;color:#d9cfbf">カウンター10席・個室1室（〜4名）</dd>
+          <dt style="color:#c9a96e">電話</dt><dd style="margin:0"><a href="tel:0360000000" style="color:#ece4d6">03-6000-0000</a></dd>
+        </dl>
+      </div>
+      <div style="min-height:clamp(260px,50vw,420px);background:repeating-linear-gradient(135deg,#221c16 0 10px,#1c1712 10px 20px);display:flex;align-items:center;justify-content:center;padding:24px">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;color:#b3a794;border:1px solid rgba(201,169,110,.3);padding:10px 16px;background:#17130f">MAP — Google Maps 埋め込み</span>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,300px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: window.innerWidth, sent: false, tried: false, f: { date: '', time: '', people: '', seat: 'any', course: 'お席のみ（当日アラカルト）', name: '', phone: '', email: '', note: '' } };
+  componentDidMount() { this.r = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.r); }
+  componentWillUnmount() { window.removeEventListener('resize', this.r); }
+  set(k, v) { this.setState(s => ({ f: { ...s.f, [k]: v } })); }
+  missing() {
+    const f = this.state.f, labels = { date: 'ご来店日', time: 'お時間', people: '人数', name: 'お名前', phone: '電話番号' };
+    return Object.keys(labels).filter(k => !f[k].trim()).map(k => labels[k]);
+  }
+  renderVals() {
+    const { f, sent, tried, w } = this.state;
+    const on = {};
+    ['date', 'time', 'people', 'course', 'name', 'phone', 'email', 'note'].forEach(k => on[k] = e => this.set(k, e.target.value));
+    const miss = this.missing();
+    const seatSel = {}, seatBg = {}, seatFg = {}, seatBd = {};
+    ['counter', 'private', 'any'].forEach(k => { const a = f.seat === k; seatSel[k] = a; seatBg[k] = a ? '#c9a96e' : 'transparent'; seatFg[k] = a ? '#17130f' : '#ece4d6'; seatBd[k] = a ? '#c9a96e' : 'rgba(201,169,110,.4)'; });
+    const seatName = { counter: 'カウンター', private: '個室', any: 'お席指定なし' }[f.seat];
+    const d = new Date(); d.setDate(d.getDate() + 1);
+    return {
+      f, on, seatSel, seatBg, seatFg, seatBd,
+      seatCounter: () => this.set('seat', 'counter'), seatPrivate: () => this.set('seat', 'private'), seatAny: () => this.set('seat', 'any'),
+      minDate: d.toISOString().slice(0, 10),
+      formSpan: w >= 1100 ? 2 : 1,
+      sent, notSent: !sent,
+      hasError: tried && miss.length > 0,
+      errorText: '次の項目をご入力ください：' + miss.join('、'),
+      summary: `${f.date.replace(/-/g, '/')} ${f.time}　${f.people}　${seatName}　${f.course}`,
+      submit: e => { e.preventDefault(); if (this.missing().length) { this.setState({ tried: true }); return; } this.setState({ sent: true }); window.scrollTo({ top: document.querySelector('form') ? document.querySelector('form').getBoundingClientRect().top + window.scrollY - 120 : 0, behavior: 'smooth' }); },
+      reset: () => this.setState({ sent: false, tried: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

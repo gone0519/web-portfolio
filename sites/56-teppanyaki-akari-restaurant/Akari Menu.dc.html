@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Menu — 鉄板焼 燈</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<script src="./image-slot.js"></script>
+<script src="./akari-motion.js"></script>
+<link rel="stylesheet" href="./akari.css">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#1b1713;color:#e4dccf;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#cdb27a;text-decoration:none;transition:color .3s}
+a:hover{color:#e8d3a2}
+</style>
+</helmet>
+<div style="position:relative;overflow-x:hidden;background-color:#1b1713;background-image:repeating-linear-gradient(90deg, rgba(255,240,220,.018) 0 1px, transparent 1px 7px)">
+<dc-import name="AkariHeader" current="menu" hint-size="100%,1px"></dc-import>
+<main>
+<dc-import name="AkariPageHero" num="02" en="MENU" ja="旬を味わう、鉄板のご馳走。" sub="Wagyu, Seafood &amp; Seasonal Vegetables" slot="menu-hero" img="images/teppan-vegetables.jpg" ph="MENU — 鉄板に並ぶ和牛と魚介（横長）" hint-size="100%,640px"></dc-import>
+
+<section data-screen-label="Dishes" style="padding:clamp(90px,10vw,140px) clamp(24px,5vw,72px)">
+ <div style="max-width:1240px;margin:0 auto">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:clamp(36px,4vw,56px)">
+    <div>
+      <p data-m="label" style="margin:0 0 14px;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.4em;color:#b89a5e">À LA CARTE</p>
+      <h2 data-m="title" style="margin:0;font-weight:500;font-size:clamp(22px,2.6vw,32px);letter-spacing:.16em;line-height:1.7">鉄板で仕上げる、七つの名物。</h2>
+    </div>
+    <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,40px);letter-spacing:.12em;color:#cdb27a">{{ activeNum }}</p>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,56px);align-items:flex-start">
+    <div style="flex:1.8 1 520px;min-width:0">
+      <div data-m="img" onTouchStart="{{ swipeStart }}" onTouchEnd="{{ swipeEnd }}" style="position:relative;aspect-ratio:4/3;overflow:hidden;touch-action:pan-y;background:radial-gradient(ellipse at 50% 72%, #45291a, #16120e 75%)">
+        <sc-for list="{{ dishes }}" as="d" hint-placeholder-count="1">
+          <div style="position:absolute;inset:0;transition:opacity 1.2s ease, clip-path 1.4s cubic-bezier(.77,0,.18,1);opacity:{{ d.op }};clip-path:{{ d.clip }};pointer-events:{{ d.pe }}">
+            <image-slot id="{{ d.slot }}" src="images/{{ d.slot }}.jpg" shape="rect" placeholder="{{ d.ph }}"></image-slot>
+          </div>
+        </sc-for>
+        <div style="position:absolute;right:0;bottom:0;display:flex;z-index:6">
+          <button onClick="{{ prev }}" aria-label="前の料理" style="width:56px;height:56px;background:#15120f;border:0;border-right:1px solid rgba(184,154,94,.25);cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#2a231d"><span style="display:block;width:10px;height:10px;border-left:1px solid #e4dccf;border-bottom:1px solid #e4dccf;transform:rotate(45deg);margin-left:4px"></span></button>
+          <button onClick="{{ next }}" aria-label="次の料理" style="width:56px;height:56px;background:#15120f;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#2a231d"><span style="display:block;width:10px;height:10px;border-right:1px solid #e4dccf;border-top:1px solid #e4dccf;transform:rotate(45deg);margin-right:4px"></span></button>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px">
+        <sc-for list="{{ dishes }}" as="d" hint-placeholder-count="7"><button onClick="{{ d.select }}" aria-label="{{ d.name }}" style="width:28px;height:20px;border:0;background:transparent;cursor:pointer;padding:0;display:flex;align-items:center"><span style="display:block;width:100%;height:1px;background:{{ d.dot }};transition:background .4s"></span></button></sc-for>
+      </div>
+    </div>
+    <div style="flex:1 1 300px;display:flex;flex-direction:column;border-bottom:1px solid rgba(184,154,94,.22)">
+      <sc-for list="{{ dishes }}" as="d" hint-placeholder-count="7">
+        <button onClick="{{ d.select }}" onMouseEnter="{{ d.hover }}" style="text-align:left;background:transparent;border:0;border-top:1px solid {{ d.line }};padding:16px 2px;cursor:pointer;color:#e4dccf;font-family:inherit;transition:border-color .4s">
+          <span style="display:block;font-family:'Cormorant Garamond',serif;font-size:10.5px;letter-spacing:.3em;color:#b89a5e;margin-bottom:6px">{{ d.cat }}</span>
+          <span style="display:flex;justify-content:space-between;gap:16px;align-items:baseline"><span style="font-size:16px;letter-spacing:.12em;color:{{ d.nameColor }};transition:color .4s">{{ d.name }}</span><span style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#cdb27a;white-space:nowrap">{{ d.price }}</span></span>
+          <span style="display:{{ d.descShow }};margin-top:10px;font-size:12.5px;line-height:2;letter-spacing:.06em;color:#b8ad9a">{{ d.desc }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+  <p style="margin:28px 0 0;font-size:11px;letter-spacing:.08em;color:#9c917f">価格はすべて税込・サービス料10%別。仕入れにより内容が変わる場合がございます。</p>
+ </div>
+</section>
+
+<section data-screen-label="Menu Quote" style="padding:0 clamp(24px,5vw,72px) clamp(100px,12vw,160px)">
+  <p data-scrub="1" style="max-width:1100px;margin:0 auto;font-size:clamp(24px,3.4vw,46px);line-height:1.8;letter-spacing:.12em;text-wrap:pretty">その日いちばんの素材を、いちばんの火入れで。お好みの焼き加減を、どうぞお申し付けください。</p>
+</section>
+</main>
+<dc-import name="AkariNext" href="Akari%20Course.dc.html" en="Course" ja="おまかせコース" hint-size="100%,360px"></dc-import>
+<dc-import name="AkariFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: 0 };
+  dishes = [
+    { cat: 'WAGYU / 和牛', name: '黒毛和牛ステーキ', desc: 'A5等級の黒毛和牛を、鉄板で香ばしく焼き上げる当店の看板料理。', price: '¥8,800〜', slot: 'dish-steak', ph: '黒毛和牛ステーキ — 焼き目と断面' },
+    { cat: 'WAGYU / 和牛', name: '特選和牛フィレ', desc: 'きめ細やかな赤身の旨みを、レアからミディアムで。', price: '¥12,000〜', slot: 'dish-fillet', ph: '特選和牛フィレ — 厚切りのフィレ' },
+    { cat: 'WAGYU / 和牛', name: '和牛サーロイン', desc: '甘みのある脂と香ばしさ。岩塩と本山葵を添えて。', price: '¥9,800〜', slot: 'dish-sirloin', ph: '和牛サーロイン — 鉄板上の脂' },
+    { cat: 'SEAFOOD / 海鮮', name: '活鮑の鉄板焼き', desc: '蒸し焼きにしたやわらかな活鮑を、肝のソースとともに。', price: '¥6,500', slot: 'dish-abalone', ph: '活鮑の鉄板焼き — 蓋を開けた湯気' },
+    { cat: 'SEAFOOD / 海鮮', name: '伊勢海老', desc: '殻ごと焼き上げ、身の甘みを閉じ込めます。', price: '時価', slot: 'dish-lobster', ph: '伊勢海老 — 殻付きの焼き上がり' },
+    { cat: 'SEAFOOD / 海鮮', name: '帆立・旬の魚介', desc: '肉厚の帆立と、その日に届いた魚介を焦がしバターで。', price: '¥4,800', slot: 'dish-scallop', ph: '帆立・旬の魚介 — 焼き色のついた帆立' },
+    { cat: 'VEGETABLES / 野菜', name: '季節野菜の鉄板焼き', desc: '契約農家から届く旬の焼き野菜。素材の甘みをそのままに。', price: '¥2,200', slot: 'dish-vegetables', ph: '季節野菜の鉄板焼き — 色とりどりの焼き野菜' }
+  ];
+  go = (i) => { const n = this.dishes.length; this.setState({ active: (i + n) % n }); this.restartAuto(); };
+  restartAuto() { clearInterval(this.timer); this.timer = setInterval(() => this.setState(s => ({ active: (s.active + 1) % this.dishes.length })), 6000); }
+  componentDidMount() { this.restartAuto(); const go = () => window.AkariMotion ? window.AkariMotion.init() : setTimeout(go, 40); go(); }
+  componentWillUnmount() { clearInterval(this.timer); }
+  renderVals() {
+    const a = this.state.active;
+    return {
+      dishes: this.dishes.map((d, i) => ({
+        ...d,
+        op: i === a ? 1 : 0,
+        clip: i === a ? 'inset(0 0 0 0)' : 'inset(0 0 0 100%)',
+        pe: i === a ? 'auto' : 'none',
+        dot: i === a ? '#cdb27a' : 'rgba(228,220,207,.25)',
+        line: i === a ? '#b89a5e' : 'rgba(184,154,94,.22)',
+        nameColor: i === a ? '#cdb27a' : '#e4dccf',
+        descShow: i === a ? 'block' : 'none',
+        select: () => { if (this.state.active !== i) this.go(i); },
+        hover: () => { if (this.state.active !== i && window.matchMedia('(hover: hover)').matches) this.go(i); }
+      })),
+      swipeStart: (e) => { const t = e.touches[0]; this.touch = { x: t.clientX, y: t.clientY }; },
+      swipeEnd: (e) => {
+        const s = this.touch; this.touch = null; if (!s) return;
+        const t = e.changedTouches[0], dx = t.clientX - s.x, dy = t.clientY - s.y;
+        if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.5) this.go(a + (dx < 0 ? 1 : -1));
+      },
+      activeNum: String(a + 1).padStart(2, '0') + ' / ' + String(this.dishes.length).padStart(2, '0'),
+      prev: () => this.go(a - 1),
+      next: () => this.go(a + 1)
+    };
+  }
+}
+</script>
+</body>
+</html>

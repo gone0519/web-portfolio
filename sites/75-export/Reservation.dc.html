@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#33241a;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+*{box-sizing:border-box}
+a{color:#ee6a17;text-decoration:none}
+a:hover{color:#b84a06}
+input,select,textarea,button{font-family:inherit}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="reservation" hint-size="100%,150px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+
+<main id="top">
+<section data-hero="" data-screen-label="Reservation Title" style="position:relative;overflow:hidden;background:linear-gradient(100deg,#fbe0c4 0%,#fce9d4 45%,#fdf1e4 100%)">
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(56px,6vw,96px) clamp(16px,3vw,40px);display:flex;flex-direction:column;gap:12px">
+    <p style="margin:0;font-size:15px;letter-spacing:0.3em;color:#ee6a17;font-weight:600">Reservation &amp; Access</p>
+    <h1 style="margin:0;font-size:clamp(30px,3vw,44px);font-weight:500;letter-spacing:0.2em">ご予約・アクセス</h1>
+  </div>
+</section>
+<nav aria-label="パンくず" style="max-width:1200px;margin:0 auto;padding:16px clamp(16px,3vw,40px);font-size:13px;letter-spacing:0.08em;display:flex;gap:10px"><a href="index.dc.html">トップ</a><span>›</span><span>ご予約・アクセス</span></nav>
+
+<section id="flow" data-screen-label="First Visit Flow" style="padding:clamp(40px,5vw,72px) clamp(16px,3vw,40px)">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center">
+      <p style="margin:0;font-size:clamp(15px,1.2vw,18px);letter-spacing:0.16em">初めての方へ</p>
+      <h2 style="margin:0;font-size:clamp(26px,2.4vw,36px);font-weight:500;letter-spacing:0.2em;color:#ee6a17">ご来院の流れ</h2>
+    </div>
+    <ol style="list-style:none;margin:clamp(32px,4vw,48px) 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:15px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+        <li style="background:linear-gradient(180deg,#f6f2eb 0%,#fbf9f6 100%);border-radius:14px 14px 0 0;padding:28px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px">
+          <span style="width:74px;height:74px;border-radius:50%;border:1px dashed #ee6a17;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#ee6a17;line-height:1.1"><span style="font-size:11px;letter-spacing:0.14em">STEP</span><span style="font-size:24px">{{ s.no }}</span></span>
+          <h3 style="margin:0;font-size:17px;font-weight:500;letter-spacing:0.12em;color:#ee6a17;padding-bottom:12px;border-bottom:1px dashed #ee6a17;width:100%">{{ s.t }}</h3>
+          <p style="margin:0;font-size:14px;line-height:1.9;letter-spacing:0.06em;text-align:left">{{ s.d }}</p>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section data-screen-label="Hours" style="padding:0 clamp(12px,3vw,40px) clamp(48px,5vw,72px)">
+  <div style="max-width:1000px;margin:0 auto;background:#fff;border-radius:6px;padding:clamp(16px,2.4vw,30px);box-shadow:0 4px 20px rgba(120,70,20,0.08)">
+    <div style="background:linear-gradient(90deg,#f7801a,#f25c05);color:#fff;text-align:center;padding:14px;font-size:clamp(17px,1.4vw,21px);letter-spacing:0.2em">診療情報</div>
+    <div style="overflow-x:auto;margin-top:22px">
+      <table style="width:100%;min-width:560px;border-collapse:collapse;text-align:center;font-size:16px">
+        <thead><tr>
+          <th style="border:1px solid #d9d0c5;padding:9px;background:#fdf0e3;font-weight:500">診療時間</th>
+          <sc-for list="{{ days }}" as="d" hint-placeholder-count="7"><th style="border:1px solid #d9d0c5;padding:9px;background:#fdf0e3;font-weight:600;color:{{ d.c }}">{{ d.l }}</th></sc-for>
+        </tr></thead>
+        <tbody>
+          <sc-for list="{{ hours }}" as="h" hint-placeholder-count="2">
+            <tr><td style="border:1px solid #d9d0c5;padding:14px 10px;white-space:nowrap">{{ h.t }}</td>
+              <sc-for list="{{ h.c }}" as="x" hint-placeholder-count="7"><td style="border:1px solid #d9d0c5;padding:14px 10px;color:#ee6a17;font-size:18px">{{ x }}</td></sc-for>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:14px;letter-spacing:0.06em">
+      <span style="color:#d0021b">【休診日】木曜、祝日</span><span style="color:#6d5a4d">▲ 土・日曜の午後は17:00まで</span>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Form" style="padding:clamp(48px,5vw,80px) clamp(12px,3vw,40px);background:linear-gradient(115deg,#f8f3ea 0%,#efe4d2 50%,#f6eee1 100%)">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center">
+      <h2 style="margin:0;font-size:clamp(26px,2.4vw,36px);font-weight:500;letter-spacing:0.2em;color:#ee6a17">ご予約・ご相談</h2>
+      <p style="margin:0;font-size:15px;line-height:2;letter-spacing:0.08em">初回カウンセリングは無料です。お電話でもご予約いただけます。</p>
+      <a href="tel:0335550148" style="display:flex;align-items:baseline;gap:10px;color:#ee6a17"><span style="font-size:14px">お電話での予約</span><span style="font-size:30px;letter-spacing:0.1em">03-5550-0148</span></a>
+    </div>
+    <form id="form" onSubmit="{{ submit }}" style="background:#fff;border-radius:6px;overflow:hidden">
+      <div style="background:linear-gradient(90deg,#f7801a,#f25c05);color:#fff;text-align:center;padding:14px;font-size:19px;letter-spacing:0.2em">美容診療 ご予約フォーム</div>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="padding:56px 20px;text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center">
+          <span style="width:64px;height:64px;border-radius:50%;border:1px dashed #ee6a17;display:flex;align-items:center;justify-content:center;color:#ee6a17;font-size:26px">✓</span>
+          <p style="margin:0;font-size:20px;color:#ee6a17;letter-spacing:0.12em">{{ sentName }} 様、ありがとうございます。</p>
+          <p style="margin:0;font-size:15px;line-height:2;letter-spacing:0.06em">ご予約リクエストを受け付けました。<br>1営業日以内に、ご予約確定のご連絡をいたします。</p>
+          <button type="button" onClick="{{ reset }}" style="margin-top:8px;min-height:46px;padding:0 26px;border:1px solid #ee6a17;background:#fff;color:#ee6a17;cursor:pointer;letter-spacing:0.1em">フォームに戻る</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:clamp(18px,3vw,40px);display:flex;flex-direction:column">
+          <sc-for list="{{ fields }}" as="f" hint-placeholder-count="5">
+            <label style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px 24px;align-items:center;padding:16px 0;border-bottom:1px dashed #edd9c3;font-size:15px;letter-spacing:0.1em">
+              <span style="display:flex;align-items:center;gap:10px">{{ f.label }}<span style="font-size:11px;padding:2px 8px;background:{{ f.badgeBg }};color:#fff;letter-spacing:0.06em">{{ f.badge }}</span></span>
+              <input name="{{ f.name }}" type="{{ f.type }}" required="{{ f.req }}" autocomplete="{{ f.ac }}" placeholder="{{ f.ph }}" style="grid-column:span 2;min-height:48px;padding:0 14px;border:1px solid #ddd6ce;background:#fdfbf8;font-size:16px;outline-color:#ee6a17;min-width:0">
+            </label>
+          </sc-for>
+          <label style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px 24px;align-items:center;padding:16px 0;border-bottom:1px dashed #edd9c3;font-size:15px;letter-spacing:0.1em">
+            <span style="display:flex;align-items:center;gap:10px">ご希望の施術<span style="font-size:11px;padding:2px 8px;background:#b5a898;color:#fff;letter-spacing:0.06em">任意</span></span>
+            <select name="treatment" style="grid-column:span 2;min-height:48px;padding:0 12px;border:1px solid #ddd6ce;background:#fdfbf8;font-size:16px;outline-color:#ee6a17;min-width:0">
+              <sc-for list="{{ options }}" as="o" hint-placeholder-count="9"><option value="{{ o }}">{{ o }}</option></sc-for>
+            </select>
+          </label>
+          <label style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px 24px;align-items:start;padding:16px 0;font-size:15px;letter-spacing:0.1em">
+            <span style="display:flex;align-items:center;gap:10px;padding-top:12px">ご相談内容<span style="font-size:11px;padding:2px 8px;background:#b5a898;color:#fff;letter-spacing:0.06em">任意</span></span>
+            <textarea name="message" rows="4" placeholder="気になるお悩みなどをご記入ください" style="grid-column:span 2;padding:12px 14px;border:1px solid #ddd6ce;background:#fdfbf8;font-size:16px;resize:vertical;outline-color:#ee6a17;min-width:0"></textarea>
+          </label>
+          <button type="submit" style="margin:18px auto 0;width:min(100%,420px);min-height:58px;border:none;border-radius:40px;background:#f25c05;color:#fff;font-size:19px;letter-spacing:0.16em;cursor:pointer;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-2px);box-shadow:0 10px 22px rgba(242,92,5,0.3)">予約内容を送信する</button>
+          <p style="margin:14px 0 0;font-size:12.5px;color:#6d5a4d;text-align:center;letter-spacing:0.04em">ご入力いただいた個人情報は、ご予約のご連絡以外には使用いたしません。</p>
+        </div>
+      </sc-if>
+    </form>
+  </div>
+</section>
+
+<section id="faq" data-screen-label="FAQ" style="padding:clamp(56px,6vw,88px) clamp(12px,3vw,40px)">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center">
+      <h2 style="margin:0;font-size:clamp(26px,2.4vw,34px);font-weight:500;letter-spacing:0.24em;color:#ee6a17">よくあるご質問</h2>
+      <p style="margin:0;font-size:14px;letter-spacing:0.28em;font-weight:600;color:#6d5a4d">FAQ</p>
+    </div>
+    <div style="margin-top:32px;display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ faq }}" as="q" hint-placeholder-count="5">
+        <div style="border:1px solid {{ q.border }};background:#fff;transition:border-color .3s">
+          <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;min-height:64px;padding:14px 20px;border:none;background:none;display:flex;align-items:center;gap:16px;text-align:left;cursor:pointer;font-size:16px;letter-spacing:0.08em;color:#33241a">
+            <span style="flex-shrink:0;width:34px;height:34px;border-radius:50%;background:#ee6a17;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px">Q</span>
+            <span style="flex:1">{{ q.q }}</span>
+            <span style="color:#ee6a17;font-size:22px;width:20px;text-align:center">{{ q.sign }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:16px;padding:4px 20px 22px;font-size:15px;line-height:2;letter-spacing:0.06em">
+              <span style="flex-shrink:0;width:34px;height:34px;border-radius:50%;border:1px solid #ee6a17;color:#ee6a17;display:flex;align-items:center;justify-content:center;font-size:15px">A</span>
+              <p style="margin:0;padding-top:2px">{{ q.a }}</p>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="access" data-screen-label="Access" style="padding:clamp(48px,5vw,80px) clamp(12px,3vw,40px);background:#fbf6ee">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center">
+      <h2 style="margin:0;font-size:clamp(26px,2.4vw,34px);font-weight:500;letter-spacing:0.24em;color:#ee6a17">アクセス</h2>
+      <p style="margin:0;font-size:14px;letter-spacing:0.28em;font-weight:600;color:#6d5a4d">Access</p>
+    </div>
+    <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,48px);align-items:stretch">
+      <div style="flex:1 1 460px;min-height:340px;position:relative;border-radius:8px;overflow:hidden"><image-slot id="access-map" shape="rect" placeholder="Googleマップ（埋め込み）"></image-slot></div>
+      <dl style="flex:1 1 380px;margin:0;display:flex;flex-direction:column">
+        <sc-for list="{{ access }}" as="a" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:110px 1fr;gap:16px;padding:16px 4px;border-bottom:1px dashed #edd9c3;font-size:15px;line-height:1.85;letter-spacing:0.06em">
+            <dt style="color:#ee6a17">{{ a.k }}</dt><dd style="margin:0;white-space:pre-line">{{ a.v }}</dd>
+          </div>
+        </sc-for>
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" cta="{{ false }}" hint-size="100%,500px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false, sentName: '', open: 0 };
+  renderVals() {
+    const req = { badge: '必須', badgeBg: '#ee6a17', req: true }, opt = { badge: '任意', badgeBg: '#b5a898', req: false };
+    const faq = [
+      ['カウンセリングだけでも受けられますか？', 'はい。初回カウンセリングは無料で、その日に施術を受ける必要はありません。お持ち帰りいただき、ゆっくりご検討ください。'],
+      ['予約なしでも受診できますか？', '一般皮膚科は予約なしでも受診いただけます。美容診療は、お待たせしないよう事前のご予約をお願いしています。'],
+      ['施術当日にメイクはできますか？', '施術により異なります。多くの施術は当日からメイク可能です。詳しくはカウンセリング時にご説明します。'],
+      ['お支払い方法を教えてください。', '現金、各種クレジットカード、電子マネー、QRコード決済をご利用いただけます。'],
+      ['男性も受診できますか？', 'はい。男性の患者様にも多くご来院いただいています。']
+    ];
+    return {
+      sent: this.state.sent, notSent: !this.state.sent, sentName: this.state.sentName,
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true, sentName: String(new FormData(e.target).get('name') || '') }); },
+      reset: () => this.setState({ sent: false }),
+      steps: [
+        { no: '01', t: 'ご予約', d: 'お電話またはWEBフォームからご予約ください。当日のご予約も承ります。' },
+        { no: '02', t: 'ご来院・問診', d: '受付後、問診票にご記入いただきます。お薬手帳があればお持ちください。' },
+        { no: '03', t: 'カウンセリング', d: '個室でお悩みやご希望をうかがい、肌診断を行います。' },
+        { no: '04', t: '診察・ご提案', d: '医師が診察し、治療内容・費用・リスクをご説明します。' },
+        { no: '05', t: '施術・アフターケア', d: 'ご納得いただけた場合のみ施術を行います。術後のケアもご案内します。' }
+      ],
+      days: [
+        { l: '月', c: '#33241a' }, { l: '火', c: '#33241a' }, { l: '水', c: '#33241a' }, { l: '木', c: '#d0021b' },
+        { l: '金', c: '#33241a' }, { l: '土', c: '#1a5fd0' }, { l: '日', c: '#d0021b' }
+      ],
+      hours: [
+        { t: '10:00〜13:30', c: ['●', '●', '●', '／', '●', '●', '●'] },
+        { t: '15:00〜19:00', c: ['●', '●', '●', '／', '●', '▲', '▲'] }
+      ],
+      fields: [
+        { label: 'お名前', name: 'name', type: 'text', ac: 'name', ph: '例）美岡 花子', ...req },
+        { label: 'メールアドレス', name: 'email', type: 'email', ac: 'email', ph: '例）info@example.com', ...req },
+        { label: '電話番号', name: 'phone', type: 'tel', ac: 'tel', ph: '例）090-1234-5678', ...req },
+        { label: 'ご希望日', name: 'date', type: 'date', ac: 'off', ph: '', ...opt }
+      ],
+      options: ['未定・相談して決めたい', '美肌・肌質改善', 'メディカルエステ', 'レーザー治療', 'ボトックス・ヒアルロン酸', 'ニキビ・ニキビ跡', '毛穴・肌のキメ', 'しわ・たるみ', '医療脱毛・ボディ'],
+      faq: faq.map(([q, a], i) => {
+        const open = this.state.open === i;
+        return { q, a, open, sign: open ? '−' : '+', border: open ? '#ee6a17' : '#e3dcd3', toggle: () => this.setState({ open: open ? -1 : i }) };
+      }),
+      access: [
+        { k: '所在地', v: '〒107-0062\n東京都港区南青山2-14-6 青山ガーデンビル3F' },
+        { k: '電車', v: '東京メトロ 銀座線・半蔵門線・千代田線\n「表参道駅」A4出口より徒歩4分' },
+        { k: 'お車', v: '専用駐車場はございません。近隣のコインパーキングをご利用ください。' },
+        { k: '電話番号', v: '03-5550-0148' },
+        { k: 'SNS', v: 'Instagram @mioka_clinic ／ LINE公式アカウント' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

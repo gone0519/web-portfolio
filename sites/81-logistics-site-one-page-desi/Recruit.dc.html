@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="site.css" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:#fff;color:#1b2233;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#0E1E46;text-decoration:none}
+a:hover{color:#0E1E46;opacity:.8}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="recruit" hint-size="100%,64px"></dc-import>
+<main>
+<dc-import name="PageHero" ja="採用情報" en="RECRUIT" slot="recruit-hero" img="uploads/staff-helmet-wide.jpg" photo="写真：ドライバーとトラック（人物中心）" hint-size="100%,420px"></dc-import>
+
+<section aria-labelledby="ms" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));background:#FFD200;margin-top:24px">
+  <div style="position:relative;overflow:hidden;padding:clamp(64px,8vw,120px) clamp(24px,6vw,96px);color:#0E1E46">
+    <div aria-hidden="true" style="position:absolute;left:-.04em;top:16px;font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(70px,11vw,160px);line-height:.9;color:rgba(255,255,255,.4)">JOIN US</div>
+    <div style="position:relative;max-width:520px">
+      <h2 id="ms" data-reveal="up" style="margin:clamp(40px,5vw,80px) 0 12px;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:clamp(26px,3.2vw,42px);line-height:1.5;letter-spacing:.06em">物流の未来を、<br>ともにつくる。</h2>
+      <p data-reveal="up" style="margin:0 0 28px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em">Let's Move the Future Forward, Together.</p>
+      <p data-reveal="up" style="margin:0 0 36px;font-size:15px;line-height:2.1;color:#2a3352;text-wrap:pretty">[求める人物像や、会社として大切にしている働き方をご記入ください。]</p>
+      <a href="#entry" data-reveal="up" style="display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:52px;min-width:240px;background:#0E1E46;color:#fff;padding:0 32px;border-radius:999px;font-size:14px;font-weight:700;letter-spacing:.08em" style-hover="background:#1b3170">応募する<span style="font-family:Montserrat,sans-serif;font-size:11px;color:#FFD200">→</span></a>
+    </div>
+  </div>
+  <div style="position:relative;min-height:clamp(320px,40vw,560px)">
+    <image-slot id="recruit-message" src="uploads/staff-team.jpg" shape="rect" placeholder="写真：社員の働く様子" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+  </div>
+</section>
+
+<section aria-labelledby="jb" style="max-width:1180px;margin:0 auto;padding:clamp(80px,9vw,130px) clamp(20px,4vw,48px)">
+  <div style="text-align:center;margin-bottom:48px">
+    <h2 id="jb" data-reveal="up" style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);letter-spacing:.08em;color:#0E1E46">募集職種</h2>
+    <p data-reveal="up" style="margin:8px 0 0;font-family:Montserrat,sans-serif;font-size:12px;letter-spacing:.14em;color:#7a8299">Positions</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+    <sc-for list="{{ jobs }}" as="j" hint-placeholder-count="3">
+      <article data-reveal="up" style="border:1px solid #e3e6ec;display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 18px 32px -16px rgba(14,30,70,.3)">
+        <div style="position:relative;aspect-ratio:3/2">
+          <image-slot id="{{ j.slot }}" src="{{ j.img }}" shape="rect" placeholder="{{ j.photo }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+          <span style="position:absolute;top:14px;left:0;background:#0E1E46;color:#fff;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:14px;padding:7px 16px;pointer-events:none">{{ j.name }}</span>
+        </div>
+        <div style="padding:22px 22px 26px;display:flex;flex-direction:column;gap:14px;flex:1">
+          <p style="margin:0;font-family:Montserrat,sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;color:#9aa2b6">{{ j.en }}</p>
+          <p style="margin:0;font-size:13px;line-height:1.85;color:#3b4358;flex:1">{{ j.desc }}</p>
+          <a href="#req" style="display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid #e6e8ee;font-size:12px;font-weight:700;color:#0E1E46">募集要項を見る<span style="width:26px;height:26px;border-radius:50%;background:#0E1E46;color:#FFD200;display:inline-flex;align-items:center;justify-content:center;font-size:11px">→</span></a>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section aria-labelledby="en" style="background:#0E1E46;color:#fff;padding:clamp(80px,9vw,130px) clamp(20px,4vw,48px)">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:48px">
+      <h2 id="en" data-reveal="up" style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);letter-spacing:.08em">働く環境</h2>
+      <p data-reveal="up" style="margin:8px 0 0;font-family:Montserrat,sans-serif;font-size:12px;letter-spacing:.14em;color:#FFD200">Environment</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14)">
+      <sc-for list="{{ env }}" as="e" hint-placeholder-count="4">
+        <div data-reveal="up" style="background:#0E1E46;padding:32px 26px">
+          <p style="margin:0 0 14px;font-family:Montserrat,sans-serif;font-weight:800;font-size:13px;color:#FFD200">{{ e.n }}</p>
+          <h3 style="margin:0 0 12px;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:18px;letter-spacing:.06em">{{ e.t }}</h3>
+          <p style="margin:0;font-size:13px;line-height:1.85;color:#c9d0e2">{{ e.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="req" aria-labelledby="rq" style="max-width:960px;margin:0 auto;padding:clamp(80px,9vw,130px) clamp(20px,4vw,48px)">
+  <div style="text-align:center;margin-bottom:40px">
+    <h2 id="rq" data-reveal="up" style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);letter-spacing:.08em;color:#0E1E46">募集要項</h2>
+    <p data-reveal="up" style="margin:8px 0 0;font-family:Montserrat,sans-serif;font-size:12px;letter-spacing:.14em;color:#7a8299">Requirements</p>
+  </div>
+  <div role="tablist" aria-label="職種" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+    <sc-for list="{{ jobs }}" as="j" hint-placeholder-count="3">
+      <button role="tab" aria-selected="{{ j.selected }}" onClick="{{ j.pick }}" style="min-height:44px;padding:0 22px;border-radius:999px;border:1px solid #0E1E46;background:{{ j.tabBg }};color:{{ j.tabFg }};font-family:inherit;font-size:13px;font-weight:700;cursor:pointer">{{ j.name }}</button>
+    </sc-for>
+  </div>
+  <dl data-reveal="up" class="spec" style="margin:0;display:grid;grid-template-columns:minmax(100px,180px) 1fr;border-top:2px solid #0E1E46;font-size:14px">
+    <sc-for list="{{ reqRows }}" as="r" hint-placeholder-count="7">
+      <dt style="padding:18px 22px;border-bottom:1px solid #e3e6ec;font-weight:700;color:#0E1E46;background:#fbfbfc">{{ r.k }}</dt>
+      <dd style="margin:0;padding:18px 22px;border-bottom:1px solid #e3e6ec;color:#3b4358;line-height:1.8">{{ r.v }}</dd>
+    </sc-for>
+  </dl>
+</section>
+
+<section id="entry" aria-labelledby="et" style="background:#f5f6f8;padding:clamp(72px,8vw,120px) clamp(20px,4vw,48px)">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:44px">
+      <h2 id="et" data-reveal="up" style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);letter-spacing:.08em;color:#0E1E46">選考の流れ</h2>
+      <p data-reveal="up" style="margin:8px 0 0;font-family:Montserrat,sans-serif;font-size:12px;letter-spacing:.14em;color:#7a8299">Selection Process</p>
+    </div>
+    <ol style="list-style:none;margin:0 0 56px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <li data-reveal="up" style="background:#fff;padding:24px 22px;border-top:4px solid #FFD200">
+          <p style="margin:0 0 10px;font-family:Montserrat,sans-serif;font-weight:800;font-size:12px;letter-spacing:.14em;color:#0E1E46">STEP {{ s.n }}</p>
+          <h3 style="margin:0 0 8px;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:17px;color:#0E1E46">{{ s.t }}</h3>
+          <p style="margin:0;font-size:13px;line-height:1.8;color:#3b4358">{{ s.d }}</p>
+        </li>
+      </sc-for>
+    </ol>
+    <div data-reveal="up" style="background:#FFD200;padding:clamp(32px,4vw,52px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+      <div>
+        <p style="margin:0 0 6px;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:clamp(20px,2.2vw,28px);color:#0E1E46;letter-spacing:.06em">応募・お問い合わせ</p>
+        <p style="margin:0;font-size:13px;color:#2a3352">採用担当　TEL <span style="font-family:Montserrat,sans-serif;font-weight:700">[Phone Number]</span>　受付 [Business Hours]</p>
+      </div>
+      <a href="Contact.dc.html?type=recruit" style="display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:56px;min-width:260px;background:#0E1E46;color:#fff;padding:0 32px;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:.08em" style-hover="background:#1b3170">応募フォームへ<span style="font-family:Montserrat,sans-serif;font-size:11px;color:#FFD200">→</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" show-cta="{{ false }}" hint-size="100%,400px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { job: 0 };
+  renderVals() {
+    const base = [
+      { slot: 'job-driver', img: 'uploads/driver-delivery.jpg', name: 'ドライバー', en: 'DRIVER', photo: '写真：運転席・乗務中のドライバー' },
+      { slot: 'job-dispatch', img: 'uploads/roll-call.jpg', name: '運行管理・配車', en: 'OPERATIONS', photo: '写真：配車業務・事務所' },
+      { slot: 'job-warehouse', img: 'uploads/warehouse-racks.jpg', name: '倉庫スタッフ', en: 'WAREHOUSE', photo: '写真：倉庫内作業・フォークリフト' }
+    ];
+    const jobs = base.map((j, i) => ({
+      ...j, desc: '[' + j.name + 'の仕事内容をご記入ください]',
+      selected: i === this.state.job,
+      tabBg: i === this.state.job ? '#0E1E46' : '#fff', tabFg: i === this.state.job ? '#fff' : '#0E1E46',
+      pick: () => this.setState({ job: i })
+    }));
+    const n = base[this.state.job].name;
+    return {
+      jobs,
+      reqRows: [
+        { k: '職種', v: n },
+        { k: '仕事内容', v: '[' + n + 'の仕事内容]' },
+        { k: '雇用形態', v: '[正社員・契約社員など]' },
+        { k: '応募資格', v: '[必要な免許・経験など]' },
+        { k: '勤務地', v: '[勤務地]' },
+        { k: '勤務時間', v: '[勤務時間・休憩]' },
+        { k: '給与', v: '[給与]' },
+        { k: '休日・休暇', v: '[休日・休暇]' },
+        { k: '待遇・福利厚生', v: '[待遇・福利厚生]' }
+      ],
+      env: [
+        { n: '01', t: '[働く環境の特長]', d: '[教育制度、資格取得支援など、実際の制度をご記入ください]' },
+        { n: '02', t: '[働く環境の特長]', d: '[休日・勤務体制など、実際の制度をご記入ください]' },
+        { n: '03', t: '[働く環境の特長]', d: '[車両・設備など、実際の環境をご記入ください]' },
+        { n: '04', t: '[働く環境の特長]', d: '[福利厚生など、実際の制度をご記入ください]' }
+      ],
+      steps: [
+        { n: '01', t: '応募', d: 'フォームまたはお電話でご応募ください。' },
+        { n: '02', t: '書類選考', d: '[選考内容をご記入ください]' },
+        { n: '03', t: '面接', d: '[面接回数・内容をご記入ください]' },
+        { n: '04', t: '内定', d: '[入社までの流れをご記入ください]' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+/* 旬彩 ひより — responsive adjustments shared by every page.
+   Inline styles win over stylesheets, so overrides here use !important. */
+
+/* ── Section heading row (見出し + 英字 + 罫線) ── */
+@media (max-width: 640px) {
+  .sec-head { flex-wrap: wrap; column-gap: 16px !important; row-gap: 12px; margin-bottom: 40px !important; }
+  .sec-head > h2, .sec-head > h3, .sec-head > span { white-space: nowrap; }
+  .sec-head > [data-reveal="line-x"] { flex: 1 1 100% !important; }
+}
+
+/* ── Top: hero scroll indicator collides with the CTA buttons below ~880px ── */
+@media (max-width: 879px) {
+  .hero-scroll { display: none !important; }
+}
+
+/* ── Single large photos: don't let them blow up to full tablet width ── */
+@media (max-width: 899px) {
+  .img-cap { width: 100%; max-width: 520px !important; margin-left: auto; margin-right: auto; }
+}
+
+/* ── Menu: signature dishes — 2 across on tablets ── */
+@media (min-width: 641px) and (max-width: 899px) {
+  .rec2 { grid-template-columns: repeat(2, 1fr) !important; column-gap: 32px !important; }
+}
+
+/* ── Top: drink heading block sits at the right like the other sections ── */
+@media (max-width: 640px) {
+  .sp-right { justify-content: flex-start !important; }
+}
+
+/* ── Top: dish cards — 3 across from tablet up, shorter crops on phones ── */
+@media (min-width: 640px) {
+  .dish3 { grid-template-columns: repeat(3, 1fr) !important; }
+}
+.dish3 > article > div:last-child { flex-wrap: wrap; row-gap: 4px; }
+.dish3 h3 { white-space: nowrap; }
+@media (max-width: 639px) {
+  .dish3 > article { margin-top: 0 !important; }
+  .dish3 > article > div:first-child { aspect-ratio: 4 / 3 !important; }
+}
+
+/* ── Three-up grids (course cards, reservation steps, access notes) ── */
+@media (min-width: 900px) {
+  .g3 { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 899px) {
+  .g3 { grid-template-columns: 1fr !important; }
+  .cards3 > div { border-right: 0 !important; border-bottom: 1px solid rgba(179,155,92,.18); }
+  .cards3 > div:last-child { border-bottom: 0; }
+}
+
+/* ── Concept: greeting — vertical text overflows a phone, set it horizontally ── */
+@media (max-width: 640px) {
+  .greeting { writing-mode: horizontal-tb !important; height: auto !important; width: 100%; overflow: visible !important; line-height: 2.2 !important; letter-spacing: .08em !important; }
+  .greeting p { margin: 0 !important; }
+  .greeting p:first-child { margin-bottom: .8em !important; }
+  .greeting p:last-child { padding-top: 1.2em !important; text-align: right; }
+}
+
+/* ── Concept: four seasons — 2 × 2 instead of 3 + 1 / 1 × 4 ── */
+@media (max-width: 959px) {
+  .seasons { grid-template-columns: repeat(2, 1fr) !important; }
+  .seasons > div { border-right: 1px solid rgba(179,155,92,.2) !important; }
+  .seasons > div:nth-child(2n) { border-right: 0 !important; }
+  .seasons > div:nth-child(-n+2) { border-bottom: 1px solid rgba(179,155,92,.2); }
+}
+@media (max-width: 640px) {
+  .seasons > div { padding: 36px 8px !important; gap: 14px !important; }
+}
+
+/* ── Menu / Drink: category lists — horizontal header above the list on phones ── */
+@media (max-width: 640px) {
+  .cat { flex-direction: column !important; gap: 12px !important; }
+  .cat-h { flex-direction: row !important; align-items: baseline !important; gap: 14px !important; min-height: 0 !important; width: 100%; padding: 0 0 12px !important; border-right: 0 !important; border-bottom: 1px solid rgba(179,155,92,.45); }
+  .cat-h > * { writing-mode: horizontal-tb !important; padding-top: 0 !important; }
+  .cat > div:last-child { width: 100%; }
+}
+
+/* ── Drink: seasonal picks — 3 across from 560px, image + text rows below ── */
+@media (min-width: 560px) {
+  .picks { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 559px) {
+  .picks > article { flex-direction: row !important; align-items: center; gap: 20px !important; }
+  .picks > article > div:first-child { flex: 0 0 40%; }
+}
+
+/* ── Drink: pairing banner — text spans the full width, so darken evenly ── */
+@media (max-width: 640px) {
+  .pair-shade { background: linear-gradient(180deg, rgba(10,9,8,.55) 0%, rgba(10,9,8,.85) 100%) !important; }
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>お問い合わせ｜AOBA Precision Works</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<script src="./image-slot.js"></script>
+<script src="./reveal.js"></script>
+<style>
+body{margin:0;background:#0e1d4a;color:#fff;font-family:'Plus Jakarta Sans','Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#fff;text-decoration:none}
+a:hover{color:#9db8ff}
+::selection{background:#d0101b;color:#fff}
+input::placeholder,textarea::placeholder{color:#8b96b5}
+.ct-grid{grid-template-columns:minmax(0,1fr)}
+@media (min-width:1024px){.ct-grid{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}}
+@media (max-width:600px){
+  .ct-faq-a{padding-right:0!important;gap:14px!important}
+  .ct-submit{height:68px!important;padding-left:28px!important}
+}
+</style>
+</helmet>
+<dc-import name="Site Header" current="contact" hint-size="100%,72px" style="position:fixed;top:0;left:0;right:0;z-index:50"></dc-import>
+<main>
+<div data-screen-label="01 Hero"><dc-import name="Page Hero" num="05" en="Contact" crumb="CONTACT" jp="お問い合わせ" lead="お見積り、図面・技術のご相談、工場見学のお申し込みなど、お気軽にお問い合わせください。2営業日以内にご返信いたします。" slot="hero-contact" src="images/consultation.jpg" placeholder="Sales / engineer meeting with client" hint-size="100%,660px"></dc-import></div>
+
+<section data-screen-label="02 Form" style="position:relative;background:#0e1d4a;padding:100px 0 140px">
+  <div class="ct-grid" style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,6vw,96px);display:grid;gap:clamp(48px,6vw,96px);align-items:start">
+    <aside data-reveal="" style="display:flex;flex-direction:column;gap:40px">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><span style="display:block;width:22px;height:30px;background:#d0101b;transform:skewX(-28deg)"></span><span style="font-size:14px;font-weight:600">By Phone</span></div>
+        <p style="margin:0 0 10px;font-family:'Noto Sans JP';font-weight:700;font-size:15px;letter-spacing:.2em">お電話でのお問い合わせ</p>
+        <a href="tel:0566123456" style="display:block;font-weight:500;font-size:clamp(36px,3.6vw,52px);letter-spacing:-0.02em;line-height:1.1">0566-12-3456</a>
+        <p style="margin:10px 0 0;font-family:'Noto Sans JP';font-size:13px;opacity:.8">【受付時間】月〜金曜 8:30〜17:30（土日祝除く）</p>
+      </div>
+      <div style="padding-top:32px;border-top:1px solid rgba(255,255,255,.2)">
+        <p style="margin:0 0 10px;font-size:12px;font-weight:600;letter-spacing:.16em;opacity:.65">EMAIL</p>
+        <a href="mailto:info@aoba-precision.co.jp" style="font-size:18px;font-weight:600">info@aoba-precision.co.jp</a>
+      </div>
+      <div style="padding-top:32px;border-top:1px solid rgba(255,255,255,.2);font-family:'Noto Sans JP';font-size:13px;line-height:2;opacity:.85">図面データ（PDF・DXF・STEP）を添付いただくと、お見積りがスムーズです。機密保持契約（NDA）の締結にも対応しています。</div>
+    </aside>
+
+    <div data-reveal="" data-delay="120" style="background:#fff;color:#12245a;padding:clamp(28px,4vw,56px)">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="min-height:520px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:20px">
+          <span style="display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:#12245a;color:#fff;font-size:26px">✓</span>
+          <p style="margin:0;font-weight:700;font-size:clamp(32px,3.4vw,48px);letter-spacing:-0.03em">Thank you.</p>
+          <p style="margin:0;font-family:'Noto Sans JP';font-size:15px;line-height:2">{{ sentName }} 様、お問い合わせを受け付けました。<br>担当者より2営業日以内にご連絡いたします。</p>
+          <button onClick="{{ reset }}" style="margin-top:12px;height:52px;padding:0 28px;border-radius:999px;border:1px solid #12245a;background:transparent;color:#12245a;font:inherit;font-size:14px;font-weight:700;cursor:pointer">新しいお問い合わせ</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" noValidate="{{ true }}" style="display:flex;flex-direction:column;gap:28px">
+          <div>
+            <p style="margin:0 0 12px;font-family:'Noto Sans JP';font-weight:700;font-size:14px">お問い合わせ種別</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ types }}" as="t" hint-placeholder-count="4">
+                <button type="button" data-v="{{ t.label }}" onClick="{{ pickType }}" style="height:44px;padding:0 20px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};font-family:'Noto Sans JP';font-size:13px;font-weight:700;cursor:pointer;transition:background .2s,color .2s">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px">
+            <label style="display:flex;flex-direction:column;gap:8px;font-family:'Noto Sans JP';font-weight:700;font-size:14px">会社名
+              <input name="company" value="{{ f.company }}" onChange="{{ setField }}" placeholder="株式会社○○" style="height:52px;padding:0 16px;border:1px solid #cdd4e2;background:#f6f8fb;font:inherit;font-weight:500;color:#12245a;outline-color:#1b47b0">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-family:'Noto Sans JP';font-weight:700;font-size:14px"><span>お名前 <span style="color:#d0101b">*</span></span>
+              <input name="name" value="{{ f.name }}" onChange="{{ setField }}" placeholder="山田 太郎" style="height:52px;padding:0 16px;border:1px solid {{ bd.name }};background:#f6f8fb;font:inherit;font-weight:500;color:#12245a;outline-color:#1b47b0">
+              <sc-if value="{{ er.name }}" hint-placeholder-val="{{ false }}"><span style="color:#d0101b;font-size:12px;font-weight:500">{{ er.name }}</span></sc-if>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-family:'Noto Sans JP';font-weight:700;font-size:14px"><span>メールアドレス <span style="color:#d0101b">*</span></span>
+              <input name="email" type="email" value="{{ f.email }}" onChange="{{ setField }}" placeholder="example@company.co.jp" style="height:52px;padding:0 16px;border:1px solid {{ bd.email }};background:#f6f8fb;font:inherit;font-weight:500;color:#12245a;outline-color:#1b47b0">
+              <sc-if value="{{ er.email }}" hint-placeholder-val="{{ false }}"><span style="color:#d0101b;font-size:12px;font-weight:500">{{ er.email }}</span></sc-if>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-family:'Noto Sans JP';font-weight:700;font-size:14px">電話番号
+              <input name="tel" type="tel" value="{{ f.tel }}" onChange="{{ setField }}" placeholder="0566-00-0000" style="height:52px;padding:0 16px;border:1px solid #cdd4e2;background:#f6f8fb;font:inherit;font-weight:500;color:#12245a;outline-color:#1b47b0">
+            </label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px;font-family:'Noto Sans JP';font-weight:700;font-size:14px"><span>お問い合わせ内容 <span style="color:#d0101b">*</span></span>
+            <textarea name="msg" value="{{ f.msg }}" onChange="{{ setField }}" rows="6" placeholder="材質・数量・希望納期などをご記入ください" style="padding:14px 16px;border:1px solid {{ bd.msg }};background:#f6f8fb;font:inherit;font-weight:500;color:#12245a;line-height:1.8;resize:vertical;outline-color:#1b47b0"></textarea>
+            <sc-if value="{{ er.msg }}" hint-placeholder-val="{{ false }}"><span style="color:#d0101b;font-size:12px;font-weight:500">{{ er.msg }}</span></sc-if>
+          </label>
+          <label style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:18px 20px;border:1px dashed #9aa6c2;cursor:pointer;font-family:'Noto Sans JP';font-size:13px">
+            <input type="file" onChange="{{ setFile }}" style="display:none">
+            <span style="height:40px;padding:0 18px;display:flex;align-items:center;border-radius:999px;background:#12245a;color:#fff;font-weight:700">図面を添付</span>
+            <span style="opacity:.75">{{ fileLabel }}</span>
+          </label>
+          <label style="display:flex;align-items:center;gap:12px;font-family:'Noto Sans JP';font-size:13px;cursor:pointer">
+            <input type="checkbox" checked="{{ f.agree }}" onChange="{{ setAgree }}" style="width:20px;height:20px;accent-color:#d0101b">
+            <span>個人情報の取り扱いに同意する <span style="color:#d0101b">*</span></span>
+          </label>
+          <sc-if value="{{ er.agree }}" hint-placeholder-val="{{ false }}"><span style="margin-top:-16px;color:#d0101b;font-family:'Noto Sans JP';font-size:12px">{{ er.agree }}</span></sc-if>
+          <button type="submit" class="ct-submit" style="display:flex;align-items:center;justify-content:space-between;height:76px;padding:0 14px 0 36px;border-radius:999px;border:0;background:#d0101b;color:#fff;font:inherit;font-weight:700;font-size:17px;cursor:pointer;transition:background .3s,transform .3s" style-hover="background:#b00b15;transform:translateY(-2px)">
+            <span style="display:flex;flex-direction:column;align-items:flex-start;gap:2px"><span>Send Message</span><span style="font-family:'Noto Sans JP';font-size:11px;font-weight:500;opacity:.85">送信する</span></span>
+            <span style="display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,.8)">→</span>
+          </button>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 FAQ" style="position:relative;background:#0e1d4a;overflow:hidden;padding:0 0 160px">
+  <div style="position:absolute;right:-10%;top:0;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(40,100,255,.4),rgba(40,100,255,0) 68%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1100px;margin:0 auto;padding:0 clamp(20px,6vw,96px)">
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px 28px;margin-bottom:40px">
+      <h2 style="margin:0;font-weight:700;font-size:clamp(44px,6vw,88px);letter-spacing:-0.05em;line-height:.9">FAQ</h2>
+      <p style="margin:0;font-family:'Noto Sans JP';font-weight:700;font-size:15px;letter-spacing:.2em">よくあるご質問</p>
+    </div>
+    <div data-reveal="" style="border-top:1px solid rgba(255,255,255,.3)">
+      <sc-for list="{{ faq }}" as="q" hint-placeholder-count="4">
+        <div style="border-bottom:1px solid rgba(255,255,255,.3)">
+          <button data-i="{{ $index }}" onClick="{{ toggleFaq }}" aria-expanded="{{ q.open }}" style="width:100%;display:flex;align-items:center;gap:20px;padding:28px 0;background:none;border:0;color:#fff;text-align:left;cursor:pointer;font:inherit">
+            <span style="font-weight:700;font-size:20px;color:#ff4a54">Q</span>
+            <span style="flex:1;font-family:'Noto Sans JP';font-weight:700;font-size:16px;line-height:1.7">{{ q.q }}</span>
+            <span style="flex:none;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.6);font-size:18px">{{ q.sign }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <div class="ct-faq-a" style="display:flex;gap:20px;padding:0 56px 28px 0">
+              <span style="font-weight:700;font-size:20px;color:#9db8ff">A</span>
+              <p style="margin:0;font-family:'Noto Sans JP';font-size:14px;line-height:2;opacity:.9">{{ q.a }}</p>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="Site Footer" cta="{{ false }}" top-bg="#0e1d4a" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  blank = { type: '見積り依頼', company: '', name: '', email: '', tel: '', msg: '', agree: false };
+  state = { f: { ...this.blank }, file: '', errors: {}, sent: false, faqOpen: 0 };
+  set(k, v) { this.setState(s => ({ f: { ...s.f, [k]: v }, errors: { ...s.errors, [k]: '' } })); }
+  submit(e) {
+    e.preventDefault();
+    const f = this.state.f, er = {};
+    if (!f.name.trim()) er.name = 'お名前を入力してください';
+    if (!/^\S+@\S+\.\S+$/.test(f.email)) er.email = '正しいメールアドレスを入力してください';
+    if (!f.msg.trim()) er.msg = 'お問い合わせ内容を入力してください';
+    if (!f.agree) er.agree = '個人情報の取り扱いへの同意が必要です';
+    if (Object.keys(er).length) return this.setState({ errors: er });
+    this.setState({ sent: true, sentName: f.name });
+  }
+  renderVals() {
+    const { f, errors: er, sent } = this.state;
+    const bdr = k => er[k] ? '#d0101b' : '#cdd4e2';
+    return {
+      f, er, sent, notSent: !sent, sentName: this.state.sentName,
+      bd: { name: bdr('name'), email: bdr('email'), msg: bdr('msg') },
+      types: ['見積り依頼', '技術相談', '工場見学', 'その他'].map(label => {
+        const on = f.type === label;
+        return { label, bg: on ? '#12245a' : '#fff', color: on ? '#fff' : '#12245a', border: on ? '#12245a' : '#cdd4e2' };
+      }),
+      pickType: e => this.set('type', e.currentTarget.dataset.v),
+      setField: e => this.set(e.target.name, e.target.value),
+      setAgree: e => this.set('agree', e.target.checked),
+      setFile: e => this.setState({ file: e.target.files[0] ? e.target.files[0].name : '' }),
+      fileLabel: this.state.file || 'PDF・DXF・STEP（10MBまで）',
+      submit: e => this.submit(e),
+      reset: () => this.setState({ f: { ...this.blank }, file: '', errors: {}, sent: false }),
+      toggleFaq: e => { const i = +e.currentTarget.dataset.i; this.setState(s => ({ faqOpen: s.faqOpen === i ? -1 : i })); },
+      faq: [
+        ['1個からの試作にも対応していますか？', 'はい、1個からの試作に対応しています。試作後の量産移行も同じ工場で行えるため、条件を引き継いだまま立ち上げが可能です。'],
+        ['見積りにはどのくらい時間がかかりますか？', '図面をいただいてから通常1〜3営業日でご回答します。形状や数量によってはお時間をいただく場合があります。'],
+        ['対応可能な材質を教えてください。', 'アルミ合金、ステンレス、炭素鋼、チタン、真鍮、樹脂（POM・PEEKなど）に対応しています。その他の材質もご相談ください。'],
+        ['工場見学はできますか？', '平日の日中に承っています。お問い合わせ種別で「工場見学」を選択し、ご希望の日程をお知らせください。']
+      ].map(([q, a], i) => ({ q, a, open: this.state.faqOpen === i, sign: this.state.faqOpen === i ? '−' : '+' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

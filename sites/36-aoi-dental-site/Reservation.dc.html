@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Zen Maru Gothic',sans-serif;color:#3d3a38;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a6fb5;text-decoration:none}
+a:hover{color:#0b4c83}
+input,select,textarea,button{font-family:inherit}
+</style>
+<link rel="stylesheet" href="./responsive.css">
+</helmet>
+<dc-import name="SiteHeader" current="reservation" hint-size="100%,82px"></dc-import>
+<dc-import name="SubHero" title="RESERVATION" jp="ご予約・アクセス" src="images/staff-greeting.jpg" placeholder="受付でお迎えするスタッフ" hint-size="100%,440px"></dc-import>
+
+<main>
+<section data-screen-label="Reservation 01 Form" style="background:repeating-linear-gradient(-45deg,#f5f6f6 0 2px,#fbfbfb 2px 7px);padding:clamp(50px,7vw,90px) clamp(20px,4vw,40px) clamp(70px,9vw,110px)">
+  <div style="max-width:1100px;margin:0 auto">
+    <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-bottom:28px">
+      <a href="#form" style="display:flex;align-items:center;justify-content:space-between;gap:16px;background:#1a6fb5;color:#fff;border-radius:0 24px 0 24px;padding:26px 30px;transition:background .3s,transform .3s" style-hover="background:#0b4c83;color:#fff;transform:translateY(-3px)"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;letter-spacing:.14em;opacity:.9">24時間受付</span><span style="font-size:21px;font-weight:700;letter-spacing:.08em">WEB予約フォーム</span></span><span style="width:40px;height:1px;background:#fff"></span></a>
+      <a href="tel:0357124180" style="display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fff;color:#1a6fb5;border-radius:0 24px 0 24px;padding:26px 30px;box-shadow:0 8px 26px rgba(40,80,110,.07);transition:transform .3s" style-hover="transform:translateY(-3px)"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;letter-spacing:.14em;color:#5d6a72">診療時間内のお電話</span><span style="font-family:Jost;font-size:26px;font-weight:500;letter-spacing:.1em">03-5712-4180</span></span><span style="width:40px;height:1px;background:#1a6fb5"></span></a>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start">
+      <div id="form" data-reveal="1" style="scroll-margin-top:24px;flex:1 1 520px;min-width:0;background:#fff;border-radius:18px;box-shadow:0 10px 36px rgba(40,80,110,.08);padding:clamp(24px,4vw,44px)">
+        <div style="display:flex;gap:6px;margin-bottom:12px"><span style="width:10px;height:10px;border-radius:50%;background:#1a6fb5"></span><span style="width:10px;height:10px;border-radius:50%;background:#9fd3ef"></span></div>
+        <h2 style="margin:0 0 6px;font-size:21px;color:#1a6fb5;letter-spacing:.06em">ご予約・お問い合わせフォーム</h2>
+        <p style="margin:0 0 24px;font-size:14px;line-height:1.8;color:#5d6a72">1営業日以内にメールまたはお電話にてご連絡し、日時を確定いたします。お急ぎの方・痛みがある方はお電話ください。</p>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#e4f3fb;border-radius:12px;padding:32px 26px;text-align:center">
+            <div style="font-size:19px;font-weight:700;color:#1a6fb5;margin-bottom:8px">お問い合わせありがとうございます。</div>
+            <p style="margin:0 0 18px;font-size:14px;line-height:1.8">担当スタッフより、ご予約確認のご連絡を差し上げます。</p>
+            <button onClick="{{ reset }}" style="height:44px;padding:0 20px;border-radius:8px;border:1px solid #1a6fb5;background:#fff;color:#1a6fb5;font-weight:700;cursor:pointer">続けて送信する</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px">
+            <label style="grid-column:1 / -1;display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:700;letter-spacing:.06em">ご来院について
+              <select name="type" style="height:50px;padding:0 14px;border:1px solid #cfdfe8;border-radius:8px;background:#fbfdfe;font-size:15px"><option>はじめて受診する</option><option>受診したことがある</option></select></label>
+            <label style="display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:700;letter-spacing:.06em">お名前 <input required="required" name="name" autocomplete="name" style="height:50px;padding:0 14px;border:1px solid #cfdfe8;border-radius:8px;background:#fbfdfe;font-size:15px"></input></label>
+            <label style="display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:700;letter-spacing:.06em">メールアドレス <input required="required" type="email" name="email" autocomplete="email" style="height:50px;padding:0 14px;border:1px solid #cfdfe8;border-radius:8px;background:#fbfdfe;font-size:15px"></input></label>
+            <label style="display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:700;letter-spacing:.06em">電話番号 <input type="tel" name="phone" autocomplete="tel" style="height:50px;padding:0 14px;border:1px solid #cfdfe8;border-radius:8px;background:#fbfdfe;font-size:15px"></input></label>
+            <label style="display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:700;letter-spacing:.06em">ご希望日 <input type="date" name="date" style="height:50px;padding:0 14px;border:1px solid #cfdfe8;border-radius:8px;background:#fbfdfe;font-size:15px"></input></label>
+            <label style="grid-column:1 / -1;display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:700;letter-spacing:.06em">ご来院の目的
+              <select name="reason" style="height:50px;padding:0 14px;border:1px solid #cfdfe8;border-radius:8px;background:#fbfdfe;font-size:15px"><option>定期検診・クリーニング</option><option>痛み・違和感</option><option>歯ぐきのケア</option><option>審美・ホワイトニング</option><option>矯正歯科</option><option>インプラント・歯を失った</option><option>お子さまの受診</option><option>その他</option></select></label>
+            <label style="grid-column:1 / -1;display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:700;letter-spacing:.06em">ご相談内容 <textarea name="message" rows="4" placeholder="症状やご希望の時間帯など、お気軽にご記入ください" style="padding:12px 14px;border:1px solid #cfdfe8;border-radius:8px;background:#fbfdfe;font-size:15px;resize:vertical"></textarea></label>
+            <label style="grid-column:1 / -1;display:flex;align-items:center;gap:10px;font-size:13px;line-height:1.6;min-height:44px"><input type="checkbox" required="required" style="width:20px;height:20px;accent-color:#1a6fb5"></input>個人情報の取り扱いに同意します</label>
+            <div style="grid-column:1 / -1;display:flex;justify-content:flex-end">
+              <button type="submit" style="display:flex;align-items:center;gap:14px;height:54px;padding:0 28px;border:none;border-radius:8px;background:#1a6fb5;color:#fff;font-size:15px;font-weight:700;letter-spacing:.08em;cursor:pointer;transition:background .3s" style-hover="background:#0b4c83">送信する <span style="width:26px;height:1px;background:#fff"></span></button>
+            </div>
+          </form>
+        </sc-if>
+      </div>
+
+      <div data-reveal="1" style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:20px">
+        <div style="background:#fff;border-radius:0 24px 0 24px;padding:28px 26px;box-shadow:0 8px 26px rgba(40,80,110,.06)">
+          <h3 style="margin:0 0 14px;font-size:15px;color:#1a6fb5;letter-spacing:.08em">診療時間</h3>
+          <div style="overflow-x:auto">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;text-align:center;min-width:300px">
+              <thead><tr style="border-top:1px solid #cfdfe8;border-bottom:1px solid #cfdfe8"><th style="padding:10px 4px"></th><th style="padding:10px 4px;font-weight:500">月</th><th style="padding:10px 4px;font-weight:500">火</th><th style="padding:10px 4px;font-weight:500">水</th><th style="padding:10px 4px;font-weight:500">木</th><th style="padding:10px 4px;font-weight:500">金</th><th style="padding:10px 4px;font-weight:500">土</th><th style="padding:10px 4px;font-weight:500">日祝</th></tr></thead>
+              <tbody>
+                <tr style="border-bottom:1px solid #e6ecef"><td style="padding:12px 4px;text-align:left;font-family:Jost;white-space:nowrap">9:30–13:00</td><td style="color:#3f97d1">●</td><td style="color:#3f97d1">●</td><td style="color:#3f97d1">●</td><td style="color:#3f97d1">●</td><td style="color:#3f97d1">●</td><td style="color:#3f97d1">●</td><td style="color:#3f97d1">—</td></tr>
+                <tr style="border-bottom:1px solid #e6ecef"><td style="padding:12px 4px;text-align:left;font-family:Jost;white-space:nowrap">14:30–19:30</td><td style="color:#3f97d1">●</td><td style="color:#3f97d1">●</td><td style="color:#3f97d1">—</td><td style="color:#3f97d1">●</td><td style="color:#3f97d1">●</td><td style="color:#3f97d1">▲</td><td style="color:#3f97d1">—</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin:12px 0 0;font-size:12px;line-height:1.8;color:#5d6a72">▲ 土曜午後は14:00〜17:00　休診日：水曜午後・日曜・祝日<br>最終受付は各終了時刻の30分前です。</p>
+        </div>
+        <div style="background:#fff;border-radius:0 24px 0 24px;padding:28px 26px;box-shadow:0 8px 26px rgba(40,80,110,.06)">
+          <h3 style="margin:0 0 12px;font-size:15px;color:#1a6fb5;letter-spacing:.08em">初診の方へ</h3>
+          <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.95">
+            <li>保険証またはマイナ保険証をお持ちください</li>
+            <li>お薬手帳をお持ちの方はご持参ください</li>
+            <li>ご予約時間の5分前にお越しください</li>
+            <li>変更・キャンセルは前日までにご連絡ください</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="access" data-screen-label="Reservation 02 Access" style="scroll-margin-top:24px;position:relative;background:radial-gradient(ellipse 45% 40% at 12% 30%,#c4e5f6 0%,rgba(196,229,246,0) 70%),#e4f3fb;padding:0 clamp(20px,4vw,40px) clamp(80px,10vw,120px)">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="display:block;width:calc(100% + 2 * clamp(20px,4vw,40px));margin:0 calc(-1 * clamp(20px,4vw,40px));height:clamp(30px,5vw,70px)"><path d="M0,0 L1440,0 L1440,30 C1100,80 760,0 420,40 C240,62 100,50 0,34 Z" fill="#fafafa"></path></svg>
+  <div style="max-width:1100px;margin:0 auto;padding-top:clamp(40px,5vw,60px)">
+    <div data-reveal="1">
+      <div style="display:flex;align-items:center;gap:12px;color:#1a6fb5;font-size:clamp(15px,1.3vw,18px);font-weight:500;letter-spacing:.1em"><span style="width:56px;height:1px;background:#1a6fb5"></span>アクセス</div>
+      <h2 style="margin:4px 0 40px;font-family:Jost;font-weight:400;font-size:clamp(44px,6vw,80px);letter-spacing:.05em;line-height:1;color:#1a6fb5">ACCESS</h2>
+    </div>
+    <div data-reveal="1" style="height:clamp(280px,36vw,440px);border-radius:32px 0 32px 0;overflow:hidden;background:#fff;margin-bottom:24px"><img src="images/clinic-sign.jpg" alt="Googleマップ埋め込み" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+      <div data-reveal="1" style="background:#fff;border-radius:0 24px 0 24px;padding:28px 26px">
+        <h3 style="margin:0 0 12px;font-size:16px;color:#1a6fb5;letter-spacing:.08em">所在地</h3>
+        <p style="margin:0 0 16px;font-size:14px;line-height:1.9">〒154-0024<br>東京都世田谷区三軒茶屋2-14-8 あおいビル3F</p>
+        <a href="#" style="display:inline-flex;align-items:center;gap:12px;height:44px;padding:0 16px;border:1px solid #1a6fb5;border-radius:8px;font-size:13px;letter-spacing:.06em">Google Mapで開く <span style="width:22px;height:1px;background:#1a6fb5"></span></a>
+      </div>
+      <div data-reveal="1" style="background:#fff;border-radius:0 24px 0 24px;padding:28px 26px">
+        <h3 style="margin:0 0 12px;font-size:16px;color:#1a6fb5;letter-spacing:.08em">電車でお越しの方</h3>
+        <p style="margin:0;font-size:14px;line-height:1.9;text-wrap:pretty">東急田園都市線・世田谷線「三軒茶屋駅」南口Aより徒歩3分。駅を出て右手、郵便局の向かいのビル3階です。</p>
+      </div>
+      <div data-reveal="1" style="background:#fff;border-radius:0 24px 0 24px;padding:28px 26px">
+        <h3 style="margin:0 0 12px;font-size:16px;color:#1a6fb5;letter-spacing:.08em">お車・自転車でお越しの方</h3>
+        <p style="margin:0;font-size:14px;line-height:1.9;text-wrap:pretty">専用駐車場はございません。近隣のコインパーキングをご利用ください。ビル1階に駐輪スペースがあります。</p>
+      </div>
+    </div>
+    <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin-top:24px">
+      <div style="height:200px;overflow:hidden;background:#fff;border-radius:14px"><img src="images/clinic-sign.jpg" alt="道順1：駅南口" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div style="height:200px;overflow:hidden;background:#fff;border-radius:14px"><img src="images/clinic-interior.jpg" alt="道順2：郵便局前の交差点" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div style="height:200px;overflow:hidden;background:#fff;border-radius:14px"><img src="images/clinic-sign.jpg" alt="道順3：ビル入口" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false };
+  renderVals() {
+    return {
+      sent: this.state.sent, notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

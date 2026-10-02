@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#5a4636;font-family:"Zen Maru Gothic",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#e57f12;text-decoration:none}
+a:hover{color:#c8680a}
+input,select,textarea,button{font-family:inherit}
+@media (max-width:767px){
+  .sec{padding-top:72px!important;padding-bottom:76px!important}
+  .sec-t{padding-top:72px!important}
+  .sub-h{margin-top:60px!important}
+  .hd-mark{width:46px!important;height:46px!important;font-size:20px!important;box-shadow:0 0 0 5px #fbd87a,0 0 0 9px #fdeec2!important}
+  .hd-tel{width:46px;height:46px;border-radius:50%;background:#4bb3a6;color:#fff!important;display:flex!important;align-items:center;justify-content:center;font-size:20px!important;letter-spacing:0!important;box-shadow:0 3px 0 #36968a}
+  .hd-tel-num{display:none}
+  .hero-lead{border-radius:18px!important;padding:8px 16px!important;line-height:1.7}
+  .ft-scene{height:300px!important}
+  .ft-trees{bottom:118px!important;left:-20%!important;right:-20%!important;transform:scale(.72);transform-origin:center bottom}
+  .ft-ground{height:160px!important}
+  .lp-foot{margin-top:60px!important}
+  input,select,textarea{font-size:16px!important}
+}
+</style>
+</helmet>
+
+<header data-screen-label="Header" style="position:relative;background:#f8f3e6;padding:22px 20px 34px;overflow:hidden">
+  <div style="position:absolute;left:5%;top:14px;width:150px;height:46px;border-radius:40px;background:#a9d3ef;filter:blur(6px);opacity:.75"></div>
+  <div style="position:absolute;left:16%;top:70px;width:80px;height:26px;border-radius:30px;background:#bfe0f3;filter:blur(5px);opacity:.8"></div>
+  <div style="position:absolute;right:6%;top:12px;width:140px;height:44px;border-radius:40px;background:#b7dbf2;filter:blur(6px);opacity:.75"></div>
+  <div style="position:absolute;right:20%;top:80px;width:70px;height:22px;border-radius:30px;background:#c6e4f5;filter:blur(5px);opacity:.8"></div>
+  <div style="position:absolute;left:21%;top:24px;width:12px;height:12px;background:#f2a0a8;transform:rotate(45deg);border-radius:2px"></div>
+  <div style="position:absolute;right:15%;top:60px;width:12px;height:12px;background:#5fc2b4;transform:rotate(45deg);border-radius:2px"></div>
+  <div style="position:absolute;right:12%;top:30px;width:9px;height:9px;background:#f5c43c;transform:rotate(45deg);border-radius:2px"></div>
+  <div style="position:relative;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px">
+    <div style="display:flex">
+      <button onClick="{{ openMenu }}" aria-label="メニューを開く" style="width:46px;height:46px;border:none;border-radius:8px;background:#f08a1c;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;box-shadow:0 3px 0 #d06f08;transition:transform .2s" style-hover="transform:translateY(-2px)">
+        <span style="width:22px;height:2px;background:#fff;border-radius:2px"></span>
+        <span style="width:22px;height:2px;background:#fff;border-radius:2px"></span>
+        <span style="width:22px;height:2px;background:#fff;border-radius:2px"></span>
+        <span style="font-size:8px;letter-spacing:.08em;font-weight:700">MENU</span>
+      </button>
+    </div>
+    <a href="#top" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#5a4636">
+      <div class="hd-mark" style="width:58px;height:58px;border-radius:50%;background:#f8b52c;box-shadow:0 0 0 6px #fbd87a,0 0 0 11px #fdeec2;display:flex;align-items:center;justify-content:center;font-family:'Yusei Magic';color:#fff;font-size:24px">ひ</div>
+      <div style="margin-top:8px;background:#f08a1c;color:#fff;font-size:9px;letter-spacing:.14em;padding:3px 16px;clip-path:polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%);font-weight:700">HINATA NO MORI NURSERY</div>
+      <div style="font-family:'Yusei Magic';font-size:clamp(20px,2.6vw,28px);letter-spacing:.12em;color:#e57f12">ひなたの森<span style="color:#5a4636">保育園</span></div>
+    </a>
+    <div style="display:flex;justify-content:flex-end">
+      <a href="tel:0000000000" class="hd-tel" aria-label="電話する 0120-00-1234" style="font-family:'Yusei Magic';font-size:clamp(14px,1.8vw,21px);letter-spacing:.08em;color:#4bb3a6;white-space:nowrap">☎<span class="hd-tel-num"> 0120-00-1234</span></a>
+    </div>
+  </div>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#f8f3e6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:40px;overflow-y:auto">
+    <button onClick="{{ closeMenu }}" aria-label="閉じる" style="position:absolute;top:22px;left:22px;width:46px;height:46px;border:none;border-radius:8px;background:#f08a1c;color:#fff;font-size:22px;cursor:pointer">×</button>
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+      <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="font-family:'Yusei Magic';font-size:26px;letter-spacing:.1em;color:#5a4636;padding:12px 20px;display:flex;align-items:baseline;gap:14px" style-hover="color:#e57f12">
+        <span style="font-size:12px;color:#f08a1c;letter-spacing:.2em">{{ n.en }}</span>{{ n.ja }}
+      </a>
+    </sc-for>
+    <a href="tel:0000000000" style="margin-top:20px;font-family:'Yusei Magic';font-size:22px;color:#4bb3a6">☎ 0120-00-1234</a>
+  </div>
+</sc-if>
+
+<sc-if value="{{ showDesktopTabs }}" hint-placeholder-val="{{ true }}">
+  <div style="position:fixed;right:0;top:34%;z-index:50;display:flex;flex-direction:column;gap:10px">
+    <a href="#contact" style="writing-mode:vertical-rl;background:#f08a1c;color:#fff;padding:22px 12px;border-radius:14px 0 0 14px;border:3px solid #fff;border-right:none;font-weight:700;letter-spacing:.3em;font-size:14px;box-shadow:0 4px 12px rgba(90,70,54,.15);transition:padding .2s" style-hover="color:#fff;padding-right:18px">見学予約</a>
+    <a href="#contact" style="writing-mode:vertical-rl;background:#4bb3a6;color:#fff;padding:22px 12px;border-radius:14px 0 0 14px;border:3px solid #fff;border-right:none;font-weight:700;letter-spacing:.3em;font-size:14px;box-shadow:0 4px 12px rgba(90,70,54,.15);transition:padding .2s" style-hover="color:#fff;padding-right:18px">お問い合わせ</a>
+  </div>
+</sc-if>
+<sc-if value="{{ showMobileBar }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(248,243,230,.96);box-shadow:0 -4px 16px rgba(90,70,54,.1)">
+    <a href="tel:0000000000" style="min-height:48px;display:flex;align-items:center;justify-content:center;border-radius:30px;background:#4bb3a6;color:#fff;font-weight:700">☎ 電話する</a>
+    <a href="#contact" style="min-height:48px;display:flex;align-items:center;justify-content:center;border-radius:30px;background:#f08a1c;color:#fff;font-weight:700">見学を予約する</a>
+  </div>
+</sc-if>
+
+<main id="top">
+<!-- 01 HERO -->
+<section data-screen-label="01 Hero" style="position:relative">
+  <div style="position:relative;height:clamp(380px,46vw,640px);background:repeating-linear-gradient(135deg,#e9dfc9 0 12px,#f1e9d7 12px 24px);overflow:hidden">
+    <img src="images/running-field.jpg" alt="芝生の上を先生と走る子どもたち" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;top:-1px;left:0;width:100%;height:40px;display:block"><path d="M0 0H1440V20Q720 60 0 20Z" fill="#f8f3e6"></path></svg>
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;bottom:-1px;left:0;width:100%;height:44px;display:block"><path d="M0 60H1440V30Q720 -10 0 30Z" fill="#fff"></path></svg>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 16px;text-align:center">
+      <h1 style="margin:0;font-family:'Yusei Magic';font-weight:400;font-size:clamp(34px,7vw,92px);line-height:1.2;letter-spacing:.04em;text-shadow:4px 4px 0 #fff,-4px 4px 0 #fff,4px -4px 0 #fff,-4px -4px 0 #fff,0 5px 0 #fff,5px 0 0 #fff,-5px 0 0 #fff,0 -5px 0 #fff,0 10px 18px rgba(60,40,20,.25);text-wrap:balance">
+        <span style="color:#ee8fa0">ち</span><span style="color:#f08a1c">い</span><span style="color:#f5b72c">さ</span><span style="color:#4bb3a6">な</span><span style="color:#6cb84a;font-size:.8em">一歩</span><span style="color:#8e7a63;font-size:.6em">、</span><wbr><span style="color:#5aa9dd">お</span><span style="color:#ee8fa0">お</span><span style="color:#f08a1c">き</span><span style="color:#4bb3a6">な</span><span style="color:#e5553f">発</span><span style="color:#6cb84a">見</span><span style="color:#8e7a63;font-size:.6em">。</span>
+      </h1>
+      <p class="hero-lead" style="margin:18px 0 0;background:rgba(255,255,255,.9);padding:8px 22px;border-radius:30px;font-weight:700;font-size:clamp(13px,1.5vw,16px);letter-spacing:.08em;color:#5a4636">0歳から5歳まで。ひとりひとりの「やってみたい」を、まいにち見守ります。</p>
+    </div>
+  </div>
+
+  <div style="max-width:1080px;margin:0 auto;padding:56px 20px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px 60px">
+    <div data-reveal="1">
+      <h2 style="margin:0 0 14px;font-family:'Yusei Magic';font-weight:400;font-size:22px;letter-spacing:.14em;display:flex;align-items:center;gap:10px"><span style="width:12px;height:12px;border-radius:50%;background:#f08a1c;box-shadow:0 0 0 4px #fde0bd"></span>おしらせ</h2>
+      <div style="height:8px;background:radial-gradient(circle,#f08a1c 2px,transparent 2.6px) 0 0/16px 8px repeat-x,radial-gradient(circle,#f5c43c 1.6px,transparent 2.2px) 8px 0/16px 8px repeat-x"></div>
+      <sc-for list="{{ news }}" as="n" hint-placeholder-count="4">
+        <a href="#contact" style="display:grid;grid-template-columns:92px 1fr 12px;gap:14px;align-items:center;padding:20px 6px;border-bottom:2px dotted #e3d8c3;color:#5a4636;font-size:14px;font-weight:500;letter-spacing:.06em;transition:background .2s" style-hover="background:#fcf8ef;color:#e57f12">
+          <span style="color:#8e7a63;font-size:13px">{{ n.date }}</span><span>{{ n.title }}</span><span style="color:#c9b89e">›</span>
+        </a>
+      </sc-for>
+      <a href="#contact" style="display:inline-block;margin-top:16px;font-size:13px;font-weight:700;color:#5a4636" style-hover="color:#e57f12">すべて見る ›</a>
+    </div>
+    <div data-reveal="1">
+      <h2 style="margin:0 0 14px;font-family:'Yusei Magic';font-weight:400;font-size:22px;letter-spacing:.14em;display:flex;align-items:center;gap:10px"><span style="width:12px;height:12px;border-radius:50%;background:#4bb3a6;box-shadow:0 0 0 4px #cdebe6"></span>園のごあんない</h2>
+      <div style="height:8px;background:radial-gradient(circle,#f08a1c 2px,transparent 2.6px) 0 0/16px 8px repeat-x,radial-gradient(circle,#f5c43c 1.6px,transparent 2.2px) 8px 0/16px 8px repeat-x"></div>
+      <dl style="margin:0">
+        <sc-for list="{{ info }}" as="i" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:92px 1fr;gap:14px;padding:18px 6px;border-bottom:2px dotted #e3d8c3;font-size:14px;letter-spacing:.06em">
+            <dt style="color:#4bb3a6;font-weight:700">{{ i.k }}</dt><dd style="margin:0;font-weight:500;line-height:1.7">{{ i.v }}</dd>
+          </div>
+        </sc-for>
+      </dl>
+      <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;background:#f08a1c;color:#fff;padding:13px 26px;border-radius:40px;font-weight:700;letter-spacing:.08em;font-size:14px;box-shadow:0 3px 0 #d06f08;transition:transform .2s" style-hover="color:#fff;transform:translateY(-2px)">園見学を予約する <span style="width:18px;height:18px;border-radius:50%;background:#fff;color:#f08a1c;display:inline-flex;align-items:center;justify-content:center;font-size:11px">➜</span></a>
+        <a href="#admission" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#e57f12;border:2px solid #f08a1c;padding:11px 24px;border-radius:40px;font-weight:700;letter-spacing:.08em;font-size:14px;transition:background .2s" style-hover="background:#fff4e6">入園のご案内</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ABOUT -->
+<section id="about" class="sec" data-screen-label="02 About" style="padding:90px 20px 100px">
+  <div style="max-width:1000px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;text-align:center">
+      <div style="background:#f08a1c;color:#fff;font-weight:700;font-size:12px;letter-spacing:.24em;padding:6px 44px;clip-path:polygon(0 0,100% 0,92% 50%,100% 100%,0 100%,8% 50%)">ABOUT</div>
+      <h2 style="margin:18px 0 20px;font-family:'Yusei Magic';font-weight:400;font-size:clamp(26px,3.4vw,34px);letter-spacing:.14em">ひなたの森保育園について</h2>
+      <div style="width:min(300px,80%);height:8px;background:radial-gradient(circle,#f08a1c 2px,transparent 2.6px) 0 0/16px 8px repeat-x,radial-gradient(circle,#f5c43c 1.6px,transparent 2.2px) 8px 0/16px 8px repeat-x"></div>
+    </div>
+    <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:36px 48px;align-items:center">
+      <div data-reveal="1">
+        <h3 style="margin:0 0 18px;font-size:clamp(20px,2.4vw,24px);font-weight:700;letter-spacing:.1em;line-height:1.6;text-wrap:pretty">ひとりひとりのペースで、<br>いっしょに育つ毎日を。</h3>
+        <p style="margin:0 0 18px;font-size:15px;line-height:2.1;letter-spacing:.05em;text-wrap:pretty">ひなたの森保育園は、雑木林に囲まれた小さな保育園です。できることの早さよりも、「やってみたい」と思う気持ちを大切にしています。泣いたり笑ったり、ときにはけんかをしながら、子どもたちは毎日すこしずつ自分の力を見つけていきます。</p>
+        <p style="margin:0 0 28px;font-size:15px;line-height:2.1;letter-spacing:.05em;text-wrap:pretty">保育士は、その一歩をせかさず、そばで見守ります。ご家庭と毎日の様子を共有しながら、お子さまの成長をいっしょに喜べる園でありたいと考えています。</p>
+        <a href="#daily" style="display:inline-flex;align-items:center;gap:12px;background:#f08a1c;color:#fff;padding:14px 30px;border-radius:40px;font-weight:700;letter-spacing:.1em;font-size:14px;box-shadow:0 3px 0 #d06f08;transition:transform .2s" style-hover="color:#fff;transform:translateY(-2px)">園の一日を見る <span style="width:18px;height:18px;border-radius:50%;background:#fff;color:#f08a1c;display:inline-flex;align-items:center;justify-content:center;font-size:11px">➜</span></a>
+      </div>
+      <div data-reveal="1" style="position:relative;overflow:hidden;aspect-ratio:3/2;border-radius:18px;background:#e9dfc9;box-shadow:0 6px 0 #f3ead8">
+        <img src="images/building-exterior.jpg" alt="木々に囲まれた園舎の外観" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      </div>
+    </div>
+    <div style="margin-top:72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px">
+      <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+        <div data-reveal="1" style="background:#fbf7ee;border-radius:20px;padding:28px 24px 26px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-4px);box-shadow:0 10px 24px rgba(90,70,54,.08)">
+          <div style="font-family:'Yusei Magic';font-size:13px;letter-spacing:.2em;color:#f08a1c">{{ v.no }}</div>
+          <h4 style="margin:8px 0 12px;font-family:'Yusei Magic';font-weight:400;font-size:21px;letter-spacing:.12em">{{ v.title }}</h4>
+          <p style="margin:0;font-size:14px;line-height:1.95;letter-spacing:.04em;text-wrap:pretty">{{ v.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 03 DAILY -->
+<section id="daily" class="sec" data-screen-label="03 Daily" style="position:relative;background:#f8f3e6;padding:110px 20px 110px">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;top:-1px;left:0;width:100%;height:44px;display:block"><path d="M0 0H1440V30Q720 -10 0 30Z" fill="#fff"></path></svg>
+  <div style="max-width:1080px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;text-align:center">
+      <div style="background:#4bb3a6;color:#fff;font-weight:700;font-size:12px;letter-spacing:.24em;padding:6px 44px;clip-path:polygon(0 0,100% 0,92% 50%,100% 100%,0 100%,8% 50%)">DAILY LIFE</div>
+      <h2 style="margin:18px 0 20px;font-family:'Yusei Magic';font-weight:400;font-size:clamp(26px,3.4vw,34px);letter-spacing:.14em">園でのまいにち</h2>
+      <div style="width:min(300px,80%);height:8px;background:radial-gradient(circle,#f08a1c 2px,transparent 2.6px) 0 0/16px 8px repeat-x,radial-gradient(circle,#f5c43c 1.6px,transparent 2.2px) 8px 0/16px 8px repeat-x"></div>
+    </div>
+
+    <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px 56px;align-items:start">
+      <div data-reveal="1" style="display:grid;gap:16px">
+        <img src="images/play-equipment.jpg" alt="遊具で遊ぶ子どもたち" loading="lazy" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <img src="images/cooking.jpg" alt="じゃがいもの皮むき" loading="lazy" style="display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:18px">
+          <img src="images/drawing.jpg" alt="お絵かきをする子どもたち" loading="lazy" style="display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:55% center;border-radius:18px">
+        </div>
+      </div>
+      <div data-reveal="1">
+        <h3 style="margin:0 0 6px;font-family:'Yusei Magic';font-weight:400;font-size:22px;letter-spacing:.14em">1日の流れ</h3>
+        <p style="margin:0 0 18px;font-size:13px;color:#8e7a63;letter-spacing:.05em">3〜5歳児クラスの一例です。0〜2歳児は一人ひとりの生活リズムに合わせて過ごします。</p>
+        <ol style="margin:0;padding:0;list-style:none">
+          <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="8">
+            <li style="display:grid;grid-template-columns:62px 14px 1fr;gap:14px;align-items:start;padding:14px 0;border-bottom:2px dotted #e3d8c3">
+              <span style="font-family:'Yusei Magic';font-size:17px;color:#e57f12;letter-spacing:.04em">{{ s.time }}</span>
+              <span style="width:12px;height:12px;margin-top:5px;border-radius:50%;background:#fff;border:3px solid #f5b72c"></span>
+              <div><div style="font-weight:700;font-size:15px;letter-spacing:.08em">{{ s.title }}</div><div style="margin-top:4px;font-size:13px;line-height:1.8;color:#7a6552">{{ s.text }}</div></div>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </div>
+
+    <h3 data-reveal="1" class="sub-h" style="margin:90px 026px;text-align:center;font-family:'Yusei Magic';font-weight:400;font-size:24px;letter-spacing:.14em">あそびと学びのプログラム</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px">
+      <sc-for list="{{ programs }}" as="p" hint-placeholder-count="6">
+        <article data-reveal="1" style="background:#fff;border-radius:20px;overflow:hidden;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-4px);box-shadow:0 12px 26px rgba(90,70,54,.1)">
+          <img src="{{ p.img }}" alt="{{ p.photo }}" loading="lazy" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:{{ p.pos }}">
+          <div style="padding:20px 22px 24px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.2em;color:#4bb3a6">{{ p.en }}</div>
+            <h4 style="margin:6px 0 10px;font-family:'Yusei Magic';font-weight:400;font-size:20px;letter-spacing:.1em">{{ p.title }}</h4>
+            <p style="margin:0;font-size:14px;line-height:1.9;letter-spacing:.04em;text-wrap:pretty">{{ p.text }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+
+    <h3 data-reveal="1" class="sub-h" style="margin:90px 026px;text-align:center;font-family:'Yusei Magic';font-weight:400;font-size:24px;letter-spacing:.14em">1年の行事</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px">
+      <sc-for list="{{ seasons }}" as="s" hint-placeholder-count="4">
+        <div data-reveal="1" style="background:#fff;border-radius:20px;padding:24px 24px 26px;border-top:6px solid {{ s.color }}">
+          <div style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Yusei Magic';font-size:28px;color:{{ s.color }}">{{ s.name }}</span><span style="font-size:12px;color:#8e7a63;letter-spacing:.1em">{{ s.months }}</span></div>
+          <ul style="margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px">
+            <sc-for list="{{ s.events }}" as="e" hint-placeholder-count="3">
+              <li style="font-size:14px;font-weight:500;letter-spacing:.06em;padding-bottom:8px;border-bottom:2px dotted #eee4d2">{{ e }}</li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 04 TEACHERS / ENVIRONMENT / VOICES -->
+<section id="teachers" class="sec" data-screen-label="04 Teachers" style="position:relative;padding:110px 20px 100px">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;top:-1px;left:0;width:100%;height:44px;display:block"><path d="M0 0H1440V30Q720 -10 0 30Z" fill="#f8f3e6"></path></svg>
+  <div style="max-width:1080px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;text-align:center">
+      <div style="background:#ee8fa0;color:#fff;font-weight:700;font-size:12px;letter-spacing:.24em;padding:6px 44px;clip-path:polygon(0 0,100% 0,92% 50%,100% 100%,0 100%,8% 50%)">TEACHERS</div>
+      <h2 style="margin:18px 0 20px;font-family:'Yusei Magic';font-weight:400;font-size:clamp(26px,3.4vw,34px);letter-spacing:.14em">先生と、園のこと</h2>
+      <div style="width:min(300px,80%);height:8px;background:radial-gradient(circle,#f08a1c 2px,transparent 2.6px) 0 0/16px 8px repeat-x,radial-gradient(circle,#f5c43c 1.6px,transparent 2.2px) 8px 0/16px 8px repeat-x"></div>
+    </div>
+
+    <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px">
+      <sc-for list="{{ teachers }}" as="t" hint-placeholder-count="3">
+        <div data-reveal="1" style="text-align:center;padding:10px 16px">
+          <img src="{{ t.img }}" alt="{{ t.name }}" loading="lazy" style="display:block;width:150px;height:150px;margin:0 auto;border-radius:50%;object-fit:cover;object-position:{{ t.pos }};background:#e9dfc9;box-shadow:0 0 0 6px #fff,0 0 0 10px {{ t.color }}">
+          <div style="margin-top:22px;font-size:12px;font-weight:700;letter-spacing:.14em;color:#4bb3a6">{{ t.role }}</div>
+          <div style="margin-top:4px;font-family:'Yusei Magic';font-size:21px;letter-spacing:.14em">{{ t.name }}</div>
+          <p style="margin:14px 0 0;font-size:14px;line-height:1.95;letter-spacing:.04em;text-align:left;text-wrap:pretty">{{ t.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+
+    <h3 data-reveal="1" class="sub-h" style="margin:90px 010px;text-align:center;font-family:'Yusei Magic';font-weight:400;font-size:24px;letter-spacing:.14em">安心してすごせる環境</h3>
+    <p data-reveal="1" style="margin:0 auto 28px;max-width:620px;text-align:center;font-size:14px;line-height:2;letter-spacing:.05em">木のぬくもりを感じる保育室と、季節の変化が見える園庭。毎日の清掃と安全点検を欠かさず、子どもたちがのびのび過ごせる場所を整えています。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px">
+      <sc-for list="{{ spaces }}" as="e" hint-placeholder-count="6">
+        <figure data-reveal="1" style="margin:0">
+          <div style="position:relative;overflow:hidden;aspect-ratio:4/3;border-radius:16px;background:repeating-linear-gradient(135deg,#e9dfc9 0 12px,#f1e9d7 12px 24px);display:flex;align-items:flex-end;padding:10px">
+            <sc-if value="{{ e.img }}"><img src="{{ e.img }}" alt="{{ e.name }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if>
+            <sc-if value="{{ !e.img }}"><span style="font-family:ui-monospace,monospace;font-size:11px;color:#8e7a63;background:rgba(255,255,255,.8);padding:3px 8px;border-radius:4px">写真：{{ e.name }}</span></sc-if>
+          </div>
+          <figcaption style="margin-top:10px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:700;font-size:15px;letter-spacing:.1em">{{ e.name }}</span><span style="font-size:13px;color:#7a6552;line-height:1.7">{{ e.text }}</span></figcaption>
+        </figure>
+      </sc-for>
+    </div>
+
+    <h3 data-reveal="1" class="sub-h" style="margin:90px 030px;text-align:center;font-family:'Yusei Magic';font-weight:400;font-size:24px;letter-spacing:.14em">保護者の方の声</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px 22px">
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+        <div data-reveal="1">
+          <div style="position:relative;background:#fbf7ee;border-radius:22px;padding:26px 26px 24px;font-size:14px;line-height:2;letter-spacing:.04em;text-wrap:pretty" style-after="content:'';position:absolute;left:36px;bottom:-12px;width:24px;height:24px;background:#fbf7ee;transform:rotate(45deg);border-radius:3px">{{ v.text }}</div>
+          <div style="margin:22px 0 0 20px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.06em;color:#7a6552"><span style="width:28px;height:28px;border-radius:50%;background:{{ v.color }}"></span>{{ v.who }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ADMISSION / CONTACT -->
+<section id="contact" class="sec-t" data-screen-label="05 Contact" style="position:relative;background:#f8f3e6;padding:110px 20px 0">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;top:-1px;left:0;width:100%;height:44px;display:block"><path d="M0 0H1440V30Q720 -10 0 30Z" fill="#fff"></path></svg>
+  <div style="max-width:1000px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;text-align:center">
+      <div style="background:#f08a1c;color:#fff;font-weight:700;font-size:12px;letter-spacing:.24em;padding:6px 44px;clip-path:polygon(0 0,100% 0,92% 50%,100% 100%,0 100%,8% 50%)">CONTACT</div>
+      <h2 style="margin:18px 0 20px;font-family:'Yusei Magic';font-weight:400;font-size:clamp(26px,3.4vw,34px);letter-spacing:.14em;text-wrap:balance">まずは、あそびに来てください。</h2>
+      <div style="width:min(300px,80%);height:8px;background:radial-gradient(circle,#f08a1c 2px,transparent 2.6px) 0 0/16px 8px repeat-x,radial-gradient(circle,#f5c43c 1.6px,transparent 2.2px) 8px 0/16px 8px repeat-x"></div>
+      <p style="margin:24px 0 0;max-width:600px;font-size:15px;line-height:2.1;letter-spacing:.05em;text-wrap:pretty">見学は平日の午前中に随時受け付けています。お子さまとご一緒にどうぞ。園の雰囲気を見ていただきながら、気になることをなんでもお聞きください。</p>
+    </div>
+
+    <div id="admission" style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px">
+      <div data-reveal="1" style="background:#fff;border-radius:22px;padding:30px 28px">
+        <h3 style="margin:0 0 16px;font-family:'Yusei Magic';font-weight:400;font-size:21px;letter-spacing:.12em;color:#e57f12">入園までの流れ</h3>
+        <ol style="margin:0;padding:0;list-style:none;display:grid;gap:14px">
+          <sc-for list="{{ flow }}" as="f" hint-placeholder-count="4">
+            <li style="display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start">
+              <span style="width:34px;height:34px;border-radius:50%;background:#fde0bd;color:#e57f12;font-family:'Yusei Magic';display:flex;align-items:center;justify-content:center">{{ f.no }}</span>
+              <div><div style="font-weight:700;font-size:15px;letter-spacing:.08em">{{ f.title }}</div><div style="margin-top:3px;font-size:13px;line-height:1.8;color:#7a6552">{{ f.text }}</div></div>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+      <div data-reveal="1" style="background:#fff;border-radius:22px;padding:30px 28px">
+        <h3 style="margin:0 0 16px;font-family:'Yusei Magic';font-weight:400;font-size:21px;letter-spacing:.12em;color:#4bb3a6">募集要項（令和9年度）</h3>
+        <dl style="margin:0">
+          <sc-for list="{{ admission }}" as="a" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:84px 1fr;gap:12px;padding:12px 0;border-bottom:2px dotted #eee4d2;font-size:14px">
+              <dt style="font-weight:700;color:#7a6552">{{ a.k }}</dt><dd style="margin:0;line-height:1.7">{{ a.v }}</dd>
+            </div>
+          </sc-for>
+        </dl>
+        <p style="margin:14px 0 0;font-size:12px;color:#8e7a63;line-height:1.8">入園の申込みは、お住まいの市区町村の窓口となります。</p>
+      </div>
+    </div>
+
+    <form data-reveal="1" onSubmit="{{ submit }}" style="margin-top:28px;background:#fff;border-radius:26px;padding:clamp(26px,4vw,48px)">
+      <h3 style="margin:0 0 6px;text-align:center;font-family:'Yusei Magic';font-weight:400;font-size:23px;letter-spacing:.14em">見学予約・お問い合わせ</h3>
+      <p style="margin:0 0 30px;text-align:center;font-size:13px;color:#8e7a63">2営業日以内に、担当よりご連絡いたします。</p>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:30px 10px">
+          <div style="font-family:'Yusei Magic';font-size:24px;color:#e57f12;letter-spacing:.1em">ありがとうございます</div>
+          <p style="margin:14px 0 0;font-size:14px;line-height:2">お問い合わせを受け付けました。お会いできるのを楽しみにしています。</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:24px">
+          <sc-for list="{{ kinds }}" as="k" hint-placeholder-count="3">
+            <label style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:30px;border:2px solid #f2dcc0;font-size:14px;font-weight:700;cursor:pointer;min-height:44px"><input type="radio" name="kind" value="{{ k }}" style="accent-color:#f08a1c"></input>{{ k }}</label>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px 20px">
+          <label style="display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">保護者さまのお名前 <span style="display:none"></span><input required="" name="name" placeholder="ひなた はなこ" style="height:50px;border:2px solid #eee4d2;border-radius:12px;padding:0 16px;font-size:15px;background:#fcfaf5;color:#5a4636;outline-color:#f08a1c"></input></label>
+          <label style="display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">メールアドレス<input required="" type="email" name="email" placeholder="example@mail.jp" style="height:50px;border:2px solid #eee4d2;border-radius:12px;padding:0 16px;font-size:15px;background:#fcfaf5;color:#5a4636;outline-color:#f08a1c"></input></label>
+          <label style="display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">電話番号<input type="tel" name="tel" placeholder="090-0000-0000" style="height:50px;border:2px solid #eee4d2;border-radius:12px;padding:0 16px;font-size:15px;background:#fcfaf5;color:#5a4636;outline-color:#f08a1c"></input></label>
+          <label style="display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">お子さまの年齢
+            <select name="age" style="height:50px;border:2px solid #eee4d2;border-radius:12px;padding:0 14px;font-size:15px;background:#fcfaf5;color:#5a4636;outline-color:#f08a1c">
+              <option>選択してください</option><option>0歳</option><option>1歳</option><option>2歳</option><option>3歳</option><option>4歳</option><option>5歳</option><option>出産予定</option>
+            </select>
+          </label>
+          <label style="display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">見学希望日<input type="date" name="date" style="height:50px;border:2px solid #eee4d2;border-radius:12px;padding:0 16px;font-size:15px;background:#fcfaf5;color:#5a4636;outline-color:#f08a1c"></input></label>
+          <label style="display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">希望時間帯
+            <select name="time" style="height:50px;border:2px solid #eee4d2;border-radius:12px;padding:0 14px;font-size:15px;background:#fcfaf5;color:#5a4636;outline-color:#f08a1c">
+              <option>10:00〜</option><option>10:30〜</option><option>11:00〜</option><option>相談したい</option>
+            </select>
+          </label>
+          <label style="grid-column:1/-1;display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">ご質問・メッセージ<textarea name="msg" rows="5" placeholder="気になっていること、ご質問などがあればご記入ください。" style="border:2px solid #eee4d2;border-radius:12px;padding:14px 16px;font-size:15px;background:#fcfaf5;color:#5a4636;resize:vertical;outline-color:#f08a1c;line-height:1.8"></textarea></label>
+        </div>
+        <div style="margin-top:30px;display:flex;justify-content:center">
+          <button type="submit" style="display:inline-flex;align-items:center;gap:12px;border:none;cursor:pointer;background:#f08a1c;color:#fff;padding:16px 44px;min-height:54px;border-radius:40px;font-weight:700;letter-spacing:.12em;font-size:16px;box-shadow:0 4px 0 #d06f08;transition:transform .2s" style-hover="transform:translateY(-2px)">この内容で送信する <span style="width:20px;height:20px;border-radius:50%;background:#fff;color:#f08a1c;display:inline-flex;align-items:center;justify-content:center;font-size:12px">➜</span></button>
+        </div>
+      </sc-if>
+    </form>
+  </div>
+
+  <footer class="lp-foot" style="margin-top:90px">
+    <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:36px 60px;padding-bottom:40px">
+      <div style="display:grid;gap:12px;align-content:start">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:42px;height:42px;border-radius:50%;background:#f8b52c;box-shadow:0 0 0 5px #fbd87a;display:flex;align-items:center;justify-content:center;font-family:'Yusei Magic';color:#fff;font-size:18px">ひ</div>
+          <div style="font-family:'Yusei Magic';font-size:26px;letter-spacing:.12em"><span style="color:#e57f12">ひなたの森</span>保育園</div>
+        </div>
+        <a href="tel:0000000000" style="font-family:'Yusei Magic';font-size:24px;letter-spacing:.08em;color:#5a4636">☎ 0120-00-1234</a>
+        <div style="font-size:13px;line-height:1.9;letter-spacing:.05em">〒000-0000 ○○県○○市ひなた町1-2-3<br>○○線「森の台駅」徒歩7分／駐輪場あり<br>開園 月〜土 7:00〜19:00（日祝・年末年始休園）<br>info@hinatanomori.example</div>
+        <div style="display:flex;gap:10px;margin-top:4px">
+          <a href="#top" style="padding:8px 16px;border-radius:30px;background:#fff;font-size:12px;font-weight:700;color:#5a4636" style-hover="color:#e57f12">Instagram</a>
+          <a href="#top" style="padding:8px 16px;border-radius:30px;background:#fff;font-size:12px;font-weight:700;color:#5a4636" style-hover="color:#e57f12">LINE</a>
+          <a href="#top" style="padding:8px 16px;border-radius:30px;background:#fff;font-size:12px;font-weight:700;color:#5a4636" style-hover="color:#e57f12">YouTube</a>
+        </div>
+      </div>
+      <nav style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px;align-content:start;font-size:13px;letter-spacing:.06em">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" style="color:#5a4636" style-hover="color:#e57f12">{{ n.ja }}</a>
+        </sc-for>
+        <a href="#admission" style="color:#5a4636" style-hover="color:#e57f12">入園のご案内</a>
+      </nav>
+    </div>
+    <div class="ft-scene" style="position:relative;margin:0 -20px;height:230px;overflow:hidden">
+      <div class="ft-trees" style="position:absolute;left:0;right:0;bottom:70px;display:flex;justify-content:space-around;align-items:flex-end;padding:0 4%">
+        <div style="display:flex;flex-direction:column;align-items:center"><div style="width:90px;height:90px;border-radius:50%;background:#8cc760;opacity:.9"></div><div style="width:10px;height:30px;background:#a07a5a"></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center"><div style="width:74px;height:40px;background:#f2a0a8;clip-path:polygon(50% 0,100% 100%,0 100%)"></div><div style="width:62px;height:48px;background:#fdf8ee"></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center"><div style="width:50px;height:70px;border-radius:50%;background:#5fc2b4;opacity:.85"></div><div style="width:8px;height:22px;background:#a07a5a"></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center"><div style="width:84px;height:44px;background:#f5c43c;clip-path:polygon(50% 0,100% 100%,0 100%)"></div><div style="width:70px;height:56px;background:#fdf8ee"></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center"><div style="width:70px;height:40px;background:#7cc3e6;clip-path:polygon(50% 0,100% 100%,0 100%)"></div><div style="width:58px;height:44px;background:#fdf8ee"></div></div>
+        <div style="display:flex;flex-direction:column;align-items:center"><div style="width:100px;height:100px;border-radius:50%;background:#9ccf5a;opacity:.9"></div><div style="width:12px;height:30px;background:#a07a5a"></div></div>
+      </div>
+      <svg class="ft-ground" viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;left:0;bottom:0;width:100%;height:90px;display:block"><path d="M0 22Q360 0 720 18T1440 16V90H0Z" fill="#9ccf5a"></path></svg>
+      <div style="position:absolute;left:0;right:0;bottom:calc(16px + {{ barPad }}px);text-align:center;font-size:12px;color:#fff;letter-spacing:.08em;font-weight:500">© Hinata no Mori Nursery School</div>
+    </div>
+  </footer>
+</section>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showSideTabs&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;UI&quot;},&quot;revealAnimation&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;UI&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false, sent: false, mobile: typeof window !== 'undefined' && window.innerWidth < 768 };
+  componentDidMount() {
+    this.onResize = () => this.setState({ mobile: window.innerWidth < 768 });
+    window.addEventListener('resize', this.onResize);
+    if ((this.props.revealAnimation ?? true) && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'none'; io.unobserve(e.target); }
+      }), { threshold: 0.12 });
+      setTimeout(() => document.querySelectorAll('[data-reveal]').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight) return;
+        el.style.opacity = 0; el.style.transform = 'translateY(24px)';
+        el.style.transition = 'opacity .8s ease, transform .8s ease';
+        io.observe(el);
+      }), 50);
+      this.io = io;
+    }
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); this.io && this.io.disconnect(); }
+  renderVals() {
+    const tabs = this.props.showSideTabs ?? true;
+    const m = this.state.mobile;
+    return {
+      menuOpen: this.state.menuOpen,
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      showDesktopTabs: tabs && !m,
+      showMobileBar: tabs && m,
+      barPad: tabs && m ? 70 : 0,
+      sent: this.state.sent, notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      nav: [
+        { en: 'ABOUT', ja: '園について', href: '#about' },
+        { en: 'DAILY', ja: '園でのまいにち', href: '#daily' },
+        { en: 'TEACHERS', ja: '先生と環境', href: '#teachers' },
+        { en: 'VOICE', ja: '保護者の声', href: '#teachers' },
+        { en: 'CONTACT', ja: '見学・お問い合わせ', href: '#contact' }
+      ],
+      news: [
+        { date: '2026.9.20', title: '令和9年度 入園説明会のご案内' },
+        { date: '2026.9.05', title: '秋の園見学 受付をはじめました' },
+        { date: '2026.8.28', title: 'おいもほり遠足の日程について' },
+        { date: '2026.7.12', title: '夏まつりの様子をお届けします' }
+      ],
+      info: [
+        { k: '対象年齢', v: '0歳（生後57日）〜5歳児' },
+        { k: '保育時間', v: '7:00〜18:00（延長保育 〜19:00）' },
+        { k: '定員', v: '90名（各クラス少人数制）' },
+        { k: '園見学', v: '平日 10:00〜11:30／随時受付' }
+      ],
+      values: [
+        { no: '01', title: 'じぶんで', text: '服を着る、片づける、えらぶ。できるまで待つ時間を、大切な保育の時間と考えています。' },
+        { no: '02', title: 'いっしょに', text: '異年齢で過ごす時間を多く取り、ゆずる・たすける・教えあう経験を重ねます。' },
+        { no: '03', title: 'つくる', text: '絵の具、粘土、廃材、どろんこ。手を動かして、思いついたことを形にします。' },
+        { no: '04', title: 'ふしぎ', text: '虫や草花、空の色。身近な自然の中で見つけた「なんで？」を一緒に考えます。' }
+      ],
+      schedule: [
+        { time: '7:00', title: '登園・自由あそび', text: '視診と検温のあと、好きなあそびでゆっくり朝をはじめます。' },
+        { time: '9:30', title: '朝の会', text: '歌をうたい、今日の予定やお当番を確認します。' },
+        { time: '10:00', title: '主活動・外あそび', text: '園庭や近くの公園へ。季節によって製作やリズムあそびも。' },
+        { time: '11:30', title: '給食', text: '園内の調理室でつくる、できたての給食です。' },
+        { time: '13:00', title: 'おひるね', text: '年長児は就学に向けて、静かにすごす時間へ移行します。' },
+        { time: '15:00', title: 'おやつ', text: '手づくりのおやつを、みんなでいただきます。' },
+        { time: '15:30', title: '帰りの会・自由あそび', text: '今日のできごとを振り返ります。' },
+        { time: '16:00〜', title: '順次降園', text: '担任から、その日の様子を直接お伝えします。' }
+      ],
+      programs: [
+        { en: 'OUTDOOR', title: '森のおさんぽ', photo: '芝生で輪になって遊ぶ子どもたち', img: 'images/circle-play.jpg', pos: 'center 50%', text: '週に一度、近くの雑木林へ。落ち葉や木の実を拾いながら、季節の移ろいを体で感じます。' },
+        { en: 'ART', title: 'アトリエ', photo: 'お絵かきをする子どもたち', img: 'images/drawing.jpg', pos: 'center 40%', text: '決まった完成形はつくりません。素材にふれて、混ぜて、ためしてみる時間です。' },
+        { en: 'MUSIC', title: 'リズムとうた', photo: '電車ごっこをする子どもたち', img: 'images/train-play.jpg', pos: 'center 45%', text: 'ピアノや打楽器に合わせて体を動かします。音を楽しむことからはじめます。' },
+        { en: 'BOOKS', title: 'えほんの時間', photo: '絵本を読む先生と子ども', img: 'images/teacher-baby-book.jpg', pos: 'center 40%', text: '毎日の読み聞かせと、週末の絵本の貸し出し。ご家庭でも親子の時間をどうぞ。' },
+        { en: 'FOOD', title: 'たべる・そだてる', photo: 'じゃがいもの皮むき', img: 'images/cooking.jpg', pos: 'center center', text: '園の菜園で野菜を育て、収穫したものをクッキングで味わいます。' },
+        { en: 'ENGLISH', title: 'えいごであそぼう', photo: '先生と子どもたち', img: 'images/kids-boots.jpg', pos: 'center 35%', text: '3歳児から月2回。ゲームや歌を通して、ことばの響きに親しみます。' }
+      ],
+      seasons: [
+        { name: '春', months: '4〜6月', color: '#ee8fa0', events: ['入園式', 'こどもの日の集い', '親子遠足'] },
+        { name: '夏', months: '7〜9月', color: '#4bb3a6', events: ['七夕まつり', 'プールあそび', '夏まつり'] },
+        { name: '秋', months: '10〜12月', color: '#f08a1c', events: ['うんどう会', 'おいもほり', 'クリスマス会'] },
+        { name: '冬', months: '1〜3月', color: '#5aa9dd', events: ['おもちつき', '生活発表会', '卒園式'] }
+      ],
+      teachers: [
+        { role: '園長', name: '森田 ゆう子', color: '#f5c43c', img: 'images/teacher-clipboard.jpg', pos: '52% center', text: '保育士になって28年。子どもたちが「また明日ね」と帰っていく姿が、いちばんの励みです。保護者の方のお話も、いつでもお聞きします。' },
+        { role: '主任保育士', name: '佐野 あおい', color: '#ee8fa0', img: 'images/teacher-baby-book.jpg', pos: '45% center', text: '得意なことは絵本の読み聞かせ。子どもが夢中になっている時間を、途中で切らないように心がけています。' },
+        { role: '保育士・0歳児担当', name: '川口 はると', color: '#4bb3a6', img: 'images/teacher-baby.jpg', pos: '30% center', text: 'はじめて保育園に通うお子さまと、おうちの方の不安に寄りそいます。毎日の連絡帳で、小さな変化もお伝えします。' }
+      ],
+      spaces: [
+        { name: '保育室', img: 'images/playroom.jpg', text: '床と棚は無垢材。年齢ごとに家具の高さを変えています。' },
+        { name: '園庭', img: 'images/playground.jpg', text: '築山と砂場、実のなる木。はだしで走れる土の園庭です。' },
+        { name: '菜園', text: 'トマト、きゅうり、さつまいもを子どもたちが育てます。' },
+        { name: 'ランチルーム', img: 'images/cooking.jpg', text: '調理室と隣り合い、つくる様子が見えるつくりです。' },
+        { name: 'おひるね室', img: 'images/playroom-slide.jpg', text: '午睡中は5分ごとに呼吸と体勢を確認しています。' },
+        { name: '安全への取り組み', img: 'images/entrance-fence.jpg', text: 'オートロックの玄関、防犯カメラ、毎月の避難訓練。' }
+      ],
+      voices: [
+        { who: '1歳児クラス 保護者さま', color: '#fde0bd', text: '初めての集団生活で心配でしたが、連絡帳に毎日たくさん様子を書いてくださり、仕事中も安心していられました。今では朝、自分から先生のところへ歩いていきます。' },
+        { who: '年中クラス 保護者さま', color: '#cdebe6', text: '家では食べなかった野菜を「園で育てたから」と食べるようになりました。子どもの話を聞くと、毎日いろいろな発見をしているのが伝わってきます。' },
+        { who: '年長クラス 保護者さま', color: '#f9d4da', text: '子育ての悩みを、お迎えのときに気軽に相談できるのがありがたいです。先生方が子どもだけでなく、親のことも見てくれていると感じます。' }
+      ],
+      flow: [
+        { no: '1', title: '園見学', text: 'まずはお気軽にご連絡ください。所要時間は30分ほどです。' },
+        { no: '2', title: '入園説明会', text: '毎年10月・11月に開催します。個別のご相談も承ります。' },
+        { no: '3', title: '市区町村へ申込み', text: '必要書類は各自治体の窓口・ウェブサイトでご確認ください。' },
+        { no: '4', title: '面談・入園準備', text: '内定後、お子さまの様子をうかがう面談を行います。' }
+      ],
+      admission: [
+        { k: '対象', v: '0歳児（生後57日）〜5歳児' },
+        { k: '定員', v: '0歳 6名／1歳 12名／2歳 14名／3〜5歳 各19名' },
+        { k: '保育時間', v: '標準時間 7:00〜18:00／短時間 8:30〜16:30' },
+        { k: '延長保育', v: '18:00〜19:00（要申込）' },
+        { k: '給食', v: '自園調理・アレルギー対応あり' }
+      ],
+      kinds: ['園見学の予約', '入園について', 'その他のご質問']
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;0,800;0,900;1,900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1A1A1A;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1A1A1A;text-decoration:none}
+a:hover{color:#E63B24}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="results" hint-size="100%,86px"></dc-import>
+<main>
+<section data-screen-label="Results hero" style="position:relative;background:#F2F2F2;margin-top:20px;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;right:-2vw;bottom:-2vw;font-family:Montserrat;font-weight:900;font-size:clamp(90px,17vw,260px);line-height:1;color:#E8E8E8;letter-spacing:-4px;white-space:nowrap;pointer-events:none">RESULTS</div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,4vw,40px) clamp(56px,7vw,96px);display:flex;flex-wrap:wrap;gap:40px;align-items:center">
+    <div style="flex:1 1 480px;min-width:0">
+      <div style="font-family:Montserrat;font-size:12px;font-weight:700;letter-spacing:1px;color:#777"><a href="Top.dc.html" style="color:#777">TOP</a> / RESULTS</div>
+      <h1 data-reveal="1" style="margin:20px 0 0;font-family:Montserrat;font-weight:900;font-size:clamp(40px,6vw,76px);line-height:1;letter-spacing:-1px">RESULTS</h1>
+      <div data-reveal="1" style="margin-top:28px;background:linear-gradient(100deg,#E63B24,#EF7A1F);clip-path:polygon(0 0,100% 0,90% 100%,0 100%);color:#fff;padding:28px 16% 28px 32px">
+        <p style="margin:0;font-size:clamp(20px,2.4vw,30px);font-weight:900;letter-spacing:2px;line-height:1.5">数字で見る、お客様の変化。</p>
+        <p style="margin:10px 0 0;font-size:14px;line-height:1.9;font-weight:500">体重・体脂肪率・ウエスト。実際に通われたお客様の記録と声をご紹介します。</p>
+      </div>
+    </div>
+    <div data-reveal="1" style="flex:1 1 380px;min-width:0;height:clamp(300px,34vw,440px)"><image-slot id="results-hero" mask="polygon(24% 0,100% 0,76% 100%,0 100%)" placeholder="引き締まった体・ダーク"></image-slot></div>
+  </div>
+</section>
+
+<section data-screen-label="Before After" style="padding:clamp(72px,9vw,120px) 0 0">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div style="display:flex;align-items:center;gap:14px;font-family:Montserrat;font-weight:700;font-size:12px;letter-spacing:1.5px"><span style="width:28px;height:1px;background:#1A1A1A"></span>BEFORE &amp; AFTER</div>
+    <h2 data-reveal="1" style="margin:18px 0 0;font-weight:900;font-size:clamp(28px,3.6vw,44px);line-height:1.3">お客様の<span style="background:linear-gradient(transparent 55%,#EF7A1F 55%);padding:0 4px">変化</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,500px),1fr));gap:24px;margin-top:48px">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="4">
+        <article data-reveal="1" style="background:#F2F2F2;border-radius:6px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));transition:transform .35s" style-hover="transform:translateY(-4px)">
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px;min-height:280px">
+            <div style="position:relative;filter:grayscale(.6)"><image-slot id="ba-{{ c.key }}-b" shape="rect" placeholder="BEFORE"></image-slot><span style="position:absolute;left:10px;top:10px;background:#1A1A1A;color:#fff;font-family:Montserrat;font-weight:700;font-size:10px;letter-spacing:1px;padding:4px 10px;pointer-events:none">BEFORE</span></div>
+            <div style="position:relative"><image-slot id="ba-{{ c.key }}-a" shape="rect" placeholder="AFTER"></image-slot><span style="position:absolute;left:10px;top:10px;background:linear-gradient(90deg,#E63B24,#EF7A1F);color:#fff;font-family:Montserrat;font-weight:700;font-size:10px;letter-spacing:1px;padding:4px 10px;pointer-events:none">AFTER</span></div>
+          </div>
+          <div style="padding:22px 24px 26px;min-width:0">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+              <span style="font-weight:900;font-size:15px">{{ c.who }}</span>
+              <span style="font-size:12px;font-weight:700;background:#1A1A1A;color:#fff;padding:5px 12px;border-radius:999px">{{ c.period }}</span>
+            </div>
+            <div style="font-size:12px;color:#555;margin-top:6px">{{ c.plan }}</div>
+            <div style="margin-top:14px;display:flex;flex-direction:column">
+              <sc-for list="{{ c.stats }}" as="st" hint-placeholder-count="3">
+                <div style="display:grid;grid-template-columns:70px 1fr auto;align-items:baseline;gap:8px;padding:10px 0;border-top:1px solid #DCDCDC">
+                  <span style="font-size:12px;font-weight:700;color:#555">{{ st.label }}</span>
+                  <span style="font-family:Montserrat;font-weight:700;font-size:13px">{{ st.from }} → {{ st.to }}</span>
+                  <span style="font-family:Montserrat;font-weight:900;font-size:19px;color:#D4371F">{{ st.diff }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <p style="margin:16px 0 0;font-size:11px;color:#777">※ 掲載の結果は個人の実績であり、効果を保証するものではありません。</p>
+  </div>
+</section>
+
+<section data-screen-label="Voices" style="margin-top:clamp(72px,9vw,120px);background:#F2F2F2;border-radius:0 28px 0 0;width:min(100%,1500px);padding:clamp(64px,8vw,100px) 0">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div style="display:flex;align-items:center;gap:14px;font-family:Montserrat;font-weight:700;font-size:12px;letter-spacing:1.5px"><span style="width:28px;height:1px;background:#1A1A1A"></span>VOICE</div>
+    <h2 data-reveal="1" style="margin:18px 0 0;font-weight:900;font-size:clamp(28px,3.6vw,44px);line-height:1.3">お客様の<span style="background:linear-gradient(transparent 55%,#EF7A1F 55%);padding:0 4px">声</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:24px;margin-top:40px">
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="4">
+        <figure data-reveal="1" style="margin:0;padding:32px 28px;border-radius:6px;display:flex;flex-direction:column;gap:18px;background:#fff">
+          <span style="font-family:Montserrat;font-weight:900;font-size:48px;line-height:.6;color:#E63B24">“</span>
+          <p style="margin:0;font-weight:900;font-size:17px;line-height:1.6">{{ v.head }}</p>
+          <blockquote style="margin:0;font-size:14px;line-height:2;color:#333;flex:1">{{ v.body }}</blockquote>
+          <figcaption style="display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid #E5E5E5">
+            <image-slot id="voice-{{ v.key }}" shape="circle" placeholder="顔" style="width:44px;height:44px;flex-shrink:0"></image-slot>
+            <span style="font-size:13px;font-weight:700">{{ v.who }}</span>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const s = (a, b, c) => [
+      { label: '体重', from: a[0], to: a[1], diff: a[2] },
+      { label: '体脂肪率', from: b[0], to: b[1], diff: b[2] },
+      { label: 'ウエスト', from: c[0], to: c[1], diff: c[2] }];
+    return {
+      cases: [
+        { key: 'c1', who: '30代 女性 / 会社員', period: '3ヶ月', plan: 'ダイエット＋食事サポート / 週2回', stats: s(['62.4kg','54.8kg','−7.6kg'],['31.2%','23.9%','−7.3%'],['78cm','67cm','−11cm']) },
+        { key: 'c2', who: '40代 男性 / 経営者', period: '4ヶ月', plan: 'ダイエット＋姿勢改善 / 週2回', stats: s(['84.1kg','73.5kg','−10.6kg'],['27.8%','17.4%','−10.4%'],['94cm','81cm','−13cm']) },
+        { key: 'c3', who: '20代 女性 / 看護師', period: '2ヶ月', plan: 'ボディメイク / 週1〜2回', stats: s(['55.0kg','51.2kg','−3.8kg'],['28.5%','23.1%','−5.4%'],['70cm','63cm','−7cm']) },
+        { key: 'c4', who: '30代 男性 / エンジニア', period: '6ヶ月', plan: '筋力トレーニング / 週2回', stats: s(['68.2kg','71.0kg','+2.8kg'],['22.4%','15.1%','−7.3%'],['84cm','77cm','−7cm']) },
+      ],
+      voices: [
+        { key: 'v1', head: '食事を我慢する感覚がなかった', body: '何度もダイエットに失敗してきましたが、食べてはいけないものが無いのが続いた理由です。毎日の報告に丁寧な返信があり、一人じゃない感覚がありました。', who: '32歳 女性 / 会社員' },
+        { key: 'v2', head: '腰痛がなくなり、仕事の集中力が上がった', body: '運動経験はほぼゼロ。姿勢の分析から始めてもらい、痛みが出ない範囲で少しずつ負荷を上げてくれたので安心して通えました。', who: '45歳 男性 / 経営者' },
+        { key: 'v3', head: '夜勤があっても通い続けられた', body: '朝7時から夜23時まで予約できるので、シフト制でも問題なし。トレーナーさんが毎回の体調を見てメニューを調整してくれます。', who: '27歳 女性 / 看護師' },
+        { key: 'v4', head: '体重より、見た目が変わった', body: '体重は少し増えましたが、服のサイズは下がりました。数字の見方から教えてもらえたので、焦らずに続けられました。', who: '34歳 男性 / エンジニア' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#4b4340;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#4b4340;text-decoration:none}
+a:hover{color:#a8876f}
+@media (max-width:640px){.br-pc{display:none}}
+</style>
+</helmet>
+<dc-import name="Site Header" current="about" title-en="About Us" title-ja="当院について" lead="皮膚科専門医による、誠実で丁寧な美容医療を。" slot-id="about-hero" slot-src="images/reception-staff.jpg" slot-ph="院内・受付の写真" hint-size="100%,620px"></dc-import>
+
+<section data-screen-label="About 01 Message" style="position:relative;background:#fff;padding:clamp(80px,9vw,140px) clamp(20px,4vw,40px);overflow:hidden">
+  <div data-parallax="-0.18" style="position:absolute;right:-1vw;bottom:-10px;font-family:'Cormorant Garamond',serif;font-size:clamp(90px,14vw,230px);line-height:.8;color:rgba(191,167,122,.12);pointer-events:none;user-select:none">PHILOSOPHY</div>
+  <div data-reveal="up" style="position:relative;max-width:760px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:30px">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.3em;color:#bfa77a">PHILOSOPHY</span>
+    <h2 style="margin:0;font-weight:500;font-size:clamp(24px,2.6vw,34px);line-height:1.8;letter-spacing:.14em">美しさは、あなたの中にある。</h2>
+    <p style="margin:0;font-size:14.5px;line-height:2.4;letter-spacing:.08em;text-wrap:pretty">流行の顔や、誰かの基準に近づくことではなく、<br class="br-pc">あなたが本来持っている美しさを、健やかに引き出すこと。<br class="br-pc">セレナ美容皮膚科クリニックは、医学的根拠にもとづいた診療と、<br class="br-pc">一人ひとりの気持ちに寄り添うカウンセリングを大切にしています。</p>
+  </div>
+</section>
+
+<section data-screen-label="About 02 Values" style="background:#f5f2ec;padding:clamp(80px,9vw,130px) clamp(20px,4vw,40px)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div data-reveal="up" style="display:flex;align-items:center;gap:24px"><span style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,2.8vw,36px);letter-spacing:.08em">OUR VALUES</span><span style="font-size:13px;letter-spacing:.16em">3つの約束</span><span data-reveal="line" style="flex:1;height:1px;background:#8f847e"></span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:28px">
+      <sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+        <div data-reveal="up" style="background:#fff;display:flex;flex-direction:column;transition:transform .5s,box-shadow .5s" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px rgba(110,90,78,.08)">
+          <div style="aspect-ratio:3/2"><image-slot id="{{ v.id }}" src="{{ v.src }}" shape="rect" placeholder="{{ v.ph }}"></image-slot></div>
+          <div style="padding:30px 30px 36px;display:flex;flex-direction:column;gap:12px">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1;color:#d4a7a1">{{ v.no }}</span>
+            <h3 style="margin:0;font-weight:500;font-size:18px;letter-spacing:.12em;line-height:1.7">{{ v.title }}</h3>
+            <p style="margin:0;font-size:13.5px;line-height:2.1;letter-spacing:.05em;text-wrap:pretty">{{ v.text }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="About 03 Interior" style="background:#fff;padding:clamp(80px,9vw,130px) 0">
+  <div data-reveal="up" style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:56px;text-align:center;padding:0 20px">
+    <span data-shimmer style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.6vw,46px);letter-spacing:.06em;line-height:1.1;background:linear-gradient(95deg,#e3bdb7 0%,#b08d7e 60%,#7a5646 100%);-webkit-background-clip:text;background-clip:text;color:transparent">CLINIC INTERIOR</span>
+    <span style="font-size:13px;letter-spacing:.2em">院内のご紹介</span>
+    <span data-reveal="line" style="width:36px;height:1px;background:#4b4340;margin-top:18px"></span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:4px">
+    <sc-for list="{{ rooms }}" as="r" hint-placeholder-count="4">
+      <figure data-reveal="img" style="margin:0;position:relative;aspect-ratio:4/5;overflow:hidden">
+        <image-slot id="{{ r.id }}" src="{{ r.src }}" shape="rect" placeholder="{{ r.ph }}"></image-slot>
+        <figcaption style="position:absolute;left:0;bottom:24px;background:rgba(255,255,255,.92);padding:10px 20px;display:flex;flex-direction:column;gap:2px;pointer-events:none"><span style="font-size:13px;letter-spacing:.12em">{{ r.name }}</span><span style="font-family:'Cormorant Garamond',serif;font-size:12px;color:#a8916a;letter-spacing:.1em">{{ r.en }}</span></figcaption>
+      </figure>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="About 04 Flow" style="background:#f5f2ec;padding:clamp(80px,9vw,130px) clamp(20px,4vw,40px)">
+  <div style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div data-reveal="up" style="display:flex;align-items:center;gap:24px"><span style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,2.8vw,36px);letter-spacing:.08em">FLOW</span><span style="font-size:13px;letter-spacing:.16em">初めての方へ・ご来院の流れ</span><span data-reveal="line" style="flex:1;height:1px;background:#8f847e"></span></div>
+    <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px">
+      <sc-for list="{{ flow }}" as="s" hint-placeholder-count="5">
+        <li data-reveal="up" style="background:#fff;display:grid;grid-template-columns:minmax(90px,140px) minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:center;padding:28px clamp(20px,3vw,40px)">
+          <span style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#bfa77a">STEP</span><span style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:#d4a7a1">{{ s.no }}</span></span>
+          <span style="display:flex;flex-direction:column;gap:8px"><span style="font-size:17px;letter-spacing:.12em;font-weight:500">{{ s.title }}</span><span style="font-size:13.5px;line-height:2;letter-spacing:.05em;color:#5a4f4a">{{ s.text }}</span></span>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section data-screen-label="About 05 Overview" style="background:#fff;padding:clamp(80px,9vw,130px) clamp(20px,4vw,40px)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,80px)">
+    <div data-reveal="up" style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,2.8vw,36px);letter-spacing:.08em">OVERVIEW</span><span style="font-size:13px;letter-spacing:.16em">クリニック概要</span></div>
+      <dl style="margin:0;display:flex;flex-direction:column">
+        <sc-for list="{{ overview }}" as="o" hint-placeholder-count="7">
+          <div style="display:grid;grid-template-columns:minmax(96px,130px) minmax(0,1fr);gap:20px;padding:18px 0;border-bottom:1px solid #ece5da;font-size:13.5px;line-height:1.9;letter-spacing:.05em"><dt style="color:#a8916a">{{ o.k }}</dt><dd style="margin:0">{{ o.v }}</dd></div>
+        </sc-for>
+      </dl>
+    </div>
+    <div data-reveal="img" style="flex:1 1 380px;min-width:0;aspect-ratio:1/1"><image-slot id="about-map" src="images/exterior.jpg" shape="rect" placeholder="MAP — Googleマップ埋め込み"></image-slot></div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,820px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      values: [
+        { no: '01', title: '診断にもとづく、必要な治療だけを', text: '肌の状態を医学的に診断し、根拠のある選択肢をご提案します。必要のない施術やコースをおすすめすることはありません。', id: 'val-1', src: 'images/doctor-exam-face.jpg', ph: '診察・肌診断' },
+        { no: '02', title: 'リスクや費用も、事前にすべて', text: '効果だけでなく、副作用・ダウンタイム・総額の目安まで施術前にご説明し、ご納得いただいてから治療を始めます。', id: 'val-2', src: 'images/counseling-clipboard.jpg', ph: 'カウンセリング' },
+        { no: '03', title: '長く付き合える、肌のかかりつけに', text: '一度きりの施術ではなく、年齢や季節による肌の変化に合わせて、長く寄り添えるクリニックでありたいと考えています。', id: 'val-3', src: 'images/doctor-consultation.jpg', ph: '医師とスタッフ' },
+      ],
+      rooms: [
+        { name: '受付・待合', en: 'Reception', id: 'room-1', src: 'images/lobby.jpg', ph: '受付・待合' },
+        { name: 'カウンセリングルーム', en: 'Counseling Room', id: 'room-2', src: 'images/counseling-room.jpg', ph: 'カウンセリングルーム' },
+        { name: '施術室', en: 'Treatment Room', id: 'room-3', src: 'images/facial-treatment.jpg', ph: '施術室（完全個室）' },
+        { name: 'パウダールーム', en: 'Powder Room', id: 'room-4', src: 'images/body-arm.jpg', ph: 'パウダールーム' },
+      ],
+      flow: [
+        { no: '01', title: 'ご予約', text: 'Web予約またはお電話にてご予約ください。カウンセリングのみのご来院も歓迎しています。' },
+        { no: '02', title: '問診票のご記入', text: '受付後、お悩みや既往歴、アレルギーなどを問診票にご記入いただきます。' },
+        { no: '03', title: '医師による診察・カウンセリング', text: '医師が肌の状態を確認し、治療方法やリスク、費用についてご説明します。当日に施術を決める必要はありません。' },
+        { no: '04', title: '施術', text: 'ご希望の場合は当日施術も可能です。完全個室でリラックスしてお受けいただけます。' },
+        { no: '05', title: 'アフターケア', text: '施術後の過ごし方をご案内します。気になることがあれば、いつでもご相談ください。' },
+      ],
+      overview: [
+        { k: '名称', v: 'セレナ美容皮膚科クリニック' },
+        { k: '院長', v: '早瀬 真理（皮膚科専門医）' },
+        { k: '診療科目', v: '美容皮膚科・皮膚科' },
+        { k: '所在地', v: '〒150-0000 東京都渋谷区神宮前0-0-0 SERÉNAビル 3F' },
+        { k: 'アクセス', v: '東京メトロ「表参道駅」A2出口より徒歩3分' },
+        { k: '診療時間', v: '10:00–14:00 / 15:00–19:00（完全予約制）' },
+        { k: '休診日', v: '水曜・日曜午後・祝日' },
+        { k: '電話番号', v: '03-0000-0000' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

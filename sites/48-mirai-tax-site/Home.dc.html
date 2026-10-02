@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;font-family:'Noto Sans JP',sans-serif;color:oklch(23% 0.01 90);background:oklch(99% 0.003 90);}
+  a{color:oklch(38% 0.08 241);text-decoration:none;}
+  a:hover{color:oklch(28% 0.07 241);}
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes bgPan{0%{background-position:0 0}100%{background-position:120px 120px}}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 oklch(80% 0.05 241 / 0.5)}50%{box-shadow:0 0 0 10px oklch(80% 0.05 241 / 0)}}
+  @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .fade1{animation:fadeInUp .8s ease-out .1s both}
+  .fade2{animation:fadeInUp .8s ease-out .3s both}
+  .heroBg{animation:bgPan 14s linear infinite alternate;}
+  @keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.08)}}
+  .heroZoom{animation:slowZoom 20s ease-in-out infinite alternate;}
+  .pulseBtn{animation:pulse 2.6s ease-out infinite;}
+  .floatIcon{animation:floatY 3.2s ease-in-out infinite;}
+  @keyframes drift{0%{transform:translate(0,0)}50%{transform:translate(26px,-18px)}100%{transform:translate(0,0)}}
+  .blob1{animation:drift 9s ease-in-out infinite;}
+  .blob2{animation:drift 11s ease-in-out infinite reverse;}
+</style>
+</helmet>
+
+<div style="display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;position:sticky;top:0;z-index:30;transition:box-shadow .3s ease,background .3s ease;background:{{ headerBg }};box-shadow:{{ headerShadow }};">
+  <a href="Home.dc.html" style="display:flex;align-items:center;gap:10px;">
+    <div style="width:38px;height:38px;border-radius:8px;background:oklch(28% 0.07 241);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px;flex:none;transition:transform .3s ease;" style-hover="transform:rotate(-8deg) scale(1.08)">M</div>
+    <div>
+      <div style="font-weight:700;font-size:15px;line-height:1.2;color:oklch(23% 0.01 90);">みらい会計事務所</div>
+      <div style="font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:.12em;color:oklch(45% 0.01 90);">MIRAI TAX &amp; ACCOUNTING</div>
+    </div>
+  </a>
+  <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;align-items:center;gap:28px;">
+      <a href="Home.dc.html" style="font-size:14px;font-weight:700;color:oklch(28% 0.07 241);">HOME</a>
+      <a href="Services.dc.html" style="font-size:14px;color:oklch(23% 0.01 90);transition:color .2s ease;">業務内容</a>
+      <a href="About.dc.html" style="font-size:14px;color:oklch(23% 0.01 90);transition:color .2s ease;">事務所案内</a>
+      <a href="Fees.dc.html" style="font-size:14px;color:oklch(23% 0.01 90);transition:color .2s ease;">料金</a>
+      <a href="CaseStudies.dc.html" style="font-size:14px;color:oklch(23% 0.01 90);transition:color .2s ease;">導入事例</a>
+      <a href="Contact.dc.html" style="font-size:13px;font-weight:600;background:oklch(28% 0.07 241);color:white;padding:10px 20px;border-radius:4px;transition:transform .25s ease,box-shadow .25s ease;" style-hover="transform:translateY(-2px);box-shadow:0 8px 18px oklch(28% 0.07 241 / 0.35)">お問い合わせ</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleNav }}" aria-label="メニュー" style="background:none;border:none;width:40px;height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;">
+      <span style="width:22px;height:2px;background:oklch(23% 0.01 90);"></span>
+      <span style="width:22px;height:2px;background:oklch(23% 0.01 90);"></span>
+      <span style="width:22px;height:2px;background:oklch(23% 0.01 90);"></span>
+    </button>
+  </sc-if>
+</div>
+
+<sc-if value="{{ showMobileNav }}" hint-placeholder-val="{{ false }}">
+  <nav style="display:flex;flex-direction:column;padding:8px 5vw 20px;gap:14px;background:oklch(99% 0.003 90);border-bottom:1px solid oklch(90% 0.005 90);position:relative;z-index:20;">
+    <a href="Home.dc.html" style="font-size:15px;font-weight:700;color:oklch(28% 0.07 241);">HOME</a>
+    <a href="Services.dc.html" style="font-size:15px;color:oklch(23% 0.01 90);">業務内容</a>
+    <a href="About.dc.html" style="font-size:15px;color:oklch(23% 0.01 90);">事務所案内</a>
+    <a href="Fees.dc.html" style="font-size:15px;color:oklch(23% 0.01 90);">料金</a>
+    <a href="CaseStudies.dc.html" style="font-size:15px;color:oklch(23% 0.01 90);">導入事例</a>
+    <a href="Contact.dc.html" style="font-size:15px;font-weight:600;color:oklch(28% 0.07 241);">お問い合わせ</a>
+  </nav>
+</sc-if>
+
+<div style="position:relative;min-height:680px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+  <div class="heroZoom" style="position:absolute;inset:0;background:url(images/team-office.jpg) center 35% / cover no-repeat;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, oklch(18% 0.04 241 / 0.86), oklch(16% 0.04 241 / 0.94));"></div>
+  <div class="blob1" style="position:absolute;top:-60px;right:8%;width:280px;height:280px;border-radius:50%;background:oklch(78% 0.15 75 / 0.28);filter:blur(50px);"></div>
+  <div class="blob2" style="position:absolute;bottom:-40px;left:6%;width:220px;height:220px;border-radius:50%;background:oklch(65% 0.1 241 / 0.32);filter:blur(45px);"></div>
+  <div class="fade1" style="position:relative;z-index:2;text-align:center;padding:100px 24px 130px;max-width:820px;">
+    <div style="display:inline-flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-size:12px;letter-spacing:.18em;color:oklch(78% 0.15 75);margin-bottom:24px;padding:6px 16px;border:1px solid oklch(78% 0.15 75 / 0.5);border-radius:20px;">TAX &amp; ACCOUNTING CONSULTING</div>
+    <h1 style="font-size:clamp(34px,6vw,64px);line-height:1.35;color:white;font-weight:900;margin:0 0 24px;letter-spacing:-0.01em;">経営者の未来を、<br/><span style="background:linear-gradient(90deg, oklch(85% 0.13 75), oklch(78% 0.15 75));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;">数字から支える。</span></h1>
+    <p style="font-size:17px;line-height:1.9;color:oklch(94% 0.01 75 / 0.92);margin:0 0 40px;">税務・会計の代行だけでなく、経営の意思決定に寄り添うパートナーとして。<br/>開業から事業承継まで、長期的な視点でサポートします。</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="Contact.dc.html" class="pulseBtn" style="background:oklch(78% 0.15 75);color:oklch(22% 0.06 241);font-weight:700;font-size:16px;padding:18px 36px;border-radius:4px;display:inline-block;transition:transform .25s ease;" style-hover="transform:translateY(-3px) scale(1.03)">無料相談を申し込む</a>
+      <a href="Services.dc.html" style="border:1px solid white;color:white;font-weight:600;font-size:16px;padding:18px 36px;border-radius:4px;transition:background .25s ease,transform .25s ease;" style-hover="background:oklch(100% 0 0 / 0.12);transform:translateY(-3px)">サービス内容を見る</a>
+    </div>
+
+    <div class="fade2" style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:oklch(100% 0 0 / 0.2);border:1px solid oklch(100% 0 0 / 0.2);border-radius:8px;overflow:hidden;">
+      <sc-for list="{{ heroFacts }}" as="hf" hint-placeholder-count="3">
+        <div style="background:oklch(18% 0.04 241 / 0.6);padding:22px 14px;">
+          <div style="font-size:11px;letter-spacing:.08em;color:oklch(88% 0.01 75 / 0.8);margin-bottom:10px;">{{ hf.label }}</div>
+          <div style="display:flex;align-items:baseline;justify-content:center;gap:5px;">
+            <span style="font-size:30px;font-weight:900;color:oklch(85% 0.13 75);line-height:1.1;">{{ hf.main }}</span>
+            <span style="font-size:12px;color:white;">{{ hf.sub }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+<div ref="{{ refNumbers }}" style="position:relative;z-index:5;max-width:1000px;margin:-64px auto 0;padding:0 5vw;">
+  <div style="background:white;border-radius:14px;box-shadow:0 24px 48px oklch(20% 0.03 241 / 0.18);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;padding:40px 24px;">
+    <sc-for list="{{ numbers }}" as="n" hint-placeholder-count="4">
+      <div style="text-align:center;padding:8px;">
+        <div style="font-family:'Poppins',sans-serif;font-size:clamp(28px,3.6vw,38px);font-weight:700;color:oklch(28% 0.07 241);">{{ n.display }}</div>
+        <div style="font-size:12.5px;color:oklch(45% 0.01 90);margin-top:6px;">{{ n.label }}</div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+<div ref="{{ refCampaign }}" style="padding:72px 5vw;background:oklch(85% 0.13 75);opacity:{{ campaignOpacity }};transform:{{ campaignTransform }};transition:opacity .8s ease,transform .8s ease;">
+  <div style="max-width:880px;margin:0 auto;background:white;border-radius:12px;padding:40px 32px;text-align:center;box-shadow:0 16px 36px oklch(20% 0.03 241 / 0.16);">
+    <div style="display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;">
+      <div style="width:30px;height:30px;border-radius:6px;background:oklch(28% 0.07 241);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex:none;">M</div>
+      <div style="font-weight:700;font-size:14px;letter-spacing:.04em;">みらい会計事務所</div>
+    </div>
+    <div style="font-family:'Poppins',sans-serif;font-size:11px;letter-spacing:.18em;color:oklch(45% 0.01 90);margin-bottom:16px;">FIRST CONSULTATION</div>
+    <div style="font-size:clamp(19px,2.6vw,27px);font-weight:900;line-height:1.7;margin-bottom:10px;">初回のご相談・お見積りは<br/><span style="background:linear-gradient(transparent 62%, oklch(85% 0.13 75) 62%);padding:0 4px;">何度でも0円</span></div>
+    <div style="font-size:13.5px;line-height:1.9;color:oklch(45% 0.01 90);margin-bottom:28px;">ご契約前に費用が発生することはありません。<br/>「話を聞いてみたい」だけでも歓迎です。</div>
+    <a href="Contact.dc.html" class="pulseBtn" style="background:oklch(28% 0.07 241);color:white;font-weight:700;font-size:15px;padding:16px 38px;border-radius:4px;display:inline-block;transition:transform .25s ease;" style-hover="transform:translateY(-3px) scale(1.03)">無料相談を申し込む</a>
+    <div style="font-size:12px;color:oklch(50% 0.01 90);margin-top:14px;">TEL 048-123-4567 ／ 受付時間 平日 9:00〜18:00</div>
+  </div>
+</div>
+
+<div ref="{{ refIntro }}" style="padding:100px 5vw;background:oklch(96% 0.012 75);opacity:{{ introOpacity }};transform:{{ introTransform }};transition:opacity .8s ease,transform .8s ease;">
+  <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:56px;align-items:center;">
+    <div style="width:100%;aspect-ratio:1/1;border-radius:12px;overflow:hidden;transition:transform .4s ease;" style-hover="transform:scale(1.02)">
+      <img src="images/consultation.jpg" alt="お客様との打ち合わせの様子" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+    </div>
+    <div>
+      <div style="font-family:'Poppins',sans-serif;font-size:13px;letter-spacing:.16em;color:oklch(38% 0.08 241);margin-bottom:10px;">ABOUT US</div>
+      <h2 style="font-size:clamp(22px,2.6vw,30px);font-weight:700;margin:0 0 22px;line-height:1.5;">数字の向こう側にある、<br/>経営を見ています。</h2>
+      <p style="font-size:15px;line-height:2;color:oklch(35% 0.01 90);margin:0 0 28px;">みらい会計事務所は、法人・個人事業主のお客様を中心に、税務・会計のご相談を承っています。単なる申告代行ではなく、日々の数字から経営課題を読み取り、次の一手をご提案することを大切にしています。開業をお考えの方から事業承継や相続まで、長くお付き合いいただけるパートナーを目指しています。</p>
+      <a href="About.dc.html" style="font-size:14px;font-weight:600;color:oklch(28% 0.07 241);border-bottom:1px solid oklch(28% 0.07 241);padding-bottom:2px;">事務所についてもっと知る ›</a>
+    </div>
+  </div>
+</div>
+
+<div ref="{{ refWorries }}" style="padding:96px 5vw;background:oklch(28% 0.07 241);color:white;opacity:{{ worriesOpacity }};transform:{{ worriesTransform }};transition:opacity .8s ease,transform .8s ease;">
+  <div style="max-width:1000px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:46px;">
+      <div style="font-family:'Poppins',sans-serif;font-size:13px;letter-spacing:.16em;color:oklch(78% 0.15 75);margin-bottom:12px;">YOUR CONCERNS</div>
+      <h2 style="font-size:clamp(22px,2.6vw,30px);font-weight:700;margin:0;">こんなお悩みはありませんか？</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+      <sc-for list="{{ worries }}" as="w" hint-placeholder-count="6">
+        <div style="display:flex;gap:14px;align-items:flex-start;background:oklch(100% 0 0 / 0.07);border:1px solid oklch(78% 0.15 75 / 0.45);border-radius:8px;padding:22px 24px;transition:transform .3s ease,background .3s ease;" style-hover="transform:translateY(-5px);background:oklch(100% 0 0 / 0.13)">
+          <span style="color:oklch(85% 0.13 75);font-size:16px;font-weight:700;flex:none;line-height:1.75;">✓</span>
+          <div style="font-size:14px;line-height:1.85;color:oklch(95% 0.01 75);">{{ w }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="text-align:center;margin-top:44px;font-size:15px;line-height:2.1;color:oklch(88% 0.01 75);">ひとつでも当てはまる方は、ぜひ一度ご相談ください。<br/>みらい会計事務所が、数字の面から解決の道筋をご提案します。</div>
+  </div>
+</div>
+
+<div ref="{{ refServices }}" style="padding:100px 5vw;opacity:{{ servicesOpacity }};transform:{{ servicesTransform }};transition:opacity .8s ease,transform .8s ease;">
+  <div style="text-align:center;margin-bottom:56px;position:relative;">
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:120px;font-weight:700;color:oklch(93% 0.01 241);z-index:0;pointer-events:none;">01</div>
+    <div style="font-family:'Poppins',sans-serif;font-size:13px;letter-spacing:.16em;color:oklch(38% 0.08 241);margin-bottom:10px;position:relative;">SERVICE</div>
+    <h2 style="font-size:clamp(22px,2.6vw,30px);font-weight:700;margin:0;position:relative;">業務内容</h2>
+  </div>
+  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:oklch(90% 0.005 90);">
+    <sc-for list="{{ services }}" as="s" hint-placeholder-count="8">
+      <div style="background:white;padding:32px 26px;min-height:180px;transition:transform .3s ease,box-shadow .3s ease,z-index 0s;position:relative;" style-hover="transform:translateY(-6px);box-shadow:0 16px 32px oklch(20% 0.02 241 / 0.12);z-index:2">
+        <div style="font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.1em;color:oklch(60% 0.09 241);margin-bottom:8px;">{{ s.en }}</div>
+        <div style="font-size:16px;font-weight:700;margin-bottom:10px;">{{ s.title }}</div>
+        <div style="font-size:13px;line-height:1.8;color:oklch(45% 0.01 90);">{{ s.desc }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="text-align:center;margin-top:40px;">
+    <a href="Services.dc.html" style="font-size:14px;font-weight:600;color:oklch(28% 0.07 241);border-bottom:1px solid oklch(28% 0.07 241);padding-bottom:2px;">すべての業務内容を見る ›</a>
+  </div>
+</div>
+
+<div ref="{{ refStrengths }}" style="padding:100px 5vw;background:oklch(28% 0.07 241);color:white;opacity:{{ strengthsOpacity }};transform:{{ strengthsTransform }};transition:opacity .8s ease,transform .8s ease;">
+  <div style="max-width:1140px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:56px;position:relative;">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:120px;font-weight:700;color:oklch(100% 0 0 / 0.06);z-index:0;pointer-events:none;">02</div>
+      <div style="font-family:'Poppins',sans-serif;font-size:13px;letter-spacing:.16em;color:oklch(75% 0.06 241);margin-bottom:10px;position:relative;">STRENGTHS</div>
+      <h2 style="font-size:clamp(22px,2.6vw,30px);font-weight:700;margin:0;position:relative;">当事務所が選ばれる理由</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:40px;">
+      <sc-for list="{{ strengths }}" as="st" hint-placeholder-count="4">
+        <div style="transition:transform .3s ease;" style-hover="transform:translateY(-5px)">
+          <div class="floatIcon" style="font-family:'Poppins',sans-serif;font-size:28px;font-weight:600;color:oklch(60% 0.09 241);margin-bottom:14px;">{{ st.num }}</div>
+          <div style="font-size:16px;font-weight:700;margin-bottom:10px;">{{ st.title }}</div>
+          <div style="font-size:13.5px;line-height:1.9;color:oklch(88% 0.01 75);">{{ st.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+<div ref="{{ refFlow }}" style="padding:100px 5vw;opacity:{{ flowOpacity }};transform:{{ flowTransform }};transition:opacity .8s ease,transform .8s ease;">
+  <div style="max-width:1000px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:56px;position:relative;">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:120px;font-weight:700;color:oklch(93% 0.01 241);z-index:0;pointer-events:none;">03</div>
+      <div style="font-family:'Poppins',sans-serif;font-size:13px;letter-spacing:.16em;color:oklch(38% 0.08 241);margin-bottom:10px;position:relative;">FLOW</div>
+      <h2 style="font-size:clamp(22px,2.6vw,30px);font-weight:700;margin:0;position:relative;">ご相談の流れ</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;">
+      <sc-for list="{{ flow }}" as="f" hint-placeholder-count="6">
+        <div style="text-align:center;padding:24px 12px;border-top:3px solid oklch(60% 0.09 241);transition:transform .3s ease,border-color .3s ease;" style-hover="transform:translateY(-4px);border-color:oklch(28% 0.07 241)">
+          <div style="font-family:'Poppins',sans-serif;font-size:12px;color:oklch(60% 0.09 241);font-weight:600;margin-bottom:10px;">STEP {{ f.step }}</div>
+          <div style="font-size:14.5px;font-weight:700;margin-bottom:8px;">{{ f.title }}</div>
+          <div style="font-size:12.5px;line-height:1.7;color:oklch(45% 0.01 90);">{{ f.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+<div ref="{{ refCases }}" style="padding:100px 5vw;background:oklch(96% 0.012 75);opacity:{{ casesOpacity }};transform:{{ casesTransform }};transition:opacity .8s ease,transform .8s ease;">
+  <div style="max-width:1140px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:56px;position:relative;">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:120px;font-weight:700;color:oklch(90% 0.01 241);z-index:0;pointer-events:none;">04</div>
+      <div style="font-family:'Poppins',sans-serif;font-size:13px;letter-spacing:.16em;color:oklch(38% 0.08 241);margin-bottom:10px;position:relative;">CASE STUDIES</div>
+      <h2 style="font-size:clamp(22px,2.6vw,30px);font-weight:700;margin:0;position:relative;">お客様の事例</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3">
+        <a href="CaseStudies.dc.html" style="display:block;background:white;border-radius:8px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease;" style-hover="transform:translateY(-6px);box-shadow:0 16px 32px oklch(20% 0.02 241 / 0.12)">
+          <div style="height:180px;overflow:hidden;">
+            <img src="{{ c.img }}" alt="{{ c.industry }}の事例" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+          </div>
+          <div style="padding:24px;">
+            <div style="font-size:11px;color:oklch(60% 0.09 241);font-weight:600;margin-bottom:8px;">{{ c.industry }}</div>
+            <div style="font-size:15px;font-weight:700;color:oklch(23% 0.01 90);line-height:1.6;">{{ c.title }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+<div ref="{{ refFaq }}" style="padding:100px 5vw;opacity:{{ faqOpacity }};transform:{{ faqTransform }};transition:opacity .8s ease,transform .8s ease;">
+  <div style="max-width:760px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;position:relative;">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:120px;font-weight:700;color:oklch(93% 0.01 241);z-index:0;pointer-events:none;">05</div>
+      <div style="font-family:'Poppins',sans-serif;font-size:13px;letter-spacing:.16em;color:oklch(38% 0.08 241);margin-bottom:10px;position:relative;">FAQ</div>
+      <h2 style="font-size:clamp(22px,2.6vw,30px);font-weight:700;margin:0;position:relative;">よくあるご質問</h2>
+    </div>
+    <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+      <div style="border-bottom:1px solid oklch(90% 0.005 90);">
+        <button onClick="{{ f.toggle }}" style="width:100%;text-align:left;background:none;border:none;padding:22px 4px;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;">
+          <span style="font-size:15px;font-weight:600;color:oklch(23% 0.01 90);">Q. {{ f.q }}</span>
+          <span style="font-size:20px;color:oklch(38% 0.08 241);flex:none;transition:transform .3s ease;transform:{{ f.markRotate }};">＋</span>
+        </button>
+        <div style="overflow:hidden;transition:max-height .35s ease,opacity .35s ease;max-height:{{ f.maxH }};opacity:{{ f.ansOpacity }};">
+          <div style="padding:0 4px 24px;font-size:14px;line-height:1.9;color:oklch(45% 0.01 90);">A. {{ f.a }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+<div style="position:relative;padding:100px 5vw;background:oklch(22% 0.06 241);color:white;text-align:center;overflow:hidden;">
+  <div class="heroBg" style="position:absolute;inset:-10%;opacity:0.5;background:repeating-linear-gradient(135deg, oklch(24% 0.05 241) 0px, oklch(24% 0.05 241) 22px, oklch(20% 0.045 241) 22px, oklch(20% 0.045 241) 44px);"></div>
+  <div style="position:relative;z-index:2;">
+    <div style="font-size:24px;font-weight:700;margin-bottom:20px;">まずはお気軽にご相談ください。</div>
+    <div style="font-size:14px;color:oklch(88% 0.01 75);margin-bottom:36px;">初回のご相談は無料です。オンライン面談にも対応しています。</div>
+    <div style="display:flex;gap:20px;justify-content:center;align-items:center;flex-wrap:wrap;">
+      <div style="font-family:'Poppins',sans-serif;font-size:26px;font-weight:600;">☎ 048-123-4567</div>
+      <a href="Contact.dc.html" class="pulseBtn" style="background:oklch(78% 0.15 75);color:oklch(22% 0.06 241);font-weight:700;font-size:16px;padding:18px 36px;border-radius:4px;transition:transform .25s ease;" style-hover="transform:translateY(-3px) scale(1.03)">無料相談を申し込む</a>
+    </div>
+    <div style="font-size:12px;color:oklch(75% 0.02 75);margin-top:14px;">受付時間 平日 9:00〜18:00</div>
+  </div>
+</div>
+
+<footer style="padding:64px 5vw 32px;background:oklch(96% 0.012 75);">
+  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px;border-bottom:1px solid oklch(88% 0.005 90);padding-bottom:44px;">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+        <div style="width:30px;height:30px;border-radius:6px;background:oklch(28% 0.07 241);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;">M</div>
+        <div style="font-weight:700;font-size:14px;">みらい会計事務所</div>
+      </div>
+      <div style="font-size:12.5px;line-height:1.9;color:oklch(45% 0.01 90);">〒330-0854<br/>埼玉県さいたま市大宮区桜木町1-7-5<br/>大宮セントラルビル3F</div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:14px;">サイトメニュー</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <a href="Home.dc.html" style="font-size:13px;color:oklch(35% 0.01 90);">HOME</a>
+        <a href="Services.dc.html" style="font-size:13px;color:oklch(35% 0.01 90);">業務内容</a>
+        <a href="About.dc.html" style="font-size:13px;color:oklch(35% 0.01 90);">事務所案内</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:14px;">&nbsp;</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <a href="Fees.dc.html" style="font-size:13px;color:oklch(35% 0.01 90);">料金</a>
+        <a href="CaseStudies.dc.html" style="font-size:13px;color:oklch(35% 0.01 90);">導入事例</a>
+        <a href="Contact.dc.html" style="font-size:13px;color:oklch(35% 0.01 90);">お問い合わせ</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:14px;">お問い合わせ</div>
+      <div style="font-size:13px;color:oklch(35% 0.01 90);line-height:1.9;">TEL 048-123-4567<br/>受付時間 平日 9:00〜18:00<br/>info@mirai-tax.example.jp</div>
+    </div>
+  </div>
+  <div style="max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;font-size:12px;color:oklch(55% 0.01 90);">
+    <div>© 2026 みらい会計事務所</div>
+    <div style="display:flex;gap:20px;"><a href="#" style="font-size:12px;color:oklch(55% 0.01 90);">プライバシーポリシー</a></div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { isMobile: false, navOpen: false, faqOpen: 0, scrolled: false, visible: {}, numProgress: 0 };
+
+  // ref コールバックは render より先に呼ばれるため、フィールドで初期化しておく。
+  refs_ = {};
+  refFns = {};
+  faqFns = {};
+  observer = null;
+
+  componentDidMount() {
+    this.checkSize = () => this.setState({ isMobile: window.innerWidth < 880 });
+    this.checkSize();
+    this.resizeObserver = new ResizeObserver(this.checkSize);
+    this.resizeObserver.observe(document.documentElement);
+
+    this.onScroll = () => this.setState({ scrolled: window.scrollY > 12 });
+    window.addEventListener('scroll', this.onScroll);
+
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        this.reveal(en.target.dataset.revealKey);
+        this.observer.unobserve(en.target);
+      });
+    }, { threshold: 0.15 });
+    // ref は既に張られているので、溜まっている要素をまとめて監視開始。
+    Object.keys(this.refs_).forEach(k => this.observer.observe(this.refs_[k]));
+
+    // 監視が何らかの理由で発火しなくても空白にならないための保険。
+    this.revealTimer = setTimeout(() => {
+      Object.keys(this.refs_).forEach(k => this.reveal(k));
+    }, 2500);
+  }
+  componentWillUnmount() {
+    if (this.resizeObserver) this.resizeObserver.disconnect();
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.observer) this.observer.disconnect();
+    if (this.revealTimer) clearTimeout(this.revealTimer);
+    if (this.countRAF) cancelAnimationFrame(this.countRAF);
+  }
+
+  reveal(key) {
+    if (!key || this.state.visible[key]) return;
+    this.setState(s => ({ visible: { ...s.visible, [key]: true } }));
+    if (key === 'numbers') this.startCount();
+  }
+
+  startCount() {
+    if (this.counting) return;
+    this.counting = true;
+    const start = performance.now();
+    const dur = 1400;
+    const step = (t) => {
+      const p = Math.min(1, (t - start) / dur);
+      this.setState({ numProgress: p });
+      if (p < 1) this.countRAF = requestAnimationFrame(step);
+    };
+    this.countRAF = requestAnimationFrame(step);
+  }
+
+  // テンプレートの {{ }} は関数呼び出しを解決できないため、
+  // 呼び出し済み・同一参照のコールバックを値として渡す。
+  refFor(key) {
+    if (!this.refFns[key]) {
+      this.refFns[key] = (el) => {
+        if (!el || this.refs_[key]) return;
+        this.refs_[key] = el;
+        el.dataset.revealKey = key;
+        if (this.observer) this.observer.observe(el);
+      };
+    }
+    return this.refFns[key];
+  }
+
+  faqToggleFor(id) {
+    if (!this.faqFns[id]) {
+      this.faqFns[id] = () => this.setState(s => ({ faqOpen: s.faqOpen === id ? null : id }));
+    }
+    return this.faqFns[id];
+  }
+
+  renderVals() {
+    const v = this.state.visible;
+    const revealStyle = (key) => ({
+      opacity: v[key] ? 1 : 0,
+      transform: v[key] ? 'translateY(0)' : 'translateY(28px)',
+    });
+
+    const services = [
+      { en: 'CORPORATE TAX', title: '法人税務・決算', desc: '法人税の申告から月次の経営数値の把握まで一貫してサポートします。' },
+      { en: 'BOOKKEEPING', title: '会計・経理代行', desc: '日々の入力業務を代行し、経営に集中できる環境を整えます。' },
+      { en: 'INDIVIDUAL TAX', title: '個人の確定申告', desc: '個人事業主・フリーランスの方の確定申告をサポートします。' },
+      { en: 'STARTUP', title: '会社設立支援', desc: '設立時の手続きから資金調達まで、開業を後押しします。' },
+      { en: 'SUCCESSION', title: '事業承継', desc: '後継者への引き継ぎを税務・財務の両面から計画的に支援します。' },
+      { en: 'INHERITANCE', title: '相続税・相続対策', desc: '相続税の申告と、生前からの相続対策をご提案します。' },
+      { en: 'CONSULTING', title: '経営コンサルティング', desc: '数字に基づいた経営判断をサポートする資料と提案を行います。' },
+      { en: 'TAX PLANNING', title: '税務プランニング', desc: '将来を見据えた税負担の最適化をご提案します。' },
+    ];
+    const strengths = [
+      { num: '01', title: 'スピード対応', desc: 'ご連絡から24時間以内を目安にご返信し、経営判断を後押しします。' },
+      { num: '02', title: '経営目線のアドバイス', desc: '税務・会計の数字を、次の経営判断に活かせる形でご提案します。' },
+      { num: '03', title: '長期的なパートナーシップ', desc: '開業から事業承継まで、長くお付き合いいただける関係を築きます。' },
+      { num: '04', title: '明瞭な料金体系', desc: '事前のお見積りを徹底し、費用面の不安なくご相談いただけます。' },
+    ];
+    const numbersData = [
+      { target: 320, suffix: '+', label: '顧問先数' },
+      { target: 20, suffix: '年', label: '業界経験' },
+      { target: 150, suffix: '+', label: '創業支援実績' },
+      { target: 80, suffix: '+', label: '相続税相談実績' },
+    ];
+    const p = this.state.numProgress;
+    const numbers = numbersData.map(n => ({ ...n, display: Math.round(n.target * p) + n.suffix }));
+    const flow = [
+      { step: '01', title: 'お問い合わせ', desc: 'フォーム・電話でご連絡ください。' },
+      { step: '02', title: '初回無料相談', desc: 'ご状況を丁寧にお伺いします。' },
+      { step: '03', title: 'ヒアリング・分析', desc: '現状を整理し課題を明確にします。' },
+      { step: '04', title: 'ご提案・お見積り', desc: '支援内容と費用をご提示します。' },
+      { step: '05', title: 'ご契約', desc: '内容にご納得いただいた上で契約。' },
+      { step: '06', title: '継続的なサポート', desc: '担当者が継続的に伴走します。' },
+    ];
+    const cases = [
+      { industry: 'IT・ソフトウェア', title: '創業2年で資金調達に成功したIT企業の事例', img: 'images/analysis-laptop.jpg' },
+      { industry: '飲食業', title: '複数店舗展開に向けた会計体制構築の事例', img: 'images/calculator-work.jpg' },
+      { industry: '建設業', title: '事業承継を見据えた経営体制整備の事例', img: 'images/succession-consult.jpg' },
+    ];
+    const faqData = [
+      { id: 1, q: '初回相談は本当に無料ですか？', a: 'はい、初回のご相談は無料です。まずはお話をお伺いし、必要な支援内容をご案内します。' },
+      { id: 2, q: '顧問料はどのくらいかかりますか？', a: '事業規模や取引量によって異なります。詳細は料金ページをご覧いただくか、お気軽にお問い合わせください。' },
+      { id: 3, q: '会社設立の相談だけでも対応してもらえますか？', a: 'もちろん対応可能です。設立時の手続きから資金調達まで、幅広くサポートしています。' },
+      { id: 4, q: '現在の税理士から切り替えることはできますか？', a: '可能です。引き継ぎに必要な資料の確認から、スムーズな切り替えまでサポートします。' },
+      { id: 5, q: '対応可能な地域はどこまでですか？', a: 'オンラインでの面談にも対応しておりますので、全国からのご相談を承っています。' },
+    ];
+    const faqs = faqData.map(f => {
+      const open = this.state.faqOpen === f.id;
+      return {
+        ...f,
+        maxH: open ? '300px' : '0px',
+        ansOpacity: open ? 1 : 0,
+        markRotate: open ? 'rotate(45deg)' : 'rotate(0deg)',
+        toggle: this.faqToggleFor(f.id),
+      };
+    });
+    const heroFacts = [
+      { label: '月次顧問料', main: '¥20,000', sub: '〜／月（税別）' },
+      { label: 'JR大宮駅 西口から', main: '徒歩5分', sub: '' },
+      { label: '初回相談・お見積り', main: '無料', sub: 'オンライン可' },
+    ];
+    const worries = [
+      '記帳や申告に時間を取られて、本業に集中できない',
+      '今の税理士から、経営に関する提案がほとんどない',
+      '顧問料が適正なのか分からず、相談しづらい',
+      '資金繰りの見通しが立たず、将来が不安だ',
+      '事業承継や相続を、何から始めればいいか分からない',
+      '開業したばかりで、税務のことが何も分からない',
+    ];
+
+    return {
+      isMobile: this.state.isMobile,
+      notMobile: !this.state.isMobile,
+      showMobileNav: this.state.isMobile && this.state.navOpen,
+      toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen })),
+      headerBg: this.state.scrolled ? 'oklch(99% 0.003 90 / 0.96)' : 'oklch(99% 0.003 90)',
+      headerShadow: this.state.scrolled ? '0 4px 20px oklch(20% 0.02 241 / 0.1)' : 'none',
+      refNumbers: this.refFor('numbers'),
+      refCampaign: this.refFor('campaign'),
+      refIntro: this.refFor('intro'),
+      refWorries: this.refFor('worries'),
+      refServices: this.refFor('services'),
+      refStrengths: this.refFor('strengths'),
+      refFlow: this.refFor('flow'),
+      refCases: this.refFor('cases'),
+      refFaq: this.refFor('faq'),
+      campaignOpacity: revealStyle('campaign').opacity, campaignTransform: revealStyle('campaign').transform,
+      introOpacity: revealStyle('intro').opacity, introTransform: revealStyle('intro').transform,
+      worriesOpacity: revealStyle('worries').opacity, worriesTransform: revealStyle('worries').transform,
+      servicesOpacity: revealStyle('services').opacity, servicesTransform: revealStyle('services').transform,
+      strengthsOpacity: revealStyle('strengths').opacity, strengthsTransform: revealStyle('strengths').transform,
+      flowOpacity: revealStyle('flow').opacity, flowTransform: revealStyle('flow').transform,
+      casesOpacity: revealStyle('cases').opacity, casesTransform: revealStyle('cases').transform,
+      faqOpacity: revealStyle('faq').opacity, faqTransform: revealStyle('faq').transform,
+      services, strengths, numbers, flow, cases, faqs, heroFacts, worries,
+    };
+  }
+}
+</script>
+</body>
+</html>

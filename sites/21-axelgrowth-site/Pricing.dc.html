@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #ffffff; -webkit-font-smoothing: antialiased; }
+  a { color: #1a6faf; text-decoration: none; }
+  a:hover { color: #d4000e; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="pricing" hint-size="100%,140px"></dc-import>
+
+<main style="font-family: 'Zen Kaku Gothic New', sans-serif; color: #1a1a1a;">
+  <section style="position: relative; background-color: #2b3a45; background-image: url(images/growth-arrows.jpg); background-size: cover; background-position: center 35%; padding: clamp(60px, 8vw, 104px) 24px;">
+    <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(0,0,0,0.8), rgba(0,0,0,0.35));"></div>
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) both;">
+      <span style="font-size: 10.5px; letter-spacing: 0.34em; color: #8ccdea;">PRICING</span>
+      <h1 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(28px, 4vw, 44px); letter-spacing: 0.16em; color: #fff;">料金プラン</h1>
+      <p style="margin: 0; font-size: 14px; line-height: 2.1; color: rgba(255,255,255,0.85); max-width: 40em; text-wrap: pretty;">費用は「何をどこまで任せるか」で決まります。標準プランを公開した上で、必要な施策だけを積み上げてお見積りします。</p>
+    </div>
+  </section>
+  <div style="border-bottom: 1px solid #e3e3e3;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 14px 24px; font-size: 12px; color: #8c8c8c; display: flex; gap: 10px;">
+      <a href="Home.dc.html" style="color: #8c8c8c;">ホーム</a><span>›</span><span style="color: #1a1a1a;">料金プラン</span>
+    </div>
+  </div>
+
+  <section style="padding: clamp(64px, 8vw, 100px) 24px;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div data-reveal="" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; margin-bottom: 52px;">
+        <h2 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(25px, 3.2vw, 36px); letter-spacing: 0.22em;">月額プラン</h2>
+        <span style="font-size: 10.5px; letter-spacing: 0.44em; color: #d4000e;">MONTHLY PLANS</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 24px; align-items: start;">
+        <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+          <div data-reveal="rise" style="{{ p.cardStyle }}" style-hover="transform: translateY(-6px); box-shadow: 0 18px 44px rgba(0,0,0,0.1);">
+            <div style="{{ p.headStyle }}">
+              <span style="font-size: 10px; letter-spacing: 0.3em; opacity: .8;">{{ p.en }}</span>
+              <h3 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: 24px; letter-spacing: 0.12em;">{{ p.name }}</h3>
+              <span style="font-size: 12px; line-height: 1.8; opacity: .85;">{{ p.for }}</span>
+            </div>
+            <div style="padding: 28px; display: flex; flex-direction: column; gap: 20px;">
+              <div style="display: flex; align-items: flex-end; gap: 6px;">
+                <span style="font-size: 13px; color: #6d6d6d;">月額</span>
+                <span data-count="" style="font-family: 'Shippori Mincho', serif; font-size: 38px; line-height: 1; color: #d4000e;">{{ p.price }}</span>
+                <span style="font-size: 13px; color: #6d6d6d;">万円〜</span>
+              </div>
+              <p style="margin: 0; font-size: 12.5px; line-height: 1.9; color: #6d6d6d; border-bottom: 1px solid #e3e3e3; padding-bottom: 16px;">{{ p.note }}</p>
+              <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px;">
+                <sc-for list="{{ p.items }}" as="i" hint-placeholder-count="5">
+                  <li style="display: flex; gap: 10px; font-size: 13px; line-height: 1.85; color: #575757;"><span style="color: #1a6faf;">✓</span>{{ i }}</li>
+                </sc-for>
+              </ul>
+              <a href="#contact" style="{{ p.btnStyle }}">このプランを相談する<span>›</span></a>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #f2f2f2; padding: clamp(64px, 8vw, 100px) 24px;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div data-reveal="" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; margin-bottom: 48px;">
+        <h2 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(25px, 3.2vw, 36px); letter-spacing: 0.22em;">単発・制作費用</h2>
+        <span style="font-size: 10.5px; letter-spacing: 0.44em; color: #d4000e;">PROJECT BASED</span>
+      </div>
+      <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; background: #fff;">
+        <thead>
+          <tr>
+            <th style="text-align: left; background: #1a1a1a; color: #fff; padding: 15px 18px; font-size: 12px; letter-spacing: 0.12em; font-weight: 700;">メニュー</th>
+            <th style="text-align: left; background: #1a1a1a; color: #fff; padding: 15px 18px; font-size: 12px; letter-spacing: 0.12em; font-weight: 700; width: 170px;">費用（税別）</th>
+            <th style="text-align: left; background: #1a1a1a; color: #fff; padding: 15px 18px; font-size: 12px; letter-spacing: 0.12em; font-weight: 700; width: 130px;">期間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ rows }}" as="r" hint-placeholder-count="7">
+            <tr>
+              <td style="border: 1px solid #e3e3e3; padding: 15px 18px; line-height: 1.8;">{{ r.name }}</td>
+              <td style="border: 1px solid #e3e3e3; padding: 15px 18px; font-family: 'Shippori Mincho', serif; font-size: 16px; color: #d4000e;">{{ r.price }}</td>
+              <td style="border: 1px solid #e3e3e3; padding: 15px 18px; color: #6d6d6d; font-size: 12.5px;">{{ r.term }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+      <p style="margin: 18px 0 0; font-size: 12px; line-height: 1.9; color: #6d6d6d;">※ 表示価格はすべて税別です。広告費は別途となります。初回の無料診断に費用は発生しません。</p>
+    </div>
+  </section>
+
+  <section style="padding: clamp(64px, 8vw, 100px) 24px;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div data-reveal="" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; margin-bottom: 48px;">
+        <h2 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(25px, 3.2vw, 36px); letter-spacing: 0.22em;">プラン比較</h2>
+        <span style="font-size: 10.5px; letter-spacing: 0.44em; color: #d4000e;">COMPARISON</span>
+      </div>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; min-width: 640px; border-collapse: collapse; font-size: 13px;">
+          <thead>
+            <tr>
+              <th style="text-align: left; padding: 14px 16px; border-bottom: 2px solid #1a1a1a; font-size: 12px; letter-spacing: 0.1em;">項目</th>
+              <th style="padding: 14px 16px; border-bottom: 2px solid #1a1a1a; font-size: 12px; letter-spacing: 0.1em;">スタンダード</th>
+              <th style="padding: 14px 16px; border-bottom: 2px solid #d4000e; font-size: 12px; letter-spacing: 0.1em; color: #d4000e;">グロース</th>
+              <th style="padding: 14px 16px; border-bottom: 2px solid #1a1a1a; font-size: 12px; letter-spacing: 0.1em;">エンタープライズ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ compare }}" as="c" hint-placeholder-count="7">
+              <tr>
+                <td style="padding: 14px 16px; border-bottom: 1px solid #e3e3e3; color: #1a1a1a;">{{ c.k }}</td>
+                <td style="padding: 14px 16px; border-bottom: 1px solid #e3e3e3; text-align: center; color: #575757;">{{ c.a }}</td>
+                <td style="padding: 14px 16px; border-bottom: 1px solid #e3e3e3; text-align: center; color: #575757; background: #fdf4f4;">{{ c.b }}</td>
+                <td style="padding: 14px 16px; border-bottom: 1px solid #e3e3e3; text-align: center; color: #575757;">{{ c.c }}</td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #8ccdea; padding: clamp(56px, 7vw, 84px) 24px;">
+    <div style="max-width: 900px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px;">
+      <h2 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(22px, 3vw, 32px); letter-spacing: 0.1em; color: #0f3b56; line-height: 1.6;">どのプランが合うか、<br />診断結果を見てから決められます。</h2>
+      <p style="margin: 0; font-size: 14px; line-height: 2; color: #16455f; max-width: 32em;">現状のアカウントとサイトを診断し、改善余地と必要な体制をお伝えしたうえでお見積りします。</p>
+      <a href="#contact" style="background: #1a6faf; color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 0.1em; padding: 17px 38px; border-radius: 3px; display: flex; align-items: center; gap: 10px; transition: background .25s, transform .25s;" style-hover="background: #14598d; transform: translateY(-2px);">無料診断を申し込む<span>›</span></a>
+    </div>
+  </section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    import("./motion.js").then(m => m.initMotion());
+  }
+  renderVals() {
+    const card = hi => "background:#fff;border:1px solid " + (hi ? "#d4000e" : "#e3e3e3") +
+      ";display:flex;flex-direction:column;transition:transform .3s, box-shadow .3s;" +
+      (hi ? "box-shadow:0 10px 30px rgba(212,0,14,0.12);" : "");
+    const head = hi => "padding:26px 28px;display:flex;flex-direction:column;gap:8px;background:" +
+      (hi ? "#d4000e" : "#1a1a1a") + ";color:#fff;";
+    const btn = hi => "margin-top:6px;background:" + (hi ? "#d4000e" : "#1a1a1a") +
+      ";color:#fff;font-size:13.5px;font-weight:700;letter-spacing:0.08em;padding:15px;border-radius:3px;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .25s;";
+    return {
+      plans: [
+        {
+          en: "STANDARD", name: "スタンダード", for: "まず1チャネルを立て直したい企業向け", price: "15", cardStyle: card(false), headStyle: head(false), btnStyle: btn(false),
+          note: "広告費に対して18%の運用手数料が加算されます（最低15万円）。",
+          items: ["1〜2媒体の広告運用", "月次レポート・改善提案", "ダッシュボード提供", "月1回の定例ミーティング", "クリエイティブ制作 月4本"]
+        },
+        {
+          en: "GROWTH", name: "グロース", for: "獲得と計測を同時に立て直す企業向け", price: "48", cardStyle: card(true), headStyle: head(true), btnStyle: btn(true),
+          note: "最も多くご利用いただいているプランです。広告費18%の手数料を含みます。",
+          items: ["媒体横断の広告運用（上限なし）", "SEO・コンテンツ制作（月4本）", "LP制作・ABテスト 月1本", "計測設計・GA4/GTM実装", "週次ミーティングと改善ログ公開", "専任担当2名＋アナリスト"]
+        },
+        {
+          en: "ENTERPRISE", name: "エンタープライズ", for: "複数事業・内製化を見据える企業向け", price: "120", cardStyle: card(false), headStyle: head(false), btnStyle: btn(false),
+          note: "運用予算・支援範囲に応じて個別見積り。内製化移管まで対応します。",
+          items: ["グロースプランの全機能", "複数事業・複数ブランドの統括", "サーバーサイド計測／CDP連携", "インハウス化トレーニング", "四半期の経営レビュー同席", "専任チーム4〜6名体制"]
+        }
+      ],
+      rows: [
+        { name: "広告アカウント診断・サイト診断", price: "無料", term: "5営業日" },
+        { name: "マーケティング戦略設計（KPIツリー／ロードマップ）", price: "80万円〜", term: "4〜6週間" },
+        { name: "コーポレートサイト制作", price: "150万円〜", term: "2〜4ヶ月" },
+        { name: "LP制作（1本）", price: "35万円〜", term: "3〜4週間" },
+        { name: "SEO監査・キーワード設計", price: "45万円〜", term: "3〜4週間" },
+        { name: "計測基盤構築（GA4／GTM／サーバーサイド）", price: "60万円〜", term: "4〜8週間" },
+        { name: "ブランディング（言語／ビジュアル設計）", price: "180万円〜", term: "3〜5ヶ月" },
+        { name: "インハウス化移管支援", price: "90万円〜", term: "3ヶ月" }
+      ],
+      compare: [
+        { k: "対応媒体数", a: "1〜2媒体", b: "上限なし", c: "上限なし" },
+        { k: "ミーティング頻度", a: "月1回", b: "週1回", c: "週1回＋四半期レビュー" },
+        { k: "SEO・コンテンツ制作", a: "—", b: "月4本", c: "月8本〜" },
+        { k: "計測設計", a: "基本設定", b: "GA4／GTM実装", c: "サーバーサイド／CDP" },
+        { k: "クリエイティブ制作", a: "月4本", b: "月12本", c: "個別設計" },
+        { k: "体制", a: "担当1名", b: "担当2名＋アナリスト", c: "専任チーム4〜6名" },
+        { k: "内製化支援", a: "—", b: "オプション", c: "標準で含む" },
+        { k: "推奨契約期間", a: "6ヶ月", b: "6ヶ月", c: "12ヶ月" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

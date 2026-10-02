@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:relative;z-index:30;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px clamp(20px,3vw,48px);border-bottom:1px solid #eef2f4">
+  <a href="Aoi%20Dental%20Clinic.dc.html" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+    <span style="position:relative;width:38px;height:30px;flex:none">
+      <span style="position:absolute;left:0;top:6px;width:24px;height:24px;border-radius:50%;background:#3f97d1"></span>
+      <span style="position:absolute;left:12px;top:0;width:24px;height:24px;border-radius:50%;background:#9fd3ef;mix-blend-mode:multiply"></span>
+      <span style="position:absolute;left:28px;top:0;width:8px;height:8px;border-radius:50%;background:#f0a868"></span>
+    </span>
+    <span style="display:flex;flex-direction:column;line-height:1.2">
+      <span style="font-size:17px;font-weight:700;color:#3d3a38;letter-spacing:.08em">あおい歯科クリニック</span>
+      <span style="font-family:Jost;font-size:10px;letter-spacing:.32em;color:#1a6fb5">AOI DENTAL CLINIC</span>
+    </span>
+  </a>
+  <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メイン" style="display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+      <sc-for list="{{ items }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px clamp(10px,1.4vw,26px);border-left:1px solid #e3e9ec;color:{{ n.color }};text-decoration:none;transition:color .3s" style-hover="color:#1a6fb5"><span style="font-size:14px;font-weight:500;letter-spacing:.06em">{{ n.jp }}</span><span style="font-family:Jost;font-size:11px;letter-spacing:.14em;color:#1a6fb5">{{ n.en }}</span><span style="width:18px;height:2px;border-radius:2px;background:{{ n.bar }};margin-top:3px"></span></a>
+      </sc-for>
+      <a href="Reservation.dc.html#form" style="margin-left:14px;display:flex;align-items:center;height:48px;padding:0 20px;border-radius:8px;background:#1a6fb5;color:#fff;font-size:14px;font-weight:700;letter-spacing:.08em;text-decoration:none;transition:background .3s" style-hover="background:#0b4c83;color:#fff">WEB予約</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMob }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ openMenu }}" aria-label="メニューを開く" style="width:48px;height:48px;border:none;border-radius:10px;background:#1a6fb5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer">
+      <span style="width:22px;height:2px;background:#fff"></span><span style="width:22px;height:2px;background:#fff"></span><span style="width:14px;height:2px;background:#fff;margin-left:8px"></span>
+    </button>
+  </sc-if>
+</header>
+<sc-if value="{{ menu }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:rgba(228,243,251,.98);display:flex;flex-direction:column;padding:24px;overflow:auto">
+    <button onClick="{{ closeMenu }}" aria-label="メニューを閉じる" style="align-self:flex-end;width:48px;height:48px;border:none;border-radius:10px;background:#1a6fb5;color:#fff;font-size:22px;cursor:pointer">×</button>
+    <nav style="display:flex;flex-direction:column;margin-top:20px">
+      <a href="Aoi%20Dental%20Clinic.dc.html" style="display:flex;justify-content:space-between;align-items:center;padding:18px 4px;border-bottom:1px solid #c7deea;color:#3d3a38;font-size:17px;font-weight:500;text-decoration:none">トップ<span style="font-family:Jost;font-size:13px;color:#1a6fb5;letter-spacing:.14em">TOP</span></a>
+      <sc-for list="{{ items }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="display:flex;justify-content:space-between;align-items:center;padding:18px 4px;border-bottom:1px solid #c7deea;color:#3d3a38;font-size:17px;font-weight:500;text-decoration:none">{{ n.jp }}<span style="font-family:Jost;font-size:13px;color:#1a6fb5;letter-spacing:.14em">{{ n.en }}</span></a>
+      </sc-for>
+    </nav>
+    <a href="Reservation.dc.html#form" style="margin-top:28px;display:flex;align-items:center;justify-content:center;height:56px;border-radius:8px;background:#1a6fb5;color:#fff;font-weight:700;letter-spacing:.08em;text-decoration:none">WEB予約はこちら</a>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:100},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;concept&quot;,&quot;services&quot;,&quot;doctor&quot;,&quot;feature&quot;,&quot;reservation&quot;],&quot;default&quot;:&quot;concept&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { mobile: false, menu: false };
+  nav = [
+    { key: 'concept', jp: '当院の想い', en: 'Concept', href: 'Concept.dc.html' },
+    { key: 'services', jp: '診療案内', en: 'Services', href: 'Services.dc.html' },
+    { key: 'doctor', jp: '院長・スタッフ', en: 'Doctor', href: 'Doctor.dc.html' },
+    { key: 'feature', jp: '当院の特徴', en: 'Feature', href: 'Feature.dc.html' },
+    { key: 'reservation', jp: 'ご予約・アクセス', en: 'Reservation', href: 'Reservation.dc.html' }
+  ];
+  componentDidMount() {
+    // トップページと同じ 1024px でハンバーガーメニューに切り替える
+    this.onR = () => { const m = window.innerWidth < 1024; if (m !== this.state.mobile) this.setState({ mobile: m }); };
+    this.onR(); window.addEventListener('resize', this.onR);
+    [120, 700, 1600].forEach(t => setTimeout(() => this.reveal(), t));
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); this.io && this.io.disconnect(); }
+  reveal() {
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+    }), { threshold: 0.1 });
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (el.dataset.rv) return; el.dataset.rv = '1';
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.style.opacity = 0; el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)';
+      this.io.observe(el);
+    });
+  }
+  renderVals() {
+    const cur = this.props.current;
+    return {
+      items: this.nav.map(n => ({ ...n, color: n.key === cur ? '#1a6fb5' : '#3d3a38', bar: n.key === cur ? '#3f97d1' : 'transparent' })),
+      isDesk: !this.state.mobile, isMob: this.state.mobile, menu: this.state.menu,
+      openMenu: () => this.setState({ menu: true }), closeMenu: () => this.setState({ menu: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

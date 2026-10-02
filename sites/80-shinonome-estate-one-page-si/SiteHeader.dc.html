@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+html,body{overflow-x:clip}
+p{text-wrap:pretty}
+h1,h2,h3,h4,dt,dd,li>span,figcaption,blockquote,p[style*="Shippori"],span[style*="Shippori"]{word-break:auto-phrase;overflow-wrap:break-word}
+.se-span2{grid-column:span 2}
+@media (max-width:1179px){.se-hdr-tel{display:none!important}}
+@media (max-width:899px){
+  .se-span2{grid-column:1/-1}
+  .se-img-first{order:-1}
+  .se-bg-full{width:100%!important}
+  .se-bg-hide,.se-deco-v{display:none!important}
+  .se-fill-last>:last-child:nth-child(odd){grid-column:1/-1}
+  .se-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:24px;row-gap:40px}
+  .se-pb-sm{padding-bottom:56px!important}
+}
+@media (min-width:600px) and (max-width:899px){
+  .se-cards2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media (max-width:599px){
+  .se-btns{flex-direction:column!important;align-items:stretch!important;width:100%}
+  .se-btns>a{justify-content:center!important}
+  .se-grid2{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .se-grid2>*{justify-content:center!important}
+  .se-numrow{grid-template-columns:48px minmax(0,1fr)!important;gap:12px!important}
+  .se-dl{grid-template-columns:88px minmax(0,1fr)!important}
+}
+</style>
+</helmet>
+<div ref="{{ curtainRef }}" aria-hidden="true" style="position:fixed;inset:0;z-index:100;background:#0f1d5c;transform:translateY(-100%);pointer-events:none;display:flex;align-items:center;justify-content:center">
+  <span ref="{{ curtainLogoRef }}" style="font-family:'Shippori Mincho',serif;font-size:22px;letter-spacing:.3em;color:#fff">東雲不動産</span>
+</div>
+
+<header style="position:fixed;top:0;left:0;right:0;height:72px;z-index:50;display:flex;background:#fff;box-shadow:{{ headerShadow }};transition:box-shadow .5s">
+  <a href="Shinonome%20Estate.dc.html" style="background:#0f1d5c;color:#fff;width:{{ headerLeftW }};min-width:220px;padding:0 clamp(18px,2vw,28px);display:flex;flex-direction:column;justify-content:center;gap:4px;transition:width .7s cubic-bezier(.2,.7,.2,1)">
+    <span style="font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.12em;color:#c9cde0;white-space:nowrap">住まいと資産の、確かなパートナー</span>
+    <span style="font-family:'Shippori Mincho',serif;font-size:20px;letter-spacing:.24em;color:#fff;white-space:nowrap">東雲不動産</span>
+  </a>
+  <div style="flex:1;display:flex;align-items:center;justify-content:flex-end">
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav data-stagger="" data-delay="200" aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:clamp(16px,2.2vw,36px);padding:0 clamp(16px,2.4vw,40px) 0 clamp(20px,2.4vw,40px)">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="position:relative;padding:6px 0;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:#0f1d5c;border-bottom:1px solid {{ n.line }};transition:opacity .3s,letter-spacing .4s" style-hover="opacity:.55;letter-spacing:.26em">{{ n.label }}</a>
+        </sc-for>
+        <a href="tel:0120000000" class="se-hdr-tel" style="display:flex;align-items:baseline;gap:6px;color:#0f1d5c;white-space:nowrap"><span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.1em">TEL.</span><span style="font-family:'Cormorant Garamond',serif;font-size:21px;letter-spacing:.04em">0120-000-000</span></a>
+      </nav>
+      <a href="{{ contactHref }}" style="height:72px;width:128px;display:flex;align-items:center;justify-content:center;background:#eceef3;color:#0f1d5c;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.16em;transition:background .4s,color .4s,letter-spacing .4s" style-hover="background:#0f1d5c;color:#fff;letter-spacing:.24em">無料相談</a>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="メニューを開く" aria-expanded="{{ menuOpen }}" style="width:72px;height:72px;border:0;background:#eceef3;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px">
+        <span style="display:block;width:26px;height:1px;background:#0f1d5c"></span>
+        <span style="display:block;width:26px;height:1px;background:#0f1d5c"></span>
+        <span style="display:block;width:16px;height:1px;background:#0f1d5c;margin-left:10px"></span>
+      </button>
+    </sc-if>
+  </div>
+  <span ref="{{ progRef }}" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:2px;background:#0f1d5c;transform:scaleX(0);transform-origin:left;pointer-events:none"></span>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#0f1d5c;color:#fff;display:flex;flex-direction:column;padding:0 28px 40px;overflow-y:auto">
+    <div style="height:72px;flex:none;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-family:'Shippori Mincho',serif;font-size:20px;letter-spacing:.24em">東雲不動産</span>
+      <button onClick="{{ closeMenu }}" aria-label="メニューを閉じる" style="background:none;border:1px solid rgba(255,255,255,.4);color:#fff;width:56px;height:44px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.1em;cursor:pointer">CLOSE</button>
+    </div>
+    <nav ref="{{ menuNavRef }}" style="display:flex;flex-direction:column;margin-top:24px">
+      <sc-for list="{{ menuItems }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.18);color:#fff">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:.14em;text-transform:uppercase">{{ n.label }}</span>
+          <span style="font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.14em;color:#c9cde0">{{ n.ja }}</span>
+        </a>
+      </sc-for>
+    </nav>
+    <div style="margin-top:auto;padding-top:32px;display:flex;flex-direction:column;gap:12px">
+      <a href="tel:0120000000" style="height:56px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.5);color:#fff;font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.06em">TEL. 0120-000-000</a>
+      <a href="{{ contactHref }}" onClick="{{ closeMenu }}" style="height:56px;display:flex;align-items:center;justify-content:center;background:#fff;color:#0f1d5c;font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.18em">無料相談はこちら</a>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ showCursor }}" hint-placeholder-val="{{ false }}">
+  <div ref="{{ cursorRef }}" aria-hidden="true" style="position:fixed;left:0;top:0;width:38px;height:38px;margin:-19px 0 0 -19px;border:1px solid #fff;border-radius:50%;pointer-events:none;z-index:95;mix-blend-mode:difference;opacity:0;transition:width .35s,height .35s,margin .35s,background-color .35s,opacity .35s"></div>
+  <div ref="{{ dotRef }}" aria-hidden="true" style="position:fixed;left:0;top:0;width:4px;height:4px;margin:-2px 0 0 -2px;background:#fff;border-radius:50%;pointer-events:none;z-index:95;mix-blend-mode:difference;opacity:0;transition:opacity .35s"></div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;about&quot;,&quot;properties&quot;,&quot;services&quot;,&quot;strengths&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;cursor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;wideLogo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const EASE = 'cubic-bezier(.2,.7,.2,1)';
+class Component extends DCLogic {
+  state = { scrolled: false, isMobile: typeof window !== 'undefined' && window.innerWidth < 960, menuOpen: false, fine: false };
+  curtainRef = React.createRef(); curtainLogoRef = React.createRef(); progRef = React.createRef();
+  cursorRef = React.createRef(); dotRef = React.createRef(); menuNavRef = React.createRef();
+
+  get motionOn() {
+    if (this.props.motion === false) return false;
+    return !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+
+  componentDidMount() {
+    this._raf = 0;
+    this._onScroll = () => {
+      const s = window.scrollY > 40;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => { this._raf = 0; this._frame(); });
+    };
+    this._onResize = () => {
+      const m = window.innerWidth < 960;
+      if (m !== this.state.isMobile) this.setState({ isMobile: m, menuOpen: m ? this.state.menuOpen : false });
+      this._frame();
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onResize);
+    this._onResize(); this._onScroll();
+    if (!this.motionOn) return;
+    this.setState({ fine: !!(window.matchMedia && window.matchMedia('(pointer: fine)').matches) });
+    const introDelay = this._curtainIn();
+    this._setupPageLeave();
+    this._setupCursor();
+    setTimeout(() => this._setupReveal(introDelay), 60);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    this._onClick && document.removeEventListener('click', this._onClick, true);
+    this._onShow && window.removeEventListener('pageshow', this._onShow);
+    this._onMove && window.removeEventListener('mousemove', this._onMove);
+    this._io && this._io.disconnect();
+    clearTimeout(this._revealTimer);
+    cancelAnimationFrame(this._cursorRaf);
+  }
+  componentDidUpdate(pp, ps) {
+    if (!ps.menuOpen && this.state.menuOpen && this.motionOn && this.menuNavRef.current) {
+      Array.from(this.menuNavRef.current.children).forEach((c, i) => c.animate(
+        [{ opacity: 0, transform: 'translateX(40px)' }, { opacity: 1, transform: 'none' }],
+        { duration: 700, delay: 80 + i * 70, easing: EASE, fill: 'backwards' }));
+    }
+  }
+
+  _curtainIn() {
+    const c = this.curtainRef.current, logo = this.curtainLogoRef.current;
+    if (!c) return 0;
+    let fromNav = false;
+    try { fromNav = sessionStorage.getItem('se-curtain') === '1'; sessionStorage.removeItem('se-curtain'); } catch (e) {}
+    c.style.transform = 'translateY(0)';
+    if (logo) logo.animate([{ opacity: 0, letterSpacing: '.6em' }, { opacity: 1, letterSpacing: '.3em' }], { duration: fromNav ? 300 : 700, easing: EASE, fill: 'both' });
+    const hold = fromNav ? 150 : 650;
+    c.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-100%)' }],
+      { duration: 1000, delay: hold, easing: 'cubic-bezier(.7,0,.2,1)', fill: 'forwards' });
+    setTimeout(() => { c.style.transform = 'translateY(-100%)'; }, hold + 1000);
+    this._onShow = e => { if (e.persisted) { c.getAnimations().forEach(a => a.cancel()); c.style.transform = 'translateY(-100%)'; } };
+    window.addEventListener('pageshow', this._onShow);
+    return hold + 450;
+  }
+  _setupPageLeave() {
+    this._onClick = e => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target) return;
+      const raw = a.getAttribute('href') || '';
+      if (!raw || raw.startsWith('#') || raw.startsWith('tel:') || raw.startsWith('mailto:')) return;
+      let url; try { url = new URL(a.href, location.href); } catch (er) { return; }
+      if (!/\.dc\.html$/.test(url.pathname) || url.pathname === location.pathname) return;
+      const c = this.curtainRef.current; if (!c) return;
+      e.preventDefault();
+      try { sessionStorage.setItem('se-curtain', '1'); } catch (er) {}
+      c.getAnimations().forEach(x => x.cancel());
+      const anim = c.animate([{ transform: 'translateY(100%)' }, { transform: 'translateY(0)' }], { duration: 650, easing: 'cubic-bezier(.7,0,.2,1)', fill: 'forwards' });
+      anim.onfinish = () => { location.href = url.href; };
+    };
+    document.addEventListener('click', this._onClick, true);
+  }
+  _setupCursor() {
+    let x = -100, y = -100, cx = -100, cy = -100, big = false, shown = false;
+    this._onMove = e => {
+      x = e.clientX; y = e.clientY;
+      const r = this.cursorRef.current, d = this.dotRef.current;
+      if (!r || !d) return;
+      if (!shown) { shown = true; r.style.opacity = '1'; d.style.opacity = '1'; cx = x; cy = y; }
+      const hot = !!(e.target.closest && e.target.closest('a,button,label,select,input,textarea'));
+      if (hot !== big) {
+        big = hot;
+        r.style.width = r.style.height = hot ? '72px' : '38px';
+        r.style.margin = hot ? '-36px 0 0 -36px' : '-19px 0 0 -19px';
+        r.style.backgroundColor = hot ? 'rgba(255,255,255,1)' : 'transparent';
+      }
+      d.style.transform = `translate3d(${x}px,${y}px,0)`;
+    };
+    window.addEventListener('mousemove', this._onMove, { passive: true });
+    const loop = () => {
+      cx += (x - cx) * 0.16; cy += (y - cy) * 0.16;
+      const r = this.cursorRef.current;
+      if (r) r.style.transform = `translate3d(${cx.toFixed(1)}px,${cy.toFixed(1)}px,0)`;
+      this._cursorRaf = requestAnimationFrame(loop);
+    };
+    this._cursorRaf = requestAnimationFrame(loop);
+  }
+
+  _frame() {
+    const vh = window.innerHeight;
+    const max = document.documentElement.scrollHeight - vh;
+    if (this.progRef.current) this.progRef.current.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+      const speed = parseFloat(el.getAttribute('data-parallax')) || 0.1;
+      const r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      const off = (r.top + r.height / 2 - vh / 2) * -speed;
+      el.style.transform = `translate3d(0,${off.toFixed(1)}px,0)`;
+    });
+    if (!this.motionOn) return;
+    document.querySelectorAll('[data-drift],[data-drift-y]').forEach(el => {
+      const r = (el.parentElement || el).getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) return;
+      const p = r.top + r.height / 2 - vh / 2;
+      if (el.hasAttribute('data-drift')) el.style.translate = `${(p * (parseFloat(el.getAttribute('data-drift')) || 0.2)).toFixed(1)}px 0`;
+      else el.style.translate = `0 ${(p * (parseFloat(el.getAttribute('data-drift-y')) || 0.2)).toFixed(1)}px`;
+    });
+    this._revealCheck && this._revealCheck();
+  }
+
+  _split(el) {
+    const chars = [];
+    const walk = node => {
+      Array.from(node.childNodes).forEach(n => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          for (const ch of n.textContent) {
+            if (ch === '\n') continue;
+            const s = document.createElement('span');
+            s.textContent = ch === ' ' ? '\u00a0' : ch;
+            s.style.display = 'inline-block';
+            s.style.opacity = '0';
+            s.style.translate = '0 .55em';
+            s.style.filter = 'blur(6px)';
+            frag.appendChild(s); chars.push(s);
+          }
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1 && n.tagName !== 'BR') walk(n);
+      });
+    };
+    walk(el);
+    return chars;
+  }
+
+  _setupReveal(introDelay) {
+    if (!('IntersectionObserver' in window)) return;
+    const items = new Map();
+    const add = (el, fn) => { if (!items.has(el)) items.set(el, []); items.get(el).push(fn); };
+    const baseDelay = el => parseInt(el.getAttribute('data-delay') || '0', 10);
+
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (el.getAttribute('data-reveal') === 'mask') {
+        el.style.clipPath = 'inset(0 100% 0 0)';
+        add(el, d => {
+          el.style.transition = `clip-path 1.5s cubic-bezier(.7,0,.2,1) ${d}ms`;
+          el.style.clipPath = 'inset(0 0 0 0)';
+          const img = el.querySelector('image-slot');
+          if (img) img.animate([{ transform: 'scale(1.3)' }, { transform: 'scale(1)' }], { duration: 2000, delay: d, easing: EASE, fill: 'backwards' });
+        });
+      } else {
+        el.style.opacity = '0'; el.style.translate = '0 36px';
+        add(el, d => {
+          el.style.transition = `opacity 1.2s ${EASE} ${d}ms, translate 1.2s ${EASE} ${d}ms`;
+          el.style.opacity = '1'; el.style.translate = '0 0';
+        });
+      }
+    });
+    document.querySelectorAll('[data-split]').forEach(el => {
+      const chars = this._split(el);
+      add(el, d => chars.forEach((s, i) => {
+        s.style.transition = `opacity 1s ${EASE} ${d + i * 45}ms, translate 1s ${EASE} ${d + i * 45}ms, filter 1s ${EASE} ${d + i * 45}ms`;
+        s.style.opacity = '1'; s.style.translate = '0 0'; s.style.filter = 'blur(0)';
+      }));
+    });
+    document.querySelectorAll('[data-stagger]').forEach(el => {
+      const kids = Array.from(el.children);
+      kids.forEach(k => { k.style.opacity = '0'; k.style.translate = '0 24px'; });
+      add(el, d => kids.forEach((k, i) => {
+        k.style.transition = `opacity 1s ${EASE} ${d + i * 110}ms, translate 1s ${EASE} ${d + i * 110}ms`;
+        k.style.opacity = '1'; k.style.translate = '0 0';
+      }));
+    });
+    document.querySelectorAll('[data-line]').forEach(el => {
+      el.style.transformOrigin = 'left'; el.style.transform = 'scaleX(0)';
+      add(el, d => { el.style.transition = `transform 1.4s cubic-bezier(.7,0,.2,1) ${d + 300}ms`; el.style.transform = 'scaleX(1)'; });
+    });
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const tn = Array.from(el.childNodes).find(n => n.nodeType === 3 && /\d/.test(n.textContent));
+      if (!tn) return;
+      const orig = tn.textContent, target = parseInt(orig.replace(/[^\d]/g, ''), 10), comma = orig.includes(',');
+      tn.textContent = '0';
+      add(el, d => setTimeout(() => {
+        const t0 = performance.now(), dur = 1800;
+        const step = now => {
+          const p = Math.min(1, (now - t0) / dur), v = Math.round(target * (1 - Math.pow(1 - p, 3)));
+          tn.textContent = comma ? v.toLocaleString('en-US') : String(v);
+          if (p < 1) requestAnimationFrame(step); else tn.textContent = orig;
+        };
+        requestAnimationFrame(step);
+      }, d + 200));
+    });
+    document.querySelectorAll('[data-kenburns]').forEach(el => el.animate(
+      [{ transform: 'scale(1.2)' }, { transform: 'scale(1)' }], { duration: 7000, delay: Math.max(0, introDelay - 400), easing: EASE, fill: 'both' }));
+    document.querySelectorAll('[data-loop="line"]').forEach(el => {
+      el.style.transformOrigin = 'top';
+      el.animate([{ transform: 'scaleY(0)', transformOrigin: 'top' }, { transform: 'scaleY(1)', transformOrigin: 'top', offset: .5 }, { transform: 'scaleY(1)', transformOrigin: 'bottom', offset: .5001 }, { transform: 'scaleY(0)', transformOrigin: 'bottom' }], { duration: 2400, iterations: Infinity, easing: 'cubic-bezier(.6,0,.3,1)' });
+    });
+
+    const show = (el, batchIdx) => {
+      const fns = items.get(el); if (!fns) return;
+      items.delete(el); this._io.unobserve(el);
+      const extra = el.hasAttribute('data-delay') ? 0 : batchIdx * 120;
+      const d = baseDelay(el) + extra + (this._introPending ? introDelay : 0);
+      fns.forEach(fn => fn(d));
+    };
+    this._introPending = true;
+    this._revealCheck = () => {
+      const vh = window.innerHeight; let i = 0;
+      items.forEach((_, el) => { const r = el.getBoundingClientRect(); if (r.top < vh * 0.92 && r.bottom > 0) show(el, i++); });
+    };
+    this._io = new IntersectionObserver(entries => {
+      let i = 0; entries.forEach(e => { if (e.isIntersecting) show(e.target, i++); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+    items.forEach((_, el) => this._io.observe(el));
+    requestAnimationFrame(() => { this._revealCheck(); this._introPending = false; });
+    this._revealTimer = setTimeout(() => { let i = 0; Array.from(items.keys()).forEach(el => show(el, 0)); }, 6000);
+  }
+
+  renderVals() {
+    const { scrolled, isMobile, menuOpen, fine } = this.state;
+    const current = this.props.current ?? '';
+    const top = 'Shinonome%20Estate.dc.html';
+    const contactHref = current === 'top' ? '#contact' : top + '#contact';
+    const items = [
+      { key: 'about', label: 'About', ja: '会社概要', href: 'About.dc.html' },
+      { key: 'properties', label: 'Properties', ja: '物件一覧', href: 'Properties.dc.html' },
+      { key: 'services', label: 'Services', ja: 'サービス', href: 'Services.dc.html' },
+      { key: 'strengths', label: 'Strengths', ja: '私たちの強み', href: 'Strengths.dc.html' },
+      { key: 'contact', label: 'Contact', ja: 'お問い合わせ', href: contactHref },
+    ].map(n => ({ ...n, line: n.key === current ? '#0f1d5c' : 'transparent', aria: n.key === current ? 'page' : undefined }));
+    return {
+      navItems: items,
+      menuItems: [{ key: 'top', label: 'Top', ja: 'トップ', href: current === 'top' ? '#top' : top }, ...items],
+      contactHref,
+      isMobile, isDesktop: !isMobile, menuOpen,
+      showCursor: fine && !isMobile && this.props.cursor !== false,
+      curtainRef: this.curtainRef, curtainLogoRef: this.curtainLogoRef, progRef: this.progRef,
+      cursorRef: this.cursorRef, dotRef: this.dotRef, menuNavRef: this.menuNavRef,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      headerLeftW: isMobile ? '100%' : (scrolled ? '300px' : (this.props.wideLogo === false ? '300px' : '52%')),
+      headerShadow: scrolled ? '0 10px 30px -20px rgba(15,29,92,.35)' : 'none',
+    };
+  }
+}
+</script>
+</body>
+</html>

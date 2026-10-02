@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body { margin: 0; font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif; background: oklch(98% 0.004 240); }
+a { color: oklch(46% 0.10 245); text-decoration: none; }
+a:hover { color: oklch(32% 0.09 248); }
+input, textarea, select { font-family: 'Noto Sans JP', sans-serif; box-sizing: border-box; max-width: 100%; }
+input:focus, textarea:focus, select:focus { outline: 2px solid oklch(46% 0.10 245); outline-offset: 1px; }
+
+/* <image-slot> の aspect-ratio 由来の最小幅で列が広がらないように */
+image-slot { min-width: 0; }
+/* src を指定したスロットではプレースホルダーの破線枠を消す。
+   image-slot が自分で付ける data-filled 属性が React の再描画で外れてしまい、
+   シャドウ内の :host([data-filled]) .ring{display:none} が効かないため。 */
+image-slot[src]::part(ring) { display: none; }
+
+/* ===== レイアウト（レスポンシブ） =====
+   ブレークポイント：860px＝2カラム解除／680px＝スマホ */
+.ct-head { max-width: 1200px; margin: 0 auto; padding: 56px 24px 20px; }
+.ct-title { font-size: 32px; font-weight: 700; color: oklch(22% 0.02 250); margin: 0; }
+.ct-form-sec { max-width: 900px; margin: 0 auto; padding: 24px 24px 64px; }
+.ct-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.ct-tel { background: oklch(96% 0.008 235); padding: 48px 24px; }
+.ct-access { max-width: 1100px; margin: 0 auto; padding: 64px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+/* 外観写真（image-slot）の最小コンテンツ幅で列が広がらないように */
+.ct-access > div { min-width: 0; }
+
+@media (max-width: 860px) {
+  .ct-access { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 680px) {
+  .ct-head { padding: 40px 20px 16px; }
+  .ct-title { font-size: 25px; }
+  .ct-form-sec { padding: 20px 20px 48px; }
+  .ct-fields { grid-template-columns: 1fr; gap: 14px; }
+  .ct-tel { padding: 40px 20px; }
+  .ct-access { padding: 48px 20px; }
+  /* iOS Safari はフォント16px未満の入力欄でフォーカス時に自動ズームするため */
+  input, textarea, select { font-size: 16px !important; }
+}
+</style>
+</helmet>
+<div style="max-width:100vw;overflow-x:hidden;">
+<dc-import name="Header" active="contact" hint-size="100%,64px"></dc-import>
+
+<section class="ct-head">
+  <div style="font-size:12px;color:oklch(55% 0.02 245);margin-bottom:14px;"><a href="Home.dc.html">ホーム</a> ／ アクセス・ご予約</div>
+  <h1 class="ct-title">アクセス・ご予約</h1>
+</section>
+
+<section class="ct-form-sec">
+  <h2 style="font-size:20px;font-weight:700;color:oklch(22% 0.02 250);margin:0 0 20px;">WEB予約フォーム</h2>
+  <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+    <div style="background:oklch(94% 0.03 150);border-radius:6px;padding:28px;text-align:center;font-size:14px;color:oklch(30% 0.03 150);">ご予約リクエストを受け付けました。担当者よりご連絡いたします。（デモ画面のため実際の送信は行われません）</div>
+  </sc-if>
+  <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+  <form onSubmit="{{ handleSubmit }}" style="display:flex;flex-direction:column;gap:18px;">
+    <div class="ct-fields">
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:oklch(30% 0.02 245);">お名前<span style="color:oklch(55% 0.15 25);">必須</span>
+        <input type="text" required="" style="border:1px solid oklch(85% 0.006 240);border-radius:4px;padding:12px;font-size:14px;"/>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:oklch(30% 0.02 245);">フリガナ
+        <input type="text" style="border:1px solid oklch(85% 0.006 240);border-radius:4px;padding:12px;font-size:14px;"/>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:oklch(30% 0.02 245);">メールアドレス<span style="color:oklch(55% 0.15 25);">必須</span>
+        <input type="email" required="" style="border:1px solid oklch(85% 0.006 240);border-radius:4px;padding:12px;font-size:14px;"/>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:oklch(30% 0.02 245);">電話番号<span style="color:oklch(55% 0.15 25);">必須</span>
+        <input type="tel" required="" style="border:1px solid oklch(85% 0.006 240);border-radius:4px;padding:12px;font-size:14px;"/>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:oklch(30% 0.02 245);">ご希望日
+        <input type="date" style="border:1px solid oklch(85% 0.006 240);border-radius:4px;padding:12px;font-size:14px;"/>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:oklch(30% 0.02 245);">ご希望時間
+        <input type="time" style="border:1px solid oklch(85% 0.006 240);border-radius:4px;padding:12px;font-size:14px;"/>
+      </label>
+    </div>
+    <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:oklch(30% 0.02 245);">ご来院区分
+      <select style="border:1px solid oklch(85% 0.006 240);border-radius:4px;padding:12px;font-size:14px;">
+        <option>初めてご来院の方</option>
+        <option>再診の方</option>
+      </select>
+    </label>
+    <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:oklch(30% 0.02 245);">気になる症状
+      <select style="border:1px solid oklch(85% 0.006 240);border-radius:4px;padding:12px;font-size:14px;">
+        <option>肩こり</option><option>腰痛</option><option>首の痛み</option><option>膝の痛み</option><option>スポーツによるケガ</option><option>交通事故による痛み</option><option>その他</option>
+      </select>
+    </label>
+    <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:oklch(30% 0.02 245);">お問い合わせ内容
+      <textarea rows="4" style="border:1px solid oklch(85% 0.006 240);border-radius:4px;padding:12px;font-size:14px;resize:vertical;"></textarea>
+    </label>
+    <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;color:oklch(42% 0.02 245);">
+      <input type="checkbox" required="" style="margin-top:2px;"/>
+      <span><a href="#">プライバシーポリシー</a>に同意の上、送信します。</span>
+    </label>
+    <button type="submit" style="background:oklch(46% 0.10 245);color:#fff;border:none;padding:16px;border-radius:4px;font-size:15px;font-weight:700;cursor:pointer;">この内容で予約リクエストを送る</button>
+  </form>
+  </sc-if>
+</section>
+
+<section class="ct-tel">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <h2 style="font-size:18px;font-weight:700;color:oklch(22% 0.02 250);margin:0 0 14px;">お電話でのご予約</h2>
+    <a href="tel:0120-000-000" style="font-size:32px;font-weight:700;color:oklch(46% 0.10 245);">0120-000-000</a>
+    <p style="font-size:13px;color:oklch(45% 0.02 245);margin:10px 0 0;">診療時間 9:00〜13:00 / 15:00〜20:00　休診日 水曜・日曜祝日</p>
+  </div>
+</section>
+
+<section id="access" class="ct-access">
+  <div>
+    <h2 style="font-size:20px;font-weight:700;color:oklch(22% 0.02 250);margin:0 0 20px;">アクセス</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;font-size:13px;color:oklch(32% 0.02 245);line-height:1.8;">
+      <div><span style="font-weight:700;color:oklch(46% 0.10 245);">住所　</span>〒000-0000 東京都○○区○○ 1-2-3</div>
+      <div><span style="font-weight:700;color:oklch(46% 0.10 245);">最寄駅　</span>○○駅　徒歩5分</div>
+      <div><span style="font-weight:700;color:oklch(46% 0.10 245);">駐車場　</span>駐車場3台完備</div>
+      <div><span style="font-weight:700;color:oklch(46% 0.10 245);">診療時間　</span>9:00〜13:00 / 15:00〜20:00</div>
+      <div><span style="font-weight:700;color:oklch(46% 0.10 245);">休診日　</span>水曜・日曜祝日</div>
+    </div>
+    <image-slot id="access-exterior" src="images/exterior-sign.jpg" shape="rounded" radius="6" placeholder="院の外観" style="width:100%;height:220px;margin-top:22px;"></image-slot>
+  </div>
+  <div style="background:repeating-linear-gradient(45deg, oklch(93% 0.008 235), oklch(93% 0.008 235) 10px, oklch(90% 0.008 235) 10px, oklch(90% 0.008 235) 20px);border-radius:6px;height:280px;display:flex;align-items:center;justify-content:center;font-size:12px;color:oklch(45% 0.02 245);font-family:monospace;">地図（マップ）プレースホルダー</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+<dc-import name="MobileBar" hint-size="100%,56px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { submitted: false };
+  handleSubmit = (e) => { e.preventDefault(); this.setState({ submitted: true }); };
+  renderVals() {
+    return { submitted: this.state.submitted, notSubmitted: !this.state.submitted, handleSubmit: this.handleSubmit };
+  }
+}
+</script>
+</body>
+</html>

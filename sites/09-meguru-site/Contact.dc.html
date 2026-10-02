@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: oklch(0.985 0.003 250); color: oklch(0.22 0.02 250); font-family: "Zen Kaku Gothic New", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: oklch(0.55 0.15 250); text-decoration: none; }
+  a:hover { color: oklch(0.44 0.15 250); }
+  ::selection { background: oklch(0.55 0.15 250); color: #fff; }
+  input, textarea, select, button { font-family: inherit; }
+  input:focus, textarea:focus, select:focus { border-color: oklch(0.55 0.15 250) !important; }
+  @keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(1.1em) rotate(1.2deg); } to { opacity: 1; transform: none; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  /* Responsive: the header nav collapses into a menu button at 820px and below. */
+  [id] { scroll-margin-top: 88px; }
+  @media (max-width: 820px) {
+    [data-nav-desktop] { display: none !important; }
+    [data-nav-toggle] { display: inline-flex !important; }
+    input, textarea, select { font-size: 16px !important; }
+  }
+  @media (min-width: 821px) { [data-nav-mobile] { display: none !important; } }
+  @media (max-width: 560px) {
+    [data-dl-row] { grid-template-columns: 1fr !important; gap: 4px !important; }
+    [data-cta-row] > a { width: 100%; justify-content: center; padding-left: 24px !important; padding-right: 24px !important; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</helmet>
+
+<div style="width:100%;overflow-x:hidden;font-feature-settings:'palt' 1;">
+
+  <header style="position:fixed;top:0;left:0;right:0;z-index:50;background:oklch(0.985 0.003 250 / 0.88);backdrop-filter:blur(14px);border-bottom:1px solid oklch(0.91 0.008 250);">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,44px);height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px;">
+      <a href="MEGURU Home.dc.html" style="display:flex;align-items:center;gap:10px;color:oklch(0.22 0.02 250);flex:0 0 auto;">
+        <span style="position:relative;width:24px;height:24px;display:block;flex:0 0 auto;"><span style="position:absolute;inset:3px;border-radius:50%;border:3px solid oklch(0.55 0.15 250);display:block;"></span><span style="position:absolute;inset:0;display:block;animation:orbit 7s linear infinite;"><span style="position:absolute;top:0;left:50%;margin-left:-3px;width:6px;height:6px;border-radius:50%;background:oklch(0.22 0.02 250);display:block;"></span></span></span>
+        <span style="font-family:Syne,sans-serif;font-weight:700;font-size:17px;letter-spacing:0.16em;">MEGURU</span>
+      </a>
+      <nav data-nav-desktop="" aria-label="グローバルナビゲーション" style="display:flex;align-items:center;gap:clamp(14px,2.4vw,30px);">
+        <a href="About.dc.html" style="font-family:Syne,sans-serif;font-size:12px;font-weight:500;letter-spacing:0.18em;color:oklch(0.34 0.02 250);white-space:nowrap;" style-hover="color:oklch(0.55 0.15 250)">ABOUT</a>
+        <a href="Services.dc.html" style="font-family:Syne,sans-serif;font-size:12px;font-weight:500;letter-spacing:0.18em;color:oklch(0.34 0.02 250);white-space:nowrap;" style-hover="color:oklch(0.55 0.15 250)">SERVICE</a>
+        <a href="Case Studies.dc.html" style="font-family:Syne,sans-serif;font-size:12px;font-weight:500;letter-spacing:0.18em;color:oklch(0.34 0.02 250);white-space:nowrap;" style-hover="color:oklch(0.55 0.15 250)">WORKS</a>
+        <a href="Blog.dc.html" style="font-family:Syne,sans-serif;font-size:12px;font-weight:500;letter-spacing:0.18em;color:oklch(0.34 0.02 250);white-space:nowrap;" style-hover="color:oklch(0.55 0.15 250)">INSIGHTS</a>
+        <a href="Contact.dc.html" style="font-family:Syne,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.18em;color:#fff;background:oklch(0.55 0.15 250);padding:11px 20px;border-radius:999px;white-space:nowrap;">CONTACT</a>
+      </nav>
+      <button type="button" data-nav-toggle="" onClick="{{ toggleMenu }}" aria-controls="mobile-menu" aria-expanded="{{ menuExpanded }}" aria-label="{{ menuLabel }}" style="display:none;position:relative;width:44px;height:44px;flex:0 0 auto;padding:0;border:1px solid oklch(0.88 0.01 250);border-radius:50%;background:#fff;cursor:pointer;">
+        <span aria-hidden="true" style="{{ burgerTop }}"></span>
+        <span aria-hidden="true" style="{{ burgerBottom }}"></span>
+      </button>
+    </div>
+  </header>
+
+  <sc-if value="{{ menuOpen }}"><div id="mobile-menu" data-nav-mobile="" style="position:fixed;top:72px;left:0;right:0;bottom:0;z-index:49;overflow-y:auto;background:oklch(0.985 0.003 250);padding:12px clamp(18px,4vw,44px) 40px;display:flex;flex-direction:column;gap:32px;animation:fadeUp .35s cubic-bezier(.2,.7,.2,1) both;">
+      <nav aria-label="メインメニュー" style="display:grid;">
+        <a href="MEGURU Home.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 2px;border-bottom:1px solid oklch(0.91 0.008 250);color:oklch(0.22 0.02 250);"><span style="font-family:Syne,sans-serif;font-size:clamp(22px,7vw,30px);font-weight:600;letter-spacing:0.08em;">HOME</span><span style="font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">ホーム</span></a>
+        <a href="About.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 2px;border-bottom:1px solid oklch(0.91 0.008 250);color:oklch(0.22 0.02 250);"><span style="font-family:Syne,sans-serif;font-size:clamp(22px,7vw,30px);font-weight:600;letter-spacing:0.08em;">ABOUT</span><span style="font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">会社概要</span></a>
+        <a href="Services.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 2px;border-bottom:1px solid oklch(0.91 0.008 250);color:oklch(0.22 0.02 250);"><span style="font-family:Syne,sans-serif;font-size:clamp(22px,7vw,30px);font-weight:600;letter-spacing:0.08em;">SERVICE</span><span style="font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">サービス</span></a>
+        <a href="Case Studies.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 2px;border-bottom:1px solid oklch(0.91 0.008 250);color:oklch(0.22 0.02 250);"><span style="font-family:Syne,sans-serif;font-size:clamp(22px,7vw,30px);font-weight:600;letter-spacing:0.08em;">WORKS</span><span style="font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">実績</span></a>
+        <a href="Blog.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 2px;border-bottom:1px solid oklch(0.91 0.008 250);color:oklch(0.22 0.02 250);"><span style="font-family:Syne,sans-serif;font-size:clamp(22px,7vw,30px);font-weight:600;letter-spacing:0.08em;">INSIGHTS</span><span style="font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">インサイト</span></a>
+        <a href="Contact.dc.html" onClick="{{ closeMenu }}" aria-current="page" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 2px;border-bottom:1px solid oklch(0.91 0.008 250);color:oklch(0.55 0.15 250);"><span style="font-family:Syne,sans-serif;font-size:clamp(22px,7vw,30px);font-weight:600;letter-spacing:0.08em;">CONTACT</span><span style="font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">お問い合わせ</span></a>
+      </nav>
+      <div style="display:grid;gap:14px;">
+        <a href="Contact.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;justify-content:center;gap:12px;background:oklch(0.22 0.02 250);color:#fff;padding:18px 24px;border-radius:999px;font-size:15px;font-weight:500;letter-spacing:0.06em;">無料で相談する<span style="font-family:Syne,sans-serif;font-size:12px;">→</span></a>
+        <a href="tel:0300000000" style="display:flex;align-items:center;justify-content:center;border:1px solid oklch(0.85 0.01 250);color:oklch(0.22 0.02 250);padding:18px 24px;border-radius:999px;font-family:Syne,sans-serif;font-size:15px;font-weight:600;letter-spacing:0.04em;">03-0000-0000</a>
+        <p style="margin:0;text-align:center;font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">受付時間 平日10:00〜19:00</p>
+      </div>
+  </div></sc-if>
+
+  <section style="position:relative;padding:clamp(120px,17vh,190px) clamp(18px,4vw,44px) clamp(50px,7vh,80px);overflow:hidden;">
+    <div aria-hidden="true" data-parallax="22" style="position:absolute;top:-2%;right:-7%;width:min(46vw,440px);height:min(46vw,440px);pointer-events:none;">
+      <div style="position:absolute;inset:0;border-radius:50%;border:1px dashed oklch(0.87 0.03 250);animation:orbit 90s linear infinite;"></div>
+      <div style="position:absolute;inset:18%;border-radius:50%;border:2px solid oklch(0.55 0.15 250);border-right-color:transparent;border-top-color:transparent;animation:orbit 26s linear infinite;"></div>
+      <div style="position:absolute;inset:38%;border-radius:50%;background:oklch(0.95 0.03 250);"></div>
+      <div style="position:absolute;inset:6%;animation:orbit 15s linear infinite;"><span style="position:absolute;top:-6px;left:50%;margin-left:-6px;width:12px;height:12px;border-radius:50%;background:oklch(0.55 0.15 250);display:block;"></span></div>
+    </div>
+    <div style="position:relative;max-width:1280px;margin:0 auto;">
+      <nav aria-label="パンくず" style="margin-bottom:clamp(26px,4vh,40px);display:flex;gap:10px;align-items:center;font-family:Syne,sans-serif;font-size:11px;letter-spacing:0.16em;color:oklch(0.46 0.02 250);animation:fadeUp .7s ease both;">
+        <a href="MEGURU Home.dc.html" style="color:oklch(0.46 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">HOME</a><span aria-hidden="true">/</span><span style="color:oklch(0.22 0.02 250);">CONTACT</span>
+      </nav>
+      <p style="margin:0 0 clamp(16px,2.4vh,26px);display:inline-flex;align-items:center;gap:12px;font-family:Syne,sans-serif;font-size:clamp(10px,1.1vw,12px);font-weight:600;letter-spacing:0.3em;color:oklch(0.55 0.15 250);animation:fadeUp .8s ease both;"><span style="width:38px;height:2px;background:oklch(0.55 0.15 250);display:block;"></span>GET IN TOUCH</p>
+      <h1 style="margin:0;font-family:Syne,sans-serif;font-size:clamp(44px,10vw,132px);line-height:0.94;font-weight:700;letter-spacing:-0.02em;">
+        <span style="display:block;overflow:hidden;padding-bottom:0.04em;"><span style="display:inline-block;animation:riseIn 1s cubic-bezier(.16,.9,.2,1) .06s both;">CONTACT</span></span>
+      </h1>
+      <p style="margin:clamp(26px,4vh,40px) 0 0;max-width:620px;font-size:clamp(15px,1.5vw,17px);line-height:2.1;color:oklch(0.46 0.02 250);animation:fadeUp 1s ease .4s both;">初回のご相談は無料です。ご契約前提のご連絡でなくても構いません。2営業日以内に担当ストラテジストからご返信します。</p>
+    </div>
+  </section>
+
+  <section style="padding:clamp(50px,7vh,80px) clamp(18px,4vw,44px) clamp(70px,10vh,120px);">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(40px,5vw,72px);align-items:start;">
+
+      <form onSubmit="{{ onSubmit }}" style="min-width:0;display:grid;gap:26px;">
+        <div style="display:grid;gap:10px;">
+          <label for="c-name" style="font-size:13px;font-weight:500;letter-spacing:0.06em;">お名前 <span style="color:oklch(0.55 0.15 250);">*</span></label>
+          <input id="c-name" type="text" required="" value="{{ name }}" onChange="{{ onName }}" placeholder="山田 太郎" style="border:1px solid oklch(0.88 0.01 250);background:#fff;padding:16px 18px;font-size:14.5px;outline:none;transition:border-color .2s;color:oklch(0.22 0.02 250);" />
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:26px;">
+          <div style="display:grid;gap:10px;min-width:0;">
+            <label for="c-company" style="font-size:13px;font-weight:500;letter-spacing:0.06em;">会社名 <span style="color:oklch(0.55 0.15 250);">*</span></label>
+            <input id="c-company" type="text" required="" value="{{ company }}" onChange="{{ onCompany }}" placeholder="株式会社〇〇" style="border:1px solid oklch(0.88 0.01 250);background:#fff;padding:16px 18px;font-size:14.5px;outline:none;transition:border-color .2s;color:oklch(0.22 0.02 250);" />
+          </div>
+          <div style="display:grid;gap:10px;min-width:0;">
+            <label for="c-role" style="font-size:13px;font-weight:500;letter-spacing:0.06em;">部署・役職</label>
+            <input id="c-role" type="text" value="{{ role }}" onChange="{{ onRole }}" placeholder="マーケティング部 部長" style="border:1px solid oklch(0.88 0.01 250);background:#fff;padding:16px 18px;font-size:14.5px;outline:none;transition:border-color .2s;color:oklch(0.22 0.02 250);" />
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:26px;">
+          <div style="display:grid;gap:10px;min-width:0;">
+            <label for="c-email" style="font-size:13px;font-weight:500;letter-spacing:0.06em;">メールアドレス <span style="color:oklch(0.55 0.15 250);">*</span></label>
+            <input id="c-email" type="email" required="" value="{{ email }}" onChange="{{ onEmail }}" placeholder="name@example.com" style="border:1px solid oklch(0.88 0.01 250);background:#fff;padding:16px 18px;font-size:14.5px;outline:none;transition:border-color .2s;color:oklch(0.22 0.02 250);" />
+          </div>
+          <div style="display:grid;gap:10px;min-width:0;">
+            <label for="c-tel" style="font-size:13px;font-weight:500;letter-spacing:0.06em;">電話番号</label>
+            <input id="c-tel" type="tel" value="{{ tel }}" onChange="{{ onTel }}" placeholder="03-0000-0000" style="border:1px solid oklch(0.88 0.01 250);background:#fff;padding:16px 18px;font-size:14.5px;outline:none;transition:border-color .2s;color:oklch(0.22 0.02 250);" />
+          </div>
+        </div>
+        <div style="display:grid;gap:10px;">
+          <label for="c-topic" style="font-size:13px;font-weight:500;letter-spacing:0.06em;">ご相談内容 <span style="color:oklch(0.55 0.15 250);">*</span></label>
+          <select id="c-topic" required="" value="{{ topic }}" onChange="{{ onTopic }}" style="border:1px solid oklch(0.88 0.01 250);background:#fff;padding:16px 18px;font-size:14.5px;outline:none;transition:border-color .2s;color:oklch(0.22 0.02 250);appearance:none;">
+            <option value="strategy">戦略設計</option>
+            <option value="ads">広告運用</option>
+            <option value="seo">SEO</option>
+            <option value="social">SNSマーケティング</option>
+            <option value="web">サイト制作・LP</option>
+            <option value="crm">CRM・LTV改善</option>
+            <option value="analytics">分析・レポーティング</option>
+            <option value="recruit">採用について</option>
+            <option value="other">その他</option>
+          </select>
+        </div>
+        <div style="display:grid;gap:10px;">
+          <label for="c-budget" style="font-size:13px;font-weight:500;letter-spacing:0.06em;">月間広告予算（任意）</label>
+          <select id="c-budget" value="{{ budget }}" onChange="{{ onBudget }}" style="border:1px solid oklch(0.88 0.01 250);background:#fff;padding:16px 18px;font-size:14.5px;outline:none;transition:border-color .2s;color:oklch(0.22 0.02 250);appearance:none;">
+            <option value="">選択しない</option>
+            <option value="u100">100万円未満</option>
+            <option value="100-300">100〜300万円</option>
+            <option value="300-1000">300〜1,000万円</option>
+            <option value="o1000">1,000万円以上</option>
+          </select>
+        </div>
+        <div style="display:grid;gap:10px;">
+          <label for="c-message" style="font-size:13px;font-weight:500;letter-spacing:0.06em;">詳細 <span style="color:oklch(0.55 0.15 250);">*</span></label>
+          <textarea id="c-message" required="" rows="6" value="{{ message }}" onChange="{{ onMessage }}" placeholder="現状の課題、これまでに試された施策、目標とされている数値などをご記入ください。" style="border:1px solid oklch(0.88 0.01 250);background:#fff;padding:16px 18px;font-size:14.5px;line-height:1.9;outline:none;transition:border-color .2s;resize:vertical;color:oklch(0.22 0.02 250);"></textarea>
+        </div>
+        <label style="display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.9;color:oklch(0.42 0.02 250);cursor:pointer;">
+          <input type="checkbox" checked="{{ agreed }}" onChange="{{ onAgree }}" style="margin-top:0.35em;width:17px;height:17px;flex:0 0 auto;accent-color:oklch(0.55 0.15 250);" />
+          <span>プライバシーポリシーに同意のうえ送信します。いただいた情報はご相談への対応にのみ使用します。</span>
+        </label>
+        <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;">
+          <button type="submit" style="background:oklch(0.22 0.02 250);color:#fff;border:0;padding:19px 44px;border-radius:999px;font-size:15px;font-weight:500;letter-spacing:0.06em;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s;" style-hover="background:oklch(0.55 0.15 250);transform:translateY(-3px);box-shadow:0 18px 34px -18px oklch(0.4 0.1 250 / 0.6)">送信する</button>
+          <p style="margin:0;font-size:13px;letter-spacing:0.04em;color:{{ noticeColor }};">{{ notice }}</p>
+        </div>
+      </form>
+
+      <aside style="min-width:0;display:grid;gap:clamp(28px,4vh,40px);align-content:start;">
+        <div style="border:1px solid oklch(0.91 0.008 250);background:#fff;padding:clamp(28px,3.4vw,40px);">
+          <p style="margin:0 0 22px;font-family:Syne,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.24em;color:oklch(0.52 0.02 250);">DIRECT CONTACT</p>
+          <a href="tel:0300000000" style="display:block;font-family:Syne,sans-serif;font-size:clamp(24px,3.2vw,34px);font-weight:600;letter-spacing:0.01em;color:oklch(0.22 0.02 250);margin-bottom:10px;" style-hover="color:oklch(0.55 0.15 250)">03-0000-0000</a>
+          <p style="margin:0 0 24px;font-size:12.5px;letter-spacing:0.04em;color:oklch(0.46 0.02 250);">受付時間 平日10:00〜19:00</p>
+          <a href="mailto:contact@example.com" style="display:block;font-size:14.5px;letter-spacing:0.02em;word-break:break-all;">contact@example.com</a>
+        </div>
+
+        <div style="border:1px solid oklch(0.91 0.008 250);background:#fff;padding:clamp(28px,3.4vw,40px);">
+          <p style="margin:0 0 22px;font-family:Syne,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.24em;color:oklch(0.52 0.02 250);">OFFICE</p>
+          <div style="position:relative;aspect-ratio:16/9;overflow:hidden;margin:0 0 18px;background:repeating-linear-gradient(135deg,oklch(0.93 0.01 250) 0 10px,oklch(0.96 0.008 250) 10px 20px);border:1px solid oklch(0.91 0.008 250);"><img src="images/office-tokyo.jpg" alt="東京本社が入居するビルの外観" loading="lazy" decoding="async" onError="{{ hideImg }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" /></div>
+          <h3 style="margin:0 0 10px;font-size:15px;font-weight:700;letter-spacing:0.04em;">東京本社</h3>
+          <p style="margin:0 0 24px;font-size:13.5px;line-height:2;color:oklch(0.42 0.02 250);">〒150-0001<br />東京都渋谷区神宮前0-0-0 MEGURUビル 5F<br />JR渋谷駅 宮益坂口より徒歩7分</p>
+          <div style="position:relative;aspect-ratio:16/9;overflow:hidden;margin:0 0 18px;background:repeating-linear-gradient(135deg,oklch(0.93 0.01 250) 0 10px,oklch(0.96 0.008 250) 10px 20px);border:1px solid oklch(0.91 0.008 250);"><img src="images/office-osaka.jpg" alt="大阪オフィスが入居するビルの外観" loading="lazy" decoding="async" onError="{{ hideImg }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" /></div>
+          <h3 style="margin:0 0 10px;font-size:15px;font-weight:700;letter-spacing:0.04em;">大阪オフィス</h3>
+          <p style="margin:0;font-size:13.5px;line-height:2;color:oklch(0.42 0.02 250);">〒530-0001<br />大阪市北区梅田0-0-0<br />JR大阪駅より徒歩5分</p>
+        </div>
+
+        <div style="border:1px solid oklch(0.91 0.008 250);aspect-ratio:4/3;background:repeating-linear-gradient(135deg,oklch(0.93 0.01 250) 0 10px,oklch(0.96 0.008 250) 10px 20px);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+          <span aria-hidden="true" style="position:absolute;top:50%;left:50%;width:70px;height:70px;transform:translate(-50%,-50%);"><span style="position:absolute;inset:0;border-radius:50%;border:1px dashed oklch(0.72 0.06 250);display:block;animation:orbit 30s linear infinite;"></span><span style="position:absolute;inset:26px;border-radius:50%;background:oklch(0.55 0.15 250);display:block;"></span></span>
+          <span style="position:relative;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:0.1em;color:oklch(0.42 0.02 250);background:oklch(0.96 0.008 250);padding:6px 12px;margin-top:88px;">Google Maps embed</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section style="padding:clamp(70px,10vh,120px) clamp(18px,4vw,44px);background:#fff;border-top:1px solid oklch(0.93 0.008 250);border-bottom:1px solid oklch(0.93 0.008 250);">
+    <div style="max-width:860px;margin:0 auto;">
+      <div data-reveal="" style="text-align:center;">
+        <div aria-hidden="true" style="width:56px;height:56px;margin:0 auto 24px;position:relative;"><div style="position:absolute;inset:0;border-radius:50%;border:1px dashed oklch(0.84 0.05 250);animation:orbit 34s linear infinite;"></div><div style="position:absolute;inset:11px;border-radius:50%;border:2px solid oklch(0.55 0.15 250);border-right-color:transparent;border-bottom-color:transparent;animation:orbit 8s linear infinite;"></div><div style="position:absolute;inset:22px;border-radius:50%;background:oklch(0.95 0.03 250);"></div><div style="position:absolute;inset:0;animation:orbit 6s linear infinite;"><span style="position:absolute;top:-3px;left:50%;margin-left:-3px;width:6px;height:6px;border-radius:50%;background:oklch(0.55 0.15 250);display:block;"></span></div></div>
+        <p style="margin:0 0 14px;font-family:Syne,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.3em;color:oklch(0.55 0.15 250);">QUESTIONS</p>
+        <h2 style="margin:0;font-family:Syne,sans-serif;font-size:clamp(34px,6.4vw,76px);font-weight:600;letter-spacing:0.02em;line-height:1;">FAQ</h2>
+      </div>
+      <div data-reveal="" style="margin-top:clamp(46px,6vh,72px);border-top:1px solid oklch(0.89 0.01 250);">
+        <div style="border-bottom:1px solid oklch(0.89 0.01 250);">
+          <button type="button" onClick="{{ t0 }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 4px;background:none;border:0;cursor:pointer;text-align:left;font-size:16px;font-weight:500;letter-spacing:0.03em;color:oklch(0.22 0.02 250);">相談したら必ず契約が必要ですか？<span aria-hidden="true" style="font-family:Syne,sans-serif;color:oklch(0.55 0.15 250);flex:0 0 auto;">{{ i0 }}</span></button>
+          <sc-if value="{{ o0 }}" hint-placeholder-val="{{ true }}"><div>
+            <p style="margin:0;padding:0 4px 28px;font-size:14px;line-height:2.1;color:oklch(0.42 0.02 250);">いいえ。初回のご相談で改善余地をお伝えした段階で終了されて構いません。情報収集のみのご連絡も歓迎しています。</p>
+          </div></sc-if>
+        </div>
+        <div style="border-bottom:1px solid oklch(0.89 0.01 250);">
+          <button type="button" onClick="{{ t1 }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 4px;background:none;border:0;cursor:pointer;text-align:left;font-size:16px;font-weight:500;letter-spacing:0.03em;color:oklch(0.22 0.02 250);">返信までどのくらいかかりますか？<span aria-hidden="true" style="font-family:Syne,sans-serif;color:oklch(0.55 0.15 250);flex:0 0 auto;">{{ i1 }}</span></button>
+          <sc-if value="{{ o1 }}" hint-placeholder-val="{{ true }}"><div>
+            <p style="margin:0;padding:0 4px 28px;font-size:14px;line-height:2.1;color:oklch(0.42 0.02 250);">2営業日以内に担当ストラテジストからご返信します。お急ぎの場合はお電話ください。</p>
+          </div></sc-if>
+        </div>
+        <div style="border-bottom:1px solid oklch(0.89 0.01 250);">
+          <button type="button" onClick="{{ t2 }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 4px;background:none;border:0;cursor:pointer;text-align:left;font-size:16px;font-weight:500;letter-spacing:0.03em;color:oklch(0.22 0.02 250);">初回相談では何を準備すればよいですか？<span aria-hidden="true" style="font-family:Syne,sans-serif;color:oklch(0.55 0.15 250);flex:0 0 auto;">{{ i2 }}</span></button>
+          <sc-if value="{{ o2 }}" hint-placeholder-val="{{ true }}"><div>
+            <p style="margin:0;padding:0 4px 28px;font-size:14px;line-height:2.1;color:oklch(0.42 0.02 250);">特別な準備は不要です。広告アカウントの管理画面とGA4を拝見できると、その場で具体的な改善点をお伝えできます。可能な範囲でご共有ください。</p>
+          </div></sc-if>
+        </div>
+        <div style="border-bottom:1px solid oklch(0.89 0.01 250);">
+          <button type="button" onClick="{{ t3 }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 4px;background:none;border:0;cursor:pointer;text-align:left;font-size:16px;font-weight:500;letter-spacing:0.03em;color:oklch(0.22 0.02 250);">オンラインでの打ち合わせは可能ですか？<span aria-hidden="true" style="font-family:Syne,sans-serif;color:oklch(0.55 0.15 250);flex:0 0 auto;">{{ i3 }}</span></button>
+          <sc-if value="{{ o3 }}" hint-placeholder-val="{{ true }}"><div>
+            <p style="margin:0;padding:0 4px 28px;font-size:14px;line-height:2.1;color:oklch(0.42 0.02 250);">はい。定例も含めてオンラインを標準としています。ご希望があれば訪問も可能です（首都圏・関西圏）。</p>
+          </div></sc-if>
+        </div>
+        <div style="border-bottom:1px solid oklch(0.89 0.01 250);">
+          <button type="button" onClick="{{ t4 }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 4px;background:none;border:0;cursor:pointer;text-align:left;font-size:16px;font-weight:500;letter-spacing:0.03em;color:oklch(0.22 0.02 250);">採用の応募もこのフォームからですか？<span aria-hidden="true" style="font-family:Syne,sans-serif;color:oklch(0.55 0.15 250);flex:0 0 auto;">{{ i4 }}</span></button>
+          <sc-if value="{{ o4 }}" hint-placeholder-val="{{ true }}"><div>
+            <p style="margin:0;padding:0 4px 28px;font-size:14px;line-height:2.1;color:oklch(0.42 0.02 250);">はい。ご相談内容で「採用について」をお選びください。職務経歴書は返信メールに添付いただく形で構いません。</p>
+          </div></sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(80px,12vh,150px) clamp(18px,4vw,44px);position:relative;overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute;bottom:-180px;left:50%;transform:translateX(-50%);width:min(90vw,700px);height:min(90vw,700px);pointer-events:none;">
+      <div style="position:absolute;inset:0;border-radius:50%;border:1px dashed oklch(0.88 0.04 250);animation:orbit 120s linear infinite;"></div>
+      <div style="position:absolute;inset:9%;border-radius:50%;border:1px solid oklch(0.92 0.02 250);"></div>
+      <div style="position:absolute;inset:0;animation:orbit 24s linear infinite;"><span style="position:absolute;top:-5px;left:50%;margin-left:-5px;width:10px;height:10px;border-radius:50%;background:oklch(0.55 0.15 250);display:block;"></span></div>
+    </div>
+    <div data-reveal="" style="position:relative;max-width:760px;margin:0 auto;text-align:center;">
+      <h2 style="margin:0;font-size:clamp(26px,4.6vw,52px);line-height:1.36;font-weight:700;letter-spacing:0.01em;">まずは、現状の数字を<br />見せてください。</h2>
+      <p style="margin:28px auto 0;max-width:520px;font-size:15px;line-height:2.1;color:oklch(0.46 0.02 250);">広告アカウントと計測環境を確認したうえで、改善余地を定量的にお伝えします。</p>
+      <div data-cta-row="" style="margin-top:44px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
+        <a href="Case Studies.dc.html" style="display:inline-flex;align-items:center;gap:12px;border:1px solid oklch(0.85 0.01 250);color:oklch(0.22 0.02 250);padding:20px 40px;border-radius:999px;font-size:15px;font-weight:500;letter-spacing:0.06em;transition:border-color .25s,transform .25s;" style-hover="border-color:oklch(0.55 0.15 250);color:oklch(0.22 0.02 250);transform:translateY(-3px)">実績を見る</a>
+        <a href="Services.dc.html" style="display:inline-flex;align-items:center;gap:12px;border:1px solid oklch(0.85 0.01 250);color:oklch(0.22 0.02 250);padding:20px 40px;border-radius:999px;font-size:15px;font-weight:500;letter-spacing:0.06em;transition:border-color .25s,transform .25s;" style-hover="border-color:oklch(0.55 0.15 250);color:oklch(0.22 0.02 250);transform:translateY(-3px)">サービスを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid oklch(0.91 0.008 250);padding:clamp(60px,8vh,88px) clamp(18px,4vw,44px) 36px;">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(36px,5vw,64px);">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="position:relative;width:24px;height:24px;display:block;flex:0 0 auto;"><span style="position:absolute;inset:3px;border-radius:50%;border:3px solid oklch(0.55 0.15 250);display:block;"></span><span style="position:absolute;inset:0;display:block;animation:orbit 7s linear infinite;"><span style="position:absolute;top:0;left:50%;margin-left:-3px;width:6px;height:6px;border-radius:50%;background:oklch(0.22 0.02 250);display:block;"></span></span></span>
+          <span style="font-family:Syne,sans-serif;font-weight:700;font-size:17px;letter-spacing:0.16em;">MEGURU</span>
+        </div>
+        <p style="margin:18px 0 0;font-size:13px;line-height:2;color:oklch(0.46 0.02 250);">株式会社メグル<br />〒150-0001 東京都渋谷区神宮前0-0-0<br />MEGURUビル 5F</p>
+      </div>
+      <div>
+        <p style="margin:0 0 18px;font-family:Syne,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.24em;color:oklch(0.52 0.02 250);">SITEMAP</p>
+        <div style="display:grid;gap:12px;font-size:13.5px;">
+          <a href="MEGURU Home.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">ホーム</a>
+          <a href="About.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">会社概要</a>
+          <a href="Services.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">サービス</a>
+          <a href="Case Studies.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">実績</a>
+          <a href="Blog.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">インサイト</a>
+          <a href="Contact.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">お問い合わせ</a>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0 0 18px;font-family:Syne,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.24em;color:oklch(0.52 0.02 250);">COMPANY DATA</p>
+        <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:12px 18px;font-size:13px;">
+          <dt style="color:oklch(0.52 0.02 250);">設立</dt><dd style="margin:0;">2019年4月</dd>
+          <dt style="color:oklch(0.52 0.02 250);">代表</dt><dd style="margin:0;">田中 遼</dd>
+          <dt style="color:oklch(0.52 0.02 250);">従業員</dt><dd style="margin:0;">38名</dd>
+          <dt style="color:oklch(0.52 0.02 250);">資本金</dt><dd style="margin:0;">3,000万円</dd>
+        </dl>
+      </div>
+      <div>
+        <p style="margin:0 0 18px;font-family:Syne,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.24em;color:oklch(0.52 0.02 250);">RECRUIT</p>
+        <p style="margin:0 0 18px;font-size:13px;line-height:2;color:oklch(0.46 0.02 250);">ストラテジスト、運用コンサルタント、デザイナーを募集しています。</p>
+        <a href="Contact.dc.html" style="font-family:Syne,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;border-bottom:1px solid oklch(0.55 0.15 250);padding-bottom:6px;">VIEW POSITIONS →</a>
+      </div>
+    </div>
+    <div style="max-width:1180px;margin:clamp(44px,6vh,64px) auto 0;padding-top:24px;border-top:1px solid oklch(0.93 0.008 250);display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;">
+      <p style="margin:0;font-family:Syne,sans-serif;font-size:11px;letter-spacing:0.1em;color:oklch(0.52 0.02 250);">© 2026 MEGURU Inc.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px 24px;font-size:12px;">
+        <a href="Contact.dc.html" style="color:oklch(0.52 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">プライバシーポリシー</a>
+        <a href="Contact.dc.html" style="color:oklch(0.52 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">特定商取引法に基づく表記</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { menuOpen: false,
+    name: '', company: '', role: '', email: '', tel: '',
+    topic: 'strategy', budget: '', message: '', agreed: false,
+    notice: '', ok: false, open: null
+  };
+
+  componentDidMount() {
+    this.initMenu();
+    const nodes = Array.from(document.querySelectorAll('[data-reveal]'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; io.unobserve(e.target); }
+      });
+    }, { threshold: 0.06 });
+    const hidden = [];
+    nodes.forEach((n) => {
+      if (n.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+      n.style.opacity = '0';
+      n.style.transform = 'translateY(16px)';
+      n.style.transition = 'opacity .7s ease, transform .7s ease';
+      hidden.push(n);
+      io.observe(n);
+    });
+    this._safety = setTimeout(() => { hidden.forEach((n) => { n.style.opacity = '1'; n.style.transform = 'none'; }); }, 1200);
+    this._io = io;
+    this.initParallax();
+  }
+
+  initParallax() {
+    const layers = Array.from(document.querySelectorAll('[data-parallax]'));
+    if (!layers.length) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    layers.forEach((el) => { el.style.transition = 'transform .5s cubic-bezier(.2,.8,.2,1)'; });
+    this._pm = (e) => {
+      const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+      const dx = (e.clientX - cx) / cx, dy = (e.clientY - cy) / cy;
+      layers.forEach((el) => {
+        const d = parseFloat(el.getAttribute('data-parallax')) || 0;
+        el.style.transform = 'translate3d(' + (dx * d).toFixed(2) + 'px,' + (dy * d * 0.6).toFixed(2) + 'px,0)';
+      });
+    };
+    window.addEventListener('mousemove', this._pm, { passive: true });
+  }
+
+  initMenu() {
+    this._menuKey = (e) => { if (e.key === 'Escape') this.setMenu(false); };
+    window.addEventListener('keydown', this._menuKey);
+    if (window.matchMedia) {
+      this._menuMq = window.matchMedia('(min-width: 821px)');
+      this._menuMqChange = (e) => { if (e.matches) this.setMenu(false); };
+      this._menuMq.addEventListener('change', this._menuMqChange);
+    }
+  }
+
+  setMenu(open) {
+    if (!!this.state.menuOpen === open) return;
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    this.setState({ menuOpen: open });
+  }
+
+  menuVals() {
+    const open = !!this.state.menuOpen;
+    const line = 'position:absolute;left:12px;width:18px;height:2px;border-radius:2px;background:oklch(0.22 0.02 250);transition:top .3s cubic-bezier(.2,.8,.2,1),transform .3s cubic-bezier(.2,.8,.2,1);';
+    return {
+      menuOpen: open,
+      menuExpanded: open ? 'true' : 'false',
+      menuLabel: open ? 'メニューを閉じる' : 'メニューを開く',
+      toggleMenu: () => this.setMenu(!this.state.menuOpen),
+      closeMenu: () => this.setMenu(false),
+      burgerTop: line + (open ? 'top:20px;transform:rotate(45deg);' : 'top:16px;'),
+      burgerBottom: line + (open ? 'top:20px;transform:rotate(-45deg);' : 'top:24px;')
+    };
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this._menuKey);
+    if (this._menuMq) this._menuMq.removeEventListener('change', this._menuMqChange);
+    document.documentElement.style.overflow = '';
+    if (this._io) this._io.disconnect();
+    if (this._safety) clearTimeout(this._safety);
+    if (this._pm) window.removeEventListener('mousemove', this._pm);
+  }
+
+  field(key) { return (e) => this.setState({ [key]: e.target.value }); }
+
+  renderVals() {
+    const s = this.state;
+    const vals = {
+      hideImg: (e) => { e.currentTarget.style.display = 'none'; },
+      name: s.name, company: s.company, role: s.role, email: s.email,
+      tel: s.tel, topic: s.topic, budget: s.budget, message: s.message,
+      agreed: s.agreed, notice: s.notice,
+      noticeColor: s.ok ? 'oklch(0.5 0.14 160)' : 'oklch(0.55 0.15 250)',
+      onName: this.field('name'),
+      onCompany: this.field('company'),
+      onRole: this.field('role'),
+      onEmail: this.field('email'),
+      onTel: this.field('tel'),
+      onTopic: this.field('topic'),
+      onBudget: this.field('budget'),
+      onMessage: this.field('message'),
+      onAgree: (e) => this.setState({ agreed: e.target.checked }),
+      onSubmit: (e) => {
+        e.preventDefault();
+        if (!s.agreed) {
+          this.setState({ notice: 'プライバシーポリシーへの同意が必要です。', ok: false });
+          return;
+        }
+        this.setState({
+          notice: '送信しました。2営業日以内にご返信します。', ok: true,
+          name: '', company: '', role: '', email: '', tel: '', message: '', agreed: false
+        });
+      }
+    };
+    for (let i = 0; i < 5; i++) {
+      const isOpen = s.open === i;
+      vals['t' + i] = () => this.setState((st) => ({ open: st.open === i ? null : i }));
+      vals['o' + i] = isOpen;
+      vals['i' + i] = isOpen ? '−' : '+';
+    }
+    return Object.assign(vals, this.menuVals());
+  }
+}
+</script>
+</body>
+</html>

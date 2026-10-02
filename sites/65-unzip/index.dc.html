@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<link href="./site.css" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#3d3a38;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#e8555b;text-decoration:none}
+a:hover{color:#c93d44}
+*{box-sizing:border-box}
+input,select,textarea,button{font-family:inherit}
+@keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@keyframes popIn{from{scale:.3;opacity:0}}
+@keyframes fadeUp{from{opacity:0;translate:0 20px}}
+@keyframes kenburns{from{scale:1}to{scale:1.08}}
+@keyframes sway{from{rotate:-7deg}to{rotate:7deg}}
+@keyframes bob{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -5px;rotate:-10deg}}
+@keyframes drift{0%,100%{translate:0 0}50%{translate:12px -16px}}
+</style>
+</helmet>
+
+<dc-import name="SiteHeader" current="top" style="position:sticky;top:0;z-index:50;display:block" hint-size="100%,72px"></dc-import>
+
+<main lang="ja">
+<!-- 01 HERO -->
+<section id="top" data-screen-label="01 Hero" style="position:relative;background:#dff3f8">
+  <div style="position:relative;height:clamp(460px,62vw,760px);overflow:hidden">
+    <div data-anim="kenburns" style="position:absolute;inset:0"><image-slot id="hero-main" shape="rect" src="images/running-field.jpg" placeholder="メイン写真：園児たちの笑顔（横長）"></image-slot></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none">
+      <span data-anim="drift" style="position:absolute;left:8%;top:18%;width:18px;height:18px;border-radius:50%;background:#f6d25a"></span>
+      <span data-anim="drift" style="position:absolute;left:18%;top:70%;width:12px;height:12px;border-radius:50%;background:#8fd0e6"></span>
+      <span data-anim="drift" style="position:absolute;right:12%;top:22%;width:22px;height:22px;border-radius:50%;background:#f39aa0"></span>
+      <span data-anim="drift" style="position:absolute;right:20%;top:66%;width:14px;height:14px;border-radius:50%;background:#a8d88f"></span>
+      <span data-anim="drift" style="position:absolute;left:30%;top:10%;width:10px;height:10px;border-radius:50%;background:#f7b37a"></span>
+      <span data-anim="drift" style="position:absolute;right:32%;top:84%;width:16px;height:16px;border-radius:50%;background:#c7a8e0"></span>
+    </div>
+    <div data-parallax="1" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;pointer-events:none;text-align:center;padding:0 16px 60px">
+      <div style="display:flex;gap:clamp(4px,1vw,10px);flex-wrap:wrap;justify-content:center">
+        <sc-for list="{{ tags }}" as="t" hint-placeholder-count="5">
+          <span data-anim="float" style="width:clamp(42px,5vw,58px);height:clamp(42px,5vw,58px);border-radius:50%;background:#e8555b;color:#fff;border:3px solid #fff;display:grid;place-items:center;font-family:'Mochiy Pop One';font-size:clamp(12px,1.4vw,16px);transform:rotate({{ t.rot }}deg);box-shadow:0 3px 0 rgba(0,0,0,.08)">{{ t.label }}</span>
+        </sc-for>
+      </div>
+      <h1 data-anim="pop" style="margin:6px 0 0;font-family:'Mochiy Pop One';font-weight:400;font-size:clamp(44px,8.4vw,112px);line-height:1.08;color:#e8555b;letter-spacing:.02em;text-shadow:4px 0 0 #fff,-4px 0 0 #fff,0 4px 0 #fff,0 -4px 0 #fff,3px 3px 0 #fff,-3px 3px 0 #fff,3px -3px 0 #fff,-3px -3px 0 #fff,0 8px 0 rgba(0,0,0,.12)">{{ heroLine1 }}<br>{{ heroLine2 }}</h1>
+      <div data-anim="fadeup" style="display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:6px">
+        <span style="background:#e8555b;color:#fff;border:3px solid #fff;padding:6px 18px;font-family:'Mochiy Pop One';font-size:clamp(14px,1.8vw,20px);letter-spacing:.1em">認定こども園 昭和保育園</span>
+        <span style="background:#fff;color:#e8555b;padding:3px 12px;font-weight:900;font-size:13px;letter-spacing:.12em;border-radius:4px">名古屋市 昭和区</span>
+      </div>
+    </div>
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(40px,6vw,90px);pointer-events:none"><path d="M0 50 C 240 10 420 90 720 55 C 1000 22 1200 80 1440 40 L1440 90 L0 90 Z" fill="#dff3f8"></path></svg>
+  </div>
+
+  <div style="position:relative;max-width:980px;margin:-10px auto 0;padding:0 16px 64px;display:flex;flex-direction:column;gap:24px">
+    <div data-reveal="1" style="background:#fff;border-radius:20px;padding:clamp(24px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px;align-items:center;box-shadow:0 6px 0 #c6e7f0">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="align-self:flex-start;background:#fdecec;color:#e8555b;font-weight:900;font-size:12px;padding:4px 12px;border-radius:999px">2027年度 入園見学 受付中</span>
+        <p style="margin:0;font-size:clamp(18px,2.2vw,22px);font-weight:900;color:#e8555b;line-height:1.6;text-wrap:pretty">あそびの中の「やってみたい」を、<br>いっしょに育てていく保育園です。</p>
+        <p style="margin:0;font-size:14px;line-height:2;color:#5a5552">0歳から就学前まで、保育と教育の両面から子どもたちの毎日を見守ります。まずはお気軽に園の様子を見にいらしてください。</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px">
+          <a href="お問い合わせ.dc.html" style="display:flex;align-items:center;gap:10px;background:#e8555b;color:#fff;font-weight:700;font-size:14px;padding:13px 22px;border-radius:999px;transition:background .2s,transform .2s" style-hover="background:#c93d44;color:#fff;transform:translateY(-2px)">見学を予約する <span style="font-size:11px">▶</span></a>
+          <a href="入園案内.dc.html" style="display:flex;align-items:center;gap:10px;background:#fff;color:#e8555b;border:1px solid #e8555b;font-weight:700;font-size:14px;padding:12px 22px;border-radius:999px;transition:background .2s" style-hover="background:#fdecec">入園案内を見る</a>
+        </div>
+      </div>
+      <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:0;font-size:14px;border-top:1px dashed #e9d9d9">
+        <dt style="padding:14px 16px 14px 0;font-weight:900;color:#e8555b;border-bottom:1px dashed #e9d9d9">開園時間</dt><dd style="margin:0;padding:14px 0;border-bottom:1px dashed #e9d9d9">7:00〜19:00（月〜土）</dd>
+        <dt style="padding:14px 16px 14px 0;font-weight:900;color:#e8555b;border-bottom:1px dashed #e9d9d9">対象年齢</dt><dd style="margin:0;padding:14px 0;border-bottom:1px dashed #e9d9d9">0歳（生後57日）〜就学前</dd>
+        <dt style="padding:14px 16px 14px 0;font-weight:900;color:#e8555b;border-bottom:1px dashed #e9d9d9">見学日</dt><dd style="margin:0;padding:14px 0;border-bottom:1px dashed #e9d9d9">毎週火・木 10:00〜 ／ 要予約</dd>
+      </dl>
+    </div>
+
+    <div data-reveal="1" style="position:relative;background:#fff;border-radius:20px;padding:44px clamp(20px,4vw,40px) 32px;margin-top:22px">
+      <div style="position:absolute;top:-26px;left:50%;transform:translateX(-50%);width:84px;height:52px;background:#fff;border-radius:42px 42px 0 0;display:flex;justify-content:center;padding-top:10px"><span style="width:30px;height:30px;border-radius:50%;background:#7cc5e0;color:#fff;display:grid;place-items:center;font-family:'Mochiy Pop One';font-size:13px">!</span></div>
+      <h2 style="margin:0 0 24px;text-align:center;font-size:14px;font-weight:900">お知らせ</h2>
+      <div class="r-news-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:20px">
+        <sc-for list="{{ news }}" as="item" hint-placeholder-count="3">
+          <a href="#top" class="r-news" style="display:flex;flex-direction:column;gap:8px;color:#3d3a38;transition:transform .2s" style-hover="transform:translateY(-3px);color:#3d3a38">
+            <span style="aspect-ratio:16/8;border-radius:10px;background:{{ item.bg }};display:grid;place-items:center;font-family:'Mochiy Pop One';color:#fff;font-size:22px;letter-spacing:.08em">{{ item.cat }}</span>
+            <span style="font-size:11px;color:#8a8380">{{ item.date }}</span>
+            <span style="font-size:13px;line-height:1.7">{{ item.title }}</span>
+          </a>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:center;margin-top:28px">
+        <a href="#top" style="display:flex;align-items:center;justify-content:center;gap:40px;min-width:220px;padding:10px 20px;border:1px solid #e8555b;border-radius:999px;color:#e8555b;font-size:12px;font-weight:700;background:#fff;transition:background .2s,color .2s" style-hover="background:#e8555b;color:#fff">お知らせを見る <span>›</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<sc-if value="{{ showBunting }}" hint-placeholder-val="{{ true }}">
+  <div aria-hidden="true" style="position:relative;height:40px;overflow:hidden;background:#dff3f8;border-bottom:0">
+    <div style="position:absolute;top:6px;left:0;right:0;height:2px;background:#f2b8bb"></div>
+    <div style="display:flex;gap:6px;padding-top:7px;width:max-content">
+      <sc-for list="{{ flags }}" as="f" hint-placeholder-count="40"><span data-anim="flag" style="width:24px;height:26px;background:{{ f }};clip-path:polygon(0 0,100% 0,50% 100%)"></span></sc-for>
+    </div>
+  </div>
+</sc-if>
+
+<!-- 02 PHILOSOPHY -->
+<section id="feature" data-screen-label="02 Philosophy" style="padding:clamp(64px,8vw,110px) 16px;background:#fff">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center">
+    <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:8px">
+      <span data-anim="icon" style="width:40px;height:40px;border-radius:50%;background:#f6c343;color:#fff;display:grid;place-items:center;font-family:'Mochiy Pop One'">特</span>
+      <span style="font-size:13px;font-weight:900">園の特色</span>
+    </div>
+    <div data-reveal="1" class="r-collage" style="width:100%;display:grid;grid-template-columns:{{ featureCols }};gap:clamp(12px,2vw,20px);align-items:center;margin:32px 0 36px">
+      <div style="aspect-ratio:4/3"><image-slot id="feat-1" radius="8" src="images/circle-play.jpg" placeholder="自然体験の写真"></image-slot></div>
+      <div style="aspect-ratio:16/10"><image-slot id="feat-2" radius="8" src="images/group-smile.jpg" placeholder="発表会・行事の写真"></image-slot></div>
+      <div style="aspect-ratio:4/3"><image-slot id="feat-3" radius="8" src="images/exercise-jump.jpg" placeholder="運動あそびの写真"></image-slot></div>
+    </div>
+    <h2 data-reveal="1" style="margin:0 0 20px;font-size:clamp(22px,2.6vw,28px);font-weight:900;color:#e8555b;letter-spacing:.06em;text-align:center;line-height:1.6">体験で伸ばす、一人ひとりの可能性</h2>
+    <p data-reveal="1" style="margin:0;max-width:600px;text-align:center;font-size:14px;line-height:2.1;text-wrap:pretty">昭和保育園は、たくさんの「やってみた」を大切にしています。見て、聞いて、さわって、体で感じたことは、子どもたちの一生の財産になります。できたことも、うまくいかなかったことも、先生がそばで受けとめ、次の「やってみたい」へつなげていきます。</p>
+    <div data-reveal="1" style="margin-top:28px"><a href="園の特色.dc.html" style="display:flex;align-items:center;justify-content:center;gap:40px;min-width:220px;padding:10px 20px;border:1px solid #e8555b;border-radius:999px;color:#e8555b;font-size:12px;font-weight:700;background:#fff;transition:background .2s,color .2s" style-hover="background:#e8555b;color:#fff">保育方針を見る <span>›</span></a></div>
+
+    <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px;margin-top:clamp(56px,7vw,80px)">
+      <sc-for list="{{ features }}" as="c" hint-placeholder-count="3">
+        <article data-reveal="1" style="display:flex;flex-direction:column;gap:12px;transition:transform .25s" style-hover="transform:translateY(-4px)">
+          <div style="position:relative;aspect-ratio:3/2">
+            <image-slot id="{{ c.id }}" radius="8" src="{{ c.src }}" placeholder="{{ c.ph }}"></image-slot>
+            <span style="position:absolute;left:0;bottom:-1px;background:#fff;padding:8px 14px 2px 8px;border-radius:0 10px 0 0;color:#e8555b;font-weight:900;font-size:15px;letter-spacing:.06em">{{ c.title }}</span>
+          </div>
+          <p style="margin:0;font-size:13px;line-height:1.9;text-wrap:pretty">{{ c.text }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 03 DAILY LIFE -->
+<section id="life" data-screen-label="03 Daily life" style="background:#dff3f8">
+  <sc-if value="{{ showBunting }}" hint-placeholder-val="{{ true }}">
+    <div aria-hidden="true" style="position:relative;height:40px;overflow:hidden;background:#fff">
+      <div style="position:absolute;top:6px;left:0;right:0;height:2px;background:#f2b8bb"></div>
+      <div style="display:flex;gap:6px;padding-top:7px;width:max-content">
+        <sc-for list="{{ flags }}" as="f" hint-placeholder-count="40"><span data-anim="flag" style="width:24px;height:26px;background:{{ f }};clip-path:polygon(0 0,100% 0,50% 100%)"></span></sc-for>
+      </div>
+    </div>
+  </sc-if>
+  <div style="padding:clamp(56px,7vw,90px) 0">
+    <div style="max-width:1000px;margin:0 auto;padding:0 16px;display:flex;flex-direction:column;align-items:center;text-align:center">
+      <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <span data-anim="icon" style="width:40px;height:40px;border-radius:50%;background:#fff;border:3px solid #e8555b;color:#e8555b;display:grid;place-items:center;font-family:'Mochiy Pop One';font-size:14px">生</span>
+        <span style="font-size:13px;font-weight:900">園の生活</span>
+      </div>
+      <h2 data-reveal="1" style="margin:14px 0 18px;font-size:clamp(22px,2.6vw,28px);font-weight:900;color:#e8555b;letter-spacing:.1em">よく遊び、よく学び、よく育つ</h2>
+      <p data-reveal="1" style="margin:0;max-width:560px;font-size:14px;line-height:2.1;text-wrap:pretty">子どもたちの毎日は、新しい体験でいっぱい。登園からお迎えまでの一日の流れと、季節ごとの行事をご紹介します。</p>
+    </div>
+
+    <div style="overflow:hidden;margin:44px 0 0">
+      <div ref="{{ trackRef }}" style="display:flex;gap:14px;width:max-content;will-change:transform">
+        <sc-for list="{{ strip }}" as="s" hint-placeholder-count="16">
+          <div style="width:clamp(140px,14vw,200px);aspect-ratio:1;flex:none;transition:transform .35s cubic-bezier(.34,1.56,.64,1)" style-hover="transform:scale(1.06) rotate(-2deg)"><image-slot id="{{ s.id }}" radius="10" src="{{ s.src }}" placeholder="{{ s.ph }}"></image-slot></div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="max-width:1000px;margin:0 auto;padding:0 16px">
+      <div data-reveal="1" style="margin-top:56px;background:#fff;border-radius:20px;padding:clamp(24px,4vw,40px)">
+        <h3 style="margin:0 0 24px;font-size:17px;font-weight:900;color:#e8555b;text-align:center;letter-spacing:.08em">一日の流れ <span style="font-size:12px;color:#8a8380;font-weight:500">（3〜5歳児の例）</span></h3>
+        <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:0">
+          <sc-for list="{{ schedule }}" as="d" hint-placeholder-count="8">
+            <li style="display:flex;gap:14px;padding:14px 8px;border-bottom:1px dashed #d9ecf2;align-items:flex-start">
+              <span style="flex:none;min-width:52px;font-family:'Mochiy Pop One';font-size:14px;color:{{ d.color }}">{{ d.time }}</span>
+              <span style="display:flex;flex-direction:column;gap:2px;text-align:left"><strong style="font-size:14px">{{ d.title }}</strong><span style="font-size:12px;color:#6b6562;line-height:1.7">{{ d.text }}</span></span>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+
+      <div data-reveal="1" style="margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+        <sc-for list="{{ programs }}" as="p" hint-placeholder-count="9">
+          <span style="background:#fff;border:2px solid {{ p.color }};color:#3d3a38;font-weight:700;font-size:13px;padding:8px 16px;border-radius:999px">{{ p.label }}</span>
+        </sc-for>
+      </div>
+
+      <div class="r-2col" style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:16px">
+        <sc-for list="{{ seasons }}" as="se" hint-placeholder-count="4">
+          <div data-reveal="1" style="background:#fff;border-radius:16px;padding:22px 20px;border-top:6px solid {{ se.color }};display:flex;flex-direction:column;gap:10px;text-align:left">
+            <span style="font-family:'Mochiy Pop One';font-size:20px;color:{{ se.color }}">{{ se.name }}</span>
+            <span style="font-size:13px;line-height:1.9">{{ se.events }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div data-reveal="1" style="display:flex;justify-content:center;margin-top:36px"><a href="園の生活.dc.html" style="display:flex;align-items:center;justify-content:center;gap:40px;min-width:220px;padding:10px 20px;border:1px solid #e8555b;border-radius:999px;color:#e8555b;font-size:12px;font-weight:700;background:#fff;transition:background .2s,color .2s" style-hover="background:#e8555b;color:#fff">園の生活を見る <span>›</span></a></div>
+    </div>
+  </div>
+  <sc-if value="{{ showBunting }}" hint-placeholder-val="{{ true }}">
+    <div aria-hidden="true" style="position:relative;height:40px;overflow:hidden;background:#fff">
+      <div style="position:absolute;top:6px;left:0;right:0;height:2px;background:#f2b8bb"></div>
+      <div style="display:flex;gap:6px;padding-top:7px;width:max-content">
+        <sc-for list="{{ flags }}" as="f" hint-placeholder-count="40"><span data-anim="flag" style="width:24px;height:26px;background:{{ f }};clip-path:polygon(0 0,100% 0,50% 100%)"></span></sc-for>
+      </div>
+    </div>
+  </sc-if>
+</section>
+
+<!-- 04 TRUST -->
+<section id="trust" data-screen-label="04 Teachers & environment" style="padding:clamp(64px,8vw,110px) 16px;background:#fff">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:8px">
+      <span data-anim="icon" style="width:40px;height:40px;border-radius:50%;background:#8cc97a;color:#fff;display:grid;place-items:center;font-family:'Mochiy Pop One';font-size:14px">園</span>
+      <span style="font-size:13px;font-weight:900">先生と環境</span>
+    </div>
+    <h2 data-reveal="1" style="margin:14px 0 18px;font-size:clamp(20px,2.6vw,28px);font-weight:900;color:#e8555b;letter-spacing:.08em;line-height:1.6">保育、教育<br>二つの面から子どもたちの成長を育みます</h2>
+    <p data-reveal="1" style="margin:0;max-width:600px;font-size:14px;line-height:2.1;text-wrap:pretty">名古屋市昭和区の閑静な住宅街にある認定こども園です。子どもの気持ちに寄り添う先生たちと、安心して過ごせる環境で、お子さまとご家族を支えます。</p>
+
+    <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:28px;margin-top:48px;text-align:left">
+      <sc-for list="{{ teachers }}" as="tc" hint-placeholder-count="3">
+        <article data-reveal="1" class="r-teacher" style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:28px 22px;border:2px solid #fbe1e2;border-radius:20px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-4px);box-shadow:0 8px 0 #fbe1e2">
+          <image-slot id="{{ tc.id }}" shape="circle" src="{{ tc.src }}" style="width:120px;height:120px" placeholder="先生の写真"></image-slot>
+          <span style="font-size:12px;font-weight:700;color:#fff;background:{{ tc.color }};padding:3px 12px;border-radius:999px">{{ tc.role }}</span>
+          <strong style="font-size:17px;letter-spacing:.08em">{{ tc.name }}</strong>
+          <p style="margin:0;font-size:13px;line-height:1.9;text-align:left;text-wrap:pretty">{{ tc.text }}</p>
+        </article>
+      </sc-for>
+    </div>
+
+    <div data-reveal="1" style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;margin-top:64px">
+      <div style="aspect-ratio:16/10"><image-slot id="env-1" radius="10" src="images/room-slide.jpg" placeholder="保育室（0〜2歳）"></image-slot></div>
+      <div style="aspect-ratio:16/10"><image-slot id="env-2" radius="10" src="images/playroom.jpg" placeholder="保育室（3〜5歳）"></image-slot></div>
+    </div>
+    <div class="r-2col" style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:16px;margin-top:20px;text-align:left">
+      <sc-for list="{{ envs }}" as="e" hint-placeholder-count="4">
+        <div data-reveal="1" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:#fff8f4;border-radius:14px">
+          <strong style="font-size:14px;color:#e8555b">{{ e.title }}</strong>
+          <span style="font-size:12px;line-height:1.8">{{ e.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <h3 data-reveal="1" style="margin:72px 0 24px;font-size:18px;font-weight:900;color:#e8555b;letter-spacing:.1em">保護者の声</h3>
+    <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;text-align:left">
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+        <figure data-reveal="1" style="margin:0;position:relative;background:#dff3f8;border-radius:20px;padding:28px 24px 22px;display:flex;flex-direction:column;gap:14px">
+          <span style="position:absolute;top:-14px;left:22px;font-family:'Mochiy Pop One';font-size:40px;line-height:1;color:#7cc5e0">“</span>
+          <blockquote style="margin:0;font-size:13px;line-height:2;text-wrap:pretty">{{ v.text }}</blockquote>
+          <figcaption style="font-size:12px;font-weight:700;color:#5a8fa3">{{ v.who }}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
+    <div data-reveal="1" style="display:flex;justify-content:center;margin-top:36px"><a href="園の概要.dc.html" style="display:flex;align-items:center;justify-content:center;gap:40px;min-width:220px;padding:10px 20px;border:1px solid #e8555b;border-radius:999px;color:#e8555b;font-size:12px;font-weight:700;background:#fff;transition:background .2s,color .2s" style-hover="background:#e8555b;color:#fff">園の概要を見る <span>›</span></a></div>
+  </div>
+</section>
+
+<!-- 05 ADMISSION / CONTACT -->
+<section id="admission" data-screen-label="05 Admission & contact" style="padding:clamp(56px,7vw,90px) 16px clamp(64px,8vw,100px);background:#fdf6f2">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:8px">
+      <span data-anim="icon" style="width:40px;height:40px;border-radius:50%;background:#e8555b;color:#fff;display:grid;place-items:center;font-family:'Mochiy Pop One';font-size:14px">入</span>
+      <span style="font-size:13px;font-weight:900">入園・見学のご案内</span>
+    </div>
+    <h2 data-reveal="1" style="margin:14px 0 18px;font-size:clamp(22px,2.6vw,28px);font-weight:900;color:#e8555b;letter-spacing:.1em">まずは、園に遊びにきてください</h2>
+    <p data-reveal="1" style="margin:0;max-width:560px;font-size:14px;line-height:2.1;text-wrap:pretty">実際の園の雰囲気や子どもたちの様子を見ていただくのがいちばんです。お子さまとご一緒に、どうぞお気軽にお越しください。</p>
+
+    <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px;margin-top:56px">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="2">
+        <a href="{{ st.href }}" data-reveal="1" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;background:#fff;border:2px solid #f2b8bb;border-radius:18px;padding:40px 24px 28px;color:#3d3a38;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-4px);box-shadow:0 8px 0 #f7d2d4;color:#3d3a38">
+          <span style="position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid #f2b8bb;display:grid;place-items:center;color:#e8555b;font-family:'Mochiy Pop One';font-size:15px">{{ st.mark }}</span>
+          <strong style="font-size:18px;color:#e8555b;letter-spacing:.08em;display:flex;align-items:center;gap:8px">{{ st.title }} <span style="width:18px;height:18px;border-radius:50%;background:#e8555b;color:#fff;font-size:10px;display:grid;place-items:center">›</span></strong>
+          <span style="font-size:13px;line-height:1.9">{{ st.text }}</span>
+        </a>
+      </sc-for>
+    </div>
+
+    <div id="contact" style="width:100%;margin-top:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px;text-align:left;scroll-margin-top:90px">
+      <div data-reveal="1" style="background:#fff;border-radius:20px;padding:clamp(24px,4vw,36px);display:flex;flex-direction:column;gap:16px">
+        <h3 style="margin:0;font-size:17px;font-weight:900;color:#e8555b">見学予約・お問い合わせ</h3>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:14px">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">保護者さまのお名前 <span style="display:none"></span><input required="required" name="name" autocomplete="name" style="height:48px;padding:0 14px;border:1px solid #e6dcd8;border-radius:10px;font-size:15px;background:#fffdfb"></label>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">メールアドレス<input required="required" type="email" name="email" autocomplete="email" style="height:48px;padding:0 14px;border:1px solid #e6dcd8;border-radius:10px;font-size:15px;background:#fffdfb"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">電話番号<input type="tel" name="tel" autocomplete="tel" style="height:48px;padding:0 14px;border:1px solid #e6dcd8;border-radius:10px;font-size:15px;background:#fffdfb"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">お子さまの年齢<select name="age" style="height:48px;padding:0 12px;border:1px solid #e6dcd8;border-radius:10px;font-size:15px;background:#fffdfb"><option>0歳</option><option>1歳</option><option>2歳</option><option>3歳</option><option>4歳</option><option>5歳</option><option>出産予定</option></select></label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">見学希望日<input type="date" name="date" style="height:48px;padding:0 12px;border:1px solid #e6dcd8;border-radius:10px;font-size:15px;background:#fffdfb"></label>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">ご質問・メッセージ<textarea name="msg" rows="4" style="padding:12px 14px;border:1px solid #e6dcd8;border-radius:10px;font-size:15px;background:#fffdfb;resize:vertical"></textarea></label>
+            <button type="submit" style="height:54px;border:none;border-radius:999px;background:#e8555b;color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:background .2s" style-hover="background:#c93d44">この内容で送信する</button>
+          </form>
+        </sc-if>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:40px 10px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center">
+            <span style="width:56px;height:56px;border-radius:50%;background:#8cc97a;color:#fff;display:grid;place-items:center;font-family:'Mochiy Pop One';font-size:22px">✓</span>
+            <strong style="font-size:17px">お問い合わせありがとうございます</strong>
+            <span style="font-size:13px;line-height:1.9">2営業日以内に担当よりご連絡いたします。</span>
+          </div>
+        </sc-if>
+      </div>
+
+      <div data-reveal="1" style="display:flex;flex-direction:column;gap:16px">
+        <div style="background:#fff;border-radius:20px;padding:clamp(24px,4vw,32px)">
+          <h3 style="margin:0 0 12px;font-size:17px;font-weight:900;color:#e8555b">園の概要</h3>
+          <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;font-size:13px;line-height:1.8">
+            <sc-for list="{{ info }}" as="i" hint-placeholder-count="6">
+              <dt style="padding:10px 16px 10px 0;font-weight:900;border-bottom:1px dashed #eadede;white-space:nowrap">{{ i.k }}</dt>
+              <dd style="margin:0;padding:10px 0;border-bottom:1px dashed #eadede">{{ i.v }}</dd>
+            </sc-for>
+          </dl>
+        </div>
+        <a href="tel:052-000-0000" style="display:flex;flex-direction:column;align-items:center;gap:2px;background:#e8555b;color:#fff;border-radius:20px;padding:20px;transition:background .2s" style-hover="background:#c93d44;color:#fff">
+          <span style="font-size:12px;font-weight:700">お電話でのお問い合わせ（平日 9:00〜17:00）</span>
+          <span style="font-family:'Mochiy Pop One';font-size:26px;letter-spacing:.06em">052-000-0000</span>
+        </a>
+        <div style="aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:repeating-linear-gradient(45deg,#f3ece8 0 10px,#efe6e1 10px 20px);display:grid;place-items:center;font-family:monospace;font-size:12px;color:#9a8f8a">地図（Google Map 埋め込み）</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<dc-import name="SiteFooter" show-cta="{{ false }}" hint-size="100%,300px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroCopy&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;],&quot;default&quot;:&quot;a&quot;,&quot;tsType&quot;:&quot;'a'|'b'|'c'&quot;,&quot;section&quot;:&quot;ヒーロー&quot;},&quot;showBunting&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;装飾&quot;},&quot;marquee&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;動き&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menu: false, sent: false };
+  trackRef = React.createRef();
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+    this.setupReveal();
+    this.animate();
+    let x = 0;
+    const tick = () => {
+      const el = this.trackRef.current;
+      if (el && this.props.marquee !== false) {
+        x -= 0.4;
+        const half = el.scrollWidth / 2;
+        if (half && -x >= half) x += half;
+        el.style.transform = `translateX(${x}px)`;
+      }
+      this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+  }
+  animate() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const q = (s, fn) => document.querySelectorAll(s).forEach(fn);
+    setTimeout(() => {
+      q('[data-anim="kenburns"]', el => el.style.animation = 'kenburns 16s ease-in-out infinite alternate');
+      q('[data-anim="float"]', (el, i) => el.style.animation = `popIn .6s cubic-bezier(.34,1.56,.64,1) ${.2 + i * .1}s backwards, floaty 3.2s ease-in-out ${i * .3}s infinite`);
+      q('[data-anim="pop"]', el => el.style.animation = 'popIn .9s cubic-bezier(.34,1.56,.64,1) .7s backwards');
+      q('[data-anim="fadeup"]', el => el.style.animation = 'fadeUp .8s ease 1.2s backwards');
+      q('[data-anim="drift"]', (el, i) => el.style.animation = `popIn .6s ease ${.4 + i * .12}s backwards, drift ${5 + i % 3}s ease-in-out ${i * .4}s infinite`);
+      q('[data-anim="flag"]', (el, i) => { el.style.transformOrigin = '50% 0'; el.style.animation = `sway ${2.4 + (i % 5) * .2}s ease-in-out ${(i % 11) * .13}s infinite alternate`; });
+      q('[data-anim="icon"]', (el, i) => el.style.animation = `bob 2.8s ease-in-out ${i * .35}s infinite`);
+    }, 100);
+    this.onScroll = () => {
+      const y = window.scrollY; if (y > 900) return;
+      document.querySelectorAll('[data-parallax]').forEach(el => { el.style.translate = `0 ${y * .28}px`; el.style.opacity = Math.max(0, 1 - y / 700); });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+  }
+  setupReveal() {
+    if (!('IntersectionObserver' in window)) return;
+    this.io = new IntersectionObserver((ents) => ents.forEach(en => {
+      if (en.isIntersecting) { const t = en.target; t.style.opacity = 1; t.style.transform = 'none'; this.io.unobserve(t); setTimeout(() => { t.style.transitionDelay = ''; }, 1400); }
+    }), { threshold: 0.12 });
+    setTimeout(() => document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (el.dataset.rv) return; el.dataset.rv = 1;
+      const r = el.getBoundingClientRect(); if (r.top < window.innerHeight) return;
+      const sib = [...el.parentElement.children].filter(c => c.hasAttribute('data-reveal')).indexOf(el);
+      el.style.opacity = 0; el.style.transform = 'translateY(32px) scale(.97)';
+      el.style.transition = (el.style.transition ? el.style.transition + ',' : '') + 'opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1)';
+      el.style.transitionDelay = Math.max(0, sib) * .12 + 's';
+      this.io.observe(el);
+    }), 300);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); cancelAnimationFrame(this.raf); this.io && this.io.disconnect(); }
+  renderVals() {
+    const mobile = this.state.w < 900;
+    const copy = { a: ['毎日が、', 'はっけん！'], b: ['あそんで', 'ぐんぐん！'], c: ['体験', 'いっぱい！'] }[this.props.heroCopy ?? 'a'] || ['毎日が、', 'はっけん！'];
+    const pal = ['#f39aa0', '#f6d25a', '#8fd0e6', '#a8d88f', '#f7b37a', '#c7a8e0'];
+    const strip = [
+      ['リトミック', 'train-game'], ['クッキング', 'cooking-potato'], ['外あそび', 'playground-kids'], ['お絵かき', 'drawing'],
+      ['絵本の時間', 'teacher-toddler'], ['運動あそび', 'exercise-jump'], ['お友だちと', 'circle-play'], ['読み聞かせ', 'picture-book'],
+    ].map(([ph, img], i) => ({ id: 'life-' + i, ph, src: 'images/' + img + '.jpg' }));
+    return {
+      isDesktop: !mobile, isMobile: mobile, menuOpen: mobile && this.state.menu,
+      menuLabel: this.state.menu ? '閉じる' : 'MENU',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      heroLine1: copy[0], heroLine2: copy[1],
+      showBunting: this.props.showBunting ?? true,
+      featureCols: mobile ? '1fr 1fr' : '1fr 1.5fr 1fr',
+      trackRef: this.trackRef,
+      notSent: !this.state.sent, sent: this.state.sent,
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      nav: [
+        { label: '園の特色', href: '#feature', color: '#f6c343', mark: '特' },
+        { label: '園の生活', href: '#life', color: '#7cc5e0', mark: '生' },
+        { label: '先生と環境', href: '#trust', color: '#8cc97a', mark: '園' },
+        { label: '入園案内', href: '#admission', color: '#f39a6b', mark: '入' },
+        { label: 'お問い合わせ', href: '#contact', color: '#e8555b', mark: '?' },
+      ],
+      tags: [{ label: '自然', rot: -14 }, { label: '文化', rot: -6 }, { label: '音楽', rot: 0 }, { label: '運動', rot: 6 }, { label: '学習', rot: 14 }],
+      flags: Array.from({ length: 80 }, (_, i) => pal[i % pal.length]),
+      news: [
+        { cat: 'お知らせ', bg: '#f39aa0', date: '2026.09.07', title: '【ご案内】9月16日（水）の施設見学申込みを締め切りました' },
+        { cat: '行事', bg: '#7cc5e0', date: '2026.08.18', title: '【お知らせ】10月に運動会を開催します' },
+        { cat: '見学', bg: '#8cc97a', date: '2026.06.23', title: '【ご案内】2027年度 入園見学の受付を開始しました' },
+      ],
+      features: [
+        { id: 'card-1', ph: '園内の写真', src: 'images/cooking-potato.jpg', title: '自分でできた！', text: '着替えや片づけなど、身のまわりのことを「自分でやってみる」気持ちを大切に、一人ひとりのペースで見守ります。' },
+        { id: 'card-2', ph: '友だちと遊ぶ写真', src: 'images/playground-kids.jpg', title: 'いっしょが楽しい', text: '異年齢の友だちとのあそびや行事を通して、思いやりや伝え合う力を育みます。' },
+        { id: 'card-3', ph: '製作・表現活動の写真', src: 'images/drawing.jpg', title: 'なんでだろう？', text: '音楽・製作・自然あそびなど、好奇心の芽をひろげる活動を毎日のカリキュラムに取り入れています。' },
+      ],
+      strip: strip.concat(strip.map(s => ({ ...s, id: s.id + 'b' }))),
+      schedule: [
+        { time: '7:00', title: '登園', text: '朝の受け入れ・視診', color: '#f39a6b' },
+        { time: '9:30', title: '朝の会', text: 'うた・お当番・今日の予定', color: '#e8555b' },
+        { time: '10:00', title: '主活動', text: '外あそび・製作・リトミック', color: '#7cc5e0' },
+        { time: '11:30', title: '給食', text: '園内調理のあたたかいごはん', color: '#8cc97a' },
+        { time: '13:00', title: 'お昼寝', text: 'ゆったり体を休めます', color: '#b39ad6' },
+        { time: '15:00', title: 'おやつ', text: '手づくりおやつ', color: '#f6c343' },
+        { time: '15:30', title: '自由あそび', text: '好きなあそびをじっくり', color: '#7cc5e0' },
+        { time: '16:00', title: '順次降園', text: '一日の様子をお伝えします', color: '#f39a6b' },
+      ],
+      programs: [
+        { label: '外あそび', color: '#8cc97a' }, { label: 'リトミック', color: '#f39aa0' }, { label: '和太鼓', color: '#f39a6b' },
+        { label: '絵画・製作', color: '#f6c343' }, { label: '絵本', color: '#7cc5e0' }, { label: '体操教室', color: '#8cc97a' },
+        { label: 'えいご', color: '#b39ad6' }, { label: '野菜の栽培', color: '#a8d88f' }, { label: 'クッキング', color: '#f39aa0' },
+      ],
+      seasons: [
+        { name: '春', color: '#f39aa0', events: '入園式・こどもの日・春の遠足・親子参観' },
+        { name: '夏', color: '#7cc5e0', events: 'プール遊び・七夕会・夏まつり・野菜の収穫' },
+        { name: '秋', color: '#f39a6b', events: '運動会・芋ほり・ハロウィン・秋の遠足' },
+        { name: '冬', color: '#8fa9d9', events: '生活発表会・クリスマス会・豆まき・卒園式' },
+      ],
+      teachers: [
+        { id: 't-1', src: 'images/face-1.jpg', role: '園長', color: '#e8555b', name: '山田 花子', text: '子どもたちの「やってみたい」を大人が先回りせず、そっと支えることを大切にしています。' },
+        { id: 't-2', src: 'images/face-2.jpg', role: '主任保育士', color: '#7cc5e0', name: '佐藤 美咲', text: 'お迎えのときに、その日の小さな「できた」をご家族と共有できる時間が大好きです。' },
+        { id: 't-3', src: 'images/face-5.jpg', role: '管理栄養士', color: '#8cc97a', name: '鈴木 健太', text: '旬の食材を使った給食で、食べることの楽しさを伝えています。アレルギーにも個別に対応します。' },
+      ],
+      envs: [
+        { title: '園庭', text: '砂場や築山、季節の花や野菜を育てる畑があります。' },
+        { title: 'ランチルーム', text: '園内調理の給食を、みんなで囲んでいただきます。' },
+        { title: '午睡室', text: '0〜2歳児は5分ごとの呼吸チェックを行っています。' },
+        { title: '安全対策', text: 'オートロック・防犯カメラ・毎月の避難訓練を実施。' },
+      ],
+      voices: [
+        { text: '人見知りだった息子が、今では「明日も保育園行く！」と言うように。先生が毎日の様子を丁寧に教えてくださるので安心です。', who: '3歳児クラス 保護者さま' },
+        { text: '仕事復帰で不安だらけでしたが、連絡帳や送迎時の会話で子育ての相談にものってもらえて、心強かったです。', who: '1歳児クラス 保護者さま' },
+        { text: '行事がたくさんあって、家では見られない表情に出会えます。発表会で堂々と太鼓を叩く姿に涙が出ました。', who: '5歳児クラス 保護者さま' },
+      ],
+      steps: [
+        { href: '入園案内.dc.html#faq', mark: '?', title: 'よくあるご質問', text: '持ち物、慣らし保育、延長保育など、よくいただくご質問をまとめました。' },
+        { href: '入園案内.dc.html', mark: '入', title: '入園案内', text: '入園までの流れ、募集人数、必要書類はこちらをご覧ください。' },
+      ],
+      info: [
+        { k: '園名', v: '認定こども園 昭和保育園' },
+        { k: '所在地', v: '〒466-0000 名古屋市昭和区○○町1-1' },
+        { k: 'アクセス', v: '地下鉄鶴舞線「○○駅」徒歩8分／駐車場あり' },
+        { k: '開園時間', v: '月〜土 7:00〜19:00（日祝・年末年始休園）' },
+        { k: '保育時間', v: '標準時間 7:00〜18:00／短時間 8:30〜16:30' },
+        { k: '定員', v: '120名（0歳〜就学前）' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#4b4340;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#4b4340;text-decoration:none}
+a:hover{color:#a8876f}
+</style>
+</helmet>
+<dc-import name="Site Header" current="price" title-en="Price" title-ja="料金表" lead="料金はすべて税込表示です。カウンセリングは無料で承ります。" slot-id="price-hero" slot-src="images/woman-hands-face.jpg" slot-ph="スキンケア製品・院内ディテール" hint-size="100%,620px"></dc-import>
+
+<section data-screen-label="Price Tables" style="background:#f5f2ec;padding:clamp(60px,7vw,100px) clamp(20px,4vw,40px) clamp(80px,9vw,130px)">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,72px)">
+    <nav data-reveal="up" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px">
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="6">
+        <a href="{{ g.anchor }}" style="min-height:44px;display:inline-flex;align-items:center;padding:10px 22px;border:1px solid #ddd3c5;background:#fff;font-size:13px;letter-spacing:.1em;transition:all .3s" style-hover="border-color:#6e5a4e;color:#4b4340">{{ g.name }}</a>
+      </sc-for>
+    </nav>
+    <div data-reveal="up" style="background:#fff;padding:clamp(24px,3vw,36px);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;color:#a8916a;letter-spacing:.1em">カウンセリング</span><span style="font-family:'Cormorant Garamond',serif;font-size:24px">¥0</span></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;color:#a8916a;letter-spacing:.1em">初診料</span><span style="font-family:'Cormorant Garamond',serif;font-size:24px">¥3,300</span></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;color:#a8916a;letter-spacing:.1em">再診料</span><span style="font-family:'Cormorant Garamond',serif;font-size:24px">¥1,100</span></div>
+    </div>
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="6">
+      <div id="{{ g.id }}" data-reveal="up" style="display:flex;flex-direction:column;gap:18px;scroll-margin-top:40px">
+        <div style="display:flex;align-items:center;gap:20px"><span style="font-size:clamp(17px,1.7vw,20px);letter-spacing:.12em;font-weight:500">{{ g.name }}</span><span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#d4a7a1">{{ g.en }}</span><span data-reveal="line" style="flex:1;height:1px;background:#8f847e"></span></div>
+        <div style="background:#fff;padding:0 clamp(18px,3vw,32px)">
+          <div style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px solid #4b4340;font-size:11.5px;letter-spacing:.1em;color:#7a706b"><span>施術</span><span style="text-align:right">1回</span><span style="text-align:right">{{ g.courseLabel }}</span></div>
+          <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:12px;padding:18px 0;border-bottom:1px solid #efe8dd;align-items:baseline">
+              <span style="display:flex;flex-direction:column;gap:3px"><span style="font-size:14px;letter-spacing:.05em">{{ r.n }}</span><span style="font-size:11.5px;color:#9a8f88;letter-spacing:.04em">{{ r.d }}</span></span>
+              <span style="text-align:right;font-family:'Cormorant Garamond',serif;font-size:19px">{{ r.a }}</span>
+              <span style="text-align:right;font-family:'Cormorant Garamond',serif;font-size:19px">{{ r.b }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+    <div data-reveal="up" style="display:flex;flex-direction:column;gap:10px;font-size:12px;line-height:2;color:#7a706b;letter-spacing:.04em">
+      <span>※ 表示価格はすべて税込・自由診療（保険適用外）です。</span>
+      <span>※ お支払い：現金／各種クレジットカード／電子マネー／医療ローン</span>
+      <span>※ 効果には個人差があります。施術のリスク・副作用については各施術ページおよびカウンセリング時にご説明します。</span>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,820px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const g = [
+      { id: 'p-skin', name: 'スキンケア・肌育', en: 'Skin Care', rows: [
+        { n: 'ケミカルピーリング', d: '顔全体', a: '¥8,800', b: '¥39,600' },
+        { n: 'エレクトロポレーション', d: 'ビタミンC・トラネキサム酸', a: '¥11,000', b: '¥49,500' },
+        { n: '水光注射', d: '顔全体', a: '¥33,000', b: '¥148,500' } ] },
+      { id: 'p-laser', name: 'レーザー・光治療', en: 'Laser & Light', rows: [
+        { n: 'ピコトーニング', d: '顔全体', a: '¥16,500', b: '¥74,800' },
+        { n: 'ピコスポット', d: '〜5mm / 1箇所', a: '¥5,500', b: '—' },
+        { n: '光治療（IPL）', d: '顔全体', a: '¥19,800', b: '¥88,000' } ] },
+      { id: 'p-inject', name: '注入治療', en: 'Injectables', courseLabel: '—', rows: [
+        { n: 'ヒアルロン酸', d: '1本（1.0cc）', a: '¥66,000', b: '—' },
+        { n: 'ボツリヌス製剤（額・眉間）', d: '1部位', a: '¥27,500', b: '—' },
+        { n: 'ボツリヌス製剤（エラ）', d: '両側', a: '¥44,000', b: '—' } ] },
+      { id: 'p-acne', name: 'ニキビ・毛穴', en: 'Acne & Pore', rows: [
+        { n: 'ダーマペン', d: '顔全体', a: '¥22,000', b: '¥99,000' },
+        { n: 'ニキビ跡 光治療', d: '顔全体', a: '¥13,200', b: '¥59,400' },
+        { n: '面皰圧出', d: '顔全体', a: '¥5,500', b: '—' } ] },
+      { id: 'p-lift', name: 'たるみ治療', en: 'Lifting', rows: [
+        { n: 'HIFU', d: '顔全体', a: '¥44,000', b: '—' },
+        { n: 'HIFU', d: '顔全体＋首', a: '¥60,500', b: '—' } ] },
+      { id: 'p-body', name: 'ボディ', en: 'Body', rows: [
+        { n: '背中ピーリング', d: '背中全体', a: '¥16,500', b: '¥74,250' },
+        { n: '医療脱毛（全身）', d: '顔・VIO除く', a: '¥44,000', b: '¥198,000' } ] },
+    ].map(x => ({ ...x, anchor: '#' + x.id, courseLabel: x.courseLabel || '5回' }));
+    return { groups: g };
+  }
+}
+</script>
+</body>
+</html>

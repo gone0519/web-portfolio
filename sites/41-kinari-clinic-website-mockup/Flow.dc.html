@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<link href="./site.css" rel="stylesheet">
+<style>html{scroll-behavior:smooth}body{margin:0;background:#fff;color:#0b2e7e;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#0b2e7e}a:hover{color:#1d47a8}h1,h2,h3,h4,p{word-break:auto-phrase}</style>
+</helmet>
+<dc-import name="Header" active="flow" hint-size="100%,150px"></dc-import>
+<dc-import name="PageHero" title="施術の流れ・料金" en="FLOW &amp; PRICE" img-id="flow-hero" src="images/explain-spine.jpg" placeholder="問診・カウンセリングの写真" hint-size="100%,360px"></dc-import>
+
+<section data-screen-label="Flow" style="padding:clamp(40px,6vw,70px) 24px 0">
+  <div style="max-width:1000px;margin:0 auto">
+    <p style="display:block;width:fit-content;margin:0 auto 14px;font-weight:900;font-size:clamp(34px,5vw,54px);line-height:1.05;letter-spacing:.06em;color:#0b2e7e;background:linear-gradient(transparent 62%,#ffe100 62%);padding:0 8px">FLOW</p>
+    <h2 data-reveal="" style="margin:0 0 32px;text-align:center;font-size:clamp(20px,2.5vw,26px);font-weight:900;color:#0b2e7e;letter-spacing:.06em">初めての方の施術の流れ</h2>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="6">
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:0;border:2px solid #0b2e7e;background:#fff">
+          <div class="flow-num" style="flex:0 0 110px;background:#0b2e7e;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px">
+            <span style="font-weight:700;font-size:11px;letter-spacing:.2em;color:#ffe100">STEP</span>
+            <span style="font-weight:900;font-size:32px;line-height:1">{{ s.num }}</span>
+          </div>
+          <div class="flow-body" style="flex:1 1 260px;padding:20px 24px">
+            <h3 style="margin:0 0 8px;font-size:18px;font-weight:900;color:#0b2e7e;letter-spacing:.04em">{{ s.title }}</h3>
+            <p style="margin:0;font-size:13.5px;line-height:1.9;color:#0b2e7e">{{ s.body }}</p>
+          </div>
+          <div class="flow-img" style="flex:0 1 220px;min-height:130px;position:relative"><image-slot id="flow-step-{{ s.num }}" shape="rect" src="{{ s.src }}" placeholder="{{ s.img }}"></image-slot></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="price" style="padding:clamp(56px,8vw,90px) 24px 0">
+  <div data-reveal="" style="max-width:1000px;margin:0 auto">
+    <h2 style="display:block;width:fit-content;margin:0 auto 14px;font-weight:900;font-size:clamp(34px,5vw,54px);line-height:1.05;letter-spacing:.06em;color:#0b2e7e;background:linear-gradient(transparent 62%,#ffe100 62%);padding:0 8px">PRICE</h2>
+    <p style="margin:0 0 28px;text-align:center;font-size:22px;font-weight:900;color:#0b2e7e;letter-spacing:.06em">料金</p>
+    <div style="background:#0b2e7e;color:#fff;padding:12px 20px;font-size:14px;font-weight:700;letter-spacing:.1em;display:flex;align-items:center;gap:12px"><span style="width:14px;height:2px;background:#ffe100"></span>自費施術（税込）</div>
+    <div style="background:#fff;border:2px solid #0b2e7e;border-top:0">
+      <sc-for list="{{ prices }}" as="p" hint-placeholder-count="5">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;padding:16px 22px;border-bottom:1px solid #d5ddee">
+          <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:700">{{ p.name }}</span><span style="font-size:12.5px;color:#3d5a9e">{{ p.note }}</span></div>
+          <span style="font-weight:900;font-size:22px;color:#0b2e7e">{{ p.price }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px">
+      <div style="border-top:4px solid #0b2e7e;background:#eef2fa;padding:22px">
+        <h3 style="margin:0 0 10px;font-size:16px;font-weight:900;color:#0b2e7e">保険施術について</h3>
+        <p style="margin:0;font-size:13px;line-height:1.9;color:#0b2e7e">骨折・脱臼・打撲・捻挫・挫傷など、原因がはっきりしたケガは健康保険が適用されます。窓口負担は1回あたり500〜1,500円程度です（負担割合・部位により異なります）。</p>
+      </div>
+      <div style="border-top:4px solid #0b2e7e;background:#eef2fa;padding:22px">
+        <h3 style="margin:0 0 10px;font-size:16px;font-weight:900;color:#0b2e7e">お持ちいただくもの</h3>
+        <p style="margin:0;font-size:13px;line-height:1.9;color:#0b2e7e">・保険証（マイナ保険証）<br>・お薬手帳（服用中の方）<br>・動きやすい服装（お着替えもご用意しています）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,700px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      steps: [
+        { num: '01', title: 'ご予約', body: 'お電話またはWEBフォームからご予約ください。当日のご予約も空きがあれば承ります。', img: '電話受付の写真', src: 'images/staff-guide.jpg' },
+        { num: '02', title: '受付・問診票のご記入', body: '保険証をご提示いただき、現在の症状や既往歴を問診票にご記入いただきます。', img: '受付の写真', src: 'images/staff-clipboard.jpg' },
+        { num: '03', title: 'カウンセリング', body: 'いつから・どのような時に痛むのか、お仕事や生活習慣などを詳しく伺います。', img: 'カウンセリングの写真', src: 'images/counseling.jpg' },
+        { num: '04', title: '検査・状態の確認', body: '姿勢や関節の動き、筋肉の状態を確認し、施術計画と通院の目安をご説明します。', img: '検査の写真', src: 'images/leg-exam.jpg' },
+        { num: '05', title: '施術', body: 'ご納得いただいたうえで施術を行います。強さなどはお気軽にお伝えください。', img: '施術の写真', src: 'images/back-treatment.jpg' },
+        { num: '06', title: 'セルフケアのご案内', body: 'ご自宅でできる体操やストレッチ、次回の来院目安をお伝えします。', img: 'ストレッチ指導の写真', src: 'images/side-stretch.jpg' }
+      ],
+      prices: [
+        { name: '初診料', note: 'カウンセリング・検査を含みます', price: '¥2,200' },
+        { name: '整体施術（40分）', note: '姿勢・骨盤の調整、筋肉の緊張ケア', price: '¥5,500' },
+        { name: '整体施術（60分）', note: '全身のバランスを整えたい方に', price: '¥7,700' },
+        { name: 'パーソナルトレーニング（50分）', note: '再発予防・競技復帰のための運動指導', price: '¥6,600' },
+        { name: '交通事故治療', note: '自賠責保険適用の場合', price: '窓口負担 0円' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

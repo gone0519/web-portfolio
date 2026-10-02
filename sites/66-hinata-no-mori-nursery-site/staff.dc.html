@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="Header" current="staff" hint-size="100%,220px"></dc-import>
+<main>
+<section data-screen-label="Staff Hero" style="position:relative">
+  <div style="background:#f8f3e6;padding:36px 20px 40px;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div style="background:#ee8fa0;color:#fff;font-weight:700;font-size:12px;letter-spacing:.24em;padding:6px 44px;clip-path:polygon(0 0,100% 0,92% 50%,100% 100%,0 100%,8% 50%)">TEACHERS</div>
+    <h1 style="margin:16px 0 0;font-family:'Yusei Magic';font-weight:400;font-size:clamp(28px,4vw,40px);letter-spacing:.14em">先生と環境</h1>
+  </div>
+  <div style="position:relative;overflow:hidden;height:clamp(200px,24vw,320px);background:#e9dfc9">
+    <img src="images/kids-boots.jpg" alt="先生と子どもたち" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;top:-1px;left:0;width:100%;height:36px;display:block"><path d="M0 0H1440V20Q720 60 0 20Z" fill="#f8f3e6"></path></svg>
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;bottom:-1px;left:0;width:100%;height:40px;display:block"><path d="M0 60H1440V30Q720 -10 0 30Z" fill="#fff"></path></svg>
+  </div>
+  <div style="max-width:1080px;margin:0 auto;padding:14px 20px 0;font-size:12px;color:#8e7a63;letter-spacing:.06em"><a href="ひなたの森保育園.dc.html" style="color:#8e7a63">ホーム</a> › 先生と環境</div>
+</section>
+
+<section class="sec" data-screen-label="Teachers" style="padding:70px 20px 100px">
+  <div style="max-width:1080px;margin:0 auto">
+    <div data-reveal="1" style="text-align:center">
+      <h2 style="margin:0 0 20px;font-family:'Yusei Magic';font-weight:400;font-size:clamp(24px,3.2vw,32px);letter-spacing:.14em">先生のしょうかい</h2>
+      <div style="width:min(300px,80%);height:8px;margin:0 auto;background:radial-gradient(circle,#f08a1c 2px,transparent 2.6px) 0 0/16px 8px repeat-x,radial-gradient(circle,#f5c43c 1.6px,transparent 2.2px) 8px 0/16px 8px repeat-x"></div>
+    </div>
+    <div style="margin-top:50px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px 24px">
+      <sc-for list="{{ teachers }}" as="t" hint-placeholder-count="6">
+        <div data-reveal="1" style="text-align:center;padding:0 10px">
+          <img src="{{ t.img }}" alt="{{ t.name }}" loading="lazy" style="display:block;width:150px;height:150px;margin:0 auto;border-radius:50%;object-fit:cover;object-position:{{ t.pos }};background:#e9dfc9;box-shadow:0 0 0 6px #fff,0 0 0 10px {{ t.color }}">
+          <div style="margin-top:22px;font-size:12px;font-weight:700;letter-spacing:.14em;color:#4bb3a6">{{ t.role }}</div>
+          <div style="margin-top:4px;font-family:'Yusei Magic';font-size:21px;letter-spacing:.14em">{{ t.name }}</div>
+          <p style="margin:14px 0 0;font-size:14px;line-height:1.95;letter-spacing:.04em;text-align:left;text-wrap:pretty">{{ t.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-screen-label="Environment" style="position:relative;background:#f8f3e6;padding:110px 20px">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;top:-1px;left:0;width:100%;height:44px;display:block"><path d="M0 0H1440V30Q720 -10 0 30Z" fill="#fff"></path></svg>
+  <div style="max-width:1080px;margin:0 auto">
+    <h2 data-reveal="1" style="margin:0 0 12px;text-align:center;font-family:'Yusei Magic';font-weight:400;font-size:clamp(24px,3.2vw,32px);letter-spacing:.14em">園の環境</h2>
+    <p data-reveal="1" style="margin:0 auto 32px;max-width:620px;text-align:center;font-size:14px;line-height:2;letter-spacing:.05em">木のぬくもりを感じる保育室と、季節の変化が見える園庭。子どもたちがのびのび過ごせる場所を整えています。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px">
+      <sc-for list="{{ spaces }}" as="e" hint-placeholder-count="6">
+        <figure data-reveal="1" style="margin:0">
+          <div style="position:relative;overflow:hidden;aspect-ratio:4/3;border-radius:16px;background:repeating-linear-gradient(135deg,#e6dbc3 0 12px,#eee5d1 12px 24px);display:flex;align-items:flex-end;padding:10px">
+            <sc-if value="{{ e.img }}"><img src="{{ e.img }}" alt="{{ e.name }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if>
+            <sc-if value="{{ !e.img }}"><span style="font-family:ui-monospace,monospace;font-size:11px;color:#8e7a63;background:rgba(255,255,255,.8);padding:3px 8px;border-radius:4px">写真：{{ e.name }}</span></sc-if>
+          </div>
+          <figcaption style="margin-top:10px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:700;font-size:15px;letter-spacing:.1em">{{ e.name }}</span><span style="font-size:13px;color:#7a6552;line-height:1.7">{{ e.text }}</span></figcaption>
+        </figure>
+      </sc-for>
+    </div>
+    <div data-reveal="1" style="margin-top:60px;background:#fff;border-radius:24px;padding:clamp(24px,4vw,40px)">
+      <h3 style="margin:0 0 20px;font-family:'Yusei Magic';font-weight:400;font-size:22px;letter-spacing:.12em;color:#4bb3a6">安全への取り組み</h3>
+      <ul style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:4px 32px">
+        <sc-for list="{{ safety }}" as="s" hint-placeholder-count="6">
+          <li style="display:flex;gap:12px;align-items:baseline;padding:12px 0;border-bottom:2px dotted #eee4d2;font-size:14px;line-height:1.8;letter-spacing:.04em"><span style="flex:none;width:10px;height:10px;border-radius:50%;background:#f5b72c"></span>{{ s }}</li>
+        </sc-for>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-screen-label="Voices" style="position:relative;padding:110px 20px">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;top:-1px;left:0;width:100%;height:44px;display:block"><path d="M0 0H1440V30Q720 -10 0 30Z" fill="#f8f3e6"></path></svg>
+  <div style="max-width:1080px;margin:0 auto">
+    <h2 data-reveal="1" style="margin:0 0 34px;text-align:center;font-family:'Yusei Magic';font-weight:400;font-size:clamp(24px,3.2vw,32px);letter-spacing:.14em">保護者の方の声</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:30px 22px">
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+        <div data-reveal="1">
+          <div style="position:relative;background:#fbf7ee;border-radius:22px;padding:26px;font-size:14px;line-height:2;letter-spacing:.04em;text-wrap:pretty" style-after="content:'';position:absolute;left:36px;bottom:-12px;width:24px;height:24px;background:#fbf7ee;transform:rotate(45deg);border-radius:3px">{{ v.text }}</div>
+          <div style="margin:22px 0 0 20px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.06em;color:#7a6552"><span style="width:28px;height:28px;border-radius:50%;background:{{ v.color }}"></span>{{ v.who }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      teachers: [
+        { role: '園長', name: '森田 ゆう子', color: '#f5c43c', img: 'images/teacher-clipboard.jpg', pos: '52% center', text: '保育士になって28年。子どもたちが「また明日ね」と帰っていく姿が、いちばんの励みです。' },
+        { role: '主任保育士', name: '佐野 あおい', color: '#ee8fa0', img: 'images/teacher-baby-book.jpg', pos: '45% center', text: '得意なことは絵本の読み聞かせ。子どもが夢中になっている時間を、途中で切らないように心がけています。' },
+        { role: '0歳児担当', name: '川口 はると', color: '#4bb3a6', img: 'images/teacher-baby.jpg', pos: '30% center', text: 'はじめて保育園に通うお子さまとおうちの方に寄りそいます。連絡帳で小さな変化もお伝えします。' },
+        { role: '2歳児担当', name: '野村 さくら', color: '#5aa9dd', img: 'images/drawing.jpg', pos: '50% center', text: '「いや！」も大切な気持ち。まずは受けとめてから、いっしょに次の一歩を考えます。' },
+        { role: '看護師', name: '石井 まどか', color: '#6cb84a', img: 'images/teachers-three.jpg', pos: '50% center', text: '毎日の健康チェックと、けがや体調不良への対応を担当しています。気になることはご相談ください。' },
+        { role: '栄養士', name: '高橋 けんた', color: '#f08a1c', img: 'images/teachers-two.jpg', pos: '85% center', text: '旬の食材を使って、季節を感じる献立を考えています。苦手な野菜も、少しずつ仲良くなれるように。' }
+      ],
+      spaces: [
+        { name: '保育室', img: 'images/playroom.jpg', text: '床と棚は無垢材。年齢ごとに家具の高さを変えています。' },
+        { name: '園庭', img: 'images/playground.jpg', text: '築山と砂場、実のなる木。はだしで走れる土の園庭です。' },
+        { name: '菜園', text: 'トマト、きゅうり、さつまいもを子どもたちが育てます。' },
+        { name: 'ランチルーム', img: 'images/cooking.jpg', text: '調理室と隣り合い、つくる様子が見えるつくりです。' },
+        { name: 'おひるね室', img: 'images/playroom-slide.jpg', text: '静かで明るさを調整できる、専用の午睡スペースです。' },
+        { name: '玄関', img: 'images/entrance-fence.jpg', text: 'オートロックで、登降園時は職員が立ち会います。' }
+      ],
+      safety: [
+        '玄関はオートロック。防犯カメラを設置しています',
+        '午睡中は0歳児5分、1〜2歳児10分ごとに呼吸を確認',
+        '毎月の避難訓練と、年2回の不審者対応訓練',
+        '園庭遊具は毎朝、職員が点検しています',
+        'アレルギー食は色分けトレイと二重確認で提供',
+        '全職員が救命講習（AED・心肺蘇生）を受講'
+      ],
+      voices: [
+        { who: '1歳児クラス 保護者さま', color: '#fde0bd', text: '初めての集団生活で心配でしたが、連絡帳に毎日たくさん様子を書いてくださり、仕事中も安心していられました。今では朝、自分から先生のところへ歩いていきます。' },
+        { who: '年中クラス 保護者さま', color: '#cdebe6', text: '家では食べなかった野菜を「園で育てたから」と食べるようになりました。子どもの話を聞くと、毎日いろいろな発見をしているのが伝わってきます。' },
+        { who: '年長クラス 保護者さま', color: '#f9d4da', text: '子育ての悩みを、お迎えのときに気軽に相談できるのがありがたいです。先生方が子どもだけでなく、親のことも見てくれていると感じます。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="site.css" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:#fff;color:#1b2233;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#0E1E46;text-decoration:none}
+a:hover{color:#0E1E46;opacity:.8}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="services" hint-size="100%,64px"></dc-import>
+<main>
+<dc-import name="PageHero" ja="事業内容" en="SERVICES" slot="services-hero" img="uploads/fleet-color.jpg" photo="写真：走行中のトラック（横流し・スピード感）" hint-size="100%,420px"></dc-import>
+
+<section aria-labelledby="in" style="position:relative;overflow:hidden;padding:clamp(64px,8vw,110px) clamp(20px,4vw,48px) clamp(40px,5vw,72px)">
+  <div aria-hidden="true" style="position:absolute;right:-.04em;top:20px;font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(64px,11vw,170px);line-height:.9;color:#f0f2f5;white-space:nowrap">OUR SERVICES</div>
+  <div style="position:relative;max-width:1180px;margin:0 auto">
+    <h2 id="in" data-reveal="up" style="margin:0 0 20px;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(22px,2.8vw,36px);line-height:1.6;letter-spacing:.06em;color:#0E1E46;text-wrap:balance">輸送にまつわる多様なニーズに、<br>ワンストップでお応えします。</h2>
+    <p data-reveal="up" style="margin:0;max-width:600px;font-size:15px;line-height:2.1;color:#4a5268">近距離から長距離、保管から配送まで。荷物と目的に合わせた輸送をご提案します。</p>
+    <nav aria-label="事業一覧" style="margin-top:40px;display:flex;flex-wrap:wrap;gap:10px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
+        <a href="#{{ s.slot }}" style="display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border:1px solid #0E1E46;border-radius:999px;font-size:13px;font-weight:700;color:#0E1E46" style-hover="background:#FFD200;border-color:#FFD200"><span style="font-family:Montserrat,sans-serif;font-size:11px;color:#9aa2b6">{{ s.no }}</span>{{ s.name }}</a>
+      </sc-for>
+    </nav>
+  </div>
+</section>
+
+<sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
+  <section id="{{ s.slot }}" aria-label="{{ s.name }}" style="max-width:1280px;margin:0 auto;padding:clamp(40px,5vw,72px) clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;flex-direction:{{ s.dir }};gap:clamp(28px,5vw,72px);align-items:center">
+    <div data-reveal="up" class="offset-photo" style="flex:1 1 440px;position:relative;aspect-ratio:3/2;max-width:100%">
+      <div class="offset-bg" style="position:absolute;inset:20px -20px -20px 20px;background:#FFD200;clip-path:polygon(10% 0,100% 0,100% 100%,0 100%)"></div>
+      <image-slot id="{{ s.photoId }}" src="{{ s.img }}" shape="rect" placeholder="{{ s.photo }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <span style="position:absolute;top:16px;left:0;background:#0E1E46;color:#fff;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:14px;letter-spacing:.06em;padding:8px 16px;pointer-events:none">{{ s.name }}</span>
+    </div>
+    <div style="flex:1 1 360px">
+      <p data-reveal="up" style="margin:0 0 10px;font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(40px,5vw,64px);line-height:1;color:#FFD200">{{ s.no }}</p>
+      <p data-reveal="up" style="margin:0 0 6px;font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;color:#7a8299">{{ s.en }}</p>
+      <h2 data-reveal="up" style="margin:0 0 20px;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(22px,2.4vw,30px);letter-spacing:.08em;color:#0E1E46">{{ s.name }}</h2>
+      <p data-reveal="up" style="margin:0 0 24px;font-size:14px;line-height:2;color:#3b4358">{{ s.desc }}</p>
+      <ul data-reveal="up" style="list-style:none;margin:0;padding:0;border-top:1px solid #e3e6ec">
+        <sc-for list="{{ s.points }}" as="p" hint-placeholder-count="3">
+          <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e3e6ec;font-size:14px;color:#1b2233"><span style="flex:none;width:8px;height:8px;background:#0E1E46;transform:rotate(45deg) translateY(-2px)"></span>{{ p }}</li>
+        </sc-for>
+      </ul>
+    </div>
+  </section>
+</sc-for>
+
+<section aria-labelledby="fl" style="margin-top:clamp(56px,7vw,96px);background:#FFD200;padding:clamp(72px,8vw,120px) clamp(20px,4vw,48px)">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:48px">
+      <h2 id="fl" data-reveal="up" style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(24px,2.6vw,34px);letter-spacing:.08em;color:#0E1E46">ご依頼の流れ</h2>
+      <p data-reveal="up" style="margin:8px 0 0;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;color:#0E1E46">Flow</p>
+    </div>
+    <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px">
+      <sc-for list="{{ flow }}" as="f" hint-placeholder-count="5">
+        <li data-reveal="up" style="background:#fff;display:flex;flex-direction:column">
+          <span style="background:#0E1E46;color:#FFD200;font-family:Montserrat,sans-serif;font-weight:800;font-size:12px;letter-spacing:.16em;padding:10px 18px">STEP {{ f.n }}</span>
+          <div style="padding:20px 18px 24px">
+            <h3 style="margin:0 0 10px;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:17px;color:#0E1E46">{{ f.t }}</h3>
+            <p style="margin:0;font-size:13px;line-height:1.8;color:#3b4358">{{ f.d }}</p>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,600px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const pts = ['[特長・対応内容 1]', '[特長・対応内容 2]', '[特長・対応内容 3]'];
+    const list = [
+      ['svc-general', '一般貨物輸送', 'GENERAL FREIGHT', '写真：大型トラック・積荷', 'trucks-dock'],
+      ['svc-long', '長距離輸送', 'LONG-DISTANCE', '写真：高速道路を走る車両', 'fleet-orange'],
+      ['svc-route', 'ルート配送', 'ROUTE DELIVERY', '写真：中型・小型配送車', 'driver-delivery'],
+      ['svc-warehouse', '倉庫・保管', 'WAREHOUSING', '写真：倉庫内・ラック・荷役', 'warehouse-racks'],
+      ['svc-support', '物流サポート', 'LOGISTICS SUPPORT', '写真：仕分け・流通加工の作業', 'logistics-support']
+    ];
+    return {
+      services: list.map(([slot, name, en, photo, img], i) => ({
+        slot, name, en, photo, photoId: slot + '-photo', img: 'uploads/' + img + '.jpg', no: String(i + 1).padStart(2, '0'),
+        dir: i % 2 ? 'row-reverse' : 'row',
+        desc: '[' + name + 'のサービス内容をご記入ください。取扱品目、対応エリア、車両サイズなど。]',
+        points: pts
+      })),
+      flow: [
+        { n: '01', t: 'お問い合わせ', d: 'お電話またはフォームよりご連絡ください。' },
+        { n: '02', t: 'ヒアリング', d: '荷物の内容、量、時期、届け先などを伺います。' },
+        { n: '03', t: 'お見積り', d: '内容に合わせた輸送方法とお見積りをご提示します。' },
+        { n: '04', t: 'ご契約', d: 'ご条件を確認のうえ、ご契約となります。' },
+        { n: '05', t: '輸送開始', d: '計画に沿って、安全・確実に輸送します。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;bottom:0;left:0;right:0;z-index:60;display:grid;grid-template-columns:1fr 1fr 1fr;background:#fff;border-top:1px solid oklch(90% 0.006 240);box-shadow:0 -2px 12px oklch(0% 0 0 / 0.06);">
+    <a href="Contact.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 0 calc(10px + env(safe-area-inset-bottom));font-size:12px;font-weight:700;color:#fff;background:oklch(46% 0.10 245);">
+      <span>WEB予約</span>
+    </a>
+    <a href="tel:0120-000-000" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 0 calc(10px + env(safe-area-inset-bottom));font-size:12px;font-weight:700;color:oklch(28% 0.02 250);">
+      <span>電話</span>
+    </a>
+    <a href="Contact.dc.html#access" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 0 calc(10px + env(safe-area-inset-bottom));font-size:12px;font-weight:700;color:oklch(28% 0.02 250);">
+      <span>アクセス</span>
+    </a>
+  </div>
+  <div style="height:56px;"></div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mobile: typeof window !== 'undefined' ? window.innerWidth < 1040 : false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ mobile: window.innerWidth < 1040 });
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() { return { mobile: this.state.mobile }; }
+}
+</script>
+</body>
+</html>

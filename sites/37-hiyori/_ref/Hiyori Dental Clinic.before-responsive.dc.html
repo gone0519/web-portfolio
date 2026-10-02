@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f2f8fb;color:#3a3a3a;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#3a3a3a;text-decoration:none;cursor:pointer}
+a:hover{color:#2f95c9}
+*{box-sizing:border-box}
+input,select,textarea,button{font-family:inherit}
+</style>
+</helmet>
+
+<sc-if value="{{ pHome }}" hint-placeholder-val="{{ true }}">
+<header id="top" data-screen-label="Home Hero" style="position:relative;height:clamp(620px,100vh,980px);min-height:620px;overflow:hidden;background:#2b2b2b">
+  <div style="position:absolute;inset:0"><image-slot id="hero-main" shape="rect" placeholder="HERO PHOTO — 受付前で笑顔のスタッフ集合写真（横長・明るい院内）"></image-slot></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 62%,rgba(0,0,0,.5) 100%)"></div>
+
+  <div style="position:absolute;top:22px;left:clamp(20px,5vw,72px);display:flex;flex-direction:column;gap:6px;pointer-events:none">
+    <p style="margin:0;font-size:11px;letter-spacing:.14em;color:#fff">港区芝浦の歯医者　予防歯科・小児歯科・インプラント</p>
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="width:46px;height:46px;border-radius:50%;border:1.5px solid #cdeaf6;display:flex;align-items:center;justify-content:center;color:#cdeaf6"><svg viewBox="0 0 64 64" style="width:24px;height:24px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="3.5"></path></svg></div>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <span style="font-size:clamp(20px,2.2vw,28px);letter-spacing:.3em;color:#fff;font-weight:500">ひより歯科</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.34em;color:#cdeaf6">HIYORI DENTAL CLINIC</span>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;top:14px;right:18px;background:rgba(255,255,255,.88);border-radius:60px;padding:14px 30px 14px 18px;display:flex;align-items:center;gap:18px;backdrop-filter:blur(6px)">
+      <div style="width:66px;height:66px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;line-height:1.5;font-weight:700;color:#3a3a3a;box-shadow:0 0 0 1px #d6ebf5">土曜<span>診療</span></div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <a href="tel:0335550123" style="display:flex;align-items:baseline;gap:10px;border-bottom:1px solid #bbb;padding-bottom:4px"><span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.1em">TEL</span><span style="font-size:24px;font-weight:500;letter-spacing:.04em">03-5555-0123</span></a>
+        <span style="font-size:11px;text-align:right;line-height:1.6">〒108-0023 東京都港区芝浦3-0-0<br>診療時間 9:30–13:00 / 14:30–18:30<br><span style="color:#b34a3a">休診日：木曜・日曜・祝日</span></span>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="position:absolute;top:18px;right:16px;width:52px;height:52px;border-radius:50%;border:none;background:rgba(255,255,255,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer"><span style="width:20px;height:1.5px;background:#3a3a3a"></span><span style="width:20px;height:1.5px;background:#3a3a3a"></span><span style="width:14px;height:1.5px;background:#3a3a3a"></span></button>
+  </sc-if>
+
+  <div style="position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;pointer-events:none;width:min(92vw,720px)">
+    <div style="width:clamp(78px,8vw,108px);height:clamp(78px,8vw,108px);border-radius:50%;border:2px solid rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;color:#fff"><svg viewBox="0 0 64 64" style="width:52%;height:52%"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="3"></path></svg></div>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.4em;color:#fff">MEDICAL CORPORATION HIYORIKAI</span>
+    <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,4.6vw,64px);letter-spacing:.18em;color:#fff;line-height:1.05">HIYORI</h1>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.5em;color:#fff">DENTAL CLINIC</span>
+    <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:18px 0 0;font-size:20px;letter-spacing:.2em;color:#fff;font-weight:500;line-height:1.8;text-shadow:0 1px 8px rgba(0,0,0,.4)">{{ heroCopyA }}<br>{{ heroCopyB }}</p>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;left:calc(50% + clamp(200px,16vw,260px));top:170px;display:flex;flex-direction:row-reverse;align-items:flex-start;gap:18px;color:#fff;font-size:clamp(18px,1.7vw,25px);letter-spacing:.3em;font-weight:500;text-shadow:0 1px 10px rgba(0,0,0,.35);pointer-events:none">
+      <span style="writing-mode:vertical-rl">{{ heroCopyA }}</span><span style="writing-mode:vertical-rl;padding-top:2.4em">{{ heroCopyB }}</span>
+    </div>
+  </sc-if>
+
+  <div style="position:absolute;left:0;right:0;bottom:clamp(24px,5vh,48px);display:flex;justify-content:center;align-items:center;gap:clamp(12px,2vw,28px);flex-wrap:wrap;padding:0 16px">
+    <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center">
+        <sc-for list="{{ subnav }}" as="n" hint-placeholder-count="5">
+          <a href="#" onClick="{{ n.go }}" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px clamp(12px,1.6vw,24px);border-left:1px solid rgba(255,255,255,.55);color:#fff;transition:opacity .3s" style-hover="opacity:.7;color:#fff">
+            <span style="font-size:11px;letter-spacing:.1em">{{ n.ja }}</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:19px;letter-spacing:.14em">{{ n.en }}</span>
+          </a>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <div style="display:flex;gap:12px">
+      <a href="#reserve" style="width:clamp(74px,6vw,86px);height:clamp(74px,6vw,86px);border-radius:50%;background:rgba(47,149,201,.9);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px;font-weight:700;letter-spacing:.06em;transition:transform .35s,background .35s" style-hover="transform:translateY(-3px);background:#237fb0;color:#fff"><span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;font-weight:500">RESERVE</span>WEB予約</a>
+      <a href="#" onClick="{{ goFirst }}" style="width:clamp(74px,6vw,86px);height:clamp(74px,6vw,86px);border-radius:50%;background:rgba(255,255,255,.92);color:#2c7fae;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px;font-weight:700;letter-spacing:.06em;transition:transform .35s" style-hover="transform:translateY(-3px);color:#2c7fae"><span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;font-weight:500">FIRST</span>初めての方</a>
+    </div>
+  </div>
+</header>
+<div style="background:#fff;padding:26px 20px;display:flex;justify-content:center">
+  <p style="margin:0;background:#2c7fae;color:#fff;padding:12px clamp(20px,4vw,60px);font-size:clamp(13px,1.2vw,15px);letter-spacing:.14em;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center"><span style="background:#fff;color:#2c7fae;padding:2px 10px;font-weight:700">土曜日</span>も診療しております。平日は18:30まで受付。</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ pSub }}" hint-placeholder-val="{{ false }}">
+  <div style="position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid #e0edf3">
+    <div style="max-width:1240px;margin:0 auto;padding:12px clamp(16px,3vw,32px);display:flex;align-items:center;justify-content:space-between;gap:20px">
+      <a href="#" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:12px">
+        <div style="width:40px;height:40px;border-radius:50%;border:1.5px solid #2f95c9;display:flex;align-items:center;justify-content:center;color:#2f95c9"><svg viewBox="0 0 64 64" style="width:21px;height:21px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="3.5"></path></svg></div>
+        <div style="display:flex;flex-direction:column;gap:1px"><span style="font-size:18px;letter-spacing:.28em;font-weight:500">ひより歯科</span><span style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.3em;color:#3f8fb8">HIYORI DENTAL CLINIC</span></div>
+      </a>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;align-items:center">
+          <sc-for list="{{ subnav }}" as="n" hint-placeholder-count="5">
+            <a href="#" onClick="{{ n.go }}" style="display:flex;flex-direction:column;align-items:center;gap:1px;padding:2px clamp(10px,1.3vw,20px);border-left:1px solid #d6e6ee;color:{{ n.color }}">
+              <span style="font-size:10.5px;letter-spacing:.1em">{{ n.ja }}</span>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.14em">{{ n.en }}</span>
+            </a>
+          </sc-for>
+        </nav>
+      </sc-if>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+        <a href="tel:0335550123" style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span style="font-size:19px;font-weight:500;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.1em;margin-right:6px">TEL</span>03-5555-0123</span><span style="font-size:10.5px;color:#b34a3a">休診日：木・日・祝</span></a>
+      </sc-if>
+      <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:48px;height:48px;border-radius:50%;border:1px solid #d6e6ee;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer"><span style="width:20px;height:1.5px;background:#3a3a3a"></span><span style="width:20px;height:1.5px;background:#3a3a3a"></span><span style="width:14px;height:1.5px;background:#3a3a3a"></span></button>
+      </sc-if>
+    </div>
+  </div>
+  <sc-for list="{{ subnav }}" as="p" hint-placeholder-count="0">
+    <div style="display:{{ p.disp }};position:relative;height:clamp(240px,32vw,380px);overflow:hidden;background:#cfe6f1">
+      <div style="position:absolute;inset:0"><image-slot id="{{ p.slot }}" shape="rect" placeholder="{{ p.ph }}"></image-slot></div>
+      <div style="position:absolute;inset:0;background:rgba(28,92,128,.42);pointer-events:none"></div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;text-align:center;pointer-events:none;padding:0 20px">
+        <svg viewBox="0 0 64 64" style="width:28px;height:28px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="3"></path></svg>
+        <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(38px,5vw,64px);letter-spacing:.18em;line-height:1">{{ p.en }}</h1>
+        <span style="font-size:14px;letter-spacing:.3em;font-weight:500">{{ p.ja }}</span>
+      </div>
+    </div>
+  </sc-for>
+  <div style="max-width:1000px;margin:0 auto;padding:18px 20px 0;display:flex;gap:10px;font-size:12px;letter-spacing:.08em;color:#777">
+    <a href="#" onClick="{{ goHome }}" style="color:#3f8fb8">HOME</a><span>›</span><span>{{ pageJa }}</span>
+  </div>
+</sc-if>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:rgba(242,248,251,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px">
+    <button onClick="{{ toggleMenu }}" aria-label="閉じる" style="position:absolute;top:18px;right:16px;width:52px;height:52px;border-radius:50%;border:1px solid #cfe0e9;background:#fff;font-size:22px;cursor:pointer">×</button>
+    <div style="color:#2f95c9"><svg viewBox="0 0 64 64" style="width:34px;height:34px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="3"></path></svg></div>
+    <sc-for list="{{ allnav }}" as="n" hint-placeholder-count="6">
+      <a href="#" onClick="{{ n.go }}" style="display:flex;flex-direction:column;align-items:center;gap:2px;min-height:44px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.16em">{{ n.en }}</span>
+        <span style="font-size:12px;letter-spacing:.14em;color:#7a8a92">{{ n.ja }}</span>
+      </a>
+    </sc-for>
+    <a href="tel:0335550123" style="margin-top:6px;padding:14px 34px;border:1px solid #2c7fae;color:#2c7fae;font-size:18px;letter-spacing:.06em">TEL 03-5555-0123</a>
+  </div>
+</sc-if>
+
+<sc-if value="{{ pHome }}" hint-placeholder-val="{{ true }}">
+<section id="concept" data-screen-label="Home 02 Concept" style="position:relative;overflow:hidden;padding:clamp(80px,10vw,140px) 20px clamp(60px,8vw,120px)">
+  <svg viewBox="0 0 64 64" style="position:absolute;top:-60px;left:-90px;width:340px;height:340px;transform:rotate(-14deg);color:#dcedf6;pointer-events:none"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="5"></path></svg>
+  <svg viewBox="0 0 64 64" style="position:absolute;bottom:14%;right:-110px;width:380px;height:380px;transform:rotate(12deg);color:#dcedf6;pointer-events:none"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="5"></path></svg>
+  <div style="position:relative;max-width:1000px;margin:0 auto">
+    <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:30px;padding-bottom:20px">
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,38px);letter-spacing:.14em">CONCEPT</h2>
+          <span style="display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.16em;color:#3f9cc9;font-weight:700"><svg viewBox="0 0 64 64" style="width:13px;height:13px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>5つの医院のこだわり</span>
+        </div>
+        <p style="margin:0;font-size:clamp(20px,2vw,26px);letter-spacing:.14em;line-height:1.8;font-weight:500">治療のその先にある、<br>一生の笑顔のために。</p>
+        <p style="margin:0;font-size:14px;line-height:2.1;letter-spacing:.06em;max-width:520px;text-wrap:pretty">ひより歯科は「治す」だけでなく、「守り、育てる」歯科医療を大切にしています。お一人おひとりのお口の状態と生活に合わせた治療計画を、丁寧な説明とともにご提案します。</p>
+      </div>
+      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(180px,24vw,320px);line-height:.8;color:#6cbde0;text-shadow:6px 8px 14px rgba(47,149,201,.18)">5</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(70px,9vw,120px);margin-top:clamp(70px,9vw,120px)">
+      <sc-for list="{{ features }}" as="f" hint-placeholder-count="5">
+        <article data-reveal="" style="display:flex;flex-direction:{{ f.dir }};flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,64px)">
+          <div style="flex:1 1 360px;max-width:500px;position:relative;aspect-ratio:1/1;margin:0 18px 18px 0">
+            <div style="position:absolute;inset:18px -18px -18px 18px;background:#d0e8f3"></div>
+            <div style="position:relative;width:100%;height:100%;overflow:hidden"><image-slot id="{{ f.slot }}" shape="rect" placeholder="{{ f.ph }}"></image-slot></div>
+          </div>
+          <div style="flex:1 1 320px;display:flex;flex-direction:column;align-items:{{ f.align }};text-align:{{ f.align2 }};gap:20px">
+            <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(110px,12vw,170px);line-height:.8;color:#6cbde0;text-shadow:5px 6px 12px rgba(47,149,201,.16)">{{ f.no }}</span>
+            <h3 style="margin:0;font-size:clamp(20px,2vw,25px);letter-spacing:.16em;line-height:1.75;font-weight:700">{{ f.t1 }}<br>{{ f.t2 }}</h3>
+            <p style="margin:0;font-size:13.5px;line-height:2.05;letter-spacing:.05em;text-align:left;max-width:420px;text-wrap:pretty">{{ f.body }}</p>
+            <a href="#" onClick="{{ goClinic }}" style="display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;min-height:32px">MORE <span style="font-size:10px">›</span></a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="medical" data-screen-label="Home 03 Medical" style="background:#fff;padding:clamp(80px,9vw,130px) 20px">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,5vw,60px)">
+    <div data-reveal="" style="display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center">
+      <div style="display:flex;align-items:baseline;gap:14px"><h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,38px);letter-spacing:.14em">MEDICAL</h2><span style="display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.16em;color:#3f9cc9;font-weight:700"><svg viewBox="0 0 64 64" style="width:13px;height:13px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>診療案内</span></div>
+      <div style="background:#f2f8fb;padding:26px clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px 40px;text-align:left;width:100%;max-width:760px">
+        <sc-for list="{{ worries }}" as="w" hint-placeholder-count="6">
+          <span style="display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.04em;line-height:1.6"><svg viewBox="0 0 64 64" style="flex:none;width:15px;height:15px;color:#2f95c9"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>{{ w }}</span>
+        </sc-for>
+      </div>
+      <p style="margin:0;font-size:14px;letter-spacing:.08em;font-weight:700">小さな気がかりも、まずはお気軽にご相談ください。</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:20px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+        <article data-reveal="" style="border:1px solid #d6e6ee;background:#fff;display:flex;flex-direction:column;transition:box-shadow .4s,transform .4s,border-color .4s" style-hover="box-shadow:0 14px 34px rgba(47,149,201,.12);transform:translateY(-4px);border-color:#6cbde0">
+          <div style="aspect-ratio:16/10;overflow:hidden;background:#eee"><image-slot id="{{ s.slot }}" shape="rect" placeholder="{{ s.ph }}"></image-slot></div>
+          <div style="padding:24px 24px 26px;display:flex;flex-direction:column;gap:12px;flex:1">
+            <div style="display:flex;align-items:baseline;gap:12px">
+              <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#6cbde0;line-height:1">{{ s.no }}</span>
+              <h3 style="margin:0;font-size:17px;letter-spacing:.12em;font-weight:700">{{ s.name }}</h3>
+            </div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;color:#8a8a8a">{{ s.en }}</span>
+            <p style="margin:0;font-size:13px;line-height:1.95;letter-spacing:.04em;text-wrap:pretty">{{ s.desc }}</p>
+            <p style="margin:0;font-size:12px;line-height:1.8;color:#2f7aa3;background:#eaf6fb;padding:8px 12px">こんな方に：{{ s.for }}</p>
+            <a href="#" onClick="{{ goMedical }}" style="margin-top:auto;display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;padding-top:6px;min-height:32px">MORE <span style="font-size:10px">›</span></a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="message" data-screen-label="Home 04 Message" style="position:relative;overflow:hidden;padding:clamp(80px,9vw,130px) 20px">
+  <svg viewBox="0 0 64 64" style="position:absolute;top:40px;left:-110px;width:300px;height:300px;transform:rotate(-10deg);color:#dcedf6;pointer-events:none"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="5"></path></svg>
+  <div style="position:relative;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(80px,9vw,120px)">
+    <div style="display:flex;flex-direction:column;gap:40px">
+      <div style="display:flex;align-items:baseline;gap:14px"><h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,38px);letter-spacing:.14em">MESSAGE</h2><span style="display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.16em;color:#3f9cc9;font-weight:700"><svg viewBox="0 0 64 64" style="width:13px;height:13px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>院長メッセージ</span></div>
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(30px,4vw,50px)">
+        <div style="flex:0 1 300px;margin:0 auto;width:min(300px,72vw);aspect-ratio:1/1;border-radius:50%;overflow:hidden;background:#e2eff5"><image-slot id="doctor" shape="circle" placeholder="院長ポートレート（正方形）"></image-slot></div>
+        <div style="flex:1 1 440px;position:relative;padding:clamp(28px,4vw,48px) clamp(20px,4vw,48px)">
+          <div style="position:absolute;top:0;right:0;width:62%;height:64%;border-top:3px solid #6cbde0;border-right:3px solid #6cbde0;pointer-events:none"></div>
+          <div style="position:absolute;bottom:0;left:0;width:48%;height:62%;border-bottom:3px solid #6cbde0;border-left:3px solid #6cbde0;pointer-events:none"></div>
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <p style="margin:0;font-size:clamp(18px,1.8vw,22px);letter-spacing:.1em;text-align:right;padding-bottom:18px;border-bottom:1px solid #d6e6ee">「また来たい」と思える歯医者でありたい</p>
+            <p style="margin:0;font-size:13.5px;line-height:2.1;letter-spacing:.05em;text-wrap:pretty">歯医者が苦手な方ほど、最初の一歩は大きなものだと思います。当院では、治療を始める前にお口の状態を画像でお見せしながら、選択肢とそれぞれの費用・期間を丁寧にご説明することを大切にしています。</p>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+              <a href="#" onClick="{{ goStaff }}" style="display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;min-height:32px">MORE <span style="font-size:10px">›</span></a>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px">
+                <span style="font-size:11px;letter-spacing:.1em;color:#777">院長・歯科医師</span>
+                <span style="font-size:24px;letter-spacing:.3em;font-weight:500">日和 健太</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:36px">
+      <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap"><h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,38px);letter-spacing:.14em">VOICE</h2><span style="display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.16em;color:#3f9cc9;font-weight:700"><svg viewBox="0 0 64 64" style="width:13px;height:13px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>患者さまの声</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px">
+        <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+          <figure data-reveal="" style="margin:0;background:#fff;padding:30px 28px;display:flex;flex-direction:column;gap:16px;border-top:3px solid #6cbde0">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:56px;line-height:.5;color:#6cbde0;height:22px">“</span>
+            <p style="margin:0;font-size:15px;letter-spacing:.1em;font-weight:700;line-height:1.7">{{ v.title }}</p>
+            <blockquote style="margin:0;font-size:13px;line-height:2;letter-spacing:.04em;text-wrap:pretty">{{ v.body }}</blockquote>
+            <figcaption style="margin-top:auto;font-size:12px;color:#777;letter-spacing:.08em;padding-top:12px;border-top:1px solid #eee">{{ v.who }}</figcaption>
+          </figure>
+        </sc-for>
+      </div>
+      <p style="margin:0;font-size:11.5px;color:#888;letter-spacing:.04em">※個人の感想であり、治療の効果・感じ方には個人差があります。</p>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ pClinic }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Page 01 Clinic" style="position:relative;overflow:hidden;padding:clamp(60px,8vw,110px) 20px">
+  <svg viewBox="0 0 64 64" style="position:absolute;top:40px;right:-100px;width:340px;height:340px;transform:rotate(12deg);color:#dcedf6;pointer-events:none"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="5"></path></svg>
+  <div style="position:relative;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(70px,9vw,110px)">
+    <div data-reveal="" style="display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center">
+      <div style="display:flex;align-items:baseline;gap:14px"><h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,38px);letter-spacing:.14em">PHILOSOPHY</h2><span style="display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.16em;color:#3f9cc9;font-weight:700"><svg viewBox="0 0 64 64" style="width:13px;height:13px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>診療理念</span></div>
+      <p style="margin:0;font-size:clamp(20px,2.2vw,28px);letter-spacing:.16em;line-height:1.8;font-weight:500">治療のためだけでなく、<br>健康を守るために通う場所へ。</p>
+      <p style="margin:0;font-size:14px;line-height:2.1;letter-spacing:.05em;max-width:640px;text-wrap:pretty">ひより歯科は2019年、芝浦の地に開院しました。地域の皆さまが、痛くなる前に気軽に立ち寄れる「かかりつけの歯医者」であることを目指し、3つの約束を大切にしています。</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px">
+      <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+        <div data-reveal="" style="background:#fff;padding:40px 30px 36px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;border:1px solid #d6e6ee">
+          <div style="position:relative;width:74px;height:74px;display:flex;align-items:center;justify-content:center;color:#6cbde0"><svg viewBox="0 0 64 64" style="position:absolute;inset:0;width:100%;height:100%"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="2.5"></path></svg><span style="position:relative;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#2f95c9;margin-top:-8px">{{ p.no }}</span></div>
+          <h3 style="margin:0;font-size:18px;letter-spacing:.14em;font-weight:700">{{ p.t }}</h3>
+          <p style="margin:0;font-size:13px;line-height:2;letter-spacing:.04em;text-align:left;text-wrap:pretty">{{ p.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(50px,6vw,80px)">
+      <div style="display:flex;align-items:baseline;gap:14px"><h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,38px);letter-spacing:.14em">FACILITY</h2><span style="display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.16em;color:#3f9cc9;font-weight:700"><svg viewBox="0 0 64 64" style="width:13px;height:13px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>院内・設備紹介</span></div>
+      <sc-for list="{{ facilities }}" as="fa" hint-placeholder-count="6">
+        <article data-reveal="" style="display:flex;flex-direction:{{ fa.dir }};flex-wrap:wrap;align-items:center;gap:clamp(24px,4vw,56px)">
+          <div style="flex:1 1 340px;max-width:480px;position:relative;aspect-ratio:4/3;margin:0 16px 16px 0">
+            <div style="position:absolute;inset:16px -16px -16px 16px;background:#d0e8f3"></div>
+            <div style="position:relative;width:100%;height:100%;overflow:hidden"><image-slot id="{{ fa.slot }}" shape="rect" placeholder="{{ fa.ph }}"></image-slot></div>
+          </div>
+          <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;align-items:flex-end;gap:14px">
+              <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(70px,8vw,100px);line-height:.8;color:#6cbde0">{{ fa.no }}</span>
+              <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;color:#3f8fb8">{{ fa.en }}</span><h3 style="margin:0;font-size:clamp(18px,1.8vw,22px);letter-spacing:.14em;font-weight:700">{{ fa.name }}</h3></div>
+            </div>
+            <p style="margin:0;font-size:13.5px;line-height:2.05;letter-spacing:.05em;text-wrap:pretty">{{ fa.desc }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ pStaff }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Page 02 Staff" style="position:relative;overflow:hidden;padding:clamp(60px,8vw,110px) 20px">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(80px,9vw,120px)">
+    <div style="display:flex;flex-direction:column;gap:40px">
+      <div style="display:flex;align-items:baseline;gap:14px"><h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,38px);letter-spacing:.14em">DOCTOR</h2><span style="display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.16em;color:#3f9cc9;font-weight:700"><svg viewBox="0 0 64 64" style="width:13px;height:13px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>院長紹介</span></div>
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(30px,4vw,50px)">
+        <div style="flex:0 1 300px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px">
+          <div style="width:min(300px,72vw);aspect-ratio:1/1;border-radius:50%;overflow:hidden;background:#e2eff5"><image-slot id="doctor" shape="circle" placeholder="院長ポートレート（正方形）"></image-slot></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:11px;letter-spacing:.1em;color:#777">院長・歯科医師</span><span style="font-size:24px;letter-spacing:.3em;font-weight:500">日和 健太</span><span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#777">Hiyori Kenta</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;line-height:1.8;letter-spacing:.04em;width:100%;max-width:300px;padding-top:14px;border-top:1px solid #d6e6ee">
+            <sc-for list="{{ career }}" as="c" hint-placeholder-count="4"><span style="display:flex;gap:12px"><span style="flex:none;width:52px;color:#3f8fb8;font-family:'Cormorant Garamond',serif;font-size:14px">{{ c.y }}</span>{{ c.t }}</span></sc-for>
+          </div>
+        </div>
+        <div style="flex:1 1 440px;position:relative;padding:clamp(28px,4vw,48px) clamp(20px,4vw,48px)">
+          <div style="position:absolute;top:0;right:0;width:62%;height:64%;border-top:3px solid #6cbde0;border-right:3px solid #6cbde0;pointer-events:none"></div>
+          <div style="position:absolute;bottom:0;left:0;width:48%;height:62%;border-bottom:3px solid #6cbde0;border-left:3px solid #6cbde0;pointer-events:none"></div>
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <p style="margin:0;font-size:clamp(18px,1.8vw,22px);letter-spacing:.1em;text-align:right;padding-bottom:18px;border-bottom:1px solid #d6e6ee">「また来たい」と思える歯医者でありたい</p>
+            <p style="margin:0;font-size:13.5px;line-height:2.1;letter-spacing:.05em;text-wrap:pretty">歯医者が苦手な方ほど、最初の一歩は大きなものだと思います。当院では、治療を始める前にお口の状態を画像でお見せしながら、選択肢とそれぞれの費用・期間を丁寧にご説明することを大切にしています。</p>
+            <p style="margin:0;font-size:13.5px;line-height:2.1;letter-spacing:.05em;text-wrap:pretty">むし歯や歯周病は、定期的なメインテナンスで予防できることも多い病気です。痛くなってから通う場所ではなく、健康を守るために通う場所として、地域の皆さまに長くお付き合いいただける医院を目指しています。</p>
+            <p style="margin:0;font-size:13.5px;line-height:2.1;letter-spacing:.05em;text-wrap:pretty">専門は歯周病治療と予防歯科です。学会や勉強会で学んだ知見を、スタッフ全員で共有しながら日々の診療に活かしています。</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ doctorTags }}" as="t" hint-placeholder-count="4"><span style="font-size:11.5px;letter-spacing:.08em;padding:5px 12px;border:1px solid #9fd3ea;color:#2f7aa3">{{ t }}</span></sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:40px">
+      <div style="display:flex;align-items:baseline;gap:14px"><h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,38px);letter-spacing:.14em">STAFF</h2><span style="display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.16em;color:#3f9cc9;font-weight:700"><svg viewBox="0 0 64 64" style="width:13px;height:13px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>スタッフ紹介</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:clamp(20px,2.4vw,30px)">
+        <sc-for list="{{ staff }}" as="st" hint-placeholder-count="4">
+          <div data-reveal="" style="display:flex;flex-direction:column;gap:14px;transition:transform .4s" style-hover="transform:translateY(-4px)">
+            <div style="aspect-ratio:3/4;overflow:hidden;background:#e2eff5"><image-slot id="{{ st.slot }}" shape="rect" placeholder="スタッフ写真（縦長）"></image-slot></div>
+            <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:11.5px;letter-spacing:.1em;color:#3f8fb8;font-weight:700">{{ st.role }}</span><span style="font-size:18px;letter-spacing:.2em;font-weight:500">{{ st.name }}</span></div>
+            <p style="margin:0;font-size:12.5px;line-height:1.9;letter-spacing:.04em;text-wrap:pretty">{{ st.msg }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ pMedical }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Page 03 Medical" style="padding:clamp(60px,8vw,110px) 20px">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(60px,8vw,100px)">
+    <div data-reveal="" style="display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center">
+      <p style="margin:0;font-size:clamp(20px,2.2vw,26px);letter-spacing:.16em;line-height:1.8;font-weight:500">お口の状態とご希望に合わせて、<br>最適な方法をご提案します。</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="6"><a href="{{ s.anchor }}" style="display:flex;align-items:center;gap:8px;padding:10px 18px;background:#fff;border:1px solid #d6e6ee;font-size:13px;letter-spacing:.08em;min-height:44px;transition:border-color .3s" style-hover="border-color:#2f95c9"><svg viewBox="0 0 64 64" style="width:13px;height:13px;color:#6cbde0"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>{{ s.name }}</a></sc-for>
+      </div>
+    </div>
+    <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+      <article id="{{ s.id }}" data-reveal="" style="background:#fff;display:flex;flex-direction:{{ s.dir }};flex-wrap:wrap;scroll-margin-top:90px">
+        <div style="flex:1 1 360px;min-height:300px;position:relative"><div style="position:absolute;inset:0"><image-slot id="{{ s.slot }}" shape="rect" placeholder="{{ s.ph }}"></image-slot></div></div>
+        <div style="flex:1 1 400px;padding:clamp(28px,4vw,50px);display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:flex-end;gap:14px">
+            <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:64px;line-height:.8;color:#6cbde0">{{ s.no }}</span>
+            <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;color:#3f8fb8">{{ s.en }}</span><h3 style="margin:0;font-size:clamp(19px,1.9vw,23px);letter-spacing:.12em;font-weight:700">{{ s.name }}</h3></div>
+          </div>
+          <p style="margin:0;font-size:13.5px;line-height:2;letter-spacing:.04em;text-wrap:pretty">{{ s.desc }}</p>
+          <div style="display:flex;flex-direction:column;gap:8px;padding:16px 18px;background:#f2f8fb">
+            <span style="font-size:12px;letter-spacing:.12em;font-weight:700;color:#2f7aa3">主な内容</span>
+            <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="3"><span style="display:flex;align-items:center;gap:8px;font-size:13px;line-height:1.7"><svg viewBox="0 0 64 64" style="flex:none;width:12px;height:12px;color:#6cbde0"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>{{ it }}</span></sc-for>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12.5px;line-height:1.8">
+            <span><span style="color:#2f7aa3;font-weight:700;margin-right:8px">こんな方に</span>{{ s.for }}</span>
+            <span><span style="color:#2f7aa3;font-weight:700;margin-right:8px">通院の目安</span>{{ s.period }}</span>
+          </div>
+          <a href="#reserve" style="align-self:flex-start;margin-top:6px;display:flex;align-items:center;gap:10px;padding:12px 26px;border:1px solid #2c7fae;color:#2c7fae;font-size:13px;letter-spacing:.12em;transition:background .3s,color .3s" style-hover="background:#2c7fae;color:#fff">この診療について相談する <span style="font-size:10px">›</span></a>
+        </div>
+      </article>
+    </sc-for>
+    <p style="margin:0;font-size:11.5px;color:#888;line-height:1.8">※通院回数・期間は症状により異なります。自費診療の費用は、カウンセリング時にお見積りをご提示します。</p>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ pFirst }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Page 04 First" style="position:relative;overflow:hidden;padding:clamp(60px,8vw,110px) 20px">
+  <svg viewBox="0 0 64 64" style="position:absolute;top:120px;left:-110px;width:320px;height:320px;transform:rotate(-12deg);color:#dcedf6;pointer-events:none"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="5"></path></svg>
+  <div style="position:relative;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(70px,9vw,110px)">
+    <div data-reveal="" style="display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center">
+      <p style="margin:0;font-size:clamp(20px,2.2vw,26px);letter-spacing:.16em;line-height:1.8;font-weight:500">はじめての方も、久しぶりの方も。<br>安心してお越しください。</p>
+      <p style="margin:0;font-size:14px;line-height:2.1;letter-spacing:.05em;max-width:620px;text-wrap:pretty">初診ではお話を伺う時間を十分にとり、検査結果をもとに治療方針をご説明します。その日のうちに治療を始めるかどうかも、ご相談のうえで決めていただけます。</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:36px">
+      <div style="display:flex;align-items:baseline;gap:14px"><h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,38px);letter-spacing:.14em">FLOW</h2><span style="display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.16em;color:#3f9cc9;font-weight:700"><svg viewBox="0 0 64 64" style="width:13px;height:13px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>初診の流れ</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:20px">
+        <sc-for list="{{ flow }}" as="fl" hint-placeholder-count="6">
+          <div data-reveal="" style="background:#fff;padding:28px 26px;display:flex;gap:18px;align-items:flex-start">
+            <div style="flex:none;position:relative;width:54px;height:54px;display:flex;align-items:center;justify-content:center;color:#2f95c9"><svg viewBox="0 0 64 64" style="position:absolute;inset:0;width:100%;height:100%"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg><span style="position:relative;margin-top:-6px;font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;font-weight:500">{{ fl.no }}</span></div>
+            <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-size:16px;letter-spacing:.12em;font-weight:700">{{ fl.t }}</h3><p style="margin:0;font-size:13px;line-height:1.9;letter-spacing:.04em;text-wrap:pretty">{{ fl.d }}</p></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:#fff;border:1px solid #d6e6ee;padding:22px clamp(20px,3vw,34px);display:flex;flex-wrap:wrap;gap:12px 30px;align-items:center">
+        <span style="font-size:14px;letter-spacing:.12em;font-weight:700;color:#2f7aa3">お持ちいただくもの</span>
+        <sc-for list="{{ bring }}" as="b" hint-placeholder-count="4"><span style="display:flex;align-items:center;gap:8px;font-size:13px"><svg viewBox="0 0 64 64" style="width:12px;height:12px;color:#6cbde0"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>{{ b }}</span></sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:36px">
+      <div style="display:flex;align-items:baseline;gap:14px"><h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,38px);letter-spacing:.14em">Q&amp;A</h2><span style="display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.16em;color:#3f9cc9;font-weight:700"><svg viewBox="0 0 64 64" style="width:13px;height:13px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>よくあるご質問</span></div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ faq }}" as="q" hint-placeholder-count="5">
+          <div style="background:#fff;border:1px solid #d6e6ee">
+            <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;display:flex;align-items:center;gap:16px;padding:20px 24px;border:none;background:none;cursor:pointer;text-align:left;font-size:14.5px;letter-spacing:.06em;color:#3a3a3a;font-weight:700;min-height:44px">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#2f95c9;font-weight:500">Q</span><span style="flex:1">{{ q.q }}</span><span style="font-size:18px;color:#6cbde0;font-weight:400">{{ q.icon }}</span>
+            </button>
+            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:16px;padding:0 24px 22px;font-size:13.5px;line-height:2;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#b0c8d4;line-height:1.3">A</span><span style="flex:1;text-wrap:pretty">{{ q.a }}</span></div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ pAccess }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Page 05 Access" style="padding:clamp(60px,8vw,110px) 20px">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(50px,6vw,80px)">
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:clamp(30px,4vw,56px);align-items:flex-start">
+      <div style="flex:1 1 400px;display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;align-items:baseline;gap:14px"><h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,38px);letter-spacing:.14em">ACCESS</h2><span style="display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.16em;color:#3f9cc9;font-weight:700"><svg viewBox="0 0 64 64" style="width:13px;height:13px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>交通案内</span></div>
+        <dl style="margin:0;display:flex;flex-direction:column;gap:0;font-size:13.5px;line-height:1.9">
+          <sc-for list="{{ access }}" as="ac" hint-placeholder-count="5"><div style="display:flex;gap:20px;padding:14px 0;border-bottom:1px solid #d6e6ee"><dt style="flex:none;width:84px;font-weight:700;color:#2f7aa3;letter-spacing:.08em">{{ ac.k }}</dt><dd style="margin:0">{{ ac.v }}</dd></div></sc-for>
+        </dl>
+      </div>
+      <div style="flex:1 1 400px;display:flex;flex-direction:column;gap:16px">
+        <div style="aspect-ratio:4/3;overflow:hidden"><image-slot id="access-exterior" shape="rect" placeholder="外観写真（ビル入口・看板）"></image-slot></div>
+        <p style="margin:0;font-size:12.5px;line-height:1.9;color:#666">1階にコンビニが入っているビルの2階です。青い歯のマークの看板が目印です。</p>
+      </div>
+    </div>
+    <div data-reveal="" style="aspect-ratio:21/9;min-height:280px;overflow:hidden"><image-slot id="access-map" shape="rect" placeholder="MAP — Googleマップ埋め込み（広域）"></image-slot></div>
+  </div>
+</section>
+</sc-if>
+
+<section id="reserve" data-screen-label="05 Reserve" style="background:#2c7fae;color:#fff;padding:clamp(80px,9vw,120px) 20px 0;position:relative;overflow:hidden">
+  <svg viewBox="0 0 64 64" style="position:absolute;top:40px;right:-80px;width:320px;height:320px;transform:rotate(14deg);color:rgba(255,255,255,.07);pointer-events:none"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="5"></path></svg>
+  <div style="position:relative;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(50px,6vw,80px)">
+    <div data-reveal="" style="display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center">
+      <div style="display:flex;align-items:baseline;gap:14px"><h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3vw,38px);letter-spacing:.14em;color:#fff">RESERVE</h2><span style="display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.16em;color:#cdeaf6;font-weight:700"><svg viewBox="0 0 64 64" style="width:13px;height:13px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor"></path></svg>ご予約・ご相談</span></div>
+      <p style="margin:0;font-size:clamp(20px,2.2vw,28px);letter-spacing:.16em;line-height:1.8;font-weight:500">健やかな笑顔は、<br>一度のご来院から。</p>
+      <p style="margin:0;font-size:13.5px;line-height:2;letter-spacing:.05em;max-width:560px;opacity:.92">検診だけ、相談だけのご来院も歓迎しています。ご希望の日時を送信いただくと、スタッフより確認のご連絡を差し上げます。</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+        <a href="tel:0335550123" style="display:flex;align-items:center;gap:12px;padding:16px 34px;border:1px solid rgba(255,255,255,.8);color:#fff;font-size:20px;letter-spacing:.06em;transition:background .3s" style-hover="background:rgba(255,255,255,.1);color:#fff"><span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em">TEL</span>03-5555-0123</a>
+        <a href="#form" style="display:flex;align-items:center;gap:10px;padding:16px 34px;background:#fff;color:#2c7fae;font-size:15px;letter-spacing:.14em;font-weight:700;transition:background .3s" style-hover="background:#e3f3fa;color:#2c7fae">WEB予約フォーム <span style="font-size:11px">›</span></a>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(36px,5vw,64px)">
+      <form id="form" onSubmit="{{ submit }}" style="flex:1 1 440px;background:#fff;color:#3a3a3a;padding:clamp(24px,4vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:18px 20px">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="grid-column:1/-1;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:60px 0">
+            <svg viewBox="0 0 64 64" style="width:40px;height:40px;color:#6cbde0"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="3"></path></svg>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:30px;letter-spacing:.14em;color:#2f95c9">THANK YOU</span>
+            <p style="margin:0;font-size:14px;line-height:2">送信ありがとうございました。<br>1営業日以内にスタッフよりご連絡いたします。</p>
+            <button type="button" onClick="{{ reset }}" style="margin-top:8px;padding:12px 28px;border:1px solid #3a3a3a;background:none;cursor:pointer;letter-spacing:.1em">フォームに戻る</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12.5px;letter-spacing:.08em;font-weight:700">お名前 <input required="" name="name" autocomplete="name" placeholder="日和 花子" style="height:48px;padding:0 14px;border:1px solid #cfe0e9;background:#f6fafc;font-size:15px;font-weight:400"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12.5px;letter-spacing:.08em;font-weight:700">電話番号 <input required="" name="tel" type="tel" autocomplete="tel" placeholder="090-0000-0000" style="height:48px;padding:0 14px;border:1px solid #cfe0e9;background:#f6fafc;font-size:15px;font-weight:400"></label>
+          <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px;font-size:12.5px;letter-spacing:.08em;font-weight:700">メールアドレス <input required="" name="email" type="email" autocomplete="email" placeholder="example@mail.jp" style="height:48px;padding:0 14px;border:1px solid #cfe0e9;background:#f6fafc;font-size:15px;font-weight:400"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12.5px;letter-spacing:.08em;font-weight:700">ご希望日 <input name="date" type="date" style="height:48px;padding:0 14px;border:1px solid #cfe0e9;background:#f6fafc;font-size:15px;font-weight:400"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12.5px;letter-spacing:.08em;font-weight:700">ご相談内容
+            <select name="type" style="height:48px;padding:0 12px;border:1px solid #cfe0e9;background:#f6fafc;font-size:15px;font-weight:400"><option>検診・クリーニング</option><option>むし歯・痛みの相談</option><option>歯周病治療</option><option>小児歯科</option><option>審美・ホワイトニング</option><option>インプラント相談</option><option>その他</option></select>
+          </label>
+          <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px;font-size:12.5px;letter-spacing:.08em;font-weight:700">メッセージ <textarea name="msg" rows="4" placeholder="気になる症状やご要望があればご記入ください" style="padding:12px 14px;border:1px solid #cfe0e9;background:#f6fafc;font-size:15px;font-weight:400;resize:vertical"></textarea></label>
+          <button type="submit" style="grid-column:1/-1;height:56px;border:none;background:#2c7fae;color:#fff;font-size:15px;letter-spacing:.2em;cursor:pointer;transition:background .3s" style-hover="background:#1f6690">この内容で送信する</button>
+        </sc-if>
+      </form>
+      <div style="flex:1 1 360px;display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;line-height:1.8;letter-spacing:.06em">
+          <span>〒108-0023　東京都港区芝浦3-0-0 ひよりビル2F</span>
+          <span style="opacity:.9">JR田町駅 芝浦口より徒歩6分／都営三田線 三田駅より徒歩8分</span>
+        </div>
+        <table style="border-collapse:collapse;font-size:13px;text-align:center;width:100%">
+          <thead><tr><th style="text-align:left;font-weight:400;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.4)"></th><sc-for list="{{ days }}" as="d" hint-placeholder-count="8"><th style="font-weight:700;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.4)">{{ d }}</th></sc-for></tr></thead>
+          <tbody><sc-for list="{{ hours }}" as="h" hint-placeholder-count="2"><tr><td style="text-align:left;padding:12px 0;white-space:nowrap;font-weight:700">{{ h.time }}</td><sc-for list="{{ h.marks }}" as="m" hint-placeholder-count="8"><td style="padding:12px 0">{{ m }}</td></sc-for></tr></sc-for></tbody>
+        </table>
+        <p style="margin:-14px 0 0;font-size:12px;line-height:1.9;opacity:.9">▲ 土曜午後は14:00–17:00　／　休診日：木曜・日曜・祝日</p>
+        <div style="position:relative;aspect-ratio:16/9;overflow:hidden"><image-slot id="map" shape="rect" placeholder="MAP — Googleマップ埋め込み／アクセスマップ"></image-slot></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <sc-for list="{{ socials }}" as="so" hint-placeholder-count="3"><a href="#" style="padding:8px 18px;background:#fff;color:#2c7fae;font-size:12px;letter-spacing:.1em;min-height:36px;display:flex;align-items:center;transition:background .3s" style-hover="background:#e3f3fa;color:#2c7fae">{{ so }}</a></sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer style="position:relative;max-width:1000px;margin:clamp(60px,7vw,90px) auto 0;padding:40px 0 30px;border-top:1px solid rgba(255,255,255,.25);display:flex;flex-direction:column;align-items:center;gap:28px">
+    <a href="#" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:14px;color:#fff">
+      <div style="width:40px;height:40px;border-radius:50%;border:1.5px solid #fff;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 64 64" style="width:21px;height:21px"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="none" stroke="currentColor" stroke-width="3.5"></path></svg></div>
+      <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:18px;letter-spacing:.3em">ひより歯科</span><span style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.3em;opacity:.85">HIYORI DENTAL CLINIC</span></div>
+    </a>
+    <nav style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px">
+      <sc-for list="{{ allnav }}" as="n" hint-placeholder-count="6"><a href="#" onClick="{{ n.go }}" style="color:#fff;font-size:12.5px;letter-spacing:.1em;font-weight:700;min-height:32px;display:flex;align-items:center" style-hover="color:#cdeaf6">{{ n.ja }}</a></sc-for>
+    </nav>
+    <small style="font-size:11px;letter-spacing:.1em;opacity:.8">© 2026 Hiyori Dental Clinic. All rights reserved.</small>
+  </footer>
+</section>
+
+<sc-if value="{{ showBadge }}" hint-placeholder-val="{{ false }}">
+  <a href="#reserve" aria-label="WEB予約" style="position:fixed;right:16px;bottom:16px;z-index:40;height:60px;padding:0 28px 0 22px;border-radius:999px;background:#2f95c9;border:1.5px solid #fff;display:flex;align-items:center;gap:12px;color:#fff;box-shadow:0 6px 18px rgba(28,92,128,.3);transition:transform .3s,background .3s" style-hover="transform:translateY(-3px);background:#237fb0;color:#fff">
+    <svg viewBox="0 0 64 64" style="flex:none;width:24px;height:24px;color:#fff"><path d="M20 6C11 6 6 13 6 21c0 7 3 11 5 17 2 6 2 20 8 20 5 0 5-9 7-15 1-4 3-6 6-6s5 2 6 6c2 6 2 15 7 15 6 0 6-14 8-20 2-6 5-10 5-17 0-8-5-15-14-15-6 0-8 3-12 3S26 6 20 6Z" fill="currentColor" stroke="#fff" stroke-width="1.5"></path></svg>
+    <span style="display:flex;flex-direction:column;line-height:1.25"><span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.2em">RESERVE</span><span style="font-size:14px;font-weight:700;letter-spacing:.1em">WEB予約</span></span>
+  </a>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroCopy&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;first&quot;,&quot;smile&quot;,&quot;care&quot;],&quot;default&quot;:&quot;first&quot;,&quot;tsType&quot;:&quot;'first'|'smile'|'care'&quot;},&quot;floatingReserve&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { page: (typeof localStorage !== 'undefined' && localStorage.getItem('hiyori-page')) || 'home', menuOpen: false, sent: false, scrolled: false, faq: 0 };
+  componentDidMount() {
+    this.onScroll = () => { const s = window.scrollY > window.innerHeight * 0.6; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.mq = window.matchMedia('(max-width:859px)');
+    this.onMq = () => this.forceUpdate();
+    this.mq.addEventListener('change', this.onMq);
+    window.addEventListener('resize', this.onMq);
+    setTimeout(() => this.forceUpdate(), 0);
+    setTimeout(() => this.forceUpdate(), 400);
+    this.setupReveal();
+  }
+  componentDidUpdate() { this.setupReveal(); }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onMq);
+    this.io && this.io.disconnect();
+    this.mq && this.mq.removeEventListener('change', this.onMq);
+  }
+  go(page) {
+    return e => {
+      e && e.preventDefault && e.preventDefault();
+      try { localStorage.setItem('hiyori-page', page); } catch (_) {}
+      this.setState({ page, menuOpen: false });
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    };
+  }
+  setupReveal() {
+    if (this.props.reveal === false) return;
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+    }), { threshold: 0.1 });
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.style.opacity = 0; el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1)';
+      this.io.observe(el);
+    });
+  }
+  renderVals() {
+    const mobile = typeof window !== 'undefined' ? window.matchMedia('(max-width:859px)').matches : false;
+    const page = this.state.page;
+    const copies = { smile: ['笑顔が続く毎日を', 'この街の歯科医院から'], care: ['一生の歯を', 'ともに守っていく'], first: ['健やかな笑顔は', 'ここからはじまる'] };
+    const [a, b] = copies[this.props.heroCopy ?? 'first'] || copies.first;
+    const pages = [
+      { key: 'clinic', ja: '医院紹介', en: 'CLINIC', ph: 'PAGE HEADER — 院内・受付の横長写真' },
+      { key: 'staff', ja: '院長・スタッフ', en: 'STAFF', ph: 'PAGE HEADER — スタッフ集合写真' },
+      { key: 'medical', ja: '診療案内', en: 'MEDICAL', ph: 'PAGE HEADER — 診療室の横長写真' },
+      { key: 'first', ja: '初めての方へ', en: 'FIRST', ph: 'PAGE HEADER — カウンセリング風景' },
+      { key: 'access', ja: '診療時間・アクセス', en: 'ACCESS', ph: 'PAGE HEADER — 外観・周辺の街並み' },
+    ];
+    const subnav = pages.map(p => ({ ...p, go: this.go(p.key), slot: 'page-' + p.key, disp: p.key === page ? 'block' : 'none', color: p.key === page ? '#2f95c9' : '#3a3a3a' }));
+    const cur = pages.find(p => p.key === page);
+    const features = [
+      { t1: '「通いたい」と思える', t2: '歯科医院を目指して', body: '明るく清潔な院内と、話しやすいスタッフ。痛みや不安をひとりで抱えず、気軽に相談できる雰囲気づくりを何より大切にしています。', ph: '受付・スタッフの笑顔' },
+      { t1: '一生ご自身の歯で', t2: '過ごすための予防歯科', body: '歯科衛生士による担当制のクリーニングと、定期検診による早期発見。むし歯や歯周病になりにくいお口の環境を一緒につくります。', ph: '歯科衛生士によるクリーニング' },
+      { t1: '画像で見せる、', t2: 'わかりやすいご説明', body: 'CTや口腔内カメラの画像をモニターでお見せしながら、現在の状態と治療の選択肢、費用や期間をご説明。納得されてから治療を始めます。', ph: 'モニターを使ったカウンセリング' },
+      { t1: 'できるだけ痛みに', t2: '配慮した治療', body: '表面麻酔や細い針、麻酔液の温度管理など、治療中の負担を少なくする工夫を重ねています。途中で休憩したいときも遠慮なくお伝えください。', ph: '個室の診療ユニット' },
+      { t1: 'お子さまも安心して', t2: '通えるキッズスペース', body: '待合室にはキッズスペースを設け、ベビーカーのまま入れるバリアフリー設計。親子で一緒に通える、家族のかかりつけ医でありたいと考えています。', ph: 'キッズスペース・待合室' },
+    ].map((f, i) => ({ ...f, no: String(i + 1), slot: 'feat-' + (i + 1), dir: i % 2 ? 'row' : 'row-reverse', align: i % 2 ? 'flex-start' : 'flex-end', align2: i % 2 ? 'left' : 'right' }));
+    const services = [
+      { id: 'general', name: '一般歯科', en: 'GENERAL', desc: 'むし歯や根管治療など、歯の痛みやしみる症状の治療。できるだけ削る量を抑え、歯を残すことを優先します。', for: '歯がしみる・痛む／詰め物が取れた', ph: '一般歯科の治療風景', items: ['むし歯治療（CR充填・インレー）', '根管治療（歯の神経の治療）', '親知らずの抜歯'], period: '1〜5回程度' },
+      { id: 'preventive', name: '予防歯科・検診', en: 'PREVENTIVE', desc: '定期検診とプロによるクリーニング。歯石除去やフッ素塗布で、健康な状態を長く保つお手伝いをします。', for: 'しばらく歯医者に行っていない方', ph: 'クリーニング・検診', items: ['定期検診・レントゲン検査', '歯石除去・PMTC', 'ブラッシング指導・フッ素塗布'], period: '3〜6か月ごと' },
+      { id: 'perio', name: '歯周病治療', en: 'PERIODONTAL', desc: '歯ぐきの検査をもとに段階的に治療を行います。全身の健康にも関わる歯周病を、早めにケアしましょう。', for: '歯ぐきから血が出る・腫れる', ph: '歯周ポケット検査', items: ['歯周ポケット検査', 'スケーリング・ルートプレーニング', '歯周外科・メインテナンス'], period: '3〜8回程度' },
+      { id: 'kids', name: '小児歯科', en: 'PEDIATRIC', desc: '歯医者に慣れることから始め、無理のないペースで診療します。シーラントや仕上げ磨きの指導も行います。', for: '初めての歯医者／乳歯のむし歯が心配', ph: '親子での診療', items: ['トレーニング・慣らし診療', 'フッ素塗布・シーラント', '仕上げ磨き指導'], period: '3か月ごとの検診' },
+      { id: 'esthetic', name: '審美歯科・ホワイトニング', en: 'COSMETIC', desc: 'セラミックの被せ物やホワイトニングで、自然な見た目の美しさを。メリットと注意点をご説明した上でご提案します。', for: '歯の色や銀歯が気になる方', ph: 'セラミック・ホワイトニング', items: ['セラミック・ジルコニア', 'オフィス／ホームホワイトニング', '銀歯の白い素材への交換'], period: '2〜4回程度' },
+      { id: 'implant', name: 'インプラント・入れ歯', en: 'IMPLANT', desc: '失った歯を補う方法として、インプラント・入れ歯・ブリッジの違いを比較し、ご希望に合う方法を一緒に考えます。', for: '歯を失った／入れ歯が合わない', ph: 'CT画像・模型', items: ['CTによる精密検査', 'インプラント治療', '保険・自費の入れ歯'], period: '3〜6か月程度' },
+    ].map((s, i) => ({ ...s, no: '0' + (i + 1), slot: 'svc-' + (i + 1), anchor: '#' + s.id, dir: i % 2 ? 'row-reverse' : 'row' }));
+    const facilities = [
+      { name: '歯科用CT', en: 'DENTAL CT', desc: '骨や神経の位置を立体的に確認でき、より精度の高い診断に役立てています。インプラントや親知らずの抜歯の際にも活用します。', ph: '歯科用CT' },
+      { name: '徹底した滅菌管理', en: 'STERILIZATION', desc: 'クラスB滅菌器を導入し、器具は患者さまごとに滅菌・個包装しています。グローブやエプロンも使い捨てです。', ph: '滅菌器・個包装器具' },
+      { name: '半個室の診療室', en: 'TREATMENT ROOM', desc: '周りの目を気にせず、落ち着いて相談・治療を受けていただけます。各ユニットにモニターを設置しています。', ph: '診療室' },
+      { name: '口腔内カメラ', en: 'INTRAORAL CAMERA', desc: 'お口の中を撮影し、その場でモニターに映してご説明します。ご自身では見えない部分も一緒に確認できます。', ph: '口腔内カメラ・モニター' },
+      { name: 'キッズスペース', en: 'KIDS SPACE', desc: '待合室の一角に、絵本やおもちゃのあるスペースを設けています。保護者の方の治療中はスタッフが見守ります。', ph: 'キッズスペース' },
+      { name: 'バリアフリー設計', en: 'BARRIER FREE', desc: 'エレベーター完備。院内は段差をなくし、車椅子やベビーカーのままご来院いただけます。', ph: 'エントランス' },
+    ].map((f, i) => ({ ...f, no: String(i + 1), slot: 'fac-' + (i + 1), dir: i % 2 ? 'row-reverse' : 'row' }));
+    const faqList = [
+      { q: '予約なしでも診てもらえますか？', a: 'ご予約の方を優先していますが、急な痛みや腫れがある場合はお電話ください。できる限り当日中に対応いたします。' },
+      { q: '初診の所要時間はどのくらいですか？', a: '問診・検査・ご説明を含めて、60分程度を目安にお考えください。' },
+      { q: '治療費はどのくらいかかりますか？', a: '保険診療が中心です。自費診療をご提案する場合は、事前にお見積りをお渡しし、ご納得いただいてから進めます。' },
+      { q: '子どもと一緒に通院できますか？', a: 'はい。キッズスペースがあり、保護者の方の治療中はスタッフが見守ります。ベビーカーのままご入室いただけます。' },
+      { q: '歯医者が怖いのですが大丈夫でしょうか？', a: '初診時に不安な点を伺い、痛みに配慮した方法で進めます。途中で休憩したいときは、手を挙げてお知らせください。' },
+    ];
+    const X = '●', N = '／', T = '▲';
+    return {
+      mobile, desktop: !mobile,
+      pHome: page === 'home', pSub: page !== 'home',
+      pClinic: page === 'clinic', pStaff: page === 'staff', pMedical: page === 'medical', pFirst: page === 'first', pAccess: page === 'access',
+      pageJa: cur ? cur.ja : '',
+      heroCopyA: a, heroCopyB: b,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      subnav,
+      allnav: [{ ja: 'ホーム', en: 'HOME', go: this.go('home') }, ...subnav],
+      goHome: this.go('home'), goClinic: this.go('clinic'), goStaff: this.go('staff'), goMedical: this.go('medical'), goFirst: this.go('first'),
+      features, services, facilities,
+      pillars: [
+        { no: '1', t: 'わかりやすく伝える', d: '検査結果は画像でお見せし、専門用語を使わずにご説明します。治療方法は複数の選択肢からご自身で選んでいただけます。' },
+        { no: '2', t: 'できるだけ残す', d: '削る・抜くは最小限に。将来のお口の健康を考え、ご自身の歯をできるだけ長く使えるような治療を心がけています。' },
+        { no: '3', t: '予防で守る', d: '治療が終わった後も、定期的なメインテナンスで健康な状態を維持できるよう、長くお付き合いさせていただきます。' },
+      ],
+      worries: ['歯がしみる、噛むと痛む', '歯ぐきから血が出る', '口臭が気になる', '子どもの歯並びが心配', '銀歯を白くしたい', '入れ歯が合わない'],
+      career: [{ y: '2008', t: '東京医科歯科大学 歯学部 卒業' }, { y: '2008', t: '都内歯科医院にて勤務' }, { y: '2016', t: '同院 副院長' }, { y: '2019', t: 'ひより歯科 開院' }],
+      doctorTags: ['日本歯周病学会 会員', '日本口腔インプラント学会 会員', '予防歯科', '歯周病治療'],
+      staff: [
+        { role: '歯科医師', name: '佐伯 美穂', msg: '小児歯科を担当しています。お子さまのペースに合わせて、楽しく通える雰囲気を大切にしています。' },
+        { role: '歯科衛生士', name: '森 はるか', msg: '担当制でクリーニングを行っています。毎回の変化を一緒に確認していきましょう。' },
+        { role: '歯科衛生士', name: '高橋 彩', msg: '歯みがきのコツや、ご自宅でのケアについて気軽にご相談ください。' },
+        { role: '受付・歯科助手', name: '小林 奈央', msg: 'ご予約やお会計の際、わからないことがあれば何でもお声がけください。' },
+      ].map((s, i) => ({ ...s, slot: 'staff-' + (i + 1) })),
+      flow: [
+        { t: 'ご予約', d: 'お電話またはWEBフォームからご予約ください。急な痛みはお電話でご相談ください。' },
+        { t: '受付・問診票', d: '保険証をご提示のうえ、問診票にご記入いただきます。気になることは何でもお書きください。' },
+        { t: 'カウンセリング', d: '症状やご希望、治療への不安などを、落ち着いた空間でお伺いします。' },
+        { t: '検査', d: 'レントゲン撮影、口腔内カメラ、歯周ポケット検査などでお口の状態を確認します。' },
+        { t: '治療計画のご説明', d: '画像をお見せしながら、治療の選択肢と期間・費用の目安をご説明します。' },
+        { t: '治療開始', d: 'ご納得いただいてから治療を始めます。痛みがある場合は応急処置を優先します。' },
+      ].map((f, i) => ({ ...f, no: String(i + 1) })),
+      bring: ['保険証・マイナ保険証', '各種医療証', 'お薬手帳', '紹介状（お持ちの方）'],
+      faq: faqList.map((q, i) => ({ ...q, open: this.state.faq === i, icon: this.state.faq === i ? '−' : '+', toggle: () => this.setState(s => ({ faq: s.faq === i ? -1 : i })) })),
+      access: [
+        { k: '住所', v: '〒108-0023 東京都港区芝浦3-0-0 ひよりビル2F' },
+        { k: '電車', v: 'JR山手線・京浜東北線「田町駅」芝浦口より徒歩6分／都営三田線・浅草線「三田駅」A4出口より徒歩8分' },
+        { k: 'バス', v: '都営バス「芝浦三丁目」停留所より徒歩1分' },
+        { k: 'お車', v: '専用駐車場はございません。近隣のコインパーキングをご利用ください。' },
+        { k: 'TEL', v: '03-5555-0123（診療時間内）' },
+      ],
+      voices: [
+        { title: '説明が丁寧で、安心して任せられました', body: '治療の前に画像を見ながら、いくつかの方法と費用を説明してもらえました。自分で選べたことで、不安なく治療に進めました。', who: '30代・女性／一般歯科' },
+        { title: '子どもが「また行きたい」と言うように', body: '最初は椅子に座る練習から付き合ってくださいました。スタッフの方が優しく声をかけてくれるので、今では検診を楽しみにしています。', who: '40代・女性／小児歯科（お子さま6歳）' },
+        { title: '院内が清潔で、落ち着いて過ごせます', body: '待合室も診療室もいつも清潔で、器具が個包装されているのも安心です。仕事帰りの土曜に通えるのも助かっています。', who: '50代・男性／予防歯科' },
+      ],
+      days: ['月', '火', '水', '木', '金', '土', '日', '祝'],
+      hours: [{ time: '9:30 – 13:00', marks: [X, X, X, N, X, X, N, N] }, { time: '14:30 – 18:30', marks: [X, X, X, N, X, T, N, N] }],
+      socials: ['Instagram', 'LINE', 'Google マップ'],
+      sent: this.state.sent, notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false }),
+      showBadge: (this.props.floatingReserve ?? true) && this.state.scrolled,
+    };
+  }
+}
+</script>
+</body>
+</html>

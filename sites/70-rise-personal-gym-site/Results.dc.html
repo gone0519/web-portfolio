@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F5F3EF;color:#151515;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#151515;text-decoration:none}
+a:hover{color:#E4462B}
+/* --- responsive --- */
+.sec-head{flex-wrap:wrap}
+@media (max-width:460px){
+  .r-stat{grid-template-columns:62px 1fr auto!important;gap:8px!important}
+  .r-diff{font-size:24px!important}
+  .r-ba-img{height:clamp(200px,52vw,280px)!important}
+}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="results" hint-size="100%,77px"></dc-import>
+<main>
+<section data-screen-label="Results hero" style="background:#151515;color:#F5F3EF">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(40px,5vw,64px) clamp(20px,4vw,48px) clamp(56px,7vw,96px)">
+    <div style="font-family:'Barlow Condensed';font-weight:600;font-size:14px;letter-spacing:2px;color:#9A958C"><a href="Top.dc.html" style="color:#9A958C">トップ</a> / お客様の変化</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;align-items:end;margin-top:24px">
+      <h1 data-reveal="1" style="margin:0;font-weight:900;font-size:clamp(48px,7.4vw,112px);line-height:1.1;letter-spacing:2px">お客様の変化</h1>
+      <div data-reveal="1" style="min-width:0;padding-bottom:8px">
+        <p style="margin:0;font-size:clamp(20px,2.2vw,28px);font-weight:900;letter-spacing:1px">数字で見る、お客様の変化。</p>
+        <p style="margin:12px 0 0;font-size:14px;line-height:2;color:#CFCAC1">体重・体脂肪率・ウエスト。実際に通われたお客様の記録と声をご紹介します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Before After" style="padding:clamp(80px,10vw,140px) 0 0">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div class="sec-head" style="display:flex;justify-content:space-between;gap:20px;border-top:1px solid#151515;padding-top:16px;font-family:'Barlow Condensed';font-weight:600;font-size:15px;letter-spacing:2px"><span>(01) ビフォー・アフター</span><span style="color:#6B6760">4つの事例</span></div>
+    <div style="display:flex;flex-direction:column;margin-top:24px">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="4">
+        <article data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px clamp(32px,5vw,72px);padding:40px 0;border-bottom:1px solid #D9D5CE">
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;min-width:0">
+            <div style="min-width:0">
+              <div class="r-ba-img" style="height:clamp(240px,26vw,340px);filter:grayscale(1)"><image-slot id="v2-ba-{{ c.key }}-b" shape="rect" placeholder="ビフォー"></image-slot></div>
+              <div style="margin-top:8px;font-family:'Barlow Condensed';font-weight:700;font-size:14px;letter-spacing:2px;color:#6B6760">ビフォー</div>
+            </div>
+            <div style="min-width:0">
+              <div class="r-ba-img" style="height:clamp(240px,26vw,340px)"><image-slot id="v2-ba-{{ c.key }}-a" shape="rect" placeholder="アフター"></image-slot></div>
+              <div style="margin-top:8px;font-family:'Barlow Condensed';font-weight:700;font-size:14px;letter-spacing:2px;color:#E4462B">アフター（{{ c.period }}）</div>
+            </div>
+          </div>
+          <div style="min-width:0;display:flex;flex-direction:column">
+            <div style="font-family:'Barlow Condensed';font-weight:600;font-size:15px;letter-spacing:2px;color:#E4462B">事例 {{ c.no }}</div>
+            <h3 style="margin:10px 0 0;font-size:clamp(20px,2vw,26px);font-weight:900">{{ c.who }}</h3>
+            <p style="margin:6px 0 0;font-size:13px;color:#6B6760">{{ c.plan }} / 期間 {{ c.period }}</p>
+            <div style="margin-top:auto;padding-top:28px;display:flex;flex-direction:column;border-top:1px solid #151515">
+              <sc-for list="{{ c.stats }}" as="st" hint-placeholder-count="3">
+                <div class="r-stat" style="display:grid;grid-template-columns:80px 1fr auto;gap:12px;align-items:baseline;padding:14px 0;border-bottom:1px solid #D9D5CE">
+                  <span style="font-size:13px;font-weight:700">{{ st.label }}</span>
+                  <span style="font-family:'Barlow Condensed';font-weight:600;font-size:18px;color:#6B6760">{{ st.from }} → {{ st.to }}</span>
+                  <span class="r-diff" style="font-family:'Barlow Condensed';font-weight:800;font-size:34px;line-height:1">{{ st.diff }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <p style="margin:20px 0 0;font-size:11px;color:#6B6760">※ 掲載の結果は個人の実績であり、効果を保証するものではありません。</p>
+  </div>
+</section>
+
+<section data-screen-label="Voices" style="padding:clamp(80px,10vw,140px) 0">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div class="sec-head" style="display:flex;justify-content:space-between;gap:20px;border-top:1px solid#151515;padding-top:16px;font-family:'Barlow Condensed';font-weight:600;font-size:15px;letter-spacing:2px"><span>(02) お客様の声</span><span style="color:#6B6760">通われている方の感想</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:0 clamp(32px,5vw,72px);margin-top:24px">
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="4">
+        <figure data-reveal="1" style="margin:0;padding:36px 0;border-bottom:1px solid #D9D5CE;display:flex;flex-direction:column;gap:16px">
+          <p style="margin:0;font-weight:900;font-size:clamp(18px,1.8vw,22px);line-height:1.6">「{{ v.head }}」</p>
+          <blockquote style="margin:0;font-size:14px;line-height:2.1;color:#3A3732">{{ v.body }}</blockquote>
+          <figcaption style="display:flex;align-items:center;gap:12px;margin-top:4px">
+            <image-slot id="v2-voice-{{ v.key }}" shape="circle" placeholder="顔" style="width:44px;height:44px;flex-shrink:0"></image-slot>
+            <span style="font-size:13px;font-weight:700">{{ v.who }}</span>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const s = (a, b, c) => [
+      { label: '体重', from: a[0], to: a[1], diff: a[2] },
+      { label: '体脂肪率', from: b[0], to: b[1], diff: b[2] },
+      { label: 'ウエスト', from: c[0], to: c[1], diff: c[2] }];
+    return {
+      cases: [
+        { no: '01', key: 'c1', who: '30代 女性 / 会社員', period: '3ヶ月', periodEn: '3 MONTHS', plan: 'ダイエット＋食事サポート・週2回', stats: s(['62.4kg','54.8kg','−7.6kg'],['31.2%','23.9%','−7.3%'],['78cm','67cm','−11cm']) },
+        { no: '02', key: 'c2', who: '40代 男性 / 経営者', period: '4ヶ月', periodEn: '4 MONTHS', plan: 'ダイエット＋姿勢改善・週2回', stats: s(['84.1kg','73.5kg','−10.6kg'],['27.8%','17.4%','−10.4%'],['94cm','81cm','−13cm']) },
+        { no: '03', key: 'c3', who: '20代 女性 / 看護師', period: '2ヶ月', periodEn: '2 MONTHS', plan: 'ボディメイク・週1〜2回', stats: s(['55.0kg','51.2kg','−3.8kg'],['28.5%','23.1%','−5.4%'],['70cm','63cm','−7cm']) },
+        { no: '04', key: 'c4', who: '30代 男性 / エンジニア', period: '6ヶ月', periodEn: '6 MONTHS', plan: '筋力トレーニング・週2回', stats: s(['68.2kg','71.0kg','+2.8kg'],['22.4%','15.1%','−7.3%'],['84cm','77cm','−7cm']) },
+      ],
+      voices: [
+        { key: 'v1', head: '食事を我慢する感覚がなかった', body: '何度もダイエットに失敗してきましたが、食べてはいけないものが無いのが続いた理由です。毎日の報告に丁寧な返信があり、一人じゃない感覚がありました。', who: '32歳 女性 / 会社員' },
+        { key: 'v2', head: '腰痛がなくなり、仕事の集中力が上がった', body: '運動経験はほぼゼロ。姿勢の分析から始めてもらい、痛みが出ない範囲で少しずつ負荷を上げてくれたので安心して通えました。', who: '45歳 男性 / 経営者' },
+        { key: 'v3', head: '夜勤があっても通い続けられた', body: '朝7時から夜23時まで予約できるので、シフト制でも問題なし。トレーナーさんが毎回の体調を見てメニューを調整してくれます。', who: '27歳 女性 / 看護師' },
+        { key: 'v4', head: '体重より、見た目が変わった', body: '体重は少し増えましたが、服のサイズは下がりました。数字の見方から教えてもらえたので、焦らずに続けられました。', who: '34歳 男性 / エンジニア' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #FBF6EE; overflow-x: clip; }
+  body { font-family: "Noto Sans JP", system-ui, sans-serif; color: #2A2724; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #C9411F; text-decoration: none; }
+  a:hover { color: #A83217; }
+
+  /* ===== responsive ===== */
+  h1, h2, h3 { word-break: auto-phrase; }
+  .t-toggle { display: none; }
+  .t-burger { display: none; }
+  .t-nav-cta { display: none !important; }
+  @media (max-width: 860px) {
+    .t-head { flex-wrap: nowrap !important; gap: 12px !important; padding: 12px 20px !important; }
+    .t-toggle { display: block; position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    .t-burger { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; flex: 0 0 auto; width: 44px; height: 44px; margin-left: auto; border-radius: 50%; background: #fff; border: 1px solid #E3D6C3; cursor: pointer; }
+    .t-burger span { display: block; width: 18px; height: 2px; border-radius: 2px; background: #2A2724; transition: transform .2s ease, opacity .2s ease; }
+    .t-toggle:checked + .t-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .t-toggle:checked + .t-burger span:nth-child(2) { opacity: 0; }
+    .t-toggle:checked + .t-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .t-toggle:focus-visible + .t-burger { outline: 2px solid #C9411F; outline-offset: 2px; }
+    .t-nav { display: none !important; }
+    .t-toggle:checked ~ .t-nav { display: flex !important; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; flex-wrap: nowrap !important; gap: 0 !important; margin: 0 !important; padding: 6px 20px 24px; background: #FBF6EE; border-bottom: 1px solid #EDE2D2; box-shadow: 0 18px 28px rgba(42,39,36,.10); font-size: 16px !important; max-height: calc(100vh - 69px); overflow-y: auto; }
+    .t-nav > a { padding: 15px 4px !important; border-bottom: 1px solid #EDE2D2; }
+    .t-nav > a.t-nav-cta { display: block !important; margin-top: 20px; padding: 16px 20px !important; border: 0; border-radius: 999px; background: #C9411F; color: #fff; text-align: center; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; box-shadow: 0 6px 0 #A83217; }
+    .t-nav > a.t-nav-cta:hover { background: #A83217; color: #fff; }
+    .t-head-cta { font-size: 13px !important; padding: 10px 16px !important; box-shadow: 0 4px 0 #A83217 !important; }
+
+    .t-subnav { top: 69px !important; padding: 12px 0 !important; }
+    .t-subnav-inner { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .t-subnav-inner::-webkit-scrollbar { display: none; }
+    .t-subnav-inner > a { flex: 0 0 auto; white-space: nowrap; }
+    .t-svc-sec { scroll-margin-top: 150px !important; }
+  }
+  @media (max-width: 780px) {
+    .t-blog-aside { order: 3 !important; max-width: none !important; flex-basis: 100% !important; }
+  }
+  @media (max-width: 640px) {
+    input, select, textarea { font-size: 16px !important; }
+    .t-kv { grid-template-columns: 1fr !important; gap: 4px !important; padding: 16px 20px !important; }
+  }
+  @media (max-width: 480px) {
+    .t-head-cta { display: none !important; }
+    .t-hero-stat { padding: 16px !important; }
+    .t-hero-stat > span:first-child { font-size: 30px !important; }
+    .t-hero-stat > span:last-child { font-size: 11px !important; line-height: 1.6 !important; }
+  }
+</style>
+<script>
+  (function () {
+    if (window.__taneMenu) return;
+    window.__taneMenu = true;
+    function closeMenu() {
+      var t = document.getElementById("t-menu");
+      if (t) t.checked = false;
+    }
+    document.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest(".t-nav a")) closeMenu();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+    window.addEventListener("pageshow", closeMenu);
+  })();
+</script>
+</helmet>
+
+<div style="background:#FBF6EE">
+
+  <header style="position:sticky; top:0; z-index:50; background:rgba(251,246,238,.92); backdrop-filter:blur(8px); border-bottom:1px solid #EDE2D2">
+    <div class="t-head" style="max-width:1180px; margin:0 auto; padding:14px 24px; display:flex; flex-wrap:wrap; align-items:center; gap:10px 20px">
+      <a href="TANE%20Home.dc.html" style="display:flex; align-items:center; gap:10px; flex:0 0 auto">
+        <span style="width:30px; height:30px; border-radius:50% 50% 50% 8px; background:#EF5E3C; display:block"></span>
+        <span style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:22px; letter-spacing:.06em; color:#2A2724">TANE</span>
+      </a>
+      <input type="checkbox" id="t-menu" class="t-toggle" aria-label="メニューを開く" />
+      <label for="t-menu" class="t-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+      <nav class="t-nav" aria-label="メインメニュー" style="display:flex; flex-wrap:wrap; gap:4px 18px; margin-left:auto; font-size:14px; font-weight:500">
+        <a href="TANE%20About.dc.html" style="color:#4A443D; padding:6px 0" style-hover="color:#C9411F">私たちについて</a>
+        <a href="TANE%20Services.dc.html" style="color:#C9411F; padding:6px 0; font-weight:700" style-hover="color:#A83217">サービス</a>
+        <a href="TANE%20Works.dc.html" style="color:#4A443D; padding:6px 0" style-hover="color:#C9411F">実績</a>
+        <a href="TANE%20Blog.dc.html" style="color:#4A443D; padding:6px 0" style-hover="color:#C9411F">読みもの</a>
+        <a href="TANE%20Contact.dc.html" style="color:#4A443D; padding:6px 0" style-hover="color:#C9411F">お問い合わせ</a>
+        <a class="t-nav-cta" href="TANE%20Contact.dc.html">無料相談する</a>
+      </nav>
+      <a class="t-head-cta" href="TANE%20Contact.dc.html" style="flex:0 0 auto; background:#C9411F; color:#fff; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:14px; padding:11px 22px; border-radius:999px; box-shadow:0 6px 0 #A83217" style-hover="background:#A83217; color:#fff">無料相談する</a>
+    </div>
+  </header>
+
+  <section style="position:relative; padding:clamp(34px,4.67vw,56px) 0 clamp(38px,5.33vw,64px); overflow:hidden">
+    <div style="position:absolute; top:-140px; right:-120px; width:480px; height:480px; border-radius:46% 54% 60% 40%/50% 44% 56% 50%; background:#FDE7D8"></div>
+    <div style="position:relative; max-width:1180px; margin:0 auto; padding:0 24px">
+      <p style="font-size:13px; color:#6F655A; margin:0 0 22px"><a href="TANE%20Home.dc.html" style="color:#6F655A">ホーム</a>　/　サービス</p>
+      <p style="font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:14px; color:#2F6149; letter-spacing:.1em; margin:0 0 14px">SERVICES</p>
+      <h1 style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:clamp(30px,4.6vw,50px); line-height:1.4; margin:0 0 24px; text-wrap:pretty">できることの、<span style="color:#EF5E3C">ぜんぶ</span>。</h1>
+      <p style="font-size:16px; line-height:2; color:#4A443D; margin:0; max-width:36em; text-wrap:pretty">9つのサービスを、単品でも組み合わせでもご依頼いただけます。どれから始めるべきか迷っている場合は、最初の無料相談で一緒に優先順位を決めましょう。</p>
+    </div>
+  </section>
+
+  <nav class="t-subnav" aria-label="サービス一覧" style="background:#fff; border-top:1px solid #EDE2D2; border-bottom:1px solid #EDE2D2; padding:18px 0; position:sticky; top:71px; z-index:40">
+    <div class="t-subnav-inner" style="max-width:1180px; margin:0 auto; padding:0 24px; display:flex; flex-wrap:wrap; gap:8px 10px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="9">
+        <a href="{{ s.anchor }}" style="font-size:13px; font-weight:500; color:#4A443D; background:#FBF6EE; border:1px solid #EDE2D2; border-radius:999px; padding:7px 15px" style-hover="border-color:#C9411F; color:#C9411F">{{ s.ja }}</a>
+      </sc-for>
+    </div>
+  </nav>
+
+  <sc-for list="{{ services }}" as="s" hint-placeholder-count="9">
+    <section id="{{ s.id }}" class="t-svc-sec" style="padding:clamp(48px,6.67vw,80px) 0; border-bottom:1px solid #EDE2D2; scroll-margin-top:210px">
+      <div style="max-width:1180px; margin:0 auto; padding:0 24px">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:clamp(26px,3.67vw,44px); align-items:start">
+          <div>
+            <div style="display:flex; align-items:center; gap:14px; margin-bottom:18px">
+              <span style="display:flex; align-items:center; justify-content:center; width:50px; height:50px; flex:0 0 auto; border-radius:50% 50% 50% 12px; background:#FDE7D8; font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:19px; color:#C9411F">{{ s.no }}</span>
+              <span style="font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:12px; color:#C9411F; letter-spacing:.09em">{{ s.en }}</span>
+            </div>
+            <h2 style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:clamp(23px,3vw,32px); line-height:1.5; margin:0 0 20px">{{ s.ja }}</h2>
+            <p style="font-size:15.5px; line-height:2.1; color:#3A352F; margin:0 0 28px; text-wrap:pretty">{{ s.overview }}</p>
+            <div style="background:#F3F7F0; border:1px solid #DCE6D6; border-radius:20px; padding:24px 26px; margin-bottom:28px">
+              <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; color:#2F6149; letter-spacing:.06em; margin-bottom:12px">BENEFITS ／ 得られること</span>
+              <p style="font-size:14.5px; line-height:2; color:#2A3E33; margin:0">{{ s.benefit }}</p>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center">
+              <a href="TANE%20Contact.dc.html" style="background:#C9411F; color:#fff; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:15px; padding:15px clamp(22px,2.67vw,32px); border-radius:999px; box-shadow:0 6px 0 #A83217" style-hover="background:#A83217; color:#fff">このサービスを相談する</a>
+              <span style="font-size:13px; color:#6F655A">目安：{{ s.price }}</span>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:18px">
+            <div style="background:#fff; border:1px solid #EDE2D2; border-radius:22px; padding:28px 26px">
+              <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; color:#C9411F; letter-spacing:.06em; margin-bottom:16px">FEATURES ／ 内容</span>
+              <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:12px">
+                <sc-for list="{{ s.features }}" as="ft" hint-placeholder-count="4">
+                  <li style="display:flex; gap:12px; font-size:14px; line-height:1.95; color:#3A352F">
+                    <span style="flex:0 0 auto; width:7px; height:7px; border-radius:50%; background:#EF5E3C; margin-top:9px"></span>
+                    <span style="flex:1">{{ ft }}</span>
+                  </li>
+                </sc-for>
+              </ul>
+            </div>
+            <div style="background:#fff; border:1px solid #EDE2D2; border-radius:22px; padding:28px 26px">
+              <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; color:#2F6149; letter-spacing:.06em; margin-bottom:16px">PROCESS ／ 進め方</span>
+              <div style="display:flex; flex-direction:column; gap:14px">
+                <sc-for list="{{ s.process }}" as="pr" hint-placeholder-count="4">
+                  <div style="display:flex; gap:14px; align-items:baseline">
+                    <span style="flex:0 0 auto; font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:13px; color:#2F6149; width:22px">{{ pr.n }}</span>
+                    <span style="flex:1; font-size:14px; line-height:1.9; color:#3A352F">{{ pr.t }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="background:#fff; border:1px solid #EDE2D2; border-radius:22px; padding:28px 26px">
+              <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; color:#6F655A; letter-spacing:.06em; margin-bottom:16px">DELIVERABLES ／ お渡しするもの</span>
+              <div style="display:flex; flex-wrap:wrap; gap:8px">
+                <sc-for list="{{ s.deliverables }}" as="d" hint-placeholder-count="3">
+                  <span style="font-size:12.5px; color:#3A352F; background:#FBF6EE; border:1px solid #EDE2D2; border-radius:999px; padding:6px 13px">{{ d }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section id="process" style="padding:clamp(55px,7.67vw,92px) 0; background:#F6EFE3">
+    <div style="max-width:1180px; margin:0 auto; padding:0 24px">
+      <div style="text-align:center; margin-bottom:clamp(31px,4.33vw,52px)">
+        <p style="font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:14px; color:#2F6149; letter-spacing:.1em; margin:0 0 12px">PROCESS</p>
+        <h2 style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:clamp(24px,3.4vw,36px); margin:0">ご依頼から公開までの進め方</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr)); gap:20px">
+        <sc-for list="{{ steps }}" as="p" hint-placeholder-count="5">
+          <div style="background:#fff; border-radius:22px; padding:clamp(21px,2.5vw,30px) 26px; border:1px solid #E9DECC">
+            <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:13px; color:#C9411F; letter-spacing:.14em; margin-bottom:14px">STEP {{ p.no }}</span>
+            <h3 style="font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:18px; margin:0 0 12px">{{ p.title }}</h3>
+            <p style="font-size:13.5px; line-height:1.95; color:#5A534B; margin:0 0 14px">{{ p.body }}</p>
+            <span style="display:inline-block; font-size:12px; font-weight:700; color:#2F6149; background:#F3F7F0; border:1px solid #DCE6D6; border-radius:999px; padding:5px 12px">{{ p.span }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative; background:#F6EFE3; padding:0 0 clamp(58px,8.0vw,96px)">
+    <div style="max-width:820px; margin:0 auto; padding:0 24px; text-align:center">
+      <h2 style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:clamp(24px,3.6vw,38px); line-height:1.5; margin:0 0 22px; text-wrap:pretty">どれが必要かは、<br />話しながら決めましょう。</h2>
+      <p style="font-size:15.5px; line-height:2; color:#4A443D; margin:0 0 32px">現状を見せていただければ、いま効果が出やすい順番をお伝えします。相談だけで終わっても構いません。</p>
+      <a href="TANE%20Contact.dc.html" style="display:inline-block; background:#C9411F; color:#fff; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:16px; padding:18px clamp(24px,3.33vw,40px); border-radius:999px; box-shadow:0 7px 0 #A83217" style-hover="background:#A83217; color:#fff">無料相談を申し込む</a>
+    </div>
+  </section>
+
+  <footer style="background:#2F6149; color:#fff; padding:clamp(38px,5.33vw,64px) 0 0">
+    <div style="max-width:1180px; margin:0 auto; padding:0 24px">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr)); gap:36px 24px; padding-bottom:clamp(26px,3.67vw,44px)">
+        <div>
+          <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; letter-spacing:.1em; color:#FFFFFF; margin-bottom:12px">About</span>
+          <a href="TANE%20About.dc.html" style="display:block; font-size:14px; color:#fff; margin-bottom:8px" style-hover="color:#FCD9C9">私たちについて</a>
+          <a href="TANE%20About.dc.html#company" style="display:block; font-size:14px; color:#fff" style-hover="color:#FCD9C9">会社概要</a>
+        </div>
+        <div>
+          <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; letter-spacing:.1em; color:#FFFFFF; margin-bottom:12px">Services</span>
+          <a href="TANE%20Services.dc.html" style="display:block; font-size:14px; color:#fff; margin-bottom:8px" style-hover="color:#FCD9C9">サービス一覧</a>
+          <a href="TANE%20Services.dc.html#process" style="display:block; font-size:14px; color:#fff" style-hover="color:#FCD9C9">進め方</a>
+        </div>
+        <div>
+          <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; letter-spacing:.1em; color:#FFFFFF; margin-bottom:12px">Works</span>
+          <a href="TANE%20Works.dc.html" style="display:block; font-size:14px; color:#fff; margin-bottom:8px" style-hover="color:#FCD9C9">実績</a>
+          <a href="TANE%20Blog.dc.html" style="display:block; font-size:14px; color:#fff" style-hover="color:#FCD9C9">読みもの</a>
+        </div>
+        <div>
+          <span style="display:block; font-family:'Zen Maru Gothic',sans-serif; font-weight:700; font-size:13px; letter-spacing:.1em; color:#FFFFFF; margin-bottom:12px">Contact</span>
+          <a href="TANE%20Contact.dc.html" style="display:block; font-size:14px; color:#fff; margin-bottom:8px" style-hover="color:#FCD9C9">無料相談</a>
+          <a href="TANE%20Contact.dc.html#faq" style="display:block; font-size:14px; color:#fff" style-hover="color:#FCD9C9">よくあるご質問</a>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.22); padding:26px 0 clamp(21px,2.5vw,30px); font-size:13px; color:#FBF6EE; line-height:2">株式会社TANE　〒460-0000 愛知県名古屋市中区栄0-0-0 サンプルビル5F</div>
+    </div>
+    <div style="background:#FBF6EE; padding:22px 0">
+      <div style="max-width:1180px; margin:0 auto; padding:0 24px; display:flex; flex-wrap:wrap; align-items:center; gap:16px">
+        <span style="display:flex; align-items:center; gap:10px">
+          <span style="width:26px; height:26px; border-radius:50% 50% 50% 8px; background:#EF5E3C; display:block"></span>
+          <span style="font-family:'Zen Maru Gothic',sans-serif; font-weight:900; font-size:19px; letter-spacing:.06em; color:#2A2724">TANE</span>
+        </span>
+        <span style="margin-left:auto; font-size:12.5px; color:#6F655A">© 2026 TANE Inc. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  renderVals() {
+    const raw = [
+      ["01","DIGITAL MARKETING","デジタルマーケティング全体設計","digital",
+       "広告・SEO・SNS・サイト。手段が増えるほど、どこに力を入れるべきか分からなくなります。まず売上につながる経路を整理し、予算と人の手をどこに配分するかを決めるところから始めます。担当者が一人しかいない会社でも回る計画にすることを前提にしています。",
+       "「今月は何をやるべきか」が毎回決まった状態になります。社内に判断の基準が残るので、私たちがいなくなっても運用を続けられます。",
+       "月額15万円〜",
+       ["現状の集客経路と数字の棚卸し","ターゲットと提供価値の言語化","媒体ごとの役割分担と予算配分","年間の施策カレンダー作成","月次の打ち合わせと方針更新"],
+       [["01","ヒアリングと現状調査"],["02","課題の整理と優先順位づけ"],["03","戦略と予算配分のご提案"],["04","実行と月次の見直し"]],
+       ["戦略資料（スライド）","施策カレンダー","月次レポート"]],
+
+      ["02","SEO","SEO・コンテンツ","seo",
+       "検索されている言葉を調べ、それに答えるページを足していく地道な施策です。順位が動くまで半年から1年かかりますが、広告費をかけずに問い合わせが入る状態をつくれます。中小企業の場合、全国より地域名との組み合わせで戦うほうが結果が早く出ます。",
+       "広告を止めても流入が残ります。指名検索が増えると、他社と価格で比べられる場面そのものが減っていきます。",
+       "月額12万円〜",
+       ["キーワード調査と検索意図の分類","サイト構造とタイトルの見直し","技術面の問題点の修正","記事・事例ページの執筆代行","順位と流入の月次追跡"],
+       [["01","現状のサイト診断"],["02","キーワード設計"],["03","改修と新規ページ制作"],["04","効果測定と追加制作"]],
+       ["キーワード一覧","サイト診断書","記事原稿","順位レポート"]],
+
+      ["03","GOOGLE ADS / PPC","Google広告・リスティング運用","ads",
+       "今すぐ探している人に届く、いちばん速い手段です。ただ設定したまま放置すると、関係のない検索にも配信されて費用だけが出ていきます。問い合わせ1件あたりの費用を毎週見ながら、効いていない配信を削る作業を私たちが引き受けます。",
+       "早ければ配信の翌週から問い合わせが入ります。何の検索から問い合わせが来たかが分かるので、次の施策の材料にもなります。",
+       "月額8万円〜（広告費の20%）",
+       ["アカウント設計とキーワード選定","広告文の作成とテスト","除外キーワードの継続整備","コンバージョン計測の設定","週次の調整と月次報告"],
+       [["01","アカウント診断・設計"],["02","計測設定と入稿"],["03","少額で配信開始"],["04","週次調整と拡大"]],
+       ["運用中アカウント","広告文一覧","月次レポート"]],
+
+      ["04","SOCIAL MEDIA","SNSマーケティング","sns",
+       "Instagram・LINE・X。フォロワー数を増やすことより、来店や問い合わせにつながる使い方を設計します。投稿の代行だけでなく、社内で続けられる型をつくって引き継ぐ形も選べます。続かない運用に意味はないという前提で組みます。",
+       "既存のお客様に繰り返し思い出してもらえる状態になります。広告と違って、止めても積み上がった投稿は残ります。",
+       "月額10万円〜",
+       ["媒体ごとの役割設計","投稿テーマとトーンの設計","撮影・投稿の代行","LINE公式の配信設計","社内運用マニュアルの作成"],
+       [["01","媒体選定と方針決定"],["02","初月の投稿設計"],["03","運用と反応の確認"],["04","社内引き継ぎ（希望時）"]],
+       ["投稿カレンダー","投稿素材","運用マニュアル"]],
+
+      ["05","WEB DESIGN","ホームページ制作","web",
+       "更新しやすさを優先して設計します。公開して終わりではなく、その後お客様自身で文章や写真を差し替えられることを重視しています。スマートフォンからの閲覧が大半を占めるため、そちらを先に設計してから画面の広い端末に広げます。",
+       "問い合わせの導線が整い、営業資料としても使えるサイトになります。更新を外注しなくて済むので、維持費が下がります。",
+       "45万円〜",
+       ["構成案とワイヤーフレーム","デザイン制作（スマホ優先）","CMS構築と更新設定","原稿執筆・写真撮影の手配","公開後の操作説明"],
+       [["01","構成案のすり合わせ"],["02","デザイン制作"],["03","実装とCMS設定"],["04","確認・公開・操作説明"]],
+       ["公開済みサイト","管理画面","操作マニュアル"]],
+
+      ["06","LANDING PAGE","ランディングページ制作","lp",
+       "広告の受け皿に特化した1枚もののページです。伝える順番と、申し込みボタンの位置で結果が大きく変わります。公開後も文言や順番を入れ替えて、数字が良いほうを残していく作業まで含めてお引き受けします。",
+       "同じ広告費でも問い合わせ数が変わります。改善の履歴が残るので、次のページ制作が速くなります。",
+       "28万円〜",
+       ["訴求軸の設計とライティング","ファーストビューの複数案作成","フォーム項目の最適化","公開後のA/Bテスト","計測とヒートマップ設置"],
+       [["01","訴求軸の設計"],["02","ライティングとデザイン"],["03","公開・広告連携"],["04","テストと改善"]],
+       ["公開済みLP","原稿データ","テスト結果レポート"]],
+
+      ["07","BRANDING","ブランディング","branding",
+       "ロゴや色を整える作業だけを指すのではありません。何を言う会社で、何を言わない会社なのか。そこが決まっていないと、広告の文面もサイトの文章も毎回ぶれます。社内の言葉を揃えるところから着手します。",
+       "社員が同じ説明をできるようになります。価格以外の理由で選ばれる場面が増えます。",
+       "35万円〜",
+       ["社内・顧客インタビュー","ブランドの言葉の整理","ロゴ・配色・書体の設計","名刺・封筒などの展開","ガイドラインの作成"],
+       [["01","インタビューと現状整理"],["02","言葉とコンセプトの設計"],["03","ビジュアル設計"],["04","ガイドライン納品"]],
+       ["ロゴデータ（各形式）","ブランドガイドライン","各種印刷物データ"]],
+
+      ["08","STRATEGY","マーケティング戦略","strategy",
+       "1年間の打ち手をカレンダーに落とし込みます。繁忙期と閑散期、採用の時期、既存商品の在庫。社内の事情を踏まえないと計画は実行されません。そのまま社内会議の資料として使える形でお渡しします。",
+       "その場の判断で施策を決めることがなくなります。予算の申請や社内の合意形成が通しやすくなります。",
+       "単発 40万円〜",
+       ["市場と競合の調査","顧客インタビューの実施","年間施策カレンダーの作成","必要予算と体制の試算","社内説明用の資料作成"],
+       [["01","調査と社内ヒアリング"],["02","戦略の組み立て"],["03","計画の合意形成"],["04","実行支援（希望時）"]],
+       ["戦略資料","年間カレンダー","予算計画書"]],
+
+      ["09","ANALYTICS","分析・レポート","analytics",
+       "計測が正しく入っていないサイトは驚くほど多いです。まず数えられる状態にしてから、毎月の報告をします。数字の羅列ではなく、何が起きていて次に何をするかを日本語で書いた資料をお渡しします。",
+       "打ち手の良し悪しが判断できるようになります。社内で共有しやすく、会議の時間が短くなります。",
+       "月額5万円〜",
+       ["GA4・タグの設定と検証","コンバージョン計測の整備","ダッシュボードの構築","月次レポートの作成","数字の読み方の解説（月30分）"],
+       [["01","計測状況の診断"],["02","設定の修正・追加"],["03","ダッシュボード構築"],["04","月次報告の開始"]],
+       ["計測設定","ダッシュボード","月次レポート"]]
+    ];
+
+    return {
+      services: raw.map(r => ({
+        no: r[0], en: r[1], ja: r[2], id: r[3], anchor: "#" + r[3],
+        overview: r[4], benefit: r[5], price: r[6],
+        features: r[7],
+        process: r[8].map(p => ({ n: p[0], t: p[1] })),
+        deliverables: r[9]
+      })),
+      steps: [
+        { no: "01", title: "無料相談", body: "現状のサイトや広告を見ながら、困っていることを伺います。オンラインでも構いません。", span: "30〜60分" },
+        { no: "02", title: "調査とご提案", body: "競合と検索需要を調べ、優先順位をつけた提案書とお見積りをお出しします。", span: "1〜2週間" },
+        { no: "03", title: "設計・制作", body: "構成案から確認いただき、文章とデザインを詰めます。途中の共有は週1回です。", span: "3〜8週間" },
+        { no: "04", title: "公開・運用開始", body: "計測の設定を済ませてから公開します。広告は少額から始めて様子を見ます。", span: "1週間" },
+        { no: "05", title: "改善の繰り返し", body: "毎月の打ち合わせで数字を確認し、次の1か月にやることを決めます。", span: "継続" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

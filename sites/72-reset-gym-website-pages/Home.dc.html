@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <link rel="stylesheet" href="./responsive.css">
+  <style id="__om-reset">*{box-sizing:border-box;}body{margin:0;}a{text-decoration:none;color:inherit;}a:hover{opacity:0.75;}@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(244,196,0,0.55);}50%{box-shadow:0 0 0 10px rgba(244,196,0,0);}}</style>
+  <title>RESET GYM | がんばりすぎずに、変わる。</title>
+</helmet>
+<div style="fontFamily:'Noto Sans JP',sans-serif;background:#fdfdf8;color:#17170f;">
+  <dc-import name="Header" current-page="home" hint-size="100%,58px"></dc-import>
+
+  <section style="display:flex;flexWrap:wrap-reverse;alignItems:stretch;">
+    <div class="r-hero" style="flex:1 1 420px;padding:64px 48px;display:flex;flexDirection:column;justifyContent:center;minWidth:320px;borderLeft:10px solid #f4c400;background:#17170f;">
+      <div ref="{{ refs.hero }}" style="{{ anim.hero }}">
+        <span style="fontFamily:'Oswald',sans-serif;fontSize:13px;letterSpacing:3px;color:#f4c400;fontWeight:700;">PERSONAL &amp; SELF FITNESS GYM</span>
+        <h1 style="fontSize:clamp(34px,5vw,54px);fontWeight:900;lineHeight:1.35;margin:0;color:#fdfdf8;">がんばりすぎずに、<br/><span style="color:#f4c400;">変わる。</span></h1>
+        <p style="fontSize:16px;lineHeight:1.9;color:#c9c7b8;maxWidth:440px;margin:0;">続けやすいトレーニングと的確なサポートで、無理なく理想のカラダへ。初めての方も、経験者も、あなたのペースで結果につなげます。</p>
+        <div style="display:flex;gap:14px;flexWrap:wrap;marginTop:8px;">
+          <a href="Contact.dc.html" style="background:#f4c400;color:#17170f;fontWeight:900;fontSize:15px;padding:16px 30px;borderRadius:2px;animation:pulseGlow 2.4s ease-in-out infinite;">無料体験を予約する</a>
+          <a href="Services.dc.html" style="border:1px solid #fdfdf8;color:#fdfdf8;fontWeight:700;fontSize:15px;padding:16px 30px;borderRadius:2px;">トレーニングを見る</a>
+        </div>
+      </div>
+    </div>
+    <div class="r-fx" style="flex:1 1 480px;minWidth:320px;">
+      <image-slot class="r-hero-img" id="hero" shape="rect" src="./images/hero.jpg" placeholder="トレーニング風景（横長）" style="{{ anim.heroImg }}"></image-slot>
+    </div>
+  </section>
+
+  <section ref="{{ refs.stats }}" style="{{ anim.stats }}">
+    <sc-for list="{{ heroStats }}" as="stat" hint-placeholder-count="3">
+      <div class="r-stat" style="flex:1 1 220px;padding:30px 20px;textAlign:center;borderRight:2px solid #17170f;">
+        <div style="fontFamily:'Oswald',sans-serif;fontSize:26px;fontWeight:900;color:#17170f;">{{ stat.value }}</div>
+        <div style="fontSize:13px;color:#17170f;marginTop:6px;fontWeight:700;">{{ stat.label }}</div>
+      </div>
+    </sc-for>
+  </section>
+
+  <section class="r-px r-py r-split" style="padding:88px 28px;maxWidth:1120px;margin:0 auto;display:flex;flexWrap:wrap;gap:56px;alignItems:center;">
+    <div class="r-fx" ref="{{ refs.concept }}" style="{{ anim.concept }}">
+      <image-slot class="r-img-tall" id="concept" shape="rect" src="./images/concept.jpg" placeholder="トレーナーが会員をサポートする様子" style="width:100%;height:100%;minHeight:340px;" style-hover="transform:scale(1.02);"></image-slot>
+    </div>
+    <div class="r-fx" style="flex:1 1 380px;minWidth:300px;">
+      <span style="fontFamily:'Oswald',sans-serif;fontSize:13px;letterSpacing:3px;color:#a3934f;">CONCEPT</span>
+      <h2 style="fontSize:30px;fontWeight:900;lineHeight:1.5;margin:14px 0 20px;">数字だけを追わない、<br/>続けられるカラダづくり。</h2>
+      <p style="fontSize:15px;lineHeight:2;color:#4d4b41;margin:0 0 28px;">RESET GYMは、無理な食事制限や過度なトレーニングに頼らず、日常に取り入れやすい方法で結果を目指すジムです。トレーナーが一人ひとりの体力や目標に合わせてメニューを組み、続けやすさを大切にしています。</p>
+      <a href="About.dc.html" style="fontWeight:700;fontSize:14px;borderBottom:2px solid #17170f;paddingBottom:2px;">コンセプトを詳しく見る ›</a>
+    </div>
+  </section>
+
+  <section class="r-px r-py" style="background:#f1efe8;padding:80px 28px;">
+    <div style="maxWidth:1120px;margin:0 auto;">
+      <div style="textAlign:center;marginBottom:48px;">
+        <span style="fontFamily:'Oswald',sans-serif;fontSize:13px;letterSpacing:3px;color:#a3934f;">WHY RESET GYM</span>
+        <h2 style="fontSize:28px;fontWeight:900;margin:12px 0 0;">選ばれる理由</h2>
+      </div>
+      <div ref="{{ refs.features }}" style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#d9d6c9;border:1px solid #d9d6c9;">
+        <sc-for list="{{ features }}" as="f" hint-placeholder-count="4">
+          <div class="r-card" style="{{ f.style }}">
+            <div style="display:inline-block;fontFamily:'Oswald',sans-serif;fontSize:20px;fontWeight:900;color:#17170f;background:#f4c400;padding:4px 12px;marginBottom:16px;">{{ f.num }}</div>
+            <h3 style="fontSize:16px;fontWeight:700;margin:0 0 10px;">{{ f.title }}</h3>
+            <p style="fontSize:13.5px;lineHeight:1.9;color:#5a584c;margin:0;">{{ f.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="r-px r-py" style="padding:88px 28px;maxWidth:1120px;margin:0 auto;">
+    <div style="display:flex;justifyContent:space-between;alignItems:flex-end;flexWrap:wrap;gap:12px;marginBottom:40px;">
+      <div>
+        <span style="fontFamily:'Oswald',sans-serif;fontSize:13px;letterSpacing:3px;color:#a3934f;">TRAINING</span>
+        <h2 style="fontSize:28px;fontWeight:900;margin:12px 0 0;">トレーニング内容</h2>
+      </div>
+      <a href="Services.dc.html" style="fontWeight:700;fontSize:14px;borderBottom:2px solid #17170f;paddingBottom:2px;">すべて見る ›</a>
+    </div>
+    <div ref="{{ refs.services }}" style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(280px,1fr));gap:28px;">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
+        <a href="Services.dc.html" style="{{ s.style }}">
+          <image-slot id="svc-{{ s.id }}" shape="rect" src="{{ s.img }}" placeholder="{{ s.imgLabel }}" style="width:100%;height:200px;" style-hover="transform:scale(1.03);"></image-slot>
+          <h3 style="fontSize:17px;fontWeight:700;margin:18px 0 8px;">{{ s.title }}</h3>
+          <p style="fontSize:13.5px;lineHeight:1.8;color:#5a584c;margin:0;">{{ s.desc }}</p>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section class="r-px r-py" style="background:#1b1b15;color:#fdfdf8;padding:88px 28px;">
+    <div style="maxWidth:1120px;margin:0 auto;">
+      <div style="textAlign:center;marginBottom:40px;">
+        <span style="fontFamily:'Oswald',sans-serif;fontSize:13px;letterSpacing:3px;color:#f4c400;">TRAINING SUPPORT</span>
+        <h2 style="fontSize:28px;fontWeight:900;margin:12px 0 0;">サポートによる変化の例</h2>
+        <p style="fontSize:13px;color:#a9a795;marginTop:12px;">※以下は説明用のサンプルです。効果には個人差があります。</p>
+      </div>
+      <div ref="{{ refs.before }}" style="{{ anim.before }}">
+        <div class="r-ba r-fx r-card" style="flex:1 1 260px;padding:32px;borderRight:1px solid #3a3930;">
+          <span style="fontFamily:'Oswald',sans-serif;fontSize:20px;fontWeight:700;color:#c9c7b8;">Before</span>
+          <image-slot id="before" shape="rect" src="./images/before.jpg" placeholder="Before（サンプル）" style="width:100%;height:280px;marginTop:16px;"></image-slot>
+        </div>
+        <div class="r-ba r-fx r-card" style="flex:1 1 260px;padding:32px;borderRight:1px solid #3a3930;background:#f4c400;">
+          <span style="fontFamily:'Oswald',sans-serif;fontSize:20px;fontWeight:900;color:#17170f;">After</span>
+          <image-slot id="after" shape="rect" src="./images/after.jpg" placeholder="After（サンプル）" style="width:100%;height:280px;marginTop:16px;"></image-slot>
+        </div>
+        <div class="r-ba r-fx r-card" style="flex:1 1 220px;padding:32px;display:flex;flexDirection:column;justifyContent:center;gap:14px;">
+          <div><div style="fontSize:12px;color:#a9a795;">トレーニング期間</div><div style="fontSize:20px;fontWeight:700;">4ヶ月（例）</div></div>
+          <div><div style="fontSize:12px;color:#a9a795;">サポート内容</div><div style="fontSize:14px;lineHeight:1.8;">週2回のパーソナル<br/>食事アドバイス</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="r-px r-py" style="padding:88px 28px;maxWidth:1120px;margin:0 auto;">
+    <div style="textAlign:center;marginBottom:40px;">
+      <span style="fontFamily:'Oswald',sans-serif;fontSize:13px;letterSpacing:3px;color:#a3934f;">FACILITIES</span>
+      <h2 style="fontSize:28px;fontWeight:900;margin:12px 0 0;">施設のご紹介</h2>
+    </div>
+    <div ref="{{ refs.facilities }}" style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+      <sc-for list="{{ facilityShots }}" as="shot" hint-placeholder-count="4">
+        <image-slot id="home-fac-{{ shot.id }}" shape="rect" src="{{ shot.img }}" placeholder="{{ shot.label }}" style="{{ shot.style }}" style-hover="transform:scale(1.03);"></image-slot>
+      </sc-for>
+    </div>
+    <div style="textAlign:center;marginTop:32px;">
+      <a href="Facilities.dc.html" style="fontWeight:700;fontSize:14px;borderBottom:2px solid #17170f;paddingBottom:2px;">施設・トレーナーを見る ›</a>
+    </div>
+  </section>
+
+  <section class="r-px r-py" style="background:#f1efe8;padding:88px 28px;">
+    <div style="maxWidth:900px;margin:0 auto;textAlign:center;">
+      <span style="fontFamily:'Oswald',sans-serif;fontSize:13px;letterSpacing:3px;color:#a3934f;">PRICING</span>
+      <h2 style="fontSize:28px;fontWeight:900;margin:12px 0 40px;">料金プラン（例）</h2>
+      <div ref="{{ refs.pricing }}" style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">
+        <sc-for list="{{ pricingPreview }}" as="p" hint-placeholder-count="2">
+          <div class="r-card" style="{{ p.style }}">
+            <div style="fontSize:14px;fontWeight:700;color:#a3934f;">{{ p.name }}</div>
+            <div style="fontFamily:'Oswald',sans-serif;fontSize:30px;fontWeight:700;margin:10px 0;">{{ p.price }}<span style="fontSize:13px;fontWeight:500;">{{ p.unit }}</span></div>
+            <p style="fontSize:13px;color:#5a584c;lineHeight:1.8;margin:0;">{{ p.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <p style="fontSize:12px;color:#8c8a7c;marginTop:20px;">※表示価格はサンプルです。実際の料金は別途ご案内します。</p>
+      <a href="Pricing.dc.html" style="fontWeight:700;fontSize:14px;borderBottom:2px solid #17170f;paddingBottom:2px;">料金プランを詳しく見る ›</a>
+    </div>
+  </section>
+
+  <section class="r-cta" ref="{{ refs.cta }}" style="{{ anim.cta }}">
+    <h2 style="fontSize:clamp(26px,4vw,36px);fontWeight:900;margin:0 0 16px;">まずは無料体験から。</h2>
+    <p style="fontSize:15px;color:#c9c7b8;marginBottom:32px;">あなたに合ったトレーニングを、体験してみませんか。</p>
+    <div style="display:flex;gap:14px;justifyContent:center;flexWrap:wrap;">
+      <a href="Contact.dc.html" style="background:#f4c400;color:#17170f;fontWeight:900;fontSize:15px;padding:16px 32px;borderRadius:2px;">無料体験を予約する</a>
+      <a href="Contact.dc.html" style="border:2px solid #f4c400;color:#f4c400;fontWeight:700;fontSize:15px;padding:16px 32px;borderRadius:2px;">お問い合わせ</a>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { revealed: {} };
+  els = {};
+  check = () => {
+    const updates = {};
+    let changed = false;
+    Object.keys(this.els).forEach((key) => {
+      if (this.state.revealed[key]) return;
+      const el = this.els[key];
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.92 && r.bottom > 0) { updates[key] = true; changed = true; }
+    });
+    if (changed) this.setState((s) => ({ revealed: { ...s.revealed, ...updates } }));
+  };
+  componentDidMount() {
+    window.addEventListener('scroll', this.check, { passive: true });
+    window.addEventListener('resize', this.check);
+    this.check();
+    this._t = setTimeout(this.check, 300);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.check);
+    window.removeEventListener('resize', this.check);
+    clearTimeout(this._t);
+  }
+  setRef = (key) => (el) => { this.els[key] = el; };
+  fadeUp(key, delay) {
+    const on = !!this.state.revealed[key];
+    return { opacity: on ? 1 : 0, transform: on ? 'translateY(0)' : 'translateY(26px)', transition: `opacity 0.7s ease ${delay || 0}s, transform 0.7s ease ${delay || 0}s` };
+  }
+  renderVals() {
+    const refs = {
+      hero: this.setRef('hero'), stats: this.setRef('stats'), concept: this.setRef('concept'),
+      features: this.setRef('features'), services: this.setRef('services'), before: this.setRef('before'),
+      facilities: this.setRef('facilities'), pricing: this.setRef('pricing'), cta: this.setRef('cta'),
+    };
+    const anim = {
+      hero: { display: 'flex', flexDirection: 'column', gap: '22px', ...this.fadeUp('hero', 0) },
+      heroImg: { width: '100%', height: '100%', minHeight: '380px', ...this.fadeUp('hero', 0.15) },
+      stats: { display: 'flex', flexWrap: 'wrap', ...this.fadeUp('stats', 0) },
+      concept: { flex: '1 1 380px', minWidth: '300px', ...this.fadeUp('concept', 0) },
+      before: { display: 'flex', flexWrap: 'wrap', gap: 0, background: '#26251d', border: '1px solid #3a3930', ...this.fadeUp('before', 0) },
+      cta: { background: '#17170f', color: '#fdfdf8', padding: '100px 28px', textAlign: 'center', ...this.fadeUp('cta', 0) },
+    };
+    const featuresRevealed = !!this.state.revealed.features;
+    const servicesRevealed = !!this.state.revealed.services;
+    const facilitiesRevealed = !!this.state.revealed.facilities;
+    const pricingRevealed = !!this.state.revealed.pricing;
+    return {
+      refs, anim,
+      heroStats: [
+        { value: '完全個別', label: 'パーソナルメニュー設計' },
+        { value: '駅徒歩3分', label: 'アクセス良好（例）' },
+        { value: 'レンタル無料', label: 'ウエア・タオル・シューズ' },
+      ],
+      features: [
+        { num: '01', title: '専属トレーナーによるサポート', desc: '入会からトレーニング内容まで、専属トレーナーが一貫してサポートします。' },
+        { num: '02', title: '初心者にも通いやすい環境', desc: '運動経験がない方でも安心して始められるよう、丁寧にご案内します。' },
+        { num: '03', title: '無理のないメニュー設計', desc: '生活リズムや体力に合わせ、続けやすいペースでメニューを組みます。' },
+        { num: '04', title: 'ウエア・タオル類レンタル', desc: '荷物を増やさず、仕事帰りでも気軽に通える設備を整えています。' },
+      ].map((f, i) => ({ ...f, style: { background: '#fdfdf8', padding: '32px 26px', ...this.fadeUp('features', featuresRevealed ? i * 0.1 : 0) } })),
+      services: [
+        { id: 'personal', title: 'パーソナルトレーニング', desc: '目標に合わせた完全個別メニューで、マンツーマンでサポートします。', imgLabel: 'パーソナルトレーニングの様子', img: './images/card-personal.jpg' },
+        { id: 'gym', title: 'ジムトレーニング', desc: 'マシン・フリーウエイトを使い、自分のペースで鍛えられます。', imgLabel: 'マシン・フリーウエイトエリア', img: './images/card-gym.jpg' },
+        { id: 'group', title: 'グループ・ストレッチ', desc: 'グループレッスンやストレッチで、柔軟性とコンディションを整えます。', imgLabel: 'グループレッスンの様子', img: './images/card-group.jpg' },
+      ].map((s, i) => ({ ...s, style: { display: 'flex', flexDirection: 'column', ...this.fadeUp('services', servicesRevealed ? i * 0.1 : 0) } })),
+      facilityShots: [
+        { id: '1', label: 'トレーニングエリア', img: './images/area-training-1.jpg' },
+        { id: '2', label: 'フリーウエイトエリア', img: './images/area-freeweight.jpg' },
+        { id: '3', label: 'シャワールーム', img: './images/area-shower.jpg' },
+        { id: '4', label: '受付・ロビー', img: './images/area-reception.jpg' },
+      ].map((s, i) => ({ ...s, style: { width: '100%', height: '220px', ...this.fadeUp('facilities', facilitiesRevealed ? i * 0.1 : 0) } })),
+      pricingPreview: [
+        { name: '体験レッスン', price: '¥3,300', unit: '（税込）/ 60分', desc: '初めての方向けの体験プランです。' },
+        { name: '月2回コース', price: '¥28,600', unit: '（税込）/ 月', desc: 'パーソナルトレーニングの基本プランです。' },
+      ].map((p, i) => ({ ...p, style: { background: '#fdfdf8', border: '1px solid #d9d6c9', padding: '32px 24px', textAlign: 'left', ...this.fadeUp('pricing', pricingRevealed ? i * 0.15 : 0) } })),
+    };
+  }
+}
+</script>
+</body>
+</html>

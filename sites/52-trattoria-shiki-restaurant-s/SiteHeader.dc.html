@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 max(20px, 3vw);background:rgba(255,255,255,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #EEEBE6;font-family:'Zen Kaku Gothic New',sans-serif">
+  <a href="Home.dc.html" aria-label="Trattoria Shiki トップへ" style="display:flex;align-items:center;gap:12px;color:#3B2F26;text-decoration:none">
+    <span style="width:46px;height:46px;border-radius:50%;background:#DDBE5C;display:flex;align-items:center;justify-content:center;font-family:'Lobster Two',cursive;font-style:italic;font-weight:700;font-size:17px;color:#9C1F34">Shiki</span>
+    <span style="display:flex;flex-direction:column;line-height:1.3">
+      <span style="font-size:11px;letter-spacing:.28em;font-weight:700">TRATTORIA SHIKI</span>
+      <span style="font-size:10px;letter-spacing:.2em;color:#8A807A">トラットリア 四季</span>
+    </span>
+  </a>
+  <sc-if value="{{ desktopNav }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:clamp(20px,2.6vw,40px)">
+      <a href="Concept.dc.html" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;letter-spacing:.24em;font-weight:700;color:#3B2F26;text-decoration:none" style-hover="color:#9C1F34">CONCEPT<sc-if value="{{ isConcept }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;bottom:-10px;width:6px;height:6px;border-radius:50%;background:#9C1F34"></span></sc-if></a>
+      <a href="Menu.dc.html" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;letter-spacing:.24em;font-weight:700;color:#3B2F26;text-decoration:none" style-hover="color:#9C1F34">MENU<sc-if value="{{ isMenu }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;bottom:-10px;width:6px;height:6px;border-radius:50%;background:#9C1F34"></span></sc-if></a>
+      <a href="Chef.dc.html" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;letter-spacing:.24em;font-weight:700;color:#3B2F26;text-decoration:none" style-hover="color:#9C1F34">CHEF<sc-if value="{{ isChef }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;bottom:-10px;width:6px;height:6px;border-radius:50%;background:#9C1F34"></span></sc-if></a>
+      <a href="Access.dc.html" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;letter-spacing:.24em;font-weight:700;color:#3B2F26;text-decoration:none" style-hover="color:#9C1F34">ACCESS<sc-if value="{{ isAccess }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;bottom:-10px;width:6px;height:6px;border-radius:50%;background:#9C1F34"></span></sc-if></a>
+      <a href="Reservation.dc.html" style="display:inline-flex;align-items:center;gap:18px;height:42px;padding:0 18px 0 22px;background:#3B2F26;color:#fff;font-size:11px;letter-spacing:.24em;font-weight:700;text-decoration:none;transition:background .3s" style-hover="background:#9C1F34;color:#fff">RESERVATION<span aria-hidden="true">›</span></a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ mobileNav }}" hint-placeholder-val="{{ false }}">
+    <button type="button" onClick="{{ toggleMenu }}" aria-label="メニューを開く" aria-expanded="{{ menuOpen }}" style="width:48px;height:48px;border:0;background:#3B2F26;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer">
+      <span style="{{ bar1 }}"></span>
+      <span style="{{ bar2 }}"></span>
+      <span style="{{ bar3 }}"></span>
+    </button>
+  </sc-if>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-label="ナビゲーション" style="position:fixed;inset:72px 0 0 0;z-index:49;background:#9C1F34;color:#fff;padding:40px 32px;display:flex;flex-direction:column;gap:24px;overflow:auto;font-family:'Zen Kaku Gothic New',sans-serif">
+    <a href="Home.dc.html" style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:14px;color:#fff;text-decoration:none"><span style="font-family:'Lobster Two',cursive;font-style:italic;font-weight:700;font-size:32px">Home</span><span style="font-size:12px;letter-spacing:.16em;color:#F5DC8C">トップ</span></a>
+    <a href="Concept.dc.html" style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:14px;color:#fff;text-decoration:none"><span style="font-family:'Lobster Two',cursive;font-style:italic;font-weight:700;font-size:32px">Concept</span><span style="font-size:12px;letter-spacing:.16em;color:#F5DC8C">私たちについて</span></a>
+    <a href="Menu.dc.html" style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:14px;color:#fff;text-decoration:none"><span style="font-family:'Lobster Two',cursive;font-style:italic;font-weight:700;font-size:32px">Menu</span><span style="font-size:12px;letter-spacing:.16em;color:#F5DC8C">お料理</span></a>
+    <a href="Chef.dc.html" style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:14px;color:#fff;text-decoration:none"><span style="font-family:'Lobster Two',cursive;font-style:italic;font-weight:700;font-size:32px">Chef</span><span style="font-size:12px;letter-spacing:.16em;color:#F5DC8C">素材と職人</span></a>
+    <a href="Access.dc.html" style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:14px;color:#fff;text-decoration:none"><span style="font-family:'Lobster Two',cursive;font-style:italic;font-weight:700;font-size:32px">Access</span><span style="font-size:12px;letter-spacing:.16em;color:#F5DC8C">アクセス</span></a>
+    <a href="Reservation.dc.html" style="display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;background:#DDBE5C;color:#3B2F26;font-size:14px;letter-spacing:.2em;font-weight:700;margin-top:8px;text-decoration:none">ご予約はこちら<span aria-hidden="true">›</span></a>
+    <a href="tel:0364127780" style="color:#fff;font-size:14px;letter-spacing:.12em;text-decoration:none">TEL 03-6412-7780</a>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:80},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;concept&quot;,&quot;menu&quot;,&quot;chef&quot;,&quot;reservation&quot;,&quot;access&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { mobile: typeof window !== 'undefined' && window.innerWidth < 860, open: false };
+  componentDidMount() {
+    this.onResize = () => {
+      const m = window.innerWidth < 860;
+      if (m !== this.state.mobile) this.setState({ mobile: m, open: false });
+    };
+    window.addEventListener('resize', this.onResize);
+    this.onKey = e => { if (e.key === 'Escape' && this.state.open) this.setState({ open: false }); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentDidUpdate() { document.body.style.overflow = this.state.mobile && this.state.open ? 'hidden' : ''; }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('keydown', this.onKey); document.body.style.overflow = ''; }
+  renderVals() {
+    const { mobile, open } = this.state;
+    const c = this.props.current || '';
+    const base = { display: 'block', width: '20px', height: '2px', background: '#fff', transition: 'transform .3s, opacity .3s' };
+    return {
+      desktopNav: !mobile, mobileNav: mobile, menuOpen: mobile && open,
+      isConcept: c === 'concept', isMenu: c === 'menu', isChef: c === 'chef', isAccess: c === 'access',
+      toggleMenu: () => this.setState(s => ({ open: !s.open })),
+      bar1: { ...base, transform: open ? 'translateY(8px) rotate(45deg)' : 'none' },
+      bar2: { ...base, opacity: open ? 0 : 1 },
+      bar3: { ...base, transform: open ? 'translateY(-8px) rotate(-45deg)' : 'none' },
+    };
+  }
+}
+</script>
+</body>
+</html>

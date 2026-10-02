@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>職人の技 — 鮨 しらせ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Shippori+Mincho:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./responsive.css">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#12110f;color:#ece6db;font-family:"Shippori Mincho",serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:#c9ad78}
+::selection{background:#c9ad78;color:#12110f}
+</style>
+</helmet>
+
+<dc-import name="SiteHeader" current="craft" hint-size="100%,0px"></dc-import>
+
+<main>
+<section data-first-view="" data-screen-label="Craft Hero" style="position:relative;min-height:78svh;display:flex;align-items:flex-end;overflow:hidden;background:#12110f">
+  <div data-parallax="0.1" style="position:absolute;inset:-8% 0;will-change:transform">
+    <image-slot id="craft-page-hero" src="images/nikiri.jpg" shape="rect" placeholder="Yanagiba knife drawn across a fillet, side light"></image-slot>
+  </div>
+  <div style="position:absolute;inset:0;background:linear-gradient(rgba(18,17,15,.2),rgba(18,17,15,.85));pointer-events:none"></div>
+  <div style="position:relative;width:100%;max-width:1280px;margin:0 auto;padding:160px clamp(24px,6vw,96px) clamp(56px,9vh,96px);display:flex;flex-direction:column;gap:24px;pointer-events:none">
+    <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.34em;color:#a79e90">HOME ／ CRAFTSMANSHIP</p>
+    <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(52px,8.4vw,124px);line-height:.9">Craftsmanship</h1>
+    <p style="margin:0;font-size:clamp(18px,2vw,24px);letter-spacing:.2em">素材と技が生み出す、一貫。</p>
+  </div>
+</section>
+
+<section data-screen-label="Craft Chapters" style="background:#f1ece3;color:#1c1a17;padding:clamp(96px,13vw,190px) clamp(24px,6vw,96px)">
+  <div style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(80px,11vw,160px)">
+    <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="4">
+      <article style="display:flex;flex-wrap:wrap;flex-direction:{{ c.dir }};gap:clamp(40px,6vw,96px);align-items:center">
+        <div data-reveal="" style="flex:1 1 400px;position:relative;aspect-ratio:4/3;overflow:hidden">
+          <image-slot id="{{ c.id }}" src="{{ c.src }}" shape="rect" placeholder="{{ c.ph }}"></image-slot>
+        </div>
+        <div style="flex:1 1 340px;display:flex;flex-direction:column;gap:24px">
+          <div data-reveal="" style="display:flex;align-items:baseline;gap:16px;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.34em;color:#6b6356"><span style="font-size:44px;line-height:1;color:#a8412a">{{ c.no }}</span>{{ c.en }}</div>
+          <h2 data-reveal="" style="margin:0;font-weight:500;font-size:clamp(26px,3vw,40px);letter-spacing:.14em;line-height:1.5">{{ c.jp }}</h2>
+          <p data-reveal="" style="margin:0;max-width:30em;font-size:15.5px;line-height:2.3;text-wrap:pretty">{{ c.lead }}</p>
+          <p data-reveal="" style="margin:0;max-width:30em;font-size:14px;line-height:2.2;color:#4a443b;text-wrap:pretty">{{ c.body }}</p>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Craft Timeline" style="background:#12110f;padding:clamp(96px,13vw,190px) clamp(24px,6vw,96px)">
+  <div style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,80px)">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <div data-reveal="" style="display:flex;align-items:center;gap:16px;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.4em;color:#a79e90"><span style="width:40px;height:1px;background:#c9ad78"></span>A DAY AT THE COUNTER</div>
+      <h2 data-reveal="" style="margin:0;font-weight:500;font-size:clamp(28px,3.6vw,48px);letter-spacing:.14em">一日の仕込み</h2>
+    </div>
+    <ol style="margin:0;padding:0;list-style:none;border-top:1px solid #2e2a25">
+      <sc-for list="{{ day }}" as="d" hint-placeholder-count="6">
+        <li data-reveal="" style="display:grid;grid-template-columns:minmax(80px,140px) minmax(0,1fr);gap:24px;padding:28px 0;border-bottom:1px solid #2e2a25;align-items:baseline">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#c9ad78">{{ d.t }}</span>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-size:17px;letter-spacing:.14em">{{ d.h }}</span>
+            <span style="font-size:13.5px;line-height:2;color:#b8afa1">{{ d.p }}</span>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section data-screen-label="Craft CTA" style="background:#f1ece3;color:#1c1a17;padding:clamp(88px,11vw,160px) clamp(24px,6vw,96px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px">
+  <h2 data-reveal="" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5.6vw,80px);line-height:1">An Evening <em style="color:#a8412a">to Remember.</em></h2>
+  <p data-reveal="" style="margin:0;font-size:clamp(17px,1.8vw,22px);letter-spacing:.16em">特別なひとときを、鮨とともに。</p>
+  <a data-reveal="" href="Access.dc.html#reserve" style="display:inline-flex;align-items:center;gap:18px;padding:20px 44px;background:#1c1a17;color:#f1ece3;font-size:14px;letter-spacing:.3em;transition:background .4s" style-hover="background:#a8412a;color:#f1ece3">ご予約はこちら<span style="font-family:'Cormorant Garamond',serif;font-size:18px">→</span></a>
+</section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,360px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      chapters: [
+        { id: 'cp-shun', src: 'images/neta-box.jpg', no: '01', en: 'SEASONAL INGREDIENTS', jp: '旬の素材', lead: '季節ごとに最も美味しい魚介と食材を、目利きで選び抜きます。', body: '同じ鮪でも、産地や時期、個体によって脂の入り方は異なります。毎朝市場で状態を見極め、その日の握りを組み立てます。', ph: 'Fresh seafood at the market, on ice', dir: 'row' },
+        { id: 'cp-shikomi', src: 'images/shimesaba.jpg', no: '02', en: 'PREPARATION', jp: '丁寧な仕込み', lead: '長年の経験から生まれた技で、ひとつひとつの素材に手を入れます。', body: '〆る、漬ける、寝かせる、煮る。江戸前の仕事は、魚の旨みを引き出すための手間の積み重ねです。', ph: 'Knife preparation, fillet on hinoki board', dir: 'row-reverse' },
+        { id: 'cp-shari', src: 'images/hands-shari.jpg', no: '03', en: 'SHARI', jp: 'シャリへのこだわり', lead: '米、温度、酢の塩梅、口どけ。ネタに合わせて均衡を整えます。', body: '硬めに炊いた米に熟成赤酢を合わせ、おひつで人肌に保ちます。一部と二部で、それぞれ炊きたてを用意しています。', ph: 'Rice preparation — shari in hangiri, steam', dir: 'row' },
+        { id: 'cp-waza', src: 'images/shiromi-serve.jpg', no: '04', en: 'THE HAND', jp: '職人の技', lead: '握りの形と、お出しする一瞬まで。すべてを職人の手で。', body: 'ネタとシャリの温度差、口に入れたときのほどけ方。握りはお客さまの前で仕上げ、すぐにお召し上がりいただきます。', ph: 'Chef’s hands shaping nigiri, close-up', dir: 'row-reverse' }
+      ],
+      day: [
+        { t: '06:00', h: '豊洲市場へ', p: '仲卸をまわり、その日の魚を選びます。' },
+        { t: '09:00', h: '下処理・〆', p: '捌き、塩を当て、昆布や酢で〆ていきます。' },
+        { t: '13:00', h: '煮物・椀の支度', p: '穴子を煮て、出汁を引きます。' },
+        { t: '16:00', h: 'シャリを炊く', p: '一部に合わせて米を炊き、赤酢を合わせます。' },
+        { t: '17:30', h: '一部 開店', p: 'カウンター八席、一斉にお迎えします。' },
+        { t: '20:15', h: '二部 開店', p: '炊き直したシャリで、二部をお迎えします。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

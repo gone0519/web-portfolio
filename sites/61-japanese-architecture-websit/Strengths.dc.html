@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<link rel="stylesheet" href="./site.css">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff;-webkit-font-smoothing:antialiased}
+a{color:#14335a;text-decoration:none}
+a:hover{color:#2d5f96}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="strengths" style="position:sticky;top:0;z-index:50" hint-size="100%,72px"></dc-import>
+<main>
+<section data-screen-label="Strengths / Page hero" style="position:relative;height:clamp(300px,40vw,440px);display:flex;align-items:center;justify-content:center;overflow:hidden;background:#2d5f96">
+  <div style="position:absolute;inset:0"><image-slot id="strengths-hero" shape="rect" src="img/team-five.jpg" placeholder="ページヒーロー：職人の手仕事"></image-slot></div>
+  <sc-if value="{{ tint }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0;pointer-events:none;background:rgba(32,82,145,.72);mix-blend-mode:multiply"></div></sc-if>
+  <div style="position:absolute;inset:0;pointer-events:none;background:rgba(13,36,64,.28)"></div>
+  <div style="position:relative;pointer-events:none;color:#fff;text-align:center;display:flex;flex-direction:column;gap:12px;padding:0 20px">
+    <h1 style="margin:0;font-family:Montserrat,sans-serif;font-size:clamp(30px,4vw,48px);font-weight:600;letter-spacing:.16em">STRENGTHS</h1>
+    <p style="margin:0;font-size:14px;font-weight:700;letter-spacing:.12em">私たちの強み</p>
+  </div>
+  <nav aria-label="パンくずリスト" style="position:absolute;left:clamp(16px,5vw,64px);bottom:20px;display:flex;gap:10px;font-size:11px;color:#fff;letter-spacing:.08em"><a href="Home.dc.html" style="color:#fff" style-hover="opacity:.7">TOP</a><span>›</span><span>私たちの強み</span></nav>
+</section>
+
+<section data-screen-label="Strengths / Intro" style="padding:clamp(56px,8vw,104px) clamp(16px,5vw,64px) clamp(40px,5vw,64px)">
+  <div style="max-width:860px;margin:0 auto;text-align:center;display:flex;flex-direction:column;gap:18px;align-items:center">
+    <span style="width:40px;height:40px;border:1.5px solid #0d2440;transform:rotate(45deg);margin-bottom:12px"></span>
+    <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(24px,2.8vw,36px);font-weight:600;line-height:1.7;letter-spacing:.08em;color:#0d2440">一つひとつの建築に、技術と誇りを。</h2>
+    <p style="margin:0;font-family:Montserrat,sans-serif;font-size:13px;letter-spacing:.1em;color:#6a7a8c">Crafted With Skill, Built to Last.</p>
+    <p style="margin:8px 0 0;font-size:14px;line-height:2.1;color:#444;text-wrap:pretty">完成した建物の背景には、図面に表れない数多くの判断と手仕事があります。私たちがすべての現場で大切にしている5つのことをご紹介します。</p>
+  </div>
+</section>
+
+<section data-screen-label="Strengths / List" aria-label="5つの強み" style="padding:0 clamp(16px,5vw,64px) clamp(64px,9vw,120px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px)">
+    <sc-for list="{{ strengths }}" as="st" hint-placeholder-count="5">
+      <article data-reveal="" style="background:#f2f3f5;display:flex;flex-wrap:wrap;align-items:stretch">
+        <div style="flex:1 1 420px;padding:clamp(32px,4.5vw,64px);display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:baseline;gap:18px">
+            <span style="font-family:Montserrat,sans-serif;font-size:clamp(44px,5vw,64px);font-weight:600;color:#2d5f96;line-height:1">{{ st.no }}</span>
+            <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;color:#6a7a8c">{{ st.en }}</span>
+          </div>
+          <h2 style="margin:6px 0 0;font-family:'Shippori Mincho',serif;font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:.06em;color:#0d2440">{{ st.ja }}</h2>
+          <p style="margin:0;font-size:14px;line-height:2.1;color:#444;text-wrap:pretty">{{ st.desc }}</p>
+          <ul style="list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;border-top:1px solid #d9dee4">
+            <sc-for list="{{ st.points }}" as="pt" hint-placeholder-count="3">
+              <li style="display:flex;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid #d9dee4;font-size:13px;color:#333"><span style="width:6px;height:6px;background:#2d5f96;transform:rotate(45deg);flex-shrink:0"></span>{{ pt }}</li>
+            </sc-for>
+          </ul>
+        </div>
+        <div style="flex:1 1 380px;position:relative;min-height:320px;background:#3c6a9c">
+          <image-slot id="strp-{{ st.no }}" shape="rect" src="{{ st.img }}" placeholder="{{ st.ph }}"></image-slot>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Strengths / Works link" style="background:#262729;color:#fff;padding:clamp(56px,7vw,88px) clamp(16px,5vw,64px)">
+  <div data-reveal="" style="max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <p style="margin:0;font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;color:#b9bec6">WORKS</p>
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:.06em">強みが息づく、施工実績。</p>
+    </div>
+    <a href="Works.dc.html" style="position:relative;display:flex;align-items:center;justify-content:center;width:min(100%,280px);min-height:48px;border:1px solid #fff;color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;transition:background .3s,color .3s" style-hover="background:#fff;color:#262729"><span style="position:absolute;left:16px;font-size:15px;font-weight:400">›</span>施工実績を見る</a>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" tint="{{ tint }}" hint-size="100%,820px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;blueTint&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() { this.rv(); }
+  componentDidUpdate() { this.rv(); }
+  componentWillUnmount() { this.io && this.io.disconnect(); }
+  rv() {
+    if (this.props.reveal === false) return;
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); } }), { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.style.opacity = '0'; el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1)';
+      this.io.observe(el);
+    });
+  }
+  renderVals() {
+    return {
+      tint: this.props.blueTint ?? true,
+      strengths: [
+        { no: '01', img: 'img/site-helmet.jpg', en: 'TECHNICAL EXPERTISE', ja: '確かな技術力', ph: '職人の手元・構造の納まり', desc: '専門的な建築知識と熟練の職人技で、設計の意図を正確にかたちにします。構造・設備・意匠を総合的に理解したうえで、最適な工法を選択します。', points: ['設計意図を読み解く施工計画', '経験豊富な職人との協働', '構造・設備を含めた総合的な検討'] },
+        { no: '02', img: 'img/blueprint.jpg', en: 'QUALITY CONTROL', ja: '徹底した品質管理', ph: '検査・計測の様子', desc: '材料の選定から施工工程、仕上げに至るまで、各段階で丁寧に確認を重ねます。見えなくなる部分ほど、記録と検査を大切にしています。', points: ['材料・部材の受入確認', '工程ごとの社内検査', '施工記録の整備と共有'] },
+        { no: '03', img: 'img/crane-scaffold.jpg', en: 'SAFETY', ja: '安全への取り組み', ph: '安全管理された現場', desc: 'すべての現場で安全管理を徹底し、作業する人と近隣の方々の安全を守ります。整理整頓された現場づくりが、品質の土台になると考えています。', points: ['日々の安全確認と危険予知活動', '近隣環境への配慮', '整理整頓された現場づくり'] },
+        { no: '04', img: 'img/team-pair.jpg', en: 'PROJECT MANAGEMENT', ja: 'プロジェクトマネジメント', ph: '工程会議・現場打ち合わせ', desc: '工程・予算・チーム・施工プロセスを綿密に調整し、計画を確実に進めます。課題は早めに共有し、関係者と一体になって解決します。', points: ['工程・予算の綿密な管理', '協力会社との密な連携', '課題の早期共有と対応'] },
+        { no: '05', img: 'img/consult-client.jpg', en: 'CLIENT COMMUNICATION', ja: '丁寧なコミュニケーション', ph: 'お客さまとの打ち合わせ', desc: '計画段階から竣工まで、お客さまとの対話を重ねながら進めます。専門用語に頼らず、わかりやすい説明を心がけています。', points: ['わかりやすいご提案と説明', '進捗の定期的なご報告', '竣工後も続くご相談窓口'] },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

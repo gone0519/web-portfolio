@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<link href="./site.css" rel="stylesheet">
+<style>html{scroll-behavior:smooth}body{margin:0;background:#fff;color:#0b2e7e;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#0b2e7e}a:hover{color:#1d47a8}h1,h2,h3,h4,p{word-break:auto-phrase}</style>
+</helmet>
+<dc-import name="Header" active="staff" hint-size="100%,150px"></dc-import>
+<dc-import name="PageHero" title="施術者紹介" en="STAFF" img-id="staff-hero" src="images/staff-clipboard.jpg" placeholder="スタッフ集合写真" hint-size="100%,360px"></dc-import>
+
+<section data-screen-label="Staff" style="padding:clamp(40px,6vw,70px) 24px 0">
+  <div data-reveal="" style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,56px);align-items:flex-start">
+    <div style="flex:1 1 320px;max-width:440px;height:clamp(360px,40vw,500px);position:relative;border-bottom:8px solid #ffe100"><image-slot id="staff-director" shape="rect" src="images/neck-treatment.jpg" placeholder="院長のポートレート"></image-slot></div>
+    <div style="flex:1 1 400px">
+      <p style="margin:0;font-size:13px;font-weight:700;color:#1d47a8;letter-spacing:.08em">院長／柔道整復師</p>
+      <h2 style="margin:6px 0 4px;font-size:clamp(26px,3vw,32px);font-weight:900;letter-spacing:.1em">森下 健太</h2>
+      <p style="margin:0 0 22px;font-weight:600;font-size:13px;letter-spacing:.16em;color:#0b2e7e">KENTA MORISHITA</p>
+      <p style="margin:0 0 24px;font-size:14px;line-height:2;color:#0b2e7e">専門学校卒業後、整形外科での勤務や大学ラグビー部のトレーナー活動を経て、2011年にきなり整骨院を開院。「痛みを診る前に、その人を知る」を大切に、施術の内容と理由をわかりやすくお伝えすることを心がけています。</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:2px;background:#0b2e7e;border:2px solid #0b2e7e">
+        <div style="background:#fff;padding:16px 18px"><p style="margin:0 0 8px;font-size:13px;font-weight:900;color:#0b2e7e">資格</p><p style="margin:0;font-size:13px;line-height:1.9;color:#0b2e7e">柔道整復師（国家資格）<br>日本スポーツ協会公認アスレティックトレーナー<br>オステオパシー研修修了</p></div>
+        <div style="background:#fff;padding:16px 18px"><p style="margin:0 0 8px;font-size:13px;font-weight:900;color:#0b2e7e">得意分野</p><p style="margin:0;font-size:13px;line-height:1.9;color:#0b2e7e">骨盤・背骨の調整<br>スポーツ障害のリハビリ<br>デスクワークによる不調</p></div>
+        <div style="background:#fff;padding:16px 18px;grid-column:1/-1;display:flex;gap:28px;flex-wrap:wrap">
+          <span style="font-size:13px;color:#0b2e7e">施術歴 <b style="font-size:24px;color:#0b2e7e">18</b> 年</span>
+          <span style="font-size:13px;color:#0b2e7e">サポートした地域チーム <b style="font-size:24px;color:#0b2e7e">12</b> 団体</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(56px,8vw,90px) 24px 0">
+  <div data-reveal="" style="max-width:1000px;margin:0 auto">
+    <div style="background:#0b2e7e;color:#fff;padding:12px 20px;font-size:14px;font-weight:700;letter-spacing:.1em;display:flex;align-items:center;gap:12px;margin-bottom:28px"><span style="width:14px;height:2px;background:#ffe100"></span>スタッフ</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px">
+      <sc-for list="{{ staff }}" as="p" hint-placeholder-count="2">
+        <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap">
+          <div style="width:140px;height:170px;position:relative;flex:none;border-bottom:5px solid #ffe100"><image-slot id="staff-{{ p.id }}" shape="rect" src="{{ p.src }}" placeholder="{{ p.name }}の写真"></image-slot></div>
+          <div style="flex:1 1 160px">
+            <p style="margin:0;font-size:12px;font-weight:700;color:#1d47a8">{{ p.role }}</p>
+            <h3 style="margin:4px 0 10px;font-size:20px;font-weight:900;letter-spacing:.08em">{{ p.name }}</h3>
+            <p style="margin:0;font-size:13px;line-height:1.85;color:#0b2e7e">{{ p.body }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(56px,8vw,90px) 24px 0">
+  <div data-reveal="" style="max-width:1100px;margin:0 auto">
+    <h2 style="display:block;width:fit-content;margin:0 auto 14px;font-weight:900;font-size:clamp(34px,5vw,54px);line-height:1.05;letter-spacing:.06em;color:#0b2e7e;background:linear-gradient(transparent 62%,#ffe100 62%);padding:0 8px">VOICE</h2>
+    <p style="margin:0 0 6px;text-align:center;font-size:22px;font-weight:900;color:#0b2e7e;letter-spacing:.06em">患者様の声</p>
+    <p style="margin:0 0 28px;text-align:center;font-size:12px;color:#3d5a9e">※個人の感想です。効果には個人差があります。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px">
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+        <figure style="margin:0;background:#eef2fa;border-top:4px solid #0b2e7e;padding:24px 22px;display:flex;flex-direction:column;gap:14px">
+          <span style="align-self:flex-start;background:#ffe100;color:#0b2e7e;font-size:11px;font-weight:900;padding:3px 10px">{{ v.tag }}</span>
+          <blockquote style="margin:0;font-size:14px;line-height:1.95;color:#0b2e7e">{{ v.quote }}</blockquote>
+          <figcaption style="font-size:12.5px;color:#3d5a9e">{{ v.who }}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,700px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      staff: [
+        { id: 'a', role: '柔道整復師', name: '青木 美咲', src: 'images/staff-smile.jpg', body: '産後の骨盤ケアや女性特有のお悩みを中心に担当。話しやすい雰囲気づくりを大切にしています。' },
+        { id: 'b', role: '柔道整復師・トレーナー', name: '佐藤 翔', src: 'images/hand-treatment.jpg', body: '学生アスリートのケガの施術と、競技復帰に向けたトレーニング指導を担当しています。' }
+      ],
+      voices: [
+        { tag: 'スタッフの対応', quote: 'どんな質問にもわかりやすく答えてくれます。自分のからだの状態がよく理解できました。', who: '30代女性／産後の腰痛' },
+        { tag: '施術', quote: '強すぎない施術で安心でした。仕事の合間にできるストレッチも教えてもらい、続けています。', who: '50代男性・会社員／首の痛み' },
+        { tag: '日常生活', quote: '長く歩くのがつらかったのですが、今は孫との散歩を楽しめるようになりました。', who: '70代女性／膝の痛み' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

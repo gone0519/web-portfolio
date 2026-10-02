@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#2c3150;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0f1d5c;text-decoration:none}
+a:hover{color:#3a4a8f}
+::selection{background:#0f1d5c;color:#fff}
+input,textarea,button{font-family:inherit}
+</style>
+</helmet>
+
+<dc-import name="SiteHeader" current="top" motion="{{ motion }}" hint-size="100%,1px"></dc-import>
+
+<main id="top">
+
+<!-- 01 HERO -->
+<section data-screen-label="01 Hero" aria-label="ファーストビュー" style="position:relative;height:100vh;min-height:680px;background:#0f1d5c;overflow:hidden">
+  <div style="position:absolute;top:72px;left:clamp(20px,17%,240px);right:0;bottom:0;overflow:hidden">
+    <div data-parallax="0.18" style="position:absolute;left:0;right:0;top:-8%;height:116%">
+      <image-slot id="hero-main" src="images/04.jpg" data-kenburns="" shape="rect" placeholder="ヒーロー画像：街並みと住宅・建築（横長フル）"></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;background:{{ heroScrim }};pointer-events:none"></div>
+  </div>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+  <div style="position:absolute;left:0;bottom:0;width:clamp(20px,17%,240px);height:180px;display:flex;flex-direction:column;align-items:center;gap:14px;pointer-events:none">
+    <span style="writing-mode:vertical-rl;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.3em;color:#c9cde0">SCROLL</span>
+    <span data-loop="line" style="flex:1;width:1px;background:rgba(255,255,255,.7)"></span>
+  </div>
+  </sc-if>
+  <div style="position:absolute;left:clamp(28px,7vw,112px);right:24px;top:50%;transform:translateY(-44%);max-width:680px;color:#fff;pointer-events:none">
+    <p data-reveal="" data-delay="100" style="margin:0 0 28px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(17px,1.6vw,22px);letter-spacing:.08em;color:#e4e7f2">{{ heroSubline }}</p>
+    <h1 data-split="" data-delay="300" style="margin:0;font-family:'Shippori Mincho',serif;font-weight:400;font-size:min(64px,max(min(calc((100vw - 60px) / 11.8),32px),4.4vw));line-height:1.5;letter-spacing:.16em;color:#fff">理想の暮らしと、<br>未来の資産をつくる。</h1>
+    <p data-reveal="" data-delay="1200" style="margin:28px 0 0;max-width:460px;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:14px;line-height:2.1;letter-spacing:.1em;color:#fff;text-wrap:pretty">住まい探しから資産運用、売却まで。お一人おひとりのライフスタイルや将来の目標に合わせ、不動産に関わるすべてを一貫してサポートいたします。</p>
+    <div data-stagger="" data-delay="1400" class="se-btns" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:40px;pointer-events:auto">
+      <a href="Properties.dc.html" style="height:56px;padding:0 28px;display:flex;align-items:center;gap:22px;background:#fff;color:#0f1d5c;font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.16em;transition:gap .4s" style-hover="gap:34px">物件を探す<svg width="30" height="8" viewBox="0 0 30 8" fill="none"><path d="M0 7H29L22 1" stroke="currentColor"></path></svg></a>
+      <a href="#contact" style="height:56px;padding:0 28px;display:flex;align-items:center;gap:22px;border:1px solid rgba(255,255,255,.8);color:#fff;font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.16em;transition:gap .4s,background .4s" style-hover="gap:34px;background:rgba(255,255,255,.1);color:#fff">無料相談はこちら<svg width="30" height="8" viewBox="0 0 30 8" fill="none"><path d="M0 7H29L22 1" stroke="currentColor"></path></svg></a>
+    </div>
+  </div>
+  <sc-if value="{{ pickupVisible }}" hint-placeholder-val="{{ true }}">
+    <div data-reveal="" data-delay="1700" style="position:absolute;right:0;bottom:0;width:min(520px,38%);height:78px;background:#fff;display:flex;align-items:center;gap:22px;padding:0 24px 0 28px">
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;color:#0f1d5c">PICK UP</span><span style="width:22px;height:1px;background:#0f1d5c"></span></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:6px;min-width:0">
+        <span style="align-self:flex-start;background:#0f1d5c;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.12em;padding:2px 10px">新着物件</span>
+        <a href="PropertyDetail.dc.html" style="font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.1em;color:#0f1d5c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">南青山レジデンス 全24邸 販売開始のお知らせ</a>
+      </div>
+      <a href="Properties.dc.html" style="height:36px;padding:0 16px;display:flex;align-items:center;border:1px solid #0f1d5c;font-family:'Shippori Mincho',serif;font-size:11px;letter-spacing:.12em;white-space:nowrap;transition:background .3s,color .3s" style-hover="background:#0f1d5c;color:#fff">一覧へ</a>
+    </div>
+  </sc-if>
+</section>
+
+<!-- 02 CONCEPT -->
+<section id="concept" data-screen-label="02 Concept" style="position:relative;padding:clamp(64px,8vw,96px) 0 clamp(80px,10vw,140px);overflow:hidden;scroll-margin-top:72px">
+  <div data-drift-y="0.25" aria-hidden="true" class="se-deco-v" style="position:absolute;left:-0.08em;top:0;font-family:'Cormorant Garamond',serif;font-size:clamp(90px,13vw,200px);line-height:1;letter-spacing:.02em;color:#eef0f5;writing-mode:vertical-rl;pointer-events:none;user-select:none">CONCEPT</div>
+  <div style="display:flex;justify-content:flex-end">
+    <div data-reveal="mask" style="position:relative;width:clamp(260px,38%,560px);aspect-ratio:3.6/1">
+      <image-slot id="concept-top" src="images/13.jpg" shape="rect" placeholder="空・遠景（横長バナー）"></image-slot>
+    </div>
+  </div>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <div data-reveal="mask" style="position:absolute;left:0;top:52%;width:15%;aspect-ratio:1.1/1">
+      <image-slot id="concept-left" src="images/05.jpg" shape="rect" placeholder="街並み・夕景"></image-slot>
+    </div>
+  </sc-if>
+  <div style="position:relative;max-width:1080px;margin:0 auto;padding:clamp(40px,5vw,72px) clamp(24px,5vw,40px) 0 clamp(24px,10vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(40px,6vw,96px)">
+    <div data-reveal="">
+      <h2 data-split="" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,3.4vw,46px);letter-spacing:.14em;color:#0f1d5c;line-height:1">CONCEPT</h2>
+      <span data-line="" style="display:block;width:52px;height:1px;background:#0f1d5c;margin:18px 0 12px"></span>
+      <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.2em;color:#5b6180">私たちの想い</span>
+      <p style="margin:40px 0 0;font-family:'Shippori Mincho',serif;font-size:clamp(20px,2vw,26px);line-height:2.1;letter-spacing:.16em;color:#0f1d5c">暮らしに寄り添い、<br>未来まで考える<br>不動産。</p>
+      <a href="About.dc.html" style="margin-top:40px;width:min(100%,240px);height:52px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;border:1px solid #0f1d5c;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.16em;color:#0f1d5c;transition:background .4s,color .4s" style-hover="background:#0f1d5c;color:#fff">会社概要<svg width="30" height="8" viewBox="0 0 30 8" fill="none"><path d="M0 7H29L22 1" stroke="currentColor"></path></svg></a>
+    </div>
+    <div data-stagger="" style="display:flex;flex-direction:column;gap:26px;padding-top:clamp(0px,6vw,96px);font-family:'Shippori Mincho',serif;font-size:14px;line-height:2.3;letter-spacing:.14em;color:#3a3f5c">
+      <p style="margin:0">住まい選びは、人生の選択でもあります。</p>
+      <p style="margin:0">私たちは一人ひとりのライフスタイルや<br>将来のビジョンに寄り添い<br>本当に価値のある住まいをご提案します。</p>
+      <p style="margin:0">地域の市場を知り尽くした専門家として<br>物件の価値を見極め<br>納得のいくご決断を支えてまいります。</p>
+      <p style="margin:0">ご契約のその先も<br>長くお付き合いできるパートナーとして<br>お客様の暮らしと資産を見守り続けます。</p>
+    </div>
+  </div>
+  <div data-stagger="" style="position:relative;max-width:1080px;margin:clamp(64px,8vw,110px) auto 0;padding:0 clamp(24px,5vw,40px) 0 clamp(24px,10vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))" class="se-stats">
+    <div style="padding:26px 0 0;border-top:1px solid #d8dbe6;display:flex;flex-direction:column;gap:10px">
+      <span data-count="" style="font-family:'Cormorant Garamond',serif;font-size:clamp(42px,11vw,56px);line-height:1;color:#0f1d5c">20<span style="font-size:30px">+</span></span>
+      <span style="font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#3a3f5c">創業からの年数</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.2em;color:#7a809c">YEARS OF EXPERIENCE</span>
+    </div>
+    <div style="padding:26px 0 0;border-top:1px solid #d8dbe6;display:flex;flex-direction:column;gap:10px">
+      <span data-count="" style="font-family:'Cormorant Garamond',serif;font-size:clamp(42px,11vw,56px);line-height:1;color:#0f1d5c">1,000<span style="font-size:30px">+</span></span>
+      <span style="font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#3a3f5c">ご相談・ご成約のお客様</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.2em;color:#7a809c">CUSTOMERS SUPPORTED</span>
+    </div>
+    <div style="padding:26px 0 0;border-top:1px solid #d8dbe6;display:flex;flex-direction:column;gap:10px">
+      <span data-count="" style="font-family:'Cormorant Garamond',serif;font-size:clamp(42px,11vw,56px);line-height:1;color:#0f1d5c">500<span style="font-size:30px">+</span></span>
+      <span style="font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#3a3f5c">取扱物件数</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.2em;color:#7a809c">PROPERTIES</span>
+    </div>
+    <div style="padding:26px 0 0;border-top:1px solid #d8dbe6;display:flex;flex-direction:column;gap:10px">
+      <span data-count="" style="font-family:'Cormorant Garamond',serif;font-size:clamp(42px,11vw,56px);line-height:1;color:#0f1d5c">98<span style="font-size:30px">%</span></span>
+      <span style="font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#3a3f5c">お客様満足度</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.2em;color:#7a809c">CUSTOMER SATISFACTION</span>
+    </div>
+  </div>
+</section>
+
+<div aria-hidden="true" style="position:relative;height:clamp(180px,22vw,320px);overflow:hidden">
+  <div data-parallax="0.12" style="position:absolute;left:0;right:0;top:-25%;height:150%;filter:grayscale(1)">
+    <image-slot id="band" src="images/16.jpg" shape="rect" placeholder="街を行き交う人々・俯瞰（モノクロ推奨）"></image-slot>
+  </div>
+  <span style="position:absolute;left:50%;bottom:0;width:44px;height:14px;margin-left:-22px;background:#f4f4f6"></span>
+</div>
+
+<!-- 03 PROPERTIES -->
+<section id="properties" data-screen-label="03 Properties" style="background:#f4f4f6;padding:clamp(72px,9vw,120px) clamp(20px,6vw,96px) clamp(80px,10vw,140px);scroll-margin-top:72px">
+  <div style="position:relative;text-align:center;padding:clamp(24px,4vw,56px) 0">
+    <span data-drift="0.3" aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-size:clamp(64px,12vw,190px);line-height:1;letter-spacing:.02em;color:#fff;white-space:nowrap;pointer-events:none;user-select:none">PROPERTIES</span>
+    <h2 data-split="" style="position:relative;margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(32px,3.4vw,46px);letter-spacing:.16em;color:#0f1d5c;line-height:1">PROPERTIES</h2>
+    <span style="position:relative;display:block;margin-top:10px;font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.2em;color:#5b6180">物件・サービス</span>
+  </div>
+  <p data-reveal="" style="margin:clamp(24px,3vw,40px) auto 0;text-align:center;font-family:'Shippori Mincho',serif;font-size:clamp(18px,1.9vw,24px);line-height:1.9;letter-spacing:.16em;color:#0f1d5c">あなたの理想に合わせた、<br>不動産のご提案。</p>
+
+  <div style="max-width:1180px;margin:clamp(56px,7vw,96px) auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(72px,7vw,96px) clamp(32px,5vw,72px)" class="se-cards2">
+    <article data-reveal="">
+      <div data-reveal="mask" style="position:relative;aspect-ratio:16/10;overflow:hidden">
+        <div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="prop-residential" src="images/11.jpg" shape="rect" placeholder="新築戸建て・外観"></image-slot></div>
+      </div>
+      <a href="Properties.dc.html?cat=residential" style="position:relative;display:inline-flex;align-items:center;gap:22px;margin-top:-34px;margin-left:clamp(0px,2vw,24px);height:68px;padding:0 28px 0 88px;background:#fff;color:#0f1d5c;transition:gap .4s" style-hover="gap:34px">
+        <span style="position:absolute;left:18px;bottom:12px;font-family:'Cormorant Garamond',serif;font-size:46px;line-height:1;color:#0f1d5c">01</span>
+        <span style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Shippori Mincho',serif;font-size:17px;letter-spacing:.18em">住まい</span><span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#5b6180">RESIDENTIAL</span></span>
+        <svg width="30" height="8" viewBox="0 0 30 8" fill="none"><path d="M0 7H29L22 1" stroke="currentColor"></path></svg>
+      </a>
+      <p style="margin:24px 0 0;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;line-height:2.1;letter-spacing:.08em;color:#3a3f5c;text-wrap:pretty">家族の時間を育む一邸を。新築から中古、土地探しまで、将来の資産価値も見据えてご提案します。</p>
+      <div data-stagger="" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.1em;color:#0f1d5c">
+        <span style="border:1px solid #c9cde0;padding:5px 12px">新築戸建て</span><span style="border:1px solid #c9cde0;padding:5px 12px">中古戸建て</span><span style="border:1px solid #c9cde0;padding:5px 12px">マンション</span><span style="border:1px solid #c9cde0;padding:5px 12px">土地</span>
+      </div>
+    </article>
+
+    <article data-reveal="">
+      <div data-reveal="mask" style="position:relative;aspect-ratio:16/10;overflow:hidden">
+        <div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="prop-rental" src="images/09.jpg" shape="rect" placeholder="賃貸マンション・リビング"></image-slot></div>
+      </div>
+      <a href="Properties.dc.html?cat=rental" style="position:relative;display:inline-flex;align-items:center;gap:22px;margin-top:-34px;margin-left:clamp(0px,2vw,24px);height:68px;padding:0 28px 0 88px;background:#fff;color:#0f1d5c;transition:gap .4s" style-hover="gap:34px">
+        <span style="position:absolute;left:18px;bottom:12px;font-family:'Cormorant Garamond',serif;font-size:46px;line-height:1;color:#0f1d5c">02</span>
+        <span style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Shippori Mincho',serif;font-size:17px;letter-spacing:.18em">賃貸</span><span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#5b6180">RENTAL</span></span>
+        <svg width="30" height="8" viewBox="0 0 30 8" fill="none"><path d="M0 7H29L22 1" stroke="currentColor"></path></svg>
+      </a>
+      <p style="margin:24px 0 0;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;line-height:2.1;letter-spacing:.08em;color:#3a3f5c;text-wrap:pretty">通勤や周辺環境まで考えた住まいから、事業の拠点となる店舗・オフィスまで幅広くご紹介します。</p>
+      <div data-stagger="" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.1em;color:#0f1d5c">
+        <span style="border:1px solid #c9cde0;padding:5px 12px">賃貸マンション</span><span style="border:1px solid #c9cde0;padding:5px 12px">賃貸アパート</span><span style="border:1px solid #c9cde0;padding:5px 12px">店舗・オフィス</span>
+      </div>
+    </article>
+
+    <article id="services" data-reveal="" style="scroll-margin-top:100px">
+      <div data-reveal="mask" style="position:relative;aspect-ratio:16/10;overflow:hidden">
+        <div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="prop-investment" src="images/20.jpg" shape="rect" placeholder="一棟マンション・外観／都市景観"></image-slot></div>
+      </div>
+      <a href="Properties.dc.html?cat=investment" style="position:relative;display:inline-flex;align-items:center;gap:22px;margin-top:-34px;margin-left:clamp(0px,2vw,24px);height:68px;padding:0 28px 0 88px;background:#fff;color:#0f1d5c;transition:gap .4s" style-hover="gap:34px">
+        <span style="position:absolute;left:18px;bottom:12px;font-family:'Cormorant Garamond',serif;font-size:46px;line-height:1;color:#0f1d5c">03</span>
+        <span style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Shippori Mincho',serif;font-size:17px;letter-spacing:.18em">投資</span><span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#5b6180">INVESTMENT</span></span>
+        <svg width="30" height="8" viewBox="0 0 30 8" fill="none"><path d="M0 7H29L22 1" stroke="currentColor"></path></svg>
+      </a>
+      <p style="margin:24px 0 0;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;line-height:2.1;letter-spacing:.08em;color:#3a3f5c;text-wrap:pretty">利回りや立地、将来の需要を丁寧に分析。長期的に安定した収益を生む不動産投資をご提案します。</p>
+      <div data-stagger="" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.1em;color:#0f1d5c">
+        <span style="border:1px solid #c9cde0;padding:5px 12px">投資用マンション</span><span style="border:1px solid #c9cde0;padding:5px 12px">一棟物件</span><span style="border:1px solid #c9cde0;padding:5px 12px">収益不動産</span>
+      </div>
+    </article>
+
+    <article data-reveal="">
+      <div data-reveal="mask" style="position:relative;aspect-ratio:16/10;overflow:hidden">
+        <div style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="prop-sale" src="images/01.jpg" shape="rect" placeholder="ご相談風景・室内"></image-slot></div>
+      </div>
+      <a href="Services.dc.html#sale" style="position:relative;display:inline-flex;align-items:center;gap:22px;margin-top:-34px;margin-left:clamp(0px,2vw,24px);height:68px;padding:0 28px 0 88px;background:#fff;color:#0f1d5c;transition:gap .4s" style-hover="gap:34px">
+        <span style="position:absolute;left:18px;bottom:12px;font-family:'Cormorant Garamond',serif;font-size:46px;line-height:1;color:#0f1d5c">04</span>
+        <span style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Shippori Mincho',serif;font-size:17px;letter-spacing:.18em">売却</span><span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#5b6180">SALE</span></span>
+        <svg width="30" height="8" viewBox="0 0 30 8" fill="none"><path d="M0 7H29L22 1" stroke="currentColor"></path></svg>
+      </a>
+      <p style="margin:24px 0 0;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;line-height:2.1;letter-spacing:.08em;color:#3a3f5c;text-wrap:pretty">適正な査定から販売活動、お引き渡しまで。大切な資産を、納得のいく価格とタイミングで売却へ導きます。</p>
+      <div data-stagger="" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.1em;color:#0f1d5c">
+        <span style="border:1px solid #c9cde0;padding:5px 12px">不動産売却</span><span style="border:1px solid #c9cde0;padding:5px 12px">査定</span><span style="border:1px solid #c9cde0;padding:5px 12px">売却サポート</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 04 STRENGTHS -->
+<section id="strengths" data-screen-label="04 Strengths" style="padding:clamp(80px,10vw,140px) 0 clamp(80px,10vw,140px);scroll-margin-top:72px;overflow:hidden">
+  <div style="position:relative;text-align:center;padding:clamp(24px,4vw,56px) 20px">
+    <span data-drift="0.3" aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-size:clamp(64px,12vw,190px);line-height:1;letter-spacing:.02em;color:#f0f1f5;white-space:nowrap;pointer-events:none;user-select:none">STRENGTHS</span>
+    <h2 data-split="" style="position:relative;margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(32px,3.4vw,46px);letter-spacing:.16em;color:#0f1d5c;line-height:1">STRENGTHS</h2>
+    <span style="position:relative;display:block;margin-top:10px;font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.2em;color:#5b6180">私たちの強み</span>
+  </div>
+  <p data-reveal="" style="margin:clamp(24px,3vw,40px) auto 0;padding:0 20px;text-align:center;font-family:'Shippori Mincho',serif;font-size:clamp(18px,1.9vw,24px);line-height:1.9;letter-spacing:.16em;color:#0f1d5c">不動産のプロだからできる、<br>安心のサポート。</p>
+
+  <div style="position:relative;max-width:1180px;margin:clamp(48px,6vw,80px) auto 0;padding:0 clamp(20px,6vw,96px);margin-bottom:{{ sbWrapGap }}">
+    <div data-reveal="mask" style="position:relative;width:{{ sbImgW }};aspect-ratio:16/8">
+      <image-slot id="strengths-main" src="images/10.jpg" shape="rect" placeholder="オフィス・接客スペース／内観"></image-slot>
+    </div>
+    <div data-reveal="" style="position:{{ sbPos }};right:clamp(20px,6vw,96px);bottom:{{ sbBottom }};width:{{ sbW }};margin:{{ sbMargin }};background:#fff;padding:clamp(28px,3.4vw,48px)">
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(17px,1.6vw,21px);line-height:1.9;letter-spacing:.14em;color:#0f1d5c">お客様の人生に寄り添う、<br>確かな知識と誠実な対応。</p>
+      <p style="margin:18px 0 0;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;line-height:2.1;letter-spacing:.08em;color:#3a3f5c;text-wrap:pretty">宅地建物取引士をはじめとする専門スタッフが、ご相談から物件選び、ご契約、お引き渡し後のアフターサポートまで一貫して担当します。</p>
+      <a href="Services.dc.html#flow" style="margin-top:28px;width:min(100%,260px);height:52px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;border:1px solid #0f1d5c;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.16em;color:#0f1d5c;transition:background .4s,color .4s" style-hover="background:#0f1d5c;color:#fff">ご相談の流れ<svg width="30" height="8" viewBox="0 0 30 8" fill="none"><path d="M0 7H29L22 1" stroke="currentColor"></path></svg></a>
+    </div>
+  </div>
+
+  <div style="position:relative;padding:clamp(56px,7vw,96px) 0">
+    <div aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:{{ sbGrayW }};background:#f4f4f6"></div>
+    <div style="position:relative;max-width:1000px;margin:0 auto;padding:0 clamp(20px,5vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(32px,5vw,64px);align-items:start">
+      <div data-reveal="" style="border-left:1px solid #0f1d5c;padding-left:18px;max-width:240px">
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:30px;letter-spacing:.12em;color:#0f1d5c;line-height:1.1">OUR<br>EXPERTISE</h3>
+        <span style="display:block;margin-top:8px;font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.2em;color:#5b6180">4つの強み</span>
+        <a href="Strengths.dc.html" style="margin-top:28px;width:min(100%,240px);height:52px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;border:1px solid #0f1d5c;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.16em;color:#0f1d5c;transition:background .4s,color .4s" style-hover="background:#0f1d5c;color:#fff">強みを詳しく見る<svg width="30" height="8" viewBox="0 0 30 8" fill="none"><path d="M0 7H29L22 1" stroke="currentColor"></path></svg></a>
+      </div>
+      <ol data-reveal="" data-stagger="" class="se-span2" style="list-style:none;margin:0;padding:0 clamp(20px,3vw,40px);background:#fff;min-width:0">
+        <li class="se-numrow" style="display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;padding:30px 0;border-bottom:1px solid #e3e5ec">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:#0f1d5c">01</span>
+          <div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px"><span style="background:#0f1d5c;color:#fff;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.16em;padding:2px 10px">LISTINGS</span><h4 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.14em;color:#0f1d5c">豊富な物件情報</h4></div><p style="margin:10px 0 0;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;line-height:2;letter-spacing:.06em;color:#3a3f5c">住宅から事業用、投資用まで。独自のネットワークで、市場に出る前の物件情報も含めて幅広くご紹介します。</p></div>
+        </li>
+        <li class="se-numrow" style="display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;padding:30px 0;border-bottom:1px solid #e3e5ec">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:#0f1d5c">02</span>
+          <div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px"><span style="background:#0f1d5c;color:#fff;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.16em;padding:2px 10px">LOCAL</span><h4 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.14em;color:#0f1d5c">地域に根ざした知識</h4></div><p style="margin:10px 0 0;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;line-height:2;letter-spacing:.06em;color:#3a3f5c">相場の動き、街の雰囲気、交通や生活環境まで。地域を知り尽くしたスタッフが、数字だけでは見えない価値をお伝えします。</p></div>
+        </li>
+        <li class="se-numrow" style="display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;padding:30px 0;border-bottom:1px solid #e3e5ec">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:#0f1d5c">03</span>
+          <div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px"><span style="background:#0f1d5c;color:#fff;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.16em;padding:2px 10px">PERSONAL</span><h4 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.14em;color:#0f1d5c">一人ひとりに合わせた提案</h4></div><p style="margin:10px 0 0;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;line-height:2;letter-spacing:.06em;color:#3a3f5c">ご予算やライフスタイル、将来の計画を丁寧にお伺いし、お客様にとって最適な選択肢をご提案します。</p></div>
+        </li>
+        <li class="se-numrow" style="display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;padding:30px 0">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:#0f1d5c">04</span>
+          <div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px"><span style="background:#0f1d5c;color:#fff;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.16em;padding:2px 10px">SUPPORT</span><h4 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.14em;color:#0f1d5c">購入後まで続くサポート</h4></div><p style="margin:10px 0 0;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;line-height:2;letter-spacing:.06em;color:#3a3f5c">ご相談、物件選びからご契約、お引き渡し後のアフターサポートまで、同じ担当者が責任を持って伴走します。</p></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CONTACT -->
+<section id="contact" data-screen-label="05 Contact" style="position:relative;padding:clamp(80px,10vw,130px) clamp(16px,4vw,40px) 0;scroll-margin-top:72px;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;left:0;right:0;top:0;bottom:280px;overflow:hidden">
+    <div style="position:absolute;inset:-24px;filter:blur(8px)"><image-slot id="contact-bg" src="images/17.jpg" shape="rect" placeholder="明るい室内（ぼかして使用）"></image-slot></div>
+    <div style="position:absolute;inset:0;background:rgba(255,255,255,.62);pointer-events:none"></div>
+  </div>
+  <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:280px;background:#0f1d5c"></div>
+
+  <div style="position:relative;text-align:center;pointer-events:none">
+    <h2 data-split="" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(36px,4.2vw,58px);letter-spacing:.16em;color:#0f1d5c;line-height:1">CONTACT</h2>
+    <span style="display:block;margin-top:10px;font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.2em;color:#2c3150">お問い合わせ</span>
+  </div>
+
+  <div data-reveal="" style="position:relative;max-width:1060px;margin:clamp(40px,5vw,56px) auto 0;background:#fff;padding:clamp(32px,5vw,64px) clamp(20px,5vw,64px);box-shadow:0 30px 60px -40px rgba(15,29,92,.35)">
+    <div style="text-align:center">
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.2vw,28px);line-height:1.8;letter-spacing:.16em;color:#0f1d5c">理想の住まいを、一緒に見つけませんか？</p>
+      <p style="margin:10px 0 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;letter-spacing:.08em;color:#5b6180">Let's Find Your Future Home.</p>
+      <p style="margin:22px auto 0;max-width:520px;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;line-height:2.1;letter-spacing:.08em;color:#3a3f5c">ご相談は無料です。まだ具体的に決まっていない段階でも、どうぞお気軽にお声がけください。</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(20px,3vw,40px);margin-top:36px">
+      <a href="tel:0120000000" style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#0f1d5c">
+        <span style="display:flex;align-items:baseline;gap:8px"><span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.1em">TEL.</span><span style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.4vw,42px);line-height:1;letter-spacing:.04em">0120-000-000</span></span>
+        <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.1em;color:#5b6180">受付 10:00〜19:00（水曜定休）</span>
+      </a>
+      <div data-stagger="" class="se-btns" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px">
+        <a href="#form" style="height:56px;padding:0 26px;display:flex;align-items:center;gap:18px;background:#0f1d5c;color:#fff;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;transition:gap .4s,background .4s" style-hover="gap:28px;background:#1d2d7a;color:#fff">無料相談はこちら<svg width="24" height="8" viewBox="0 0 30 8" fill="none"><path d="M0 7H29L22 1" stroke="currentColor"></path></svg></a>
+        <a href="Properties.dc.html" style="height:56px;padding:0 26px;display:flex;align-items:center;border:1px solid #0f1d5c;color:#0f1d5c;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;transition:background .4s,color .4s" style-hover="background:#0f1d5c;color:#fff">物件を探す</a>
+        <a href="#form" style="height:56px;padding:0 26px;display:flex;align-items:center;border:1px solid #0f1d5c;color:#0f1d5c;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;transition:background .4s,color .4s" style-hover="background:#0f1d5c;color:#fff">売却査定はこちら</a>
+      </div>
+    </div>
+
+    <div style="height:1px;background:#e3e5ec;margin:clamp(40px,5vw,56px) 0"></div>
+
+    <div id="form" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(40px,5vw,64px);scroll-margin-top:100px">
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:22px;font-family:'Noto Sans JP',sans-serif">
+          <fieldset style="border:0;margin:0;padding:0">
+            <legend style="padding:0;font-size:12px;letter-spacing:.12em;color:#0f1d5c;margin-bottom:10px">ご相談内容</legend>
+            <div class="se-grid2" style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ categories }}" as="c" hint-placeholder-count="4">
+                <button type="button" onClick="{{ c.onClick }}" aria-pressed="{{ c.active }}" style="height:44px;padding:0 18px;border:1px solid #0f1d5c;background:{{ c.bg }};color:{{ c.fg }};font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.1em;cursor:pointer;transition:background .3s,color .3s">{{ c.label }}</button>
+              </sc-for>
+            </div>
+          </fieldset>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.12em;color:#0f1d5c">お名前<input required="" name="name" autocomplete="name" style="height:48px;border:1px solid #d3d6e2;padding:0 14px;font-size:14px;color:#2c3150;outline:none;transition:border-color .3s" style-focus="border-color:#0f1d5c"></label>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.12em;color:#0f1d5c">メールアドレス<input required="" type="email" name="email" autocomplete="email" style="height:48px;border:1px solid #d3d6e2;padding:0 14px;font-size:14px;color:#2c3150;outline:none;transition:border-color .3s" style-focus="border-color:#0f1d5c"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.12em;color:#0f1d5c">電話番号<input type="tel" name="tel" autocomplete="tel" style="height:48px;border:1px solid #d3d6e2;padding:0 14px;font-size:14px;color:#2c3150;outline:none;transition:border-color .3s" style-focus="border-color:#0f1d5c"></label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.12em;color:#0f1d5c">ご相談内容の詳細<textarea name="message" rows="4" style="border:1px solid #d3d6e2;padding:12px 14px;font-size:14px;line-height:1.8;color:#2c3150;outline:none;resize:vertical;transition:border-color .3s" style-focus="border-color:#0f1d5c"></textarea></label>
+          <p style="margin:0;font-size:11px;line-height:1.9;letter-spacing:.06em;color:#5b6180">送信いただいた情報は、<a href="#" style="text-decoration:underline">プライバシーポリシー</a>に基づき適切に管理いたします。</p>
+          <button type="submit" style="height:60px;border:0;background:#0f1d5c;color:#fff;font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.2em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:22px;transition:gap .4s,background .4s" style-hover="gap:34px;background:#1d2d7a">内容を送信する<svg width="30" height="8" viewBox="0 0 30 8" fill="none"><path d="M0 7H29L22 1" stroke="currentColor"></path></svg></button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="display:flex;flex-direction:column;justify-content:center;gap:16px;padding:40px;background:#f4f4f6">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;color:#0f1d5c">THANK YOU</span>
+          <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:18px;line-height:1.9;letter-spacing:.12em;color:#0f1d5c">お問い合わせありがとうございます。</p>
+          <p style="margin:0;font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;line-height:2;color:#3a3f5c">「{{ category }}」について、担当者より2営業日以内にご連絡いたします。</p>
+          <button type="button" onClick="{{ resetForm }}" style="align-self:flex-start;height:44px;padding:0 20px;border:1px solid #0f1d5c;background:transparent;color:#0f1d5c;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.14em;cursor:pointer">フォームに戻る</button>
+        </div>
+      </sc-if>
+
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div style="position:relative;aspect-ratio:16/10">
+          <image-slot id="contact-office" src="images/21.jpg" shape="rect" placeholder="店舗外観または地図"></image-slot>
+        </div>
+        <dl style="margin:0;display:grid;grid-template-columns:88px minmax(0,1fr);row-gap:16px;font-family:'Noto Sans JP',sans-serif;font-size:13px;line-height:1.9;letter-spacing:.06em">
+          <dt style="font-family:'Shippori Mincho',serif;color:#0f1d5c;letter-spacing:.14em">所在地</dt><dd style="margin:0;color:#3a3f5c">〒107-0062<br>東京都港区南青山0-0-0 <span style="white-space:nowrap">東雲ビル5F</span></dd>
+          <dt style="font-family:'Shippori Mincho',serif;color:#0f1d5c;letter-spacing:.14em">アクセス</dt><dd style="margin:0;color:#3a3f5c">東京メトロ「表参道駅」A4出口より徒歩3分</dd>
+          <dt style="font-family:'Shippori Mincho',serif;color:#0f1d5c;letter-spacing:.14em">営業時間</dt><dd style="margin:0;color:#3a3f5c">10:00〜19:00</dd>
+          <dt style="font-family:'Shippori Mincho',serif;color:#0f1d5c;letter-spacing:.14em">定休日</dt><dd style="margin:0;color:#3a3f5c">水曜日・年末年始</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroSubline&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Find Your Place. Build Your Future.&quot;,&quot;Connecting People, Properties, and Possibilities.&quot;],&quot;default&quot;:&quot;Find Your Place. Build Your Future.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showPickup&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { scrolled: false, isMobile: typeof window !== 'undefined' && window.innerWidth < 960, menuOpen: false, category: '購入相談', sent: false };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const s = window.scrollY > 40;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+      this._parallax();
+      this._revealCheck && this._revealCheck();
+    };
+    this._onResize = () => {
+      const m = window.innerWidth < 960;
+      if (m !== this.state.isMobile) this.setState({ isMobile: m, menuOpen: m ? this.state.menuOpen : false });
+    };
+    window.addEventListener('resize', this._onResize);
+    this._onResize();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    this._io && this._io.disconnect();
+    clearTimeout(this._revealTimer);
+  }
+  _parallax() {
+    const vh = window.innerHeight;
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+      const speed = parseFloat(el.getAttribute('data-parallax')) || 0.1;
+      const r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      const off = (r.top + r.height / 2 - vh / 2) * -speed;
+      el.style.transform = `translate3d(0,${off.toFixed(1)}px,0)`;
+    });
+  }
+  _setupReveal() {
+    if (this.props.animations === false || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    this._pending = new Set(els);
+    const show = el => {
+      if (!this._pending.has(el)) return;
+      this._pending.delete(el);
+      if (el.getAttribute('data-reveal') === 'mask') el.style.clipPath = 'inset(0 0 0 0)';
+      else { el.style.opacity = '1'; el.style.translate = '0 0'; }
+      this._io && this._io.unobserve(el);
+    };
+    this._revealCheck = () => {
+      const vh = window.innerHeight;
+      this._pending.forEach(el => { const r = el.getBoundingClientRect(); if (r.top < vh * 0.94 && r.bottom > 0) show(el); });
+    };
+    this._revealAll = () => this._pending.forEach(show);
+    this._io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) show(e.target); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    this._revealTimer = setTimeout(() => this._revealAll(), 4000);
+    els.forEach(el => {
+      if (el.getAttribute('data-reveal') === 'mask') {
+        el.style.clipPath = 'inset(0 100% 0 0)';
+        el.style.transition = 'clip-path 1.4s cubic-bezier(.7,0,.2,1)';
+      } else {
+        el.style.opacity = '0';
+        el.style.translate = '0 28px';
+        el.style.transition = 'opacity 1.2s cubic-bezier(.2,.7,.2,1), translate 1.2s cubic-bezier(.2,.7,.2,1)';
+      }
+      this._io.observe(el);
+    });
+    requestAnimationFrame(() => requestAnimationFrame(() => this._revealCheck()));
+  }
+
+  renderVals() {
+    const { scrolled, isMobile, menuOpen, category, sent } = this.state;
+    const cats = ['購入相談', '売却相談', '賃貸相談', '投資相談'];
+    const closeMenu = () => this.setState({ menuOpen: false });
+    return {
+      navItems: [
+        { label: 'About', ja: '私たちについて', href: '#concept' },
+        { label: 'Properties', ja: '物件', href: '#properties' },
+        { label: 'Services', ja: 'サービス', href: '#services' },
+        { label: 'Strengths', ja: '強み', href: '#strengths' },
+        { label: 'Contact', ja: 'お問い合わせ', href: '#contact' },
+      ],
+      isMobile, isDesktop: !isMobile, menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu,
+      headerLeftW: isMobile ? 'auto' : (scrolled ? '300px' : '52%'),
+      headerShadow: scrolled ? '0 10px 30px -20px rgba(15,29,92,.35)' : 'none',
+      heroScrim: isMobile
+        ? 'rgba(15,29,92,.55)'
+        : 'linear-gradient(90deg, rgba(15,29,92,.78) 0%, rgba(15,29,92,.38) 42%, rgba(15,29,92,0) 72%)',
+      heroSubline: this.props.heroSubline ?? 'Find Your Place. Build Your Future.',
+      pickupVisible: (this.props.showPickup ?? true) && !isMobile,
+      sbImgW: isMobile ? '100%' : '76%',
+      sbPos: isMobile ? 'relative' : 'absolute',
+      sbBottom: isMobile ? 'auto' : '-96px',
+      sbW: isMobile ? 'auto' : '46%',
+      sbMargin: isMobile ? '-40px 0 0 20px' : '0',
+      sbWrapGap: isMobile ? '0' : '96px',
+      sbGrayW: isMobile ? '100%' : '50%',
+      categories: cats.map(c => ({
+        label: c, active: c === category,
+        bg: c === category ? '#0f1d5c' : '#fff',
+        fg: c === category ? '#fff' : '#0f1d5c',
+        onClick: () => this.setState({ category: c }),
+      })),
+      motion: this.props.animations ?? true,
+      category, sent, notSent: !sent,
+      onSubmit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      resetForm: () => this.setState({ sent: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

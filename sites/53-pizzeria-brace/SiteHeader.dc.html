@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;height:84px;background:#fff;box-shadow:0 2px 14px rgba(58,46,31,.08);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,64px) 0 clamp(16px,6vw,120px);font-family:'Noto Sans JP',sans-serif">
+  <a href="Pizzeria%20Brace.dc.html" aria-label="Pizzeria Brace ホーム" style="position:relative;align-self:flex-start;width:clamp(92px,9vw,118px);height:clamp(92px,9vw,118px);margin-top:-14px;border-radius:50%;background:#E5C65B;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:12px;box-shadow:0 4px 12px rgba(58,46,31,.12);color:#AF1B30;text-decoration:none">
+    <span style="font-family:'Kaushan Script',cursive;font-size:clamp(28px,2.6vw,36px);line-height:1;color:#AF1B30">Brace</span>
+    <span style="font-size:9px;font-weight:700;letter-spacing:.3em;color:#3A2E1F;margin-top:4px">PIZZERIA</span>
+  </a>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2.4vw,40px)">
+    <nav aria-label="メインナビゲーション" style="max-width:clamp(0px,calc((100vw - 1080px) * 999),2000px);overflow:hidden;display:flex;gap:clamp(18px,2.2vw,36px);white-space:nowrap">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="position:relative;color:#3A2E1F;font-size:12px;font-weight:700;letter-spacing:.16em;padding:8px 0;text-decoration:none" style-hover="color:#AF1B30">{{ n.label }}<sc-if value="{{ n.active }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:0;height:2px;background:#AF1B30"></span></sc-if></a>
+      </sc-for>
+    </nav>
+    <a href="Reservation.dc.html" style="background:#AF1B30;color:#fff;font-size:13px;font-weight:700;letter-spacing:.14em;padding:13px clamp(16px,2vw,28px);white-space:nowrap;transition:background .3s;text-decoration:none" style-hover="background:#3A2E1F;color:#fff">予約する</a>
+    <button onClick="{{ toggleMenu }}" aria-label="メニューを開く" style="width:clamp(0px,calc((1080px - 100vw) * 999),44px);height:44px;overflow:hidden;border:0;background:transparent;padding:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+      <span style="display:block;width:26px;height:2px;background:#3A2E1F;flex:none"></span>
+      <span style="display:block;width:26px;height:2px;background:#3A2E1F;flex:none"></span>
+      <span style="display:block;width:18px;height:2px;background:#3A2E1F;flex:none"></span>
+    </button>
+  </div>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#AF1B30;color:#fff;display:flex;flex-direction:column;padding:28px 28px 40px;font-family:'Noto Sans JP',sans-serif;overflow-y:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-family:'Kaushan Script',cursive;font-size:32px;color:#E5C65B">Brace</span>
+      <button onClick="{{ closeMenu }}" aria-label="メニューを閉じる" style="width:44px;height:44px;border:1px solid rgba(255,255,255,.5);background:transparent;color:#fff;font-size:22px;cursor:pointer">×</button>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:4px;margin-top:40px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="color:#fff;font-size:20px;font-weight:700;letter-spacing:.14em;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.2);display:flex;justify-content:space-between;align-items:center;text-decoration:none"><span>{{ n.label }}</span><span style="font-size:12px;font-weight:400">{{ n.ja }}</span></a>
+      </sc-for>
+    </nav>
+    <a href="Reservation.dc.html" style="margin-top:auto;background:#E5C65B;color:#3A2E1F;text-align:center;font-weight:700;letter-spacing:.14em;padding:18px;text-decoration:none">ご予約はこちら</a>
+    <a href="tel:0364120000" style="margin-top:14px;color:#fff;text-align:center;font-size:14px;letter-spacing:.1em;text-decoration:none">TEL 03-6412-0000</a>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:400},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;concept&quot;,&quot;menu&quot;,&quot;craft&quot;,&quot;news&quot;,&quot;access&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false };
+  componentDidMount() {
+    if (document.visibilityState !== 'visible') return;
+    setTimeout(() => import('./site-fx.js').then(m => { if (!this.dead) this.stopFx = m.start(this); }), 30);
+  }
+  componentWillUnmount() {
+    this.dead = true;
+    this.stopFx && this.stopFx();
+  }
+  renderVals() {
+    const cur = this.props.current ?? 'home';
+    const nav = [
+      ['home', 'HOME', 'ホーム', 'Pizzeria%20Brace.dc.html'],
+      ['concept', 'CONCEPT', 'コンセプト', 'Concept.dc.html'],
+      ['menu', 'MENU', 'メニュー', 'Menu.dc.html'],
+      ['craft', 'CRAFTSMANSHIP', '素材と技', 'Craftsmanship.dc.html'],
+      ['news', 'NEWS', 'お知らせ', 'News.dc.html'],
+      ['access', 'RESERVATION & ACCESS', 'ご予約・アクセス', 'Reservation.dc.html']
+    ].map(([k, label, ja, href]) => ({ label, ja, href, active: k === cur }));
+    return {
+      nav,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

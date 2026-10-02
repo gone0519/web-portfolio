@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="Header" current="daily" hint-size="100%,220px"></dc-import>
+<main>
+<section data-screen-label="Daily Hero" style="position:relative">
+  <div style="background:#f8f3e6;padding:36px 20px 40px;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div style="background:#4bb3a6;color:#fff;font-weight:700;font-size:12px;letter-spacing:.24em;padding:6px 44px;clip-path:polygon(0 0,100% 0,92% 50%,100% 100%,0 100%,8% 50%)">DAILY LIFE</div>
+    <h1 style="margin:16px 0 0;font-family:'Yusei Magic';font-weight:400;font-size:clamp(28px,4vw,40px);letter-spacing:.14em">園でのまいにち</h1>
+  </div>
+  <div style="position:relative;overflow:hidden;height:clamp(200px,24vw,320px);background:#e9dfc9">
+    <img src="images/circle-play.jpg" alt="芝生で輪になって遊ぶ子どもたち" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;top:-1px;left:0;width:100%;height:36px;display:block"><path d="M0 0H1440V20Q720 60 0 20Z" fill="#f8f3e6"></path></svg>
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;bottom:-1px;left:0;width:100%;height:40px;display:block"><path d="M0 60H1440V30Q720 -10 0 30Z" fill="#fff"></path></svg>
+  </div>
+  <div style="max-width:1080px;margin:0 auto;padding:14px 20px 0;font-size:12px;color:#8e7a63;letter-spacing:.06em"><a href="ひなたの森保育園.dc.html" style="color:#8e7a63">ホーム</a> › 園でのまいにち</div>
+</section>
+
+<section class="sec" data-screen-label="Schedule" style="padding:70px 20px 100px">
+  <div style="max-width:1080px;margin:0 auto">
+    <div data-reveal="1" style="text-align:center">
+      <h2 style="margin:0 0 20px;font-family:'Yusei Magic';font-weight:400;font-size:clamp(24px,3.2vw,32px);letter-spacing:.14em">1日の流れ</h2>
+      <div style="width:min(300px,80%);height:8px;margin:0 auto;background:radial-gradient(circle,#f08a1c 2px,transparent 2.6px) 0 0/16px 8px repeat-x,radial-gradient(circle,#f5c43c 1.6px,transparent 2.2px) 8px 0/16px 8px repeat-x"></div>
+    </div>
+    <div data-reveal="1" role="tablist" style="margin:34px auto 0;display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
+      <button role="tab" onClick="{{ pickYoung }}" style="min-height:46px;padding:0 26px;border-radius:30px;border:2px solid #f08a1c;background:{{ youngBg }};color:{{ youngFg }};font-weight:700;font-size:14px;letter-spacing:.08em;cursor:pointer;transition:background .2s">0〜2歳児クラス</button>
+      <button role="tab" onClick="{{ pickOld }}" style="min-height:46px;padding:0 26px;border-radius:30px;border:2px solid #f08a1c;background:{{ oldBg }};color:{{ oldFg }};font-weight:700;font-size:14px;letter-spacing:.08em;cursor:pointer;transition:background .2s">3〜5歳児クラス</button>
+    </div>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px 56px;align-items:start">
+      <div data-reveal="1" style="display:grid;gap:16px">
+        <img src="{{ photoSrc }}" alt="{{ photo }}" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px">
+        <p style="margin:0;font-size:13px;color:#8e7a63;line-height:1.9;letter-spacing:.05em">{{ note }}</p>
+      </div>
+      <ol data-reveal="1" style="margin:0;padding:0;list-style:none">
+        <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="8">
+          <li style="display:grid;grid-template-columns:62px 14px 1fr;gap:14px;align-items:start;padding:14px 0;border-bottom:2px dotted #e3d8c3">
+            <span style="font-family:'Yusei Magic';font-size:17px;color:#e57f12">{{ s.time }}</span>
+            <span style="width:12px;height:12px;margin-top:5px;border-radius:50%;background:#fff;border:3px solid #f5b72c"></span>
+            <div><div style="font-weight:700;font-size:15px;letter-spacing:.08em">{{ s.title }}</div><div style="margin-top:4px;font-size:13px;line-height:1.8;color:#7a6552">{{ s.text }}</div></div>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-screen-label="Programs" style="position:relative;background:#f8f3e6;padding:110px 20px">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;top:-1px;left:0;width:100%;height:44px;display:block"><path d="M0 0H1440V30Q720 -10 0 30Z" fill="#fff"></path></svg>
+  <div style="max-width:1080px;margin:0 auto">
+    <h2 data-reveal="1" style="margin:0 0 30px;text-align:center;font-family:'Yusei Magic';font-weight:400;font-size:clamp(24px,3.2vw,32px);letter-spacing:.14em">あそびと学びのプログラム</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px">
+      <sc-for list="{{ programs }}" as="p" hint-placeholder-count="6">
+        <article data-reveal="1" style="background:#fff;border-radius:20px;overflow:hidden;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-4px);box-shadow:0 12px 26px rgba(90,70,54,.1)">
+          <img src="{{ p.img }}" alt="{{ p.photo }}" loading="lazy" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:{{ p.pos }}">
+          <div style="padding:20px 22px 24px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.2em;color:#4bb3a6">{{ p.en }}</div>
+            <h3 style="margin:6px 0 10px;font-family:'Yusei Magic';font-weight:400;font-size:20px;letter-spacing:.1em">{{ p.title }}</h3>
+            <p style="margin:0;font-size:14px;line-height:1.9;letter-spacing:.04em;text-wrap:pretty">{{ p.text }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-screen-label="Events" style="position:relative;padding:110px 20px">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;top:-1px;left:0;width:100%;height:44px;display:block"><path d="M0 0H1440V30Q720 -10 0 30Z" fill="#f8f3e6"></path></svg>
+  <div style="max-width:1080px;margin:0 auto">
+    <h2 data-reveal="1" style="margin:0 0 30px;text-align:center;font-family:'Yusei Magic';font-weight:400;font-size:clamp(24px,3.2vw,32px);letter-spacing:.14em">1年の行事</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px">
+      <sc-for list="{{ seasons }}" as="s" hint-placeholder-count="4">
+        <div data-reveal="1" style="background:#fbf7ee;border-radius:20px;padding:24px 24px 26px;border-top:6px solid {{ s.color }}">
+          <div style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Yusei Magic';font-size:28px;color:{{ s.color }}">{{ s.name }}</span><span style="font-size:12px;color:#8e7a63;letter-spacing:.1em">{{ s.months }}</span></div>
+          <ul style="margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px">
+            <sc-for list="{{ s.events }}" as="e" hint-placeholder-count="4">
+              <li style="font-size:14px;font-weight:500;letter-spacing:.06em;padding-bottom:8px;border-bottom:2px dotted #eee4d2">{{ e }}</li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-for>
+    </div>
+    <div data-reveal="1" style="margin-top:70px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:30px 48px;align-items:center;background:#fff4e6;border-radius:24px;padding:clamp(24px,4vw,44px)">
+      <div style="aspect-ratio:3/2;border-radius:16px;background:repeating-linear-gradient(135deg,#f1dcc0 0 12px,#f8e8d2 12px 24px);display:flex;align-items:flex-end;padding:12px"><span style="font-family:ui-monospace,monospace;font-size:11px;color:#8e7a63;background:rgba(255,255,255,.8);padding:3px 8px;border-radius:4px">写真：給食</span></div>
+      <div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:.24em;color:#f08a1c">FOOD</div>
+        <h3 style="margin:8px 0 14px;font-family:'Yusei Magic';font-weight:400;font-size:24px;letter-spacing:.12em">園でつくる、あたたかい給食</h3>
+        <p style="margin:0;font-size:14px;line-height:2;letter-spacing:.05em;text-wrap:pretty">給食とおやつは、園内の調理室で毎日手づくりしています。だしをとり、旬の野菜を使った和食中心の献立です。食物アレルギーには、医師の指示書にもとづいて除去食で対応します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 'old' };
+  renderVals() {
+    const old = this.state.tab === 'old';
+    const young = [
+      { time: '7:00', title: '順次登園', text: '視診・検温をして、おうちの方から朝の様子をうかがいます。' },
+      { time: '9:30', title: 'おやつ・水分補給', text: '一人ひとりの生活リズムに合わせて過ごします。' },
+      { time: '10:00', title: 'あそび・おさんぽ', text: '室内あそびや園庭、近くの公園へのおさんぽ。' },
+      { time: '11:00', title: '離乳食・給食', text: '月齢や発達に合わせた形態で提供します。' },
+      { time: '12:30', title: 'おひるね', text: '0歳児は5分ごと、1〜2歳児は10分ごとに呼吸を確認します。' },
+      { time: '15:00', title: 'おやつ', text: '手づくりのおやつをいただきます。' },
+      { time: '15:30', title: 'あそび', text: 'ゆったりとした雰囲気の中で過ごします。' },
+      { time: '16:00〜', title: '順次降園', text: '連絡帳とあわせて、その日の様子をお伝えします。' }
+    ];
+    const older = [
+      { time: '7:00', title: '登園・自由あそび', text: '視診と検温のあと、好きなあそびでゆっくり朝をはじめます。' },
+      { time: '9:30', title: '朝の会', text: '歌をうたい、今日の予定やお当番を確認します。' },
+      { time: '10:00', title: '主活動・外あそび', text: '園庭や近くの公園へ。季節によって製作やリズムあそびも。' },
+      { time: '11:30', title: '給食', text: '園内の調理室でつくる、できたての給食です。' },
+      { time: '13:00', title: 'おひるね', text: '年長児は就学に向けて、静かにすごす時間へ移行します。' },
+      { time: '15:00', title: 'おやつ', text: '手づくりのおやつを、みんなでいただきます。' },
+      { time: '15:30', title: '帰りの会・自由あそび', text: '今日のできごとを振り返ります。' },
+      { time: '16:00〜', title: '順次降園', text: '担任から、その日の様子を直接お伝えします。' }
+    ];
+    return {
+      pickOld: () => this.setState({ tab: 'old' }),
+      pickYoung: () => this.setState({ tab: 'young' }),
+      oldBg: old ? '#f08a1c' : '#fff', oldFg: old ? '#fff' : '#e57f12',
+      youngBg: old ? '#fff' : '#f08a1c', youngFg: old ? '#e57f12' : '#fff',
+      schedule: old ? older : young,
+      photo: old ? '3〜5歳児の外あそび' : '0〜2歳児の室内あそび',
+      photoSrc: old ? 'images/play-equipment.jpg' : 'images/picturebook-group.jpg',
+      note: old ? '3〜5歳児クラスの一例です。季節や行事によって内容は変わります。' : '0〜2歳児クラスの一例です。月齢や体調に合わせて、一人ひとりのリズムを大切にしています。',
+      programs: [
+        { en: 'OUTDOOR', title: '森のおさんぽ', photo: '芝生を走る子どもたち', img: 'images/running-field.jpg', pos: 'center 55%', text: '週に一度、近くの雑木林へ。落ち葉や木の実を拾いながら、季節の移ろいを体で感じます。' },
+        { en: 'ART', title: 'アトリエ', photo: 'お絵かきをする子どもたち', img: 'images/drawing.jpg', pos: 'center 40%', text: '決まった完成形はつくりません。素材にふれて、混ぜて、ためしてみる時間です。' },
+        { en: 'MUSIC', title: 'リズムとうた', photo: '電車ごっこをする子どもたち', img: 'images/train-play.jpg', pos: 'center 45%', text: 'ピアノや打楽器に合わせて体を動かします。音を楽しむことからはじめます。' },
+        { en: 'BOOKS', title: 'えほんの時間', photo: '絵本を読む先生と子ども', img: 'images/teacher-baby-book.jpg', pos: 'center 40%', text: '毎日の読み聞かせと、週末の絵本の貸し出し。ご家庭でも親子の時間をどうぞ。' },
+        { en: 'FOOD', title: 'たべる・そだてる', photo: 'じゃがいもの皮むき', img: 'images/cooking.jpg', pos: 'center center', text: '園の菜園で野菜を育て、収穫したものをクッキングで味わいます。' },
+        { en: 'ENGLISH', title: 'えいごであそぼう', photo: '先生と子どもたち', img: 'images/kids-boots.jpg', pos: 'center 35%', text: '3歳児から月2回。ゲームや歌を通して、ことばの響きに親しみます。' }
+      ],
+      seasons: [
+        { name: '春', months: '4〜6月', color: '#ee8fa0', events: ['入園式', 'こどもの日の集い', '親子遠足', '保育参観'] },
+        { name: '夏', months: '7〜9月', color: '#4bb3a6', events: ['七夕まつり', 'プールあそび', '夏まつり', 'お月見'] },
+        { name: '秋', months: '10〜12月', color: '#f08a1c', events: ['うんどう会', 'おいもほり', 'ハロウィン', 'クリスマス会'] },
+        { name: '冬', months: '1〜3月', color: '#5aa9dd', events: ['おもちつき', '豆まき', '生活発表会', '卒園式'] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

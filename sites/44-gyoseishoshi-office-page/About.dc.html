@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Old+Mincho:wght@400;600&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./site-motion.js"></script>
+<link href="./site.css" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#222;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#00a7ad;text-decoration:none}
+a:hover{color:#222}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="about" hint-size="100%,77px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+<main id="top" style="max-width:1600px;margin:0 auto;border-left:1px solid #f3f3f3;border-right:1px solid #f3f3f3;overflow:hidden">
+  <dc-import name="PageHero" title="事務所について" en="ABOUT" image-id="page-about" image-src="uploads/team-smile.jpg" placeholder="事務所外観" hint-size="100%,430px"></dc-import>
+
+  <section id="message" data-screen-label="About / Message" style="scroll-margin-top:76px;padding:clamp(64px,8vw,110px) clamp(24px,6vw,100px);display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,96px);align-items:center">
+    <div style="flex:1 1 420px;display:flex;flex-direction:column;gap:28px">
+      <span data-reveal="bar" data-origin="left" style="width:60px;height:3px;background:#00c4c8"></span>
+      <span data-reveal="track" data-delay="150" style="font-family:Lato,sans-serif;font-size:13px;letter-spacing:0.1em">CONCEPT</span>
+      <h2 data-reveal="wipe" data-delay="250" style="margin:0;font-family:'Zen Old Mincho',serif;font-weight:400;font-size:clamp(28px,3vw,44px);line-height:1.6;letter-spacing:0.06em"><span style="color:#1bb8c2">手続き</span>の先にある、<br>あなたの一歩を支える</h2>
+      <div data-reveal="up" data-delay="450" style="display:flex;flex-direction:column;gap:20px;font-size:15px;line-height:2.1;letter-spacing:0.05em;max-width:620px">
+        <p style="margin:0">会社をつくる、許可を取る、日本で働く、家族の財産を引き継ぐ。行政への手続きは、人生や事業の節目に必ず訪れます。けれど、必要な書類や守るべき要件は複雑で、どこから手をつければよいかわからない方も少なくありません。</p>
+        <p style="margin:0">当事務所は、ご相談者さまのお話を丁寧に伺い、いま何が必要で、何をすればよいのかを一緒に整理することから始めます。専門用語はできるだけ使わず、判断に必要な情報をわかりやすくお伝えします。</p>
+        <p style="margin:0">手続きを終えることがゴールではなく、その先にある新しい一歩を安心して踏み出していただくこと。それが私たちの仕事だと考えています。</p>
+      </div>
+    </div>
+    <div data-reveal="wipeR" data-delay="200" style="flex:1 1 360px;position:relative;aspect-ratio:4/5;max-width:560px;overflow:hidden;background:#eef3f4"><div data-parallax="0.06" style="position:absolute;inset:-10% 0"><image-slot id="about-message" src="uploads/writing.jpg" shape="rect" placeholder="相談室・デスク"></image-slot></div></div>
+  </section>
+
+  <section id="values" data-screen-label="About / Values" style="scroll-margin-top:76px;background:#eeeeee;padding:clamp(64px,8vw,100px) 0">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 24px">
+      <span data-reveal="bar" style="width:60px;height:3px;background:#00c4c8"></span>
+      <span data-reveal="track" data-delay="200" style="margin-top:28px;font-family:Lato,sans-serif;font-size:13px;letter-spacing:0.1em">VALUES</span>
+      <h2 data-reveal="up" data-delay="300" style="margin:14px 0 0;font-size:clamp(26px,2.6vw,38px);font-weight:900;letter-spacing:0.06em">大切にしていること</h2>
+    </div>
+    <ul data-stagger="150" data-stagger-mod="3" style="list-style:none;margin:clamp(40px,4vw,56px) 0 0;padding:0 clamp(0px,2vw,24px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(24px,2.6vw,40px)">
+      <sc-for list="{{ values }}" as="v" hint-placeholder-count="6">
+        <li data-reveal="up" style="background:#fff;display:flex;flex-direction:column;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s" style-hover="transform:translateY(-6px);box-shadow:0 24px 40px -24px rgba(0,60,70,.3)">
+          <div style="position:relative;aspect-ratio:16/10;overflow:hidden"><image-slot id="tile-{{ v.id }}" src="{{ v.img }}" shape="rect" placeholder="{{ v.ph }}"></image-slot></div>
+          <div style="padding:0 28px 32px;display:flex;flex-direction:column;gap:12px">
+            <span style="font-family:Lato,sans-serif;font-weight:900;font-size:38px;line-height:1;margin-top:-20px;position:relative;z-index:1;background:#fff;align-self:flex-start;padding:8px 14px 0 0">{{ v.num }}</span>
+            <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:0.06em">{{ v.title }}</h3>
+            <p style="margin:0;font-size:14px;line-height:1.9;color:#444">{{ v.text }}</p>
+          </div>
+        </li>
+      </sc-for>
+    </ul>
+  </section>
+
+  <section id="outline" data-screen-label="About / Outline" style="scroll-margin-top:76px;padding:clamp(64px,8vw,100px) clamp(24px,6vw,100px)">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
+      <span data-reveal="bar" style="width:60px;height:3px;background:#00c4c8"></span>
+      <span data-reveal="track" data-delay="200" style="margin-top:28px;font-family:Lato,sans-serif;font-size:13px;letter-spacing:0.1em">OUTLINE</span>
+      <h2 data-reveal="up" data-delay="300" style="margin:14px 0 0;font-size:clamp(26px,2.6vw,38px);font-weight:900;letter-spacing:0.06em">事務所概要</h2>
+    </div>
+    <dl data-stagger="60" style="margin:clamp(40px,4vw,56px) auto 0;max-width:960px;border-top:1px solid #222">
+      <sc-for list="{{ outline }}" as="o" hint-placeholder-count="8">
+        <div data-reveal="up" style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:22px 8px;border-bottom:1px solid #ddd">
+          <dt style="flex:0 0 180px;font-size:14px;font-weight:700;color:#00a7ad;letter-spacing:0.06em">{{ o.k }}</dt>
+          <dd style="flex:1 1 320px;margin:0;font-size:15px;line-height:1.8">{{ o.v }}</dd>
+        </div>
+      </sc-for>
+    </dl>
+    <div data-reveal="up" style="margin:48px auto 0;max-width:960px;background:#f6f6f6;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:14px">
+      <h3 style="margin:0;font-size:16px;font-weight:700;letter-spacing:0.06em">提携している専門家</h3>
+      <p style="margin:0;font-size:14px;line-height:1.9">行政書士の業務範囲を超えるご相談には、提携する専門家と連携して対応します。窓口は当事務所がひとつにまとめますので、何度も同じ説明をしていただく必要はありません。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">
+        <sc-for list="{{ partners }}" as="p" hint-placeholder-count="4"><span style="border:2px solid #00c4c8;background:#fff;color:#00a7ad;font-size:13px;font-weight:700;padding:6px 16px">{{ p }}</span></sc-for>
+      </div>
+    </div>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { const go = () => window.SiteMotion ? window.SiteMotion.init() : setTimeout(go, 50); go(); }
+  renderVals() {
+    const v = [
+      ['わかりやすい説明', '相談室でのご説明', '専門用語はできるだけ使わず、図や資料を使ってご説明します。わからないことは何度でもお尋ねください。'],
+      ['最初に見通しを共有', 'ポートレート（笑顔）', '初回相談で、必要な書類・おおよその期間・費用を具体的にお伝えします。ご依頼はその後にご判断ください。'],
+      ['迅速で丁寧な対応', '書棚・資料', 'お問い合わせには原則1営業日以内にご連絡します。申請までのスケジュールも共有しながら進めます。'],
+      ['オンライン相談', 'PCで打ち合わせ', 'ビデオ通話・電話・メールでのご相談にも対応しています。遠方の方やお忙しい方もお気軽にどうぞ。'],
+      ['守秘義務の徹底', '書類に記入する手元', '行政書士には法律上の守秘義務があります。お預かりした書類や情報は厳重に管理します。'],
+      ['専門家との連携', '打ち合わせ風景', '税理士・司法書士・社会保険労務士・弁護士と連携し、手続き全体をスムーズに進めます。']
+    ];
+    return {
+      values: v.map((x, i) => ({ id: i + 1, num: String(i + 1).padStart(2, '0'), title: x[0], ph: x[1], text: x[2],
+        img: 'uploads/' + ['consult-explain', 'calculator', 'handshake-desk', 'online', 'hanko', 'team-desk'][i] + '.jpg' })),
+      outline: [
+        { k: '事務所名', v: '行政書士 あおば法務事務所' },
+        { k: '代表者', v: '青葉 さくら（行政書士／申請取次行政書士）' },
+        { k: '登録番号', v: '日本行政書士会連合会 登録番号 第00000000号' },
+        { k: '所属', v: '静岡県行政書士会' },
+        { k: '所在地', v: '〒420-0000 静岡県静岡市葵区〇〇町1丁目2番3号' },
+        { k: '電話番号', v: '054-000-0000' },
+        { k: '営業時間', v: '月〜金曜日 9:00 – 18:00（土・日・祝日はご予約により対応）' },
+        { k: '対応エリア', v: '静岡県全域（オンライン相談は全国対応）' }
+      ],
+      partners: ['税理士', '司法書士', '社会保険労務士', '弁護士']
+    };
+  }
+}
+</script>
+</body>
+</html>

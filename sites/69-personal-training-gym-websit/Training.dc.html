@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',system-ui,sans-serif;color:#1a1a1a;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a1a1a;text-decoration:none}
+a:hover{color:#d9622b}
+@keyframes heroIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (max-width:600px){
+  .prog-index{grid-template-columns:repeat(2,1fr)!important;gap:6px!important}
+  .prog-index a{padding:10px 10px!important;font-size:11.5px!important;gap:6px!important;line-height:1.4}
+  .prog-img>span:last-child{width:44px!important;height:44px!important;font-size:15px!important;top:-10px!important;left:-10px!important}
+}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="training" hint-size="100%,0px"></dc-import>
+
+<section data-screen-label="Training Title" style="position:relative;background:#111;color:#fff;overflow:hidden;padding:clamp(140px,16vw,190px) clamp(20px,4vw,48px) clamp(56px,7vw,80px)">
+  <div style="position:absolute;inset:0;background:url(images/machines-orange.jpg) center/cover,#111"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.9),rgba(10,10,10,.4))"></div>
+  <div aria-hidden="true" style="position:absolute;right:-1vw;bottom:-2vw;font-family:Oswald,'Noto Sans JP';font-weight:700;font-size:clamp(90px,15vw,240px);line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.16);white-space:nowrap;pointer-events:none">TRAINING</div>
+  <div style="position:relative;max-width:1000px;margin:0 auto;animation:heroIn 1s .1s ease-out both">
+    <div style="font-size:11px;letter-spacing:.08em;margin-bottom:24px;display:flex;gap:8px;color:#999"><a href="Personal%20Training%20Gym.dc.html" style="color:#999">TOP</a><span>›</span><span style="color:#f0a04b">トレーニング</span></div>
+    <span style="display:inline-block;font-family:Oswald,'Noto Sans JP';font-size:11px;letter-spacing:.2em;color:#fff;padding:4px 22px;background:linear-gradient(90deg,#d9622b,#f0a04b)">TRAINING</span>
+    <h1 style="margin:16px 0 0;font-size:clamp(30px,4.5vw,48px);font-weight:700;letter-spacing:.06em">トレーニング</h1>
+    <p style="margin:14px 0 0;font-size:13.5px;color:#bbb;line-height:1.9;max-width:520px">目標に合わせて、7つのプログラムを組み合わせてご提案します。</p>
+  </div>
+</section>
+
+<section data-screen-label="Program Index" style="padding:clamp(56px,7vw,80px) clamp(20px,4vw,48px) 0">
+  <nav class="prog-index" style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:8px">
+    <sc-for list="{{ programs }}" as="p" hint-placeholder-count="7">
+      <a href="{{ p.anchor }}" style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border:1px solid #e3e3e3;font-size:13px;font-weight:700;transition:all .3s" style-hover="border-color:#d9622b;color:#d9622b"><span><span style="font-family:Oswald,'Noto Sans JP';color:#d9622b;margin-right:10px">{{ p.no }}</span>{{ p.title }}</span><span>↓</span></a>
+    </sc-for>
+  </nav>
+</section>
+
+<section data-screen-label="Programs" style="padding:clamp(56px,7vw,90px) clamp(20px,4vw,48px) clamp(72px,9vw,120px)">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,72px)">
+    <sc-for list="{{ programs }}" as="p" hint-placeholder-count="7">
+      <article id="{{ p.id }}" data-reveal="" style="display:flex;flex-wrap:wrap;flex-direction:{{ p.dir }};gap:clamp(24px,4vw,56px);align-items:center;scroll-margin-top:90px">
+        <div class="prog-img" role="img" aria-label="{{ p.img }}" style="position:relative;flex:1 1 380px;aspect-ratio:3/2;background:url({{ p.photo }}) {{ p.pos }}/cover,repeating-linear-gradient(135deg,#e6e4e1 0 10px,#efedea 10px 20px)"><span style="position:absolute;top:-14px;left:-14px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#d9622b,#f0a04b);color:#fff;font-family:Oswald,'Noto Sans JP';font-size:18px;display:flex;align-items:center;justify-content:center">{{ p.no }}</span></div>
+        <div style="flex:1 1 360px">
+          <div style="display:inline-block;font-family:Oswald,'Noto Sans JP';font-size:11px;letter-spacing:.2em;color:#fff;padding:3px 14px;background:#141414">{{ p.en }}</div>
+          <h2 style="margin:14px 0 14px;font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:.04em">{{ p.title }}</h2>
+          <p style="margin:0 0 20px;font-size:13.5px;line-height:2;color:#444;text-wrap:pretty">{{ p.text }}</p>
+          <div style="background:#f4f3f1;padding:16px 18px">
+            <div style="font-size:12px;font-weight:700;color:#d9622b;margin-bottom:8px">こんな方におすすめ</div>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px">
+              <sc-for list="{{ p.for }}" as="x" hint-placeholder-count="3"><li style="font-size:12.5px;color:#444;display:flex;gap:8px"><span style="color:#d9622b">✓</span>{{ x }}</li></sc-for>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Session" style="padding:clamp(64px,8vw,96px) clamp(20px,4vw,48px);background:#f4f3f1">
+  <div style="text-align:center;margin-bottom:40px">
+    <span style="display:inline-block;font-family:Oswald,'Noto Sans JP';font-size:11px;letter-spacing:.2em;color:#fff;padding:4px 22px;background:linear-gradient(90deg,#d9622b,#f0a04b)">SESSION</span>
+    <h2 style="margin:12px 0 0;font-size:15px;letter-spacing:.08em;font-weight:700">60分セッションの流れ</h2>
+  </div>
+  <div data-reveal="" style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:2px;background:#e3e3e3">
+    <div style="background:#fff;padding:24px 20px"><div style="font-family:Oswald,'Noto Sans JP';font-size:24px;color:#d9622b">10<span style="font-size:13px">min</span></div><div style="font-size:14px;font-weight:700;margin:6px 0">コンディション確認</div><div style="font-size:12px;color:#666;line-height:1.8">体重・体調・食事を確認し、当日のメニューを調整。</div></div>
+    <div style="background:#fff;padding:24px 20px"><div style="font-family:Oswald,'Noto Sans JP';font-size:24px;color:#d9622b">40<span style="font-size:13px">min</span></div><div style="font-size:14px;font-weight:700;margin:6px 0">メイントレーニング</div><div style="font-size:12px;color:#666;line-height:1.8">フォームを確認しながら、目標に合わせた種目を実施。</div></div>
+    <div style="background:#fff;padding:24px 20px"><div style="font-family:Oswald,'Noto Sans JP';font-size:24px;color:#d9622b">10<span style="font-size:13px">min</span></div><div style="font-size:14px;font-weight:700;margin:6px 0">ストレッチ・振り返り</div><div style="font-size:12px;color:#666;line-height:1.8">身体をほぐし、次回までの食事とセルフケアを共有。</div></div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const list = [
+      { en: 'PERSONAL', title: 'パーソナルトレーニング', img: 'トレーナーと会員', photo: 'images/coaching-chest-press.jpg', pos: 'center', text: '専属トレーナーによるマンツーマン指導。姿勢・動作のチェックから始め、あなたの目標に合わせて種目・重量・回数を毎回調整します。', for: ['何から始めればいいかわからない', 'ジムに一人で通っても続かなかった', '正しいフォームを身につけたい'] },
+      { en: 'WEIGHT LOSS', title: 'ダイエットプログラム', img: 'トレッドミルで走る会員', photo: 'images/treadmill-woman.jpg', pos: 'center 30%', text: '筋力トレーニングで代謝を保ちながら、食事指導で脂肪を減らしていくプログラム。リバウンドしにくい体づくりを目指します。', for: ['体重・体脂肪を落としたい', '過去にリバウンドした経験がある', 'イベントまでに身体を絞りたい'] },
+      { en: 'BODY MAKE', title: 'ボディメイク', img: 'ケーブルマシンでのトレーニング', photo: 'images/cable-row.jpg', pos: 'center', text: 'ヒップアップ、くびれ、厚みのある胸板など、なりたいシルエットに合わせて部位ごとにアプローチします。', for: ['体重より見た目を変えたい', 'メリハリのある身体になりたい', 'コンテスト出場を目指している'] },
+      { en: 'STRENGTH', title: '筋力トレーニング', img: 'ダンベルラック', photo: 'images/dumbbell-rack.jpg', pos: 'center', text: 'スクワット・デッドリフト・ベンチプレスを中心に、安全なフォームで扱える重量を着実に伸ばします。', for: ['筋力・筋量を増やしたい', 'BIG3の記録を伸ばしたい', '年齢による筋力低下を防ぎたい'] },
+      { en: 'FUNCTIONAL', title: 'ファンクショナルトレーニング', img: 'クロストレーナーでのトレーニング', photo: 'images/elliptical.jpg', pos: 'center', text: '押す・引く・しゃがむ・ひねるといった基本動作を強化。スポーツのパフォーマンス向上やケガ予防につなげます。', for: ['ゴルフやランニングの競技力を上げたい', '疲れにくい身体をつくりたい', 'ケガを予防したい'] },
+      { en: 'NUTRITION', title: '食事サポート', img: '水分補給をする会員', photo: 'images/hydration.jpg', pos: 'center', text: '管理栄養士が毎日の食事写真を確認し、アプリでアドバイス。外食やコンビニ中心の方にも実践しやすい方法をご提案します。', for: ['食事の選び方がわからない', '外食や会食が多い', '無理な食事制限はしたくない'] },
+      { en: 'POSTURE', title: '姿勢改善トレーニング', img: 'ピラティスマシンで姿勢を整える様子', photo: 'images/pilates-hands.jpg', pos: 'center', text: '猫背や反り腰、肩こり・腰痛の原因となる筋肉のアンバランスを評価し、ストレッチと筋トレで整えます。', for: ['デスクワークで肩や腰がつらい', '姿勢を良く見せたい', '痛みに配慮して運動したい'] }
+    ];
+    return {
+      programs: list.map((p, i) => {
+        const no = String(i + 1).padStart(2, '0');
+        return { ...p, no, id: 'p' + no, anchor: '#p' + no, dir: i % 2 ? 'row-reverse' : 'row' };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div aria-hidden="true" ref="{{ root }}" style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+  <sc-for list="{{ leaves }}" as="l" hint-placeholder-count="0">
+    <span style="position:absolute;left:{{ l.x }};top:{{ l.y }};width:{{ l.w }};height:{{ l.h }};border-radius:0 100% 0 100%;background:{{ l.c }};opacity:{{ l.o }};rotate:{{ l.r }}"></span>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;600px&quot;,&quot;height&quot;:&quot;300px&quot;},&quot;color&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#d9d5ca&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#c9a29a&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;count&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;tsType&quot;:&quot;number&quot;},&quot;seed&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  root = React.createRef();
+  componentDidMount() {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !this.root.current) return;
+    [...this.root.current.children].forEach((el, i) => {
+      const r = parseFloat(el.style.rotate) || 0, dx = 30 + (i % 5) * 22, dy = 40 + (i % 4) * 30;
+      el.animate([
+        { translate: '0 0', rotate: `${r}deg` },
+        { translate: `${dx * 0.5}px ${dy * 0.4}px`, rotate: `${r + 40}deg`, offset: 0.4 },
+        { translate: `${dx}px ${dy}px`, rotate: `${r + 110}deg` }
+      ], { duration: 9000 + (i % 6) * 2200, delay: -(i * 1300), iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' });
+    });
+  }
+  renderVals() {
+    const k = JSON.stringify([this.props.seed, this.props.count, this.props.color, this.props.accent]);
+    if (this._k !== k) {
+      this._k = k;
+      let s = this.props.seed ?? 5, rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+      const c = this.props.color ?? '#d9d5ca', a = this.props.accent ?? '#c9a29a';
+      this._l = Array.from({ length: this.props.count ?? 10 }, (_, i) => {
+        const w = 9 + rnd() * 14;
+        return { x: (rnd() * 92) + '%', y: (rnd() * 85) + '%', w: w.toFixed(1) + 'px', h: (w * 0.55).toFixed(1) + 'px', r: Math.floor(rnd() * 360) + 'deg', o: (0.45 + rnd() * 0.5).toFixed(2), c: i % 6 === 2 ? a : c };
+      });
+    }
+    return { root: this.root, leaves: this._l };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+/* レスポンシブ調整（全ページ共通）
+   各要素はインラインstyleで組まれているため、上書きには !important を使っています。 */
+
+/* 横スクロール防止（sticky ヘッダーを壊さない clip を使用） */
+html, body { overflow-x: clip; }
+
+/* ── タブレット・スマホ（〜700px）: 下層ページのヒーロー ── */
+@media (max-width: 700px) {
+  .sub-hero { flex-direction: column !important; align-items: stretch !important; min-height: 0 !important; }
+  .sub-hero-txt { padding: 32px 24px 28px !important; }
+  .sub-hero-img { position: relative !important; inset: auto !important; width: 100% !important; height: 190px; clip-path: none !important; order: 2; }
+}
+
+/* ── スマホ（〜600px） ── */
+@media (max-width: 600px) {
+  /* 診療時間表：時間が2行に折れないように */
+  .sched-time { padding-left: 4px !important; font-size: 14px !important; }
+
+  /* トップ「診療内容」カード：アイコンを上に置いて本文を全幅に */
+  .svc-card { grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; padding: 24px 20px !important; }
+  .svc-card > span:first-child { width: 52px !important; height: 52px !important; font-size: 26px !important; }
+
+  /* トップ「当院の特徴」写真：縦長すぎないように */
+  .feat-img { aspect-ratio: 4 / 3 !important; }
+
+  /* PC用の改行を解除 */
+  .pc-br { display: none; }
+
+  /* フッター右側（Instagram・コピーライト）を左揃えに */
+  .foot-side { align-items: flex-start !important; }
+}

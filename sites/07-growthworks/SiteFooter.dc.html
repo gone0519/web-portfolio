@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<footer style="background:#ffde00;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,0.4) 0 10px,transparent 10px 20px);clip-path:polygon(0 0,18% 0,6% 100%,0 100%)"></div>
+  <div style="position:relative;max-width:1180px;margin:0 auto;padding:70px 24px 28px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:40px">
+      <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
+        <div>
+          <a href="{{ col.href }}" style="margin:0 0 16px;font-size:14px;font-weight:900;letter-spacing:0.1em;display:flex;gap:8px;align-items:center" style-hover="color:#6b5f00"><span style="color:#8a7a00">+</span>{{ col.title }}</a>
+          <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+            <a href="{{ l.href }}" style="display:flex;gap:8px;align-items:baseline;font-size:13px;letter-spacing:0.07em;padding:6px 0" style-hover="color:#6b5f00"><span style="color:#8a7a00">&rsaquo;</span>{{ l.label }}</a>
+          </sc-for>
+        </div>
+      </sc-for>
+      <div>
+        <p style="margin:0;font-family:'Chakra Petch',sans-serif;font-size:22px;font-weight:700;letter-spacing:0.14em">GROWTHWORKS</p>
+        <p style="margin:14px 0 0;font-size:12.5px;line-height:2;letter-spacing:0.06em">株式会社グロースワークス<br />〒150-0002<br />東京都渋谷区渋谷2-14-3 渋谷慶友ビル7F</p>
+        <a href="Contact.dc.html" style="margin-top:18px;display:flex;align-items:center;gap:12px;border:1px solid #17170f;padding:12px 16px;font-size:13px;font-weight:700;letter-spacing:0.08em" style-hover="background:#17170f;color:#ffde00">お問い合わせはこちら</a>
+        <a href="tel:0359264363" style="margin-top:8px;display:flex;align-items:center;gap:12px;border:1px solid #17170f;padding:12px 16px;font-family:'Chakra Petch',sans-serif;font-size:16px;font-weight:600;letter-spacing:0.12em" style-hover="background:#17170f;color:#ffde00">03-5926-4363</a>
+      </div>
+    </div>
+    <div style="margin-top:48px;padding-top:22px;border-top:1px solid rgba(23,23,15,0.2);display:flex;flex-wrap:wrap;gap:18px;justify-content:center;font-size:12px;letter-spacing:0.1em">
+      <a href="About.dc.html#recruit" style-hover="color:#6b5f00">採用情報</a>
+      <span style="color:rgba(23,23,15,0.3)">|</span>
+      <a href="Contact.dc.html#privacy" style-hover="color:#6b5f00">プライバシーポリシー</a>
+      <span style="color:rgba(23,23,15,0.3)">|</span>
+      <a href="About.dc.html#profile" style-hover="color:#6b5f00">会社概要</a>
+    </div>
+    <p style="margin:18px 0 0;text-align:center;font-family:'Chakra Petch',sans-serif;font-size:11px;letter-spacing:0.16em;color:#6b5f00">Copyright &copy; 2026 GROWTHWORKS Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<sc-if value="{{ showTop }}" hint-placeholder-val="{{ false }}">
+  <a href="#" onClick="{{ toTop }}" aria-label="ページ上部へ戻る" data-anim="fade" style="position:fixed;right:22px;bottom:24px;z-index:90;width:56px;height:62px;background:#17170f;color:#ffde00;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:'Chakra Petch',sans-serif;font-size:11px;letter-spacing:0.16em;clip-path:polygon(0 0,100% 0,100% 78%,78% 100%,0 100%)" style-hover="background:#ffde00;color:#17170f">
+    <span style="display:block;width:10px;height:10px;border-top:2px solid currentColor;border-left:2px solid currentColor;transform:rotate(45deg) translate(2px,2px)"></span>
+    <span>TOP</span>
+  </a>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { showTop: false };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const s = window.scrollY > 520;
+      if (s !== this.state.showTop) this.setState({ showTop: s });
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    this._onScroll();
+  }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._onScroll);
+  }
+
+  renderVals() {
+    return {
+      showTop: this.state.showTop,
+      toTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); },
+      footerCols: [
+        { title: "会社案内", href: "About.dc.html", links: [
+          { label: "代表メッセージ", href: "About.dc.html#message" }, { label: "選ばれる理由", href: "About.dc.html#reasons" },
+          { label: "会社概要・沿革", href: "About.dc.html#profile" }, { label: "採用情報", href: "About.dc.html#recruit" }
+        ]},
+        { title: "サービス", href: "Services.dc.html", links: [
+          { label: "広告運用", href: "Services.dc.html#ads" }, { label: "SEO・コンテンツ", href: "Services.dc.html#seo" },
+          { label: "サイト制作", href: "Services.dc.html#web" }, { label: "分析・計測基盤", href: "Services.dc.html#analytics" },
+          { label: "料金の目安", href: "Services.dc.html#pricing" }
+        ]},
+        { title: "導入事例", href: "Cases.dc.html", links: [
+          { label: "事例一覧", href: "Cases.dc.html" }, { label: "お客様の声", href: "Cases.dc.html#voice" },
+          { label: "お知らせ", href: "Home.dc.html#news" }, { label: "よくあるご質問", href: "Contact.dc.html#faq" }
+        ]}
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

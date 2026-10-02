@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif; color: #1c1a17; background: #fff; -webkit-font-smoothing: antialiased; }
+  a { color: #1c1a17; text-decoration: none; }
+  a:hover { color: #8a6f00; }
+  input, textarea, select, button { font-family: inherit; }
+  input:focus, textarea:focus, select:focus { outline: 2px solid #F5C400; outline-offset: 1px; }
+  @media (max-width: 900px) {
+    .axle-2col { grid-template-columns: minmax(0,1fr) !important; gap: 48px !important; }
+  }
+  @media (max-width: 640px) {
+    .axle-submit { align-self: stretch !important; }
+    .axle-faq-a { padding-left: 24px !important; }
+  }
+</style>
+</helmet>
+<div style="width:100%;overflow-x:hidden">
+  <dc-import name="SiteHeader" hint-size="100%,150px"></dc-import>
+
+  <section style="position:relative;background:#F5C400;padding:64px 24px 72px;overflow:hidden">
+    <div style="position:absolute;inset:0 0 0 58%;background:repeating-linear-gradient(135deg,rgba(255,255,255,.5) 0 7px,rgba(255,255,255,0) 7px 18px)"></div>
+    <div style="position:relative;max-width:1180px;margin:0 auto">
+      <div style="font-family:Jost,sans-serif;font-size:12px;letter-spacing:.14em;color:#6b5a00"><a href="./Home.dc.html">HOME</a> / CONTACT</div>
+      <h1 style="margin:20px 0 0;font-size:clamp(32px,5vw,58px);font-weight:900;letter-spacing:.08em">お問い合わせ</h1>
+      <div style="margin-top:14px;font-family:Jost,sans-serif;font-size:13px;letter-spacing:.2em;color:#6b5a00">contact</div>
+      <p style="margin:26px 0 0;max-width:640px;font-size:15px;line-height:2.1;letter-spacing:.04em">ご相談は無料です。1営業日以内に担当者よりご連絡いたします。お急ぎの場合はお電話ください。</p>
+    </div>
+  </section>
+
+  <section class="axle-2col" style="max-width:1180px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr);gap:56px;align-items:start">
+    <div>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid #F5C400;background:#fffbe9;padding:40px 34px">
+          <img src="./images/illust/handshake.png" alt="" style="display:block;width:180px;height:auto;margin-bottom:24px" />
+          <div style="font-family:Jost,sans-serif;font-size:12px;letter-spacing:.2em;color:#8a6f00">thank you</div>
+          <h2 style="margin:14px 0 12px;font-size:22px;font-weight:700;letter-spacing:.06em">送信が完了しました</h2>
+          <p style="margin:0;font-size:14.5px;line-height:2.1;color:#3d3830">お問い合わせありがとうございます。1営業日以内に担当者よりご連絡いたします。（このフォームはデザイン確認用のため、実際の送信は行われません。）</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:26px">
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <label for="c-type" style="font-size:13px;font-weight:700;letter-spacing:.08em">お問い合わせ種別 <span style="color:#c24a00">*</span></label>
+            <select id="c-type" required="required" style="border:1px solid #ded9c8;padding:14px;font-size:14px;background:#fff">
+              <option>サービスについて相談したい</option>
+              <option>お見積りを依頼したい</option>
+              <option>セカンドオピニオンを依頼したい</option>
+              <option>採用について</option>
+              <option>取材・その他</option>
+            </select>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:26px">
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <label for="c-company" style="font-size:13px;font-weight:700;letter-spacing:.08em">会社名 <span style="color:#c24a00">*</span></label>
+              <input id="c-company" type="text" required="required" placeholder="株式会社◯◯" style="border:1px solid #ded9c8;padding:14px;font-size:14px" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <label for="c-name" style="font-size:13px;font-weight:700;letter-spacing:.08em">お名前 <span style="color:#c24a00">*</span></label>
+              <input id="c-name" type="text" required="required" placeholder="山田 太郎" style="border:1px solid #ded9c8;padding:14px;font-size:14px" />
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:26px">
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <label for="c-email" style="font-size:13px;font-weight:700;letter-spacing:.08em">メールアドレス <span style="color:#c24a00">*</span></label>
+              <input id="c-email" type="email" required="required" placeholder="name@example.co.jp" style="border:1px solid #ded9c8;padding:14px;font-size:14px" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <label for="c-tel" style="font-size:13px;font-weight:700;letter-spacing:.08em">電話番号</label>
+              <input id="c-tel" type="tel" placeholder="03-0000-0000" style="border:1px solid #ded9c8;padding:14px;font-size:14px" />
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <label for="c-budget" style="font-size:13px;font-weight:700;letter-spacing:.08em">月間のご予算</label>
+            <select id="c-budget" style="border:1px solid #ded9c8;padding:14px;font-size:14px;background:#fff">
+              <option>未定 / 相談したい</option>
+              <option>〜50万円</option>
+              <option>50万〜150万円</option>
+              <option>150万〜500万円</option>
+              <option>500万円以上</option>
+            </select>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <label for="c-body" style="font-size:13px;font-weight:700;letter-spacing:.08em">ご相談内容 <span style="color:#c24a00">*</span></label>
+            <textarea id="c-body" required="required" rows="7" placeholder="現在の課題、実施中の施策、サイトURLなどをご記入ください。" style="border:1px solid #ded9c8;padding:14px;font-size:14px;line-height:1.9;resize:vertical"></textarea>
+          </div>
+          <label style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.9;color:#5c564a">
+            <input type="checkbox" required="required" style="margin-top:4px;width:18px;height:18px;flex:0 0 auto" />
+            <span><a href="#" style="border-bottom:1px solid #F5C400">プライバシーポリシー</a>に同意のうえ送信します。</span>
+          </label>
+          <button type="submit" class="axle-submit" style="align-self:flex-start;border:0;background:#1c1a17;color:#fff;padding:19px 60px;font-size:15px;font-weight:700;letter-spacing:.16em;cursor:pointer;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%)" style-hover="background:#F5C400;color:#1c1a17">送信する</button>
+        </form>
+      </sc-if>
+    </div>
+
+    <aside style="display:flex;flex-direction:column;gap:28px">
+      <div style="border:1px solid #eae6d9;padding:28px 26px">
+        <div style="font-family:Jost,sans-serif;font-size:12px;letter-spacing:.18em;color:#a39c8a">by phone</div>
+        <div style="margin-top:10px;font-family:Jost,sans-serif;font-size:26px;font-weight:600;letter-spacing:.06em">03-6427-1180</div>
+        <div style="margin-top:10px;font-size:13px;line-height:1.9;color:#5c564a">受付時間：平日 10:00〜18:00<br />（土日祝・年末年始を除く）</div>
+      </div>
+      <div style="border:1px solid #eae6d9;padding:28px 26px">
+        <div style="font-family:Jost,sans-serif;font-size:12px;letter-spacing:.18em;color:#a39c8a">office</div>
+        <div style="margin-top:12px;font-size:14px;font-weight:700">本社（渋谷）</div>
+        <div style="margin-top:8px;font-size:13px;line-height:1.95;color:#5c564a">〒150-0002<br />東京都渋谷区渋谷2-14-6 渋谷HKビル7F<br />JR渋谷駅 東口より徒歩6分</div>
+        <div style="margin-top:20px;font-size:14px;font-weight:700">大阪オフィス</div>
+        <div style="margin-top:8px;font-size:13px;line-height:1.95;color:#5c564a">〒530-0001<br />大阪市北区梅田1-3-1 梅田セントラルビル9F</div>
+      </div>
+      <div style="background:#F5C400;padding:26px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.4) 0 7px,rgba(255,255,255,0) 7px 18px)"></div>
+        <div style="position:relative">
+          <div style="font-size:14px;font-weight:700;letter-spacing:.06em">資料請求も承っています</div>
+          <p style="margin:12px 0 0;font-size:13px;line-height:1.95">サービス内容と料金の詳細をまとめた資料をお送りします。フォームの種別で「お見積り」をお選びください。</p>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section style="max-width:1180px;margin:0 auto;padding:0 24px 88px">
+    <div style="aspect-ratio:21/9;background:repeating-linear-gradient(135deg,#f2efe5 0 8px,#faf8f1 8px 16px);border:1px solid #eae6d9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
+      <span style="font-family:Jost,sans-serif;font-size:12px;letter-spacing:.18em;color:#8a8577">google maps embed</span>
+      <span style="font-size:12.5px;color:#8a8577">東京都渋谷区渋谷2-14-6 渋谷HKビル7F</span>
+    </div>
+  </section>
+
+  <section style="background:repeating-linear-gradient(135deg,#fcfaf2 0 10px,#fff 10px 22px);padding:88px 24px">
+    <div style="max-width:900px;margin:0 auto">
+      <div style="display:flex;gap:18px 24px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap">
+        <div style="display:flex;gap:18px;align-items:flex-start">
+          <div style="width:44px;height:44px;flex:0 0 auto;background:#F5C400;clip-path:polygon(0 0,100% 0,0 100%)"></div>
+          <div style="padding-top:2px">
+            <h2 style="margin:0;font-size:clamp(22px,2.6vw,30px);font-weight:700;letter-spacing:.07em">お問い合わせについて</h2>
+            <div style="margin-top:10px;font-family:Jost,sans-serif;font-size:12.5px;letter-spacing:.18em;color:#a39c8a">faq</div>
+          </div>
+        </div>
+        <img src="./images/illust/worried.png" alt="" style="width:170px;max-width:50%;height:auto;display:block" />
+      </div>
+      <div style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="4">
+          <div style="background:#fff;border:1px solid #eae6d9">
+            <button type="button" onClick="{{ item.toggle }}" style="width:100%;display:flex;gap:16px;align-items:center;justify-content:space-between;background:none;border:0;padding:22px 24px;text-align:left;cursor:pointer;font-size:15.5px;font-weight:700;letter-spacing:.05em;color:#1c1a17" style-hover="background:#fdfaef">
+              <span style="display:flex;gap:14px;align-items:flex-start"><span style="font-family:Jost,sans-serif;color:#F5C400;font-size:18px">Q</span>{{ item.q }}</span>
+              <span style="font-size:20px;color:#b3aa8e">{{ item.sign }}</span>
+            </button>
+            <sc-if value="{{ item.open }}" hint-placeholder-val="{{ false }}">
+              <div class="axle-faq-a" style="padding:0 24px 26px 62px;font-size:14px;line-height:2.1;color:#5c564a">{{ item.a }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#1c1a17;color:#fff;padding:80px 24px">
+    <div style="max-width:820px;margin:0 auto;text-align:center">
+      <h2 style="margin:0;font-size:clamp(24px,3.4vw,38px);font-weight:900;letter-spacing:.08em;line-height:1.6;color:#fff">まずは、いまの数字を<br />見せてください。</h2>
+      <p style="margin:22px 0 0;font-size:15px;line-height:2.1;color:#c9c4b8">60分の無料相談で、改善余地と優先順位を整理してお伝えします。</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:34px">
+        <a href="./Services.dc.html" style="display:inline-flex;align-items:center;justify-content:center;padding:19px 46px;border:1px solid rgba(255,255,255,.4);color:#fff;font-size:15px;font-weight:700;letter-spacing:.14em" style-hover="border-color:#F5C400;color:#F5C400">サービスを見る</a>
+        <a href="./CaseStudies.dc.html" style="display:inline-flex;align-items:center;justify-content:center;padding:19px 46px;background:#F5C400;color:#1c1a17;font-size:15px;font-weight:700;letter-spacing:.14em;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%)" style-hover="background:#fff">実績を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false, open: -1 };
+  renderVals() {
+    const data = [
+      ['返信はどのくらいで届きますか？', '1営業日以内に担当者よりメールまたはお電話でご連絡します。土日祝にいただいたお問い合わせは、翌営業日の対応となります。'],
+      ['初回相談では何を用意すればよいですか？', '広告アカウントの閲覧権限、アクセス解析、直近の実績数値があるとより具体的にお話しできます。準備が難しい場合は、課題の共有のみでも問題ありません。'],
+      ['他社と比較検討中でも相談できますか？', '可能です。比較のための情報提供や、他社提案へのセカンドオピニオンのみのご依頼も受け付けています。'],
+      ['対応エリアはどこまでですか？', '全国対応です。オンラインでの定例を基本としており、首都圏・関西圏は訪問も可能です。']
+    ];
+    return {
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      faqs: data.map(([q, a], i) => ({
+        q, a,
+        open: this.state.open === i,
+        sign: this.state.open === i ? '−' : '＋',
+        toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i }))
+      }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

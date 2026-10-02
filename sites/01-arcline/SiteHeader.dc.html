@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header class="r-header" style="position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:stretch; justify-content:space-between; background:rgba(255,255,255,0.96); backdrop-filter:blur(10px); border-bottom:1px solid #e6e9ee; height:76px;">
+  <a href="Home.dc.html" class="r-logo" style="display:flex; align-items:center; gap:13px; padding:0 28px;">
+    <div style="width:28px; height:28px; background:#14367a; transform:rotate(45deg); flex:none;"></div>
+    <span style="display:flex; flex-direction:column; line-height:1;">
+      <span class="r-logo-name" style="font-family:Archivo,sans-serif; font-weight:700; font-size:21px; letter-spacing:0.07em; color:#10151d;">ARCLINE</span>
+      <span style="font-size:10px; letter-spacing:0.16em; color:#8a9099; margin-top:5px;">DIGITAL MARKETING</span>
+    </span>
+  </a>
+  <nav class="r-nav" style="display:flex; align-items:stretch;">
+    <sc-for list="{{ links }}" as="l" hint-placeholder-count="4">
+      <a href="{{ l.href }}" class="r-nav-item" style="{{ l.style }}" style-hover="border-bottom-color:#1f5ad6;">
+        <span style="{{ l.enStyle }}">{{ l.en }}</span>
+        <span style="font-size:10px; color:#8a9099;">{{ l.ja }}</span>
+      </a>
+    </sc-for>
+    <a href="Contact.dc.html" class="r-nav-contact" style="{{ contactStyle }}" style-hover="background:#a80d26;">
+      <span style="font-family:Archivo,sans-serif; font-size:12.5px; font-weight:600; letter-spacing:0.1em; color:#fff;">CONTACT</span>
+      <span style="font-size:10px; color:rgba(255,255,255,0.85);">お問い合わせ</span>
+    </a>
+  </nav>
+  <button type="button" class="r-burger" onClick="{{ toggle }}" aria-label="メニュー" aria-expanded="{{ open }}" style="align-items:center; justify-content:center; width:64px; background:none; border:none; cursor:pointer; padding:0;">
+    <span style="position:relative; display:block; width:24px; height:16px;">
+      <span style="{{ bar1 }}"></span>
+      <span style="{{ bar2 }}"></span>
+      <span style="{{ bar3 }}"></span>
+    </span>
+  </button>
+</header>
+<div class="r-drawer" style="{{ drawerStyle }}">
+  <sc-for list="{{ drawerLinks }}" as="d" hint-placeholder-count="5">
+    <a href="{{ d.href }}" style="display:flex; align-items:center; justify-content:space-between; padding:20px 4px; border-bottom:1px solid #e6e9ee;">
+      <span style="display:flex; flex-direction:column; gap:6px;">
+        <span style="{{ d.enStyle }}">{{ d.en }}</span>
+        <span style="font-size:12px; color:#8a9099;">{{ d.ja }}</span>
+      </span>
+      <span style="width:8px; height:8px; border-top:2px solid #1f5ad6; border-right:2px solid #1f5ad6; transform:rotate(45deg);"></span>
+    </a>
+  </sc-for>
+  <a href="Contact.dc.html" style="display:flex; align-items:center; justify-content:center; margin-top:32px; background:#c8102e; color:#fff; font-size:15px; font-weight:700; padding:18px 24px; border-radius:999px;">お問い合わせ</a>
+  <span style="display:block; margin-top:20px; text-align:center; font-family:Archivo,sans-serif; font-size:22px; font-weight:700; color:#14367a;">TEL.03-6427-1180</span>
+  <span style="display:block; margin-top:6px; text-align:center; font-size:12px; color:#8a9099;">受付時間／平日 9:00〜18:00</span>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;内容&quot;}}">
+class Component extends DCLogic {
+  state = { open: false };
+
+  componentDidMount() {
+    this._onResize = () => { if (this.state.open && window.innerWidth > 900) this.setState({ open: false }); };
+    this._onKey = (e) => { if (e.key === 'Escape' && this.state.open) this.setState({ open: false }); };
+    window.addEventListener('resize', this._onResize);
+    window.addEventListener('keydown', this._onKey);
+  }
+  componentDidUpdate() {
+    document.body.style.overflow = this.state.open ? 'hidden' : '';
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('keydown', this._onKey);
+    document.body.style.overflow = '';
+  }
+
+  renderVals() {
+    const cur = this.props.current || '';
+    const open = this.state.open;
+    const items = [
+      { key: 'company', en: 'COMPANY', ja: '会社案内', href: 'Company.dc.html' },
+      { key: 'service', en: 'SERVICE', ja: 'サービス', href: 'Service.dc.html' },
+      { key: 'works', en: 'WORKS', ja: '導入事例', href: 'Works.dc.html' },
+      { key: 'insights', en: 'INSIGHTS', ja: 'ブログ', href: 'Insights.dc.html' },
+    ];
+    const bar = 'position:absolute; left:0; width:24px; height:2px; background:#10151d; transition:top .3s, transform .3s, opacity .2s;';
+    return {
+      open,
+      toggle: () => this.setState(s => ({ open: !s.open })),
+      links: items.map(i => {
+        const active = cur === i.key;
+        return {
+          ...i,
+          style: `display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; padding:0 20px; border-bottom:3px solid ${active ? '#1f5ad6' : 'transparent'}; transition:border-color .2s;`,
+          enStyle: `font-family:Archivo,sans-serif; font-size:12.5px; font-weight:600; letter-spacing:0.1em; color:${active ? '#1f5ad6' : '#10151d'};`,
+        };
+      }),
+      drawerLinks: [{ key: 'home', en: 'HOME', ja: 'トップ', href: 'Home.dc.html' }, ...items].map(i => ({
+        ...i,
+        enStyle: `font-family:Archivo,sans-serif; font-size:16px; font-weight:600; letter-spacing:0.1em; color:${cur === i.key ? '#1f5ad6' : '#10151d'};`,
+      })),
+      contactStyle: `display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; padding:0 30px; background:${cur === 'contact' ? '#a80d26' : '#c8102e'}; color:#fff; transition:background .2s;`,
+      bar1: `${bar} top:${open ? 7 : 0}px; transform:rotate(${open ? 45 : 0}deg);`,
+      bar2: `${bar} top:7px; opacity:${open ? 0 : 1};`,
+      bar3: `${bar} top:${open ? 7 : 14}px; transform:rotate(${open ? -45 : 0}deg);`,
+      drawerStyle: `position:fixed; top:64px; left:0; right:0; bottom:0; z-index:99; background:#fff; padding:8px 24px 40px; overflow-y:auto; transition:opacity .3s, transform .3s, visibility .3s; opacity:${open ? 1 : 0}; transform:translateY(${open ? 0 : -12}px); visibility:${open ? 'visible' : 'hidden'};`,
+    };
+  }
+}
+</script>
+</body>
+</html>

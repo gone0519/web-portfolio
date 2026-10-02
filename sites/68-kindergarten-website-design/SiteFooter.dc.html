@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>フッター</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#3d3a33;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#3d3a33;text-decoration:none}
+a:hover{color:#b39500}
+input,select,textarea,button{font-family:inherit}
+@keyframes kf-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes kf-morph{0%,100%{border-radius:46% 54% 42% 58%/52% 44% 56% 48%}50%{border-radius:56% 44% 54% 46%/44% 56% 44% 56%}}
+@keyframes kf-pop{from{opacity:0;transform:translateY(16px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes kf-sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes kf-spin{to{transform:rotate(360deg)}}
+@keyframes kf-bounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-9px)}}
+@keyframes kf-slide{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<footer style="position:relative;overflow:hidden;padding-top:110px;background:#fbf9f3">
+    <div style="position:absolute;left:50%;top:150px;transform:translateX(-50%);width:clamp(340px,40vw,560px);aspect-ratio:1;border-radius:50%;background:#e6c619;opacity:.9"></div>
+    <div style="position:absolute;left:-6%;top:70px;width:clamp(240px,26vw,380px);aspect-ratio:1;border-radius:50%;background:#f2b8a8;opacity:.75"></div>
+    <div style="position:absolute;right:6%;top:220px;width:clamp(200px,20vw,300px);aspect-ratio:1;border-radius:50%;background:#f2b8a8;opacity:.55"></div>
+    <div style="position:relative;max-width:1000px;margin:0 auto;padding:0 24px">
+      <nav style="border-top:1px solid #3d3a33;border-bottom:1px solid #3d3a33;padding:14px 0;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;background:rgba(251,249,243,.6)">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" style="font-size:12.5px">› {{ n.label }}</a>
+        </sc-for>
+      </nav>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:48px 0 28px;text-align:center">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.14em">認定こども園</span>
+        <span style="font-size:clamp(24px,3vw,30px);font-weight:700;letter-spacing:.14em">こもれび幼稚園</span>
+        <span style="font-size:12.5px;line-height:1.8">〒158-0094 東京都世田谷区緑ヶ丘2-14-6<br>TEL 03-5432-1180 / FAX 03-5432-1181</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;padding-bottom:28px">
+        <sc-for list="{{ info }}" as="i" hint-placeholder-count="4">
+          <div style="background:rgba(255,255,255,.88);padding:16px 18px;display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:Quicksand,sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;color:#7d6a00">{{ i.k }}</span>
+            <span style="font-size:13px;line-height:1.7">{{ i.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:center;gap:10px;padding-bottom:40px">
+        <sc-for list="{{ social }}" as="s" hint-placeholder-count="3">
+          <a href="#" style="min-height:44px;display:flex;align-items:center;padding:0 18px;background:#fff;border-radius:22px;font-family:Quicksand,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;transition:background .2s" style-hover="background:#3d3a33;color:#fff">{{ s }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <div style="position:relative;height:clamp(240px,28vw,360px)">
+      <image-slot id="footer-map" shape="rect" placeholder="アクセスマップ（埋め込み or 画像）"></image-slot>
+    </div>
+    <div style="position:relative;background:#fff;text-align:center;padding:16px;font-size:11px;color:#6b665b">© 2026 認定こども園 こもれび幼稚園｜学校法人 こもれび学園</div>
+  </footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      nav: [
+      { key: 'home', href: 'index.dc.html', en: 'HOME', label: 'ホーム' },
+      { key: 'about', href: 'about.dc.html', en: 'ABOUT', label: 'こもれびについて' },
+      { key: 'daily', href: 'daily-life.dc.html', en: 'DAILY LIFE', label: '園での生活' },
+      { key: 'people', href: 'teachers.dc.html', en: 'PEOPLE', label: '先生と環境' },
+      { key: 'admission', href: 'admission.dc.html', en: 'ADMISSION', label: '入園案内' },
+      { key: 'contact', href: 'contact.dc.html', en: 'CONTACT', label: 'お問い合わせ' }
+    ],
+      info: [
+        { k: 'SCHOOL HOURS 保育時間', v: '教育時間 9:00 – 14:00／預かり保育 7:30 – 18:30' },
+        { k: 'HOLIDAYS 休園日', v: '日曜・祝日・年末年始' },
+        { k: 'ACCESS アクセス', v: '緑ヶ丘駅より徒歩6分／園バスあり' },
+        { k: 'OFFICE 入園相談', v: '平日 9:00 – 17:00' }
+      ],
+      social: ['Instagram', 'LINE', 'YouTube']
+    };
+  }
+}
+</script>
+</body>
+</html>

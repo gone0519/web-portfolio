@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="Header" current="contact" hint-size="100%,220px"></dc-import>
+<main>
+<section data-screen-label="Contact Hero" style="position:relative">
+  <div style="background:#f8f3e6;padding:36px 20px 60px;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div style="background:#6cb84a;color:#fff;font-weight:700;font-size:12px;letter-spacing:.24em;padding:6px 44px;clip-path:polygon(0 0,100% 0,92% 50%,100% 100%,0 100%,8% 50%)">CONTACT</div>
+    <h1 style="margin:16px 0 0;font-family:'Yusei Magic';font-weight:400;font-size:clamp(28px,4vw,40px);letter-spacing:.14em">お問い合わせ・見学予約</h1>
+    <p style="margin:20px 0 0;max-width:600px;font-size:15px;line-height:2.1;letter-spacing:.05em;text-wrap:pretty">見学は平日の午前中に随時受け付けています。お子さまとご一緒にどうぞ。園の雰囲気を見ていただきながら、気になることをなんでもお聞きください。</p>
+  </div>
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="display:block;width:100%;height:40px;margin-top:-1px"><path d="M0 0H1440V20Q720 60 0 20Z" fill="#f8f3e6"></path></svg>
+  <div style="max-width:1080px;margin:0 auto;padding:0 20px;font-size:12px;color:#8e7a63;letter-spacing:.06em"><a href="ひなたの森保育園.dc.html" style="color:#8e7a63">ホーム</a> › お問い合わせ</div>
+</section>
+
+<section data-screen-label="Tel" style="padding:50px 20px 0">
+  <div data-reveal="1" style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px">
+    <div style="background:#fbf7ee;border-radius:22px;padding:28px;text-align:center">
+      <div style="font-size:13px;font-weight:700;letter-spacing:.1em">お電話でのお問い合わせ</div>
+      <a href="tel:0000000000" style="display:block;margin-top:10px;font-family:'Yusei Magic';font-size:clamp(24px,7vw,30px);letter-spacing:.08em;color:#4bb3a6;white-space:nowrap">☎ 0120-00-1234</a>
+      <div style="margin-top:6px;font-size:12px;color:#8e7a63">受付 月〜金 9:00〜17:00</div>
+    </div>
+    <div style="background:#fbf7ee;border-radius:22px;padding:28px;text-align:center">
+      <div style="font-size:13px;font-weight:700;letter-spacing:.1em">園見学の時間</div>
+      <div style="margin-top:10px;font-family:'Yusei Magic';font-size:30px;letter-spacing:.08em;color:#e57f12">10:00〜11:30</div>
+      <div style="margin-top:6px;font-size:12px;color:#8e7a63">平日のみ・所要30分ほど</div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Form" style="padding:40px 20px 100px">
+  <form data-reveal="1" onSubmit="{{ submit }}" style="max-width:1000px;margin:0 auto;background:#fff;border:2px solid #f3ead8;border-radius:26px;padding:clamp(26px,4vw,48px)">
+    <h2 style="margin:0 0 6px;text-align:center;font-family:'Yusei Magic';font-weight:400;font-size:clamp(20px,5.4vw,24px);letter-spacing:.1em;text-wrap:balance">フォームでのお問い合わせ</h2>
+    <p style="margin:0 0 30px;text-align:center;font-size:13px;color:#8e7a63">2営業日以内に、担当よりご連絡いたします。</p>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align:center;padding:30px 10px">
+        <div style="font-family:'Yusei Magic';font-size:24px;color:#e57f12;letter-spacing:.1em">ありがとうございます</div>
+        <p style="margin:14px 0 0;font-size:14px;line-height:2">お問い合わせを受け付けました。お会いできるのを楽しみにしています。</p>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:24px">
+        <sc-for list="{{ kinds }}" as="k" hint-placeholder-count="3">
+          <label style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:30px;border:2px solid #f2dcc0;font-size:14px;font-weight:700;cursor:pointer;min-height:44px"><input type="radio" name="kind" value="{{ k }}" style="accent-color:#f08a1c"></input>{{ k }}</label>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px 20px">
+        <label style="display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">保護者さまのお名前<input required="" name="name" placeholder="ひなた はなこ" style="height:50px;border:2px solid #eee4d2;border-radius:12px;padding:0 16px;font-size:15px;background:#fcfaf5;color:#5a4636;outline-color:#f08a1c"></input></label>
+        <label style="display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">メールアドレス<input required="" type="email" name="email" placeholder="example@mail.jp" style="height:50px;border:2px solid #eee4d2;border-radius:12px;padding:0 16px;font-size:15px;background:#fcfaf5;color:#5a4636;outline-color:#f08a1c"></input></label>
+        <label style="display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">電話番号<input type="tel" name="tel" placeholder="090-0000-0000" style="height:50px;border:2px solid #eee4d2;border-radius:12px;padding:0 16px;font-size:15px;background:#fcfaf5;color:#5a4636;outline-color:#f08a1c"></input></label>
+        <label style="display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">お子さまの年齢
+          <select name="age" style="height:50px;border:2px solid #eee4d2;border-radius:12px;padding:0 14px;font-size:15px;background:#fcfaf5;color:#5a4636;outline-color:#f08a1c"><option>選択してください</option><option>0歳</option><option>1歳</option><option>2歳</option><option>3歳</option><option>4歳</option><option>5歳</option><option>出産予定</option></select>
+        </label>
+        <label style="display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">見学希望日<input type="date" name="date" style="height:50px;border:2px solid #eee4d2;border-radius:12px;padding:0 16px;font-size:15px;background:#fcfaf5;color:#5a4636;outline-color:#f08a1c"></input></label>
+        <label style="display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">希望時間帯
+          <select name="time" style="height:50px;border:2px solid #eee4d2;border-radius:12px;padding:0 14px;font-size:15px;background:#fcfaf5;color:#5a4636;outline-color:#f08a1c"><option>10:00〜</option><option>10:30〜</option><option>11:00〜</option><option>相談したい</option></select>
+        </label>
+        <label style="grid-column:1/-1;display:grid;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">ご質問・メッセージ<textarea name="msg" rows="5" placeholder="気になっていること、ご質問などがあればご記入ください。" style="border:2px solid #eee4d2;border-radius:12px;padding:14px 16px;font-size:15px;background:#fcfaf5;color:#5a4636;resize:vertical;outline-color:#f08a1c;line-height:1.8"></textarea></label>
+      </div>
+      <div style="margin-top:30px;display:flex;justify-content:center">
+        <button type="submit" style="display:inline-flex;align-items:center;gap:12px;border:none;cursor:pointer;background:#f08a1c;color:#fff;padding:16px 44px;min-height:54px;border-radius:40px;font-weight:700;letter-spacing:.12em;font-size:16px;box-shadow:0 4px 0 #d06f08;transition:transform .2s" style-hover="transform:translateY(-2px)">この内容で送信する ➜</button>
+      </div>
+    </sc-if>
+  </form>
+</section>
+
+<section class="sec-t" data-screen-label="Access" style="position:relative;background:#f8f3e6;padding:110px 20px 20px">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;top:-1px;left:0;width:100%;height:44px;display:block"><path d="M0 0H1440V30Q720 -10 0 30Z" fill="#fff"></path></svg>
+  <div style="max-width:1000px;margin:0 auto">
+    <h2 data-reveal="1" style="margin:0 0 30px;text-align:center;font-family:'Yusei Magic';font-weight:400;font-size:clamp(24px,3.2vw,32px);letter-spacing:.14em">アクセス</h2>
+    <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:28px 44px;align-items:start">
+      <div style="aspect-ratio:4/3;border-radius:20px;background:repeating-linear-gradient(135deg,#e6dbc3 0 12px,#eee5d1 12px 24px);display:flex;align-items:flex-end;padding:12px"><span style="font-family:ui-monospace,monospace;font-size:11px;color:#8e7a63;background:rgba(255,255,255,.8);padding:3px 8px;border-radius:4px">地図（Googleマップ埋め込み）</span></div>
+      <dl style="margin:0;border-top:2px dotted #e3d8c3">
+        <sc-for list="{{ access }}" as="a" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:84px 1fr;gap:14px;padding:16px 6px;border-bottom:2px dotted #e3d8c3;font-size:14px;letter-spacing:.05em">
+            <dt style="font-weight:700;color:#4bb3a6">{{ a.k }}</dt><dd style="margin:0;line-height:1.8">{{ a.v }}</dd>
+          </div>
+        </sc-for>
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false };
+  renderVals() {
+    return {
+      sent: this.state.sent, notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      kinds: ['園見学の予約', '入園について', 'その他のご質問'],
+      access: [
+        { k: '住所', v: '〒000-0000 ○○県○○市ひなた町1-2-3' },
+        { k: '電車', v: '○○線「森の台駅」南口から徒歩7分' },
+        { k: 'バス', v: '○○バス「ひなた町」下車 徒歩2分' },
+        { k: '駐車場', v: '送迎用 4台（10分以内）・駐輪場あり' },
+        { k: '開園', v: '月〜土 7:00〜19:00（日祝・年末年始休園）' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

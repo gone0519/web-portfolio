@@ -1,0 +1,30 @@
+/* Shared responsive overrides. Inline styles hold the desktop design;
+   rules here need !important to win over them. */
+
+/* Below-the-fold photos start at scale(1.08) for the wipe-in, and some
+   decorative offsets bleed past the edge — never let either widen the page. */
+main{overflow-x:clip}
+
+@media (max-width:600px){
+  /* Top hero: keep both CTAs on one row under the headline plate */
+  .hero-ctas{right:20px;gap:8px!important;flex-wrap:nowrap!important}
+  .hero-ctas a{flex:1 1 0;justify-content:center;padding:0 12px!important;font-size:13px!important;letter-spacing:.04em!important}
+  .hero-scroll{display:none}
+
+  /* Top services band: replace the wide left diagonal with a shallow top slant */
+  .svc-band{clip-path:polygon(0 28px,100% 0,100% 100%,0 100%)!important;padding:64px 0 40px 20px!important}
+  .svc-band > p{text-align:left!important;margin-right:20px!important}
+  .svc-band [role=list]{padding-right:20px!important;grid-auto-columns:minmax(230px,72vw)!important}
+  .svc-intro{padding-bottom:48px!important}
+
+  /* Definition tables: narrow label column instead of a 200px one */
+  .spec{grid-template-columns:7.5em 1fr!important;font-size:13px!important}
+  .spec dt,.spec dd{padding:14px 12px!important}
+
+  /* History: year above the event */
+  .history li{grid-template-columns:1fr!important;gap:2px!important;padding-bottom:24px!important}
+
+  /* Photos with a yellow offset block: pull the offset inside the screen */
+  .offset-photo{max-width:calc(100% - 12px)!important}
+  .offset-photo > .offset-bg{inset:12px -12px -12px 12px!important}
+}

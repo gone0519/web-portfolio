@@ -1,0 +1,27 @@
+/* レスポンシブ調整（全ページ共通） */
+
+/* 日本語を文節単位で改行し、見出しの行長をそろえる（Chrome/Edge） */
+h1,h2,h3,h4,p,dd,li,a{word-break:auto-phrase}
+h1,h2,h3{text-wrap:balance}
+
+/* タブレット以下：ヒーロー写真を背景にし、文字を重ねる */
+@media (max-width:759px){
+  .r-hero{display:block!important}
+  .r-hero-text{min-height:100svh}
+  .r-hero-media{position:absolute!important;inset:0;min-height:0!important;z-index:0}
+  .r-hero-fade{background:linear-gradient(rgba(18,17,15,.35),rgba(18,17,15,.55) 40%,rgba(18,17,15,.94) 85%)!important}
+  .r-hero-scroll{display:none!important}
+}
+
+/* スマホ */
+@media (max-width:640px){
+  /* 握りは2列 */
+  .r-nigiri{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:36px 14px!important}
+  .r-nigiri-title{flex-direction:column;align-items:flex-start!important;gap:4px!important;padding-bottom:10px!important}
+  .r-nigiri h3,.r-nigiri h4{font-size:17px!important;letter-spacing:.12em!important}
+  .r-nigiri p{font-size:12.5px!important;line-height:1.9!important}
+
+  /* 横並びのボタンは幅をそろえる */
+  .r-cta-row{width:100%}
+  .r-cta-row>a{width:100%;justify-content:center;padding-left:24px!important;padding-right:24px!important}
+}

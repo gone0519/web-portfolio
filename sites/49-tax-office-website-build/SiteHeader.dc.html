@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div>
+<header ref="{{ headerRef }}" style="height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(16px,3vw,40px);background:rgba(255,255,255,.96);backdrop-filter:blur(8px);transition:box-shadow .3s ease;font-family:'Zen Maru Gothic',sans-serif">
+  <a href="Tax%20Office%20Website.dc.html" style="display:flex;align-items:center;gap:10px;color:#17457f">
+    <span style="position:relative;width:34px;height:34px;border-radius:7px;background:#17457f;display:block;flex:none">
+      <span style="position:absolute;right:5px;top:5px;width:14px;height:14px;border-radius:50%;background:#7cc4ec"></span>
+      <span style="position:absolute;left:6px;bottom:6px;width:12px;height:12px;border-radius:2px;background:#fff"></span>
+    </span>
+    <span style="display:flex;flex-direction:column;line-height:1.2">
+      <span style="font-size:18px;font-weight:700;letter-spacing:.08em;white-space:nowrap">あおば税理士事務所</span>
+      <span style="font-family:Quicksand,sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.06em;color:#4a78ad;white-space:nowrap">Aoba Tax Accounting Office</span>
+    </span>
+  </a>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:28px">
+      <ul style="display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:13px;font-weight:500;letter-spacing:.06em;white-space:nowrap">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+          <li style="position:relative">
+            <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="color:#24395a;transition:color .2s ease" style-hover="color:#2f8fd0">{{ n.ja }}</a>
+            <sc-if value="{{ n.active }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:50%;bottom:-10px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#eba52c;display:block"></span></sc-if>
+          </li>
+        </sc-for>
+      </ul>
+      <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 24px;border-radius:999px;background:#eba52c;color:#fff;font-size:13px;font-weight:700;letter-spacing:.08em;white-space:nowrap;box-shadow:0 3px 0 #cf8a17;transition:transform .2s ease,box-shadow .2s ease" style-hover="transform:translateY(2px);box-shadow:0 1px 0 #cf8a17;color:#fff">
+        <span style="width:14px;height:10px;border:1.5px solid #fff;border-radius:2px;display:block"></span>無料相談
+      </a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニューを開く" aria-expanded="{{ menuOpen }}" style="width:48px;height:48px;border:0;border-radius:50%;background:#17457f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+      <span style="width:20px;height:2px;border-radius:2px;background:#fff;display:block"></span>
+      <span style="width:20px;height:2px;border-radius:2px;background:#fff;display:block"></span>
+      <span style="width:12px;height:2px;border-radius:2px;background:#fff;display:block;margin-left:8px"></span>
+    </button>
+  </sc-if>
+</header>
+<sc-if value="{{ showMenu }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#17457f;color:#fff;display:flex;flex-direction:column;padding:20px 24px 32px;font-family:'Zen Maru Gothic',sans-serif;overflow:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center;height:48px">
+      <span style="font-size:17px;font-weight:700;letter-spacing:.08em">あおば税理士事務所</span>
+      <button onClick="{{ closeMenu }}" aria-label="メニューを閉じる" style="width:48px;height:48px;border:1.5px solid rgba(255,255,255,.5);border-radius:50%;background:transparent;color:#fff;font-size:22px;cursor:pointer;font-family:inherit">×</button>
+    </div>
+    <nav aria-label="モバイルナビゲーション" style="margin-top:32px;display:flex;flex-direction:column">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.18);color:#fff">
+          <span style="font-size:18px;font-weight:700;letter-spacing:.1em">{{ n.ja }}</span>
+          <span style="font-family:Quicksand,sans-serif;font-size:11px;color:#9fd2f0;letter-spacing:.08em">{{ n.en }}</span>
+        </a>
+      </sc-for>
+    </nav>
+    <a href="Contact.dc.html" style="margin-top:32px;flex:none;display:flex;align-items:center;justify-content:center;height:56px;border-radius:999px;background:#eba52c;color:#fff;font-weight:700;letter-spacing:.1em">無料相談はこちら</a>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;72px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;about&quot;,&quot;services&quot;,&quot;strengths&quot;,&quot;pricing&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: window.innerWidth, menuOpen: false };
+  headerRef = React.createRef();
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onScroll = () => { const h = this.headerRef.current; if (h) h.style.boxShadow = window.scrollY > 10 ? '0 6px 24px rgba(23,69,127,.08)' : 'none'; };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); }
+  renderVals() {
+    const cur = this.props.current ?? 'home';
+    const isMobile = this.state.w < 1180;
+    const items = [
+      ['home', 'Tax%20Office%20Website.dc.html', 'ホーム', 'Home'],
+      ['about', 'About.dc.html', '事務所について', 'About'],
+      ['services', 'Services.dc.html', 'サービス', 'Services'],
+      ['strengths', 'Strengths.dc.html', '私たちの強み', 'Strengths'],
+      ['pricing', 'Pricing.dc.html', '料金プラン', 'Pricing'],
+      ['contact', 'Contact.dc.html', 'お問い合わせ', 'Contact']
+    ];
+    return {
+      headerRef: this.headerRef,
+      isDesktop: !isMobile, isMobile,
+      menuOpen: this.state.menuOpen,
+      showMenu: isMobile && this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      navItems: items.map(([k, href, ja, en]) => ({ href, ja, en, active: k === cur, aria: k === cur ? 'page' : undefined }))
+    };
+  }
+}
+</script>
+</body>
+</html>

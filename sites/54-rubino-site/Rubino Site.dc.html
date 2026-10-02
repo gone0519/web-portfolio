@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;1,400&family=Shippori+Mincho:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #17130F; color: #EDE7DF; font-family: 'Shippori Mincho', 'EB Garamond', serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #EDE7DF; text-decoration: none; }
+  a:hover { color: #C9A961; }
+  button { font: inherit; cursor: pointer; color: inherit; }
+  input, textarea, select { font: inherit; }
+  ::selection { background: #6B2029; color: #F3EEE7; }
+  @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes wipeX { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  /* ============================================================
+     レスポンシブ
+     本文のスタイルは全てインライン（style="..."）なので、
+     ここでの上書きには !important が必要です。
+     使えるクラス名は README の「レスポンシブ」参照。
+     ブレークポイント: 1024px / 900px / 720px / 560px
+     ============================================================ */
+  img, svg, video { max-width: 100%; }
+
+  /* コンテナに余白が無くなる幅では、装飾の引用符を内側に寄せる */
+  @media (max-width: 1180px) { .rb-quote { right: 0 !important; } }
+
+  /* --- セクション左右余白（.rb-bleed = 全幅バンドは除外） --- */
+  @media (max-width: 1024px) {
+    section:not(.rb-bleed), .rb-footer { padding-left: 30px !important; padding-right: 30px !important; }
+    .rb-copybar { margin-left: -30px !important; margin-right: -30px !important; padding-left: 30px !important; padding-right: 30px !important; }
+  }
+  @media (max-width: 560px) {
+    section:not(.rb-bleed), .rb-footer { padding-left: 18px !important; padding-right: 18px !important; }
+    section:not(.rb-bleed) { padding-top: 62px !important; padding-bottom: 66px !important; }
+    .rb-copybar { margin-left: -18px !important; margin-right: -18px !important; padding-left: 18px !important; padding-right: 18px !important; }
+    .rb-copybar > div { flex-wrap: wrap; gap: 8px 22px !important; text-align: center; }
+  }
+
+  /* --- ヘッダー上段 --- */
+  @media (max-width: 860px) {
+    .rb-bar { height: auto !important; flex-wrap: wrap; justify-content: center !important;
+              gap: 6px 22px !important; padding: 10px 18px !important; }
+  }
+  @media (max-width: 560px) {
+    .rb-bar-note { display: none !important; }
+    .rb-bar-tel { font-size: 16px !important; }
+  }
+
+  /* --- グローバルナビ（横スクロール化） --- */
+  @media (max-width: 900px) {
+    .rb-nav { justify-content: flex-start !important; padding: 0 14px !important;
+              overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .rb-nav::-webkit-scrollbar { display: none; }
+    .rb-navbtn { flex: 0 0 auto; padding: 12px 20px 14px !important; }
+    .rb-navline { left: 20px !important; right: 20px !important; }
+  }
+  @media (max-width: 560px) {
+    .rb-navbtn { padding: 10px 14px 12px !important; }
+    .rb-navline { left: 14px !important; right: 14px !important; }
+  }
+
+  /* --- ヒーロー（バナー） --- */
+  @media (max-width: 860px) {
+    .rb-hero-mosaic { grid-template-columns: repeat(2, 1fr) !important; height: 460px !important; }
+    .rb-hero-mosaic > div:nth-child(n+5) { display: none !important; }
+    .rb-hero-single { height: 480px !important; }
+    .rb-hero-split { grid-template-columns: 1fr !important; height: auto !important; }
+    .rb-hero-split > div:first-child { min-height: 240px; clip-path: none !important; }
+    .rb-hero-split > div:last-child { padding: 44px 24px 52px !important; }
+  }
+  @media (max-width: 480px) {
+    .rb-hero-mosaic { height: 400px !important; }
+    .rb-hero-single { height: 420px !important; }
+  }
+
+  /* --- グリッド --- */
+  @media (max-width: 900px) {
+    .rb-g2 { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .rb-g3, .rb-g4 { grid-template-columns: repeat(2, 1fr) !important; }
+    .rb-coursepair { gap: 76px !important; }
+  }
+  @media (max-width: 720px) {
+    .rb-side { grid-template-columns: 1fr !important; gap: 4px !important; }
+  }
+  @media (max-width: 640px) {
+    .rb-g2s { grid-template-columns: 1fr !important; gap: 22px !important; }
+    .rb-g3, .rb-g4 { grid-template-columns: 1fr !important; }
+  }
+
+  /* --- 縦書きブロック → 横書きへ --- */
+  @media (max-width: 900px) {
+    .rb-vwrap   { flex-direction: column !important; gap: 22px !important; align-items: flex-start; }
+    .rb-vwrap-r { flex-direction: column-reverse !important; gap: 16px !important; align-items: flex-start; }
+    .rb-vtext   { writing-mode: horizontal-tb !important; height: auto !important; letter-spacing: 0.1em !important; }
+    .rb-quote   { right: 0 !important; top: -30px !important; font-size: 44px !important; }
+    .rb-band    { height: 340px !important; }
+    .rb-band .rb-vwrap, .rb-band .rb-vtext { text-align: center; align-items: center; }
+  }
+
+  /* --- 画像プレースホルダ／装飾 --- */
+  @media (max-width: 900px) {
+    .rb-img { height: clamp(220px, 52vw, 380px) !important; }
+    .rb-offset { margin-top: 0 !important; }
+    .rb-deco { font-size: 84px !important; }
+    .rb-deco-l { left: 16px !important; top: 40px !important; }
+  }
+  @media (max-width: 560px) {
+    .rb-deco { font-size: 54px !important; }
+    .rb-faq-a { padding-right: 0 !important; }
+  }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; overflow-x: hidden; background: #17130F;">
+
+  <header style="position: sticky; top: 0; z-index: 60; background: rgba(18,15,13,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(201,169,97,0.18);">
+    <div class="rb-bar" style="max-width: 1400px; margin: 0 auto; padding: 0 44px; display: flex; align-items: center; justify-content: space-between; gap: 40px; height: 52px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+      <button onClick="{{ goHome }}" style="background: none; border: 0; padding: 0; display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 18px; letter-spacing: 0.34em; font-weight: 500;">RUBINO</span>
+        <span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 11px; color: #C9A961;">dal 2016</span>
+      </button>
+      <div style="display: flex; align-items: center; gap: 26px;">
+        <div style="display: flex; align-items: baseline; gap: 12px;">
+          <span class="rb-bar-note" style="font-size: 11.5px; letter-spacing: 0.18em; color: #A79B8C;">ご予約・お問い合わせ</span>
+          <a class="rb-bar-tel" href="tel:+81352290166" style="font-family: 'Cormorant Garamond', serif; font-size: 19px; letter-spacing: 0.1em;">TEL.03-5229-0166</a>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px; font-family: 'Cormorant Garamond', serif; font-size: 12px; letter-spacing: 0.22em; color: #A79B8C;">
+          <span style="width: 1px; height: 13px; background: rgba(255,255,255,0.16); display: block;"></span>
+          <button onClick="{{ goAccess }}" style="background: none; border: 0; padding: 0; letter-spacing: 0.22em;" style-hover="color: #C9A961;">MAP</button>
+          <span style="width: 1px; height: 13px; background: rgba(255,255,255,0.16); display: block;"></span>
+          <button onClick="{{ goAccess }}" style="background: none; border: 0; padding: 0; letter-spacing: 0.22em;" style-hover="color: #C9A961;">RESERVE</button>
+          <span style="width: 1px; height: 13px; background: rgba(255,255,255,0.16); display: block;"></span>
+        </div>
+      </div>
+    </div>
+    <nav class="rb-nav" style="max-width: 1400px; margin: 0 auto; padding: 0 44px; display: flex; align-items: stretch; justify-content: center;">
+      <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+        <button class="rb-navbtn" onClick="{{ item.onClick }}" style="background: none; border: 0; padding: 14px 34px 16px; display: flex; flex-direction: column; align-items: center; gap: 5px; position: relative; transition: color .3s ease; white-space: nowrap;" style-hover="color: #C9A961;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 14.5px; letter-spacing: 0.24em; color: {{ item.color }};">{{ item.label }}</span>
+          <span style="font-size: 10px; letter-spacing: 0.14em; color: #8C8171;">{{ item.ja }}</span>
+          <span class="rb-navline" style="position: absolute; left: 34px; right: 34px; bottom: 6px; height: 1px; background: {{ item.line }};"></span>
+        </button>
+      </sc-for>
+    </nav>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Home">
+    <section class="rb-bleed" style="position: relative; background: #17130F;">
+      <sc-if value="{{ heroMosaic }}" hint-placeholder-val="{{ true }}">
+        <div class="rb-hero-mosaic" style="display: grid; grid-template-columns: repeat(5, 1fr); height: 580px;">
+          <sc-for list="{{ heroTiles }}" as="t" hint-placeholder-count="5">
+            <div style="background: linear-gradient(rgba(23,19,15,0.42), rgba(23,19,15,0.42)), url('{{ t }}') center/cover no-repeat; animation: fade 1.2s ease both;"></div>
+          </sc-for>
+        </div>
+        <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 0 16px; pointer-events: none;">
+          <div style="text-align: center; max-width: 100%; padding: clamp(26px, 5vw, 48px) clamp(20px, 6vw, 66px); background: linear-gradient(180deg, rgba(58,13,20,0.7), rgba(23,19,15,0.84)); animation: fade 1.4s ease both .2s;">
+            <div style="width: clamp(54px, 14vw, 84px); margin: 0 auto 20px;">
+              <svg width="100%" viewBox="0 0 82 72" fill="none" stroke="#F0E9DE" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                <mask id="rb-a" maskUnits="userSpaceOnUse" x="0" y="0" width="82" height="72">
+                  <rect x="0" y="0" width="82" height="72" fill="white" stroke="none"></rect>
+                  <g fill="black" stroke="black" stroke-width="2.4">
+                    <path d="M46.1 11.9 C52 12.4 62 12.4 67.9 11.9 C67.3 19 66.6 26.4 66.1 32.2 C65.7 42.6 48.2 42.8 47.8 32.1 C47.3 26.3 46.7 19 46.1 11.9 Z"></path>
+                    <path d="M56.2 42.8 C55.9 48 56.1 54.4 56.2 59.4 H57.9 C58 54.4 58.2 48 57.9 42.8 Z"></path>
+                    <path d="M49.4 61.1 C52.4 59.4 61.6 59.4 64.6 61.1 C61.6 62.6 52.4 62.6 49.4 61.1 Z"></path>
+                  </g>
+                </mask>
+                <g mask="url(#rb-a)">
+                  <path d="M20.2 18.2 C25.6 14.4 42.6 14.6 47.9 18 C53.6 25.4 54.2 45.4 48.1 56.1 C42.4 59.6 25.4 59.3 19.9 55.8 C14.2 48 13.6 26.6 20.2 18.2 Z" stroke-width="0.95"></path>
+                  <path d="M20.2 18.2 C26 21.4 42.2 21.8 47.9 18" stroke-width="0.7"></path>
+                  <path d="M17.3 26.1 C25 25.6 43 25.7 50.7 26.2" stroke-width="0.85"></path>
+                  <path d="M16.7 29.2 C25 28.7 43 28.8 51.3 29.3" stroke-width="0.85"></path>
+                  <path d="M16.8 45.1 C25 44.6 43 44.7 51.2 45.2" stroke-width="0.85"></path>
+                  <path d="M17.4 48.2 C25 47.7 43 47.8 50.5 48.3" stroke-width="0.85"></path>
+                  <path d="M27.2 19.6 C25.4 29.6 25.7 45.4 27 56.4" stroke-width="0.45" stroke-opacity="0.8"></path>
+                  <path d="M40.8 19.4 C42.6 29.4 42.3 45.2 41.1 56.6" stroke-width="0.45" stroke-opacity="0.8"></path>
+                  <path d="M22.6 33.5 C23.4 35.8 23.3 38.6 22.7 41" stroke-width="0.4" stroke-opacity="0.65"></path>
+                  <path d="M32 32.8 C32.7 35 32.6 38 32 40.4" stroke-width="0.4" stroke-opacity="0.65"></path>
+                  <path d="M45.6 34 C46.3 36 46.2 38.8 45.7 41" stroke-width="0.4" stroke-opacity="0.65"></path>
+                  <path d="M17.6 36.2 L20.4 34.9" stroke-width="0.35" stroke-opacity="0.5"></path>
+                  <path d="M17.4 39.4 L20.2 38.1" stroke-width="0.35" stroke-opacity="0.5"></path>
+                  <path d="M18 42.6 L20.7 41.4" stroke-width="0.35" stroke-opacity="0.5"></path>
+                  <circle cx="24" cy="27.6" r="0.5" stroke-width="0.4"></circle>
+                  <circle cx="44.2" cy="27.7" r="0.5" stroke-width="0.4"></circle>
+                  <circle cx="24" cy="46.6" r="0.5" stroke-width="0.4"></circle>
+                  <circle cx="44.2" cy="46.7" r="0.5" stroke-width="0.4"></circle>
+                </g>
+                <path d="M46.1 11.9 C52 12.4 62 12.4 67.9 11.9 C67.3 19 66.6 26.4 66.1 32.2 C65.7 42.6 48.2 42.8 47.8 32.1 C47.3 26.3 46.7 19 46.1 11.9 Z" stroke-width="0.95"></path>
+                <path d="M49.1 24.4 C53.6 25 61.2 25 64.9 24.5" stroke-width="0.5" stroke-opacity="0.75"></path>
+                <path d="M56.2 42.8 C55.9 48 56.1 54.4 56.2 59.4 H57.9 C58 54.4 58.2 48 57.9 42.8 Z" stroke-width="0.8"></path>
+                <path d="M49.4 61.1 C52.4 59.4 61.6 59.4 64.6 61.1 C61.6 62.6 52.4 62.6 49.4 61.1 Z" stroke-width="0.9"></path>
+                <path d="M50.6 28.6 L52.8 31" stroke-width="0.35" stroke-opacity="0.55"></path>
+                <path d="M51.8 31.8 L54 34" stroke-width="0.35" stroke-opacity="0.55"></path>
+                <path d="M63.6 16.4 C63.9 20.4 63.6 24 62.8 26.6" stroke-width="0.35" stroke-opacity="0.5"></path>
+              </svg>
+            </div>
+            <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; letter-spacing: 0.14em; color: #C9A961;">dal 2016</div>
+            <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; color: #DCCDB4; margin-top: 6px;">cucina italiana</div>
+            <h1 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(27px, 8vw, 52px); font-weight: 400; letter-spacing: 0.32em; margin: 14px 0 0; padding-left: 0.32em;">RUBINO</h1>
+            <div style="width: min(210px, 100%); height: 1px; background: rgba(201,169,97,0.5); margin: 22px auto 18px;"></div>
+            <p style="font-size: 13px; letter-spacing: 0.14em; color: #C6BAA9; margin: 0; line-height: 1.9;">神楽坂のイタリアン、ルビーノ｜ワインと手打ちパスタ</p>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ heroSingle }}" hint-placeholder-val="{{ false }}">
+        <div class="rb-hero-single" style="height: 640px; background: linear-gradient(rgba(23,19,15,0.5), rgba(23,19,15,0.5)), url('images/home-wine-band.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; padding: 0 20px; position: relative;">
+          <div style="text-align: center; animation: rise 1.3s cubic-bezier(.2,.7,.2,1) both;">
+            <div style="width: 100px; margin: 0 auto 24px;">
+              <svg width="100%" viewBox="0 0 82 72" fill="none" stroke="#F0E9DE" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                <mask id="rb-b" maskUnits="userSpaceOnUse" x="0" y="0" width="82" height="72">
+                  <rect x="0" y="0" width="82" height="72" fill="white" stroke="none"></rect>
+                  <g fill="black" stroke="black" stroke-width="2.4">
+                    <path d="M46.1 11.9 C52 12.4 62 12.4 67.9 11.9 C67.3 19 66.6 26.4 66.1 32.2 C65.7 42.6 48.2 42.8 47.8 32.1 C47.3 26.3 46.7 19 46.1 11.9 Z"></path>
+                    <path d="M56.2 42.8 C55.9 48 56.1 54.4 56.2 59.4 H57.9 C58 54.4 58.2 48 57.9 42.8 Z"></path>
+                    <path d="M49.4 61.1 C52.4 59.4 61.6 59.4 64.6 61.1 C61.6 62.6 52.4 62.6 49.4 61.1 Z"></path>
+                  </g>
+                </mask>
+                <g mask="url(#rb-b)">
+                  <path d="M20.2 18.2 C25.6 14.4 42.6 14.6 47.9 18 C53.6 25.4 54.2 45.4 48.1 56.1 C42.4 59.6 25.4 59.3 19.9 55.8 C14.2 48 13.6 26.6 20.2 18.2 Z" stroke-width="0.95"></path>
+                  <path d="M20.2 18.2 C26 21.4 42.2 21.8 47.9 18" stroke-width="0.7"></path>
+                  <path d="M17.3 26.1 C25 25.6 43 25.7 50.7 26.2" stroke-width="0.85"></path>
+                  <path d="M16.7 29.2 C25 28.7 43 28.8 51.3 29.3" stroke-width="0.85"></path>
+                  <path d="M16.8 45.1 C25 44.6 43 44.7 51.2 45.2" stroke-width="0.85"></path>
+                  <path d="M17.4 48.2 C25 47.7 43 47.8 50.5 48.3" stroke-width="0.85"></path>
+                  <path d="M27.2 19.6 C25.4 29.6 25.7 45.4 27 56.4" stroke-width="0.45" stroke-opacity="0.8"></path>
+                  <path d="M40.8 19.4 C42.6 29.4 42.3 45.2 41.1 56.6" stroke-width="0.45" stroke-opacity="0.8"></path>
+                  <path d="M22.6 33.5 C23.4 35.8 23.3 38.6 22.7 41" stroke-width="0.4" stroke-opacity="0.65"></path>
+                  <path d="M32 32.8 C32.7 35 32.6 38 32 40.4" stroke-width="0.4" stroke-opacity="0.65"></path>
+                  <path d="M45.6 34 C46.3 36 46.2 38.8 45.7 41" stroke-width="0.4" stroke-opacity="0.65"></path>
+                  <path d="M17.6 36.2 L20.4 34.9" stroke-width="0.35" stroke-opacity="0.5"></path>
+                  <path d="M17.4 39.4 L20.2 38.1" stroke-width="0.35" stroke-opacity="0.5"></path>
+                  <path d="M18 42.6 L20.7 41.4" stroke-width="0.35" stroke-opacity="0.5"></path>
+                  <circle cx="24" cy="27.6" r="0.5" stroke-width="0.4"></circle>
+                  <circle cx="44.2" cy="27.7" r="0.5" stroke-width="0.4"></circle>
+                  <circle cx="24" cy="46.6" r="0.5" stroke-width="0.4"></circle>
+                  <circle cx="44.2" cy="46.7" r="0.5" stroke-width="0.4"></circle>
+                </g>
+                <path d="M46.1 11.9 C52 12.4 62 12.4 67.9 11.9 C67.3 19 66.6 26.4 66.1 32.2 C65.7 42.6 48.2 42.8 47.8 32.1 C47.3 26.3 46.7 19 46.1 11.9 Z" stroke-width="0.95"></path>
+                <path d="M49.1 24.4 C53.6 25 61.2 25 64.9 24.5" stroke-width="0.5" stroke-opacity="0.75"></path>
+                <path d="M56.2 42.8 C55.9 48 56.1 54.4 56.2 59.4 H57.9 C58 54.4 58.2 48 57.9 42.8 Z" stroke-width="0.8"></path>
+                <path d="M49.4 61.1 C52.4 59.4 61.6 59.4 64.6 61.1 C61.6 62.6 52.4 62.6 49.4 61.1 Z" stroke-width="0.9"></path>
+                <path d="M50.6 28.6 L52.8 31" stroke-width="0.35" stroke-opacity="0.55"></path>
+                <path d="M51.8 31.8 L54 34" stroke-width="0.35" stroke-opacity="0.55"></path>
+                <path d="M63.6 16.4 C63.9 20.4 63.6 24 62.8 26.6" stroke-width="0.35" stroke-opacity="0.5"></path>
+              </svg>
+            </div>
+            <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 16px; color: #C9A961;">cucina italiana · dal 2016</div>
+            <h1 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(31px, 10vw, 76px); font-weight: 300; letter-spacing: 0.3em; margin: 20px 0 0; padding-left: 0.3em;">RUBINO</h1>
+            <div style="width: min(340px, 100%); height: 1px; background: rgba(201,169,97,0.5); margin: 30px auto 22px;"></div>
+            <p style="font-size: 14px; letter-spacing: 0.2em; color: #C6BAA9; margin: 0;">神楽坂の路地裏で、ワインと手打ちパスタを</p>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ heroSplit }}" hint-placeholder-val="{{ false }}">
+        <div class="rb-hero-split" style="height: 620px; display: grid; grid-template-columns: 1.15fr 1fr; background: #17130F;">
+          <div style="background: url('images/floor-counter.jpg') center/cover no-repeat; clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);"></div>
+          <div style="display: flex; flex-direction: column; justify-content: center; padding: 0 56px; animation: rise 1.2s cubic-bezier(.2,.7,.2,1) both .1s;">
+            <div style="width: 82px; margin-bottom: 22px;">
+              <svg width="100%" viewBox="0 0 82 72" fill="none" stroke="#F0E9DE" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                <mask id="rb-c" maskUnits="userSpaceOnUse" x="0" y="0" width="82" height="72">
+                  <rect x="0" y="0" width="82" height="72" fill="white" stroke="none"></rect>
+                  <g fill="black" stroke="black" stroke-width="2.4">
+                    <path d="M46.1 11.9 C52 12.4 62 12.4 67.9 11.9 C67.3 19 66.6 26.4 66.1 32.2 C65.7 42.6 48.2 42.8 47.8 32.1 C47.3 26.3 46.7 19 46.1 11.9 Z"></path>
+                    <path d="M56.2 42.8 C55.9 48 56.1 54.4 56.2 59.4 H57.9 C58 54.4 58.2 48 57.9 42.8 Z"></path>
+                    <path d="M49.4 61.1 C52.4 59.4 61.6 59.4 64.6 61.1 C61.6 62.6 52.4 62.6 49.4 61.1 Z"></path>
+                  </g>
+                </mask>
+                <g mask="url(#rb-c)">
+                  <path d="M20.2 18.2 C25.6 14.4 42.6 14.6 47.9 18 C53.6 25.4 54.2 45.4 48.1 56.1 C42.4 59.6 25.4 59.3 19.9 55.8 C14.2 48 13.6 26.6 20.2 18.2 Z" stroke-width="0.95"></path>
+                  <path d="M20.2 18.2 C26 21.4 42.2 21.8 47.9 18" stroke-width="0.7"></path>
+                  <path d="M17.3 26.1 C25 25.6 43 25.7 50.7 26.2" stroke-width="0.85"></path>
+                  <path d="M16.7 29.2 C25 28.7 43 28.8 51.3 29.3" stroke-width="0.85"></path>
+                  <path d="M16.8 45.1 C25 44.6 43 44.7 51.2 45.2" stroke-width="0.85"></path>
+                  <path d="M17.4 48.2 C25 47.7 43 47.8 50.5 48.3" stroke-width="0.85"></path>
+                  <path d="M27.2 19.6 C25.4 29.6 25.7 45.4 27 56.4" stroke-width="0.45" stroke-opacity="0.8"></path>
+                  <path d="M40.8 19.4 C42.6 29.4 42.3 45.2 41.1 56.6" stroke-width="0.45" stroke-opacity="0.8"></path>
+                  <path d="M22.6 33.5 C23.4 35.8 23.3 38.6 22.7 41" stroke-width="0.4" stroke-opacity="0.65"></path>
+                  <path d="M32 32.8 C32.7 35 32.6 38 32 40.4" stroke-width="0.4" stroke-opacity="0.65"></path>
+                  <path d="M45.6 34 C46.3 36 46.2 38.8 45.7 41" stroke-width="0.4" stroke-opacity="0.65"></path>
+                  <path d="M17.6 36.2 L20.4 34.9" stroke-width="0.35" stroke-opacity="0.5"></path>
+                  <path d="M17.4 39.4 L20.2 38.1" stroke-width="0.35" stroke-opacity="0.5"></path>
+                  <path d="M18 42.6 L20.7 41.4" stroke-width="0.35" stroke-opacity="0.5"></path>
+                  <circle cx="24" cy="27.6" r="0.5" stroke-width="0.4"></circle>
+                  <circle cx="44.2" cy="27.7" r="0.5" stroke-width="0.4"></circle>
+                  <circle cx="24" cy="46.6" r="0.5" stroke-width="0.4"></circle>
+                  <circle cx="44.2" cy="46.7" r="0.5" stroke-width="0.4"></circle>
+                </g>
+                <path d="M46.1 11.9 C52 12.4 62 12.4 67.9 11.9 C67.3 19 66.6 26.4 66.1 32.2 C65.7 42.6 48.2 42.8 47.8 32.1 C47.3 26.3 46.7 19 46.1 11.9 Z" stroke-width="0.95"></path>
+                <path d="M49.1 24.4 C53.6 25 61.2 25 64.9 24.5" stroke-width="0.5" stroke-opacity="0.75"></path>
+                <path d="M56.2 42.8 C55.9 48 56.1 54.4 56.2 59.4 H57.9 C58 54.4 58.2 48 57.9 42.8 Z" stroke-width="0.8"></path>
+                <path d="M49.4 61.1 C52.4 59.4 61.6 59.4 64.6 61.1 C61.6 62.6 52.4 62.6 49.4 61.1 Z" stroke-width="0.9"></path>
+                <path d="M50.6 28.6 L52.8 31" stroke-width="0.35" stroke-opacity="0.55"></path>
+                <path d="M51.8 31.8 L54 34" stroke-width="0.35" stroke-opacity="0.55"></path>
+                <path d="M63.6 16.4 C63.9 20.4 63.6 24 62.8 26.6" stroke-width="0.35" stroke-opacity="0.5"></path>
+              </svg>
+            </div>
+            <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: #C9A961;">cucina italiana · dal 2016</div>
+            <h1 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(29px, 9vw, 56px); font-weight: 300; letter-spacing: 0.28em; margin: 16px 0 0;">RUBINO</h1>
+            <div style="width: 100%; height: 1px; background: rgba(201,169,97,0.4); margin: 26px 0 20px;"></div>
+            <p style="font-size: 14px; letter-spacing: 0.14em; color: #C6BAA9; margin: 0; line-height: 2;">神楽坂の路地裏、十四席。<br />ワインと手打ちパスタの店。</p>
+          </div>
+        </div>
+      </sc-if>
+    </section>
+
+    <section style="background: linear-gradient(180deg, #3A0D14 0%, #2C0E13 100%); padding: 92px 44px 100px;">
+      <div style="max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px;">
+        <sc-for list="{{ notices }}" as="n" hint-placeholder-count="2">
+          <div style="background: rgba(255,255,255,0.055); border: 1px solid rgba(201,169,97,0.16);">
+            <div style="text-align: center; padding: 24px 32px 20px;">
+              <span style="font-size: 16.5px; letter-spacing: 0.2em; font-weight: 500;">{{ n.title }}</span>
+            </div>
+            <div style="height: 1px; background: rgba(201,169,97,0.28); margin: 0 clamp(16px, 4vw, 40px);"></div>
+            <div style="padding: 30px clamp(20px, 5vw, 56px) 38px; text-align: center; font-size: 13.5px; line-height: 2.3; color: #D6C9B8; letter-spacing: 0.06em;">
+              <sc-for list="{{ n.paras }}" as="p" hint-placeholder-count="2">
+                <p style="margin: 0 0 20px;">{{ p }}</p>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div class="rb-g2" style="max-width: 1180px; margin: 92px auto 0; display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center;">
+        <div class="rb-img" style="height: 470px; background: url('images/home-storefront.jpg') center/cover no-repeat; animation: rise 1s ease both; animation-timeline: view(); animation-range: entry 0% cover 26%;"></div>
+        <div class="rb-vwrap" style="display: flex; flex-direction: row-reverse; gap: 38px; position: relative;">
+          <div class="rb-quote" style="position: absolute; right: -34px; top: -34px; font-family: 'Playfair Display', serif; font-style: italic; font-size: 56px; color: rgba(201,169,97,0.35);">”</div>
+          <div class="rb-vtext" style="writing-mode: vertical-rl; font-size: 27px; letter-spacing: 0.26em; line-height: 2.1; font-weight: 500; height: 420px;">「美味しい」<br />時間が、<br />神楽坂に。</div>
+          <div class="rb-vtext" style="writing-mode: vertical-rl; font-size: 13.5px; letter-spacing: 0.13em; line-height: 2.5; color: #C6BAA9; height: 440px;">神楽坂駅から石畳を三分。表通りから一本外れた路地に、看板をひとつだけ出してひっそりと店を構えるイタリア料理店「RUBINO（ルビーノ）」。<br /><br />十四席のみの小さな店内は、ゆったりとした大人の隠れ家のような居心地の良さが自慢です。肉料理や魚料理、手打ちパスタなどの幅広いお料理は、どれもイタリアンを土台にしながらも、和のエッセンスをさりげなく忍ばせています。<br /><br />日本ならではの土鍋や陶器でお出ししたり、和食の食材を使ったり。「新しい感動をお届けしたい」という想いで、日々お料理と向き合っています。</div>
+        </div>
+      </div>
+      <div style="max-width: 1180px; margin: 60px auto 0; display: flex; justify-content: center;">
+        <button onClick="{{ goMind }}" style="background: none; border: 0; padding: 0 0 14px; display: flex; align-items: center; gap: 28px; border-bottom: 1px solid rgba(201,169,97,0.4); min-width: min(480px, 100%); justify-content: center; transition: border-color .3s ease;" style-hover="border-color: #C9A961;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #C9A961;">&gt;</span>
+          <span style="font-size: 14px; letter-spacing: 0.24em;">ルビーノの想い</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="rb-bleed rb-band" style="position: relative; height: 560px; background: linear-gradient(rgba(18,15,13,0.55), rgba(18,15,13,0.55)), url('images/home-wine-band.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center;">
+      <div class="rb-vwrap" style="display: flex; flex-direction: row-reverse; gap: 30px; align-items: flex-start; animation: fade 1.2s ease both; animation-timeline: view(); animation-range: entry 0% cover 30%;">
+        <div class="rb-vtext" style="writing-mode: vertical-rl; font-size: 25px; letter-spacing: 0.28em; line-height: 2.2; font-weight: 500;">繊細かつ大胆に。</div>
+        <div class="rb-vtext" style="writing-mode: vertical-rl; font-size: 25px; letter-spacing: 0.28em; line-height: 2.2; font-weight: 500;">見え隠れする「和」。</div>
+      </div>
+    </section>
+
+    <section style="background: #E9E5DD; color: #241E19; padding: 104px 44px 110px; position: relative; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(118deg, rgba(255,255,255,0.6) 0 24%, rgba(255,255,255,0) 42%); pointer-events: none;"></div>
+      <div style="max-width: 1180px; margin: 0 auto; position: relative;">
+        <div class="rb-g2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+          <div class="rb-img rb-offset" style="height: 300px; background: url('images/home-beef.jpg') center/cover no-repeat; margin-top: 40px; box-shadow: 0 6px 26px rgba(60,45,30,0.14);"></div>
+          <div class="rb-img rb-offset" style="height: 260px; background: url('images/home-pouring-hands.jpg') center/cover no-repeat; margin-top: 150px; box-shadow: 0 6px 26px rgba(60,45,30,0.14);"></div>
+        </div>
+        <div class="rb-g2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 76px;">
+          <div class="rb-img" style="height: 420px; background: url('images/home-donabe.jpg') center/cover no-repeat; box-shadow: 0 6px 26px rgba(60,45,30,0.14);"></div>
+          <div>
+            <div style="display: flex; align-items: baseline; gap: 18px;">
+              <span style="font-size: 32px; letter-spacing: 0.1em; font-weight: 500;">和</span>
+              <span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #8A6E3A;">×</span>
+              <span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 34px;">Italian</span>
+            </div>
+            <div style="width: 100%; height: 1px; background: rgba(138,110,58,0.35); margin: 26px 0 28px;"></div>
+            <p style="font-size: 13.5px; line-height: 2.4; color: #4B443C; margin: 0 0 22px; letter-spacing: 0.05em;">素材の持ち味を活かした本格的なイタリアンの中に、食材や器で和のテイストを取り入れた遊び心あるお料理こそ、ルビーノの真骨頂です。</p>
+            <p style="font-size: 13.5px; line-height: 2.4; color: #4B443C; margin: 0; letter-spacing: 0.05em;">築地から届く旬の鮮魚、長野の契約農家から届く野菜、瀬戸内の柑橘。こだわり抜いた食材を用いて、目でも舌でも愉しめる一皿をお作りしています。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: #17130F; padding: 104px 44px 112px; position: relative; overflow: hidden;">
+      <div class="rb-deco" style="position: absolute; top: 50px; left: 0; right: 0; text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 140px; color: rgba(255,255,255,0.04); pointer-events: none;">Course</div>
+      <div style="max-width: 1180px; margin: 0 auto; position: relative;">
+        <div style="text-align: center;">
+          <h2 style="font-size: 24px; letter-spacing: 0.2em; font-weight: 500; margin: 0;">「ルビーノの想い」を表現するコース</h2>
+          <div style="width: 74px; height: 1px; background: rgba(201,169,97,0.5); margin: 26px auto 0;"></div>
+        </div>
+        <div class="rb-g2 rb-coursepair" style="display: grid; grid-template-columns: 1fr 1fr; margin-top: 76px; align-items: center;">
+          <div style="position: relative;">
+            <div class="rb-img" style="height: 340px; background: url('images/home-pasta-cheese.jpg') center/cover no-repeat; clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);"></div>
+            <button onClick="{{ goCourse }}" style="position: absolute; left: 0; bottom: -36px; background: none; border: 0; padding: 0; display: flex; align-items: center; gap: 20px;" style-hover="color: #C9A961;">
+              <span style="width: 62px; height: 1px; background: rgba(201,169,97,0.6); display: block;"></span>
+              <span style="font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 0.26em;">CHEESE COURSE</span>
+            </button>
+          </div>
+          <div style="position: relative;">
+            <div class="rb-img" style="height: 340px; background: url('images/home-pasta-seafood.jpg') center/cover no-repeat; clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);"></div>
+            <button onClick="{{ goCourse }}" style="position: absolute; right: 0; top: -36px; background: none; border: 0; padding: 0; display: flex; align-items: center; gap: 20px;" style-hover="color: #C9A961;">
+              <span style="font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 0.26em;">FULL COURSE</span>
+              <span style="width: 62px; height: 1px; background: rgba(201,169,97,0.6); display: block;"></span>
+            </button>
+          </div>
+        </div>
+        <div class="rb-g3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(201,169,97,0.16); margin-top: 96px;">
+          <sc-for list="{{ courseCards }}" as="c" hint-placeholder-count="3">
+            <button onClick="{{ goCourse }}" style="text-align: left; background: #17130F; border: 0; padding: 40px 34px 44px; transition: background .4s ease;" style-hover="background: #3A0D14;">
+              <div style="font-family: 'Cormorant Garamond', serif; font-size: 11.5px; letter-spacing: 0.24em; color: #C9A961;">{{ c.en }}</div>
+              <h3 style="font-size: 19px; letter-spacing: 0.12em; font-weight: 500; margin: 18px 0 6px;">{{ c.title }}</h3>
+              <div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; letter-spacing: 0.06em; color: #DCCDB4;">{{ c.price }}</div>
+              <p style="font-size: 13px; line-height: 2.15; color: #A79B8C; margin: 16px 0 0;">{{ c.body }}</p>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: linear-gradient(180deg, #3A0D14 0%, #24100F 100%); padding: 100px 44px 108px; position: relative; overflow: hidden;">
+      <div class="rb-deco rb-deco-l" style="position: absolute; top: 60px; left: 60px; font-family: 'Playfair Display', serif; font-style: italic; font-size: 150px; color: rgba(255,255,255,0.045); pointer-events: none;">Wine</div>
+      <div class="rb-g2" style="max-width: 1180px; margin: 0 auto; position: relative; display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: center;">
+        <div class="rb-vwrap-r" style="display: flex; gap: 30px; justify-content: center;">
+          <div class="rb-vtext" style="writing-mode: vertical-rl; font-size: 15px; letter-spacing: 0.18em; line-height: 2.4; color: #C6BAA9; height: 340px;">そう感じていただきたくて</div>
+          <div class="rb-vtext" style="writing-mode: vertical-rl; font-size: 27px; letter-spacing: 0.26em; line-height: 2.1; font-weight: 500; height: 400px;">「ワインって、<br />愉しい。」</div>
+        </div>
+        <div class="rb-img" style="height: 460px; background: url('images/home-sommelier.jpg') center/cover no-repeat; animation: rise 1s ease both; animation-timeline: view(); animation-range: entry 0% cover 26%;"></div>
+      </div>
+      <div style="max-width: 900px; margin: 64px auto 0; text-align: center;">
+        <p style="font-size: 13.5px; line-height: 2.5; color: #D6C9B8; margin: 0; letter-spacing: 0.06em;">数あるドリンクの中でも、おすすめはソムリエ資格を持つ店主が選定した芳醇なワインです。とはいえ、当店には型にはまったワインリストはございません。お客様のお好みやその日のシチュエーションによって、最適な一杯をご提案いたします。</p>
+      </div>
+      <div style="max-width: 1180px; margin: 54px auto 0; display: flex; justify-content: center;">
+        <button onClick="{{ goWine }}" style="background: none; border: 0; padding: 0 0 14px; display: flex; align-items: center; gap: 28px; border-bottom: 1px solid rgba(201,169,97,0.4); min-width: min(480px, 100%); justify-content: center;" style-hover="border-color: #C9A961;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #C9A961;">&gt;</span>
+          <span style="font-size: 14px; letter-spacing: 0.24em;">ワインについて</span>
+        </button>
+      </div>
+    </section>
+
+    <section style="background: #17130F; padding: 96px 44px 104px;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <div style="text-align: center;">
+          <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 40px; color: #C9A961;">Lunch</div>
+          <h2 style="font-size: 23px; letter-spacing: 0.2em; font-weight: 500; margin: 16px 0 0;">昼のパスタコース</h2>
+          <div style="width: 74px; height: 1px; background: rgba(201,169,97,0.5); margin: 24px auto 0;"></div>
+        </div>
+        <div class="rb-g2" style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 44px; margin-top: 58px; align-items: center;">
+          <div class="rb-img" style="height: 340px; background: url('images/home-lunch.jpg') center/cover no-repeat;"></div>
+          <div>
+            <p style="font-size: 13.5px; line-height: 2.4; color: #C6BAA9; margin: 0 0 26px; letter-spacing: 0.05em;">平日の昼は、前菜・手打ちパスタ・ドルチェの三皿で構成した軽やかなコースをご用意しています。パスタは日替わりで三種からお選びいただけます。</p>
+            <div style="border-top: 1px solid rgba(201,169,97,0.22);">
+              <sc-for list="{{ lunchQuick }}" as="l" hint-placeholder-count="3">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.07);">
+                  <span style="font-size: 14px; letter-spacing: 0.08em;">{{ l.n }}</span>
+                  <span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; color: #DCCDB4;">{{ l.p }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <button onClick="{{ goLunch }}" style="margin-top: 30px; background: none; border: 1px solid rgba(201,169,97,0.4); padding: 14px 26px; display: flex; align-items: center; gap: 20px; transition: background .3s ease, color .3s ease;" style-hover="background: #C9A961; color: #241E19;">
+              <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px;">&gt;</span>
+              <span style="font-size: 13px; letter-spacing: 0.2em;">ランチの詳細</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: #E9E5DD; color: #241E19; padding: 96px 44px 104px; position: relative; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(120deg, rgba(255,255,255,0.6) 0 22%, rgba(255,255,255,0) 42%); pointer-events: none;"></div>
+      <div style="max-width: 1180px; margin: 0 auto; position: relative;">
+        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 20px 44px;">
+          <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 52px;">News</div>
+          <button onClick="{{ goAccess }}" style="background: none; border: 1px solid rgba(138,110,58,0.45); padding: 12px 30px; display: flex; align-items: center; gap: 18px; transition: background .3s ease, color .3s ease;" style-hover="background: #241E19; color: #E9E5DD;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #8A6E3A;">&gt;</span>
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 0.24em;">MORE</span>
+          </button>
+        </div>
+        <div class="rb-g3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px;">
+          <sc-for list="{{ news }}" as="n" hint-placeholder-count="3">
+            <div style="background: #FBFAF7; box-shadow: 0 2px 14px rgba(60,45,30,0.08); transition: transform .35s ease;" style-hover="transform: translateY(-4px);">
+              <div style="height: 214px; background: url('{{ n.shot }}') center/cover no-repeat;"></div>
+              <div style="padding: 20px 24px 24px;">
+                <div style="font-size: 14px; letter-spacing: 0.06em; line-height: 1.8;">{{ n.title }}</div>
+                <div style="font-family: 'Cormorant Garamond', serif; font-size: 12.5px; letter-spacing: 0.12em; color: #8A7F72; margin-top: 12px;">{{ n.date }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div class="rb-g2s" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px;">
+          <a href="#" style="border-bottom: 1px solid rgba(138,110,58,0.4); padding: 0 0 14px; display: flex; align-items: center; gap: 26px; justify-content: center; color: #241E19;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #8A6E3A;">&gt;</span>
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 0.24em;">Instagram</span>
+          </a>
+          <a href="#" style="border-bottom: 1px solid rgba(138,110,58,0.4); padding: 0 0 14px; display: flex; align-items: center; gap: 26px; justify-content: center; color: #241E19;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #8A6E3A;">&gt;</span>
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 0.24em;">Facebook</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isMind }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Mind">
+    <section style="background: linear-gradient(180deg, #3A0D14 0%, #24100F 100%); padding: 80px 44px 88px; text-align: center;">
+      <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 52px; color: #C9A961;">Mind</div>
+      <h1 style="font-size: 27px; letter-spacing: 0.2em; font-weight: 500; margin: 20px 0 0;">店主の想い</h1>
+      <div style="width: 84px; height: 1px; background: rgba(201,169,97,0.55); margin: 30px auto 0;"></div>
+    </section>
+
+    <section style="background: #17130F; padding: 92px 44px 96px;">
+      <div class="rb-g2" style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.05fr; gap: 60px; align-items: center;">
+        <div class="rb-vwrap" style="display: flex; flex-direction: row-reverse; gap: 38px;">
+          <div class="rb-vtext" style="writing-mode: vertical-rl; font-size: 26px; letter-spacing: 0.26em; line-height: 2.1; font-weight: 500; height: 400px;">十四席だから、<br />できること。</div>
+          <div class="rb-vtext" style="writing-mode: vertical-rl; font-size: 13.5px; letter-spacing: 0.13em; line-height: 2.5; color: #C6BAA9; height: 440px;">大阪のイタリア料理店で八年、ミラノ近郊の家族経営のトラットリアで三年。帰国後に開いた店が、この神楽坂のルビーノです。<br /><br />修業先で最後まで残った学びは、技術ではなく距離でした。厨房とお客様の間が近い店ほど、料理は良くなる。だから席数を増やさず、十四席のままにしています。カウンターでお出しする一皿は、私が焼いて、私がお運びします。<br /><br />イタリアの型をそのまま持ち込むつもりはありません。日本の器で、日本の魚で、日本の四季で作る。それでもイタリア料理と呼べるものを、毎日探しています。</div>
+        </div>
+        <div class="rb-img" style="height: 460px; background: url('images/mind-portrait.jpg') center/cover no-repeat;"></div>
+      </div>
+    </section>
+
+    <section style="background: #E9E5DD; color: #241E19; padding: 96px 44px 104px; position: relative; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(118deg, rgba(255,255,255,0.6) 0 24%, rgba(255,255,255,0) 42%); pointer-events: none;"></div>
+      <div style="max-width: 1180px; margin: 0 auto; position: relative;">
+        <div style="text-align: center;">
+          <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 38px; color: #8A6E3A;">Three promises</div>
+          <h2 style="font-size: 22px; letter-spacing: 0.2em; font-weight: 500; margin: 14px 0 0;">三つの約束</h2>
+        </div>
+        <div class="rb-g3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(138,110,58,0.22); margin-top: 54px;">
+          <sc-for list="{{ promises }}" as="p" hint-placeholder-count="3">
+            <div style="background: #F2EFE9; padding: 40px 34px 44px; text-align: center;">
+              <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; color: #8A6E3A;">{{ p.n }}</div>
+              <h3 style="font-size: 16.5px; letter-spacing: 0.16em; font-weight: 500; margin: 16px 0 0;">{{ p.t }}</h3>
+              <div style="width: 48px; height: 1px; background: rgba(138,110,58,0.4); margin: 20px auto;"></div>
+              <p style="font-size: 13px; line-height: 2.25; color: #5F564C; margin: 0; letter-spacing: 0.04em;">{{ p.b }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <div class="rb-g3" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 26px; margin-top: 72px;">
+          <sc-for list="{{ mindShots }}" as="s" hint-placeholder-count="3">
+            <div style="height: 260px; background: url('{{ s }}') center/cover no-repeat; box-shadow: 0 5px 22px rgba(60,45,30,0.12);"></div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: linear-gradient(180deg, #3A0D14 0%, #2C0E13 100%); padding: 92px 44px 96px;">
+      <div style="max-width: 1000px; margin: 0 auto;">
+        <div style="text-align: center;">
+          <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 34px; color: #C9A961;">Ingredients</div>
+          <h2 style="font-size: 21px; letter-spacing: 0.2em; font-weight: 500; margin: 14px 0 0;">食材のこと</h2>
+        </div>
+        <div style="margin-top: 46px;">
+          <sc-for list="{{ ingredients }}" as="i" hint-placeholder-count="4">
+            <div class="rb-side" style="display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 22px 0; border-top: 1px solid rgba(201,169,97,0.22);">
+              <div style="font-size: 14px; letter-spacing: 0.14em; color: #DCCDB4;">{{ i.k }}</div>
+              <div style="font-size: 13px; letter-spacing: 0.05em; color: #C6BAA9; line-height: 2.2;">{{ i.v }}</div>
+            </div>
+          </sc-for>
+          <div style="border-top: 1px solid rgba(201,169,97,0.22);"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isCourse }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Course">
+    <section style="background: linear-gradient(180deg, #3A0D14 0%, #24100F 100%); padding: 80px 44px 88px; text-align: center;">
+      <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 52px; color: #C9A961;">Course</div>
+      <h1 style="font-size: 27px; letter-spacing: 0.2em; font-weight: 500; margin: 20px 0 0;">夜のコース</h1>
+      <div style="width: 84px; height: 1px; background: rgba(201,169,97,0.55); margin: 30px auto 32px;"></div>
+      <p style="font-size: 13.5px; line-height: 2.3; color: #C6BAA9; max-width: 720px; margin: 0 auto; letter-spacing: 0.05em;">夜はコースのみのご提供です。月替わりで内容を組み替えており、下記は2026年8月の構成です。<br />アレルギー・苦手な食材は、ご予約時にお申し付けください。</p>
+    </section>
+
+    <sc-for list="{{ courses }}" as="c" hint-placeholder-count="3">
+      <section style="background: {{ c.bg }}; padding: 84px 44px 88px; border-top: 1px solid rgba(201,169,97,0.16);">
+        <div class="rb-g2" style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 420px 1fr; gap: 72px;">
+          <div>
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 12px; letter-spacing: 0.26em; color: #C9A961;">{{ c.en }}</div>
+            <h2 style="font-size: 25px; letter-spacing: 0.16em; font-weight: 500; margin: 16px 0 12px;">{{ c.title }}</h2>
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; letter-spacing: 0.05em; color: #DCCDB4;">{{ c.price }}</div>
+            <div style="width: 100%; height: 1px; background: rgba(201,169,97,0.28); margin: 26px 0;"></div>
+            <p style="font-size: 13.5px; line-height: 2.35; color: #C6BAA9; margin: 0 0 28px; letter-spacing: 0.04em;">{{ c.body }}</p>
+            <div style="height: 240px; background: url('{{ c.shot }}') center/cover no-repeat;"></div>
+            <div style="margin-top: 22px; font-size: 12px; color: #8C8171; line-height: 2;">{{ c.note }}</div>
+          </div>
+          <div>
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 11.5px; letter-spacing: 0.26em; color: #C9A961; padding-bottom: 16px; border-bottom: 1px solid rgba(201,169,97,0.28);">MENU — 8月の構成</div>
+            <sc-for list="{{ c.items }}" as="i" hint-placeholder-count="7">
+              <div class="rb-side" style="display: grid; grid-template-columns: 130px 1fr; gap: 28px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.07);">
+                <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; color: #C9A961;">{{ i.it }}</div>
+                <div>
+                  <div style="font-size: 15px; letter-spacing: 0.08em; line-height: 1.8;">{{ i.ja }}</div>
+                  <div style="font-size: 12.5px; color: #A79B8C; margin-top: 8px; line-height: 2;">{{ i.d }}</div>
+                </div>
+              </div>
+            </sc-for>
+            <button onClick="{{ goAccess }}" style="margin-top: 34px; background: none; border: 1px solid rgba(201,169,97,0.45); padding: 15px 28px; display: flex; align-items: center; gap: 20px; transition: background .3s ease, color .3s ease;" style-hover="background: #C9A961; color: #241E19;">
+              <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px;">&gt;</span>
+              <span style="font-size: 13.5px; letter-spacing: 0.2em;">このコースで予約する</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </sc-for>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isWine }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Wine">
+    <section style="background: linear-gradient(180deg, #3A0D14 0%, #24100F 100%); padding: 80px 44px 88px; text-align: center;">
+      <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 52px; color: #C9A961;">Wine</div>
+      <h1 style="font-size: 27px; letter-spacing: 0.2em; font-weight: 500; margin: 20px 0 0;">ワインとドリンク</h1>
+      <div style="width: 84px; height: 1px; background: rgba(201,169,97,0.55); margin: 30px auto 32px;"></div>
+      <p style="font-size: 13.5px; line-height: 2.3; color: #C6BAA9; max-width: 720px; margin: 0 auto; letter-spacing: 0.05em;">当店に固定のワインリストはございません。その日の一皿と、お客様のお好みに合わせて一杯ずつお選びします。</p>
+    </section>
+
+    <section class="rb-bleed rb-band" style="position: relative; height: 480px; background: linear-gradient(rgba(18,15,13,0.58), rgba(18,15,13,0.58)), url('images/wine-band.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center;">
+      <div class="rb-vtext" style="writing-mode: vertical-rl; font-size: 24px; letter-spacing: 0.28em; line-height: 2.2; font-weight: 500;">一皿ごとに、一杯を。</div>
+    </section>
+
+    <section style="background: #17130F; padding: 92px 44px 96px;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <div class="rb-g4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(201,169,97,0.16);">
+          <sc-for list="{{ wineRegions }}" as="w" hint-placeholder-count="4">
+            <div style="background: #17130F; padding: 36px 30px 40px;">
+              <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; color: #C9A961;">{{ w.en }}</div>
+              <h3 style="font-size: 16px; letter-spacing: 0.14em; font-weight: 500; margin: 14px 0 14px;">{{ w.ja }}</h3>
+              <p style="font-size: 12.5px; line-height: 2.1; color: #A79B8C; margin: 0;">{{ w.b }}</p>
+            </div>
+          </sc-for>
+        </div>
+
+        <div class="rb-g2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 76px;">
+          <div>
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 11.5px; letter-spacing: 0.26em; color: #C9A961; padding-bottom: 16px; border-bottom: 1px solid rgba(201,169,97,0.28);">BY THE GLASS — グラス</div>
+            <sc-for list="{{ byGlass }}" as="g" hint-placeholder-count="5">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 17px 0; border-bottom: 1px solid rgba(255,255,255,0.07);">
+                <span style="font-size: 14px; letter-spacing: 0.06em; line-height: 1.8;">{{ g.n }}</span>
+                <span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; color: #DCCDB4; white-space: nowrap;">{{ g.p }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div>
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 11.5px; letter-spacing: 0.26em; color: #C9A961; padding-bottom: 16px; border-bottom: 1px solid rgba(201,169,97,0.28);">PAIRING & OTHERS — ペアリング・その他</div>
+            <sc-for list="{{ pairing }}" as="g" hint-placeholder-count="5">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 17px 0; border-bottom: 1px solid rgba(255,255,255,0.07);">
+                <span style="font-size: 14px; letter-spacing: 0.06em; line-height: 1.8;">{{ g.n }}</span>
+                <span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; color: #DCCDB4; white-space: nowrap;">{{ g.p }}</span>
+              </div>
+            </sc-for>
+            <p style="font-size: 12px; color: #8C8171; margin: 22px 0 0; line-height: 2;">ボトルは¥5,500〜。お持ち込みは1本¥3,300の抜栓料にて承ります。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isLunch }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Lunch">
+    <section style="background: linear-gradient(180deg, #3A0D14 0%, #24100F 100%); padding: 80px 44px 88px; text-align: center;">
+      <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 52px; color: #C9A961;">Lunch</div>
+      <h1 style="font-size: 27px; letter-spacing: 0.2em; font-weight: 500; margin: 20px 0 0;">昼のご案内</h1>
+      <div style="width: 84px; height: 1px; background: rgba(201,169,97,0.55); margin: 30px auto 32px;"></div>
+      <p style="font-size: 13.5px; line-height: 2.3; color: #C6BAA9; max-width: 720px; margin: 0 auto; letter-spacing: 0.05em;">平日 11:30〜14:30（最終入店13:00）。昼も完全予約制です。<br />手打ちパスタは日替わりで三種からお選びいただけます。</p>
+    </section>
+
+    <section style="background: #E9E5DD; color: #241E19; padding: 88px 44px 100px; position: relative; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(118deg, rgba(255,255,255,0.6) 0 24%, rgba(255,255,255,0) 42%); pointer-events: none;"></div>
+      <div style="max-width: 1180px; margin: 0 auto; position: relative;">
+        <div class="rb-g2" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
+          <sc-for list="{{ lunchSets }}" as="l" hint-placeholder-count="2">
+            <div style="background: #FBFAF7; border: 1px solid rgba(138,110,58,0.2); box-shadow: 0 3px 18px rgba(60,45,30,0.08);">
+              <div style="height: 280px; background: url('{{ l.shot }}') center/cover no-repeat;"></div>
+              <div style="padding: 34px clamp(20px, 5vw, 36px) 38px;">
+                <div style="font-family: 'Cormorant Garamond', serif; font-size: 11.5px; letter-spacing: 0.26em; color: #8A6E3A;">{{ l.en }}</div>
+                <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-top: 14px;">
+                  <h2 style="font-size: 21px; letter-spacing: 0.14em; font-weight: 500; margin: 0;">{{ l.title }}</h2>
+                  <span style="font-family: 'Cormorant Garamond', serif; font-size: 26px;">{{ l.price }}</span>
+                </div>
+                <div style="width: 100%; height: 1px; background: rgba(138,110,58,0.28); margin: 22px 0;"></div>
+                <sc-for list="{{ l.items }}" as="i" hint-placeholder-count="4">
+                  <div style="display: flex; gap: 14px; padding: 9px 0;">
+                    <span style="color: #8A6E3A; font-size: 12px; line-height: 2;">—</span>
+                    <span style="font-size: 13.5px; line-height: 2; letter-spacing: 0.04em; color: #3B342C;">{{ i }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div class="rb-g2" style="margin-top: 76px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px;">
+          <div>
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 11.5px; letter-spacing: 0.26em; color: #8A6E3A; padding-bottom: 16px; border-bottom: 1px solid rgba(138,110,58,0.3);">PASTA OF THE DAY — 本日のパスタ</div>
+            <sc-for list="{{ pastaDaily }}" as="p" hint-placeholder-count="3">
+              <div style="padding: 18px 0; border-bottom: 1px solid rgba(138,110,58,0.18);">
+                <div style="font-size: 15px; letter-spacing: 0.06em;">{{ p.n }}</div>
+                <div style="font-size: 12.5px; color: #6E655D; margin-top: 8px; line-height: 2;">{{ p.d }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div>
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 11.5px; letter-spacing: 0.26em; color: #8A6E3A; padding-bottom: 16px; border-bottom: 1px solid rgba(138,110,58,0.3);">NOTES — ご案内</div>
+            <sc-for list="{{ lunchNotes }}" as="n" hint-placeholder-count="4">
+              <div style="display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(138,110,58,0.18);">
+                <span style="color: #8A6E3A; font-size: 12px; line-height: 2;">—</span>
+                <span style="font-size: 13px; line-height: 2.05; letter-spacing: 0.04em; color: #4B443C;">{{ n }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isAccess }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Access">
+    <section style="background: linear-gradient(180deg, #3A0D14 0%, #24100F 100%); padding: 80px 44px 88px; text-align: center;">
+      <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 52px; color: #C9A961;">Access</div>
+      <h1 style="font-size: 27px; letter-spacing: 0.2em; font-weight: 500; margin: 20px 0 0;">店舗案内とご予約</h1>
+      <div style="width: 84px; height: 1px; background: rgba(201,169,97,0.55); margin: 30px auto 0;"></div>
+    </section>
+
+    <section style="background: #17130F; padding: 84px 44px 92px;">
+      <div class="rb-g2" style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: start;">
+        <div>
+          <div style="border: 1px solid rgba(201,169,97,0.22);">
+            <div class="rb-img" style="height: 340px; background: repeating-linear-gradient(135deg, #2A1B17 0 10px, #33221C 10px 20px); display: flex; align-items: center; justify-content: center;">
+              <span style="font-family: 'Cormorant Garamond', serif; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: #7A6A58;">[ google maps embed ]</span>
+            </div>
+            <div style="padding: 28px 30px 32px;">
+              <div style="font-family: 'Cormorant Garamond', serif; font-size: 11.5px; letter-spacing: 0.26em; color: #C9A961;">KAGURAZAKA</div>
+              <p style="font-size: 13.5px; line-height: 2.1; color: #C6BAA9; margin: 14px 0 0; letter-spacing: 0.04em;">〒162-0825 東京都新宿区神楽坂5-12-3 神楽坂ビル1F<br />東京メトロ東西線「神楽坂駅」1番出口から徒歩3分／JR「飯田橋駅」西口から徒歩9分</p>
+            </div>
+          </div>
+          <div style="margin-top: 40px;">
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 11.5px; letter-spacing: 0.26em; color: #C9A961; padding-bottom: 16px; border-bottom: 1px solid rgba(201,169,97,0.28);">FLOOR — 店内のご案内</div>
+            <div class="rb-g3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 26px;">
+              <sc-for list="{{ floorShots }}" as="f" hint-placeholder-count="3">
+                <div>
+                  <div style="height: 180px; background: url('{{ f.shot }}') center/cover no-repeat;"></div>
+                  <div style="font-size: 13px; letter-spacing: 0.1em; margin-top: 14px;">{{ f.t }}</div>
+                  <div style="font-size: 12px; color: #8C8171; margin-top: 6px; line-height: 1.9;">{{ f.b }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 34px;">
+          <div style="border: 1px solid rgba(201,169,97,0.28); padding: 32px 30px 36px; text-align: center;">
+            <div style="font-size: 12.5px; letter-spacing: 0.18em; color: #C6BAA9;">ご予約・お問い合わせ</div>
+            <a href="tel:+81352290166" style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 30px; letter-spacing: 0.06em; margin-top: 14px;">TEL.03-5229-0166</a>
+            <p style="font-size: 12px; color: #8C8171; margin: 14px 0 0; line-height: 2;">受付時間 10:00〜21:00<br />※完全予約制／前日までのご連絡をお願いいたします</p>
+          </div>
+          <form style="border: 1px solid rgba(201,169,97,0.22); padding: 32px 30px 34px;">
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 11.5px; letter-spacing: 0.26em; color: #C9A961; padding-bottom: 18px; border-bottom: 1px solid rgba(201,169,97,0.22);">FORM — ご予約フォーム</div>
+            <div style="display: flex; flex-direction: column; gap: 22px; margin-top: 26px;">
+              <sc-for list="{{ formFields }}" as="f" hint-placeholder-count="5">
+                <label style="display: block;">
+                  <span style="display: block; font-size: 12.5px; letter-spacing: 0.14em; color: #C6BAA9; margin-bottom: 10px;">{{ f.label }}</span>
+                  <input type="text" placeholder="{{ f.ph }}" style="width: 100%; background: none; border: 0; border-bottom: 1px solid rgba(201,169,97,0.32); outline: none; padding: 9px 0; font-family: 'Shippori Mincho', serif; font-size: 14px; color: #EDE7DF;" />
+                </label>
+              </sc-for>
+              <label style="display: block;">
+                <span style="display: block; font-size: 12.5px; letter-spacing: 0.14em; color: #C6BAA9; margin-bottom: 10px;">ご要望</span>
+                <textarea rows="4" placeholder="アレルギー、記念日のご利用、お席のご希望などをご記入ください。" style="width: 100%; background: none; border: 1px solid rgba(201,169,97,0.28); outline: none; padding: 13px; font-family: 'Shippori Mincho', serif; font-size: 14px; color: #EDE7DF; resize: vertical; line-height: 2;"></textarea>
+              </label>
+            </div>
+            <button type="button" style="width: 100%; margin-top: 28px; background: #C9A961; border: 0; color: #241E19; padding: 16px 0; font-family: 'Shippori Mincho', serif; font-size: 14px; letter-spacing: 0.24em; transition: opacity .3s ease;" style-hover="opacity: 0.85;">予約を申し込む</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: linear-gradient(180deg, #3A0D14 0%, #2C0E13 100%); padding: 88px 44px 92px;">
+      <div style="max-width: 1000px; margin: 0 auto;">
+        <div style="text-align: center;">
+          <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 34px; color: #C9A961;">Information</div>
+          <h2 style="font-size: 21px; letter-spacing: 0.2em; font-weight: 500; margin: 14px 0 0;">店舗情報</h2>
+        </div>
+        <div style="margin-top: 44px;">
+          <sc-for list="{{ storeInfo }}" as="i" hint-placeholder-count="8">
+            <div class="rb-side" style="display: grid; grid-template-columns: 190px 1fr; gap: 32px; padding: 18px 0; border-top: 1px solid rgba(201,169,97,0.22);">
+              <div style="font-size: 13px; letter-spacing: 0.16em; color: #DCCDB4;">{{ i.k }}</div>
+              <div style="font-size: 13px; letter-spacing: 0.05em; color: #C6BAA9; line-height: 2.1;">{{ i.v }}</div>
+            </div>
+          </sc-for>
+          <div style="border-top: 1px solid rgba(201,169,97,0.22);"></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: #17130F; padding: 92px 44px 100px;">
+      <div style="max-width: 1000px; margin: 0 auto;">
+        <div style="text-align: center;">
+          <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 34px; color: #C9A961;">Question</div>
+          <h2 style="font-size: 21px; letter-spacing: 0.2em; font-weight: 500; margin: 14px 0 0;">よくあるご質問</h2>
+          <div style="width: 66px; height: 1px; background: rgba(201,169,97,0.5); margin: 24px auto 0;"></div>
+        </div>
+        <div style="margin-top: 48px;">
+          <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+            <div style="border-top: 1px solid rgba(201,169,97,0.2);">
+              <button onClick="{{ f.toggle }}" style="width: 100%; background: none; border: 0; padding: 26px 4px; display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; text-align: left;" style-hover="color: #C9A961;">
+                <span style="font-size: 15.5px; letter-spacing: 0.1em; line-height: 1.8;">{{ f.q }}</span>
+                <span style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #C9A961; line-height: 1.4;">{{ f.sign }}</span>
+              </button>
+              <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+                <p class="rb-faq-a" style="font-size: 13.5px; line-height: 2.3; color: #A79B8C; margin: 0 0 30px; padding-right: 60px; animation: fade .35s ease both;">{{ f.a }}</p>
+              </sc-if>
+            </div>
+          </sc-for>
+          <div style="border-top: 1px solid rgba(201,169,97,0.2);"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+
+  <footer class="rb-footer" style="background: #120F0D; padding: 88px 44px 0;">
+    <div class="rb-g2" style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 360px 1fr; gap: 80px; padding-bottom: 60px;">
+      <div style="text-align: center;">
+        <div style="width: 70px; margin: 0 auto 16px;">
+              <svg width="100%" viewBox="0 0 82 72" fill="none" stroke="#F0E9DE" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                <mask id="rb-d" maskUnits="userSpaceOnUse" x="0" y="0" width="82" height="72">
+                  <rect x="0" y="0" width="82" height="72" fill="white" stroke="none"></rect>
+                  <g fill="black" stroke="black" stroke-width="2.4">
+                    <path d="M46.1 11.9 C52 12.4 62 12.4 67.9 11.9 C67.3 19 66.6 26.4 66.1 32.2 C65.7 42.6 48.2 42.8 47.8 32.1 C47.3 26.3 46.7 19 46.1 11.9 Z"></path>
+                    <path d="M56.2 42.8 C55.9 48 56.1 54.4 56.2 59.4 H57.9 C58 54.4 58.2 48 57.9 42.8 Z"></path>
+                    <path d="M49.4 61.1 C52.4 59.4 61.6 59.4 64.6 61.1 C61.6 62.6 52.4 62.6 49.4 61.1 Z"></path>
+                  </g>
+                </mask>
+                <g mask="url(#rb-d)">
+                  <path d="M20.2 18.2 C25.6 14.4 42.6 14.6 47.9 18 C53.6 25.4 54.2 45.4 48.1 56.1 C42.4 59.6 25.4 59.3 19.9 55.8 C14.2 48 13.6 26.6 20.2 18.2 Z" stroke-width="0.95"></path>
+                  <path d="M20.2 18.2 C26 21.4 42.2 21.8 47.9 18" stroke-width="0.7"></path>
+                  <path d="M17.3 26.1 C25 25.6 43 25.7 50.7 26.2" stroke-width="0.85"></path>
+                  <path d="M16.7 29.2 C25 28.7 43 28.8 51.3 29.3" stroke-width="0.85"></path>
+                  <path d="M16.8 45.1 C25 44.6 43 44.7 51.2 45.2" stroke-width="0.85"></path>
+                  <path d="M17.4 48.2 C25 47.7 43 47.8 50.5 48.3" stroke-width="0.85"></path>
+                  <path d="M27.2 19.6 C25.4 29.6 25.7 45.4 27 56.4" stroke-width="0.45" stroke-opacity="0.8"></path>
+                  <path d="M40.8 19.4 C42.6 29.4 42.3 45.2 41.1 56.6" stroke-width="0.45" stroke-opacity="0.8"></path>
+                  <path d="M22.6 33.5 C23.4 35.8 23.3 38.6 22.7 41" stroke-width="0.4" stroke-opacity="0.65"></path>
+                  <path d="M32 32.8 C32.7 35 32.6 38 32 40.4" stroke-width="0.4" stroke-opacity="0.65"></path>
+                  <path d="M45.6 34 C46.3 36 46.2 38.8 45.7 41" stroke-width="0.4" stroke-opacity="0.65"></path>
+                  <path d="M17.6 36.2 L20.4 34.9" stroke-width="0.35" stroke-opacity="0.5"></path>
+                  <path d="M17.4 39.4 L20.2 38.1" stroke-width="0.35" stroke-opacity="0.5"></path>
+                  <path d="M18 42.6 L20.7 41.4" stroke-width="0.35" stroke-opacity="0.5"></path>
+                  <circle cx="24" cy="27.6" r="0.5" stroke-width="0.4"></circle>
+                  <circle cx="44.2" cy="27.7" r="0.5" stroke-width="0.4"></circle>
+                  <circle cx="24" cy="46.6" r="0.5" stroke-width="0.4"></circle>
+                  <circle cx="44.2" cy="46.7" r="0.5" stroke-width="0.4"></circle>
+                </g>
+                <path d="M46.1 11.9 C52 12.4 62 12.4 67.9 11.9 C67.3 19 66.6 26.4 66.1 32.2 C65.7 42.6 48.2 42.8 47.8 32.1 C47.3 26.3 46.7 19 46.1 11.9 Z" stroke-width="0.95"></path>
+                <path d="M49.1 24.4 C53.6 25 61.2 25 64.9 24.5" stroke-width="0.5" stroke-opacity="0.75"></path>
+                <path d="M56.2 42.8 C55.9 48 56.1 54.4 56.2 59.4 H57.9 C58 54.4 58.2 48 57.9 42.8 Z" stroke-width="0.8"></path>
+                <path d="M49.4 61.1 C52.4 59.4 61.6 59.4 64.6 61.1 C61.6 62.6 52.4 62.6 49.4 61.1 Z" stroke-width="0.9"></path>
+                <path d="M50.6 28.6 L52.8 31" stroke-width="0.35" stroke-opacity="0.55"></path>
+                <path d="M51.8 31.8 L54 34" stroke-width="0.35" stroke-opacity="0.55"></path>
+                <path d="M63.6 16.4 C63.9 20.4 63.6 24 62.8 26.6" stroke-width="0.35" stroke-opacity="0.5"></path>
+              </svg>
+            </div>
+        <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 12px; letter-spacing: 0.12em; color: #C9A961;">dal 2016</div>
+        <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; color: #DCCDB4; margin-top: 6px;">cucina italiana</div>
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 26px; letter-spacing: 0.3em; margin-top: 12px; padding-left: 0.3em;">RUBINO</div>
+        <div style="font-size: 12.5px; letter-spacing: 0.14em; color: #A79B8C; margin-top: 22px; line-height: 2;">東京 神楽坂 イタリアン<br />RUBINO（ルビーノ）</div>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 30px;">
+          <button onClick="{{ goAccess }}" style="background: none; border: 1px solid rgba(201,169,97,0.35); padding: 13px 22px; display: flex; align-items: center; gap: 20px; justify-content: center; transition: border-color .3s ease;" style-hover="border-color: #C9A961;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #C9A961;">&gt;</span>
+            <span style="font-size: 13px; letter-spacing: 0.2em;">詳しい店舗情報</span>
+          </button>
+          <button onClick="{{ goAccess }}" style="background: none; border: 1px solid rgba(201,169,97,0.35); padding: 13px 22px; display: flex; align-items: center; gap: 20px; justify-content: center; transition: border-color .3s ease;" style-hover="border-color: #C9A961;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #C9A961;">&gt;</span>
+            <span style="font-size: 13px; letter-spacing: 0.2em;">ご予約について</span>
+          </button>
+        </div>
+      </div>
+      <div>
+        <div style="display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 20px;">
+          <span style="font-size: 13px; letter-spacing: 0.16em; color: #C6BAA9;">ご予約・お問い合わせ</span>
+          <a href="tel:+81352290166" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 6vw, 28px); letter-spacing: 0.08em;">TEL.03-5229-0166</a>
+        </div>
+        <p style="font-size: 12px; color: #8C8171; margin: 10px 0 0; letter-spacing: 0.08em;">ホームページを見たとお伝えいただけるとスムーズです。</p>
+        <div style="margin-top: 42px;">
+          <sc-for list="{{ shopInfo }}" as="i" hint-placeholder-count="4">
+            <div class="rb-side" style="display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.07);">
+              <div style="font-size: 13px; letter-spacing: 0.16em; color: #C6BAA9;">{{ i.k }}</div>
+              <div style="font-size: 13px; letter-spacing: 0.06em; color: #A79B8C; line-height: 2;">{{ i.v }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1180px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding: 32px 0;">
+      <div style="display: flex; justify-content: center; gap: 18px 40px; flex-wrap: wrap;">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+          <button onClick="{{ item.onClick }}" style="background: none; border: 0; padding: 0; font-family: 'Cormorant Garamond', serif; font-size: 13.5px; letter-spacing: 0.22em; color: #C6BAA9;" style-hover="color: #C9A961;">{{ item.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div class="rb-copybar" style="background: #0C0A09; margin: 0 -44px; padding: 20px 44px;">
+      <div style="max-width: 1180px; margin: 0 auto; display: flex; justify-content: center; gap: 40px; font-family: 'Cormorant Garamond', serif; font-size: 12px; letter-spacing: 0.16em; color: #6E655D;">
+        <span>Cookie情報等の取り扱いについて</span>
+        <span>© RUBINO. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroTreatment&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;mosaic&quot;,&quot;single&quot;,&quot;split&quot;],&quot;default&quot;:&quot;mosaic&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'home', faq: 0 };
+
+  go(p) { this.setState({ page: p }); window.scrollTo({ top: 0, behavior: 'instant' }); }
+
+  renderVals() {
+    const page = this.state.page;
+    const hero = this.props.heroTreatment || 'mosaic';
+    const mk = (label, ja, key) => ({
+      label, ja, onClick: () => this.go(key),
+      color: page === key ? '#C9A961' : '#EDE7DF',
+      line: page === key ? 'rgba(201,169,97,0.8)' : 'transparent'
+    });
+
+    const faqData = [
+      { q: '予約は必要ですか。', a: '当店は完全予約制です。十四席のみの小さな店のため、お席とお料理のご用意に時間を要します。お電話またはご予約フォームより、前日までにご連絡をお願いいたします。' },
+      { q: 'アレルギーや苦手な食材に対応いただけますか。', a: '対応いたします。ご予約時にお申し付けください。当日のお申し出の場合、コース内容の変更が難しいことがございます。' },
+      { q: '記念日の演出はお願いできますか。', a: 'ドルチェへのメッセージ、花束のお預かり、乾杯用のスパークリングをご用意しております。ご予約時にご相談ください。' },
+      { q: '個室はありますか。', a: '個室はございませんが、六名様までの半個室席を一室ご用意しております。ご希望の場合は早めのご予約をおすすめいたします。' },
+      { q: '香水についてお願いがあると聞きました。', a: '当店は料理とワインの香りも愉しんでいただきたいと考えております。香りの強い香水やハンドクリームのご使用はご遠慮くださいますようお願いいたします。' }
+    ];
+
+    return {
+      isHome: page === 'home', isMind: page === 'mind', isCourse: page === 'course',
+      isWine: page === 'wine', isLunch: page === 'lunch', isAccess: page === 'access',
+      heroMosaic: hero === 'mosaic', heroSingle: hero === 'single', heroSplit: hero === 'split',
+      heroTiles: [
+        'images/hero-1-wine.jpg', 'images/hero-2-antipasto.jpg', 'images/hero-3-toast.jpg',
+        'images/hero-4-pasta.jpg', 'images/hero-5-dolce.jpg'
+      ],
+      goHome: () => this.go('home'), goMind: () => this.go('mind'), goCourse: () => this.go('course'),
+      goWine: () => this.go('wine'), goLunch: () => this.go('lunch'), goAccess: () => this.go('access'),
+      nav: [
+        mk('HOME', 'ホーム', 'home'), mk('MIND', '店主の想い', 'mind'),
+        mk('COURSE', 'コース', 'course'), mk('WINE', 'ワイン', 'wine'),
+        mk('LUNCH', 'ランチ', 'lunch'), mk('ACCESS', '店舗案内', 'access')
+      ],
+      notices: [
+        { title: '大切なお知らせ', paras: [
+          '改めてお知らせいたしますが、当店は事前のご予約が必要となります。',
+          'ディナーのご利用時は、お会計金額より別途サービス料5%を頂戴いたします。現金でのお支払いの場合は5%割引とさせていただきます。当日キャンセルのお客様は、ランチ・ディナー共にご予約時にお伺いしていたコース料金＋席代（550円）×人数分を頂戴いたします。',
+          '何卒よろしくお願いいたします。'
+        ] },
+        { title: 'お知らせ', paras: [
+          '平素は当店をご利用いただき誠にありがとうございます。当店は料理、ワインの味だけでなく香りも愉しんでもらいたいと思っております。',
+          '大切なひと時をお過ごしいただくためにも、香りの強い香水やハンドクリームの利用はご遠慮ください。皆様にはご不便をおかけして申し訳ありませんが、何卒ご理解とご協力をよろしくお願いいたします。'
+        ] }
+      ],
+      courseCards: [
+        { en: 'FULL COURSE', title: 'フルコース', price: '¥8,800', body: '前菜三種、スープ、手打ちパスタ、魚料理、肉料理、ドルチェの全七皿。季節の食材を軸に、月替わりで構成しています。' },
+        { en: 'CHEESE COURSE', title: 'チーズコース', price: '¥11,000', body: 'イタリア各地のチーズを五種、熟成度の順にお出しします。ワインとの組み合わせは一皿ずつご提案いたします。' },
+        { en: 'DEGUSTAZIONE', title: 'おまかせ', price: '¥14,300', body: 'その日の仕入れから店主が構成する十皿。カウンター席限定、二日前までのご予約をお願いしております。' }
+      ],
+      lunchQuick: [
+        { n: 'パスタランチ（前菜・パスタ・ドルチェ）', p: '¥2,200' },
+        { n: 'ルビーノランチ（前菜二種・パスタ・肉料理・ドルチェ）', p: '¥3,850' },
+        { n: 'グラスワイン（昼のみ）', p: '¥770' }
+      ],
+      news: [
+        { title: '9月の空席状況をお知らせいたします。', date: '2026.08.14', shot: 'images/news-1-autumn.jpg' },
+        { title: '秋のコースへ、いちじくと鴨の一皿を加えました。', date: '2026.08.02', shot: 'images/news-2-duck.jpg' },
+        { title: 'ピエモンテの生産者を訪ね、新しく三本仕入れました。', date: '2026.07.20', shot: 'images/news-3-bottles.jpg' }
+      ],
+      shopInfo: [
+        { k: '住所', v: '〒162-0825 東京都新宿区神楽坂5-12-3 神楽坂ビル1F' },
+        { k: 'アクセス', v: '東京メトロ東西線「神楽坂駅」1番出口から徒歩3分' },
+        { k: '営業時間', v: 'ランチ 11:30〜14:30（最終入店13:00）／ディナー 17:30〜23:00（最終入店21:00）※完全予約制' },
+        { k: '定休日', v: '日曜日、第2月曜日、その他不定休' }
+      ],
+      promises: [
+        { n: 'I', t: '十四席のままで', b: '席数を増やせば一皿の精度が落ちます。開店から十年、席を増やしていません。' },
+        { n: 'II', t: '器から考える', b: '土鍋、信楽、萩。料理より先に器を決めることもあります。' },
+        { n: 'III', t: '毎月、書き換える', b: 'コースは月替わり。同じ構成を二度お出ししません。' }
+      ],
+      mindShots: ['images/mind-pasta.jpg', 'images/mind-plate.jpg', 'images/mind-counter.jpg'],
+      ingredients: [
+        { k: '鮮魚', v: '築地の仲卸より週四回。その日に届いたものを見てから、当日の魚料理を決めています。' },
+        { k: '野菜', v: '長野・八ヶ岳南麓の契約農家より直送。冬季は九州の生産者に切り替えます。' },
+        { k: '柑橘・香味', v: '瀬戸内の島から。仕上げの香りづけには、あえて和柑橘を使います。' },
+        { k: '小麦・チーズ', v: 'パスタは北海道産の小麦を自家製粉。チーズはイタリア各地から少量ずつ。' }
+      ],
+      courses: [
+        { en: 'FULL COURSE', title: 'フルコース', price: '¥8,800', bg: '#17130F', shot: 'images/course-full.jpg',
+          body: 'ルビーノの基本となるコースです。前菜からドルチェまで全七皿。イタリアの型を土台に、器と食材で和を忍ばせた構成になっています。',
+          note: '※お一人様あたり／サービス料5%別途／現金払い5%割引',
+          items: [
+            { it: 'Antipasti', ja: '前菜三種', d: '真鯛のカルパッチョ、無花果と生ハム、季節野菜のカポナータ' },
+            { it: 'Zuppa', ja: 'スープ', d: 'とうもろこしの冷製ズッパ、焦がしバターの香り' },
+            { it: 'Pasta', ja: '手打ちパスタ', d: '雲丹とじゃがいものタリオリーニ、萩焼の器で' },
+            { it: 'Pesce', ja: '魚料理', d: '本日の鮮魚のグリル、瀬戸内レモンとケイパー' },
+            { it: 'Carne', ja: '肉料理', d: '和牛ほほ肉の赤ワイン煮込み、土鍋仕立て' },
+            { it: 'Dolce', ja: 'ドルチェ', d: 'ティラミス、または季節のジェラート' },
+            { it: 'Caffè', ja: '食後の飲み物', d: 'エスプレッソ、または和紅茶' }
+          ] },
+        { en: 'CHEESE COURSE', title: 'チーズコース', price: '¥11,000', bg: '#1E1712', shot: 'images/course-cheese.jpg',
+          body: 'フルコースの魚料理をチーズ五種に替えた構成です。熟成の浅いものから順にお出しし、一皿ごとにワインをご提案いたします。',
+          note: '※二名様以上でのご予約をお願いしております',
+          items: [
+            { it: 'Antipasti', ja: '前菜三種', d: 'フルコースと同構成' },
+            { it: 'Pasta', ja: '手打ちパスタ', d: 'ペコリーノと黒胡椒のトンナレッリ' },
+            { it: 'Formaggi', ja: 'チーズ五種', d: 'ブッラータ／タレッジオ／ペコリーノ／ゴルゴンゾーラ／熟成パルミジャーノ' },
+            { it: 'Carne', ja: '肉料理', d: '和牛ほほ肉の赤ワイン煮込み、土鍋仕立て' },
+            { it: 'Dolce', ja: 'ドルチェ', d: 'リコッタのセミフレッド、蜂蜜と胡桃' },
+            { it: 'Caffè', ja: '食後の飲み物', d: 'エスプレッソ、または和紅茶' }
+          ] },
+        { en: 'DEGUSTAZIONE', title: 'おまかせ十皿', price: '¥14,300', bg: '#17130F', shot: 'images/course-degustazione.jpg',
+          body: 'その日の仕入れから店主が構成する十皿です。カウンター六席限定、二日前までのご予約をお願いしております。内容は当日まで決まりません。',
+          note: '※カウンター席限定／二日前までのご予約／内容は当日の仕入れ次第',
+          items: [
+            { it: 'Stuzzichini', ja: '小皿三種', d: 'その日の一口' },
+            { it: 'Crudo', ja: '生の一皿', d: '築地の鮮魚から' },
+            { it: 'Zuppa', ja: 'スープ', d: '季節の一杯' },
+            { it: 'Pasta I', ja: 'パスタ一皿目', d: '軽い仕立ての手打ち' },
+            { it: 'Pasta II', ja: 'パスタ二皿目', d: '濃度のある手打ち' },
+            { it: 'Pesce', ja: '魚料理', d: '火入れの一皿' },
+            { it: 'Carne', ja: '肉料理', d: '土鍋または炭火' },
+            { it: 'Formaggio', ja: 'チーズ', d: '一種を少量' },
+            { it: 'Dolce', ja: 'ドルチェ二皿', d: '軽いものから' },
+            { it: 'Caffè', ja: '食後の飲み物', d: 'エスプレッソ、または和紅茶' }
+          ] }
+      ],
+      wineRegions: [
+        { en: 'Piemonte', ja: 'ピエモンテ', b: 'バローロ、バルベーラを中心に。肉料理に合わせる一杯はこの地方から選ぶことが多いです。' },
+        { en: 'Toscana', ja: 'トスカーナ', b: 'サンジョヴェーゼの造り手を少量ずつ。手打ちパスタとの相性を基準に仕入れています。' },
+        { en: 'Sicilia', ja: 'シチリア', b: '火山性土壌のエトナ。鮮魚と和柑橘を使う一皿に、これほど合うものはありません。' },
+        { en: 'Giappone', ja: '日本', b: '長野と山形の造り手を各二本。和の食材を使う料理には、日本のワインを合わせます。' }
+      ],
+      byGlass: [
+        { n: 'スパークリング（フランチャコルタ）', p: '¥1,320' },
+        { n: '白（エトナ・ビアンコ／シチリア）', p: '¥1,100' },
+        { n: '白（甲州／山梨）', p: '¥1,210' },
+        { n: '赤（バルベーラ・ダスティ／ピエモンテ）', p: '¥1,320' },
+        { n: '赤（キアンティ・クラシコ／トスカーナ）', p: '¥1,430' },
+        { n: 'オレンジ（フリウリ）', p: '¥1,540' }
+      ],
+      pairing: [
+        { n: 'ペアリング五杯（フルコース向け）', p: '¥6,600' },
+        { n: 'ペアリング七杯（おまかせ向け）', p: '¥9,900' },
+        { n: 'ノンアルコールペアリング四杯', p: '¥3,300' },
+        { n: '自家製サングリア', p: '¥990' },
+        { n: 'イタリア産ミネラルウォーター（1本）', p: '¥660' }
+      ],
+      lunchSets: [
+        { en: 'PASTA LUNCH', title: 'パスタランチ', price: '¥2,200', shot: 'images/lunch-pasta.jpg',
+          items: ['前菜（本日の一皿）', '手打ちパスタ（三種よりお選びいただけます）', 'ドルチェ', 'エスプレッソ、または和紅茶'] },
+        { en: 'RUBINO LUNCH', title: 'ルビーノランチ', price: '¥3,850', shot: 'images/lunch-rubino.jpg',
+          items: ['前菜二種', '手打ちパスタ（三種よりお選びいただけます）', '肉料理（本日の一皿）', 'ドルチェ', 'エスプレッソ、または和紅茶'] }
+      ],
+      pastaDaily: [
+        { n: 'しらすと九条葱のスパゲッティーニ', d: '和柑橘の皮を仕上げに。軽やかな一皿です。' },
+        { n: '雲丹とじゃがいものタリオリーニ', d: '夜のコースと同じ配合の手打ち麺で。' },
+        { n: '和牛ラグーのタリアテッレ', d: '赤ワインで三時間煮込んだラグーを合わせます。' }
+      ],
+      lunchNotes: [
+        '昼も完全予約制です。前日までにご連絡をお願いいたします。',
+        'ランチのサービス料はいただいておりません。',
+        '最終入店は13:00、ご退店は14:30となります。',
+        'お子様のご同伴は、半個室席のみ承っております。'
+      ],
+      floorShots: [
+        { shot: 'images/floor-counter.jpg', t: 'カウンター六席', b: '厨房と向かい合う席。おまかせコースはこちらで。' },
+        { shot: 'images/floor-table.jpg', t: 'テーブル八席', b: '二名様×四卓。壁側の二卓は連結できます。' },
+        { shot: 'images/floor-private.jpg', t: '半個室一室', b: '最大六名様。少人数のお集まりに。' }
+      ],
+      formFields: [
+        { label: 'お名前', ph: '山田 太郎' },
+        { label: 'お電話番号', ph: '090-0000-0000' },
+        { label: 'メールアドレス', ph: 'name@example.com' },
+        { label: 'ご希望日時', ph: '例：2026年9月12日 18:30' },
+        { label: 'ご人数', ph: '例：2名' }
+      ],
+      storeInfo: [
+        { k: '店名', v: 'RUBINO（ルビーノ）' },
+        { k: '住所', v: '〒162-0825 東京都新宿区神楽坂5-12-3 神楽坂ビル1F' },
+        { k: 'アクセス', v: '東京メトロ東西線「神楽坂駅」1番出口から徒歩3分／JR「飯田橋駅」西口から徒歩9分' },
+        { k: '営業時間', v: 'ランチ 11:30〜14:30（最終入店13:00）／ディナー 17:30〜23:00（最終入店21:00）' },
+        { k: '定休日', v: '日曜日、第2月曜日、その他不定休' },
+        { k: '席数', v: '14席（カウンター6席、テーブル8席、半個室1室）' },
+        { k: 'お支払い', v: '現金、各種クレジットカード、QR決済（ディナーは現金払い5%割引）' },
+        { k: 'その他', v: '完全予約制／ディナーはサービス料5%別途／席代550円／全席禁煙' }
+      ],
+      faqs: faqData.map((f, i) => ({
+        q: f.q, a: f.a, open: this.state.faq === i, sign: this.state.faq === i ? '—' : '+',
+        toggle: () => this.setState(s => ({ faq: s.faq === i ? -1 : i }))
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

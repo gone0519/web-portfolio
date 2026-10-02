@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#111;color:#1a1a1a;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;
+--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+*{box-sizing:border-box}
+a{color:#c4161f;text-decoration:none}
+a:hover{color:#e0262f}
+input,select,textarea,button{font-family:inherit}
+</style>
+</helmet>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,3vw,40px);background:{{ headerBg }};transition:background .4s ease, box-shadow .4s ease;box-shadow:{{ headerShadow }}">
+  <a href="#top" style="display:flex;align-items:center;gap:12px;color:{{ logoColor }};transition:color .4s">
+    <div style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <div style="width:24px;height:24px;transform:rotate(45deg);border:4px solid #c4161f;display:flex;align-items:center;justify-content:center">
+        <div style="width:6px;height:6px;background:currentColor"></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;line-height:1.15">
+      <span style="font-family:'Dela Gothic One',sans-serif;font-size:15px;letter-spacing:.14em">{{ companyEn }}</span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:.2em">{{ companyName }}</span>
+    </div>
+  </a>
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:clamp(18px,2.4vw,36px)">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="display:flex;flex-direction:column;align-items:center;gap:2px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5)" style-hover="color:#ff4a52">
+          <span style="font-family:'Dela Gothic One',sans-serif;font-size:13px;letter-spacing:.14em">{{ n.en }}</span>
+          <span style="font-size:10px;font-weight:500;letter-spacing:.16em;opacity:.8">{{ n.jp }}</span>
+        </a>
+      </sc-for>
+      <a href="#contact" style="display:flex;align-items:center;gap:10px;height:46px;padding:0 26px;background:#c4161f;color:#fff;font-weight:700;font-size:14px;letter-spacing:.08em;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);transition:background .3s" style-hover="background:#e0262f;color:#fff">無料見積もり</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" aria-expanded="{{ menuOpen }}" style="width:48px;height:48px;border:none;background:#c4161f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)">
+      <span style="display:block;width:20px;height:2px;background:#fff"></span>
+      <span style="display:block;width:20px;height:2px;background:#fff"></span>
+      <span style="display:block;width:20px;height:2px;background:#fff"></span>
+    </button>
+  </sc-if>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#0d0d0d;background-image:var(--noise),linear-gradient(135deg,#1a0304 0%,#0d0d0d 60%);display:flex;flex-direction:column;padding:24px">
+    <div style="display:flex;justify-content:flex-end">
+      <button onClick="{{ toggleMenu }}" aria-label="閉じる" style="width:48px;height:48px;border:1px solid #c4161f;background:transparent;color:#fff;font-size:22px;cursor:pointer">×</button>
+    </div>
+    <nav aria-label="モバイルナビゲーション" style="display:flex;flex-direction:column;gap:4px;margin-top:32px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;gap:14px;padding:18px 4px;border-bottom:1px solid rgba(255,255,255,.12);color:#fff">
+          <span style="font-family:'Dela Gothic One',sans-serif;font-size:26px;letter-spacing:.1em">{{ n.en }}</span>
+          <span style="font-size:12px;letter-spacing:.16em;color:#ff4a52">{{ n.jp }}</span>
+        </a>
+      </sc-for>
+    </nav>
+    <a href="#contact" onClick="{{ closeMenu }}" style="margin-top:32px;display:flex;align-items:center;justify-content:center;height:58px;background:#c4161f;color:#fff;font-weight:700;letter-spacing:.1em">無料見積もり・お問い合わせ</a>
+    <a href="tel:{{ tel }}" style="margin-top:14px;text-align:center;color:#fff;font-family:'Dela Gothic One',sans-serif;font-size:22px;letter-spacing:.06em">TEL {{ tel }}</a>
+  </div>
+</sc-if>
+
+<main id="top">
+
+<section data-screen-label="01 Hero" aria-label="ファーストビュー" style="position:relative;height:100vh;min-height:640px;max-height:1000px;overflow:hidden;background:#1b1b1b">
+  <div ref="{{ heroImgRef }}" style="position:absolute;inset:-6% 0 -6% 0;will-change:transform">
+    <image-slot id="hero-main" shape="rect" placeholder="HERO PHOTO — 解体現場・重機（横位置・高解像度）"></image-slot>
+  </div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.15) 60%,rgba(0,0,0,.7) 100%)"></div>
+  <div style="position:absolute;top:0;left:0;width:min(42vw,560px);height:min(62vh,560px);background:#f1f1f1;background-image:var(--noise);clip-path:polygon(0 0,100% 0,0 100%);pointer-events:none;opacity:.95"></div>
+  <div style="position:absolute;right:clamp(16px,6vw,110px);top:clamp(140px,26vh,280px);display:flex;flex-direction:column;align-items:flex-end;gap:18px;pointer-events:none" data-reveal="">
+    <h1 style="margin:0;display:flex;flex-direction:column;align-items:flex-end;gap:8px;font-family:'Dela Gothic One',sans-serif;font-weight:400;font-size:clamp(30px,4.4vw,66px);line-height:1.2;color:#fff;letter-spacing:.04em">
+      <span style="background:#0e0e0e;padding:2px 16px">壊す技術で、</span>
+      <span style="background:#0e0e0e;padding:2px 16px"><span style="color:#ff2a33">未来</span>をつくる。</span>
+    </h1>
+    <p style="margin:0;color:#fff;font-size:clamp(14px,1.2vw,17px);font-weight:500;letter-spacing:.08em;text-shadow:0 1px 10px rgba(0,0,0,.8)">Demolition Expertise That Builds the Future.</p>
+    <a href="#contact" style="pointer-events:auto;margin-top:8px;display:flex;align-items:center;gap:14px;height:58px;padding:0 34px;background:#c4161f;color:#fff;font-weight:700;font-size:15px;letter-spacing:.08em;clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);transition:background .3s" style-hover="background:#e0262f;color:#fff">
+      <span>無料見積もり・お問い合わせ</span>
+      <span style="font-family:'Dela Gothic One',sans-serif;font-size:14px">→</span>
+    </a>
+  </div>
+  <div style="position:absolute;left:clamp(12px,3vw,48px);right:12px;bottom:clamp(36px,6vh,64px);pointer-events:none">
+    <div style="font-family:'Dela Gothic One',sans-serif;font-size:clamp(40px,8.6vw,150px);line-height:.98;color:#d0141d;letter-spacing:.01em;transform:skewX(-8deg);transform-origin:left bottom;text-shadow:0 4px 30px rgba(0,0,0,.35)">
+      <div>BREAK DOWN,</div>
+      <div>BUILD FUTURE.</div>
+    </div>
+    <p style="margin:18px 0 0;color:#fff;font-size:12px;letter-spacing:.14em;opacity:.85">安全 ・ 信頼 ・ 技術 ── 建物解体工事の専門会社</p>
+  </div>
+</section>
+
+<section id="about" data-screen-label="02 About" style="position:relative;overflow:hidden;background:#0f0f0f;background-image:var(--noise),radial-gradient(ellipse at 70% 30%,rgba(196,22,31,.75) 0%,rgba(120,8,14,.55) 35%,rgba(15,15,15,0) 70%),linear-gradient(160deg,#5c060b 0%,#1a0204 55%,#0f0f0f 100%);color:#fff;padding:clamp(90px,12vw,150px) clamp(20px,5vw,60px) clamp(80px,10vw,130px)">
+  <div style="position:absolute;left:0;top:0;bottom:0;width:min(52%,720px);opacity:.28;pointer-events:none">
+    <image-slot id="about-bg" shape="rect" placeholder="BACKGROUND — 重機シルエット"></image-slot>
+  </div>
+  <div aria-hidden="true" style="position:absolute;right:clamp(8px,3vw,48px);top:clamp(60px,8vw,110px);writing-mode:vertical-rl;font-family:'Dela Gothic One',sans-serif;font-size:clamp(36px,5vw,76px);letter-spacing:.06em;color:transparent;-webkit-text-stroke:1.5px #ff2a33;opacity:.75;pointer-events:none;line-height:1">SAFETY FIRST, TRUST ALWAYS</div>
+  <div style="position:relative;max-width:920px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center" data-reveal="">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <div style="width:14px;height:14px;transform:rotate(45deg);border:3px solid #ff2a33"></div>
+      <span style="font-family:'Dela Gothic One',sans-serif;font-size:14px;letter-spacing:.3em;color:#ff4a52">ABOUT US</span>
+    </div>
+    <h2 style="margin:0;font-family:'Dela Gothic One',sans-serif;font-weight:400;font-size:clamp(26px,3.6vw,48px);line-height:1.45;letter-spacing:.04em;text-wrap:balance">確かな技術で、<br>安心できる解体を。</h2>
+    <p style="margin:0;max-width:680px;font-size:15px;line-height:2.1;letter-spacing:.06em;color:rgba(255,255,255,.9);text-wrap:pretty">私たちは、木造住宅から鉄骨造・RC造の建物、店舗・施設の内装まで、あらゆる解体工事を手がける専門会社です。解体は「壊して終わり」ではなく、その土地の次の活用へつなぐ大切な工程だと考えています。安全を最優先に、近隣環境への配慮と丁寧な説明を欠かさず、お客様に長く信頼していただける仕事を積み重ねています。</p>
+    <div style="width:100%;max-width:560px;border:1px solid rgba(255,255,255,.55);padding:26px clamp(20px,4vw,40px);background:rgba(0,0,0,.35);text-align:left">
+      <p style="margin:0 0 16px;font-size:13px;font-weight:700;letter-spacing:.2em;color:#ff4a52">OUR PHILOSOPHY ── 私たちの約束</p>
+      <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ philosophy }}" as="p" hint-placeholder-count="5">
+          <li style="display:flex;align-items:flex-start;gap:14px;font-size:15px;font-weight:500;line-height:1.7;letter-spacing:.05em">
+            <span style="flex-shrink:0;margin-top:8px;width:9px;height:9px;transform:rotate(45deg);border:2px solid #ff2a33"></span>
+            <span>{{ p }}</span>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+  </div>
+  <div style="position:relative;max-width:1100px;margin:clamp(60px,8vw,96px) auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(12px,2vw,24px)" data-reveal="">
+    <sc-for list="{{ aboutPhotos }}" as="ph" hint-placeholder-count="3">
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div style="aspect-ratio:4/3;border:1px solid rgba(255,255,255,.3);padding:6px;background:rgba(0,0,0,.3)">
+          <image-slot id="{{ ph.id }}" shape="rect" placeholder="{{ ph.ph }}"></image-slot>
+        </div>
+        <figcaption style="font-size:12px;letter-spacing:.14em;color:rgba(255,255,255,.75)">{{ ph.cap }}</figcaption>
+      </figure>
+    </sc-for>
+  </div>
+</section>
+
+<section id="services" data-screen-label="03 Services" style="position:relative;background:#d8d8d8;background-image:var(--noise),linear-gradient(180deg,#e2e2e2,#d2d2d2);padding:clamp(80px,10vw,130px) clamp(20px,5vw,60px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center" data-reveal="">
+      <div style="width:14px;height:14px;transform:rotate(45deg);border:3px solid #c4161f"></div>
+      <span style="font-family:'Dela Gothic One',sans-serif;font-size:clamp(34px,5vw,64px);letter-spacing:.06em;color:#1a1a1a;line-height:1.1">SERVICES</span>
+      <h2 style="margin:0;font-size:clamp(18px,2vw,24px);font-weight:900;letter-spacing:.12em;color:#c4161f">解体工事のサービス</h2>
+      <p style="margin:8px 0 0;max-width:640px;font-size:15px;line-height:2;letter-spacing:.05em;color:#333;text-wrap:pretty">建物の構造や規模、立地条件に合わせて最適な工法をご提案します。小さな部分解体から大型施設まで、まずはお気軽にご相談ください。</p>
+    </div>
+    <div style="margin-top:clamp(48px,6vw,72px);display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:clamp(16px,2vw,28px)">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="8">
+        <article data-reveal="" style="position:relative;display:flex;flex-direction:column;background:#f4f4f4;box-shadow:0 1px 0 rgba(0,0,0,.08);transition:transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s" style-hover="transform:translateY(-6px);box-shadow:0 18px 36px rgba(0,0,0,.18)">
+          <div style="position:relative;aspect-ratio:4/3">
+            <image-slot id="{{ s.id }}" shape="rect" placeholder="{{ s.ph }}"></image-slot>
+            <span style="position:absolute;top:0;left:0;pointer-events:none;background:#c4161f;color:#fff;font-family:'Dela Gothic One',sans-serif;font-size:14px;letter-spacing:.08em;padding:6px 14px 6px 12px;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)">{{ s.no }}</span>
+          </div>
+          <div style="background:linear-gradient(90deg,#7a080d 0%,#c4161f 45%,#8e0c12 100%);color:#fff;padding:12px 18px;display:flex;flex-direction:column;gap:2px">
+            <h3 style="margin:0;font-size:17px;font-weight:900;letter-spacing:.08em">{{ s.jp }}</h3>
+            <span style="font-size:11px;font-weight:500;letter-spacing:.14em;opacity:.85">{{ s.en }}</span>
+          </div>
+          <p style="margin:0;padding:16px 18px 22px;font-size:14px;line-height:1.9;letter-spacing:.04em;color:#333;text-wrap:pretty">{{ s.desc }}</p>
+        </article>
+      </sc-for>
+    </div>
+    <div data-reveal="" style="margin-top:clamp(56px,7vw,88px);display:flex;flex-direction:column">
+      <div style="background:linear-gradient(90deg,#7a080d 0%,#c4161f 45%,#8e0c12 100%);color:#fff;padding:14px 22px;font-size:clamp(15px,1.6vw,18px);font-weight:900;letter-spacing:.1em">現地調査・お見積もりは無料です</div>
+      <div style="background:#f4f4f4;padding:clamp(22px,3vw,34px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
+        <p style="margin:0;flex:1 1 380px;font-size:15px;line-height:2;letter-spacing:.05em;color:#333;text-wrap:pretty">現地で建物の状態や周辺環境を確認したうえで、工事内容と費用の内訳を明確にしたお見積もりをご提示します。ご納得いただいてからのご契約ですので、安心してご相談ください。</p>
+        <a href="#contact" style="display:flex;align-items:center;gap:12px;height:54px;padding:0 30px;border:2px solid #c4161f;color:#c4161f;font-weight:700;font-size:14px;letter-spacing:.1em;transform:skewX(-14deg);transition:background .3s,color .3s" style-hover="background:#c4161f;color:#fff">
+          <span style="transform:skewX(14deg)">無料見積もりを依頼する →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="strengths" data-screen-label="04 Strengths" style="position:relative;background:#e4e4e4;background-image:var(--noise);">
+  <div style="position:relative;overflow:hidden;background:#141414;background-image:var(--noise),linear-gradient(180deg,#1c1c1c,#0e0e0e);padding:clamp(80px,10vw,120px) clamp(20px,5vw,60px) clamp(70px,9vw,110px);color:#fff">
+    <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:52%;width:44%;background:linear-gradient(90deg,#8e0c12,#c4161f);clip-path:polygon(38% 0,62% 0,24% 100%,0 100%);opacity:.9;pointer-events:none"></div>
+    <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:64%;width:30%;background:#c4161f;clip-path:polygon(60% 0,68% 0,30% 100%,22% 100%);opacity:.6;pointer-events:none"></div>
+    <div style="position:relative;max-width:1160px;margin:0 auto;display:flex;flex-direction:column;gap:22px" data-reveal="">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:14px;height:14px;transform:rotate(45deg);border:3px solid #ff2a33"></div>
+        <span style="font-family:'Dela Gothic One',sans-serif;font-size:14px;letter-spacing:.3em;color:#ff4a52">STRENGTHS</span>
+      </div>
+      <h2 style="margin:0;font-family:'Dela Gothic One',sans-serif;font-weight:400;font-size:clamp(26px,3.6vw,48px);line-height:1.45;letter-spacing:.04em;text-wrap:balance">安全へのこだわりが、<br>品質をつくる。</h2>
+      <p style="margin:0;max-width:560px;font-size:15px;line-height:2;letter-spacing:.05em;color:rgba(255,255,255,.88);text-wrap:pretty">解体工事の品質は、事故のない現場と、丁寧な段取りから生まれます。私たちが大切にしている5つの取り組みをご紹介します。</p>
+      <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:10px 28px">
+        <sc-for list="{{ keywords }}" as="k" hint-placeholder-count="5">
+          <span style="font-family:'Dela Gothic One',sans-serif;font-size:clamp(20px,2.6vw,34px);letter-spacing:.06em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.8)">{{ k }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1160px;margin:0 auto;padding:clamp(70px,9vw,110px) clamp(20px,5vw,60px);display:flex;flex-direction:column;gap:clamp(56px,7vw,88px)">
+    <sc-for list="{{ strengths }}" as="st" hint-placeholder-count="5">
+      <article data-reveal="" style="display:flex;flex-direction:column">
+        <div style="display:flex;align-items:center;gap:16px;background:linear-gradient(90deg,#7a080d 0%,#c4161f 45%,#8e0c12 100%);color:#fff;padding:12px 22px">
+          <span style="font-family:'Dela Gothic One',sans-serif;font-size:22px;letter-spacing:.04em">{{ st.no }}</span>
+          <h3 style="margin:0;font-size:clamp(16px,1.7vw,20px);font-weight:900;letter-spacing:.1em">{{ st.jp }}</h3>
+          <span style="margin-left:auto;font-family:'Dela Gothic One',sans-serif;font-size:12px;letter-spacing:.2em;opacity:.85">{{ st.en }}</span>
+        </div>
+        <div style="margin-top:clamp(20px,3vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(22px,4vw,48px);align-items:center">
+          <div style="order:{{ st.imgOrder }};aspect-ratio:16/10;border:1px solid rgba(0,0,0,.18);padding:6px;background:#f4f4f4">
+            <image-slot id="{{ st.id }}" shape="rect" placeholder="{{ st.ph }}"></image-slot>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <p style="margin:0;font-size:clamp(18px,1.9vw,23px);font-weight:900;line-height:1.6;letter-spacing:.06em;color:#1a1a1a;text-wrap:pretty">{{ st.lead }}</p>
+            <p style="margin:0;font-size:15px;line-height:2;letter-spacing:.05em;color:#333;text-wrap:pretty">{{ st.body }}</p>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(0,0,0,.15);padding-top:18px">
+              <sc-for list="{{ st.points }}" as="pt" hint-placeholder-count="3">
+                <li style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700;letter-spacing:.05em;color:#1a1a1a">
+                  <span style="flex-shrink:0;width:8px;height:8px;transform:rotate(45deg);background:#c4161f"></span>
+                  <span>{{ pt }}</span>
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section id="contact" data-screen-label="05 Contact" style="position:relative;overflow:hidden;background:#101010;color:#fff">
+  <div style="position:relative;padding:clamp(90px,11vw,140px) clamp(20px,5vw,60px) clamp(70px,9vw,110px)">
+    <div style="position:absolute;inset:0;opacity:.3">
+      <image-slot id="contact-bg" shape="rect" placeholder="BACKGROUND — 作業風景・手元（モノクロ推奨）"></image-slot>
+    </div>
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,rgba(16,16,16,.2) 0%,rgba(16,16,16,.8) 70%)"></div>
+    <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:60%;pointer-events:none;background:linear-gradient(90deg,#8e0c12,#c4161f);clip-path:polygon(18% 0,46% 0,82% 100%,54% 100%);opacity:.85"></div>
+    <div style="position:relative;max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center" data-reveal="">
+      <span style="font-size:15px;font-weight:700;letter-spacing:.2em">お問い合わせ</span>
+      <span style="font-family:'Dela Gothic One',sans-serif;font-size:clamp(48px,8vw,110px);line-height:1;letter-spacing:.06em">CONTACT</span>
+      <h2 style="margin:10px 0 0;font-size:clamp(20px,2.4vw,30px);font-weight:900;letter-spacing:.1em;text-wrap:balance">解体のご相談・お見積もりはこちら。</h2>
+      <p style="margin:0;font-size:15px;letter-spacing:.08em;color:rgba(255,255,255,.85)">Let's discuss your demolition project.</p>
+      <div style="margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px clamp(20px,4vw,48px);font-family:'Dela Gothic One',sans-serif;font-size:clamp(22px,3vw,38px);letter-spacing:.04em">
+        <a href="tel:{{ tel }}" style="color:#fff" style-hover="color:#ff4a52">TEL {{ tel }}</a>
+        <span>FAX {{ fax }}</span>
+      </div>
+      <p style="margin:0;font-size:14px;letter-spacing:.1em;color:rgba(255,255,255,.8)">受付時間 {{ hours }}</p>
+      <div style="margin-top:16px;display:flex;flex-wrap:wrap;justify-content:center;gap:16px">
+        <a href="#form" style="display:flex;align-items:center;justify-content:center;min-width:240px;height:60px;padding:0 30px;background:#c4161f;color:#fff;font-weight:700;font-size:15px;letter-spacing:.1em;clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);transition:background .3s" style-hover="background:#e0262f;color:#fff">無料見積もりはこちら</a>
+        <a href="#form" style="display:flex;align-items:center;justify-content:center;min-width:240px;height:60px;padding:0 30px;border:2px solid #fff;color:#fff;font-weight:700;font-size:15px;letter-spacing:.1em;transform:skewX(-14deg);transition:background .3s,color .3s" style-hover="background:#fff;color:#111">
+          <span style="transform:skewX(14deg)">お問い合わせ</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div id="form" style="position:relative;background:#d8d8d8;background-image:var(--noise);color:#1a1a1a;padding:clamp(60px,8vw,100px) clamp(20px,5vw,60px)">
+    <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(28px,4vw,56px);align-items:start">
+      <div data-reveal="" style="display:flex;flex-direction:column">
+        <div style="background:linear-gradient(90deg,#7a080d 0%,#c4161f 45%,#8e0c12 100%);color:#fff;padding:12px 22px;font-size:17px;font-weight:900;letter-spacing:.1em">会社情報</div>
+        <dl style="margin:0;background:#f4f4f4;padding:8px 22px 14px;display:grid;grid-template-columns:auto 1fr;gap:0 20px;font-size:14px;line-height:1.8;letter-spacing:.04em">
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(0,0,0,.12);font-weight:700;color:#c4161f">会社名</dt>
+          <dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.12)">{{ companyName }}</dd>
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(0,0,0,.12);font-weight:700;color:#c4161f">所在地</dt>
+          <dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.12)">{{ address }}</dd>
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(0,0,0,.12);font-weight:700;color:#c4161f">電話</dt>
+          <dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.12)">{{ tel }}</dd>
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(0,0,0,.12);font-weight:700;color:#c4161f">FAX</dt>
+          <dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.12)">{{ fax }}</dd>
+          <dt style="padding:14px 0;border-bottom:1px solid rgba(0,0,0,.12);font-weight:700;color:#c4161f">メール</dt>
+          <dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.12)">{{ email }}</dd>
+          <dt style="padding:14px 0;font-weight:700;color:#c4161f">営業時間</dt>
+          <dd style="margin:0;padding:14px 0">{{ hours }}</dd>
+        </dl>
+        <div style="margin-top:20px;aspect-ratio:16/10;border:1px solid rgba(0,0,0,.18);padding:6px;background:#f4f4f4">
+          <image-slot id="office-map" shape="rect" placeholder="MAP / 事務所外観"></image-slot>
+        </div>
+      </div>
+      <div data-reveal="" style="display:flex;flex-direction:column">
+        <div style="background:#141414;color:#fff;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <span style="font-size:17px;font-weight:900;letter-spacing:.1em">お見積もり・お問い合わせフォーム</span>
+          <span style="font-family:'Dela Gothic One',sans-serif;font-size:11px;letter-spacing:.2em;color:#ff4a52">MAIL FORM</span>
+        </div>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" style="background:#f4f4f4;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:18px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:18px">
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">
+                <span>お名前 <span style="color:#c4161f">＊</span></span>
+                <input required="" name="name" placeholder="山田 太郎" style="height:50px;padding:0 14px;border:1px solid #b9b9b9;background:#fff;font-size:15px;border-radius:0" style-focus="outline:2px solid #c4161f;outline-offset:-1px">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">
+                <span>電話番号 <span style="color:#c4161f">＊</span></span>
+                <input required="" name="tel" type="tel" placeholder="090-0000-0000" style="height:50px;padding:0 14px;border:1px solid #b9b9b9;background:#fff;font-size:15px;border-radius:0" style-focus="outline:2px solid #c4161f;outline-offset:-1px">
+              </label>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">
+              <span>メールアドレス <span style="color:#c4161f">＊</span></span>
+              <input required="" name="email" type="email" placeholder="example@mail.com" style="height:50px;padding:0 14px;border:1px solid #b9b9b9;background:#fff;font-size:15px;border-radius:0" style-focus="outline:2px solid #c4161f;outline-offset:-1px">
+            </label>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:18px">
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">
+                <span>工事の種類</span>
+                <select name="type" style="height:50px;padding:0 12px;border:1px solid #b9b9b9;background:#fff;font-size:15px;border-radius:0">
+                  <sc-for list="{{ serviceOptions }}" as="o" hint-placeholder-count="8">
+                    <option>{{ o }}</option>
+                  </sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">
+                <span>物件所在地</span>
+                <input name="place" placeholder="〇〇市〇〇町" style="height:50px;padding:0 14px;border:1px solid #b9b9b9;background:#fff;font-size:15px;border-radius:0" style-focus="outline:2px solid #c4161f;outline-offset:-1px">
+              </label>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">
+              <span>ご相談内容</span>
+              <textarea name="message" rows="5" placeholder="建物の構造・延床面積・ご希望の時期など、分かる範囲でご記入ください。" style="padding:12px 14px;border:1px solid #b9b9b9;background:#fff;font-size:15px;line-height:1.8;resize:vertical;border-radius:0" style-focus="outline:2px solid #c4161f;outline-offset:-1px"></textarea>
+            </label>
+            <button type="submit" style="align-self:center;margin-top:6px;min-width:260px;height:60px;border:none;cursor:pointer;background:#c4161f;color:#fff;font-weight:700;font-size:15px;letter-spacing:.12em;clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);transition:background .3s" style-hover="background:#e0262f">この内容で送信する</button>
+          </form>
+        </sc-if>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#f4f4f4;padding:clamp(40px,6vw,64px) 28px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+            <div style="width:18px;height:18px;transform:rotate(45deg);border:3px solid #c4161f"></div>
+            <p style="margin:0;font-size:19px;font-weight:900;letter-spacing:.08em">送信ありがとうございました。</p>
+            <p style="margin:0;font-size:14px;line-height:1.9;color:#333">内容を確認のうえ、担当者より折り返しご連絡いたします。</p>
+            <button onClick="{{ reset }}" style="margin-top:8px;height:44px;padding:0 22px;border:1px solid #1a1a1a;background:transparent;cursor:pointer;font-size:13px;letter-spacing:.08em">フォームに戻る</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer style="background:#0c0c0c;color:#fff">
+  <div id="works" style="position:relative;overflow:hidden;background:#8e0c12;background-image:var(--noise),linear-gradient(135deg,#5c060b 0%,#c4161f 50%,#6a070c 100%);padding:clamp(50px,7vw,80px) clamp(20px,5vw,60px)">
+    <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,3vw,32px)">
+      <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="2">
+        <a href="{{ t.href }}" style="position:relative;display:block;height:180px;border:1px solid rgba(255,255,255,.7);overflow:hidden;color:#fff;transition:transform .4s" style-hover="transform:translateY(-4px);color:#fff">
+          <image-slot id="{{ t.id }}" shape="rect" placeholder="{{ t.ph }}"></image-slot>
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.7),rgba(0,0,0,.25))"></div>
+          <div style="position:absolute;right:24px;bottom:22px;pointer-events:none;display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+            <span style="font-size:13px;font-weight:700;letter-spacing:.16em">{{ t.jp }}</span>
+            <span style="font-family:'Dela Gothic One',sans-serif;font-size:clamp(28px,3.4vw,42px);letter-spacing:.06em;line-height:1">{{ t.en }}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+  <div style="background-image:var(--noise);padding:clamp(56px,7vw,80px) clamp(20px,5vw,60px) 28px">
+    <div style="max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:32px;height:32px;transform:rotate(45deg);border:4px solid #c4161f;display:flex;align-items:center;justify-content:center">
+            <div style="width:8px;height:8px;background:#fff"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;line-height:1.3;margin-left:6px">
+            <span style="font-family:'Dela Gothic One',sans-serif;font-size:18px;letter-spacing:.14em">{{ companyEn }}</span>
+            <span style="font-size:12px;font-weight:700;letter-spacing:.2em">{{ companyName }}</span>
+          </div>
+        </div>
+        <p style="margin:0;font-size:13px;line-height:1.9;letter-spacing:.05em;color:rgba(255,255,255,.75)">{{ address }}<br>TEL {{ tel }} ／ FAX {{ fax }}</p>
+      </div>
+      <nav aria-label="フッターナビゲーション" style="display:grid;grid-template-columns:repeat(2,auto);gap:12px 48px;align-content:start">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" style="display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.1em;color:rgba(255,255,255,.85)" style-hover="color:#ff4a52">
+            <span style="width:6px;height:6px;transform:rotate(45deg);background:#c4161f"></span>
+            <span>{{ n.jp }}</span>
+          </a>
+        </sc-for>
+      </nav>
+    </div>
+    <p style="max-width:1160px;margin:48px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.55);text-align:center">© {{ companyEn }} All Rights Reserved.</p>
+  </div>
+</footer>
+
+<a href="#top" aria-label="ページトップへ" style="position:fixed;right:18px;bottom:18px;z-index:40;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#c4161f;color:#fff;font-family:'Dela Gothic One',sans-serif;font-size:14px;opacity:{{ topOpacity }};transition:opacity .4s,background .3s;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)" style-hover="background:#e0262f;color:#fff">↑</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;companyName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;〇〇解体工業株式会社&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;会社情報&quot;},&quot;companyEn&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;MARUMARU KAITAI&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;会社情報&quot;},&quot;tel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;000-000-0000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;会社情報&quot;},&quot;fax&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;000-000-0001&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;会社情報&quot;},&quot;email&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;info@example.co.jp&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;会社情報&quot;},&quot;address&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;〒000-0000 〇〇県〇〇市〇〇町0-0-0&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;会社情報&quot;},&quot;hours&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;8:00〜18:00（日曜・祝日定休）&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;会社情報&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, y: 0, menuOpen: false, sent: false };
+  heroImgRef = React.createRef();
+
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onScroll = () => {
+      const y = window.scrollY;
+      if ((y > 60) !== (this.state.y > 60) || (y > 600) !== (this.state.y > 600)) this.setState({ y });
+      const el = this.heroImgRef.current;
+      if (el && y < 1200) el.style.transform = `translate3d(0,${y * 0.25}px,0) scale(${this.zoom || 1})`;
+    };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    const hero = this.heroImgRef.current;
+    if (hero) {
+      this.zoom = 1.08;
+      hero.style.transform = 'scale(1.08)';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        hero.style.transition = 'transform 2.6s cubic-bezier(.2,.7,.2,1)';
+        this.zoom = 1;
+        hero.style.transform = `translate3d(0,${window.scrollY * 0.25}px,0) scale(1)`;
+        setTimeout(() => { hero.style.transition = ''; }, 2700);
+      }));
+    }
+    setTimeout(() => this.setupReveal(), 60);
+  }
+
+  setupReveal() {
+    const els = document.querySelectorAll('[data-reveal]');
+    if (!('IntersectionObserver' in window)) return;
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.translate = '0 0';
+          this.io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) return;
+      el.style.opacity = '0';
+      el.style.translate = '0 32px';
+      el.style.transition = (el.style.transition ? el.style.transition + ', ' : '') + 'opacity .9s ease, translate .9s cubic-bezier(.2,.7,.2,1)';
+      this.io.observe(el);
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.io) this.io.disconnect();
+  }
+
+  renderVals() {
+    const p = this.props;
+    const wide = this.state.w >= 960;
+    const scrolled = this.state.y > 60 || this.state.menuOpen;
+    const services = [
+      ['bldg', '建物解体工事', 'Building Demolition', '戸建てから中規模建築物まで、建物全体の解体を計画から整地まで一貫して行います。'],
+      ['wood', '木造住宅解体', 'Wooden House Demolition', '手作業と重機を使い分け、廃材を丁寧に分別しながら木造住宅を解体します。'],
+      ['steel', '鉄骨造解体', 'Steel Structure Demolition', '工場・倉庫・店舗などの鉄骨造建物を、構造に合わせた手順で安全に解体します。'],
+      ['rc', 'RC造解体', 'Reinforced Concrete Demolition', 'マンションやビルなど鉄筋コンクリート造の建物を、騒音・粉じん対策を徹底して解体します。'],
+      ['interior', '内装解体', 'Interior Demolition', 'テナント退去時の原状回復やリフォーム前の内装撤去を、建物を傷めずに行います。'],
+      ['shop', '店舗・施設解体', 'Commercial Facility Demolition', '店舗・事務所・施設の解体を、営業スケジュールや周辺の利用者に配慮して進めます。'],
+      ['partial', '部分解体', 'Partial Demolition', '増築部分や離れ、ブロック塀など、必要な箇所だけを残す部分の構造に配慮して解体します。'],
+      ['other', 'その他解体・撤去工事', 'Other Removal Works', 'カーポート・土間コンクリート・樹木・残置物の撤去など、幅広くご相談を承ります。']
+    ].map((s, i) => ({ id: 'svc-' + s[0], no: String(i + 1).padStart(2, '0'), jp: s[1], en: s[2], desc: s[3], ph: s[2].toUpperCase() }));
+    const strengths = [
+      ['safety', '安全管理', 'SAFETY', '事故ゼロの現場を、毎日の確認から。', '着工前の危険予知活動と作業手順の共有を徹底し、現場ごとのリスクを洗い出してから作業に入ります。足場・養生・重機の点検も毎日欠かさず行います。', ['着工前・作業前の安全確認', '法令に沿った正しい施工手順', '現場ごとのリスク管理']],
+      ['tech', '専門技術', 'TECHNOLOGY', '経験に裏付けされた、確かな解体技術。', '構造や立地を見極め、手壊しと重機解体を適切に組み合わせます。現場に合った機械を選定し、無駄のない工程で効率よく作業を進めます。', ['経験豊富な解体スタッフ', '現場に適した重機・機材の選定', '効率的で無理のない工法']],
+      ['manage', '工程管理', 'MANAGEMENT', '計画どおりに、丁寧に進める。', '現地調査をもとに詳細な工程表を作成し、進捗を管理します。工事の各段階でお客様へご報告し、不安のない状態で完了までお付き合いします。', ['現地調査に基づく詳細な計画', '工期・スケジュールの管理', 'お客様への定期的なご報告']],
+      ['eco', '環境への配慮', 'ENVIRONMENT', '解体材を、次の資源へ。', '木材・コンクリート・金属などを現場で分別し、法令に従って適正に処理します。再資源化できるものは積極的にリサイクルにまわします。', ['廃材の分別と適正処理', '可能な範囲での再資源化', '解体材の責任ある取り扱い']],
+      ['support', '地域・お客様対応', 'SUPPORT', '相談しやすい、分かりやすい。', '初めて解体を検討される方にも、手続きや費用の内訳を分かりやすくご説明します。近隣へのご挨拶や工事中のご要望にも柔軟に対応します。', ['丁寧なヒアリングとご相談', '費用・工程の分かりやすい説明', 'さまざまな解体案件への柔軟な対応']]
+    ].map((s, i) => ({ id: 'str-' + s[0], no: String(i + 1).padStart(2, '0'), jp: s[1], en: s[2], lead: s[3], body: s[4], points: s[5], imgOrder: i % 2 ? 1 : 0, ph: s[2] + ' — 現場写真' }));
+    return {
+      wide, narrow: !wide,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      headerBg: scrolled ? 'rgba(14,14,14,.94)' : 'transparent',
+      headerShadow: scrolled ? '0 2px 20px rgba(0,0,0,.35)' : 'none',
+      logoColor: scrolled ? '#fff' : '#111',
+      topOpacity: this.state.y > 600 ? 1 : 0,
+      heroImgRef: this.heroImgRef,
+      companyName: p.companyName ?? '〇〇解体工業株式会社',
+      companyEn: p.companyEn ?? 'MARUMARU KAITAI',
+      tel: p.tel ?? '000-000-0000',
+      fax: p.fax ?? '000-000-0001',
+      email: p.email ?? 'info@example.co.jp',
+      address: p.address ?? '〒000-0000 〇〇県〇〇市〇〇町0-0-0',
+      hours: p.hours ?? '8:00〜18:00（日曜・祝日定休）',
+      nav: [
+        { en: 'ABOUT', jp: '私たちについて', href: '#about' },
+        { en: 'SERVICES', jp: 'サービス', href: '#services' },
+        { en: 'STRENGTHS', jp: '強み・安全', href: '#strengths' },
+        { en: 'WORKS', jp: '施工実績', href: '#works' },
+        { en: 'CONTACT', jp: 'お問い合わせ', href: '#contact' }
+      ],
+      philosophy: ['安全を最優先にした施工', '一件ごとの丁寧な工事計画', '経験豊富な専門スタッフによる作業', '近隣・周辺環境への配慮', '工事後も続く信頼関係'],
+      aboutPhotos: [
+        { id: 'about-1', ph: 'PHOTO — 手作業での解体', cap: '手壊しによる丁寧な分別解体' },
+        { id: 'about-2', ph: 'PHOTO — 保護具を着けた作業員', cap: '安全装備を徹底した現場作業' },
+        { id: 'about-3', ph: 'PHOTO — 重機オペレーター', cap: '熟練オペレーターによる重機解体' }
+      ],
+      services,
+      serviceOptions: services.map(s => s.jp).concat(['未定・相談したい']),
+      keywords: ['SAFETY', 'TECHNOLOGY', 'EXPERIENCE', 'QUALITY', 'TRUST'],
+      strengths,
+      tiles: [
+        { id: 'tile-works', en: 'WORKS', jp: '施工実績', href: '#works', ph: 'WORKS — 施工前後の写真' },
+        { id: 'tile-company', en: 'COMPANY', jp: '会社情報', href: '#form', ph: 'COMPANY — 社屋・スタッフ' }
+      ],
+      sent: this.state.sent, notSent: !this.state.sent,
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

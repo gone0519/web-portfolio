@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;0,800;0,900;1,900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1A1A1A;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1A1A1A;text-decoration:none}
+a:hover{color:#E63B24}
+input,textarea,button{font-family:inherit}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px)">
+  <div style="max-width:1240px;margin:0 auto;padding:14px clamp(20px,4vw,40px);display:flex;align-items:center;gap:32px">
+    <a href="#top" style="display:flex;flex-direction:column;align-items:flex-start;gap:2px;flex-shrink:0">
+      <span style="font-family:Montserrat;font-weight:900;font-style:italic;font-size:34px;letter-spacing:-1px;line-height:1">RISE<span style="color:#E63B24">/</span></span>
+      <span style="font-family:Montserrat;font-weight:700;font-size:9px;letter-spacing:2.4px">PERSONAL GYM</span>
+    </a>
+    <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:26px;flex:1;font-size:14px;font-weight:700">
+        <a href="#about">コンセプト</a>
+        <a href="#programs">プログラム</a>
+        <a href="#results">お客様の変化</a>
+        <a href="#trainers">トレーナー</a>
+        <a href="#contact">アクセス</a>
+      </nav>
+      <a href="#contact" style="display:flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;background:linear-gradient(90deg,#E63B24,#EF7A1F);color:#fff;font-size:13px;font-weight:700;transition:transform .25s, box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 10px 24px rgba(230,59,36,.3);color:#fff">無料カウンセリング・体験予約 <span style="font-family:Montserrat">→</span></a>
+    </sc-if>
+    <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+      <div style="flex:1"></div>
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:48px;height:48px;border:none;border-radius:50%;background:#1A1A1A;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+        <span style="width:18px;height:2px;background:#fff"></span><span style="width:18px;height:2px;background:#fff"></span><span style="width:18px;height:2px;background:#fff"></span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;flex-direction:column;padding:8px 24px 24px;gap:0;background:#fff;border-top:1px solid #eee">
+      <a href="#about" onClick="{{ closeMenu }}" style="padding:16px 0;border-bottom:1px solid #eee;font-weight:700">コンセプト</a>
+      <a href="#programs" onClick="{{ closeMenu }}" style="padding:16px 0;border-bottom:1px solid #eee;font-weight:700">プログラム</a>
+      <a href="#results" onClick="{{ closeMenu }}" style="padding:16px 0;border-bottom:1px solid #eee;font-weight:700">お客様の変化</a>
+      <a href="#trainers" onClick="{{ closeMenu }}" style="padding:16px 0;border-bottom:1px solid #eee;font-weight:700">トレーナー</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="margin-top:20px;padding:16px;border-radius:999px;background:linear-gradient(90deg,#E63B24,#EF7A1F);color:#fff;font-weight:700;text-align:center">無料カウンセリング・体験予約 →</a>
+    </nav>
+  </sc-if>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section data-screen-label="01 Hero" style="position:relative;background:#F2F2F2;margin-top:20px;overflow:hidden">
+  <div style="position:absolute;left:0;top:0;width:44%;height:78%;filter:grayscale(1) contrast(1.05)">
+    <image-slot id="hero-bg" shape="rect" placeholder="ジム内観（モノクロ）"></image-slot>
+  </div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(40px,7vw,96px) clamp(20px,4vw,40px) 64px;display:flex;flex-wrap:wrap;gap:32px;align-items:center">
+    <div style="flex:1 1 520px;min-width:0;position:relative;z-index:2">
+      <div data-reveal="1" style="background:linear-gradient(100deg,#E63B24 0%,#EF7A1F 100%);clip-path:polygon(0 0,100% 0,84% 100%,0 100%);padding:clamp(36px,5vw,64px) 22% clamp(36px,5vw,64px) clamp(24px,4vw,56px);color:#fff">
+        <div style="position:relative;display:inline-block;background:#1A1A1A;color:#fff;font-size:13px;font-weight:700;letter-spacing:2px;padding:10px 26px;border-radius:999px">
+          完全個室・マンツーマン
+          <span style="position:absolute;left:44%;bottom:-7px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:8px solid #1A1A1A"></span>
+        </div>
+        <h1 style="margin:22px 0 0;font-weight:900;font-size:clamp(34px,4.6vw,58px);line-height:1.2;letter-spacing:4px;text-wrap:balance">理想のカラダを、<br>一生モノに。</h1>
+        <p style="margin:22px 0 0;font-size:clamp(15px,1.6vw,20px);font-weight:900;letter-spacing:2px;line-height:1.9">
+          <span style="background:linear-gradient(transparent 62%,rgba(255,255,255,.42) 62%);padding:0 2px">ダイエット</span> から <span style="background:linear-gradient(transparent 62%,rgba(255,255,255,.42) 62%);padding:0 2px">ボディメイク</span> まで
+        </p>
+        <p style="margin:14px 0 0;font-size:14px;line-height:1.9;font-weight:500;max-width:420px">あなた専属のトレーナーが、運動・食事・習慣まで設計。リバウンドしない体を、2ヶ月から。</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
+        <a href="#contact" style="display:flex;align-items:center;gap:12px;padding:18px 32px;border-radius:999px;background:#1A1A1A;color:#fff;font-weight:700;font-size:15px;transition:transform .25s,background .25s" style-hover="transform:translateY(-2px);background:#E63B24;color:#fff">無料体験を予約する <span style="font-family:Montserrat">→</span></a>
+        <a href="#programs" style="display:flex;align-items:center;gap:12px;padding:18px 32px;border-radius:999px;background:#fff;border:1.5px solid #1A1A1A;font-weight:700;font-size:15px;transition:transform .25s" style-hover="transform:translateY(-2px)">プログラムを見る</a>
+      </div>
+      <sc-if value="{{ showBadges }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-wrap:wrap;gap:clamp(10px,2vw,22px);margin-top:36px">
+          <sc-for list="{{ badges }}" as="b" hint-placeholder-count="3">
+            <div data-reveal="1" style="width:clamp(104px,12vw,150px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 28%,#C3161F 0%,#8A0610 60%,#5E0309 100%);border:5px solid #E8BE5E;box-shadow:0 0 0 3px #A9782A,0 10px 24px rgba(90,10,10,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;position:relative">
+              <span style="position:absolute;inset:6px;border-radius:50%;border:1px solid rgba(240,200,120,.55)"></span>
+              <span style="color:#F0C66A;font-size:10px;letter-spacing:2px">★★★</span>
+              <span style="font-size:clamp(11px,1.1vw,13px);font-weight:900;margin-top:2px">{{ b.top }}</span>
+              <span style="font-family:Montserrat;font-weight:900;font-size:clamp(24px,2.8vw,36px);line-height:1.1">{{ b.big }}<span style="font-family:'Noto Sans JP';font-size:12px">{{ b.unit }}</span></span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <div style="flex:1 1 400px;min-width:0;position:relative;height:clamp(420px,52vw,640px)">
+      <div data-reveal="1" style="position:absolute;left:4%;top:0;width:72%;height:58%">
+        <image-slot id="hero-a" mask="polygon(22% 0,100% 0,78% 100%,0 100%)" placeholder="トレーニング中の女性"></image-slot>
+      </div>
+      <div data-reveal="1" style="position:absolute;right:0;bottom:0;width:80%;height:72%">
+        <image-slot id="hero-b" mask="polygon(34% 0,100% 0,66% 100%,0 100%)" placeholder="男性の上半身・ダーク"></image-slot>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" data-screen-label="02 Concept" style="position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;right:-2vw;top:0;font-family:Montserrat;font-weight:900;font-size:clamp(90px,17vw,260px);line-height:1;color:#EDEDED;letter-spacing:-4px;white-space:nowrap;pointer-events:none">CONCEPT</div>
+  <div style="background:linear-gradient(#F2F2F2,#F2F2F2) no-repeat 0 0/100% 72%">
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(64px,8vw,110px) clamp(20px,4vw,40px) 80px">
+      <div data-reveal="1" style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(20px,3vw,36px)">
+        <div style="width:clamp(84px,9vw,120px);aspect-ratio:1.2;background:#1A1A1A;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <span style="font-family:Montserrat;font-weight:900;font-style:italic;font-size:clamp(30px,3.4vw,44px);color:#fff">R<span style="color:#EF7A1F">/</span></span>
+        </div>
+        <div style="min-width:0">
+          <p style="margin:0;font-size:clamp(14px,1.5vw,18px);font-weight:700;letter-spacing:2px">パーソナルトレーニングなら</p>
+          <h2 style="margin:6px 0 0;font-family:Montserrat;font-weight:900;font-size:clamp(32px,5vw,62px);line-height:1.05;letter-spacing:-1px;text-wrap:balance">Your Body. Your Goals.<br>Your Transformation.</h2>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,64px);margin-top:56px">
+        <div data-reveal="1" style="flex:1 1 340px;min-width:0;font-size:15px;line-height:2.1;letter-spacing:.5px">
+          <p style="margin:0">同じメニューで、同じ結果は出ない。<br>RISE PERSONAL GYM は、目標・生活リズム・体力・体の状態を<br><span style="background:linear-gradient(90deg,#E63B24,#EF7A1F);color:#fff;font-weight:700;padding:2px 4px">カウンセリング × 姿勢分析 × 体組成測定</span><br>から読み解き、あなただけのプログラムを設計します。</p>
+          <p style="margin:24px 0 0">担当トレーナーが最初から最後まで伴走。<br>トレーニングの日も、そうでない日も、食事と習慣をLINEでサポートします。</p>
+          <p style="margin:24px 0 0"><span style="background:linear-gradient(90deg,#E63B24,#EF7A1F);color:#fff;font-weight:700;padding:2px 4px">「続けられる」をつくるジム</span>を目指しています。</p>
+        </div>
+        <div data-reveal="1" style="flex:1.4 1 460px;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:0;height:clamp(300px,34vw,420px);border-radius:6px;overflow:hidden">
+          <div style="grid-row:span 2"><image-slot id="about-1" shape="rect" placeholder="ラックエリア"></image-slot></div>
+          <div style="grid-row:span 2"><image-slot id="about-2" shape="rect" placeholder="個室ブース"></image-slot></div>
+          <div><image-slot id="about-3" shape="rect" placeholder="腹筋ディテール"></image-slot></div>
+          <div><image-slot id="about-4" shape="rect" placeholder="女性のトレーニング"></image-slot></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:64px">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+          <div data-reveal="1" style="background:#fff;padding:28px 24px;border-radius:6px;box-shadow:0 1px 0 rgba(0,0,0,.04);transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.08)">
+            <div style="font-family:Montserrat;font-weight:900;font-size:13px;color:#E63B24;letter-spacing:1px">{{ p.no }}</div>
+            <div style="font-family:Montserrat;font-weight:800;font-size:12px;letter-spacing:1.5px;margin-top:14px;color:#777">{{ p.en }}</div>
+            <h3 style="margin:4px 0 0;font-size:18px;font-weight:900">{{ p.title }}</h3>
+            <p style="margin:12px 0 0;font-size:13px;line-height:1.9;color:#444">{{ p.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs" data-screen-label="03 Programs" style="position:relative;padding-top:clamp(56px,7vw,96px)">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div style="display:flex;align-items:center;gap:14px;font-family:Montserrat;font-weight:700;font-size:12px;letter-spacing:1.5px"><span style="width:28px;height:1px;background:#1A1A1A"></span>PROGRAMS</div>
+    <h2 data-reveal="1" style="margin:18px 0 0;font-family:Montserrat;font-weight:900;font-size:clamp(34px,4.6vw,56px);line-height:1.2">RISE GYM<br><span style="font-family:'Noto Sans JP';background:linear-gradient(transparent 55%,#E63B24 55%,#EF7A1F 100%);padding:0 2px">の</span><span style="font-family:'Noto Sans JP';background:linear-gradient(transparent 55%,#EF7A1F 55%);padding:0 4px 0 0">プログラム</span></h2>
+  </div>
+  <div style="margin-top:-30px;background:#F2F2F2;border-radius:0 28px 0 0;width:min(100%,1500px);padding:clamp(72px,8vw,110px) 0 clamp(64px,8vw,100px)">
+    <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+      <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,56px);align-items:flex-start">
+        <div style="flex:1.3 1 420px;min-width:0">
+          <div style="position:relative;padding-top:16px">
+            <span style="position:absolute;left:24px;top:0;background:#1A1A1A;color:#fff;font-family:Montserrat;font-weight:700;font-size:13px;padding:7px 20px;border-radius:999px">Program 01</span>
+            <div style="background:linear-gradient(90deg,#E63B24,#EF7A1F);color:#fff;padding:20px 24px 16px;font-size:clamp(18px,2vw,24px);font-weight:900;letter-spacing:2px">パーソナルトレーニング</div>
+          </div>
+          <h3 style="margin:36px 0 0;display:flex;align-items:baseline;gap:14px;font-size:20px;font-weight:900;border-left:5px solid #E63B24;padding-left:16px">完全オーダーメイドの60分<span style="font-family:Montserrat;font-size:11px;font-weight:500;color:#888">Personal Training</span></h3>
+          <p style="margin:20px 0 0;font-size:15px;line-height:2.1">初回のカウンセリングと姿勢・体組成の測定をもとに、毎回のセッション内容を担当トレーナーが設計。フォームの細部まで1対1で指導するため、運動が初めての方でも安全に、最短距離で結果に向かえます。</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
+            <span style="font-size:12px;font-weight:700;padding:7px 14px;background:#fff;border-radius:999px">60分 / 回</span>
+            <span style="font-size:12px;font-weight:700;padding:7px 14px;background:#fff;border-radius:999px">完全個室</span>
+            <span style="font-size:12px;font-weight:700;padding:7px 14px;background:#fff;border-radius:999px">ウェア・シューズ無料貸出</span>
+          </div>
+        </div>
+        <div style="flex:1 1 360px;min-width:0;height:clamp(260px,28vw,360px);border-radius:6px;overflow:hidden">
+          <image-slot id="prog-main" shape="rect" placeholder="トレーナーと顧客のセッション"></image-slot>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:clamp(20px,2.5vw,32px);margin-top:clamp(56px,6vw,80px)">
+        <sc-for list="{{ programs }}" as="s" hint-placeholder-count="6">
+          <article data-reveal="1" style="background:#fff;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.1)">
+            <div style="height:200px;overflow:hidden"><image-slot id="prog-{{ s.key }}" shape="rect" placeholder="{{ s.img }}"></image-slot></div>
+            <div style="position:relative;padding-top:14px;margin:-22px 20px 0">
+              <span style="position:absolute;left:16px;top:0;background:#1A1A1A;color:#fff;font-family:Montserrat;font-weight:700;font-size:11px;padding:5px 14px;border-radius:999px;z-index:1">Program {{ s.no }}</span>
+              <div style="background:linear-gradient(90deg,#E63B24,#EF7A1F);color:#fff;padding:16px 18px 12px;font-size:17px;font-weight:900;letter-spacing:1px">{{ s.title }}</div>
+            </div>
+            <div style="padding:18px 24px 28px">
+              <div style="font-family:Montserrat;font-size:11px;font-weight:700;color:#888;letter-spacing:1px">{{ s.en }}</div>
+              <p style="margin:10px 0 0;font-size:14px;line-height:1.95">{{ s.body }}</p>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" data-screen-label="04 Results" style="position:relative;overflow:hidden;padding:clamp(72px,9vw,120px) 0 0">
+  <div aria-hidden="true" style="position:absolute;left:-1vw;top:clamp(40px,5vw,70px);font-family:Montserrat;font-weight:900;font-size:clamp(90px,17vw,260px);line-height:1;color:#F2F2F2;letter-spacing:-4px;white-space:nowrap;pointer-events:none">RESULTS</div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div style="display:flex;align-items:center;gap:14px;font-family:Montserrat;font-weight:700;font-size:12px;letter-spacing:1.5px"><span style="width:28px;height:1px;background:#1A1A1A"></span>BEFORE &amp; AFTER</div>
+    <h2 data-reveal="1" style="margin:18px 0 0;font-weight:900;font-size:clamp(32px,4.4vw,54px);line-height:1.25">お客様の<span style="background:linear-gradient(transparent 55%,#EF7A1F 55%);padding:0 4px">変化</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:24px;margin-top:48px">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3">
+        <article data-reveal="1" style="background:#F2F2F2;border-radius:6px;overflow:hidden;transition:transform .35s" style-hover="transform:translateY(-4px)">
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px;height:260px;position:relative">
+            <div style="position:relative;filter:grayscale(.6)"><image-slot id="ba-{{ c.key }}-b" shape="rect" placeholder="BEFORE"></image-slot><span style="position:absolute;left:10px;top:10px;background:#1A1A1A;color:#fff;font-family:Montserrat;font-weight:700;font-size:10px;letter-spacing:1px;padding:4px 10px;pointer-events:none">BEFORE</span></div>
+            <div style="position:relative"><image-slot id="ba-{{ c.key }}-a" shape="rect" placeholder="AFTER"></image-slot><span style="position:absolute;left:10px;top:10px;background:linear-gradient(90deg,#E63B24,#EF7A1F);color:#fff;font-family:Montserrat;font-weight:700;font-size:10px;letter-spacing:1px;padding:4px 10px;pointer-events:none">AFTER</span></div>
+          </div>
+          <div style="padding:22px 24px 26px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+              <span style="font-weight:900;font-size:15px">{{ c.who }}</span>
+              <span style="font-size:12px;font-weight:700;background:#1A1A1A;color:#fff;padding:5px 12px;border-radius:999px">{{ c.period }}</span>
+            </div>
+            <div style="margin-top:16px;display:flex;flex-direction:column">
+              <sc-for list="{{ c.stats }}" as="st" hint-placeholder-count="3">
+                <div style="display:grid;grid-template-columns:80px 1fr auto;align-items:baseline;gap:10px;padding:10px 0;border-top:1px solid #DCDCDC">
+                  <span style="font-size:12px;font-weight:700;color:#555">{{ st.label }}</span>
+                  <span style="font-family:Montserrat;font-weight:700;font-size:14px">{{ st.from }} → {{ st.to }}</span>
+                  <span style="font-family:Montserrat;font-weight:900;font-size:20px;color:#D4371F">{{ st.diff }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <p style="margin:16px 0 0;font-size:11px;color:#777">※ 掲載の結果は個人の実績であり、効果を保証するものではありません。</p>
+
+    <div style="display:flex;align-items:center;gap:14px;font-family:Montserrat;font-weight:700;font-size:12px;letter-spacing:1.5px;margin-top:clamp(80px,9vw,120px)"><span style="width:28px;height:1px;background:#1A1A1A"></span>VOICE</div>
+    <h2 data-reveal="1" style="margin:18px 0 0;font-weight:900;font-size:clamp(28px,3.6vw,44px);line-height:1.3">お客様の<span style="background:linear-gradient(transparent 55%,#EF7A1F 55%);padding:0 4px">声</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:24px;margin-top:40px">
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+        <figure data-reveal="1" style="margin:0;padding:32px 28px;border:1.5px solid #1A1A1A;border-radius:6px;display:flex;flex-direction:column;gap:18px;background:#fff">
+          <span style="font-family:Montserrat;font-weight:900;font-size:48px;line-height:.6;color:#E63B24">“</span>
+          <p style="margin:0;font-weight:900;font-size:17px;line-height:1.6">{{ v.head }}</p>
+          <blockquote style="margin:0;font-size:14px;line-height:2;color:#333;flex:1">{{ v.body }}</blockquote>
+          <figcaption style="display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid #E5E5E5">
+            <image-slot id="voice-{{ v.key }}" shape="circle" placeholder="顔" style="width:44px;height:44px;flex-shrink:0"></image-slot>
+            <span style="font-size:13px;font-weight:700">{{ v.who }}</span>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- TRAINERS -->
+  <div id="trainers" data-screen-label="04b Trainers" style="margin-top:clamp(80px,9vw,120px);background:linear-gradient(#F2F2F2,#F2F2F2) no-repeat left top/min(100%,1500px) 100%;border-radius:0 28px 0 0;padding:clamp(64px,8vw,100px) 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+      <div style="display:flex;align-items:center;gap:14px;font-family:Montserrat;font-weight:700;font-size:12px;letter-spacing:1.5px"><span style="width:28px;height:1px;background:#1A1A1A"></span>TRAINERS</div>
+      <h2 data-reveal="1" style="margin:18px 0 0;font-family:Montserrat;font-weight:900;font-size:clamp(32px,4.4vw,54px);line-height:1.2">RISE GYM<br><span style="font-family:'Noto Sans JP';background:linear-gradient(transparent 55%,#EF7A1F 55%);padding:0 4px 0 0">のトレーナー</span></h2>
+      <div style="display:flex;flex-direction:column;gap:clamp(48px,6vw,72px);margin-top:56px">
+        <sc-for list="{{ trainers }}" as="t" hint-placeholder-count="3">
+          <article data-reveal="1" style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,48px);align-items:flex-start">
+            <div style="flex:0 1 300px;min-width:240px;height:360px;border-radius:6px;overflow:hidden"><image-slot id="trainer-{{ t.key }}" shape="rect" placeholder="トレーナー写真"></image-slot></div>
+            <div style="flex:1 1 380px;min-width:0">
+              <div style="display:inline-block;background:#1A1A1A;color:#fff;font-size:12px;font-weight:700;padding:6px 16px;border-radius:999px">{{ t.role }}</div>
+              <h3 style="margin:18px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;font-size:24px;font-weight:900;border-left:5px solid #E63B24;padding-left:16px">{{ t.name }}<span style="font-family:Montserrat;font-size:11px;font-weight:500;color:#888">{{ t.en }}</span></h3>
+              <p style="margin:20px 0 0;font-size:15px;line-height:2.1">{{ t.bio }}</p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:24px">
+                <div>
+                  <div style="font-size:13px;font-weight:900;display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;background:#1A1A1A"></span>保有資格</div>
+                  <p style="margin:8px 0 0;font-size:13px;line-height:1.9;color:#333">{{ t.cert }}</p>
+                </div>
+                <div>
+                  <div style="font-size:13px;font-weight:900;display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;background:#1A1A1A"></span>得意分野</div>
+                  <p style="margin:8px 0 0;font-size:13px;line-height:1.9;color:#333">{{ t.spec }}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" data-screen-label="05 Contact" style="position:relative;padding:clamp(72px,9vw,120px) 0 clamp(72px,8vw,100px)">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+    <div data-reveal="1" style="background:linear-gradient(100deg,#E63B24,#EF7A1F);clip-path:polygon(0 0,100% 0,94% 100%,0 100%);color:#fff;padding:clamp(40px,5vw,64px) 12% clamp(40px,5vw,64px) clamp(24px,4vw,56px)">
+      <div style="font-family:Montserrat;font-weight:700;font-size:12px;letter-spacing:2px">FREE COUNSELING &amp; TRIAL</div>
+      <h2 style="margin:14px 0 0;font-family:Montserrat;font-weight:900;font-size:clamp(32px,5vw,64px);line-height:1.05;letter-spacing:-1px;text-wrap:balance">Start Your Transformation Today.</h2>
+      <p style="margin:18px 0 0;font-size:15px;line-height:1.9;font-weight:500;max-width:560px">無料カウンセリングでは、目標の整理と体組成測定、60分の体験トレーニングを行います。その場での入会は必要ありません。</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,64px);margin-top:56px;align-items:flex-start">
+      <div style="flex:1.4 1 440px;min-width:0">
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700">お名前 <span style="color:#D4371F;font-size:11px">必須</span><input required name="name" placeholder="山田 花子" style="padding:16px;border:1.5px solid #DADADA;border-radius:4px;font-size:15px;background:#F7F7F7;outline:none" style-focus="border-color:#E63B24;background:#fff"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700">電話番号 <span style="color:#D4371F;font-size:11px">必須</span><input required type="tel" name="tel" placeholder="090-0000-0000" style="padding:16px;border:1.5px solid #DADADA;border-radius:4px;font-size:15px;background:#F7F7F7;outline:none" style-focus="border-color:#E63B24;background:#fff"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700">メールアドレス <span style="color:#D4371F;font-size:11px">必須</span><input required type="email" name="email" placeholder="you@example.com" style="padding:16px;border:1.5px solid #DADADA;border-radius:4px;font-size:15px;background:#F7F7F7;outline:none" style-focus="border-color:#E63B24;background:#fff"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700">ご希望日 <span style="color:#888;font-size:11px">任意</span><input type="date" name="date" style="padding:15px 16px;border:1.5px solid #DADADA;border-radius:4px;font-size:15px;background:#F7F7F7;outline:none" style-focus="border-color:#E63B24;background:#fff"></label>
+            <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700">ご相談内容 <span style="color:#888;font-size:11px">任意</span><textarea name="msg" rows="5" placeholder="目標や気になること、ご希望の時間帯などをご記入ください" style="padding:16px;border:1.5px solid #DADADA;border-radius:4px;font-size:15px;background:#F7F7F7;outline:none;resize:vertical" style-focus="border-color:#E63B24;background:#fff"></textarea></label>
+            <button type="submit" style="grid-column:1/-1;justify-self:start;display:flex;align-items:center;gap:12px;padding:20px 44px;border:none;border-radius:999px;background:linear-gradient(90deg,#E63B24,#EF7A1F);color:#fff;font-size:16px;font-weight:700;cursor:pointer;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 12px 28px rgba(230,59,36,.32)">無料カウンセリングを予約する <span style="font-family:Montserrat">→</span></button>
+          </form>
+        </sc-if>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#F2F2F2;border-radius:6px;padding:48px 36px">
+            <div style="font-family:Montserrat;font-weight:900;font-size:28px">Thank you.</div>
+            <p style="margin:14px 0 0;font-size:15px;line-height:2">お申し込みを受け付けました。担当者より1営業日以内にご連絡いたします。</p>
+            <button onClick="{{ reset }}" style="margin-top:20px;padding:12px 24px;border:1.5px solid #1A1A1A;border-radius:999px;background:#fff;font-weight:700;cursor:pointer">フォームに戻る</button>
+          </div>
+        </sc-if>
+      </div>
+      <aside style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:0">
+        <div style="height:200px;border-radius:6px;overflow:hidden;filter:grayscale(1)"><image-slot id="access-map" shape="rect" placeholder="店舗外観 / 地図"></image-slot></div>
+        <dl style="margin:24px 0 0;display:grid;grid-template-columns:96px 1fr;font-size:14px;line-height:1.8">
+          <dt style="font-weight:900;padding:14px 0;border-top:1px solid #E0E0E0">所在地</dt><dd style="margin:0;padding:14px 0;border-top:1px solid #E0E0E0">〒150-0001<br>東京都渋谷区神宮前 5-00-0 RISEビル 3F</dd>
+          <dt style="font-weight:900;padding:14px 0;border-top:1px solid #E0E0E0">営業時間</dt><dd style="margin:0;padding:14px 0;border-top:1px solid #E0E0E0">7:00 – 23:00（最終受付 22:00）<br>年中無休</dd>
+          <dt style="font-weight:900;padding:14px 0;border-top:1px solid #E0E0E0;border-bottom:1px solid #E0E0E0">電話</dt><dd style="margin:0;padding:14px 0;border-top:1px solid #E0E0E0;border-bottom:1px solid #E0E0E0"><a href="tel:0312345678" style="font-family:Montserrat;font-weight:800;font-size:20px">03-1234-5678</a></dd>
+        </dl>
+        <div style="display:flex;gap:10px;margin-top:20px">
+          <a href="#" style="display:flex;align-items:center;justify-content:center;height:48px;padding:0 22px;border-radius:999px;background:#1A1A1A;color:#fff;font-family:Montserrat;font-weight:700;font-size:13px">Instagram</a>
+          <a href="#" style="display:flex;align-items:center;justify-content:center;height:48px;padding:0 22px;border-radius:999px;border:1.5px solid #1A1A1A;font-family:Montserrat;font-weight:700;font-size:13px">LINE</a>
+          <a href="#" style="display:flex;align-items:center;justify-content:center;height:48px;padding:0 22px;border-radius:999px;border:1.5px solid #1A1A1A;font-family:Montserrat;font-weight:700;font-size:13px">YouTube</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:#1A1A1A;color:#fff">
+  <div style="max-width:1240px;margin:0 auto;padding:56px clamp(20px,4vw,40px) 32px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-end">
+    <div>
+      <div style="font-family:Montserrat;font-weight:900;font-style:italic;font-size:40px;line-height:1">RISE<span style="color:#EF7A1F">/</span></div>
+      <div style="font-family:Montserrat;font-weight:700;font-size:10px;letter-spacing:2.6px;margin-top:4px">PERSONAL GYM</div>
+    </div>
+    <nav style="display:flex;flex-wrap:wrap;gap:24px;font-size:13px;font-weight:700">
+      <a href="#about" style="color:#fff">コンセプト</a><a href="#programs" style="color:#fff">プログラム</a><a href="#results" style="color:#fff">お客様の変化</a><a href="#trainers" style="color:#fff">トレーナー</a><a href="#contact" style="color:#fff">アクセス</a>
+    </nav>
+  </div>
+  <div style="max-width:1240px;margin:0 auto;padding:20px clamp(20px,4vw,40px) 32px;border-top:1px solid #333;font-family:Montserrat;font-size:11px;color:#AAA;letter-spacing:1px">© 2026 RISE PERSONAL GYM</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, sent: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+    setTimeout(() => this.setupReveal(), 60);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    this.io && this.io.disconnect();
+  }
+  setupReveal() {
+    if (this.props.animations === false || !('IntersectionObserver' in window)) return;
+    this.io = new IntersectionObserver((es) => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.translate = '0 0'; this.io.unobserve(e.target); }
+    }), { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) return;
+      el.style.opacity = '0'; el.style.translate = '0 28px';
+      el.style.transition = (el.style.transition ? el.style.transition + ',' : '') + 'opacity .9s cubic-bezier(.2,.7,.2,1), translate .9s cubic-bezier(.2,.7,.2,1)';
+      this.io.observe(el);
+    });
+  }
+  renderVals() {
+    const mobile = this.state.w < 960;
+    return {
+      desktop: !mobile, mobile, menuVisible: mobile && this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      showBadges: this.props.showBadges ?? true,
+      sent: this.state.sent, notSent: !this.state.sent,
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false }),
+      badges: [
+        { top: '完全個室', big: '1on1', unit: '' },
+        { top: '継続率', big: '94', unit: '%' },
+        { top: '食事サポート', big: '365', unit: '日' },
+      ],
+      pillars: [
+        { no: '01', en: 'CUSTOM PROGRAM', title: 'あなた専用の設計', body: '目標・生活リズム・体力・体の状態から、毎回のメニューを組み立てます。' },
+        { no: '02', en: 'PRO TRAINERS', title: '資格を持つ専門家', body: 'NSCA・NESTAなどの資格を持ち、年間1,000セッション以上を担当するトレーナーのみ在籍。' },
+        { no: '03', en: 'ONE ON ONE', title: '完全マンツーマン', body: '担当制の1対1指導。フォームの細部まで見ながら、安全に負荷を高めます。' },
+        { no: '04', en: 'NUTRITION & LIFESTYLE', title: '食事と習慣のサポート', body: '毎日の食事報告にトレーナーがフィードバック。無理のない習慣をつくります。' },
+      ],
+      programs: [
+        { key: 'diet', no: '02', title: 'ダイエットプログラム', en: 'Weight Loss', img: '有酸素・全身運動', body: '筋肉量を落とさずに体脂肪を減らす。食事管理と組み合わせ、リバウンドしにくい体重減をめざします。' },
+        { key: 'bodymake', no: '03', title: 'ボディメイク', en: 'Body Make', img: '鏡の前でのポージング', body: 'くびれ、ヒップライン、厚みのある胸板。なりたい体のシルエットから逆算してメニューを組みます。' },
+        { key: 'strength', no: '04', title: '筋力トレーニング', en: 'Strength Training', img: 'バーベルスクワット', body: 'ビッグ3を中心に、正しいフォームで扱える重量を段階的に伸ばします。初心者から競技者まで対応。' },
+        { key: 'functional', no: '05', title: 'ファンクショナル', en: 'Functional Training', img: 'ケトルベル・体幹', body: '日常やスポーツで使える動きを鍛える。体幹・可動域・バランスを高め、疲れにくい体へ。' },
+        { key: 'nutrition', no: '06', title: '食事サポート', en: 'Nutrition Support', img: '食事・プレート', body: '外食やコンビニでも続けられる食事法を提案。毎日の報告に担当トレーナーが個別に返信します。' },
+        { key: 'posture', no: '07', title: '姿勢改善', en: 'Posture Improvement', img: '姿勢チェック', body: '猫背・反り腰・肩こりの原因を姿勢分析で特定。ストレッチと筋力強化で根本から整えます。' },
+      ],
+      cases: [
+        { key: 'c1', who: '30代 女性 / 会社員', period: '3ヶ月', stats: [
+          { label: '体重', from: '62.4kg', to: '54.8kg', diff: '−7.6kg' },
+          { label: '体脂肪率', from: '31.2%', to: '23.9%', diff: '−7.3%' },
+          { label: 'ウエスト', from: '78cm', to: '67cm', diff: '−11cm' } ] },
+        { key: 'c2', who: '40代 男性 / 経営者', period: '4ヶ月', stats: [
+          { label: '体重', from: '84.1kg', to: '73.5kg', diff: '−10.6kg' },
+          { label: '体脂肪率', from: '27.8%', to: '17.4%', diff: '−10.4%' },
+          { label: 'ウエスト', from: '94cm', to: '81cm', diff: '−13cm' } ] },
+        { key: 'c3', who: '20代 女性 / 看護師', period: '2ヶ月', stats: [
+          { label: '体重', from: '55.0kg', to: '51.2kg', diff: '−3.8kg' },
+          { label: '体脂肪率', from: '28.5%', to: '23.1%', diff: '−5.4%' },
+          { label: 'ウエスト', from: '70cm', to: '63cm', diff: '−7cm' } ] },
+      ],
+      voices: [
+        { key: 'v1', head: '食事を我慢する感覚がなかった', body: '何度もダイエットに失敗してきましたが、食べてはいけないものが無いのが続いた理由です。毎日の報告に丁寧な返信があり、一人じゃない感覚がありました。', who: '32歳 女性 / 会社員' },
+        { key: 'v2', head: '腰痛がなくなり、仕事の集中力が上がった', body: '運動経験はほぼゼロ。姿勢の分析から始めてもらい、痛みが出ない範囲で少しずつ負荷を上げてくれたので安心して通えました。', who: '45歳 男性 / 経営者' },
+        { key: 'v3', head: '夜勤があっても通い続けられた', body: '朝7時から夜23時まで予約できるので、シフト制でも問題なし。トレーナーさんが毎回の体調を見てメニューを調整してくれます。', who: '27歳 女性 / 看護師' },
+      ],
+      trainers: [
+        { key: 't1', role: '代表 / ヘッドトレーナー', name: '高橋 誠', en: 'Makoto Takahashi', bio: 'トレーナー歴15年。延べ3,000名以上のダイエット・ボディメイクを担当。RISEのプログラム設計とトレーナー育成を統括し、現在も現場でお客様を指導しています。', cert: 'NSCA-CSCS / 健康運動指導士', spec: 'ボディメイク、筋力トレーニング' },
+        { key: 't2', role: 'シニアトレーナー', name: '中村 さくら', en: 'Sakura Nakamura', bio: '管理栄養士の資格を持つトレーナー。食事とトレーニングの両面から、女性の体づくりをサポート。産後のボディケアにも対応します。', cert: '管理栄養士 / NESTA-PFT', spec: 'ダイエット、食事指導、ヒップライン' },
+        { key: 't3', role: 'トレーナー', name: '佐藤 健太', en: 'Kenta Sato', bio: '元・大学アメフト部のストレングスコーチ。動作分析をもとにした姿勢改善とファンクショナルトレーニングを得意とし、腰痛・肩こりに悩む方を多く担当。', cert: 'NSCA-CPT / 柔道整復師', spec: '姿勢改善、ファンクショナル' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

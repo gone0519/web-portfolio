@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./responsive.css">
+  <style id="__om-reset">*{box-sizing:border-box;}a{text-decoration:none;}</style>
+</helmet>
+<header class="r-hd" style="position:sticky;top:0;z-index:100;background:#fdfdf8;borderBottom:3px solid #17170f;display:flex;alignItems:center;justifyContent:space-between;padding:14px 28px;fontFamily:'Noto Sans JP',sans-serif;">
+  <a href="Home.dc.html" style="display:flex;alignItems:center;gap:10px;lineHeight:1;color:#17170f;minWidth:0;">
+    <span style="width:14px;height:14px;background:#f4c400;display:inline-block;flexShrink:0;"></span>
+    <span style="fontFamily:'Oswald',sans-serif;fontWeight:700;fontSize:22px;letterSpacing:1px;whiteSpace:nowrap;">RESET GYM</span>
+    <span class="r-brand-sub" style="fontSize:9px;letterSpacing:2px;color:#6f6d61;marginTop:3px;">PERSONAL &amp; SELF FITNESS</span>
+  </a>
+  <sc-if value="{{ !isMobile }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;alignItems:center;gap:26px;">
+      <sc-for list="{{ items }}" as="item" hint-placeholder-count="6">
+        <a href="{{ item.href }}" style="fontSize:14px;fontWeight:{{ item.weight }};color:{{ item.color }};borderBottom:{{ item.underline }};paddingBottom:4px;">{{ item.label }}</a>
+      </sc-for>
+      <a href="Contact.dc.html" style="background:#f4c400;color:#17170f;fontWeight:700;fontSize:14px;padding:11px 22px;borderRadius:2px;">無料体験</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="background:none;border:none;width:32px;height:24px;display:flex;flexDirection:column;justifyContent:space-between;cursor:pointer;padding:0;">
+      <span style="display:block;height:2px;background:#17170f;"></span>
+      <span style="display:block;height:2px;background:#17170f;"></span>
+      <span style="display:block;height:2px;background:#17170f;"></span>
+    </button>
+  </sc-if>
+</header>
+<sc-if value="{{ isMobile && menuOpen }}" hint-placeholder-val="{{ false }}">
+  <nav class="r-hd-menu" style="position:sticky;top:57px;zIndex:99;background:#fdfdf8;borderBottom:1px solid #17170f;display:flex;flexDirection:column;padding:8px 28px 20px;fontFamily:'Noto Sans JP',sans-serif;">
+    <sc-for list="{{ items }}" as="item" hint-placeholder-count="6">
+      <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="fontSize:15px;fontWeight:{{ item.weight }};color:{{ item.color }};padding:12px 0;borderBottom:1px solid #eee;">{{ item.label }}</a>
+    </sc-for>
+    <a href="Contact.dc.html" style="background:#f4c400;color:#17170f;fontWeight:700;fontSize:14px;padding:13px 22px;borderRadius:2px;textAlign:center;marginTop:14px;">無料体験を予約する</a>
+  </nav>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;currentPage&quot;:{&quot;editor&quot;:null,&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { isMobile: false, menuOpen: false };
+  componentDidMount() {
+    this.check = () => this.setState({ isMobile: window.innerWidth < 900 });
+    this.check();
+    window.addEventListener('resize', this.check);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.check); }
+  renderVals() {
+    const current = this.props.currentPage || '';
+    const mk = (key, label, href) => {
+      const active = current === key;
+      return { key, label, href, weight: active ? 700 : 500, color: active ? '#17170f' : '#4d4b41', underline: active ? '2px solid #f4c400' : '2px solid transparent' };
+    };
+    return {
+      isMobile: this.state.isMobile,
+      menuOpen: this.state.menuOpen,
+      items: [
+        mk('home', 'ホーム', 'Home.dc.html'),
+        mk('about', 'コンセプト', 'About.dc.html'),
+        mk('services', 'トレーニング', 'Services.dc.html'),
+        mk('pricing', '料金', 'Pricing.dc.html'),
+        mk('facilities', '施設・トレーナー', 'Facilities.dc.html'),
+        mk('contact', 'お問い合わせ', 'Contact.dc.html'),
+      ],
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

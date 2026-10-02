@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>サービス | SOSHIN 株式会社創進</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="株式会社創進のサービス — 運用型広告・SEO・サイト制作・分析を一つのチームで。" />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #f2f3f5; color: #14161a; font-family: "Noto Sans JP", sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #14161a; text-decoration: none; }
+  a:hover { color: #3d5f8a; }
+  @keyframes so-rise { from { opacity: 0; transform: translateY(54px) scale(.985); } to { opacity: 1; transform: none; } }
+  @supports (animation-timeline: view()) {
+    [data-reveal] { animation: so-rise 1s cubic-bezier(.16,.84,.28,1) both; animation-timeline: view(); animation-range: entry 2% cover 26%; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+</helmet>
+
+<div style="background:#f2f3f5;overflow-x:clip">
+  <dc-import name="SoshinHeader" current="service" style="position:sticky;top:0;z-index:50" hint-size="100%,77px"></dc-import>
+  <dc-import name="SoshinPageHero" en="SERVICE" ja="事業案内" lead="運用型広告、SEO、サイト制作、分析。4つの領域を社内の一つのチームで担い、施策ごとの数値ではなく、事業の売上と粗利で評価される支援を行います。" img="./images/team-laptops.jpg" pos="center 40%" hint-size="100%,760px"></dc-import>
+
+  <section style="max-width:1080px;margin:0 auto;padding:36px 28px 0">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(20,22,26,.1)">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+        <a href="#{{ s.id }}" style="display:flex;align-items:center;gap:14px;background:#f2f3f5;padding:20px 22px" style-hover="background:#fff">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#3d5f8a">{{ s.num }}</span>
+          <span style="font-size:13px;letter-spacing:.06em">{{ s.title }}</span>
+          <span style="margin-left:auto;font-size:12px;color:#8a929c">↓</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+    <section id="{{ s.id }}" data-reveal="1" style="max-width:1080px;margin:0 auto;padding:96px 28px 0;scroll-margin-top:40px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start">
+        <div>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.26em;color:#5c6570">{{ s.no }}　/　{{ s.en }}</p>
+          <h2 style="margin:14px 0 0;font-family:'Shippori Mincho B1',serif;font-size:clamp(26px,3.2vw,38px);font-weight:600;line-height:1.5">{{ s.title }}</h2>
+          <p style="margin:22px 0 0;font-size:14px;line-height:2.1;color:#3c444e">{{ s.lead }}</p>
+          <div style="margin-top:30px;border-bottom:1px solid rgba(20,22,26,.1)">
+            <sc-for list="{{ s.points }}" as="p" hint-placeholder-count="3">
+              <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:20px 0;border-top:1px solid rgba(20,22,26,.1)">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.2;color:#3d5f8a">{{ p.no }}</span>
+                <span>
+                  <span style="display:block;font-size:14px;font-weight:500">{{ p.title }}</span>
+                  <span style="display:block;margin-top:6px;font-size:12.5px;line-height:2;color:#5c6570">{{ p.body }}</span>
+                </span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="{{ s.mediaStyle }}">
+          <div style="position:relative;height:300px;overflow:hidden;background:#e7eaee"><img src="{{ s.img }}" alt="{{ s.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
+          <div style="background:#fff;padding:26px 28px;box-shadow:0 18px 50px rgba(20,22,26,.07)">
+            <p style="margin:0;font-size:11px;letter-spacing:.14em;color:#8a929c">対応範囲</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+              <sc-for list="{{ s.scope }}" as="x" hint-placeholder-count="5">
+                <span style="font-size:12px;padding:6px 12px;background:#f2f3f5;color:#3c444e">{{ x }}</span>
+              </sc-for>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-top:24px;padding-top:18px;border-top:1px solid rgba(20,22,26,.08)">
+              <span style="font-size:12px;color:#5c6570">費用の目安</span>
+              <span style="font-family:'Shippori Mincho B1',serif;font-size:20px;font-weight:600;color:#3d5f8a">{{ s.price }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section id="plan" data-reveal="1" style="max-width:1080px;margin:0 auto;padding:120px 28px 0;scroll-margin-top:40px">
+    <div style="position:relative;background:#14181f;color:#fff;padding:clamp(36px,5vw,64px);overflow:hidden">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px"></div>
+      <div style="position:relative">
+        <span style="display:inline-block;background:#3d5f8a;color:#fff;font-size:10px;letter-spacing:.14em;padding:5px 10px">NEW SERVICE</span>
+        <p style="margin:22px 0 0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#9aa6b6">GROWTH PARTNER PLAN</p>
+        <h2 style="margin:10px 0 0;font-family:'Shippori Mincho B1',serif;font-size:clamp(24px,3.2vw,36px);font-weight:600;line-height:1.6">広告運用・SEO・制作を、<br />一つのチームで。</h2>
+        <p style="margin:18px 0 0;max-width:640px;font-size:13px;line-height:2.1;color:#c3cbd6">施策ごとに分断されがちな打ち手を、一貫した設計で束ねます。領域ごとに別の会社へ依頼していた体制を一本化し、月次の数値ではなく事業の売上で評価される支援へ切り替えます。</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:rgba(255,255,255,.12);margin-top:40px">
+          <sc-for list="{{ plan }}" as="p" hint-placeholder-count="4">
+            <div style="background:#14181f;padding:28px 24px">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#8fb0d6">{{ p.no }}</span>
+              <p style="margin:10px 0 0;font-family:'Shippori Mincho B1',serif;font-size:17px;font-weight:600">{{ p.title }}</p>
+              <p style="margin:10px 0 0;font-size:12px;line-height:2;color:#aeb7c3">{{ p.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;align-items:center;gap:20px 28px;flex-wrap:wrap;margin-top:36px">
+          <a href="./SoshinFlow.dc.html#form" style="background:#3d5f8a;color:#fff;padding:16px 36px;font-size:13px;letter-spacing:.1em" style-hover="background:#2e4a6e;color:#fff">プランについて相談する　→</a>
+          <span style="font-size:12px;color:#9aa6b6">費用はご支援範囲に応じて個別にお見積りします。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SoshinFooter" cta="1" hint-size="100%,700px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    if (location.hash) setTimeout(() => {
+      const el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (el) el.scrollIntoView();
+    }, 500);
+  }
+  renderVals() {
+    const services = [
+      { id: 's-01', en: 'PERFORMANCE ADS', title: '広告運用支援', img: './images/growth-arrows.jpg',
+        lead: 'Google・Meta・Yahoo!などの運用型広告を、事業の粗利から逆算して設計します。入札の調整だけでなく、予算配分・訴求・計測までを月次で見直します。',
+        points: [
+          ['予算設計', '商談化率と粗利から許容できる獲得単価を算出し、媒体・キャンペーンごとの配分を決めます。'],
+          ['アカウント再設計', '指名・比較検討・潜在層の役割を分け、成果が評価できる構成に組み直します。'],
+          ['定例での意思決定', '何を止め、どこに寄せるか。判断の根拠を毎月の定例で開示します。']
+        ],
+        scope: ['Google広告', 'Meta広告', 'Yahoo!広告', 'LINE広告', '計測設計', 'バナー・動画制作'],
+        price: '月額25万円〜' },
+      { id: 's-02', en: 'SEO & CONTENT', title: 'SEO・コンテンツ', img: './images/analyst-desk.jpg',
+        lead: '検索からの流入を、比較検討で選ばれる理由に変えます。技術的な改善と記事設計を並行し、指名検索が育つ状態をつくります。',
+        points: [
+          ['テクニカル改善', 'インデックス、表示速度、構造化データ、内部リンクを点検し、優先度順に改善します。'],
+          ['記事・ページ設計', '検索意図と商談につながる導線から逆算して、作るべきページを決めます。'],
+          ['指名検索の育成', '広告とコンテンツの役割を分け、社名・サービス名で探される状態を目指します。']
+        ],
+        scope: ['テクニカルSEO', '内部リンク設計', '記事企画・制作', '構造化データ', '競合調査'],
+        price: '月額35万円〜' },
+      { id: 's-03', en: 'WEBSITE & LANDING PAGE', title: 'サイト制作・LP', img: './images/monitor-review.jpg',
+        lead: '見た目の刷新ではなく、問い合わせと商談につながる設計から始めます。公開後も数値を見ながら改善を続けます。',
+        points: [
+          ['情報設計', '誰が、何を比べて、どこで迷うのか。検討プロセスからページ構成を組み立てます。'],
+          ['UI設計・実装', 'デザインから実装、CMS構築までを社内で完結し、修正の往復を減らします。'],
+          ['継続改善', 'フォームの離脱やスクロールの到達率を計測し、A/Bテストで改善します。']
+        ],
+        scope: ['情報設計', 'UIデザイン', 'コーディング', 'CMS構築', 'A/Bテスト', 'EFO'],
+        price: '150万円〜' },
+      { id: 's-04', en: 'ANALYTICS & REPORTING', title: '分析・レポーティング', img: './images/dashboard-review.jpg',
+        lead: '広告の管理画面と、営業の商談データをつなぎます。社内会議の資料としてそのまま使えるレポートを整えます。',
+        points: [
+          ['計測環境の整備', 'GA4・タグ・コンバージョンの定義を見直し、抜け漏れのない計測にします。'],
+          ['データ統合', 'CRMや商談管理のデータと広告データをつなぎ、粗利まで追える状態にします。'],
+          ['ダッシュボード', '見るべき指標を絞り込み、担当者が自分で判断できる画面を設計します。']
+        ],
+        scope: ['GA4設計', 'タグ管理', 'Looker Studio', 'BigQuery', 'CRM連携'],
+        price: '個別お見積り' }
+    ];
+    return {
+      services: services.map((s, i) => Object.assign({}, s, {
+        no: 'SERVICE 0' + (i + 1),
+        num: '0' + (i + 1),
+        mediaStyle: i % 2 ? 'order:-1' : '',
+        points: s.points.map((p, j) => ({ no: '0' + (j + 1), title: p[0], body: p[1] }))
+      })),
+      plan: [
+        { no: '01', title: '共通KPIの設計', body: '商談化率・粗利まで含めた指標を一つに揃え、施策ごとの評価のズレをなくします。' },
+        { no: '02', title: '月次の優先順位見直し', body: '定例で数値と判断の根拠を開示し、翌月の投資配分を組み替えます。' },
+        { no: '03', title: '領域横断のチーム', body: '広告・SEO・制作・分析の担当者が、同じ定例に参加します。' },
+        { no: '04', title: '内製化への移行', body: 'ご希望に応じて、運用の型と判断基準をドキュメント化してお引き渡しします。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

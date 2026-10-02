@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body { margin: 0; font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif; background: oklch(98% 0.004 240); }
+a { color: oklch(46% 0.10 245); text-decoration: none; }
+a:hover { color: oklch(32% 0.09 248); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes drift { from { transform: translateX(0); } to { transform: translateX(24px); } }
+@keyframes drift2 { from { transform: translateX(0); } to { transform: translateX(-20px); } }
+@keyframes sunPulse { 0%,100% { box-shadow: 0 0 40px oklch(80% 0.16 80 / 0.6); transform: scale(1); } 50% { box-shadow: 0 0 60px oklch(80% 0.16 80 / 0.85); transform: scale(1.08); } }
+@keyframes popIn { from { opacity: 0; transform: scale(0.7) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes ctaPulse { 0%,100% { box-shadow: 0 8px 20px oklch(0% 0 0 / 0.2); } 50% { box-shadow: 0 8px 30px oklch(80% 0.16 80 / 0.55); } }
+@keyframes badgeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes glowPulse { 0%,100% { text-shadow: 0 2px 12px oklch(30% 0.05 245 / 0.3), 0 0 0 oklch(85% 0.16 80 / 0); } 50% { text-shadow: 0 2px 12px oklch(30% 0.05 245 / 0.3), 0 0 22px oklch(85% 0.16 80 / 0.8); } }
+@keyframes underlineGrow { from { width: 0; } to { width: 100%; } }
+[data-reveal] { opacity: 0; transition: opacity 0.7s ease, transform 0.7s ease; will-change: opacity, transform; }
+[data-reveal="up"] { transform: translateY(40px); }
+[data-reveal="left"] { transform: translateX(-48px); }
+[data-reveal="right"] { transform: translateX(48px); }
+[data-reveal="scale"] { transform: scale(0.82); }
+[data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* <image-slot> は aspect-ratio:3/2 を持つため、height 指定があると
+   「高さ×1.5」が最小コンテンツ幅になり、grid/flex の列を押し広げてしまう。
+   スロット自身と、スロットを包む grid 項目の両方で縮小を許可する。 */
+image-slot, .hm-staff > div, .hm-hero-staff > div { min-width: 0; }
+/* src を指定したスロットではプレースホルダーの破線枠を消す。
+   image-slot が自分で付ける data-filled 属性が React の再描画で外れてしまい、
+   シャドウ内の :host([data-filled]) .ring{display:none} が効かないため。 */
+image-slot[src]::part(ring) { display: none; }
+
+/* ===== レスポンシブ =====
+   カラム数はロジック側（renderVals の layout）で切り替えている。
+   ここはインラインの余白・見出しサイズをスマホ幅で上書きする分。 */
+@media (max-width: 680px) {
+  .hm-hero-inner { padding: 36px 20px 44px !important; }
+  .hm-sec        { padding: 52px 20px !important; }
+  .hm-intro      { padding: 16px 20px 52px !important; }
+  .hm-band       { padding: 52px 20px !important; }
+  .hm-cta        { padding: 64px 20px !important; }
+  .hm-h2         { font-size: 22px !important; }
+  .hm-cta-h2     { font-size: 25px !important; }
+}
+</style>
+</helmet>
+<div style="max-width:100vw;overflow-x:hidden;">
+<dc-import name="Header" active="home" hint-size="100%,64px"></dc-import>
+
+<section style="position:relative;overflow:hidden;background:linear-gradient(180deg, oklch(62% 0.10 245), oklch(78% 0.07 235));">
+  <div style="position:absolute;top:60px;right:-40px;width:220px;height:120px;border-radius:100px;background:#fff;opacity:0.85;filter:blur(1px);pointer-events:none;animation:drift 9s ease-in-out infinite alternate;"></div>
+  <div style="position:absolute;top:120px;right:80px;width:140px;height:90px;border-radius:100px;background:#fff;opacity:0.7;pointer-events:none;animation:drift2 7s ease-in-out infinite alternate;"></div>
+  <div style="position:absolute;bottom:60px;left:-30px;width:260px;height:130px;border-radius:100px;background:#fff;opacity:0.5;pointer-events:none;animation:drift 11s ease-in-out infinite alternate;"></div>
+  <div style="position:absolute;top:20px;right:5%;width:64px;height:64px;border-radius:50%;background:oklch(80% 0.16 80);pointer-events:none;animation:sunPulse 3.5s ease-in-out infinite;"></div>
+  <div class="hm-hero-inner" style="position:relative;max-width:1200px;margin:0 auto;padding:48px 24px 64px;">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px;">
+      <sc-for list="{{ heroBadges }}" as="b" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:8px;background:{{ b.color }};border-radius:24px;padding:8px 18px;box-shadow:0 4px 14px oklch(0% 0 0 / 0.25);animation:badgeIn 0.5s ease {{ b.delay }} both;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#fff;flex:none;"></span>
+          <span style="font-size:12px;font-weight:700;color:#fff;white-space:nowrap;">{{ b.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ heroCols }};gap:40px;align-items:center;">
+      <div style="animation:fadeUp 0.7s ease both;min-width:0;grid-column:1;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;animation:fadeUp 0.7s ease 0.1s both;">
+          <span style="width:28px;height:2px;background:#fff;"></span>
+          <span style="font-size:13px;font-weight:700;color:#fff;letter-spacing:0.12em;">実り接骨院</span>
+        </div>
+        <h1 style="font-size:{{ heroTitleSize }};line-height:1.38;font-weight:700;color:#fff;margin:0 0 18px;letter-spacing:-0.01em;text-shadow:0 2px 12px oklch(30% 0.05 245 / 0.3);animation:fadeUp 0.8s ease 0.2s both;">なんでも相談できる<br/><span style="position:relative;display:inline-block;color:oklch(85% 0.16 80);animation:glowPulse 2.6s ease-in-out 1.2s infinite;">街のかかりつけ整骨院<span style="position:absolute;left:0;bottom:-4px;height:4px;background:oklch(85% 0.16 80);border-radius:2px;animation:underlineGrow 0.8s ease 1s both;"></span></span></h1>
+        <div style="display:inline-block;background:#fff;color:oklch(40% 0.09 245);padding:10px 22px;border-radius:4px;font-size:14px;font-weight:700;margin-bottom:22px;animation:popIn 0.5s ease 0.4s both;">笑顔あふれる毎日をサポートします</div>
+        <p style="font-size:14px;line-height:1.9;color:oklch(97% 0.01 245);margin:0 0 30px;max-width:460px;animation:fadeUp 0.8s ease 0.3s both;">肩こりや腰痛、スポーツでのケガ、産後の骨盤の歪みまで。一人ひとりの状態を丁寧に確認し、無理のない施術プランをご提案します。</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp 0.8s ease 0.4s both;">
+          <a href="Contact.dc.html" style="background:oklch(80% 0.16 80);color:oklch(30% 0.05 245);padding:17px 34px;border-radius:4px;font-size:15px;font-weight:700;animation:ctaPulse 2.4s ease-in-out infinite;" style-hover="box-shadow:0 10px 26px oklch(0% 0 0 / 0.3);transform:translateY(-1px);">WEB予約はこちら</a>
+          <a href="tel:0120-000-000" style="border:1px solid #fff;background:transparent;color:#fff;padding:17px 34px;border-radius:4px;font-size:15px;font-weight:700;" style-hover="background:oklch(58% 0.10 245);">0120-000-000</a>
+        </div>
+      </div>
+      <div style="min-width:0;animation:fadeUp 0.8s ease 0.15s both;">
+        <image-slot id="hero-1" src="images/hero-neck-towel.jpg" shape="rounded" radius="14" placeholder="施術シーン（メイン写真）" style="width:100%;min-width:0;height:{{ heroImgH }};box-shadow:0 24px 48px oklch(22% 0.02 250 / 0.2);"></image-slot>
+      </div>
+    </div>
+    <div class="hm-hero-staff" style="display:grid;grid-template-columns:{{ staffStripCols }};gap:16px;margin-top:40px;">
+      <sc-for list="{{ heroStaff }}" as="s" hint-placeholder-count="5">
+        <div style="text-align:center;">
+          <div style="position:relative;width:100%;aspect-ratio:1;border-radius:50%;background:{{ s.color }};padding:6px;transition:transform 0.2s ease;" style-hover="transform:scale(1.08) rotate(3deg);">
+            <image-slot id="{{ s.slotId }}" src="{{ s.src }}" shape="circle" placeholder="スタッフ" style="width:100%;height:100%;"></image-slot>
+          </div>
+          <div style="font-size:12px;font-weight:700;color:#fff;margin-top:8px;">{{ s.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section class="hm-intro" style="max-width:1200px;margin:0 auto;padding:24px 24px 80px;display:grid;grid-template-columns:{{ introCols }};gap:48px;align-items:center;">
+  <image-slot id="clinic-intro" src="images/counseling-smile.jpg" shape="rounded" radius="8" placeholder="院内・受付の写真" style="width:100%;height:320px;" data-reveal="left"></image-slot>
+  <div data-reveal="right">
+    <div style="display:inline-block;font-size:12px;font-weight:700;color:#fff;background:oklch(70% 0.13 80);border-radius:20px;padding:5px 14px;letter-spacing:0.04em;margin-bottom:14px;">ABOUT US</div>
+    <h2 style="font-size:26px;font-weight:700;color:oklch(22% 0.02 250);margin:0 0 16px;">お一人おひとりに合わせた施術を</h2>
+    <p style="font-size:14px;line-height:1.9;color:oklch(42% 0.02 245);margin:0 0 24px;">当院では、症状だけでなく生活習慣や身体の使い方まで丁寧にお伺いし、根本的な改善を目指した施術を行っています。お子様からご年配の方まで、安心して通っていただける環境づくりを大切にしています。</p>
+    <a href="About.dc.html" style="font-size:14px;font-weight:700;color:oklch(46% 0.10 245);">クリニックについて詳しく見る →</a>
+  </div>
+</section>
+
+<section class="hm-band" style="background:oklch(96% 0.008 235);padding:80px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:40px;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;">
+        <span style="width:28px;height:2px;background:oklch(46% 0.10 245);"></span>
+        <span style="font-size:13px;font-weight:700;color:oklch(46% 0.10 245);letter-spacing:0.12em;">SYMPTOMS</span>
+        <span style="width:28px;height:2px;background:oklch(46% 0.10 245);"></span>
+      </div>
+      <h2 class="hm-h2" style="font-size:28px;font-weight:700;color:oklch(22% 0.02 250);margin:0;">こんなお悩みありませんか？</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ symptomsCols }};gap:14px;" data-reveal="up">
+      <sc-for list="{{ symptoms }}" as="item" hint-placeholder-count="12">
+        <a href="Symptoms.dc.html" style="background:#fff;border-radius:6px;padding:24px 16px;text-align:center;font-size:14px;font-weight:500;color:oklch(28% 0.02 250);border:1px solid oklch(91% 0.006 240);display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform 0.15s ease;" style-hover="border-color:oklch(46% 0.10 245);box-shadow:0 10px 22px oklch(22% 0.02 250 / 0.08);transform:translateY(-3px);">
+          <span style="width:10px;height:10px;border-radius:50%;background:{{ item.color }};"></span>
+          {{ item.label }}
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section class="hm-sec" style="max-width:1200px;margin:0 auto;padding:80px 24px;">
+  <div style="text-align:center;margin-bottom:44px;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;">
+      <span style="width:28px;height:2px;background:oklch(46% 0.10 245);"></span>
+      <span style="font-size:13px;font-weight:700;color:oklch(46% 0.10 245);letter-spacing:0.12em;">TREATMENT</span>
+      <span style="width:28px;height:2px;background:oklch(46% 0.10 245);"></span>
+    </div>
+    <h2 class="hm-h2" style="font-size:28px;font-weight:700;color:oklch(22% 0.02 250);margin:0;">施術メニュー</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:{{ servicesCols }};gap:20px;">
+    <sc-for list="{{ services }}" as="item" hint-placeholder-count="4">
+      <div style="border:1px solid oklch(91% 0.006 240);border-radius:6px;padding:28px 22px;transition:box-shadow 0.15s ease,transform 0.15s ease, opacity 0.7s ease;" style-hover="box-shadow:0 14px 30px oklch(22% 0.02 250 / 0.10);transform:translateY(-3px);" data-reveal="scale">
+        <div style="width:36px;height:36px;border-radius:50%;background:{{ item.color }};color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-bottom:14px;">{{ item.no }}</div>
+        <div style="font-size:16px;font-weight:700;color:oklch(22% 0.02 250);margin-bottom:10px;">{{ item.title }}</div>
+        <div style="font-size:13px;line-height:1.8;color:oklch(45% 0.02 245);">{{ item.desc }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="text-align:center;margin-top:36px;">
+    <a href="Treatments.dc.html" style="font-size:14px;font-weight:700;color:oklch(46% 0.10 245);">施術メニューを詳しく見る →</a>
+  </div>
+</section>
+
+<section class="hm-band" style="position:relative;overflow:hidden;background:linear-gradient(180deg, oklch(58% 0.10 245), oklch(72% 0.08 240));padding:80px 24px;">
+  <div style="position:absolute;top:40px;right:6%;width:180px;height:90px;border-radius:100px;background:#fff;opacity:0.5;pointer-events:none;animation:drift2 8s ease-in-out infinite alternate;"></div>
+  <div style="position:absolute;bottom:30px;left:5%;width:200px;height:100px;border-radius:100px;background:#fff;opacity:0.4;pointer-events:none;animation:drift 10s ease-in-out infinite alternate;"></div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:44px;">
+      <div style="font-size:13px;font-weight:700;color:oklch(90% 0.10 80);letter-spacing:0.08em;margin-bottom:10px;">WHY US</div>
+      <h2 class="hm-h2" style="font-size:26px;font-weight:700;color:#fff;margin:0;">当院が選ばれる理由</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ strengthsCols }};gap:24px;" data-reveal="up">
+      <sc-for list="{{ strengths }}" as="item" hint-placeholder-count="4">
+        <div>
+          <div style="width:44px;height:44px;border-radius:50%;background:#fff;color:oklch(46% 0.10 245);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;margin-bottom:16px;">{{ item.no }}</div>
+          <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:10px;">{{ item.title }}</div>
+          <div style="font-size:13px;line-height:1.8;color:oklch(96% 0.01 245);">{{ item.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section class="hm-sec" style="max-width:1200px;margin:0 auto;padding:80px 24px;">
+  <div style="text-align:center;margin-bottom:48px;">
+    <div style="font-size:13px;font-weight:700;color:oklch(46% 0.10 245);letter-spacing:0.08em;margin-bottom:10px;">FLOW</div>
+    <h2 class="hm-h2" style="font-size:26px;font-weight:700;color:oklch(22% 0.02 250);margin:0;">ご来院の流れ</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:{{ flowCols }};gap:16px;">
+    <sc-for list="{{ flow }}" as="item" hint-placeholder-count="6">
+      <div style="text-align:center;" data-reveal="up">
+        <div style="width:52px;height:52px;border-radius:50%;background:{{ item.color }};color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;margin:0 auto 14px;box-shadow:0 8px 18px oklch(22% 0.02 250 / 0.16);">{{ item.no }}</div>
+        <div style="font-size:14px;font-weight:700;color:oklch(22% 0.02 250);margin-bottom:6px;">{{ item.title }}</div>
+        <div style="font-size:12px;line-height:1.7;color:oklch(48% 0.02 245);">{{ item.desc }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section class="hm-band" style="background:oklch(96% 0.008 235);padding:80px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:44px;">
+      <div style="font-size:13px;font-weight:700;color:oklch(46% 0.10 245);letter-spacing:0.08em;margin-bottom:10px;">STAFF</div>
+      <h2 class="hm-h2" style="font-size:26px;font-weight:700;color:oklch(22% 0.02 250);margin:0;">スタッフ紹介</h2>
+    </div>
+    <div class="hm-staff" style="display:grid;grid-template-columns:{{ staffCols }};gap:24px;">
+      <sc-for list="{{ staff }}" as="item" hint-placeholder-count="3">
+        <div style="background:#fff;border-radius:6px;overflow:hidden;border:1px solid oklch(91% 0.006 240);transition:box-shadow 0.15s ease,transform 0.15s ease, opacity 0.7s ease;" style-hover="box-shadow:0 16px 34px oklch(22% 0.02 250 / 0.12);transform:translateY(-3px);" data-reveal="up">
+          <image-slot id="{{ item.slotId }}" src="{{ item.src }}" shape="rect" placeholder="スタッフ写真" style="width:100%;height:220px;"></image-slot>
+          <div style="padding:20px;">
+            <div style="font-size:15px;font-weight:700;color:oklch(22% 0.02 250);">{{ item.name }}</div>
+            <div style="display:inline-block;font-size:11px;color:#fff;background:oklch(46% 0.10 245);border-radius:20px;padding:3px 12px;font-weight:700;margin:4px 0 10px;">{{ item.role }}</div>
+            <div style="font-size:12px;color:oklch(46% 0.02 245);margin-bottom:10px;">{{ item.qual }}</div>
+            <div style="font-size:13px;line-height:1.8;color:oklch(38% 0.02 245);">{{ item.message }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section class="hm-sec" style="max-width:1200px;margin:0 auto;padding:80px 24px;">
+  <div style="text-align:center;margin-bottom:44px;">
+    <div style="font-size:13px;font-weight:700;color:oklch(46% 0.10 245);letter-spacing:0.08em;margin-bottom:10px;">VOICE</div>
+    <h2 class="hm-h2" style="font-size:26px;font-weight:700;color:oklch(22% 0.02 250);margin:0 0 8px;">患者様の声</h2>
+    <div style="font-size:12px;color:oklch(55% 0.02 245);">※掲載内容は一例のイメージです</div>
+  </div>
+  <div style="display:grid;grid-template-columns:{{ reviewsCols }};gap:24px;">
+    <sc-for list="{{ reviews }}" as="item" hint-placeholder-count="3">
+      <div style="background:#fff;border-radius:6px;padding:28px 26px;border:1px solid oklch(91% 0.006 240);position:relative;" data-reveal="scale">
+        <div style="font-size:34px;line-height:1;color:oklch(85% 0.05 245);font-weight:700;margin-bottom:6px;">"</div>
+        <div style="font-size:13px;line-height:1.9;color:oklch(32% 0.02 245);margin-bottom:16px;">{{ item.text }}</div>
+        <div style="font-size:12px;font-weight:700;color:oklch(46% 0.02 245);">{{ item.who }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section class="hm-band" style="background:oklch(96% 0.008 235);padding:80px 24px;">
+  <div style="max-width:800px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:40px;">
+      <div style="font-size:13px;font-weight:700;color:oklch(46% 0.10 245);letter-spacing:0.08em;margin-bottom:10px;">FAQ</div>
+      <h2 class="hm-h2" style="font-size:26px;font-weight:700;color:oklch(22% 0.02 250);margin:0;">よくあるご質問</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="8">
+        <div style="background:#fff;border-radius:6px;border:1px solid oklch(91% 0.006 240);overflow:hidden;transition:border-color 0.15s ease, opacity 0.6s ease;" style-hover="border-color:oklch(75% 0.06 245);" data-reveal="up">
+          <div onClick="{{ item.toggle }}" style="padding:18px 20px;display:flex;justify-content:space-between;gap:16px;cursor:pointer;font-size:14px;font-weight:700;color:oklch(24% 0.02 250);">
+            <span>{{ item.q }}</span>
+            <span style="color:oklch(46% 0.10 245);">{{ item.mark }}</span>
+          </div>
+          <sc-if value="{{ item.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 20px 18px;font-size:13px;line-height:1.8;color:oklch(42% 0.02 245);">{{ item.a }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section class="hm-cta" style="position:relative;padding:96px 24px;text-align:center;background:linear-gradient(180deg, oklch(62% 0.10 245), oklch(80% 0.06 235));overflow:hidden;">
+  <div style="position:absolute;top:50px;left:8%;width:200px;height:100px;border-radius:100px;background:#fff;opacity:0.6;pointer-events:none;"></div>
+  <div style="position:absolute;bottom:40px;right:10%;width:240px;height:120px;border-radius:100px;background:#fff;opacity:0.5;pointer-events:none;"></div>
+  <div style="position:absolute;top:30px;right:8%;width:56px;height:56px;border-radius:50%;background:oklch(80% 0.16 80);box-shadow:0 0 36px oklch(80% 0.16 80 / 0.6);pointer-events:none;"></div>
+  <div style="position:relative;" data-reveal="scale">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;">
+      <span style="width:28px;height:2px;background:#fff;"></span>
+      <span style="font-size:13px;font-weight:700;color:#fff;letter-spacing:0.12em;">CONTACT</span>
+      <span style="width:28px;height:2px;background:#fff;"></span>
+    </div>
+    <h2 class="hm-cta-h2" style="font-size:32px;font-weight:700;color:#fff;margin:0 0 16px;text-shadow:0 2px 10px oklch(30% 0.05 245 / 0.3);">まずはお気軽にご相談ください。</h2>
+    <p style="font-size:14px;color:#fff;margin:0 0 32px;">診療時間 9:00〜13:00 / 15:00〜20:00　休診日 水曜・日曜祝日</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="Contact.dc.html" style="background:oklch(80% 0.16 80);color:oklch(30% 0.05 245);padding:18px 40px;border-radius:4px;font-size:15px;font-weight:700;animation:ctaPulse 2.4s ease-in-out infinite;" style-hover="transform:translateY(-2px);">WEB予約はこちら</a>
+      <a href="tel:0120-000-000" style="border:1px solid #fff;color:#fff;padding:18px 40px;border-radius:4px;font-size:15px;font-weight:700;" style-hover="background:oklch(58% 0.10 245);">0120-000-000</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+<dc-import name="MobileBar" hint-size="100%,56px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { faqOpen: {}, width: typeof window !== 'undefined' ? window.innerWidth : 1200 };
+  componentDidMount() {
+    this.onResize = () => this.setState({ width: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => e.target.classList.toggle('is-visible', e.isIntersecting));
+    }, { threshold: 0.15 });
+    this._observeTimer = setTimeout(() => {
+      document.querySelectorAll('[data-reveal]').forEach(el => this.observer.observe(el));
+    }, 50);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    clearTimeout(this._observeTimer);
+    if (this.observer) this.observer.disconnect();
+  }
+  toggleFaq = (i) => this.setState(s => ({ faqOpen: { ...s.faqOpen, [i]: !s.faqOpen[i] } }));
+  renderVals() {
+    const accentHues = ['oklch(46% 0.10 245)', 'oklch(70% 0.13 80)'];
+    const w = this.state.width;
+    const narrow = w < 680;   // スマホ
+    const split = w < 860;    // 写真＋テキストの2カラムを解除する幅
+    const mid = w < 1040;     // ヘッダーがハンバーガー表示に切り替わる幅
+    const layout = {
+      heroCols: split ? '1fr' : '0.85fr 1.15fr',
+      heroTitleSize: narrow ? '28px' : mid ? '38px' : '46px',
+      heroImgH: narrow ? '260px' : split ? '320px' : mid ? '400px' : '560px',
+      introCols: split ? '1fr' : '1fr 1.2fr',
+      symptomsCols: narrow ? 'repeat(2,1fr)' : mid ? 'repeat(3,1fr)' : 'repeat(4,1fr)',
+      servicesCols: narrow ? '1fr' : mid ? 'repeat(2,1fr)' : 'repeat(4,1fr)',
+      strengthsCols: narrow ? '1fr' : mid ? 'repeat(2,1fr)' : 'repeat(4,1fr)',
+      flowCols: narrow ? 'repeat(2,1fr)' : mid ? 'repeat(3,1fr)' : 'repeat(6,1fr)',
+      staffCols: narrow ? '1fr' : mid ? 'repeat(2,1fr)' : 'repeat(3,1fr)',
+      reviewsCols: narrow ? '1fr' : mid ? 'repeat(2,1fr)' : 'repeat(3,1fr)',
+      badgeLeft: narrow ? '12px' : '-24px',
+      staffStripCols: narrow ? 'repeat(3,1fr)' : 'repeat(5,1fr)',
+    };
+    const heroBadges = [
+      { label: '土日祝も診療', color: accentHues[0], delay: '0.05s' },
+      { label: '駐車場3台完備', color: accentHues[1], delay: '0.15s' },
+      { label: '駅から徒歩5分', color: accentHues[0], delay: '0.25s' },
+    ];
+    const heroStaff = [
+      { slotId: 'hero-staff-1', label: '院長', color: accentHues[0], src: 'images/treatment-neck-male.jpg' },
+      { slotId: 'hero-staff-2', label: '施術者', color: accentHues[1], src: 'images/staff-director.jpg' },
+      { slotId: 'hero-staff-3', label: '施術者', color: accentHues[0], src: 'images/treatment-knee.jpg' },
+      { slotId: 'hero-staff-4', label: '受付', color: accentHues[1], src: 'images/staff-reception.jpg' },
+      { slotId: 'hero-staff-5', label: 'スタッフ', color: accentHues[0], src: 'images/staff-chart.jpg' },
+    ];
+    const symptomLabels = ['肩こり','腰痛','首の痛み','膝の痛み','頭痛','猫背','骨盤の歪み','スポーツによるケガ','捻挫','肉離れ','交通事故による痛み','手や足のしびれ'];
+    const services = [
+      { no: '01', title: '手技療法', desc: '筋肉や関節の状態を確認しながら、手技で丁寧にアプローチします。', color: accentHues[0] },
+      { no: '02', title: '物理療法', desc: '温熱・電気治療などの機器を用いて、痛みの緩和と血流改善を促します。', color: accentHues[1] },
+      { no: '03', title: '運動療法', desc: '再発防止に向けて、無理のない範囲でのストレッチや運動指導を行います。', color: accentHues[0] },
+      { no: '04', title: '姿勢改善・骨盤調整', desc: '姿勢や骨盤の歪みを確認し、日常生活の負担を減らす施術を行います。', color: accentHues[1] },
+    ];
+    const strengths = [
+      { no: '01', title: '丁寧なカウンセリング', desc: '症状やお悩みをしっかりお伺いし、無理な施術は行いません。', color: accentHues[0] },
+      { no: '02', title: '一人ひとりに合わせた施術', desc: '年齢や生活スタイルに合わせて施術プランをご提案します。', color: accentHues[1] },
+      { no: '03', title: 'わかりやすい説明', desc: '施術内容やお身体の状態を、専門用語を使わずご説明します。', color: accentHues[0] },
+      { no: '04', title: '通いやすい環境', desc: '駅から近く、駐車場も完備。予約制で待ち時間も抑えています。', color: accentHues[1] },
+    ];
+    const flow = [
+      { no: '01', title: 'ご予約', desc: 'WEBまたはお電話で', color: accentHues[0] },
+      { no: '02', title: '受付', desc: '問診票のご記入', color: accentHues[1] },
+      { no: '03', title: '問診・検査', desc: 'お身体の状態を確認', color: accentHues[0] },
+      { no: '04', title: 'ご説明', desc: '施術方針をご提案', color: accentHues[1] },
+      { no: '05', title: '施術', desc: '状態に合わせて施術', color: accentHues[0] },
+      { no: '06', title: 'アフターケア', desc: '次回のご案内', color: accentHues[1] },
+    ];
+    const staff = [
+      { slotId: 'staff-1', src: 'images/treatment-neck-male.jpg', name: '佐藤 大輔', role: '院長', qual: '柔道整復師', message: '一人ひとりのお身体に真摯に向き合い、根本的な改善を目指します。' },
+      { slotId: 'staff-2', src: 'images/staff-director.jpg', name: '田中 美咲', role: '施術者', qual: '柔道整復師', message: '産後の骨盤ケアやスポーツ障害を得意としています。' },
+      { slotId: 'staff-3', src: 'images/explain-hand-model.jpg', name: '鈴木 健', role: '施術者', qual: '柔道整復師', message: 'わかりやすい説明を心がけ、安心して通える院づくりを大切にしています。' },
+    ];
+    const reviews = [
+      { text: '長年の腰痛が楽になりました。説明が丁寧で安心して通えています。', who: 'K.S様（30代・女性）' },
+      { text: 'スポーツでの怪我の際にお世話になりました。的確な施術で早く復帰できました。', who: 'T.M様（20代・男性）' },
+      { text: '子どもの姿勢のことで相談しましたが、優しく対応していただけました。', who: 'A.Y様（40代・女性）' },
+    ];
+    const faqRaw = [
+      { q: '予約は必要ですか？', a: '基本的には予約制となっております。WEBまたはお電話にてご予約ください。当日のご予約もお気軽にお問い合わせください。' },
+      { q: '当日の服装に決まりはありますか？', a: '動きやすい服装でお越しください。着替え用のスペースもご用意しております。' },
+      { q: '施術時間はどのくらいですか？', a: '初回はカウンセリングを含め45〜60分程度、2回目以降は20〜40分程度が目安です。' },
+      { q: '料金はどのくらいかかりますか？', a: '施術内容により異なります。詳しくは料金ページをご確認いただくか、お気軽にお問い合わせください。' },
+      { q: '肩こりだけでも相談できますか？', a: 'はい、肩こりのみのご相談も承っております。' },
+      { q: '子どもも施術を受けられますか？', a: '可能です。お子様の状態に合わせて無理のない施術を行います。' },
+      { q: '交通事故の治療に対応していますか？', a: '対応しております。保険会社とのやり取りについてもご相談ください。' },
+      { q: '駐車場はありますか？', a: '院の近くに駐車場をご用意しております。詳しくはアクセスページをご確認ください。' },
+    ];
+    const faqs = faqRaw.map((f, i) => ({
+      ...f,
+      open: !!this.state.faqOpen[i],
+      mark: this.state.faqOpen[i] ? '－' : '＋',
+      toggle: () => this.toggleFaq(i),
+    }));
+    return {
+      symptoms: symptomLabels.map((l, i) => ({ label: l, color: accentHues[i % accentHues.length] })),
+      services, strengths, flow, staff, reviews, faqs,
+      heroBadges, heroStaff,
+      ...layout,
+    };
+  }
+}
+</script>
+</body>
+</html>

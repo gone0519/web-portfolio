@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>季節の楽しみ方 | Tabi no Ma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;family=Sacramento&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#34393a;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+*{box-sizing:border-box}
+a{color:#34393a;text-decoration:none}
+a:hover{color:#5f9e95}
+::selection{background:#dceae7}
+[style*="aspect-ratio"]{min-width:0}
+@media (max-width:860px){.fitr{aspect-ratio:auto!important}}
+@media (max-width:700px){.sp-hide{display:none!important}.sgrid{grid-template-columns:1fr 1fr!important;height:auto!important}.sgrid>*{aspect-ratio:1/1}.sgrid>*:first-child{grid-column:1/-1;aspect-ratio:16/10}}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="season" hint-size="100%,0px"></dc-import>
+<main style="overflow-x:clip">
+<section data-screen-label="Season / Hero" style="position:relative;padding-top:min(112px,max(36px,calc(1180px - 100vw)))">
+  <div style="position:relative;margin:0 clamp(20px,4vw,80px) 0 clamp(24px,calc((100vw - 760px) * .36),400px);padding-top:clamp(24px,5vw,72px)">
+    <nav aria-label="パンくずリスト" style="display:flex;gap:10px;font-size:11px;letter-spacing:.16em;color:#5a6163"><a href="Home.dc.html">TOP</a><span>/</span><span>SEASON</span></nav>
+    <div data-reveal="1" data-delay="200" style="position:relative;margin-top:28px">
+      <span aria-hidden="true" data-parallax="0.1" style="position:absolute;left:-0.06em;top:-0.42em;font-family:'Sacramento',cursive;font-size:clamp(64px,11vw,180px);line-height:1;color:#d3e6e2;white-space:nowrap;pointer-events:none">Seasons</span>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px;padding-top:clamp(40px,5vw,80px)">
+        <div style="display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.16em;color:#5f9e95"><span style="width:28px;height:1px;background:#7fb9b0"></span>04 — Season</div>
+        <h1 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(22px,2.8vw,42px);letter-spacing:.22em;line-height:1.7"><span style="display:inline-block">季節ごとに変わる、</span><span style="display:inline-block">楽しみ方。</span></h1>
+        <p style="margin:0;font-size:12px;letter-spacing:.16em;color:#5a6163">Something New to Discover in Every Season.</p>
+      </div>
+    </div>
+    <nav aria-label="季節を選ぶ" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:36px">
+      <sc-for list="{{ seasons }}" as="s" hint-placeholder-count="4">
+        <a href="#{{ s.key }}" style="display:flex;align-items:baseline;gap:10px;height:48px;padding:0 24px;border-radius:999px;border:1px solid #34393a;background:#fff;align-items:center" style-hover="background:#34393a;color:#fff"><span style="font-family:'Shippori Mincho',serif;font-size:17px">{{ s.kanji }}</span><span style="font-size:11px;letter-spacing:.16em">{{ s.en }}</span></a>
+      </sc-for>
+    </nav>
+  </div>
+</section>
+
+<div style="display:flex;flex-direction:column;gap:clamp(110px,12vw,180px);margin-top:clamp(72px,8vw,120px)">
+  <sc-for list="{{ seasons }}" as="s" hint-placeholder-count="2">
+    <section id="{{ s.key }}" data-screen-label="Season / {{ s.en }}" style="position:relative;scroll-margin-top:90px">
+      <div style="position:relative;display:flex;flex-wrap:wrap;gap:24px clamp(40px,6vw,120px);align-items:flex-end;max-width:1440px;margin:0 auto;padding:0 clamp(24px,6vw,120px)">
+        <span aria-hidden="true" data-parallax="0.14" style="position:absolute;right:clamp(16px,6vw,120px);top:-0.35em;font-family:'Shippori Mincho',serif;font-size:clamp(140px,16vw,260px);line-height:1;color:#eef4f2;pointer-events:none">{{ s.kanji }}</span>
+        <div data-reveal="1" style="position:relative;display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'Sacramento',cursive;font-size:clamp(52px,5vw,76px);line-height:1;color:#5f9e95">{{ s.en }}</span>
+          <span style="font-size:12px;letter-spacing:.2em;color:#5a6163">{{ s.kanji }} ／ {{ s.months }}</span>
+          <h2 style="margin:6px 0 0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(22px,2.2vw,32px);letter-spacing:.2em;line-height:1.7">{{ s.title }}</h2>
+        </div>
+        <p data-reveal="1" style="position:relative;flex:1 1 300px;max-width:440px;margin:0;font-size:14px;line-height:2.1;letter-spacing:.08em;text-wrap:pretty">{{ s.desc }}</p>
+      </div>
+      <div data-curtain="1" class="sgrid" style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:6px;height:clamp(240px,32vw,500px);margin:40px clamp(0px,3vw,60px) 0">
+        <sc-for list="{{ s.imgs }}" as="im" hint-placeholder-count="3">
+          <div style="position:relative;background:#e9f1ef"><image-slot id="{{ im.id }}" src="{{ im.src }}" shape="rect" placeholder="{{ im.ph }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+        </sc-for>
+      </div>
+      <div style="max-width:1440px;margin:40px auto 0;padding:0 clamp(24px,6vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
+        <sc-for list="{{ s.recs }}" as="r" hint-placeholder-count="3">
+          <div data-reveal="1" style="display:flex;flex-direction:column;gap:10px;padding:22px 0;border-top:1px solid #34393a">
+            <span style="font-size:11px;letter-spacing:.16em;color:#5f9e95">{{ r.type }}</span>
+            <span style="font-size:15px;font-weight:700;letter-spacing:.08em">{{ r.name }}</span>
+            <span style="font-size:13px;line-height:1.9;letter-spacing:.06em;color:#4a5153">[おすすめポイントの説明が入ります]</span>
+            <span style="align-self:flex-start;padding:4px 12px;border:1px solid #9aa3a4;border-radius:999px;font-size:11px">見頃：〇月〜〇月</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </sc-for>
+</div>
+
+<section data-screen-label="Season / Calendar" style="position:relative;margin-top:clamp(110px,12vw,180px)">
+  <div style="margin-left:clamp(0px,3vw,60px);background:#f3f7f6;padding:clamp(64px,7vw,104px) clamp(24px,6vw,120px)">
+    <div data-reveal="1" style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.16em;color:#5f9e95"><span style="width:28px;height:1px;background:#7fb9b0"></span>Calendar</div>
+      <h2 style="margin:0;font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:.16em">年間イベントカレンダー</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1px;margin-top:40px;background:#cfdcd9;border:1px solid #cfdcd9">
+      <sc-for list="{{ months }}" as="m" hint-placeholder-count="12">
+        <div style="display:flex;flex-direction:column;gap:10px;padding:20px 18px 24px;background:#fff;min-height:140px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <span style="font-family:'Shippori Mincho',serif;font-size:26px">{{ m.n }}<span style="font-size:12px">月</span></span>
+            <span style="font-family:'Sacramento',cursive;font-size:22px;color:#5f9e95">{{ m.en }}</span>
+          </div>
+          <span style="font-size:13px;letter-spacing:.06em;color:#4a5153">[イベント名が入ります]</span>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:20px 0 0;font-size:11px;letter-spacing:.08em;color:#4a5153">※開催内容・日程は年によって変更となる場合があります。</p>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const SEASONS = [
+  { key: 'spring', imgs: ['images/pagoda-temple.jpg', 'images/town-camera.jpg', 'images/couple-guidebook.jpg'],  kanji: '春', en: 'Spring', months: '3月〜5月', title: '芽吹きの季節を歩く', desc: '山の木々が若葉に染まり、花が咲きはじめる頃。やわらかな日差しの中、散策やピクニックが心地よい季節です。', recs: [{ name: '[桜の名所]', type: '景勝地' }, { name: '[山菜摘み体験]', type: '体験' }, { name: '[春のイベント]', type: 'イベント' }] },
+  { key: 'summer', imgs: ['images/coast-parasol.jpg', 'images/island-bridge.jpg', 'images/thatched-village.jpg'],  kanji: '夏', en: 'Summer', months: '6月〜8月', title: '水辺で、思いきり遊ぶ', desc: '川や湖が主役になる季節。カヤックや川遊びで涼をとり、夜は夏祭りの灯りに出かけましょう。', recs: [{ name: '[川遊びスポット]', type: '自然' }, { name: '[水上アクティビティ]', type: '体験' }, { name: '[夏祭り]', type: 'イベント' }] },
+  { key: 'autumn', imgs: ['images/autumn-temple.jpg', 'images/onsen-autumn-view.jpg', 'images/friends-walk.jpg'],  kanji: '秋', en: 'Autumn', months: '9月〜11月', title: '色づく山と、実りの味', desc: '山々が赤や黄に色づき、収穫の季節を迎えます。紅葉めぐりと、旬の味覚をあわせて楽しめます。', recs: [{ name: '[紅葉スポット]', type: '景勝地' }, { name: '[収穫体験]', type: '体験' }, { name: '[秋の味覚]', type: 'グルメ' }] },
+  { key: 'winter', imgs: [],  kanji: '冬', en: 'Winter', months: '12月〜2月', title: '湯けむりと、澄んだ星空', desc: '空気が澄み、星がいちばん美しく見える季節。温泉で温まりながら、静かな冬の景色を味わえます。', recs: [{ name: '[温泉施設]', type: '温泉' }, { name: '[星空観察スポット]', type: '自然' }, { name: '[冬の味覚]', type: 'グルメ' }] },
+];
+const MEN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+class Component extends DCLogic {
+  componentDidMount() {
+    setTimeout(() => import(new URL('./motion.js', document.baseURI).href).then(m => { this.stop = m.initMotion(); }).catch(() => {}), 120);
+  }
+  componentWillUnmount() { this.stop && this.stop(); }
+  renderVals() {
+    return {
+      seasons: SEASONS.map(s => ({ ...s, imgs: [1, 2, 3].map(n => ({ id: `season-${s.key}-${n}`, src: s.imgs[n - 1], ph: `${s.kanji}の風景 ${n}${n === 1 ? '（メイン）' : ''}` })) })),
+      months: MEN.map((en, i) => ({ n: i + 1, en })),
+    };
+  }
+}
+</script>
+</body>
+</html>

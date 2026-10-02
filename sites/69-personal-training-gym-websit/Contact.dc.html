@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',system-ui,sans-serif;color:#1a1a1a;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a1a1a;text-decoration:none}
+a:hover{color:#d9622b}
+input,textarea,button{font-family:inherit}
+@keyframes heroIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (max-width:600px){
+  /* iOS Safari zooms in on focus when inputs are under 16px */
+  input,textarea{font-size:16px!important}
+  .access-map{aspect-ratio:16/9!important}
+  .access-dl{grid-template-columns:76px 1fr!important}
+}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="contact" hint-size="100%,0px"></dc-import>
+
+<section data-screen-label="Contact Title" style="position:relative;background:#111;color:#fff;overflow:hidden;padding:clamp(140px,16vw,190px) clamp(20px,4vw,48px) clamp(56px,7vw,80px)">
+  <div style="position:absolute;inset:0;background:url(images/gym-interior.jpg) center/cover,#111"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.9),rgba(10,10,10,.4))"></div>
+  <div aria-hidden="true" style="position:absolute;right:-1vw;bottom:-2vw;font-family:Oswald,'Noto Sans JP';font-weight:700;font-size:clamp(90px,15vw,240px);line-height:.85;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.16);white-space:nowrap;pointer-events:none">CONTACT</div>
+  <div style="position:relative;max-width:1000px;margin:0 auto;animation:heroIn 1s .1s ease-out both">
+    <div style="font-size:11px;letter-spacing:.08em;margin-bottom:24px;display:flex;gap:8px;color:#999"><a href="Personal%20Training%20Gym.dc.html" style="color:#999">TOP</a><span>›</span><span style="color:#f0a04b">アクセス・お問い合わせ</span></div>
+    <span style="display:inline-block;font-family:Oswald,'Noto Sans JP';font-size:11px;letter-spacing:.2em;color:#fff;padding:4px 22px;background:linear-gradient(90deg,#d9622b,#f0a04b)">CONTACT</span>
+    <h1 style="margin:16px 0 0;font-size:clamp(28px,4.5vw,48px);font-weight:700;letter-spacing:.06em">アクセス・お問い合わせ</h1>
+    <p style="margin:14px 0 0;font-size:13.5px;color:#bbb;line-height:1.9;max-width:520px">理想の身体への一歩を、今日から。60分の無料体験を受付中です。</p>
+  </div>
+</section>
+
+<section data-screen-label="Form" style="padding:clamp(72px,9vw,110px) clamp(20px,4vw,48px)">
+  <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(40px,5vw,64px)">
+    <div data-reveal="">
+      <p style="margin:0 0 6px;font-family:Oswald,'Noto Sans JP';font-size:12px;letter-spacing:.3em;color:#d9622b">FREE TRIAL</p>
+      <h2 style="margin:0 0 12px;font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:.04em">無料体験のお申し込み</h2>
+      <p style="margin:0 0 28px;font-size:13px;line-height:1.9;color:#555">身体の状態チェック・体験トレーニング・プランのご提案を行います。無理な勧誘は一切ありません。</p>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid #e3e3e3;padding:48px 32px;text-align:center"><div style="font-family:Oswald,'Noto Sans JP';font-size:28px;color:#d9622b;margin-bottom:10px">THANK YOU</div><p style="margin:0;font-size:13px;line-height:1.9;color:#555">お申し込みありがとうございます。1営業日以内に、体験日程確認のご連絡をいたします。</p><button onClick="{{ reset }}" style="margin-top:22px;padding:10px 20px;border:1px solid #141414;background:#fff;font-size:12px;cursor:pointer">別の内容で送信する</button></div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:16px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em"><span>お名前 <span style="color:#d9622b;font-size:10px">必須</span></span><input required="" name="name" autocomplete="name" style="height:48px;padding:0 14px;border:1px solid #d5d5d5;font-size:14px;outline:none" style-focus="border-color:#d9622b"></label>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em"><span>メールアドレス <span style="color:#d9622b;font-size:10px">必須</span></span><input required="" type="email" name="email" autocomplete="email" style="height:48px;padding:0 14px;border:1px solid #d5d5d5;font-size:14px;outline:none" style-focus="border-color:#d9622b"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em">電話番号<input type="tel" name="phone" autocomplete="tel" style="height:48px;padding:0 14px;border:1px solid #d5d5d5;font-size:14px;outline:none" style-focus="border-color:#d9622b"></label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em">ご希望日<input type="date" name="date" style="height:48px;padding:0 14px;border:1px solid #d5d5d5;font-size:14px;outline:none" style-focus="border-color:#d9622b"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em">メッセージ<textarea name="message" rows="5" placeholder="目標、ケガの有無、ご希望の時間帯など" style="padding:12px 14px;border:1px solid #d5d5d5;font-size:14px;outline:none;resize:vertical" style-focus="border-color:#d9622b"></textarea></label>
+          <button type="submit" style="display:flex;justify-content:space-between;align-items:center;height:56px;padding:0 24px;border:0;background:#141414;color:#fff;font-size:14px;font-weight:700;letter-spacing:.08em;cursor:pointer;transition:background .3s" style-hover="background:#d9622b">無料体験を申し込む <span>›</span></button>
+        </form>
+      </sc-if>
+    </div>
+    <div data-reveal="" style="display:flex;flex-direction:column">
+      <p style="margin:0 0 6px;font-family:Oswald,'Noto Sans JP';font-size:12px;letter-spacing:.3em;color:#d9622b">ACCESS</p>
+      <h2 style="margin:0 0 24px;font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:.04em">店舗情報</h2>
+      <div class="access-map" role="img" aria-label="店内写真" style="aspect-ratio:16/10;background:url(images/treadmill-legs.jpg) center/cover,repeating-linear-gradient(135deg,#e6e4e1 0 10px,#efedea 10px 20px);margin-bottom:24px"></div>
+      <dl class="access-dl" style="margin:0;display:grid;grid-template-columns:90px 1fr;font-size:13px;line-height:1.7">
+        <dt style="padding:12px 0;border-bottom:1px solid #eee;font-weight:700;color:#d9622b">住所</dt><dd style="margin:0;padding:12px 0;border-bottom:1px solid #eee">〒150-0022 東京都渋谷区恵比寿南1-12-8 4F<br><span style="color:#888;font-size:12px">JR恵比寿駅 西口より徒歩3分</span></dd>
+        <dt style="padding:12px 0;border-bottom:1px solid #eee;font-weight:700;color:#d9622b">営業時間</dt><dd style="margin:0;padding:12px 0;border-bottom:1px solid #eee">平日 7:00–23:00<br>土日祝 8:00–21:00</dd>
+        <dt style="padding:12px 0;border-bottom:1px solid #eee;font-weight:700;color:#d9622b">電話番号</dt><dd style="margin:0;padding:12px 0;border-bottom:1px solid #eee"><a href="tel:0300000000">03-0000-0000</a></dd>
+        <dt style="padding:12px 0;border-bottom:1px solid #eee;font-weight:700;color:#d9622b">SNS</dt><dd style="margin:0;padding:12px 0;border-bottom:1px solid #eee;display:flex;gap:18px"><a href="#" style="text-decoration:underline">Instagram</a><a href="#" style="text-decoration:underline">LINE</a><a href="#" style="text-decoration:underline">YouTube</a></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="FAQ" style="padding:clamp(64px,8vw,96px) clamp(20px,4vw,48px);background:#f4f3f1">
+  <div style="text-align:center;margin-bottom:40px">
+    <span style="display:inline-block;font-family:Oswald,'Noto Sans JP';font-size:11px;letter-spacing:.2em;color:#fff;padding:4px 22px;background:linear-gradient(90deg,#d9622b,#f0a04b)">FAQ</span>
+    <h2 style="margin:12px 0 0;font-size:15px;letter-spacing:.08em;font-weight:700">よくあるご質問</h2>
+  </div>
+  <div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:8px">
+    <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+      <div style="background:#fff">
+        <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;min-height:60px;display:flex;align-items:center;gap:14px;padding:16px 20px;border:0;background:transparent;text-align:left;font-size:14px;font-weight:700;cursor:pointer;color:#1a1a1a"><span style="font-family:Oswald,'Noto Sans JP';font-size:18px;color:#d9622b">Q</span><span style="flex:1">{{ q.q }}</span><span style="font-size:18px;color:#d9622b">{{ q.icon }}</span></button>
+        <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;gap:14px;padding:0 20px 20px;font-size:13px;line-height:1.9;color:#555"><span style="font-family:Oswald,'Noto Sans JP';font-size:18px;color:#999">A</span><span>{{ q.a }}</span></div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hide-cta="{{ true }}" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false, open: 0 };
+  renderVals() {
+    const faqs = [
+      { q: '運動経験がなくても大丈夫ですか？', a: 'はい。会員様の多くが運動初心者からのスタートです。体力や身体の状態に合わせて、無理のない内容から始めます。' },
+      { q: '体験当日に持ち物は必要ですか？', a: 'ウェア・シューズ・タオル・水は無料でご用意しています。手ぶらでお越しください。' },
+      { q: '体験後に入会を決めないといけませんか？', a: 'いいえ。その場でのご入会は必要ありません。ご自宅でゆっくりご検討ください。' },
+      { q: '予約の変更やキャンセルはできますか？', a: '前日までにアプリまたはお電話でご連絡いただければ、無料で変更・キャンセルが可能です。' },
+      { q: 'ケガや持病があっても通えますか？', a: 'カウンセリングで状態を伺い、必要に応じて医師の許可をいただいたうえで、身体に配慮したプログラムを作成します。' }
+    ].map((f, i) => ({ ...f, open: this.state.open === i, icon: this.state.open === i ? '−' : '+', toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })) }));
+    return {
+      faqs, sent: this.state.sent, notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

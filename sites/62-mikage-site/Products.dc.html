@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>製品・実績 | 株式会社 御影精工</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;family=Shippori+Mincho:wght@500;600&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./site-motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0f1c48;color:#fff;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:#8fb0ff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="products" hint-size="100%,72px" style="position:fixed;top:0;left:0;right:0;z-index:50"></dc-import>
+<main>
+<section data-screen-label="01 Page Hero" style="position:relative;min-height:clamp(560px,76vh,800px);background:#13255f;overflow:hidden">
+  <div style="position:absolute;inset:0"><image-slot id="prod-hero" shape="rect" src="./images/handshake-industry.jpg"placeholder="精密部品の集合カット（横長）"></image-slot></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(95deg,rgba(15,28,72,.85) 0%,rgba(15,28,72,.4) 55%,rgba(28,63,148,.15) 100%)"></div>
+  <div style="position:absolute;right:24%;top:8%;width:3px;height:60%;background:#d0021b;transform:rotate(28deg);pointer-events:none"></div>
+  <div style="position:relative;padding:190px clamp(24px,8vw,160px) max(180px,14vw);pointer-events:none">
+    <div style="font:500 12px Outfit,sans-serif;letter-spacing:.12em;opacity:.85;pointer-events:auto"><a href="./Factory%20Site.dc.html">HOME</a>　/　PRODUCTS</div>
+    <div style="display:flex;align-items:center;gap:14px;margin-top:40px"><span style="width:20px;height:30px;background:#d0021b;transform:skewX(-28deg);display:block"></span><span style="font:700 16px 'Zen Kaku Gothic New',sans-serif;letter-spacing:.2em">製品・実績</span></div>
+    <h1 style="margin:14px 0 0;font:600 clamp(40px,max(10vw,min(15.5vw,60px)),176px)/.88 Outfit,sans-serif;letter-spacing:-0.04em">Products<span style="color:#d0021b">.</span></h1>
+  </div>
+</section>
+
+<section data-screen-label="02 Product Gallery" style="position:relative;z-index:2;margin-top:-10vw;clip-path:polygon(0 10vw,100% 0,100% 100%,0 100%);padding:calc(10vw + 100px) clamp(24px,8vw,160px) clamp(110px,10vw,160px);background:radial-gradient(circle at 88% 20%,rgba(30,80,255,.5),transparent 26%),linear-gradient(180deg,#1c3f94 0%,#132a6e 40%,#0f1c48 100%);overflow:hidden">
+  <div style="position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:80px 80px"></div>
+  <div style="position:relative;max-width:1400px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 80px;align-items:end">
+      <div data-reveal="">
+        <div style="display:flex;align-items:center;gap:14px"><span style="width:20px;height:30px;background:#d0021b;transform:skewX(-28deg);display:block"></span><span style="font:600 14px Outfit,sans-serif">Product Gallery</span></div>
+        <h2 style="margin:20px 0 0;font:700 clamp(26px,2.6vw,38px)/1.6 'Zen Kaku Gothic New',sans-serif;letter-spacing:.16em">製作事例</h2>
+      </div>
+      <p data-reveal="" style="margin:0;font:700 15px/2.1 'Zen Kaku Gothic New',sans-serif;text-wrap:pretty">自動車、産業機械、電子機器、医療機器など、幅広い分野の部品を製作しています。掲載していない形状・材料もご相談ください。</p>
+    </div>
+    <div role="tablist" aria-label="製品カテゴリ" style="margin-top:clamp(48px,5vw,72px);display:flex;flex-wrap:wrap;gap:10px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <button role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.pick }}" style="min-height:44px;padding:0 24px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};font:700 14px 'Zen Kaku Gothic New',sans-serif;letter-spacing:.08em;cursor:pointer;transition:background .3s">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px">
+      <sc-for list="{{ list }}" as="p" hint-placeholder-count="8">
+        <article data-card="" style="position:relative;aspect-ratio:4/5;background:#1a2f72;overflow:hidden;border-radius:4px;transition:transform .5s" style-hover="transform:translateY(-6px)">
+          <image-slot id="{{ p.slot }}" shape="rect" src="{{ p.img }}"placeholder="{{ p.name }}"></image-slot>
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(15,28,72,0) 40%,rgba(15,28,72,.92) 85%)"></div>
+          <div style="position:absolute;left:24px;right:24px;bottom:24px;pointer-events:none">
+            <div style="display:flex;align-items:center;gap:8px;font:600 11px Outfit,sans-serif;letter-spacing:.12em"><span style="width:7px;height:14px;background:#d0021b;transform:skewX(-28deg);display:block"></span>{{ p.catEn }}</div>
+            <h3 style="margin:8px 0 0;font:700 19px/1.5 'Zen Kaku Gothic New',sans-serif;letter-spacing:.06em">{{ p.name }}</h3>
+            <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;font-weight:700;opacity:.9"><span>材質：{{ p.mat }}</span><span>工程：{{ p.proc }}</span></div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 Case Studies" style="position:relative;z-index:3;margin-top:-8vw;clip-path:polygon(0 8vw,100% 0,100% 100%,0 100%);padding:calc(8vw + 40px) 0 clamp(100px,9vw,150px);color:#0f1c48;background:repeating-linear-gradient(172deg,rgba(255,255,255,0) 0 22px,rgba(255,255,255,.75) 22px 24px,rgba(255,255,255,0) 24px 70px),linear-gradient(172deg,#eef1f6 0%,#d6dce6 28%,#ffffff 46%,#c9d1dd 68%,#eef1f5 100%);overflow:hidden">
+  <div aria-hidden="true" style="font:700 clamp(84px,14vw,240px)/.9 Outfit,sans-serif;letter-spacing:-0.04em;white-space:nowrap;color:#1c3f94;padding-left:clamp(24px,3vw,48px)">Case Studies</div>
+  <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,4vw,64px) clamp(24px,8vw,160px) 0">
+    <div data-reveal="" style="display:flex;align-items:center;gap:14px"><span style="width:20px;height:30px;background:#d0021b;transform:skewX(-28deg);display:block"></span><span style="font:700 15px 'Zen Kaku Gothic New',sans-serif;letter-spacing:.2em">導入実績</span></div>
+    <div style="margin-top:40px;display:flex;flex-direction:column;gap:24px">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3">
+        <article data-reveal="" style="background:#fff;border-radius:4px;overflow:hidden;display:flex;flex-wrap:wrap">
+          <div style="flex:1 1 320px;position:relative;min-height:260px;background:#1c3f94;clip-path:polygon(0 0,100% 0,86% 100%,0 100%)"><image-slot id="{{ c.slot }}" shape="rect" src="{{ c.img }}"placeholder="{{ c.ph }}"></image-slot></div>
+          <div style="flex:2 1 460px;padding:clamp(28px,3vw,44px)">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px"><span style="font:600 40px/1 Outfit,sans-serif;color:#1c3f94">{{ c.no }}</span><span style="padding:4px 12px;background:#0f1c48;color:#fff;border-radius:999px;font-size:12px;font-weight:700">{{ c.field }}</span></div>
+            <h3 style="margin:14px 0 0;font:700 clamp(20px,1.8vw,26px)/1.5 'Zen Kaku Gothic New',sans-serif;letter-spacing:.08em">{{ c.title }}</h3>
+            <dl style="margin:20px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px">
+              <div><dt style="font:600 12px Outfit,'Zen Kaku Gothic New',sans-serif;letter-spacing:.1em;color:#d0021b">課題</dt><dd style="margin:6px 0 0;font-size:13.5px;line-height:1.9;color:#3a4466">{{ c.issue }}</dd></div>
+              <div><dt style="font:600 12px Outfit,'Zen Kaku Gothic New',sans-serif;letter-spacing:.1em;color:#d0021b">対応</dt><dd style="margin:6px 0 0;font-size:13.5px;line-height:1.9;color:#3a4466">{{ c.action }}</dd></div>
+              <div><dt style="font:600 12px Outfit,'Zen Kaku Gothic New',sans-serif;letter-spacing:.1em;color:#d0021b">結果</dt><dd style="margin:6px 0 0;font:700 14px/1.9 'Zen Kaku Gothic New',sans-serif;color:#0f1c48">{{ c.result }}</dd></div>
+            </dl>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <p style="margin:20px 0 0;font-size:12px;color:#4a5680">※ 事例内容・数値はサンプルです。</p>
+  </div>
+</section>
+
+<section data-screen-label="04 Industries" style="position:relative;padding:clamp(120px,11vw,180px) clamp(24px,8vw,160px) clamp(100px,9vw,150px);background:#8a8f99;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;left:0;top:0;width:100%;height:clamp(240px,24vw,400px);background:#b0001a;clip-path:polygon(0 0,100% 0,0 100%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1400px;margin:0 auto">
+    <div data-reveal="" style="font:700 clamp(72px,11vw,200px)/.85 Outfit,sans-serif;letter-spacing:-0.045em">INDUSTRIES</div>
+    <div data-reveal="" style="margin-top:36px;display:flex;align-items:center;gap:14px"><span style="width:20px;height:30px;background:#fff;transform:skewX(-28deg);display:block"></span><span style="font:900 clamp(22px,2.2vw,32px) 'Zen Kaku Gothic New',sans-serif;letter-spacing:.2em">対応業界</span></div>
+    <ul style="list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px">
+      <sc-for list="{{ industries }}" as="i" hint-placeholder-count="6">
+        <li data-reveal="" style="background:#fff;color:#0f1c48;border-radius:4px;padding:26px 26px 28px">
+          <div style="font:600 11px Outfit,sans-serif;letter-spacing:.14em;color:#d0021b">{{ i.en }}</div>
+          <div style="margin-top:8px;font:700 20px 'Zen Kaku Gothic New',sans-serif;letter-spacing:.1em">{{ i.jp }}</div>
+          <div style="margin-top:8px;font-size:13px;line-height:1.8;color:#3a4466">{{ i.ex }}</div>
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</section>
+
+<a href="./About.dc.html" data-screen-label="Next" style="display:block;position:relative;padding:clamp(60px,6vw,90px) clamp(24px,8vw,160px);background:#1c3f94;color:#fff;transition:background .4s" style-hover="background:#2348a8;color:#fff">
+  <div style="max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+    <div>
+      <div style="font:600 13px Outfit,sans-serif;letter-spacing:.16em;display:flex;align-items:center;gap:10px"><span style="width:8px;height:16px;background:#d0021b;transform:skewX(-28deg);display:block"></span>NEXT PAGE</div>
+      <div style="margin-top:10px;font:600 clamp(40px,5vw,80px)/1 Outfit,sans-serif;letter-spacing:-0.03em">About Us</div>
+      <div style="margin-top:10px;font-weight:700;letter-spacing:.2em">会社概要</div>
+    </div>
+    <span style="width:72px;height:72px;border-radius:50%;border:1px solid #fff;display:flex;align-items:center;justify-content:center;font:400 24px Outfit">→</span>
+  </div>
+</a>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: 'all' };
+  componentDidMount() { setTimeout(() => window.setupSiteMotion && window.setupSiteMotion(), 80); }
+  renderVals() {
+    const P = [
+      ['auto', 'AUTOMOTIVE', 'エンジン周辺ブラケット', 'アルミ合金', '5軸加工'],
+      ['auto', 'AUTOMOTIVE', 'トランスミッション用シャフト', '炭素鋼', '旋削・研削'],
+      ['machine', 'INDUSTRIAL', 'ロボット関節ハウジング', 'アルミ合金', '複合加工'],
+      ['machine', 'INDUSTRIAL', '油圧バルブブロック', 'ステンレス鋼', 'マシニング'],
+      ['electronic', 'ELECTRONICS', '半導体装置用プレート', 'アルミ合金', '精密切削'],
+      ['electronic', 'ELECTRONICS', '放熱ヒートシンク', '銅', '切削・組立'],
+      ['medical', 'MEDICAL', '検査装置用精密ジョイント', 'チタン合金', '5軸加工'],
+      ['medical', 'MEDICAL', '樹脂製ガイド部品', 'PEEK', '精密切削'],
+    ].map((r, i) => ({ cat: r[0], catEn: r[1], name: r[2], mat: r[3], proc: r[4], slot: 'pr-' + (i + 1),
+      // placeholder photos — replace with shots of the actual parts
+      img: './images/' + ['machine-closeup', 'plant-towers', 'factory-safety', 'control-room'][i % 4] + '.jpg' }));
+    const cats = [['all', 'すべて'], ['auto', '自動車'], ['machine', '産業機械'], ['electronic', '電子機器'], ['medical', '医療機器']];
+    const cur = this.state.cat;
+    return {
+      tabs: cats.map(([k, label]) => ({
+        label, sel: k === cur ? 'true' : 'false',
+        bg: k === cur ? '#fff' : 'transparent', fg: k === cur ? '#0f1c48' : '#fff', border: k === cur ? '#fff' : 'rgba(255,255,255,.4)',
+        pick: () => this.setState({ cat: k }, () => window.siteCardsIn && window.siteCardsIn()),
+      })),
+      list: cur === 'all' ? P : P.filter(p => p.cat === cur),
+      cases: [
+        { no: '01', slot: 'case-01', img: './images/contract.jpg',field: '産業機械メーカー', title: '複数部品の一体化で、組立工数を削減', issue: '3部品を溶接で組み立てており、精度のばらつきと工数が課題でした。', action: '5軸加工による一体削り出し形状をご提案し、試作で強度を確認。', result: '組立工数を約40%削減、寸法精度も安定。', ph: '一体化した部品' },
+        { no: '02', slot: 'case-02', img: './images/handshake-team.jpg',field: '自動車部品メーカー', title: '自動化ラインで、量産品の短納期に対応', issue: '需要増に対し、従来の生産体制では納期に間に合わない状況でした。', action: 'ロボット搬送による夜間無人運転を組み込み、専用治具を製作。', result: '生産リードタイムを約半分に短縮。', ph: '自動化ライン' },
+        { no: '03', slot: 'case-03', img: './images/team-meeting.jpg',field: '医療機器メーカー', title: '難削材チタンの試作から量産まで', issue: 'チタン合金の微細形状部品で、加工できる協力先が見つからない状況でした。', action: '工具と加工条件を検証し、測定方法も含めて工程を設計。', result: '試作から3か月で量産立ち上げ。', ph: 'チタン精密部品' },
+      ],
+      industries: [
+        { en: 'AUTOMOTIVE', jp: '自動車', ex: 'エンジン・駆動系・車体部品' },
+        { en: 'INDUSTRIAL MACHINERY', jp: '産業機械', ex: 'ロボット・工作機械・油圧機器' },
+        { en: 'SEMICONDUCTOR', jp: '半導体・電子機器', ex: '製造装置部品・放熱部品' },
+        { en: 'MEDICAL', jp: '医療機器', ex: '検査装置・精密ジョイント' },
+        { en: 'ENERGY', jp: 'エネルギー', ex: '発電設備・配管継手' },
+        { en: 'AEROSPACE', jp: '航空・宇宙', ex: '試作部品・治具' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

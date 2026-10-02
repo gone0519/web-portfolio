@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F6F4F0; color: #1C1A17; font-family: "Zen Kaku Gothic New", sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: oklch(0.52 0.12 250); text-decoration: none; }
+  a:hover { color: oklch(0.44 0.12 250); }
+  * { box-sizing: border-box; }
+  @keyframes lumenRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  @keyframes lumenWipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  @keyframes lumenMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes lumenGlow { 0%, 100% { opacity: 0.35; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.12); } }
+  [data-reveal] { animation: lumenRise 0.9s cubic-bezier(0.2,0.7,0.2,1) both; }
+  @supports (animation-timeline: view()) {
+    [data-reveal] { animation-timeline: view(); animation-range: entry 5% entry 65%; }
+  }
+
+  /* ===== レスポンシブ =====
+     本文はインラインstyleで組んでいるため、class="r-*" を付けた要素を
+     メディアクエリ内で !important により上書きする。
+     ブレークポイント: 900px（ヘッダー） / 768px（スマホ） / 480px（小型スマホ） */
+  main { overflow-x: clip; }
+  .r-burger { display: none !important; }
+
+  @media (max-width: 1024px) {
+    .r-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  }
+
+  @media (max-width: 900px) {
+    .r-headbar { padding: 12px 20px !important; gap: 0 !important; }
+    .r-burger { display: flex !important; }
+    .r-menu { display: none !important; }
+    .r-menu.is-open { display: flex !important; flex-direction: column; align-items: stretch !important; gap: 16px !important; width: 100%; padding: 16px 0 12px; }
+    .r-menu.is-open nav { flex-direction: column; align-items: stretch !important; gap: 2px !important; }
+    .r-menu.is-open nav button { text-align: left; font-size: 15px !important; padding: 14px 16px !important; }
+    .r-menu.is-open .r-menu-cta { padding: 16px 22px !important; font-size: 14px !important; }
+  }
+
+  @media (max-width: 768px) {
+    .r-py { padding-top: 64px !important; padding-bottom: 64px !important; }
+    .r-pb { padding-bottom: 64px !important; }
+    .r-page-head { padding-top: 56px !important; padding-bottom: 40px !important; }
+    .r-gap { gap: 32px !important; }
+    .r-mb { margin-bottom: 32px !important; }
+    .r-btns > button { flex: 1 1 100%; padding: 17px 24px !important; }
+    .r-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    .r-metric { padding: 32px 12px !important; }
+    .r-metric-num { font-size: 44px !important; }
+    .r-metric-label { font-size: 11px !important; letter-spacing: 0.1em !important; }
+    .r-ph { min-height: 240px !important; }
+    .r-hero-veil { background: linear-gradient(180deg, rgba(19,18,16,0.7) 0%, rgba(19,18,16,0.88) 60%) !important; }
+    .r-svc { grid-template-columns: minmax(0, 1fr) !important; gap: 24px !important; padding: 40px 0 !important; }
+    .r-svc > * { grid-column: auto !important; }
+    .r-input { font-size: 16px !important; }
+    .r-dl { grid-template-columns: 96px minmax(0, 1fr) !important; gap: 16px !important; }
+  }
+
+  @media (max-width: 600px) {
+    .r-hero-h1 { font-size: clamp(28px, 9.4vw, 56px) !important; }
+  }
+
+  @media (max-width: 480px) {
+    .r-dl { grid-template-columns: minmax(0, 1fr) !important; gap: 4px !important; }
+    .r-logo-sub { display: none !important; }
+  }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: #F6F4F0;">
+
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(246,244,240,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid #E2DDD4;">
+    <div class="r-headbar" style="max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+      <div onClick="{{ goHome }}" style="display: flex; align-items: baseline; gap: 10px; cursor: pointer; margin-right: auto;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 26px; letter-spacing: 0.22em; color: #1C1A17;">LUMEN</span>
+        <span class="r-logo-sub" style="font-size: 10px; letter-spacing: 0.3em; color: #6B665E;">DIGITAL</span>
+      </div>
+      <button class="r-burger" onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuOpen }}" style="border: 1px solid #C9C2B6; background: none; cursor: pointer; width: 44px; height: 44px; border-radius: 999px; padding: 0; flex-direction: column; align-items: center; justify-content: center; gap: 5px;">
+        <span style="display: block; width: 18px; height: 1.5px; background: #1C1A17; transition: transform 0.25s; transform: {{ bar1 }};"></span>
+        <span style="display: block; width: 18px; height: 1.5px; background: #1C1A17; transition: opacity 0.2s; opacity: {{ bar2 }};"></span>
+        <span style="display: block; width: 18px; height: 1.5px; background: #1C1A17; transition: transform 0.25s; transform: {{ bar3 }};"></span>
+      </button>
+      <div class="r-menu {{ menuCls }}" style="display: flex; align-items: center; gap: 28px;">
+        <nav style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
+          <sc-for list="{{ nav }}" as="item" hint-placeholder-count="5">
+            <button onClick="{{ item.go }}" style="border: none; background: none; cursor: pointer; font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 13px; letter-spacing: 0.08em; padding: 8px 14px; border-radius: 999px; color: {{ item.color }}; background: {{ item.bg }};">{{ item.label }}</button>
+          </sc-for>
+        </nav>
+        <button class="r-menu-cta" onClick="{{ goContact }}" style="border: none; cursor: pointer; background: oklch(0.52 0.12 250); color: #fff; font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 13px; letter-spacing: 0.08em; padding: 12px 22px; border-radius: 999px;" style-hover="background: oklch(0.44 0.12 250);">無料相談を予約</button>
+      </div>
+    </div>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main>
+    <section style="position: relative; overflow: hidden; background: #131210; color: #F6F4F0; padding: clamp(72px, 11vw, 150px) 24px clamp(64px, 8vw, 110px); min-height: 88vh; display: flex; align-items: center;">
+      <img src="images/hero-meeting.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 30%;" />
+      <div class="r-hero-veil" style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(19,18,16,0.92) 0%, rgba(19,18,16,0.78) 50%, rgba(19,18,16,0.45) 100%);"></div>
+      <div style="position: absolute; top: -18%; right: -10%; width: min(62vw, 720px); height: min(62vw, 720px); border-radius: 50%; background: radial-gradient(circle, oklch(0.52 0.12 250 / 0.55) 0%, rgba(19,18,16,0) 68%); animation: lumenGlow 9s ease-in-out infinite;"></div>
+      <div style="position: relative; max-width: 1280px; margin: 0 auto; width: 100%;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(20px, 2.4vw, 30px); color: oklch(0.78 0.10 250); margin: 0 0 clamp(20px, 3vw, 34px); animation: lumenRise 0.7s ease both;">Growth, designed.</p>
+        <h1 class="r-hero-h1" style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(38px, 8.4vw, 116px); line-height: 1.16; letter-spacing: 0.01em; margin: 0 0 clamp(28px, 4vw, 46px);">
+          <span style="display: block; animation: lumenWipe 1.1s cubic-bezier(0.2,0.7,0.2,1) both;">数字で語れる、</span>
+          <span style="display: block; color: oklch(0.78 0.10 250); animation: lumenWipe 1.1s cubic-bezier(0.2,0.7,0.2,1) 0.22s both;">マーケティング。</span>
+        </h1>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 40px; align-items: end; animation: lumenRise 0.9s ease 0.5s both;">
+          <p style="max-width: 560px; font-size: 15px; line-height: 2.2; color: rgba(246,244,240,0.78); margin: 0;">戦略設計から広告運用、サイト制作、分析改善まで。事業の成長に直結する一連の施策を、ひとつのチームで担います。</p>
+          <div class="r-btns" style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-start;">
+            <button onClick="{{ goContact }}" style="border: none; cursor: pointer; background: #F6F4F0; color: #1C1A17; font-size: 14px; letter-spacing: 0.08em; padding: 18px 40px; border-radius: 999px; font-family: 'Zen Kaku Gothic New', sans-serif;" style-hover="background: oklch(0.78 0.10 250);">無料で相談する</button>
+            <button onClick="{{ goCases }}" style="cursor: pointer; background: none; border: 1px solid rgba(246,244,240,0.45); color: #F6F4F0; font-size: 14px; letter-spacing: 0.08em; padding: 18px 40px; border-radius: 999px; font-family: 'Zen Kaku Gothic New', sans-serif;" style-hover="border-color: #F6F4F0;">導入事例を見る</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div style="background: oklch(0.52 0.12 250); color: #FFFFFF; overflow: hidden; padding: 18px 0; white-space: nowrap;">
+      <div style="display: inline-flex; gap: 56px; animation: lumenMarquee 26s linear infinite; will-change: transform;">
+        <sc-for list="{{ ticker }}" as="t" hint-placeholder-count="12">
+          <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; letter-spacing: 0.04em;">{{ t }}</span>
+        </sc-for>
+      </div>
+    </div>
+
+    <section class="r-py" style="padding: 96px 24px; background: #F6F4F0;">
+      <div class="r-gap" style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 56px; align-items: start;">
+        <div>
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 42px); color: oklch(0.52 0.12 250); margin: 0 0 14px;">About us</p>
+          <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(28px, 4.4vw, 54px); letter-spacing: 0.01em; line-height: 1.6; margin: 0;">成果の再現性を、<br />仕組みでつくる。</h2>
+        </div>
+        <div style="font-size: 15px; line-height: 2.2; color: #4A453E;">
+          <p style="margin: 0 0 20px;">LUMEN Digital は、2016年の設立以来、BtoB・EC・サービス業を中心に240社以上のマーケティングを支援してきました。広告、SEO、制作、分析を分断せず、ひとつの戦略のもとで動かすことを基本方針としています。</p>
+          <p style="margin: 0;">担当者は平均7年の実務経験を持ち、施策の設計から実行、月次のレポーティングまで一貫して担当します。運用の中身はすべて開示し、判断の根拠を共有します。</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 0 0 8px;">
+      <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+        <div class="r-metrics" data-reveal="1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 1px; background: #E2DDD4; border: 1px solid #E2DDD4;">
+          <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="4">
+            <div class="r-metric" style="background: #FBFAF8; padding: clamp(36px, 5vw, 64px) 28px; text-align: center;" style-hover="background: #1C1A17; color: #F6F4F0;">
+              <div class="r-metric-num" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 7vw, 92px); line-height: 0.95; color: oklch(0.52 0.12 250);">{{ m.value }}</div>
+              <div class="r-metric-label" style="margin-top: 18px; font-size: 12px; letter-spacing: 0.16em; color: #6B665E;">{{ m.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section class="r-py" style="padding: 96px 24px;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 42px); color: oklch(0.52 0.12 250); margin: 0 0 10px;">Why choose us</p>
+        <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(28px, 4.4vw, 54px); letter-spacing: 0.01em; margin: 0 0 48px;">選ばれる3つの理由</h2>
+        <div data-reveal="1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 28px;">
+          <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="3">
+            <div style="background: #FFFFFF; border: 1px solid #E2DDD4; padding: 40px 32px;" style-hover="border-color: oklch(0.52 0.12 250);">
+              <div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: oklch(0.52 0.12 250); margin-bottom: 20px;">{{ r.num }}</div>
+              <h3 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: 20px; line-height: 1.6; margin: 0 0 16px;">{{ r.title }}</h3>
+              <p style="font-size: 14px; line-height: 2.05; color: #4A453E; margin: 0;">{{ r.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section class="r-pb" style="padding: 0 24px 96px;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <div style="display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap; margin-bottom: 44px;">
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 42px); color: oklch(0.52 0.12 250); margin: 0;">Services</p>
+          <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(28px, 4.4vw, 54px); letter-spacing: 0.01em; margin: 0;">主なサービス</h2>
+          <button onClick="{{ goServices }}" style="margin-left: auto; cursor: pointer; background: none; border: 1px solid #C9C2B6; border-radius: 999px; padding: 12px 24px; font-size: 13px; letter-spacing: 0.08em; font-family: 'Zen Kaku Gothic New', sans-serif; color: #1C1A17;" style-hover="border-color: #1C1A17;">すべて見る</button>
+        </div>
+        <div data-reveal="1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 24px;">
+          <sc-for list="{{ featured }}" as="s" hint-placeholder-count="6">
+            <div onClick="{{ goServices }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E2DDD4;" style-hover="border-color: oklch(0.52 0.12 250);">
+              <img src="{{ s.img }}" alt="{{ s.ja }}" loading="lazy" style="display: block; width: 100%; height: 168px; object-fit: cover; background: #EAE6DE;" />
+              <div style="padding: 26px 26px 30px;">
+                <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 19px; color: oklch(0.52 0.12 250); margin: 0 0 6px;">{{ s.en }}</p>
+                <h3 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: 17px; margin: 0 0 12px;">{{ s.ja }}</h3>
+                <p style="font-size: 13px; line-height: 1.95; color: #6B665E; margin: 0;">{{ s.body }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));">
+      <div class="r-ph" style="position: relative; min-height: 46vh; background: #EAE6DE;">
+        <img src="images/team-discussion.jpg" alt="チームでの打ち合わせ風景" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
+      </div>
+      <div style="background: oklch(0.52 0.12 250); color: #FFFFFF; padding: clamp(44px, 6vw, 88px); display: flex; flex-direction: column; justify-content: center;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.4vw, 44px); margin: 0 0 18px;">Our Commitment</p>
+        <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(22px, 2.6vw, 32px); line-height: 1.6; margin: 0 0 20px;">運用の中身を、隠さない。</h2>
+        <p style="font-size: 14px; line-height: 2.15; color: rgba(255,255,255,0.88); margin: 0;">管理画面は常時共有し、数字の背景と次の打ち手を毎月説明します。判断の理由が見えることが、成果の再現性につながると考えています。</p>
+      </div>
+      <div style="background: #2E2A24; color: #F6F4F0; padding: clamp(44px, 6vw, 88px); display: flex; flex-direction: column; justify-content: center; order: 1;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.4vw, 44px); color: oklch(0.78 0.10 250); margin: 0 0 18px;">One Team</p>
+        <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(22px, 2.6vw, 32px); line-height: 1.6; margin: 0 0 20px;">設計した人間が、実行する。</h2>
+        <p style="font-size: 14px; line-height: 2.15; color: rgba(246,244,240,0.8); margin: 0;">戦略、広告、制作、分析を同じチームで担当します。引き継ぎによる意図のずれがなく、改善のサイクルが速く回ります。</p>
+      </div>
+      <div class="r-ph" style="position: relative; min-height: 46vh; background: #E6E2DA; order: 1;">
+        <img src="images/meeting-tablet.jpg" alt="タブレットを使ったミーティング風景" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
+      </div>
+    </section>
+
+    <section class="r-py" style="background: #1C1A17; color: #F6F4F0; padding: 96px 24px;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 42px); color: oklch(0.72 0.09 250); margin: 0 0 10px;">Process</p>
+        <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(28px, 4.4vw, 54px); letter-spacing: 0.01em; margin: 0 0 52px;">ご支援の流れ</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 32px;">
+          <sc-for list="{{ process }}" as="p" hint-placeholder-count="4">
+            <div style="border-top: 1px solid rgba(246,244,240,0.28); padding-top: 24px;">
+              <div style="font-family: 'Cormorant Garamond', serif; font-size: 34px; color: oklch(0.72 0.09 250); line-height: 1;">{{ p.num }}</div>
+              <h3 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: 18px; margin: 18px 0 12px;">{{ p.title }}</h3>
+              <p style="font-size: 13px; line-height: 2; color: rgba(246,244,240,0.78); margin: 0;">{{ p.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section class="r-py" style="padding: 96px 24px;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <div style="display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap; margin-bottom: 44px;">
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 42px); color: oklch(0.52 0.12 250); margin: 0;">Case studies</p>
+          <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(28px, 4.4vw, 54px); letter-spacing: 0.01em; margin: 0;">導入事例</h2>
+          <button onClick="{{ goCases }}" style="margin-left: auto; cursor: pointer; background: none; border: 1px solid #C9C2B6; border-radius: 999px; padding: 12px 24px; font-size: 13px; letter-spacing: 0.08em; font-family: 'Zen Kaku Gothic New', sans-serif; color: #1C1A17;" style-hover="border-color: #1C1A17;">すべて見る</button>
+        </div>
+        <div data-reveal="1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px;">
+          <sc-for list="{{ casePreview }}" as="c" hint-placeholder-count="3">
+            <div onClick="{{ goCases }}" style="cursor: pointer; background: #FFFFFF; border: 1px solid #E2DDD4;" style-hover="border-color: oklch(0.52 0.12 250);">
+              <img src="{{ c.img }}" alt="{{ c.category }}の導入事例" loading="lazy" style="display: block; width: 100%; height: 200px; object-fit: cover; background: #EAE6DE;" />
+              <div style="padding: 26px;">
+                <span style="display: inline-block; font-size: 11px; letter-spacing: 0.1em; color: oklch(0.52 0.12 250); border: 1px solid oklch(0.52 0.12 250); border-radius: 999px; padding: 5px 12px;">{{ c.category }}</span>
+                <h3 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: 18px; line-height: 1.7; margin: 16px 0 14px;">{{ c.title }}</h3>
+                <p style="font-size: 20px; font-weight: 700; color: #1C1A17; margin: 0;">{{ c.metric }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section class="r-pb" style="padding: 0 24px 96px;">
+      <div style="max-width: 1180px; margin: 0 auto; background: #FFFFFF; border: 1px solid #E2DDD4; padding: clamp(32px, 5vw, 64px);">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 42px); color: oklch(0.52 0.12 250); margin: 0 0 36px;">Voice</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 40px;">
+          <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+            <div>
+              <p style="font-family: 'Zen Old Mincho', serif; font-size: 16px; line-height: 2.1; margin: 0 0 22px;">{{ v.quote }}</p>
+              <p style="font-size: 12px; letter-spacing: 0.06em; color: #6B665E; margin: 0;">{{ v.who }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section class="r-pb" style="padding: 0 24px 96px;">
+      <div style="max-width: 900px; margin: 0 auto;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 42px); color: oklch(0.52 0.12 250); margin: 0 0 10px;">FAQ</p>
+        <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(28px, 4.4vw, 54px); letter-spacing: 0.01em; margin: 0 0 36px;">よくあるご質問</h2>
+        <div style="border-top: 1px solid #E2DDD4;">
+          <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+            <div style="border-bottom: 1px solid #E2DDD4;">
+              <button onClick="{{ f.toggle }}" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer; padding: 24px 8px; display: flex; gap: 20px; align-items: center; font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 15px; color: #1C1A17;">
+                <span style="flex: 1;">{{ f.q }}</span>
+                <span style="font-size: 18px; color: oklch(0.52 0.12 250);">{{ f.sign }}</span>
+              </button>
+              <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+                <p style="margin: 0; padding: 0 8px 26px; font-size: 14px; line-height: 2.05; color: #4A453E;">{{ f.a }}</p>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section class="r-pb" style="padding: 0 24px 100px;">
+      <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 48px;" class="r-gap">
+        <div>
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 42px); color: oklch(0.52 0.12 250); margin: 0 0 24px;">News</p>
+          <sc-for list="{{ news }}" as="n" hint-placeholder-count="3">
+            <div style="border-bottom: 1px solid #E2DDD4; padding: 20px 0; display: flex; gap: 18px; align-items: center; flex-wrap: wrap;">
+              <span style="font-size: 12px; color: #8A8377; font-family: ui-monospace, Menlo, monospace;">{{ n.date }}</span>
+              <span style="font-size: 11px; letter-spacing: 0.08em; color: #fff; background: oklch(0.52 0.12 250); padding: 4px 10px;">{{ n.tag }}</span>
+              <span style="font-size: 14px; flex: 1; min-width: 200px;">{{ n.title }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="position: relative; background: #EAE6DE; min-height: 280px;">
+          <img src="images/handshake.jpg" alt="パートナー企業との握手" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section class="r-page-head" style="padding: 80px 24px 56px; border-bottom: 1px solid #E2DDD4;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 42px); color: oklch(0.52 0.12 250); margin: 0 0 12px;">Services</p>
+        <h1 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(28px, 4vw, 44px); margin: 0 0 24px;">サービス</h1>
+        <p style="max-width: 640px; font-size: 15px; line-height: 2.1; color: #4A453E; margin: 0;">単発の施策ではなく、集客から接客、計測、改善までを一本の線でつなぎます。必要な範囲だけの部分支援にも対応しています。</p>
+      </div>
+    </section>
+    <section class="r-pb" style="padding: 0 24px 80px;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="9">
+          <div class="r-svc" style="border-bottom: 1px solid #E2DDD4; padding: 56px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 44px; align-items: start;">
+            <div>
+              <div style="font-family: 'Cormorant Garamond', serif; font-size: 18px; color: oklch(0.52 0.12 250);">{{ s.num }}</div>
+              <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: 24px; margin: 12px 0 8px;">{{ s.ja }}</h2>
+              <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: #8A8377; margin: 0;">{{ s.en }}</p>
+            </div>
+            <div style="grid-column: span 2; min-width: 0;">
+              <p style="font-size: 15px; line-height: 2.1; color: #4A453E; margin: 0 0 26px;">{{ s.overview }}</p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 24px;">
+                <div>
+                  <h3 style="font-size: 12px; letter-spacing: 0.12em; color: #8A8377; margin: 0 0 12px;">FEATURES</h3>
+                  <sc-for list="{{ s.features }}" as="f" hint-placeholder-count="3">
+                    <p style="font-size: 13px; line-height: 1.9; margin: 0 0 8px; color: #1C1A17;">{{ f }}</p>
+                  </sc-for>
+                </div>
+                <div>
+                  <h3 style="font-size: 12px; letter-spacing: 0.12em; color: #8A8377; margin: 0 0 12px;">DELIVERABLES</h3>
+                  <sc-for list="{{ s.deliverables }}" as="d" hint-placeholder-count="3">
+                    <p style="font-size: 13px; line-height: 1.9; margin: 0 0 8px; color: #1C1A17;">{{ d }}</p>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isCases }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section class="r-page-head" style="padding: 80px 24px 40px; border-bottom: 1px solid #E2DDD4;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 42px); color: oklch(0.52 0.12 250); margin: 0 0 12px;">Case studies</p>
+        <h1 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(28px, 4vw, 44px); margin: 0 0 24px;">導入事例</h1>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px;">
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+            <button onClick="{{ f.go }}" style="cursor: pointer; border: 1px solid {{ f.border }}; background: {{ f.bg }}; color: {{ f.color }}; border-radius: 999px; padding: 10px 20px; font-size: 13px; letter-spacing: 0.06em; font-family: 'Zen Kaku Gothic New', sans-serif;">{{ f.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section class="r-py" style="padding: 56px 24px 88px;">
+      <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 28px;">
+        <sc-for list="{{ visibleCases }}" as="c" hint-placeholder-count="6">
+          <article style="background: #FFFFFF; border: 1px solid #E2DDD4;" style-hover="border-color: oklch(0.52 0.12 250);">
+            <img src="{{ c.img }}" alt="{{ c.category }}の導入事例" loading="lazy" style="display: block; width: 100%; height: 200px; object-fit: cover; background: #EAE6DE;" />
+            <div style="padding: 28px;">
+              <span style="display: inline-block; font-size: 11px; letter-spacing: 0.1em; color: oklch(0.52 0.12 250); border: 1px solid oklch(0.52 0.12 250); border-radius: 999px; padding: 5px 12px;">{{ c.category }}</span>
+              <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: 19px; line-height: 1.7; margin: 16px 0 18px;">{{ c.title }}</h2>
+              <p style="font-size: 12px; letter-spacing: 0.1em; color: #8A8377; margin: 0 0 6px;">課題</p>
+              <p style="font-size: 13px; line-height: 1.95; color: #4A453E; margin: 0 0 16px;">{{ c.challenge }}</p>
+              <p style="font-size: 12px; letter-spacing: 0.1em; color: #8A8377; margin: 0 0 6px;">施策</p>
+              <p style="font-size: 13px; line-height: 1.95; color: #4A453E; margin: 0 0 22px;">{{ c.strategy }}</p>
+              <div style="display: flex; gap: 22px; flex-wrap: wrap; border-top: 1px solid #E2DDD4; padding-top: 20px;">
+                <sc-for list="{{ c.results }}" as="r" hint-placeholder-count="2">
+                  <div>
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: oklch(0.52 0.12 250);">{{ r.value }}</div>
+                    <div style="font-size: 11px; color: #6B665E; margin-top: 6px;">{{ r.label }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section class="r-page-head" style="padding: 80px 24px 64px; border-bottom: 1px solid #E2DDD4;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 42px); color: oklch(0.52 0.12 250); margin: 0 0 12px;">About</p>
+        <h1 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(28px, 4vw, 44px); line-height: 1.5; margin: 0 0 28px;">わたしたちについて</h1>
+        <p style="max-width: 660px; font-size: 15px; line-height: 2.15; color: #4A453E; margin: 0;">広告代理店とデザインスタジオ、双方の出身者が集まり2016年に設立しました。数字の責任を負いながら、生活者にとって心地よい体験をつくることを両立させたいと考えています。</p>
+      </div>
+    </section>
+    <div style="max-width: 1180px; margin: 64px auto 0; padding: 0 24px;">
+      <img src="images/office-exterior.jpg" alt="LUMEN Digital のオフィス周辺" loading="lazy" style="display: block; width: 100%; height: clamp(220px, 40vw, 460px); object-fit: cover; object-position: 50% 45%; background: #EAE6DE;" />
+    </div>
+    <section class="r-py" style="padding: 80px 24px;">
+      <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1px; background: #E2DDD4; border: 1px solid #E2DDD4;">
+        <div style="background: #FFFFFF; padding: 44px 34px;">
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; color: oklch(0.52 0.12 250); margin: 0 0 16px;">Mission</p>
+          <p style="font-family: 'Zen Old Mincho', serif; font-size: 20px; line-height: 1.8; margin: 0 0 16px;">事業の成長を、確かな手触りに。</p>
+          <p style="font-size: 14px; line-height: 2.05; color: #4A453E; margin: 0;">感覚に頼らず、検証できる形で施策を積み上げます。</p>
+        </div>
+        <div style="background: #FFFFFF; padding: 44px 34px;">
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; color: oklch(0.52 0.12 250); margin: 0 0 16px;">Vision</p>
+          <p style="font-family: 'Zen Old Mincho', serif; font-size: 20px; line-height: 1.8; margin: 0 0 16px;">10年先も選ばれるブランドを増やす。</p>
+          <p style="font-size: 14px; line-height: 2.05; color: #4A453E; margin: 0;">短期の数字と中長期の資産形成を両立させます。</p>
+        </div>
+      </div>
+    </section>
+    <section class="r-pb" style="padding: 0 24px 80px;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(22px, 3vw, 30px); margin: 0 0 36px;">価値観</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 26px;">
+          <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+            <div style="border-top: 2px solid #1C1A17; padding-top: 22px;">
+              <h3 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: 18px; margin: 0 0 12px;">{{ v.title }}</h3>
+              <p style="font-size: 13px; line-height: 2; color: #4A453E; margin: 0;">{{ v.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section class="r-pb" style="padding: 0 24px 80px;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(22px, 3vw, 30px); margin: 0 0 36px;">メンバー</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 24px;">
+          <sc-for list="{{ team }}" as="t" hint-placeholder-count="4">
+            <div>
+              <img src="{{ t.img }}" alt="{{ t.name }}" loading="lazy" style="display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: {{ t.pos }}; background: #EAE6DE;" />
+              <h3 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: 17px; margin: 18px 0 6px;">{{ t.name }}</h3>
+              <p style="font-size: 12px; color: #6B665E; margin: 0 0 10px;">{{ t.role }}</p>
+              <p style="font-size: 12px; line-height: 1.9; color: #4A453E; margin: 0;">{{ t.bio }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section class="r-pb" style="padding: 0 24px 80px;">
+      <div style="max-width: 900px; margin: 0 auto;">
+        <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(22px, 3vw, 30px); margin: 0 0 36px;">沿革</h2>
+        <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="5">
+          <div style="display: grid; grid-template-columns: 96px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid #E2DDD4;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: oklch(0.52 0.12 250);">{{ t.year }}</span>
+            <span style="font-size: 14px; line-height: 1.9; color: #1C1A17;">{{ t.body }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section class="r-pb" style="padding: 0 24px 96px;">
+      <div style="max-width: 900px; margin: 0 auto;">
+        <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(22px, 3vw, 30px); margin: 0 0 30px;">会社概要</h2>
+        <sc-for list="{{ company }}" as="c" hint-placeholder-count="6">
+          <div class="r-dl" style="display: grid; grid-template-columns: 140px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid #E2DDD4;">
+            <span style="font-size: 13px; color: #8A8377;">{{ c.k }}</span>
+            <span style="font-size: 14px; line-height: 1.9;">{{ c.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section class="r-page-head" style="padding: 80px 24px 56px; border-bottom: 1px solid #E2DDD4;">
+      <div style="max-width: 1180px; margin: 0 auto;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 42px); color: oklch(0.52 0.12 250); margin: 0 0 12px;">Contact</p>
+        <h1 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(28px, 4vw, 44px); margin: 0 0 24px;">お問い合わせ</h1>
+        <p style="max-width: 640px; font-size: 15px; line-height: 2.1; color: #4A453E; margin: 0;">初回のご相談は無料です。現状の課題をお聞きし、必要な施策と概算費用をご提案します。通常2営業日以内にご返信します。</p>
+      </div>
+    </section>
+    <section class="r-py" style="padding: 64px 24px 96px;">
+      <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 56px; align-items: start;" class="r-gap">
+        <form onSubmit="{{ submit }}" style="display: grid; gap: 22px;">
+          <sc-for list="{{ fields }}" as="f" hint-placeholder-count="5">
+            <label style="display: grid; gap: 8px;">
+              <span style="font-size: 13px; letter-spacing: 0.06em; color: #4A453E;">{{ f.label }}</span>
+              <input class="r-input" placeholder="{{ f.ph }}" style="border: 1px solid #C9C2B6; background: #FFFFFF; padding: 14px 16px; font-size: 14px; font-family: 'Zen Kaku Gothic New', sans-serif; color: #1C1A17; border-radius: 2px;" style-focus="outline: none; border-color: oklch(0.52 0.12 250);" />
+            </label>
+          </sc-for>
+          <label style="display: grid; gap: 8px;">
+            <span style="font-size: 13px; letter-spacing: 0.06em; color: #4A453E;">ご相談内容</span>
+            <textarea class="r-input" rows="6" placeholder="現在の課題、ご予算、希望時期などをご記入ください" style="border: 1px solid #C9C2B6; background: #FFFFFF; padding: 14px 16px; font-size: 14px; font-family: 'Zen Kaku Gothic New', sans-serif; color: #1C1A17; border-radius: 2px; resize: vertical;" style-focus="outline: none; border-color: oklch(0.52 0.12 250);"></textarea>
+          </label>
+          <button type="submit" style="justify-self: start; border: none; cursor: pointer; background: #1C1A17; color: #fff; font-size: 14px; letter-spacing: 0.08em; padding: 16px 40px; border-radius: 999px; font-family: 'Zen Kaku Gothic New', sans-serif;" style-hover="background: oklch(0.52 0.12 250);">送信する</button>
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 0; font-size: 13px; color: oklch(0.52 0.12 250);">送信しました。担当者より2営業日以内にご連絡します。</p>
+          </sc-if>
+        </form>
+        <div>
+          <div style="background: #FFFFFF; border: 1px solid #E2DDD4; padding: 34px;">
+            <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: 19px; margin: 0 0 20px;">LUMEN Digital 株式会社</h2>
+            <p style="font-size: 13px; line-height: 2.1; color: #4A453E; margin: 0 0 18px;">〒150-0002<br />東京都渋谷区渋谷2-14-6 渋谷宮下ビル7F<br />平日 10:00 - 19:00</p>
+            <p style="font-size: 20px; font-family: 'Cormorant Garamond', serif; margin: 0 0 6px;">Tel. 03-6427-0000</p>
+            <p style="font-size: 13px; color: #6B665E; margin: 0;">contact@lumen-digital.jp</p>
+          </div>
+          <div style="margin-top: 24px; height: 280px; background-color: #EAE6DE; background-image: repeating-linear-gradient(135deg, rgba(28,26,23,0.05) 0 10px, rgba(28,26,23,0) 10px 20px); display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.12em; color: #8A8377;">Google Maps 埋め込み</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <section class="r-py" style="background: #1C1A17; color: #F6F4F0; padding: 88px 24px; text-align: center;">
+    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 24px; color: oklch(0.72 0.09 250); margin: 0 0 18px;">Let's start</p>
+    <h2 style="font-family: 'Zen Old Mincho', serif; font-weight: 500; font-size: clamp(24px, 3.6vw, 38px); line-height: 1.6; margin: 0 0 24px;">まずは現状の課題を<br />お聞かせください。</h2>
+    <p style="font-size: 14px; line-height: 2.1; color: rgba(246,244,240,0.75); margin: 0 auto 34px; max-width: 520px;">初回相談・お見積りは無料です。オンラインでも承ります。</p>
+    <button onClick="{{ goContact }}" style="border: none; cursor: pointer; background: #F6F4F0; color: #1C1A17; font-size: 14px; letter-spacing: 0.08em; padding: 17px 44px; border-radius: 999px; font-family: 'Zen Kaku Gothic New', sans-serif;" style-hover="background: oklch(0.72 0.09 250);">無料相談を予約する</button>
+  </section>
+
+  <footer style="background: #F6F4F0; border-top: 1px solid #E2DDD4; padding: 48px 24px;">
+    <div style="max-width: 1180px; margin: 0 auto; display: flex; gap: 28px; flex-wrap: wrap; align-items: center;">
+      <div style="display: flex; align-items: baseline; gap: 10px; margin-right: auto;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 0.22em;">LUMEN</span>
+        <span style="font-size: 10px; letter-spacing: 0.3em; color: #6B665E;">DIGITAL</span>
+      </div>
+      <nav style="display: flex; gap: 22px; flex-wrap: wrap;">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="5">
+          <button onClick="{{ item.go }}" style="border: none; background: none; cursor: pointer; font-size: 12px; letter-spacing: 0.08em; color: #6B665E; font-family: 'Zen Kaku Gothic New', sans-serif; padding: 0;" style-hover="color: #1C1A17;">{{ item.label }}</button>
+        </sc-for>
+      </nav>
+      <span style="font-size: 11px; color: #8A8377; width: 100%; text-align: center; letter-spacing: 0.08em;">© 2026 LUMEN Digital Inc.</span>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { page: 'home', openFaq: 0, filter: 'すべて', sent: false, menuOpen: false };
+
+  go(page) {
+    this.setState({ page, menuOpen: false });
+    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  renderVals() {
+    const accent = 'oklch(0.52 0.12 250)';
+    const page = this.state.page;
+    const navDefs = [
+      ['home', 'ホーム'], ['services', 'サービス'], ['cases', '導入事例'],
+      ['about', '会社について'], ['contact', 'お問い合わせ']
+    ];
+
+    const cases = [
+      { category: 'BtoB SaaS', img: 'images/meeting-overhead.jpg', title: '商談化率を軸に広告を再設計し、問合せ単価を46%改善', challenge: '獲得件数は伸びていたが、商談につながらないリードが大半を占めていた。', strategy: 'CRMと広告の連携で商談化データを取得し、キーワードとLPを商談貢献度で再配分。', results: [{ value: '-46%', label: '問合せ単価' }, { value: '2.3x', label: '商談化数' }] },
+      { category: 'EC', img: 'images/smartphone.jpg', title: '指名検索の育成で、広告依存度を下げながら売上1.8倍', challenge: '広告費の増加に売上が追いつかず、利益率が悪化していた。', strategy: 'SEOとSNSで認知経路を新設。広告は刈り取り領域に集中させ予算を再配分。', results: [{ value: '1.8x', label: '年間売上' }, { value: '-31%', label: '広告費比率' }] },
+      { category: '人材', img: 'images/staff-duo.jpg', title: '採用サイト刷新とコンテンツ運用で応募数3.4倍', challenge: '媒体依存で採用単価が高騰し、応募者の質にもばらつきがあった。', strategy: '職種別LPと社員インタビューを整備し、検索流入から直接応募へ導線を集約。', results: [{ value: '3.4x', label: '応募数' }, { value: '-52%', label: '採用単価' }] },
+      { category: 'BtoB SaaS', img: 'images/team-laptops.jpg', title: 'ウェビナー導線の改善で、有効リードを月間180件に', challenge: '集客はできても、参加後のフォロー設計がなく機会損失が続いていた。', strategy: '申込フォームの簡素化と、参加後シナリオメールの自動化を実装。', results: [{ value: '180件', label: '月間有効リード' }, { value: '+64%', label: '参加率' }] },
+      { category: '小売', img: 'images/city-street.jpg', title: '店舗とECの計測を統合し、来店効果まで可視化', challenge: 'オンライン広告の来店貢献が見えず、予算判断ができなかった。', strategy: '位置情報と会員IDを用いた来店計測を導入し、レポートを統合。', results: [{ value: '+27%', label: '来店数' }, { value: '92%', label: '計測カバー率' }] },
+      { category: 'EC', img: 'images/plan-select.jpg', title: 'LP改善の反復で、CVRを1.2%から3.1%へ', challenge: '流入は十分にあったが、カート到達前の離脱が大きかった。', strategy: 'ヒートマップと定性調査から仮説を作り、月2本のABテストを継続。', results: [{ value: '3.1%', label: 'CVR' }, { value: '14本', label: '年間テスト数' }] }
+    ];
+    const cats = ['すべて', 'BtoB SaaS', 'EC', '人材', '小売'];
+
+    const faqData = [
+      { q: '最低の契約期間はありますか。', a: '広告運用は3か月以上、制作案件は都度のお見積りです。効果検証に必要な期間を確保するため、運用系は3か月を目安としています。' },
+      { q: '費用の目安を教えてください。', a: '広告運用は月額30万円から、サイト制作は150万円からが中心価格帯です。ご予算に応じて範囲を調整します。' },
+      { q: '広告アカウントは自社で保有できますか。', a: 'はい。アカウントはすべて貴社保有を原則としています。契約終了後もデータは残ります。' },
+      { q: '一部の施策だけ依頼できますか。', a: '可能です。分析のみ、制作のみといった部分支援も多くお受けしています。' },
+      { q: '対応エリアに制限はありますか。', a: 'ありません。全国および海外の企業様とオンラインで進行しています。' }
+    ];
+
+    return {
+      isHome: page === 'home', isServices: page === 'services', isCases: page === 'cases',
+      isAbout: page === 'about', isContact: page === 'contact',
+      goHome: () => this.go('home'), goServices: () => this.go('services'),
+      goCases: () => this.go('cases'), goContact: () => this.go('contact'),
+      sent: this.state.sent,
+
+      menuOpen: this.state.menuOpen,
+      menuCls: this.state.menuOpen ? 'is-open' : '',
+      menuLabel: this.state.menuOpen ? 'メニューを閉じる' : 'メニューを開く',
+      toggleMenu: () => this.setState({ menuOpen: !this.state.menuOpen }),
+      bar1: this.state.menuOpen ? 'translateY(6.5px) rotate(45deg)' : 'none',
+      bar2: this.state.menuOpen ? 0 : 1,
+      bar3: this.state.menuOpen ? 'translateY(-6.5px) rotate(-45deg)' : 'none',
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+
+      nav: navDefs.map(([id, label]) => ({
+        label, go: () => this.go(id),
+        color: page === id ? '#FFFFFF' : '#4A453E',
+        bg: page === id ? '#1C1A17' : 'transparent'
+      })),
+
+      ticker: (() => {
+        const w = ['Strategy', 'SEO', 'Paid Media', 'Branding', 'Web Design', 'Analytics', 'Social', 'Landing Page'];
+        return w.concat(w).map((s, i) => (i % 2 ? s : s + ' ―'));
+      })(),
+
+      metrics: [
+        { value: '240+', label: '支援社数' }, { value: '94%', label: '契約継続率' },
+        { value: '7年', label: '担当者の平均経験' }, { value: '2016', label: '設立' }
+      ],
+
+      reasons: [
+        { num: '01', title: '戦略から運用まで一つのチームで', body: '設計した人間がそのまま運用します。引き継ぎによる意図のずれが起きません。' },
+        { num: '02', title: '売上に直結する指標で評価', body: 'クリックや表示回数ではなく、商談数や粗利をKPIに置いて改善します。' },
+        { num: '03', title: '運用の中身をすべて開示', body: '管理画面は常時共有。判断の理由と次の打ち手を毎月の定例で説明します。' }
+      ],
+
+      featured: [
+        { en: 'Digital Marketing', ja: 'デジタルマーケティング', img: 'images/report-review.jpg', body: '流入から成約までの全体設計と実行。' },
+        { en: 'SEO', ja: 'SEO', img: 'images/analytics-devices.jpg', body: '技術・コンテンツ両面からの検索流入改善。' },
+        { en: 'Google Ads', ja: '広告運用', img: 'images/dashboard-review.jpg', body: '検索・ディスプレイ・動画の統合運用。' },
+        { en: 'Web Design', ja: 'サイト制作', img: 'images/monitor-review.jpg', body: '設計・デザイン・実装までを内製で対応。' },
+        { en: 'Branding', ja: 'ブランディング', img: 'images/growth-arrows.jpg', body: '言語とビジュアルの指針づくり。' },
+        { en: 'Analytics', ja: '分析・レポート', img: 'images/analyst-desk.jpg', body: '計測基盤の設計と意思決定のための可視化。' }
+      ],
+
+      process: [
+        { num: '01', title: 'ヒアリング', body: '事業モデル、既存データ、社内体制を確認します。' },
+        { num: '02', title: '戦略設計', body: 'KPIと優先順位を定め、3か月の実行計画に落とします。' },
+        { num: '03', title: '実行', body: '広告・制作・コンテンツを並行して進めます。' },
+        { num: '04', title: '検証と改善', body: '月次で結果を検証し、次の打ち手を決めます。' }
+      ],
+
+      casePreview: cases.slice(0, 3).map(c => ({ ...c, metric: c.results[0].value + ' ' + c.results[0].label })),
+
+      voices: [
+        { quote: '「数字の報告だけでなく、なぜそうなったかを毎回説明してもらえる。社内の意思決定が速くなりました。」', who: '製造業 / マーケティング部長' },
+        { quote: '「制作と運用が同じチームなので、修正の反映が早い。細かい改善が積み上がっていく感覚があります。」', who: 'SaaS / 事業責任者' },
+        { quote: '「予算の増減も含めて率直に提案してくれる。代理店というより社内の一部門に近い距離感です。」', who: 'EC / 取締役' }
+      ],
+
+      faqs: faqData.map((f, i) => ({
+        q: f.q, a: f.a, open: this.state.openFaq === i,
+        sign: this.state.openFaq === i ? '−' : '+',
+        toggle: () => this.setState({ openFaq: this.state.openFaq === i ? -1 : i })
+      })),
+
+      news: [
+        { date: '2026.09.02', tag: 'お知らせ', title: '大阪オフィスを開設しました' },
+        { date: '2026.08.18', tag: 'セミナー', title: '「BtoBの商談化率を上げる広告設計」ウェビナーを開催します' },
+        { date: '2026.07.30', tag: '実績', title: '支援社数が240社を超えました' }
+      ],
+
+      services: [
+        { num: '01', ja: 'デジタルマーケティング', en: 'Digital Marketing', overview: '集客から成約、リピートまでを一つの流れとして設計します。チャネルごとの最適化ではなく、事業のKPIから逆算して配分を決めます。', features: ['事業KPIからの逆算設計', 'チャネル横断の予算配分', '月次の仮説検証サイクル'], deliverables: ['マーケティング戦略書', '実行ロードマップ', '月次レポート'] },
+        { num: '02', ja: 'SEO', en: 'Search Engine Optimization', overview: '技術課題の解消とコンテンツ設計の両輪で、検索からの安定した流入をつくります。順位ではなく、売上に貢献するキーワードから着手します。', features: ['テクニカル監査', '検索意図に基づく記事設計', '内部リンク構造の再編'], deliverables: ['サイト監査レポート', 'キーワードマップ', '記事制作・改善'] },
+        { num: '03', ja: '広告運用 / PPC', en: 'Google Ads & PPC', overview: '検索・ディスプレイ・動画・ショッピングを一元管理します。獲得件数ではなく、商談や粗利を指標に入札と配信先を調整します。', features: ['商談データ連携', '入札戦略の設計', 'クリエイティブ検証'], deliverables: ['アカウント構成設計', '広告クリエイティブ', '週次・月次レポート'] },
+        { num: '04', ja: 'SNSマーケティング', en: 'Social Media Marketing', overview: '指名検索と第一想起を育てる中長期の運用です。プラットフォームごとの文脈に合わせ、投稿と広告を組み合わせます。', features: ['アカウント設計', '投稿企画・制作', 'SNS広告運用'], deliverables: ['運用ガイドライン', '月間投稿カレンダー', 'クリエイティブ一式'] },
+        { num: '05', ja: 'サイト制作・開発', en: 'Website Design & Development', overview: '情報設計からデザイン、実装、公開後の改善までを内製で行います。運用しやすいCMS構成を前提に設計します。', features: ['情報設計・ワイヤーフレーム', 'UIデザイン', 'CMS実装・保守'], deliverables: ['サイトマップ', 'デザインデータ', '実装済みサイト'] },
+        { num: '06', ja: 'LPデザイン', en: 'Landing Page Design', overview: '広告の受け皿としてのLPを、検証前提で設計します。構成要素を分解し、改善しやすい状態で納品します。', features: ['訴求の整理', 'ファーストビュー設計', 'ABテスト運用'], deliverables: ['構成案', 'LPデザイン・実装', 'テスト結果レポート'] },
+        { num: '07', ja: 'ブランディング', en: 'Branding', overview: '言葉とビジュアルの指針を定め、あらゆる接点で一貫した印象をつくります。社内で運用できる粒度まで落とし込みます。', features: ['ブランド調査', 'メッセージ開発', 'ビジュアル指針策定'], deliverables: ['ブランドブック', 'ロゴ・カラー規定', 'トーン&マナー指針'] },
+        { num: '08', ja: 'マーケティング戦略', en: 'Marketing Strategy', overview: '市場と競合、自社の資産を整理し、どこで戦うかを決めます。実行計画と体制案までを含めて提示します。', features: ['市場・競合分析', 'ターゲット定義', '体制・予算設計'], deliverables: ['戦略提案書', '年間計画', 'KPI設計書'] },
+        { num: '09', ja: '分析・レポーティング', en: 'Analytics & Reporting', overview: '計測の土台を整え、意思決定に使えるレポートを用意します。定例では数字の背景と次の打ち手を共有します。', features: ['計測基盤の実装', 'ダッシュボード構築', '定例での意思決定支援'], deliverables: ['計測設計書', 'BIダッシュボード', '月次レポート'] }
+      ],
+
+      filters: cats.map(c => ({
+        label: c, go: () => this.setState({ filter: c }),
+        bg: this.state.filter === c ? '#1C1A17' : 'transparent',
+        color: this.state.filter === c ? '#FFFFFF' : '#4A453E',
+        border: this.state.filter === c ? '#1C1A17' : '#C9C2B6'
+      })),
+      visibleCases: this.state.filter === 'すべて' ? cases : cases.filter(c => c.category === this.state.filter),
+
+      values: [
+        { title: '事実から始める', body: '印象ではなくデータと現場の声を起点に判断します。' },
+        { title: '分けずに考える', body: '広告、制作、分析を別々の仕事として扱いません。' },
+        { title: '説明できる仕事', body: 'なぜその施策なのかを、常に言葉で説明します。' },
+        { title: '長く使えるものを', body: '短期の数字のために資産を削る提案はしません。' }
+      ],
+
+      team: [
+        { name: '山内 遼', role: '代表 / ストラテジスト', img: 'images/leader-omori.jpg', pos: '52% 30%', bio: '総合代理店を経て2016年に設立。BtoBの戦略設計を担当。' },
+        { name: '佐久間 千尋', role: 'クリエイティブディレクター', img: 'images/leader-shibata.jpg', pos: '66% 30%', bio: 'ブランド開発とサイト設計を担当。前職はデザインスタジオ。' },
+        { name: '大野 拓也', role: '広告運用責任者', img: 'images/consultant-outdoor.jpg', pos: '74% 30%', bio: '運用歴11年。EC・人材領域の大規模アカウントを担当。' },
+        { name: '三宅 みなみ', role: 'アナリスト', img: 'images/analyst-desk.jpg', pos: '62% 40%', bio: '計測基盤の設計とダッシュボード構築を担当。' }
+      ],
+
+      timeline: [
+        { year: '2016', body: '東京・渋谷にて設立。広告運用支援からスタート。' },
+        { year: '2018', body: '制作部門を新設し、サイト・LP制作の内製化を開始。' },
+        { year: '2020', body: '分析チームを設置。計測基盤構築の提供を開始。' },
+        { year: '2023', body: '支援社数が150社を突破。ブランディング領域へ拡張。' },
+        { year: '2026', body: '大阪オフィスを開設。支援社数240社を超える。' }
+      ],
+
+      company: [
+        { k: '会社名', v: 'LUMEN Digital 株式会社' },
+        { k: '設立', v: '2016年4月' },
+        { k: '代表者', v: '代表取締役 山内 遼' },
+        { k: '資本金', v: '3,000万円' },
+        { k: '従業員数', v: '48名（2026年9月現在）' },
+        { k: '所在地', v: '東京都渋谷区渋谷2-14-6 渋谷宮下ビル7F' }
+      ],
+
+      fields: [
+        { label: '会社名', ph: '株式会社ルーメン' },
+        { label: 'お名前', ph: '山田 太郎' },
+        { label: 'メールアドレス', ph: 'you@example.com' },
+        { label: '電話番号', ph: '03-0000-0000' },
+        { label: 'ご検討中のサービス', ph: '広告運用 / サイト制作 など' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F5F3EF;color:#151515;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#151515;text-decoration:none}
+a:hover{color:#E4462B}
+input,textarea,button{font-family:inherit}
+/* --- responsive --- */
+.sec-head{flex-wrap:wrap}
+@media (max-width:560px){
+  .ct-steps{grid-template-columns:1fr!important}
+  .ct-steps>li{padding:14px 0 0 0!important}
+  .ct-submit{width:100%;justify-content:space-between}
+  .ct-dl{grid-template-columns:80px 1fr!important}
+}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="contact" hint-size="100%,77px"></dc-import>
+<main>
+<section data-screen-label="Contact hero" style="background:#151515;color:#F5F3EF">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(40px,5vw,64px) clamp(20px,4vw,48px) clamp(56px,7vw,96px)">
+    <div style="font-family:'Barlow Condensed';font-weight:600;font-size:14px;letter-spacing:2px;color:#9A958C"><a href="Top.dc.html" style="color:#9A958C">トップ</a> / 予約・アクセス</div>
+    <h1 data-reveal="1" style="margin:24px 0 0;font-weight:900;font-size:clamp(44px,7vw,104px);line-height:1.2;letter-spacing:3px">変わるなら、<br><span style="color:#E4462B">今日から。</span></h1>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;margin-top:48px;align-items:start">
+      <p style="margin:0;font-size:15px;line-height:2;color:#CFCAC1;max-width:520px">無料カウンセリングでは、目標の整理と体組成測定、60分の体験トレーニングを行います。その場での入会は必要ありません。</p>
+      <ol class="ct-steps" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #F5F3EF">
+        <li style="padding:16px 12px 0 0"><div style="font-family:'Barlow Condensed';font-weight:600;font-size:13px;letter-spacing:2px;color:#E4462B">01</div><div style="margin-top:8px;font-size:14px;font-weight:700">フォームから予約</div></li>
+        <li style="padding:16px 12px 0 0"><div style="font-family:'Barlow Condensed';font-weight:600;font-size:13px;letter-spacing:2px;color:#E4462B">02</div><div style="margin-top:8px;font-size:14px;font-weight:700">日程確定のご連絡</div></li>
+        <li style="padding:16px 0 0 0"><div style="font-family:'Barlow Condensed';font-weight:600;font-size:13px;letter-spacing:2px;color:#E4462B">03</div><div style="margin-top:8px;font-size:14px;font-weight:700">来店・体験（約90分）</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Form" style="padding:clamp(80px,10vw,140px) 0 0">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div class="sec-head" style="display:flex;justify-content:space-between;gap:20px;border-top:1px solid#151515;padding-top:16px;font-family:'Barlow Condensed';font-weight:600;font-size:15px;letter-spacing:2px"><span>(01) 無料カウンセリング予約</span><span style="color:#6B6760">1営業日以内にご連絡</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px);margin-top:clamp(40px,5vw,64px);align-items:start">
+      <div style="min-width:0">
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px 24px">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">お名前 *<input required name="name" placeholder="山田 花子" style="padding:12px 0;border:none;border-bottom:1.5px solid #151515;font-size:16px;background:transparent;outline:none;border-radius:0" style-focus="border-color:#E4462B"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">電話番号 *<input required type="tel" name="tel" placeholder="090-0000-0000" style="padding:12px 0;border:none;border-bottom:1.5px solid #151515;font-size:16px;background:transparent;outline:none;border-radius:0" style-focus="border-color:#E4462B"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">メールアドレス *<input required type="email" name="email" placeholder="you@example.com" style="padding:12px 0;border:none;border-bottom:1.5px solid #151515;font-size:16px;background:transparent;outline:none;border-radius:0" style-focus="border-color:#E4462B"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">ご希望日<input type="date" name="date" style="padding:11px 0;border:none;border-bottom:1.5px solid #151515;font-size:16px;background:transparent;outline:none;border-radius:0" style-focus="border-color:#E4462B"></label>
+            <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">ご相談内容<textarea name="msg" rows="4" placeholder="目標や気になること、ご希望の時間帯など" style="padding:12px 0;border:none;border-bottom:1.5px solid #151515;font-size:16px;background:transparent;outline:none;resize:vertical;border-radius:0" style-focus="border-color:#E4462B"></textarea></label>
+            <div style="grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:20px;justify-content:space-between">
+              <span style="font-size:12px;color:#6B6760">* は必須項目です。1営業日以内にご連絡します。</span>
+              <button type="submit" class="ct-submit" style="display:flex;align-items:center;gap:40px;height:64px;padding:0 28px;border:none;background:#E4462B;color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:background .25s" style-hover="background:#151515">予約内容を送信する <span style="font-family:'Barlow Condensed';font-size:22px">↗</span></button>
+            </div>
+          </form>
+        </sc-if>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="border-top:4px solid #E4462B;padding-top:32px">
+            <div style="font-weight:900;font-size:clamp(28px,3vw,40px);line-height:1.3">ありがとうございます。</div>
+            <p style="margin:16px 0 0;font-size:15px;line-height:2">お申し込みを受け付けました。担当者より1営業日以内にご連絡いたします。</p>
+            <button onClick="{{ reset }}" style="margin-top:24px;height:48px;padding:0 22px;border:1px solid #151515;background:transparent;font-weight:700;cursor:pointer">フォームに戻る</button>
+          </div>
+        </sc-if>
+      </div>
+      <aside style="min-width:0">
+        <div style="height:240px;filter:grayscale(1)"><image-slot id="v2-access" shape="rect" src="images/14.jpg" placeholder="店舗外観 / 地図"></image-slot></div>
+        <dl class="ct-dl" style="margin:24px 0 0;display:grid;grid-template-columns:96px 1fr;font-size:14px;line-height:1.8;border-top:1px solid #151515">
+          <dt style="font-weight:900;padding:16px 0;border-bottom:1px solid #D9D5CE">所在地</dt><dd style="margin:0;padding:16px 0;border-bottom:1px solid #D9D5CE">〒150-0001<br>東京都渋谷区神宮前 5-00-0 RISEビル 3F<br><span style="font-size:12px;color:#6B6760">表参道駅 A1出口 徒歩4分</span></dd>
+          <dt style="font-weight:900;padding:16px 0;border-bottom:1px solid #D9D5CE">営業時間</dt><dd style="margin:0;padding:16px 0;border-bottom:1px solid #D9D5CE">7:00 – 23:00（最終受付 22:00）<br>年中無休</dd>
+          <dt style="font-weight:900;padding:16px 0;border-bottom:1px solid #D9D5CE">電話</dt><dd style="margin:0;padding:16px 0;border-bottom:1px solid #D9D5CE"><a href="tel:0312345678" style="font-family:'Barlow Condensed';font-weight:800;font-size:26px;letter-spacing:1px">03-1234-5678</a></dd>
+          <dt style="font-weight:900;padding:16px 0;border-bottom:1px solid #D9D5CE">SNS</dt><dd style="margin:0;padding:16px 0;border-bottom:1px solid #D9D5CE;display:flex;gap:20px;font-family:'Barlow Condensed';font-weight:700;font-size:16px;letter-spacing:1px"><a href="#">Instagram ↗</a><a href="#">LINE ↗</a></dd>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="FAQ" style="padding:clamp(80px,10vw,140px) 0">
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div class="sec-head" style="display:flex;justify-content:space-between;gap:20px;border-top:1px solid#151515;padding-top:16px;font-family:'Barlow Condensed';font-weight:600;font-size:15px;letter-spacing:2px"><span>(02) よくあるご質問</span><span style="color:#6B6760">体験前の疑問にお答えします</span></div>
+    <div style="display:flex;flex-direction:column;margin-top:24px;max-width:960px;margin-left:auto">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+        <div style="border-bottom:1px solid #D9D5CE">
+          <button onClick="{{ q.toggle }}" style="width:100%;display:flex;align-items:center;gap:20px;padding:24px 0;background:none;border:none;text-align:left;cursor:pointer;font-size:16px;font-weight:900;color:#151515">
+            <span style="font-family:'Barlow Condensed';font-weight:600;color:#E4462B;font-size:15px;letter-spacing:1px">{{ q.no }}</span><span style="flex:1">{{ q.q }}</span><span style="font-family:'Barlow Condensed';font-size:26px;width:20px;text-align:center">{{ q.icon }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;padding:0 40px 28px 44px;font-size:14px;line-height:2.1;color:#3A3732">{{ q.a }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" show-cta="{{ false }}" hint-size="100%,600px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false, open: 0 };
+  renderVals() {
+    const faqs = [
+      ['運動経験がなくても大丈夫ですか？', 'はい。会員様の約7割が運動初心者の方です。体力や体の状態に合わせて、無理のない強度から始めます。'],
+      ['体験時に必要な持ち物はありますか？', 'ウェア・シューズ・タオルは無料で貸し出しています。手ぶらでお越しいただけます。'],
+      ['勧誘されることはありますか？', '体験当日にご入会を求めることはありません。持ち帰ってご検討いただけます。'],
+      ['食事制限はどのくらい厳しいですか？', '極端な制限は行いません。外食やお酒の席も前提に、続けられる食事の選び方をご提案します。'],
+    ].map(([q, a], i) => ({ no: 'Q' + (i + 1), q, a, open: this.state.open === i, icon: this.state.open === i ? '−' : '+', toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })) }));
+    return {
+      faqs, sent: this.state.sent, notSent: !this.state.sent,
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

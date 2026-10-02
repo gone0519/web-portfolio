@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Parisienne&display=swap" rel="stylesheet" />
+<style>
+  body { margin:0; background:#101c31; -webkit-font-smoothing:antialiased; }
+  * { box-sizing:border-box; }
+  a { color:#e8744c; text-decoration:none; }
+  a:hover { color:#f39167; }
+  [id] { scroll-margin-top:20px; }
+  summary::-webkit-details-marker { display:none; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible, summary:focus-visible { outline:2px solid #e8744c; outline-offset:2px; }
+  @keyframes hk-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  @keyframes hk-twinkle { 0%,100%{opacity:.35} 50%{opacity:1} }
+  @keyframes hk-twinkle-slow { 0%,100%{opacity:.6} 50%{opacity:.2} }
+  @keyframes hk-shoot { 0%{transform:translate3d(0,0,0) rotate(28deg); opacity:0} 8%{opacity:1} 34%{transform:translate3d(-460px,240px,0) rotate(28deg); opacity:0} 100%{opacity:0} }
+  @keyframes hk-menu-in { from{opacity:0; transform:translateY(-8px)} to{opacity:1; transform:none} }
+  [data-split] { grid-template-columns:minmax(0,1.55fr) minmax(0,1fr); }
+
+  /* Responsive: nav collapses into a menu button at 900px and below. */
+  @media (max-width: 900px) {
+    [data-nav-desktop] { display: none !important; }
+    [data-nav-toggle] { display: inline-flex !important; }
+    [data-split] { grid-template-columns: 1fr !important; }
+  }
+  @media (min-width: 901px) { [data-nav-mobile] { display: none !important; } }
+  @media (max-width: 700px) {
+    [data-svc-row] { grid-template-columns: 1fr !important; }
+    [data-svc-media] { order: 2; }
+  }
+  /* The vertical side CTA becomes a bottom bar on phones. */
+  @media (max-width: 640px) {
+    [data-float-cta] { top: auto !important; bottom: 0; left: 0; flex-direction: row !important; gap: 0 !important; align-items: stretch !important; }
+    [data-float-cta] > a { flex: 1 1 0; writing-mode: horizontal-tb !important; text-align: center; border-radius: 0 !important; padding: 15px 8px !important; font-size: 13px !important; letter-spacing: .08em !important; box-shadow: 0 -4px 16px rgba(0,0,0,.22) !important; }
+    [data-footer] { padding-bottom: 52px !important; }
+    [data-form-row] { grid-template-columns: 1fr !important; }
+    [data-dl-row] { grid-template-columns: 1fr !important; gap: 4px !important; }
+  }
+  @media (max-width: 480px) {
+    [data-cta-row] > a { flex: 1 1 100%; text-align: center; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</helmet>
+
+<div style="font-family:'Zen Maru Gothic','Noto Sans JP',sans-serif; color:#12203a; background:#101c31; overflow-x:hidden; position:relative">
+
+  <!-- ══ 固定サイドCTA ══ -->
+  <sc-if value="{{ showFloatingCta }}" hint-placeholder-val="{{ true }}">
+    <div data-float-cta="" style="position:fixed; right:0; top:26vh; z-index:60; display:flex; flex-direction:column; gap:10px; align-items:flex-end">
+      <a href="Contact.dc.html#form" style="background:#e8744c; color:#fff; writing-mode:vertical-rl; padding:22px 13px; border-radius:14px 0 0 14px; font-size:14px; font-weight:700; letter-spacing:.18em; box-shadow:-4px 6px 18px rgba(0,0,0,.28)" style-hover="background:#d9613a; padding-right:18px">無料相談する</a>
+      <a href="Contact.dc.html?type=download#form" style="background:#fff; color:#12203a; writing-mode:vertical-rl; padding:22px 13px; border-radius:14px 0 0 14px; font-size:14px; font-weight:700; letter-spacing:.18em; box-shadow:-4px 6px 18px rgba(0,0,0,.28)" style-hover="background:#f7f2e7">資料ダウンロード</a>
+    </div>
+  </sc-if>
+
+  <!-- ══ モバイルメニュー ══ -->
+  <sc-if value="{{ menuOpen }}"><div id="mobile-menu" data-nav-mobile="" style="position:fixed; inset:0; z-index:80; overflow-y:auto; background:#101c31; padding:22px clamp(16px,3vw,40px) 40px; display:flex; flex-direction:column; gap:28px; animation:hk-menu-in .3s ease both">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px">
+      <a href="ハルカゼ Home.dc.html" onClick="{{ closeMenu }}" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(255,255,255,.16); border-radius:18px; padding:12px 18px; color:#fff">
+        <span style="width:38px; height:38px; border-radius:50%; border:1.5px solid #e8744c; display:flex; align-items:center; justify-content:center; font-size:15px; color:#e8744c">春</span>
+        <span style="line-height:1.25">
+          <span style="display:block; font-size:16px; font-weight:900; letter-spacing:.08em; color:#fff">ハルカゼ</span>
+          <span style="display:block; font-size:10px; letter-spacing:.24em; color:#8fa4c4; font-family:'Noto Sans JP',sans-serif">HARUKAZE DIGITAL</span>
+        </span>
+      </a>
+      <button type="button" onClick="{{ closeMenu }}" aria-controls="mobile-menu" aria-label="メニューを閉じる" style="position:relative; width:48px; height:48px; flex:0 0 auto; padding:0; border:1px solid rgba(255,255,255,.22); border-radius:50%; background:#101c31; cursor:pointer">
+        <span aria-hidden="true" style="{{ burgerTop }}"></span>
+        <span aria-hidden="true" style="{{ burgerBottom }}"></span>
+      </button>
+    </div>
+    <nav aria-label="メインメニュー" style="display:grid">
+      <a href="ハルカゼ Home.dc.html" onClick="{{ closeMenu }}" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:18px 2px; border-bottom:1px solid rgba(255,255,255,.12); color:#fff"><span style="font-size:clamp(18px,5.4vw,22px); font-weight:700; letter-spacing:.08em">ホーム</span><span style="font-family:'Parisienne',cursive; font-size:20px; color:#e8744c">Home</span></a>
+      <a href="Services.dc.html" onClick="{{ closeMenu }}" aria-current="page" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:18px 2px; border-bottom:1px solid rgba(255,255,255,.12); color:#f39167"><span style="font-size:clamp(18px,5.4vw,22px); font-weight:700; letter-spacing:.08em">サービス</span><span style="font-family:'Parisienne',cursive; font-size:20px; color:#e8744c">Services</span></a>
+      <a href="Works.dc.html" onClick="{{ closeMenu }}" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:18px 2px; border-bottom:1px solid rgba(255,255,255,.12); color:#fff"><span style="font-size:clamp(18px,5.4vw,22px); font-weight:700; letter-spacing:.08em">実績</span><span style="font-family:'Parisienne',cursive; font-size:20px; color:#e8744c">Case Studies</span></a>
+      <a href="About.dc.html" onClick="{{ closeMenu }}" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:18px 2px; border-bottom:1px solid rgba(255,255,255,.12); color:#fff"><span style="font-size:clamp(18px,5.4vw,22px); font-weight:700; letter-spacing:.08em">会社概要</span><span style="font-family:'Parisienne',cursive; font-size:20px; color:#e8744c">About</span></a>
+      <a href="Blog.dc.html" onClick="{{ closeMenu }}" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:18px 2px; border-bottom:1px solid rgba(255,255,255,.12); color:#fff"><span style="font-size:clamp(18px,5.4vw,22px); font-weight:700; letter-spacing:.08em">ブログ</span><span style="font-family:'Parisienne',cursive; font-size:20px; color:#e8744c">Insights</span></a>
+      <a href="Contact.dc.html" onClick="{{ closeMenu }}" style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; padding:18px 2px; border-bottom:1px solid rgba(255,255,255,.12); color:#fff"><span style="font-size:clamp(18px,5.4vw,22px); font-weight:700; letter-spacing:.08em">お問い合わせ</span><span style="font-family:'Parisienne',cursive; font-size:20px; color:#e8744c">Contact</span></a>
+    </nav>
+    <div style="display:grid; gap:12px">
+      <a href="Contact.dc.html#form" onClick="{{ closeMenu }}" style="display:block; text-align:center; background:#e8744c; color:#fff; font-size:15px; font-weight:700; padding:17px 24px; border-radius:999px; letter-spacing:.08em">無料でご相談</a>
+      <a href="tel:0365551240" style="display:block; text-align:center; border:1px solid rgba(255,255,255,.32); color:#fff; font-size:17px; font-weight:700; padding:15px 24px; border-radius:999px; letter-spacing:.04em">03-6555-1240</a>
+      <p style="margin:0; text-align:center; font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#8fa4c4; letter-spacing:.06em">受付時間 平日 10:00–19:00</p>
+    </div>
+  </div></sc-if>
+
+  <!-- ══ ヘッダー + ページタイトル ══ -->
+  <header style="position:relative; background:#101c31">
+    <div style="position:absolute; inset:0; background:radial-gradient(1000px 460px at 82% -10%, rgba(63,96,140,.42), transparent 62%), radial-gradient(640px 380px at 6% 40%, rgba(232,116,76,.10), transparent 60%)"></div>
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.62; background-image:radial-gradient(#ffffff 1.3px,transparent 1.3px),radial-gradient(#ffd9a8 1.1px,transparent 1.1px),radial-gradient(rgba(255,255,255,.75) .8px,transparent .8px); background-size:120px 120px,190px 190px,64px 64px; background-position:0 0,60px 40px,22px 30px; animation:hk-twinkle-slow 7s ease-in-out infinite"></div>
+    <div style="position:absolute; inset:0; pointer-events:none; overflow:hidden">
+      <span style="position:absolute; left:58%; top:26%; width:16px; height:16px; background:#fff; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 3.8s ease-in-out infinite"></span>
+      <span style="position:absolute; right:12%; top:58%; width:20px; height:20px; background:#ffd9a8; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 5.2s ease-in-out 1s infinite"></span>
+      <span style="position:absolute; left:8%; bottom:14%; width:10px; height:10px; background:rgba(255,255,255,.8); clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 4.4s ease-in-out 0.4s infinite"></span>
+      <span style="position:absolute; right:28%; top:10%; width:110px; height:2px; background:linear-gradient(90deg,transparent,#fff); border-radius:2px; animation:hk-shoot 11s linear 3s infinite"></span>
+    </div>
+
+    <div style="position:relative; display:flex; align-items:flex-start; justify-content:space-between; gap:24px; padding:22px clamp(16px,3vw,40px) 0; flex-wrap:wrap">
+      <a href="ハルカゼ Home.dc.html" style="display:flex; align-items:center; gap:12px; background:#101c31; border:1px solid rgba(255,255,255,.16); border-radius:18px; padding:12px 18px; color:#fff">
+        <span style="width:38px; height:38px; border-radius:50%; border:1.5px solid #e8744c; display:flex; align-items:center; justify-content:center; font-size:15px; color:#e8744c">春</span>
+        <span style="line-height:1.25">
+          <span style="display:block; font-size:16px; font-weight:900; letter-spacing:.08em; color:#fff">ハルカゼ</span>
+          <span style="display:block; font-size:10px; letter-spacing:.24em; color:#8fa4c4; font-family:'Noto Sans JP',sans-serif">HARUKAZE DIGITAL</span>
+        </span>
+      </a>
+
+      <nav data-nav-desktop="" aria-label="グローバルナビゲーション" style="display:flex; align-items:center; gap:clamp(14px,1.8vw,30px); flex-wrap:wrap; padding-top:14px">
+        <a href="Services.dc.html" aria-current="page" style="color:#f39167; font-size:14px; letter-spacing:.06em" style-hover="color:#f39167">サービス</a>
+        <a href="Works.dc.html" style="color:#e7edf7; font-size:14px; letter-spacing:.06em" style-hover="color:#f39167">実績</a>
+        <a href="#flow" style="color:#e7edf7; font-size:14px; letter-spacing:.06em" style-hover="color:#f39167">支援の流れ</a>
+        <a href="About.dc.html" style="color:#e7edf7; font-size:14px; letter-spacing:.06em" style-hover="color:#f39167">会社概要</a>
+        <a href="Blog.dc.html" style="color:#e7edf7; font-size:14px; letter-spacing:.06em" style-hover="color:#f39167">ブログ</a>
+        <a href="Contact.dc.html#faq" style="color:#e7edf7; font-size:14px; letter-spacing:.06em" style-hover="color:#f39167">FAQ</a>
+        <a href="Contact.dc.html" style="background:#e8744c; color:#fff; font-size:13px; font-weight:700; padding:13px 22px; border-radius:999px; letter-spacing:.08em; white-space:nowrap" style-hover="background:#d9613a">お問い合わせ</a>
+      </nav>
+      <button type="button" data-nav-toggle="" onClick="{{ toggleMenu }}" aria-controls="mobile-menu" aria-expanded="{{ menuExpanded }}" aria-label="{{ menuLabel }}" style="display:none; position:relative; align-self:center; width:48px; height:48px; flex:0 0 auto; padding:0; border:1px solid rgba(255,255,255,.22); border-radius:50%; background:#101c31; cursor:pointer">
+        <span aria-hidden="true" style="{{ burgerTop }}"></span>
+        <span aria-hidden="true" style="{{ burgerBottom }}"></span>
+      </button>
+    </div>
+
+    <div style="position:relative; max-width:1180px; margin:0 auto; padding:clamp(44px,7vw,96px) clamp(16px,3vw,40px) clamp(60px,8vw,110px)">
+      <nav aria-label="パンくず" style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:clamp(22px,3vw,34px); font-family:'Noto Sans JP',sans-serif; font-size:12px; letter-spacing:.08em; color:#8fa4c4">
+        <a href="ハルカゼ Home.dc.html" style="color:#c3d0e4" style-hover="color:#f39167">ホーム</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page" style="color:#fff">サービス</span>
+      </nav>
+      <p style="margin:0 0 6px; font-family:'Parisienne',cursive; font-size:clamp(30px,4vw,50px); color:#e8744c; line-height:1.1">Services</p>
+      <h1 style="margin:0; font-size:clamp(30px,4.6vw,56px); font-weight:900; line-height:1.35; color:#fff; letter-spacing:.06em">サービス</h1>
+      <div style="width:78px; height:3px; background:#e8744c; border-radius:2px; margin:26px 0 22px"></div>
+      <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:clamp(14px,1.15vw,16px); line-height:2.1; color:#c3d0e4; max-width:40em; text-wrap:pretty">広告運用・SEO・サイト制作・データ分析。<br />4つの領域を同じチームが担当し、事業の数字から逆算して設計します。</p>
+    </div>
+  </header>
+
+  <main>
+
+  <!-- ══ サービス一覧 ══ -->
+  <section style="position:relative; background:#f7f2e7; padding:clamp(70px,9vw,120px) clamp(16px,3vw,40px)">
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.28; background-image:radial-gradient(#b9ab8f 1.1px,transparent 1.1px),radial-gradient(#d8b79a 1px,transparent 1px); background-size:132px 132px,200px 200px; background-position:0 0,60px 46px"></div>
+    <div style="position:relative; max-width:1180px; margin:0 auto">
+      <div style="text-align:center; margin-bottom:clamp(34px,4vw,54px)">
+        <p style="margin:0 0 8px; font-family:'Parisienne',cursive; font-size:26px; color:#e8744c">What we do</p>
+        <h2 style="margin:0; font-size:clamp(24px,3.2vw,38px); font-weight:900; letter-spacing:.06em; line-height:1.5">4つの領域を、ひとつのチームで</h2>
+        <p style="margin:18px auto 0; max-width:44em; font-family:'Noto Sans JP',sans-serif; font-size:14px; line-height:2.1; color:#5b6779; text-wrap:pretty">分業による情報の分断をなくすため、戦略・運用・制作・分析を同じチームが担当します。気になる領域からご覧ください。</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:16px">
+        <a href="#ads" style="display:flex; flex-direction:column; gap:10px; background:#fff; border-radius:16px; padding:26px 22px; color:#12203a; border-top:4px solid #b96f45; transition:transform .35s ease" style-hover="transform:translateY(-6px); color:#12203a">
+          <span style="font-family:'Parisienne',cursive; font-size:40px; color:#e0d5c0; line-height:1">01</span>
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.22em; color:#b96f45">PAID ADS</span>
+          <span style="font-size:19px; font-weight:700">広告運用</span>
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.9; color:#5b6779; flex:1">検索・SNS・動画広告を横断して設計。週次の検証で勝ちパターンを積み上げます。</span>
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; font-weight:700; letter-spacing:.1em; color:#e8744c">詳しく見る ↓</span>
+        </a>
+        <a href="#seo" style="display:flex; flex-direction:column; gap:10px; background:#fff; border-radius:16px; padding:26px 22px; color:#12203a; border-top:4px solid #6f8f70; transition:transform .35s ease" style-hover="transform:translateY(-6px); color:#12203a">
+          <span style="font-family:'Parisienne',cursive; font-size:40px; color:#e0d5c0; line-height:1">02</span>
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.22em; color:#6f8f70">SEO & CONTENT</span>
+          <span style="font-size:19px; font-weight:700">SEO・コンテンツ</span>
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.9; color:#5b6779; flex:1">検索意図の分析から記事制作、生成AI検索への対応まで。広告に依存しない集客基盤を。</span>
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; font-weight:700; letter-spacing:.1em; color:#e8744c">詳しく見る ↓</span>
+        </a>
+        <a href="#web" style="display:flex; flex-direction:column; gap:10px; background:#fff; border-radius:16px; padding:26px 22px; color:#12203a; border-top:4px solid #5f7f96; transition:transform .35s ease" style-hover="transform:translateY(-6px); color:#12203a">
+          <span style="font-family:'Parisienne',cursive; font-size:40px; color:#e0d5c0; line-height:1">03</span>
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.22em; color:#5f7f96">WEB & LP</span>
+          <span style="font-size:19px; font-weight:700">サイト・LP制作</span>
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.9; color:#5b6779; flex:1">情報設計から実装、計測まで一貫対応。公開後に改善し続けられるサイトを。</span>
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; font-weight:700; letter-spacing:.1em; color:#e8744c">詳しく見る ↓</span>
+        </a>
+        <a href="#analytics" style="display:flex; flex-direction:column; gap:10px; background:#fff; border-radius:16px; padding:26px 22px; color:#12203a; border-top:4px solid #a98352; transition:transform .35s ease" style-hover="transform:translateY(-6px); color:#12203a">
+          <span style="font-family:'Parisienne',cursive; font-size:40px; color:#e0d5c0; line-height:1">04</span>
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.22em; color:#a98352">ANALYTICS</span>
+          <span style="font-size:19px; font-weight:700">データ分析</span>
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.9; color:#5b6779; flex:1">GA4・サーバーサイド計測・CRMを統合し、投資判断に使える数字を届けます。</span>
+          <span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; font-weight:700; letter-spacing:.1em; color:#e8744c">詳しく見る ↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- ══ 01 広告運用 ══ -->
+  <section id="ads" style="position:relative; background:#fff; padding:clamp(70px,9vw,120px) clamp(16px,3vw,40px)">
+    
+    <div style="position:relative; max-width:1180px; margin:0 auto">
+
+      <div data-svc-row="" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:clamp(24px,4vw,60px); align-items:center">
+        <div>
+          <p style="margin:0; font-family:'Parisienne',cursive; font-size:64px; color:#e0d5c0; line-height:.8">01</p>
+          <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.24em; color:#b96f45">PAID ADS ／ 広告運用</p>
+          <h2 style="margin:10px 0 0; font-size:clamp(22px,2.8vw,34px); font-weight:900; line-height:1.6; letter-spacing:.04em">広告運用で、<br />いま必要な売上を</h2>
+          <p style="margin:20px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:14px; line-height:2.1; color:#5b6779; max-width:34em; text-wrap:pretty">検索・SNS・動画を横断して配信設計を組み立てます。まずアカウント構造を整理し、勝ちクリエイティブを週次で見つけるサイクルへ。運用の判断はすべてレポートに残し、「なぜ伸びたか」を再現できる状態にします。</p>
+        </div>
+        <div style="display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:14px; align-items:end; min-width:0">
+          <div style="position:relative; overflow:hidden; border-radius:16px; aspect-ratio:4/5; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/smartphone.jpg" alt="スマートフォンで広告を確認する様子" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+          <div style="position:relative; overflow:hidden; border-radius:16px; aspect-ratio:1/1; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e9e1d2;"><img src="images/dashboard-review.jpg" alt="広告の成果をダッシュボードで確認するメンバー" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:18px; margin-top:clamp(36px,5vw,60px)">
+        <div style="background:#f7f2e7; border-radius:16px; padding:26px 24px; border-top:4px solid #b96f45">
+          <h3 style="margin:0 0 14px; font-size:16px; font-weight:700">支援内容</h3>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px"><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>Google・Yahoo! の検索広告／ディスプレイ広告</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>Meta（Instagram・Facebook）・LINE・TikTok広告</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>YouTube・動画広告の設計と制作</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>アカウント構造の再設計と入札戦略</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>バナー・動画クリエイティブの週次検証</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>週次レポートと月次の戦略定例</span></li></ul>
+        </div>
+        <div style="background:#f7f2e7; border-radius:16px; padding:26px 24px; border-top:4px solid #b96f45">
+          <h3 style="margin:0 0 14px; font-size:16px; font-weight:700">こんな課題はありませんか？</h3>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:12px"><li style="display:flex; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:8px; height:8px; margin-top:9px; border-radius:2px; background:#b96f45"></span><span>CPAが高止まりして、予算を増やせない</span></li><li style="display:flex; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:8px; height:8px; margin-top:9px; border-radius:2px; background:#b96f45"></span><span>レポートが数字の羅列で終わっている</span></li><li style="display:flex; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:8px; height:8px; margin-top:9px; border-radius:2px; background:#b96f45"></span><span>クリエイティブの勝ちパターンが分からない</span></li></ul>
+        </div>
+        <div style="background:#12203a; border-radius:16px; padding:26px 24px; display:flex; flex-direction:column; gap:12px">
+          <h3 style="margin:0 0 4px; font-size:16px; font-weight:700; color:#fff">支援実績の目安</h3>
+          <p style="margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:12px"><span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#c3d0e4">CPA</span><strong style="font-size:22px; font-weight:900; color:#f39167; white-space:nowrap">-32%</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:12px"><span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#c3d0e4">ROAS</span><strong style="font-size:22px; font-weight:900; color:#f39167; white-space:nowrap">1.8倍</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:12px"><span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#c3d0e4">クリエイティブ検証</span><strong style="font-size:22px; font-weight:900; color:#f39167; white-space:nowrap">月20本〜</strong></p>
+          <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:11px; line-height:1.8; color:#8fa4c4; flex:1">※2025年度の支援案件における中央値・目安です</p>
+          <a href="Contact.dc.html#form" style="display:inline-block; background:#e8744c; color:#fff; font-size:14px; font-weight:700; letter-spacing:.1em; padding:15px 40px; border-radius:999px; text-align:center" style-hover="background:#d9613a; color:#fff">この領域を相談する</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ══ 02 SEO・コンテンツ ══ -->
+  <section id="seo" style="position:relative; background:#f7f2e7; padding:clamp(70px,9vw,120px) clamp(16px,3vw,40px)">
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.28; background-image:radial-gradient(#b9ab8f 1.1px,transparent 1.1px),radial-gradient(#d8b79a 1px,transparent 1px); background-size:132px 132px,200px 200px; background-position:0 0,60px 46px"></div>
+    <div style="position:relative; max-width:1180px; margin:0 auto">
+
+      <div data-svc-row="" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:clamp(24px,4vw,60px); align-items:center">
+        <div data-svc-media="" style="display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:14px; align-items:end; min-width:0">
+          <div style="position:relative; overflow:hidden; border-radius:16px; aspect-ratio:4/5; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/meeting-tablet.jpg" alt="タブレットを使った編集会議" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:72% center; display:block" /></div>
+          <div style="position:relative; overflow:hidden; border-radius:16px; aspect-ratio:1/1; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e9e1d2;"><img src="images/meeting-overhead.jpg" alt="資料を広げた施策の検討会議" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+        </div>
+        <div>
+          <p style="margin:0; font-family:'Parisienne',cursive; font-size:64px; color:#e0d5c0; line-height:.8">02</p>
+          <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.24em; color:#6f8f70">SEO & CONTENT ／ SEO・コンテンツ</p>
+          <h2 style="margin:10px 0 0; font-size:clamp(22px,2.8vw,34px); font-weight:900; line-height:1.6; letter-spacing:.04em">SEOで、<br />選ばれ続ける導線を</h2>
+          <p style="margin:20px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:14px; line-height:2.1; color:#5b6779; max-width:34em; text-wrap:pretty">検索意図の分析からサイト構造の再設計、記事制作、内部リンク整備まで。生成AIによる検索体験の変化も踏まえ、指名検索と自然流入の両方を伸ばす設計を行います。</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:18px; margin-top:clamp(36px,5vw,60px)">
+        <div style="background:#fff; border-radius:16px; padding:26px 24px; border-top:4px solid #6f8f70">
+          <h3 style="margin:0 0 14px; font-size:16px; font-weight:700">支援内容</h3>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px"><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>検索意図・競合の分析とキーワード設計</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>サイト構造・内部リンクの再設計</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>テクニカルSEO（表示速度・インデックス・構造化データ）</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>記事の企画・取材・執筆・編集</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>生成AI検索（AIによる要約表示）への対応</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>指名検索を伸ばすブランドコンテンツ</span></li></ul>
+        </div>
+        <div style="background:#fff; border-radius:16px; padding:26px 24px; border-top:4px solid #6f8f70">
+          <h3 style="margin:0 0 14px; font-size:16px; font-weight:700">こんな課題はありませんか？</h3>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:12px"><li style="display:flex; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:8px; height:8px; margin-top:9px; border-radius:2px; background:#6f8f70"></span><span>記事を増やしても流入が伸びない</span></li><li style="display:flex; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:8px; height:8px; margin-top:9px; border-radius:2px; background:#6f8f70"></span><span>広告費に依存した集客から抜け出したい</span></li><li style="display:flex; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:8px; height:8px; margin-top:9px; border-radius:2px; background:#6f8f70"></span><span>生成AI検索の影響が読めない</span></li></ul>
+        </div>
+        <div style="background:#12203a; border-radius:16px; padding:26px 24px; display:flex; flex-direction:column; gap:12px">
+          <h3 style="margin:0 0 4px; font-size:16px; font-weight:700; color:#fff">支援実績の目安</h3>
+          <p style="margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:12px"><span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#c3d0e4">自然検索流入</span><strong style="font-size:22px; font-weight:900; color:#f39167; white-space:nowrap">+140%</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:12px"><span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#c3d0e4">検索経由のCV</span><strong style="font-size:22px; font-weight:900; color:#f39167; white-space:nowrap">2.2倍</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:12px"><span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#c3d0e4">記事制作</span><strong style="font-size:22px; font-weight:900; color:#f39167; white-space:nowrap">月4本〜</strong></p>
+          <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:11px; line-height:1.8; color:#8fa4c4; flex:1">※2025年度の支援案件における中央値・目安です</p>
+          <a href="Contact.dc.html#form" style="display:inline-block; background:#e8744c; color:#fff; font-size:14px; font-weight:700; letter-spacing:.1em; padding:15px 40px; border-radius:999px; text-align:center" style-hover="background:#d9613a; color:#fff">この領域を相談する</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ══ 03 サイト・LP制作 ══ -->
+  <section id="web" style="position:relative; background:#fff; padding:clamp(70px,9vw,120px) clamp(16px,3vw,40px)">
+    
+    <div style="position:relative; max-width:1180px; margin:0 auto">
+
+      <div data-svc-row="" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:clamp(24px,4vw,60px); align-items:center">
+        <div>
+          <p style="margin:0; font-family:'Parisienne',cursive; font-size:64px; color:#e0d5c0; line-height:.8">03</p>
+          <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.24em; color:#5f7f96">WEB & LP ／ サイト・LP制作</p>
+          <h2 style="margin:10px 0 0; font-size:clamp(22px,2.8vw,34px); font-weight:900; line-height:1.6; letter-spacing:.04em">サイト制作で、<br />受け皿を強くする</h2>
+          <p style="margin:20px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:14px; line-height:2.1; color:#5b6779; max-width:34em; text-wrap:pretty">流入を増やす前に、受け止める側を整えます。情報設計・デザイン・実装・計測実装までを一貫して担当し、公開後にA/Bテストを回せる構造で納品します。</p>
+        </div>
+        <div style="display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:14px; align-items:end; min-width:0">
+          <div style="position:relative; overflow:hidden; border-radius:16px; aspect-ratio:4/5; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/monitor-review.jpg" alt="モニターでサイトを確認するチーム" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:45% center; display:block" /></div>
+          <div style="position:relative; overflow:hidden; border-radius:16px; aspect-ratio:1/1; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e9e1d2;"><img src="images/office-loft.jpg" alt="制作チームのワークスペース" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:18px; margin-top:clamp(36px,5vw,60px)">
+        <div style="background:#f7f2e7; border-radius:16px; padding:26px 24px; border-top:4px solid #5f7f96">
+          <h3 style="margin:0 0 14px; font-size:16px; font-weight:700">支援内容</h3>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px"><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>事業課題の整理と情報設計</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>UI・UXデザインとワイヤーフレーム</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>LP・コーポレートサイト・採用サイト制作</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>CMS構築（WordPress・ヘッドレスCMS）</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>GA4・広告タグ・コンバージョン計測の実装</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>公開後のA/Bテストと改善運用</span></li></ul>
+        </div>
+        <div style="background:#f7f2e7; border-radius:16px; padding:26px 24px; border-top:4px solid #5f7f96">
+          <h3 style="margin:0 0 14px; font-size:16px; font-weight:700">こんな課題はありませんか？</h3>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:12px"><li style="display:flex; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:8px; height:8px; margin-top:9px; border-radius:2px; background:#5f7f96"></span><span>広告の流入はあるのにCVしない</span></li><li style="display:flex; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:8px; height:8px; margin-top:9px; border-radius:2px; background:#5f7f96"></span><span>サイトの更新が外注頼みで遅い</span></li><li style="display:flex; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:8px; height:8px; margin-top:9px; border-radius:2px; background:#5f7f96"></span><span>リニューアルの効果を数字で説明できない</span></li></ul>
+        </div>
+        <div style="background:#12203a; border-radius:16px; padding:26px 24px; display:flex; flex-direction:column; gap:12px">
+          <h3 style="margin:0 0 4px; font-size:16px; font-weight:700; color:#fff">支援実績の目安</h3>
+          <p style="margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:12px"><span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#c3d0e4">CVR</span><strong style="font-size:22px; font-weight:900; color:#f39167; white-space:nowrap">1.7倍</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:12px"><span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#c3d0e4">LP制作</span><strong style="font-size:22px; font-weight:900; color:#f39167; white-space:nowrap">最短3週間</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:12px"><span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#c3d0e4">A/Bテスト</span><strong style="font-size:22px; font-weight:900; color:#f39167; white-space:nowrap">公開直後から</strong></p>
+          <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:11px; line-height:1.8; color:#8fa4c4; flex:1">※2025年度の支援案件における中央値・目安です</p>
+          <a href="Contact.dc.html#form" style="display:inline-block; background:#e8744c; color:#fff; font-size:14px; font-weight:700; letter-spacing:.1em; padding:15px 40px; border-radius:999px; text-align:center" style-hover="background:#d9613a; color:#fff">この領域を相談する</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ══ 04 データ分析 ══ -->
+  <section id="analytics" style="position:relative; background:#f7f2e7; padding:clamp(70px,9vw,120px) clamp(16px,3vw,40px)">
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.28; background-image:radial-gradient(#b9ab8f 1.1px,transparent 1.1px),radial-gradient(#d8b79a 1px,transparent 1px); background-size:132px 132px,200px 200px; background-position:0 0,60px 46px"></div>
+    <div style="position:relative; max-width:1180px; margin:0 auto">
+
+      <div data-svc-row="" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:clamp(24px,4vw,60px); align-items:center">
+        <div data-svc-media="" style="display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:14px; align-items:end; min-width:0">
+          <div style="position:relative; overflow:hidden; border-radius:16px; aspect-ratio:4/5; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e0d5c0;"><img src="images/analyst-desk.jpg" alt="レポートを確認するアナリスト" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:62% center; display:block" /></div>
+          <div style="position:relative; overflow:hidden; border-radius:16px; aspect-ratio:1/1; background:repeating-linear-gradient(135deg,rgba(18,32,58,.07) 0 9px,transparent 9px 18px),#e9e1d2;"><img src="images/laptop-charts.jpg" alt="ノートPCとタブレットに表示した分析グラフ" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block" /></div>
+        </div>
+        <div>
+          <p style="margin:0; font-family:'Parisienne',cursive; font-size:64px; color:#e0d5c0; line-height:.8">04</p>
+          <p style="margin:14px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.24em; color:#a98352">ANALYTICS ／ データ分析</p>
+          <h2 style="margin:10px 0 0; font-size:clamp(22px,2.8vw,34px); font-weight:900; line-height:1.6; letter-spacing:.04em">データ分析で、<br />次の一手を決める</h2>
+          <p style="margin:20px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:14px; line-height:2.1; color:#5b6779; max-width:34em; text-wrap:pretty">GA4とサーバーサイド計測、CRMのデータを統合してダッシュボード化。広告の貢献を正しく評価し、経営の投資判断に使える数字を毎週お届けします。</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:18px; margin-top:clamp(36px,5vw,60px)">
+        <div style="background:#fff; border-radius:16px; padding:26px 24px; border-top:4px solid #a98352">
+          <h3 style="margin:0 0 14px; font-size:16px; font-weight:700">支援内容</h3>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px"><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>GA4・GTMの設計と実装</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>サーバーサイド計測・コンバージョンAPIの導入</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>CRM・SFAと広告データの統合</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>BIダッシュボードの構築</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>広告の貢献度評価（アトリビューション分析）</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>経営会議向けの指標設計とレポーティング</span></li></ul>
+        </div>
+        <div style="background:#fff; border-radius:16px; padding:26px 24px; border-top:4px solid #a98352">
+          <h3 style="margin:0 0 14px; font-size:16px; font-weight:700">こんな課題はありませんか？</h3>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:12px"><li style="display:flex; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:8px; height:8px; margin-top:9px; border-radius:2px; background:#a98352"></span><span>媒体ごとに数字が違い、何を信じればいいか分からない</span></li><li style="display:flex; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:8px; height:8px; margin-top:9px; border-radius:2px; background:#a98352"></span><span>Cookie規制で計測に欠損が出ている</span></li><li style="display:flex; gap:10px; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:8px; height:8px; margin-top:9px; border-radius:2px; background:#a98352"></span><span>マーケティング投資の効果を経営に説明できない</span></li></ul>
+        </div>
+        <div style="background:#12203a; border-radius:16px; padding:26px 24px; display:flex; flex-direction:column; gap:12px">
+          <h3 style="margin:0 0 4px; font-size:16px; font-weight:700; color:#fff">支援実績の目安</h3>
+          <p style="margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:12px"><span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#c3d0e4">計測の欠損</span><strong style="font-size:22px; font-weight:900; color:#f39167; white-space:nowrap">最大-80%</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:12px"><span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#c3d0e4">レポート作成工数</span><strong style="font-size:22px; font-weight:900; color:#f39167; white-space:nowrap">-70%</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:12px"><span style="font-family:'Noto Sans JP',sans-serif; font-size:12px; color:#c3d0e4">ダッシュボード</span><strong style="font-size:22px; font-weight:900; color:#f39167; white-space:nowrap">最短4週間</strong></p>
+          <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:11px; line-height:1.8; color:#8fa4c4; flex:1">※2025年度の支援案件における中央値・目安です</p>
+          <a href="Contact.dc.html#form" style="display:inline-block; background:#e8744c; color:#fff; font-size:14px; font-weight:700; letter-spacing:.1em; padding:15px 40px; border-radius:999px; text-align:center" style-hover="background:#d9613a; color:#fff">この領域を相談する</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ══ 料金プラン ══ -->
+  <section id="plan" style="position:relative; background:#101c31; padding:clamp(70px,9vw,120px) clamp(16px,3vw,40px); overflow:hidden">
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.5; background-image:radial-gradient(#ffffff 1.2px,transparent 1.2px),radial-gradient(rgba(255,217,168,.85) 1px,transparent 1px); background-size:138px 138px,80px 80px; background-position:0 0,40px 48px; animation:hk-twinkle-slow 8s ease-in-out infinite"></div>
+    <div style="position:absolute; inset:0; pointer-events:none"><span style="position:absolute; left:6%; top:14%; width:17px; height:17px; background:#fff; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 4.6s ease-in-out infinite"></span><span style="position:absolute; right:8%; bottom:18%; width:13px; height:13px; background:#ffd9a8; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 6.2s ease-in-out 0.9s infinite"></span></div>
+    <div style="position:relative; max-width:1180px; margin:0 auto">
+      <div style="text-align:center; margin-bottom:clamp(34px,4vw,54px)">
+        <p style="margin:0 0 8px; font-family:'Parisienne',cursive; font-size:26px; color:#e8744c">Plan</p>
+        <h2 style="margin:0; color:#fff; font-size:clamp(24px,3.2vw,38px); font-weight:900; letter-spacing:.06em; line-height:1.5">料金プラン</h2>
+        <p style="margin:18px auto 0; max-width:44em; font-family:'Noto Sans JP',sans-serif; font-size:14px; line-height:2.1; color:#c3d0e4; text-wrap:pretty">事業規模や課題に合わせて、施策の範囲を調整してお見積りします。まずは目安としてご覧ください。</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr)); gap:20px; padding-top:14px">
+        <article style="position:relative; background:#fff; border-radius:18px; padding:30px 24px 26px; display:flex; flex-direction:column; gap:14px">
+          <span style="align-self:flex-start; background:#f7f2e7; color:#b96f45; font-size:11px; letter-spacing:.14em; padding:6px 12px; border-radius:6px">GROWTH</span>
+          <h3 style="margin:0; font-size:18px; font-weight:700; line-height:1.6">運用型広告フルマネジメント</h3>
+          <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.9; color:#5b6779">Google・Meta・LINEを横断した設計と運用、クリエイティブ制作、週次レポートまで一括で。</p>
+          <div style="padding:14px 0; border-top:1px solid #eceae4; border-bottom:1px solid #eceae4">
+            <p style="margin:0; display:flex; align-items:baseline; gap:8px"><span style="background:#e8744c; color:#fff; font-size:10px; padding:4px 9px; border-radius:4px">月額</span><span style="font-size:26px; font-weight:900; color:#e8744c">¥300,000〜</span></p>
+            <p style="margin:6px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11.5px; color:#7d8798">初期費用 ¥200,000</p>
+          </div>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px; flex:1"><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>広告アカウントの設計・運用（3媒体まで）</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>バナー制作 月10点まで</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>週次レポート・月次定例</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>計測環境の初期チェック</span></li></ul>
+          <a href="Contact.dc.html#form" style="display:inline-block; background:#12203a; color:#fff; font-size:14px; font-weight:700; letter-spacing:.1em; padding:15px 40px; border-radius:999px; text-align:center" style-hover="background:#e8744c; color:#fff">このプランを相談する</a>
+        </article>
+        <article style="position:relative; background:#fff; border-radius:18px; padding:30px 24px 26px; display:flex; flex-direction:column; gap:14px; box-shadow:0 0 0 3px #e8744c">
+          <span style="position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:#e8744c; color:#fff; font-size:11px; font-weight:700; letter-spacing:.12em; padding:7px 16px; border-radius:999px; white-space:nowrap">人気No.1</span>
+          <span style="align-self:flex-start; background:#f7f2e7; color:#6f8f70; font-size:11px; letter-spacing:.14em; padding:6px 12px; border-radius:6px">ORGANIC</span>
+          <h3 style="margin:0; font-size:18px; font-weight:700; line-height:1.6">SEO・コンテンツ支援</h3>
+          <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.9; color:#5b6779">テクニカル改善から記事制作、生成AI検索への対応まで。指名検索を伸ばす中長期の土台づくり。</p>
+          <div style="padding:14px 0; border-top:1px solid #eceae4; border-bottom:1px solid #eceae4">
+            <p style="margin:0; display:flex; align-items:baseline; gap:8px"><span style="background:#e8744c; color:#fff; font-size:10px; padding:4px 9px; border-radius:4px">月額</span><span style="font-size:26px; font-weight:900; color:#e8744c">¥250,000〜</span></p>
+            <p style="margin:6px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11.5px; color:#7d8798">初期費用 ¥150,000</p>
+          </div>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px; flex:1"><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>サイト診断とキーワード設計</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>記事の企画・制作 月4本</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>内部リンク・サイト構造の改善</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>月次レポート・定例</span></li></ul>
+          <a href="Contact.dc.html#form" style="display:inline-block; background:#12203a; color:#fff; font-size:14px; font-weight:700; letter-spacing:.1em; padding:15px 40px; border-radius:999px; text-align:center" style-hover="background:#e8744c; color:#fff">このプランを相談する</a>
+        </article>
+        <article style="position:relative; background:#fff; border-radius:18px; padding:30px 24px 26px; display:flex; flex-direction:column; gap:14px">
+          <span style="align-self:flex-start; background:#f7f2e7; color:#5f7f96; font-size:11px; letter-spacing:.14em; padding:6px 12px; border-radius:6px">BUILD</span>
+          <h3 style="margin:0; font-size:18px; font-weight:700; line-height:1.6">サイト・LP制作</h3>
+          <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.9; color:#5b6779">設計・デザイン・実装・計測実装まで。公開後の改善を前提にした構造で納品します。</p>
+          <div style="padding:14px 0; border-top:1px solid #eceae4; border-bottom:1px solid #eceae4">
+            <p style="margin:0; display:flex; align-items:baseline; gap:8px"><span style="background:#e8744c; color:#fff; font-size:10px; padding:4px 9px; border-radius:4px">一式</span><span style="font-size:26px; font-weight:900; color:#e8744c">¥1,200,000〜</span></p>
+            <p style="margin:6px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11.5px; color:#7d8798">LP単体は ¥500,000〜</p>
+          </div>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px; flex:1"><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>情報設計・ワイヤーフレーム</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>デザイン・実装（CMS対応）</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>GA4・広告タグの計測実装</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>公開後1ヶ月の改善サポート</span></li></ul>
+          <a href="Contact.dc.html#form" style="display:inline-block; background:#12203a; color:#fff; font-size:14px; font-weight:700; letter-spacing:.1em; padding:15px 40px; border-radius:999px; text-align:center" style-hover="background:#e8744c; color:#fff">このプランを相談する</a>
+        </article>
+        <article style="position:relative; background:#fff; border-radius:18px; padding:30px 24px 26px; display:flex; flex-direction:column; gap:14px">
+          <span style="align-self:flex-start; background:#f7f2e7; color:#a98352; font-size:11px; letter-spacing:.14em; padding:6px 12px; border-radius:6px">INSIGHT</span>
+          <h3 style="margin:0; font-size:18px; font-weight:700; line-height:1.6">データ分析・計測基盤</h3>
+          <p style="margin:0; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.9; color:#5b6779">計測の欠損を減らし、媒体をまたいだ貢献度を可視化。経営に報告できる指標を整えます。</p>
+          <div style="padding:14px 0; border-top:1px solid #eceae4; border-bottom:1px solid #eceae4">
+            <p style="margin:0; display:flex; align-items:baseline; gap:8px"><span style="background:#e8744c; color:#fff; font-size:10px; padding:4px 9px; border-radius:4px">月額</span><span style="font-size:26px; font-weight:900; color:#e8744c">¥150,000〜</span></p>
+            <p style="margin:6px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:11.5px; color:#7d8798">初期構築 ¥400,000〜</p>
+          </div>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px; flex:1"><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>GA4・GTMの設計と実装</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>サーバーサイド計測の導入</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>BIダッシュボード構築</span></li><li style="display:flex; gap:10px; align-items:flex-start; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:1.85; color:#3d4a5e"><span aria-hidden="true" style="flex:0 0 auto; width:18px; height:18px; margin-top:4px; border-radius:50%; background:#e8744c; color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center">✓</span><span>月次の分析レポート</span></li></ul>
+          <a href="Contact.dc.html#form" style="display:inline-block; background:#12203a; color:#fff; font-size:14px; font-weight:700; letter-spacing:.1em; padding:15px 40px; border-radius:999px; text-align:center" style-hover="background:#e8744c; color:#fff">このプランを相談する</a>
+        </article>
+      </div>
+      <div style="margin-top:clamp(34px,4vw,52px); background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:18px; padding:clamp(22px,3vw,34px)">
+        <h3 style="margin:0 0 8px; color:#fff; font-size:17px; font-weight:700">オプション</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); column-gap:36px">
+          <p style="margin:0; display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.12); font-family:'Noto Sans JP',sans-serif; font-size:13.5px; color:#e7edf7"><span>アカウント構造診断</span><strong style="color:#f39167; white-space:nowrap">無料</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.12); font-family:'Noto Sans JP',sans-serif; font-size:13.5px; color:#e7edf7"><span>バナー制作（5点）</span><strong style="color:#f39167; white-space:nowrap">¥80,000〜</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.12); font-family:'Noto Sans JP',sans-serif; font-size:13.5px; color:#e7edf7"><span>動画広告制作（15秒）</span><strong style="color:#f39167; white-space:nowrap">¥250,000〜</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.12); font-family:'Noto Sans JP',sans-serif; font-size:13.5px; color:#e7edf7"><span>SEO記事制作（1本）</span><strong style="color:#f39167; white-space:nowrap">¥60,000〜</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.12); font-family:'Noto Sans JP',sans-serif; font-size:13.5px; color:#e7edf7"><span>計測環境の監査</span><strong style="color:#f39167; white-space:nowrap">¥200,000〜</strong></p>
+          <p style="margin:0; display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.12); font-family:'Noto Sans JP',sans-serif; font-size:13.5px; color:#e7edf7"><span>社内研修・内製化支援</span><strong style="color:#f39167; white-space:nowrap">¥150,000〜／回</strong></p>
+        </div>
+        <p style="margin:16px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:12px; line-height:1.9; color:#8fa4c4">※表示価格はすべて税別です。媒体に支払う広告費は含まれません。</p>
+      </div>
+    </div>
+  </section>
+  <!-- ══ 支援の流れ ══ -->
+  <section id="flow" style="position:relative; background:#f7f2e7; padding:clamp(70px,9vw,120px) clamp(16px,3vw,40px)">
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.28; background-image:radial-gradient(#b9ab8f 1.1px,transparent 1.1px),radial-gradient(#d8b79a 1px,transparent 1px); background-size:132px 132px,200px 200px; background-position:0 0,60px 46px"></div>
+    <div style="position:relative; max-width:1180px; margin:0 auto">
+      <div style="text-align:center; margin-bottom:clamp(34px,4vw,54px)">
+        <p style="margin:0 0 8px; font-family:'Parisienne',cursive; font-size:26px; color:#e8744c">Process</p>
+        <h2 style="margin:0; font-size:clamp(24px,3.2vw,38px); font-weight:900; letter-spacing:.06em; line-height:1.5">ご相談から成果まで</h2>
+        <p style="margin:18px auto 0; max-width:44em; font-family:'Noto Sans JP',sans-serif; font-size:14px; line-height:2.1; color:#5b6779; text-wrap:pretty">最初の2〜3週間で現状を分析し、施策と費用をご提案します。ご契約はご提案内容にご納得いただいてからです。</p>
+      </div>
+      <ol style="list-style:none; margin:0 auto; padding:0; max-width:900px; display:grid; gap:14px">
+        <li style="display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(14px,2.5vw,26px); align-items:start">
+          <span style="width:60px; height:60px; border-radius:50%; background:#b96f45; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1.1"><span style="font-size:9px; letter-spacing:.16em; opacity:.85">STEP</span><span style="font-size:19px; font-weight:900">01</span></span>
+          <div style="background:#fff; border-radius:16px; padding:22px 24px">
+            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap">
+              <h3 style="margin:0; font-size:17px; font-weight:700">ヒアリング</h3>
+              <span style="font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.1em; color:#b96f45; border:1px solid #b96f45; border-radius:999px; padding:3px 11px">1週目</span>
+            </div>
+            <p style="margin:10px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.95; color:#5b6779">事業構造・利益率・現状の数字を伺い、課題を整理します。所要60分・無料です。</p>
+            <p style="margin:12px 0 0; display:flex; gap:8px; flex-wrap:wrap; align-items:center; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798"><span style="letter-spacing:.14em">成果物</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">課題の整理メモ</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">必要データのご案内</span></p>
+          </div>
+        </li>
+        <li style="display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(14px,2.5vw,26px); align-items:start">
+          <span style="width:60px; height:60px; border-radius:50%; background:#6f8f70; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1.1"><span style="font-size:9px; letter-spacing:.16em; opacity:.85">STEP</span><span style="font-size:19px; font-weight:900">02</span></span>
+          <div style="background:#fff; border-radius:16px; padding:22px 24px">
+            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap">
+              <h3 style="margin:0; font-size:17px; font-weight:700">分析・ご提案</h3>
+              <span style="font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.1em; color:#6f8f70; border:1px solid #6f8f70; border-radius:999px; padding:3px 11px">2〜3週目</span>
+            </div>
+            <p style="margin:10px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.95; color:#5b6779">アカウント診断とサイト分析をもとに、施策の優先順位と体制、費用をご提示します。</p>
+            <p style="margin:12px 0 0; display:flex; gap:8px; flex-wrap:wrap; align-items:center; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798"><span style="letter-spacing:.14em">成果物</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">分析レポート</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">施策ロードマップ</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">お見積り</span></p>
+          </div>
+        </li>
+        <li style="display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(14px,2.5vw,26px); align-items:start">
+          <span style="width:60px; height:60px; border-radius:50%; background:#5f7f96; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1.1"><span style="font-size:9px; letter-spacing:.16em; opacity:.85">STEP</span><span style="font-size:19px; font-weight:900">03</span></span>
+          <div style="background:#fff; border-radius:16px; padding:22px 24px">
+            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap">
+              <h3 style="margin:0; font-size:17px; font-weight:700">初期構築</h3>
+              <span style="font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.1em; color:#5f7f96; border:1px solid #5f7f96; border-radius:999px; padding:3px 11px">1〜2ヶ月目</span>
+            </div>
+            <p style="margin:10px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.95; color:#5b6779">計測環境の整備、アカウントの再構築、クリエイティブ制作を並行して進めます。</p>
+            <p style="margin:12px 0 0; display:flex; gap:8px; flex-wrap:wrap; align-items:center; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798"><span style="letter-spacing:.14em">成果物</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">計測設計書</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">アカウント構造</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">初期クリエイティブ</span></p>
+          </div>
+        </li>
+        <li style="display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(14px,2.5vw,26px); align-items:start">
+          <span style="width:60px; height:60px; border-radius:50%; background:#a98352; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1.1"><span style="font-size:9px; letter-spacing:.16em; opacity:.85">STEP</span><span style="font-size:19px; font-weight:900">04</span></span>
+          <div style="background:#fff; border-radius:16px; padding:22px 24px">
+            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap">
+              <h3 style="margin:0; font-size:17px; font-weight:700">運用・改善</h3>
+              <span style="font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.1em; color:#a98352; border:1px solid #a98352; border-radius:999px; padding:3px 11px">3ヶ月目〜</span>
+            </div>
+            <p style="margin:10px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.95; color:#5b6779">週次で検証と改善を繰り返します。仮説と結果をすべて記録し、勝ち筋を積み上げます。</p>
+            <p style="margin:12px 0 0; display:flex; gap:8px; flex-wrap:wrap; align-items:center; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798"><span style="letter-spacing:.14em">成果物</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">週次レポート</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">月次定例</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">検証ログ</span></p>
+          </div>
+        </li>
+        <li style="display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(14px,2.5vw,26px); align-items:start">
+          <span style="width:60px; height:60px; border-radius:50%; background:#7d6a90; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1.1"><span style="font-size:9px; letter-spacing:.16em; opacity:.85">STEP</span><span style="font-size:19px; font-weight:900">05</span></span>
+          <div style="background:#fff; border-radius:16px; padding:22px 24px">
+            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap">
+              <h3 style="margin:0; font-size:17px; font-weight:700">拡大・内製化</h3>
+              <span style="font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.1em; color:#7d6a90; border:1px solid #7d6a90; border-radius:999px; padding:3px 11px">6ヶ月目〜</span>
+            </div>
+            <p style="margin:10px 0 0; font-family:'Noto Sans JP',sans-serif; font-size:13.5px; line-height:1.95; color:#5b6779">再現性が出た施策を横展開。ご希望に応じて社内運用への移管も支援します。</p>
+            <p style="margin:12px 0 0; display:flex; gap:8px; flex-wrap:wrap; align-items:center; font-family:'Noto Sans JP',sans-serif; font-size:11px; color:#7d8798"><span style="letter-spacing:.14em">成果物</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">運用マニュアル</span><span style="background:#f7f2e7; color:#3d4a5e; border-radius:999px; padding:4px 11px">社内研修</span></p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  </main>
+
+  <!-- ══ 最終CTA ══ -->
+  <section style="position:relative; background:#e8744c; padding:clamp(60px,8vw,100px) clamp(16px,3vw,40px); text-align:center; overflow:hidden">
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.3; background-image:radial-gradient(#ffffff 1.2px,transparent 1.2px),radial-gradient(rgba(255,255,255,.8) 1px,transparent 1px); background-size:132px 132px,76px 76px; background-position:0 0,46px 38px"></div>
+    <div style="position:absolute; inset:0; pointer-events:none">
+      <span style="position:absolute; left:8%; top:24%; width:18px; height:18px; background:rgba(255,255,255,.75); clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 5.1s ease-in-out infinite"></span>
+      <span style="position:absolute; right:9%; bottom:22%; width:13px; height:13px; background:rgba(255,255,255,.75); clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 4s ease-in-out 0.8s infinite"></span>
+    </div>
+    <div style="position:relative; max-width:760px; margin:0 auto">
+      <p style="margin:0 0 12px; font-family:'Parisienne',cursive; font-size:30px; color:rgba(255,255,255,.85)">Let's talk</p>
+      <h2 style="margin:0 0 20px; color:#fff; font-size:clamp(24px,3.4vw,40px); font-weight:900; line-height:1.6; letter-spacing:.04em">まずは現状の数字を、<br />一緒に見るところから。</h2>
+      <p style="margin:0 0 34px; font-family:'Noto Sans JP',sans-serif; font-size:14px; line-height:2.05; color:rgba(255,255,255,.92)">アカウント診断もサイト分析も無料です。売り込みは行いません。<br />課題整理だけのご相談も歓迎しています。</p>
+      <div data-cta-row="" style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap">
+        <a href="Contact.dc.html#form" style="background:#12203a; color:#fff; font-size:15px; font-weight:700; padding:18px 44px; border-radius:999px; letter-spacing:.1em" style-hover="background:#0b1526">無料相談を申し込む</a>
+        <a href="Contact.dc.html?type=download#form" style="background:#fff; color:#12203a; font-size:15px; font-weight:700; padding:18px 44px; border-radius:999px; letter-spacing:.1em" style-hover="background:#f7f2e7">資料をダウンロード</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ フッター ══ -->
+  <footer data-footer="" style="position:relative; background:#101c31; padding:clamp(60px,8vw,96px) clamp(16px,3vw,40px) 0; overflow:hidden">
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:.5; background-image:radial-gradient(#ffffff 1.2px,transparent 1.2px),radial-gradient(rgba(255,217,168,.85) 1px,transparent 1px); background-size:140px 140px,76px 76px; background-position:0 0,34px 44px; animation:hk-twinkle-slow 9s ease-in-out infinite"></div>
+    <div style="position:absolute; inset:0; pointer-events:none">
+      <span style="position:absolute; left:8%; top:20%; width:18px; height:18px; background:#fff; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 5.2s ease-in-out infinite"></span>
+      <span style="position:absolute; right:11%; top:12%; width:13px; height:13px; background:#ffd9a8; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:hk-twinkle 3.8s ease-in-out 0.8s infinite"></span>
+    </div>
+    <div style="position:relative; max-width:1100px; margin:0 auto; text-align:center">
+      <a href="ハルカゼ Home.dc.html" aria-label="ハルカゼ ホーム" style="display:inline-flex; width:58px; height:58px; border-radius:50%; border:1.5px solid #e8744c; align-items:center; justify-content:center; color:#e8744c; font-size:20px">春</a>
+      <p style="margin:16px 0 4px; color:#fff; font-size:19px; font-weight:900; letter-spacing:.14em">株式会社ハルカゼ</p>
+      <p style="margin:0 0 28px; color:#8fa4c4; font-size:10px; letter-spacing:.3em; font-family:'Noto Sans JP',sans-serif">HARUKAZE DIGITAL INC.</p>
+      <p style="margin:0 auto 28px; max-width:36em; font-family:'Noto Sans JP',sans-serif; font-size:13px; line-height:2.1; color:#c3d0e4">〒150-0001 東京都渋谷区神宮前5-12-8 ハルカゼビル 4F<br />TEL 03-6555-1240（平日 10:00–19:00）／ FAX 03-6555-1241</p>
+      <a href="Contact.dc.html#form" style="display:inline-block; background:#e8744c; color:#fff; font-size:14px; font-weight:700; padding:15px 44px; border-radius:999px; letter-spacing:.1em" style-hover="background:#d9613a">お問い合わせ</a>
+
+      <nav aria-label="フッターナビゲーション" style="display:flex; justify-content:center; gap:clamp(14px,2.5vw,34px); flex-wrap:wrap; margin:44px 0 0; padding-top:28px; border-top:1px solid rgba(255,255,255,.12)">
+        <a href="ハルカゼ Home.dc.html" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">ホーム</a>
+        <a href="Services.dc.html" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">サービス</a>
+        <a href="Works.dc.html" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">実績</a>
+        <a href="Services.dc.html#flow" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">支援の流れ</a>
+        <a href="About.dc.html" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">会社概要</a>
+        <a href="Blog.dc.html" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">ブログ</a>
+        <a href="Contact.dc.html#faq" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">FAQ</a>
+        <a href="#" style="color:#c3d0e4; font-size:12.5px; font-family:'Noto Sans JP',sans-serif" style-hover="color:#e8744c">プライバシーポリシー</a>
+      </nav>
+      <p style="margin:0; padding:26px 0; font-family:'Noto Sans JP',sans-serif; font-size:11px; letter-spacing:.1em; color:#6d80a0">© 2026 HARUKAZE DIGITAL INC. All rights reserved.</p>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showFloatingCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示設定&quot;}}">
+
+class Component extends DCLogic {
+  state = Object.assign({ menuOpen: false }, {});
+
+  componentDidMount() {
+    this._menuKey = (e) => { if (e.key === 'Escape') this.setMenu(false); };
+    window.addEventListener('keydown', this._menuKey);
+    if (window.matchMedia) {
+      this._menuMq = window.matchMedia('(min-width: 901px)');
+      this._menuMqChange = (e) => { if (e.matches) this.setMenu(false); };
+      this._menuMq.addEventListener('change', this._menuMqChange);
+    }
+    this.scrollToHash();
+    if (this.pageDidMount) this.pageDidMount();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this._menuKey);
+    if (this._menuMq) this._menuMq.removeEventListener('change', this._menuMqChange);
+    (this._hashTimers || []).forEach(clearTimeout);
+    document.documentElement.style.overflow = '';
+    if (this.pageWillUnmount) this.pageWillUnmount();
+  }
+
+  // The page renders after load, so links like "Services.dc.html#flow" need a manual jump to the anchor.
+  scrollToHash() {
+    if (!location.hash || location.hash.length < 2) return;
+    let id = location.hash.slice(1);
+    try { id = decodeURIComponent(id); } catch (e) {}
+    let landed = null;
+    const go = () => { const el = document.getElementById(id); if (el) { el.scrollIntoView(); landed = window.scrollY; } };
+    this._hashTimers = [
+      setTimeout(go, 60),
+      // Re-align once fonts and images settle, unless the visitor has already scrolled away.
+      setTimeout(() => { if (landed === null || window.scrollY === landed) go(); }, 800)
+    ];
+  }
+
+  setMenu(open) {
+    if (!!this.state.menuOpen === open) return;
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    this.setState({ menuOpen: open });
+  }
+
+  renderVals() {
+    const open = !!this.state.menuOpen;
+    const line = 'position:absolute; left:14px; width:18px; height:2px; border-radius:2px; background:#fff; transition:top .3s ease, transform .3s ease;';
+    return Object.assign({
+      showFloatingCta: this.props.showFloatingCta ?? true,
+      menuOpen: open,
+      menuExpanded: open ? 'true' : 'false',
+      menuLabel: open ? 'メニューを閉じる' : 'メニューを開く',
+      toggleMenu: () => this.setMenu(!this.state.menuOpen),
+      closeMenu: () => this.setMenu(false),
+      burgerTop: line + (open ? 'top:22px; transform:rotate(45deg);' : 'top:18px;'),
+      burgerBottom: line + (open ? 'top:22px; transform:rotate(-45deg);' : 'top:26px;')
+    }, this.pageVals ? this.pageVals() : {});
+  }
+
+}
+</script>
+</body>
+</html>

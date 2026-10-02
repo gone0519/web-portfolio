@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>診療内容 | ひより歯科クリニック</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f3efe9;color:#3a332b;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#9c7547;text-decoration:none}
+a:hover{color:#7d5c34}
+h1,h2,h3{word-break:auto-phrase;overflow-wrap:anywhere}
+main{overflow-x:clip}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="treatments" hint-size="100%,84px"></dc-import>
+<main>
+<section data-screen-label="01 Page Hero" style="padding:clamp(32px,5vw,72px) 0 clamp(56px,7vw,96px);display:grid;grid-template-columns:{{ heroCols }};gap:clamp(32px,4vw,64px);align-items:end">
+  <div data-intro="0" style="padding:0 clamp(20px,4vw,48px) 0 clamp(20px,6vw,96px);display:flex;flex-direction:column;gap:20px">
+    <nav aria-label="パンくず" style="display:flex;gap:10px;font-size:11px;letter-spacing:.12em;color:#8a7e70"><a href="Hiyori%20Dental%20Clinic.dc.html" style="color:#8a7e70">HOME</a><span>/</span><span>診療内容</span></nav>
+    <span aria-hidden="true" style="font-family:Jost,sans-serif;font-weight:300;font-size:clamp(56px,8vw,120px);line-height:1;color:#e0d3c1">Treatments</span>
+    <h1 style="margin:0;font-size:clamp(28px,3.4vw,44px);font-weight:500;letter-spacing:.16em">診療内容</h1>
+    <p style="margin:0;font-size:15px;line-height:2.2;letter-spacing:.08em;color:#4a4238;max-width:30em;text-wrap:pretty">むし歯の治療から予防、歯並び、見た目のお悩みまで。お口のことならどんなことでもご相談ください。</p>
+  </div>
+  <div data-intro="1" style="height:clamp(240px,30vw,440px);border-radius:clamp(90px,13vw,200px) 0 0 0;overflow:hidden">
+    <image-slot id="trd-hero" src="images/unit-detail.jpg" shape="rect" placeholder="診療室・チェアまわり"></image-slot>
+  </div>
+</section>
+
+<nav aria-label="診療メニュー" data-reveal="" style="padding:0 clamp(20px,5vw,80px) clamp(72px,9vw,120px)">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px">
+    <sc-for list="{{ items }}" as="t" hint-placeholder-count="6">
+      <a href="#{{ t.id }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px clamp(14px,2vw,22px);min-height:52px;white-space:nowrap;border-radius:999px;background:#fbf8f3;border:1px solid #e6dccd;color:#3a332b;font-size:14px;font-weight:500;letter-spacing:.08em;transition:background .3s, border-color .3s" style-hover="background:#e9e0d3;border-color:#c9a97e;color:#3a332b">
+        <span style="display:flex;gap:10px;align-items:baseline"><span style="font-family:Jost,sans-serif;font-size:12px;color:#9c7547">{{ t.n }}</span>{{ t.title }}</span>
+        <span style="font-family:Jost,sans-serif;color:#9c7547">↓</span>
+      </a>
+    </sc-for>
+  </div>
+</nav>
+
+<div style="display:flex;flex-direction:column;gap:clamp(96px,12vw,180px);padding-bottom:clamp(100px,12vw,180px)">
+  <sc-for list="{{ items }}" as="t" hint-placeholder-count="6">
+    <section id="{{ t.id }}" data-screen-label="{{ t.label }}" style="scroll-margin-top:100px;display:grid;grid-template-columns:{{ rowCols }};gap:clamp(36px,5vw,88px);align-items:center">
+      <div data-reveal="" style="order:{{ t.imgOrder }};height:clamp(280px,34vw,500px);border-radius:{{ t.radius }};overflow:hidden">
+        <image-slot id="{{ t.img }}" src="{{ t.src }}" shape="rect" placeholder="{{ t.ph }}"></image-slot>
+      </div>
+      <div data-reveal="" style="order:1;padding:{{ t.pad }};display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;align-items:baseline;gap:18px">
+          <span style="font-family:Jost,sans-serif;font-weight:300;font-size:clamp(44px,5vw,72px);line-height:1;color:#c9a97e">{{ t.n }}</span>
+          <span style="font-family:Jost,sans-serif;font-size:12px;letter-spacing:.22em;color:#9c7547">{{ t.en }}</span>
+        </div>
+        <h2 style="margin:0;font-size:clamp(24px,2.6vw,34px);font-weight:500;letter-spacing:.16em">{{ t.title }}</h2>
+        <p style="margin:0;font-size:15px;line-height:2.2;letter-spacing:.06em;color:#4a4238;text-wrap:pretty">{{ t.lead }}</p>
+        <div style="background:#fbf8f3;border-radius:0 32px 0 0;padding:24px 28px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:13px;font-weight:500;letter-spacing:.12em;color:#9c7547">こんなお悩みはありませんか？</span>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ t.worries }}" as="w" hint-placeholder-count="3">
+              <li style="display:flex;gap:12px;align-items:baseline;font-size:14px;line-height:1.8;letter-spacing:.05em;color:#4a4238"><span style="flex:none;width:6px;height:6px;border-radius:50%;background:#b08a5b;transform:translateY(-2px)"></span>{{ w }}</li>
+            </sc-for>
+          </ul>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ t.tags }}" as="g" hint-placeholder-count="3">
+            <span style="padding:7px 16px;border-radius:999px;border:1px solid #d6c8b5;font-size:12px;letter-spacing:.08em;color:#5c5349">{{ g }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+</div>
+
+<section data-screen-label="Fees" data-reveal="" style="padding:0 clamp(20px,5vw,80px) clamp(80px,10vw,140px)">
+  <div style="max-width:1000px;margin:0 auto;background:#fbf8f3;border-radius:clamp(28px,4vw,48px);padding:clamp(36px,5vw,64px);display:grid;grid-template-columns:{{ feeCols }};gap:clamp(24px,4vw,56px)">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <p style="margin:0;font-family:Jost,sans-serif;font-size:12px;letter-spacing:.24em;color:#9c7547">Fees</p>
+      <h2 style="margin:0;font-size:clamp(20px,2vw,26px);font-weight:500;letter-spacing:.14em;line-height:1.7">保険診療・<br>自費診療について</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;font-size:14px;line-height:2.1;letter-spacing:.05em;color:#4a4238">
+      <p style="margin:0;text-wrap:pretty">一般歯科・予防歯科・小児歯科の多くは保険診療で受けていただけます。矯正歯科・審美歯科・インプラントなど自費診療となる治療は、事前に費用と期間をご説明し、ご納得いただいてから進めます。</p>
+      <p style="margin:0">料金の詳細は、カウンセリング時に書面でご案内しています。</p>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: window.innerWidth };
+  componentDidMount() { this.r = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.r); }
+  componentWillUnmount() { window.removeEventListener('resize', this.r); }
+  renderVals() {
+    const m = this.state.w < 900;
+    const data = [
+      { id: 'tr-general', src: 'images/treatment.jpg', en: 'General Dentistry', title: '一般歯科', ph: '一般歯科の診療風景', lead: 'むし歯や歯の痛み、詰め物・かぶせ物の不具合など、お口の基本的な治療を行います。できるだけ歯を削らず、痛みの少ない治療を心がけています。', worries: ['歯がしみる、痛む', '詰め物が取れてしまった', '歯ぐきが腫れている'], tags: ['むし歯治療', '根管治療', '歯周病治療', '入れ歯'] },
+      { id: 'tr-prevent', src: 'images/tooth-brush.jpg', en: 'Preventive Care', title: '予防歯科', ph: 'クリーニング・定期検診', lead: '定期検診と専門的なクリーニングで、むし歯や歯周病を未然に防ぎます。歯科衛生士がご自宅でのセルフケアも一緒に考えます。', worries: ['しばらく歯科医院に行っていない', '口臭が気になる', '歯みがきの方法が合っているか不安'], tags: ['定期検診', 'PMTC', 'フッ素塗布', 'ブラッシング指導'] },
+      { id: 'tr-ortho', src: 'images/teeth-model.jpg', en: 'Orthodontics', title: '矯正歯科', ph: '矯正相談の様子', lead: '歯並びやかみ合わせのお悩みに、ご相談の段階から丁寧に対応します。目立ちにくいマウスピース型矯正もご用意しています。', worries: ['歯並びが気になる', 'かみ合わせが悪い気がする', '子どもの歯並びが心配'], tags: ['マウスピース矯正', 'ワイヤー矯正', '小児矯正'] },
+      { id: 'tr-aesthetic', src: 'images/smile.jpg', en: 'Aesthetic Dentistry', title: '審美歯科', ph: '笑顔のクローズアップ', lead: 'ホワイトニングや白い詰め物・かぶせ物で、自然で美しい口元を目指します。機能と見た目の両方を大切にした治療をご提案します。', worries: ['歯の黄ばみが気になる', '銀歯を白くしたい', '前歯の形や色を整えたい'], tags: ['ホワイトニング', 'セラミック', 'ダイレクトボンディング'] },
+      { id: 'tr-kids', src: 'images/hygienist-model.jpg', en: 'Pediatric Dentistry', title: '小児歯科', ph: 'お子さまと歯科衛生士', lead: 'お子さまが怖がらずに通えるよう、やさしく楽しい診療を心がけています。むし歯になりにくいお口を、小さいうちから一緒に育てます。', worries: ['子どもが歯医者を怖がる', '仕上げみがきのコツを知りたい', '乳歯のむし歯が心配'], tags: ['フッ素塗布', 'シーラント', '仕上げみがき指導'] },
+      { id: 'tr-implant', src: 'images/model-hands.jpg', en: 'Dental Implants', title: 'インプラント', ph: 'カウンセリング・模型説明', lead: '歯を失った部分を補う方法のひとつとして、CT検査とご相談から丁寧にご説明します。入れ歯やブリッジとの違いも比較しながらお選びいただけます。', worries: ['入れ歯が合わない', '歯を失ったまま放置している', 'しっかり噛めるようになりたい'], tags: ['CT検査', 'インプラント治療', 'メンテナンス'] }
+    ];
+    const big = 'clamp(90px,12vw,200px)';
+    return {
+      heroCols: m ? 'minmax(0,1fr)' : 'minmax(0,5fr) minmax(0,6fr)',
+      rowCols: m ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,1fr)',
+      feeCols: m ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,2fr)',
+      items: data.map((t, i) => {
+        const flip = !m && i % 2 === 1;
+        return { ...t, n: String(i + 1).padStart(2, '0'), label: String(i + 2).padStart(2, '0') + ' ' + t.title, img: 'trd-' + t.id.slice(3),
+          imgOrder: flip ? 2 : 0,
+          radius: flip ? `${big} 0 0 0` : `0 0 ${big} 0`,
+          pad: m ? '0 20px' : (flip ? '0 0 0 clamp(20px,6vw,96px)' : '0 clamp(20px,6vw,96px) 0 0') };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

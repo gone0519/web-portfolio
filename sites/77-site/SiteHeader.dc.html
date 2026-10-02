@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&amp;family=Cormorant+Garamond:ital,wght@0,400;1,300;1,400;1,500&amp;family=Josefin+Sans:wght@300;400&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F5EE;color:#2F2B24;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#8A7633;text-decoration:none}
+a:hover{color:#2F2B24}
+p,h1,h2,h3,h4,dl,dd,figure{margin:0}
+</style>
+</helmet>
+<header style="position:fixed;top:0;left:0;right:0;z-index:60;height:84px;background:{{ bg }};border-bottom:1px solid {{ line }};transform:{{ hdrT }};transition:background .5s,border-color .5s,transform .6s cubic-bezier(.7,0,.2,1);backdrop-filter:blur(8px)">
+  <div style="height:100%;padding:0 clamp(18px,3.5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="Top.dc.html" style="display:flex;align-items:center;gap:14px;color:{{ ink }};transition:color .5s">
+      <span style="width:40px;height:40px;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center"><svg width="18" height="15" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 15 L10 1 L19 15 Z M7.5 15 L10 10 L12.5 15"></path></svg></span>
+      <span style="display:flex;flex-direction:column;gap:4px">
+        <span style="font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:13px;letter-spacing:0.28em">[COMPANY NAME]</span>
+        <span style="font-size:9px;letter-spacing:0.7em;opacity:0.8">グランピング</span>
+      </span>
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:clamp(20px,2.6vw,40px)">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;color:{{ ink }};padding:6px 0;transition:color .5s,transform .4s" style-hover="transform:translateY(-2px)">
+            <span style="font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:0.22em">{{ n.en }}</span>
+            <span style="font-size:10px;letter-spacing:0.12em;opacity:0.75">{{ n.ja }}</span>
+            <span style="position:absolute;left:50%;bottom:-6px;width:4px;height:4px;border-radius:50%;background:#C9B56A;transform:translateX(-50%);opacity:{{ n.op }}"></span>
+          </a>
+        </sc-for>
+        <a href="Access.dc.html#reservation" style="margin-left:8px;height:44px;padding:0 28px;display:flex;align-items:center;gap:10px;background:#C9B56A;color:#2F2B24;border-radius:999px;font-size:13px;letter-spacing:0.18em;transition:background .3s" style-hover="background:#E2D7AE;color:#2F2B24">予約する<span style="font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:0.2em">RESERVE</span></a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" aria-expanded="{{ menuOpen }}" style="width:52px;height:52px;border:1px solid {{ ink }};border-radius:50%;background:transparent;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;cursor:pointer">
+        <span style="width:20px;height:1px;background:{{ ink }}"></span>
+        <span style="width:20px;height:1px;background:{{ ink }}"></span>
+      </button>
+    </sc-if>
+  </div>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:84px 0 0 0;z-index:59;background:#2F2B24;color:#F7F5EE;padding:36px 28px 100px;display:flex;flex-direction:column;overflow:auto">
+    <a href="Top.dc.html" style="padding:16px 0;border-bottom:1px solid rgba(247,245,238,0.15);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#F7F5EE">Top</a>
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+      <a href="{{ n.href }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(247,245,238,0.15);color:#F7F5EE">
+        <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px">{{ n.title }}</span>
+        <span style="font-size:13px;letter-spacing:0.14em;color:#C9B56A">{{ n.ja }}</span>
+      </a>
+    </sc-for>
+  </div>
+</sc-if>
+<sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:58;display:grid;grid-template-columns:1fr 1.5fr;background:#2F2B24">
+    <a href="tel:[Phone Number]" style="height:58px;display:grid;place-items:center;color:#F7F5EE;font-size:13px;letter-spacing:0.12em">電話する</a>
+    <a href="Access.dc.html#reservation" style="height:58px;display:grid;place-items:center;background:#C9B56A;color:#2F2B24;font-size:14px;letter-spacing:0.2em">予約する</a>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;120px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;concept&quot;,&quot;stay&quot;,&quot;experience&quot;,&quot;facilities&quot;,&quot;access&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;solid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, scrolled: false, hidden: false, menuOpen: false };
+  componentDidMount() {
+    const E = 'cubic-bezier(.7,0,.2,1)';
+    this.cleanup = [];
+    const on = (t, ev, fn, o) => { t.addEventListener(ev, fn, o); this.cleanup.push(() => t.removeEventListener(ev, fn, o)); };
+    const mk = (css) => { const d = document.createElement('div'); d.style.cssText = css; document.body.appendChild(d); this.cleanup.push(() => d.remove()); return d; };
+    this.hold = false;
+    // scroll progress
+    const bar = mk('position:fixed;top:0;left:0;right:0;height:2px;background:#C9B56A;transform-origin:0 50%;transform:scaleX(0);z-index:70;pointer-events:none');
+    // reveal engine
+    this.pending = []; this.seen = new WeakSet();
+    this.check = () => {
+      if (this.hold) return;
+      const lim = window.innerHeight * 0.9;
+      this.pending = this.pending.filter(({ el, kind }) => {
+        if (!el.isConnected) return false;
+        const r = (kind === 'mask' ? el.parentElement : el).getBoundingClientRect();
+        if (r.top >= lim) return true;
+        el.style.opacity = '1'; el.style.transform = 'none'; el.style.clipPath = 'inset(0 0 0 0)'; el.style.filter = 'none';
+        if (kind === 'mask' && el.firstElementChild && el.animate) {
+          el.firstElementChild.animate([{ scale: '1.3' }, { scale: '1' }], { duration: 1800, delay: (parseFloat(el.dataset.delay) || 0) * 1000, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' });
+        }
+        return false;
+      });
+    };
+    this.setup = () => {
+      document.querySelectorAll('[data-reveal]').forEach(el => {
+        if (this.seen.has(el)) return; this.seen.add(el);
+        const d = parseFloat(el.dataset.delay) || 0;
+        const kind = el.dataset.reveal;
+        if (kind === 'mask') {
+          el.style.clipPath = 'inset(0 0 100% 0)';
+          el.style.transition = 'clip-path 1.5s ' + E + ' ' + d + 's';
+          if (el.firstElementChild) { el.firstElementChild.style.transition = 'scale 1.2s cubic-bezier(.2,.7,.2,1)'; }
+          on(el, 'mouseenter', () => { if (el.firstElementChild) el.firstElementChild.style.scale = '1.06'; });
+          on(el, 'mouseleave', () => { if (el.firstElementChild) el.firstElementChild.style.scale = '1'; });
+        } else if (kind === 'rise') {
+          el.style.clipPath = 'inset(0 0 100% 0)'; el.style.transform = 'translateY(0.35em)';
+          el.style.transition = 'clip-path 1.4s ' + E + ' ' + d + 's, transform 1.4s ' + E + ' ' + d + 's';
+        } else {
+          el.style.opacity = '0'; el.style.transform = 'translateY(32px)'; el.style.filter = 'blur(6px)';
+          el.style.transition = 'opacity 1.2s ease ' + d + 's, transform 1.3s cubic-bezier(.2,.6,.2,1) ' + d + 's, filter 1.2s ease ' + d + 's';
+        }
+        this.pending.push({ el, kind });
+      });
+      document.querySelectorAll('[data-zoom]').forEach(el => {
+        if (el.dataset.zd || !el.animate) return; el.dataset.zd = '1';
+        el.animate([{ transform: 'scale(1.15)' }, { transform: 'scale(1)' }], { duration: 9000, easing: 'cubic-bezier(.2,.6,.2,1)', fill: 'forwards' });
+      });
+      document.querySelectorAll('[data-marquee]').forEach(el => {
+        if (el.dataset.md || !el.animate) return; el.dataset.md = '1';
+        const dir = el.dataset.marquee === 'rev' ? ['-50%', '0%'] : ['0%', '-50%'];
+        el.animate([{ transform: 'translateX(' + dir[0] + ')' }, { transform: 'translateX(' + dir[1] + ')' }], { duration: 38000, iterations: Infinity });
+      });
+      document.querySelectorAll('[data-spin]').forEach(el => {
+        if (el.dataset.sd || !el.animate) return; el.dataset.sd = '1';
+        el.animate([{ rotate: '0deg' }, { rotate: '360deg' }], { duration: 22000, iterations: Infinity });
+      });
+      const R = Math.random;
+      document.querySelectorAll('[data-stars]').forEach(el => {
+        if (el.dataset.gen || !el.animate) return; el.dataset.gen = '1';
+        const n = parseInt(el.dataset.stars) || 60;
+        for (let i = 0; i < n; i++) {
+          const s = document.createElement('span'), z = 0.8 + R() * 1.8, o = 0.35 + R() * 0.65;
+          s.style.cssText = 'position:absolute;border-radius:50%;background:#FFF8E6;left:' + (R() * 100) + '%;top:' + (R() * 78) + '%;width:' + z + 'px;height:' + z + 'px;opacity:' + o + (z > 2.2 ? ';box-shadow:0 0 6px rgba(255,248,230,.9)' : '');
+          el.appendChild(s);
+          s.animate([{ opacity: o }, { opacity: 0.1 }, { opacity: o }], { duration: 2000 + R() * 4000, delay: -R() * 4000, iterations: Infinity });
+        }
+        if (el.dataset.shoot) setInterval(() => {
+          const m = document.createElement('span');
+          m.style.cssText = 'position:absolute;height:1px;width:90px;background:linear-gradient(90deg,rgba(255,248,230,0),#FFF8E6);left:' + (20 + R() * 60) + '%;top:' + (R() * 35) + '%;transform:rotate(-24deg)';
+          el.appendChild(m);
+          m.animate([{ translate: '0 0', opacity: 0 }, { opacity: 1, offset: 0.2 }, { translate: '-180px 80px', opacity: 0 }], { duration: 1200, easing: 'ease-out' }).onfinish = () => m.remove();
+        }, 5200);
+      });
+      document.querySelectorAll('[data-clouds]').forEach(el => {
+        if (el.dataset.gen || !el.animate) return; el.dataset.gen = '1';
+        const n = parseInt(el.dataset.clouds) || 4;
+        for (let i = 0; i < n; i++) {
+          const c = document.createElement('span'), w = 90 + R() * 160;
+          c.style.cssText = 'position:absolute;left:-40%;top:' + (4 + R() * 40) + '%;width:' + w + 'px;height:' + (w * 0.32) + 'px;border-radius:50%;background:rgba(255,255,255,' + (0.35 + R() * 0.35) + ');filter:blur(' + (8 + R() * 10) + 'px)';
+          el.appendChild(c);
+          const W = Math.max(el.clientWidth, 300) * 1.9;
+          c.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(' + W + 'px)' }], { duration: 50000 + R() * 50000, delay: -R() * 60000, iterations: Infinity });
+        }
+      });
+      document.querySelectorAll('[data-flicker]').forEach(el => {
+        if (el.dataset.gen || !el.animate) return; el.dataset.gen = '1';
+        el.animate([{ opacity: 0.7, scale: '1' }, { opacity: 1, scale: '1.08' }, { opacity: 0.8, scale: '0.96' }, { opacity: 0.95, scale: '1.04' }, { opacity: 0.72, scale: '1' }], { duration: 2400 + R() * 1200, iterations: Infinity, easing: 'ease-in-out' });
+      });
+      document.querySelectorAll('[data-cue]').forEach(el => {
+        if (el.dataset.cd || !el.animate) return; el.dataset.cd = '1';
+        el.animate([{ transform: 'translateY(-100%)' }, { transform: 'translateY(100%)' }], { duration: 2200, iterations: Infinity, easing: E });
+      });
+      requestAnimationFrame(() => requestAnimationFrame(this.check));
+    };
+    // scroll / resize
+    let lastY = window.scrollY;
+    this.onScroll = () => {
+      const y = window.scrollY, H = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (H > 0 ? y / H : 0) + ')';
+      const s = y > 60, hid = y > 400 && y > lastY + 2 && !this.state.menuOpen;
+      if (s !== this.state.scrolled || (Math.abs(y - lastY) > 2 && hid !== this.state.hidden)) this.setState({ scrolled: s, hidden: hid });
+      lastY = y;
+      const vh = window.innerHeight;
+      document.querySelectorAll('[data-parallax]').forEach(el => {
+        const r = el.parentElement.getBoundingClientRect();
+        const p = (r.top + r.height / 2 - vh / 2) / vh;
+        el.style.transform = 'translateY(' + (-p * (parseFloat(el.dataset.parallax) || 50)).toFixed(1) + 'px)';
+      });
+      document.querySelectorAll('[data-drift]').forEach(el => {
+        const r = el.getBoundingClientRect();
+        const p = (r.top + r.height / 2 - vh / 2) / vh;
+        el.style.translate = (p * (parseFloat(el.dataset.drift) || 120)).toFixed(1) + 'px 0';
+      });
+      this.check();
+    };
+    this.onResize = () => this.setState({ w: window.innerWidth, menuOpen: window.innerWidth < 960 && this.state.menuOpen });
+    on(window, 'resize', this.onResize);
+    on(window, 'scroll', this.onScroll, { passive: true });
+    // custom cursor (fine pointers only)
+    if (window.matchMedia && matchMedia('(pointer:fine)').matches) {
+      const cur = mk('position:fixed;top:0;left:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#C9B56A;z-index:80;pointer-events:none;display:grid;place-items:center;font:400 10px/1 "Josefin Sans",sans-serif;letter-spacing:.2em;color:#2F2B24;transition:width .4s cubic-bezier(.2,.7,.2,1),height .4s cubic-bezier(.2,.7,.2,1),margin .4s cubic-bezier(.2,.7,.2,1),background .3s,opacity .3s;opacity:0');
+      let x = 0, y = 0, cx = 0, cy = 0, raf;
+      on(window, 'mousemove', e => { x = e.clientX; y = e.clientY; cur.style.opacity = '1';
+        const t = e.target.closest && e.target.closest('[data-reveal="mask"], a, button');
+        const big = t && (t.matches('[data-reveal="mask"]') || t.querySelector('image-slot'));
+        const sz = big ? 84 : t ? 44 : 10;
+        cur.style.width = cur.style.height = sz + 'px'; cur.style.margin = (-sz / 2) + 'px 0 0 ' + (-sz / 2) + 'px';
+        cur.style.background = big ? 'rgba(201,181,106,0.92)' : t ? 'rgba(201,181,106,0.35)' : '#C9B56A';
+        cur.textContent = big ? 'VIEW' : '';
+      });
+      on(document, 'mouseleave', () => { cur.style.opacity = '0'; });
+      const loop = () => { cx += (x - cx) * 0.18; cy += (y - cy) * 0.18; cur.style.transform = 'translate(' + cx + 'px,' + cy + 'px)'; raf = requestAnimationFrame(loop); };
+      loop(); this.cleanup.push(() => cancelAnimationFrame(raf));
+    }
+    // page transition curtain
+    const curtain = mk('position:fixed;inset:0;z-index:90;background:#C9B56A;pointer-events:none;transform:translateY(100%)');
+    on(document, 'click', e => {
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank') return;
+      const href = a.getAttribute('href');
+      if (!/\.dc\.html(#.*)?$/.test(href)) return;
+      const url = new URL(a.href, location.href);
+      if (url.pathname === location.pathname) return;
+      e.preventDefault();
+      if (curtain.animate) curtain.animate([{ transform: 'translateY(100%)' }, { transform: 'translateY(0)' }], { duration: 650, easing: E, fill: 'forwards' });
+      setTimeout(() => { location.href = a.href; }, 620);
+    });
+    // loader (Top) or enter curtain (subpages)
+    if (this.props.loader) {
+      this.hold = true;
+      const L = mk('position:fixed;inset:0;z-index:95;background:#F7F5EE;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;color:#2F2B24');
+      L.innerHTML = '<svg width="92" height="92" viewBox="0 0 92 92" fill="none" stroke="#2F2B24" stroke-width="1"><circle cx="46" cy="46" r="44" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></circle><path d="M28 60 L46 30 L64 60 Z M41 60 L46 51 L51 60" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path></svg><div style="font:300 13px/1 \'Josefin Sans\',sans-serif;letter-spacing:.36em;opacity:0">[COMPANY NAME]</div><div style="font:400 11px/1 \'Shippori Mincho\',serif;letter-spacing:.6em;opacity:0">自然の中で、忘れられない時間を。</div>';
+      const [svg, t1, t2] = L.children;
+      if (L.animate) {
+        [...svg.children].forEach((p, i) => p.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: 1300, delay: i * 350, easing: E, fill: 'forwards' }));
+        t1.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 900, delay: 700, fill: 'forwards' });
+        t2.animate([{ opacity: 0 }, { opacity: 0.7 }], { duration: 900, delay: 1000, fill: 'forwards' });
+        setTimeout(() => {
+          L.animate([{ clipPath: 'inset(0 0 0 0)' }, { clipPath: 'inset(0 0 100% 0)' }], { duration: 1100, easing: E, fill: 'forwards' });
+          setTimeout(() => { this.hold = false; this.check(); }, 350);
+          setTimeout(() => L.remove(), 1200);
+        }, 2200);
+      } else { L.remove(); this.hold = false; }
+    } else if (curtain.animate) {
+      curtain.style.transform = 'translateY(0)';
+      curtain.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-100%)' }], { duration: 900, delay: 100, easing: E, fill: 'forwards' });
+    }
+    this.mo = new MutationObserver(() => { clearTimeout(this.t); this.t = setTimeout(this.setup, 80); });
+    this.mo.observe(document.body, { childList: true, subtree: true });
+    setTimeout(this.setup, 80);
+    this.iv = setInterval(() => this.check(), 700);
+    this.onScroll();
+  }
+  componentWillUnmount() {
+    (this.cleanup || []).forEach(f => f());
+    this.mo && this.mo.disconnect(); clearInterval(this.iv);
+  }
+  renderVals() {
+    const narrow = this.state.w < 960;
+    const solid = this.state.scrolled || this.state.menuOpen || this.props.solid;
+    const cur = this.props.current ?? '';
+    const pages = [
+      ['concept', 'Concept', 'CONCEPT', 'コンセプト', 'Concept.dc.html'],
+      ['stay', 'Stay', 'STAY', 'お部屋', 'Stay.dc.html'],
+      ['experience', 'Experience', 'EXPERIENCE', '体験', 'Experience.dc.html'],
+      ['facilities', 'Facilities', 'FACILITIES', '施設', 'Facilities.dc.html'],
+      ['access', 'Access', 'ACCESS', 'アクセス', 'Access.dc.html'],
+    ];
+    return {
+      wide: !narrow, narrow, menuOpen: narrow && this.state.menuOpen,
+      bg: solid ? 'rgba(247,245,238,0.96)' : 'rgba(0,0,0,0)',
+      line: solid ? '#E4DFD0' : 'rgba(255,255,255,0.18)',
+      ink: solid ? '#2F2B24' : '#FFFFFF',
+      hdrT: this.state.hidden ? 'translateY(-100%)' : 'translateY(0)',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      nav: pages.map(([k, title, en, ja, href]) => ({ title, en, ja, href, op: k === cur ? 1 : 0, aria: k === cur ? 'page' : undefined })),
+    };
+  }
+}
+</script>
+</body>
+</html>

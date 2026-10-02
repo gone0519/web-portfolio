@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&display=block">
+<script src="./image-slot.js"></script>
+<script src="./anim.js"></script>
+<link rel="stylesheet" href="./responsive.css">
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:#fff;color:#2b2f45;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a2170;text-decoration:none}
+a:hover{color:#2b45c9}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="treatment" hint-size="100%,72px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+<main>
+<section data-screen-label="Treatment Hero" style="padding:40px clamp(16px,2vw,40px) 0">
+  <div class="sub-hero" style="position:relative;border-radius:20px;overflow:hidden;min-height:clamp(240px,22vw,360px);background:linear-gradient(90deg,#f4f6fd,#e1e6fb);display:flex;align-items:center">
+    <div class="sub-hero-img" style="position:absolute;top:0;right:0;bottom:0;width:56%;clip-path:polygon(14% 0,100% 0,100% 100%,0 100%)"><image-slot id="treat-hero" src="images/exam-leg.jpg" shape="rect" placeholder="診察風景" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+    <div class="sub-hero-txt" style="position:relative;padding:40px clamp(24px,4vw,70px);pointer-events:none">
+      <span style="font-family:Outfit,sans-serif;font-size:clamp(40px,5vw,80px);font-weight:500;color:#1a2170;line-height:1">Treatment</span>
+      <h1 style="margin:14px 0 0;font-size:clamp(22px,2vw,30px);font-weight:700;color:#1a2170;letter-spacing:.1em">診療内容</h1>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:18px auto 0;font-size:12px;color:#666;display:flex;gap:8px"><a href="Aoba%20Clinic.dc.html">ホーム</a><span>›</span><span>診療内容</span></div>
+</section>
+
+<section style="padding:clamp(56px,6vw,90px) clamp(20px,4vw,40px) 0">
+  <p style="margin:0 auto;max-width:760px;font-size:15px;line-height:2;color:#333;text-align:center;text-wrap:pretty">内科全般から消化器の専門診療、予防医療まで対応しています。<br>どの項目にあてはまるかわからない場合も、まずはご相談ください。</p>
+  <nav style="max-width:1200px;margin:40px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+    <sc-for list="{{ services }}" as="s" hint-placeholder-count="8">
+      <a href="{{ s.hash }}" style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #d9dce8;padding:14px 16px;font-size:15px;font-weight:700;color:#1a2170;transition:background .25s,border-color .25s" style-hover="background:#f1f3fa;border-color:#1a2170"><span style="font-family:'Material Symbols Rounded';font-size:24px;font-variation-settings:'FILL' 1">{{ s.icon }}</span><span style="flex:1">{{ s.name }}</span><span style="font-family:'Material Symbols Rounded';font-size:20px">expand_more</span></a>
+    </sc-for>
+  </nav>
+</section>
+
+<section style="background:#faf9f5;margin-top:clamp(56px,6vw,90px);padding:clamp(56px,6vw,90px) clamp(20px,4vw,40px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+      <article id="{{ s.id }}" style="background:#fff;padding:clamp(24px,3vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(24px,3vw,48px);box-shadow:0 2px 14px rgba(26,33,112,.05)">
+        <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#eceef5"><image-slot id="{{ s.slot }}" src="{{ s.src }}" shape="rect" placeholder="{{ s.ph }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+        <div style="display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:16px;padding-bottom:14px;border-bottom:2px solid #c9cde0">
+            <span style="width:56px;height:56px;border-radius:50%;background:#f1f3fa;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:28px;color:#1a2170;font-variation-settings:'FILL' 1;flex:none">{{ s.icon }}</span>
+            <div><h2 style="margin:0;font-size:clamp(20px,1.8vw,24px);font-weight:700;color:#1a2170;letter-spacing:.06em">{{ s.name }}</h2><span style="font-family:Outfit,sans-serif;font-size:12px;color:#5a6090">{{ s.en }}</span></div>
+          </div>
+          <p style="margin:18px 0 0;font-size:15px;line-height:2;color:#2b2f45;text-wrap:pretty">{{ s.desc }}</p>
+          <dl style="margin:20px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px 14px;font-size:14px;line-height:1.8">
+            <dt style="background:#eef1fa;color:#1a2170;font-weight:700;padding:2px 12px;border-radius:3px;height:fit-content;white-space:nowrap">主な症状</dt><dd style="margin:0;color:#444">{{ s.symptoms }}</dd>
+            <dt style="background:#eef1fa;color:#1a2170;font-weight:700;padding:2px 12px;border-radius:3px;height:fit-content;white-space:nowrap">対象</dt><dd style="margin:0;color:#444">{{ s.target }}</dd>
+            <dt style="background:#eef1fa;color:#1a2170;font-weight:700;padding:2px 12px;border-radius:3px;height:fit-content;white-space:nowrap">検査・治療</dt><dd style="margin:0;color:#444">{{ s.care }}</dd>
+          </dl>
+          <a href="Access.dc.html#contact" style="align-self:flex-end;margin-top:auto;padding-top:22px;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:#222" style-hover="color:#2b45c9">相談・予約する<span style="width:26px;height:26px;border-radius:50%;background:#1a2170;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:18px">chevron_right</span></a>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section style="padding:clamp(60px,6vw,100px) clamp(20px,4vw,40px)">
+  <div style="max-width:960px;margin:0 auto">
+    <div style="border-left:5px solid #1a2170;padding-left:18px;margin-bottom:24px"><div style="font-size:22px;font-weight:700;color:#1a2170;letter-spacing:.06em">自費診療・予防接種の料金</div><div style="font-family:Outfit,sans-serif;font-size:12px;color:#1a2170">Price</div></div>
+    <div style="border-top:1px solid #d9dce8">
+      <sc-for list="{{ prices }}" as="p" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:16px 8px;border-bottom:1px solid #d9dce8;font-size:15px"><span style="color:#222">{{ p.name }}</span><span style="font-family:Outfit,sans-serif;font-weight:500;color:#1a2170">{{ p.price }}</span></div>
+      </sc-for>
+    </div>
+    <p style="margin:14px 0 0;font-size:13px;color:#666;line-height:1.8">※料金はすべて税込です。公費助成の対象となる方は自己負担額が異なります。詳しくは受付までお問い合わせください。</p>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const s = [
+      ['general', 'stethoscope', '一般内科', 'General Medicine', 'かぜや発熱、腹痛など日常的な体調不良に幅広く対応します。どの科にかかればよいか迷うときも、まずは当院でお話をうかがい、必要に応じて専門の医療機関をご紹介します。', '発熱、咳、のどの痛み、頭痛、腹痛、だるさ、めまい', '中学生以上の方', '血液検査、迅速検査（インフルエンザ・新型コロナなど）、点滴'],
+      ['gastro', 'gastroenterology', '消化器内科', 'Gastroenterology', '胃・腸・肝臓・胆のう・すい臓などの症状を専門的に診療します。院内で胃カメラや腹部超音波検査を行い、結果はその日のうちにご説明します。', '胃もたれ、胸やけ、みぞおちの痛み、便通の変化、肝機能の数値異常', '消化器の症状や検査結果が気になる方', '胃カメラ（経鼻・経口・鎮静剤対応）、腹部超音波、ピロリ菌検査'],
+      ['lifestyle', 'monitor_heart', '生活習慣病', 'Lifestyle-related Diseases', '高血圧・糖尿病・脂質異常症・高尿酸血症などを、定期的な検査で経過を確認しながら治療します。食事や運動のアドバイスも、無理なく続けられる内容をご一緒に考えます。', '血圧・血糖・コレステロールの指摘、体重の増加', '健診で再検査をすすめられた方、治療中で通院先を探している方', '血液・尿検査、心電図、生活指導、薬物療法'],
+      ['checkup', 'health_and_safety', '健康診断・人間ドック', 'Health Checkups', '企業健診、特定健診、区の各種がん検診などに対応しています。結果に気になる点があれば、そのまま精密検査や治療につなげられます。', '—', '定期的に健康状態を確認したい方', '身体計測、血液検査、胸部X線、心電図、胃カメラ'],
+      ['vaccine', 'vaccines', '予防接種', 'Vaccination', 'インフルエンザ、新型コロナ、肺炎球菌、帯状疱疹などのワクチン接種を行っています。接種スケジュールのご相談も承ります。', '—', '接種対象となる方（ワクチンにより異なります）', '各種ワクチン接種、接種前の問診・診察'],
+      ['allergy', 'allergy', 'アレルギー・花粉症', 'Allergy', '血液検査でアレルギーの原因を調べ、症状や季節に合わせて内服薬・点鼻薬などをご提案します。', 'くしゃみ、鼻水、鼻づまり、目のかゆみ、じんましん', '季節ごとの症状にお困りの方', 'アレルギー検査（血液）、内服・外用薬'],
+      ['sleep', 'bedtime', '睡眠時無呼吸・いびき外来', 'Sleep Apnea', 'ご自宅でできる簡易検査で、睡眠中の呼吸の状態を調べます。結果に応じてCPAP療法などの治療をご提案します。', '大きないびき、日中の強い眠気、起床時の頭痛', 'ご家族からいびきを指摘された方', '簡易睡眠検査、CPAP療法'],
+      ['smoke', 'smoke_free', '禁煙外来', 'Smoking Cessation', '保険診療による禁煙治療を行っています。約3か月・5回の通院プログラムで、無理なく続けられるよう伴走します。', '—', '禁煙を考えている方（条件により保険適用）', '禁煙補助薬の処方、呼気一酸化炭素濃度の測定'],
+    ];
+    // 診療項目ごとの写真（images/ フォルダ）。未設定の項目は差し替え枠のまま表示されます。
+    const photos = {
+      general: 'images/counseling.jpg', gastro: 'images/explain-spine.jpg', lifestyle: 'images/shoulder-check.jpg',
+      checkup: 'images/staff-clipboard.jpg', vaccine: 'images/nurse.jpg', allergy: 'images/explain-model.jpg',
+      sleep: 'images/relax-back.jpg', smoke: 'images/staff-smile.jpg',
+    };
+    return {
+      services: s.map(([id, icon, name, en, desc, symptoms, target, care], i) => ({ id, hash: '#' + id, icon, name, en, desc, symptoms, target, care, slot: 'treat-' + id, src: photos[id], ph: name + 'のイメージ写真' })),
+      prices: [
+        { name: 'インフルエンザワクチン（13歳以上）', price: '¥3,800' },
+        { name: '帯状疱疹ワクチン（不活化・1回）', price: '¥22,000' },
+        { name: '肺炎球菌ワクチン（任意接種）', price: '¥8,800' },
+        { name: '雇入時健康診断', price: '¥8,800' },
+        { name: 'ピロリ菌検査（自費）', price: '¥5,500' },
+        { name: '各種診断書', price: '¥3,300〜' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

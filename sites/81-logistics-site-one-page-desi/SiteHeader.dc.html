@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;height:64px;background:#fff;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 0 rgba(14,30,70,.08)">
+  <a href="Logistics%20Site.dc.html" style="height:100%;display:flex;align-items:center;padding:0 56px 0 24px;background:#FFD200;clip-path:polygon(0 0,100% 0,calc(100% - 28px) 100%,0 100%);font-family:Montserrat,sans-serif;font-weight:800;font-size:20px;letter-spacing:.02em;color:#0E1E46">[Company Name]</a>
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メインメニュー" style="display:flex;align-items:center;gap:28px;padding-right:24px">
+      <div style="display:flex;gap:26px;font-size:13px;letter-spacing:.06em;font-weight:500">
+        <sc-for list="{{ mainLinks }}" as="n" hint-placeholder-count="3">
+          <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="color:#3b4358;padding:6px 0;border-bottom:2px solid {{ n.line }}" style-hover="color:#0E1E46">{{ n.ja }}</a>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:10px">
+        <a href="Recruit.dc.html" style="background:#0E1E46;color:#fff;font-size:12px;font-weight:700;padding:9px 20px;border-radius:999px;letter-spacing:.08em" style-hover="background:#1b3170">採用情報</a>
+        <a href="Contact.dc.html" style="background:#FFD200;color:#0E1E46;font-size:12px;font-weight:700;padding:9px 20px;border-radius:999px;letter-spacing:.08em" style-hover="background:#ffdf4d">お問い合わせ</a>
+      </div>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" aria-expanded="{{ menuOpen }}" style="width:64px;height:64px;border:0;background:#0E1E46;color:#fff;font-family:Montserrat,sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer">
+      <span style="display:block;width:22px;height:2px;background:#FFD200"></span>
+      <span style="display:block;width:22px;height:2px;background:#FFD200"></span>
+      <span>{{ menuLabel }}</span>
+    </button>
+  </sc-if>
+</header>
+<sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+  <nav aria-label="モバイルメニュー" style="position:fixed;top:64px;left:0;right:0;bottom:0;z-index:49;background:#0E1E46;padding:24px 28px;display:flex;flex-direction:column;overflow-y:auto">
+    <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+      <a href="{{ n.href }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14);color:#fff">
+        <span style="font-family:'Shippori Mincho B1',serif;font-size:18px;font-weight:700">{{ n.ja }}</span>
+        <span style="font-family:Montserrat,sans-serif;font-size:11px;letter-spacing:.16em;color:#FFD200">{{ n.en }}</span>
+      </a>
+    </sc-for>
+    <a href="Contact.dc.html" style="margin-top:28px;background:#FFD200;color:#0E1E46;text-align:center;padding:18px;border-radius:999px;font-weight:700;letter-spacing:.08em">お問い合わせ</a>
+  </nav>
+</sc-if>
+<div style="height:64px"></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;company&quot;,&quot;services&quot;,&quot;safety&quot;,&quot;recruit&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: window.innerWidth, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState(s => ({ w: window.innerWidth, menuOpen: window.innerWidth < 900 && s.menuOpen }));
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const cur = this.props.current || 'top';
+    const items = [
+      { id: 'top', href: 'Logistics%20Site.dc.html', ja: 'トップ', en: 'TOP' },
+      { id: 'company', href: 'Company.dc.html', ja: '会社概要', en: 'COMPANY' },
+      { id: 'services', href: 'Services.dc.html', ja: '事業内容', en: 'SERVICES' },
+      { id: 'safety', href: 'Safety.dc.html', ja: '安全への取り組み', en: 'SAFETY' },
+      { id: 'recruit', href: 'Recruit.dc.html', ja: '採用情報', en: 'RECRUIT' },
+      { id: 'contact', href: 'Contact.dc.html', ja: 'お問い合わせ', en: 'CONTACT' }
+    ].map(n => ({ ...n, aria: n.id === cur ? 'page' : undefined, line: n.id === cur ? '#FFD200' : 'transparent' }));
+    const mobile = this.state.w < 900;
+    return {
+      mobile, desktop: !mobile, menuOpen: this.state.menuOpen,
+      menuVisible: mobile && this.state.menuOpen,
+      menuLabel: this.state.menuOpen ? 'CLOSE' : 'MENU',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      navItems: items,
+      mainLinks: items.filter(n => ['company', 'services', 'safety'].includes(n.id))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="MERIDIAN のインサイト。SEO、広告運用、戦略・分析、デジタルトレンドに関する実務的な記事を公開しています。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./meridian.css" />
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:oklch(0.985 0.005 90);color:oklch(0.28 0.02 220);font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased;text-wrap:pretty}
+  a{color:oklch(0.45 0.07 195);text-decoration:none;transition:color .25s}
+  a:hover{color:oklch(0.44 0.09 62)}
+  h1,h2,h3,h4{margin:0;font-weight:500}
+  p{margin:0}
+  [id]{scroll-margin-top:96px}
+  summary::-webkit-details-marker{display:none}
+  input::placeholder,textarea::placeholder{color:oklch(0.47 0.02 220)}
+  .mrd-dark input::placeholder{color:oklch(0.82 0.012 200)}
+  @keyframes mrd-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;overflow-x:clip">
+
+<dc-import name="MeridianHeader" active="insights" hint-size="100%,120px"></dc-import>
+
+
+<dc-import name="MeridianPageHero" image="images/city-street.jpg" image-position="50% 50%" crumb="INSIGHTS" en="Insights" jp="インサイト" lead="実務で使える検証結果と考え方を公開しています。社内の運用マニュアルから抜粋したものも含みます。" hint-size="100%,340px"></dc-import>
+<section style="padding:clamp(56px,7vw,88px) 24px 0" data-reveal="1">
+  <div style="max-width:1240px;margin:0 auto">
+    <p style="font-size:11.5px;letter-spacing:.18em;color:oklch(0.48 0.09 62)">FEATURED ／ 注目記事</p>
+    <a href="MERIDIAN Insights.dc.html" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));margin-top:18px;border:1px solid oklch(0.89 0.01 200);background:oklch(0.99 0.004 90);color:inherit" style-hover="border-color:oklch(0.45 0.07 195);color:inherit">
+      <div style="aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:oklch(0.93 0.012 200)"><img src="images/dashboard-review.jpg" alt="ダッシュボードの数値を一緒に確認する担当者" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%" /></div>
+      <div style="padding:clamp(28px,3.4vw,48px);display:flex;flex-direction:column;justify-content:center">
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center"><span style="font-size:10.5px;letter-spacing:.14em;background:oklch(0.45 0.07 195);color:oklch(0.98 0.005 90);padding:5px 12px">戦略・分析</span><span style="font-family:'Cormorant Garamond',serif;font-size:12.5px;letter-spacing:.08em;color:oklch(0.47 0.02 220)">2026.09.14</span></div>
+        <h2 style="margin-top:18px;font-family:'Shippori Mincho',serif;font-size:clamp(19px,2.4vw,27px);font-weight:600;line-height:1.65">広告費を増やす前に、<br />回収期間を測り直す</h2>
+        <p style="margin-top:18px;font-size:13.5px;line-height:2.1;color:oklch(0.4 0.015 220)">投資回収までの月数が読めていないまま予算を積むと、キャッシュが先に尽きます。48 社の実測から、業種別の回収期間と、確認すべき前提条件を整理しました。</p>
+        <p style="margin-top:22px;font-size:12.5px;letter-spacing:.08em;color:oklch(0.45 0.07 195)">続きを読む →　<span style="color:oklch(0.47 0.02 220)">読了 12 分</span></p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section style="padding:clamp(48px,6vw,76px) 24px clamp(64px,8vw,104px)">
+  <div class="mrd-insights-layout" style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(272px,100%),1fr));gap:clamp(36px,4vw,56px)">
+    <div style="min-width:0">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;padding-bottom:26px;border-bottom:1px solid oklch(0.89 0.01 200)">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+          <button type="button" onClick="{{ f.pick }}" style="{{ f.style }}">{{ f.label }}</button>
+        </sc-for>
+      </div>
+      <p style="margin-top:20px;font-size:12px;letter-spacing:.1em;color:oklch(0.47 0.02 220)">{{ countLabel }}</p>
+      <div style="margin-top:22px;display:flex;flex-direction:column">
+        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="9">
+          <a class="mrd-post" href="MERIDIAN Insights.dc.html" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:18px 26px;padding:26px 4px;border-bottom:1px solid oklch(0.89 0.01 200);color:inherit" style-hover="background:oklch(0.965 0.008 200);color:inherit">
+            <div class="mrd-post-thumb" style="max-width:240px"><div style="aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:oklch(0.93 0.012 200)"><img src="{{ p.img }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ p.imgPos }}" /></div></div>
+            <div style="grid-column:span 2;min-width:0">
+              <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center"><span style="font-size:10.5px;letter-spacing:.14em;color:oklch(0.45 0.07 195);border:1px solid oklch(0.45 0.07 195);padding:4px 10px">{{ p.cat }}</span><span style="font-family:'Cormorant Garamond',serif;font-size:12.5px;letter-spacing:.08em;color:oklch(0.47 0.02 220)">{{ p.date }}</span><span style="font-size:11.5px;color:oklch(0.47 0.02 220)">読了 {{ p.read }}</span></div>
+              <h3 style="margin-top:14px;font-family:'Shippori Mincho',serif;font-size:17.5px;font-weight:600;line-height:1.7">{{ p.title }}</h3>
+              <p style="margin-top:12px;font-size:13px;line-height:2;color:oklch(0.4 0.015 220)">{{ p.excerpt }}</p>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+    <aside class="mrd-insights-aside" style="min-width:0;display:flex;flex-direction:column;gap:22px;max-width:340px">
+      <div style="border:1px solid oklch(0.89 0.01 200);background:oklch(0.99 0.004 90);padding:24px 22px">
+        <p style="font-size:11.5px;letter-spacing:.16em;color:oklch(0.48 0.09 62)">SEARCH ／ 記事検索</p>
+        <input type="search" value="{{ query }}" onInput="{{ onQuery }}" placeholder="キーワードで探す" aria-label="記事検索" style="margin-top:14px;width:100%;padding:13px 14px;border:1px solid oklch(0.89 0.01 200);background:oklch(0.985 0.005 90);font-family:inherit;font-size:13px;border-radius:2px" />
+      </div>
+      <div style="border:1px solid oklch(0.89 0.01 200);background:oklch(0.99 0.004 90);padding:24px 22px">
+        <p style="font-size:11.5px;letter-spacing:.16em;color:oklch(0.48 0.09 62)">CATEGORIES ／ カテゴリ</p>
+        <ul style="list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column">
+          <sc-for list="{{ catCounts }}" as="c" hint-placeholder-count="4">
+            <li style="border-bottom:1px solid oklch(0.94 0.006 200)"><button type="button" onClick="{{ c.pick }}" style="width:100%;display:flex;justify-content:space-between;gap:12px;background:none;border:0;padding:13px 0;font-family:inherit;font-size:13px;color:oklch(0.32 0.02 220);cursor:pointer;text-align:left" style-hover="color:oklch(0.44 0.09 62)"><span>{{ c.label }}</span><span style="font-family:'Cormorant Garamond',serif;color:oklch(0.47 0.02 220)">{{ c.n }}</span></button></li>
+          </sc-for>
+        </ul>
+      </div>
+      <div class="mrd-dark" style="background:oklch(0.28 0.035 205);color:oklch(0.97 0.008 90);padding:26px 22px">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.18em;color:oklch(0.82 0.08 70)">NEWSLETTER</p>
+        <h3 style="margin-top:12px;font-family:'Shippori Mincho',serif;font-size:17px;font-weight:600;line-height:1.7">月 2 回、検証結果をお届けします</h3>
+        <p style="margin-top:12px;font-size:12.5px;line-height:1.95;color:oklch(0.88 0.012 200)">登録は無料、配信解除はいつでも可能です。広告費の相場や媒体の変更点もまとめています。</p>
+        <input type="email" placeholder="you@example.com" aria-label="メールアドレス" style="margin-top:16px;width:100%;padding:13px 14px;border:1px solid oklch(1 0 0 / 0.28);background:oklch(1 0 0 / 0.08);color:oklch(0.97 0.008 90);font-family:inherit;font-size:13px;border-radius:2px" />
+        <button type="button" style="margin-top:10px;width:100%;padding:14px;background:oklch(0.72 0.09 70);color:oklch(0.22 0.03 60);border:0;font-family:inherit;font-size:13px;font-weight:700;letter-spacing:.08em;cursor:pointer;border-radius:2px" style-hover="background:oklch(0.8 0.08 70)">購読する</button>
+      </div>
+    </aside>
+  </div>
+</section>
+<dc-import name="MeridianCTA" hint-size="100%,760px"></dc-import>
+
+<dc-import name="MeridianFooter" hint-size="100%,520px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;revealAnimations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  state = { cat: 'すべて', q: '' };
+  componentDidMount() {
+    if (this.props.revealAnimations === false) return;
+    const nodes = Array.from(document.querySelectorAll('[data-reveal]'));
+    nodes.forEach(n => { n.style.opacity = '0'; n.style.transform = 'translateY(22px)'; n.style.transition = 'opacity .8s cubic-bezier(.22,.7,.2,1), transform .8s cubic-bezier(.22,.7,.2,1)'; });
+    const show = n => { n.style.opacity = '1'; n.style.transform = 'none'; };
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+      nodes.forEach(n => io.observe(n));
+    }
+    this._t = setTimeout(() => nodes.forEach(show), 1600);
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+  renderVals() {
+    const data = [["SEO","2026.09.10","検索意図を 4 分類して記事構成を決める手順","キーワードを「知りたい・比べたい・試したい・買いたい」に分け、それぞれで必要な情報と CTA を変えます。分類の判断基準と、実際の構成テンプレートを公開します。","9 分"],["広告運用","2026.09.02","自動入札に任せる前に整えておく 3 つの設定","コンバージョン値、除外条件、アカウント構成。この三つが崩れたまま自動化すると、単価は必ず暴れます。順序と確認方法をまとめました。","7 分"],["戦略・分析","2026.08.26","売上目標から逆算した KPI ツリーの作り方","受注件数から必要な商談数、リード数、流入数へ分解します。粗利率とリードタイムをどこに織り込むかが要点です。","11 分"],["SEO","2026.08.18","内部リンクの棚卸しで流入が戻った事例","記事を増やすほど評価が分散した状態から、ハブ記事を定めて再配線しました。3 か月の推移とともに手順を紹介します。","8 分"],["広告運用","2026.08.05","獲得単価だけを見ると失敗する理由","CPA が下がったのに売上が伸びない典型的なパターンを三つ挙げ、代わりに見るべき指標を示します。","6 分"],["戦略・分析","2026.07.29","計測の欠けを見つけるチェックリスト","電話、フォーム、チャット、来店。抜けやすい経路を洗い出す 18 項目のチェックリストです。","5 分"],["トレンド","2026.07.15","生成 AI 検索が流入に与えた実測の変化","支援先 24 サイトのデータから、要約表示の影響を受けた領域と、影響が小さかった領域を比較しました。","10 分"],["トレンド","2026.07.01","2026 年下期に予算を見直すべき三領域","媒体単価の推移と、検索行動の変化をもとに、下期の配分の考え方を整理します。","7 分"],["SEO","2026.06.20","Core Web Vitals を実測で改善する優先順位","LCP から着手すべきか、INP からか。実測データの読み方と、費用対効果の高い施策の順番を示します。","9 分"]];
+    const cats = ["すべて","SEO","広告運用","戦略・分析","トレンド"];
+    const cur = this.state.cat, q = this.state.q.trim();
+    const on = 'padding:11px 20px;border:1px solid oklch(0.45 0.07 195);background:oklch(0.45 0.07 195);color:oklch(0.98 0.005 90);font-family:inherit;font-size:12.5px;letter-spacing:.06em;cursor:pointer;border-radius:2px';
+    const off = 'padding:11px 20px;border:1px solid oklch(0.89 0.01 200);background:oklch(0.99 0.004 90);color:oklch(0.35 0.02 220);font-family:inherit;font-size:12.5px;letter-spacing:.06em;cursor:pointer;border-radius:2px';
+    const images = [['plan-select', '50% 50%'], ['team-discussion', '50% 40%'], ['meeting-overhead', '50% 50%'], ['meeting-tablet', '50% 40%'], ['leader-shibata', '68% 30%'], ['smartphone', '50% 40%'], ['team-laptops', '50% 40%'], ['skyscrapers', '50% 50%'], ['monitor-review', '50% 40%']];
+    const list = data.map((d, i) => d.concat([images[i]])).filter(d => (cur === 'すべて' || d[0] === cur) && (!q || (d[2] + d[3]).indexOf(q) >= 0));
+    return {
+      filters: cats.map(c => ({ label: c, style: c === cur ? on : off, pick: () => this.setState({ cat: c }) })),
+      catCounts: cats.slice(1).map(c => ({ label: c, n: data.filter(d => d[0] === c).length, pick: () => this.setState({ cat: c }) })),
+      countLabel: list.length + ' 件の記事',
+      query: this.state.q,
+      onQuery: e => this.setState({ q: e.target.value }),
+      posts: list.map(d => ({ cat: d[0], date: d[1], title: d[2], excerpt: d[3], read: d[4], img: 'images/' + d[5][0] + '.jpg', imgPos: d[5][1] }))
+    };
+  }
+}
+</script>
+</body>
+</html>

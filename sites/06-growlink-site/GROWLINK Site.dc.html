@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  body { margin:0; background:#ffffff; font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN',sans-serif; color:#12324a; -webkit-font-smoothing:antialiased; }
+  * { box-sizing:border-box; }
+  a { color:#1b9ad6; text-decoration:none; }
+  a:hover { color:#0f7fb5; }
+  input, textarea { font-family:'Zen Kaku Gothic New',sans-serif; }
+  @keyframes riseIn { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+  @keyframes riseUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
+  @keyframes fadeLeft { from { opacity:0; transform:translateX(-34px); } to { opacity:1; transform:none; } }
+  @keyframes fadeRight { from { opacity:0; transform:translateX(34px); } to { opacity:1; transform:none; } }
+  @keyframes zoomIn { from { opacity:0; transform:scale(.92); } to { opacity:1; transform:none; } }
+  @keyframes popIn { 0% { opacity:0; transform:scale(.7); } 60% { opacity:1; transform:scale(1.06); } 100% { opacity:1; transform:scale(1); } }
+  @keyframes floatY { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-9px); } }
+  @keyframes ringPulse { 0% { box-shadow:0 0 0 0 rgba(27,154,214,.35); } 70% { box-shadow:0 0 0 16px rgba(27,154,214,0); } 100% { box-shadow:0 0 0 0 rgba(27,154,214,0); } }
+  @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  @keyframes arrowNudge { 0%,100% { transform:translateX(0); } 50% { transform:translateX(5px); } }
+  @keyframes shimmer { 0% { background-position:-220% 0; } 100% { background-position:220% 0; } }
+  @keyframes slowPan { 0% { background-position:0 0; } 100% { background-position:120px 120px; } }
+</style>
+</helmet>
+
+<div style="width:100%; overflow-x:hidden">
+
+  <header id="om-header" style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,.95); backdrop-filter:blur(8px); border-bottom:1px solid #e6eff5; transition:box-shadow .3s ease">
+    <div id="om-progress" style="position:absolute; left:0; top:0; height:3px; width:0%; background:#1b9ad6; transition:width .12s linear"></div>
+    <div style="max-width:1180px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap">
+      <div style="display:flex; align-items:center; gap:12px; cursor:pointer" onClick="{{ goHome }}">
+        <div style="width:38px; height:38px; border:2px solid #1b9ad6; border-radius:10px; display:flex; align-items:center; justify-content:center">
+          <div style="width:12px; height:12px; background:#1b9ad6; transform:rotate(45deg)"></div>
+        </div>
+        <div style="line-height:1.15">
+          <div style="font-size:19px; font-weight:700; letter-spacing:.02em">株式会社グロウリンク</div>
+          <div style="font-family:'Barlow',sans-serif; font-size:10px; letter-spacing:.34em; color:#1b9ad6">GROWLINK</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap; justify-content:flex-end">
+        <div style="display:flex; align-items:center; gap:9px">
+          <div style="width:24px; height:24px; border-radius:50%; background:#1b9ad6; display:flex; align-items:center; justify-content:center; color:#fff; font-size:12px">✆</div>
+          <div style="line-height:1.1">
+            <div style="font-size:10px; color:#6b8496">平日 10:00 - 19:00</div>
+            <div style="font-family:'Barlow',sans-serif; font-size:21px; font-weight:700">03-4500-2180</div>
+          </div>
+        </div>
+        <div style="padding:11px 22px; border-radius:999px; background:#1b9ad6; color:#fff; font-size:13px; font-weight:700; cursor:pointer; box-shadow:0 6px 16px rgba(27,154,214,.32)" style-hover="background:#0f7fb5" onClick="{{ goContact }}">無料診断を申し込む</div>
+      </div>
+    </div>
+    <nav style="border-top:1px solid #eef5f9">
+      <div style="max-width:1180px; margin:0 auto; padding:0 24px; display:flex; gap:4px; justify-content:center; flex-wrap:wrap">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+          <div style="padding:13px 20px; font-size:14px; font-weight:500; cursor:pointer; border-bottom:2px solid transparent; color:{{ item.color }}; border-bottom-color:{{ item.line }}" style-hover="color:#1b9ad6" onClick="{{ item.onClick }}">{{ item.label }}</div>
+        </sc-for>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ══════════ HOME ══════════ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main>
+    <section style="position:relative; padding:92px 24px 100px; background:linear-gradient(180deg,#eaf6fc 0%,#f6fbfe 100%); overflow:hidden">
+      <div style="position:absolute; inset:0; background-image:repeating-linear-gradient(135deg,rgba(27,154,214,.055) 0 14px,rgba(27,154,214,0) 14px 28px)"></div>
+      <div style="position:relative; max-width:1000px; margin:0 auto; text-align:center; animation:riseIn .7s ease both">
+        <div style="font-size:19px; font-weight:500; color:#2b5c78; letter-spacing:.04em; animation:riseIn .8s .05s ease both">＼ 広告費のムダを止め、売上に直結する施策へ ／</div>
+        <div style="margin-top:20px; display:flex; align-items:flex-end; justify-content:center; gap:8px; flex-wrap:wrap">
+          <div style="font-size:40px; font-weight:900; padding-bottom:14px">運用費</div>
+          <div style="font-family:'Barlow',sans-serif; font-size:130px; font-weight:700; line-height:.82; color:#1b9ad6; letter-spacing:-.02em; animation:popIn .9s .28s cubic-bezier(.2,.8,.2,1) both">{{ heroNumber }}</div>
+          <div style="font-size:42px; font-weight:900; color:#1b9ad6; padding-bottom:16px">ヶ月無料</div>
+        </div>
+        <div style="margin-top:32px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; animation:riseIn .9s .45s ease both">
+          <div style="background:#fff; border-radius:14px; padding:16px 26px; display:flex; align-items:baseline; gap:10px; box-shadow:0 10px 24px rgba(20,60,90,.08)">
+            <div style="text-align:left"><div style="font-size:16px; font-weight:700">初回診断</div><div style="font-size:10px; color:#6b8496">回数に制限なし</div></div>
+            <div style="font-family:'Barlow',sans-serif; font-size:40px; font-weight:700; color:#1b9ad6; line-height:1">0</div><div style="font-size:15px; font-weight:700">円</div>
+          </div>
+          <div style="background:#fff; border-radius:14px; padding:16px 26px; display:flex; align-items:baseline; gap:10px; box-shadow:0 10px 24px rgba(20,60,90,.08)">
+            <div style="text-align:left"><div style="font-size:16px; font-weight:700">契約の縛り</div><div style="font-size:10px; color:#6b8496">最低利用期間なし</div></div>
+            <div style="font-family:'Barlow',sans-serif; font-size:40px; font-weight:700; color:#1b9ad6; line-height:1">0</div><div style="font-size:15px; font-weight:700">ヶ月</div>
+          </div>
+          <div style="background:#fff; border-radius:14px; padding:16px 26px; display:flex; align-items:center; gap:12px; box-shadow:0 10px 24px rgba(20,60,90,.08)">
+            <div style="text-align:left"><div style="font-size:16px; font-weight:700">最短開始</div><div style="font-size:10px; color:#6b8496">ヒアリング当日から</div></div>
+            <div style="font-family:'Barlow',sans-serif; font-size:34px; font-weight:700; color:#1b9ad6">3日</div>
+          </div>
+        </div>
+        <div style="margin-top:36px; display:flex; justify-content:center; animation:riseIn .9s .62s ease both">
+          <div style="padding:17px 46px; border-radius:999px; background:#1b9ad6; color:#fff; font-weight:700; font-size:16px; cursor:pointer; display:flex; align-items:center; gap:14px; box-shadow:0 12px 26px rgba(27,154,214,.35); transition:transform .25s, background .25s, box-shadow .25s; animation:ringPulse 2.8s 1.4s ease-out infinite" style-hover="background:#0f7fb5; transform:translateY(-3px); box-shadow:0 18px 34px rgba(27,154,214,.45)" onClick="{{ goContact }}">今すぐ無料診断を申し込む <span style="font-family:'Barlow',sans-serif; animation:arrowNudge 1.6s ease-in-out infinite">›</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:34px 24px; background:#fff">
+      <div style="max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px">
+        <div data-reveal="left" style="background:#eaf6fc; border-radius:12px; padding:22px 26px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; transition:background .25s, transform .25s" style-hover="background:#ddeffa; transform:translateY(-3px)" onClick="{{ goServices }}">
+          <div><div style="font-size:12px; color:#2b5c78">＼ 成果を伸ばす施策を探すなら ／</div><div style="margin-top:6px; font-size:19px; font-weight:700">サービス一覧</div></div>
+          <div style="font-family:'Barlow',sans-serif; color:#1b9ad6; font-size:22px">›</div>
+        </div>
+        <div data-reveal="right" style="background:#e7eef4; border-radius:12px; padding:22px 26px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; transition:background .25s, transform .25s" style-hover="background:#dde7ef; transform:translateY(-3px)" onClick="{{ goPricing }}">
+          <div><div style="font-size:12px; color:#2b5c78">＼ 費用を先に知りたいなら ／</div><div style="margin-top:6px; font-size:19px; font-weight:700">料金プラン</div></div>
+          <div style="font-family:'Barlow',sans-serif; color:#1b9ad6; font-size:22px">›</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:28px 0 0; background:#fff; overflow:hidden">
+      <div style="border-top:1px solid #eef5f9; border-bottom:1px solid #eef5f9; padding:16px 0; display:flex; width:100%">
+        <div style="display:flex; gap:44px; flex-shrink:0; animation:marquee 34s linear infinite; white-space:nowrap">
+          <sc-for list="{{ marqueeLoop }}" as="m" hint-placeholder-count="24">
+            <div style="display:flex; gap:44px; align-items:center; font-size:13px; font-weight:700; color:#8aa4b6; letter-spacing:.08em">{{ m }}<span style="color:#cfe2ee">◆</span></div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:76px 24px 84px; background:linear-gradient(180deg,#f6fbfe,#eaf6fc)">
+      <div style="max-width:1080px; margin:0 auto; text-align:center">
+        <div data-reveal="up" style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">FEATURES</div>
+        <div style="margin-top:12px; font-size:18px; font-weight:500; color:#2b5c78">株式会社グロウリンクの</div>
+        <div style="margin-top:2px; display:flex; align-items:center; justify-content:center; gap:8px">
+          <div style="font-family:'Barlow',sans-serif; font-size:56px; font-weight:700; color:#1b9ad6; line-height:1">5</div>
+          <div style="font-size:30px; font-weight:900">つの強み</div>
+        </div>
+        <div style="margin-top:44px; display:flex; gap:26px; justify-content:center; flex-wrap:wrap">
+          <sc-for list="{{ features }}" as="f" hint-placeholder-count="5">
+            <div data-reveal="pop" style="width:174px; text-align:center">
+              <div style="position:relative; width:130px; height:130px; margin:0 auto; border:2px solid #1b9ad6; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s" style-hover="transform:translateY(-8px) scale(1.06); box-shadow:0 16px 30px rgba(27,154,214,.25)">
+                <img src="{{ f.img }}" alt="" style="width:74px; height:74px; object-fit:contain" />
+                <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); padding:2px 11px; border-radius:999px; background:#1b9ad6; color:#fff; font-family:'Barlow',sans-serif; font-size:14px; font-weight:700">{{ f.no }}</div>
+              </div>
+              <div style="margin-top:14px; font-size:15px; font-weight:700; line-height:1.55">{{ f.title }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:44px; display:flex; justify-content:center">
+          <div style="padding:14px 34px; border-radius:999px; background:#1b9ad6; color:#fff; font-weight:700; font-size:14px; cursor:pointer; display:flex; gap:12px" style-hover="background:#0f7fb5" onClick="{{ goAbout }}">グロウリンクが選ばれる理由 <span style="font-family:'Barlow',sans-serif">›</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:88px 24px; background:#fff">
+      <div style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:54px; align-items:center">
+        <div data-reveal="left" style="border-radius:16px; overflow:hidden; box-shadow:0 18px 40px rgba(20,60,90,.14)">
+          <img src="images/company.jpg" alt="データをもとにチームへ施策を説明する様子" style="display:block; width:100%; aspect-ratio:4/3; object-fit:cover" />
+        </div>
+        <div data-reveal="right">
+          <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">COMPANY</div>
+          <h2 style="margin:12px 0 0; font-size:30px; font-weight:900; line-height:1.45">数字で語れるマーケティングを、<br />すべての企業へ。</h2>
+          <p style="margin:22px 0 0; font-size:15px; line-height:2; color:#41607a; text-wrap:pretty">グロウリンクは、広告運用・SEO・サイト制作を一つのチームで担うデジタルマーケティングエージェンシーです。施策を分断せず、獲得単価と売上に直結する形で設計・運用します。2016年の創業から累計320社を支援し、運用総額は年間28億円を超えました。</p>
+          <p style="margin:16px 0 0; font-size:15px; line-height:2; color:#41607a; text-wrap:pretty">月次レポートは代行担当ではなく、施策を設計した責任者が直接ご説明します。数字の背景と次の一手が分かる状態を、常につくります。</p>
+          <div style="margin-top:26px; display:flex; gap:12px; flex-wrap:wrap">
+            <div style="padding:13px 30px; border-radius:999px; border:1.5px solid #1b9ad6; color:#1b9ad6; font-size:14px; font-weight:700; cursor:pointer" style-hover="background:#eaf6fc" onClick="{{ goAbout }}">会社概要を見る ›</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:84px 24px; background:#eaf6fc">
+      <div style="max-width:1080px; margin:0 auto">
+        <div style="text-align:center">
+          <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">SERVICES</div>
+          <h2 style="margin:12px 0 0; font-size:30px; font-weight:900">サービス</h2>
+          <p style="margin:12px 0 0; font-size:14px; color:#4d6d85; line-height:1.9">集客から改善までを一貫して支援します。<br />課題に合わせて必要な施策だけを組み合わせられます。</p>
+        </div>
+        <div style="margin-top:42px; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px">
+          <sc-for list="{{ services }}" as="s" hint-placeholder-count="9">
+            <div data-reveal="up" style="background:#fff; border-radius:14px; padding:28px 26px; cursor:pointer; box-shadow:0 6px 18px rgba(20,60,90,.06); transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s" style-hover="transform:translateY(-7px); box-shadow:0 18px 36px rgba(20,60,90,.14)" onClick="{{ goServices }}">
+              <div style="display:flex; align-items:center; gap:12px">
+                <div style="width:40px; height:40px; border-radius:10px; background:#eaf6fc; display:flex; align-items:center; justify-content:center; font-family:'Barlow',sans-serif; font-size:14px; font-weight:700; color:#1b9ad6">{{ s.no }}</div>
+                <div style="font-size:17px; font-weight:700">{{ s.title }}</div>
+              </div>
+              <p style="margin:16px 0 0; font-size:13px; line-height:1.95; color:#55728a; text-wrap:pretty">{{ s.body }}</p>
+              <div style="margin-top:16px; font-size:12px; color:#1b9ad6; font-weight:700">詳しく見る ›</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:84px 24px; background:#fff">
+      <div style="max-width:1080px; margin:0 auto">
+        <div style="text-align:center">
+          <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">PROCESS</div>
+          <h2 style="margin:12px 0 0; font-size:30px; font-weight:900">ご支援の流れ</h2>
+        </div>
+        <div style="margin-top:42px; display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:16px">
+          <sc-for list="{{ process }}" as="p" hint-placeholder-count="5">
+            <div data-reveal="up" style="border:1px solid #dbe9f1; border-radius:14px; padding:26px 22px; background:#fbfdfe; transition:transform .3s, border-color .3s, background .3s" style-hover="transform:translateY(-5px); border-color:#1b9ad6; background:#fff">
+              <div style="font-family:'Barlow',sans-serif; font-size:11px; letter-spacing:.26em; color:#1b9ad6">STEP {{ p.no }}</div>
+              <div style="margin-top:10px; font-size:17px; font-weight:700">{{ p.title }}</div>
+              <p style="margin:12px 0 0; font-size:13px; line-height:1.9; color:#55728a; text-wrap:pretty">{{ p.body }}</p>
+              <div style="margin-top:14px; font-size:11px; color:#7b96a9; font-family:'Barlow',sans-serif">{{ p.term }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:84px 24px; background:#f6fbfe">
+      <div style="max-width:1080px; margin:0 auto">
+        <div style="text-align:center">
+          <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">WORKS</div>
+          <h2 style="margin:12px 0 0; font-size:30px; font-weight:900">実績・事例</h2>
+        </div>
+        <div style="margin-top:40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:20px">
+          <sc-for list="{{ casesTop }}" as="c" hint-placeholder-count="3">
+            <div data-reveal="up" style="background:#fff; border-radius:14px; overflow:hidden; border:1px solid #e6eff5; cursor:pointer; transition:box-shadow .3s, transform .3s" style-hover="box-shadow:0 18px 36px rgba(20,60,90,.14); transform:translateY(-6px)" onClick="{{ goCases }}">
+              <div style="height:200px; background:#fff; border-bottom:1px solid #eef5f9; display:flex; align-items:center; justify-content:center; padding:14px">
+                <img src="{{ c.img }}" alt="{{ c.industry }}の事例イメージ" style="max-width:100%; max-height:100%; object-fit:contain" />
+              </div>
+              <div style="padding:22px 24px 26px">
+                <div style="display:flex; gap:8px; align-items:center">
+                  <div style="padding:4px 10px; border-radius:4px; background:#eaf6fc; color:#146b93; font-size:11px; font-weight:700">{{ c.industry }}</div>
+                  <div style="font-family:'Barlow',sans-serif; font-size:11px; color:#7b96a9">{{ c.date }}</div>
+                </div>
+                <div style="margin-top:14px; font-size:17px; font-weight:700; line-height:1.6">{{ c.title }}</div>
+                <div style="margin-top:16px; display:flex; gap:24px">
+                  <div><div style="font-size:11px; color:#6b8496">{{ c.m1label }}</div><div style="font-family:'Barlow',sans-serif; font-size:26px; font-weight:700; color:#1b9ad6">{{ c.m1 }}</div></div>
+                  <div><div style="font-size:11px; color:#6b8496">{{ c.m2label }}</div><div style="font-family:'Barlow',sans-serif; font-size:26px; font-weight:700; color:#1b9ad6">{{ c.m2 }}</div></div>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:36px; display:flex; justify-content:center">
+          <div style="padding:14px 34px; border-radius:999px; background:#1b9ad6; color:#fff; font-weight:700; font-size:14px; cursor:pointer" style-hover="background:#0f7fb5" onClick="{{ goCases }}">実績をすべて見る ›</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:84px 24px; background:#fff">
+      <div style="max-width:1080px; margin:0 auto">
+        <div style="text-align:center">
+          <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">VOICE</div>
+          <h2 style="margin:12px 0 0; font-size:30px; font-weight:900">お客様の声</h2>
+        </div>
+        <div style="margin-top:40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px">
+          <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+            <div data-reveal="zoom" style="border:1px solid #e6eff5; border-radius:14px; overflow:hidden; transition:transform .3s, box-shadow .3s" style-hover="transform:translateY(-5px); box-shadow:0 16px 32px rgba(20,60,90,.1)">
+              <div style="height:190px; background:#fff; border-bottom:1px solid #eef5f9; display:flex; align-items:center; justify-content:center; padding:14px">
+                <img src="{{ v.img }}" alt="お客様のイメージ" style="max-width:100%; max-height:100%; object-fit:contain" />
+              </div>
+              <div style="padding:22px 24px">
+                <p style="margin:0; font-size:13px; line-height:2; color:#41607a; text-wrap:pretty">{{ v.body }}</p>
+                <div style="margin-top:14px; font-size:12px; color:#6b8496">{{ v.name }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <sc-if value="{{ showMetrics }}" hint-placeholder-val="{{ true }}">
+    <section style="padding:70px 24px; background:#1b9ad6; color:#fff">
+      <div style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:28px; text-align:center">
+        <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="4">
+          <div data-reveal="up">
+            <div style="font-size:13px">{{ m.label }}</div>
+            <div style="margin-top:8px; display:flex; align-items:baseline; justify-content:center; gap:4px">
+              <div data-countup="" style="font-family:'Barlow',sans-serif; font-size:54px; font-weight:700; line-height:1">{{ m.value }}</div>
+              <div style="font-size:16px; font-weight:700">{{ m.unit }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    </sc-if>
+
+    <section style="padding:84px 24px; background:#f6fbfe">
+      <div style="max-width:820px; margin:0 auto">
+        <div style="text-align:center">
+          <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">FAQ</div>
+          <h2 style="margin:12px 0 0; font-size:30px; font-weight:900">よくあるご質問</h2>
+        </div>
+        <div style="margin-top:36px; display:flex; flex-direction:column; gap:12px">
+          <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+            <div data-reveal="up" style="background:#fff; border:1px solid #e6eff5; border-radius:12px; overflow:hidden; transition:border-color .25s, box-shadow .25s" style-hover="border-color:#cfe2ee; box-shadow:0 10px 22px rgba(20,60,90,.07)">
+              <div style="padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; cursor:pointer" onClick="{{ q.toggle }}" style-hover="background:#fbfdfe">
+                <div style="display:flex; gap:14px; align-items:center"><div style="font-family:'Barlow',sans-serif; font-size:17px; font-weight:700; color:#1b9ad6">Q</div><div style="font-size:15px; font-weight:700; line-height:1.6">{{ q.q }}</div></div>
+                <div style="font-family:'Barlow',sans-serif; font-size:20px; color:#1b9ad6">{{ q.sign }}</div>
+              </div>
+              <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:0 24px 22px 62px; font-size:14px; line-height:2; color:#41607a; text-wrap:pretty; animation:riseIn .45s ease both">{{ q.a }}</div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:84px 24px; background:#fff">
+      <div style="max-width:1080px; margin:0 auto">
+        <div style="text-align:center">
+          <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">NEWS</div>
+          <h2 style="margin:12px 0 0; font-size:30px; font-weight:900">新着情報</h2>
+        </div>
+        <div style="margin-top:32px; border-top:1px solid #e6eff5">
+          <sc-for list="{{ news }}" as="n" hint-placeholder-count="4">
+            <div data-reveal="left" style="padding:20px 4px; border-bottom:1px solid #e6eff5; display:flex; gap:20px; align-items:center; flex-wrap:wrap; transition:background .25s, padding-left .25s" style-hover="background:#fbfdfe; padding-left:12px">
+              <div style="font-family:'Barlow',sans-serif; font-size:12px; color:#7b96a9; width:92px">{{ n.date }}</div>
+              <div style="padding:4px 12px; border-radius:999px; background:#eaf6fc; color:#146b93; font-size:11px; font-weight:700">{{ n.tag }}</div>
+              <div style="font-size:15px; flex:1; min-width:200px; line-height:1.6">{{ n.title }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ SERVICES ══════════ -->
+  <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="padding:62px 24px; background:linear-gradient(180deg,#eaf6fc,#f6fbfe); text-align:center">
+      <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">SERVICES</div>
+      <h1 style="margin:12px 0 0; font-size:34px; font-weight:900">サービス</h1>
+      <p style="margin:14px auto 0; max-width:680px; font-size:14px; line-height:2; color:#4d6d85; text-wrap:pretty">集客・接客・改善の全工程を、同じチームが担当します。以下の9領域から必要な施策のみを組み合わせてご提供します。</p>
+    </section>
+
+    <section style="padding:48px 24px 8px; background:#fff">
+      <div style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="9">
+          <div data-reveal="pop" style="border:1px solid #dbe9f1; border-radius:10px; padding:14px 16px; font-size:13px; font-weight:700; display:flex; gap:10px; align-items:center; transition:transform .25s, border-color .25s, background .25s" style-hover="transform:translateY(-4px); border-color:#1b9ad6; background:#f6fbfe">
+            <span style="font-family:'Barlow',sans-serif; color:#1b9ad6">{{ s.no }}</span>{{ s.title }}
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:48px 24px 90px; background:#fff">
+      <div style="max-width:1080px; margin:0 auto; display:flex; flex-direction:column; gap:28px">
+        <sc-for list="{{ serviceDetails }}" as="d" hint-placeholder-count="3">
+          <div data-reveal="up" style="border:1px solid #e6eff5; border-radius:18px; overflow:hidden">
+            <div style="padding:26px 30px; background:#eaf6fc; display:flex; gap:16px; align-items:center; flex-wrap:wrap">
+              <div style="width:44px; height:44px; border-radius:12px; background:#1b9ad6; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Barlow',sans-serif; font-weight:700">{{ d.no }}</div>
+              <div>
+                <div style="font-size:22px; font-weight:900">{{ d.title }}</div>
+                <div style="font-family:'Barlow',sans-serif; font-size:11px; letter-spacing:.24em; color:#146b93">{{ d.en }}</div>
+              </div>
+              <img src="{{ d.img }}" alt="" style="margin-left:auto; height:110px; width:auto; mix-blend-mode:multiply" />
+            </div>
+            <div style="padding:30px; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:34px">
+              <div>
+                <div style="font-size:12px; font-weight:700; color:#1b9ad6; letter-spacing:.1em">OVERVIEW / 概要</div>
+                <p style="margin:12px 0 0; font-size:14px; line-height:2; color:#41607a; text-wrap:pretty">{{ d.overview }}</p>
+                <div style="margin-top:26px; font-size:12px; font-weight:700; color:#1b9ad6; letter-spacing:.1em">BENEFITS / 得られる成果</div>
+                <p style="margin:12px 0 0; font-size:14px; line-height:2; color:#41607a; text-wrap:pretty">{{ d.benefit }}</p>
+              </div>
+              <div>
+                <div style="font-size:12px; font-weight:700; color:#1b9ad6; letter-spacing:.1em">FEATURES / 特徴</div>
+                <div style="margin-top:12px; display:flex; flex-direction:column; gap:9px">
+                  <sc-for list="{{ d.features }}" as="f" hint-placeholder-count="4">
+                    <div style="display:flex; gap:10px; font-size:13.5px; line-height:1.8; color:#33546e"><span style="color:#1b9ad6">●</span>{{ f }}</div>
+                  </sc-for>
+                </div>
+                <div style="margin-top:26px; font-size:12px; font-weight:700; color:#1b9ad6; letter-spacing:.1em">DELIVERABLES / 納品物</div>
+                <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap">
+                  <sc-for list="{{ d.deliverables }}" as="x" hint-placeholder-count="3">
+                    <div style="padding:6px 12px; border-radius:999px; background:#f2f8fc; border:1px solid #dbe9f1; font-size:12px; color:#41607a">{{ x }}</div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+            <div style="padding:0 30px 30px">
+              <div style="padding:20px 24px; background:#fbfdfe; border:1px solid #e6eff5; border-radius:12px">
+                <div style="font-size:12px; font-weight:700; color:#1b9ad6; letter-spacing:.1em">PROCESS / 進め方</div>
+                <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+                  <sc-for list="{{ d.process }}" as="p" hint-placeholder-count="4">
+                    <div style="display:flex; align-items:center; gap:10px">
+                      <div style="padding:8px 16px; background:#fff; border:1px solid #dbe9f1; border-radius:8px; font-size:12.5px; font-weight:700">{{ p }}</div>
+                      <span style="color:#a9c3d2; font-family:'Barlow',sans-serif">›</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="margin-top:20px; display:flex; gap:14px; align-items:center; flex-wrap:wrap">
+                <div style="padding:14px 32px; border-radius:999px; background:#1b9ad6; color:#fff; font-size:14px; font-weight:700; cursor:pointer" style-hover="background:#0f7fb5" onClick="{{ goContact }}">このサービスを相談する ›</div>
+                <div style="font-size:12.5px; color:#54718a">{{ d.price }}</div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ CASES ══════════ -->
+  <sc-if value="{{ isCases }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="padding:62px 24px; background:linear-gradient(180deg,#eaf6fc,#f6fbfe); text-align:center">
+      <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">CASE STUDIES</div>
+      <h1 style="margin:12px 0 0; font-size:34px; font-weight:900">実績・事例</h1>
+      <p style="margin:14px auto 0; max-width:680px; font-size:14px; line-height:2; color:#4d6d85">課題・戦略・実施内容・成果までを公開しています。業種で絞り込みできます。</p>
+    </section>
+    <section style="padding:34px 24px 90px; background:#fff">
+      <div style="max-width:1080px; margin:0 auto">
+        <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center">
+          <sc-for list="{{ caseFilters }}" as="f" hint-placeholder-count="5">
+            <div style="padding:10px 22px; border-radius:999px; font-size:13px; font-weight:700; cursor:pointer; border:1.5px solid {{ f.border }}; background:{{ f.bg }}; color:{{ f.color }}" onClick="{{ f.onClick }}">{{ f.label }}</div>
+          </sc-for>
+        </div>
+        <div style="margin-top:36px; display:flex; flex-direction:column; gap:26px">
+          <sc-for list="{{ visibleCases }}" as="c" hint-placeholder-count="4">
+            <div data-reveal="up" style="border:1px solid #e6eff5; border-radius:18px; overflow:hidden; display:grid; grid-template-columns:{{ caseCols }}; transition:box-shadow .3s" style-hover="box-shadow:0 18px 38px rgba(20,60,90,.1)">
+              <div style="min-height:300px; background:#fff; display:flex; align-items:center; justify-content:center; padding:28px">
+                <img src="{{ c.img }}" alt="{{ c.industry }}の事例イメージ" style="width:100%; max-width:440px; height:auto; display:block" />
+              </div>
+              <div style="padding:32px">
+                <div style="display:flex; gap:8px; align-items:center">
+                  <div style="padding:4px 10px; border-radius:4px; background:#eaf6fc; color:#146b93; font-size:11px; font-weight:700">{{ c.industry }}</div>
+                  <div style="font-family:'Barlow',sans-serif; font-size:11px; color:#7b96a9">{{ c.date }}</div>
+                </div>
+                <h3 style="margin:14px 0 0; font-size:21px; font-weight:900; line-height:1.55">{{ c.title }}</h3>
+                <div style="margin-top:20px; display:flex; flex-direction:column; gap:14px">
+                  <div><div style="font-size:11px; font-weight:700; color:#1b9ad6; letter-spacing:.1em">CHALLENGE / 課題</div><p style="margin:6px 0 0; font-size:13.5px; line-height:1.95; color:#41607a; text-wrap:pretty">{{ c.challenge }}</p></div>
+                  <div><div style="font-size:11px; font-weight:700; color:#1b9ad6; letter-spacing:.1em">STRATEGY / 戦略</div><p style="margin:6px 0 0; font-size:13.5px; line-height:1.95; color:#41607a; text-wrap:pretty">{{ c.strategy }}</p></div>
+                  <div><div style="font-size:11px; font-weight:700; color:#1b9ad6; letter-spacing:.1em">SOLUTION / 実施内容</div><p style="margin:6px 0 0; font-size:13.5px; line-height:1.95; color:#41607a; text-wrap:pretty">{{ c.solution }}</p></div>
+                </div>
+                <div style="margin-top:22px; padding:18px 20px; background:#f6fbfe; border-radius:12px; display:flex; gap:28px; flex-wrap:wrap">
+                  <div><div style="font-size:11px; color:#6b8496">{{ c.m1label }}</div><div style="font-family:'Barlow',sans-serif; font-size:30px; font-weight:700; color:#1b9ad6">{{ c.m1 }}</div></div>
+                  <div><div style="font-size:11px; color:#6b8496">{{ c.m2label }}</div><div style="font-family:'Barlow',sans-serif; font-size:30px; font-weight:700; color:#1b9ad6">{{ c.m2 }}</div></div>
+                  <div><div style="font-size:11px; color:#6b8496">{{ c.m3label }}</div><div style="font-family:'Barlow',sans-serif; font-size:30px; font-weight:700; color:#1b9ad6">{{ c.m3 }}</div></div>
+                </div>
+                <p style="margin:16px 0 0; font-size:13px; line-height:1.95; color:#55728a; text-wrap:pretty">{{ c.result }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ PRICING ══════════ -->
+  <sc-if value="{{ isPricing }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="padding:62px 24px; background:linear-gradient(180deg,#eaf6fc,#f6fbfe); text-align:center">
+      <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">PRICING</div>
+      <h1 style="margin:12px 0 0; font-size:34px; font-weight:900">料金プラン</h1>
+      <p style="margin:14px auto 0; max-width:700px; font-size:14px; line-height:2; color:#4d6d85; text-wrap:pretty">月額は定額です。広告費に対する%課金は行いません。初月と2〜3ヶ月目の運用費は無料で、成果を確認してから継続をご判断いただけます。</p>
+    </section>
+
+    <section style="padding:48px 24px 20px; background:#fff">
+      <div style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:20px; align-items:stretch">
+        <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+          <div data-reveal="up" style="border:2px solid {{ p.border }}; border-radius:18px; padding:32px 28px; background:{{ p.bg }}; display:flex; flex-direction:column; transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s" style-hover="transform:translateY(-8px); box-shadow:0 22px 44px rgba(20,60,90,.16)">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+              <div style="font-size:20px; font-weight:900; color:{{ p.titleColor }}">{{ p.name }}</div>
+              <div style="padding:4px 12px; border-radius:999px; background:{{ p.badgeBg }}; color:{{ p.badgeColor }}; font-size:11px; font-weight:700">{{ p.badge }}</div>
+            </div>
+            <div style="margin-top:6px; font-size:12.5px; color:{{ p.subColor }}; line-height:1.8">{{ p.for }}</div>
+            <div style="margin-top:20px; display:flex; align-items:baseline; gap:6px; color:{{ p.titleColor }}">
+              <div style="font-size:14px; font-weight:700">月額</div>
+              <div style="font-family:'Barlow',sans-serif; font-size:46px; font-weight:700; line-height:1">{{ p.price }}</div>
+              <div style="font-size:15px; font-weight:700">万円〜</div>
+            </div>
+            <div style="margin-top:4px; font-size:11px; color:{{ p.subColor }}">税別 / 最低利用期間なし</div>
+            <div style="margin-top:22px; height:1px; background:{{ p.rule }}"></div>
+            <div style="margin-top:20px; display:flex; flex-direction:column; gap:10px; flex:1">
+              <sc-for list="{{ p.items }}" as="it" hint-placeholder-count="6">
+                <div style="display:flex; gap:10px; font-size:13px; line-height:1.75; color:{{ p.textColor }}"><span style="color:{{ p.tickColor }}">✓</span>{{ it }}</div>
+              </sc-for>
+            </div>
+            <div style="margin-top:26px; padding:15px; border-radius:999px; text-align:center; font-size:14px; font-weight:700; cursor:pointer; background:{{ p.btnBg }}; color:{{ p.btnColor }}; border:1.5px solid {{ p.btnBorder }}" onClick="{{ goContact }}">このプランで相談する ›</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:56px 24px; background:#fff">
+      <div style="max-width:1080px; margin:0 auto">
+        <h2 style="margin:0; font-size:24px; font-weight:900">プラン比較</h2>
+        <div style="margin-top:22px; overflow-x:auto">
+          <table style="width:100%; min-width:620px; border-collapse:collapse; font-size:13.5px">
+            <thead>
+              <tr>
+                <th style="text-align:left; padding:14px 16px; background:#f2f8fc; border:1px solid #e0edf4; font-size:12px; color:#2b5c78; width:240px">項目</th>
+                <th style="padding:14px 16px; background:#f2f8fc; border:1px solid #e0edf4; font-size:13px">スタート</th>
+                <th style="padding:14px 16px; background:#eaf6fc; border:1px solid #cfe2ee; font-size:13px; color:#0f6d97">グロース</th>
+                <th style="padding:14px 16px; background:#f2f8fc; border:1px solid #e0edf4; font-size:13px">パートナー</th>
+              </tr>
+            </thead>
+            <tbody>
+              <sc-for list="{{ compare }}" as="r" hint-placeholder-count="7">
+                <tr data-reveal="left">
+                  <td style="padding:14px 16px; border:1px solid #e0edf4; font-weight:700; color:#2b5c78">{{ r.k }}</td>
+                  <td style="padding:14px 16px; border:1px solid #e0edf4; text-align:center; color:#41607a">{{ r.a }}</td>
+                  <td style="padding:14px 16px; border:1px solid #cfe2ee; text-align:center; color:#41607a; background:#fbfdfe">{{ r.b }}</td>
+                  <td style="padding:14px 16px; border:1px solid #e0edf4; text-align:center; color:#41607a">{{ r.c }}</td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:20px 24px 70px; background:#fff">
+      <div style="max-width:1080px; margin:0 auto">
+        <h2 style="margin:0; font-size:24px; font-weight:900">スポット・オプション</h2>
+        <div style="margin-top:22px; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px">
+          <sc-for list="{{ addons }}" as="a" hint-placeholder-count="4">
+            <div data-reveal="up" style="border:1px solid #e6eff5; border-radius:14px; padding:24px; transition:transform .3s, border-color .3s" style-hover="transform:translateY(-5px); border-color:#1b9ad6">
+              <div style="font-size:16px; font-weight:700">{{ a.name }}</div>
+              <div style="margin-top:8px; font-family:'Barlow',sans-serif; font-size:24px; font-weight:700; color:#1b9ad6">{{ a.price }}</div>
+              <p style="margin:10px 0 0; font-size:12.5px; line-height:1.9; color:#55728a; text-wrap:pretty">{{ a.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:30px; padding:22px 26px; background:#f6fbfe; border:1px solid #e0edf4; border-radius:14px; font-size:13px; line-height:2; color:#41607a">
+          表示価格はすべて税別です。広告費は実費のお預かりとなり、手数料は月額に含まれます。初回ヒアリング後、課題と工数に応じた正式なお見積りを2営業日以内にご提出します。
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ ABOUT ══════════ -->
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="padding:62px 24px; background:linear-gradient(180deg,#eaf6fc,#f6fbfe); text-align:center">
+      <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">ABOUT US</div>
+      <h1 style="margin:12px 0 0; font-size:34px; font-weight:900">会社概要</h1>
+    </section>
+
+    <section style="padding:80px 24px; background:#fff">
+      <div style="max-width:880px; margin:0 auto">
+        <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">OUR STORY</div>
+        <h2 style="margin:12px 0 0; font-size:28px; font-weight:900; line-height:1.5">「代行」ではなく「共同運用」を選んだ理由</h2>
+        <p style="margin:22px 0 0; font-size:15px; line-height:2.1; color:#41607a; text-wrap:pretty">創業者の2人は、いずれも事業会社側でマーケティング責任者を務めていました。外部パートナーから届くレポートは整っているのに、翌月の打ち手が決まらない。その経験が、グロウリンクの出発点です。</p>
+        <p style="margin:18px 0 0; font-size:15px; line-height:2.1; color:#41607a; text-wrap:pretty">私たちは施策の設計者が運用と報告まで担当します。広告・SEO・サイト制作を別会社に分けないことで、数字の原因を最短で特定し、改善に回せる体制をつくりました。</p>
+      </div>
+    </section>
+
+    <section style="padding:70px 24px; background:#eaf6fc">
+      <div style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px">
+        <div data-reveal="left" style="background:#fff; border-radius:16px; padding:34px">
+          <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.3em; color:#1b9ad6">MISSION</div>
+          <div style="margin-top:14px; font-size:21px; font-weight:900; line-height:1.6">投資したマーケティング費用を、<br />確かめられる成果に変える。</div>
+          <p style="margin:16px 0 0; font-size:14px; line-height:2; color:#55728a; text-wrap:pretty">費用の行き先と成果の因果を、常に説明できる状態で運用します。</p>
+        </div>
+        <div data-reveal="right" style="background:#fff; border-radius:16px; padding:34px">
+          <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.3em; color:#1b9ad6">VISION</div>
+          <div style="margin-top:14px; font-size:21px; font-weight:900; line-height:1.6">2030年までに、<br />1,000社の成長基盤をつくる。</div>
+          <p style="margin:16px 0 0; font-size:14px; line-height:2; color:#55728a; text-wrap:pretty">再現性のある運用手法を体系化し、規模を問わず提供できる形にします。</p>
+        </div>
+      </div>
+      <div style="max-width:1080px; margin:20px auto 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px">
+        <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+          <div data-reveal="pop" style="background:#fff; border-radius:14px; padding:26px; transition:transform .3s" style-hover="transform:translateY(-5px)">
+            <div style="font-family:'Barlow',sans-serif; font-size:24px; font-weight:700; color:#1b9ad6">{{ v.no }}</div>
+            <div style="margin-top:8px; font-size:16px; font-weight:700">{{ v.title }}</div>
+            <p style="margin:10px 0 0; font-size:13px; line-height:1.95; color:#55728a; text-wrap:pretty">{{ v.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:80px 24px; background:#fff">
+      <div style="max-width:1080px; margin:0 auto">
+        <div style="text-align:center">
+          <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">TEAM</div>
+          <h2 style="margin:12px 0 0; font-size:28px; font-weight:900">メンバー紹介</h2>
+        </div>
+        <div style="margin-top:38px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px">
+          <sc-for list="{{ team }}" as="t" hint-placeholder-count="4">
+            <div data-reveal="zoom" style="border:1px solid #e6eff5; border-radius:14px; overflow:hidden; transition:transform .3s, box-shadow .3s" style-hover="transform:translateY(-6px); box-shadow:0 18px 34px rgba(20,60,90,.12)">
+              <div style="height:210px; background-image:repeating-linear-gradient(135deg,#f2f8fc 0 10px,#e8f3fa 10px 20px); display:flex; align-items:center; justify-content:center">
+                <div style="font-family:'Barlow',sans-serif; font-size:11px; letter-spacing:.2em; color:#7fa0b4">PORTRAIT</div>
+              </div>
+              <div style="padding:20px 22px">
+                <div style="font-size:11px; color:#1b9ad6; font-weight:700">{{ t.role }}</div>
+                <div style="margin-top:6px; font-size:17px; font-weight:700">{{ t.name }}</div>
+                <p style="margin:10px 0 0; font-size:12.5px; line-height:1.9; color:#55728a; text-wrap:pretty">{{ t.bio }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:70px 24px; background:#f6fbfe">
+      <div style="max-width:880px; margin:0 auto">
+        <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">HISTORY</div>
+        <h2 style="margin:12px 0 26px; font-size:28px; font-weight:900">沿革</h2>
+        <div style="display:flex; flex-direction:column">
+          <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="5">
+            <div data-reveal="left" style="display:flex; gap:22px; align-items:flex-start; padding:18px 0; border-bottom:1px solid #e0edf4">
+              <div style="font-family:'Barlow',sans-serif; font-size:17px; font-weight:700; color:#1b9ad6; width:64px; flex-shrink:0">{{ t.year }}</div>
+              <div style="font-size:14px; line-height:1.9; color:#33546e; text-wrap:pretty">{{ t.body }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:70px 24px 90px; background:#fff">
+      <div style="max-width:880px; margin:0 auto">
+        <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">COMPANY DATA</div>
+        <h2 style="margin:12px 0 26px; font-size:28px; font-weight:900">会社情報</h2>
+        <div style="border-top:1px solid #e6eff5">
+          <sc-for list="{{ companyData }}" as="r" hint-placeholder-count="7">
+            <div data-reveal="left" style="display:flex; gap:24px; padding:16px 4px; border-bottom:1px solid #e6eff5; flex-wrap:wrap">
+              <div style="width:150px; font-size:13px; font-weight:700; color:#2b5c78">{{ r.k }}</div>
+              <div style="flex:1; min-width:220px; font-size:14px; line-height:1.9; color:#41607a">{{ r.v }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ CONTACT ══════════ -->
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="padding:62px 24px; background:linear-gradient(180deg,#eaf6fc,#f6fbfe); text-align:center">
+      <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">CONTACT</div>
+      <h1 style="margin:12px 0 0; font-size:34px; font-weight:900">お問い合わせ</h1>
+      <p style="margin:14px auto 0; max-width:680px; font-size:14px; line-height:2; color:#4d6d85">初回のご相談・現状診断は無料です。2営業日以内に担当者よりご連絡します。</p>
+    </section>
+
+    <section style="padding:56px 24px 80px; background:#fff">
+      <div style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:40px">
+        <div data-reveal="left">
+          <div style="font-size:18px; font-weight:900">お問い合わせフォーム</div>
+          <div style="margin-top:22px; display:flex; flex-direction:column; gap:18px">
+            <div>
+              <label style="font-size:13px; font-weight:700; color:#2b5c78">会社名 <span style="color:#c9402f">*</span></label>
+              <input style="margin-top:8px; width:100%; padding:14px 16px; border:1px solid #cfe2ee; border-radius:10px; font-size:14px; outline:none" style-focus="border-color:#1b9ad6" />
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:16px">
+              <div>
+                <label style="font-size:13px; font-weight:700; color:#2b5c78">お名前 <span style="color:#c9402f">*</span></label>
+                <input style="margin-top:8px; width:100%; padding:14px 16px; border:1px solid #cfe2ee; border-radius:10px; font-size:14px; outline:none" style-focus="border-color:#1b9ad6" />
+              </div>
+              <div>
+                <label style="font-size:13px; font-weight:700; color:#2b5c78">電話番号</label>
+                <input style="margin-top:8px; width:100%; padding:14px 16px; border:1px solid #cfe2ee; border-radius:10px; font-size:14px; outline:none" style-focus="border-color:#1b9ad6" />
+              </div>
+            </div>
+            <div>
+              <label style="font-size:13px; font-weight:700; color:#2b5c78">メールアドレス <span style="color:#c9402f">*</span></label>
+              <input style="margin-top:8px; width:100%; padding:14px 16px; border:1px solid #cfe2ee; border-radius:10px; font-size:14px; outline:none" style-focus="border-color:#1b9ad6" />
+            </div>
+            <div>
+              <label style="font-size:13px; font-weight:700; color:#2b5c78">ご相談内容</label>
+              <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap">
+                <sc-for list="{{ topics }}" as="t" hint-placeholder-count="5">
+                  <div style="padding:9px 16px; border-radius:999px; font-size:12.5px; font-weight:700; cursor:pointer; border:1.5px solid {{ t.border }}; background:{{ t.bg }}; color:{{ t.color }}" onClick="{{ t.onClick }}">{{ t.label }}</div>
+                </sc-for>
+              </div>
+            </div>
+            <div>
+              <label style="font-size:13px; font-weight:700; color:#2b5c78">詳細 <span style="color:#c9402f">*</span></label>
+              <textarea rows="6" placeholder="現在の課題、月間の広告予算、開始希望時期などをご記入ください。" style="margin-top:8px; width:100%; padding:14px 16px; border:1px solid #cfe2ee; border-radius:10px; font-size:14px; outline:none; resize:vertical" style-focus="border-color:#1b9ad6"></textarea>
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start; font-size:12.5px; color:#55728a; line-height:1.8">
+              <input type="checkbox" style="margin-top:4px" /><div>個人情報の取り扱いについて同意します。</div>
+            </div>
+            <div style="padding:17px 40px; border-radius:999px; background:#1b9ad6; color:#fff; font-weight:700; font-size:16px; text-align:center; cursor:pointer; box-shadow:0 12px 26px rgba(27,154,214,.3)" style-hover="background:#0f7fb5" onClick="{{ submit }}">{{ submitLabel }}</div>
+          </div>
+        </div>
+
+        <div data-reveal="right">
+          <div style="border:1px solid #e6eff5; border-radius:16px; padding:30px">
+            <img src="images/contact.jpg" alt="笑顔で対応するサポート担当" style="display:block; width:100%; max-width:260px; height:auto; margin:0 auto 22px" />
+            <div style="font-size:18px; font-weight:900">直接のご連絡</div>
+            <div style="margin-top:20px; display:flex; gap:16px; flex-wrap:wrap">
+              <div style="flex:1; min-width:150px; border:1px solid #dbe9f1; border-radius:12px; padding:22px; text-align:center">
+                <div style="width:40px; height:40px; margin:0 auto; border-radius:50%; background:#eaf6fc; color:#1b9ad6; display:flex; align-items:center; justify-content:center; font-size:17px">✆</div>
+                <div style="margin-top:12px; font-family:'Barlow',sans-serif; font-size:21px; font-weight:700">03-4500-2180</div>
+                <div style="font-size:11px; color:#6b8496">平日 10:00 - 19:00</div>
+              </div>
+              <div style="flex:1; min-width:150px; border:1px solid #dbe9f1; border-radius:12px; padding:22px; text-align:center">
+                <div style="width:40px; height:40px; margin:0 auto; border-radius:50%; background:#eaf6fc; color:#1b9ad6; display:flex; align-items:center; justify-content:center; font-size:17px">✉</div>
+                <div style="margin-top:12px; font-size:14px; font-weight:700">info@growlink.co.jp</div>
+                <div style="font-size:11px; color:#6b8496">24時間受付</div>
+              </div>
+            </div>
+            <div style="margin-top:26px; font-size:14px; line-height:2; color:#41607a">
+              <div style="font-weight:700; color:#12324a">株式会社グロウリンク</div>
+              〒150-0043<br />東京都渋谷区道玄坂1-12-4 SKビル 8F
+            </div>
+            <div style="margin-top:16px; padding:14px 18px; background:#f6fbfe; border-radius:10px; font-size:12.5px; color:#41607a; line-height:1.8">
+              <span style="font-weight:700; color:#1b9ad6">最寄り駅</span><br />JR 渋谷駅 西口より徒歩5分 / 京王井の頭線 神泉駅より徒歩4分
+            </div>
+          </div>
+          <div style="margin-top:20px; height:300px; border:1px solid #dbe9f1; border-radius:16px; background-image:repeating-linear-gradient(135deg,#f2f8fc 0 10px,#e8f3fa 10px 20px); display:flex; align-items:center; justify-content:center">
+            <div style="font-family:'Barlow',sans-serif; font-size:11px; letter-spacing:.2em; color:#7fa0b4">GOOGLE MAPS EMBED</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:70px 24px 90px; background:#f6fbfe">
+      <div style="max-width:820px; margin:0 auto">
+        <div style="text-align:center">
+          <div style="font-family:'Barlow',sans-serif; font-size:12px; letter-spacing:.34em; color:#1b9ad6">FAQ</div>
+          <h2 style="margin:12px 0 0; font-size:28px; font-weight:900">お問い合わせについて</h2>
+        </div>
+        <div style="margin-top:32px; display:flex; flex-direction:column; gap:12px">
+          <sc-for list="{{ contactFaqs }}" as="q" hint-placeholder-count="4">
+            <div data-reveal="up" style="background:#fff; border:1px solid #e6eff5; border-radius:12px; padding:22px 24px; transition:transform .25s" style-hover="transform:translateY(-3px)">
+              <div style="display:flex; gap:14px; align-items:center"><div style="font-family:'Barlow',sans-serif; font-size:17px; font-weight:700; color:#1b9ad6">Q</div><div style="font-size:15px; font-weight:700; line-height:1.6">{{ q.q }}</div></div>
+              <div style="margin-top:12px; padding-left:34px; font-size:13.5px; line-height:2; color:#41607a; text-wrap:pretty">{{ q.a }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <!-- ══════════ CTA + FOOTER ══════════ -->
+  <section style="position:relative; padding:66px 24px; background:#86c9e8; overflow:hidden">
+    <div style="position:absolute; inset:0; background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.18) 0 16px,rgba(255,255,255,0) 16px 32px)"></div>
+    <div style="position:relative; max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px; align-items:center">
+      <div data-reveal="left">
+        <div style="font-size:30px; font-weight:900; color:#0c3c56">無料診断 受付中</div>
+        <p style="margin:12px 0 0; font-size:14px; line-height:1.95; color:#12495f">現在の広告アカウントとサイトを確認し、改善余地をレポートにしてお渡しします。費用は一切かかりません。</p>
+      </div>
+      <div style="display:flex; gap:16px; justify-content:flex-end; flex-wrap:wrap">
+        <div data-reveal="right" style="background:#fff; border-radius:14px; padding:22px 30px; text-align:center; box-shadow:0 10px 24px rgba(12,60,86,.14); animation:floatY 5s ease-in-out infinite">
+          <div style="width:40px; height:40px; margin:0 auto; border-radius:50%; background:#eaf6fc; color:#1b9ad6; display:flex; align-items:center; justify-content:center; font-size:17px">✆</div>
+          <div style="margin-top:10px; font-family:'Barlow',sans-serif; font-size:23px; font-weight:700; color:#12324a">03-4500-2180</div>
+          <div style="font-size:11px; color:#6b8496">平日 10:00 - 19:00</div>
+        </div>
+        <div data-reveal="right" style="background:#fff; border-radius:14px; padding:22px 30px; text-align:center; cursor:pointer; box-shadow:0 10px 24px rgba(12,60,86,.14); animation:floatY 5s .7s ease-in-out infinite; transition:background .25s" style-hover="background:#f6fbfe" onClick="{{ goContact }}">
+          <div style="width:40px; height:40px; margin:0 auto; border-radius:50%; background:#eaf6fc; color:#1b9ad6; display:flex; align-items:center; justify-content:center; font-size:17px">✉</div>
+          <div style="margin-top:10px; font-size:14px; font-weight:700; color:#12324a">メールでのお問い合わせ</div>
+          <div style="font-size:11px; color:#6b8496">24時間受付</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="position:fixed; right:24px; bottom:24px; z-index:90; display:flex; flex-direction:column; align-items:flex-end; gap:12px; animation:riseIn .6s .8s ease both">
+    <sc-if value="{{ fabOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="width:236px; background:#fff; border:1px solid #dbe9f1; border-radius:14px; box-shadow:0 18px 38px rgba(12,60,86,.2); overflow:hidden; animation:popIn .35s cubic-bezier(.2,.8,.2,1) both">
+        <div style="padding:12px 16px; background:#1b9ad6; color:#fff; font-size:12px; font-weight:700; letter-spacing:.04em">無料診断・ご相談窓口</div>
+        <a href="tel:0345002180" style="display:flex; gap:11px; align-items:center; padding:13px 16px; border-bottom:1px solid #eef5f9; color:#12324a" style-hover="background:#f6fbfe">
+          <span style="width:26px; height:26px; flex-shrink:0; border-radius:50%; background:#eaf6fc; color:#1b9ad6; display:flex; align-items:center; justify-content:center; font-size:12px">✆</span>
+          <span style="line-height:1.25"><span style="display:block; font-family:'Barlow',sans-serif; font-size:16px; font-weight:700">03-4500-2180</span><span style="display:block; font-size:10px; color:#6b8496">平日 10:00 - 19:00</span></span>
+        </a>
+        <a href="mailto:info@growlink.co.jp" style="display:flex; gap:11px; align-items:center; padding:13px 16px; border-bottom:1px solid #eef5f9; color:#12324a" style-hover="background:#f6fbfe">
+          <span style="width:26px; height:26px; flex-shrink:0; border-radius:50%; background:#eaf6fc; color:#1b9ad6; display:flex; align-items:center; justify-content:center; font-size:12px">✉</span>
+          <span style="line-height:1.25"><span style="display:block; font-size:13px; font-weight:700">メールで送る</span><span style="display:block; font-size:10px; color:#6b8496">24時間受付</span></span>
+        </a>
+        <div style="padding:13px 16px; display:flex; gap:11px; align-items:center; cursor:pointer" style-hover="background:#f6fbfe" onClick="{{ fabToContact }}">
+          <span style="width:26px; height:26px; flex-shrink:0; border-radius:50%; background:#eaf6fc; color:#1b9ad6; display:flex; align-items:center; justify-content:center; font-size:12px">▷</span>
+          <span style="line-height:1.25"><span style="display:block; font-size:13px; font-weight:700; color:#12324a">お問い合わせフォーム</span><span style="display:block; font-size:10px; color:#6b8496">2営業日以内に返信</span></span>
+        </div>
+      </div>
+    </sc-if>
+    <div style="display:flex; align-items:center; gap:14px; padding:22px 42px; border-radius:999px; background:#1b9ad6; color:#fff; font-size:22px; font-weight:700; letter-spacing:.05em; cursor:pointer; box-shadow:0 16px 34px rgba(27,154,214,.48); animation:ringPulse 3.2s 1.6s ease-out infinite; transition:transform .25s, background .25s" style-hover="background:#0f7fb5; transform:translateY(-3px)" onClick="{{ fabToggle }}">
+      <span style="font-size:26px">{{ fabIcon }}</span>{{ fabLabel }}
+    </div>
+  </div>
+
+  <footer style="background:#1b9ad6; color:#fff">
+    <div style="max-width:1180px; margin:0 auto; padding:34px 24px; display:flex; gap:24px; align-items:center; justify-content:center; flex-wrap:wrap; border-bottom:1px solid rgba(255,255,255,.25)">
+      <div style="display:flex; align-items:center; gap:10px">
+        <div style="width:24px; height:24px; border-radius:50%; background:#fff; color:#1b9ad6; display:flex; align-items:center; justify-content:center; font-size:12px">✆</div>
+        <div style="line-height:1.1">
+          <div style="font-size:10px">平日 10:00 - 19:00</div>
+          <div style="font-family:'Barlow',sans-serif; font-size:22px; font-weight:700">03-4500-2180</div>
+        </div>
+      </div>
+      <div style="padding:13px 26px; border-radius:999px; background:#fff; color:#12324a; font-size:13px; font-weight:700; cursor:pointer" style-hover="background:#eaf6fc" onClick="{{ goContact }}">無料診断を申し込む</div>
+    </div>
+    <div style="max-width:1180px; margin:0 auto; padding:22px 24px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap">
+      <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+        <div style="padding:8px 16px; font-size:13px; cursor:pointer; opacity:.94" style-hover="opacity:.7" onClick="{{ item.onClick }}">{{ item.label }}</div>
+      </sc-for>
+    </div>
+    <div style="background:#fff; padding:30px 24px; text-align:center">
+      <div style="display:inline-flex; align-items:center; gap:10px">
+        <div style="width:30px; height:30px; border:2px solid #1b9ad6; border-radius:8px; display:flex; align-items:center; justify-content:center">
+          <div style="width:9px; height:9px; background:#1b9ad6; transform:rotate(45deg)"></div>
+        </div>
+        <div style="line-height:1.15; text-align:left">
+          <div style="font-size:15px; font-weight:700; color:#12324a">株式会社グロウリンク</div>
+          <div style="font-family:'Barlow',sans-serif; font-size:9px; letter-spacing:.3em; color:#1b9ad6">GROWLINK</div>
+        </div>
+      </div>
+      <div style="margin-top:16px; font-family:'Barlow',sans-serif; font-size:11px; color:#7b96a9">© 2026 GROWLINK Inc. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;3&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;ヒーロー&quot;,&quot;label&quot;:&quot;無料期間の数字&quot;},&quot;showMetrics&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;ホーム&quot;,&quot;label&quot;:&quot;実績数値バーを表示&quot;},&quot;caseLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;横並び&quot;,&quot;縦積み&quot;],&quot;default&quot;:&quot;横並び&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;実績・事例&quot;,&quot;label&quot;:&quot;事例カードの並び&quot;}}">
+class Component extends DCLogic {
+  state = { page: "home", openFaq: 0, caseCat: "すべて", topic: "広告運用", sent: false, fabOpen: false };
+
+  go = (p) => { this.setState({ page: p }); if (typeof window !== "undefined") window.scrollTo({ top: 0 }); };
+
+  _anim = { up: "riseUp", left: "fadeLeft", right: "fadeRight", zoom: "zoomIn", pop: "popIn" };
+
+  componentDidMount() {
+    this._setupReveal();
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const d = document.documentElement;
+        const span = d.scrollHeight - d.clientHeight;
+        const bar = document.getElementById("om-progress");
+        if (bar) bar.style.width = (span > 0 ? (d.scrollTop / span) * 100 : 0) + "%";
+        const h = document.getElementById("om-header");
+        if (h) h.style.boxShadow = d.scrollTop > 12 ? "0 6px 22px rgba(20,60,90,.09)" : "none";
+      });
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    this._onScroll();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.page !== this.state.page) requestAnimationFrame(() => this._setupReveal());
+    else requestAnimationFrame(() => this._setupReveal());
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener("scroll", this._onScroll);
+    if (this._io) this._io.disconnect();
+  }
+
+  _countUp(el) {
+    const raw = (el.textContent || "").trim();
+    const target = parseFloat(raw.replace(/,/g, ""));
+    if (!isFinite(target)) return;
+    const dec = (raw.split(".")[1] || "").length;
+    const start = performance.now();
+    const step = (t) => {
+      const p = Math.min(1, (t - start) / 1100);
+      const e = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * e).toFixed(dec);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = raw;
+    };
+    el.textContent = dec ? (0).toFixed(dec) : "0";
+    requestAnimationFrame(step);
+  }
+
+  _setupReveal() {
+    if (typeof window === "undefined" || typeof IntersectionObserver === "undefined") return;
+    if (!this._io) {
+      this._io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          const el = en.target;
+          const kind = el.getAttribute("data-reveal") || "up";
+          const delay = parseInt(el.dataset.omDelay || "0", 10);
+          el.style.animation = (this._anim[kind] || "riseUp") + " .75s " + delay + "ms cubic-bezier(.2,.75,.2,1) both";
+          el.dataset.omDone = "1";
+          const nums = el.matches("[data-countup]") ? [el] : Array.from(el.querySelectorAll("[data-countup]"));
+          nums.forEach((n) => setTimeout(() => this._countUp(n), delay + 120));
+          this._io.unobserve(el);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    }
+    const groups = new Map();
+    document.querySelectorAll("[data-reveal]").forEach((el) => {
+      if (el.dataset.omInit === "1") return;
+      el.dataset.omInit = "1";
+      const key = el.parentElement;
+      const i = groups.get(key) || 0;
+      groups.set(key, i + 1);
+      el.dataset.omDelay = String(Math.min(i * 80, 480));
+      el.style.opacity = "0";
+      this._io.observe(el);
+    });
+  }
+
+  renderVals() {
+    const page = this.state.page;
+    const items = [
+      ["home", "ホーム"], ["services", "サービス"], ["pricing", "料金プラン"],
+      ["cases", "実績・事例"], ["about", "会社概要"], ["contact", "お問い合わせ"]
+    ];
+    const nav = items.map(([k, label]) => ({
+      label, onClick: () => this.go(k),
+      color: page === k ? "#1b9ad6" : "#33546e",
+      line: page === k ? "#1b9ad6" : "transparent"
+    }));
+
+    const services = [
+      { no: "01", title: "デジタルマーケティング", body: "獲得目標から逆算して媒体・予算・クリエイティブを設計し、全体の投資効率を管理します。" },
+      { no: "02", title: "SEO", body: "検索意図の分析から内部改善、コンテンツ制作までを一貫して実施。指名外の流入を積み上げます。" },
+      { no: "03", title: "Google広告 / PPC", body: "構造の再設計と入札戦略の検証で、同じ予算での獲得件数を伸ばします。" },
+      { no: "04", title: "SNSマーケティング", body: "Meta・LINE・X・TikTokを目的別に使い分け、認知から獲得までを繋ぎます。" },
+      { no: "05", title: "サイト制作・開発", body: "コーポレートからECまで、計測設計を前提としたサイトを設計・実装します。" },
+      { no: "06", title: "LP制作・改善", body: "訴求仮説を複数用意し、ABテストで勝ちパターンを特定します。" },
+      { no: "07", title: "ブランディング", body: "選ばれる理由を言語化し、名乗り方・トーン・ビジュアルを統一します。" },
+      { no: "08", title: "マーケティング戦略", body: "市場と競合を整理し、四半期単位の実行計画に落とし込みます。" },
+      { no: "09", title: "分析・レポーティング", body: "GA4とCRMを接続し、売上まで追えるダッシュボードを構築します。" }
+    ];
+
+    const serviceDetails = [
+      {
+        no: "01", title: "Google広告 / PPC運用", en: "PAID SEARCH & PPC", img: "images/svc-ads.jpg",
+        overview: "アカウント構造の再設計から始めます。検索語句とコンバージョンの実データを突き合わせ、成果が出ていない配信面を止め、獲得できている領域に予算を寄せます。運用担当は設計者本人が務めます。",
+        benefit: "支援開始から3ヶ月で獲得単価を平均24%改善しています。予算を増やさずに獲得件数を伸ばす前提で運用します。",
+        features: ["週次の入札・除外キーワード調整", "検索語句レポートの全件レビュー", "広告文は月8本以上を検証", "計測タグとCV定義の監査から実施"],
+        deliverables: ["アカウント診断レポート", "月次運用レポート", "改善提案書", "クリエイティブ原稿"],
+        process: ["現状診断", "構造設計", "配信開始", "週次改善", "月次報告"],
+        price: "月額20万円〜（広告費は実費）"
+      },
+      {
+        no: "02", title: "SEO / コンテンツ", en: "SEO & CONTENT", img: "images/svc-seo.jpg",
+        overview: "検索需要をクラスタ単位で整理し、既存ページの改善と新規コンテンツの制作を並行します。技術要件はエンジニアが直接確認し、実装可否まで含めて提案します。",
+        benefit: "平均12ヶ月で自然検索経由の商談数が2.4倍。広告依存度を下げ、獲得単価の平準化に寄与します。",
+        features: ["検索意図ベースのキーワード設計", "テクニカル監査と実装支援", "専門ライターによる記事制作", "内部リンクの継続的な最適化"],
+        deliverables: ["キーワードマップ", "技術改善要件書", "記事原稿", "順位・流入レポート"],
+        process: ["現状分析", "設計", "実装・制作", "効果検証"],
+        price: "月額25万円〜"
+      },
+      {
+        no: "03", title: "サイト制作・LP改善", en: "WEB & LANDING PAGE", img: "images/svc-web.jpg",
+        overview: "デザインの前に計測設計を決めます。どの数値をどう動かすためのページかを定義し、公開後の改善までを同じチームで担当します。CMSはお客様側で更新できる構成にします。",
+        benefit: "LP改善案件のCVR中位値は改善前比168%。公開後3ヶ月のテスト運用を標準で含みます。",
+        features: ["構成・ワイヤーからの設計", "スマートフォン優先の実装", "ABテスト前提の構成分割", "表示速度はLighthouse 90以上を基準"],
+        deliverables: ["構成案・ワイヤーフレーム", "デザインデータ", "実装一式", "テスト結果レポート"],
+        process: ["要件定義", "構成設計", "デザイン", "実装", "公開後改善"],
+        price: "LP 45万円〜 / サイト 120万円〜"
+      }
+    ];
+
+    const features = [
+      { no: "01", title: "設計者が運用まで担当", img: "images/feat-01.jpg" },
+      { no: "02", title: "定額制・%課金なし", img: "images/feat-02.jpg" },
+      { no: "03", title: "最短3日で運用開始", img: "images/feat-03.jpg" },
+      { no: "04", title: "広告とSEOを一体設計", img: "images/feat-04.jpg" },
+      { no: "05", title: "売上まで追える計測", img: "images/feat-05.jpg" }
+    ];
+
+    const process = [
+      { no: "01", title: "無料診断", body: "広告アカウントとサイトを確認し、改善余地をレポートにします。", term: "所要 3営業日" },
+      { no: "02", title: "戦略設計", body: "目標から逆算し、媒体構成・予算配分・KPIを決めます。", term: "1〜2週間" },
+      { no: "03", title: "実行準備", body: "計測タグ、クリエイティブ、配信設定を整えます。", term: "1〜2週間" },
+      { no: "04", title: "運用・改善", body: "週次で数値を確認し、入札とクリエイティブを調整します。", term: "継続" },
+      { no: "05", title: "月次報告", body: "設計責任者が数値の背景と次の施策を説明します。", term: "毎月" }
+    ];
+
+    const allCases = [
+      {
+        industry: "SaaS", date: "2026.07", img: "images/case-saas.jpg", title: "商談数を12ヶ月で2.4倍にしたBtoB SaaSの検索戦略",
+        challenge: "指名検索以外の流入がほぼなく、広告費を止めると商談が途絶える状態でした。", 
+        strategy: "比較検討層のキーワードを起点に、記事と事例ページを同時に整備する計画を策定しました。",
+        solution: "テクニカル改善を先行して実施し、その後8ヶ月で42本の記事と9本の導入事例を公開。広告側では指名防衛に予算を絞りました。",
+        m1label: "商談数", m1: "×2.4", m2label: "自然流入", m2: "+310%", m3label: "獲得単価", m3: "-38%",
+        result: "自然検索が主要な獲得経路となり、広告依存度は67%から29%まで低下しました。"
+      },
+      {
+        industry: "EC", date: "2026.05", img: "images/case-ec.jpg", title: "広告費を増やさずROASを183%に改善したアパレルEC",
+        challenge: "新規獲得はできていたものの、送料無料ラインを下回る注文が多く粗利が残らない状態でした。",
+        strategy: "商品別の粗利データを取り込み、利益が出る商品群に配信を集中させる方針に切り替えました。",
+        solution: "フィード設計を作り直し、価格帯別にキャンペーンを分割。セット購入を促すLPを4パターン制作しテストしました。",
+        m1label: "ROAS", m1: "183%", m2label: "客単価", m2: "+41%", m3label: "広告費", m3: "±0%",
+        result: "同一予算で月間粗利が1,900万円増加し、繁忙期以外も安定した水準を維持しています。"
+      },
+      {
+        industry: "人材", date: "2026.03", img: "images/case-hr.jpg", title: "応募単価を半分にした人材紹介会社のLP再設計",
+        challenge: "応募フォームの離脱率が82%に達し、広告の改善だけでは限界がありました。",
+        strategy: "応募前に知りたい情報を候補者調査で洗い出し、フォーム到達前に解消する構成へ変更しました。",
+        solution: "入力項目を14から6に削減し、職種別に3種類のLPを制作。エントリー後の連絡フローも併せて設計しました。",
+        m1label: "応募単価", m1: "-51%", m2label: "CVR", m2: "×2.8", m3label: "面談化率", m3: "+22%",
+        result: "月間応募数は38件から104件に増加。採用担当の対応工数も削減できました。"
+      },
+      {
+        industry: "医療", date: "2026.01", img: "images/case-medical.jpg", title: "エリア需要を捉え予約数を月180件増やした歯科クリニック",
+        challenge: "近隣の競合が増え、指名検索だけでは新患数が確保できなくなっていました。",
+        strategy: "診療メニュー別の検索需要を調査し、単価と需要のバランスが良い領域に投資を集中しました。",
+        solution: "メニュー別LPを5本制作し、地域名を含む検索への広告配信とMEO対策を同時に進めました。",
+        m1label: "月間予約", m1: "+180", m2label: "予約単価", m2: "-34%", m3label: "地図経由", m3: "×3.1",
+        result: "自費診療の比率が18%から31%に上昇し、売上構成が改善しました。"
+      }
+    ];
+    const cats = ["すべて", "SaaS", "EC", "人材", "医療"];
+    const caseFilters = cats.map(c => {
+      const on = this.state.caseCat === c;
+      return { label: c, onClick: () => this.setState({ caseCat: c }),
+        border: on ? "#1b9ad6" : "#dbe9f1", bg: on ? "#1b9ad6" : "#fff", color: on ? "#fff" : "#41607a" };
+    });
+    const visibleCases = this.state.caseCat === "すべて" ? allCases : allCases.filter(c => c.industry === this.state.caseCat);
+
+    const plans = [
+      { name: "スタート", badge: "月商1,000万円未満", for: "単一媒体からまず改善したい企業向け", price: "20",
+        items: ["広告運用 1媒体", "月次レポート・報告会", "計測タグ・CV定義の監査", "クリエイティブ月4本", "チャット相談 平日対応"] },
+      { name: "グロース", badge: "最も選ばれています", for: "広告とSEOを並行し獲得を伸ばす企業向け", price: "45",
+        items: ["広告運用 3媒体まで", "SEO設計・記事4本/月", "LP ABテスト 月1回", "週次レポート＋月次報告会", "GA4ダッシュボード構築", "クリエイティブ月10本"], primary: true },
+      { name: "パートナー", badge: "専任チーム", for: "事業計画から一緒に設計したい企業向け", price: "90",
+        items: ["媒体数の上限なし", "SEO・記事8本/月", "専任3名体制＋週次定例", "サイト改修の実装対応", "CRM連携・LTV分析", "経営会議への同席"] }
+    ].map(p => p.primary ? Object.assign({}, p, {
+        border: "#1b9ad6", bg: "#1b9ad6", titleColor: "#fff", subColor: "rgba(255,255,255,.88)", textColor: "#fff",
+        tickColor: "#fff", rule: "rgba(255,255,255,.35)", badgeBg: "#fff", badgeColor: "#0f6d97",
+        btnBg: "#fff", btnColor: "#0f6d97", btnBorder: "#fff"
+      }) : Object.assign({}, p, {
+        border: "#dbe9f1", bg: "#fff", titleColor: "#12324a", subColor: "#6b8496", textColor: "#41607a",
+        tickColor: "#1b9ad6", rule: "#e6eff5", badgeBg: "#eaf6fc", badgeColor: "#146b93",
+        btnBg: "#fff", btnColor: "#1b9ad6", btnBorder: "#1b9ad6"
+      }));
+
+    const compare = [
+      { k: "対応媒体数", a: "1媒体", b: "3媒体", c: "上限なし" },
+      { k: "SEO・コンテンツ", a: "—", b: "記事4本/月", c: "記事8本/月" },
+      { k: "レポート頻度", a: "月次", b: "週次＋月次", c: "週次＋定例" },
+      { k: "担当体制", a: "運用者1名", b: "2名", c: "専任3名" },
+      { k: "LP・サイト改修", a: "別途見積", b: "ABテスト月1回", c: "実装まで対応" },
+      { k: "初期費用", a: "無料", b: "無料", c: "無料" },
+      { k: "運用費の無料期間", a: "初月", b: "3ヶ月", c: "3ヶ月" }
+    ];
+
+    const addons = [
+      { name: "広告アカウント診断", price: "無料", body: "現状の構造・検索語句・計測設定を確認し、改善余地をレポートにします。" },
+      { name: "LP制作", price: "45万円〜", body: "構成設計からデザイン・実装まで。公開後3ヶ月のテスト運用を含みます。" },
+      { name: "GA4計測設計", price: "30万円〜", body: "CV定義の整理からタグ実装、ダッシュボード構築まで対応します。" },
+      { name: "SEOテクニカル監査", price: "25万円", body: "クロール・表示速度・構造化データを点検し、実装要件書を提出します。" }
+    ];
+
+    const voices = [
+      { body: "レポートを読んで終わりではなく、翌月に何をするかが毎回決まっている点が以前の会社と違います。社内の判断が早くなりました。", name: "SaaS事業会社 マーケティング責任者", img: "images/voice-saas.jpg" },
+      { body: "粗利データまで見て配信を組み替えてもらえたので、売上ではなく利益で判断できるようになりました。", name: "アパレルEC 代表取締役", img: "images/voice-ec.jpg" },
+      { body: "応募フォームの改修を提案からテストまで任せられました。採用のスピードが明らかに変わっています。" , name: "人材紹介会社 事業部長", img: "images/voice-hr.jpg" }
+    ];
+
+    const metrics = [
+      { label: "支援企業数（累計）", value: "320", unit: "社" },
+      { label: "年間運用総額", value: "28", unit: "億円" },
+      { label: "契約継続率", value: "94", unit: "%" },
+      { label: "獲得単価 平均改善", value: "24", unit: "%" }
+    ];
+
+    const faqSrc = [
+      { q: "最低の契約期間はありますか。", a: "ありません。月単位でのご契約となり、解約のご連絡は当月末までにいただければ翌月から停止します。" },
+      { q: "広告費に対する手数料はかかりますか。", a: "かかりません。月額定額制のため、広告費を増やしても料金は変わりません。広告費は実費のお預かりです。" },
+      { q: "運用費3ヶ月無料の条件を教えてください。", a: "グロース以上のプランで初回ご契約の企業様が対象です。期間中に成果が確認できない場合、そのまま終了いただけます。" },
+      { q: "既存のサイトや広告アカウントはそのまま使えますか。", a: "はい。アカウントはお客様名義のまま運用します。解約後もそのままご利用いただけます。" },
+      { q: "支援開始までどのくらいかかりますか。", a: "最短でヒアリングから3日です。計測設計が必要な場合は1〜2週間を目安にご案内します。" }
+    ];
+    const faqs = faqSrc.map((f, i) => ({
+      q: f.q, a: f.a, open: this.state.openFaq === i, sign: this.state.openFaq === i ? "−" : "＋",
+      toggle: () => this.setState({ openFaq: this.state.openFaq === i ? -1 : i })
+    }));
+
+    const news = [
+      { date: "2026.09.10", tag: "お知らせ", title: "渋谷オフィスを移転し、専任チーム体制を2部門増設しました" },
+      { date: "2026.08.22", tag: "セミナー", title: "『定額制で回すBtoB広告運用』オンラインセミナーを開催します" },
+      { date: "2026.07.15", tag: "実績", title: "支援企業数が累計320社を超えました" },
+      { date: "2026.06.30", tag: "メディア", title: "マーケティング専門誌にてSEOと広告の統合運用について寄稿しました" }
+    ];
+
+    const values = [
+      { no: "01", title: "数字で会話する", body: "感覚ではなく、実データを根拠に提案します。" },
+      { no: "02", title: "設計者が運用する", body: "提案と実行を分けません。責任の所在を明確にします。" },
+      { no: "03", title: "止める判断をする", body: "成果が出ない施策は、続けずに止めることを提案します。" },
+      { no: "04", title: "引き継げる形で残す", body: "アカウントも知見も、お客様側に残る形で運用します。" }
+    ];
+
+    const team = [
+      { role: "代表取締役 / Strategy", name: "氏名を入力", bio: "事業会社でマーケティング責任者を7年務めた後、2016年にグロウリンクを設立。" },
+      { role: "取締役 / Performance", name: "氏名を入力", bio: "大手代理店で累計180アカウントの運用を担当。広告設計と入札戦略の責任者。" },
+      { role: "SEO Director", name: "氏名を入力", bio: "BtoB・医療領域のSEOを専門とし、テクニカル改善からコンテンツ設計まで統括。" },
+      { role: "Creative Director", name: "氏名を入力", bio: "LP・サイト制作を担当。計測設計を前提としたデザインを設計する。" }
+    ];
+
+    const timeline = [
+      { year: "2016", body: "東京都渋谷区にて株式会社グロウリンクを設立。広告運用支援を開始。" },
+      { year: "2018", body: "SEO・コンテンツ事業を開始し、広告とSEOの統合支援体制を構築。" },
+      { year: "2020", body: "サイト制作部門を新設。計測設計から実装までの一貫提供を開始。" },
+      { year: "2023", body: "支援企業数が累計200社を突破。定額制プランへ料金体系を一本化。" },
+      { year: "2026", body: "支援企業数320社、年間運用総額28億円。専任チーム制を拡大。" }
+    ];
+
+    const companyData = [
+      { k: "会社名", v: "株式会社グロウリンク（GROWLINK Inc.）" },
+      { k: "設立", v: "2016年4月" },
+      { k: "代表取締役", v: "氏名を入力" },
+      { k: "資本金", v: "3,000万円" },
+      { k: "従業員数", v: "48名（2026年9月現在）" },
+      { k: "所在地", v: "〒150-0043 東京都渋谷区道玄坂1-12-4 SKビル 8F" },
+      { k: "事業内容", v: "デジタル広告運用 / SEO・コンテンツ制作 / Webサイト・LP制作 / マーケティング戦略立案 / 分析基盤構築" },
+      { k: "主要取引先", v: "SaaS・EC・人材・医療・不動産領域の事業会社 320社（累計）" }
+    ];
+
+    const topicList = ["広告運用", "SEO", "サイト・LP制作", "料金の相談", "その他"];
+    const topics = topicList.map(t => {
+      const on = this.state.topic === t;
+      return { label: t, onClick: () => this.setState({ topic: t }),
+        border: on ? "#1b9ad6" : "#dbe9f1", bg: on ? "#1b9ad6" : "#fff", color: on ? "#fff" : "#41607a" };
+    });
+
+    const contactFaqs = [
+      { q: "返信までどのくらいかかりますか。", a: "2営業日以内に担当者よりご連絡します。お急ぎの場合はお電話をご利用ください。" },
+      { q: "相談だけでも問題ありませんか。", a: "問題ありません。現状の課題整理のみのご相談も多くいただいています。無料診断のみで終了いただいても費用は発生しません。" },
+      { q: "オンラインでの打ち合わせは可能ですか。", a: "可能です。Google Meet・Zoom・Teamsに対応しています。全国からご依頼いただいています。" },
+      { q: "見積りはいつもらえますか。", a: "初回ヒアリング後、課題と工数を確認したうえで2営業日以内にご提出します。" }
+    ];
+
+    return {
+      nav, isHome: page === "home", isServices: page === "services", isCases: page === "cases",
+      isPricing: page === "pricing", isAbout: page === "about", isContact: page === "contact",
+      goHome: () => this.go("home"), goServices: () => this.go("services"), goCases: () => this.go("cases"),
+      goPricing: () => this.go("pricing"), goAbout: () => this.go("about"), goContact: () => this.go("contact"),
+      features, services, serviceDetails, process, casesTop: allCases.slice(0, 3), caseFilters, visibleCases,
+      plans, compare, addons, voices, metrics, faqs, news, values, team, timeline, companyData,
+      topics, contactFaqs,
+      fabOpen: this.state.fabOpen,
+      fabIcon: this.state.fabOpen ? "×" : "✉",
+      fabLabel: this.state.fabOpen ? "閉じる" : "無料相談",
+      fabToggle: () => this.setState({ fabOpen: !this.state.fabOpen }),
+      fabToContact: () => { this.setState({ fabOpen: false }); this.go("contact"); },
+      marqueeLoop: (() => { const a = ["SaaS", "EC・D2C", "人材", "医療・クリニック", "不動産", "製造", "教育", "金融", "BtoBサービス", "飲食", "美容", "士業"]; return a.concat(a); })(),
+      heroNumber: this.props.heroNumber ?? "3",
+      showMetrics: this.props.showMetrics ?? true,
+      caseCols: (this.props.caseLayout ?? "横並び") === "縦積み" ? "1fr" : "repeat(auto-fit,minmax(300px,1fr))",
+      submitLabel: this.state.sent ? "送信しました（デモ）" : "無料診断を申し込む",
+      submit: () => this.setState({ sent: true })
+    };
+  }
+}
+
+</script>
+</body>
+</html>

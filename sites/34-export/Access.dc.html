@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&display=block">
+<script src="./image-slot.js"></script>
+<script src="./anim.js"></script>
+<link rel="stylesheet" href="./responsive.css">
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:#fff;color:#2b2f45;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a2170;text-decoration:none}
+a:hover{color:#2b45c9}
+input,select,textarea,button{font-family:inherit}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="access" hint-size="100%,72px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+<main>
+<section data-screen-label="Access Hero" style="padding:40px clamp(16px,2vw,40px) 0">
+  <div class="sub-hero" style="position:relative;border-radius:20px;overflow:hidden;min-height:clamp(240px,22vw,360px);background:linear-gradient(90deg,#f4f6fd,#e1e6fb);display:flex;align-items:center">
+    <div class="sub-hero-img" style="position:absolute;top:0;right:0;bottom:0;width:56%;clip-path:polygon(14% 0,100% 0,100% 100%,0 100%)"><image-slot id="access-hero" src="images/staff-smile.jpg" shape="rect" placeholder="クリニック外観・駅からの道" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+    <div class="sub-hero-txt" style="position:relative;padding:40px clamp(24px,4vw,70px);pointer-events:none">
+      <span style="font-family:Outfit,sans-serif;font-size:clamp(40px,5vw,80px);font-weight:500;color:#1a2170;line-height:1">Access</span>
+      <h1 style="margin:14px 0 0;font-size:clamp(22px,2vw,30px);font-weight:700;color:#1a2170;letter-spacing:.1em">アクセス・お問い合わせ</h1>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:18px auto 0;font-size:12px;color:#666;display:flex;gap:8px"><a href="Aoba%20Clinic.dc.html">ホーム</a><span>›</span><span>アクセス・お問い合わせ</span></div>
+</section>
+
+<section style="padding:clamp(60px,6vw,100px) clamp(20px,4vw,40px)">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,5vw,64px);align-items:start">
+    <div style="position:relative;aspect-ratio:57/49;border-radius:20px;overflow:hidden;background:#eceef5"><iframe src="https://maps.google.com/maps?q=東京都世田谷区桜ヶ丘2-8-14&z=16&output=embed" title="あおば内科クリニックの地図" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div>
+    <div>
+      <div style="border-left:5px solid #1a2170;padding-left:18px;margin-bottom:22px"><div style="font-size:22px;font-weight:700;color:#1a2170;letter-spacing:.06em">診療時間</div><div style="font-family:Outfit,sans-serif;font-size:12px;color:#1a2170">Schedule</div></div>
+      <div style="border-top:1px solid #d9dce8">
+        <div style="display:grid;grid-template-columns:1.9fr repeat(6,1fr);padding:14px 0;border-bottom:1px solid #d9dce8;font-weight:700;font-size:15px;color:#222;text-align:center"><span></span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span></div>
+        <sc-for list="{{ schedule }}" as="row" hint-placeholder-count="2">
+          <div style="display:grid;grid-template-columns:1.9fr repeat(6,1fr);align-items:center;padding:14px 0;border-bottom:1px solid #d9dce8;text-align:center">
+            <span class="sched-time" style="font-family:Outfit,sans-serif;font-size:15px;color:#1a2170;font-weight:500;text-align:left;padding-left:20px;white-space:nowrap">{{ row.time }}</span>
+            <sc-for list="{{ row.days }}" as="d" hint-placeholder-count="6">
+              <span style="display:flex;justify-content:center">
+                <sc-if value="{{ d.on }}" hint-placeholder-val="{{ true }}"><span style="width:14px;height:14px;border-radius:50%;background:#1a2170;display:block"></span></sc-if>
+                <sc-if value="{{ d.off }}" hint-placeholder-val="{{ false }}"><span style="width:12px;height:2px;background:#1a2170;display:block"></span></sc-if>
+              </span>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:14px 0 0;font-size:13px;line-height:1.7;color:#333">※木曜・土曜は午前のみ。日曜・祝日は休診日となります。<br>※受付は診療終了の30分前までです。</p>
+      <dl style="margin:32px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0;font-size:15px;line-height:1.8;border-top:1px solid #e3e6f0">
+        <dt style="padding:14px 18px 14px 0;border-bottom:1px solid #e3e6f0;font-weight:700;color:#1a2170;white-space:nowrap">住所</dt><dd style="margin:0;padding:14px 0;border-bottom:1px solid #e3e6f0;color:#333">〒154-0000 東京都世田谷区桜ヶ丘2-8-14<br>あおばメディカルビル2F</dd>
+        <dt style="padding:14px 18px 14px 0;border-bottom:1px solid #e3e6f0;font-weight:700;color:#1a2170;white-space:nowrap">電話</dt><dd style="margin:0;padding:14px 0;border-bottom:1px solid #e3e6f0;color:#333">TEL. 03-0000-0000 / FAX. 03-0000-0001</dd>
+        <dt style="padding:14px 18px 14px 0;border-bottom:1px solid #e3e6f0;font-weight:700;color:#1a2170;white-space:nowrap">休診日</dt><dd style="margin:0;padding:14px 0;border-bottom:1px solid #e3e6f0;color:#333">木曜午後・土曜午後・日曜・祝日</dd>
+      </dl>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:48px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+    <div style="background:#f1f3fa;border-radius:14px;padding:26px 26px"><div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:#1a2170"><span style="font-family:'Material Symbols Rounded';font-size:26px;font-variation-settings:'FILL' 1">train</span>電車でお越しの方</div><p style="margin:12px 0 0;font-size:14px;line-height:1.9;color:#333">桜ヶ丘駅 南口を出て、駅前通りを直進。2つ目の信号を右へ、徒歩約3分です。1階に調剤薬局のあるビルの2階です。</p></div>
+    <div style="background:#f1f3fa;border-radius:14px;padding:26px 26px"><div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:#1a2170"><span style="font-family:'Material Symbols Rounded';font-size:26px;font-variation-settings:'FILL' 1">directions_bus</span>バスでお越しの方</div><p style="margin:12px 0 0;font-size:14px;line-height:1.9;color:#333">「桜ヶ丘二丁目」バス停より徒歩1分です。</p></div>
+    <div style="background:#f1f3fa;border-radius:14px;padding:26px 26px"><div style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:#1a2170"><span style="font-family:'Material Symbols Rounded';font-size:26px;font-variation-settings:'FILL' 1">local_parking</span>お車でお越しの方</div><p style="margin:12px 0 0;font-size:14px;line-height:1.9;color:#333">ビル隣の提携駐車場をご利用ください。受付で駐車券をご提示いただくと2時間無料です。</p></div>
+  </div>
+</section>
+
+<section id="contact" style="background:#faf9f5;padding:clamp(70px,7vw,110px) clamp(20px,4vw,40px)">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,5vw,80px);align-items:start">
+    <div>
+      <span style="font-family:Outfit,sans-serif;font-size:clamp(44px,4.6vw,72px);font-weight:500;color:#1a2170;line-height:1">Contact</span>
+      <h2 style="margin:22px 0 0;font-size:clamp(22px,1.9vw,28px);font-weight:700;color:#1a2170;letter-spacing:.06em;line-height:1.6">健康のこと、まずは<br>お気軽にご相談ください</h2>
+      <p style="margin:18px 0 0;font-size:15px;line-height:2;color:#333;text-wrap:pretty">受診のご相談や、健康診断・予防接種のご予約はこちらのフォームから承ります。内容を確認のうえ、2営業日以内にスタッフよりご連絡いたします。</p>
+      <p style="margin:14px 0 0;font-size:13px;line-height:1.8;color:#666;text-wrap:pretty">※急な症状や当日の受診をご希望の方は、お電話でご連絡ください。<br>※強い胸の痛みや意識の異常など緊急の場合は、119番へご連絡ください。</p>
+      <a href="tel:0300000000" style="margin-top:24px;display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 24px;border-radius:999px;background:#fff;color:#1a2170;box-shadow:0 2px 10px rgba(26,33,112,.06)"><span style="font-family:'Material Symbols Rounded';font-size:22px">call</span><span style="font-family:Outfit,sans-serif;font-size:20px;font-weight:500">03-0000-0000</span></a>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:clamp(24px,3vw,40px);box-shadow:0 2px 14px rgba(26,33,112,.05)">
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onSubmit }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;color:#1a2170">お名前<input required="" name="name" autocomplete="name" placeholder="山田 花子" style="height:50px;padding:0 16px;border:1px solid #d4d8e6;border-radius:8px;font-size:15px;font-weight:400;color:#222;background:#fff;outline:none" style-focus="border-color:#2b45c9;box-shadow:0 0 0 3px rgba(43,69,201,.12)"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;color:#1a2170">電話番号<input required="" type="tel" name="tel" autocomplete="tel" placeholder="090-0000-0000" style="height:50px;padding:0 16px;border:1px solid #d4d8e6;border-radius:8px;font-size:15px;font-weight:400;color:#222;background:#fff;outline:none" style-focus="border-color:#2b45c9;box-shadow:0 0 0 3px rgba(43,69,201,.12)"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;color:#1a2170">メールアドレス<input required="" type="email" name="email" autocomplete="email" placeholder="example@mail.com" style="height:50px;padding:0 16px;border:1px solid #d4d8e6;border-radius:8px;font-size:15px;font-weight:400;color:#222;background:#fff;outline:none" style-focus="border-color:#2b45c9;box-shadow:0 0 0 3px rgba(43,69,201,.12)"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;color:#1a2170">ご希望日<input type="date" name="date" style="height:50px;padding:0 16px;border:1px solid #d4d8e6;border-radius:8px;font-size:15px;font-weight:400;color:#222;background:#fff;outline:none" style-focus="border-color:#2b45c9;box-shadow:0 0 0 3px rgba(43,69,201,.12)"></label>
+          <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;color:#1a2170">ご相談内容
+            <select name="reason" style="height:50px;padding:0 16px;border:1px solid #d4d8e6;border-radius:8px;font-size:15px;font-weight:400;color:#222;background:#fff;outline:none">
+              <option>一般内科の受診について</option><option>胃カメラ・超音波検査について</option><option>健康診断・人間ドック</option><option>予防接種</option><option>生活習慣病のご相談</option><option>その他</option>
+            </select>
+          </label>
+          <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;color:#1a2170">メッセージ<textarea name="message" rows="5" placeholder="気になる症状や、ご質問などをご記入ください" style="padding:14px 16px;border:1px solid #d4d8e6;border-radius:8px;font-size:15px;font-weight:400;color:#222;background:#fff;outline:none;resize:vertical;line-height:1.8" style-focus="border-color:#2b45c9;box-shadow:0 0 0 3px rgba(43,69,201,.12)"></textarea></label>
+          <button type="submit" style="grid-column:1/-1;justify-self:center;height:56px;padding:0 56px;border:0;border-radius:999px;background:#1a2170;color:#fff;font-size:15px;font-weight:700;letter-spacing:.1em;cursor:pointer;display:flex;align-items:center;gap:10px;transition:background .25s,transform .25s" style-hover="background:#2b45c9;transform:translateY(-2px)">内容を送信する<span style="font-family:'Material Symbols Rounded';font-size:20px">chevron_right</span></button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:40px 0">
+          <span style="font-family:'Material Symbols Rounded';font-size:56px;color:#1a2170;font-variation-settings:'FILL' 1">check_circle</span>
+          <h3 style="margin:14px 0 0;font-size:20px;font-weight:700;color:#1a2170">送信が完了しました</h3>
+          <p style="margin:12px 0 0;font-size:14px;line-height:1.9;color:#333">お問い合わせありがとうございます。<br>2営業日以内にスタッフよりご連絡いたします。</p>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" show-cta="{{ false }}" hint-size="100%,160px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false };
+  renderVals() {
+    const mk = s => s.split('').map(c => ({ on: c === '1', off: c !== '1' }));
+    return {
+      schedule: [{ time: '9:00–13:00', days: mk('111111') }, { time: '15:00–18:30', days: mk('111010') }],
+      sent: this.state.sent, notSent: !this.state.sent,
+      onSubmit: e => { e.preventDefault(); this.setState({ sent: true }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

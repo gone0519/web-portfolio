@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#eeede5;color:#2a2a24;font-family:"Shippori Mincho",serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:#1e7a45}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="services" hint-size="100%,0px"></dc-import>
+<main>
+<section data-screen-label="Services Hero" style="position:relative;height:clamp(440px,62vh,640px);overflow:hidden;background:#1a4d34;color:#f6f2e6">
+  <div data-parallax="0.16" style="position:absolute;inset:-14% 0"><image-slot id="services-hero" src="images/consult-patient-wide.jpg" data-kenburns="" shape="rect" placeholder="ページ写真（診察室）"></image-slot></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(18,40,28,.9) 0%,rgba(18,40,28,.6) 55%,rgba(18,40,28,.35));pointer-events:none"></div>
+  <div aria-hidden="true" class="pg-outline" data-drift="0.4" style="position:absolute;right:-2vw;bottom:-.14em;white-space:nowrap;font-family:'EB Garamond',serif;font-style:italic;font-size:clamp(110px,17vw,300px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(216,192,138,.55);pointer-events:none">Services</div>
+  <div style="position:absolute;left:0;right:0;bottom:clamp(48px,7vh,80px);max-width:1124px;margin:0 auto;padding:0 clamp(16px,4vw,40px);pointer-events:none">
+    <p data-reveal="up" data-delay="500" style="margin:0;font-family:'EB Garamond',serif;font-style:italic;font-size:clamp(20px,2vw,30px);letter-spacing:.06em;color:#d8c08a">Medical Services</p>
+    <h1 class="pg-h1" data-reveal="mask" data-delay="700" style="margin:14px 0 0;font-size:clamp(36px,4.2vw,64px);font-weight:700;letter-spacing:.2em">診療内容</h1>
+    <p data-reveal="fade" data-delay="1000" style="margin:22px 0 0;font-size:13px;letter-spacing:.08em;pointer-events:auto"><a href="Dermatology%20Clinic.dc.html">トップ</a>　／　診療内容</p>
+  </div>
+</section>
+
+<section style="padding:clamp(72px,8vw,120px) clamp(16px,4vw,40px) 0">
+  <div style="max-width:1124px;margin:0 auto">
+    <p data-reveal="" class="lead-c" style="margin:0 auto;max-width:760px;text-align:center;font-size:clamp(16px,1.3vw,18px);line-height:2.1;letter-spacing:.06em;text-wrap:pretty">湿疹やかゆみ、ニキビ、できものなど、日常的な肌のお悩みを幅広く診療しています。「こんなことで受診していいのかな」と迷われる症状も、どうぞお気軽にご相談ください。</p>
+    <nav data-reveal="" aria-label="診療カテゴリ" style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:40px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
+        <a href="{{ s.anchor }}" style="font-size:14px;letter-spacing:.06em;padding:12px 24px;border-radius:999px;border:1px solid #1a4d34;color:#1a4d34;transition:background .3s, color .3s;min-height:46px;display:flex;align-items:center" style-hover="background:#1a4d34;color:#f6f2e6">{{ s.name }}</a>
+      </sc-for>
+    </nav>
+  </div>
+</section>
+
+<section aria-label="診療科目一覧" style="padding:clamp(56px,6vw,90px) clamp(16px,4vw,40px) clamp(80px,9vw,120px)">
+  <div style="max-width:1124px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
+      <article id="{{ s.id }}" data-reveal="" data-lift="" data-zoom="" style="background:#faf8f3;border-radius:4px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));scroll-margin-top:110px">
+        <div style="min-height:300px;position:relative"><image-slot id="{{ s.slot }}" src="{{ s.src }}" shape="rect" placeholder="{{ s.ph }}"></image-slot></div>
+        <div style="padding:clamp(32px,4vw,52px) clamp(24px,4vw,52px)">
+          <p style="margin:0;font-family:'EB Garamond',serif;font-size:15px;letter-spacing:.14em;color:#1e7a45">{{ s.no }} — {{ s.en }}</p>
+          <h2 style="margin:10px 0 0;font-size:clamp(20px,1.8vw,24px);font-weight:600;letter-spacing:.12em">{{ s.name }}</h2>
+          <p style="margin:18px 0 0;font-size:15px;line-height:2.05;letter-spacing:.03em;text-wrap:pretty">{{ s.desc }}</p>
+          <p style="margin:24px 0 10px;font-size:13px;letter-spacing:.1em;color:#5a5a50">主な症状・疾患</p>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="4">
+              <li style="font-size:14px;padding:6px 16px;border:1px solid #1a4d34;border-radius:999px;color:#1a4d34">{{ it }}</li>
+            </sc-for>
+          </ul>
+          <a href="Access.dc.html#reservation" style="display:flex;align-items:center;gap:10px;margin-top:28px;font-size:14px;letter-spacing:.08em">この症状について相談する <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor"><circle cx="10" cy="10" r="9"></circle><path d="M8.5 6.5 12 10l-3.5 3.5"></path></svg></a>
+        </div>
+      </article>
+    </sc-for>
+    <div data-reveal="" style="border-top:1px solid #2a2a24;border-bottom:1px solid #2a2a24;padding:28px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px 48px;font-size:14px;line-height:2">
+      <div><p style="margin:0 0 6px;font-weight:600;font-size:16px;letter-spacing:.1em">保険診療について</p>当院の診療は保険診療が中心です。各種保険証・医療証をお持ちください。（詳細はここに記載）</div>
+      <div><p style="margin:0 0 6px;font-weight:600;font-size:16px;letter-spacing:.1em">診療費について</p>費用の目安や自費診療の有無は、ここに記載してください。ご不明点は受付でお尋ねください。</div>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const svcImg = ['arm-itch', 'cheek-acne', 'arm-concern', 'hands-itch', 'mirror-check'].map(n => 'images/' + n + '.jpg');
+    const services = [
+      ['general', '一般皮膚科', 'General Dermatology', ['湿疹', '皮膚炎', 'かゆみ', '発疹', '乾燥肌'], '湿疹やかゆみ、乾燥による肌荒れなど、日常的に起こりやすい皮膚の症状を診療します。症状の原因を確認し、塗り薬の使い方やスキンケアの方法まで丁寧にご説明します。', '診察の様子'],
+      ['acne', 'ニキビ・肌トラブル', 'Acne & Skin Problems', ['ニキビ', 'ニキビ跡', '毛のう炎', '肌の赤み・刺激'], '繰り返すニキビや毛穴の炎症、肌の刺激感などのお悩みに対応します。肌の状態や生活習慣を伺いながら、保険診療を中心に無理なく続けられる治療をご提案します。', '肌のクローズアップ'],
+      ['allergy', 'アレルギー・炎症', 'Allergic / Inflammatory', ['アレルギー性皮膚疾患', '接触皮膚炎', 'アトピー性皮膚炎'], 'アトピー性皮膚炎やかぶれなど、長く付き合うことの多い症状も、経過を見ながら一緒に治療を進めます。お子さまから大人の方まで、ご相談いただけます。', '親子で受診する様子'],
+      ['infection', '皮膚の感染症', 'Skin Infections', ['とびひ等の皮膚感染症', '水虫などの真菌症', 'その他の感染症'], '細菌やウイルス、カビ（真菌）による皮膚の感染症を診療します。必要に応じて検査を行い、症状に合った治療と、ご家族への感染を防ぐための注意点をお伝えします。', '検査室・顕微鏡'],
+      ['other', 'その他の皮膚のお悩み', 'Other Concerns', ['いぼ', 'ほくろ', 'できもの', 'その他の皮膚疾患'], 'いぼやほくろ、皮膚のできものなど、気になる変化をご相談ください。診察で状態を確認し、経過観察や治療、必要に応じて専門医療機関へのご紹介を行います。', '処置室'],
+    ].map(([id, name, en, items, desc, ph], i) => ({ id, anchor: '#' + id, name, en, items, desc, ph, no: String(i + 1).padStart(2, '0'), slot: 'svc-' + (i + 1), src: svcImg[i] }));
+    return { services };
+  }
+}
+</script>
+</body>
+</html>

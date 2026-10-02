@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:relative;background:#fff">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:24px clamp(20px,3vw,40px) 0">
+    <a href="Aesthetic%20Clinic.dc.html" style="display:flex;align-items:center;gap:14px">
+      <div style="width:50px;height:50px;border:1px solid #bfa77a;border-radius:50%;display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-size:29px;font-style:italic;color:#a88c5e">S</div>
+      <div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.24em;color:#8a7250">SERÉNA</span><span style="font-size:10px;letter-spacing:.2em;color:#a8916a">セレナ美容皮膚科クリニック</span></div>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;gap:8px;align-items:center">
+        <a href="tel:0300000000" style="font-size:12px;letter-spacing:.08em;padding:9px 16px;border:1px solid #d9cfc0;transition:border-color .3s" style-hover="border-color:#bfa77a">TEL 03-0000-0000</a>
+        <a href="Aesthetic%20Clinic.dc.html#contact" style="font-size:12px;letter-spacing:.08em;padding:9px 18px;background:#6e5a4e;color:#fff;transition:background .3s" style-hover="background:#8a7250;color:#fff">Web予約</a>
+        <a href="#" style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.1em;padding:8px 10px;color:#8a7250">Instagram</a>
+      </div>
+    </sc-if>
+  </div>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav style="border-bottom:1px solid #f0ebe3">
+      <ul style="list-style:none;margin:0 auto;padding:22px 24px 14px;display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(20px,3.6vw,52px)">
+        <sc-for list="{{ nav }}" as="it" hint-placeholder-count="7">
+          <li style="position:relative"><a href="{{ it.href }}" style="display:flex;flex-direction:column;align-items:center;gap:3px;transition:color .3s" style-hover="color:#a8876f"><span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.14em">{{ it.en }}</span><span style="font-size:10px;letter-spacing:.14em;color:#9a8f88">{{ it.ja }}</span></a>
+            <sc-if value="{{ it.cur }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:50%;bottom:-15px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#bfa77a"></span></sc-if>
+          </li>
+        </sc-for>
+      </ul>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="position:fixed;top:18px;right:16px;z-index:60;width:52px;height:52px;border:1px solid #d9cfc0;background:rgba(255,255,255,.95);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;cursor:pointer;color:#4b4340">
+      <span style="display:block;width:22px;height:1px;background:#4b4340"></span>
+      <span style="display:block;width:22px;height:1px;background:#4b4340"></span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.1em">{{ menuLabel }}</span>
+    </button>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed;inset:0;z-index:55;background:#fbf9f5;padding:100px 32px 40px;display:flex;flex-direction:column;gap:24px;overflow:auto">
+        <sc-for list="{{ nav }}" as="it" hint-placeholder-count="7">
+          <a href="{{ it.href }}" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;gap:16px;padding-bottom:12px;border-bottom:1px solid #e8e0d4"><span style="font-family:'Cormorant Garamond',serif;font-size:23px;letter-spacing:.1em">{{ it.en }}</span><span style="font-size:12px;color:#9a8f88;letter-spacing:.1em">{{ it.ja }}</span></a>
+        </sc-for>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
+          <a href="tel:0300000000" style="text-align:center;padding:16px;border:1px solid #cdbfa9;font-size:13px">電話する</a>
+          <a href="Aesthetic%20Clinic.dc.html#contact" onClick="{{ closeMenu }}" style="text-align:center;padding:16px;background:#6e5a4e;color:#fff;font-size:13px">Web予約</a>
+        </div>
+      </div>
+    </sc-if>
+  </sc-if>
+
+  <div style="position:relative;min-height:clamp(300px,36vw,460px);overflow:hidden;display:flex;align-items:center">
+    <div data-kenburns style="position:absolute;top:0;right:0;bottom:0;width:{{ heroImgW }}"><image-slot id="{{ slotId }}" src="{{ slotSrc }}" shape="rect" placeholder="{{ slotPh }}"></image-slot></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:{{ heroOverlay }}"></div>
+    <div data-intro style="position:relative;padding:{{ heroPad }} clamp(20px,6vw,110px);display:flex;flex-direction:column;gap:14px;max-width:760px;pointer-events:none">
+      <h1 data-shimmer style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(46px,6vw,86px);line-height:1;letter-spacing:.02em;background:linear-gradient(95deg,#ecc9c4 0%,#cfa59b 40%,#7a5646 85%);-webkit-background-clip:text;background-clip:text;color:transparent">{{ titleEn }}</h1>
+      <span style="font-size:clamp(14px,1.3vw,17px);letter-spacing:.2em">{{ titleJa }}</span>
+      <p style="margin:12px 0 0;font-size:13.5px;line-height:2.1;letter-spacing:.06em;max-width:440px;color:#5a4f4a">{{ lead }}</p>
+    </div>
+  </div>
+  <div style="padding:16px clamp(20px,6vw,110px);display:flex;gap:12px;font-size:11.5px;letter-spacing:.08em;color:#9a8f88"><a href="Aesthetic%20Clinic.dc.html" style="color:#9a8f88">HOME</a><span>›</span><span style="color:#4b4340">{{ titleJa }}</span></div>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1280px&quot;,&quot;height&quot;:&quot;620px&quot;},&quot;titleEn&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;PAGE&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;titleJa&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ページ&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;lead&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;about&quot;,&quot;menu&quot;,&quot;doctor&quot;,&quot;price&quot;],&quot;default&quot;:&quot;about&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;slotId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;page-hero&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;slotPh&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ページ用メインビジュアル&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const cur = this.props.current ?? '';
+    const isMobile = this.state.w < 860;
+    const nav = [
+      { k: 'home', en: 'HOME', ja: 'ホーム', href: 'Aesthetic%20Clinic.dc.html' },
+      { k: 'about', en: 'ABOUT', ja: '当院について', href: 'About.dc.html' },
+      { k: 'menu', en: 'TREATMENT', ja: '診療メニュー', href: 'Treatments.dc.html' },
+      { k: 'doctor', en: 'DOCTOR & CASE', ja: '医師紹介・症例', href: 'Doctor-Cases.dc.html' },
+      { k: 'price', en: 'PRICE', ja: '料金表', href: 'Price.dc.html' },
+      { k: 'contact', en: 'RESERVATION', ja: 'ご予約', href: 'Aesthetic%20Clinic.dc.html#contact' },
+    ].map(n => ({ ...n, cur: n.k === cur }));
+    return {
+      nav, isMobile, isDesktop: !isMobile,
+      heroImgW: isMobile ? '100%' : 'max(58%,calc(100% - 520px))',
+      heroOverlay: isMobile ? 'linear-gradient(180deg,rgba(255,255,255,.72) 0%,rgba(255,255,255,.88) 100%)' : 'linear-gradient(90deg,#fff 0%,#fff 36%,rgba(255,255,255,.7) 50%,rgba(255,255,255,0) 72%)',
+      heroPad: isMobile ? '48px' : '60px',
+      menuOpen: this.state.menuOpen, menuLabel: this.state.menuOpen ? 'CLOSE' : 'MENU',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      titleEn: this.props.titleEn ?? 'PAGE', titleJa: this.props.titleJa ?? 'ページ', lead: this.props.lead ?? '',
+      slotId: this.props.slotId ?? 'page-hero', slotSrc: this.props.slotSrc, slotPh: this.props.slotPh ?? 'ページ用メインビジュアル',
+    };
+  }
+}
+</script>
+</body>
+</html>

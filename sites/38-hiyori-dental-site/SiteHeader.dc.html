@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header ref="{{ headerRef }}" style="position:fixed;top:0;left:0;right:0;z-index:50;height:84px;padding:0 clamp(16px,3.5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:24px;background:{{ headerBg }};backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .4s ease;font-family:'Zen Kaku Gothic New',sans-serif">
+  <a href="Dental%20Clinic.dc.html" style="display:flex;align-items:center;gap:12px;color:#3b342e;text-decoration:none">
+    <span style="width:30px;height:30px;border:1.5px solid #a07a4a;border-radius:50% 50% 50% 6px;display:flex;align-items:center;justify-content:center;flex:none"><span style="width:8px;height:8px;border-radius:50%;background:#a07a4a"></span></span>
+    <span style="display:flex;flex-direction:column;gap:3px">
+      <span style="font-size:clamp(15px,4.6vw,18px);font-weight:700;letter-spacing:.14em;line-height:1;white-space:nowrap">ひより歯科クリニック</span>
+      <span style="font-family:Jost,sans-serif;font-size:10px;letter-spacing:.22em;color:#8a6538;line-height:1">Hiyori Dental Clinic</span>
+    </span>
+  </a>
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;align-items:center;gap:clamp(20px,2.4vw,36px)">
+      <nav aria-label="メインナビゲーション" style="display:flex;gap:clamp(16px,2vw,30px);font-size:13px;font-weight:500;letter-spacing:.1em">
+        <a href="Dental%20Clinic.dc.html" style="color:{{ c.home }};text-decoration:none" style-hover="color:#a07a4a">HOME</a>
+        <a href="About.dc.html" style="color:{{ c.about }};text-decoration:none" style-hover="color:#a07a4a">当院について</a>
+        <a href="Treatments.dc.html" style="color:{{ c.treatment }};text-decoration:none" style-hover="color:#a07a4a">診療内容</a>
+        <a href="Features.dc.html" style="color:{{ c.features }};text-decoration:none" style-hover="color:#a07a4a">当院の特徴</a>
+        <a href="Access.dc.html" style="color:{{ c.access }};text-decoration:none" style-hover="color:#a07a4a">アクセス</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <span style="font-size:10px;font-weight:500;letter-spacing:.1em;color:#6b625a">お電話でのご予約</span>
+        <a href="tel:0300000000" style="font-family:Jost,sans-serif;font-size:20px;letter-spacing:.06em;color:#3b342e;line-height:1;text-decoration:none">03-0000-0000</a>
+      </div>
+      <a href="Reservation.dc.html" style="background:#9a7445;color:#fff;font-size:13px;font-weight:700;letter-spacing:.14em;padding:13px 26px;border-radius:999px;transition:background .3s;text-decoration:none" style-hover="background:#7f5f36;color:#fff">WEB予約</a>
+    </div>
+  </sc-if>
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニューを開く" style="width:48px;height:48px;border-radius:50%;border:1px solid #d8ccbb;background:#fbf9f5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;padding:0">
+      <span style="width:18px;height:1.5px;background:#3b342e"></span>
+      <span style="width:18px;height:1.5px;background:#3b342e"></span>
+    </button>
+  </sc-if>
+  <div ref="{{ barRef }}" aria-hidden="true" style="position:absolute;left:0;bottom:0;width:100%;height:2px;background:#9a7445;transform:scaleX(0);transform-origin:left;pointer-events:none"></div>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#f4f0ea;padding:96px 32px 40px;display:flex;flex-direction:column;gap:40px;font-family:'Zen Kaku Gothic New',sans-serif;overflow-y:auto">
+    <button onClick="{{ closeMenu }}" aria-label="メニューを閉じる" style="position:absolute;top:18px;right:16px;width:48px;height:48px;border-radius:50%;border:1px solid #d8ccbb;background:#fbf9f5;font-family:Jost,sans-serif;font-size:22px;color:#3b342e;cursor:pointer">×</button>
+    <nav style="display:flex;flex-direction:column;font-size:18px;font-weight:700;letter-spacing:.14em">
+      <a href="Dental%20Clinic.dc.html" style="color:#3b342e;text-decoration:none;padding:18px 0;border-bottom:1px solid #dcd0bf;display:flex;justify-content:space-between;align-items:baseline">HOME<span style="font-family:Jost,sans-serif;font-weight:400;font-size:11px;color:#8a6538;letter-spacing:.2em">Home</span></a>
+      <a href="About.dc.html" style="color:#3b342e;text-decoration:none;padding:18px 0;border-bottom:1px solid #dcd0bf;display:flex;justify-content:space-between;align-items:baseline">当院について<span style="font-family:Jost,sans-serif;font-weight:400;font-size:11px;color:#8a6538;letter-spacing:.2em">About</span></a>
+      <a href="Treatments.dc.html" style="color:#3b342e;text-decoration:none;padding:18px 0;border-bottom:1px solid #dcd0bf;display:flex;justify-content:space-between;align-items:baseline">診療内容<span style="font-family:Jost,sans-serif;font-weight:400;font-size:11px;color:#8a6538;letter-spacing:.2em">Treatments</span></a>
+      <a href="Features.dc.html" style="color:#3b342e;text-decoration:none;padding:18px 0;border-bottom:1px solid #dcd0bf;display:flex;justify-content:space-between;align-items:baseline">当院の特徴<span style="font-family:Jost,sans-serif;font-weight:400;font-size:11px;color:#8a6538;letter-spacing:.2em">Commitment</span></a>
+      <a href="Access.dc.html" style="color:#3b342e;text-decoration:none;padding:18px 0;border-bottom:1px solid #dcd0bf;display:flex;justify-content:space-between;align-items:baseline">アクセス<span style="font-family:Jost,sans-serif;font-weight:400;font-size:11px;color:#8a6538;letter-spacing:.2em">Access</span></a>
+      <a href="Reservation.dc.html" style="color:#3b342e;text-decoration:none;padding:18px 0;border-bottom:1px solid #dcd0bf;display:flex;justify-content:space-between;align-items:baseline">WEB予約・お問い合わせ<span style="font-family:Jost,sans-serif;font-weight:400;font-size:11px;color:#8a6538;letter-spacing:.2em">Contact</span></a>
+    </nav>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-size:11px;letter-spacing:.1em;color:#6b625a">お電話でのご予約</span>
+      <a href="tel:0300000000" style="font-family:Jost,sans-serif;font-size:30px;letter-spacing:.06em;color:#3b342e;text-decoration:none">03-0000-0000</a>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;gap:8px;padding:8px;background:rgba(251,249,245,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:999px;box-shadow:0 12px 32px -16px rgba(60,40,20,.35);font-family:'Zen Kaku Gothic New',sans-serif">
+    <a href="tel:0300000000" style="flex:1;height:48px;display:flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid #9a7445;color:#7f5f36;font-size:13px;font-weight:700;letter-spacing:.12em;text-decoration:none">電話予約</a>
+    <a href="Reservation.dc.html" style="flex:1;height:48px;display:flex;align-items:center;justify-content:center;border-radius:999px;background:#9a7445;color:#fff;font-size:13px;font-weight:700;letter-spacing:.12em;text-decoration:none">WEB予約</a>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;about&quot;,&quot;treatment&quot;,&quot;features&quot;,&quot;access&quot;,&quot;reservation&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { mobile: typeof window !== 'undefined' && window.innerWidth < 960, menuOpen: false, scrolled: false };
+  headerRef = React.createRef();
+  barRef = React.createRef();
+  componentDidMount() {
+    this.E = 'cubic-bezier(.2,.7,.2,1)';
+    this.reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.sd = !this.reduce && window.CSS && CSS.supports('animation-timeline: view()');
+    this.injectCSS();
+    this.onResize = () => { const m = window.innerWidth < 960; if (m !== this.state.mobile) this.setState({ mobile: m, menuOpen: m && this.state.menuOpen }); };
+    this.onScroll = () => { const s = window.scrollY > 30; if (s !== this.state.scrolled) this.setState({ scrolled: s }); this.tick(); };
+    this.onClick = e => this.pageLeave(e);
+    this.onOver = e => this.hover(e, true);
+    this.onOut = e => this.hover(e, false);
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    document.addEventListener('click', this.onClick);
+    document.addEventListener('mouseover', this.onOver);
+    document.addEventListener('mouseout', this.onOut);
+    if (!this.reduce) {
+      document.body.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, easing: 'ease-out' });
+      this.headerRef.current && this.headerRef.current.animate([{ transform: 'translateY(-100%)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 900, delay: 150, easing: this.E, fill: 'backwards' });
+    }
+    this.tick();
+    this.poll = setInterval(() => this.tick(), 300);
+  }
+  componentDidUpdate() { this.tick(); }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    document.removeEventListener('click', this.onClick);
+    document.removeEventListener('mouseover', this.onOver);
+    document.removeEventListener('mouseout', this.onOut);
+    clearInterval(this.poll);
+  }
+  // Scroll-linked motion is pure CSS (animation-timeline: view()), so it never depends on JS timers or scroll events.
+  injectCSS() {
+    if (document.getElementById('rv-css')) return;
+    const st = document.createElement('style'); st.id = 'rv-css';
+    st.textContent = '@keyframes rv-up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}'
+      + '@keyframes rv-clip{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}'
+      + '@keyframes rv-zoom{from{transform:scale(1.22)}to{transform:scale(1)}}'
+      + '@keyframes rv-drift{from{transform:translateX(12vw)}to{transform:translateX(-12vw)}}'
+      + '@keyframes rv-bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}';
+    document.head.appendChild(st);
+  }
+  sda(el, name, range) {
+    el.style.animation = name + ' linear both';
+    el.style.animationTimeline = 'view()';
+    el.style.animationRange = range;
+  }
+  intro(el, t, delay) {
+    if (this.reduce) return;
+    const E = this.E, o = { delay, easing: E, fill: 'backwards' };
+    const clip = t === 'img-left' ? 'inset(0 100% 0 0)' : t === 'img-right' || t === 'wipe' ? 'inset(0 0 0 100%)' : 'inset(100% 0 0 0)';
+    if (t === 'stagger') { [...el.children].forEach((c, i) => c.animate([{ opacity: 0, transform: 'translateY(40px)' }, { opacity: 1, transform: 'none' }], { ...o, duration: 1100, delay: delay + i * 120 })); return; }
+    if (t === 'fade') { el.animate([{ opacity: 0 }, { opacity: 1 }], { ...o, duration: 1600 }); return; }
+    if (t === 'wipe') { el.animate([{ clipPath: clip }, { clipPath: 'inset(0 0 0 0)' }], { ...o, duration: 2000, easing: 'cubic-bezier(.6,0,.2,1)' }); return; }
+    if (t.startsWith('img')) {
+      el.animate([{ clipPath: clip }, { clipPath: 'inset(0 0 0 0)' }], { ...o, duration: 1500, easing: 'cubic-bezier(.7,0,.2,1)' });
+      const s = el.querySelector('image-slot');
+      s && s.animate([{ transform: 'scale(1.22)' }, { transform: 'scale(1)' }], { ...o, duration: 2400 });
+      return;
+    }
+    el.animate([{ opacity: 0, transform: 'translateY(36px)' }, { opacity: 1, transform: 'none' }], { ...o, duration: 1200 });
+  }
+  tick() {
+    if (!this.E) return;
+    const h = window.innerHeight;
+    document.querySelectorAll('[data-intro]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      this.intro(el, el.dataset.introType || 'up', 250 + (+el.dataset.intro || 0) * 160);
+    });
+    if (this.barRef.current && !this.barRef.current.dataset.rv && this.sd) {
+      const b = this.barRef.current; b.dataset.rv = '1';
+      b.style.animation = 'rv-bar linear both'; b.style.animationTimeline = 'scroll(root)';
+    }
+    if (this.sd) {
+      document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => { el.setAttribute('data-rv', ''); this.sda(el, 'rv-up', 'entry 0% cover 30%'); });
+      document.querySelectorAll('[data-stagger]:not([data-rv])').forEach(el => {
+        el.setAttribute('data-rv', '');
+        [...el.children].forEach((c, i) => this.sda(c, 'rv-up', 'entry ' + (i % 4) * 10 + '% cover ' + (28 + (i % 4) * 6) + '%'));
+      });
+      document.querySelectorAll('image-slot').forEach(s => {
+        const p = s.parentElement;
+        if (!p || p.hasAttribute('data-rv') || p.closest('[data-intro]')) return;
+        p.setAttribute('data-rv', '');
+        this.sda(p, 'rv-clip', 'entry 0% cover 40%');
+        this.sda(s, 'rv-zoom', 'entry 0% cover 60%');
+      });
+      document.querySelectorAll('[data-drift]:not([data-rv])').forEach(el => { el.setAttribute('data-rv', ''); this.sda(el, 'rv-drift', 'cover 0% cover 100%'); });
+    }
+    document.querySelectorAll('[data-count]:not([data-rv])').forEach(el => {
+      if (el.getBoundingClientRect().top > h - 40) return;
+      el.setAttribute('data-rv', '');
+      if (this.reduce) return;
+      const to = +el.dataset.count, t0 = Date.now(), dur = 1800;
+      const iv = setInterval(() => { const k = Math.min(1, (Date.now() - t0) / dur), v = Math.round(to * (1 - Math.pow(1 - k, 3))); el.textContent = v.toLocaleString('en-US'); if (k >= 1) clearInterval(iv); }, 30);
+      setTimeout(() => { clearInterval(iv); el.textContent = to.toLocaleString('en-US'); }, dur + 200);
+    });
+    if (this.reduce) return;
+    document.querySelectorAll('[data-float]:not([data-rvf])').forEach((el, i) => { el.setAttribute('data-rvf', ''); el.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-16px)' }], { duration: 4200 + i * 700, direction: 'alternate', iterations: Infinity, easing: 'ease-in-out' }); });
+    document.querySelectorAll('[data-marquee]:not([data-rvf])').forEach(el => { el.setAttribute('data-rvf', ''); el.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-50%)' }], { duration: 48000, iterations: Infinity }); });
+    document.querySelectorAll('[data-scrollline]:not([data-rvf])').forEach(el => { el.setAttribute('data-rvf', ''); el.animate([{ transform: 'translateY(-100%)' }, { transform: 'translateY(100%)' }], { duration: 2200, iterations: Infinity, easing: 'cubic-bezier(.6,0,.3,1)' }); });
+  }
+  hover(e, on) {
+    if (!e.target.closest) return;
+    const leaving = el => !on && e.relatedTarget && el.contains(e.relatedTarget);
+    const card = e.target.closest('article, figure, [data-rv]');
+    const slot = card && card.querySelector('image-slot');
+    if (slot && !leaving(card)) { slot.style.scale = on ? '1.06' : '1'; slot.style.transition = 'scale 1.4s ' + this.E; }
+    const btn = e.target.closest('a, button');
+    if (btn && !leaving(btn)) [...btn.querySelectorAll('span')].forEach(s => {
+      const tx = s.textContent.trim(); if (tx !== '→' && tx !== '↓') return;
+      s.style.display = 'inline-block'; s.style.transition = 'transform .5s ' + this.E;
+      s.style.transform = on ? (tx === '→' ? 'translateX(6px)' : 'translateY(4px)') : 'none';
+    });
+  }
+  pageLeave(e) {
+    const a = e.target.closest && e.target.closest('a[href]');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank') return;
+    const href = a.getAttribute('href');
+    if (!href.includes('.dc.html') || this.reduce) return;
+    e.preventDefault();
+    this.setState({ menuOpen: false });
+    document.body.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 320, easing: 'ease-in', fill: 'forwards' });
+    setTimeout(() => { window.location.href = a.href; }, 300);
+  }
+  renderVals() {
+    const { mobile, menuOpen, scrolled } = this.state;
+    const cur = this.props.current || 'home';
+    const c = {};
+    ['home', 'about', 'treatment', 'features', 'access'].forEach(k => c[k] = k === cur ? '#8a6538' : '#3b342e');
+    return {
+      mobile, desktop: !mobile, menuOpen, c, headerRef: this.headerRef, barRef: this.barRef,
+      headerBg: scrolled || mobile ? 'rgba(244,240,234,.88)' : 'rgba(244,240,234,0)',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Zen Maru Gothic',sans-serif;color:#3d3a38;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a6fb5;text-decoration:none}
+a:hover{color:#0b4c83}
+</style>
+<link rel="stylesheet" href="./responsive.css">
+</helmet>
+<dc-import name="SiteHeader" current="feature" hint-size="100%,82px"></dc-import>
+<dc-import name="SubHero" title="FEATURE" jp="当院の特徴・設備" src="images/clinic-interior.jpg" placeholder="受付・待合室の全景" hint-size="100%,440px"></dc-import>
+
+<main>
+<section data-screen-label="Feature 01 Points" style="position:relative;background:radial-gradient(ellipse 50% 30% at 10% 12%,#c4e5f6 0%,rgba(196,229,246,0) 70%),radial-gradient(ellipse 45% 30% at 90% 60%,#bde1f5 0%,rgba(189,225,245,0) 70%),#e4f3fb;padding:clamp(60px,8vw,110px) clamp(20px,4vw,40px) clamp(80px,10vw,120px)">
+  <div style="max-width:1000px;margin:0 auto">
+    <div data-reveal="1">
+      <div style="display:flex;align-items:center;gap:12px;color:#1a6fb5;font-size:clamp(15px,1.3vw,18px);font-weight:500;letter-spacing:.1em"><span style="width:56px;height:1px;background:#1a6fb5"></span>5つの特徴</div>
+      <h2 style="margin:4px 0 60px;font-family:Jost;font-weight:400;font-size:clamp(44px,6vw,80px);letter-spacing:.05em;line-height:1;color:#1a6fb5">POINT</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:56px">
+      <sc-for list="{{ feats }}" as="f" hint-placeholder-count="3">
+        <article data-reveal="1" style="position:relative;display:flex;gap:16px;background:#fff;border-radius:18px;padding:26px 26px 26px 14px;box-shadow:0 10px 30px rgba(40,100,140,.07)">
+          <div style="flex:none;display:flex;flex-direction:column;align-items:center;margin-top:-54px"><span style="height:110px;border-left:1px dashed #8a9aa4"></span><span style="writing-mode:vertical-rl;font-family:Jost;font-size:15px;letter-spacing:.2em;color:#5d6a72;padding-top:12px">FEATURE {{ f.no }}</span></div>
+          <div style="flex:1;min-width:0;display:flex;flex-wrap:wrap;gap:24px 32px;align-items:center">
+            <div style="flex:1 1 320px;height:280px;overflow:hidden;background:#eef5f9"><img src="{{ f.img }}" alt="{{ f.ph }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+            <div style="flex:1 1 320px;min-width:0">
+              <h3 style="margin:0 0 14px;font-size:clamp(20px,2vw,24px);color:#1a6fb5;letter-spacing:.08em;line-height:1.5">{{ f.title }}</h3>
+              <p style="margin:0;font-size:15px;line-height:2;color:#2f5f86;text-wrap:pretty">{{ f.desc }}</p>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Feature 02 Equipment" style="background:repeating-linear-gradient(-45deg,#f5f6f6 0 2px,#fbfbfb 2px 7px);padding:clamp(60px,8vw,110px) clamp(20px,4vw,40px)">
+  <div style="max-width:1100px;margin:0 auto">
+    <div data-reveal="1">
+      <div style="display:flex;align-items:center;gap:12px;color:#574a42;font-size:clamp(15px,1.3vw,18px);font-weight:500;letter-spacing:.1em"><span style="width:56px;height:1px;background:#574a42"></span>設備紹介</div>
+      <h2 style="margin:4px 0 40px;font-family:Jost;font-weight:400;font-size:clamp(44px,6vw,80px);letter-spacing:.05em;line-height:1;color:#574a42">EQUIPMENT</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+      <sc-for list="{{ equip }}" as="e" hint-placeholder-count="6">
+        <article data-reveal="1" style="background:#fff;border-radius:0 24px 0 24px;overflow:hidden;box-shadow:0 8px 26px rgba(40,80,110,.06);transition:transform .4s" style-hover="transform:translateY(-4px)">
+          <div style="height:200px;background:#eef5f9"><img src="{{ e.img }}" alt="{{ e.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div style="padding:22px 24px 26px"><h3 style="margin:0 0 8px;font-size:17px;color:#1a6fb5;letter-spacing:.06em">{{ e.name }}</h3><p style="margin:0;font-size:14px;line-height:1.9;text-wrap:pretty">{{ e.desc }}</p></div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Feature 03 Gallery" style="position:relative;background:#e4f3fb;padding:0 clamp(20px,4vw,40px) clamp(80px,10vw,120px)">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="display:block;width:calc(100% + 2 * clamp(20px,4vw,40px));margin:0 calc(-1 * clamp(20px,4vw,40px));height:clamp(30px,5vw,70px)"><path d="M0,0 L1440,0 L1440,52 C1180,20 900,10 620,34 C380,56 160,50 0,26 Z" fill="#fafafa"></path></svg>
+  <div style="max-width:1100px;margin:0 auto;padding-top:clamp(40px,5vw,60px)">
+    <div data-reveal="1">
+      <div style="display:flex;align-items:center;gap:12px;color:#1a6fb5;font-size:clamp(15px,1.3vw,18px);font-weight:500;letter-spacing:.1em"><span style="width:56px;height:1px;background:#1a6fb5"></span>院内のご紹介</div>
+      <h2 style="margin:4px 0 40px;font-family:Jost;font-weight:400;font-size:clamp(44px,6vw,80px);letter-spacing:.05em;line-height:1;color:#1a6fb5">GALLERY</h2>
+    </div>
+    <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));grid-auto-rows:220px;gap:14px">
+      <figure style="margin:0;grid-row:span 2;border-radius:32px 0 0 0;overflow:hidden;background:#fff;position:relative"><img src="images/clinic-sign.jpg" alt="外観" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></figure>
+      <figure style="margin:0;overflow:hidden;background:#fff"><img src="images/staff-greeting.jpg" alt="受付" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></figure>
+      <figure style="margin:0;overflow:hidden;background:#fff"><img src="images/clinic-interior.jpg" alt="待合室" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></figure>
+      <figure style="margin:0;overflow:hidden;background:#fff"><img src="images/counseling-model.jpg" alt="キッズスペース" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></figure>
+      <figure style="margin:0;border-radius:0 0 32px 0;overflow:hidden;background:#fff"><img src="images/chair-water.jpg" alt="パウダールーム" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></figure>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    // [見出し, 画像の説明（alt）, 本文, 画像ファイル]
+    const feats = [
+      ['デジタル機器による、わかりやすい診断', 'デジタルレントゲン・口腔内スキャン画面', '低線量のデジタルレントゲン・歯科用CT・口腔内スキャナーを導入しています。撮影した画像はチェアサイドのモニターですぐにご確認いただけ、お口の状態を一緒に見ながらご説明します。', 'microscope'],
+      ['徹底した衛生管理', '滅菌室・個包装された器具', '器具はクラスB滅菌器で滅菌し、患者さまごとに個包装して保管しています。グローブやコップなど使い捨てできるものは可能な限りディスポーザブルを使用し、診療室は患者さまごとに清拭しています。', 'chair-water'],
+      ['プライバシーに配慮した完全個室', '個室の診療室', '完全個室の診療室を5室ご用意しています。周囲を気にせずお話しいただけるよう、カウンセリングも個室で行います。', 'clinic-interior'],
+      ['24時間WEB予約・リマインド', 'スマートフォンで予約する患者さま', 'ご予約・変更・キャンセルはWEBからいつでも可能です。ご予約の前日にはメールでリマインドをお送りします。', 'medical-form'],
+      ['通いやすい立地と診療時間', '医院入口・外観', '平日は19:30まで、土曜日も診療しています。三軒茶屋駅から徒歩3分、エレベーター完備のバリアフリー設計で、ベビーカーや車いすでもお越しいただけます。', 'clinic-sign']
+    ];
+    // [設備名, 説明, 画像ファイル]
+    const equip = [
+      ['歯科用CT', 'あごの骨や神経の位置を立体的に確認でき、インプラントや親知らずの抜歯計画に活用します。', 'microscope'],
+      ['デジタルレントゲン', '従来のフィルムに比べて被ばく量を抑えた撮影が可能で、画像はすぐにモニターで確認できます。', 'treatment'],
+      ['口腔内スキャナー', '型取りの材料を使わずに歯列をデジタルで記録。矯正や被せ物の計画に使用します。', 'model-mirror'],
+      ['拡大鏡（ルーペ）', '肉眼では見えにくい細部まで確認しながら、精密な治療を行います。', 'model-explain'],
+      ['クラスB滅菌器', 'ヨーロッパ規格の高水準な滅菌器で、器具の内部まで確実に滅菌します。', 'chair-water'],
+      ['口腔外バキューム', '治療中に飛び散る細かな粉じんを吸引し、院内の空気を清潔に保ちます。', 'treatment']
+    ];
+    return {
+      feats: feats.map((f, i) => ({ no: String(i + 1).padStart(2, '0'), title: f[0], ph: f[1], desc: f[2], img: 'images/' + f[3] + '.jpg' })),
+      equip: equip.map(e => ({ name: e[0], desc: e[1], img: 'images/' + e[2] + '.jpg' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>工場紹介｜AOBA Precision Works</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500&display=swap">
+<script src="./image-slot.js"></script>
+<script src="./reveal.js"></script>
+<style>
+body{margin:0;background:#0e1d4a;color:#fff;font-family:'Plus Jakarta Sans','Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#fff;text-decoration:none}
+a:hover{color:#9db8ff}
+::selection{background:#d0101b;color:#fff}
+</style>
+</helmet>
+<dc-import name="Site Header" current="factory" hint-size="100%,72px" style="position:fixed;top:0;left:0;right:0;z-index:50"></dc-import>
+<main>
+<div data-screen-label="01 Hero"><dc-import name="Page Hero" num="01" en="Our Factory" crumb="OUR FACTORY" jp="工場紹介" lead="温度・湿度を管理したクリーンな工場で、試作から量産まで。刈谷市の本社工場を中心に、4つのエリアで一貫生産を行っています。" slot="hero-factory" src="images/factory-safety.jpg" placeholder="Factory interior — wide shot of machining floor" hint-size="100%,660px"></dc-import></div>
+
+<section data-screen-label="02 Message" style="position:relative;background:#0e1d4a;overflow:hidden;padding:120px 0 140px">
+  <div style="position:absolute;right:-10%;top:10%;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(40,100,255,.4),rgba(40,100,255,0) 68%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(20px,6vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,96px)">
+    <div data-reveal="">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px"><span style="display:block;width:22px;height:30px;background:#d0101b;transform:skewX(-28deg)"></span><span style="font-size:14px;font-weight:600">Our Commitment</span></div>
+      <h2 style="margin:0;font-family:'Noto Sans JP';font-weight:700;font-size:clamp(26px,3vw,40px);line-height:1.7;letter-spacing:.12em">ひとつの部品に、<br>確かな責任を。</h2>
+      <div style="margin-top:56px;display:flex;flex-direction:column;gap:22px;border-left:1px solid rgba(255,255,255,.35);margin-left:4px">
+        <sc-for list="{{ divisions }}" as="d" hint-placeholder-count="3">
+          <div style="display:flex;align-items:baseline;gap:16px;padding-left:24px"><span style="font-family:'Noto Sans JP';font-weight:700;font-size:17px;letter-spacing:.14em">{{ d.jp }}</span><span style="font-size:13px;color:#4f86ff;font-weight:500">{{ d.en }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+    <div data-reveal="" data-delay="150" style="font-family:'Noto Sans JP';font-size:15px;line-height:2.2;font-weight:500;display:flex;flex-direction:column;gap:28px;padding-top:clamp(0px,4vw,60px)">
+      <p style="margin:0">青葉精工は1994年の創業以来、自動車・産業機械・医療機器向けの精密部品を製造してきました。</p>
+      <p style="margin:0">温度と湿度を管理したクリーンな工場に、5軸マシニングセンタや三次元測定機など50台以上の設備を配置。24時間体制で、試作から量産まで安定した生産を続けています。</p>
+      <p style="margin:0">私たちが大切にしているのは、図面の要求を確実に形にすること。<br>ひとつひとつの工程を丁寧に積み重ね、信頼される品質をお届けします。</p>
+    </div>
+  </div>
+  <div style="position:relative;max-width:1440px;margin:120px auto 0;padding:0 clamp(20px,6vw,96px)">
+    <div data-reveal="" style="margin-bottom:44px"><p style="margin:0 0 6px;font-size:12px;font-weight:600">Factory in Numbers</p><p style="margin:0;font-family:'Noto Serif JP';font-size:clamp(28px,3.4vw,44px);letter-spacing:.14em">数字で見る工場</p></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:56px 40px;border-top:1px solid rgba(255,255,255,.18);padding-top:44px">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="6">
+        <div data-reveal="">
+          <p style="margin:0 0 10px;display:flex;align-items:center;gap:10px;font-family:'Noto Sans JP';font-size:14px;font-weight:700"><span style="display:block;width:12px;height:1px;background:rgba(255,255,255,.6)"></span>{{ s.label }}</p>
+          <p style="margin:0;display:flex;align-items:baseline;gap:4px;line-height:1"><span data-count="{{ s.value }}" data-decimals="{{ s.decimals }}" style="font-weight:600;font-size:clamp(60px,6.4vw,92px);letter-spacing:-0.04em">{{ s.display }}</span><span style="font-family:'Noto Sans JP';font-weight:700;font-size:clamp(20px,2vw,28px)">{{ s.unit }}</span></p>
+          <p style="margin:12px 0 0;font-family:'Noto Sans JP';font-size:13px;opacity:.8">{{ s.en }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 Areas" style="position:relative;background:#0e1d4a">
+  <div style="background:#eef1f6;color:#12245a;clip-path:polygon(0 5%,100% 0,100% 95%,0 100%);padding:clamp(120px,12vw,180px) 0;background-image:repeating-linear-gradient(-14deg,rgba(255,255,255,.9) 0 2px,rgba(210,218,232,.55) 2px 9px,rgba(255,255,255,0) 9px 38px)">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,6vw,96px)">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px 28px;margin-bottom:64px">
+        <h2 style="margin:0;font-weight:700;font-size:clamp(48px,7vw,112px);letter-spacing:-0.05em;line-height:.9">Factory Areas</h2>
+        <p style="margin:0;font-family:'Noto Sans JP';font-weight:700;font-size:15px;letter-spacing:.2em">4つの生産拠点</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:72px 56px">
+        <sc-for list="{{ areas }}" as="a" hint-placeholder-count="4">
+          <article data-reveal="" style="display:flex;flex-direction:column;gap:24px">
+            <div data-reveal="img" style="position:relative;aspect-ratio:16/9;clip-path:polygon(8% 0,100% 0,92% 100%,0 100%)"><image-slot id="{{ a.slot }}" src="{{ a.img }}" shape="rect" placeholder="{{ a.ph }}"></image-slot></div>
+            <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 24px">
+              <span style="grid-row:span 3;font-weight:600;font-size:48px;letter-spacing:-0.03em;line-height:.9;color:#d0101b">{{ a.no }}</span>
+              <p style="margin:0;font-size:13px;font-weight:600">{{ a.en }}</p>
+              <p style="margin:0;font-family:'Noto Sans JP';font-weight:700;font-size:22px;letter-spacing:.08em">{{ a.jp }}</p>
+              <p style="margin:8px 0 0;font-family:'Noto Sans JP';font-size:14px;line-height:1.9;opacity:.85">{{ a.text }}</p>
+            </div>
+            <dl style="margin:0;display:flex;flex-wrap:wrap;gap:8px 32px;padding-top:16px;border-top:1px solid rgba(18,36,90,.2);font-size:13px">
+              <div style="display:flex;gap:10px"><dt style="font-weight:600;opacity:.6">AREA</dt><dd style="margin:0;font-weight:700">{{ a.area }}</dd></div>
+              <div style="display:flex;gap:10px"><dt style="font-weight:600;opacity:.6">MAIN</dt><dd style="margin:0;font-family:'Noto Sans JP';font-weight:700">{{ a.main }}</dd></div>
+            </dl>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 Environment" style="position:relative;background:#0e1d4a;overflow:hidden;padding:100px 0 160px">
+  <div style="position:absolute;left:-10%;top:20%;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(40,100,255,.45),rgba(40,100,255,0) 68%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(20px,6vw,96px)">
+    <div data-reveal="" style="display:flex;align-items:center;gap:14px;margin-bottom:22px"><span style="display:block;width:22px;height:30px;background:#d0101b;transform:skewX(-28deg)"></span><span style="font-size:14px;font-weight:600">Clean &amp; Safe Environment</span></div>
+    <h2 data-reveal="" style="margin:0 0 64px;font-family:'Noto Sans JP';font-weight:700;font-size:clamp(24px,2.8vw,36px);line-height:1.7;letter-spacing:.14em">品質は、環境から生まれる。</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:2px">
+      <sc-for list="{{ env }}" as="e" hint-placeholder-count="3">
+        <div data-reveal="" style="background:rgba(255,255,255,.06);padding:40px 36px;display:flex;flex-direction:column;gap:14px;transition:background .3s" style-hover="background:rgba(255,255,255,.12)">
+          <span style="font-weight:600;font-size:clamp(40px,4vw,56px);letter-spacing:-0.03em;line-height:1">{{ e.big }}</span>
+          <span style="font-weight:700;font-size:18px">{{ e.en }}</span>
+          <span style="font-family:'Noto Sans JP';font-weight:700;font-size:14px;color:#9db8ff;letter-spacing:.1em">{{ e.jp }}</span>
+          <span style="font-family:'Noto Sans JP';font-size:13px;line-height:1.9;opacity:.85">{{ e.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="Site Footer" cta="{{ true }}" top-bg="#0e1d4a" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      divisions: [
+        { jp: '精密切削加工', en: 'Precision Machining' },
+        { jp: 'ユニット組立', en: 'Assembly' },
+        { jp: '品質検査', en: 'Inspection' }
+      ],
+      stats: [
+        { label: '敷地面積', value: 12000, decimals: 0, display: '12,000', unit: '㎡', en: 'Total site area' },
+        { label: '従業員数', value: 180, decimals: 0, display: '180', unit: '名', en: 'Employees' },
+        { label: '保有設備', value: 61, decimals: 0, display: '61', unit: '台', en: 'Production equipment' },
+        { label: '月間生産数', value: 150000, decimals: 0, display: '150,000', unit: '個', en: 'Parts per month' },
+        { label: '稼働体制', value: 24, decimals: 0, display: '24', unit: '/7', en: 'Production capability' },
+        { label: '工場内温度', value: 20, decimals: 0, display: '20', unit: '±1℃', en: 'Controlled temperature' }
+      ],
+      areas: [
+        { no: '01', slot: 'area-1', img: 'images/machine-closeup.jpg',en: 'Machining Plant', jp: '第1工場 切削加工棟', text: '5軸・横形マシニングセンタ、CNC複合旋盤を集約。ロボットセルと組み合わせ、夜間も無人で稼働します。', area: '4,200㎡', main: '切削・研削・放電加工', ph: 'Machining plant floor' },
+        { no: '02', slot: 'area-2', img: 'images/control-racks.jpg',en: 'Assembly Plant', jp: '第2工場 組立棟', text: '加工部品をユニットとして組み上げる専用棟。トルク管理と作業記録で、工程のトレーサビリティを確保しています。', area: '2,800㎡', main: 'ユニット組立・圧入', ph: 'Assembly plant' },
+        { no: '03', slot: 'area-3', img: 'images/team-review.jpg',en: 'Quality Assurance Center', jp: '品質保証センター', text: '恒温室に三次元測定機・画像測定器を配置。受入から出荷まで、全工程の測定データを一元管理します。', area: '900㎡', main: '測定・検査・分析', ph: 'QA center / measurement room' },
+        { no: '04', slot: 'area-4', img: 'images/site-logistics.jpg',en: 'Logistics Center', jp: '物流センター', text: '防錆処理と製品ごとの専用梱包を行い、指定の納期・荷姿で出荷。在庫管理はバーコードで行っています。', area: '1,600㎡', main: '梱包・保管・出荷', ph: 'Logistics / shipping area' }
+      ],
+      env: [
+        { big: '20±1℃', en: 'Temperature Control', jp: '恒温管理', text: '加工・測定エリアを年間通して一定温度に保ち、熱変位による寸法誤差を抑えています。' },
+        { big: '5S', en: 'Workplace Discipline', jp: '5S活動', text: '整理・整頓・清掃・清潔・しつけを毎日実施。異物混入や工具の取り違えを防ぎます。' },
+        { big: '30%', en: 'Energy Saving', jp: '省エネルギー', text: '屋根置き太陽光パネルと高効率コンプレッサーにより、工場の電力使用量を削減しています。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

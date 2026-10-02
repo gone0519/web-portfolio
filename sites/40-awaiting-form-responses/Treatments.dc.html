@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body { margin: 0; font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif; background: oklch(98% 0.004 240); }
+a { color: oklch(46% 0.10 245); text-decoration: none; }
+a:hover { color: oklch(32% 0.09 248); }
+
+/* <image-slot> の aspect-ratio 由来の最小幅で列が広がらないように */
+image-slot { min-width: 0; }
+/* src を指定したスロットではプレースホルダーの破線枠を消す。
+   image-slot が自分で付ける data-filled 属性が React の再描画で外れてしまい、
+   シャドウ内の :host([data-filled]) .ring{display:none} が効かないため。 */
+image-slot[src]::part(ring) { display: none; }
+
+/* 各カテゴリのリード（写真＋説明文） */
+.tr-lead { display: grid; grid-template-columns: 320px 1fr; gap: 28px; align-items: center; margin: 0 0 24px; }
+.tr-lead image-slot { width: 100%; height: 200px; }
+
+/* ===== レイアウト（レスポンシブ） =====
+   ブレークポイント：860px＝カード1列／680px＝スマホ */
+.tr-head { max-width: 1200px; margin: 0 auto; padding: 56px 24px 20px; }
+.tr-title { font-size: 32px; font-weight: 700; color: oklch(22% 0.02 250); margin: 0 0 14px; }
+.tr-sec { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+.tr-cat-title { font-size: 22px; font-weight: 700; color: oklch(22% 0.02 250); margin: 0; }
+.tr-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.tr-cta { padding: 72px 24px; text-align: center; background: oklch(24% 0.03 248); }
+.tr-cta-title { font-size: 26px; font-weight: 700; color: #fff; margin: 0 0 14px; }
+
+@media (max-width: 860px) {
+  .tr-grid { grid-template-columns: 1fr; }
+  .tr-lead { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 680px) {
+  .tr-head { padding: 40px 20px 16px; }
+  .tr-title { font-size: 25px; }
+  .tr-sec { padding: 32px 20px; }
+  .tr-cat-title { font-size: 18px; }
+  .tr-cta { padding: 52px 20px; }
+  .tr-cta-title { font-size: 21px; }
+}
+</style>
+</helmet>
+<div style="max-width:100vw;overflow-x:hidden;">
+<dc-import name="Header" active="treatments" hint-size="100%,64px"></dc-import>
+
+<section class="tr-head">
+  <div style="font-size:12px;color:oklch(55% 0.02 245);margin-bottom:14px;"><a href="Home.dc.html">ホーム</a> ／ 施術メニュー</div>
+  <h1 class="tr-title">施術メニュー</h1>
+  <p style="font-size:14px;line-height:1.9;color:oklch(42% 0.02 245);max-width:640px;margin:0;">症状やお悩みに合わせて、手技療法・物理療法・運動療法などを組み合わせてご提案します。まずは丁寧な問診・検査からはじめます。</p>
+</section>
+
+<sc-for list="{{ categories }}" as="cat" hint-placeholder-count="4">
+  <section class="tr-sec">
+    <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:24px;border-bottom:2px solid oklch(46% 0.10 245);padding-bottom:14px;">
+      <span style="font-size:13px;font-weight:700;color:oklch(46% 0.10 245);flex:none;">{{ cat.no }}</span>
+      <h2 class="tr-cat-title">{{ cat.title }}</h2>
+    </div>
+    <div class="tr-lead">
+      <image-slot id="{{ cat.slotId }}" src="{{ cat.img }}" shape="rounded" radius="6" placeholder="施術の様子"></image-slot>
+      <p style="font-size:13px;line-height:1.8;color:oklch(45% 0.02 245);margin:0;max-width:720px;">{{ cat.intro }}</p>
+    </div>
+    <div class="tr-grid">
+      <sc-for list="{{ cat.items }}" as="item" hint-placeholder-count="3">
+        <div style="border:1px solid oklch(91% 0.006 240);border-radius:6px;padding:24px;background:#fff;">
+          <div style="font-size:16px;font-weight:700;color:oklch(22% 0.02 250);margin-bottom:10px;">{{ item.title }}</div>
+          <div style="font-size:12px;color:oklch(46% 0.10 245);font-weight:700;margin-bottom:4px;">こんな症状に</div>
+          <div style="font-size:13px;line-height:1.8;color:oklch(42% 0.02 245);margin-bottom:12px;">{{ item.symptoms }}</div>
+          <div style="font-size:12px;color:oklch(46% 0.10 245);font-weight:700;margin-bottom:4px;">施術の流れ</div>
+          <div style="font-size:13px;line-height:1.8;color:oklch(42% 0.02 245);">{{ item.approach }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+</sc-for>
+
+<section class="tr-cta">
+  <h2 class="tr-cta-title">ご不安な点はお気軽にご相談ください</h2>
+  <p style="font-size:13px;color:oklch(80% 0.015 245);margin:0 0 28px;">症状に応じた施術内容は、ご来院時のカウンセリングで詳しくご説明します。</p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+    <a href="Contact.dc.html" style="background:#fff;color:oklch(24% 0.03 248);padding:16px 36px;border-radius:4px;font-size:15px;font-weight:700;">WEB予約はこちら</a>
+    <a href="tel:0120-000-000" style="border:1px solid oklch(60% 0.02 245);color:#fff;padding:16px 36px;border-radius:4px;font-size:15px;font-weight:700;">0120-000-000</a>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+<dc-import name="MobileBar" hint-size="100%,56px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const categories = [
+      { no: '01', slotId: 'tr-cat-1', img: 'images/treatment-shoulder.jpg', title: '一般施術（肩こり・腰痛・首の痛みなど）', intro: '日常生活の中で起こりやすい肩こりや腰痛、首の痛みなどに対応します。筋肉や関節の状態を確認し、負担のかかっている部分にアプローチします。', items: [
+        { title: '肩こり・首の痛み', symptoms: '肩や首まわりの張り、重さ、頭痛を伴う場合も。', approach: '筋肉の緊張をやわらげ、可動域の改善を図ります。' },
+        { title: '腰痛', symptoms: '慢性的な腰の張りや、動作時の痛み。', approach: '骨盤や姿勢のバランスを確認し、負担の少ない身体の使い方をご案内します。' },
+        { title: '関節の不快感・筋肉の張り', symptoms: '肘・膝・手首などの違和感。', approach: '関節の動きや周辺の筋肉の状態を確認しながら施術します。' },
+      ] },
+      { no: '02', slotId: 'tr-cat-2', img: 'images/treatment-leg-supine.jpg', title: 'スポーツ外傷', intro: '捻挫や肉離れなど、スポーツ活動中に起こりやすいケガに対応します。競技への復帰を見据えたリハビリテーションもご提案します。', items: [
+        { title: '捻挫・肉離れ', symptoms: '関節や筋肉の急な痛み、腫れ。', approach: '状態に応じた施術とテーピングなどのサポートを行います。' },
+        { title: 'スポーツによる痛み', symptoms: '練習や試合後に繰り返し起こる痛み。', approach: '身体の使い方や負担のかかり方を確認し、再発防止に努めます。' },
+        { title: 'リハビリテーション', symptoms: '競技復帰に向けた回復期のケア。', approach: '段階的な運動指導で無理のない復帰をサポートします。' },
+      ] },
+      { no: '03', slotId: 'tr-cat-3', img: 'images/treatment-stretch.jpg', title: '姿勢・身体のコンディショニング', intro: '姿勢の崩れや骨盤の歪みは、肩こりや腰痛の原因になることがあります。日常の身体の使い方から見直していきます。', items: [
+        { title: '姿勢の評価', symptoms: '猫背、反り腰などの姿勢の崩れ。', approach: '姿勢の状態を確認し、改善のための施術と運動をご案内します。' },
+        { title: '骨盤の調整', symptoms: '骨盤の歪みによる腰まわりの不快感。', approach: '骨盤の状態を確認しながら、負担を軽減する施術を行います。' },
+        { title: '運動指導・コンディショニング', symptoms: '身体の動かし方の癖や不調の予防。', approach: '無理のない範囲でのストレッチ・運動をご提案します。' },
+      ] },
+      { no: '04', slotId: 'tr-cat-4', img: 'images/treatment-back.jpg', title: '事故・ケガのサポート', intro: '交通事故や労災、スポーツによるケガなど、専門的なサポートが必要な場合にも対応します。保険会社とのやり取りについてもご相談ください。', items: [
+        { title: '交通事故による痛み', symptoms: 'むち打ちなど事故後の痛みや違和感。', approach: '状態を確認しながら計画的に施術を進めます。保険会社対応もご相談いただけます。' },
+        { title: '労災でのケガ', symptoms: '仕事中の負傷による痛みや不調。', approach: '労災保険の取扱についてもご案内します。' },
+      ] },
+    ];
+    return { categories };
+  }
+}
+</script>
+</body>
+</html>

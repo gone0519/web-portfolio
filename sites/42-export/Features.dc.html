@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#eeede5;color:#2a2a24;font-family:"Shippori Mincho",serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:#1e7a45}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="features" hint-size="100%,0px"></dc-import>
+<main>
+<section data-screen-label="Features Hero" style="position:relative;height:clamp(440px,62vh,640px);overflow:hidden;background:#1a4d34;color:#f6f2e6">
+  <div data-parallax="0.16" style="position:absolute;inset:-14% 0"><image-slot id="features-hero" src="images/smile-skin-wide.jpg" data-kenburns="" shape="rect" placeholder="ページ写真（院内）"></image-slot></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(18,40,28,.9) 0%,rgba(18,40,28,.6) 55%,rgba(18,40,28,.35));pointer-events:none"></div>
+  <div aria-hidden="true" class="pg-outline" data-drift="0.4" style="position:absolute;right:-2vw;bottom:-.14em;white-space:nowrap;font-family:'EB Garamond',serif;font-style:italic;font-size:clamp(110px,17vw,300px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(216,192,138,.55);pointer-events:none">Features</div>
+  <div style="position:absolute;left:0;right:0;bottom:clamp(48px,7vh,80px);max-width:1124px;margin:0 auto;padding:0 clamp(16px,4vw,40px);pointer-events:none">
+    <p data-reveal="up" data-delay="500" style="margin:0;font-family:'EB Garamond',serif;font-style:italic;font-size:clamp(20px,2vw,30px);letter-spacing:.06em;color:#d8c08a">Features of Our Clinic</p>
+    <h1 class="pg-h1" data-reveal="mask" data-delay="700" style="margin:14px 0 0;font-size:clamp(36px,4.2vw,64px);font-weight:700;letter-spacing:.2em">当院の特徴</h1>
+    <p data-reveal="fade" data-delay="1000" style="margin:22px 0 0;font-size:13px;letter-spacing:.08em;pointer-events:auto"><a href="Dermatology%20Clinic.dc.html">トップ</a>　／　当院の特徴</p>
+  </div>
+</section>
+
+<section style="padding:clamp(72px,8vw,120px) clamp(16px,4vw,40px) 0">
+  <div data-reveal="" style="max-width:1124px;margin:0 auto;text-align:center">
+    <h2 style="margin:0;font-size:clamp(22px,2.2vw,30px);font-weight:600;line-height:1.8;letter-spacing:.16em"><span class="nb">安心して相談できる、</span><span class="nb">身近な皮膚科へ。</span></h2>
+    <p style="margin:10px 0 0;font-family:'EB Garamond',serif;font-size:15px;letter-spacing:.08em">Thoughtful Care. Clear Guidance. Trusted Dermatology.</p>
+  </div>
+</section>
+
+<section aria-label="特徴一覧" style="padding:clamp(56px,6vw,90px) clamp(16px,4vw,40px) clamp(80px,9vw,120px)">
+  <div style="max-width:1124px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(56px,7vw,100px)">
+    <sc-for list="{{ features }}" as="f" hint-placeholder-count="5">
+      <article data-reveal="{{ f.rv }}" style="display:flex;flex-wrap:wrap;flex-direction:{{ f.dir }};gap:clamp(32px,5vw,72px);align-items:center">
+        <div data-reveal="mask" data-zoom="" style="flex:1 1 420px;aspect-ratio:3/2;overflow:hidden;border-radius:4px"><image-slot id="{{ f.slot }}" src="{{ f.src }}" shape="rect" placeholder="{{ f.ph }}"></image-slot></div>
+        <div style="flex:1 1 360px">
+          <p style="margin:0;font-family:'EB Garamond',serif;font-size:clamp(40px,4vw,60px);line-height:1;color:#1e7a45">{{ f.no }}</p>
+          <h2 style="margin:18px 0 0;font-size:clamp(20px,1.8vw,24px);font-weight:600;line-height:1.7;letter-spacing:.12em">{{ f.title }}</h2>
+          <p style="margin:6px 0 0;font-family:'EB Garamond',serif;font-size:14px;letter-spacing:.08em;color:#5a5a50">{{ f.en }}</p>
+          <p style="margin:22px 0 0;font-size:15px;line-height:2.1;letter-spacing:.03em;text-wrap:pretty">{{ f.body }}</p>
+          <p style="margin:12px 0 0;font-size:15px;line-height:2.1;letter-spacing:.03em;text-wrap:pretty">{{ f.body2 }}</p>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const featImg = ['counseling', 'doctor-explain', 'consult-face', 'staff-welcome', 'reception-tablet'].map(n => 'images/' + n + '.jpg');
+    const features = [
+      ['丁寧なカウンセリング', 'Careful Consultation', '症状が出始めた時期や経過、日常生活でお困りのことなど、患者さまのお話をじっくり伺います。', '「うまく説明できるか不安」という方もご安心ください。問診票と会話の中で、こちらから一つずつ確認していきます。', 'カウンセリングの様子'],
+      ['わかりやすい説明', 'Clear Explanations', '診断の内容や治療の選択肢、今後の見通しについて、できるだけ専門用語を使わずにご説明します。', 'お薬の塗り方や量、生活の中で気をつけることもその場でお伝えし、ご自宅でのケアにつなげます。', '医師が説明する様子'],
+      ['一人ひとりに合わせた診療', 'Personalized Care', '同じ症状でも、肌質や年齢、生活環境によって適した治療は異なります。', '患者さまの状態やご希望、通院のしやすさもふまえて、治療方針を一緒に考えます。', '診察室'],
+      ['清潔で快適な院内環境', 'Clean & Comfortable', '院内の清掃・換気を徹底し、落ち着いてお過ごしいただける空間づくりを心がけています。', 'プライバシーに配慮した診察室をご用意し、周囲を気にせずご相談いただけます。', '待合室'],
+      ['通いやすいクリニック', 'Easy to Visit', '〇〇駅から徒歩3分。WEB予約で待ち時間の負担を減らしています。', 'お仕事帰りやお子さまの送り迎えの合間にも通いやすいよう、診療時間を設定しています。', 'クリニック外観'],
+    ].map(([title, en, body, body2, ph], i) => ({ title, en, body, body2, ph, no: String(i + 1).padStart(2, '0'), slot: 'feat-' + (i + 1), src: featImg[i], dir: i % 2 ? 'row-reverse' : 'row', rv: i % 2 ? 'right' : 'left' }));
+    return { features };
+  }
+}
+</script>
+</body>
+</html>

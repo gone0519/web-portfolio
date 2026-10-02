@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<link rel="stylesheet" href="./site.css">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff;-webkit-font-smoothing:antialiased}
+a{color:#14335a;text-decoration:none}
+a:hover{color:#2d5f96}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="works" style="position:sticky;top:0;z-index:50" hint-size="100%,72px"></dc-import>
+<main>
+<section data-screen-label="Works / Page hero" style="position:relative;height:clamp(300px,40vw,440px);display:flex;align-items:center;justify-content:center;overflow:hidden;background:#14335a">
+  <div style="position:absolute;inset:0"><image-slot id="works-hero" shape="rect" src="img/city-night.jpg" placeholder="ページヒーロー：竣工建築（夕景）"></image-slot></div>
+  <sc-if value="{{ tint }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;inset:0;pointer-events:none;background:rgba(32,82,145,.72);mix-blend-mode:multiply"></div></sc-if>
+  <div style="position:absolute;inset:0;pointer-events:none;background:rgba(13,36,64,.3)"></div>
+  <div style="position:relative;pointer-events:none;color:#fff;text-align:center;display:flex;flex-direction:column;gap:12px;padding:0 20px">
+    <h1 style="margin:0;font-family:Montserrat,sans-serif;font-size:clamp(30px,4vw,48px);font-weight:600;letter-spacing:.16em">WORKS</h1>
+    <p style="margin:0;font-size:14px;font-weight:700;letter-spacing:.12em">施工実績</p>
+  </div>
+  <nav aria-label="パンくずリスト" style="position:absolute;left:clamp(16px,5vw,64px);bottom:20px;display:flex;gap:10px;font-size:11px;color:#fff;letter-spacing:.08em"><a href="Home.dc.html" style="color:#fff" style-hover="opacity:.7">TOP</a><span>›</span><span>施工実績</span></nav>
+</section>
+
+<section data-screen-label="Works / Gallery" aria-label="施工実績一覧" style="background:#262729;color:#fff;padding:clamp(56px,7vw,96px) clamp(16px,5vw,64px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(22px,2.6vw,32px);font-weight:600;letter-spacing:.08em;line-height:1.6">一つひとつの建築に、技術と誇りを。</h2>
+      <p style="margin:0;font-family:Montserrat,sans-serif;font-size:13px;letter-spacing:.1em;color:#b9bec6">Crafted With Skill, Built to Last.</p>
+    </div>
+    <div role="tablist" aria-label="カテゴリー" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="7">
+        <button type="button" role="tab" aria-selected="{{ c.active }}" onClick="{{ c.select }}" style="font-family:'Noto Sans JP',sans-serif;font-size:12px;letter-spacing:.08em;padding:9px 18px;min-height:40px;cursor:pointer;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.fg }};transition:all .25s">{{ c.label }}<span style="font-family:Montserrat,sans-serif;font-size:10px;margin-left:8px;opacity:.6">{{ c.count }}</span></button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:clamp(20px,2.4vw,32px)">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="9">
+        <article style="display:flex;flex-direction:column;gap:14px">
+          <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#3a3c40">
+            <div style="position:absolute;inset:0;transition:transform 1s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.06)"><image-slot id="worksp-{{ p.id }}" shape="rect" src="{{ p.img }}" placeholder="{{ p.ph }}"></image-slot></div>
+            <span style="position:absolute;top:0;left:0;pointer-events:none;background:#0d2440;color:#fff;font-family:Montserrat,sans-serif;font-size:10px;font-weight:600;letter-spacing:.14em;padding:6px 12px">{{ p.catEn }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <h3 style="margin:0;font-size:15px;font-weight:500;letter-spacing:.04em">{{ p.name }}</h3>
+            <p style="margin:0;font-size:12px;color:#b9bec6;display:flex;flex-wrap:wrap;gap:4px 16px"><span>{{ p.cat }}</span><span>所在地：〇〇県〇〇市</span><span>竣工：20XX年XX月</span></p>
+            <p style="margin:4px 0 0;font-size:12px;line-height:1.8;color:#d6d9de">{{ p.desc }}</p>
+            <button type="button" onClick="{{ p.open }}" style="align-self:flex-start;margin-top:8px;display:flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:1px solid rgba(255,255,255,.5);background:transparent;color:#fff;font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;cursor:pointer;transition:background .3s,color .3s" style-hover="background:#fff;color:#262729">› DETAIL</button>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Works / Strengths link" style="background:#f2f3f5;padding:clamp(56px,7vw,88px) clamp(16px,5vw,64px)">
+  <div data-reveal="" style="max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <p style="margin:0;font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;color:#6a7a8c">STRENGTHS</p>
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.2vw,26px);font-weight:600;color:#0d2440;letter-spacing:.06em">実績を支える、5つの強み。</p>
+    </div>
+    <a href="Strengths.dc.html" style="position:relative;display:flex;align-items:center;justify-content:center;width:min(100%,280px);min-height:48px;border:1px solid #0d2440;color:#0d2440;font-size:12px;font-weight:700;letter-spacing:.1em;transition:background .3s,color .3s" style-hover="background:#0d2440;color:#fff"><span style="position:absolute;left:16px;font-size:15px;font-weight:400">›</span>私たちの強みを見る</a>
+  </div>
+</section>
+</main>
+
+<sc-if value="{{ hasSel }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="{{ sel.name }}" onClick="{{ close }}" style="position:fixed;inset:0;z-index:100;background:rgba(10,20,34,.78);display:flex;align-items:center;justify-content:center;padding:clamp(12px,4vw,48px)">
+    <div onClick="{{ stop }}" style="position:relative;background:#fff;width:min(1040px,100%);max-height:100%;overflow:auto;display:flex;flex-wrap:wrap">
+      <button type="button" onClick="{{ close }}" aria-label="閉じる" style="position:absolute;top:12px;right:12px;z-index:2;width:44px;height:44px;border:0;background:#0d2440;color:#fff;font-size:18px;cursor:pointer">×</button>
+      <div style="flex:1.4 1 420px;position:relative;min-height:clamp(240px,40vw,320px);background:#3a3c40"><image-slot id="worksp-{{ sel.id }}" shape="rect" src="{{ sel.img }}" placeholder="{{ sel.ph }}"></image-slot></div>
+      <div style="flex:1 1 320px;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:16px;position:relative">
+        <span style="align-self:flex-start;background:#0d2440;color:#fff;font-family:Montserrat,sans-serif;font-size:10px;font-weight:600;letter-spacing:.14em;padding:6px 12px">{{ sel.catEn }}</span>
+        <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:24px;font-weight:600;letter-spacing:.06em;color:#0d2440">{{ sel.name }}</h2>
+        <p style="margin:0;font-size:13px;line-height:2;color:#444">{{ sel.desc }}</p>
+        <dl style="margin:8px 0 0;display:flex;flex-direction:column;font-size:13px">
+          <div style="display:grid;grid-template-columns:90px 1fr;gap:12px;padding:10px 0;border-top:1px solid #e1e5ea"><dt style="font-weight:700;color:#0d2440">用途</dt><dd style="margin:0;color:#444">{{ sel.cat }}</dd></div>
+          <div style="display:grid;grid-template-columns:90px 1fr;gap:12px;padding:10px 0;border-top:1px solid #e1e5ea"><dt style="font-weight:700;color:#0d2440">所在地</dt><dd style="margin:0;color:#444">〇〇県〇〇市</dd></div>
+          <div style="display:grid;grid-template-columns:90px 1fr;gap:12px;padding:10px 0;border-top:1px solid #e1e5ea"><dt style="font-weight:700;color:#0d2440">構造・規模</dt><dd style="margin:0;color:#444">〇〇造 地上0階</dd></div>
+          <div style="display:grid;grid-template-columns:90px 1fr;gap:12px;padding:10px 0;border-top:1px solid #e1e5ea"><dt style="font-weight:700;color:#0d2440">延床面積</dt><dd style="margin:0;color:#444">000.00㎡</dd></div>
+          <div style="display:grid;grid-template-columns:90px 1fr;gap:12px;padding:10px 0;border-top:1px solid #e1e5ea;border-bottom:1px solid #e1e5ea"><dt style="font-weight:700;color:#0d2440">竣工</dt><dd style="margin:0;color:#444">20XX年XX月</dd></div>
+        </dl>
+        <div style="display:flex;gap:8px;margin-top:auto;padding-top:8px">
+          <button type="button" onClick="{{ prev }}" style="flex:1;min-height:44px;border:1px solid #0d2440;background:#fff;color:#0d2440;font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;cursor:pointer" style-hover="background:#0d2440;color:#fff">‹ PREV</button>
+          <button type="button" onClick="{{ next }}" style="flex:1;min-height:44px;border:1px solid #0d2440;background:#fff;color:#0d2440;font-family:Montserrat,sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;cursor:pointer" style-hover="background:#0d2440;color:#fff">NEXT ›</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+<dc-import name="SiteFooter" tint="{{ tint }}" hint-size="100%,820px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;blueTint&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { cat: 'all', sel: null };
+  componentDidMount() {
+    this.rv();
+    this.onKey = e => { if (e.key === 'Escape') this.setState({ sel: null }); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentDidUpdate() { this.rv(); }
+  componentWillUnmount() { this.io && this.io.disconnect(); window.removeEventListener('keydown', this.onKey); }
+  rv() {
+    if (this.props.reveal === false) return;
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); } }), { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.style.opacity = '0'; el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1)';
+      this.io.observe(el);
+    });
+  }
+  renderVals() {
+    const C = { res: ['住宅', 'RESIDENTIAL'], com: ['商業施設', 'COMMERCIAL'], off: ['オフィス', 'OFFICE'], ret: ['店舗', 'RETAIL'], pub: ['公共施設', 'PUBLIC'], ren: ['リノベーション', 'RENOVATION'] };
+    const raw = [
+      ['res', '〇〇の家', '住宅外観', '敷地の光と風を取り込む、二世帯で暮らす木造住宅。'],
+      ['com', '〇〇ビル 新築工事', '商業ビル外観', '地域の拠点となる複合商業施設。プロジェクト概要が入ります。'],
+      ['off', '〇〇株式会社 本社社屋', 'オフィス内観', '働き方に合わせて変化できる、開放的な執務空間。'],
+      ['ret', '〇〇ショールーム', '店舗ファサード', 'ブランドの世界観を素材と照明で表現した路面店。'],
+      ['pub', '〇〇町 公民館', '公共施設外観', '地域の方々が集う、木の温もりを生かした公共建築。'],
+      ['ren', '〇〇邸 改修工事', '改修後の内観', '築年数を重ねた住まいを、性能とデザインの両面から再生。'],
+      ['res', '〇〇の家 Ⅱ', '住宅内観（リビング）', 'プロジェクト概要が入ります。'],
+      ['off', '〇〇事務所 新築工事', 'オフィス外観', 'プロジェクト概要が入ります。'],
+      ['ren', '〇〇ビル 外装改修', '改修後の外観', 'プロジェクト概要が入ります。'],
+    ];
+    const imgs = ['houses', 'skyscrapers', 'office-trees', 'parking-building', 'cranes', 'floorplan-keys', 'estimate-model', 'crane-scaffold', 'city-station'];
+    const all = raw.map(([c, name, ph, desc], i) => ({ id: 'p' + (i + 1), img: 'img/' + imgs[i] + '.jpg', c, cat: C[c][0], catEn: C[c][1], name, ph, desc }));
+    const cat = this.state.cat;
+    const list = cat === 'all' ? all : all.filter(p => p.c === cat);
+    const cats = [['all', 'すべて'], ...Object.entries(C).map(([k, v]) => [k, v[0]])].map(([k, label]) => {
+      const active = k === cat;
+      return { label, active, count: k === 'all' ? all.length : all.filter(p => p.c === k).length, select: () => this.setState({ cat: k }),
+        bg: active ? '#fff' : 'transparent', fg: active ? '#262729' : '#fff', border: active ? '#fff' : 'rgba(255,255,255,.35)' };
+    });
+    const idx = list.findIndex(p => p.id === this.state.sel);
+    const step = d => () => this.setState({ sel: list[(idx + d + list.length) % list.length].id });
+    return {
+      tint: this.props.blueTint ?? true,
+      cats,
+      projects: list.map(p => ({ ...p, open: () => this.setState({ sel: p.id }) })),
+      hasSel: idx >= 0, sel: idx >= 0 ? list[idx] : {},
+      close: () => this.setState({ sel: null }), stop: e => e.stopPropagation(),
+      prev: step(-1), next: step(1),
+    };
+  }
+}
+</script>
+</body>
+</html>

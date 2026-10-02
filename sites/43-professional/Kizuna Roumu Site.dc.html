@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body{margin:0;-webkit-text-size-adjust:100%;}
+  *{box-sizing:border-box;}
+  a{color:#3F7A66;}
+  a:hover{color:#2c5a49;}
+  img,svg,video,iframe{max-width:100%;}
+  /* src を指定済みの画像スロットは点線の枠を出さない（空スロットには残す） */
+  image-slot[src]::part(ring){display:none;}
+  input,select,textarea,button{font-family:inherit;max-width:100%;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.55;}50%{transform:translate(-50%,-50%) scale(1.18);opacity:0.15;}}
+  @keyframes gentleFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important;transition:none !important;} }
+
+  /* ========== レスポンシブ ========== */
+  /* ヘッダー：ハンバーガーはデスクトップでは非表示 */
+  .nav-burger{display:none;}
+
+  /* タブレット以下：横並びナビをハンバーガーに切り替え */
+  @media (max-width: 1120px){
+    .nav-desk{display:none !important;}
+    .nav-burger{display:flex !important;}
+  }
+  @media (min-width: 1121px){
+    .nav-panel{display:none !important;}
+  }
+  /* 狭い画面ではヘッダー内の電話番号 → さらに狭ければCTAボタンを格納 */
+  @media (max-width: 720px){ .hdr-tel{display:none !important;} }
+  @media (max-width: 480px){ .hdr-cta{display:none !important;} }
+
+  /* 2カラムレイアウトを1カラムへ */
+  @media (max-width: 860px){
+    .ab-intro{grid-template-columns:minmax(0,1fr) !important;}
+    /* width を明示しないと auto margin で fit-content 化して幅0になる */
+    .ab-portrait{width:100%;max-width:340px;margin:0 auto;}
+  }
+  @media (max-width: 900px){
+    .ct-grid{grid-template-columns:minmax(0,1fr) !important;}
+  }
+
+  /* 定義リスト（プロフィール・事務所概要）を縦積みに */
+  @media (max-width: 600px){
+    .dl-row{flex-direction:column !important;gap:4px !important;}
+    .dl-row > div:first-child{width:auto !important;}
+  }
+
+  /* サービス詳細カードのサムネイル＋見出しを縦積みに */
+  @media (max-width: 700px){
+    .sd-head{grid-template-columns:minmax(0,1fr) !important;}
+    .sd-thumb{max-width:300px;}
+  }
+
+  /* iOSでフォーム入力時に自動ズームさせない（16px未満だとズームする） */
+  @media (max-width: 600px){
+    input,select,textarea{font-size:16px !important;}
+  }
+</style>
+</helmet>
+<div style="font-family:'Noto Sans JP',sans-serif;color:#1c1f1e;background:#faf9f6;min-height:100vh;line-height:1.75;">
+
+  <div style="position:sticky;top:0;z-index:50;background:rgba(250,249,246,0.96);backdrop-filter:blur(6px);border-bottom:1px solid #e3e6e2;">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(12px,2.4vw,16px) clamp(16px,4vw,24px);display:flex;align-items:center;justify-content:space-between;gap:clamp(10px,2vw,20px);">
+      <div onClick="{{ homeClick }}" style="cursor:pointer;font-family:'Noto Serif JP',serif;font-size:clamp(13px,2.6vw,21px);font-weight:700;letter-spacing:0.02em;white-space:nowrap;">きずな<span style="color:#3F7A66;">社会保険労務士</span>事務所</div>
+      <nav class="nav-desk" style="display:flex;align-items:center;gap:clamp(14px,2vw,24px);flex-wrap:wrap;">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+          <span onClick="{{ item.onClick }}" style="cursor:pointer;font-size:14px;font-weight:500;color:#3a3f3d;white-space:nowrap;" style-hover="color:#3F7A66;">{{ item.label }}</span>
+        </sc-for>
+      </nav>
+      <div style="display:flex;align-items:center;gap:clamp(10px,1.6vw,16px);">
+        <span class="hdr-tel" style="font-family:'Inter',sans-serif;font-size:13px;color:#5b625f;white-space:nowrap;">TEL 03-1234-5678</span>
+        <button class="hdr-cta" onClick="{{ contactClick }}" style="background:linear-gradient(135deg,#3F7A66,#2c5a49);color:#fff;border:none;padding:10px clamp(14px,2.4vw,22px);font-size:clamp(13px,1.6vw,14px);font-weight:600;cursor:pointer;border-radius:3px;white-space:nowrap;box-shadow:0 4px 14px rgba(63,122,102,0.3);transition:transform 0.2s ease;" style-hover="transform:translateY(-2px);">お問い合わせ</button>
+        <button class="nav-burger" onClick="{{ toggleMenu }}" aria-label="メニューを開閉" style="background:transparent;border:1px solid #cfd5d1;border-radius:3px;width:44px;height:38px;padding:0;cursor:pointer;flex-shrink:0;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+          <span style="display:block;width:18px;height:2px;background:#1c1f1e;"></span>
+          <span style="display:block;width:18px;height:2px;background:#1c1f1e;"></span>
+          <span style="display:block;width:18px;height:2px;background:#1c1f1e;"></span>
+        </button>
+      </div>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div class="nav-panel" style="border-top:1px solid #e3e6e2;background:#faf9f6;padding:4px clamp(16px,4vw,24px) 18px;">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+          <div onClick="{{ item.onClick }}" style="cursor:pointer;font-size:15px;font-weight:600;color:#1c1f1e;padding:13px 2px;border-bottom:1px solid #e9ece9;">{{ item.label }}</div>
+        </sc-for>
+        <div style="font-family:'Inter',sans-serif;font-size:14px;color:#5b625f;padding:16px 2px 0;">TEL 03-1234-5678</div>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <section style="background:#1c1f1e;padding:clamp(40px,7vw,72px) 0 clamp(28px,5vw,48px);overflow:hidden;animation:fadeUp 0.8s ease both;">
+      <div style="max-width:1080px;margin:0 auto;display:flex;justify-content:center;align-items:center;">
+        <image-slot id="hero-photo-1" src="images/consult-smile.jpg" shape="rect" mask="polygon(50% 0, 100% 50%, 50% 100%, 0 50%)" placeholder="面談風景" style="width:clamp(64px,17vw,320px);height:clamp(64px,17vw,320px);margin:0 clamp(-32px,-1.7vw,-9px);transform:translateY(clamp(-40px,-3vw,-16px));flex-shrink:0;filter:drop-shadow(0 14px 28px rgba(0,0,0,0.45));"></image-slot>
+        <image-slot id="hero-photo-2" src="images/office-building.jpg" shape="rect" mask="polygon(50% 0, 100% 50%, 50% 100%, 0 50%)" placeholder="オフィス風景" style="width:clamp(64px,17vw,320px);height:clamp(64px,17vw,320px);margin:0 clamp(-32px,-1.7vw,-9px);transform:translateY(clamp(16px,3vw,40px));flex-shrink:0;filter:drop-shadow(0 14px 28px rgba(0,0,0,0.45));"></image-slot>
+        <div style="position:relative;width:clamp(40px,9.5vw,180px);height:clamp(40px,9.5vw,180px);margin:0 clamp(-32px,-1.7vw,-9px);flex-shrink:0;z-index:1;">
+          <div style="position:absolute;top:50%;left:50%;width:100%;height:100%;clip-path:polygon(50% 0, 100% 50%, 50% 100%, 0 50%);background:#9fc2b3;animation:breathe 3.2s ease-in-out infinite;"></div>
+          <div style="position:relative;width:100%;height:100%;clip-path:polygon(50% 0, 100% 50%, 50% 100%, 0 50%);background:linear-gradient(135deg,#4a8a75,#2c5a49);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 28px rgba(0,0,0,0.45);animation:gentleFloat 4s ease-in-out infinite;">
+            <div style="font-family:'Noto Serif JP',serif;color:#fff;text-align:center;font-size:clamp(7px,1.5vw,13px);font-weight:700;letter-spacing:0.08em;line-height:1.6;">きずな<br/>社労士</div>
+          </div>
+        </div>
+        <image-slot id="hero-photo-3" src="images/team-five.jpg" shape="rect" mask="polygon(50% 0, 100% 50%, 50% 100%, 0 50%)" placeholder="スタッフ写真" style="width:clamp(64px,17vw,320px);height:clamp(64px,17vw,320px);margin:0 clamp(-32px,-1.7vw,-9px);transform:translateY(clamp(16px,3vw,40px));flex-shrink:0;filter:drop-shadow(0 14px 28px rgba(0,0,0,0.45));"></image-slot>
+        <image-slot id="hero-photo-4" src="images/meeting-documents.jpg" shape="rect" mask="polygon(50% 0, 100% 50%, 50% 100%, 0 50%)" placeholder="相談風景" style="width:clamp(64px,17vw,320px);height:clamp(64px,17vw,320px);margin:0 clamp(-32px,-1.7vw,-9px);transform:translateY(clamp(-40px,-3vw,-16px));flex-shrink:0;filter:drop-shadow(0 14px 28px rgba(0,0,0,0.45));"></image-slot>
+      </div>
+    </section>
+
+    <section style="max-width:800px;margin:0 auto;padding:clamp(40px,7vw,64px) clamp(16px,4vw,24px) clamp(28px,5vw,40px);text-align:center;animation:fadeUp 0.8s ease both;">
+      <div style="font-family:'Inter',sans-serif;font-size:clamp(11px,1.5vw,13px);letter-spacing:0.14em;color:#3F7A66;font-weight:600;margin-bottom:18px;">HR &amp; SOCIAL INSURANCE CONSULTANT</div>
+      <h1 style="font-family:'Noto Serif JP',serif;font-size:clamp(28px,5.6vw,58px);font-weight:700;line-height:1.4;margin:0 0 24px;letter-spacing:-0.02em;">人と会社の未来を、<br/><span style="color:#3F7A66;border-bottom:4px solid #3F7A66;">労務</span>からともに支える。</h1>
+      <p style="font-size:clamp(14px,1.8vw,16px);color:#4b514e;margin:0 auto 36px;max-width:520px;">採用から社会保険手続き、給与計算、就業規則の整備まで。会社が本業に集中できるよう、労務まわりの実務と制度づくりを継続的にサポートします。</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+        <button onClick="{{ contactClick }}" style="background:linear-gradient(135deg,#4a8a75,#2c5a49);color:#fff;border:none;padding:16px clamp(20px,4vw,34px);font-size:15px;font-weight:600;cursor:pointer;border-radius:3px;box-shadow:0 10px 24px rgba(63,122,102,0.35);transition:transform 0.2s ease,box-shadow 0.2s ease;" style-hover="transform:translateY(-3px);box-shadow:0 16px 30px rgba(63,122,102,0.45);">無料相談を予約する</button>
+        <button onClick="{{ servicesClick }}" style="background:transparent;color:#1c1f1e;border:1px solid #1c1f1e;padding:16px clamp(20px,4vw,34px);font-size:15px;font-weight:600;cursor:pointer;border-radius:3px;" style-hover="background:#1c1f1e;color:#fff;">サービスを見る</button>
+      </div>
+    </section>
+
+    <section style="background:linear-gradient(135deg,#1c1f1e 0%,#20362f 55%,#2c5a49 100%);color:#f2f1ee;padding:clamp(48px,8vw,72px) clamp(16px,4vw,24px);">
+      <div style="max-width:900px;margin:0 auto;text-align:center;">
+        <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;color:#0f1512;font-weight:700;margin-bottom:18px;background:#9fc2b3;padding:5px 14px;border-radius:20px;">MISSION</div>
+        <p style="font-family:'Noto Serif JP',serif;font-size:clamp(18px,2.9vw,27px);font-weight:600;line-height:1.85;margin:0;letter-spacing:-0.01em;">労務という土台から、はたらく人と会社が<br/>ともに成長できる仕組みをつくる。</p>
+      </div>
+    </section>
+
+    <section style="max-width:1000px;margin:0 auto;padding:clamp(56px,9vw,88px) clamp(16px,4vw,24px);text-align:center;position:relative;">
+      <div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);font-family:'Noto Serif JP',serif;font-size:clamp(90px,16vw,180px);color:#3F7A66;opacity:0.06;line-height:1;pointer-events:none;">”</div>
+      <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;position:relative;">ABOUT US</div>
+      <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(23px,3.6vw,34px);font-weight:700;margin:0 0 28px;letter-spacing:-0.01em;position:relative;">きずな社会保険労務士事務所について</h2>
+      <p style="font-size:15px;color:#4b514e;max-width:760px;margin:0 auto;">中小企業から成長中のスタートアップまで、幅広い業種の労務課題に向き合ってきました。人事労務のルールづくりから日々の手続き代行まで、経営者の伴走者として実務レベルで支援するのが私たちのやり方です。制度の説明だけで終わらせず、現場で運用できる形に落とし込むことを大切にしています。</p>
+      <img src="images/team-four.jpg" alt="きずな社会保険労務士事務所のスタッフ" style="display:block;width:100%;max-width:820px;margin:clamp(32px,5vw,48px) auto 0;height:clamp(200px,30vw,340px);object-fit:cover;border-radius:4px;position:relative;"/>
+    </section>
+
+    <section style="background:#f1f4f2;padding:clamp(56px,9vw,88px) clamp(16px,4vw,24px);">
+      <div style="max-width:1240px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:clamp(32px,5vw,52px);">
+          <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;">SERVICE</div>
+          <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(26px,4.4vw,38px);font-weight:700;margin:0;letter-spacing:-0.02em;">サービス一覧</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(16px,2.5vw,24px);">
+          <sc-for list="{{ homeServices }}" as="s" hint-placeholder-count="6">
+            <div onClick="{{ s.onClick }}" style="background:#fff;border:1px solid #e3e6e2;border-radius:4px;overflow:hidden;cursor:pointer;box-shadow:0 2px 10px rgba(28,31,30,0.05);transition:transform 0.25s ease,box-shadow 0.25s ease;" style-hover="border-color:#3F7A66;transform:translateY(-6px);box-shadow:0 20px 36px rgba(28,31,30,0.14);">
+              <img src="{{ s.img }}" alt="{{ s.title }}" style="display:block;width:100%;height:clamp(150px,20vw,190px);object-fit:cover;"/>
+              <div style="padding:clamp(22px,4.5vw,32px);">
+                <div style="width:34px;height:34px;border-radius:50%;background:#f1f4f2;color:#3F7A66;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;margin-bottom:14px;">{{ s.num }}</div>
+                <h3 style="font-size:18px;font-weight:700;margin:0 0 10px;">{{ s.title }}</h3>
+                <p style="font-size:14px;color:#5b625f;margin:0;">{{ s.desc }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#e7f0ec;padding:clamp(56px,9vw,96px) clamp(16px,4vw,24px);">
+      <div style="text-align:center;margin-bottom:clamp(34px,5vw,56px);">
+        <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#fff;padding:5px 14px;border-radius:20px;">STRENGTHS</div>
+        <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(26px,4.4vw,38px);font-weight:700;margin:0;letter-spacing:-0.02em;">選ばれる理由</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:clamp(24px,4vw,32px);max-width:1240px;margin:0 auto;">
+        <sc-for list="{{ strengths }}" as="st" hint-placeholder-count="4">
+          <div>
+            <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#4a8a75,#2c5a49);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;margin-bottom:18px;">{{ st.num }}</div>
+            <h3 style="font-size:17px;font-weight:700;margin:0 0 10px;">{{ st.title }}</h3>
+            <p style="font-size:14px;color:#5b625f;margin:0;">{{ st.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="background:linear-gradient(135deg,#1c1f1e 0%,#212a27 100%);padding:clamp(48px,8vw,80px) clamp(16px,4vw,24px);">
+      <div style="max-width:1240px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:clamp(20px,3vw,24px);text-align:center;">
+          <sc-for list="{{ stats }}" as="stat" hint-placeholder-count="4">
+            <div style="border-left:2px solid #3F7A66;padding:4px 0 4px 20px;">
+              <div style="font-family:'Noto Serif JP',serif;font-size:clamp(34px,5.4vw,58px);font-weight:700;color:#fff;letter-spacing:-0.02em;">{{ stat.value }}</div>
+              <div style="font-size:13px;color:#9fa9a5;margin-top:10px;">{{ stat.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ showPlaceholderNotices }}" hint-placeholder-val="{{ true }}">
+          <p style="text-align:center;color:#6f7975;font-size:12px;margin:28px 0 0;">※上記はサンプル数値です。実際の実績値に差し替えてご利用ください。</p>
+        </sc-if>
+      </div>
+    </section>
+
+    <section style="max-width:1000px;margin:0 auto;padding:clamp(56px,9vw,88px) clamp(16px,4vw,24px);">
+      <div style="text-align:center;margin-bottom:clamp(32px,5vw,52px);">
+        <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;">CONSULTATION FLOW</div>
+        <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(26px,4.4vw,38px);font-weight:700;margin:0;letter-spacing:-0.02em;">ご相談の流れ</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <sc-for list="{{ processSteps }}" as="p" hint-placeholder-count="6">
+          <div style="display:flex;gap:clamp(14px,3vw,24px);padding:clamp(18px,3vw,24px) 0;border-bottom:1px solid #e3e6e2;align-items:baseline;">
+            <div style="width:clamp(40px,7vw,48px);height:clamp(40px,7vw,48px);border-radius:50%;background:#e7f0ec;color:#2c5a49;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;font-size:clamp(14px,2.2vw,17px);font-weight:700;flex-shrink:0;">{{ p.num }}</div>
+            <div>
+              <h3 style="font-size:17px;font-weight:700;margin:0 0 8px;">{{ p.title }}</h3>
+              <p style="font-size:14px;color:#5b625f;margin:0;">{{ p.desc }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="background:#f1f4f2;padding:clamp(56px,9vw,88px) clamp(16px,4vw,24px);">
+      <div style="max-width:1240px;margin:0 auto;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:16px;margin-bottom:clamp(28px,4.5vw,44px);">
+          <div>
+            <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;">CASE STUDIES</div>
+            <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(26px,4.4vw,38px);font-weight:700;margin:0;letter-spacing:-0.02em;">支援事例（サンプル）</h2>
+          </div>
+          <span onClick="{{ casesClick }}" style="cursor:pointer;font-size:14px;font-weight:600;color:#3F7A66;">事例一覧を見る ＞</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(16px,2.5vw,24px);">
+          <sc-for list="{{ casePreview }}" as="c" hint-placeholder-count="3">
+            <div style="background:#fff;border:1px solid #e3e6e2;border-radius:4px;overflow:hidden;box-shadow:0 4px 16px rgba(28,31,30,0.05);">
+              <img src="{{ c.img }}" alt="{{ c.title }}" style="display:block;width:100%;height:clamp(140px,18vw,170px);object-fit:cover;"/>
+              <div style="padding:clamp(20px,4vw,28px);">
+                <div style="display:inline-block;background:#e7f0ec;color:#2c5a49;font-size:12px;font-weight:600;padding:4px 10px;border-radius:3px;margin-bottom:14px;">{{ c.tag }}</div>
+                <h3 style="font-size:16px;font-weight:700;margin:0 0 8px;">{{ c.title }}</h3>
+                <p style="font-size:13px;color:#5b625f;margin:0;">{{ c.desc }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:900px;margin:0 auto;padding:clamp(56px,9vw,88px) clamp(16px,4vw,24px);">
+      <div style="text-align:center;margin-bottom:clamp(28px,4.5vw,44px);">
+        <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;">FAQ</div>
+        <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(26px,4.4vw,38px);font-weight:700;margin:0;letter-spacing:-0.02em;">よくあるご質問</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="9">
+          <details style="background:#fff;border:1px solid #e3e6e2;border-radius:4px;padding:18px clamp(16px,3vw,22px);">
+            <summary style="cursor:pointer;font-weight:700;font-size:15px;list-style:none;">{{ f.q }}</summary>
+            <p style="font-size:14px;color:#5b625f;margin:14px 0 0;">{{ f.a }}</p>
+          </details>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="background:linear-gradient(rgba(44,90,73,0.88),rgba(28,31,30,0.88)),url(images/handshake-office.jpg) center 35%/cover no-repeat;padding:clamp(48px,8vw,80px) clamp(16px,4vw,24px);text-align:center;">
+      <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(20px,3.4vw,28px);font-weight:700;color:#fff;margin:0 0 16px;">労務について、まずはお気軽にご相談ください。</h2>
+      <p style="color:#e7f0ec;font-size:15px;margin:0 0 32px;">電話・オンライン・訪問、ご都合の良い方法でご相談いただけます。</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <button onClick="{{ contactClick }}" style="background:#fff;color:#2c5a49;border:none;padding:16px clamp(20px,4vw,34px);font-size:15px;font-weight:700;cursor:pointer;border-radius:3px;">お問い合わせフォーム</button>
+        <span style="background:transparent;color:#fff;border:1px solid #fff;padding:16px clamp(20px,4vw,34px);font-size:15px;font-weight:700;border-radius:3px;">電話 03-1234-5678</span>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <section style="max-width:1240px;margin:0 auto;padding:clamp(44px,7vw,72px) clamp(16px,4vw,24px) clamp(28px,5vw,40px);">
+      <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;">SERVICE</div>
+      <h1 style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,4vw,34px);font-weight:700;margin:0 0 20px;">サービス紹介</h1>
+      <p style="font-size:15px;color:#4b514e;max-width:640px;margin:0;">労務管理から社会保険手続き、給与計算、助成金活用まで、企業の労務全般をワンストップでサポートします。</p>
+    </section>
+    <div style="max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,24px) clamp(56px,9vw,96px);display:flex;flex-direction:column;gap:clamp(16px,2.5vw,24px);">
+      <sc-for list="{{ serviceDetails }}" as="sd" hint-placeholder-count="7">
+        <div style="background:#fff;border:1px solid #e3e6e2;border-top:3px solid #3F7A66;border-radius:4px;padding:clamp(22px,4.5vw,40px);display:grid;grid-template-columns:minmax(0,1fr);gap:20px;box-shadow:0 4px 18px rgba(28,31,30,0.05);">
+          <div class="sd-head" style="display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(18px,3vw,28px);align-items:start;">
+            <img class="sd-thumb" src="{{ sd.img }}" alt="{{ sd.title }}" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;"/>
+            <div>
+              <div style="display:flex;align-items:baseline;gap:clamp(10px,2vw,16px);flex-wrap:wrap;margin-bottom:14px;">
+                <span style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#4a8a75,#2c5a49);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;flex-shrink:0;">{{ sd.num }}</span>
+                <h2 style="font-size:clamp(18px,2.6vw,21px);font-weight:700;margin:0;">{{ sd.title }}</h2>
+              </div>
+              <p style="font-size:14px;color:#4b514e;margin:0;">{{ sd.overview }}</p>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:clamp(18px,3vw,24px);background:#f1f4f2;border-radius:4px;padding:clamp(18px,3.5vw,24px);">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:#3F7A66;margin-bottom:8px;">こんな方に</div>
+              <p style="font-size:13px;color:#4b514e;margin:0;">{{ sd.who }}</p>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:700;color:#3F7A66;margin-bottom:8px;">解決できるお悩み</div>
+              <p style="font-size:13px;color:#4b514e;margin:0;">{{ sd.problems }}</p>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:700;color:#3F7A66;margin-bottom:8px;">主なサポート内容</div>
+              <p style="font-size:13px;color:#4b514e;margin:0;">{{ sd.benefits }}</p>
+            </div>
+          </div>
+          <div>
+            <button onClick="{{ contactClick }}" style="background:linear-gradient(135deg,#4a8a75,#2c5a49);color:#fff;border:none;padding:12px clamp(18px,3.5vw,26px);font-size:14px;font-weight:600;cursor:pointer;border-radius:3px;box-shadow:0 6px 16px rgba(63,122,102,0.3);" style-hover="transform:translateY(-2px);">このサービスについて相談する</button>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <section style="max-width:1240px;margin:0 auto;padding:clamp(44px,7vw,72px) clamp(16px,4vw,24px) clamp(28px,5vw,40px);">
+      <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;">ABOUT</div>
+      <h1 style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,4vw,34px);font-weight:700;margin:0;">事務所紹介</h1>
+    </section>
+
+    <section class="ab-intro" style="max-width:1000px;margin:0 auto;padding:0 clamp(16px,4vw,24px) clamp(56px,9vw,88px);display:grid;grid-template-columns:minmax(220px,0.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,44px);align-items:start;">
+      <div class="ab-portrait">
+        <image-slot id="rep-portrait" src="images/representative.jpg" shape="rounded" radius="6" placeholder="代表者ポートレート写真" style="display:block;width:100%;aspect-ratio:3/4;"></image-slot>
+      </div>
+      <div>
+        <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;">REPRESENTATIVE MESSAGE</div>
+        <p style="font-family:'Noto Serif JP',serif;font-size:clamp(16px,2.3vw,19px);font-weight:600;line-height:2;margin:0 0 20px;">「会社の数だけ、労務の正解がある」と考えています。</p>
+        <p style="font-size:14px;color:#4b514e;margin:0 0 14px;">制度や法律の知識をそのまま当てはめるだけでは、現場はうまく回りません。それぞれの会社の事業内容や成長段階、働く人たちの状況を丁寧にうかがい、無理なく運用できる形をご提案することを大切にしています。</p>
+        <p style="font-size:14px;color:#4b514e;margin:0 0 14px;">労務トラブルの多くは、小さなすれ違いから始まります。会社と従業員の双方にとって納得感のあるルールをつくることが、結果として健全な職場と事業の成長につながると考えています。</p>
+        <p style="font-size:14px;color:#4b514e;margin:0 0 24px;">単発の手続き代行で終わらず、経営のパートナーとして長くお付き合いさせていただければ幸いです。</p>
+        <div style="font-size:14px;font-weight:700;">代表社会保険労務士　山本 智子（プレースホルダー）</div>
+      </div>
+    </section>
+
+    <section style="background:#f1f4f2;padding:clamp(48px,8vw,80px) clamp(16px,4vw,24px);">
+      <div style="max-width:1000px;margin:0 auto;text-align:center;">
+        <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;">PHILOSOPHY</div>
+        <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(20px,3.2vw,26px);font-weight:700;margin:0 0 clamp(26px,4vw,40px);">人を、信頼を、いちばん大切に。</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:clamp(12px,2vw,20px);">
+          <sc-for list="{{ philosophyPillars }}" as="ph" hint-placeholder-count="5">
+            <div style="background:#fff;border:1px solid #e3e6e2;border-radius:4px;padding:22px 16px;">
+              <div style="font-size:15px;font-weight:700;">{{ ph }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <img src="images/team-five.jpg" alt="きずな社会保険労務士事務所のメンバー" style="display:block;width:100%;margin:clamp(28px,4.5vw,40px) 0 0;height:clamp(200px,28vw,320px);object-fit:cover;border-radius:4px;"/>
+      </div>
+    </section>
+
+    <section style="max-width:1240px;margin:0 auto;padding:clamp(56px,9vw,88px) clamp(16px,4vw,24px);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:clamp(16px,2.5vw,24px);">
+        <sc-for list="{{ mvv }}" as="m" hint-placeholder-count="3">
+          <div style="border:1px solid #e3e6e2;border-radius:4px;padding:clamp(22px,4.5vw,32px);">
+            <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;">{{ m.label }}</div>
+            <p style="font-size:15px;font-weight:600;margin:0;">{{ m.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="background:#1c1f1e;padding:clamp(48px,8vw,80px) clamp(16px,4vw,24px);">
+      <div style="max-width:800px;margin:0 auto;color:#f2f1ee;">
+        <div style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.14em;color:#9fc2b3;font-weight:600;margin-bottom:20px;">PROFILE</div>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:14px;">
+          <div class="dl-row" style="display:flex;gap:20px;border-bottom:1px solid #3a3f3d;padding-bottom:12px;"><div style="width:100px;color:#9fa9a5;flex-shrink:0;">氏名</div><div>山本 智子（プレースホルダー）</div></div>
+          <div class="dl-row" style="display:flex;gap:20px;border-bottom:1px solid #3a3f3d;padding-bottom:12px;"><div style="width:100px;color:#9fa9a5;flex-shrink:0;">資格</div><div>社会保険労務士（登録番号：プレースホルダー）</div></div>
+          <div class="dl-row" style="display:flex;gap:20px;border-bottom:1px solid #3a3f3d;padding-bottom:12px;"><div style="width:100px;color:#9fa9a5;flex-shrink:0;">経歴</div><div>事業会社の人事部門を経て開業（詳細は差し替えてください）</div></div>
+          <div class="dl-row" style="display:flex;gap:20px;border-bottom:1px solid #3a3f3d;padding-bottom:12px;"><div style="width:100px;color:#9fa9a5;flex-shrink:0;">得意分野</div><div>就業規則整備、労務トラブル予防、助成金活用</div></div>
+          <div class="dl-row" style="display:flex;gap:20px;padding-bottom:4px;"><div style="width:100px;color:#9fa9a5;flex-shrink:0;">メッセージ</div><div>どんな小さなご相談でも、まずはお話をうかがうことから始めます。</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:800px;margin:0 auto;padding:clamp(56px,9vw,88px) clamp(16px,4vw,24px);">
+      <div style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.14em;color:#3F7A66;font-weight:600;margin-bottom:20px;">OFFICE INFORMATION</div>
+      <img src="images/office-building.jpg" alt="事務所が入居するビル外観" style="display:block;width:100%;height:clamp(170px,24vw,260px);object-fit:cover;border-radius:4px;margin-bottom:clamp(24px,4vw,32px);"/>
+      <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #e3e6e2;">
+        <div class="dl-row" style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #e3e6e2;font-size:14px;"><div style="width:120px;color:#9aa39e;flex-shrink:0;">事務所名</div><div>きずな社会保険労務士事務所</div></div>
+        <div class="dl-row" style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #e3e6e2;font-size:14px;"><div style="width:120px;color:#9aa39e;flex-shrink:0;">代表者</div><div>山本 智子（プレースホルダー）</div></div>
+        <div class="dl-row" style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #e3e6e2;font-size:14px;"><div style="width:120px;color:#9aa39e;flex-shrink:0;">所在地</div><div>東京都千代田区丸の内○-○-○　○○ビル5F（住所プレースホルダー）</div></div>
+        <div class="dl-row" style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #e3e6e2;font-size:14px;"><div style="width:120px;color:#9aa39e;flex-shrink:0;">電話番号</div><div>03-1234-5678</div></div>
+        <div class="dl-row" style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #e3e6e2;font-size:14px;"><div style="width:120px;color:#9aa39e;flex-shrink:0;">メール</div><div>info@kizuna-sr.jp（プレースホルダー）</div></div>
+        <div class="dl-row" style="display:flex;gap:20px;padding:16px 0;font-size:14px;"><div style="width:120px;color:#9aa39e;flex-shrink:0;">営業時間</div><div>平日 9:00〜18:00（土日祝休み）</div></div>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isFees }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <section style="max-width:1240px;margin:0 auto;padding:clamp(44px,7vw,72px) clamp(16px,4vw,24px) 16px;">
+      <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;">FEES</div>
+      <h1 style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,4vw,34px);font-weight:700;margin:0 0 16px;">料金について</h1>
+      <p style="font-size:14px;color:#4b514e;max-width:680px;margin:0;">下記は料金の目安です。実際の費用は従業員数、企業規模、依頼内容の範囲や手続き件数、業務の複雑さによって変動します。詳細は個別にお見積りいたします。</p>
+      <img src="images/badge-pen.jpg" alt="社会保険労務士バッジ" style="display:block;width:100%;height:clamp(160px,22vw,240px);object-fit:cover;object-position:center 60%;border-radius:4px;margin-top:clamp(24px,4vw,32px);"/>
+    </section>
+    <sc-if value="{{ showPlaceholderNotices }}" hint-placeholder-val="{{ true }}">
+      <p style="max-width:1240px;margin:16px auto 0;padding:0 clamp(16px,4vw,24px);color:#a05a00;font-size:12px;">※以下の価格はサンプルです。正式な料金表に差し替えてご利用ください。</p>
+    </sc-if>
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(28px,5vw,40px) clamp(16px,4vw,24px) clamp(56px,9vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:clamp(16px,2.5vw,24px);">
+      <sc-for list="{{ pricing }}" as="pr" hint-placeholder-count="7">
+        <div style="background:#fff;border:1px solid #e3e6e2;border-radius:4px;padding:clamp(22px,4.5vw,32px);display:flex;flex-direction:column;gap:14px;box-shadow:0 4px 16px rgba(28,31,30,0.05);">
+          <h3 style="font-size:16px;font-weight:700;margin:0;">{{ pr.name }}</h3>
+          <div style="font-family:'Noto Serif JP',serif;font-size:clamp(20px,3vw,24px);font-weight:700;color:#3F7A66;">{{ pr.price }}</div>
+          <p style="font-size:13px;color:#5b625f;margin:0;flex-grow:1;">{{ pr.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <section style="background:linear-gradient(135deg,#3F7A66,#2c5a49);padding:clamp(44px,7vw,64px) clamp(16px,4vw,24px);text-align:center;">
+      <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(19px,3vw,24px);font-weight:700;color:#fff;margin:0 0 24px;">貴社の状況に合わせたお見積りをご案内します。</h2>
+      <button onClick="{{ contactClick }}" style="background:#fff;color:#2c5a49;border:none;padding:16px clamp(20px,4vw,34px);font-size:15px;font-weight:700;cursor:pointer;border-radius:3px;box-shadow:0 10px 24px rgba(0,0,0,0.2);">料金について相談する</button>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isCases }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <section style="max-width:1240px;margin:0 auto;padding:clamp(44px,7vw,72px) clamp(16px,4vw,24px) clamp(22px,4vw,32px);">
+      <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;">CASE STUDIES</div>
+      <h1 style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,4vw,34px);font-weight:700;margin:0 0 8px;">支援事例</h1>
+      <p style="font-size:12px;color:#a05a00;margin:0;">※掲載の事例はサンプルです。実際の支援内容に差し替えてご利用ください。</p>
+    </section>
+    <div style="max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,24px) 24px;display:flex;gap:10px;flex-wrap:wrap;">
+      <sc-for list="{{ filters }}" as="ft" hint-placeholder-count="8">
+        <span onClick="{{ ft.onClick }}" style="{{ ft.style }}">{{ ft.label }}</span>
+      </sc-for>
+    </div>
+    <div style="max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,24px) clamp(56px,9vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(16px,2.5vw,24px);">
+      <sc-for list="{{ filteredCases }}" as="c" hint-placeholder-count="6">
+        <div style="background:#fff;border:1px solid #e3e6e2;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 4px 16px rgba(28,31,30,0.05);">
+          <img src="{{ c.img }}" alt="{{ c.categoryLabel }}の支援事例" style="display:block;width:100%;height:clamp(150px,20vw,180px);object-fit:cover;"/>
+          <div style="padding:clamp(20px,4vw,30px);display:flex;flex-direction:column;gap:10px;">
+          <div style="display:inline-block;width:fit-content;background:#e7f0ec;color:#2c5a49;font-size:12px;font-weight:600;padding:4px 10px;border-radius:3px;">{{ c.categoryLabel }}</div>
+          <div style="font-size:13px;color:#9aa39e;">{{ c.industry }}　|　{{ c.size }}</div>
+          <div><span style="font-size:12px;font-weight:700;color:#3F7A66;">課題：</span><span style="font-size:13px;color:#4b514e;">{{ c.challenge }}</span></div>
+          <div><span style="font-size:12px;font-weight:700;color:#3F7A66;">支援内容：</span><span style="font-size:13px;color:#4b514e;">{{ c.support }}</span></div>
+          <div><span style="font-size:12px;font-weight:700;color:#3F7A66;">結果：</span><span style="font-size:13px;color:#4b514e;">{{ c.result }}</span></div>
+          <p style="font-size:13px;color:#5b625f;font-style:italic;margin:8px 0 0;border-top:1px solid #e3e6e2;padding-top:12px;">「{{ c.feedback }}」</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <section style="max-width:1240px;margin:0 auto;padding:clamp(44px,7vw,72px) clamp(16px,4vw,24px) 16px;">
+      <div style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;color:#2c5a49;font-weight:700;margin-bottom:16px;background:#e7f0ec;padding:5px 14px;border-radius:20px;">CONTACT</div>
+      <h1 style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,4vw,34px);font-weight:700;margin:0;">お問い合わせ</h1>
+    </section>
+    <div class="ct-grid" style="max-width:1100px;margin:0 auto;padding:24px clamp(16px,4vw,24px) clamp(56px,9vw,96px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,0.9fr);gap:clamp(24px,4vw,40px);align-items:start;">
+
+      <sc-if value="{{ notFormSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submitForm }}" style="background:#fff;border:1px solid #e3e6e2;border-radius:4px;padding:clamp(20px,4.5vw,36px);display:flex;flex-direction:column;gap:18px;">
+          <label style="font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:6px;">会社名<input type="text" required="{{ true }}" style="border:1px solid #cfd5d1;border-radius:3px;padding:10px 12px;font-size:14px;font-family:inherit;width:100%;"/></label>
+          <label style="font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:6px;">ご担当者名<input type="text" required="{{ true }}" style="border:1px solid #cfd5d1;border-radius:3px;padding:10px 12px;font-size:14px;font-family:inherit;width:100%;"/></label>
+          <label style="font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:6px;">メールアドレス<input type="email" required="{{ true }}" style="border:1px solid #cfd5d1;border-radius:3px;padding:10px 12px;font-size:14px;font-family:inherit;width:100%;"/></label>
+          <label style="font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:6px;">電話番号<input type="tel" style="border:1px solid #cfd5d1;border-radius:3px;padding:10px 12px;font-size:14px;font-family:inherit;width:100%;"/></label>
+          <label style="font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:6px;">従業員数<input type="text" placeholder="例：25名" style="border:1px solid #cfd5d1;border-radius:3px;padding:10px 12px;font-size:14px;font-family:inherit;width:100%;"/></label>
+          <label style="font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:6px;">相談内容
+            <select style="border:1px solid #cfd5d1;border-radius:3px;padding:10px 12px;font-size:14px;font-family:inherit;width:100%;">
+              <sc-for list="{{ contactCategories }}" as="cat" hint-placeholder-count="8">
+                <option value="{{ cat }}">{{ cat }}</option>
+              </sc-for>
+            </select>
+          </label>
+          <label style="font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:6px;">お問い合わせ内容<textarea rows="5" required="{{ true }}" style="border:1px solid #cfd5d1;border-radius:3px;padding:10px 12px;font-size:14px;font-family:inherit;resize:vertical;width:100%;"></textarea></label>
+          <label style="font-size:13px;display:flex;align-items:center;gap:10px;"><input type="checkbox" required="{{ true }}" style="width:auto;flex-shrink:0;"/>プライバシーポリシーに同意する</label>
+          <button type="submit" style="background:linear-gradient(135deg,#4a8a75,#2c5a49);color:#fff;border:none;padding:16px;font-size:15px;font-weight:700;cursor:pointer;border-radius:3px;box-shadow:0 10px 22px rgba(63,122,102,0.3);" style-hover="transform:translateY(-2px);">送信する</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ formSent }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #e3e6e2;border-radius:4px;padding:clamp(28px,6vw,48px);text-align:center;">
+          <div style="font-family:'Noto Serif JP',serif;font-size:clamp(17px,2.6vw,20px);font-weight:700;margin-bottom:14px;">お問い合わせありがとうございます。</div>
+          <p style="font-size:14px;color:#5b625f;margin:0;">内容を確認のうえ、担当者より2営業日以内にご連絡いたします。</p>
+        </div>
+      </sc-if>
+
+      <div style="display:flex;flex-direction:column;gap:clamp(16px,2.5vw,24px);">
+        <img src="images/handshake-desk.jpg" alt="ご相談の様子" style="display:block;width:100%;height:clamp(160px,22vw,200px);object-fit:cover;border-radius:4px;"/>
+        <div style="background:#f1f4f2;border-radius:4px;padding:clamp(20px,4vw,28px);">
+          <h3 style="font-size:15px;font-weight:700;margin:0 0 16px;">お電話でのご相談</h3>
+          <div style="font-family:'Noto Serif JP',serif;font-size:clamp(19px,2.8vw,22px);font-weight:700;color:#3F7A66;">03-1234-5678</div>
+          <p style="font-size:12px;color:#5b625f;margin:8px 0 0;">平日 9:00〜18:00（土日祝休み）</p>
+        </div>
+        <div style="background:#f1f4f2;border-radius:4px;padding:clamp(20px,4vw,28px);font-size:13px;color:#4b514e;display:flex;flex-direction:column;gap:8px;">
+          <div>きずな社会保険労務士事務所</div>
+          <div>東京都千代田区丸の内○-○-○　○○ビル5F</div>
+          <div>info@kizuna-sr.jp</div>
+        </div>
+        <image-slot id="contact-map" shape="rect" placeholder="Googleマップ埋め込み予定" style="width:100%;aspect-ratio:4/3;"></image-slot>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <footer style="background:#1c1f1e;color:#c9cdca;padding:clamp(44px,7vw,64px) clamp(16px,4vw,24px) 28px;">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:clamp(28px,4.5vw,40px);">
+      <div>
+        <div style="font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:14px;">きずな社会保険労務士事務所</div>
+        <p style="font-size:13px;margin:0;color:#9aa39e;">人と会社の未来を、労務からともに支える。</p>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:14px;">サービス</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ footerServiceLinks }}" as="fl" hint-placeholder-count="6">
+            <span onClick="{{ servicesClick }}" style="cursor:pointer;font-size:13px;" style-hover="color:#fff;">{{ fl }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:14px;">事務所案内</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span onClick="{{ aboutClick }}" style="cursor:pointer;font-size:13px;" style-hover="color:#fff;">事務所紹介</span>
+          <span onClick="{{ feesClick }}" style="cursor:pointer;font-size:13px;" style-hover="color:#fff;">料金</span>
+          <span onClick="{{ casesClick }}" style="cursor:pointer;font-size:13px;" style-hover="color:#fff;">解決事例</span>
+          <span onClick="{{ contactClick }}" style="cursor:pointer;font-size:13px;" style-hover="color:#fff;">お問い合わせ</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:14px;">お問い合わせ</div>
+        <div style="font-size:13px;display:flex;flex-direction:column;gap:8px;">
+          <div>TEL 03-1234-5678</div>
+          <div>info@kizuna-sr.jp</div>
+          <div>平日 9:00〜18:00</div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1240px;margin:clamp(28px,4.5vw,44px) auto 0;padding-top:20px;border-top:1px solid #3a3f3d;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:#7d8682;">
+      <div>© きずな社会保険労務士事務所</div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;"><a href="#" style="color:#9aa39e;">プライバシーポリシー</a><a href="#" style="color:#9aa39e;">特定商取引法に基づく表記</a></div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280}, &quot;showPlaceholderNotices&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Content&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'home', caseFilter: 'all', formSent: false, menuOpen: false };
+
+  navTo = (p) => { this.setState({ page: p, formSent: false, menuOpen: false }); if (typeof window !== 'undefined') window.scrollTo(0, 0); };
+  toggleMenu = () => this.setState({ menuOpen: !this.state.menuOpen });
+  submitForm = (e) => { e.preventDefault(); this.setState({ formSent: true }); };
+  setFilter = (k) => this.setState({ caseFilter: k });
+
+  renderVals() {
+    const showNotices = this.props.showPlaceholderNotices ?? true;
+
+    const navItems = [
+      { key: 'home', label: 'ホーム' }, { key: 'services', label: 'サービス' },
+      { key: 'about', label: '事務所紹介' }, { key: 'fees', label: '料金' },
+      { key: 'cases', label: '解決事例' }, { key: 'contact', label: 'お問い合わせ' },
+    ].map(n => ({ ...n, onClick: () => this.navTo(n.key) }));
+
+    const homeServices = [
+      { num: '01', title: '労務管理・人事サポート', desc: '就業規則の整備や日々の人事労務に関するご相談に対応します。', img: 'images/document-writing.jpg' },
+      { num: '02', title: '社会保険手続き', desc: '健康保険・厚生年金・雇用保険・労災保険の各種手続きを代行します。', img: 'images/pension-book.jpg' },
+      { num: '03', title: '給与計算', desc: '給与計算、賞与計算、勤怠管理までまとめて代行します。', img: 'images/payroll-calc.jpg' },
+      { num: '04', title: '採用・人事', desc: '採用支援や雇用契約、人事制度の設計をサポートします。', img: 'images/interview.jpg' },
+      { num: '05', title: '助成金', desc: '活用できる助成金の診断から申請書類の作成・提出まで支援します。', img: 'images/subsidy-success.jpg' },
+      { num: '06', title: '人事コンサルティング', desc: '組織開発や職場環境の改善など、経営課題に踏み込んだ提案を行います。', img: 'images/consulting-report.jpg' },
+    ].map(s => ({ ...s, onClick: () => this.navTo('services') }));
+
+    const strengths = [
+      { num: '01', title: 'スピーディーな対応', desc: 'お問い合わせから初回のご返答まで、原則1営業日以内にご連絡します。' },
+      { num: '02', title: '相談しやすい距離感', desc: '専門用語をかみ砕き、経営者の視点に立ってわかりやすく説明します。' },
+      { num: '03', title: '実務に即したアドバイス', desc: '制度論だけでなく、現場で運用できる具体的な提案を行います。' },
+      { num: '04', title: '長期的な伴走支援', desc: '単発の手続きで終わらず、会社の成長段階に合わせて継続的に支援します。' },
+    ];
+
+    const stats = [
+      { value: '◯◯社〜', label: '支援企業数' },
+      { value: '◯◯年', label: '対応年数' },
+      { value: '◯◯件/年', label: 'ご相談件数' },
+      { value: '1営業日', label: '初回返信の目安' },
+    ];
+
+    const processSteps = [
+      { num: '01', title: 'お問い合わせ', desc: 'フォームまたはお電話にてご連絡ください。概要をお伺いします。' },
+      { num: '02', title: '初回相談', desc: 'オンラインまたは訪問にて、現状の課題やご希望を伺います。' },
+      { num: '03', title: 'ヒアリング・現状分析', desc: '就業規則や労務状況を確認し、課題を整理します。' },
+      { num: '04', title: 'ご提案', desc: '課題に対する具体的な支援内容と費用をご提案します。' },
+      { num: '05', title: 'ご契約', desc: '内容にご納得いただいた上で、契約内容を確定します。' },
+      { num: '06', title: '継続的な支援', desc: 'ご契約後も、状況の変化に合わせて継続的に伴走します。' },
+    ];
+
+    const casePreview = [
+      { tag: '労務管理', title: '製造業（従業員80名）', desc: '就業規則を見直し、残業運用のルールを整備しました。', img: 'images/contract-stamp.jpg' },
+      { tag: '給与計算', title: 'IT企業（従業員35名）', desc: '給与計算業務を全面的に代行し、担当者の負担を軽減しました。', img: 'images/laptop-work.jpg' },
+      { tag: '助成金', title: '小売業（従業員12名）', desc: '活用可能な助成金を診断し、申請をサポートしました。', img: 'images/stamp-hand.jpg' },
+    ];
+
+    const faqs = [
+      { q: '社会保険労務士（社労士）とは何をしてくれるのですか？', a: '社会保険・労働保険の手続き、給与計算、就業規則の整備、労務相談など、企業の人事労務に関する幅広い業務をサポートする専門家です。' },
+      { q: '費用はどのくらいかかりますか？', a: '企業規模や依頼内容によって異なります。まずは無料相談にてお見積りいたします。' },
+      { q: '給与計算だけの依頼はできますか？', a: '可能です。給与計算のみの単発契約にも対応しています。' },
+      { q: '就業規則の作成・見直しはお願いできますか？', a: '可能です。現行の規則の確認から作成・改定までサポートします。' },
+      { q: '会社設立時の労務手続きもお願いできますか？', a: '可能です。設立時の社会保険加入手続きなどをまとめて支援します。' },
+      { q: '社会保険の手続きだけお願いできますか？', a: '可能です。加入・喪失などの各種手続きを個別にご依頼いただけます。' },
+      { q: '助成金の相談はできますか？', a: '可能です。要件確認から申請書類の作成までサポートします。' },
+      { q: '従業員とのトラブルについて相談できますか？', a: '可能です。トラブルの予防と対応の両面からアドバイスします。' },
+      { q: '労務管理を丸ごと外部委託できますか？', a: '可能です。業務範囲に応じた顧問契約をご提案します。' },
+    ];
+
+    const serviceDetails = [
+      { num: '01', title: '労務管理', img: 'images/meeting-documents.jpg', overview: '就業規則や雇用契約の整備から日々の労務相談まで、企業の労務基盤を支えます。', who: '労務ルールが整っていない企業、リスク管理を強化したい企業', problems: '残業管理の不明確さ、契約書の不備、労務トラブルの予防', benefits: '労務相談、雇用契約書の整備、就業規則の運用サポート' },
+      { num: '02', title: '社会保険手続き', img: 'images/pension-book.jpg', overview: '健康保険・厚生年金・雇用保険・労災保険に関する各種手続きを代行します。', who: '手続き業務の負担を減らしたい企業、正確な手続きを求める企業', problems: '入退社ごとの手続き漏れ、制度改正への対応', benefits: '資格取得・喪失手続き、算定基礎届、各種変更届の代行' },
+      { num: '03', title: '給与計算', img: 'images/payroll-calc.jpg', overview: '毎月の給与計算から賞与計算、勤怠管理まで正確に代行します。', who: '給与計算の担当者が不足している企業、正確性を重視する企業', problems: '計算ミスのリスク、法改正への対応、担当者の属人化', benefits: '月次給与計算、賞与計算、勤怠管理、給与計算のアウトソーシング' },
+      { num: '04', title: '採用・人事', img: 'images/interview.jpg', overview: '採用計画から雇用契約、定着施策まで人事面を支援します。', who: '採用体制を整えたい企業、人事制度を見直したい企業', problems: '採用基準の不明確さ、早期離職、評価制度の未整備', benefits: '採用支援、雇用契約書作成、人事制度設計' },
+      { num: '05', title: '就業規則・諸規程', img: 'images/badge-pen.jpg', overview: '就業規則や賃金規程など、各種社内規程の作成・改定を行います。', who: '規則が未整備の企業、法改正に対応したい企業', problems: '法令違反のリスク、規則の形骸化', benefits: '就業規則作成・改定、賃金規程整備、法令遵守の確認' },
+      { num: '06', title: '助成金申請支援', img: 'images/subsidy-success.jpg', overview: '活用可能な助成金の診断から申請書類の作成・提出まで対応します。', who: '助成金を活用したい企業、申請作業の負担を減らしたい企業', problems: 'どの助成金が使えるか分からない、申請書類の煩雑さ', benefits: '受給可能性の診断、申請書類作成、労働局とのやり取り代行' },
+      { num: '07', title: '人事コンサルティング', img: 'images/consulting-report.jpg', overview: '組織開発や職場環境の改善など、経営課題に踏み込んだ提案を行います。', who: '組織づくりに課題を感じている企業、定着率を高めたい企業', problems: '組織の硬直化、離職率の高さ、評価制度への不満', benefits: '人事戦略立案、組織改善提案、職場環境改善のサポート' },
+    ];
+
+    const pricing = [
+      { name: '顧問契約（月額）', price: '◯◯,000円〜/月', desc: '継続的な労務相談と各種アドバイスを行う基本プランです。' },
+      { name: '社会保険手続き', price: '◯◯,000円〜/件', desc: '入退社時の資格取得・喪失などの手続き代行です。' },
+      { name: '給与計算代行', price: '◯◯,000円〜/月', desc: '従業員数に応じた月次給与計算のアウトソーシングです。' },
+      { name: '就業規則作成', price: '◯◯◯,000円〜', desc: '新規作成・改定など規程整備一式の料金です。' },
+      { name: '助成金申請支援', price: '着手金＋成功報酬', desc: '助成金の種類・件数に応じてお見積りします。' },
+      { name: '人事コンサルティング', price: '◯◯,000円〜/月', desc: '組織開発や評価制度設計など個別課題への伴走支援です。' },
+      { name: 'スポット相談', price: '◯◯,000円/回', desc: '単発でのご相談に対応するプランです。' },
+    ];
+
+    const allCases = [
+      { category: 'labor', categoryLabel: '労務管理', img: 'images/contract-stamp.jpg', industry: '製造業', size: '従業員80名', challenge: '残業運用が属人的でルールが不明確だった。', support: '就業規則を見直し、勤怠ルールを再整備。', result: '残業時間の管理精度が向上し、労務リスクを低減。', feedback: '曖昧だったルールが明文化され、現場も運用しやすくなりました。' },
+      { category: 'payroll', categoryLabel: '給与計算', img: 'images/laptop-work.jpg', industry: 'IT企業', size: '従業員35名', challenge: '給与計算担当者が退職し、業務が止まりかけていた。', support: '給与計算業務を全面的に代行。', result: '担当者不在でも安定した給与計算体制を確立。', feedback: '毎月の負担がなくなり、本業に集中できるようになりました。' },
+      { category: 'rules', categoryLabel: '就業規則', img: 'images/document-writing.jpg', industry: '小売業', size: '従業員45名', challenge: '就業規則が10年以上改定されていなかった。', support: '現行法令に合わせて全面改定。', result: '法令違反リスクを解消し、運用ルールを明確化。', feedback: '曖昧だった休暇制度が整理され、社員からの質問も減りました。' },
+      { category: 'insurance', categoryLabel: '社会保険', img: 'images/stamp-hand.jpg', industry: '建設業', size: '従業員28名', challenge: '社会保険の手続きが度々遅延していた。', support: '入退社手続きのフローを整備し、代行を開始。', result: '手続きの遅延がなくなり、担当者の負担も軽減。', feedback: '手続き漏れの不安がなくなり安心して任せられています。' },
+      { category: 'hiring', categoryLabel: '採用・人事', img: 'images/consult-smile.jpg', industry: '飲食業', size: '従業員60名', challenge: '早期離職が多く、採用基準も曖昧だった。', support: '採用基準の整理と雇用契約書の見直しを実施。', result: '入社後のミスマッチが減少。', feedback: '採用の判断基準ができたことで、面接がしやすくなりました。' },
+      { category: 'subsidies', categoryLabel: '助成金', img: 'images/subsidy-success.jpg', industry: '医療機関', size: '従業員15名', challenge: '利用できる助成金を把握できていなかった。', support: '受給可能性を診断し、申請書類を作成。', result: '複数の助成金の受給につながった（サンプル）。', feedback: '専門的な申請書類も安心して任せることができました。' },
+      { category: 'workplace', categoryLabel: '職場環境改善', img: 'images/handshake-women.jpg', industry: '専門サービス業', size: '従業員20名', challenge: '評価制度がなく、社員の不満が蓄積していた。', support: '簡易的な評価制度と面談の仕組みを導入。', result: '社員の納得感が向上し、離職率が改善（サンプル）。', feedback: '評価の基準ができ、社員との対話がしやすくなりました。' },
+    ];
+
+    const filterDefs = [
+      { key: 'all', label: 'すべて' }, { key: 'labor', label: '労務管理' }, { key: 'payroll', label: '給与計算' },
+      { key: 'rules', label: '就業規則' }, { key: 'insurance', label: '社会保険' }, { key: 'hiring', label: '採用・人事' },
+      { key: 'subsidies', label: '助成金' }, { key: 'workplace', label: '職場環境改善' },
+    ];
+    const filters = filterDefs.map(f => {
+      const active = this.state.caseFilter === f.key;
+      const style = active
+        ? 'cursor:pointer;font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;background:#3F7A66;color:#fff;'
+        : 'cursor:pointer;font-size:13px;font-weight:500;padding:8px 16px;border-radius:20px;background:#fff;color:#4b514e;border:1px solid #e3e6e2;';
+      return { ...f, style, onClick: () => this.setFilter(f.key) };
+    });
+    const filteredCases = this.state.caseFilter === 'all' ? allCases : allCases.filter(c => c.category === this.state.caseFilter);
+
+    return {
+      isHome: this.state.page === 'home', isServices: this.state.page === 'services',
+      isAbout: this.state.page === 'about', isFees: this.state.page === 'fees',
+      isCases: this.state.page === 'cases', isContact: this.state.page === 'contact',
+      homeClick: () => this.navTo('home'), servicesClick: () => this.navTo('services'),
+      aboutClick: () => this.navTo('about'), feesClick: () => this.navTo('fees'),
+      casesClick: () => this.navTo('cases'), contactClick: () => this.navTo('contact'),
+      menuOpen: this.state.menuOpen, toggleMenu: this.toggleMenu,
+      navItems, homeServices, strengths, stats, processSteps, casePreview, faqs,
+      serviceDetails, pricing, filters, filteredCases,
+      philosophyPillars: ['人', '信頼', '専門性', '対話', '長期的関係'],
+      mvv: [
+        { label: 'MISSION', text: '労務という土台から、はたらく人と会社がともに成長できる仕組みをつくる。' },
+        { label: 'VISION', text: 'すべての企業が、安心して人を雇い、育てられる社会をつくる。' },
+        { label: 'VALUES', text: '誠実であること。現場に寄り添うこと。学び続けること。' },
+      ],
+      footerServiceLinks: ['労務管理', '社会保険手続き', '給与計算', '採用・人事', '助成金', '人事コンサルティング'],
+      contactCategories: ['労務相談', '社会保険', '給与計算', '就業規則', '助成金', '人事コンサルティング', '会社設立', 'その他'],
+      showPlaceholderNotices: showNotices,
+      formSent: this.state.formSent, notFormSent: !this.state.formSent,
+      submitForm: this.submitForm,
+    };
+  }
+}
+</script>
+</body>
+</html>

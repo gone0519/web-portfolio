@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="height:{{ spacerH }}"></div>
+<div style="position:fixed;top:0;left:0;right:0;z-index:80">
+
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#17170f;color:#fff;font-family:'Chakra Petch',sans-serif;font-size:12px;letter-spacing:0.14em">
+      <div style="max-width:1180px;height:32px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:flex-end;gap:26px">
+        <a href="About.dc.html#recruit" style="color:#fff;display:flex;align-items:center;gap:7px" style-hover="color:#ffde00"><span style="color:#ffde00">+</span>RECRUIT</a>
+        <a href="Home.dc.html#news" style="color:#fff;display:flex;align-items:center;gap:7px" style-hover="color:#ffde00"><span style="color:#ffde00">+</span>NEWS</a>
+        <a href="Contact.dc.html" style="color:#fff;display:flex;align-items:center;gap:7px" style-hover="color:#ffde00"><span style="color:#ffde00">+</span>CONTACT</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <header style="background:#fff;border-bottom:1px solid #ece9dc">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:18px;height:72px">
+      <a href="Home.dc.html" style="display:flex;align-items:center;gap:12px;flex-shrink:0">
+        <span style="width:34px;height:34px;background:#ffde00;display:flex;align-items:center;justify-content:center;font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;clip-path:polygon(0 0,100% 0,100% 72%,72% 100%,0 100%)">G</span>
+        <span style="display:flex;flex-direction:column;line-height:1.05">
+          <span style="font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.14em">GROWTHWORKS</span>
+          <span style="font-family:'Chakra Petch',sans-serif;font-size:9px;letter-spacing:0.2em;color:#6b6b60">DIGITAL MARKETING AGENCY</span>
+        </span>
+      </a>
+
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <nav style="margin-left:auto;display:flex;align-items:stretch;height:72px">
+          <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="3">
+            <a href="{{ item.href }}" aria-current="{{ item.aria }}" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;padding:0 24px;border-left:1px solid #ece9dc;position:relative;background:{{ item.bg }}" style-hover="background:#fffce0">
+              <span style="font-size:14px;font-weight:700;letter-spacing:0.08em">{{ item.jp }}</span>
+              <span style="font-family:'Chakra Petch',sans-serif;font-size:9px;letter-spacing:0.18em;color:#6b6b60">{{ item.en }}</span>
+              <span style="position:absolute;left:0;right:0;bottom:0;height:3px;background:{{ item.bar }}"></span>
+            </a>
+          </sc-for>
+          <a href="Contact.dc.html" aria-current="{{ contactAria }}" style="display:flex;align-items:center;padding:0 30px 0 24px;margin-left:18px;background:{{ contactBg }};color:{{ contactColor }};font-weight:700;font-size:14px;letter-spacing:0.1em;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)" style-hover="background:#17170f;color:#ffde00">お問い合わせ</a>
+        </nav>
+      </sc-if>
+
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuExpanded }}" style="margin-left:auto;width:46px;height:46px;background:#ffde00;border:0;cursor:pointer;position:relative">
+          <span style="{{ bar1 }}"></span>
+          <span style="{{ bar2 }}"></span>
+          <span style="{{ bar3 }}"></span>
+        </button>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <nav data-anim="fade" style="border-top:1px solid #ece9dc;background:#fff;padding:8px 24px 24px;display:flex;flex-direction:column;max-height:calc(100vh - 72px);overflow-y:auto">
+        <sc-for list="{{ menuItems }}" as="item" hint-placeholder-count="4">
+          <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="display:flex;align-items:center;gap:12px;padding:17px 4px;border-bottom:1px solid #f2f0e6">
+            <span style="width:4px;height:18px;background:{{ item.bar }}"></span>
+            <span style="font-size:15px;font-weight:700;letter-spacing:0.08em">{{ item.jp }}</span>
+            <span style="font-family:'Chakra Petch',sans-serif;font-size:9px;letter-spacing:0.18em;color:#6b6b60">{{ item.en }}</span>
+          </a>
+        </sc-for>
+        <a href="Contact.dc.html" onClick="{{ closeMenu }}" style="margin-top:20px;display:flex;align-items:center;justify-content:center;height:54px;background:#ffde00;font-weight:700;font-size:15px;letter-spacing:0.12em;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)">お問い合わせ</a>
+        <a href="tel:0359264363" style="margin-top:10px;display:flex;align-items:center;justify-content:center;height:54px;border:1px solid #17170f;font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:17px;letter-spacing:0.14em">03-5926-4363</a>
+      </nav>
+    </sc-if>
+  </header>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;内容&quot;}}">
+class Component extends DCLogic {
+  state = { narrow: false, menu: false };
+
+  componentDidMount() {
+    if (!window.matchMedia) return;
+    this._mq = window.matchMedia("(max-width: 900px)");
+    this._onMq = () => this.setState({ narrow: this._mq.matches, menu: false });
+    this._onKey = (e) => { if (e.key === "Escape" && this.state.menu) this.setState({ menu: false }); };
+    if (this._mq.addEventListener) this._mq.addEventListener("change", this._onMq);
+    else this._mq.addListener(this._onMq);
+    window.addEventListener("keydown", this._onKey);
+    this._onMq();
+  }
+  componentWillUnmount() {
+    if (this._mq) {
+      if (this._mq.removeEventListener) this._mq.removeEventListener("change", this._onMq);
+      else this._mq.removeListener(this._onMq);
+    }
+    window.removeEventListener("keydown", this._onKey);
+  }
+
+  renderVals() {
+    const cur = this.props.current || "";
+    const narrow = this.state.narrow;
+    const open = narrow && this.state.menu;
+    const pages = [
+      { key: "about", jp: "会社案内", en: "ABOUT", href: "About.dc.html" },
+      { key: "services", jp: "サービス", en: "SERVICES", href: "Services.dc.html" },
+      { key: "cases", jp: "導入事例", en: "CASE STUDIES", href: "Cases.dc.html" }
+    ];
+    const bar = "position:absolute;left:13px;width:20px;height:2px;background:#17170f;transition:top .25s,transform .25s,opacity .2s;";
+    return {
+      wide: !narrow,
+      narrow,
+      menuOpen: open,
+      spacerH: narrow ? "72px" : "104px",
+      menuLabel: open ? "メニューを閉じる" : "メニューを開く",
+      menuExpanded: open ? "true" : "false",
+      toggleMenu: () => this.setState({ menu: !this.state.menu }),
+      closeMenu: () => this.setState({ menu: false }),
+      bar1: bar + "top:" + (open ? 22 : 15) + "px;transform:rotate(" + (open ? 45 : 0) + "deg)",
+      bar2: bar + "top:22px;opacity:" + (open ? 0 : 1),
+      bar3: bar + "top:" + (open ? 22 : 29) + "px;transform:rotate(" + (open ? -45 : 0) + "deg)",
+      navItems: pages.map((p) => ({
+        ...p,
+        aria: cur === p.key ? "page" : undefined,
+        bg: cur === p.key ? "#fffce0" : "transparent",
+        bar: cur === p.key ? "#ffde00" : "transparent"
+      })),
+      menuItems: [{ key: "home", jp: "トップ", en: "HOME", href: "Home.dc.html" }].concat(pages).map((p) => ({
+        ...p,
+        bar: cur === p.key ? "#ffde00" : "#ece9dc"
+      })),
+      contactAria: cur === "contact" ? "page" : undefined,
+      contactBg: cur === "contact" ? "#17170f" : "#ffde00",
+      contactColor: cur === "contact" ? "#ffde00" : "#17170f"
+    };
+  }
+}
+</script>
+</body>
+</html>

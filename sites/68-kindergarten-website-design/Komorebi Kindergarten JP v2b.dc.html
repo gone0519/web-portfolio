@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>こもれび幼稚園</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#3d3a33;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#3d3a33;text-decoration:none}
+a:hover{color:#b39500}
+input,select,textarea,button{font-family:inherit}
+@keyframes kf-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes kf-morph{0%,100%{border-radius:46% 54% 42% 58%/52% 44% 56% 48%}50%{border-radius:56% 44% 54% 46%/44% 56% 44% 56%}}
+@keyframes kf-pop{from{opacity:0;transform:translateY(16px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes kf-sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes kf-spin{to{transform:rotate(360deg)}}
+@keyframes kf-bounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-9px)}}
+@keyframes kf-slide{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 1px 0 rgba(61,58,51,.06)">
+  <div style="max-width:1200px;margin:0 auto;padding:10px clamp(16px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <a href="#home" style="display:flex;align-items:center;gap:10px">
+      <span style="position:relative;width:34px;height:34px;border-radius:50%;background:#e6c619;flex:none">
+        <span style="position:absolute;left:7px;top:7px;width:10px;height:10px;border-radius:50%;background:#fff"></span>
+        <span style="position:absolute;right:6px;bottom:8px;width:6px;height:6px;border-radius:50%;background:#8aa35a"></span>
+      </span>
+      <span style="display:flex;flex-direction:column;line-height:1.15">
+        <span style="font-size:10px;font-weight:700;letter-spacing:.14em;color:#6b665b">認定こども園</span>
+        <span style="font-size:22px;font-weight:700;letter-spacing:.14em">こもれび幼稚園</span>
+      </span>
+    </a>
+    <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <a href="tel:0354321180" style="font-family:Quicksand,sans-serif;font-size:20px;font-weight:500;color:#9a8100;letter-spacing:.02em">03-5432-1180</a>
+          <span style="display:flex;flex-direction:column;font-size:10px;line-height:1.35;color:#6b665b">
+            <span style="background:#e6c619;color:#3d3a33;font-weight:700;padding:0 6px;border-radius:2px;align-self:flex-start">見学随時受付中</span>
+            <span>平日 8:00 – 18:00</span>
+          </span>
+          <a href="#visit" style="width:26px;height:26px;border-radius:50%;background:#e6c619;display:flex;align-items:center;justify-content:center" aria-label="アクセス">
+            <span style="width:8px;height:8px;border-radius:50%;background:#fff"></span>
+          </a>
+        </div>
+        <nav style="display:flex;align-items:center;gap:14px">
+          <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+            <a href="{{ n.href }}" style="display:flex;align-items:center;gap:14px" style-hover="color:#b39500">
+              <span style="display:flex;flex-direction:column;align-items:center;line-height:1.3">
+                <span style="font-family:Quicksand,sans-serif;font-size:9px;font-weight:600;letter-spacing:.12em;color:#8a8474">{{ n.en }}</span>
+                <span style="font-size:12.5px;font-weight:500">{{ n.label }}</span>
+              </span>
+              <span style="font-size:18px;font-weight:300;color:#d9d2bf">{{ n.sep }}</span>
+            </a>
+          </sc-for>
+        </nav>
+      </div>
+    </sc-if>
+    <sc-if value="{{ showBurger }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:8px">
+        <a href="tel:0354321180" style="width:44px;height:44px;border-radius:50%;border:1px solid #e6c619;display:flex;align-items:center;justify-content:center;font-family:Quicksand,sans-serif;font-size:11px;font-weight:700">TEL</a>
+        <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:44px;height:44px;border-radius:50%;border:none;background:#e6c619;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer">
+          <span style="width:18px;height:2px;background:#3d3a33;border-radius:1px"></span>
+          <span style="width:18px;height:2px;background:#3d3a33;border-radius:1px"></span>
+          <span style="width:18px;height:2px;background:#3d3a33;border-radius:1px"></span>
+        </button>
+      </div>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:100%;left:0;right:0;background:#f7f3e8;padding:12px 24px 28px;box-shadow:0 12px 24px rgba(61,58,51,.08)">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;gap:12px;padding:16px 4px;border-bottom:1px solid #e3dccb">
+          <span style="font-family:Quicksand,sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;color:#9a8100;width:84px">{{ n.en }}</span>
+          <span style="font-size:16px;font-weight:500">{{ n.label }}</span>
+        </a>
+      </sc-for>
+      <a href="#visit" onClick="{{ closeMenu }}" style="margin-top:20px;display:flex;justify-content:center;background:#e6c619;padding:15px;font-weight:700;font-size:15px">› 園見学を予約する</a>
+    </div>
+  </sc-if>
+</header>
+
+<main>
+<!-- 01 HERO -->
+<section id="home" data-screen-label="01 Hero" style="position:relative;z-index:0;background:#fff;padding-bottom:140px;overflow:hidden">
+  <div style="position:relative;padding-left:clamp(20px,8vw,120px)">
+    <div style="position:absolute;left:0;top:32%;right:8%;bottom:-150px;background:#f4ecb0"></div>
+    <div style="position:absolute;left:0;right:8%;bottom:-170px;height:20px;background-image:radial-gradient(circle at 20px 0,#f4ecb0 19px,transparent 20px);background-size:40px 20px;background-repeat:repeat-x"></div>
+    <div style="position:relative;z-index:1;height:clamp(460px,52vw,760px);overflow:hidden;border-radius:0 0 0 clamp(60px,10vw,160px)">
+      <image-slot id="hero-main" shape="rect" placeholder="メイン写真 — 室内で遊ぶ子どもたち"></image-slot>
+    </div>
+    <a href="#visit" style="position:absolute;z-index:3;right:clamp(16px,4vw,64px);bottom:-60px;width:138px;height:138px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;box-shadow:0 10px 26px rgba(61,58,51,.14)">
+      <span style="position:absolute;inset:8px;border-radius:50%;border:2px dashed #e6c619;animation:kf-spin 24s linear infinite"></span>
+      <span style="font-family:Quicksand,sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;color:#9a8100">OPEN DAY</span>
+      <span style="font-size:15px;font-weight:700;letter-spacing:.08em">園見学会</span>
+      <span style="font-family:Quicksand,sans-serif;font-size:13px;font-weight:700">10.17 / 11.14</span>
+    </a>
+    <div style="position:absolute;z-index:2;left:clamp(16px,2vw,36px);top:clamp(28px,4.5vw,64px);right:16px;pointer-events:none;display:flex;flex-direction:column;align-items:flex-start;gap:8px">
+      <div style="display:flex;gap:clamp(18px,2.6vw,34px);padding-left:clamp(10px,1.4vw,20px);margin-bottom:4px">
+        <span style="width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(61,50,20,.35);animation:kf-bounce 2.4s 0s ease-in-out infinite"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(61,50,20,.35);animation:kf-bounce 2.4s .15s ease-in-out infinite"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(61,50,20,.35);animation:kf-bounce 2.4s .3s ease-in-out infinite"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(61,50,20,.35);animation:kf-bounce 2.4s .45s ease-in-out infinite"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(61,50,20,.35);animation:kf-bounce 2.4s .6s ease-in-out infinite"></span>
+      </div>
+      <h1 style="margin:0;color:#fff;font-weight:700;letter-spacing:.12em;line-height:1.5;text-shadow:0 2px 14px rgba(61,50,20,.45),0 1px 2px rgba(61,50,20,.35);font-size:clamp(28px,4.4vw,60px)">
+        <span style="display:block"><span style="display:inline-block;animation:kf-pop .6s 0.15s both">こ</span><span style="display:inline-block;animation:kf-pop .6s 0.22s both">も</span><span style="display:inline-block;animation:kf-pop .6s 0.29s both">れ</span><span style="display:inline-block;animation:kf-pop .6s 0.36s both">び</span><span style="display:inline-block;animation:kf-pop .6s 0.43s both">幼</span><span style="display:inline-block;animation:kf-pop .6s 0.50s both">稚</span><span style="display:inline-block;animation:kf-pop .6s 0.57s both">園</span><span style="display:inline-block;animation:kf-pop .6s 0.64s both">で</span><span style="display:inline-block;animation:kf-pop .6s 0.71s both">、</span></span>
+        <span style="display:block;font-size:.78em;animation:kf-pop .8s .9s both">学び、育ち、<span style="position:relative;display:inline-block;padding:0 .2em">かがやく<svg viewBox="0 0 200 80" preserveAspectRatio="none" style="position:absolute;left:-8%;top:-18%;width:116%;height:136%;overflow:visible"><path data-draw="1" d="M34 62 C 4 44, 18 8, 100 6 C 182 4, 206 30, 190 56 C 174 78, 76 80, 36 66 C 16 58, 26 38, 62 28" fill="none" stroke="#e6c619" stroke-width="4" stroke-linecap="round"></path></svg></span>毎日を。</span>
+      </h1>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:10px">
+        <span style="background:#e6c619;color:#3d3a33;font-weight:700;font-size:clamp(13px,1.35vw,17px);letter-spacing:.08em;padding:5px 12px;animation:kf-slide .7s 1.2s both">木もれ日のような、やさしいまなざしの中で</span>
+        <span style="background:#e6c619;color:#3d3a33;font-weight:700;font-size:clamp(13px,1.35vw,17px);letter-spacing:.08em;padding:5px 12px;animation:kf-slide .7s 1.35s both">「友だちを思う心」「いのちを大切にする心」「自分を信じる心」を</span>
+        <span style="background:#e6c619;color:#3d3a33;font-weight:700;font-size:clamp(13px,1.35vw,17px);letter-spacing:.08em;padding:5px 12px;animation:kf-slide .7s 1.5s both">毎日の小さな発見とともに育んでいきます。</span>
+      </div>
+    </div>
+  </div>
+  <svg viewBox="0 0 1200 160" preserveAspectRatio="none" style="position:absolute;z-index:0;left:0;bottom:0;width:100%;height:160px;overflow:visible;pointer-events:none"><path data-draw="1" d="M-10 120 C 160 40, 300 150, 470 96 S 760 20, 900 90 S 1120 150, 1210 60" fill="none" stroke="#c9a800" stroke-width="1.6" stroke-linecap="round"></path></svg>
+  <div style="position:relative;z-index:1;width:92%;padding:30px clamp(20px,5vw,72px) 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-right:150px">
+      <span style="font-size:11px;font-weight:700;letter-spacing:.14em;background:#fff;padding:6px 10px;border-radius:999px">見学会</span>
+      <span style="font-size:15px;font-weight:500;line-height:1.6">秋の園見学会 10月17日（土）・11月14日（土）｜令和9年度 入園受付中</span>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="#visit" style="background:#e6c619;padding:14px 32px;font-size:14px;font-weight:700;letter-spacing:.04em;transition:background .2s,transform .2s" style-hover="background:#d4b200;color:#3d3a33;transform:translateY(-2px)">› 園見学を予約する</a>
+      <a href="#admission" style="background:#fff;border:1px solid #3d3a33;padding:13px 28px;font-size:14px;font-weight:700;letter-spacing:.04em;transition:background .2s" style-hover="background:#3d3a33;color:#fff">› 入園案内を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PHILOSOPHY -->
+<section id="about" data-screen-label="02 Philosophy" style="position:relative;z-index:1;background:#f7f3e8;border-radius:50% 50% 0 0 / 70px 70px 0 0;padding:120px 0 190px;overflow:hidden">
+  <svg viewBox="0 0 1200 140" preserveAspectRatio="none" style="position:absolute;z-index:-1;left:0;top:36%;width:100%;height:140px;overflow:visible"><path data-draw="1" d="M-10 90 C 200 20, 360 130, 600 70 S 980 10, 1210 80" fill="none" stroke="#e6c619" stroke-width="1.6" stroke-linecap="round"></path></svg><span style="position:absolute;z-index:-1;left:8%;top:90px;width:14px;height:14px;border-radius:50%;background:#e6c619;animation:kf-bounce 3s ease-in-out infinite"></span><span style="position:absolute;z-index:-1;left:86%;top:150px;width:10px;height:10px;border-radius:50%;background:#f2b8a8;animation:kf-bounce 3.6s ease-in-out infinite"></span><span style="position:absolute;z-index:-1;left:92%;top:60%;width:16px;height:16px;border-radius:50%;background:#a9bd84;animation:kf-bounce 4s ease-in-out infinite"></span>
+  <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 20px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <span style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.24em"><span style="width:6px;height:6px;border-radius:50%;background:#f2b8a8"></span>教育方針<span style="width:6px;height:6px;border-radius:50%;background:#a9bd84"></span></span>
+      <span style="position:relative;display:inline-block;padding:14px 34px">
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible"><path data-draw="1" d="M24 40 C 10 16, 90 2, 160 8 C 206 12, 204 44, 160 54 C 110 64, 22 58, 10 38 C 2 24, 30 14, 64 10" fill="none" stroke="#e6c619" stroke-width="2.5" stroke-linecap="round"></path></svg>
+        <span style="position:relative;font-family:Quicksand,sans-serif;font-size:clamp(30px,4vw,42px);font-weight:500;letter-spacing:.08em;color:#c9a800;line-height:1">ABOUT US</span>
+      </span>
+    </div>
+  </div>
+
+  <div style="margin-top:64px;display:flex;flex-wrap:wrap;align-items:center;gap:clamp(32px,5vw,72px);padding-right:clamp(20px,6vw,100px)">
+    <div data-reveal="1" style="flex:1 1 560px;position:relative;padding:0 0 28px clamp(0px,1vw,16px)">
+      <div style="position:absolute;left:0;right:10%;top:34%;bottom:0;background:#e3e1dc"></div>
+      <div style="position:relative;aspect-ratio:16/8">
+        <image-slot id="about-building" shape="rect" placeholder="園舎・庭の写真（横長）"></image-slot>
+      </div>
+    </div>
+    <div data-reveal="1" style="flex:1 1 340px;max-width:460px;padding-left:20px">
+      <div style="border-top:1px solid #3d3a33;padding-top:26px;display:flex;flex-direction:column;gap:18px">
+        <h2 style="margin:0;font-size:clamp(22px,2.4vw,28px);font-weight:700;line-height:1.5;letter-spacing:.03em;text-align:center;text-wrap:balance">一人ひとりが、自分の「できる」を見つけていく場所。</h2>
+        <p style="margin:0;font-size:14px;line-height:2;text-wrap:pretty">こもれび幼稚園では、子どもたちが「安心できる」「見守られている」と感じるとき、いちばん大きく育つと考えています。遊び・自然・人とのかかわりを大切にした毎日の中で、一人ひとりが自分のペースで世界を広げていきます。</p>
+        <p style="margin:0;font-size:14px;line-height:2;text-wrap:pretty">保育者は子どもの姿をよく見つめ、学期ごとにクラスの目標を立てています。ご家庭と力を合わせながら、自信とやさしさ、そして学ぶ楽しさを育てていきます。</p>
+        <p style="margin:0;font-size:13px;text-align:center;letter-spacing:.1em">— 園長　林 恵子 —</p>
+        <div style="display:flex;justify-content:center">
+          <a href="#people" style="background:#e6c619;padding:10px 40px;font-size:13px;font-weight:700;transition:background .2s" style-hover="background:#d4b200;color:#3d3a33">› 先生たちの紹介へ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1000px;margin:96px auto 0;padding:0 24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));column-gap:40px">
+      <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="6">
+        <div data-reveal="1" style="border-top:1px solid #d9d2bf;padding:26px 0 34px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-family:Quicksand,sans-serif;font-size:30px;font-weight:500;color:#c9a800;line-height:1">{{ p.n }}</span>
+          <span style="font-family:Quicksand,sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;color:#8a8474">{{ p.en }}</span>
+          <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:.03em">{{ p.title }}</h3>
+          <p style="margin:0;font-size:13.5px;line-height:1.9;color:#5a5549;text-wrap:pretty">{{ p.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+
+    <div data-reveal="1" style="position:relative;margin-top:56px">
+      <div style="position:absolute;left:8px;top:8px;right:-8px;bottom:-8px;background-image:radial-gradient(#c9a800 1px,transparent 1.3px);background-size:5px 5px;opacity:.7"></div>
+      <div style="position:relative;background:#fff;border:1px solid #e6c619;padding:clamp(24px,4vw,44px);display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start">
+        <div style="flex:1 1 260px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:Quicksand,sans-serif;font-size:20px;font-weight:500;letter-spacing:.08em;color:#c9a800">ご家庭とともに</span>
+          <h3 style="margin:0;font-size:19px;font-weight:700;line-height:1.6">子どもの育ちを、いっしょに見守るパートナーとして。</h3>
+          <p style="margin:0;font-size:13.5px;line-height:1.9;color:#5a5549">お子さまのことをいちばんよく知っているのはご家族です。園での様子を日々お伝えし、ご家庭での姿にも耳を傾けます。</p>
+        </div>
+        <div style="flex:2 1 420px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:20px">
+          <sc-for list="{{ family }}" as="f" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:6px;padding-top:12px;border-top:2px solid #f4ecb0">
+              <span style="font-size:14.5px;font-weight:700">{{ f.title }}</span>
+              <span style="font-size:13px;line-height:1.8;color:#5a5549">{{ f.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 DAILY LIFE -->
+<section id="daily" data-screen-label="03 Daily Life" style="position:relative;z-index:2;margin-top:-70px;background:#fff;border-radius:50% 50% 0 0 / 70px 70px 0 0;padding:120px 0 190px;overflow:hidden">
+  <svg viewBox="0 0 1200 140" preserveAspectRatio="none" style="position:absolute;z-index:-1;left:0;top:58%;width:100%;height:140px;overflow:visible"><path data-draw="1" d="M-10 40 C 240 120, 420 0, 640 60 S 1000 130, 1210 30" fill="none" stroke="#f2b8a8" stroke-width="1.6" stroke-linecap="round"></path></svg><span style="position:absolute;z-index:-1;left:6%;top:30%;width:12px;height:12px;border-radius:50%;background:#a9bd84;animation:kf-bounce 3.4s ease-in-out infinite"></span><span style="position:absolute;z-index:-1;left:90%;top:100px;width:16px;height:16px;border-radius:50%;background:#e6c619;animation:kf-bounce 3s ease-in-out infinite"></span><span style="position:absolute;z-index:-1;left:50%;top:70px;width:8px;height:8px;border-radius:50%;background:#f2b8a8;animation:kf-bounce 4s ease-in-out infinite"></span>
+  <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 20px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <span style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.24em"><span style="width:6px;height:6px;border-radius:50%;background:#f2b8a8"></span>園での一日<span style="width:6px;height:6px;border-radius:50%;background:#a9bd84"></span></span>
+      <span style="position:relative;display:inline-block;padding:14px 34px">
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible"><path data-draw="1" d="M24 40 C 10 16, 90 2, 160 8 C 206 12, 204 44, 160 54 C 110 64, 22 58, 10 38 C 2 24, 30 14, 64 10" fill="none" stroke="#e6c619" stroke-width="2.5" stroke-linecap="round"></path></svg>
+        <span style="position:relative;font-family:Quicksand,sans-serif;font-size:clamp(30px,4vw,42px);font-weight:500;letter-spacing:.08em;color:#c9a800;line-height:1">DAILY LIFE</span>
+      </span>
+    </div>
+    <p style="margin:14px 0 0;max-width:560px;text-align:center;font-size:14px;line-height:2;text-wrap:pretty">朝の「おはよう」から帰りの「さようなら」まで。ゆるやかなリズムのある一日が、子どもたちに安心感と、のびのび挑戦できる余白を与えてくれます。</p>
+  </div>
+
+  <div style="max-width:1000px;margin:48px auto 0;padding:0 24px">
+    <div data-reveal="1" style="position:relative">
+      <div style="position:absolute;left:8px;top:8px;right:-8px;bottom:-8px;background-image:radial-gradient(#c9a800 1px,transparent 1.3px);background-size:5px 5px;opacity:.7"></div>
+      <div style="position:relative;background:#fff;border:1px solid #e6c619;padding:clamp(16px,3vw,32px)">
+        <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,36px);align-items:center">
+          <div style="flex:1.6 1 440px;position:relative;aspect-ratio:16/10;background:#e3e1dc">
+            <sc-for list="{{ slides }}" as="s" hint-placeholder-count="1">
+              <div style="position:absolute;inset:0;transition:opacity .6s ease;opacity:{{ s.opacity }};pointer-events:{{ s.pe }}">
+                <image-slot id="{{ s.id }}" shape="rect" placeholder="{{ s.ph }}"></image-slot>
+              </div>
+            </sc-for>
+            <button onClick="{{ prev }}" aria-label="前へ" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,.9);font-size:22px;color:#3d3a33;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s" style-hover="background:#e6c619">‹</button>
+            <button onClick="{{ next }}" aria-label="次へ" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,.9);font-size:22px;color:#3d3a33;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s" style-hover="background:#e6c619">›</button>
+          </div>
+          <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:12px">
+            <span style="font-family:Quicksand,sans-serif;font-size:13px;font-weight:600;letter-spacing:.12em;color:#8a8474">{{ cur.count }}</span>
+            <span style="font-family:Quicksand,sans-serif;font-size:48px;font-weight:500;color:#c9a800;line-height:1">{{ cur.time }}</span>
+            <h3 style="margin:0;font-size:21px;font-weight:700;letter-spacing:.03em">{{ cur.title }}</h3>
+            <p style="margin:0;font-size:14px;line-height:1.95;color:#5a5549;text-wrap:pretty">{{ cur.text }}</p>
+          </div>
+        </div>
+        <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:6px">
+          <sc-for list="{{ slides }}" as="s" hint-placeholder-count="8">
+            <button onClick="{{ s.select }}" style="border:none;cursor:pointer;padding:10px 6px 12px;background:{{ s.bg }};border-bottom:3px solid {{ s.line }};display:flex;flex-direction:column;align-items:center;gap:2px;transition:background .2s;min-height:56px">
+              <span style="font-family:Quicksand,sans-serif;font-size:14px;font-weight:600;color:#3d3a33">{{ s.time }}</span>
+              <span style="font-size:11.5px;color:#5a5549">{{ s.short }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 20px;margin-top:120px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <span style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.24em"><span style="width:6px;height:6px;border-radius:50%;background:#f2b8a8"></span>保育内容<span style="width:6px;height:6px;border-radius:50%;background:#a9bd84"></span></span>
+      <span style="position:relative;display:inline-block;padding:14px 34px">
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible"><path data-draw="1" d="M24 40 C 10 16, 90 2, 160 8 C 206 12, 204 44, 160 54 C 110 64, 22 58, 10 38 C 2 24, 30 14, 64 10" fill="none" stroke="#e6c619" stroke-width="2.5" stroke-linecap="round"></path></svg>
+        <span style="position:relative;font-family:Quicksand,sans-serif;font-size:clamp(30px,4vw,42px);font-weight:500;letter-spacing:.08em;color:#c9a800;line-height:1">PROGRAMS</span>
+      </span>
+    </div>
+  </div>
+  <div style="max-width:1000px;margin:44px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+    <sc-for list="{{ programs }}" as="p" hint-placeholder-count="6">
+      <div data-reveal="1" style="position:relative;aspect-ratio:1/1;overflow:hidden">
+        <image-slot id="{{ p.id }}" shape="rect" placeholder="{{ p.ph }}"></image-slot>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:48px 18px 16px;background:linear-gradient(to top,rgba(40,34,20,.62),rgba(40,34,20,0));pointer-events:none;display:flex;flex-direction:column;gap:4px">
+          <span style="font-family:Quicksand,sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;color:#fff">{{ p.en }}</span>
+          <span style="font-size:19px;font-weight:700;color:#fff;letter-spacing:.04em">{{ p.title }}</span>
+          <span style="font-size:12.5px;line-height:1.7;color:#fff">{{ p.text }}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="max-width:1000px;margin:120px auto 0;padding:0 24px;display:flex;gap:clamp(20px,4vw,48px)">
+    <div data-reveal="1" style="flex:none;display:flex;gap:6px;align-items:flex-start">
+      <span style="writing-mode:vertical-rl;font-family:Quicksand,sans-serif;font-size:clamp(24px,3vw,34px);font-weight:500;letter-spacing:.12em;color:#c9a800">EVENTS</span>
+      <span style="writing-mode:vertical-rl;font-size:11px;font-weight:700;letter-spacing:.12em">年間行事</span>
+    </div>
+    <div style="flex:1;min-width:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr));gap:14px">
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="8">
+        <div data-reveal="1" style="background:#fff;border:1px solid #e5e1d6;padding:6px 6px 16px;display:flex;flex-direction:column;gap:8px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-4px);box-shadow:0 10px 24px rgba(61,58,51,.08)">
+          <div style="aspect-ratio:4/3"><image-slot id="{{ e.id }}" shape="rect" placeholder="{{ e.title }}"></image-slot></div>
+          <div style="padding:0 8px;display:flex;flex-direction:column;gap:6px">
+            <span style="display:flex;align-items:center;gap:6px;font-family:Quicksand,sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.06em;color:#6b665b"><span style="width:8px;height:8px;border-radius:50%;background:#e6c619"></span>{{ e.month }}</span>
+            <span style="font-size:14.5px;font-weight:700;padding-bottom:8px;border-bottom:1px solid #e5e1d6">{{ e.title }}</span>
+            <span style="font-size:12.5px;line-height:1.75;color:#5a5549">{{ e.text }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 04 PEOPLE -->
+<section id="people" data-screen-label="04 Teachers & Environment" style="position:relative;z-index:3;margin-top:-70px;background:#f7f3e8;border-radius:50% 50% 0 0 / 70px 70px 0 0;padding:120px 0 190px;overflow:hidden">
+  <svg viewBox="0 0 1200 140" preserveAspectRatio="none" style="position:absolute;z-index:-1;left:0;top:30%;width:100%;height:140px;overflow:visible"><path data-draw="1" d="M-10 70 C 180 130, 420 10, 620 80 S 960 0, 1210 90" fill="none" stroke="#a9bd84" stroke-width="1.6" stroke-linecap="round"></path></svg><span style="position:absolute;z-index:-1;left:10%;top:120px;width:16px;height:16px;border-radius:50%;background:#f2b8a8;animation:kf-bounce 3.2s ease-in-out infinite"></span><span style="position:absolute;z-index:-1;left:88%;top:46%;width:12px;height:12px;border-radius:50%;background:#e6c619;animation:kf-bounce 3.8s ease-in-out infinite"></span><span style="position:absolute;z-index:-1;left:4%;top:76%;width:10px;height:10px;border-radius:50%;background:#e6c619;animation:kf-bounce 3s ease-in-out infinite"></span>
+  <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 20px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <span style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.24em"><span style="width:6px;height:6px;border-radius:50%;background:#f2b8a8"></span>先生紹介<span style="width:6px;height:6px;border-radius:50%;background:#a9bd84"></span></span>
+      <span style="position:relative;display:inline-block;padding:14px 34px">
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible"><path data-draw="1" d="M24 40 C 10 16, 90 2, 160 8 C 206 12, 204 44, 160 54 C 110 64, 22 58, 10 38 C 2 24, 30 14, 64 10" fill="none" stroke="#e6c619" stroke-width="2.5" stroke-linecap="round"></path></svg>
+        <span style="position:relative;font-family:Quicksand,sans-serif;font-size:clamp(30px,4vw,42px);font-weight:500;letter-spacing:.08em;color:#c9a800;line-height:1">TEACHERS</span>
+      </span>
+    </div>
+    <p style="margin:14px 0 0;max-width:560px;text-align:center;font-size:14px;line-height:2;text-wrap:pretty">在籍する18名の保育者は全員が保育士資格・幼稚園教諭免許を持っています。各クラスに担任と副担任を配置し、いつもそばに見守る大人がいる環境を整えています。</p>
+  </div>
+  <div style="max-width:1000px;margin:48px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:36px 24px">
+    <sc-for list="{{ teachers }}" as="t" hint-placeholder-count="4">
+      <div data-reveal="1" style="display:flex;flex-direction:column;gap:10px">
+        <div style="position:relative;padding:0 10px 10px 0">
+          <div style="position:absolute;left:10px;top:24%;right:0;bottom:0;background:#f4ecb0;border-radius:999px 999px 16px 16px"></div>
+          <div style="position:relative;aspect-ratio:3/4"><image-slot id="{{ t.id }}" mask="inset(0 round 999px 999px 16px 16px)" placeholder="先生の写真 — {{ t.name }}"></image-slot></div>
+        </div>
+        <span style="font-family:Quicksand,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.14em;color:#9a8100;margin-top:6px">{{ t.role }}</span>
+        <span style="font-size:18px;font-weight:700;letter-spacing:.04em">{{ t.name }}</span>
+        <span style="font-size:12px;color:#6b665b;padding-bottom:8px;border-bottom:1px solid #d9d2bf">{{ t.meta }}</span>
+        <span style="font-size:13px;line-height:1.85;color:#5a5549;text-wrap:pretty">{{ t.text }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 20px;margin-top:120px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <span style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.24em"><span style="width:6px;height:6px;border-radius:50%;background:#f2b8a8"></span>園の環境<span style="width:6px;height:6px;border-radius:50%;background:#a9bd84"></span></span>
+      <span style="position:relative;display:inline-block;padding:14px 34px">
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible"><path data-draw="1" d="M24 40 C 10 16, 90 2, 160 8 C 206 12, 204 44, 160 54 C 110 64, 22 58, 10 38 C 2 24, 30 14, 64 10" fill="none" stroke="#e6c619" stroke-width="2.5" stroke-linecap="round"></path></svg>
+        <span style="position:relative;font-family:Quicksand,sans-serif;font-size:clamp(30px,4vw,42px);font-weight:500;letter-spacing:.08em;color:#c9a800;line-height:1">CAMPUS</span>
+      </span>
+    </div>
+  </div>
+  <div style="margin-top:56px;display:flex;flex-wrap:wrap-reverse;align-items:center;gap:clamp(32px,5vw,72px);padding-left:clamp(20px,6vw,100px)">
+    <div data-reveal="1" style="flex:1 1 340px;max-width:460px;padding-right:20px">
+      <div style="border-top:1px solid #3d3a33;padding-top:26px;display:flex;flex-direction:column;gap:16px">
+        <h3 style="margin:0;font-size:22px;font-weight:700;line-height:1.55">木のぬくもりと光、そして育つための庭。</h3>
+        <p style="margin:0;font-size:14px;line-height:2;text-wrap:pretty">園舎は中庭を囲むように設計され、木造の保育室は園庭へとひらかれています。すべての空間に、安全への配慮を行き届かせています。</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px 18px;margin-top:4px">
+          <sc-for list="{{ safety }}" as="s" hint-placeholder-count="6">
+            <span style="display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.7"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#e6c619;margin-top:7px"></span>{{ s }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="1" style="flex:1 1 560px;position:relative;padding:0 clamp(0px,1vw,16px) 28px 0">
+      <div style="position:absolute;right:0;left:10%;top:34%;bottom:0;background:#e3e1dc"></div>
+      <div style="position:relative;aspect-ratio:16/9"><image-slot id="campus-main" shape="rect" placeholder="中庭・園庭の写真"></image-slot></div>
+    </div>
+  </div>
+  <div style="max-width:1000px;margin:40px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(46%,150px),1fr));gap:14px">
+    <sc-for list="{{ spaces }}" as="s" hint-placeholder-count="6">
+      <div data-reveal="1" style="display:flex;flex-direction:column;gap:8px">
+        <div style="aspect-ratio:1/1"><image-slot id="{{ s.id }}" shape="rect" placeholder="{{ s.title }}"></image-slot></div>
+        <span style="display:flex;flex-direction:column;line-height:1.35"><span style="font-family:Quicksand,sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.14em;color:#8a8474">{{ s.en }}</span><span style="font-size:13.5px;font-weight:700">{{ s.title }}</span></span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div data-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 20px;margin-top:120px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <span style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.24em"><span style="width:6px;height:6px;border-radius:50%;background:#f2b8a8"></span>保護者の声<span style="width:6px;height:6px;border-radius:50%;background:#a9bd84"></span></span>
+      <span style="position:relative;display:inline-block;padding:14px 34px">
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible"><path data-draw="1" d="M24 40 C 10 16, 90 2, 160 8 C 206 12, 204 44, 160 54 C 110 64, 22 58, 10 38 C 2 24, 30 14, 64 10" fill="none" stroke="#e6c619" stroke-width="2.5" stroke-linecap="round"></path></svg>
+        <span style="position:relative;font-family:Quicksand,sans-serif;font-size:clamp(30px,4vw,42px);font-weight:500;letter-spacing:.08em;color:#c9a800;line-height:1">VOICES</span>
+      </span>
+    </div>
+  </div>
+  <div style="max-width:1000px;margin:44px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px">
+    <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+      <figure data-reveal="1" style="margin:0;background:#fff;padding:30px 28px 26px;display:flex;flex-direction:column;gap:14px;transition:transform .25s" style-hover="transform:translateY(-4px)">
+        <span style="font-family:Quicksand,sans-serif;font-size:44px;line-height:.6;color:#e6c619;height:22px">“</span>
+        <blockquote style="margin:0;font-size:14px;line-height:2;text-wrap:pretty;flex:1">{{ v.text }}</blockquote>
+        <figcaption style="border-top:1px solid #e5e1d6;padding-top:12px;font-size:12px;color:#6b665b;line-height:1.6">{{ v.who }}</figcaption>
+      </figure>
+    </sc-for>
+  </div>
+</section>
+
+<!-- 05 VISIT -->
+<section id="visit" data-screen-label="05 Tour & Contact" style="position:relative;z-index:4;margin-top:-70px;background:#fbf9f3;border-radius:50% 50% 0 0 / 70px 70px 0 0;padding:120px 0 0;overflow:hidden">
+  <div style="position:absolute;left:-8%;top:40px;width:clamp(320px,42vw,620px);aspect-ratio:1;border-radius:50%;background:#f4ecb0;opacity:.8"></div>
+  <div style="position:absolute;right:-10%;top:0;width:clamp(260px,32vw,480px);aspect-ratio:1;border-radius:50%;background:#e3dccb;opacity:.7"></div>
+
+  <div style="position:relative;max-width:1000px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;align-items:center;gap:clamp(32px,5vw,64px)">
+    <div data-reveal="1" style="flex:1 1 340px;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+        <span style="font-family:Quicksand,sans-serif;font-size:26px;font-weight:500;letter-spacing:.08em;color:#9a8100">VISIT</span>
+        <span style="font-size:12px;font-weight:700">見学・入園案内</span>
+      </div>
+      <span style="width:72px;height:1px;background:#3d3a33;margin-top:-8px"></span>
+      <h2 style="margin:0;font-size:clamp(24px,3vw,34px);font-weight:700;line-height:1.5;letter-spacing:.03em;text-wrap:balance">まずは一度、園に遊びにきてください。</h2>
+      <p style="margin:0;font-size:14px;line-height:2;max-width:420px;text-wrap:pretty">園の雰囲気は、実際の朝の様子を見ていただくのがいちばんです。お子さまもぜひご一緒に。いつでも遊びに加わってくださいね。</p>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <a href="tel:0354321180" style="display:flex;align-items:center;gap:10px;font-family:Quicksand,sans-serif;font-size:clamp(28px,3.4vw,36px);font-weight:500;letter-spacing:.02em"><span style="font-size:12px;font-weight:700;background:#3d3a33;color:#fff;padding:3px 7px;border-radius:3px">TEL</span>03-5432-1180</a>
+        <span style="font-size:12px;color:#5a5549">電話受付時間：平日 8:00 – 18:00</span>
+      </div>
+    </div>
+    <div data-reveal="1" style="flex:1.2 1 400px;position:relative;padding:0 0 26px 18px">
+      <div style="position:absolute;left:0;right:22px;top:40%;bottom:0;background:#e3e1dc"></div>
+      <div style="position:absolute;left:10px;right:10px;top:40%;bottom:12px;background:#f4ecb0"></div>
+      <div style="position:relative;aspect-ratio:3/2"><image-slot id="visit-main" shape="rect" placeholder="園の入口・登園の様子"></image-slot></div>
+    </div>
+  </div>
+
+  <div id="admission" style="position:relative;max-width:1000px;margin:80px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+    <div data-reveal="1" style="background:#fff;border:1px solid #e5e1d6;padding:30px 28px;display:flex;flex-direction:column;gap:14px">
+      <span style="font-family:Quicksand,sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:#9a8100">園見学</span>
+      <h3 style="margin:0;font-size:19px;font-weight:700">いつもの朝を、見にきてください</h3>
+      <sc-for list="{{ tourRows }}" as="r" hint-placeholder-count="4">
+        <div style="display:flex;gap:16px;font-size:13.5px;line-height:1.7;padding-bottom:10px;border-bottom:1px dashed #e0dac9"><span style="flex:none;width:86px;font-weight:700">{{ r.k }}</span><span style="color:#5a5549">{{ r.v }}</span></div>
+      </sc-for>
+      <a href="#form" style="align-self:flex-start;margin-top:6px;background:#e6c619;padding:11px 32px;font-size:13px;font-weight:700;transition:background .2s" style-hover="background:#d4b200;color:#3d3a33">› 見学を申し込む</a>
+    </div>
+    <div data-reveal="1" style="background:#fff;border:1px solid #e5e1d6;padding:30px 28px;display:flex;flex-direction:column;gap:14px">
+      <span style="font-family:Quicksand,sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:#9a8100">令和9年度 入園</span>
+      <h3 style="margin:0;font-size:19px;font-weight:700">来年4月からの入園について</h3>
+      <sc-for list="{{ admRows }}" as="r" hint-placeholder-count="4">
+        <div style="display:flex;gap:16px;font-size:13.5px;line-height:1.7;padding-bottom:10px;border-bottom:1px dashed #e0dac9"><span style="flex:none;width:86px;font-weight:700">{{ r.k }}</span><span style="color:#5a5549">{{ r.v }}</span></div>
+      </sc-for>
+      <a href="#form" style="align-self:flex-start;margin-top:6px;background:#fff;border:1px solid #3d3a33;padding:10px 28px;font-size:13px;font-weight:700;transition:background .2s" style-hover="background:#3d3a33;color:#fff">› 入園案内を請求する</a>
+    </div>
+  </div>
+
+  <div id="form" style="position:relative;max-width:1000px;margin:64px auto 0;padding:0 24px">
+    <div data-reveal="1" style="position:relative">
+      <div style="position:absolute;left:8px;top:8px;right:-8px;bottom:-8px;background-image:radial-gradient(#c9a800 1px,transparent 1.3px);background-size:5px 5px;opacity:.7"></div>
+      <div style="position:relative;background:#fff;border:1px solid #e6c619;padding:clamp(22px,4vw,48px)">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:28px;text-align:center">
+          <span style="font-family:Quicksand,sans-serif;font-size:22px;font-weight:500;letter-spacing:.08em;color:#9a8100">お問い合わせ</span>
+          <span style="font-size:13.5px;line-height:1.8;color:#5a5549">見学のご予約、資料請求、そのほかどんなことでもお気軽にどうぞ。2営業日以内にご返信いたします。</span>
+        </div>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:40px 10px;text-align:center">
+            <span style="width:56px;height:56px;border-radius:50%;background:#f4ecb0;display:flex;align-items:center;justify-content:center;font-family:Quicksand,sans-serif;font-size:26px;font-weight:700;color:#9a8100">✓</span>
+            <span style="font-size:19px;font-weight:700">{{ sentName }} 様、ありがとうございます。</span>
+            <span style="font-size:14px;line-height:1.9;color:#5a5549;max-width:440px">お問い合わせを受け付けました。担当者より詳細確認のご連絡をいたします。お会いできるのを楽しみにしています。</span>
+            <button onClick="{{ resetForm }}" style="margin-top:8px;border:1px solid #3d3a33;background:#fff;padding:10px 26px;font-size:13px;font-weight:700;cursor:pointer">別のお問い合わせをする</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" noValidate="{{ true }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px 24px">
+            <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:13px;font-weight:700">お問い合わせ種別</span>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <sc-for list="{{ inquiryOpts }}" as="o" hint-placeholder-count="3">
+                  <button type="button" onClick="{{ o.pick }}" style="min-height:44px;padding:0 20px;border:1px solid {{ o.border }};background:{{ o.bg }};font-size:13.5px;font-weight:700;color:#3d3a33;cursor:pointer;border-radius:22px;transition:background .2s">{{ o.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">保護者さまのお名前 <span style="font-size:10px;color:#9a8100;font-weight:700">REQUIRED</span>
+              <input name="name" autoComplete="name" style="height:48px;border:1px solid #d9d2bf;background:#fbf9f3;padding:0 14px;font-size:15px;font-weight:400;outline-color:#e6c619">
+              <sc-if value="{{ errName }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#b4442f;font-weight:500">お名前を入力してください。</span></sc-if>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">メールアドレス <span style="font-size:10px;color:#9a8100;font-weight:700">REQUIRED</span>
+              <input name="email" type="email" autoComplete="email" style="height:48px;border:1px solid #d9d2bf;background:#fbf9f3;padding:0 14px;font-size:15px;font-weight:400;outline-color:#e6c619">
+              <sc-if value="{{ errEmail }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#b4442f;font-weight:500">正しいメールアドレスを入力してください。</span></sc-if>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">電話番号
+              <input name="phone" type="tel" autoComplete="tel" style="height:48px;border:1px solid #d9d2bf;background:#fbf9f3;padding:0 14px;font-size:15px;font-weight:400;outline-color:#e6c619">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">お子さまの年齢 <span style="font-size:10px;color:#9a8100;font-weight:700">REQUIRED</span>
+              <select name="age" style="height:48px;border:1px solid #d9d2bf;background:#fbf9f3;padding:0 12px;font-size:15px;font-weight:400;outline-color:#e6c619">
+                <option value="">選択してください</option>
+                <option>2歳未満</option>
+                <option>2歳</option>
+                <option>3歳</option>
+                <option>4歳</option>
+                <option>5歳</option>
+              </select>
+              <sc-if value="{{ errAge }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#b4442f;font-weight:500">お子さまの年齢を選択してください。</span></sc-if>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">見学希望日
+              <input name="date" type="date" style="height:48px;border:1px solid #d9d2bf;background:#fbf9f3;padding:0 14px;font-size:15px;font-weight:400;outline-color:#e6c619">
+            </label>
+            <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">メッセージ
+              <textarea name="message" rows="5" style="border:1px solid #d9d2bf;background:#fbf9f3;padding:12px 14px;font-size:15px;font-weight:400;line-height:1.7;resize:vertical;outline-color:#e6c619"></textarea>
+            </label>
+            <div style="grid-column:1/-1;display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:6px">
+              <span style="font-size:12px;color:#6b665b;text-align:center">ご入力いただいた情報は、お問い合わせへのご返信のみに使用します。</span>
+              <button type="submit" style="min-width:260px;min-height:52px;border:none;background:#e6c619;font-size:15px;font-weight:700;letter-spacing:.04em;color:#3d3a33;cursor:pointer;transition:background .2s,transform .2s" style-hover="background:#d4b200;transform:translateY(-2px)">› 送信する</button>
+            </div>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+
+  <footer style="position:relative;margin-top:110px">
+    <div style="position:absolute;left:50%;top:40px;transform:translateX(-50%);width:clamp(340px,40vw,560px);aspect-ratio:1;border-radius:50%;background:#e6c619;opacity:.9"></div>
+    <div style="position:absolute;left:-6%;top:-40px;width:clamp(240px,26vw,380px);aspect-ratio:1;border-radius:50%;background:#f2b8a8;opacity:.75"></div>
+    <div style="position:absolute;right:6%;top:110px;width:clamp(200px,20vw,300px);aspect-ratio:1;border-radius:50%;background:#f2b8a8;opacity:.55"></div>
+    <div style="position:relative;max-width:1000px;margin:0 auto;padding:0 24px">
+      <nav style="border-top:1px solid #3d3a33;border-bottom:1px solid #3d3a33;padding:14px 0;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;background:rgba(251,249,243,.6)">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" style="font-size:12.5px">› {{ n.label }}</a>
+        </sc-for>
+      </nav>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:48px 0 28px;text-align:center">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.14em">認定こども園</span>
+        <span style="font-size:clamp(24px,3vw,30px);font-weight:700;letter-spacing:.14em">こもれび幼稚園</span>
+        <span style="font-size:12.5px;line-height:1.8">〒158-0094 東京都世田谷区緑ヶ丘2-14-6<br>TEL 03-5432-1180 / FAX 03-5432-1181</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;padding-bottom:28px">
+        <sc-for list="{{ info }}" as="i" hint-placeholder-count="4">
+          <div style="background:rgba(255,255,255,.88);padding:16px 18px;display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:Quicksand,sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;color:#7d6a00">{{ i.k }}</span>
+            <span style="font-size:13px;line-height:1.7">{{ i.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:center;gap:10px;padding-bottom:40px">
+        <sc-for list="{{ social }}" as="s" hint-placeholder-count="3">
+          <a href="#" style="min-height:44px;display:flex;align-items:center;padding:0 18px;background:#fff;border-radius:22px;font-family:Quicksand,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;transition:background .2s" style-hover="background:#3d3a33;color:#fff">{{ s }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <div style="position:relative;height:clamp(240px,28vw,360px)">
+      <image-slot id="footer-map" shape="rect" placeholder="アクセスマップ（埋め込み or 画像）"></image-slot>
+    </div>
+    <div style="position:relative;background:#fff;text-align:center;padding:16px;font-size:11px;color:#6b665b">© 2026 認定こども園 こもれび幼稚園｜学校法人 こもれび学園</div>
+  </footer>
+</section>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, slide: 0, menu: false, sent: false, sentName: '', errors: {}, inquiry: 0 };
+
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+    setTimeout(() => this.setupReveal(), 50);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    this.io && this.io.disconnect();
+  }
+  setupReveal() {
+    if (!('IntersectionObserver' in window)) return;
+    const show = (el) => { if (el.tagName.toLowerCase() === 'path') el.style.strokeDashoffset = '0'; else { el.style.opacity = '1'; el.style.translate = '0 0'; } };
+    this.io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { show(e.target); this.io.unobserve(e.target); } }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('[data-draw]').forEach((p) => {
+      if (p.dataset.rv) return; p.dataset.rv = '1';
+      const L = p.getTotalLength();
+      p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
+      p.style.transition = 'stroke-dashoffset 1.6s cubic-bezier(.6,.1,.3,1) .4s';
+      this.io.observe(p);
+    });
+    document.querySelectorAll('[data-reveal]').forEach((el) => {
+      if (el.dataset.rv) return; el.dataset.rv = '1';
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.style.opacity = '0'; el.style.translate = '0 28px';
+      el.style.transition = (el.style.transition ? el.style.transition + ',' : '') + 'opacity .9s ease, translate .9s cubic-bezier(.2,.7,.2,1)';
+      this.io.observe(el);
+    });
+  }
+  go(d) { this.setState((s) => ({ slide: (s.slide + d + 8) % 8 })); }
+
+  submit(e) {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const name = (fd.get('name') || '').trim();
+    const email = (fd.get('email') || '').trim();
+    const errors = { name: !name, email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email), age: !fd.get('age') };
+    if (errors.name || errors.email || errors.age) return this.setState({ errors });
+    this.setState({ sent: true, sentName: name, errors: {} });
+  }
+
+  renderVals() {
+    const { w, slide, menu, sent, errors, inquiry } = this.state;
+    const mobile = w < 900;
+    const day = [
+      ['08:30', '登園', 'おはようございます', '門で保育者が一人ひとりの名前を呼んで迎えます。身支度を整えたら、友だちがそろうまで好きな遊びを選びます。'],
+      ['09:30', '朝の会', '朝の会', 'クラスで集まって歌をうたい、天気や日にちを確かめ、今日やりたいことを話し合います。'],
+      ['10:00', '設定保育', 'クラス活動', '年齢ごとのテーマ活動。製作、数あそび、お話づくり、子どもたちの「なぜ？」から生まれる実験など。'],
+      ['11:00', '外あそび', '外あそび', '走る、登る、掘る、畑のお世話。服装を整えて、たいていの天気の日は外へ出かけます。'],
+      ['12:00', '給食', 'みんなで給食', '旬の地元食材を使い、園内の厨房で手づくりしています。アレルギー対応食は別に調理し、二重に確認します。'],
+      ['13:00', '休息', 'お昼寝・静かな時間', '年少さんはお昼寝。年中・年長さんは絵本を読んだり、お絵かきをしたり、図書コーナーでゆっくり過ごします。'],
+      ['14:00', '午後', '午後の活動', '自由あそび、音楽、アトリエでの製作。自分で選び、最後までやりとげる経験を大切にします。'],
+      ['15:00', '降園', 'また明日ね', 'お迎えの際に、その日の様子をひとことお伝えします。預かり保育は18:30までご利用いただけます。']
+    ];
+    const slides = day.map((d, i) => ({
+      id: 'day-' + (i + 1), ph: d[2] + 'の写真', time: d[0], short: d[1],
+      opacity: i === slide ? 1 : 0, pe: i === slide ? 'auto' : 'none',
+      bg: i === slide ? '#f4ecb0' : '#f7f3e8', line: i === slide ? '#c9a800' : 'transparent',
+      select: () => this.setState({ slide: i })
+    }));
+    const c = day[slide];
+    const inq = ['園見学', '資料請求', 'その他のご質問'];
+    return {
+      showNav: !mobile, showBurger: mobile, menuOpen: mobile && menu,
+      toggleMenu: () => this.setState((s) => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      nav: [
+        { href: '#home', en: 'HOME', label: 'ホーム', sep: '/' },
+        { href: '#about', en: 'ABOUT', label: 'こもれびについて', sep: '/' },
+        { href: '#daily', en: 'DAILY LIFE', label: '園での生活', sep: '/' },
+        { href: '#people', en: 'PEOPLE', label: '先生と環境', sep: '/' },
+        { href: '#visit', en: 'VISIT', label: '見学・入園案内', sep: '' }
+      ],
+      pillars: [
+        { n: '01', en: 'INDIVIDUALITY 個性', title: 'その子のペースを大切に', text: '一人ひとりの興味をよく見て、保育を組み立てます。みんなが同じ日に同じゴールをめざす必要はありません。' },
+        { n: '02', en: 'INDEPENDENCE 自立', title: '「自分でできた！」を積み重ねる', text: '着替え、片づけ、給食の配膳、小さな困りごと。毎日の生活の中に、挑戦して成功する機会がたくさんあります。' },
+        { n: '03', en: 'CREATIVITY 創造性', title: 'つくる手を育てる', text: '絵の具や粘土、木片や自然素材はいつでも手の届くところに。できあがりと同じくらい、つくる過程を大切にします。' },
+        { n: '04', en: 'CURIOSITY 好奇心', title: '「なぜ？」をとことん', text: 'どうして葉っぱの色が変わるの？アリはどこに住んでいるの？見て、触れて、試しながら答えを探すことを応援します。' },
+        { n: '05', en: 'SOCIAL 社会性', title: 'いっしょに過ごす力', text: '貸し借り、順番、言葉で気持ちを伝えること。異年齢での遊びの中で、年上の子が年下の子を自然と助けるようになります。' },
+        { n: '06', en: 'EMOTION 心の育ち', title: 'どんな気持ちも受けとめる', text: '自分の気持ちに気づき、言葉にすること。必要なときにはしっかり寄り添います。安心した心が、すべての学びの土台です。' }
+      ],
+      family: [
+        { title: '毎日の連絡帳', text: '保護者アプリで、その日の様子を写真とひとことでお届けします。' },
+        { title: '学期ごとの個人面談', text: '担任と一対一で、成長の様子や気になることをお話しします。' },
+        { title: '保育参加日', text: '保護者の方も活動に参加し、お子さまの遊ぶ姿を間近で見ていただけます。' }
+      ],
+      slides, prev: () => this.go(-1), next: () => this.go(1),
+      cur: { time: c[0], title: c[2], text: c[3], count: String(slide + 1).padStart(2, '0') + ' / 08' },
+      programs: [
+        { id: 'prog-art', en: 'ART', title: 'アトリエ', text: '絵の具、粘土、自然素材を使ったものづくり。', ph: 'アトリエで絵を描く子どもたち' },
+        { id: 'prog-music', en: 'MUSIC', title: 'おんがく', text: '歌や打楽器、リズムあそびを毎週たのしみます。', ph: '楽器あそびの様子' },
+        { id: 'prog-books', en: 'READING', title: 'えほん', text: '毎日の読み聞かせと、3,000冊以上の絵本の図書室。', ph: '読み聞かせの様子' },
+        { id: 'prog-nature', en: 'NATURE & SCIENCE', title: 'しぜん・かがく', text: '畑のお世話、虫さがし、かんたんな科学あそび。', ph: '庭を探検する子どもたち' },
+        { id: 'prog-move', en: 'MOVEMENT', title: 'うんどう', text: '専任講師と、バランス・登る・チームあそび。', ph: '園庭で体を動かす様子' },
+        { id: 'prog-english', en: 'ENGLISH', title: 'えいご', text: 'ネイティブ講師と歌やゲームで、週2回。', ph: '英語あそびの様子' }
+      ],
+      events: [
+        { id: 'ev-1', month: '4月', title: '入園式', text: '桜の下で、新しいおともだちを迎えます。' },
+        { id: 'ev-2', month: '5月', title: '親子遠足', text: 'ご家族と先生みんなで公園へ出かけます。' },
+        { id: 'ev-3', month: '7月', title: '夏まつり', text: '浴衣に盆踊り、手づくりのお店やさん。' },
+        { id: 'ev-4', month: '10月', title: '運動会', text: 'かけっこ、リレー、クラスごとのダンス。' },
+        { id: 'ev-5', month: '11月', title: 'おいも掘り', text: '育てたさつまいもを掘って、みんなで味わいます。' },
+        { id: 'ev-6', month: '12月', title: 'クリスマス会', text: '歌と劇をご家族にお披露目します。' },
+        { id: 'ev-7', month: '2月', title: '作品展', text: '一年間の作品をみなさまにご覧いただきます。' },
+        { id: 'ev-8', month: '3月', title: '卒園式', text: '年長さんを小学校へ送り出します。' }
+      ],
+      teachers: [
+        { id: 't-1', role: '園長', name: '林 恵子', meta: '保育歴26年', text: '「自分は愛されている」「自分はできる」と感じて卒園してほしい。園長室の扉は、いつでもご家族にひらいています。' },
+        { id: 't-2', role: '主任', name: '森 大輔', meta: '保育歴14年｜自然・運動', text: '好きな瞬間は、園庭で何かを見つけた子が友だちに見せに走っていくとき。そんな発見を一緒に喜びたいです。' },
+        { id: 't-3', role: '年中クラス担任', name: '田中 彩', meta: '保育歴8年｜音楽', text: '毎朝、歌からはじめます。子どもたちの心が落ち着くし、今日の一人ひとりの気持ちも伝わってきます。' },
+        { id: 't-4', role: '英語講師', name: 'エミリー・カーター', meta: '指導歴6年｜英語あそび', text: '子どもたちは遊びや歌の中で自然に英語を覚えます。「もっとやりたい！」と思える時間をつくるのが私の役目です。' }
+      ],
+      safety: [
+        '門には職員が常駐、ICカードで入退室管理', '国の基準を上回る保育者配置', '全職員が小児救命講習を受講',
+        'アレルギーに配慮した給食室', '毎月の火災・地震避難訓練', '保育時間中は看護師が常駐'
+      ],
+      spaces: [
+        { id: 'sp-1', en: 'CLASSROOM', title: '木の保育室' },
+        { id: 'sp-2', en: 'PLAYGROUND', title: '園庭' },
+        { id: 'sp-3', en: 'GARDEN', title: 'はたけ' },
+        { id: 'sp-4', en: 'LIBRARY', title: '絵本の図書室' },
+        { id: 'sp-5', en: 'ATELIER', title: 'アトリエ' },
+        { id: 'sp-6', en: 'DINING', title: 'ランチルーム' }
+      ],
+      voices: [
+        { text: '入園したころはとても人見知りだった息子が、夏には毎晩、夕食のときに友だちの話をしてくれるように。小さな変化に、先生方は私たちより先に気づいてくださいました。', who: 'ひまわり組（年中）保護者さま' },
+        { text: 'お迎えが遅くなる日も、連絡帳でその日の様子がわかるので安心です。娘がつらそうな週には、担任の先生から電話をいただき、一緒に考えてくださいました。', who: 'チューリップ組（年少）保護者さま' },
+        { text: '5つの園を見学しましたが、こもれびの子どもたちは夢中で遊びながらも、どこかのびのびしていました。2年たった今も、娘は毎朝走って門をくぐります。', who: 'もみじ組（年長）保護者さま' }
+      ],
+      tourRows: [
+        { k: '見学会', v: '10月17日（土）・11月14日（土）10:00 – 11:30' },
+        { k: '平日見学', v: '火・木曜の午前（要予約）' },
+        { k: '所要時間', v: '質疑応答を含め約45分' },
+        { k: 'お子さま', v: 'ご一緒に歓迎。ごきょうだいもどうぞ' }
+      ],
+      admRows: [
+        { k: '対象', v: '満3歳〜5歳（2021年4月〜2024年3月生まれ）' },
+        { k: '入園案内', v: '10月1日より配布' },
+        { k: '願書受付', v: '2026年11月1日〜30日' },
+        { k: '補助', v: '幼児教育・保育の無償化対象' }
+      ],
+      info: [
+        { k: 'SCHOOL HOURS 保育時間', v: '教育時間 9:00 – 14:00／預かり保育 7:30 – 18:30' },
+        { k: 'HOLIDAYS 休園日', v: '日曜・祝日・年末年始' },
+        { k: 'ACCESS アクセス', v: '緑ヶ丘駅より徒歩6分／園バスあり' },
+        { k: 'OFFICE 入園相談', v: '平日 9:00 – 17:00' }
+      ],
+      social: ['Instagram', 'LINE', 'YouTube'],
+      sent, notSent: !sent, sentName: this.state.sentName,
+      errName: !!errors.name, errEmail: !!errors.email, errAge: !!errors.age,
+      submit: (e) => this.submit(e),
+      resetForm: () => this.setState({ sent: false, errors: {} }),
+      inquiryOpts: inq.map((l, i) => ({ label: l, bg: i === inquiry ? '#f4ecb0' : '#fff', border: i === inquiry ? '#c9a800' : '#d9d2bf', pick: () => this.setState({ inquiry: i }) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

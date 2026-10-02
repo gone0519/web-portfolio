@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>体験・アクティビティ | Tabi no Ma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;family=Sacramento&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#34393a;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+*{box-sizing:border-box}
+a{color:#34393a;text-decoration:none}
+a:hover{color:#5f9e95}
+button{font-family:inherit;color:inherit}
+::selection{background:#dceae7}
+[style*="aspect-ratio"]{min-width:0}
+@media (max-width:860px){.fitr{aspect-ratio:auto!important}}
+@media (max-width:700px){.sp-hide{display:none!important}.sgrid{grid-template-columns:1fr 1fr!important;height:auto!important}.sgrid>*{aspect-ratio:1/1}.sgrid>*:first-child{grid-column:1/-1;aspect-ratio:16/10}}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="experiences" hint-size="100%,0px"></dc-import>
+<main style="overflow-x:clip">
+<section data-screen-label="Experiences / Hero" style="position:relative;padding-top:min(112px,max(36px,calc(1180px - 100vw)))">
+  <div style="position:relative;margin:0 clamp(20px,4vw,80px) 0 clamp(24px,calc((100vw - 760px) * .36),400px);padding-top:clamp(24px,5vw,72px)">
+    <nav aria-label="パンくずリスト" style="display:flex;gap:10px;font-size:11px;letter-spacing:.16em;color:#5a6163"><a href="Home.dc.html">TOP</a><span>/</span><span>EXPERIENCES</span></nav>
+    <div data-reveal="1" data-delay="200" style="position:relative;margin-top:28px">
+      <span aria-hidden="true" data-parallax="0.1" style="position:absolute;left:-0.06em;top:-0.42em;font-family:'Sacramento',cursive;font-size:clamp(64px,11vw,180px);line-height:1;color:#d3e6e2;white-space:nowrap;pointer-events:none">Experiences</span>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px;padding-top:clamp(40px,5vw,80px)">
+        <div style="display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.16em;color:#5f9e95"><span style="width:28px;height:1px;background:#7fb9b0"></span>02 — Experiences</div>
+        <h1 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(22px,2.8vw,42px);letter-spacing:.22em;line-height:1.7">体験・アクティビティ</h1>
+        <p style="margin:0;font-size:12px;letter-spacing:.16em;color:#5a6163">Discover Your Next Unforgettable Experience.</p>
+      </div>
+    </div>
+  </div>
+  <div data-curtain="1" class="fitr" style="position:relative;margin:clamp(40px,5vw,72px) clamp(0px,2vw,40px) 0 clamp(0px,calc((100vw - 760px) * .36),400px);aspect-ratio:3/1;min-height:240px;overflow:hidden;background:#e9f1ef">
+    <div data-kenburns="1" style="position:absolute;inset:0"><image-slot id="ex-hero" src="images/hill-view-group.jpg" shape="rect" placeholder="体験を楽しむ人の様子（横長）" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
+  </div>
+</section>
+
+<section data-screen-label="Experiences / List" style="position:relative;margin-top:clamp(88px,9vw,140px)">
+  <div style="margin-left:clamp(0px,3vw,60px);background:#dceae7;padding:clamp(56px,6vw,88px) clamp(20px,5vw,100px)">
+    <div data-reveal="1" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:12px;letter-spacing:.2em">＼ 気分で選ぶ ／</span>
+        <h2 style="margin:0;font-size:clamp(22px,2vw,28px);font-weight:700;letter-spacing:.14em">なにして過ごす？</h2>
+      </div>
+      <p style="margin:0;font-size:13px;letter-spacing:.08em;color:#4a5153">{{ countLabel }}</p>
+    </div>
+    <div role="tablist" aria-label="体験カテゴリー" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:32px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
+        <button role="tab" aria-selected="{{ t.on }}" onClick="{{ t.pick }}" style="display:flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;border:1px solid #34393a;background:{{ t.bg }};color:{{ t.fg }};cursor:pointer;transition:background .3s,color .3s">
+          <span style="font-size:13px;letter-spacing:.1em">{{ t.jp }}</span>
+          <span class="sp-hide" style="font-size:10px;letter-spacing:.16em">{{ t.en }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div ref="{{ gridRef }}" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:40px 28px;margin-top:44px">
+      <sc-for list="{{ exps }}" as="e" hint-placeholder-count="6">
+        <article style="display:flex;flex-direction:column;background:#fff;transition:transform .5s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px)">
+          <div style="position:relative;aspect-ratio:4/3;background:#e9f1ef">
+            <image-slot id="exp-{{ e.id }}" src="{{ e.img }}" shape="rect" placeholder="{{ e.ph }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+            <span style="position:absolute;top:0;left:0;padding:6px 12px;background:#fff;font-size:11px;letter-spacing:.1em;pointer-events:none">{{ e.catJp }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;padding:22px 22px 24px;flex:1">
+            <h3 style="margin:0;font-size:16px;font-weight:700;letter-spacing:.08em">{{ e.name }}</h3>
+            <p style="margin:0;font-size:13px;line-height:1.9;letter-spacing:.06em;color:#4a5153;text-wrap:pretty">{{ e.desc }}</p>
+            <dl style="margin:4px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;font-size:12px;letter-spacing:.06em">
+              <dt style="color:#5f9e95">所要時間</dt><dd style="margin:0">〇〇分</dd>
+              <dt style="color:#5f9e95">料金</dt><dd style="margin:0">¥〇,〇〇〇〜（税込）</dd>
+              <dt style="color:#5f9e95">対象</dt><dd style="margin:0">[対象年齢・人数]</dd>
+              <dt style="color:#5f9e95">開催時期</dt><dd style="margin:0">[〇月〜〇月]</dd>
+            </dl>
+            <div style="display:flex;gap:8px;margin-top:auto;padding-top:10px">
+              <a href="#" style="flex:1;display:flex;align-items:center;justify-content:center;height:44px;border:1px solid #34393a;border-radius:999px;font-size:12px;letter-spacing:.12em" style-hover="background:#34393a;color:#fff">詳しく見る</a>
+              <a href="Access.dc.html#reservation" style="flex:1;display:flex;align-items:center;justify-content:center;height:44px;border-radius:999px;background:#34393a;color:#fff;font-size:12px;letter-spacing:.12em" style-hover="background:#5f9e95;color:#fff">予約する</a>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <p style="margin:32px 0 0;font-size:11px;letter-spacing:.08em;color:#4a5153">※掲載している体験名・所要時間・料金はすべて仮の内容です。</p>
+  </div>
+</section>
+
+<section data-screen-label="Experiences / Flow" style="position:relative;padding:clamp(100px,10vw,150px) clamp(24px,6vw,120px) 0;max-width:1440px;margin:0 auto">
+  <div data-reveal="1" style="position:relative;display:flex;flex-direction:column;gap:14px">
+    <span aria-hidden="true" data-parallax="0.12" style="position:absolute;left:-0.06em;top:-0.6em;font-family:'Sacramento',cursive;font-size:clamp(80px,8vw,128px);line-height:1;color:#d3e6e2;white-space:nowrap;pointer-events:none">How to book</span>
+    <div style="position:relative;display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.16em;color:#5f9e95"><span style="width:28px;height:1px;background:#7fb9b0"></span>Flow</div>
+    <h2 style="position:relative;margin:0;font-size:clamp(20px,1.8vw,24px);font-weight:700;letter-spacing:.16em">ご予約の流れ</h2>
+  </div>
+  <ol style="list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+    <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+      <li data-reveal="1" style="position:relative;display:flex;flex-direction:column;gap:14px;padding:28px 24px 30px;border:1px solid #cfdcd9;border-radius:4px">
+        <span style="font-family:'Sacramento',cursive;font-size:44px;line-height:1;color:#5f9e95">{{ s.no }}</span>
+        <span style="font-size:15px;font-weight:700;letter-spacing:.1em">{{ s.t }}</span>
+        <span style="font-size:13px;line-height:1.9;letter-spacing:.06em;color:#4a5153">{{ s.d }}</span>
+      </li>
+    </sc-for>
+  </ol>
+  <div data-reveal="1" style="margin-top:72px;display:flex;flex-direction:column;border-top:1px solid #cfdcd9">
+    <sc-for list="{{ notes }}" as="n" hint-placeholder-count="3">
+      <div style="display:grid;grid-template-columns:minmax(120px,200px) minmax(0,1fr);gap:20px;padding:20px 0;border-bottom:1px solid #cfdcd9">
+        <span style="font-size:13px;font-weight:700;letter-spacing:.1em">{{ n.k }}</span>
+        <span style="font-size:13px;line-height:1.9;letter-spacing:.06em;color:#4a5153">{{ n.v }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const CATS = [
+  { key: 'nature', jp: '自然を歩く', en: 'Nature' },
+  { key: 'adventure', jp: '外で遊ぶ', en: 'Adventure' },
+  { key: 'culture', jp: '文化にふれる', en: 'Culture' },
+  { key: 'relax', jp: 'くつろぐ', en: 'Relax' },
+  { key: 'family', jp: 'みんなで楽しむ', en: 'Family' },
+];
+const EXPS = [
+  { id: 'n1', img: 'images/mountain-river.jpg',  cat: 'nature', name: '朝の森さんぽ', desc: '朝霧の残る森を、ガイドと一緒にゆっくり歩きます。', ph: '朝の森を歩く' },
+  { id: 'n2', img: 'images/coast-parasol.jpg',  cat: 'nature', name: '水辺のネイチャーツアー', desc: '川沿いの生きものや植物を観察する散策ツアー。', ph: '川辺の自然観察' },
+  { id: 'a1', img: 'images/island-bridge.jpg',  cat: 'adventure', name: 'カヤック体験', desc: '穏やかな水面をカヤックで進む、初心者向けプラン。', ph: 'カヤック' },
+  { id: 'a2', img: 'images/thatched-village.jpg',  cat: 'adventure', name: '里山サイクリング', desc: '田園と山あいの道を自転車でめぐります。', ph: 'サイクリング' },
+  { id: 'c1', img: 'images/old-townscape.jpg',  cat: 'culture', name: '手しごとワークショップ', desc: '地元の職人に教わる、ものづくり体験。', ph: '工芸体験' },
+  { id: 'c2', img: 'images/couple-guidebook.jpg',  cat: 'culture', name: 'まち歩きと歴史めぐり', desc: '古い町並みや社寺を、案内人と一緒に歩きます。', ph: '町並み・社寺' },
+  { id: 'r1', img: 'images/onsen-autumn-view.jpg',  cat: 'relax', name: '日帰り温泉', desc: '景色を眺めながら、ゆったり湯につかる時間。', ph: '温泉' },
+  { id: 'r2', cat: 'relax', name: '星空観察', desc: '街明かりの少ない夜空で、星を見上げます。', ph: '星空' },
+  { id: 'f1', img: 'images/hill-view-group.jpg',  cat: 'family', name: '親子の自然あそび', desc: '子どもと一緒に、自然の中で遊びながら学ぶプログラム。', ph: '親子体験' },
+  { id: 'f2', img: 'images/friends-walk.jpg',  cat: 'family', name: '季節のイベント', desc: '季節ごとに開催される、みんなで楽しめる催し。', ph: 'イベント会場' },
+];
+class Component extends DCLogic {
+  state = { cat: 'all' };
+  gridRef = React.createRef();
+  componentDidMount() {
+    setTimeout(() => import(new URL('./motion.js', document.baseURI).href).then(m => { this.stop = m.initMotion(); }).catch(() => {}), 120);
+  }
+  componentWillUnmount() { this.stop && this.stop(); }
+  renderVals() {
+    const { cat } = this.state;
+    const jp = Object.fromEntries(CATS.map(c => [c.key, c.jp]));
+    const exps = EXPS.filter(e => cat === 'all' || e.cat === cat).map(e => ({ ...e, catJp: jp[e.cat] }));
+    const pick = k => () => this.setState({ cat: k }, () => { const g = this.gridRef.current; g && g.animate && g.animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: 700, easing: 'cubic-bezier(.2,.7,.2,1)' }); });
+    return {
+      tabs: [{ key: 'all', jp: 'すべて', en: 'All' }, ...CATS].map(t => ({ ...t, on: t.key === cat, bg: t.key === cat ? '#34393a' : '#ffffff', fg: t.key === cat ? '#ffffff' : '#34393a', pick: pick(t.key) })),
+      exps, gridRef: this.gridRef, countLabel: exps.length + ' 件の体験',
+      steps: [
+        { no: '01', t: '体験を選ぶ', d: '気になる体験の詳細ページで、内容や開催日をご確認ください。' },
+        { no: '02', t: '日程・人数を選ぶ', d: '予約ページから、希望の日時と参加人数を選択します。' },
+        { no: '03', t: 'お申し込み', d: 'お客様情報を入力して送信。確認メールが届きます。' },
+        { no: '04', t: '当日、受付へ', d: '集合場所の受付でお名前をお伝えください。' },
+      ],
+      notes: [
+        { k: '雨天時の開催', v: '[雨天時の開催可否・判断基準が入ります]' },
+        { k: 'キャンセルについて', v: '[キャンセル規定が入ります]' },
+        { k: '持ち物・服装', v: '[推奨の持ち物・服装が入ります]' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Old+Mincho:wght@400;600&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./site-motion.js"></script>
+<link href="./site.css" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#222;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#00a7ad;text-decoration:none}
+a:hover{color:#222}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="flow" hint-size="100%,77px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+<main id="top" style="max-width:1600px;margin:0 auto;border-left:1px solid #f3f3f3;border-right:1px solid #f3f3f3;overflow:hidden">
+  <dc-import name="PageHero" title="ご相談の流れ・料金" en="FLOW &amp; FEE" image-id="page-flow" image-src="uploads/pension-calc.jpg" placeholder="相談の手元・資料" hint-size="100%,430px"></dc-import>
+
+  <section id="flow" data-screen-label="Flow / Steps" style="scroll-margin-top:76px;padding:clamp(64px,8vw,100px) clamp(24px,6vw,100px)">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
+      <span data-reveal="bar" style="width:60px;height:3px;background:#00c4c8"></span>
+      <span data-reveal="track" data-delay="200" style="margin-top:28px;font-family:Lato,sans-serif;font-size:13px;letter-spacing:0.1em">FLOW</span>
+      <h2 data-reveal="up" data-delay="300" style="margin:14px 0 0;font-size:clamp(26px,2.6vw,38px);font-weight:900;letter-spacing:0.06em">ご相談の流れ</h2>
+      <p data-reveal="up" data-delay="450" style="margin:28px 0 0;font-size:15px;line-height:2;max-width:640px">お見積もりにご納得いただくまで、費用は発生しません。</p>
+    </div>
+    <ol style="list-style:none;margin:clamp(40px,4vw,56px) auto 0;padding:0;max-width:1080px;display:flex;flex-direction:column;gap:0">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="5">
+        <li style="display:flex;gap:clamp(16px,3vw,40px);align-items:stretch">
+          <div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center">
+            <span data-reveal="zoom" style="width:clamp(64px,7vw,88px);height:clamp(64px,7vw,88px);border-radius:50%;background:#00c4c8;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Lato,sans-serif;line-height:1"><span style="font-size:10px;letter-spacing:0.14em">STEP</span><span style="font-weight:900;font-size:clamp(22px,2.4vw,28px);margin-top:4px">{{ st.num }}</span></span>
+            <span style="flex:1;width:2px;background:{{ st.line }};min-height:24px"></span>
+          </div>
+          <div data-reveal="right" data-delay="150" style="flex:1;background:#f6f6f6;padding:clamp(22px,2.6vw,32px) clamp(22px,3vw,40px);margin-bottom:24px;display:flex;flex-direction:column;gap:10px;transition:background .4s,box-shadow .4s" style-hover="background:#fff;box-shadow:0 18px 36px -22px rgba(0,60,70,.3)">
+            <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px"><h3 style="margin:0;font-size:clamp(17px,1.5vw,20px);font-weight:700;letter-spacing:0.06em">{{ st.title }}</h3><span style="font-size:12px;color:#00a7ad;letter-spacing:0.06em">{{ st.tag }}</span></div>
+            <p style="margin:0;font-size:14px;line-height:1.95">{{ st.text }}</p>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+
+  <section id="fee" data-screen-label="Flow / Fee" style="scroll-margin-top:76px;background:#eeeeee;padding:clamp(64px,8vw,100px) clamp(16px,5vw,80px)">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
+      <span data-reveal="bar" style="width:60px;height:3px;background:#00c4c8"></span>
+      <span data-reveal="track" data-delay="200" style="margin-top:28px;font-family:Lato,sans-serif;font-size:13px;letter-spacing:0.1em">FEE</span>
+      <h2 data-reveal="up" data-delay="300" style="margin:14px 0 0;font-size:clamp(26px,2.6vw,38px);font-weight:900;letter-spacing:0.06em">料金表</h2>
+    </div>
+    <div data-reveal="zoom" style="margin:clamp(36px,4vw,48px) auto 0;max-width:1080px;background:#00c4c8;color:#fff;padding:24px clamp(20px,3vw,40px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px">
+      <span style="font-size:17px;font-weight:700;letter-spacing:0.06em">初回相談（60分）</span>
+      <span style="font-family:Lato,sans-serif;font-weight:900;font-size:clamp(26px,2.6vw,34px)">無料</span>
+      <span style="flex-basis:100%;font-size:13px">2回目以降：30分 5,500円（ご依頼いただいた場合は報酬に充当します）</span>
+    </div>
+    <div style="margin:32px auto 0;max-width:1080px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:24px">
+      <sc-for list="{{ fees }}" as="f" hint-placeholder-count="4">
+        <div data-reveal="up" style="background:#fff;padding:clamp(24px,3vw,36px)">
+          <div style="display:flex;align-items:baseline;gap:12px;padding-bottom:16px;border-bottom:2px solid #222"><span style="font-family:Lato,sans-serif;font-weight:900;font-size:13px;color:#00a7ad">{{ f.num }}</span><h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:0.06em">{{ f.title }}</h3></div>
+          <dl style="margin:0">
+            <sc-for list="{{ f.rows }}" as="r" hint-placeholder-count="4">
+              <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #e6e6e6;font-size:14px;line-height:1.6">
+                <dt>{{ r.k }}</dt><dd style="margin:0;font-family:Lato,sans-serif;font-weight:700;white-space:nowrap">{{ r.v }}</dd>
+              </div>
+            </sc-for>
+          </dl>
+        </div>
+      </sc-for>
+    </div>
+    <ul data-reveal="up" style="margin:32px auto 0;max-width:1080px;padding:0 0 0 1.2em;font-size:13px;line-height:1.9;color:#444">
+      <li>表示金額は報酬額の目安（税込）です。案件の内容により変動するため、正式な金額は初回相談時にお見積もりします。</li>
+      <li>申請手数料・登録免許税・証紙代・郵送料などの実費は別途ご負担いただきます。</li>
+      <li>お支払いは銀行振込にて、着手時に報酬の半額、完了時に残額をお願いしています。</li>
+    </ul>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { const go = () => window.SiteMotion ? window.SiteMotion.init() : setTimeout(go, 50); go(); }
+  renderVals() {
+    const steps = [
+      ['お問い合わせ', 'フォーム・お電話', 'お問い合わせフォームまたはお電話で、ご相談の概要とご希望の日時をお知らせください。原則1営業日以内にご連絡します。'],
+      ['初回相談（無料）', '60分・来所／オンライン', 'ご状況を詳しく伺い、必要な手続き・書類・期間の見通しをご説明します。この段階でご依頼を決める必要はありません。'],
+      ['お見積もり・ご依頼', '書面でご提示', '報酬と実費を分けた見積書をお渡しします。内容にご納得いただけましたら、委任契約を結び着手します。'],
+      ['書類の収集・作成', '進捗は随時ご報告', '必要書類の収集と申請書類の作成を進めます。ご用意いただくものは一覧にしてお伝えします。'],
+      ['申請・完了のご報告', 'アフターフォロー', '官公署へ申請し、許可・受理の結果をご報告します。更新時期や変更届など、その後の手続きもご案内します。']
+    ].map((s, i, a) => ({ num: String(i + 1).padStart(2, '0'), title: s[0], tag: s[1], text: s[2], line: i === a.length - 1 ? 'transparent' : '#bfeff0' }));
+    const R = (k, v) => ({ k, v });
+    const fees = [
+      { title: '法人設立・事業サポート', rows: [R('株式会社設立（定款作成・認証）', '88,000円〜'), R('合同会社設立（定款作成）', '55,000円〜'), R('創業時の各種届出', '22,000円〜'), R('補助金申請書類作成', '110,000円〜')] },
+      { title: '建設業・各種許認可', rows: [R('建設業許可（知事・新規）', '132,000円〜'), R('建設業許可（更新）', '66,000円〜'), R('飲食店営業許可', '44,000円〜'), R('古物商許可', '55,000円〜')] },
+      { title: '在留資格・国際業務', rows: [R('在留資格認定証明書交付申請', '110,000円〜'), R('在留期間更新', '44,000円〜'), R('在留資格変更', '88,000円〜'), R('永住許可申請', '132,000円〜')] },
+      { title: '相続・遺言・契約書', rows: [R('遺産分割協議書の作成', '44,000円〜'), R('相続関係説明図・戸籍収集', '33,000円〜'), R('公正証書遺言の作成支援', '88,000円〜'), R('契約書の作成', '33,000円〜')] }
+    ].map((f, i) => ({ ...f, num: String(i + 1).padStart(2, '0') }));
+    return { steps, fees };
+  }
+}
+</script>
+</body>
+</html>

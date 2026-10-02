@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <link rel="stylesheet" href="./responsive.css">
+  <style id="__om-reset">*{box-sizing:border-box;}body{margin:0;}a{text-decoration:none;color:inherit;}a:hover{opacity:0.75;}</style>
+  <title>施設・トレーナー | RESET GYM</title>
+</helmet>
+<div style="fontFamily:'Noto Sans JP',sans-serif;background:#fdfdf8;color:#17170f;">
+  <dc-import name="Header" current-page="facilities" hint-size="100%,58px"></dc-import>
+
+  <section class="r-px r-py" style="padding:80px 28px 50px;maxWidth:900px;margin:0 auto;textAlign:center;">
+    <span style="fontFamily:'Oswald',sans-serif;fontSize:13px;letterSpacing:3px;color:#a3934f;">FACILITIES</span>
+    <h1 style="fontSize:clamp(28px,4.5vw,40px);fontWeight:900;margin:16px 0 0;">施設のご紹介</h1>
+    <p style="fontSize:15px;color:#5a584c;marginTop:16px;">清潔で通いやすい環境を整えています。</p>
+  </section>
+
+  <section class="r-px r-pb" style="padding:0 28px 90px;maxWidth:1120px;margin:0 auto;">
+    <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
+      <sc-for list="{{ facilities }}" as="f" hint-placeholder-count="6">
+        <div>
+          <image-slot id="fac-{{ f.id }}" shape="rect" src="{{ f.img }}" placeholder="{{ f.label }}" style="width:100%;height:240px;"></image-slot>
+          <div style="fontSize:13.5px;fontWeight:700;marginTop:10px;">{{ f.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section class="r-px r-py" style="background:#f1efe8;padding:88px 28px;">
+    <div style="maxWidth:1120px;margin:0 auto;">
+      <div style="textAlign:center;marginBottom:48px;">
+        <span style="fontFamily:'Oswald',sans-serif;fontSize:13px;letterSpacing:3px;color:#a3934f;">TRAINER</span>
+        <h2 style="fontSize:28px;fontWeight:900;margin:12px 0 0;">トレーナー紹介</h2>
+        <p style="fontSize:12.5px;color:#8c8a7c;marginTop:12px;">※プロフィールはサンプルです。実際のトレーナー情報に置き換えてご利用ください。</p>
+      </div>
+      <div style="display:grid;gridTemplateColumns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
+        <sc-for list="{{ trainers }}" as="tr" hint-placeholder-count="3">
+          <div style="background:#fdfdf8;border:1px solid #d9d6c9;">
+            <image-slot id="trainer-{{ tr.id }}" shape="rect" src="{{ tr.img }}" placeholder="{{ tr.name }} の写真" style="width:100%;height:260px;"></image-slot>
+            <div style="padding:22px 24px;">
+              <div style="fontSize:12px;color:#a3934f;fontWeight:700;">{{ tr.role }}</div>
+              <div style="fontSize:18px;fontWeight:900;margin:8px 0;">{{ tr.name }}</div>
+              <div style="fontSize:12.5px;color:#8c8a7c;marginBottom:12px;">得意分野：{{ tr.specialty }}</div>
+              <p style="fontSize:13px;lineHeight:1.9;color:#4d4b41;margin:0;">{{ tr.bio }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="r-px r-py" style="padding:90px 28px;textAlign:center;">
+    <h2 style="fontSize:24px;fontWeight:900;margin:0 0 24px;">施設を実際に見てみませんか。</h2>
+    <a href="Contact.dc.html" style="background:#f4c400;color:#17170f;fontWeight:700;fontSize:15px;padding:16px 32px;borderRadius:2px;display:inline-block;">見学・体験を予約する</a>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      facilities: [
+        { id: '1', label: 'トレーニングエリア', img: './images/area-training-2.jpg' },
+        { id: '2', label: 'フリーウエイトエリア', img: './images/area-freeweight.jpg' },
+        { id: '3', label: 'カーディオエリア', img: './images/area-cardio.jpg' },
+        { id: '4', label: 'スタジオ', img: './images/area-studio.jpg' },
+        { id: '5', label: 'ロッカールーム', img: './images/area-locker.jpg' },
+        { id: '6', label: 'シャワールーム', img: './images/area-shower.jpg' },
+      ],
+      trainers: [
+        { id: '1', name: '山田 太郎（例）', img: './images/trainer-1.jpg', role: 'HEAD TRAINER', specialty: 'ボディメイク・機能改善', bio: 'パーソナルトレーニング指導歴あり。一人ひとりの目標に合わせた指導を行います。※プロフィールはサンプルです。' },
+        { id: '2', name: '佐藤 花子（例）', img: './images/trainer-2.jpg', role: 'TRAINER', specialty: 'ストレッチ・姿勢改善', bio: '柔軟性や姿勢の改善を得意とし、初心者にも丁寧に指導します。※プロフィールはサンプルです。' },
+        { id: '3', name: '鈴木 健（例）', img: './images/trainer-3.jpg', role: 'TRAINER', specialty: '筋力トレーニング', bio: '基礎からの筋力アップをサポート。無理のないペースでの指導が特徴です。※プロフィールはサンプルです。' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

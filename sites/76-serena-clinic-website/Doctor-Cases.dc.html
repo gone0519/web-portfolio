@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#4b4340;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#4b4340;text-decoration:none}
+a:hover{color:#a8876f}
+button{font-family:inherit}
+</style>
+</helmet>
+<dc-import name="Site Header" current="doctor" title-en="Doctor &amp; Case" title-ja="医師紹介・症例" lead="診察から施術、アフターケアまで。皮膚科専門医が一貫して担当します。" slot-id="doctor-hero" slot-src="images/doctor-desk.jpg" slot-ph="院長と院内の写真（横長）" hint-size="100%,620px"></dc-import>
+
+<section data-screen-label="Doctor Profile" style="position:relative;background:#fff;overflow:hidden;padding:clamp(80px,9vw,140px) 0 clamp(80px,9vw,130px)">
+  <div style="position:absolute;inset:0;background:#f5f2ec;clip-path:polygon(0 30%,100% 8%,100% 100%,0 100%);pointer-events:none"></div>
+  <div style="position:relative;display:flex;flex-wrap:wrap-reverse;align-items:center;justify-content:center;gap:clamp(40px,6vw,90px);padding:0 clamp(20px,4vw,40px)">
+    <div data-reveal="up" style="flex:1 1 400px;min-width:0;max-width:600px;display:flex;flex-direction:column;gap:26px">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.3em;color:#bfa77a">MESSAGE</span>
+      <h2 style="margin:0;font-weight:500;font-size:clamp(20px,2.2vw,28px);line-height:1.8;letter-spacing:.12em">今の自分を、少し好きになれる<br>そのお手伝いを</h2>
+      <p style="margin:0;font-size:14px;line-height:2.3;letter-spacing:.06em;text-wrap:pretty">大学病院の皮膚科で多くの患者様と向き合うなかで、肌の悩みが日々の気持ちに大きく影響することを実感してきました。美容医療は特別なものではなく、自分らしく過ごすための選択肢のひとつです。</p>
+      <p style="margin:0;font-size:14px;line-height:2.3;letter-spacing:.06em;text-wrap:pretty">治療の良い面だけでなく、リスクや限界も正直にお伝えすることが、医師としての誠実さだと考えています。どんな小さなことでも、安心してご相談ください。</p>
+      <div style="display:flex;align-items:baseline;gap:14px;margin-top:6px"><span style="font-size:11px;letter-spacing:.1em;color:#7a706b">院長</span><span style="font-size:20px;letter-spacing:.18em">早瀬 真理</span><span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.14em;color:#a8916a">MARI HAYASE</span></div>
+    </div>
+    <div data-reveal="img" style="flex:0 1 440px;min-width:260px;aspect-ratio:4/5"><image-slot id="dr-portrait-full" src="images/doctor-portrait.jpg" shape="rect" placeholder="院長ポートレート（縦位置）"></image-slot></div>
+  </div>
+  <div style="position:relative;max-width:1080px;margin:clamp(70px,8vw,110px) auto 0;padding:0 clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:28px">
+    <div data-reveal="up" style="background:#fff;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:.08em">CAREER <span style="font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.14em;margin-left:8px">経歴</span></span>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+        <sc-for list="{{ career }}" as="c" hint-placeholder-count="5">
+          <li style="display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid #efe8dd;font-size:13px;line-height:1.8;letter-spacing:.04em"><span style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#a8916a">{{ c.y }}</span><span>{{ c.t }}</span></li>
+        </sc-for>
+      </ol>
+    </div>
+    <div data-reveal="up" style="background:#fff;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:.08em">LICENSE <span style="font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.14em;margin-left:8px">資格・所属学会</span></span>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+        <sc-for list="{{ license }}" as="l" hint-placeholder-count="5">
+          <li style="display:flex;gap:12px;align-items:baseline;padding:12px 0;border-bottom:1px solid #efe8dd;font-size:13px;line-height:1.8;letter-spacing:.04em"><span style="width:5px;height:5px;border-radius:50%;background:#d4a7a1;flex:none;transform:translateY(-2px)"></span>{{ l }}</li>
+        </sc-for>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="case" data-screen-label="Cases" style="background:#fff;padding:clamp(80px,9vw,130px) clamp(20px,4vw,40px)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div data-reveal="up" style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+      <span data-shimmer style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.6vw,46px);letter-spacing:.06em;line-height:1.1;background:linear-gradient(95deg,#e3bdb7 0%,#b08d7e 60%,#7a5646 100%);-webkit-background-clip:text;background-clip:text;color:transparent">CASE</span>
+      <span style="font-size:13px;letter-spacing:.2em">症例紹介</span>
+      <span data-reveal="line" style="width:36px;height:1px;background:#4b4340;margin-top:18px"></span>
+    </div>
+    <div role="tablist" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px">
+      <sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="5">
+        <button role="tab" aria-selected="{{ tb.on }}" onClick="{{ tb.pick }}" style="min-height:44px;padding:10px 22px;border:1px solid {{ tb.bd }};background:{{ tb.bg }};color:{{ tb.fg }};font-size:13px;letter-spacing:.1em;cursor:pointer;transition:all .3s" style-hover="border-color:#6e5a4e">{{ tb.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:28px">
+      <sc-for list="{{ cases }}" as="cs" hint-placeholder-count="6">
+        <div data-zoom data-reveal="up" style="background:#f9f7f3;padding:18px 18px 26px;display:flex;flex-direction:column;gap:16px;transition:transform .5s,box-shadow .5s" style-hover="transform:translateY(-4px);box-shadow:0 18px 40px rgba(110,90,78,.08)">
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px">
+            <div style="position:relative;aspect-ratio:1/1;min-width:0;overflow:hidden"><image-slot id="{{ cs.idB }}" src="{{ cs.srcB }}" shape="rect" placeholder="Before"></image-slot><span style="position:absolute;left:0;top:0;background:rgba(255,255,255,.92);font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.1em;padding:3px 10px;pointer-events:none">Before</span></div>
+            <div style="position:relative;aspect-ratio:1/1;min-width:0;overflow:hidden"><image-slot id="{{ cs.idA }}" src="{{ cs.srcA }}" shape="rect" placeholder="After"></image-slot><span style="position:absolute;left:0;top:0;background:#6e5a4e;color:#fff;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.1em;padding:3px 10px;pointer-events:none">After</span></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><h3 style="margin:0;font-weight:500;font-size:16px;letter-spacing:.1em">{{ cs.title }}</h3><span style="font-size:11.5px;color:#7a706b;letter-spacing:.06em">{{ cs.who }}</span></div>
+          <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:12px;line-height:1.8;letter-spacing:.04em">
+            <dt style="color:#a8916a">施術内容</dt><dd style="margin:0">{{ cs.menu }}</dd>
+            <dt style="color:#a8916a">回数・期間</dt><dd style="margin:0">{{ cs.period }}</dd>
+            <dt style="color:#a8916a">費用</dt><dd style="margin:0">{{ cs.price }}</dd>
+            <dt style="color:#a8916a">リスク</dt><dd style="margin:0;color:#7a706b">{{ cs.risk }}</dd>
+          </dl>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:0;font-size:11.5px;color:#8f847e;letter-spacing:.04em;line-height:1.9">※ 掲載写真は患者様の同意を得て使用しています。効果には個人差があり、同様の結果を保証するものではありません。費用は税込・自由診療です。</p>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,820px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 'all' };
+  renderVals() {
+    const all = [
+      { cat: 'tone', title: 'シミ・くすみ', who: '40代女性', menu: 'ピコトーニング', period: '5回 / 約3ヶ月', price: '計 ¥74,800', risk: '赤み、一時的な色素沈着など' },
+      { cat: 'tone', title: '頬のシミ', who: '50代女性', menu: 'ピコスポット', period: '1回', price: '¥11,000', risk: 'かさぶた、炎症後色素沈着など' },
+      { cat: 'acne', title: 'ニキビ跡の赤み', who: '20代女性', menu: 'ケミカルピーリング＋光治療', period: '4回 / 約4ヶ月', price: '計 ¥52,800', risk: '乾燥、ヒリつき、赤みなど' },
+      { cat: 'acne', title: 'ニキビ跡の凹凸', who: '30代男性', menu: 'ダーマペン', period: '5回 / 約5ヶ月', price: '計 ¥99,000', risk: '赤み、点状出血、乾燥など' },
+      { cat: 'aging', title: '目元のくぼみ', who: '40代女性', menu: 'ヒアルロン酸注入', period: '1回', price: '¥66,000', risk: '腫れ、内出血、左右差など' },
+      { cat: 'aging', title: 'フェイスライン', who: '50代女性', menu: 'HIFU（顔全体）', period: '2回 / 約6ヶ月', price: '計 ¥88,000', risk: '赤み、むくみ、神経痛など' },
+    ].map((c, i) => ({ ...c, idB: 'dc-case' + (i + 1) + '-b', idA: 'dc-case' + (i + 1) + '-a', srcB: ["images/woman-mirror-skin.jpg","images/skin-check-mirror.jpg","images/woman-mirror-skin.jpg","images/skin-check-mirror.jpg","images/doctor-exam-face.jpg","images/jawline.jpg"][i], srcA: ["images/hero-woman-smile.jpg","images/woman-hands-face.jpg","images/skin-closeup-smile.jpg","images/skin-closeup-smile.jpg","images/woman-hands-face.jpg","images/hero-woman-smile.jpg"][i] }));
+    const tabDefs = [['all', 'すべて'], ['tone', 'シミ・色味'], ['acne', 'ニキビ跡'], ['aging', 'しわ・たるみ']];
+    const tab = this.state.tab;
+    return {
+      career: [
+        { y: '2008', t: '国立大学医学部 卒業' },
+        { y: '2010', t: '大学病院 皮膚科 入局' },
+        { y: '2015', t: '日本皮膚科学会認定 皮膚科専門医 取得' },
+        { y: '2017', t: '都内美容皮膚科クリニック 勤務' },
+        { y: '2022', t: 'セレナ美容皮膚科クリニック 開院' },
+      ],
+      license: ['日本皮膚科学会認定 皮膚科専門医', '日本美容皮膚科学会 正会員', '日本レーザー医学会 会員', 'ボトックスビスタ®認定医', 'ジュビダーム ビスタ®認定医'],
+      tabs: tabDefs.map(([k, label]) => { const on = k === tab; return { label, on, bg: on ? '#6e5a4e' : '#fff', fg: on ? '#fff' : '#4b4340', bd: on ? '#6e5a4e' : '#ddd3c5', pick: () => this.setState({ tab: k }) }; }),
+      cases: tab === 'all' ? all : all.filter(c => c.cat === tab),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+<link href="./site.css" rel="stylesheet">
+<style>html{scroll-behavior:smooth}body{margin:0;color:#3d3a38;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}a{color:#e8555b}a:hover{color:#c93d44}*{box-sizing:border-box}input,select,textarea,button{font-family:inherit}</style>
+</helmet>
+<dc-import name="SiteHeader" current="contact" style="position:sticky;top:0;z-index:50;display:block" hint-size="100%,72px"></dc-import>
+<main lang="ja">
+<section data-screen-label="Contact banner" style="position:relative;background:#dff3f8;padding:56px 16px 96px;text-align:center">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+    <span style="width:44px;height:44px;border-radius:50%;background:#e8555b;color:#fff;display:grid;place-items:center;font-family:'Mochiy Pop One'">?</span>
+    <h1 style="margin:0;font-family:'Mochiy Pop One';font-weight:400;font-size:clamp(28px,4vw,40px);color:#e8555b;letter-spacing:.1em">お問い合わせ</h1>
+    <span style="font-size:12px;color:#5a8fa3"><a href="index.dc.html" style="color:#5a8fa3">TOP</a> ＞ お問い合わせ</span>
+  </div>
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;left:0;bottom:-1px;width:100%;height:50px"><path d="M0 30 C 300 0 500 60 720 34 C 960 8 1200 56 1440 24 L1440 60 L0 60 Z" fill="#fff"></path></svg>
+</section>
+
+<section style="padding:56px 16px 24px;max-width:1000px;margin:0 auto;text-align:center">
+  <h2 style="margin:0 0 14px;font-size:clamp(22px,3vw,28px);font-weight:900;color:#e8555b;letter-spacing:.1em">まずは、園に遊びにきてください</h2>
+  <p style="margin:0 auto;max-width:560px;font-size:14px;line-height:2.1">見学のご予約、入園についてのご相談など、お気軽にお問い合わせください。</p>
+  <div style="margin:32px auto 0;max-width:720px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+    <a href="tel:052-000-0000" style="display:flex;flex-direction:column;align-items:center;gap:2px;background:#e8555b;color:#fff;border-radius:20px;padding:20px;text-decoration:none;transition:background .2s" style-hover="background:#c93d44;color:#fff">
+      <span style="font-size:12px;font-weight:700">お電話（平日 9:00〜17:00）</span>
+      <span style="font-family:'Mochiy Pop One';font-size:26px;letter-spacing:.06em">052-000-0000</span>
+    </a>
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:#dff3f8;border-radius:20px;padding:20px">
+      <span style="font-size:12px;font-weight:700;color:#3d9fc4">見学日</span>
+      <span style="font-size:16px;font-weight:900">毎週火・木 10:00〜（要予約）</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding:32px 16px 72px;max-width:760px;margin:0 auto">
+  <div style="background:#fff;border:2px solid #fbe1e2;border-radius:24px;padding:clamp(24px,5vw,44px)">
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:18px">
+        <fieldset style="border:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
+          <legend style="font-size:13px;font-weight:700;margin-bottom:8px">お問い合わせ内容 <span style="color:#e8555b;font-size:11px">必須</span></legend>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <sc-for list="{{ kinds }}" as="k" hint-placeholder-count="3">
+              <label style="display:flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid #e6dcd8;border-radius:999px;font-size:14px;cursor:pointer;min-height:44px"><input type="radio" name="kind" value="{{ k }}" required="required" style="accent-color:#e8555b">{{ k }}</label>
+            </sc-for>
+          </div>
+        </fieldset>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">保護者さまのお名前 <input required="required" name="name" autocomplete="name" style="height:50px;padding:0 14px;border:1px solid #e6dcd8;border-radius:10px;font-size:15px;background:#fffdfb"></label>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:18px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">メールアドレス<input required="required" type="email" name="email" autocomplete="email" style="height:50px;padding:0 14px;border:1px solid #e6dcd8;border-radius:10px;font-size:15px;background:#fffdfb"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">電話番号<input type="tel" name="tel" autocomplete="tel" style="height:50px;padding:0 14px;border:1px solid #e6dcd8;border-radius:10px;font-size:15px;background:#fffdfb"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">お子さまの年齢<select name="age" style="height:50px;padding:0 12px;border:1px solid #e6dcd8;border-radius:10px;font-size:15px;background:#fffdfb"><option>0歳</option><option>1歳</option><option>2歳</option><option>3歳</option><option>4歳</option><option>5歳</option><option>出産予定</option></select></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">見学希望日<input type="date" name="date" style="height:50px;padding:0 12px;border:1px solid #e6dcd8;border-radius:10px;font-size:15px;background:#fffdfb"></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">ご質問・メッセージ<textarea name="msg" rows="5" style="padding:12px 14px;border:1px solid #e6dcd8;border-radius:10px;font-size:15px;background:#fffdfb;resize:vertical"></textarea></label>
+        <button type="submit" style="height:56px;border:none;border-radius:999px;background:#e8555b;color:#fff;font-size:16px;font-weight:700;cursor:pointer;transition:background .2s" style-hover="background:#c93d44">この内容で送信する</button>
+      </form>
+    </sc-if>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:40px 10px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center">
+        <span style="width:56px;height:56px;border-radius:50%;background:#8cc97a;color:#fff;display:grid;place-items:center;font-family:'Mochiy Pop One';font-size:22px">✓</span>
+        <strong style="font-size:18px">お問い合わせありがとうございます</strong>
+        <span style="font-size:14px;line-height:1.9">2営業日以内に担当よりご連絡いたします。</span>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<section style="background:#fdf6f2;padding:72px 16px">
+  <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <h2 style="margin:0;font-size:clamp(20px,2.6vw,26px);font-weight:900;color:#e8555b;letter-spacing:.1em">アクセス</h2>
+      <dl style="margin:0;background:#fff;border-radius:20px;padding:8px 24px;display:grid;grid-template-columns:auto 1fr;font-size:14px;line-height:1.8">
+        <dt style="padding:14px 16px 14px 0;font-weight:900;border-bottom:1px dashed #eadede">住所</dt><dd style="margin:0;padding:14px 0;border-bottom:1px dashed #eadede">〒466-0000 名古屋市昭和区○○町1-1</dd>
+        <dt style="padding:14px 16px 14px 0;font-weight:900;border-bottom:1px dashed #eadede">電車</dt><dd style="margin:0;padding:14px 0;border-bottom:1px dashed #eadede">地下鉄鶴舞線「○○駅」徒歩8分</dd>
+        <dt style="padding:14px 16px 14px 0;font-weight:900;border-bottom:1px dashed #eadede">お車</dt><dd style="margin:0;padding:14px 0;border-bottom:1px dashed #eadede">送迎用駐車場 5台</dd>
+        <dt style="padding:14px 16px 14px 0;font-weight:900">開園</dt><dd style="margin:0;padding:14px 0">月〜土 7:00〜19:00</dd>
+      </dl>
+    </div>
+    <div style="aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:repeating-linear-gradient(45deg,#f3ece8 0 10px,#efe6e1 10px 20px);display:grid;place-items:center;font-family:monospace;font-size:12px;color:#9a8f8a">地図（Google Map 埋め込み）</div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" show-cta="{{ false }}" hint-size="100%,300px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false };
+  renderVals() {
+    return {
+      kinds: ['見学予約', '入園について', 'その他'],
+      notSent: !this.state.sent, sent: this.state.sent,
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

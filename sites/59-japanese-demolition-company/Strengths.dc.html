@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#111;color:#1a1a1a;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;
+--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+*{box-sizing:border-box}
+a{color:#c4161f;text-decoration:none}
+a:hover{color:#e0262f}
+body{overflow-x:clip}
+</style>
+</helmet>
+
+<dc-import name="SiteHeader" active="strengths" hint-size="100%,0px"></dc-import>
+
+<main id="top">
+<dc-import name="PageHero" en="STRENGTHS" jp="強み・安全への取り組み" img-id="strengths-hero" src="images/worker-pointing.jpg" ph="HERO — 安全装備の作業員" hint-size="100%,520px"></dc-import>
+
+<section data-screen-label="Intro" style="position:relative;overflow:hidden;background:#141414;background-image:var(--noise),linear-gradient(180deg,#1c1c1c,#0e0e0e);padding:clamp(80px,10vw,120px) clamp(20px,5vw,60px) clamp(70px,9vw,110px);color:#fff">
+  <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:52%;width:44%;background:linear-gradient(90deg,#8e0c12,#c4161f);clip-path:polygon(38% 0,62% 0,24% 100%,0 100%);opacity:.9;pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:64%;width:30%;background:#c4161f;clip-path:polygon(60% 0,68% 0,30% 100%,22% 100%);opacity:.6;pointer-events:none"></div>
+  <div style="position:relative;max-width:1160px;margin:0 auto;display:flex;flex-direction:column;gap:22px" data-reveal="">
+    <h2 style="margin:0;font-family:'Dela Gothic One',sans-serif;font-weight:400;font-size:clamp(26px,3.6vw,48px);line-height:1.45;letter-spacing:.04em;text-wrap:balance">安全へのこだわりが、<br>品質をつくる。</h2>
+    <p style="margin:0;max-width:560px;font-size:15px;line-height:2;letter-spacing:.05em;color:rgba(255,255,255,.88);text-wrap:pretty">解体工事の品質は、事故のない現場と、丁寧な段取りから生まれます。私たちが大切にしている5つの取り組みをご紹介します。</p>
+    <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:10px 28px">
+      <sc-for list="{{ keywords }}" as="k" hint-placeholder-count="5">
+        <span style="font-family:'Dela Gothic One',sans-serif;font-size:clamp(20px,2.6vw,34px);letter-spacing:.06em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.8)">{{ k }}</span>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Five strengths" style="background:#e4e4e4;background-image:var(--noise)">
+  <div style="max-width:1160px;margin:0 auto;padding:clamp(70px,9vw,110px) clamp(20px,5vw,60px);display:flex;flex-direction:column;gap:clamp(56px,7vw,88px)">
+    <sc-for list="{{ strengths }}" as="st" hint-placeholder-count="5">
+      <article data-reveal="" style="display:flex;flex-direction:column">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px;background:linear-gradient(90deg,#7a080d 0%,#c4161f 45%,#8e0c12 100%);color:#fff;padding:12px clamp(16px,4vw,22px)">
+          <span style="font-family:'Dela Gothic One',sans-serif;font-size:22px;letter-spacing:.04em">{{ st.no }}</span>
+          <h3 style="margin:0;font-size:clamp(16px,1.7vw,20px);font-weight:900;letter-spacing:.1em">{{ st.jp }}</h3>
+          <span style="margin-left:auto;font-family:'Dela Gothic One',sans-serif;font-size:12px;letter-spacing:.2em;opacity:.85">{{ st.en }}</span>
+        </div>
+        <div style="margin-top:clamp(20px,3vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(22px,4vw,48px);align-items:center">
+          <div style="order:{{ st.imgOrder }};aspect-ratio:16/10;border:1px solid rgba(0,0,0,.18);padding:6px;background:#f4f4f4">
+            <image-slot id="{{ st.id }}" src="{{ st.src }}" shape="rect" placeholder="{{ st.ph }}"></image-slot>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <p style="margin:0;font-size:clamp(18px,1.9vw,23px);font-weight:900;line-height:1.6;letter-spacing:.06em;color:#1a1a1a;text-wrap:pretty">{{ st.lead }}</p>
+            <p style="margin:0;font-size:15px;line-height:2;letter-spacing:.05em;color:#333;text-wrap:pretty">{{ st.body }}</p>
+            <ul style="margin:0;padding:18px 0 0;list-style:none;display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(0,0,0,.15)">
+              <sc-for list="{{ st.points }}" as="pt" hint-placeholder-count="3">
+                <li style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700;letter-spacing:.05em;color:#1a1a1a">
+                  <span style="flex-shrink:0;width:8px;height:8px;transform:rotate(45deg);background:#c4161f"></span>
+                  <span>{{ pt }}</span>
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="CTA" style="position:relative;overflow:hidden;background:#101010;color:#fff;padding:clamp(70px,9vw,110px) clamp(20px,5vw,60px)">
+  <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:60%;pointer-events:none;background:linear-gradient(90deg,#8e0c12,#c4161f);clip-path:polygon(18% 0,46% 0,82% 100%,54% 100%);opacity:.85"></div>
+  <div data-reveal="" style="position:relative;max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center">
+    <h2 style="margin:0;font-size:clamp(20px,2.4vw,30px);font-weight:900;letter-spacing:.1em;text-wrap:balance"><span style="display:inline-block">安全・丁寧な解体工事を</span><span style="display:inline-block">お約束します。</span></h2>
+    <a href="Contact.dc.html#form" style="margin-top:8px;display:flex;align-items:center;justify-content:center;min-width:240px;height:60px;padding:0 30px;background:#c4161f;color:#fff;font-weight:700;font-size:15px;letter-spacing:.1em;clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);transition:background .3s" style-hover="background:#e0262f;color:#fff">無料見積もりはこちら</a>
+  </div>
+</section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const STR_IMG = { safety: 'curing-sheet', tech: 'teal-excavators', manage: 'worker-arms-crossed', eco: 'skeleton-bucket', support: 'worker-smile' };
+    const strengths = [
+      ['safety', '安全管理', 'SAFETY', '事故ゼロの現場を、毎日の確認から。', '着工前の危険予知活動と作業手順の共有を徹底し、現場ごとのリスクを洗い出してから作業に入ります。足場・養生・重機の点検も毎日欠かさず行います。', ['着工前・作業前の安全確認', '法令に沿った正しい施工手順', '現場ごとのリスク管理']],
+      ['tech', '専門技術', 'TECHNOLOGY', '経験に裏付けされた、確かな解体技術。', '構造や立地を見極め、手壊しと重機解体を適切に組み合わせます。現場に合った機械を選定し、無駄のない工程で効率よく作業を進めます。', ['経験豊富な解体スタッフ', '現場に適した重機・機材の選定', '効率的で無理のない工法']],
+      ['manage', '工程管理', 'MANAGEMENT', '計画どおりに、丁寧に進める。', '現地調査をもとに詳細な工程表を作成し、進捗を管理します。工事の各段階でお客様へご報告し、不安のない状態で完了までお付き合いします。', ['現地調査に基づく詳細な計画', '工期・スケジュールの管理', 'お客様への定期的なご報告']],
+      ['eco', '環境への配慮', 'ENVIRONMENT', '解体材を、次の資源へ。', '木材・コンクリート・金属などを現場で分別し、法令に従って適正に処理します。再資源化できるものは積極的にリサイクルにまわします。', ['廃材の分別と適正処理', '可能な範囲での再資源化', '解体材の責任ある取り扱い']],
+      ['support', '地域・お客様対応', 'SUPPORT', '相談しやすい、分かりやすい。', '初めて解体を検討される方にも、手続きや費用の内訳を分かりやすくご説明します。近隣へのご挨拶や工事中のご要望にも柔軟に対応します。', ['丁寧なヒアリングとご相談', '費用・工程の分かりやすい説明', 'さまざまな解体案件への柔軟な対応']]
+    ].map((s, i) => ({ id: 'str-' + s[0], no: String(i + 1).padStart(2, '0'), jp: s[1], en: s[2], lead: s[3], body: s[4], points: s[5], imgOrder: i % 2 ? 1 : 0, ph: s[2] + ' — 現場写真', src: 'images/' + STR_IMG[s[0]] + '.jpg' }));
+    return { keywords: ['SAFETY', 'TECHNOLOGY', 'EXPERIENCE', 'QUALITY', 'TRUST'], strengths };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>AOBA Precision Works｜青葉精工</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500&family=Allura&display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0b1638;color:#fff;font-family:'Plus Jakarta Sans','Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#fff;text-decoration:none}
+a:hover{color:#9db8ff}
+::selection{background:#d0101b;color:#fff}
+</style>
+</helmet>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:stretch;justify-content:space-between;height:72px;background:{{ headerBg }};backdrop-filter:{{ headerBlur }};transition:background .4s ease">
+  <a href="#home" onClick="{{ go }}" data-target="home" style="display:flex;flex-direction:column;justify-content:center;padding:0 clamp(20px,3vw,48px);gap:3px">
+    <span style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:26px;letter-spacing:-0.02em;line-height:1">
+      <span style="display:block;width:16px;height:22px;background:#d0101b;transform:skewX(-24deg)"></span>AOBA
+    </span>
+    <span style="font-size:9px;font-weight:600;letter-spacing:.22em;opacity:.8">PRECISION WORKS</span>
+  </a>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="Main" style="display:flex;align-items:stretch">
+      <div style="display:flex;align-items:center;gap:30px;padding:0 40px 0 56px;background:rgba(255,255,255,.94);clip-path:polygon(28px 0,100% 0,100% 100%,0 100%);margin:14px -18px 14px 0">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+          <a href="#{{ n.id }}" data-target="{{ n.id }}" onClick="{{ go }}" style="color:#12245a;font-size:12px;font-weight:600;letter-spacing:.06em;font-style:italic;transition:color .25s" style-hover="color:#d0101b">{{ n.label }}</a>
+        </sc-for>
+      </div>
+      <a href="#contact" data-target="contact" onClick="{{ go }}" style="display:flex;align-items:center;padding:0 40px 0 48px;background:#d0101b;color:#fff;font-weight:600;font-size:15px;clip-path:polygon(24px 0,100% 0,100% 100%,0 100%);transition:background .25s" style-hover="background:#a80a14;color:#fff">Contact Us</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpen }}" style="width:72px;height:72px;border:0;background:#d0101b;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer">
+      <span style="display:block;width:24px;height:2px;background:#fff"></span>
+      <span style="display:block;width:24px;height:2px;background:#fff"></span>
+      <span style="display:block;width:16px;height:2px;background:#fff;margin-left:8px"></span>
+    </button>
+  </sc-if>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:72px 0 0 0;z-index:49;background:#0b1638;padding:40px 28px;display:flex;flex-direction:column;gap:8px">
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+      <a href="#{{ n.id }}" data-target="{{ n.id }}" onClick="{{ go }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14)">
+        <span style="font-size:28px;font-weight:700;letter-spacing:-0.02em">{{ n.label }}</span>
+        <span style="font-size:12px;opacity:.7;letter-spacing:.1em">{{ n.jp }}</span>
+      </a>
+    </sc-for>
+    <a href="#contact" data-target="contact" onClick="{{ go }}" style="margin-top:28px;display:flex;align-items:center;justify-content:center;height:60px;border-radius:999px;background:#d0101b;font-weight:600">Contact Us</a>
+  </div>
+</sc-if>
+
+<main>
+<!-- 01 HERO -->
+<section id="home" data-screen-label="01 Hero" style="position:relative;min-height:max(720px,100vh);background:#0e1d4a;overflow:hidden">
+  <div data-reveal="zoom" style="position:absolute;inset:0;clip-path:polygon(0 0,100% 0,100% 62%,0 88%)">
+    <image-slot id="hero-line" shape="rect" placeholder="Hero photo — automated production line / machining cells"></image-slot>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,22,60,.72) 0%,rgba(10,22,60,.25) 60%,rgba(10,22,60,.1) 100%);pointer-events:none"></div>
+  </div>
+  <div style="position:absolute;left:-10%;top:18%;width:1px;height:70%;background:rgba(255,255,255,.5);transform:rotate(28deg);pointer-events:none"></div>
+  <div style="position:absolute;right:18%;top:30%;width:2px;height:60%;background:#2f6bff;transform:rotate(28deg);pointer-events:none"></div>
+  <span style="position:absolute;right:28px;top:50%;transform:translateY(-50%) rotate(90deg);transform-origin:right center;font-size:10px;letter-spacing:.2em;opacity:.7;pointer-events:none">© AOBA PRECISION WORKS CO., LTD.</span>
+  <div style="position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:clamp(150px,20vh,220px) clamp(20px,6vw,96px) 120px;pointer-events:none">
+    <p data-reveal="" data-delay="200" style="margin:0 0 28px;font-family:'Noto Sans JP';font-weight:500;font-size:clamp(16px,2vw,28px);letter-spacing:.32em;text-wrap:pretty">確かな技術と品質で、未来のものづくりを支える。</p>
+    <h1 data-reveal="" data-delay="400" style="margin:0;font-weight:700;font-size:clamp(48px,9vw,148px);line-height:.94;letter-spacing:-0.045em">Precision Manufacturing.<br>Built for Quality.</h1>
+    <p data-reveal="" data-delay="650" style="margin:32px 0 0;max-width:520px;font-family:'Noto Sans JP';font-size:14px;line-height:2;font-weight:500">精密切削から組立・検査・出荷まで、一貫生産体制で高品質な部品を安定供給。<br>50台以上の設備と24時間稼働の工場で、日本のものづくりを支えています。</p>
+    <div data-reveal="" data-delay="850" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:40px;pointer-events:auto">
+      <a href="#technology" data-target="technology" onClick="{{ go }}" style="display:flex;align-items:center;justify-content:space-between;gap:28px;height:52px;padding:0 10px 0 28px;min-width:240px;border-radius:999px;background:#fff;color:#12245a;font-size:14px;font-weight:700;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.25);color:#12245a">Our Manufacturing<span style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:#12245a;color:#fff;font-size:14px">→</span></a>
+      <a href="#contact" data-target="contact" onClick="{{ go }}" style="display:flex;align-items:center;justify-content:space-between;gap:28px;height:52px;padding:0 10px 0 28px;min-width:200px;border-radius:999px;border:1px solid rgba(255,255,255,.7);color:#fff;font-size:14px;font-weight:700;transition:background .3s" style-hover="background:rgba(255,255,255,.12);color:#fff">Contact Us<span style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:#d0101b;font-size:14px">→</span></a>
+    </div>
+  </div>
+  <div style="position:absolute;left:clamp(20px,6vw,96px);bottom:36px;z-index:2;display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.24em;pointer-events:none">
+    <span style="display:block;width:48px;height:1px;background:#fff"></span>SCROLL
+  </div>
+</section>
+
+<!-- 02 OUR FACTORY -->
+<section id="factory" data-screen-label="02 Our Factory" style="position:relative;background:#0e1d4a;overflow:hidden;padding:40px 0 160px">
+  <div style="position:absolute;left:-8%;top:10%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(40,100,255,.55),rgba(40,100,255,0) 68%);pointer-events:none"></div>
+  <div style="position:absolute;right:-10%;top:52%;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(40,100,255,.4),rgba(40,100,255,0) 68%);pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;right:-2%;top:0;font-weight:800;font-size:clamp(280px,40vw,640px);line-height:.8;letter-spacing:-0.06em;color:rgba(80,130,255,.09);pointer-events:none">AP</div>
+
+  <div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(20px,6vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,96px)">
+    <div data-reveal="">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+        <span style="display:block;width:22px;height:30px;background:#d0101b;transform:skewX(-28deg)"></span>
+        <span style="font-size:14px;font-weight:600">Our Factory</span>
+      </div>
+      <h2 style="margin:0;font-family:'Noto Sans JP';font-weight:700;font-size:clamp(26px,3vw,40px);line-height:1.7;letter-spacing:.12em">ひとつの部品に、<br>確かな責任を。</h2>
+      <div style="margin-top:56px;display:flex;flex-direction:column;gap:22px;border-left:1px solid rgba(255,255,255,.35);margin-left:4px">
+        <sc-for list="{{ divisions }}" as="d" hint-placeholder-count="4">
+          <div style="display:flex;align-items:baseline;gap:16px;padding-left:{{ d.indent }}">
+            <span style="display:block;width:28px;height:1px;background:rgba(255,255,255,.5);margin-left:-{{ d.indent }};flex:none;align-self:center"></span>
+            <span style="font-family:'Noto Sans JP';font-weight:700;font-size:17px;letter-spacing:.14em">{{ d.jp }}</span>
+            <span style="font-size:13px;color:#4f86ff;font-weight:500">{{ d.en }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div data-reveal="" data-delay="150" style="font-family:'Noto Sans JP';font-size:15px;line-height:2.2;font-weight:500;display:flex;flex-direction:column;gap:28px;padding-top:clamp(0px,4vw,60px)">
+      <p style="margin:0">青葉精工は1994年の創業以来、自動車・産業機械・医療機器向けの精密部品を製造してきました。</p>
+      <p style="margin:0">温度と湿度を管理したクリーンな工場に、5軸マシニングセンタや三次元測定機など50台以上の設備を配置。24時間体制で、試作から量産まで安定した生産を続けています。</p>
+      <p style="margin:0">私たちが大切にしているのは、図面の要求を確実に形にすること。<br>ひとつひとつの工程を丁寧に積み重ね、信頼される品質をお届けします。</p>
+    </div>
+  </div>
+
+  <div style="position:relative;max-width:1440px;margin:140px auto 0;padding:0 clamp(20px,6vw,96px)">
+    <div data-reveal="" style="margin-bottom:48px">
+      <p style="margin:0 0 6px;font-size:12px;font-weight:600">Factory.01</p>
+      <p style="margin:0;font-family:'Noto Serif JP';font-size:clamp(28px,3.4vw,44px);letter-spacing:.14em">数字で見る青葉精工</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px);align-items:start">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:56px 40px;border-top:1px solid rgba(255,255,255,.18);padding-top:44px">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+          <div data-reveal="">
+            <p style="margin:0 0 10px;display:flex;align-items:center;gap:10px;font-family:'Noto Sans JP';font-size:14px;font-weight:700"><span style="display:block;width:12px;height:1px;background:rgba(255,255,255,.6)"></span>{{ s.label }}</p>
+            <p style="margin:0;display:flex;align-items:baseline;gap:4px;line-height:1"><span data-count="{{ s.value }}" data-decimals="{{ s.decimals }}" style="font-weight:600;font-size:clamp(64px,7vw,100px);letter-spacing:-0.04em">{{ s.display }}</span><span style="font-family:'Noto Sans JP';font-weight:700;font-size:clamp(22px,2vw,30px)">{{ s.unit }}</span></p>
+            <p style="margin:12px 0 0;font-family:'Noto Sans JP';font-size:13px;opacity:.8;letter-spacing:.06em">{{ s.en }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div data-reveal="img" style="position:relative;aspect-ratio:16/10;width:100%">
+        <image-slot id="factory-exterior" shape="rect" placeholder="Factory exterior / clean production floor"></image-slot>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 TECHNOLOGY -->
+<section id="technology" data-screen-label="03 Technology" style="position:relative;background:#0e1d4a;overflow:hidden">
+  <div style="position:relative;background:#eef1f6;color:#12245a;clip-path:polygon(0 9%,100% 0,100% 91%,0 100%);padding:clamp(120px,14vw,200px) 0 clamp(140px,15vw,220px);background-image:repeating-linear-gradient(-14deg,rgba(255,255,255,.9) 0 2px,rgba(210,218,232,.55) 2px 9px,rgba(255,255,255,0) 9px 38px)">
+    <h2 data-reveal="" style="margin:0 0 0 clamp(12px,3vw,48px);font-weight:700;font-size:clamp(52px,10vw,172px);line-height:.9;letter-spacing:-0.05em;color:#12245a;white-space:normal">Technology &amp;<br>Manufacturing</h2>
+    <div style="max-width:1440px;margin:40px auto 0;padding:0 clamp(20px,6vw,96px);display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:end">
+      <div data-reveal="">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <span style="display:block;width:16px;height:24px;background:#d0101b;transform:skewX(-28deg)"></span>
+          <span style="font-size:13px;font-weight:600">Capabilities of in-house production</span>
+        </div>
+        <p style="margin:0;font-family:'Noto Sans JP';font-weight:700;font-size:clamp(20px,2.2vw,28px);line-height:1.8;letter-spacing:.16em">加工から出荷までを一貫して、<br>自社工場で完結します。</p>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button onClick="{{ prev }}" aria-label="Previous" style="width:52px;height:52px;border-radius:50%;border:1px solid #12245a;background:transparent;color:#12245a;font-size:16px;cursor:pointer;transition:background .25s,color .25s" style-hover="background:#12245a;color:#fff">←</button>
+        <button onClick="{{ next }}" aria-label="Next" style="width:52px;height:52px;border-radius:50%;border:1px solid #12245a;background:#12245a;color:#fff;font-size:16px;cursor:pointer;transition:background .25s" style-hover="background:#d0101b">→</button>
+      </div>
+    </div>
+
+    <div ref="{{ railRef }}" onScroll="{{ onRail }}" style="margin-top:48px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 clamp(20px,6vw,96px) 8px">
+      <sc-for list="{{ caps }}" as="c" hint-placeholder-count="6">
+        <article data-reveal="" style="flex:none;width:clamp(290px,30vw,420px);height:clamp(340px,30vw,420px);margin-right:-60px;position:relative;scroll-snap-align:start;clip-path:polygon(34% 0,100% 0,66% 100%,0 100%);background:#12245a">
+          <image-slot id="{{ c.slot }}" shape="rect" placeholder="{{ c.ph }}"></image-slot>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,36,90,0) 30%,rgba(18,36,90,.92) 78%);pointer-events:none"></div>
+          <div style="position:absolute;left:14%;right:30%;bottom:26px;color:#fff;pointer-events:none">
+            <p style="margin:0;font-weight:600;font-size:30px;letter-spacing:-0.02em;line-height:1">{{ c.no }}</p>
+            <p style="margin:8px 0 6px;font-size:12px;font-weight:600;opacity:.85">{{ c.en }}</p>
+            <p style="margin:0 0 10px;font-family:'Noto Sans JP';font-weight:700;font-size:18px;letter-spacing:.04em">{{ c.jp }}</p>
+            <p style="margin:0;font-family:'Noto Sans JP';font-size:11px;line-height:1.8;opacity:.9">{{ c.text }}</p>
+          </div>
+        </article>
+      </sc-for>
+      <div style="flex:none;width:100px"></div>
+    </div>
+    <div style="max-width:1440px;margin:32px auto 0;padding:0 clamp(20px,6vw,96px)">
+      <div style="position:relative;height:3px;background:rgba(18,36,90,.15);border-radius:3px">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:{{ railPct }};background:#12245a;border-radius:3px;transition:width .15s"></div>
+      </div>
+    </div>
+
+    <div style="max-width:1440px;margin:120px auto 0;padding:0 clamp(20px,6vw,96px)">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px 28px;margin-bottom:44px">
+        <p style="margin:0;font-weight:700;font-size:clamp(36px,4vw,56px);letter-spacing:-0.03em">Process</p>
+        <p style="margin:0;font-family:'Noto Sans JP';font-weight:700;font-size:15px;letter-spacing:.2em">ご依頼から納品までの流れ</p>
+      </div>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2px">
+        <sc-for list="{{ steps }}" as="p" hint-placeholder-count="5">
+          <li data-reveal="" style="position:relative;background:#fff;padding:28px 24px 32px;min-height:190px;display:flex;flex-direction:column;gap:12px;transition:background .3s,color .3s" style-hover="background:#12245a;color:#fff">
+            <span style="font-size:12px;font-weight:700;color:#d0101b">STEP {{ p.no }}</span>
+            <span style="font-weight:700;font-size:24px;letter-spacing:-0.02em">{{ p.en }}</span>
+            <span style="font-family:'Noto Sans JP';font-weight:700;font-size:14px;letter-spacing:.14em">{{ p.jp }}</span>
+            <span style="font-family:'Noto Sans JP';font-size:12px;line-height:1.8;opacity:.75">{{ p.text }}</span>
+            <span style="position:absolute;right:20px;top:26px;font-size:16px;opacity:.5">{{ p.arrow }}</span>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 04 QUALITY -->
+<section id="quality" data-screen-label="04 Quality" style="position:relative;background:#0e1d4a;overflow:hidden;padding:60px 0 180px;margin-top:-2px">
+  <div style="position:absolute;inset:0;background:#1b47b0;clip-path:polygon(0 18%,100% 4%,100% 100%,0 100%);pointer-events:none"></div>
+  <div style="position:absolute;right:-12%;top:30%;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(70,130,255,.6),rgba(70,130,255,0) 66%);pointer-events:none"></div>
+  <div style="position:relative">
+    <h2 data-reveal="" style="margin:0 0 0 -0.04em;font-weight:700;font-size:clamp(56px,10.5vw,180px);line-height:.88;letter-spacing:-0.05em">Quality<br>You Can Trust</h2>
+    <p data-reveal="" style="margin:-0.35em 0 0 clamp(160px,34vw,560px);font-family:'Allura',cursive;font-size:clamp(44px,5vw,80px);color:#ff2a36;line-height:1">Strengths</p>
+  </div>
+  <div style="position:relative;max-width:1440px;margin:60px auto 0;padding:0 clamp(20px,6vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(48px,6vw,110px);align-items:start">
+    <div style="position:relative">
+      <div data-reveal="img" style="position:relative;aspect-ratio:4/5;width:88%">
+        <image-slot id="quality-inspection" shape="rect" placeholder="Inspection scene — CMM measurement / technician"></image-slot>
+      </div>
+      <div data-reveal="img" data-delay="200" style="position:relative;aspect-ratio:4/3;width:52%;margin:-22% 0 0 auto;box-shadow:0 30px 60px rgba(5,15,50,.45)">
+        <image-slot id="quality-detail" shape="rect" placeholder="Close-up — machined part / tooling"></image-slot>
+      </div>
+    </div>
+    <div>
+      <div data-reveal="" style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+        <span style="display:block;width:22px;height:30px;background:#d0101b;transform:skewX(-28deg)"></span>
+        <span style="font-size:14px;font-weight:600">Why AOBA</span>
+      </div>
+      <p data-reveal="" style="margin:0 0 48px;font-family:'Noto Sans JP';font-weight:700;font-size:clamp(22px,2.4vw,32px);line-height:1.75;letter-spacing:.14em">選ばれ続ける、<br>4つの理由。</p>
+      <sc-for list="{{ strengths }}" as="q" hint-placeholder-count="4">
+        <div data-reveal="" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 28px;padding:32px 0;border-top:1px solid rgba(255,255,255,.28)">
+          <span style="font-weight:600;font-size:clamp(40px,4vw,56px);line-height:.9;letter-spacing:-0.03em">{{ q.no }}</span>
+          <div>
+            <p style="margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px"><span style="font-weight:700;font-size:22px;letter-spacing:-0.01em">{{ q.en }}</span><span style="font-family:'Noto Sans JP';font-size:13px;font-weight:700;color:#bcd0ff;letter-spacing:.12em">{{ q.jp }}</span></p>
+            <p style="margin:12px 0 0;font-size:15px;line-height:1.75;opacity:.92;text-wrap:pretty">{{ q.text }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CONTACT -->
+<section id="contact" data-screen-label="05 Contact" style="position:relative;background:#1b47b0;overflow:hidden;padding-top:80px">
+  <div style="position:absolute;inset:0;background:#14171f;clip-path:polygon(0 30%,100% 8%,100% 100%,0 100%);pointer-events:none"></div>
+  <div style="position:absolute;left:-14%;bottom:12%;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(40,100,255,.35),rgba(40,100,255,0) 68%);pointer-events:none"></div>
+  <div style="position:absolute;right:-8%;top:6%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(70,130,255,.55),rgba(70,130,255,0) 66%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(20px,6vw,96px)">
+    <h2 data-reveal="" style="margin:0;font-weight:700;font-size:clamp(46px,8vw,132px);line-height:.95;letter-spacing:-0.045em;text-wrap:balance">Let's Build the Future Together.</h2>
+    <p data-reveal="" style="margin:40px 0 0;max-width:640px;font-size:16px;line-height:1.9;opacity:.9">Contact us to discuss your manufacturing requirements, production capabilities, and potential partnership opportunities.</p>
+
+    <div style="margin-top:90px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:56px">
+      <div data-reveal="">
+        <p style="margin:0 0 14px;font-family:'Noto Sans JP';font-weight:700;font-size:17px;letter-spacing:.3em">お電話でのお問い合わせ</p>
+        <a href="tel:0566123456" style="display:block;font-weight:500;font-size:clamp(40px,4.6vw,64px);letter-spacing:-0.02em;line-height:1.1">0566-12-3456</a>
+        <p style="margin:12px 0 0;font-family:'Noto Sans JP';font-size:13px;opacity:.8">【受付時間】月〜金曜 8:30〜17:30（土日祝除く）</p>
+      </div>
+      <dl data-reveal="" data-delay="120" style="margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px 32px;font-size:14px;line-height:1.7;align-content:start">
+        <sc-for list="{{ info }}" as="i" hint-placeholder-count="5">
+          <dt style="font-weight:600;font-size:12px;letter-spacing:.14em;opacity:.65;padding-top:2px">{{ i.k }}</dt>
+          <dd style="margin:0;font-family:'Noto Sans JP';font-weight:500">{{ i.v }}</dd>
+        </sc-for>
+      </dl>
+    </div>
+
+    <div data-reveal="" style="margin-top:80px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px">
+      <a href="mailto:info@aoba-precision.co.jp" style="display:flex;align-items:center;justify-content:space-between;height:clamp(76px,7vw,96px);padding:0 16px 0 40px;border-radius:999px;background:#d0101b;color:#fff;font-weight:700;font-size:18px;transition:background .3s,transform .3s" style-hover="background:#b00b15;transform:translateY(-2px);color:#fff">
+        <span style="display:flex;flex-direction:column;gap:2px"><span>Contact Us</span><span style="font-family:'Noto Sans JP';font-size:11px;font-weight:500;opacity:.85;letter-spacing:.1em">お問い合わせフォーム</span></span>
+        <span style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.8)">→</span>
+      </a>
+      <a href="mailto:sales@aoba-precision.co.jp" style="display:flex;align-items:center;justify-content:space-between;height:clamp(76px,7vw,96px);padding:0 16px 0 40px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;font-weight:700;font-size:18px;transition:background .3s,border-color .3s" style-hover="background:rgba(255,255,255,.08);border-color:#fff;color:#fff">
+        <span style="display:flex;flex-direction:column;gap:2px"><span>Request a Quote</span><span style="font-family:'Noto Sans JP';font-size:11px;font-weight:500;opacity:.85;letter-spacing:.1em">お見積り・図面のご相談</span></span>
+        <span style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:#fff;color:#14171f">→</span>
+      </a>
+    </div>
+  </div>
+
+  <footer style="position:relative;max-width:1440px;margin:120px auto 0;padding:0 clamp(20px,6vw,96px) 36px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.12)">
+      <div>
+        <p style="margin:0;display:flex;align-items:center;gap:8px;font-weight:800;font-size:30px;letter-spacing:-0.02em;line-height:1"><span style="display:block;width:18px;height:26px;background:#d0101b;transform:skewX(-24deg)"></span>AOBA</p>
+        <p style="margin:6px 0 16px;font-size:9px;font-weight:600;letter-spacing:.22em;opacity:.8">PRECISION WORKS</p>
+        <p style="margin:0;font-family:'Noto Sans JP';font-size:13px;font-weight:700">株式会社 青葉精工</p>
+      </div>
+      <nav aria-label="Footer" style="display:grid;grid-template-columns:repeat(2,auto);gap:12px 48px;align-content:start">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+          <a href="#{{ n.id }}" data-target="{{ n.id }}" onClick="{{ go }}" style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;opacity:.85"><span style="display:block;width:10px;height:1px;background:#fff"></span>{{ n.label }}</a>
+        </sc-for>
+      </nav>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-top:24px;font-size:11px;opacity:.75">
+      <span>© AOBA Precision Works Co., Ltd.</span>
+      <a href="#home" data-target="home" onClick="{{ go }}" style="display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.1em">PAGE TOP<span style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:1px solid #fff">↑</span></a>
+    </div>
+  </footer>
+</section>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, scrolled: false, menuOpen: false, rail: 0 };
+  railRef = React.createRef();
+
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth, menuOpen: window.innerWidth < 960 && this.state.menuOpen });
+    this.onScroll = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+    setTimeout(() => this.setupReveal(), 60);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    this.io && this.io.disconnect();
+  }
+  setupReveal() {
+    const ease = 'cubic-bezier(.2,.7,.2,1)';
+    const els = document.querySelectorAll('[data-reveal]');
+    els.forEach(el => {
+      const t = el.dataset.reveal, d = (el.dataset.delay || 0) + 'ms';
+      if (t === 'img') { el.style.clipPath = 'inset(0 100% 0 0)'; el.style.transition = `clip-path 1.3s ${ease} ${d}`; }
+      else if (t === 'zoom') { el.style.transform = 'scale(1.08)'; el.style.transition = `transform 2.6s ${ease}`; }
+      else { el.style.opacity = '0'; el.style.transform = 'translateY(28px)'; el.style.transition = `opacity 1s ${ease} ${d}, transform 1s ${ease} ${d}`; }
+    });
+    document.querySelectorAll('[data-count]').forEach(el => { el.textContent = this.fmt(0, +el.dataset.decimals || 0); });
+    this.io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target; this.io.unobserve(el);
+      if (el.dataset.reveal === 'img') el.style.clipPath = 'inset(0 0 0 0)';
+      else if (el.dataset.reveal === 'zoom') el.style.transform = 'scale(1)';
+      else { el.style.opacity = '1'; el.style.transform = 'none'; }
+      el.querySelectorAll('[data-count]').forEach(c => this.count(c));
+    }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    requestAnimationFrame(() => els.forEach(el => this.io.observe(el)));
+  }
+  fmt(v, dec) { return dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US'); }
+  count(el) {
+    const to = +el.dataset.count, dec = +el.dataset.decimals || 0, dur = 1600, t0 = performance.now();
+    const tick = now => { const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 4); el.textContent = this.fmt(to * e, dec); if (p < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  }
+  scrollRail(dir) { const r = this.railRef.current; if (r) r.scrollBy({ left: dir * Math.min(400, r.clientWidth * 0.8), behavior: 'smooth' }); }
+
+  renderVals() {
+    const mobile = this.state.w < 960;
+    return {
+      isDesktop: !mobile, isMobile: mobile, menuOpen: mobile && this.state.menuOpen,
+      headerBg: this.state.scrolled || this.state.menuOpen ? 'rgba(11,22,56,.92)' : 'rgba(11,22,56,0)',
+      headerBlur: this.state.scrolled ? 'blur(10px)' : 'none',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      go: e => {
+        const id = e.currentTarget.dataset.target, t = document.getElementById(id);
+        if (!t) return; e.preventDefault(); this.setState({ menuOpen: false });
+        window.scrollTo({ top: id === 'home' ? 0 : t.getBoundingClientRect().top + window.scrollY - 60, behavior: 'smooth' });
+      },
+      railRef: this.railRef,
+      onRail: e => { const r = e.currentTarget, max = r.scrollWidth - r.clientWidth; this.setState({ rail: max > 0 ? r.scrollLeft / max : 0 }); },
+      railPct: (18 + this.state.rail * 82).toFixed(1) + '%',
+      prev: () => this.scrollRail(-1), next: () => this.scrollRail(1),
+      nav: [
+        { id: 'home', label: 'HOME', jp: 'ホーム' },
+        { id: 'factory', label: 'OUR FACTORY', jp: '工場紹介' },
+        { id: 'technology', label: 'TECHNOLOGY', jp: '技術・製造' },
+        { id: 'quality', label: 'QUALITY', jp: '品質・強み' },
+        { id: 'contact', label: 'CONTACT', jp: 'お問い合わせ' }
+      ],
+      divisions: [
+        { jp: '精密切削加工', en: 'Precision Machining', indent: '0px' },
+        { jp: 'ユニット組立', en: 'Assembly', indent: '28px' },
+        { jp: '品質検査', en: 'Inspection', indent: '56px' },
+        { jp: '→ 次世代のものづくりへ', en: '', indent: '84px' }
+      ],
+      stats: [
+        { label: '創業からの歩み', value: 30, decimals: 0, display: '30', unit: '年+', en: 'Years of manufacturing experience' },
+        { label: '品質基準', value: 99.8, decimals: 1, display: '99.8', unit: '%', en: 'Quality standard (pass rate)' },
+        { label: '稼働体制', value: 24, decimals: 0, display: '24', unit: '/7', en: 'Production capability' },
+        { label: '保有設備', value: 50, decimals: 0, display: '50', unit: '台+', en: 'Production equipment' }
+      ],
+      caps: [
+        { no: '01', slot: 'cap-1', en: 'Precision Processing', jp: '精密加工', text: '5軸加工で±2μmの寸法精度に対応。', ph: 'CNC machining close-up' },
+        { no: '02', slot: 'cap-2', en: 'Assembly', jp: '組立', text: '熟練技術者によるユニット組立。', ph: 'Assembly line / hands at work' },
+        { no: '03', slot: 'cap-3', en: 'Quality Inspection', jp: '品質検査', text: '三次元測定機で全数・抜取検査。', ph: 'CMM inspection' },
+        { no: '04', slot: 'cap-4', en: 'Automated Production', jp: '自動化生産', text: 'ロボットセルで夜間も安定稼働。', ph: 'Robot arm / automated cell' },
+        { no: '05', slot: 'cap-5', en: 'Custom Manufacturing', jp: '特注・試作', text: '1個からの試作・特注品に対応。', ph: 'Prototype parts on bench' },
+        { no: '06', slot: 'cap-6', en: 'Packaging & Shipping', jp: '梱包・出荷', text: '防錆・専用梱包で確実にお届け。', ph: 'Packed parts / logistics' }
+      ],
+      steps: [
+        { no: '01', en: 'Planning', jp: '企画・設計', text: '図面・仕様を確認し、最適な工法をご提案。', arrow: '→' },
+        { no: '02', en: 'Processing', jp: '加工', text: '切削・研削など各工程を自社で加工。', arrow: '→' },
+        { no: '03', en: 'Assembly', jp: '組立', text: '部品をユニットとして組み上げ。', arrow: '→' },
+        { no: '04', en: 'Inspection', jp: '検査', text: '測定データを記録し品質を保証。', arrow: '→' },
+        { no: '05', en: 'Delivery', jp: '納品', text: '指定の納期・荷姿で出荷。', arrow: '' }
+      ],
+      strengths: [
+        { no: '01', en: 'High Precision', jp: '高精度', text: 'Advanced equipment and skilled technicians ensure consistent manufacturing quality.' },
+        { no: '02', en: 'Strict Quality Control', jp: '徹底した品質管理', text: 'Every production stage is carefully inspected to maintain stable quality.' },
+        { no: '03', en: 'Flexible Production', jp: '柔軟な生産体制', text: 'We support both large-scale production and customized manufacturing requirements.' },
+        { no: '04', en: 'Safety & Reliability', jp: '安全と信頼', text: 'A clean and safe production environment supports stable long-term operations.' }
+      ],
+      info: [
+        { k: 'COMPANY', v: '株式会社 青葉精工（AOBA Precision Works Co., Ltd.）' },
+        { k: 'ADDRESS', v: '〒448-0000 愛知県刈谷市青葉町1-2-3' },
+        { k: 'TEL', v: '0566-12-3456' },
+        { k: 'EMAIL', v: 'info@aoba-precision.co.jp' },
+        { k: 'HOURS', v: '月〜金 8:30〜17:30（土日祝休み）' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

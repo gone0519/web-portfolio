@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" />
+</helmet>
+<header style="background:rgba(242,243,245,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,22,26,.07);font-family:'Noto Sans JP',sans-serif;color:#14161a">
+  <div style="max-width:1280px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;gap:12px 32px;flex-wrap:wrap">
+    <a href="./SOSHIN Home.dc.html" style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.24em;font-weight:400;color:#14161a;text-decoration:none">SOSHIN</a>
+    <nav style="display:flex;gap:10px 26px;margin-left:auto;font-size:13px;letter-spacing:.08em;flex-wrap:wrap">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="{{ n.style }}" style-hover="color:#3d5f8a">{{ n.label }}</a>
+      </sc-for>
+    </nav>
+    <a href="./SoshinFlow.dc.html#form" style="border:1px solid rgba(20,22,26,.22);padding:12px 22px;font-size:12px;letter-spacing:.1em;background:#fff;color:#14161a;text-decoration:none" style-hover="background:#3d5f8a;color:#fff;border-color:#3d5f8a">ご依頼・ご相談フォーム</a>
+    <div style="display:grid;grid-template-columns:repeat(3,4px);gap:4px">
+      <i style="width:4px;height:4px;background:#14161a;display:block"></i><i style="width:4px;height:4px;background:#14161a;display:block"></i><i style="width:4px;height:4px;background:#14161a;display:block"></i>
+      <i style="width:4px;height:4px;background:#14161a;display:block"></i><i style="width:4px;height:4px;background:#14161a;display:block"></i><i style="width:4px;height:4px;background:#14161a;display:block"></i>
+      <i style="width:4px;height:4px;background:#14161a;display:block"></i><i style="width:4px;height:4px;background:#14161a;display:block"></i><i style="width:4px;height:4px;background:#14161a;display:block"></i>
+    </div>
+  </div>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const cur = this.props.current || '';
+    const items = [
+      { key: 'service', label: 'サービス', href: './SoshinService.dc.html' },
+      { key: 'works', label: '実績', href: './SoshinWorks.dc.html' },
+      { key: 'strength', label: '私たちの強み', href: './SoshinStrength.dc.html' },
+      { key: 'flow', label: 'ご依頼の流れ', href: './SoshinFlow.dc.html' },
+      { key: 'news', label: '新着情報', href: './SoshinNews.dc.html' }
+    ];
+    return {
+      nav: items.map(i => Object.assign({}, i, {
+        style: 'padding:6px 0;text-decoration:none;border-bottom:1px solid ' + (i.key === cur ? '#3d5f8a;color:#3d5f8a' : 'transparent;color:#14161a')
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

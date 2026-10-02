@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: oklch(0.985 0.003 250); color: oklch(0.22 0.02 250); font-family: "Zen Kaku Gothic New", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: oklch(0.55 0.15 250); text-decoration: none; }
+  a:hover { color: oklch(0.44 0.15 250); }
+  ::selection { background: oklch(0.55 0.15 250); color: #fff; }
+  input, button { font-family: inherit; }
+  @keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(1.1em) rotate(1.2deg); } to { opacity: 1; transform: none; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  /* Responsive: the header nav collapses into a menu button at 820px and below. */
+  [id] { scroll-margin-top: 88px; }
+  @media (max-width: 820px) {
+    [data-nav-desktop] { display: none !important; }
+    [data-nav-toggle] { display: inline-flex !important; }
+    input, textarea, select { font-size: 16px !important; }
+  }
+  @media (min-width: 821px) { [data-nav-mobile] { display: none !important; } }
+  @media (max-width: 560px) {
+    [data-dl-row] { grid-template-columns: 1fr !important; gap: 4px !important; }
+    [data-cta-row] > a { width: 100%; justify-content: center; padding-left: 24px !important; padding-right: 24px !important; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</helmet>
+
+<div style="width:100%;overflow-x:hidden;font-feature-settings:'palt' 1;">
+
+  <header style="position:fixed;top:0;left:0;right:0;z-index:50;background:oklch(0.985 0.003 250 / 0.88);backdrop-filter:blur(14px);border-bottom:1px solid oklch(0.91 0.008 250);">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,44px);height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px;">
+      <a href="MEGURU Home.dc.html" style="display:flex;align-items:center;gap:10px;color:oklch(0.22 0.02 250);flex:0 0 auto;">
+        <span style="position:relative;width:24px;height:24px;display:block;flex:0 0 auto;"><span style="position:absolute;inset:3px;border-radius:50%;border:3px solid oklch(0.55 0.15 250);display:block;"></span><span style="position:absolute;inset:0;display:block;animation:orbit 7s linear infinite;"><span style="position:absolute;top:0;left:50%;margin-left:-3px;width:6px;height:6px;border-radius:50%;background:oklch(0.22 0.02 250);display:block;"></span></span></span>
+        <span style="font-family:Syne,sans-serif;font-weight:700;font-size:17px;letter-spacing:0.16em;">MEGURU</span>
+      </a>
+      <nav data-nav-desktop="" aria-label="グローバルナビゲーション" style="display:flex;align-items:center;gap:clamp(14px,2.4vw,30px);">
+        <a href="About.dc.html" style="font-family:Syne,sans-serif;font-size:12px;font-weight:500;letter-spacing:0.18em;color:oklch(0.34 0.02 250);white-space:nowrap;" style-hover="color:oklch(0.55 0.15 250)">ABOUT</a>
+        <a href="Services.dc.html" style="font-family:Syne,sans-serif;font-size:12px;font-weight:500;letter-spacing:0.18em;color:oklch(0.34 0.02 250);white-space:nowrap;" style-hover="color:oklch(0.55 0.15 250)">SERVICE</a>
+        <a href="Case Studies.dc.html" style="font-family:Syne,sans-serif;font-size:12px;font-weight:500;letter-spacing:0.18em;color:oklch(0.34 0.02 250);white-space:nowrap;" style-hover="color:oklch(0.55 0.15 250)">WORKS</a>
+        <a href="Blog.dc.html" style="font-family:Syne,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.18em;color:oklch(0.55 0.15 250);white-space:nowrap;border-bottom:1px solid oklch(0.55 0.15 250);padding-bottom:3px;">INSIGHTS</a>
+        <a href="Contact.dc.html" style="font-family:Syne,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.18em;color:#fff;background:oklch(0.22 0.02 250);padding:11px 20px;border-radius:999px;white-space:nowrap;" style-hover="background:oklch(0.55 0.15 250);color:#fff">CONTACT</a>
+      </nav>
+      <button type="button" data-nav-toggle="" onClick="{{ toggleMenu }}" aria-controls="mobile-menu" aria-expanded="{{ menuExpanded }}" aria-label="{{ menuLabel }}" style="display:none;position:relative;width:44px;height:44px;flex:0 0 auto;padding:0;border:1px solid oklch(0.88 0.01 250);border-radius:50%;background:#fff;cursor:pointer;">
+        <span aria-hidden="true" style="{{ burgerTop }}"></span>
+        <span aria-hidden="true" style="{{ burgerBottom }}"></span>
+      </button>
+    </div>
+  </header>
+
+  <sc-if value="{{ menuOpen }}"><div id="mobile-menu" data-nav-mobile="" style="position:fixed;top:72px;left:0;right:0;bottom:0;z-index:49;overflow-y:auto;background:oklch(0.985 0.003 250);padding:12px clamp(18px,4vw,44px) 40px;display:flex;flex-direction:column;gap:32px;animation:fadeUp .35s cubic-bezier(.2,.7,.2,1) both;">
+      <nav aria-label="メインメニュー" style="display:grid;">
+        <a href="MEGURU Home.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 2px;border-bottom:1px solid oklch(0.91 0.008 250);color:oklch(0.22 0.02 250);"><span style="font-family:Syne,sans-serif;font-size:clamp(22px,7vw,30px);font-weight:600;letter-spacing:0.08em;">HOME</span><span style="font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">ホーム</span></a>
+        <a href="About.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 2px;border-bottom:1px solid oklch(0.91 0.008 250);color:oklch(0.22 0.02 250);"><span style="font-family:Syne,sans-serif;font-size:clamp(22px,7vw,30px);font-weight:600;letter-spacing:0.08em;">ABOUT</span><span style="font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">会社概要</span></a>
+        <a href="Services.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 2px;border-bottom:1px solid oklch(0.91 0.008 250);color:oklch(0.22 0.02 250);"><span style="font-family:Syne,sans-serif;font-size:clamp(22px,7vw,30px);font-weight:600;letter-spacing:0.08em;">SERVICE</span><span style="font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">サービス</span></a>
+        <a href="Case Studies.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 2px;border-bottom:1px solid oklch(0.91 0.008 250);color:oklch(0.22 0.02 250);"><span style="font-family:Syne,sans-serif;font-size:clamp(22px,7vw,30px);font-weight:600;letter-spacing:0.08em;">WORKS</span><span style="font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">実績</span></a>
+        <a href="Blog.dc.html" onClick="{{ closeMenu }}" aria-current="page" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 2px;border-bottom:1px solid oklch(0.91 0.008 250);color:oklch(0.55 0.15 250);"><span style="font-family:Syne,sans-serif;font-size:clamp(22px,7vw,30px);font-weight:600;letter-spacing:0.08em;">INSIGHTS</span><span style="font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">インサイト</span></a>
+        <a href="Contact.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 2px;border-bottom:1px solid oklch(0.91 0.008 250);color:oklch(0.22 0.02 250);"><span style="font-family:Syne,sans-serif;font-size:clamp(22px,7vw,30px);font-weight:600;letter-spacing:0.08em;">CONTACT</span><span style="font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">お問い合わせ</span></a>
+      </nav>
+      <div style="display:grid;gap:14px;">
+        <a href="Contact.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;justify-content:center;gap:12px;background:oklch(0.22 0.02 250);color:#fff;padding:18px 24px;border-radius:999px;font-size:15px;font-weight:500;letter-spacing:0.06em;">無料で相談する<span style="font-family:Syne,sans-serif;font-size:12px;">→</span></a>
+        <a href="tel:0300000000" style="display:flex;align-items:center;justify-content:center;border:1px solid oklch(0.85 0.01 250);color:oklch(0.22 0.02 250);padding:18px 24px;border-radius:999px;font-family:Syne,sans-serif;font-size:15px;font-weight:600;letter-spacing:0.04em;">03-0000-0000</a>
+        <p style="margin:0;text-align:center;font-size:12px;letter-spacing:0.06em;color:oklch(0.46 0.02 250);">受付時間 平日10:00〜19:00</p>
+      </div>
+  </div></sc-if>
+
+  <section style="position:relative;padding:clamp(120px,17vh,190px) clamp(18px,4vw,44px) clamp(50px,7vh,80px);overflow:hidden;">
+    <div aria-hidden="true" data-parallax="22" style="position:absolute;top:2%;right:-7%;width:min(44vw,420px);height:min(44vw,420px);pointer-events:none;">
+      <div style="position:absolute;inset:0;border-radius:50%;border:1px dashed oklch(0.87 0.03 250);animation:orbit 90s linear infinite;"></div>
+      <div style="position:absolute;inset:22%;border-radius:50%;border:2px solid oklch(0.55 0.15 250);border-right-color:transparent;border-top-color:transparent;animation:orbit 25s linear infinite;"></div>
+      <div style="position:absolute;inset:6%;animation:orbit 15s linear infinite;"><span style="position:absolute;top:-6px;left:50%;margin-left:-6px;width:12px;height:12px;border-radius:50%;background:oklch(0.55 0.15 250);display:block;"></span></div>
+    </div>
+    <div style="position:relative;max-width:1280px;margin:0 auto;">
+      <nav aria-label="パンくず" style="margin-bottom:clamp(26px,4vh,40px);display:flex;gap:10px;align-items:center;font-family:Syne,sans-serif;font-size:11px;letter-spacing:0.16em;color:oklch(0.46 0.02 250);animation:fadeUp .7s ease both;">
+        <a href="MEGURU Home.dc.html" style="color:oklch(0.46 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">HOME</a><span aria-hidden="true">/</span><span style="color:oklch(0.22 0.02 250);">INSIGHTS</span>
+      </nav>
+      <p style="margin:0 0 clamp(16px,2.4vh,26px);display:inline-flex;align-items:center;gap:12px;font-family:Syne,sans-serif;font-size:clamp(10px,1.1vw,12px);font-weight:600;letter-spacing:0.3em;color:oklch(0.55 0.15 250);animation:fadeUp .8s ease both;"><span style="width:38px;height:2px;background:oklch(0.55 0.15 250);display:block;"></span>BLOG &amp; INSIGHTS</p>
+      <h1 style="margin:0;font-family:Syne,sans-serif;font-size:clamp(44px,10vw,132px);line-height:0.94;font-weight:700;letter-spacing:-0.02em;">
+        <span style="display:block;overflow:hidden;padding-bottom:0.04em;"><span style="display:inline-block;animation:riseIn 1s cubic-bezier(.16,.9,.2,1) .06s both;">INSIGHTS</span></span>
+      </h1>
+      <p style="margin:clamp(26px,4vh,40px) 0 0;max-width:620px;font-size:clamp(15px,1.5vw,17px);line-height:2.1;color:oklch(0.46 0.02 250);animation:fadeUp 1s ease .4s both;">現場で検証した内容をそのまま公開しています。一般論ではなく、実際の数値と判断の経緯を書いています。</p>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:0 clamp(18px,4vw,44px) clamp(50px,7vh,80px);">
+    <div style="max-width:1280px;margin:0 auto;">
+      <a href="Blog.dc.html" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(28px,4vw,56px);align-items:center;color:inherit;border-top:1px solid oklch(0.91 0.008 250);border-bottom:1px solid oklch(0.91 0.008 250);padding:clamp(32px,4vh,52px) 0;transition:background .3s;" style-hover="background:#fff;color:inherit">
+        <div style="min-width:0;position:relative;overflow:hidden;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,oklch(0.93 0.01 250) 0 10px,oklch(0.96 0.008 250) 10px 20px);border:1px solid oklch(0.91 0.008 250);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:0.1em;color:oklch(0.48 0.02 250);padding:0 16px;text-align:center;">featured article image</span><img src="images/blog-featured.jpg" alt="グラフを表示したノートPCとタブレット" loading="lazy" decoding="async" onError="{{ hideImg }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div style="min-width:0;">
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:20px;">
+            <span style="font-family:Syne,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;color:#fff;background:oklch(0.55 0.15 250);padding:6px 12px;">FEATURED</span>
+            <span style="font-family:Syne,sans-serif;font-size:11px;letter-spacing:0.16em;color:oklch(0.52 0.02 250);">2026.08.24</span>
+            <span style="font-family:Syne,sans-serif;font-size:10px;letter-spacing:0.16em;color:oklch(0.55 0.15 250);border:1px solid oklch(0.85 0.06 250);padding:5px 11px;">REPORT</span>
+          </div>
+          <h2 style="margin:0 0 18px;font-size:clamp(22px,3.2vw,36px);font-weight:700;letter-spacing:0.02em;line-height:1.5;">D2Cブランドの新規獲得単価レポート 2026上期</h2>
+          <p style="margin:0 0 24px;font-size:14.5px;line-height:2.1;color:oklch(0.42 0.02 250);">当社が支援する52ブランドのデータをもとに、カテゴリ別のCPA水準と前年比の変動をまとめました。化粧品カテゴリは前年比18%上昇、一方で食品は横ばい。単価上昇が全カテゴリ一律ではないことが見えてきています。</p>
+          <span style="font-family:Syne,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;border-bottom:1px solid oklch(0.55 0.15 250);padding-bottom:7px;color:oklch(0.55 0.15 250);">READ ARTICLE →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section style="padding:0 clamp(18px,4vw,44px);">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;padding-bottom:clamp(28px,4vh,40px);border-bottom:1px solid oklch(0.91 0.008 250);">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+        <button type="button" onClick="{{ cAll }}" style="{{ sAll }}">ALL</button>
+        <button type="button" onClick="{{ cStrategy }}" style="{{ sStrategy }}">STRATEGY</button>
+        <button type="button" onClick="{{ cSeo }}" style="{{ sSeo }}">SEO</button>
+        <button type="button" onClick="{{ cAds }}" style="{{ sAds }}">ADS</button>
+        <button type="button" onClick="{{ cCrm }}" style="{{ sCrm }}">CRM</button>
+        <button type="button" onClick="{{ cTrends }}" style="{{ sTrends }}">TRENDS</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;border:1px solid oklch(0.88 0.01 250);border-radius:999px;padding:4px 6px 4px 18px;background:#fff;min-width:min(100%,260px);">
+        <span aria-hidden="true" style="width:12px;height:12px;border-radius:50%;border:2px solid oklch(0.55 0.15 250);flex:0 0 auto;"></span>
+        <input type="search" value="{{ query }}" onChange="{{ onSearch }}" placeholder="記事を検索" aria-label="記事を検索" style="flex:1;min-width:0;border:0;outline:none;background:transparent;font-size:13.5px;padding:10px 0;color:oklch(0.22 0.02 250);" />
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(50px,7vh,80px) clamp(18px,4vw,44px) clamp(70px,10vh,120px);">
+    <div style="max-width:1280px;margin:0 auto;">
+      <p style="margin:0 0 clamp(30px,4vh,44px);font-family:Syne,sans-serif;font-size:11px;letter-spacing:0.18em;color:oklch(0.46 0.02 250);">{{ countLabel }}</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(28px,3.4vw,44px);">
+        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+          <a href="Blog.dc.html" style="display:{{ p.display }};color:inherit;transition:transform .35s cubic-bezier(.2,.8,.2,1);" style-hover="transform:translateY(-8px);color:inherit">
+            <div style="position:relative;overflow:hidden;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,oklch(0.93 0.01 250) 0 10px,oklch(0.96 0.008 250) 10px 20px);border:1px solid oklch(0.91 0.008 250);display:flex;align-items:center;justify-content:center;transition:border-color .35s,box-shadow .35s;" style-hover="border-color:oklch(0.55 0.15 250);box-shadow:0 26px 50px -28px oklch(0.4 0.06 250 / 0.4)">
+              <span style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;letter-spacing:0.08em;color:oklch(0.48 0.02 250);padding:0 14px;text-align:center;">{{ p.imageNote }}</span><img src="{{ p.image }}" alt="{{ p.imageAlt }}" loading="lazy" decoding="async" onError="{{ hideImg }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" />
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:20px 0 14px;">
+              <span style="font-family:Syne,sans-serif;font-size:11px;letter-spacing:0.14em;color:oklch(0.52 0.02 250);">{{ p.date }}</span>
+              <span style="font-family:Syne,sans-serif;font-size:9.5px;letter-spacing:0.16em;color:oklch(0.55 0.15 250);border:1px solid oklch(0.85 0.06 250);padding:4px 10px;">{{ p.tag }}</span>
+            </div>
+            <h3 style="margin:0 0 12px;font-size:16.5px;font-weight:700;letter-spacing:0.02em;line-height:1.7;">{{ p.title }}</h3>
+            <p style="margin:0;font-size:13.5px;line-height:2;color:oklch(0.42 0.02 250);">{{ p.excerpt }}</p>
+          </a>
+        </sc-for>
+      </div>
+      <div style="margin-top:clamp(44px,6vh,72px);display:flex;justify-content:center;">
+        <button type="button" style="background:oklch(0.22 0.02 250);color:#fff;border:0;padding:18px 48px;border-radius:999px;font-family:Syne,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.2em;cursor:pointer;transition:background .25s,transform .25s;" style-hover="background:oklch(0.55 0.15 250);transform:translateY(-2px)">LOAD MORE</button>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(70px,10vh,120px) clamp(18px,4vw,44px);background:oklch(0.22 0.02 250);color:#fff;position:relative;overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute;top:-25%;right:-8%;width:min(52vw,480px);height:min(52vw,480px);pointer-events:none;">
+      <div style="position:absolute;inset:0;border-radius:50%;border:1px dashed oklch(0.38 0.03 250);animation:orbit 110s linear infinite;"></div>
+      <div style="position:absolute;inset:18%;border-radius:50%;border:1px solid oklch(0.42 0.05 250);"></div>
+      <div style="position:absolute;inset:0;animation:orbit 22s linear infinite;"><span style="position:absolute;top:-5px;left:50%;margin-left:-5px;width:10px;height:10px;border-radius:50%;background:oklch(0.78 0.11 250);display:block;"></span></div>
+    </div>
+    <div data-reveal="" style="position:relative;max-width:720px;margin:0 auto;text-align:center;">
+      <div aria-hidden="true" style="width:56px;height:56px;margin:0 auto 24px;position:relative;"><div style="position:absolute;inset:0;border-radius:50%;border:1px dashed oklch(0.45 0.04 250);animation:orbit 34s linear infinite;"></div><div style="position:absolute;inset:11px;border-radius:50%;border:2px solid oklch(0.78 0.11 250);border-right-color:transparent;border-bottom-color:transparent;animation:orbit 8s linear infinite;"></div><div style="position:absolute;inset:0;animation:orbit 6s linear infinite;"><span style="position:absolute;top:-3px;left:50%;margin-left:-3px;width:6px;height:6px;border-radius:50%;background:oklch(0.78 0.11 250);display:block;"></span></div></div>
+      <p style="margin:0 0 14px;font-family:Syne,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.3em;color:oklch(0.78 0.11 250);">NEWSLETTER</p>
+      <h2 style="margin:0;font-size:clamp(23px,3.6vw,40px);line-height:1.5;font-weight:700;letter-spacing:0.01em;color:#fff;">月2回、現場の数値を<br />そのままお届けします。</h2>
+      <p style="margin:26px auto 0;max-width:480px;font-size:14.5px;line-height:2.1;color:oklch(0.85 0.01 250);">支援先の実データをもとにした分析と、媒体側の変更に対する実務的な対応をまとめています。登録は無料、配信解除はいつでも可能です。</p>
+      <form onSubmit="{{ onSubscribe }}" style="margin:36px auto 0;max-width:480px;display:flex;flex-wrap:wrap;gap:12px;">
+        <input type="email" required="" value="{{ email }}" onChange="{{ onEmail }}" placeholder="メールアドレス" aria-label="メールアドレス" style="flex:1 1 200px;min-width:0;border:1px solid oklch(0.4 0.02 250);background:oklch(0.27 0.02 250);color:#fff;padding:17px 22px;border-radius:999px;font-size:14px;outline:none;" />
+        <button type="submit" style="flex:0 0 auto;background:oklch(0.55 0.15 250);color:#fff;border:0;padding:17px 34px;border-radius:999px;font-size:14px;font-weight:500;letter-spacing:0.06em;cursor:pointer;transition:background .25s,transform .25s;" style-hover="background:oklch(0.62 0.15 250);transform:translateY(-2px)">登録する</button>
+      </form>
+      <p style="margin:18px 0 0;font-size:12.5px;letter-spacing:0.04em;color:{{ noticeColor }};">{{ notice }}</p>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid oklch(0.91 0.008 250);padding:clamp(60px,8vh,88px) clamp(18px,4vw,44px) 36px;">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(36px,5vw,64px);">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="position:relative;width:24px;height:24px;display:block;flex:0 0 auto;"><span style="position:absolute;inset:3px;border-radius:50%;border:3px solid oklch(0.55 0.15 250);display:block;"></span><span style="position:absolute;inset:0;display:block;animation:orbit 7s linear infinite;"><span style="position:absolute;top:0;left:50%;margin-left:-3px;width:6px;height:6px;border-radius:50%;background:oklch(0.22 0.02 250);display:block;"></span></span></span>
+          <span style="font-family:Syne,sans-serif;font-weight:700;font-size:17px;letter-spacing:0.16em;">MEGURU</span>
+        </div>
+        <p style="margin:18px 0 0;font-size:13px;line-height:2;color:oklch(0.46 0.02 250);">株式会社メグル<br />〒150-0001 東京都渋谷区神宮前0-0-0<br />MEGURUビル 5F</p>
+      </div>
+      <div>
+        <p style="margin:0 0 18px;font-family:Syne,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.24em;color:oklch(0.52 0.02 250);">SITEMAP</p>
+        <div style="display:grid;gap:12px;font-size:13.5px;">
+          <a href="MEGURU Home.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">ホーム</a>
+          <a href="About.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">会社概要</a>
+          <a href="Services.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">サービス</a>
+          <a href="Case Studies.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">実績</a>
+          <a href="Blog.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">インサイト</a>
+          <a href="Contact.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">お問い合わせ</a>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0 0 18px;font-family:Syne,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.24em;color:oklch(0.52 0.02 250);">CATEGORIES</p>
+        <div style="display:grid;gap:12px;font-size:13.5px;">
+          <a href="Blog.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">戦略設計</a>
+          <a href="Blog.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">SEO</a>
+          <a href="Blog.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">広告運用</a>
+          <a href="Blog.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">CRM</a>
+          <a href="Blog.dc.html" style="color:oklch(0.34 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">業界動向</a>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0 0 18px;font-family:Syne,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.24em;color:oklch(0.52 0.02 250);">RECRUIT</p>
+        <p style="margin:0 0 18px;font-size:13px;line-height:2;color:oklch(0.46 0.02 250);">ストラテジスト、運用コンサルタント、デザイナーを募集しています。</p>
+        <a href="Contact.dc.html" style="font-family:Syne,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;border-bottom:1px solid oklch(0.55 0.15 250);padding-bottom:6px;">VIEW POSITIONS →</a>
+      </div>
+    </div>
+    <div style="max-width:1180px;margin:clamp(44px,6vh,64px) auto 0;padding-top:24px;border-top:1px solid oklch(0.93 0.008 250);display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;">
+      <p style="margin:0;font-family:Syne,sans-serif;font-size:11px;letter-spacing:0.1em;color:oklch(0.52 0.02 250);">© 2026 MEGURU Inc.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px 24px;font-size:12px;">
+        <a href="Contact.dc.html" style="color:oklch(0.52 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">プライバシーポリシー</a>
+        <a href="Contact.dc.html" style="color:oklch(0.52 0.02 250);" style-hover="color:oklch(0.55 0.15 250)">特定商取引法に基づく表記</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const POSTS = [
+  { cat: 'crm', date: '2026.06.02', tag: 'CRM', imageNote: 'article image / LTV', image: 'images/blog-ltv.jpg', imageAlt: 'ノートPCを囲んで数値を確認するチーム', title: '定期購入モデルのLTV設計、最初に見直すべき3つの数値', excerpt: '引き上げ率、2回目継続率、平均継続回数。この3つの精度が低いまま広告を増やすと、赤字構造が固定されます。' },
+  { cat: 'seo', date: '2026.05.19', tag: 'SEO', imageNote: 'article image / SEO', image: 'images/blog-seo.jpg', imageAlt: '検索施策を議論するチーム', title: '症状軸のSEOで獲得単価を安定させる手順', excerpt: '広告依存から抜けるための記事設計。検索意図の分類と、CTA配置の実測結果を公開します。' },
+  { cat: 'ads', date: '2026.05.08', tag: 'ADS', imageNote: 'article image / PMax', image: 'images/blog-pmax.jpg', imageAlt: '広告運用の管理画面が並ぶオフィス', title: 'P-MAXに任せる範囲と、任せてはいけない範囲', excerpt: '自動化が進むなかで運用者が手を入れるべき箇所は絞られてきました。52アカウントの比較から見えた線引きを整理します。' },
+  { cat: 'strategy', date: '2026.04.22', tag: 'STRATEGY', imageNote: 'article image / CAC', image: 'images/blog-cpa.jpg', imageAlt: '商談で握手を交わす様子', title: '許容CPAを決める前に、粗利構造を分解する', excerpt: '目標CPAが現実的かどうかは、原価と配送費と決済手数料を分けて見ないと判断できません。' },
+  { cat: 'trends', date: '2026.04.03', tag: 'TRENDS', imageNote: 'article image / trends', image: 'images/blog-measurement.jpg', imageAlt: '青空に立ち並ぶ高層オフィスビル', title: '2026年の計測環境、実務でいま起きていること', excerpt: 'Cookie規制以降の計測欠損にどう向き合うか。サーバーサイド計測の導入コストと効果を実測しました。' },
+  { cat: 'ads', date: '2026.03.14', tag: 'ADS', imageNote: 'article image / creative', image: 'images/blog-creative.jpg', imageAlt: 'クリエイティブを検証するチーム', title: 'クリエイティブ検証を週次で回すための体制', excerpt: '制作を外注していると検証速度が上がりません。内製化で何が変わったかを具体的な工程で説明します。' },
+  { cat: 'strategy', date: '2026.02.26', tag: 'STRATEGY', imageNote: 'article image / channel', image: 'images/blog-channel.jpg', imageAlt: '複数のプランから選択する様子', title: 'チャネル追加の判断基準を数値化する', excerpt: '新しい媒体に手を出すべきタイミング。既存チャネルの飽和度を測る指標を紹介します。' },
+  { cat: 'seo', date: '2026.02.05', tag: 'SEO', imageNote: 'article image / internal links', image: 'images/blog-internal-links.jpg', imageAlt: 'デスクが並ぶオフィスの内観', title: '内部リンク設計を見直して流入が1.7倍になった話', excerpt: '記事本数を増やす前にやるべきことがあります。既存記事の構造改善の実例です。' },
+  { cat: 'crm', date: '2026.01.20', tag: 'CRM', imageNote: 'article image / LINE', image: 'images/blog-line-email.jpg', imageAlt: 'スマートフォンでメッセージを確認する様子', title: 'LINEとメールの役割を分ける、実務的な線引き', excerpt: '両方に同じ内容を配信していませんか。開封と遷移の実測から、それぞれが機能する場面を整理します。' }
+];
+
+class Component extends DCLogic {
+  state = { menuOpen: false, cat: 'all', query: '', email: '', notice: '', ok: false };
+
+  componentDidMount() {
+    this.initMenu();
+    const nodes = Array.from(document.querySelectorAll('[data-reveal]'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; io.unobserve(e.target); }
+      });
+    }, { threshold: 0.06 });
+    const hidden = [];
+    nodes.forEach((n) => {
+      if (n.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+      n.style.opacity = '0';
+      n.style.transform = 'translateY(16px)';
+      n.style.transition = 'opacity .7s ease, transform .7s ease';
+      hidden.push(n);
+      io.observe(n);
+    });
+    this._safety = setTimeout(() => { hidden.forEach((n) => { n.style.opacity = '1'; n.style.transform = 'none'; }); }, 1200);
+    this._io = io;
+    this.initParallax();
+  }
+
+  initParallax() {
+    const layers = Array.from(document.querySelectorAll('[data-parallax]'));
+    if (!layers.length) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    layers.forEach((el) => { el.style.transition = 'transform .5s cubic-bezier(.2,.8,.2,1)'; });
+    this._pm = (e) => {
+      const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+      const dx = (e.clientX - cx) / cx, dy = (e.clientY - cy) / cy;
+      layers.forEach((el) => {
+        const d = parseFloat(el.getAttribute('data-parallax')) || 0;
+        el.style.transform = 'translate3d(' + (dx * d).toFixed(2) + 'px,' + (dy * d * 0.6).toFixed(2) + 'px,0)';
+      });
+    };
+    window.addEventListener('mousemove', this._pm, { passive: true });
+  }
+
+  initMenu() {
+    this._menuKey = (e) => { if (e.key === 'Escape') this.setMenu(false); };
+    window.addEventListener('keydown', this._menuKey);
+    if (window.matchMedia) {
+      this._menuMq = window.matchMedia('(min-width: 821px)');
+      this._menuMqChange = (e) => { if (e.matches) this.setMenu(false); };
+      this._menuMq.addEventListener('change', this._menuMqChange);
+    }
+  }
+
+  setMenu(open) {
+    if (!!this.state.menuOpen === open) return;
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    this.setState({ menuOpen: open });
+  }
+
+  menuVals() {
+    const open = !!this.state.menuOpen;
+    const line = 'position:absolute;left:12px;width:18px;height:2px;border-radius:2px;background:oklch(0.22 0.02 250);transition:top .3s cubic-bezier(.2,.8,.2,1),transform .3s cubic-bezier(.2,.8,.2,1);';
+    return {
+      menuOpen: open,
+      menuExpanded: open ? 'true' : 'false',
+      menuLabel: open ? 'メニューを閉じる' : 'メニューを開く',
+      toggleMenu: () => this.setMenu(!this.state.menuOpen),
+      closeMenu: () => this.setMenu(false),
+      burgerTop: line + (open ? 'top:20px;transform:rotate(45deg);' : 'top:16px;'),
+      burgerBottom: line + (open ? 'top:20px;transform:rotate(-45deg);' : 'top:24px;')
+    };
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this._menuKey);
+    if (this._menuMq) this._menuMq.removeEventListener('change', this._menuMqChange);
+    document.documentElement.style.overflow = '';
+    if (this._io) this._io.disconnect();
+    if (this._safety) clearTimeout(this._safety);
+    if (this._pm) window.removeEventListener('mousemove', this._pm);
+  }
+
+  chip(active) {
+    const base = 'font-family:Syne,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;padding:11px 20px;border-radius:999px;cursor:pointer;transition:all .25s;';
+    return active
+      ? base + 'background:oklch(0.22 0.02 250);color:#fff;border:1px solid oklch(0.22 0.02 250);'
+      : base + 'background:transparent;color:oklch(0.34 0.02 250);border:1px solid oklch(0.88 0.01 250);';
+  }
+
+  renderVals() {
+    const { cat, query } = this.state;
+    const q = query.trim().toLowerCase();
+    const match = (p) => (cat === 'all' || p.cat === cat) && (!q || (p.title + p.excerpt + p.tag).toLowerCase().indexOf(q) !== -1);
+    const posts = POSTS.map((p) => Object.assign({}, p, { display: match(p) ? 'block' : 'none' }));
+    const n = posts.filter((p) => p.display === 'block').length;
+
+    const keys = ['all', 'strategy', 'seo', 'ads', 'crm', 'trends'];
+    const names = ['All', 'Strategy', 'Seo', 'Ads', 'Crm', 'Trends'];
+    const vals = {
+      hideImg: (e) => { e.currentTarget.style.display = 'none'; },
+      posts,
+      query,
+      email: this.state.email,
+      countLabel: n + ' ARTICLES',
+      notice: this.state.notice,
+      noticeColor: this.state.ok ? 'oklch(0.82 0.13 250)' : 'oklch(0.75 0.02 250)',
+      onSearch: (e) => this.setState({ query: e.target.value }),
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      onSubscribe: (e) => {
+        e.preventDefault();
+        const v = this.state.email.trim();
+        if (!v || v.indexOf('@') === -1) {
+          this.setState({ notice: 'メールアドレスをご確認ください。', ok: false });
+          return;
+        }
+        this.setState({ notice: '登録しました。次回配信からお届けします。', ok: true, email: '' });
+      }
+    };
+    keys.forEach((k, i) => {
+      vals['c' + names[i]] = () => this.setState({ cat: k });
+      vals['s' + names[i]] = this.chip(cat === k);
+    });
+    return Object.assign(vals, this.menuVals());
+  }
+}
+</script>
+</body>
+</html>

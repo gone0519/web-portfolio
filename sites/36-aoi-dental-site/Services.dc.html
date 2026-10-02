@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Zen Maru Gothic',sans-serif;color:#3d3a38;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a6fb5;text-decoration:none}
+a:hover{color:#0b4c83}
+</style>
+<link rel="stylesheet" href="./responsive.css">
+</helmet>
+<dc-import name="SiteHeader" current="services" hint-size="100%,82px"></dc-import>
+<dc-import name="SubHero" title="SERVICES" jp="診療案内" src="images/clinic-interior.jpg" placeholder="診療チェアと明るい診療室" hint-size="100%,440px"></dc-import>
+
+<main style="background:repeating-linear-gradient(-45deg,#f5f6f6 0 2px,#fbfbfb 2px 7px)">
+  <section data-screen-label="Services 01 Index" style="padding:clamp(50px,7vw,90px) clamp(20px,4vw,40px) 20px">
+    <div style="max-width:1000px;margin:0 auto">
+      <div data-reveal="1" style="text-align:center;margin-bottom:34px">
+        <h2 style="display:inline-block;margin:0;padding-bottom:10px;border-bottom:1px dashed #1a6fb5;color:#1a6fb5;font-size:clamp(20px,2vw,26px);font-weight:700;letter-spacing:.16em">診療内容から探す</h2>
+        <p style="margin:18px auto 0;font-size:15px;line-height:2;max-width:640px;text-wrap:pretty">一般歯科から矯正・インプラントまで、お口のお悩みに幅広く対応しています。どの治療が合うかわからない場合も、まずはご相談ください。</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+          <a href="#{{ s.id }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:110px;background:#fff;border-radius:10px;box-shadow:0 6px 20px rgba(40,80,110,.06);color:#3d3a38;text-align:center;padding:10px;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 10px 26px rgba(40,80,110,.1);color:#1a6fb5"><span style="font-size:15px;font-weight:700;letter-spacing:.04em">{{ s.label }}</span><span style="font-family:Jost;font-size:11px;letter-spacing:.12em;color:#1a6fb5">{{ s.en }}</span><span style="position:absolute;right:12px;bottom:12px;width:20px;height:1px;background:#1a6fb5"></span></a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Services 02 Detail" style="padding:clamp(40px,6vw,80px) clamp(20px,4vw,40px) clamp(80px,10vw,120px)">
+    <div style="max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,6vw,70px)">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
+        <article id="{{ s.id }}" data-reveal="1" style="scroll-margin-top:24px;display:flex;flex-wrap:wrap;flex-direction:{{ s.dir }};gap:0;background:#fff;border-radius:0 32px 0 32px;overflow:hidden;box-shadow:0 12px 36px rgba(40,80,110,.07)">
+          <div style="flex:1 1 380px;min-height:320px;background:#eef5f9;position:relative;overflow:hidden"><img src="{{ s.img }}" alt="{{ s.ph }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ s.pos }};display:block"></div>
+          <div style="flex:1 1 420px;min-width:0;padding:clamp(28px,4vw,48px)">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><span style="font-family:Jost;font-size:14px;letter-spacing:.14em;color:#3f97d1">{{ s.no }}</span><span style="font-family:Jost;font-size:13px;letter-spacing:.14em;color:#8a9aa4">{{ s.en }}</span></div>
+            <h3 style="margin:0 0 14px;font-size:clamp(22px,2.3vw,28px);color:#1a6fb5;letter-spacing:.08em">{{ s.label }}</h3>
+            <p style="margin:0 0 22px;font-size:15px;line-height:2;text-wrap:pretty">{{ s.desc }}</p>
+            <div style="font-size:13px;font-weight:700;letter-spacing:.1em;margin-bottom:10px;color:#1a6fb5">こんなお悩みに</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+              <sc-for list="{{ s.concerns }}" as="c" hint-placeholder-count="4"><span style="font-size:13px;padding:7px 14px;border-radius:999px;background:linear-gradient(160deg,#a5daf1,#6fbfe3);color:#fff;font-weight:700;letter-spacing:.04em">{{ c }}</span></sc-for>
+            </div>
+            <div style="font-size:13px;font-weight:700;letter-spacing:.1em;margin-bottom:8px;color:#1a6fb5">主な治療内容</div>
+            <ul style="margin:0 0 24px;padding-left:18px;font-size:14px;line-height:1.95">
+              <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="3"><li>{{ it }}</li></sc-for>
+            </ul>
+            <a href="Reservation.dc.html#form" style="display:inline-flex;align-items:center;gap:14px;height:48px;padding:0 22px;border-radius:8px;background:#1a6fb5;color:#fff;font-weight:700;letter-spacing:.08em;font-size:14px;transition:background .3s" style-hover="background:#0b4c83;color:#fff">相談を予約する <span style="width:26px;height:1px;background:#fff"></span></a>
+          </div>
+        </article>
+      </sc-for>
+      <p data-reveal="1" style="margin:0;font-size:13px;line-height:1.9;color:#5d6a72;text-wrap:pretty">※審美治療・矯正治療・インプラント治療・ホワイトニングは自費診療となります。費用・期間・リスクについては、カウンセリング時に詳しくご説明いたします。</p>
+    </div>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  data = [
+    { id: 'general', label: '一般・予防歯科', en: 'General & Preventive', ph: '定期検診・クリーニングの様子', desc: '定期検診・むし歯治療・専門的なクリーニングで、歯と歯ぐきの健康を守ります。小さな変化を早めに見つけ、できるだけ削らない・負担の少ない治療を心がけています。', concerns: ['歯がしみる', 'むし歯', '歯ぐきからの出血', '口臭'], items: ['定期検診（3〜6か月ごと）', '歯科衛生士によるクリーニング（PMTC）', 'むし歯治療・詰め物', 'フッ素塗布・ブラッシング指導'] },
+    { id: 'perio', label: '歯周病治療', en: 'Periodontal Care', ph: '歯周ポケット検査の様子', desc: '歯周病は自覚症状が少ないまま進行することが多い病気です。歯周ポケット検査と歯石除去、セルフケアの見直し、定期的なメンテナンスで長期的に管理します。', concerns: ['歯ぐきの腫れ', '歯のぐらつき', '歯ぐきが下がる', '口臭が気になる'], items: ['歯周ポケット検査・レントゲン診断', 'スケーリング・ルートプレーニング', '歯周外科治療（必要な場合）', 'メンテナンス'] },
+    { id: 'cosmetic', label: '審美・ホワイトニング', en: 'Cosmetic & Whitening', ph: '自然な笑顔・シェードガイド', desc: '歯の色や形、古い詰め物が気になる方へ。デジタルシミュレーションで仕上がりのイメージを共有しながら、自然で長持ちする治療を計画します。', concerns: ['歯の着色', '歯の形の不揃い', '古い銀歯', 'すきっ歯'], items: ['オフィスホワイトニング', 'ホームホワイトニング', 'セラミック（詰め物・被せ物）', 'ダイレクトボンディング'] },
+    { id: 'ortho', label: '矯正歯科', en: 'Orthodontics', ph: 'マウスピース矯正装置', desc: '大人もお子さまも対象に、マウスピース矯正とワイヤー矯正に対応しています。精密検査のうえ、治療計画・期間・費用をご説明してからご判断いただけます。', concerns: ['歯並びのガタつき', 'すきま', '噛み合わせ', '出っ歯'], items: ['マウスピース矯正', 'ワイヤー矯正', '小児矯正（第一期治療）', '部分矯正'] },
+    { id: 'implant', label: 'インプラント・補綴', en: 'Implants & Restorative', ph: 'CT画像を見ながらの説明', desc: '失った歯を補う方法として、インプラント・ブリッジ・入れ歯のそれぞれの特徴をご説明し、ご希望に合う方法を一緒に選びます。インプラントはCT画像をもとに計画します。', concerns: ['歯を失った', '入れ歯が合わない', '噛みにくい', '歯が欠けた'], items: ['インプラント治療', 'ブリッジ', '部分入れ歯・総入れ歯', '被せ物（保険・自費）'] },
+    { id: 'kids', label: '小児歯科', en: 'Pediatric', ph: '笑顔のお子さまと歯科衛生士', desc: 'はじめての受診は、診療室やお道具に慣れることから。無理に治療を進めることはせず、お子さまのペースに合わせて進めます。保護者の方へのアドバイスも行っています。', concerns: ['はじめての検診', 'むし歯予防', '指しゃぶり', '歯並び'], items: ['乳歯・永久歯の検診', 'フッ素塗布・シーラント', '仕上げ磨き指導', '歯並びの相談'] }
+  ];
+  renderVals() {
+    // 診療内容ごとの画像（images/ 内のファイル名）と、縦長に切り取るときの表示位置
+    const pics = { general: 'tooth-brush', perio: 'hygienist-explain', cosmetic: 'smile-teeth', ortho: 'model-mirror', implant: 'microscope', kids: 'counseling-model' };
+    const pos = { perio: '62% 22%', kids: '60% 30%' };
+    return { services: this.data.map((s, i) => ({ ...s, no: String(i + 1).padStart(2, '0'), img: 'images/' + pics[s.id] + '.jpg', pos: pos[s.id] || 'center', dir: i % 2 ? 'row-reverse' : 'row' })) };
+  }
+}
+</script>
+</body>
+</html>

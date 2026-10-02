@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#111;color:#1a1a1a;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;
+--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+*{box-sizing:border-box}
+a{color:#c4161f;text-decoration:none}
+a:hover{color:#e0262f}
+input,select,textarea,button{font-family:inherit}
+body{overflow-x:clip}
+/* iOS zooms into inputs under 16px on focus */
+@media (max-width:700px){form input,form select,form textarea{font-size:16px!important}}
+</style>
+</helmet>
+
+<dc-import name="SiteHeader" active="contact" hint-size="100%,0px"></dc-import>
+
+<main id="top">
+<dc-import name="PageHero" en="CONTACT" jp="お問い合わせ" img-id="contact-hero" src="images/crane.jpg" ph="HERO — 打ち合わせ・現地調査の様子" hint-size="100%,520px"></dc-import>
+
+<section data-screen-label="Tel" style="position:relative;overflow:hidden;background:#101010;color:#fff;padding:clamp(80px,10vw,120px) clamp(20px,5vw,60px)">
+  <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:60%;pointer-events:none;background:linear-gradient(90deg,#8e0c12,#c4161f);clip-path:polygon(18% 0,46% 0,82% 100%,54% 100%);opacity:.85"></div>
+  <div style="position:relative;max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center" data-reveal="">
+    <h2 style="margin:0;font-size:clamp(20px,2.6vw,32px);font-weight:900;letter-spacing:.1em;text-wrap:balance"><span style="display:inline-block">解体のご相談・</span><span style="display:inline-block">お見積もりはこちら。</span></h2>
+    <p style="margin:0;font-size:15px;letter-spacing:.08em;color:rgba(255,255,255,.85)">Let's discuss your demolition project.</p>
+    <p style="margin:6px 0 0;max-width:620px;font-size:15px;line-height:2;letter-spacing:.05em;color:rgba(255,255,255,.88);text-wrap:pretty">現地調査・お見積もりは無料です。建物の構造や規模が分からない場合でも、お気軽にお問い合わせください。</p>
+    <div style="margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px clamp(20px,4vw,48px);font-family:'Dela Gothic One',sans-serif;font-size:clamp(24px,3.4vw,42px);letter-spacing:.04em">
+      <a href="tel:{{ tel }}" style="color:#fff" style-hover="color:#ff4a52">TEL {{ tel }}</a>
+      <span>FAX {{ fax }}</span>
+    </div>
+    <p style="margin:0;font-size:14px;letter-spacing:.1em;color:rgba(255,255,255,.8)">受付時間 {{ hours }}</p>
+    <a href="#form" style="margin-top:14px;display:flex;align-items:center;justify-content:center;min-width:260px;height:60px;padding:0 30px;background:#c4161f;color:#fff;font-weight:700;font-size:15px;letter-spacing:.1em;clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);transition:background .3s" style-hover="background:#e0262f;color:#fff">フォームで無料見積もり</a>
+  </div>
+</section>
+
+<section id="form" data-screen-label="Form" style="scroll-margin-top:76px;background:#d8d8d8;background-image:var(--noise);color:#1a1a1a;padding:clamp(70px,9vw,110px) clamp(20px,5vw,60px)">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(28px,4vw,56px);align-items:start">
+    <div data-reveal="" style="display:flex;flex-direction:column;grid-column:span 1">
+      <div style="background:#141414;color:#fff;padding:12px clamp(16px,4vw,22px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 12px">
+        <h2 style="margin:0;font-size:clamp(15px,4.2vw,17px);font-weight:900;letter-spacing:clamp(.04em,.6vw,.1em)">お見積もり・お問い合わせフォーム</h2>
+        <span style="font-family:'Dela Gothic One',sans-serif;font-size:11px;letter-spacing:.2em;color:#ff4a52">MAIL FORM</span>
+      </div>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="background:#f4f4f4;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:18px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:18px">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">
+              <span>お名前 <span style="color:#c4161f">＊</span></span>
+              <input required="" name="name" placeholder="山田 太郎" style="height:50px;padding:0 14px;border:1px solid #b9b9b9;background:#fff;font-size:15px;border-radius:0" style-focus="outline:2px solid #c4161f;outline-offset:-1px">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">
+              <span>電話番号 <span style="color:#c4161f">＊</span></span>
+              <input required="" name="tel" type="tel" placeholder="090-0000-0000" style="height:50px;padding:0 14px;border:1px solid #b9b9b9;background:#fff;font-size:15px;border-radius:0" style-focus="outline:2px solid #c4161f;outline-offset:-1px">
+            </label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">
+            <span>メールアドレス <span style="color:#c4161f">＊</span></span>
+            <input required="" name="email" type="email" placeholder="example@mail.com" style="height:50px;padding:0 14px;border:1px solid #b9b9b9;background:#fff;font-size:15px;border-radius:0" style-focus="outline:2px solid #c4161f;outline-offset:-1px">
+          </label>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:18px">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">
+              <span>工事の種類</span>
+              <select name="type" style="height:50px;padding:0 12px;border:1px solid #b9b9b9;background:#fff;font-size:15px;border-radius:0">
+                <sc-for list="{{ serviceOptions }}" as="o" hint-placeholder-count="9">
+                  <option>{{ o }}</option>
+                </sc-for>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">
+              <span>物件所在地</span>
+              <input name="place" placeholder="〇〇市〇〇町" style="height:50px;padding:0 14px;border:1px solid #b9b9b9;background:#fff;font-size:15px;border-radius:0" style-focus="outline:2px solid #c4161f;outline-offset:-1px">
+            </label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700;letter-spacing:.06em">
+            <span>ご相談内容</span>
+            <textarea name="message" rows="6" placeholder="建物の構造・延床面積・ご希望の時期など、分かる範囲でご記入ください。" style="padding:12px 14px;border:1px solid #b9b9b9;background:#fff;font-size:15px;line-height:1.8;resize:vertical;border-radius:0" style-focus="outline:2px solid #c4161f;outline-offset:-1px"></textarea>
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.04em">
+            <input required="" type="checkbox" style="width:20px;height:20px;accent-color:#c4161f">
+            <span>個人情報の取り扱いに同意する</span>
+          </label>
+          <button type="submit" style="align-self:center;margin-top:6px;width:min(100%,320px);height:60px;border:none;cursor:pointer;background:#c4161f;color:#fff;font-weight:700;font-size:15px;letter-spacing:.12em;clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);transition:background .3s" style-hover="background:#e0262f">この内容で送信する</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#f4f4f4;padding:clamp(40px,6vw,64px) 28px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+          <div style="width:18px;height:18px;transform:rotate(45deg);border:3px solid #c4161f"></div>
+          <p style="margin:0;font-size:19px;font-weight:900;letter-spacing:.08em">送信ありがとうございました。</p>
+          <p style="margin:0;font-size:14px;line-height:1.9;color:#333">内容を確認のうえ、担当者より折り返しご連絡いたします。</p>
+          <button onClick="{{ reset }}" style="margin-top:8px;height:44px;padding:0 22px;border:1px solid #1a1a1a;background:transparent;cursor:pointer;font-size:13px;letter-spacing:.08em">フォームに戻る</button>
+        </div>
+      </sc-if>
+    </div>
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;flex-direction:column">
+        <div style="background:linear-gradient(90deg,#7a080d 0%,#c4161f 45%,#8e0c12 100%);color:#fff;padding:12px 22px;font-size:17px;font-weight:900;letter-spacing:.1em">会社情報</div>
+        <dl style="margin:0;background:#f4f4f4;padding:8px 22px 14px;display:grid;grid-template-columns:auto 1fr;gap:0 20px;font-size:14px;line-height:1.8;letter-spacing:.04em">
+          <sc-for list="{{ info }}" as="r" hint-placeholder-count="6">
+            <dt style="padding:14px 0;border-bottom:1px solid rgba(0,0,0,.12);font-weight:700;color:#c4161f">{{ r.k }}</dt>
+            <dd style="margin:0;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.12)">{{ r.v }}</dd>
+          </sc-for>
+        </dl>
+      </div>
+      <div style="aspect-ratio:16/10;border:1px solid rgba(0,0,0,.18);padding:6px;background:#f4f4f4">
+        <image-slot id="office-map" shape="rect" placeholder="MAP — Googleマップ埋め込み / 事務所外観"></image-slot>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="FAQ" style="background:#e4e4e4;background-image:var(--noise);padding:clamp(70px,9vw,110px) clamp(20px,5vw,60px)">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center" data-reveal="">
+      <div style="width:14px;height:14px;transform:rotate(45deg);border:3px solid #c4161f"></div>
+      <span style="font-family:'Dela Gothic One',sans-serif;font-size:clamp(34px,5vw,56px);letter-spacing:.06em;color:#1a1a1a;line-height:1.1">FAQ</span>
+      <h2 style="margin:0;font-size:clamp(18px,2vw,22px);font-weight:900;letter-spacing:.12em;color:#c4161f">よくあるご質問</h2>
+    </div>
+    <div data-reveal="" style="margin-top:clamp(36px,5vw,52px);display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+        <div style="background:#f4f4f4">
+          <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;display:flex;align-items:center;gap:16px;padding:18px 22px;border:none;background:transparent;cursor:pointer;text-align:left;font-size:15px;font-weight:700;letter-spacing:.05em;color:#1a1a1a">
+            <span style="font-family:'Dela Gothic One',sans-serif;font-size:18px;color:#c4161f">Q</span>
+            <span style="flex:1">{{ q.q }}</span>
+            <span style="font-family:'Dela Gothic One',sans-serif;font-size:18px;color:#c4161f">{{ q.icon }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:16px;padding:0 22px 20px;border-top:1px solid rgba(0,0,0,.1)">
+              <span style="padding-top:16px;font-family:'Dela Gothic One',sans-serif;font-size:18px;color:#1a1a1a">A</span>
+              <p style="margin:0;padding-top:16px;font-size:14px;line-height:2;letter-spacing:.04em;color:#333">{{ q.a }}</p>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;companyName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;〇〇解体工業株式会社&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;000-000-0000&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;fax&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;000-000-0001&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;email&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;info@example.co.jp&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;address&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;〒000-0000 〇〇県〇〇市〇〇町0-0-0&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;hours&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;8:00〜18:00（日曜・祝日定休）&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { sent: false, open: 0 };
+  componentDidMount() {
+    if (location.hash === '#form') setTimeout(() => { const el = document.getElementById('form'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 76 }); }, 300);
+  }
+  renderVals() {
+    const p = this.props;
+    const tel = p.tel ?? '000-000-0000', fax = p.fax ?? '000-000-0001';
+    const hours = p.hours ?? '8:00〜18:00（日曜・祝日定休）';
+    const faqs = [
+      ['見積もりや現地調査に費用はかかりますか？', '現地調査・お見積もりは無料で行っています。お見積もり後にご依頼いただかなくても費用は発生しません。'],
+      ['解体工事の費用はどのように決まりますか？', '建物の構造・延床面積・立地条件（重機の搬入経路や前面道路の幅など）・廃材の量によって変わります。現地調査のうえ、内訳を明記したお見積もりをご提示します。'],
+      ['近隣へのご挨拶はしてもらえますか？', '着工前に近隣の皆さまへ工事内容と期間をご説明し、ご挨拶に伺います。工事中のお問い合わせにも当社が対応します。'],
+      ['建物内に家具や荷物が残っていても大丈夫ですか？', '残置物の撤去も承ります。量や種類によって費用が変わるため、現地調査の際にご相談ください。'],
+      ['解体に必要な届出も任せられますか？', '建設リサイクル法に基づく届出など、工事に必要な手続きを代行します。建物滅失登記については提携先をご紹介することも可能です。']
+    ].map((f, i) => {
+      const open = this.state.open === i;
+      return { q: f[0], a: f[1], open, icon: open ? '−' : '+', toggle: () => this.setState({ open: open ? -1 : i }) };
+    });
+    return {
+      tel, fax, hours, faqs,
+      info: [
+        { k: '会社名', v: p.companyName ?? '〇〇解体工業株式会社' },
+        { k: '所在地', v: p.address ?? '〒000-0000 〇〇県〇〇市〇〇町0-0-0' },
+        { k: '電話', v: tel },
+        { k: 'FAX', v: fax },
+        { k: 'メール', v: p.email ?? 'info@example.co.jp' },
+        { k: '営業時間', v: hours }
+      ],
+      serviceOptions: ['建物解体工事', '木造住宅解体', '鉄骨造解体', 'RC造解体', '内装解体', '店舗・施設解体', '部分解体', 'その他解体・撤去工事', '未定・相談したい'],
+      sent: this.state.sent, notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

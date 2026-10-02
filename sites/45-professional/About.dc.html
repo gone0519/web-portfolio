@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<![CDATA[
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body{margin:0;background:#FAFAF7;}
+  a{color:#1F6E85;text-decoration:none;}
+  a:hover{color:#164F60;}
+
+  .nav-desktop{display:flex;}
+  .nav-desktop a{white-space:nowrap;flex-shrink:0;}
+  .desktop-extras{display:flex;}
+  .desktop-extras>div{white-space:nowrap;flex-shrink:0;}
+  .hamburger-btn{display:none;}
+  .mobile-panel{display:none;}
+  #nav-toggle:checked ~ .mobile-panel{display:block;}
+  @media (max-width:1080px){
+    .nav-desktop{display:none;}
+    .desktop-extras{display:none;}
+    .hamburger-btn{display:flex;}
+  }
+
+  /* ---------- レスポンシブ ----------
+     インラインstyleを上書きするため !important を付けています。 */
+
+  /* image-slot は aspect-ratio を持つため、高さから逆算した最小幅で
+     グリッドの列を押し広げてしまう。min-width:0 でそれを防ぐ。 */
+  .g-2>*,.g-3>*,.profile-card>*{min-width:0;}
+
+  /* src で写真を入れた枠の破線を消す。image-slot は本来 data-filled が付いた
+     時点で自分で消すが、DCランタイム経由では付かないため ::part で消す。 */
+  image-slot[src]::part(ring){display:none;}
+
+  @media (max-width:1080px){
+    .header-inner{padding:14px 20px !important;}
+    .mobile-panel{padding:20px 20px 24px !important;}
+    .sec{padding-left:24px !important;padding-right:24px !important;}
+  }
+  @media (max-width:900px){
+    .sec-lg{padding-top:64px !important;padding-bottom:64px !important;}
+    .page-head{padding:56px 24px 44px !important;}
+    .g-2{grid-template-columns:1fr !important;gap:32px !important;}
+    .g-3{grid-template-columns:repeat(2,1fr) !important;}
+    #rep-portrait{height:320px !important;}
+    .profile-card{grid-template-columns:1fr !important;padding:32px !important;gap:24px !important;}
+    #rep-profile-photo{width:100% !important;max-width:220px;height:260px !important;}
+    .foot-grid{grid-template-columns:1fr 1fr !important;gap:32px !important;}
+  }
+  @media (max-width:600px){
+    .sec{padding-left:18px !important;padding-right:18px !important;}
+    .sec-lg{padding-top:52px !important;padding-bottom:52px !important;}
+    .page-head{padding:44px 18px 36px !important;}
+    .g-3{grid-template-columns:1fr !important;}
+    .g-2 h2{font-size:21px !important;}
+    .profile-card{padding:24px 20px !important;}
+    .profile-meta{grid-template-columns:88px 1fr !important;}
+    .info-row{grid-template-columns:100px 1fr !important;gap:10px !important;}
+    .foot-grid{grid-template-columns:1fr !important;gap:28px !important;}
+  }
+</style>
+</helmet>
+<div style="font-family:'Noto Sans JP',sans-serif;color:#20242A;line-height:1.8;background:#FAFAF7;overflow-x:hidden;">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(250,250,247,0.94);backdrop-filter:blur(6px);border-bottom:1px solid #E4E1D8;">
+    <input id="nav-toggle" type="checkbox" style="display:none;">
+    <div class="header-inner" style="max-width:1280px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
+      <a href="Home.dc.html" style="display:flex;flex-direction:column;gap:2px;flex-shrink:0;">
+        <span style="font-size:11px;letter-spacing:0.15em;color:#5B6360;">社会保険労務士事務所</span>
+        <span style="font-family:'Noto Serif JP',serif;font-size:22px;font-weight:700;color:#20242A;">こもれび事務所</span>
+      </a>
+      <nav class="nav-desktop" style="gap:28px;font-size:14px;font-weight:500;color:#3A4340;">
+        <a href="About.dc.html" style="color:#1F6E85;">事務所紹介</a>
+        <a href="Services.dc.html" style="color:inherit;">業務案内</a>
+        <a href="Fees.dc.html" style="color:inherit;">費用のご案内</a>
+        <a href="Cases.dc.html" style="color:inherit;">支援事例</a>
+        <a href="Contact.dc.html" style="color:inherit;">よくあるご質問</a>
+      </nav>
+      <div class="desktop-extras" style="align-items:center;gap:16px;">
+        <div style="text-align:right;font-size:12px;color:#5B6360;white-space:nowrap;">
+          <div style="font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700;color:#20242A;">0120-XX-XXXX</div>
+          <div>受付 平日 9:00〜18:00</div>
+        </div>
+        <a href="Contact.dc.html" style="background:#1F6E85;color:#fff;padding:12px 22px;border-radius:4px;font-size:14px;font-weight:600;white-space:nowrap;">ご相談・お問い合わせ</a>
+      </div>
+      <label for="nav-toggle" class="hamburger-btn" aria-label="メニュー" style="flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;flex-shrink:0;">
+        <span style="display:block;width:22px;height:2px;background:#20242A;"></span>
+        <span style="display:block;width:22px;height:2px;background:#20242A;"></span>
+        <span style="display:block;width:22px;height:2px;background:#20242A;"></span>
+      </label>
+    </div>
+    <div class="mobile-panel" style="border-top:1px solid #E4E1D8;padding:20px 32px 28px;background:#FAFAF7;">
+      <nav style="display:flex;flex-direction:column;gap:18px;font-size:15px;margin-bottom:20px;">
+          <a href="About.dc.html" style="color:#1F6E85;font-weight:600;">事務所紹介</a>
+          <a href="Services.dc.html" style="color:inherit;font-weight:600;">業務案内</a>
+          <a href="Fees.dc.html" style="color:inherit;font-weight:600;">費用のご案内</a>
+          <a href="Cases.dc.html" style="color:inherit;font-weight:600;">支援事例</a>
+          <a href="Contact.dc.html" style="color:inherit;font-weight:600;">よくあるご質問</a>
+      </nav>
+      <div style="font-size:13px;color:#5B6360;margin-bottom:16px;">
+        <div style="font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;color:#20242A;">0120-XX-XXXX</div>
+        <div>受付 平日 9:00〜18:00</div>
+      </div>
+      <a href="Contact.dc.html" style="display:block;text-align:center;background:#1F6E85;color:#fff;padding:14px;border-radius:4px;font-size:14px;font-weight:600;">ご相談・お問い合わせ</a>
+    </div>
+  </header>
+
+  <section class="page-head" style="background:#164F60;padding:72px 32px 56px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div style="font-size:12px;color:#9FCBD3;margin-bottom:12px;"><a href="Home.dc.html" style="color:#9FCBD3;">HOME</a> ／ 事務所紹介</div>
+      <h1 style="font-family:'Noto Serif JP',serif;color:#fff;font-size:clamp(28px,3.6vw,38px);font-weight:700;margin:0 0 12px;">事務所紹介</h1>
+      <p style="color:#DCEFF0;font-size:15px;max-width:600px;margin:0;">私たちの考え方と、代表社会保険労務士のご紹介です。</p>
+    </div>
+  </section>
+
+  <!-- REPRESENTATIVE MESSAGE -->
+  <section class="sec sec-lg g-2" style="max-width:1280px;margin:0 auto;padding:88px 32px;display:grid;grid-template-columns:1fr 1.3fr;gap:56px;align-items:start;">
+    <image-slot id="rep-portrait" src="images/rep-outdoor.jpg" shape="rounded" radius="6" placeholder="representative portrait" style="width:100%;height:460px;"></image-slot>
+    <div>
+      <p style="font-size:12px;letter-spacing:0.14em;color:#1F6E85;font-weight:600;margin:0 0 12px;">MESSAGE / 代表挨拶</p>
+      <h2 style="font-family:'Noto Serif JP',serif;font-size:26px;font-weight:700;margin:0 0 20px;">会社の未来と、そこで働く人の未来を、<br>同じ目線で考えたい。</h2>
+      <p style="color:#5B6360;font-size:14.5px;margin:0 0 16px;">経営者様が抱える労務の悩みは、日々のご事業の中で見過ごされがちです。しかし、労務管理の不備は思わぬトラブルとなり、会社の成長を妨げる要因にもなります。</p>
+      <p style="color:#5B6360;font-size:14.5px;margin:0 0 16px;">私たちは、会社の実情を丁寧にお伺いすることを何より大切にしています。制度や手続きだけでなく、そこで働く従業員の方々の安心も見据えながら、経営者様に寄り添ったご提案を行います。</p>
+      <p style="color:#5B6360;font-size:14.5px;margin:0 0 28px;">労務の問題は、早期の対応が何より重要です。小さな疑問でも、まずはお気軽にご相談ください。長くお付き合いいただけるパートナーとして、貴社の成長を支えてまいります。</p>
+      <div style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:700;">代表社会保険労務士　○○　○○</div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="sec sec-lg" style="background:#F3F1EC;padding:88px 32px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:56px;">
+        <p style="font-size:12px;letter-spacing:0.14em;color:#1F6E85;font-weight:600;margin:0 0 10px;">PHILOSOPHY</p>
+        <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,3vw,30px);font-weight:700;margin:0;">私たちが大切にしていること</h2>
+      </div>
+      <div class="g-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div style="background:#fff;padding:36px 28px;border-radius:6px;">
+          <div style="font-family:'Noto Serif JP',serif;font-size:26px;font-weight:700;color:#1F6E85;margin-bottom:14px;">人</div>
+          <h3 style="font-size:15px;font-weight:700;margin:0 0 10px;">人を大切にする労務</h3>
+          <p style="font-size:13.5px;color:#5B6360;margin:0;">制度の先には必ず人がいます。経営者と従業員、双方にとって納得できる労務のあり方を追求します。</p>
+        </div>
+        <div style="background:#fff;padding:36px 28px;border-radius:6px;">
+          <div style="font-family:'Noto Serif JP',serif;font-size:26px;font-weight:700;color:#1F6E85;margin-bottom:14px;">信</div>
+          <h3 style="font-size:15px;font-weight:700;margin:0 0 10px;">信頼できる対応</h3>
+          <p style="font-size:13.5px;color:#5B6360;margin:0;">分かりやすい説明と迅速な対応を心がけ、安心して任せていただける関係を築きます。</p>
+        </div>
+        <div style="background:#fff;padding:36px 28px;border-radius:6px;">
+          <div style="font-family:'Noto Serif JP',serif;font-size:26px;font-weight:700;color:#1F6E85;margin-bottom:14px;">長</div>
+          <h3 style="font-size:15px;font-weight:700;margin:0 0 10px;">長期的なパートナーシップ</h3>
+          <p style="font-size:13.5px;color:#5B6360;margin:0;">一度の対応で終わらず、会社の成長段階に合わせて継続的にサポートします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MVV -->
+  <section class="sec sec-lg" style="max-width:1280px;margin:0 auto;padding:88px 32px;">
+    <div style="text-align:center;margin-bottom:56px;">
+      <p style="font-size:12px;letter-spacing:0.14em;color:#1F6E85;font-weight:600;margin:0 0 10px;">MISSION / VISION / VALUES</p>
+      <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,3vw,30px);font-weight:700;margin:0;">私たちが目指す姿</h2>
+    </div>
+    <div class="g-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E4E1D8;border-radius:6px;overflow:hidden;">
+      <div style="background:#fff;padding:40px 32px;">
+        <div style="font-size:11px;letter-spacing:0.1em;color:#1F6E85;font-weight:700;margin-bottom:12px;">MISSION</div>
+        <p style="font-size:14px;color:#3A4340;margin:0;">労務の専門知識で、経営者と従業員が安心して働ける環境をつくる。</p>
+      </div>
+      <div style="background:#fff;padding:40px 32px;">
+        <div style="font-size:11px;letter-spacing:0.1em;color:#1F6E85;font-weight:700;margin-bottom:12px;">VISION</div>
+        <p style="font-size:14px;color:#3A4340;margin:0;">地域の中小企業にとって、なくてはならない労務のパートナーになる。</p>
+      </div>
+      <div style="background:#fff;padding:40px 32px;">
+        <div style="font-size:11px;letter-spacing:0.1em;color:#1F6E85;font-weight:700;margin-bottom:12px;">VALUES</div>
+        <p style="font-size:14px;color:#3A4340;margin:0;">誠実な対応、実務に基づく提案、そして長く続く信頼関係。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="sec sec-lg" style="background:#F3F1EC;padding:88px 32px;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:48px;">
+        <p style="font-size:12px;letter-spacing:0.14em;color:#1F6E85;font-weight:600;margin:0 0 10px;">PROFILE</p>
+        <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,3vw,30px);font-weight:700;margin:0;">代表者プロフィール</h2>
+      </div>
+      <div class="profile-card" style="background:#fff;border-radius:6px;padding:48px;display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start;">
+        <image-slot id="rep-profile-photo" src="images/rep-portrait.jpg" shape="rounded" radius="6" placeholder="portrait" style="width:200px;height:240px;"></image-slot>
+        <div>
+          <h3 style="font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;margin:0 0 6px;">○○　○○</h3>
+          <p style="font-size:13px;color:#5B6360;margin:0 0 20px;">代表社会保険労務士</p>
+          <div class="profile-meta" style="display:grid;grid-template-columns:120px 1fr;gap:10px 16px;font-size:13.5px;color:#3A4340;margin-bottom:20px;">
+            <div style="color:#8A8F8C;">資格</div><div>社会保険労務士（登録予定）</div>
+            <div style="color:#8A8F8C;">専門分野</div><div>労務管理／社会保険手続き／就業規則の整備</div>
+            <div style="color:#8A8F8C;">出身</div><div>滋賀県</div>
+          </div>
+          <p style="font-size:14px;color:#5B6360;margin:0;">「経営者様が本業に集中できるように」という思いを大切に、労務の実務を丁寧にサポートしています。難しい制度も分かりやすくお伝えすることを心がけています。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFICE INFO -->
+  <section class="sec sec-lg" style="max-width:1280px;margin:0 auto;padding:88px 32px;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <p style="font-size:12px;letter-spacing:0.14em;color:#1F6E85;font-weight:600;margin:0 0 10px;">OFFICE INFORMATION</p>
+      <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,3vw,30px);font-weight:700;margin:0;">事務所概要</h2>
+    </div>
+    <div style="max-width:720px;margin:0 auto;border-top:1px solid #E4E1D8;">
+      <div class="info-row" style="display:grid;grid-template-columns:160px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #E4E1D8;font-size:14px;"><div style="color:#8A8F8C;">事務所名</div><div>こもれび社会保険労務士事務所</div></div>
+      <div class="info-row" style="display:grid;grid-template-columns:160px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #E4E1D8;font-size:14px;"><div style="color:#8A8F8C;">代表者</div><div>○○　○○</div></div>
+      <div class="info-row" style="display:grid;grid-template-columns:160px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #E4E1D8;font-size:14px;"><div style="color:#8A8F8C;">所在地</div><div>〒520-0000　滋賀県○○市○○町1-2-3</div></div>
+      <div class="info-row" style="display:grid;grid-template-columns:160px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #E4E1D8;font-size:14px;"><div style="color:#8A8F8C;">電話番号</div><div>0120-XX-XXXX（FAX：0120-XX-XXXX）</div></div>
+      <div class="info-row" style="display:grid;grid-template-columns:160px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #E4E1D8;font-size:14px;"><div style="color:#8A8F8C;">メール</div><div>info@example.com</div></div>
+      <div class="info-row" style="display:grid;grid-template-columns:160px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #E4E1D8;font-size:14px;"><div style="color:#8A8F8C;">営業時間</div><div>平日 9:00〜18:00（土日祝休み）</div></div>
+      <div class="info-row" style="display:grid;grid-template-columns:160px 1fr;gap:16px;padding:18px 0;font-size:14px;"><div style="color:#8A8F8C;">アクセス</div><div>JR○○駅から徒歩10分</div></div>
+    </div>
+  </section>
+
+  <section class="sec sec-lg" style="background:linear-gradient(120deg,#1F6E85,#164F60);padding:72px 32px;text-align:center;">
+    <h2 style="color:#fff;font-family:'Noto Serif JP',serif;font-size:clamp(22px,3vw,28px);font-weight:700;margin:0 0 12px;">まずは、お気軽にご相談ください。</h2>
+    <a href="Contact.dc.html" style="background:#fff;color:#164F60;padding:16px 32px;border-radius:4px;font-size:15px;font-weight:700;">お問い合わせ →</a>
+  </section>
+
+  <footer class="sec" style="background:#20242A;color:#C9CCC8;padding:64px 32px 32px;">
+    <div class="foot-grid" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;">
+      <div>
+        <div style="font-family:'Noto Serif JP',serif;font-size:19px;font-weight:700;color:#fff;margin-bottom:12px;">こもれび社会保険労務士事務所</div>
+        <p style="font-size:13px;line-height:1.9;margin:0;">〒520-0000　滋賀県○○市○○町1-2-3<br>TEL：0120-XX-XXXX　FAX：0120-XX-XXXX</p>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:14px;">HOME</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;">
+          <a href="Home.dc.html" style="color:inherit;">トップページ</a>
+          <a href="About.dc.html" style="color:inherit;">事務所紹介</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:14px;">業務案内</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;">
+          <a href="Services.dc.html" style="color:inherit;">サービス一覧</a>
+          <a href="Fees.dc.html" style="color:inherit;">費用のご案内</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:14px;">その他</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;">
+          <a href="Cases.dc.html" style="color:inherit;">支援事例</a>
+          <a href="Contact.dc.html" style="color:inherit;">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1280px;margin:0 auto;border-top:1px solid #3A4038;padding-top:24px;font-size:12px;color:#8A8F8C;">
+      © こもれび社会保険労務士事務所 All Rights Reserved.
+    </div>
+  </footer>
+
+</div>
+]]>
+</x-dc>
+</body>
+</html>

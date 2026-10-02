@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #F7F5F0; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  button, input, select, textarea { font-family: inherit; font-size: inherit; line-height: inherit; color: inherit; }
+  a { color: #4E7A63; text-decoration: none; }
+  a:hover { color: #22323A; }
+  html { scroll-behavior: smooth; }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (min-width: 1100px) { [data-desknav] { display: flex !important; } [data-burger] { display: none !important; } }
+  @media (min-width: 900px) { [data-svcgrid] { grid-template-columns: minmax(240px, 300px) minmax(0, 1fr) !important; } [data-svcnav] { position: sticky; top: 100px; } }
+  [data-svcgrid] > * { min-width: 0; }
+  @media (max-width: 899px) {
+    [data-svcnav] { display: flex !important; overflow-x: auto; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    [data-svcnav]::-webkit-scrollbar { display: none; }
+    [data-svcnav] > button { flex: 0 0 auto; scroll-snap-align: start; padding: 14px 18px !important; white-space: nowrap; }
+  }
+  @media (max-width: 639px) {
+    [data-casemedia] { border-right: 0 !important; border-bottom: 1px solid #DDD8CB; min-height: 220px !important; }
+    [data-search] { flex: 1 1 100%; min-width: 0 !important; }
+    [data-herocta] { width: 100%; justify-self: stretch !important; }
+    [data-herocta] > button { flex: 1 1 100%; }
+    [data-hide-sm] { display: none !important; }
+  }
+  @media (max-width: 399px) {
+    [data-hcta] { padding: 12px 14px !important; }
+    [data-hcta] > span:last-child { display: none; }
+  }
+</style>
+</helmet>
+<div style="font-family: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif; color: #22323A; background: #F7F5F0; overflow-x: hidden;">
+
+  <header style="position: sticky; top: 0; z-index: 60; background: rgba(247,245,240,0.93); backdrop-filter: blur(14px); border-bottom: 1px solid #E3DFD4;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 clamp(18px, 3vw, 40px); height: 78px; display: flex; align-items: center; gap: clamp(16px, 3vw, 40px);">
+      <button onClick="{{ goHome }}" style="display: flex; align-items: baseline; gap: 10px; background: none; border: 0; padding: 0; cursor: pointer; color: #22323A;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 27px; letter-spacing: 0.16em;">STRATA</span>
+        <span data-hide-sm="1" style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.3em; color: #5F6D72;">DIGITAL</span>
+      </button>
+      <nav style="margin-left: auto; display: none; align-items: center; gap: 2px;" data-desknav="1">
+        <sc-for list="{{ navItems }}" as="nav" hint-placeholder-count="6">
+          <button onClick="{{ nav.go }}" style="position: relative; background: none; border: 0; padding: 10px 14px; font-size: 13.5px; letter-spacing: 0.04em; color: #4A585E; cursor: pointer;" style-hover="color: #22323A;">
+            {{ nav.ja }}
+            <sc-if value="{{ nav.active }}" hint-placeholder-val="{{ false }}">
+              <span style="position: absolute; left: 14px; right: 14px; bottom: 2px; height: 1px; background: #4E7A63;"></span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </nav>
+      <div style="margin-left: auto; display: flex; align-items: center; gap: 10px;">
+        <button data-hcta="1" onClick="{{ goContact }}" style="display: inline-flex; align-items: center; gap: 10px; background: #22323A; color: #F7F5F0; border: 0; padding: 14px 22px; font-size: 13px; letter-spacing: 0.06em; cursor: pointer;" style-hover="background: #4E7A63;">
+          <span>無料相談</span>
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 15px;">&#8594;</span>
+        </button>
+        <button onClick="{{ toggleNav }}" aria-label="メニュー" data-burger="1" style="display: flex; flex-direction: column; gap: 6px; background: none; border: 1px solid #D8D3C6; padding: 14px 12px; cursor: pointer;">
+          <span style="display: block; width: 18px; height: 1px; background: #22323A;"></span>
+          <span style="display: block; width: 18px; height: 1px; background: #22323A;"></span>
+        </button>
+      </div>
+    </div>
+    <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top: 1px solid #E3DFD4; background: #F2F0E9; padding: 8px clamp(18px, 3vw, 40px) 22px;">
+        <sc-for list="{{ navItems }}" as="nav" hint-placeholder-count="6">
+          <button onClick="{{ nav.go }}" style="display: flex; align-items: baseline; gap: 12px; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid #E3DFD4; padding: 17px 2px; font-size: 15px; color: #22323A; cursor: pointer;">
+            <span>{{ nav.ja }}</span>
+            <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: #63727A;">{{ nav.en }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </sc-if>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main>
+    <section style="padding: clamp(50px, 6vw, 96px) clamp(18px, 3vw, 40px) clamp(44px, 5vw, 80px); background: linear-gradient(180deg, #EDEBE2 0%, #F7F5F0 100%); border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: clamp(30px, 4vw, 64px); align-items: center;">
+        <div style="animation: riseIn 0.9s ease both;">
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.26em; color: #2F5F47; margin: 0 0 22px;">PERFORMANCE / STRATEGY / DESIGN</p>
+          <h1 style="font-size: clamp(26px, 4.4vw, 58px); line-height: 1.34; font-weight: 500; margin: 0 0 26px; text-wrap: pretty;">成果から逆算する、<br />デジタルマーケティング。</h1>
+          <p style="font-size: 15.5px; line-height: 2.05; color: #5A686E; margin: 0 0 34px; max-width: 30em; text-wrap: pretty;">戦略設計から広告運用、サイト制作、分析までを一つのチームが担います。数値の背後にある顧客の意思決定まで踏み込み、事業の利益に直結する打ち手だけを積み上げます。</p>
+          <div data-herocta="1" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px;">
+            <button onClick="{{ goContact }}" style="background: #22323A; color: #F7F5F0; border: 0; padding: 17px 30px; font-size: 14px; letter-spacing: 0.06em; cursor: pointer;" style-hover="background: #4E7A63;">無料でご相談する</button>
+            <button onClick="{{ goCases }}" style="background: none; color: #22323A; border: 1px solid #C9C3B4; padding: 17px 30px; font-size: 14px; letter-spacing: 0.06em; cursor: pointer;" style-hover="border-color: #22323A;">導入事例を見る</button>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: clamp(20px, 4vw, 48px); border-top: 1px solid #DDD8CB; padding-top: 24px;">
+            <div>
+              <p style="font-family: 'Cormorant Garamond', serif; font-size: 34px; margin: 0; line-height: 1;">128<span style="font-size: 17px;">社</span></p>
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #5F6D72; margin: 8px 0 0;">CLIENTS</p>
+            </div>
+            <div>
+              <p style="font-family: 'Cormorant Garamond', serif; font-size: 34px; margin: 0; line-height: 1;">312<span style="font-size: 17px;">%</span></p>
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #5F6D72; margin: 8px 0 0;">AVG. ROAS</p>
+            </div>
+            <div>
+              <p style="font-family: 'Cormorant Garamond', serif; font-size: 34px; margin: 0; line-height: 1;">94<span style="font-size: 17px;">%</span></p>
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #5F6D72; margin: 8px 0 0;">RETENTION</p>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 18px; align-items: stretch; min-height: 380px;">
+          <p style="writing-mode: vertical-rl; font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 13px; letter-spacing: 0.32em; color: #97A2A6; margin: 0; padding: 6px 0;">数字の先にある、事業の手応えまで。</p>
+          <div style="flex: 1; position: relative; border: 1px solid #DDD8CB; overflow: hidden;"><img src="images/hero-meeting.jpg" alt="クライアントとの定例ミーティング" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; object-position: 50% 15%;" /></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: clamp(60px, 7vw, 112px) clamp(18px, 3vw, 40px); border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr)); gap: clamp(30px, 5vw, 80px);">
+        <div>
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 10px;">About us</p>
+          <h2 style="font-size: clamp(24px, 2.6vw, 34px); font-weight: 500; line-height: 1.6; margin: 0;">広告代理店ではなく、<br />事業の共同責任者として。</h2>
+        </div>
+        <div style="display: grid; gap: 22px; align-content: start;">
+          <p style="font-size: 15.5px; line-height: 2.1; color: #5A686E; margin: 0; text-wrap: pretty;">STRATA DIGITALは2016年の創業以来、BtoB SaaS・D2C・人材・医療の4領域に特化して128社の成長を支援してきました。媒体購入の代行にとどまらず、KPI設計、クリエイティブ制作、LP開発、CRM連携までを内製体制で一気通貫に担います。</p>
+          <p style="font-size: 15.5px; line-height: 2.1; color: #5A686E; margin: 0; text-wrap: pretty;">私たちが約束するのは「レポートの見栄え」ではなく、粗利とLTVの改善です。すべての施策に仮説と検証の記録を残し、社内に知見が蓄積される状態をつくります。</p>
+          <button onClick="{{ goAbout }}" style="justify-self: start; display: inline-flex; align-items: center; gap: 12px; background: none; border: 0; border-bottom: 1px solid #22323A; padding: 8px 2px; font-size: 14px; color: #22323A; cursor: pointer;" style-hover="color: #4E7A63; border-color: #4E7A63;">会社について詳しく<span style="font-family: 'Cormorant Garamond', serif;">&#8594;</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: clamp(60px, 7vw, 112px) clamp(18px, 3vw, 40px); background: #22323A; color: #EFEDE4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.26em; color: #8FB3A1; margin: 0 0 14px;">WHY STRATA</p>
+        <h2 style="font-size: clamp(24px, 2.8vw, 36px); font-weight: 500; line-height: 1.55; margin: 0 0 clamp(36px, 5vw, 64px); max-width: 24em;">選ばれる理由は、意思決定の速さと透明性にあります。</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1px; background: #3A4A51;">
+          <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="4">
+            <div style="background: #22323A; padding: clamp(26px, 3vw, 40px) clamp(22px, 2.5vw, 34px);">
+              <p style="font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: #8FB3A1; margin: 0 0 20px;">{{ r.no }}</p>
+              <h3 style="font-size: 18px; font-weight: 500; line-height: 1.7; margin: 0 0 14px;">{{ r.title }}</h3>
+              <p style="font-size: 13.5px; line-height: 2; color: #AEBBBF; margin: 0;">{{ r.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: clamp(60px, 7vw, 112px) clamp(18px, 3vw, 40px); border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: clamp(30px, 4vw, 52px);">
+          <div>
+            <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 8px;">Services</p>
+            <h2 style="font-size: clamp(24px, 2.8vw, 36px); font-weight: 500; margin: 0;">主要サービス</h2>
+          </div>
+          <button onClick="{{ goServices }}" style="background: none; border: 1px solid #C9C3B4; padding: 15px 26px; font-size: 13.5px; cursor: pointer; color: #22323A;" style-hover="border-color: #22323A;">全9サービスを見る</button>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr)); gap: 1px; background: #E3DFD4; border: 1px solid #E3DFD4;">
+          <sc-for list="{{ featuredServices }}" as="s" hint-placeholder-count="6">
+            <button onClick="{{ s.go }}" style="text-align: left; background: #F7F5F0; border: 0; padding: clamp(26px, 3vw, 38px) clamp(22px, 2.5vw, 32px); cursor: pointer; display: grid; gap: 14px; align-content: start; min-height: 208px;" style-hover="background: #FFFFFF;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #63727A;">{{ s.code }}</span>
+              <span style="font-size: 18.5px; font-weight: 500; color: #22323A;">{{ s.ja }}</span>
+              <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: #2F5F47;">{{ s.en }}</span>
+              <span style="font-size: 13.5px; line-height: 1.95; color: #5A686E;">{{ s.lead }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: clamp(60px, 7vw, 112px) clamp(18px, 3vw, 40px); background: #EDEBE2; border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 8px;">Process</p>
+        <h2 style="font-size: clamp(24px, 2.8vw, 36px); font-weight: 500; margin: 0 0 clamp(34px, 4vw, 56px);">ご契約までの流れと、運用の型</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: clamp(20px, 3vw, 34px);">
+          <sc-for list="{{ processSteps }}" as="p" hint-placeholder-count="5">
+            <div style="border-top: 1px solid #22323A; padding-top: 20px;">
+              <p style="font-family: 'Cormorant Garamond', serif; font-size: 28px; margin: 0 0 14px; color: #4E7A63;">{{ p.no }}</p>
+              <h3 style="font-size: 16.5px; font-weight: 500; margin: 0 0 10px;">{{ p.title }}</h3>
+              <p style="font-size: 13px; line-height: 1.95; color: #5A686E; margin: 0 0 12px;">{{ p.body }}</p>
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #5F6D72; margin: 0;">{{ p.term }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: clamp(60px, 7vw, 112px) clamp(18px, 3vw, 40px); border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: clamp(30px, 4vw, 52px);">
+          <div>
+            <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 8px;">Case studies</p>
+            <h2 style="font-size: clamp(24px, 2.8vw, 36px); font-weight: 500; margin: 0;">導入事例</h2>
+          </div>
+          <button onClick="{{ goCases }}" style="background: none; border: 1px solid #C9C3B4; padding: 15px 26px; font-size: 13.5px; cursor: pointer; color: #22323A;" style-hover="border-color: #22323A;">事例一覧へ</button>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr)); gap: clamp(20px, 2.5vw, 30px);">
+          <sc-for list="{{ featuredCases }}" as="c" hint-placeholder-count="3">
+            <button onClick="{{ c.go }}" style="text-align: left; background: none; border: 0; padding: 0; cursor: pointer; display: grid; gap: 16px;" style-hover="opacity: 0.88;">
+              <span style="display: block; height: 210px; background: repeating-linear-gradient(135deg, #E6E3D8 0 10px, #EFEDE4 10px 20px); border: 1px solid #DDD8CB; position: relative;">
+                <img src="{{ c.img }}" alt="{{ c.title }}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;" />
+              </span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: #2F5F47;">{{ c.industry }}</span>
+              <span style="font-size: 17.5px; font-weight: 500; line-height: 1.7; color: #22323A;">{{ c.title }}</span>
+              <span style="display: flex; gap: 20px; border-top: 1px solid #E3DFD4; padding-top: 14px;">
+                <span style="display: block;">
+                  <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #22323A; line-height: 1;">{{ c.kpi1v }}</span>
+                  <span style="display: block; font-size: 11px; color: #5F6D72; margin-top: 6px;">{{ c.kpi1l }}</span>
+                </span>
+                <span style="display: block;">
+                  <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #22323A; line-height: 1;">{{ c.kpi2v }}</span>
+                  <span style="display: block; font-size: 11px; color: #5F6D72; margin-top: 6px;">{{ c.kpi2l }}</span>
+                </span>
+              </span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: clamp(60px, 7vw, 112px) clamp(18px, 3vw, 40px); background: #EDEBE2; border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 8px;">Voices</p>
+        <h2 style="font-size: clamp(24px, 2.8vw, 36px); font-weight: 500; margin: 0 0 clamp(34px, 4vw, 56px);">お客様の声</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: clamp(20px, 2.5vw, 30px);">
+          <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+            <figure style="background: #F7F5F0; border: 1px solid #DDD8CB; padding: clamp(24px, 3vw, 36px); margin: 0; display: grid; gap: 22px; align-content: space-between;">
+              <blockquote style="margin: 0; font-size: 15px; line-height: 2.05; color: #3E4C52; text-wrap: pretty;">{{ t.quote }}</blockquote>
+              <figcaption style="display: flex; align-items: center; gap: 14px; border-top: 1px solid #E3DFD4; padding-top: 18px;">
+                <span style="width: 42px; height: 42px; border-radius: 50%; background: repeating-linear-gradient(135deg, #E0DDD1 0 6px, #EAE7DC 6px 12px); border: 1px solid #DDD8CB; flex: 0 0 auto;"></span>
+                <span>
+                  <span style="display: block; font-size: 14px; color: #22323A;">{{ t.name }}</span>
+                  <span style="display: block; font-size: 12px; color: #5F6D72; margin-top: 4px;">{{ t.role }}</span>
+                </span>
+              </figcaption>
+            </figure>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: clamp(60px, 7vw, 112px) clamp(18px, 3vw, 40px); border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: clamp(30px, 5vw, 70px);">
+        <div>
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 8px;">FAQ</p>
+          <h2 style="font-size: clamp(24px, 2.6vw, 34px); font-weight: 500; line-height: 1.6; margin: 0 0 20px;">よくあるご質問</h2>
+          <p style="font-size: 14px; line-height: 2; color: #5A686E; margin: 0;">ここに掲載のない内容も、お問い合わせフォームよりお気軽にご相談ください。担当コンサルタントが2営業日以内にご返信します。</p>
+        </div>
+        <div>
+          <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+            <div style="border-bottom: 1px solid #DDD8CB;">
+              <button onClick="{{ f.toggle }}" style="width: 100%; display: flex; align-items: flex-start; gap: 16px; text-align: left; background: none; border: 0; padding: 22px 2px; cursor: pointer; color: #22323A;">
+                <span style="font-family: 'Cormorant Garamond', serif; font-size: 21px; color: #2F5F47; line-height: 1.4;">Q</span>
+                <span style="flex: 1; font-size: 15px; line-height: 1.75;">{{ f.q }}</span>
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #5F6D72;">{{ f.sign }}</span>
+              </button>
+              <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+                <p style="margin: 0; padding: 0 2px 24px 34px; font-size: 14px; line-height: 2.05; color: #5A686E; text-wrap: pretty;">{{ f.a }}</p>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: clamp(60px, 7vw, 100px) clamp(18px, 3vw, 40px); background: #EDEBE2; border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 36px;">
+          <div>
+            <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 8px;">News</p>
+            <h2 style="font-size: clamp(24px, 2.8vw, 36px); font-weight: 500; margin: 0;">最新のお知らせ</h2>
+          </div>
+          <button onClick="{{ goBlog }}" style="background: none; border: 1px solid #C9C3B4; padding: 15px 26px; font-size: 13.5px; cursor: pointer; color: #22323A;" style-hover="border-color: #22323A;">インサイト一覧へ</button>
+        </div>
+        <div style="border-top: 1px solid #DDD8CB;">
+          <sc-for list="{{ news }}" as="n" hint-placeholder-count="4">
+            <button onClick="{{ n.go }}" style="width: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: clamp(12px, 2vw, 28px); background: none; border: 0; border-bottom: 1px solid #DDD8CB; padding: 22px 2px; text-align: left; cursor: pointer;" style-hover="background: #F4F2EB;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #5F6D72;">{{ n.date }}</span>
+              <span style="font-size: 10.5px; letter-spacing: 0.14em; color: #2F5F47; border: 1px solid #A9C4B3; padding: 5px 12px;">{{ n.tag }}</span>
+              <span style="flex: 1; min-width: 200px; font-size: 15px; color: #22323A;">{{ n.title }}</span>
+              <span style="font-family: 'Cormorant Garamond', serif; color: #5F6D72;">&#8594;</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="padding: clamp(46px, 5vw, 78px) clamp(18px, 3vw, 40px); background: #EDEBE2; border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: #5F6D72; margin: 0 0 18px;">HOME / SERVICES</p>
+        <h1 style="font-size: clamp(30px, 3.8vw, 48px); font-weight: 500; margin: 0 0 18px;">サービス</h1>
+        <p style="font-size: 15.5px; line-height: 2.05; color: #5A686E; margin: 0; max-width: 34em; text-wrap: pretty;">9つの領域を、同じチームが横断して担当します。施策単体ではなく、集客から受注・継続までの一連の流れとして設計するため、媒体ごとの最適化が全体の成果を損なうことがありません。</p>
+      </div>
+    </section>
+    <section style="padding: clamp(40px, 5vw, 72px) clamp(18px, 3vw, 40px) clamp(60px, 7vw, 110px);">
+      <div data-svcgrid="1" style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: clamp(24px, 4vw, 56px); align-items: start;">
+        <nav style="display: grid; gap: 1px; background: #E3DFD4; border: 1px solid #E3DFD4;" data-svcnav="1">
+          <sc-for list="{{ serviceNav }}" as="s" hint-placeholder-count="9">
+            <button onClick="{{ s.go }}" style="{{ s.style }}" style-hover="background: #FFFFFF;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; color: #63727A;">{{ s.code }}</span>
+              <span style="font-size: 14.5px;">{{ s.ja }}</span>
+            </button>
+          </sc-for>
+        </nav>
+        <article style="display: grid; gap: clamp(30px, 4vw, 48px);">
+          <header>
+            <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: #4E7A63; margin: 0 0 10px;">{{ svc.en }}</p>
+            <h2 style="font-size: clamp(26px, 3vw, 38px); font-weight: 500; margin: 0 0 20px;">{{ svc.ja }}</h2>
+            <p style="font-size: 15.5px; line-height: 2.1; color: #5A686E; margin: 0; max-width: 40em; text-wrap: pretty;">{{ svc.overview }}</p>
+          </header>
+          <div style="height: clamp(200px, 32vw, 360px); border: 1px solid #DDD8CB; overflow: hidden;"><img src="{{ svc.img }}" alt="{{ svc.ja }}" style="width: 100%; height: 100%; object-fit: cover; display: block;" /></div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: clamp(24px, 3vw, 44px);">
+            <div>
+              <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.2em; color: #2F5F47; margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid #DDD8CB;">FEATURES / 特長</h3>
+              <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 14px;">
+                <sc-for list="{{ svc.features }}" as="f" hint-placeholder-count="4">
+                  <li style="font-size: 14px; line-height: 1.9; color: #3E4C52; display: flex; gap: 12px;"><span style="color: #2F5F47;">&#9679;</span><span>{{ f.t }}</span></li>
+                </sc-for>
+              </ul>
+            </div>
+            <div>
+              <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.2em; color: #2F5F47; margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid #DDD8CB;">BENEFITS / 得られる成果</h3>
+              <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 14px;">
+                <sc-for list="{{ svc.benefits }}" as="b" hint-placeholder-count="3">
+                  <li style="font-size: 14px; line-height: 1.9; color: #3E4C52; display: flex; gap: 12px;"><span style="color: #2F5F47;">&#9679;</span><span>{{ b.t }}</span></li>
+                </sc-for>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.2em; color: #2F5F47; margin: 0 0 20px;">PROCESS / 進め方</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); gap: 18px;">
+              <sc-for list="{{ svc.process }}" as="p" hint-placeholder-count="4">
+                <div style="border-top: 1px solid #22323A; padding-top: 16px;">
+                  <p style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #4E7A63; margin: 0 0 10px;">{{ p.no }}</p>
+                  <p style="font-size: 14px; font-weight: 500; margin: 0 0 8px;">{{ p.t }}</p>
+                  <p style="font-size: 12.5px; line-height: 1.9; color: #5A686E; margin: 0;">{{ p.d }}</p>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="background: #EDEBE2; border: 1px solid #DDD8CB; padding: clamp(24px, 3vw, 36px);">
+            <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.2em; color: #2F5F47; margin: 0 0 18px;">DELIVERABLES / 納品物</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <sc-for list="{{ svc.deliverables }}" as="d" hint-placeholder-count="4">
+                <span style="background: #F7F5F0; border: 1px solid #DDD8CB; padding: 10px 16px; font-size: 13px; color: #3E4C52;">{{ d.t }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <div style="background: #22323A; color: #EFEDE4; padding: clamp(28px, 3.5vw, 44px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px;">
+            <div>
+              <p style="font-size: 19px; margin: 0 0 8px;">{{ svc.ja }}のご相談</p>
+              <p style="font-size: 13.5px; color: #AEBBBF; margin: 0;">現状のデータをお預かりし、改善余地を無料で診断します。</p>
+            </div>
+            <button onClick="{{ goContact }}" style="background: #EFEDE4; color: #22323A; border: 0; padding: 16px 28px; font-size: 14px; cursor: pointer;" style-hover="background: #8FB3A1;">無料診断を依頼する</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isCases }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="padding: clamp(46px, 5vw, 78px) clamp(18px, 3vw, 40px); background: #EDEBE2; border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: #5F6D72; margin: 0 0 18px;">HOME / CASE STUDIES</p>
+        <h1 style="font-size: clamp(30px, 3.8vw, 48px); font-weight: 500; margin: 0 0 18px;">導入事例</h1>
+        <p style="font-size: 15.5px; line-height: 2.05; color: #5A686E; margin: 0; max-width: 34em; text-wrap: pretty;">課題・戦略・実行・結果を、実際の数値とともに公開しています。業種で絞り込んでご覧ください。</p>
+      </div>
+    </section>
+    <section style="padding: clamp(34px, 4vw, 56px) clamp(18px, 3vw, 40px) clamp(60px, 7vw, 110px);">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: clamp(28px, 3.5vw, 46px);">
+          <sc-for list="{{ caseFilters }}" as="f" hint-placeholder-count="5">
+            <button onClick="{{ f.go }}" style="{{ f.style }}">{{ f.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display: grid; gap: clamp(26px, 3vw, 40px);">
+          <sc-for list="{{ visibleCases }}" as="c" hint-placeholder-count="3">
+            <article style="border: 1px solid #DDD8CB; background: #FBFAF6; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+              <div data-casemedia="1" style="position: relative; min-height: 300px; border-right: 1px solid #DDD8CB; overflow: hidden;"><img src="{{ c.img }}" alt="{{ c.title }}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;" /></div>
+              <div style="padding: clamp(26px, 3vw, 42px); display: grid; gap: 20px; align-content: start;">
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
+                  <span style="font-size: 10.5px; letter-spacing: 0.14em; color: #2F5F47; border: 1px solid #A9C4B3; padding: 5px 12px;">{{ c.industry }}</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #5F6D72;">{{ c.period }}</span>
+                </div>
+                <h2 style="font-size: clamp(20px, 2.2vw, 27px); font-weight: 500; line-height: 1.6; margin: 0;">{{ c.title }}</h2>
+                <div style="display: grid; gap: 16px;">
+                  <div>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: #2F5F47; margin: 0 0 6px;">CHALLENGE</p>
+                    <p style="font-size: 14px; line-height: 1.95; color: #5A686E; margin: 0;">{{ c.challenge }}</p>
+                  </div>
+                  <div>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: #2F5F47; margin: 0 0 6px;">STRATEGY &amp; SOLUTION</p>
+                    <p style="font-size: 14px; line-height: 1.95; color: #5A686E; margin: 0;">{{ c.strategy }}</p>
+                  </div>
+                  <div>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: #2F5F47; margin: 0 0 6px;">RESULTS</p>
+                    <p style="font-size: 14px; line-height: 1.95; color: #5A686E; margin: 0;">{{ c.results }}</p>
+                  </div>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 28px; border-top: 1px solid #E3DFD4; padding-top: 20px;">
+                  <sc-for list="{{ c.metrics }}" as="m" hint-placeholder-count="3">
+                    <div>
+                      <p style="font-family: 'Cormorant Garamond', serif; font-size: 30px; margin: 0; line-height: 1; color: #22323A;">{{ m.v }}</p>
+                      <p style="font-size: 11.5px; color: #5F6D72; margin: 8px 0 0;">{{ m.l }}</p>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="padding: clamp(46px, 5vw, 78px) clamp(18px, 3vw, 40px); background: #EDEBE2; border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: #5F6D72; margin: 0 0 18px;">HOME / ABOUT</p>
+        <h1 style="font-size: clamp(30px, 3.8vw, 48px); font-weight: 500; margin: 0;">会社概要</h1>
+      </div>
+    </section>
+    <section style="padding: clamp(50px, 6vw, 96px) clamp(18px, 3vw, 40px); border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: clamp(30px, 5vw, 72px); align-items: start;">
+        <div style="display: flex; gap: 18px; min-height: 360px;">
+          <p style="writing-mode: vertical-rl; font-size: 12.5px; letter-spacing: 0.3em; color: #97A2A6; margin: 0;">2016 — 東京・神保町</p>
+          <div style="flex: 1; position: relative; border: 1px solid #DDD8CB; overflow: hidden;"><img src="images/office-entrance.jpg" alt="神保町のオフィスビル" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;" /></div>
+        </div>
+        <div>
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 10px;">Our story</p>
+          <h2 style="font-size: clamp(22px, 2.4vw, 32px); font-weight: 500; line-height: 1.65; margin: 0 0 24px;">レポートではなく、<br />損益計算書を動かすために。</h2>
+          <p style="font-size: 15px; line-height: 2.1; color: #5A686E; margin: 0 0 18px; text-wrap: pretty;">創業メンバーの3名は、いずれも事業側で予算を持つ立場から広告運用を発注していました。美しいレポートが届く一方で、営業現場の受注が増えない。その断絶を埋めるために、2016年にSTRATA DIGITALを設立しました。</p>
+          <p style="font-size: 15px; line-height: 2.1; color: #5A686E; margin: 0 0 18px; text-wrap: pretty;">現在は32名のコンサルタント・クリエイター・エンジニアが在籍し、広告・制作・分析をすべて内製しています。外注を挟まないため、仮説から検証までの周期を平均5営業日に短縮できました。</p>
+        </div>
+      </div>
+    </section>
+    <section style="padding: clamp(50px, 6vw, 96px) clamp(18px, 3vw, 40px); background: #22323A; color: #EFEDE4;">
+      <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: clamp(28px, 4vw, 60px);">
+        <div>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.22em; color: #8FB3A1; margin: 0 0 16px;">MISSION</p>
+          <p style="font-size: clamp(19px, 2vw, 25px); line-height: 1.8; margin: 0;">意思決定に、根拠を。<br />すべての投資判断を検証可能にする。</p>
+        </div>
+        <div>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.22em; color: #8FB3A1; margin: 0 0 16px;">VISION</p>
+          <p style="font-size: clamp(19px, 2vw, 25px); line-height: 1.8; margin: 0;">2030年までに、日本の成長企業500社の<br />マーケティング基盤を担う。</p>
+        </div>
+      </div>
+    </section>
+    <section style="padding: clamp(50px, 6vw, 96px) clamp(18px, 3vw, 40px); border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 8px;">Values</p>
+        <h2 style="font-size: clamp(24px, 2.8vw, 34px); font-weight: 500; margin: 0 0 clamp(30px, 4vw, 52px);">行動指針</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: clamp(20px, 3vw, 34px);">
+          <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+            <div style="border-top: 1px solid #22323A; padding-top: 20px;">
+              <p style="font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: #2F5F47; margin: 0 0 14px;">{{ v.en }}</p>
+              <h3 style="font-size: 17px; font-weight: 500; margin: 0 0 12px;">{{ v.ja }}</h3>
+              <p style="font-size: 13.5px; line-height: 2; color: #5A686E; margin: 0;">{{ v.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="padding: clamp(50px, 6vw, 96px) clamp(18px, 3vw, 40px); background: #EDEBE2; border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 8px;">Leadership</p>
+        <h2 style="font-size: clamp(24px, 2.8vw, 34px); font-weight: 500; margin: 0 0 clamp(30px, 4vw, 52px);">経営チーム</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: clamp(20px, 2.5vw, 30px);">
+          <sc-for list="{{ team }}" as="p" hint-placeholder-count="4">
+            <div>
+              <div style="height: 260px; border: 1px solid #DDD8CB; margin-bottom: 18px; overflow: hidden;"><img src="{{ p.img }}" alt="{{ p.name }}" style="width: 100%; height: 100%; object-fit: cover; display: block; object-position: {{ p.pos }};" /></div>
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #2F5F47; margin: 0 0 8px;">{{ p.role }}</p>
+              <p style="font-size: 17px; margin: 0 0 6px;">{{ p.name }}</p>
+              <p style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #5F6D72; margin: 0 0 12px;">{{ p.en }}</p>
+              <p style="font-size: 13px; line-height: 1.95; color: #5A686E; margin: 0;">{{ p.bio }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="padding: clamp(50px, 6vw, 96px) clamp(18px, 3vw, 40px);">
+      <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr)); gap: clamp(30px, 5vw, 70px);">
+        <div>
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 8px;">Timeline</p>
+          <h2 style="font-size: clamp(22px, 2.4vw, 30px); font-weight: 500; margin: 0 0 30px;">沿革</h2>
+          <div style="border-top: 1px solid #DDD8CB;">
+            <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="5">
+              <div style="display: flex; gap: 22px; border-bottom: 1px solid #DDD8CB; padding: 18px 2px;">
+                <span style="font-family: 'Cormorant Garamond', serif; font-size: 19px; color: #4E7A63; min-width: 58px;">{{ t.year }}</span>
+                <span style="font-size: 14px; line-height: 1.85; color: #3E4C52;">{{ t.body }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 8px;">Company</p>
+          <h2 style="font-size: clamp(22px, 2.4vw, 30px); font-weight: 500; margin: 0 0 30px;">会社情報</h2>
+          <dl style="margin: 0; border-top: 1px solid #DDD8CB;">
+            <sc-for list="{{ companyInfo }}" as="c" hint-placeholder-count="6">
+              <div style="display: flex; flex-wrap: wrap; gap: 8px 24px; border-bottom: 1px solid #DDD8CB; padding: 17px 2px;">
+                <dt style="font-size: 12.5px; color: #5F6D72; min-width: 110px;">{{ c.k }}</dt>
+                <dd style="margin: 0; font-size: 14px; line-height: 1.85; color: #3E4C52;">{{ c.v }}</dd>
+              </div>
+            </sc-for>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="padding: clamp(46px, 5vw, 78px) clamp(18px, 3vw, 40px); background: #EDEBE2; border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: #5F6D72; margin: 0 0 18px;">HOME / INSIGHTS</p>
+        <h1 style="font-size: clamp(30px, 3.8vw, 48px); font-weight: 500; margin: 0 0 18px;">インサイト</h1>
+        <p style="font-size: 15.5px; line-height: 2.05; color: #5A686E; margin: 0; max-width: 34em;">運用の現場で検証した知見を、そのまま公開しています。</p>
+      </div>
+    </section>
+    <section style="padding: clamp(40px, 5vw, 70px) clamp(18px, 3vw, 40px) clamp(60px, 7vw, 110px);">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <article style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); border: 1px solid #DDD8CB; background: #FBFAF6; margin-bottom: clamp(34px, 4vw, 56px);">
+          <div style="position: relative; min-height: 320px; overflow: hidden;"><img src="images/team-huddle.jpg" alt="CVR改善の打ち手を検討するチーム" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;" /></div>
+          <div style="padding: clamp(26px, 3vw, 44px); display: grid; gap: 18px; align-content: center;">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #2F5F47;">FEATURED / 特集</span>
+            <h2 style="font-size: clamp(21px, 2.4vw, 30px); font-weight: 500; line-height: 1.6; margin: 0;">CVR改善の打ち手を、影響度順に並べ替える方法</h2>
+            <p style="font-size: 14.5px; line-height: 2; color: #5A686E; margin: 0; text-wrap: pretty;">LPのA/Bテストで成果が出ない最大の理由は、検証の順序が誤っていることです。フォーム改善よりオファー設計が先に来るべき理由を、47件のテスト結果から検証しました。</p>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #5F6D72;">
+              <span>2026.09.12</span><span>CRO</span><span>読了 9分</span>
+            </div>
+          </div>
+        </article>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin-bottom: clamp(26px, 3vw, 40px);">
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <sc-for list="{{ postFilters }}" as="f" hint-placeholder-count="5">
+              <button onClick="{{ f.go }}" style="{{ f.style }}">{{ f.label }}</button>
+            </sc-for>
+          </div>
+          <input data-search="1" type="search" placeholder="キーワードで検索" value="{{ query }}" onChange="{{ onQuery }}" style="border: 1px solid #C9C3B4; background: #FBFAF6; padding: 13px 16px; font-size: 13.5px; min-width: 220px; color: #22323A;" />
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: clamp(20px, 2.5vw, 32px);">
+          <sc-for list="{{ visiblePosts }}" as="p" hint-placeholder-count="6">
+            <article style="display: grid; gap: 14px; align-content: start;">
+              <div style="height: 190px; border: 1px solid #DDD8CB; overflow: hidden;"><img src="{{ p.img }}" alt="{{ p.title }}" style="width: 100%; height: 100%; object-fit: cover; display: block;" /></div>
+              <div style="display: flex; align-items: center; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #5F6D72;">
+                <span style="color: #2F5F47;">{{ p.cat }}</span><span>{{ p.date }}</span>
+              </div>
+              <h3 style="font-size: 16.5px; font-weight: 500; line-height: 1.75; margin: 0;">{{ p.title }}</h3>
+              <p style="font-size: 13.5px; line-height: 1.95; color: #5A686E; margin: 0;">{{ p.lead }}</p>
+            </article>
+          </sc-for>
+        </div>
+        <sc-if value="{{ noPosts }}" hint-placeholder-val="{{ false }}">
+          <p style="font-size: 14px; color: #5F6D72; padding: 40px 0;">該当する記事がありません。キーワードを変えてお試しください。</p>
+        </sc-if>
+        <div style="margin-top: clamp(44px, 5vw, 80px); background: #22323A; color: #EFEDE4; padding: clamp(30px, 4vw, 52px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 28px; align-items: center;">
+          <div>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.22em; color: #8FB3A1; margin: 0 0 14px;">NEWSLETTER</p>
+            <p style="font-size: clamp(18px, 2vw, 24px); line-height: 1.7; margin: 0 0 10px;">月2回、検証済みの打ち手だけをお届けします。</p>
+            <p style="font-size: 13px; color: #AEBBBF; margin: 0;">登録者3,400名。配信解除はいつでも可能です。</p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <input type="email" placeholder="name@company.co.jp" style="flex: 1; min-width: 180px; border: 1px solid #4A5A61; background: #2A3A42; color: #EFEDE4; padding: 15px 16px; font-size: 13.5px;" />
+            <button style="background: #EFEDE4; color: #22323A; border: 0; padding: 15px 26px; font-size: 13.5px; cursor: pointer;" style-hover="background: #8FB3A1;">登録する</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="padding: clamp(46px, 5vw, 78px) clamp(18px, 3vw, 40px); background: #EDEBE2; border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: #5F6D72; margin: 0 0 18px;">HOME / CONTACT</p>
+        <h1 style="font-size: clamp(30px, 3.8vw, 48px); font-weight: 500; margin: 0 0 18px;">お問い合わせ</h1>
+        <p style="font-size: 15.5px; line-height: 2.05; color: #5A686E; margin: 0; max-width: 34em; text-wrap: pretty;">2営業日以内に担当コンサルタントよりご返信します。現状の課題が整理できていない段階でも問題ありません。</p>
+      </div>
+    </section>
+    <section style="padding: clamp(44px, 5vw, 80px) clamp(18px, 3vw, 40px); border-bottom: 1px solid #E3DFD4;">
+      <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: clamp(30px, 5vw, 70px); align-items: start;">
+        <form onSubmit="{{ onSubmit }}" style="display: grid; gap: 22px;">
+          <div style="display: grid; gap: 8px;">
+            <label for="f-company" style="font-size: 12.5px; letter-spacing: 0.06em; color: #5A686E;">会社名<span style="color: #2F5F47;"> *</span></label>
+            <input id="f-company" required="{{ true }}" style="border: 1px solid #C9C3B4; background: #FBFAF6; padding: 15px 16px; font-size: 14.5px; color: #22323A;" />
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 22px;">
+            <div style="display: grid; gap: 8px;">
+              <label for="f-name" style="font-size: 12.5px; letter-spacing: 0.06em; color: #5A686E;">お名前<span style="color: #2F5F47;"> *</span></label>
+              <input id="f-name" required="{{ true }}" style="border: 1px solid #C9C3B4; background: #FBFAF6; padding: 15px 16px; font-size: 14.5px; color: #22323A;" />
+            </div>
+            <div style="display: grid; gap: 8px;">
+              <label for="f-mail" style="font-size: 12.5px; letter-spacing: 0.06em; color: #5A686E;">メールアドレス<span style="color: #2F5F47;"> *</span></label>
+              <input id="f-mail" type="email" required="{{ true }}" style="border: 1px solid #C9C3B4; background: #FBFAF6; padding: 15px 16px; font-size: 14.5px; color: #22323A;" />
+            </div>
+          </div>
+          <div style="display: grid; gap: 8px;">
+            <label for="f-topic" style="font-size: 12.5px; letter-spacing: 0.06em; color: #5A686E;">ご相談内容</label>
+            <select id="f-topic" style="border: 1px solid #C9C3B4; background: #FBFAF6; padding: 15px 16px; font-size: 14.5px; color: #22323A;">
+              <option>広告運用・PPC</option>
+              <option>SEO・コンテンツ</option>
+              <option>サイト制作・LP</option>
+              <option>ブランディング</option>
+              <option>分析・レポーティング</option>
+              <option>その他・未定</option>
+            </select>
+          </div>
+          <div style="display: grid; gap: 8px;">
+            <label for="f-budget" style="font-size: 12.5px; letter-spacing: 0.06em; color: #5A686E;">月額予算の目安</label>
+            <select id="f-budget" style="border: 1px solid #C9C3B4; background: #FBFAF6; padding: 15px 16px; font-size: 14.5px; color: #22323A;">
+              <option>〜50万円</option>
+              <option>50〜200万円</option>
+              <option>200〜500万円</option>
+              <option>500万円以上</option>
+              <option>未定・相談したい</option>
+            </select>
+          </div>
+          <div style="display: grid; gap: 8px;">
+            <label for="f-msg" style="font-size: 12.5px; letter-spacing: 0.06em; color: #5A686E;">詳細<span style="color: #2F5F47;"> *</span></label>
+            <textarea id="f-msg" rows="6" required="{{ true }}" placeholder="現状の課題、目標としている数値などをご記入ください。" style="border: 1px solid #C9C3B4; background: #FBFAF6; padding: 15px 16px; font-size: 14.5px; line-height: 1.8; color: #22323A; resize: vertical;"></textarea>
+          </div>
+          <p style="font-size: 12px; line-height: 1.9; color: #5F6D72; margin: 0;">送信いただいた内容は、プライバシーポリシーに基づき適切に管理します。</p>
+          <button type="submit" style="justify-self: start; background: #22323A; color: #F7F5F0; border: 0; padding: 17px 36px; font-size: 14.5px; letter-spacing: 0.06em; cursor: pointer;" style-hover="background: #4E7A63;">送信する</button>
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 0; background: #E4EEE7; border: 1px solid #BFD5C7; padding: 16px 18px; font-size: 14px; color: #2F5A45;">送信を受け付けました。2営業日以内にご返信します。</p>
+          </sc-if>
+        </form>
+        <div style="display: grid; gap: clamp(24px, 3vw, 36px);">
+          <div>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.2em; color: #2F5F47; margin: 0 0 18px;">DIRECT</p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.2vw, 40px); margin: 0 0 8px; letter-spacing: 0.02em;">03-4567-8910</p>
+            <p style="font-size: 13px; color: #5F6D72; margin: 0;">平日 10:00 – 19:00 / 土日祝休</p>
+          </div>
+          <dl style="margin: 0; border-top: 1px solid #DDD8CB;">
+            <sc-for list="{{ contactInfo }}" as="c" hint-placeholder-count="4">
+              <div style="display: flex; flex-wrap: wrap; gap: 8px 24px; border-bottom: 1px solid #DDD8CB; padding: 16px 2px;">
+                <dt style="font-size: 12.5px; color: #5F6D72; min-width: 92px;">{{ c.k }}</dt>
+                <dd style="margin: 0; font-size: 14px; line-height: 1.85; color: #3E4C52;">{{ c.v }}</dd>
+              </div>
+            </sc-for>
+          </dl>
+          <div style="height: 300px; background: repeating-linear-gradient(135deg, #E6E3D8 0 10px, #EFEDE4 10px 20px); border: 1px solid #DDD8CB; display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #5F6D72;">[ Google Maps 埋め込み予定 ]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="padding: clamp(50px, 6vw, 96px) clamp(18px, 3vw, 40px); background: #EDEBE2;">
+      <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr)); gap: clamp(28px, 5vw, 68px);">
+        <div>
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #4E7A63; margin: 0 0 8px;">FAQ</p>
+          <h2 style="font-size: clamp(22px, 2.4vw, 32px); font-weight: 500; margin: 0;">お問い合わせに関するご質問</h2>
+        </div>
+        <div>
+          <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+            <div style="border-bottom: 1px solid #D5CFC1;">
+              <button onClick="{{ f.toggle }}" style="width: 100%; display: flex; align-items: flex-start; gap: 16px; text-align: left; background: none; border: 0; padding: 21px 2px; cursor: pointer; color: #22323A;">
+                <span style="font-family: 'Cormorant Garamond', serif; font-size: 21px; color: #2F5F47; line-height: 1.4;">Q</span>
+                <span style="flex: 1; font-size: 15px; line-height: 1.75;">{{ f.q }}</span>
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #5F6D72;">{{ f.sign }}</span>
+              </button>
+              <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+                <p style="margin: 0; padding: 0 2px 24px 34px; font-size: 14px; line-height: 2.05; color: #5A686E;">{{ f.a }}</p>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <section style="background: linear-gradient(rgba(27,41,47,0.9), rgba(27,41,47,0.9)), url('images/handshake.jpg') center / cover; color: #EFEDE4; padding: clamp(60px, 8vw, 120px) clamp(18px, 3vw, 40px); text-align: center;">
+    <div style="max-width: 760px; margin: 0 auto;">
+      <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: #8FB3A1; margin: 0 0 20px;">Let&#8217;s build the numbers</p>
+      <h2 style="font-size: clamp(25px, 3.4vw, 44px); font-weight: 500; line-height: 1.55; margin: 0 0 26px; text-wrap: pretty;">まずは、現状の数値を<br />一緒に読み解きませんか。</h2>
+      <p style="font-size: 15px; line-height: 2.05; color: #AEBBBF; margin: 0 0 38px;">広告アカウントとアクセス解析のデータをお預かりし、改善余地と優先順位を無料でレポートします。ご契約の有無は診断後にご判断ください。</p>
+      <div data-herocta="1" style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;">
+        <button onClick="{{ goContact }}" style="background: #EFEDE4; color: #22323A; border: 0; padding: 18px 36px; font-size: 14.5px; letter-spacing: 0.06em; cursor: pointer;" style-hover="background: #8FB3A1;">無料診断を依頼する</button>
+        <button onClick="{{ goCases }}" style="background: none; color: #EFEDE4; border: 1px solid #47585F; padding: 18px 36px; font-size: 14.5px; letter-spacing: 0.06em; cursor: pointer;" style-hover="border-color: #EFEDE4;">導入事例を見る</button>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: #22323A; color: #AEBBBF; padding: clamp(46px, 5vw, 72px) clamp(18px, 3vw, 40px) 30px; border-top: 1px solid #33444B;">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: clamp(26px, 4vw, 56px); padding-bottom: 40px; border-bottom: 1px solid #33444B;">
+        <div>
+          <p style="display: flex; align-items: baseline; gap: 10px; margin: 0 0 18px; color: #EFEDE4;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 25px; letter-spacing: 0.16em;">STRATA</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.3em; color: #A9B7BA;">DIGITAL</span>
+          </p>
+          <p style="font-size: 13px; line-height: 2; margin: 0;">〒101-0051<br />東京都千代田区神田神保町2-11-8<br />STRATA BUILDING 6F</p>
+        </div>
+        <div>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #8FB3A1; margin: 0 0 18px;">PAGES</p>
+          <div style="display: grid; gap: 12px; justify-items: start;">
+            <sc-for list="{{ navItems }}" as="nav" hint-placeholder-count="6">
+              <button onClick="{{ nav.go }}" style="background: none; border: 0; padding: 0; font-size: 13.5px; color: #AEBBBF; cursor: pointer;" style-hover="color: #EFEDE4;">{{ nav.ja }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #8FB3A1; margin: 0 0 18px;">SERVICES</p>
+          <div style="display: grid; gap: 12px; justify-items: start;">
+            <sc-for list="{{ featuredServices }}" as="s" hint-placeholder-count="6">
+              <button onClick="{{ s.go }}" style="background: none; border: 0; padding: 0; font-size: 13.5px; color: #AEBBBF; cursor: pointer;" style-hover="color: #EFEDE4;">{{ s.ja }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #8FB3A1; margin: 0 0 18px;">CONTACT</p>
+          <p style="font-family: 'Cormorant Garamond', serif; font-size: 25px; color: #EFEDE4; margin: 0 0 10px;">03-4567-8910</p>
+          <p style="font-size: 13px; line-height: 1.9; margin: 0 0 18px;">平日 10:00 – 19:00</p>
+          <button onClick="{{ goContact }}" style="background: none; border: 1px solid #47585F; color: #EFEDE4; padding: 13px 22px; font-size: 13px; cursor: pointer;" style-hover="border-color: #EFEDE4;">お問い合わせ</button>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; justify-content: space-between; padding-top: 24px;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; margin: 0; color: #A9B7BA;">&#169; 2026 STRATA DIGITAL INC.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 22px;">
+          <a href="#privacy" style="font-size: 12.5px; color: #AEBBBF;">プライバシーポリシー</a>
+          <a href="#terms" style="font-size: 12.5px; color: #AEBBBF;">利用規約</a>
+          <a href="#recruit" style="font-size: 12.5px; color: #AEBBBF;">採用情報</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#4E7A63&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#4E7A63&quot;,&quot;#2F6E8F&quot;,&quot;#8A6A3B&quot;,&quot;#6B5B8A&quot;],&quot;section&quot;:&quot;テーマ&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'home', navOpen: false, svc: 0, caseFilter: 'すべて', postFilter: 'すべて', query: '', faq: 0, sent: false };
+
+  go(page) {
+    this.setState({ page, navOpen: false });
+    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const accent = this.props.accent ?? '#4E7A63';
+    const pages = [
+      { key: 'home', ja: 'ホーム', en: 'Home' },
+      { key: 'services', ja: 'サービス', en: 'Services' },
+      { key: 'cases', ja: '導入事例', en: 'Case studies' },
+      { key: 'about', ja: '会社概要', en: 'About' },
+      { key: 'blog', ja: 'インサイト', en: 'Insights' },
+      { key: 'contact', ja: 'お問い合わせ', en: 'Contact' },
+    ];
+
+    const services = [
+      { code: 'S-01', ja: 'デジタルマーケティング', en: 'Digital marketing', lead: '集客から受注までの全体設計。媒体単位ではなく事業KPIから逆算します。',
+        overview: '広告・SEO・CRMを個別の施策として扱わず、受注までの一本の流れとして設計します。初月は事業構造とデータ基盤の把握に充て、どの指標を動かせば利益が伸びるかを特定してから実行に移ります。',
+        shot: '[ ダッシュボード／全体設計図の画像 ]', img: 'images/report-review.jpg',
+        features: ['事業KPIからの逆算設計', '媒体横断のアトリビューション分析', '週次の仮説検証ミーティング', '専任コンサルタント2名体制'],
+        benefits: ['施策間の重複投資を排除', '意思決定サイクルが平均5営業日に短縮', '社内にノウハウが蓄積される'],
+        process: [{ no: '01', t: '現状分析', d: '広告・解析・CRMのデータを統合して棚卸しします。' }, { no: '02', t: '戦略設計', d: 'KPIツリーと投資配分を合意します。' }, { no: '03', t: '実行', d: '優先度順に施策を立ち上げます。' }, { no: '04', t: '検証・改善', d: '週次で仮説を更新し続けます。' }],
+        deliverables: ['KPIツリー', '投資配分シミュレーション', '週次レポート', '施策ロードマップ'] },
+      { code: 'S-02', ja: 'SEO', en: 'Search engine optimization', lead: '検索意図の構造化から内部改善、コンテンツ制作までを内製で。',
+        overview: '順位ではなく、検索経由の売上を指標に据えます。キーワードを検索意図で分類し、事業の収益に近い領域から順に着手。テクニカル改善とコンテンツ制作を同じチームが担うため、実装待ちで止まりません。',
+        shot: '[ 検索順位・流入推移のグラフ画像 ]', img: 'images/analyst-desk.jpg',
+        features: ['検索意図ベースのキーワード設計', 'テクニカル監査(200項目)', '編集者・専門家による記事制作', '内部リンク構造の再設計'],
+        benefits: ['収益に近い流入から優先的に増加', '広告費に依存しない集客基盤', 'サイト全体の表示速度改善'],
+        process: [{ no: '01', t: '監査', d: '技術・コンテンツ・被リンクを診断します。' }, { no: '02', t: '設計', d: 'サイト構造とキーワードを割り当てます。' }, { no: '03', t: '実装・制作', d: '改修と記事制作を並行して進めます。' }, { no: '04', t: '効果検証', d: '流入と売上の相関を追跡します。' }],
+        deliverables: ['テクニカル監査書', 'キーワードマップ', '記事(月8本目安)', '順位・流入レポート'] },
+      { code: 'S-03', ja: 'Google Ads / PPC', en: 'Paid search & PPC', lead: 'CPAではなく粗利で評価する運用。入札から訴求まで週次で更新。',
+        overview: '管理画面の最適化だけでは限界があります。商談化率や受注単価まで含めた指標で評価し、獲得件数ではなく粗利が最大になる配分を探ります。クリエイティブ制作も同一チームが担当します。',
+        shot: '[ 広告管理画面／クリエイティブ一覧の画像 ]', img: 'images/dashboard-review.jpg',
+        features: ['粗利ベースの入札設計', '月40本以上のクリエイティブ検証', '除外キーワードの継続整備', 'CRM連携による成果の逆流し込み'],
+        benefits: ['無駄クリックの削減', '商談化率の高い流入への集中', '意思決定の根拠が明確になる'],
+        process: [{ no: '01', t: 'アカウント診断', d: '構造と無駄配信を洗い出します。' }, { no: '02', t: '再構築', d: 'キャンペーン構造を目的別に整理します。' }, { no: '03', t: '検証運用', d: '訴求と入札を週次で更新します。' }, { no: '04', t: '横展開', d: '勝ちパターンを他媒体へ展開します。' }],
+        deliverables: ['アカウント診断書', '広告文・バナー一式', '週次運用レポート', '検証ログ'] },
+      { code: 'S-04', ja: 'ソーシャルメディア', en: 'Social media marketing', lead: 'プラットフォームごとの文脈に合わせた設計と運用。',
+        overview: 'フォロワー数を目的にはしません。各プラットフォームでの受け取られ方を踏まえ、認知から比較検討までのどの段階を担うかを定義してから運用を設計します。',
+        shot: '[ SNS投稿・広告クリエイティブの画像 ]', img: 'images/smartphone.jpg',
+        features: ['プラットフォーム別の役割定義', '投稿と広告の一体運用', 'UGC活用の設計', 'コミュニティ対応ガイドライン'],
+        benefits: ['指名検索数の増加', '獲得単価の平準化', 'ブランドの一貫性維持'],
+        process: [{ no: '01', t: '現状把握', d: '既存アカウントと競合を分析します。' }, { no: '02', t: '設計', d: 'トーンと投稿設計を定義します。' }, { no: '03', t: '運用', d: '制作と配信を継続します。' }, { no: '04', t: '改善', d: '反応データから設計を更新します。' }],
+        deliverables: ['運用ガイドライン', '月間投稿カレンダー', 'クリエイティブ一式', '月次レポート'] },
+      { code: 'S-05', ja: 'サイト制作・開発', en: 'Web design & development', lead: '運用を前提にした設計。公開後に自走できるCMS構成で納品。',
+        overview: '公開がゴールではなく、運用の初日と捉えます。マーケティングチームが自ら更新できるCMS設計と、計測が最初から仕込まれた実装をセットで納品します。',
+        shot: '[ サイトデザイン・実装画面の画像 ]', img: 'images/monitor-review.jpg',
+        features: ['計測設計込みの実装', '自走可能なCMS構成', 'Core Web Vitals 基準の性能', 'WCAG AA 準拠'],
+        benefits: ['更新のたびに外注が不要', '計測漏れによる判断ミスを防止', '検索評価の土台が整う'],
+        process: [{ no: '01', t: '要件定義', d: '運用体制と計測要件を確定します。' }, { no: '02', t: '設計', d: '情報設計とデザインを固めます。' }, { no: '03', t: '実装', d: 'CMSと計測を同時に構築します。' }, { no: '04', t: '公開・伴走', d: '公開後3ヶ月は改善に同席します。' }],
+        deliverables: ['デザインデータ', 'CMS構築済みサイト', '計測設計書', '運用マニュアル'] },
+      { code: 'S-06', ja: 'ランディングページ', en: 'Landing page design', lead: 'オファー設計から。テストの順序を影響度順に組み立てます。',
+        overview: '要素の細かなA/Bテストよりも、オファーと訴求の順序が成果を左右します。ヒアリングと定性調査から購買の障壁を特定し、影響度の大きい仮説から検証します。',
+        shot: '[ LPワイヤーフレーム・デザイン案の画像 ]', img: 'images/plan-select.jpg',
+        features: ['定性調査による障壁の特定', '影響度順のテスト計画', 'フォーム離脱の計測実装', '2週間単位の改善サイクル'],
+        benefits: ['CVRの継続的な改善', '同じ広告費で獲得数が増加', '勝ちパターンの言語化'],
+        process: [{ no: '01', t: '調査', d: '顧客インタビューとヒートマップ分析。' }, { no: '02', t: '設計', d: '構成とオファーを定義します。' }, { no: '03', t: '制作・公開', d: 'デザインと実装を行います。' }, { no: '04', t: 'テスト', d: '仮説を順に検証します。' }],
+        deliverables: ['LP構成案', 'デザイン・実装一式', 'テスト計画書', '改善レポート'] },
+      { code: 'S-07', ja: 'ブランディング', en: 'Branding', lead: '価格競争から抜けるための、言葉と見え方の整備。',
+        overview: '広告の成果が伸び悩む原因が、訴求の曖昧さにあることは少なくありません。事業の強みを言語化し、ロゴから資料まで一貫した表現に整えます。',
+        shot: '[ ブランドガイドライン・アプリケーションの画像 ]', img: 'images/team-standing.jpg',
+        features: ['社内インタビューによる言語化', 'ポジショニングの定義', 'ビジュアルアイデンティティ策定', '運用ガイドライン整備'],
+        benefits: ['指名検討の増加', '営業資料の説明コスト削減', '採用時の訴求力向上'],
+        process: [{ no: '01', t: '調査', d: '社内外のインタビューを実施します。' }, { no: '02', t: '定義', d: 'ポジショニングと言葉を固めます。' }, { no: '03', t: '表現開発', d: 'ロゴ・トーンを設計します。' }, { no: '04', t: '浸透', d: '運用ルールを社内に定着させます。' }],
+        deliverables: ['ブランド定義書', 'ロゴ・VI一式', 'トーン&マナー', '各種テンプレート'] },
+      { code: 'S-08', ja: 'マーケティング戦略', en: 'Marketing strategy', lead: '3ヶ月単位の実行計画まで落とし込む、伴走型のコンサルティング。',
+        overview: '市場・競合・自社のデータを整理し、投資すべき領域を特定します。提言で終わらせず、誰がいつ何をするかまで落とし込んだ実行計画として納品します。',
+        shot: '[ 戦略ロードマップ・ワークショップの画像 ]', img: 'images/meeting-overhead.jpg',
+        features: ['市場・競合の定量調査', '投資配分シミュレーション', '3ヶ月単位の実行計画', '月次の経営会議同席'],
+        benefits: ['予算配分の根拠が明確になる', '施策の優先順位が揃う', '部門間の連携が進む'],
+        process: [{ no: '01', t: '調査', d: '市場と競合を定量的に把握します。' }, { no: '02', t: '仮説構築', d: '成長ドライバーを特定します。' }, { no: '03', t: '計画化', d: '実行計画と体制を設計します。' }, { no: '04', t: '伴走', d: '月次で進捗と前提を見直します。' }],
+        deliverables: ['市場調査レポート', '戦略提案書', '実行計画書', '月次議事録'] },
+      { code: 'S-09', ja: '分析・レポーティング', en: 'Analytics & reporting', lead: '見るべき数字だけが並ぶダッシュボードを構築します。',
+        overview: '指標が多すぎるレポートは判断を遅らせます。意思決定に必要な数字だけを残し、更新が自動化された状態にします。計測の欠損や二重計上の修正から着手します。',
+        shot: '[ BIダッシュボードの画像 ]', img: 'images/growth-arrows.jpg',
+        features: ['計測要件の再設計', 'GA4・広告・CRMの統合', 'BIダッシュボード構築', '社内向け読み解き研修'],
+        benefits: ['レポート作成工数の削減', '判断が数値に基づくようになる', '計測ミスによる誤判断の防止'],
+        process: [{ no: '01', t: '計測監査', d: '欠損と二重計上を洗い出します。' }, { no: '02', t: '再設計', d: '指標とイベントを定義します。' }, { no: '03', t: '実装', d: 'データ連携を構築します。' }, { no: '04', t: '定着', d: '読み解き方を社内に共有します。' }],
+        deliverables: ['計測設計書', '統合データ基盤', 'ダッシュボード', '研修資料'] },
+    ];
+
+    const allCases = [
+      { industry: 'BtoB SaaS', period: '2025.04 – 2026.03', shot: '[ 管理画面・LPのモックアップ画像 ]', img: 'images/meeting-tablet.jpg',
+        title: '商談単価を42%下げ、受注件数を2.6倍に。人事labo様',
+        challenge: '獲得件数は伸びていたものの、商談化率が11%と低く営業工数が逼迫していました。',
+        strategy: 'CRMの受注データを広告側に戻し、商談化率の高いキーワード群へ配分を集中。同時に比較検討段階向けのLPを3本新設しました。',
+        results: '獲得件数を維持しながら商談単価が42%改善。受注件数は12ヶ月で2.6倍になりました。',
+        metrics: [{ v: '-42%', l: '商談単価' }, { v: '2.6x', l: '受注件数' }, { v: '+21pt', l: '商談化率' }] },
+      { industry: 'D2C', period: '2025.07 – 2026.06', shot: '[ 商品写真・SNS広告の画像 ]', img: 'images/analytics-devices.jpg',
+        title: '定期購入の継続率を改善し、LTVを1.9倍に。BOTANICA様',
+        challenge: '新規獲得は好調でも3ヶ月以内の解約が48%に達し、粗利が積み上がらない状態でした。',
+        strategy: '解約理由の定性調査から初回体験の設計を見直し、同梱物とステップメールを再構築。広告の訴求も継続前提の内容へ変更しました。',
+        results: '3ヶ月継続率が48%から71%へ改善。LTVは1.9倍、広告投資の回収期間は5.2ヶ月から2.8ヶ月に短縮しました。',
+        metrics: [{ v: '1.9x', l: 'LTV' }, { v: '+23pt', l: '3ヶ月継続率' }, { v: '2.8ヶ月', l: '回収期間' }] },
+      { industry: '人材', period: '2026.01 – 2026.08', shot: '[ 求人サイト・記事一覧の画像 ]', img: 'images/staff-duo.jpg',
+        title: '検索経由の応募を3.4倍に。キャリアブリッジ様',
+        challenge: '媒体依存の集客で応募単価が上昇し続け、自社チャネルが育っていませんでした。',
+        strategy: '職種×地域の検索意図を再分類し、収益性の高い52領域に記事と求人一覧を集中投下。サイト構造も検索意図に合わせて再設計しました。',
+        results: '8ヶ月で検索流入が4.1倍、応募数は3.4倍に。媒体費の比率を68%から39%まで引き下げました。',
+        metrics: [{ v: '3.4x', l: '自然検索応募' }, { v: '-29pt', l: '媒体費比率' }, { v: '4.1x', l: '検索流入' }] },
+      { industry: '医療', period: '2025.10 – 2026.07', shot: '[ クリニックサイト・予約画面の画像 ]', img: 'images/team-discussion.jpg',
+        title: '予約完了率を1.8倍に。みなと総合クリニック様',
+        challenge: '予約フォームの離脱率が74%で、広告費の多くが最終段階で失われていました。',
+        strategy: 'フォーム離脱の計測を実装し、入力項目を14から6に削減。診療内容ごとに導線を分岐させ、初診者向けの説明を予約前に配置しました。',
+        results: '予約完了率が1.8倍に改善。同じ広告費で月間予約数が182件増加しました。',
+        metrics: [{ v: '1.8x', l: '予約完了率' }, { v: '+182件', l: '月間予約' }, { v: '-31%', l: '予約単価' }] },
+    ];
+
+    const industries = ['すべて'].concat(allCases.map(c => c.industry).filter((v, i, a) => a.indexOf(v) === i));
+    const chip = (active) => 'background: ' + (active ? '#22323A' : 'none') + '; color: ' + (active ? '#F7F5F0' : '#4A585E') + '; border: 1px solid ' + (active ? '#22323A' : '#C9C3B4') + '; padding: 11px 20px; font-size: 13px; letter-spacing: 0.04em; cursor: pointer;';
+
+    const posts = [
+      { cat: 'PPC', img: 'images/dashboard-review.jpg', date: '2026.09.08', title: '指名検索を守る入札戦略を、粗利で判断する', lead: '競合の指名出稿にどこまで対抗すべきか。ブランド保護と収益性の分岐点を実データから整理しました。' },
+      { cat: 'SEO', img: 'images/analyst-desk.jpg', date: '2026.08.29', title: '検索意図を4分類して、記事の投資順を決める', lead: '同じキーワード量でも成果が変わる理由は、意図の混在です。分類の基準と運用手順を公開します。' },
+      { cat: 'CRO', img: 'images/monitor-review.jpg', date: '2026.08.14', title: 'フォーム項目を減らす前に見るべき3つの数値', lead: '項目削減は万能ではありません。離脱が起きる本当の位置を特定する計測方法をまとめました。' },
+      { cat: '分析', img: 'images/analytics-devices.jpg', date: '2026.07.31', title: 'GA4で二重計上が起きる典型パターンと修正手順', lead: '判断を誤らせる計測ミスのうち、実務で最も多い5つの原因と対処を解説します。' },
+      { cat: 'トレンド', img: 'images/smartphone.jpg', date: '2026.07.18', title: '生成AI検索が流入構造をどう変えたか、6ヶ月の実測', lead: '18サイトの流入データから、AI回答の影響を受けやすいクエリの特徴を分析しました。' },
+      { cat: '戦略', img: 'images/meeting-overhead.jpg', date: '2026.07.02', title: '予算配分を決める前に、KPIツリーを1枚にする', lead: '部門ごとに指標が違うと投資判断はぶれます。合意形成に使える1枚の作り方を紹介します。' },
+    ];
+    const cats = ['すべて', 'SEO', 'PPC', 'CRO', '分析', 'トレンド', '戦略'];
+    const q = s.query.trim();
+    const visiblePosts = posts.filter(p => (s.postFilter === 'すべて' || p.cat === s.postFilter) && (!q || (p.title + p.lead + p.cat).indexOf(q) >= 0));
+
+    const faqSrc = [
+      { q: '最低契約期間はありますか。', a: '広告運用とSEOは体制構築に時間を要するため6ヶ月から、制作案件はプロジェクト単位でお受けしています。戦略コンサルティングは3ヶ月単位です。' },
+      { q: '費用の目安を教えてください。', a: '広告運用は月額40万円から、SEOは月額60万円から、サイト制作は300万円からが目安です。いずれも対象範囲と体制により変動しますので、初回のご相談時に概算をお出しします。' },
+      { q: '既存の代理店から引き継ぐことは可能ですか。', a: '可能です。アカウント構造と計測設定の引き継ぎ手順をこちらで用意し、配信を止めずに移行します。過去データの棚卸しも初月の作業に含まれます。' },
+      { q: '制作物の著作権はどちらに帰属しますか。', a: '納品物の著作権は原則としてお客様に譲渡します。第三者素材のライセンス範囲のみ、契約書に明記のうえ個別に扱います。' },
+      { q: '成果が出なかった場合の対応は。', a: '契約時に合意したKPIに対して未達が続いた場合、原因分析のレポートを提出し、体制または施策の変更をご提案します。改善が見込めないと判断した場合は、こちらから契約終了をお願いすることもあります。' },
+    ];
+
+    const svc = services[s.svc];
+
+    return {
+      isHome: s.page === 'home', isServices: s.page === 'services', isCases: s.page === 'cases',
+      isAbout: s.page === 'about', isBlog: s.page === 'blog', isContact: s.page === 'contact',
+      navOpen: s.navOpen,
+      toggleNav: () => this.setState(p => ({ navOpen: !p.navOpen })),
+      goHome: () => this.go('home'), goServices: () => this.go('services'), goCases: () => this.go('cases'),
+      goAbout: () => this.go('about'), goBlog: () => this.go('blog'), goContact: () => this.go('contact'),
+      navItems: pages.map(p => ({ ja: p.ja, en: p.en, active: s.page === p.key, go: () => this.go(p.key) })),
+
+      reasons: [
+        { no: '01', title: '媒体の代行ではなく、事業KPIの担当者として', body: '契約時に事業側のKPIを共有いただき、広告指標ではなく粗利とLTVで評価します。数値の責任範囲を最初に合意します。' },
+        { no: '02', title: '広告・制作・分析をすべて内製', body: '32名全員が社員です。外注を挟まないため、仮説から検証までの周期は平均5営業日に収まります。' },
+        { no: '03', title: '検証の記録を、お客様の資産として残す', body: '実施した施策と結果はすべて共有ドキュメントに蓄積します。契約終了後も社内で再利用できる形で残ります。' },
+        { no: '04', title: '4領域への特化', body: 'BtoB SaaS・D2C・人材・医療のみをお受けしています。業界固有の規制や購買プロセスの前提を、初回から共有できます。' },
+      ],
+      featuredServices: services.slice(0, 6).map((x, i) => ({ code: x.code, ja: x.ja, en: x.en, lead: x.lead, go: () => { this.setState({ svc: i }); this.go('services'); } })),
+      processSteps: [
+        { no: '01', title: 'お問い合わせ・初回面談', body: '現状の課題と数値を共有いただきます。資料の準備は不要です。', term: '所要 60分' },
+        { no: '02', title: '無料診断レポート', body: 'データをお預かりし、改善余地と優先順位をレポートします。', term: '5営業日' },
+        { no: '03', title: 'ご提案・体制合意', body: 'KPI、体制、費用を提示します。ここまで費用は発生しません。', term: '1週間' },
+        { no: '04', title: '立ち上げ', body: '計測整備とアカウント再構築を行い、初月で土台を整えます。', term: '1ヶ月' },
+        { no: '05', title: '週次の運用・検証', body: '毎週の定例で仮説を更新し、月次で投資配分を見直します。', term: '継続' },
+      ],
+      featuredCases: allCases.slice(0, 3).map(c => ({ industry: c.industry, title: c.title, shot: c.shot, img: c.img, kpi1v: c.metrics[0].v, kpi1l: c.metrics[0].l, kpi2v: c.metrics[1].v, kpi2l: c.metrics[1].l, go: () => this.go('cases') })),
+      testimonials: [
+        { quote: '数値が良くなった報告ではなく、次に何をするかの提案が毎週届きます。社内の議論の起点が、感覚から数字に変わりました。', name: '田中 恵理 様', role: '人事labo株式会社 執行役員' },
+        { quote: '解約率という一番触りたくない指標に、最初に切り込んでくれました。広告の前にやることがあると言い切ってくれたのが転機でした。', name: '佐々木 亮 様', role: 'BOTANICA CEO' },
+        { quote: '前任の代理店では月次レポートを読み解く会議に2時間かかっていました。今は見る指標が5つに絞られ、判断が即日で下ります。', name: '村井 拓真 様', role: 'キャリアブリッジ マーケティング部長' },
+      ],
+      faqs: faqSrc.map((f, i) => ({ q: f.q, a: f.a, open: s.faq === i, sign: s.faq === i ? '−' : '+', toggle: () => this.setState(p => ({ faq: p.faq === i ? -1 : i })) })),
+      news: [
+        { date: '2026.09.15', tag: 'お知らせ', title: '大阪オフィスを開設しました', go: () => this.go('blog') },
+        { date: '2026.09.01', tag: 'セミナー', title: '10/8開催｜BtoB SaaSの商談単価を下げる広告設計（無料・オンライン）', go: () => this.go('blog') },
+        { date: '2026.08.22', tag: 'メディア', title: '日経クロストレンドに当社代表のインタビューが掲載されました', go: () => this.go('blog') },
+        { date: '2026.08.05', tag: 'お知らせ', title: '2026年度の新卒採用エントリーを開始しました', go: () => this.go('blog') },
+      ],
+
+      serviceNav: services.map((x, i) => ({
+        code: x.code, ja: x.ja, go: () => this.setState({ svc: i }),
+        style: 'text-align: left; border: 0; cursor: pointer; padding: 17px 20px; display: grid; gap: 6px; background: ' + (s.svc === i ? '#22323A' : '#F7F5F0') + '; color: ' + (s.svc === i ? '#EFEDE4' : '#22323A') + ';',
+      })),
+      svc: {
+        ja: svc.ja, en: svc.en, overview: svc.overview, shot: svc.shot, img: svc.img,
+        features: svc.features.map(t => ({ t })), benefits: svc.benefits.map(t => ({ t })),
+        process: svc.process.map(p => ({ no: p.no, t: p.t, d: p.d })),
+        deliverables: svc.deliverables.map(t => ({ t })),
+      },
+
+      caseFilters: industries.map(label => ({ label, style: chip(s.caseFilter === label), go: () => this.setState({ caseFilter: label }) })),
+      visibleCases: allCases.filter(c => s.caseFilter === 'すべて' || c.industry === s.caseFilter),
+
+      values: [
+        { en: 'Evidence first', ja: '根拠のない提案をしない', body: '推測で語らず、データか一次情報を添えて提案します。わからないことは、わからないと伝えます。' },
+        { en: 'Own the number', ja: '数字を自分の責任にする', body: '媒体の都合や市況を理由にしません。担当した指標の結果は自分の責任として扱います。' },
+        { en: 'Leave the knowledge', ja: '知見を置いていく', body: '属人化させず、検証の記録をお客様の社内に残します。私たちがいなくても回る状態を目指します。' },
+        { en: 'Say it early', ja: '悪い報告を先に出す', body: '想定を下回ったときこそ、最速で共有します。判断が遅れることが最大の損失だと考えています。' },
+      ],
+      team: [
+        { role: 'CEO', img: 'images/leader-omori.jpg', pos: '55% 25%', name: '芦田 悠介', en: 'Yusuke Ashida', bio: '事業会社でマーケティング責任者を務めた後、2016年に創業。戦略設計と経営層向けの伴走を担当。' },
+        { role: 'COO', img: 'images/analyst-desk.jpg', pos: '62% 20%', name: '西野 千夏', en: 'Chinatsu Nishino', bio: '大手代理店で広告運用部門を統括。現在は運用品質の標準化と人材育成を管掌。' },
+        { role: 'CTO', img: 'images/consultant-outdoor.jpg', pos: '72% 20%', name: '堀内 大輔', en: 'Daisuke Horiuchi', bio: 'SaaS企業でのエンジニアリングを経て参画。計測基盤とサイト開発の技術責任者。' },
+        { role: 'CCO', img: 'images/leader-shibata.jpg', pos: '66% 25%', name: '真鍋 玲', en: 'Rei Manabe', bio: 'ブランドデザイン出身。クリエイティブとブランディング領域を統括。' },
+      ],
+      timeline: [
+        { year: '2016', body: '東京・神保町にて創業。BtoB SaaS 3社の広告運用から開始。' },
+        { year: '2018', body: 'クリエイティブ制作チームを内製化。支援社数30社を突破。' },
+        { year: '2021', body: '分析・計測基盤チームを新設。D2C・人材領域へ拡大。' },
+        { year: '2023', body: '医療領域の支援を開始。社員数20名、支援社数80社。' },
+        { year: '2026', body: '大阪オフィスを開設。社員32名、累計支援128社。' },
+      ],
+      companyInfo: [
+        { k: '会社名', v: '株式会社STRATA DIGITAL' },
+        { k: '設立', v: '2016年4月' },
+        { k: '代表取締役', v: '芦田 悠介' },
+        { k: '資本金', v: '4,800万円' },
+        { k: '従業員数', v: '32名（2026年9月時点）' },
+        { k: '所在地', v: '〒101-0051 東京都千代田区神田神保町2-11-8 STRATA BUILDING 6F' },
+        { k: '事業内容', v: 'デジタルマーケティング支援／広告運用／サイト制作・開発／データ分析基盤構築' },
+        { k: '認定', v: 'Google Partner (Premier) / Meta Business Partner' },
+      ],
+
+      postFilters: cats.map(label => ({ label, style: chip(s.postFilter === label), go: () => this.setState({ postFilter: label }) })),
+      visiblePosts, noPosts: visiblePosts.length === 0,
+      query: s.query, onQuery: (e) => this.setState({ query: e.target.value }),
+
+      contactInfo: [
+        { k: 'メール', v: 'contact@strata-digital.co.jp' },
+        { k: '所在地', v: '〒101-0051 東京都千代田区神田神保町2-11-8 STRATA BUILDING 6F' },
+        { k: 'アクセス', v: '都営新宿線 九段下駅 6番出口より徒歩4分 / 東京メトロ半蔵門線 神保町駅より徒歩6分' },
+        { k: '受付時間', v: '平日 10:00 – 19:00（土日祝を除く）' },
+      ],
+      sent: s.sent,
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      accent,
+    };
+  }
+}
+</script>
+</body>
+</html>

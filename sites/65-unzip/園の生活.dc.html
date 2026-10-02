@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+<link href="./site.css" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>html{scroll-behavior:smooth}body{margin:0;color:#3d3a38;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}a{color:#e8555b}a:hover{color:#c93d44}*{box-sizing:border-box}</style>
+</helmet>
+<dc-import name="SiteHeader" current="life" style="position:sticky;top:0;z-index:50;display:block" hint-size="100%,72px"></dc-import>
+<main lang="ja">
+<section data-screen-label="Life banner" style="position:relative;background:#dff3f8;padding:56px 16px 96px;text-align:center">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+    <span style="width:44px;height:44px;border-radius:50%;background:#7cc5e0;color:#fff;display:grid;place-items:center;font-family:'Mochiy Pop One'">生</span>
+    <h1 style="margin:0;font-family:'Mochiy Pop One';font-weight:400;font-size:clamp(28px,4vw,40px);color:#e8555b;letter-spacing:.1em">園の生活</h1>
+    <span style="font-size:12px;color:#5a8fa3"><a href="index.dc.html" style="color:#5a8fa3">TOP</a> ＞ 園の生活</span>
+  </div>
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;left:0;bottom:-1px;width:100%;height:50px"><path d="M0 30 C 300 0 500 60 720 34 C 960 8 1200 56 1440 24 L1440 60 L0 60 Z" fill="#fff"></path></svg>
+</section>
+
+<section style="padding:64px 16px;max-width:900px;margin:0 auto">
+  <h2 style="margin:0 0 12px;text-align:center;font-size:clamp(22px,3vw,30px);font-weight:900;color:#e8555b;letter-spacing:.1em">一日の流れ</h2>
+  <p style="margin:0 0 28px;text-align:center;font-size:14px;line-height:2">年齢に合わせて、無理のない生活リズムで過ごします。</p>
+  <div role="tablist" style="display:flex;justify-content:center;gap:10px;margin-bottom:28px">
+    <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="2">
+      <button role="tab" onClick="{{ t.select }}" style="flex:1 1 0;max-width:180px;height:46px;border-radius:999px;border:2px solid #e8555b;background:{{ t.bg }};color:{{ t.fg }};font-family:inherit;font-weight:700;font-size:14px;cursor:pointer">{{ t.label }}</button>
+    </sc-for>
+  </div>
+  <ol style="list-style:none;margin:0;padding:0;position:relative;display:flex;flex-direction:column;gap:14px">
+    <sc-for list="{{ schedule }}" as="d" hint-placeholder-count="9">
+      <li style="display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:center;background:#fff;border:2px solid #e3f2f7;border-radius:16px;padding:14px 18px">
+        <span style="font-family:'Mochiy Pop One';font-size:17px;color:{{ d.color }}">{{ d.time }}</span>
+        <span style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:15px">{{ d.title }}</strong><span style="font-size:13px;color:#6b6562;line-height:1.7">{{ d.text }}</span></span>
+      </li>
+    </sc-for>
+  </ol>
+</section>
+
+<section style="background:#dff3f8;padding:72px 16px">
+  <div style="max-width:1000px;margin:0 auto">
+    <h2 data-reveal="1" style="margin:0 0 12px;text-align:center;font-size:clamp(22px,3vw,30px);font-weight:900;color:#e8555b;letter-spacing:.1em">保育プログラム</h2>
+    <p data-reveal="1" style="margin:0 0 36px;text-align:center;font-size:14px;line-height:2">専門の講師や保育士と一緒に、いろいろな「好き」に出会います。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px">
+      <sc-for list="{{ programs }}" as="p" hint-placeholder-count="6">
+        <article data-reveal="1" style="background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="aspect-ratio:3/2"><image-slot id="{{ p.id }}" shape="rect" src="{{ p.src }}" placeholder="{{ p.ph }}"></image-slot></div>
+          <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><strong style="font-size:16px;color:#e8555b">{{ p.title }}</strong><span style="font-size:11px;font-weight:700;color:#5a8fa3;background:#dff3f8;padding:3px 10px;border-radius:999px">{{ p.age }}</span></div>
+            <p style="margin:0;font-size:13px;line-height:1.9">{{ p.text }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="padding:72px 16px;max-width:1000px;margin:0 auto">
+  <h2 data-reveal="1" style="margin:0 0 36px;text-align:center;font-size:clamp(22px,3vw,30px);font-weight:900;color:#e8555b;letter-spacing:.1em">年間行事</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px">
+    <sc-for list="{{ months }}" as="m" hint-placeholder-count="12">
+      <div data-reveal="1" style="border-radius:14px;padding:16px;background:{{ m.bg }};display:flex;flex-direction:column;gap:6px;min-height:110px">
+        <span style="font-family:'Mochiy Pop One';font-size:20px;color:{{ m.color }}">{{ m.m }}</span>
+        <span style="font-size:13px;line-height:1.7">{{ m.ev }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="background:#fdf6f2;padding:72px 16px">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px;align-items:center">
+    <div data-reveal="1" style="flex:1 1 360px;aspect-ratio:4/3"><image-slot id="lp-food" radius="16" placeholder="給食の写真"></image-slot></div>
+    <div data-reveal="1" style="flex:1 1 320px;display:flex;flex-direction:column;gap:14px">
+      <h2 style="margin:0;font-size:clamp(22px,3vw,28px);font-weight:900;color:#e8555b;letter-spacing:.1em">給食・おやつ</h2>
+      <p style="margin:0;font-size:14px;line-height:2.1;text-wrap:pretty">給食は園内の調理室でつくる、あたたかいごはんです。旬の食材や行事食を取り入れ、子どもたちが育てた野菜が並ぶ日もあります。離乳食やアレルギーにも、ご家庭と相談しながら個別に対応しています。</p>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 1 };
+  componentDidMount() {
+    const io = this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'none'; io.unobserve(e.target); } }), { threshold: .12 });
+    setTimeout(() => document.querySelectorAll('[data-reveal]').forEach(el => { if (el.getBoundingClientRect().top < innerHeight) return; const sib = [...el.parentElement.children].filter(c => c.hasAttribute('data-reveal')).indexOf(el); el.style.opacity = 0; el.style.transform = 'translateY(32px) scale(.97)'; el.style.transition = 'opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1)'; el.style.transitionDelay = Math.max(0, sib) * .12 + 's'; io.observe(el); }), 300);
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); }
+  renderVals() {
+    const t = this.state.tab;
+    const sched = [
+      [['7:00', '順次登園', '視診・検温、朝のあそび'], ['9:00', 'おやつ・水分補給', '牛乳や麦茶で一息'], ['9:30', 'あそび', 'お散歩・感触あそび・室内あそび'], ['11:00', '離乳食・給食', '一人ひとりのペースで'], ['12:00', 'お昼寝', '5分ごとの午睡チェック'], ['15:00', 'おやつ', '手づくりおやつ'], ['15:30', '室内あそび', '絵本・ふれあいあそび'], ['16:00', '順次降園', 'その日の様子をお伝えします'], ['18:00', '延長保育', '〜19:00まで']],
+      [['7:00', '順次登園', '視診・検温、好きなあそび'], ['9:30', '朝の会', 'うた・お当番・今日の予定'], ['10:00', '主活動', '外あそび・製作・和太鼓・体操'], ['11:30', '給食', '園内調理のあたたかいごはん'], ['13:00', 'お昼寝・休息', '5歳児は秋から午睡なしで就学準備'], ['15:00', 'おやつ', '手づくりおやつ'], ['15:30', '自由あそび', '好きなあそびをじっくり'], ['16:00', '順次降園', 'その日の様子をお伝えします'], ['18:00', '延長保育', '〜19:00まで']],
+    ][t];
+    const cols = ['#f39a6b', '#e8555b', '#7cc5e0', '#8cc97a', '#b39ad6', '#f6c343', '#7cc5e0', '#f39a6b', '#8fa9d9'];
+    const mk = (i, label) => ({ label, bg: t === i ? '#e8555b' : '#fff', fg: t === i ? '#fff' : '#e8555b', select: () => this.setState({ tab: i }) });
+    const ev = ['入園式・親子遠足', 'こどもの日・春の健康診断', '保育参観・歯科検診', '七夕会・プール開き', '夏まつり・お泊まり保育（5歳）', '野菜の収穫', '運動会', 'ハロウィン・芋ほり', '秋の遠足・七五三', 'クリスマス会・生活発表会', '豆まき', 'ひなまつり・卒園式'];
+    const seasonCol = (i) => i < 2 || i === 11 ? ['#fdecec', '#e8555b'] : i < 5 ? ['#e6f5fa', '#3d9fc4'] : i < 8 ? ['#fdf0e6', '#e07a3a'] : ['#eef1fa', '#6a84c4'];
+    return {
+      tabs: [mk(0, '0〜2歳児'), mk(1, '3〜5歳児')],
+      schedule: sched.map((s, i) => ({ time: s[0], title: s[1], text: s[2], color: cols[i] })),
+      programs: [
+        { id: 'pg-1', src: 'images/running-field.jpg', ph: '外あそびの写真', title: '外あそび・自然体験', age: '全年齢', text: '園庭や近くの公園で、季節の変化を体いっぱいに感じます。' },
+        { id: 'pg-2', ph: '和太鼓の写真', title: '和太鼓', age: '4・5歳', text: '仲間と呼吸を合わせる楽しさを、発表会で披露します。' },
+        { id: 'pg-3', src: 'images/train-game.jpg', ph: 'リトミックの写真', title: 'リトミック', age: '1〜5歳', text: '音楽に合わせて体を動かし、リズム感と表現力を育てます。' },
+        { id: 'pg-4', src: 'images/exercise-jump.jpg', ph: '体操教室の写真', title: '体操教室', age: '3〜5歳', text: '専門講師と一緒に、マット・跳び箱・鉄棒に挑戦します。' },
+        { id: 'pg-5', src: 'images/picture-book.jpg', ph: 'えいごの時間の写真', title: 'えいご', age: '3〜5歳', text: 'うたやゲームを通して、英語の音に楽しくふれます。' },
+        { id: 'pg-6', src: 'images/cooking-potato.jpg', ph: '畑・クッキングの写真', title: '畑・クッキング', age: '2〜5歳', text: '育てた野菜を収穫して、みんなで調理して味わいます。' },
+      ],
+      months: ev.map((e, i) => { const c = seasonCol(i); return { m: ((i + 3) % 12 + 1) + '月', ev: e, bg: c[0], color: c[1] }; }),
+    };
+  }
+}
+</script>
+</body>
+</html>

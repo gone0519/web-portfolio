@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1a1a1a;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a1a1a;text-decoration:none}
+a:hover{color:#c8102e}
+</style>
+</helmet>
+<div style="position:relative;overflow-x:hidden">
+<dc-import name="SiteHeader" active="trainer" title="TRAINER" sub="トレーナー紹介" img="images/trainers.jpg" img-pos="center 12%" hint-size="100%,420px"></dc-import>
+
+<section data-screen-label="Trainer Profile" style="background:#fff;padding:clamp(72px,10vw,120px) 0">
+  <div style="max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(40px,5vw,72px);align-items:start">
+    <div data-reveal="" style="aspect-ratio:4/5;background:#ddd url(images/kanzaki.jpg) 52% center/cover no-repeat"></div>
+    <div data-reveal="">
+      <p style="margin:0;font-size:11px;color:#c8102e;letter-spacing:.08em">ヘッドトレーナー</p>
+      <h2 style="margin:6px 0 0;font-size:clamp(26px,3vw,32px);font-weight:700;letter-spacing:.08em">神崎 亮</h2>
+      <p style="margin:4px 0 0;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.14em;color:#777">RYO KANZAKI</p>
+      <h3 style="margin:32px 0 0;font-size:17px;font-weight:700;line-height:1.8">正しく鍛えれば、カラダは何歳からでも変わる。</h3>
+      <p style="margin:14px 0 0;font-size:13px;line-height:2.1;color:#444;text-wrap:pretty">大学で運動生理学を学び、プロスポーツチームのストレングスコーチを経てSTRIDEに参加。アスリートから運動未経験の方まで、延べ2,000名以上を指導してきました。「できた」を一回ずつ積み重ねることを大切にしています。</p>
+      <p style="margin:32px 0 10px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:10px"><span style="display:block;width:20px;height:1px;background:#1a1a1a"></span>経歴</p>
+      <dl style="margin:0;display:grid;grid-template-columns:72px 1fr;font-size:12px;line-height:1.8">
+        <sc-for list="{{ career }}" as="c" hint-placeholder-count="4">
+          <dt style="padding:8px 0;border-top:1px solid #e3e3e3;font-family:'Oswald',sans-serif;letter-spacing:.06em;color:#777">{{ c.y }}</dt><dd style="margin:0;padding:8px 0;border-top:1px solid #e3e3e3">{{ c.t }}</dd>
+        </sc-for>
+      </dl>
+      <p style="margin:28px 0 10px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:10px"><span style="display:block;width:20px;height:1px;background:#1a1a1a"></span>保有資格</p>
+      <ul style="margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:12px;color:#444">
+        <li>NSCA認定 ストレングス&amp;コンディショニングスペシャリスト（CSCS）</li>
+        <li>日本スポーツ協会公認 アスレティックトレーナー</li>
+        <li>健康運動指導士</li>
+      </ul>
+      <p style="margin:28px 0 10px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:10px"><span style="display:block;width:20px;height:1px;background:#1a1a1a"></span>得意分野</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="border:1px solid #d6d6d6;font-size:11px;padding:4px 10px">競技力向上</span>
+        <span style="border:1px solid #d6d6d6;font-size:11px;padding:4px 10px">筋力トレーニング</span>
+        <span style="border:1px solid #d6d6d6;font-size:11px;padding:4px 10px">ケガ予防</span>
+        <span style="border:1px solid #d6d6d6;font-size:11px;padding:4px 10px">ボディメイク</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Trainer Staff" style="background:#f2f2f2;padding:clamp(72px,10vw,120px) 0">
+  <div style="max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px)">
+    <div data-reveal="">
+      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-weight:400;font-size:clamp(30px,3.4vw,40px);letter-spacing:.02em">STAFF</h2>
+      <p style="margin:2px 0 0;font-size:11px;color:#777;letter-spacing:.08em">— トレーナー</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:24px;margin-top:36px">
+      <sc-for list="{{ staff }}" as="s" hint-placeholder-count="3">
+        <article data-reveal="" style="background:#fff;padding:18px">
+          <div style="aspect-ratio:1;background:#ddd url({{ s.img }}) {{ s.pos }}/cover no-repeat"></div>
+          <p style="margin:16px 0 0;font-size:11px;color:#c8102e">{{ s.role }}</p>
+          <p style="margin:4px 0 0;font-size:16px;font-weight:700;letter-spacing:.06em">{{ s.name }}</p>
+          <p style="margin:10px 0 0;font-size:12px;line-height:1.9;color:#555;text-wrap:pretty">{{ s.body }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      career: [
+        { y: '2010', t: '〇〇体育大学 卒業（運動生理学専攻）' },
+        { y: '2012', t: 'プロサッカークラブ ストレングスコーチ' },
+        { y: '2017', t: 'パーソナルトレーナーとして独立' },
+        { y: '2020', t: 'STRIDE PERSONAL TRAINING GYM ヘッドトレーナー就任' }
+      ],
+      staff: [
+        { role: 'トレーナー ／ ボディメイク', name: '水野 彩', img: 'images/staff-female.jpg', pos: '55% 30%', body: '女性のボディメイクとダイエットを中心に担当。産後のカラダづくりのサポートも行っています。NESTA-PFT。' },
+        { role: 'トレーナー ／ 姿勢改善', name: '大野 翔', img: 'images/staff-ohno.jpg', pos: '50% 30%', body: '理学療法士の資格を持ち、姿勢改善や腰痛予防を得意としています。運動が初めての方も安心してご相談ください。' },
+        { role: '管理栄養士', name: '中村 真理', img: 'images/woman-smile.jpg', pos: '45% 30%', body: '食事サポートを担当。忙しい方でも続けやすい、現実的な食事の整え方を一緒に考えます。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

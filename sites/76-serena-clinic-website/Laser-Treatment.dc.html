@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#4b4340;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#4b4340;text-decoration:none}
+a:hover{color:#a8876f}
+button{font-family:inherit}
+</style>
+</helmet>
+<dc-import name="Site Header" current="menu" title-en="Laser &amp; Light" title-ja="レーザー・光治療" lead="シミ・肝斑・赤みなど、肌の「色」のお悩みに。肌状態を診断したうえで、機器と出力を医師が選択します。" slot-id="laser-hero" slot-src="images/woman-mirror-skin.jpg" slot-ph="レーザー照射シーン" hint-size="100%,620px"></dc-import>
+
+<section data-screen-label="Laser 01 Intro" style="position:relative;background:#fff;padding:clamp(70px,8vw,120px) 0;overflow:hidden">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(40px,6vw,90px)">
+    <div data-reveal="up" style="flex:1 1 380px;min-width:0;max-width:620px;padding:0 clamp(20px,3vw,20px) 0 clamp(20px,8vw,150px);display:flex;flex-direction:column;gap:24px">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.3em;color:#bfa77a">ABOUT</span>
+      <h2 style="margin:0;font-weight:500;font-size:clamp(20px,2.3vw,30px);line-height:1.8;letter-spacing:.12em">肌の状態に合わせて選ぶ、<br>オーダーメイドのレーザー治療</h2>
+      <p style="margin:0;font-size:14px;line-height:2.3;letter-spacing:.06em;text-wrap:pretty">シミにはいくつかの種類があり、種類によって適した治療が異なります。肝斑にレーザーを強く当てると悪化する場合もあるため、当院ではまず皮膚科専門医が診断を行い、ピコレーザー・光治療・内服薬などから最適な組み合わせをご提案します。</p>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:6px">
+        <span style="font-size:11.5px;letter-spacing:.16em;color:#9a8f88">こんなお悩みに</span>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px;max-width:380px">
+          <sc-for list="{{ concerns }}" as="c" hint-placeholder-count="6"><span style="position:relative;font-size:13px;letter-spacing:.06em;padding:0 10px 6px 0;border-bottom:1px solid #b9a88f" style-after="content:'';position:absolute;right:-4px;bottom:-4px;width:7px;height:7px;border:1px solid #b9a88f;border-radius:50%;background:#fff">{{ c }}</span></sc-for>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="img" style="flex:1.2 1 440px;min-width:0;aspect-ratio:3/2"><image-slot id="laser-intro" src="images/skin-closeup-smile.jpg" shape="rect" placeholder="肌のアップ（自然なトーン）"></image-slot></div>
+  </div>
+</section>
+
+<section data-screen-label="Laser 02 Menu" style="background:#f5f2ec;padding:clamp(80px,9vw,130px) clamp(20px,4vw,40px)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div data-reveal="up" style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+      <span data-shimmer style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.6vw,46px);letter-spacing:.06em;line-height:1.1;background:linear-gradient(95deg,#e3bdb7 0%,#b08d7e 60%,#7a5646 100%);-webkit-background-clip:text;background-clip:text;color:transparent">MENU</span>
+      <span style="font-size:13px;letter-spacing:.2em">主な施術</span>
+      <span data-reveal="line" style="width:36px;height:1px;background:#4b4340;margin-top:18px"></span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:28px">
+      <sc-for list="{{ menus }}" as="m" hint-placeholder-count="3">
+        <div data-reveal="up" style="background:#fff;display:flex;flex-direction:column">
+          <div style="aspect-ratio:16/10"><image-slot id="{{ m.id }}" src="{{ m.src }}" shape="rect" placeholder="{{ m.name }}"></image-slot></div>
+          <div style="padding:28px;display:flex;flex-direction:column;gap:12px">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;color:#bfa77a">{{ m.no }}</span>
+            <h3 style="margin:0;font-weight:500;font-size:18px;letter-spacing:.1em">{{ m.name }}</h3>
+            <p style="margin:0;font-size:13px;line-height:2;letter-spacing:.05em;text-wrap:pretty">{{ m.desc }}</p>
+            <span style="font-size:12px;color:#6e5a4e;letter-spacing:.06em;padding-top:12px;border-top:1px solid #efe8dd">適応：{{ m.fit }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Laser 03 Details" style="background:#fff;padding:clamp(80px,9vw,130px) clamp(20px,4vw,40px)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(48px,6vw,80px)">
+    <div data-reveal="up" style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:center;gap:20px"><span style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,2.6vw,32px);letter-spacing:.08em">DETAILS</span><span style="font-size:13px;letter-spacing:.16em">施術について</span><span data-reveal="line" style="flex:1;height:1px;background:#8f847e"></span></div>
+      <dl style="margin:0;display:flex;flex-direction:column">
+        <sc-for list="{{ details }}" as="d" hint-placeholder-count="6">
+          <div style="display:grid;grid-template-columns:minmax(100px,140px) minmax(0,1fr);gap:20px;padding:17px 0;border-bottom:1px solid #ece5da;font-size:13.5px;line-height:1.9;letter-spacing:.05em"><dt style="color:#a8916a">{{ d.k }}</dt><dd style="margin:0">{{ d.v }}</dd></div>
+        </sc-for>
+      </dl>
+    </div>
+    <div data-reveal="up" style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:center;gap:20px"><span style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,2.6vw,32px);letter-spacing:.08em">PRICE</span><span style="font-size:13px;letter-spacing:.16em">料金（税込）</span><span data-reveal="line" style="flex:1;height:1px;background:#8f847e"></span></div>
+      <div style="display:flex;flex-direction:column">
+        <div style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid #4b4340;font-size:11.5px;letter-spacing:.1em;color:#7a706b"><span>施術</span><span style="text-align:right">1回</span><span style="text-align:right">5回</span></div>
+        <sc-for list="{{ prices }}" as="p" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid #ece5da;font-size:13.5px;letter-spacing:.04em;align-items:baseline"><span>{{ p.n }}</span><span style="text-align:right;font-family:'Cormorant Garamond',serif;font-size:18px">{{ p.a }}</span><span style="text-align:right;font-family:'Cormorant Garamond',serif;font-size:18px">{{ p.b }}</span></div>
+        </sc-for>
+      </div>
+      <a href="Price.dc.html" style="align-self:flex-start;position:relative;font-size:13px;letter-spacing:.12em;padding:0 40px 7px 0;border-bottom:1px solid #b9a88f" style-after="content:'';position:absolute;right:-4px;bottom:-4px;width:7px;height:7px;border:1px solid #b9a88f;border-radius:50%;background:#fff">料金表をすべて見る</a>
+      <p style="margin:0;font-size:11.5px;line-height:1.9;color:#8f847e">※ 自由診療です。別途、初診料 ¥3,300 がかかります。</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Laser 04 Risk & FAQ" style="background:#f5f2ec;padding:clamp(80px,9vw,130px) clamp(20px,4vw,40px)">
+  <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:56px">
+    <div data-reveal="up" style="background:#fff;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:14px;border-top:1px solid #d9c9a8">
+      <span style="font-size:15px;letter-spacing:.14em;font-weight:500">副作用・リスクについて</span>
+      <p style="margin:0;font-size:13px;line-height:2.1;letter-spacing:.05em;color:#5a4f4a">照射部位に赤み・ほてり・乾燥が生じることがあります。まれに一時的な色素沈着、かさぶた、水疱が生じる場合があります。日焼け直後の方、妊娠中の方、光線過敏症の方は施術をお受けいただけないことがあります。</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="up" style="display:flex;align-items:center;gap:20px"><span style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,2.6vw,32px);letter-spacing:.08em">Q&amp;A</span><span style="font-size:13px;letter-spacing:.16em">よくあるご質問</span><span data-reveal="line" style="flex:1;height:1px;background:#8f847e"></span></div>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+          <div style="background:#fff">
+            <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;min-height:64px;display:flex;align-items:center;gap:18px;padding:20px 26px;background:none;border:0;cursor:pointer;text-align:left;color:#4b4340">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#d4a7a1">Q</span>
+              <span style="flex:1;font-size:14px;letter-spacing:.06em;line-height:1.8">{{ q.q }}</span>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#a8916a;width:20px;text-align:center">{{ q.sign }}</span>
+            </button>
+            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:18px;padding:0 26px 24px 26px"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#bfa77a">A</span><p style="margin:4px 0 0;flex:1;font-size:13.5px;line-height:2.1;letter-spacing:.05em;color:#5a4f4a">{{ q.a }}</p></div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" hint-size="100%,820px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { open: 0 };
+  renderVals() {
+    const faqs = [
+      { q: '痛みはありますか？', a: '輪ゴムで軽くはじかれるような刺激を感じる方が多いです。痛みが心配な方には麻酔クリームをご用意しています。' },
+      { q: '施術後すぐにメイクはできますか？', a: 'トーニングは施術直後からメイクが可能です。スポット照射の場合は、テープ保護の期間中は照射部位のメイクをお控えください。' },
+      { q: '何回くらい通えばよいですか？', a: 'お悩みや肌状態によって異なります。トーニングは2〜4週間おきに5〜10回程度が目安です。診察時に治療計画をご案内します。' },
+      { q: '肝斑があっても治療できますか？', a: '肝斑の有無を診断したうえで、低出力のトーニングや内服薬など、肝斑に配慮した方法をご提案します。' },
+    ].map((f, i) => { const open = this.state.open === i; return { ...f, open, sign: open ? '−' : '+', toggle: () => this.setState({ open: open ? -1 : i }) }; });
+    return {
+      concerns: ['シミ・そばかす', '肝斑', 'くすみ', '赤ら顔', 'ニキビ跡の赤み', '毛穴'],
+      menus: [
+        { no: '01', name: 'ピコトーニング', desc: '低出力のピコレーザーを顔全体に照射。肌への負担を抑えながら、くすみや肝斑にアプローチします。', fit: '肝斑・くすみ・肌のトーン', id: 'laser-m1', src: 'images/hero-woman-smile.jpg' },
+        { no: '02', name: 'ピコスポット', desc: '気になるシミにピンポイントで照射。従来のレーザーに比べ、ダウンタイムが短い傾向があります。', fit: '老人性色素斑・そばかす', id: 'laser-m2', src: 'images/skin-check-mirror.jpg' },
+        { no: '03', name: '光治療（IPL）', desc: '幅広い波長の光で、シミ・赤み・毛穴など複数のお悩みを同時にケアします。', fit: 'そばかす・赤ら顔・肌質', id: 'laser-m3', src: 'images/facial-treatment.jpg' },
+      ],
+      details: [
+        { k: '施術時間', v: '約10〜20分' },
+        { k: '痛み', v: '輪ゴムで軽くはじく程度（麻酔クリームあり）' },
+        { k: 'ダウンタイム', v: 'トーニング：ほぼなし／スポット：約7〜10日のかさぶた' },
+        { k: '通院目安', v: '2〜4週間おきに5〜10回' },
+        { k: 'メイク', v: 'トーニングは直後から可能' },
+        { k: '洗顔・入浴', v: '当日から可能（強くこすらない）' },
+      ],
+      prices: [
+        { n: 'ピコトーニング（顔全体）', a: '¥16,500', b: '¥74,800' },
+        { n: 'ピコスポット（〜5mm）', a: '¥5,500', b: '—' },
+        { n: '光治療 IPL（顔全体）', a: '¥19,800', b: '¥88,000' },
+        { n: '麻酔クリーム', a: '¥1,100', b: '—' },
+      ],
+      faqs,
+    };
+  }
+}
+</script>
+</body>
+</html>

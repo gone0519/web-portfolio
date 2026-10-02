@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body { margin: 0; font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif; background: oklch(98% 0.004 240); }
+a { color: oklch(46% 0.10 245); text-decoration: none; }
+a:hover { color: oklch(32% 0.09 248); }
+
+/* <image-slot> は aspect-ratio:3/2 を持つため、height 指定があると
+   「高さ×1.5」が最小コンテンツ幅になり、grid の列を押し広げてしまう。
+   スロット自身と、スロットを包む grid 項目の両方で縮小を許可する。 */
+image-slot, .ab-interior > div, .ab-staff > div { min-width: 0; }
+/* src を指定したスロットではプレースホルダーの破線枠を消す。
+   image-slot が自分で付ける data-filled 属性が React の再描画で外れてしまい、
+   シャドウ内の :host([data-filled]) .ring{display:none} が効かないため。 */
+image-slot[src]::part(ring) { display: none; }
+
+/* ===== レイアウト（レスポンシブ） =====
+   ブレークポイント：1040px＝ヘッダーがモバイル表示に切り替わる幅／860px＝2カラム解除／680px＝スマホ */
+.ab-head { max-width: 1200px; margin: 0 auto; padding: 56px 24px 20px; }
+.ab-title { font-size: 32px; font-weight: 700; color: oklch(22% 0.02 250); margin: 0; }
+.ab-philosophy { max-width: 1200px; margin: 0 auto; padding: 36px 24px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; }
+.ab-message { background: oklch(96% 0.008 235); padding: 64px 24px; }
+.ab-message-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; align-items: center; }
+.ab-staff-sec { max-width: 1200px; margin: 0 auto; padding: 64px 24px; }
+.ab-staff { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.ab-interior-sec { background: oklch(96% 0.008 235); padding: 64px 24px; }
+.ab-interior { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.ab-info-sec { max-width: 900px; margin: 0 auto; padding: 64px 24px; }
+.ab-row { display: grid; grid-template-columns: 140px 1fr; padding: 16px 22px; border-bottom: 1px solid oklch(94% 0.004 240); font-size: 13px; }
+
+@media (max-width: 1040px) {
+  .ab-staff { grid-template-columns: repeat(2, 1fr); }
+  .ab-interior { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .ab-philosophy, .ab-message-inner { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 680px) {
+  .ab-head { padding: 40px 20px 16px; }
+  .ab-title { font-size: 25px; }
+  .ab-philosophy { padding: 28px 20px; }
+  .ab-message, .ab-interior-sec, .ab-staff-sec, .ab-info-sec { padding: 48px 20px; }
+  .ab-staff { grid-template-columns: 1fr; }
+  /* 項目名と内容を上下に積む */
+  .ab-row { grid-template-columns: 1fr; gap: 4px; padding: 14px 18px; }
+}
+</style>
+</helmet>
+<div style="max-width:100vw;overflow-x:hidden;">
+<dc-import name="Header" active="about" hint-size="100%,64px"></dc-import>
+
+<section class="ab-head">
+  <div style="font-size:12px;color:oklch(55% 0.02 245);margin-bottom:14px;"><a href="Home.dc.html">ホーム</a> ／ クリニック紹介</div>
+  <h1 class="ab-title">クリニック紹介</h1>
+</section>
+
+<section class="ab-philosophy">
+  <image-slot id="about-philosophy" src="images/explain-spine-model.jpg" shape="rounded" radius="8" placeholder="院内の写真" style="width:100%;height:320px;"></image-slot>
+  <div>
+    <div style="font-size:13px;font-weight:700;color:oklch(46% 0.10 245);letter-spacing:0.08em;margin-bottom:12px;">PHILOSOPHY</div>
+    <h2 style="font-size:24px;font-weight:700;color:oklch(22% 0.02 250);margin:0 0 16px;">当院の考え方</h2>
+    <p style="font-size:14px;line-height:1.9;color:oklch(42% 0.02 245);margin:0;">症状の背景には、日々の姿勢や生活習慣が関わっていることが少なくありません。当院では、症状そのものだけでなく、生活の中での身体の使い方まで含めてお話を伺い、無理のない範囲で根本的な改善を目指した施術を行っています。分かりやすい説明を心がけ、長期的に安心して通っていただける関係づくりを大切にしています。</p>
+  </div>
+</section>
+
+<section class="ab-message">
+  <div class="ab-message-inner">
+    <image-slot id="director-photo" src="images/treatment-neck-male.jpg" shape="rounded" radius="8" placeholder="院長の写真" style="width:100%;height:280px;"></image-slot>
+    <div>
+      <div style="font-size:13px;font-weight:700;color:oklch(46% 0.10 245);letter-spacing:0.08em;margin-bottom:12px;">MESSAGE</div>
+      <h2 style="font-size:22px;font-weight:700;color:oklch(22% 0.02 250);margin:0 0 14px;">院長からのご挨拶</h2>
+      <p style="font-size:14px;line-height:1.9;color:oklch(38% 0.02 245);margin:0 0 14px;">はじめまして、院長の佐藤です。「ここに来て良かった」と思っていただけるよう、お一人おひとりのお話をじっくり伺うことを大切にしています。痛みや不安を抱えたまま無理をせず、まずは気軽にご相談ください。地域の皆様の毎日が少しでも軽やかになるよう、スタッフ一同でサポートいたします。</p>
+      <div style="font-size:13px;font-weight:700;color:oklch(28% 0.02 250);">院長　佐藤 大輔</div>
+    </div>
+  </div>
+</section>
+
+<section class="ab-staff-sec">
+  <div style="text-align:center;margin-bottom:40px;">
+    <div style="font-size:13px;font-weight:700;color:oklch(46% 0.10 245);letter-spacing:0.08em;margin-bottom:10px;">STAFF</div>
+    <h2 style="font-size:24px;font-weight:700;color:oklch(22% 0.02 250);margin:0;">スタッフ紹介</h2>
+  </div>
+  <div class="ab-staff">
+    <sc-for list="{{ staff }}" as="item" hint-placeholder-count="3">
+      <div style="background:#fff;border-radius:6px;overflow:hidden;border:1px solid oklch(91% 0.006 240);">
+        <image-slot id="{{ item.slotId }}" src="{{ item.src }}" shape="rect" placeholder="スタッフ写真" style="width:100%;height:220px;"></image-slot>
+        <div style="padding:20px;">
+          <div style="font-size:15px;font-weight:700;color:oklch(22% 0.02 250);">{{ item.name }}</div>
+          <div style="font-size:12px;color:oklch(46% 0.10 245);font-weight:700;margin:4px 0 10px;">{{ item.role }}／{{ item.qual }}</div>
+          <div style="font-size:12px;color:oklch(46% 0.02 245);margin-bottom:10px;">得意分野：{{ item.specialty }}</div>
+          <div style="font-size:13px;line-height:1.8;color:oklch(38% 0.02 245);">{{ item.message }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section class="ab-interior-sec">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:36px;">
+      <div style="font-size:13px;font-weight:700;color:oklch(46% 0.10 245);letter-spacing:0.08em;margin-bottom:10px;">INTERIOR</div>
+      <h2 style="font-size:24px;font-weight:700;color:oklch(22% 0.02 250);margin:0;">院内のご紹介</h2>
+    </div>
+    <div class="ab-interior">
+      <div>
+        <image-slot id="interior-reception" src="images/staff-reception.jpg" shape="rounded" radius="6" placeholder="受付" style="width:100%;height:180px;"></image-slot>
+        <div style="text-align:center;font-size:12px;color:oklch(45% 0.02 245);margin-top:8px;">受付</div>
+      </div>
+      <div>
+        <image-slot id="interior-room" src="images/interior-room.jpg" shape="rounded" radius="6" placeholder="施術室" style="width:100%;height:180px;"></image-slot>
+        <div style="text-align:center;font-size:12px;color:oklch(45% 0.02 245);margin-top:8px;">施術室</div>
+      </div>
+      <div>
+        <image-slot id="interior-wait" src="images/counseling-chair.jpg" shape="rounded" radius="6" placeholder="待合スペース" style="width:100%;height:180px;"></image-slot>
+        <div style="text-align:center;font-size:12px;color:oklch(45% 0.02 245);margin-top:8px;">待合スペース</div>
+      </div>
+      <div>
+        <image-slot id="interior-exterior" src="images/exterior-sign.jpg" shape="rounded" radius="6" placeholder="外観" style="width:100%;height:180px;"></image-slot>
+        <div style="text-align:center;font-size:12px;color:oklch(45% 0.02 245);margin-top:8px;">外観</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ab-info-sec">
+  <div style="text-align:center;margin-bottom:32px;">
+    <h2 style="font-size:24px;font-weight:700;color:oklch(22% 0.02 250);margin:0;">クリニック情報</h2>
+  </div>
+  <div style="border:1px solid oklch(91% 0.006 240);border-radius:6px;overflow:hidden;">
+    <sc-for list="{{ info }}" as="row" hint-placeholder-count="6">
+      <div class="ab-row">
+        <div style="font-weight:700;color:oklch(46% 0.10 245);">{{ row.label }}</div>
+        <div style="color:oklch(32% 0.02 245);">{{ row.value }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+<dc-import name="MobileBar" hint-size="100%,56px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      staff: [
+        { slotId: 'about-staff-1', src: 'images/treatment-neck-male.jpg', name: '佐藤 大輔', role: '院長', qual: '柔道整復師', specialty: '腰痛・姿勢改善', message: '一人ひとりのお身体に真摯に向き合い、根本的な改善を目指します。' },
+        { slotId: 'about-staff-2', src: 'images/staff-director.jpg', name: '田中 美咲', role: '施術者', qual: '柔道整復師', specialty: '産後の骨盤ケア', message: '産後の骨盤ケアやスポーツ障害を得意としています。' },
+        { slotId: 'about-staff-3', src: 'images/explain-hand-model.jpg', name: '鈴木 健', role: '施術者', qual: '柔道整復師', specialty: 'スポーツ外傷', message: 'わかりやすい説明を心がけ、安心して通える院づくりを大切にしています。' },
+      ],
+      info: [
+        { label: 'クリニック名', value: '実り接骨院' },
+        { label: '所在地', value: '〒000-0000 東京都○○区○○ 1-2-3' },
+        { label: '電話番号', value: '0120-000-000' },
+        { label: '診療時間', value: '9:00〜13:00 / 15:00〜20:00' },
+        { label: '休診日', value: '水曜・日曜祝日' },
+        { label: 'アクセス', value: '○○駅 徒歩5分／駐車場3台完備' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

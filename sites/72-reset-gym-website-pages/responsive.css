@@ -1,0 +1,130 @@
+/* ==========================================================================
+   RESET GYM — responsive.css
+
+   各ページのレイアウトは inline style で書かれているため、上書きするには
+   !important が必要です。HTML 側には r-* クラスを付けるだけで、値の調整は
+   このファイルだけで完結します。
+
+   ブレークポイント
+     1100px 以下 … ヘッダーのタグラインを隠す（ナビとの干渉を防ぐ）
+      900px 以下 … タブレット。ヘッダーがハンバーガーに切り替わる幅
+      600px 以下 … スマートフォン
+      380px 以下 … 小型スマートフォン
+   ========================================================================== */
+
+html { -webkit-text-size-adjust: 100%; }
+img, svg, video { max-width: 100%; }
+
+/* 横並びの最後の区切り線は消す（PC / SP 共通） */
+.r-stat:last-child,
+.r-ba:last-child { border-right: none !important; }
+
+/* タッチ端末では :hover が貼り付くので無効化 */
+@media (hover: none) {
+  a:hover { opacity: 1 !important; }
+}
+
+/* ==========================================================================
+   1100px 以下
+   ========================================================================== */
+@media (max-width: 1100px) {
+  /* ロゴ横の "PERSONAL & SELF FITNESS" はナビを押し出すので非表示 */
+  .r-brand-sub { display: none !important; }
+}
+
+/* ==========================================================================
+   900px 以下（タブレット）
+   ========================================================================== */
+@media (max-width: 900px) {
+  /* ヘッダーの高さを固定 → モバイルメニューの top:57px と正確に揃う */
+  .r-hd { height: 57px !important; }
+
+  .r-split { gap: 40px !important; }
+  .r-hero  { padding: 56px 32px !important; }
+}
+
+/* ==========================================================================
+   600px 以下（スマートフォン）
+   ========================================================================== */
+@media (max-width: 600px) {
+
+  /* --- 左右の余白 28px → 20px ------------------------------------------ */
+  .r-px, .r-hd, .r-hd-menu {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* --- 上下の余白 ------------------------------------------------------- */
+  .r-py    { padding-top: 52px !important; padding-bottom: 52px !important; }
+  .r-pt    { padding-top: 52px !important; }
+  .r-pb    { padding-bottom: 52px !important; }
+  .r-py-sm { padding-top: 36px !important; padding-bottom: 36px !important; }
+
+  /* --- 2カラムの横はみ出し防止 ------------------------------------------ */
+  /* inline の minWidth:300px 等は 320px 幅の端末でははみ出すため解除する */
+  .r-fx {
+    min-width: 0 !important;
+    flex-basis: 100% !important;
+  }
+  .r-split { gap: 28px !important; }
+
+  /* --- ヒーロー --------------------------------------------------------- */
+  .r-hero {
+    padding: 44px 22px !important;
+    border-left-width: 6px !important;
+    min-width: 0 !important;
+  }
+  .r-hero-img { min-height: 260px !important; }
+
+  /* 縦長の画像スロットはスマホでは高さを抑える */
+  .r-img-tall {
+    height: 230px !important;
+    min-height: 230px !important;
+  }
+
+  /* --- カード ----------------------------------------------------------- */
+  .r-card    { padding: 24px 20px !important; }
+  .r-card-lg { padding: 26px 22px !important; }
+
+  /* カード左端に合わせる「おすすめ」バッジ */
+  .r-badge { left: 20px !important; }
+
+  /* --- CTA -------------------------------------------------------------- */
+  .r-cta { padding: 64px 20px !important; }
+
+  /* --- 区切り線を縦 → 横へ ---------------------------------------------- */
+  .r-stat {
+    border-right: none !important;
+    border-bottom: 2px solid #17170f !important;
+  }
+  .r-stat:last-child { border-bottom: none !important; }
+
+  .r-ba {
+    border-right: none !important;
+    border-bottom: 1px solid #3a3930 !important;
+  }
+  .r-ba:last-child { border-bottom: none !important; }
+
+  /* --- 折り返し後に右寄せが不自然になる箇所 ----------------------------- */
+  .r-ta-l { text-align: left !important; }
+
+  /* --- フォーム --------------------------------------------------------- */
+  /* 16px 未満だと iOS Safari がフォーカス時にページを拡大してしまう */
+  input, select, textarea { font-size: 16px !important; }
+
+  /* --- フッター --------------------------------------------------------- */
+  .r-ft { padding: 48px 20px 24px !important; }
+}
+
+/* ==========================================================================
+   380px 以下（小型スマートフォン）
+   ========================================================================== */
+@media (max-width: 380px) {
+  .r-px, .r-hd, .r-hd-menu {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .r-hero { padding: 38px 18px !important; }
+  .r-py   { padding-top: 44px !important; padding-bottom: 44px !important; }
+  .r-cta  { padding: 52px 16px !important; }
+}

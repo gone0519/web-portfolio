@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<section style="position:relative;background:#ffde00;overflow:hidden">
+  <div data-parallax="0.16" data-anim="drift" style="position:absolute;inset:-14% 0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,0.55) 0 10px,transparent 10px 20px);clip-path:polygon(58% 0,100% 0,100% 100%,72% 100%)"></div>
+  <div data-parallax="-0.1" data-rotate="45" style="position:absolute;left:-160px;bottom:-200px;width:360px;height:360px;background:rgba(255,255,255,0.35);transform:rotate(45deg)"></div>
+  <div style="position:relative;max-width:1180px;margin:0 auto;padding:30px 24px 72px">
+    <nav aria-label="パンくずリスト" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:12px;letter-spacing:0.08em;color:#6b5f00">
+      <a href="Home.dc.html" style="color:#6b5f00" style-hover="color:#17170f">トップ</a>
+      <span style="width:6px;height:6px;border-right:1.5px solid #6b5f00;border-top:1.5px solid #6b5f00;transform:rotate(45deg)"></span>
+      <span style="color:#17170f;font-weight:700">{{ jp }}</span>
+    </nav>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:40px 56px;align-items:center">
+      <div>
+        <p data-anim="eyebrow" style="margin:0;font-family:'Chakra Petch',sans-serif;font-size:12px;letter-spacing:0.34em;color:#6b5f00;display:flex;align-items:center;gap:14px"><span data-anim="rule" style="width:44px;height:2px;background:#17170f"></span>{{ en }}</p>
+        <h1 data-anim="line1" style="margin:16px 0 0;font-size:clamp(36px,5vw,62px);font-weight:900;letter-spacing:0.06em;line-height:1.25">{{ jp }}</h1>
+        <p data-anim="lead" style="margin:22px 0 0;max-width:34em;font-size:15px;line-height:2.1;letter-spacing:0.1em;font-weight:500">{{ lead }}</p>
+      </div>
+      <sc-if value="{{ img }}" hint-placeholder-val="{{ false }}">
+        <div data-anim="visual" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:repeating-linear-gradient(-45deg,rgba(255,255,255,0.9) 0 12px,rgba(255,255,255,0.35) 12px 24px);border:1px solid rgba(255,255,255,0.9);clip-path:polygon(0 0,100% 0,100% 82%,88% 100%,0 100%)">
+          <img class="gw-img" src="{{ img }}" alt="{{ imgAlt }}" style="object-position:{{ imgPos }}" />
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;jp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ページタイトル&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;内容&quot;},&quot;en&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;PAGE TITLE&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;内容&quot;},&quot;lead&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;内容&quot;},&quot;img&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;画像&quot;},&quot;imgAlt&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;画像&quot;},&quot;imgPos&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;center&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;画像&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      jp: this.props.jp || "",
+      en: this.props.en || "",
+      lead: this.props.lead || "",
+      img: this.props.img || "",
+      imgAlt: this.props.imgAlt || "",
+      imgPos: this.props.imgPos || "center"
+    };
+  }
+}
+</script>
+</body>
+</html>

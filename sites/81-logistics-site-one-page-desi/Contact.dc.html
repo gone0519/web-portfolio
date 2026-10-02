@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="site.css" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:#fff;color:#1b2233;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#0E1E46;text-decoration:none}
+a:hover{color:#0E1E46;opacity:.8}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="contact" hint-size="100%,64px"></dc-import>
+<main>
+<dc-import name="PageHero" ja="お問い合わせ" en="CONTACT" slot="contact-hero" img="uploads/warehouse-racks.jpg" photo="写真：倉庫・荷積みの様子" hint-size="100%,420px"></dc-import>
+
+<section aria-label="お問い合わせ" style="max-width:1180px;margin:0 auto;padding:clamp(48px,6vw,88px) clamp(20px,4vw,48px) clamp(80px,9vw,130px);display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,56px);align-items:flex-start">
+  <aside style="flex:1 1 300px;display:grid;gap:16px">
+    <div data-reveal="up" style="background:#0E1E46;color:#fff;padding:32px 28px">
+      <p style="margin:0 0 6px;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:18px;letter-spacing:.06em">お電話でのお問い合わせ</p>
+      <p style="margin:0 0 20px;font-family:Montserrat,sans-serif;font-size:11px;letter-spacing:.16em;color:#9aa6c4">By Phone</p>
+      <a href="tel:" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:clamp(24px,2.4vw,30px);color:#fff">[Phone Number]</a>
+      <p style="margin:6px 0 0;font-size:12px;color:#c9d0e2">受付時間　[Business Hours]</p>
+    </div>
+    <div data-reveal="up" style="background:#FFD200;color:#0E1E46;padding:28px">
+      <p style="margin:0 0 8px;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:17px">採用に関するお問い合わせ</p>
+      <p style="margin:0 0 18px;font-size:13px;line-height:1.8;color:#2a3352">募集職種・募集要項は採用情報ページをご覧ください。</p>
+      <a href="Recruit.dc.html" style="display:inline-flex;align-items:center;gap:12px;min-height:44px;background:#0E1E46;color:#fff;padding:0 24px;border-radius:999px;font-size:13px;font-weight:700">採用情報を見る<span style="font-family:Montserrat,sans-serif;font-size:11px;color:#FFD200">→</span></a>
+    </div>
+  </aside>
+
+  <div style="flex:2 1 520px;min-width:0">
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div role="status" style="border-top:4px solid #FFD200;background:#f5f6f8;padding:clamp(40px,5vw,64px);text-align:center">
+        <p style="margin:0 0 10px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.2em;color:#0E1E46">THANK YOU</p>
+        <h2 style="margin:0 0 18px;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(22px,2.4vw,28px);color:#0E1E46">送信が完了しました</h2>
+        <p style="margin:0 0 28px;font-size:14px;line-height:2;color:#3b4358">お問い合わせいただきありがとうございます。<br>内容を確認のうえ、担当者よりご連絡いたします。</p>
+        <button onClick="{{ reset }}" style="min-height:48px;padding:0 28px;border-radius:999px;border:1px solid #0E1E46;background:#fff;color:#0E1E46;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer">フォームに戻る</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <h2 data-reveal="up" style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(22px,2.4vw,30px);letter-spacing:.08em;color:#0E1E46">お問い合わせフォーム</h2>
+      <p style="margin:8px 0 32px;font-size:13px;color:#4a5268"><span style="color:#b3261e">*</span> は必須項目です</p>
+      <form onSubmit="{{ submit }}" style="display:grid;gap:22px">
+        <fieldset style="border:0;margin:0;padding:0">
+          <legend style="font-size:14px;font-weight:700;color:#0E1E46;margin-bottom:12px">お問い合わせ種別 <span style="color:#b3261e">*</span></legend>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ types }}" as="t" hint-placeholder-count="5">
+              <button type="button" aria-pressed="{{ t.on }}" onClick="{{ t.pick }}" style="min-height:44px;padding:0 20px;border-radius:999px;border:1px solid {{ t.bd }};background:{{ t.bg }};color:{{ t.fg }};font-family:inherit;font-size:13px;font-weight:700;cursor:pointer">{{ t.label }}</button>
+            </sc-for>
+          </div>
+        </fieldset>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:22px">
+          <sc-for list="{{ fields }}" as="f" hint-placeholder-count="4">
+            <label style="display:grid;gap:8px;font-size:14px;font-weight:700;color:#0E1E46">
+              <span>{{ f.label }} <span style="color:#b3261e">{{ f.mark }}</span></span>
+              <input name="{{ f.name }}" type="{{ f.type }}" required="{{ f.req }}" autocomplete="{{ f.ac }}" placeholder="{{ f.ph }}" style="min-height:52px;padding:0 16px;border:1px solid #cfd4de;background:#fff;font-family:inherit;font-size:15px;font-weight:400;color:#1b2233;outline-color:#0E1E46" style-focus="border-color:#0E1E46;box-shadow:0 0 0 3px rgba(255,210,0,.6)">
+            </label>
+          </sc-for>
+        </div>
+        <label style="display:grid;gap:8px;font-size:14px;font-weight:700;color:#0E1E46">
+          <span>お問い合わせ内容 <span style="color:#b3261e">*</span></span>
+          <textarea name="message" required rows="7" placeholder="荷物の内容・量、発着地、希望日時など" style="padding:14px 16px;border:1px solid #cfd4de;font-family:inherit;font-size:15px;font-weight:400;line-height:1.8;color:#1b2233;resize:vertical" style-focus="border-color:#0E1E46;box-shadow:0 0 0 3px rgba(255,210,0,.6)"></textarea>
+        </label>
+        <label style="display:flex;gap:12px;align-items:center;font-size:13px;color:#3b4358;cursor:pointer">
+          <input type="checkbox" required style="width:20px;height:20px;accent-color:#0E1E46">
+          <span><a href="#" style="text-decoration:underline">プライバシーポリシー</a>に同意する</span>
+        </label>
+        <div style="padding-top:8px">
+          <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:56px;min-width:280px;border:0;background:#0E1E46;color:#fff;padding:0 36px;border-radius:999px;font-family:inherit;font-size:15px;font-weight:700;letter-spacing:.08em;cursor:pointer" style-hover="background:#1b3170">送信する<span style="font-family:Montserrat,sans-serif;font-size:11px;color:#FFD200">→</span></button>
+        </div>
+      </form>
+    </sc-if>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" show-cta="{{ false }}" hint-size="100%,400px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { type: /type=recruit/.test(location.search) ? 4 : 0, sent: false };
+  renderVals() {
+    const labels = ['輸送のご依頼', 'お見積り', '倉庫・保管', 'その他', '採用について'];
+    return {
+      sent: this.state.sent, notSent: !this.state.sent,
+      types: labels.map((label, i) => {
+        const on = i === this.state.type;
+        return { label, on, bg: on ? '#0E1E46' : '#fff', fg: on ? '#fff' : '#0E1E46', bd: '#0E1E46', pick: () => this.setState({ type: i }) };
+      }),
+      fields: [
+        { name: 'company', label: '会社名', mark: '', type: 'text', req: false, ac: 'organization', ph: '' },
+        { name: 'name', label: 'お名前', mark: '*', type: 'text', req: true, ac: 'name', ph: '' },
+        { name: 'email', label: 'メールアドレス', mark: '*', type: 'email', req: true, ac: 'email', ph: '' },
+        { name: 'tel', label: '電話番号', mark: '', type: 'tel', req: false, ac: 'tel', ph: '' }
+      ],
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); window.scrollTo({ top: 300, behavior: 'smooth' }); },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

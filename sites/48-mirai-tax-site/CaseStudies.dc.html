@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;font-family:'Noto Sans JP',sans-serif;color:oklch(23% 0.01 90);background:oklch(99% 0.003 90);}
+  a{color:oklch(38% 0.08 241);text-decoration:none;}
+  a:hover{color:oklch(28% 0.07 241);}
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .fade1{animation:fadeInUp .8s ease-out .1s both}
+</style>
+</helmet>
+
+<div style="display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;position:sticky;top:0;z-index:30;transition:box-shadow .3s ease,background .3s ease;background:{{ headerBg }};box-shadow:{{ headerShadow }};">
+  <a href="Home.dc.html" style="display:flex;align-items:center;gap:10px;">
+    <div style="width:38px;height:38px;border-radius:8px;background:oklch(28% 0.07 241);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px;flex:none;">M</div>
+    <div>
+      <div style="font-weight:700;font-size:15px;line-height:1.2;">みらい会計事務所</div>
+      <div style="font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:.12em;color:oklch(45% 0.01 90);">MIRAI TAX &amp; ACCOUNTING</div>
+    </div>
+  </a>
+  <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;align-items:center;gap:28px;">
+      <a href="Home.dc.html" style="font-size:14px;color:oklch(23% 0.01 90);">HOME</a>
+      <a href="Services.dc.html" style="font-size:14px;color:oklch(23% 0.01 90);">業務内容</a>
+      <a href="About.dc.html" style="font-size:14px;color:oklch(23% 0.01 90);">事務所案内</a>
+      <a href="Fees.dc.html" style="font-size:14px;color:oklch(23% 0.01 90);">料金</a>
+      <a href="CaseStudies.dc.html" style="font-size:14px;font-weight:700;color:oklch(28% 0.07 241);">導入事例</a>
+      <a href="Contact.dc.html" style="font-size:13px;font-weight:600;background:oklch(28% 0.07 241);color:white;padding:10px 20px;border-radius:4px;">お問い合わせ</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleNav }}" aria-label="メニュー" style="background:none;border:none;width:40px;height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;">
+      <span style="width:22px;height:2px;background:oklch(23% 0.01 90);"></span>
+      <span style="width:22px;height:2px;background:oklch(23% 0.01 90);"></span>
+      <span style="width:22px;height:2px;background:oklch(23% 0.01 90);"></span>
+    </button>
+  </sc-if>
+</div>
+<sc-if value="{{ showMobileNav }}" hint-placeholder-val="{{ false }}">
+  <nav style="display:flex;flex-direction:column;padding:8px 5vw 20px;gap:14px;border-bottom:1px solid oklch(90% 0.005 90);">
+    <a href="Home.dc.html" style="font-size:15px;">HOME</a>
+    <a href="Services.dc.html" style="font-size:15px;">業務内容</a>
+    <a href="About.dc.html" style="font-size:15px;">事務所案内</a>
+    <a href="Fees.dc.html" style="font-size:15px;">料金</a>
+    <a href="CaseStudies.dc.html" style="font-size:15px;font-weight:700;color:oklch(28% 0.07 241);">導入事例</a>
+    <a href="Contact.dc.html" style="font-size:15px;font-weight:600;color:oklch(28% 0.07 241);">お問い合わせ</a>
+  </nav>
+</sc-if>
+
+<div class="fade1" style="background:linear-gradient(oklch(20% 0.05 241 / 0.84), oklch(20% 0.05 241 / 0.9)), url(images/handshake.jpg) center 40% / cover no-repeat;color:white;padding:70px 5vw 56px;text-align:center;">
+  <div style="font-family:'Poppins',sans-serif;font-size:12px;letter-spacing:.16em;color:oklch(75% 0.06 241);margin-bottom:14px;">CASE STUDIES</div>
+  <h1 style="font-size:clamp(26px,3.4vw,36px);font-weight:900;margin:0 0 12px;">お客様の事例</h1>
+  <div style="font-size:13px;color:oklch(85% 0.01 75);max-width:520px;margin:0 auto;">実際のご相談内容をもとにした事例です。個人情報保護のため、内容の一部を再構成しています。</div>
+</div>
+
+<div style="padding:80px 5vw;">
+  <div style="max-width:1140px;margin:0 auto;display:flex;flex-direction:column;gap:40px;">
+    <sc-for list="{{ cases }}" as="c" hint-placeholder-count="6">
+      <div style="display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:0;background:white;border:1px solid oklch(90% 0.005 90);border-radius:10px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease;" style-hover="{&quot;transform&quot;:&quot;translateY(-5px)&quot;,&quot;boxShadow&quot;:&quot;0 16px 32px oklch(20% 0.02 241 / 0.12)&quot;}">
+        <div style="min-height:220px;overflow:hidden;">
+          <img src="{{ c.img }}" alt="{{ c.industry }}の事例" style="width:100%;height:100%;min-height:220px;object-fit:cover;display:block;"/>
+        </div>
+        <div style="padding:32px 36px;">
+          <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;">
+            <span style="font-size:11px;font-weight:700;color:white;background:oklch(28% 0.07 241);padding:4px 12px;border-radius:20px;">{{ c.industry }}</span>
+            <span style="font-size:11px;color:oklch(50% 0.01 90);padding:4px 12px;border:1px solid oklch(88% 0.005 90);border-radius:20px;">{{ c.size }}</span>
+          </div>
+          <div style="font-size:17px;font-weight:700;margin-bottom:16px;">{{ c.title }}</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 24px;font-size:13px;line-height:1.9;color:oklch(35% 0.01 90);">
+            <div><span style="font-weight:700;color:oklch(38% 0.08 241);">課題：</span>{{ c.challenge }}</div>
+            <div><span style="font-weight:700;color:oklch(38% 0.08 241);">支援内容：</span>{{ c.support }}</div>
+            <div><span style="font-weight:700;color:oklch(38% 0.08 241);">結果：</span>{{ c.result }}</div>
+          </div>
+          <div style="margin-top:18px;padding-top:16px;border-top:1px solid oklch(92% 0.005 90);font-size:13px;color:oklch(45% 0.01 90);font-style:italic;">「{{ c.feedback }}」</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+<div style="padding:90px 5vw;background:oklch(22% 0.06 241);color:white;text-align:center;">
+  <div style="font-size:22px;font-weight:700;margin-bottom:20px;">あなたの事業についてもご相談ください</div>
+  <div style="font-size:14px;color:oklch(88% 0.01 75);margin-bottom:36px;">業種や規模を問わず、まずはお話をお伺いします。</div>
+  <a href="Contact.dc.html" style="background:white;color:oklch(28% 0.07 241);font-weight:700;font-size:15px;padding:16px 34px;border-radius:4px;display:inline-block;transition:transform .25s ease;" style-hover="{&quot;transform&quot;:&quot;translateY(-3px) scale(1.03)&quot;}">無料相談を申し込む</a>
+</div>
+
+<footer style="padding:64px 5vw 32px;background:oklch(96% 0.012 75);">
+  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px;border-bottom:1px solid oklch(88% 0.005 90);padding-bottom:44px;">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+        <div style="width:30px;height:30px;border-radius:6px;background:oklch(28% 0.07 241);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;">M</div>
+        <div style="font-weight:700;font-size:14px;">みらい会計事務所</div>
+      </div>
+      <div style="font-size:12.5px;line-height:1.9;color:oklch(45% 0.01 90);">〒330-0854<br/>埼玉県さいたま市大宮区桜木町1-7-5<br/>大宮セントラルビル3F</div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:14px;">サイトメニュー</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <a href="Home.dc.html" style="font-size:13px;color:oklch(35% 0.01 90);">HOME</a>
+        <a href="Services.dc.html" style="font-size:13px;color:oklch(35% 0.01 90);">業務内容</a>
+        <a href="About.dc.html" style="font-size:13px;color:oklch(35% 0.01 90);">事務所案内</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:14px;">&nbsp;</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <a href="Fees.dc.html" style="font-size:13px;color:oklch(35% 0.01 90);">料金</a>
+        <a href="CaseStudies.dc.html" style="font-size:13px;color:oklch(35% 0.01 90);">導入事例</a>
+        <a href="Contact.dc.html" style="font-size:13px;color:oklch(35% 0.01 90);">お問い合わせ</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:14px;">お問い合わせ</div>
+      <div style="font-size:13px;color:oklch(35% 0.01 90);line-height:1.9;">TEL 048-123-4567<br/>受付時間 平日 9:00〜18:00<br/>info@mirai-tax.example.jp</div>
+    </div>
+  </div>
+  <div style="max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;font-size:12px;color:oklch(55% 0.01 90);">
+    <div>© 2026 みらい会計事務所</div>
+    <div style="display:flex;gap:20px;"><a href="#" style="font-size:12px;color:oklch(55% 0.01 90);">プライバシーポリシー</a></div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { isMobile: false, navOpen: false, scrolled: false };
+  componentDidMount() {
+    this.checkSize = () => this.setState({ isMobile: window.innerWidth < 880 });
+    this.checkSize();
+    this.resizeObserver = new ResizeObserver(this.checkSize);
+    this.resizeObserver.observe(document.documentElement);
+    this.onScroll = () => this.setState({ scrolled: window.scrollY > 12 });
+    window.addEventListener('scroll', this.onScroll);
+  }
+  componentWillUnmount() {
+    if (this.resizeObserver) this.resizeObserver.disconnect();
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  renderVals() {
+    const cases = [
+      { img: 'images/analysis-laptop.jpg', industry: 'IT・ソフトウェア', size: '従業員8名', title: '創業2年で資金調達に成功したIT企業の事例', challenge: '創業直後で資金計画・税務体制が未整備だった。', support: '事業計画書の作成支援と月次会計体制の構築。', result: '融資獲得と月次での経営数値の可視化を実現。', feedback: '数字の話を経営の言葉に翻訳してもらえるので助かっています。' },
+      { img: 'images/calculator-work.jpg', industry: '飲食業', size: '店舗数3店', title: '複数店舗展開に向けた会計体制構築の事例', challenge: '店舗ごとの収支が把握できず出店判断に不安があった。', support: '店舗別の会計管理体制と月次レポートの導入。', result: '店舗別採算が明確になり、新規出店を判断できた。', feedback: '店舗ごとの状況が見えるようになり、経営判断が早くなりました。' },
+      { img: 'images/succession-consult.jpg', industry: '建設業', size: '従業員22名', title: '事業承継を見据えた経営体制整備の事例', challenge: '後継者への引き継ぎ方針が決まっていなかった。', support: '承継計画の策定と税務上の対策をご提案。', result: '無理のない承継スケジュールと税負担の見通しを確立。', feedback: '早めに相談したことで、落ち着いて準備を進められました。' },
+      { img: 'images/staff-desk.jpg', industry: '医療・介護', size: 'クリニック1院', title: '医療法人化を検討したクリニックの事例', challenge: '法人化のメリット・手続きが分からず判断できなかった。', support: '法人化の税務メリットの検証と手続き支援。', result: '法人化による税負担軽減効果を数値で確認し実行。', feedback: '医療現場特有の事情も理解した上で相談できました。' },
+      { img: 'images/tax-return.jpg', industry: '専門サービス業', size: '個人事業主', title: '独立直後の税務相談の事例', challenge: '確定申告の経験がなく手続きに不安があった。', support: '初回から確定申告までの一連の流れをサポート。', result: '期限内に正確な申告を完了し安心して事業に集中。', feedback: '分からないことをいつでも聞ける安心感があります。' },
+      { img: 'images/blue-return.jpg', industry: '小売業', size: '従業員5名', title: '在庫管理と資金繰り改善の事例', challenge: '季節による資金繰りの波が大きく不安があった。', support: '資金繰り表の作成と将来の資金予測をご提案。', result: '資金ショートのリスクを事前に把握できるようになった。', feedback: '先が見えるようになったことで安心して経営できています。' },
+    ];
+    return {
+      isMobile: this.state.isMobile,
+      notMobile: !this.state.isMobile,
+      showMobileNav: this.state.isMobile && this.state.navOpen,
+      toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen })),
+      headerBg: this.state.scrolled ? 'oklch(99% 0.003 90 / 0.96)' : 'oklch(99% 0.003 90)',
+      headerShadow: this.state.scrolled ? '0 4px 20px oklch(20% 0.02 241 / 0.1)' : 'none',
+      cases,
+    };
+  }
+}
+</script>
+</body>
+</html>

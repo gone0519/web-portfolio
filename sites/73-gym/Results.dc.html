@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1a1a1a;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1a1a1a;text-decoration:none}
+a:hover{color:#c8102e}
+</style>
+</helmet>
+<div style="position:relative;overflow-x:hidden">
+<dc-import name="SiteHeader" active="results" title="RESULTS &amp; VOICE" sub="実績・お客様の声" img="images/members.jpg" img-pos="center 30%" hint-size="100%,420px"></dc-import>
+
+<section data-screen-label="Results List" style="background:#fff;padding:clamp(64px,8vw,96px) 0 clamp(72px,10vw,120px)">
+  <div style="max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px)">
+    <div data-reveal="">
+      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-weight:400;font-size:clamp(30px,3.4vw,40px);letter-spacing:.02em">RESULTS</h2>
+      <p style="margin:2px 0 0;font-size:11px;color:#777;letter-spacing:.08em">— トレーニング実績</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <button onClick="{{ t.pick }}" style="height:40px;padding:0 16px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};font-size:12px;cursor:pointer;transition:all .3s">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:24px;margin-top:28px">
+      <sc-for list="{{ results }}" as="c" hint-placeholder-count="3">
+        <article style="background:#f2f2f2;padding:18px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+            <div style="position:relative;aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#e6e6e6 0 10px,#dedede 10px 20px)"><span style="position:absolute;top:0;left:0;background:#1a1a1a;color:#fff;font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.12em;padding:3px 8px">BEFORE</span></div>
+            <div style="position:relative;aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#e6e6e6 0 10px,#dedede 10px 20px)"><span style="position:absolute;top:0;left:0;background:#c8102e;color:#fff;font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.12em;padding:3px 8px">AFTER</span></div>
+          </div>
+          <p style="margin:16px 0 0;font-size:14px;font-weight:700">{{ c.title }}</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:12px;background:#d6d6d6;border:1px solid #d6d6d6">
+            <sc-for list="{{ c.data }}" as="d" hint-placeholder-count="3">
+              <div style="background:#fff;padding:10px 8px;text-align:center"><p style="margin:0;font-size:10px;color:#888">{{ d.k }}</p><p style="margin:4px 0 0;font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:.02em">{{ d.v }}</p></div>
+            </sc-for>
+          </div>
+          <p style="margin:12px 0 0;font-size:11px;line-height:1.8;color:#555">{{ c.note }}</p>
+        </article>
+      </sc-for>
+    </div>
+    <p style="margin:18px 0 0;font-size:11px;color:#888;line-height:1.8">※ 掲載はご本人の同意を得たものです。結果には個人差があり、同様の効果を保証するものではありません。</p>
+  </div>
+</section>
+
+<section data-screen-label="Voice List" style="background:#f2f2f2;padding:clamp(72px,10vw,120px) 0">
+  <div style="max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,40px)">
+    <div data-reveal="">
+      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-weight:400;font-size:clamp(30px,3.4vw,40px);letter-spacing:.02em">VOICE</h2>
+      <p style="margin:2px 0 0;font-size:11px;color:#777;letter-spacing:.08em">— お客様の声</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:24px;margin-top:36px">
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="6">
+        <article data-reveal="" style="background:#fff;padding:28px 26px;display:flex;flex-direction:column;transition:box-shadow .4s" style-hover="box-shadow:0 12px 32px rgba(0,0,0,.08)">
+          <span style="align-self:flex-start;background:#1a1a1a;color:#fff;font-size:10px;padding:3px 10px;letter-spacing:.06em">{{ v.tag }}</span>
+          <p style="margin:18px 0 0;font-size:15px;font-weight:700;line-height:1.7">{{ v.title }}</p>
+          <p style="margin:12px 0 0;font-size:12px;line-height:2;color:#555;text-wrap:pretty">{{ v.body }}</p>
+          <p style="margin:auto 0 0;padding-top:18px;font-size:11px;color:#888">{{ v.who }}</p>
+        </article>
+      </sc-for>
+    </div>
+    <p style="margin:18px 0 0;font-size:11px;color:#888">※ 個人の感想であり、効果を保証するものではありません。</p>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: 'all' };
+  renderVals() {
+    const R = (cat, title, a, b, c, note) => ({ cat, title, data: [{ k: '期間', v: a }, { k: b[0], v: b[1] }, { k: c[0], v: c[1] }], note });
+    const all = [
+      R('diet', '30代 男性 ／ 会社員', '3ヶ月', ['体重', '−6.2kg'], ['体脂肪率', '−5.1%'], '週2回・食事サポート併用。外食中心の生活を続けながら取り組みました。'),
+      R('body', '20代 女性 ／ 会社員', '4ヶ月', ['ウエスト', '−7cm'], ['体脂肪率', '−3.8%'], '週1回。ヒップアップと姿勢改善を中心にトレーニング。'),
+      R('posture', '40代 女性 ／ デスクワーク', '2ヶ月', ['頭部前方位', '改善'], ['肩こり', '軽減'], '週1回。姿勢評価とモビリティトレーニングを継続。'),
+      R('sports', '40代 男性 ／ ゴルファー', '3ヶ月', ['ヘッドスピード', '+3.5m/s'], ['可動域', '向上'], '週1回。回旋動作の強化と股関節の柔軟性向上に取り組みました。'),
+      R('diet', '50代 女性 ／ 主婦', '4ヶ月', ['体重', '−5.4kg'], ['体脂肪率', '−4.2%'], '週1回・食事サポート併用。膝に負担をかけないメニューで実施。'),
+      R('body', '30代 男性 ／ 自営業', '6ヶ月', ['筋肉量', '+2.8kg'], ['スクワット', '+40kg'], '週2回。フォーム習得から始め、段階的に負荷を上げました。')
+    ];
+    const tabs = [['all', 'すべて'], ['diet', 'ダイエット'], ['body', 'ボディメイク'], ['posture', '姿勢改善'], ['sports', '競技力向上']];
+    const cat = this.state.cat;
+    return {
+      tabs: tabs.map(([k, label]) => ({ label, pick: () => this.setState({ cat: k }), bg: k === cat ? '#1a1a1a' : '#fff', color: k === cat ? '#fff' : '#1a1a1a', border: k === cat ? '#1a1a1a' : '#d6d6d6' })),
+      results: all.filter(c => cat === 'all' || c.cat === cat),
+      voices: [
+        { tag: '継続', title: '運動が苦手でも、半年続けられました。', body: '最初は週1回から。毎回その日の体調を聞いてメニューを調整してくれるので、無理なく通えています。階段がつらくなくなったのが一番の変化です。', who: '40代 女性 ／ ボディメイク' },
+        { tag: '食事', title: '我慢ではなく、選び方を教わりました。', body: '食事制限が厳しいイメージでしたが、外食が多い生活に合わせた選び方を一緒に考えてもらえました。終了後も自分で続けられています。', who: '30代 男性 ／ ダイエット' },
+        { tag: '環境', title: '個室なので、人目を気にせず集中できます。', body: 'フォームを一つひとつ確認しながら進めてもらえるので、腰を痛めることもなく安心です。シャワーもあり仕事前に通えます。', who: '30代 女性 ／ 姿勢改善' },
+        { tag: 'トレーナー', title: '説明が論理的で、納得して取り組めます。', body: 'なぜこの種目をやるのか、毎回理由を説明してもらえるので、自主トレのときも意識するポイントがわかるようになりました。', who: '40代 男性 ／ 競技力向上' },
+        { tag: '体験', title: '体験の日に入会を迫られなかったのが決め手。', body: '体組成の結果をもとに丁寧に説明してもらい、持ち帰って検討できました。押し付けがない雰囲気で安心して入会できました。', who: '20代 女性 ／ ダイエット' },
+        { tag: '予約', title: 'アプリで予約・変更ができて便利です。', body: '急な仕事でも前日までならアプリで予約を変更できるので、忙しい時期も通い続けられています。', who: '30代 男性 ／ 筋力トレーニング' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

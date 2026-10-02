@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./site.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>導入事例｜GROWTHWORKS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="site.css" rel="stylesheet" />
+</helmet>
+
+<div id="top" style="min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden">
+
+  <dc-import name="SiteHeader" current="cases" hint-size="100%,104px"></dc-import>
+
+  <main style="flex:1">
+    <dc-import name="PageHero" jp="導入事例" en="CASE STUDIES" lead="業種も課題もさまざまな 320 社以上のご支援から、代表的な事例をご紹介します。どの事例も、最初に「何を成果とするか」を決めるところから始まっています。" img="images/cases-hero.jpg" img-alt="クライアントと握手を交わす様子" img-pos="center 40%" hint-size="100%,320px"></dc-import>
+
+    <!-- LIST -->
+    <section style="max-width:1180px;margin:0 auto;padding:90px 24px 0">
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;margin-bottom:40px">
+        <div role="group" aria-label="業種で絞り込む" style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+            <button type="button" onClick="{{ f.select }}" aria-pressed="{{ f.pressed }}" style="height:40px;padding:0 18px;border:1px solid #17170f;background:{{ f.bg }};color:{{ f.color }};font-size:13px;font-weight:700;letter-spacing:0.08em;cursor:pointer" style-hover="background:#ffde00;color:#17170f">{{ f.label }}</button>
+          </sc-for>
+        </div>
+        <p style="margin:0;font-size:13px;letter-spacing:0.08em;color:#6b6b60"><span style="font-family:'Chakra Petch',sans-serif;font-size:22px;font-weight:700;color:#17170f;margin-right:6px">{{ count }}</span>件の事例</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(460px,100%),1fr));gap:28px">
+        <sc-for list="{{ visibleCases }}" as="c" hint-placeholder-count="4">
+          <article data-reveal="up" data-stagger="1" style="display:flex;flex-direction:column;border:1px solid #ece9dc;background:#fff" style-hover="border-color:#ffde00">
+            <div style="position:relative;overflow:hidden;aspect-ratio:16/8;background:repeating-linear-gradient(-45deg,#f6f4e9 0 10px,#fdfcf5 10px 20px);display:flex;align-items:center;justify-content:center;border-bottom:1px solid #ece9dc">
+              <span style="font-family:'Chakra Petch',sans-serif;font-size:10px;letter-spacing:0.26em;color:#6f6c5e">CASE IMAGE</span>
+              <img class="gw-img" src="{{ c.img }}" alt="{{ c.title }}" loading="lazy" style="object-position:{{ c.pos }}" />
+              <span style="position:absolute;left:0;top:0;background:#ffde00;font-size:12px;font-weight:700;letter-spacing:0.12em;padding:7px 16px">{{ c.industry }}</span>
+            </div>
+            <div style="padding:28px 28px 0;flex:1">
+              <p style="margin:0;display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ c.services }}" as="s" hint-placeholder-count="2">
+                  <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;border:1px solid #ddd9c7;padding:3px 10px">{{ s }}</span>
+                </sc-for>
+              </p>
+              <h2 style="margin:16px 0 0;font-size:19px;font-weight:900;letter-spacing:0.05em;line-height:1.7">{{ c.title }}</h2>
+              <p style="margin:6px 0 0;font-size:12.5px;letter-spacing:0.08em;color:#6b6b60">{{ c.client }}</p>
+              <dl style="margin:20px 0 0">
+                <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid #f2f0e6">
+                  <dt style="flex:0 0 44px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:#8a7a00">課題</dt>
+                  <dd style="margin:0;font-size:13.5px;line-height:1.95;letter-spacing:0.04em;color:#55554c">{{ c.issue }}</dd>
+                </div>
+                <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid #f2f0e6">
+                  <dt style="flex:0 0 44px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:#8a7a00">施策</dt>
+                  <dd style="margin:0;font-size:13.5px;line-height:1.95;letter-spacing:0.04em;color:#55554c">{{ c.action }}</dd>
+                </div>
+              </dl>
+            </div>
+            <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;background:#17170f;color:#fff">
+              <sc-for list="{{ c.results }}" as="r" hint-placeholder-count="2">
+                <div style="padding:20px 28px;border-left:1px solid rgba(255,255,255,0.12)">
+                  <p style="margin:0;font-family:'Chakra Petch',sans-serif;font-size:28px;font-weight:700;line-height:1.1;color:#ffde00">{{ r.value }}</p>
+                  <p style="margin:6px 0 0;font-size:11.5px;letter-spacing:0.08em;color:#d2d0c4">{{ r.label }}</p>
+                </div>
+              </sc-for>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- LOGOS -->
+    <section style="max-width:1180px;margin:0 auto;padding:100px 24px 0">
+      <p data-reveal="up" style="margin:0 0 24px;text-align:center;font-size:13px;font-weight:700;letter-spacing:0.14em">業種・規模を問わず、多くの企業様をご支援しています</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:#ece9dc;border:1px solid #ece9dc">
+        <sc-for list="{{ logos }}" as="l" hint-placeholder-count="12">
+          <div data-reveal="up" data-stagger="1" style="height:84px;background:#fff;display:flex;align-items:center;justify-content:center">
+            <span style="font-family:'Chakra Petch',sans-serif;font-size:10px;letter-spacing:0.24em;color:#a3a091">{{ l }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- VOICE -->
+    <section id="voice" style="margin-top:100px;background:#faf9f4;border-top:1px solid #ece9dc;border-bottom:1px solid #ece9dc">
+      <div style="max-width:1180px;margin:0 auto;padding:88px 24px">
+        <div data-reveal="up" style="display:flex;gap:16px;align-items:flex-start;margin-bottom:46px">
+          <span style="width:44px;height:44px;background:#ffde00;flex-shrink:0;clip-path:polygon(0 0,100% 0,0 100%);margin-top:4px"></span>
+          <div>
+            <h2 style="margin:0;font-size:30px;font-weight:900;letter-spacing:0.06em">お客様の声</h2>
+            <p style="margin:10px 0 0;font-family:'Chakra Petch',sans-serif;font-size:11px;letter-spacing:0.26em;color:#6b6b60">CLIENT TESTIMONIALS</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:24px">
+          <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="4">
+            <figure data-reveal="up" data-stagger="1" style="margin:0;background:#fff;border:1px solid #ece9dc;padding:32px 28px;display:flex;flex-direction:column">
+              <span style="font-family:'Chakra Petch',sans-serif;font-size:44px;font-weight:700;color:#ffde00;line-height:0.8;display:block">&ldquo;</span>
+              <blockquote style="margin:18px 0 0;flex:1;font-size:14px;line-height:2.15;letter-spacing:0.05em;color:#3d3d36">{{ t.quote }}</blockquote>
+              <figcaption style="margin-top:24px;padding-top:18px;border-top:1px solid #ece9dc;display:flex;align-items:center;gap:14px">
+                <span style="width:44px;height:44px;flex-shrink:0;background:repeating-linear-gradient(-45deg,#f6f4e9 0 5px,#fdfcf5 5px 10px);border:1px solid #ece9dc"></span>
+                <span style="font-size:12.5px;line-height:1.7;letter-spacing:0.08em;color:#6b6b60">{{ t.who }}</span>
+              </figcaption>
+            </figure>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <dc-import name="ContactCta" hint-size="100%,480px"></dc-import>
+  </main>
+
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { filter: "すべて" };
+
+  renderVals() {
+    const cases = [
+      {
+        industry: "SaaS", services: ["広告運用", "分析・計測基盤"], img: "images/case-saas.jpg", pos: "center 35%",
+        title: "商談化率を落とさずに、新規リード数を 2.4 倍へ",
+        client: "クラウド型勤怠管理サービス / 従業員 120 名",
+        issue: "リード数を増やすと商談化率が下がり、営業部門から広告経由のリードが敬遠されていた。",
+        action: "CRM の商談データを広告媒体に連携し、商談化したリードを学習シグナルとして入札を再設計。",
+        results: [{ value: "+142%", label: "有効リード数（6ヶ月）" }, { value: "31%", label: "商談化率（維持）" }]
+      },
+      {
+        industry: "EC", services: ["SEO・コンテンツ", "広告運用"], img: "images/case-ec-food.jpg", pos: "center 45%",
+        title: "指名検索の獲得で、新規顧客の CPA を半減",
+        client: "オーガニック食品 D2C ブランド",
+        issue: "SNS 広告への依存度が高く、配信単価の上昇とともに獲得効率が悪化していた。",
+        action: "比較・レシピ系コンテンツで指名検索を育成し、検索広告と SEO の予算配分を見直し。",
+        results: [{ value: "-51%", label: "新規顧客獲得単価" }, { value: "2.7倍", label: "指名検索数" }]
+      },
+      {
+        industry: "製造業", services: ["サイト制作", "ブランディング"], img: "images/case-manufacturing.jpg", pos: "center",
+        title: "海外展開に向けた、多言語サイトの全面刷新",
+        client: "精密部品メーカー / 東証スタンダード上場",
+        issue: "製品情報が PDF 中心で検索されず、海外からの問い合わせがほとんど発生していなかった。",
+        action: "用途別の製品データベースを構築し、英語・中国語の 3 言語サイトとして再設計。",
+        results: [{ value: "3.8倍", label: "問い合わせ件数" }, { value: "46%", label: "海外比率" }]
+      },
+      {
+        industry: "人材", services: ["マーケティング戦略", "広告運用"], img: "images/case-hr.jpg", pos: "65% 25%",
+        title: "求職者と企業、両面の獲得単価を同時に改善",
+        client: "IT 人材特化型エージェント",
+        issue: "求職者向けと法人向けの施策が別チームで動き、予算の取り合いが起きていた。",
+        action: "成約単位の KPI ツリーを作成し、両面の予算を一つの指標で配分する運用に統合。",
+        results: [{ value: "-38%", label: "成約あたり獲得コスト" }, { value: "+64%", label: "月間成約数" }]
+      },
+      {
+        industry: "BtoB", services: ["分析・計測基盤"], img: "images/case-btob.jpg", pos: "center 40%",
+        title: "部門ごとにばらばらだった数値を、一つのダッシュボードへ",
+        client: "業務用設備の専門商社",
+        issue: "営業・マーケ・経営で見ている数字が異なり、会議の多くが数字の突き合わせに使われていた。",
+        action: "GA4・広告・CRM を BigQuery に統合し、役割別の Looker Studio ダッシュボードを構築。",
+        results: [{ value: "-12h", label: "月間レポート作成工数" }, { value: "100%", label: "指標定義の統一" }]
+      },
+      {
+        industry: "EC", services: ["サイト制作", "広告運用"], img: "images/case-ec-lp.jpg", pos: "center 75%",
+        title: "LP の検証サイクルを週次に変え、CVR を 1.9 倍に",
+        client: "スキンケアブランド / 通販事業",
+        issue: "LP の改修を外部に都度発注しており、1 回の検証に 1 ヶ月以上かかっていた。",
+        action: "パーツ単位で差し替えられる LP を再構築し、社内クリエイティブで週次の ABテストを実施。",
+        results: [{ value: "1.9倍", label: "LP コンバージョン率" }, { value: "24本", label: "半年間の検証数" }]
+      }
+    ];
+
+    const labels = ["すべて", "SaaS", "EC", "製造業", "人材", "BtoB"];
+    const cur = this.state.filter;
+    const visible = cur === "すべて" ? cases : cases.filter((c) => c.industry === cur);
+
+    return {
+      filters: labels.map((label) => ({
+        label,
+        pressed: cur === label ? "true" : "false",
+        bg: cur === label ? "#17170f" : "#fff",
+        color: cur === label ? "#ffde00" : "#17170f",
+        select: () => this.setState({ filter: label })
+      })),
+      visibleCases: visible,
+      count: String(visible.length),
+
+      logos: ["CLIENT LOGO", "CLIENT LOGO", "CLIENT LOGO", "CLIENT LOGO", "CLIENT LOGO", "CLIENT LOGO",
+              "CLIENT LOGO", "CLIENT LOGO", "CLIENT LOGO", "CLIENT LOGO", "CLIENT LOGO", "CLIENT LOGO"],
+
+      testimonials: [
+        { quote: "数字が悪い月ほど連絡が早い。都合の悪い結果を最初に共有してくれる代理店は初めてでした。社内の会議資料がそのまま使える精度のレポートも助かっています。", who: "SaaS / 執行役員 マーケティング本部長" },
+        { quote: "広告の相談から始まりましたが、結果的に商談化の定義そのものを見直すことになりました。営業部門を巻き込んだ設計まで踏み込んでもらえたのが大きかったです。", who: "人材サービス / 事業部長" },
+        { quote: "運用を任せきりにせず、社内メンバーが判断できるようになることをゴールに置いてくれました。2年目からは自社運用に切り替え、今も月次でレビューをお願いしています。", who: "D2C / 代表取締役" },
+        { quote: "サイトを作って終わりではなく、公開後の問い合わせの質まで一緒に見てくれました。海外の代理店とのやり取りも含めて伴走してもらえたのは心強かったです。", who: "製造業 / 海外営業部 部長" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

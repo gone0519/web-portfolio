@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+body { margin: 0; font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif; }
+a { color: oklch(46% 0.10 245); text-decoration: none; }
+a:hover { color: oklch(32% 0.09 248); }
+</style>
+</helmet>
+<header style="position:sticky;top:0;z-index:50;background:oklch(99% 0.002 240);border-bottom:1px solid oklch(90% 0.006 240);">
+  <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+    <div style="background:oklch(96% 0.012 245);border-bottom:1px solid oklch(90% 0.006 240);">
+      <div style="max-width:1200px;margin:0 auto;padding:7px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:12px;color:oklch(38% 0.02 245);">
+        <span>〒000-0000 東京都○○区○○ 1-2-3　診療時間 9:00〜13:00／15:00〜20:00　休診日 水曜・日曜祝日</span>
+        <div style="display:flex;gap:8px;align-items:center;flex:none;">
+          <a href="tel:0120-000-000" style="background:oklch(68% 0.13 80);color:#fff;padding:4px 14px;border-radius:20px;font-weight:700;font-size:12px;white-space:nowrap;">📞 0120-000-000</a>
+          <a href="Contact.dc.html" style="background:oklch(46% 0.10 245);color:#fff;padding:4px 14px;border-radius:20px;font-weight:700;font-size:12px;white-space:nowrap;">WEB予約</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <div style="max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <a href="Home.dc.html" style="font-size:23px;font-weight:700;background:linear-gradient(120deg, oklch(46% 0.10 245), oklch(60% 0.15 80));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:0.02em;white-space:nowrap;">{{ clinicName }}</a>
+    <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:28px;flex:1;justify-content:center;">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+          <a href="{{ item.href }}" style="font-size:14px;color:{{ item.color }};font-weight:{{ item.weight }};white-space:nowrap;">{{ item.label }}</a>
+        </sc-for>
+      </nav>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <a href="tel:0120-000-000" style="font-size:13px;color:oklch(30% 0.02 245);white-space:nowrap;">📞 0120-000-000</a>
+        <a href="Contact.dc.html" style="background:oklch(46% 0.10 245);color:#fff;padding:10px 20px;border-radius:4px;font-size:14px;font-weight:700;white-space:nowrap;">WEB予約</a>
+      </div>
+    </sc-if>
+    <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="menu" style="background:none;border:none;width:32px;height:24px;position:relative;cursor:pointer;">
+        <span style="position:absolute;top:0;left:0;width:100%;height:2px;background:oklch(24% 0.02 250);"></span>
+        <span style="position:absolute;top:11px;left:0;width:100%;height:2px;background:oklch(24% 0.02 250);"></span>
+        <span style="position:absolute;bottom:0;left:0;width:100%;height:2px;background:oklch(24% 0.02 250);"></span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ showMenu }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;flex-direction:column;padding:8px 24px 20px;border-top:1px solid oklch(90% 0.006 240);">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+        <a href="{{ item.href }}" style="padding:12px 0;font-size:15px;color:{{ item.color }};font-weight:{{ item.weight }};border-bottom:1px solid oklch(94% 0.004 240);">{{ item.label }}</a>
+      </sc-for>
+      <a href="Contact.dc.html" style="margin-top:14px;background:oklch(46% 0.10 245);color:#fff;padding:12px 20px;border-radius:4px;font-size:15px;font-weight:700;text-align:center;">WEB予約はこちら</a>
+      <a href="tel:0120-000-000" style="margin-top:10px;text-align:center;font-size:14px;color:oklch(30% 0.02 245);padding:8px 0;">📞 0120-000-000</a>
+    </nav>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mobile: typeof window !== 'undefined' ? window.innerWidth < 1040 : false, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState(s => (window.innerWidth < 1040) !== s.mobile ? { mobile: window.innerWidth < 1040, menuOpen: false } : null);
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+  renderVals() {
+    const active = this.props.active || '';
+    const raw = [
+      { key: 'home', label: 'ホーム', href: 'Home.dc.html' },
+      { key: 'treatments', label: '施術メニュー', href: 'Treatments.dc.html' },
+      { key: 'about', label: 'クリニック紹介', href: 'About.dc.html' },
+      { key: 'fees', label: '料金', href: 'Fees.dc.html' },
+      { key: 'symptoms', label: '症状から探す', href: 'Symptoms.dc.html' },
+      { key: 'contact', label: 'アクセス・ご予約', href: 'Contact.dc.html' },
+    ];
+    const navItems = raw.map(it => ({
+      ...it,
+      color: it.key === active ? 'oklch(46% 0.10 245)' : 'oklch(30% 0.02 245)',
+      weight: it.key === active ? 700 : 500,
+    }));
+    return {
+      clinicName: '実り接骨院',
+      navItems,
+      mobile: this.state.mobile,
+      notMobile: !this.state.mobile,
+      showMenu: this.state.mobile && this.state.menuOpen,
+      toggleMenu: this.toggleMenu,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>設備一覧 | 株式会社 御影精工</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;family=Shippori+Mincho:wght@500;600&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./site-motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0f1c48;color:#fff;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:#8fb0ff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="equipment" hint-size="100%,72px" style="position:fixed;top:0;left:0;right:0;z-index:50"></dc-import>
+<main>
+<section data-screen-label="01 Page Hero" style="position:relative;min-height:clamp(560px,76vh,800px);background:#13255f;overflow:hidden">
+  <div style="position:absolute;inset:0"><image-slot id="equip-hero" shape="rect" src="./images/plant-towers.jpg"placeholder="工場内 設備が並ぶ全景（横長）"></image-slot></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(95deg,rgba(15,28,72,.85) 0%,rgba(15,28,72,.4) 55%,rgba(28,63,148,.15) 100%)"></div>
+  <div style="position:absolute;right:24%;top:8%;width:3px;height:60%;background:#d0021b;transform:rotate(28deg);pointer-events:none"></div>
+  <div style="position:relative;padding:190px clamp(24px,8vw,160px) max(180px,14vw);pointer-events:none">
+    <div style="font:500 12px Outfit,sans-serif;letter-spacing:.12em;opacity:.85;pointer-events:auto"><a href="./Factory%20Site.dc.html">HOME</a>　/　EQUIPMENT</div>
+    <div style="display:flex;align-items:center;gap:14px;margin-top:40px"><span style="width:20px;height:30px;background:#d0021b;transform:skewX(-28deg);display:block"></span><span style="font:700 16px 'Zen Kaku Gothic New',sans-serif;letter-spacing:.2em">設備一覧</span></div>
+    <h1 style="margin:14px 0 0;font:600 clamp(40px,max(10vw,min(15.5vw,60px)),176px)/.88 Outfit,sans-serif;letter-spacing:-0.04em">Equipment<span style="color:#d0021b">.</span></h1>
+  </div>
+</section>
+
+<section data-screen-label="02 Equipment List" style="position:relative;z-index:2;margin-top:-10vw;clip-path:polygon(0 10vw,100% 0,100% 100%,0 100%);padding:calc(10vw + 100px) clamp(24px,8vw,160px) clamp(110px,10vw,160px);background:radial-gradient(circle at 88% 20%,rgba(30,80,255,.5),transparent 26%),linear-gradient(180deg,#1c3f94 0%,#132a6e 40%,#0f1c48 100%);overflow:hidden">
+  <div style="position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:80px 80px"></div>
+  <div style="position:relative;max-width:1400px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px 80px;align-items:end">
+      <div data-reveal="">
+        <div style="display:flex;align-items:center;gap:14px"><span style="width:20px;height:30px;background:#d0021b;transform:skewX(-28deg);display:block"></span><span style="font:600 14px Outfit,sans-serif">Machine List</span></div>
+        <h2 style="margin:20px 0 0;font:700 clamp(26px,2.6vw,38px)/1.6 'Zen Kaku Gothic New',sans-serif;letter-spacing:.16em">保有設備</h2>
+        <p style="margin:14px 0 0;font:700 15px/2.1 'Zen Kaku Gothic New',sans-serif">加工・自動化・検査の各工程に必要な設備を社内に保有しています。</p>
+      </div>
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+        <sc-for list="{{ summary }}" as="s" hint-placeholder-count="3">
+          <div style="border-top:2px solid rgba(255,255,255,.3);padding-top:14px">
+            <div style="font:700 13px 'Zen Kaku Gothic New',sans-serif;display:flex;align-items:center;gap:8px"><span style="width:7px;height:14px;background:#d0021b;transform:skewX(-28deg);display:block"></span>{{ s.label }}</div>
+            <div style="display:flex;align-items:baseline;gap:4px;margin-top:6px"><span data-count="{{ s.value }}" style="font:600 clamp(44px,4.4vw,72px)/1 Outfit,sans-serif;letter-spacing:-0.03em">{{ s.value }}</span><span style="font-weight:700">{{ s.unit }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div role="tablist" aria-label="設備カテゴリ" style="margin-top:clamp(56px,5vw,80px);display:flex;flex-wrap:wrap;gap:10px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <button role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.pick }}" style="min-height:44px;padding:0 24px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};font:700 14px 'Zen Kaku Gothic New',sans-serif;letter-spacing:.08em;cursor:pointer;transition:background .3s">{{ t.label }}<span style="font:500 12px Outfit,sans-serif;margin-left:8px;opacity:.8">{{ t.count }}</span></button>
+      </sc-for>
+    </div>
+
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px">
+      <sc-for list="{{ list }}" as="m" hint-placeholder-count="6">
+        <article data-card="" style="background:#fff;color:#0f1c48;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;transition:transform .5s,box-shadow .5s" style-hover="transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.25)">
+          <div style="position:relative;height:190px;background:#1c3f94;clip-path:polygon(0 0,100% 0,100% 82%,0 100%)"><image-slot id="{{ m.slot }}" shape="rect" src="{{ m.img }}"placeholder="{{ m.name }}"></image-slot></div>
+          <div style="padding:14px 24px 26px;display:flex;flex-direction:column;gap:8px;flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+              <span style="font:600 11px Outfit,sans-serif;letter-spacing:.12em;color:#d0021b">{{ m.catEn }}</span>
+              <span style="font:600 13px Outfit,'Zen Kaku Gothic New',sans-serif;background:#eef1f6;padding:3px 10px;border-radius:999px">{{ m.qty }}台</span>
+            </div>
+            <h3 style="margin:0;font:700 18px/1.5 'Zen Kaku Gothic New',sans-serif;letter-spacing:.06em">{{ m.name }}</h3>
+            <div style="font:500 12px Outfit,sans-serif;color:#4a5680">{{ m.model }}</div>
+            <p style="margin:4px 0 0;font-size:13px;line-height:1.8;color:#3a4466">{{ m.spec }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <p style="margin:24px 0 0;font-size:12px;opacity:.75">※ 設備名・メーカー・台数はサンプルです。</p>
+  </div>
+</section>
+
+<section data-screen-label="03 Facility" style="position:relative;z-index:3;margin-top:-8vw;clip-path:polygon(0 8vw,100% 0,100% 100%,0 100%);padding:calc(8vw + 40px) 0 clamp(100px,9vw,150px);color:#0f1c48;background:repeating-linear-gradient(172deg,rgba(255,255,255,0) 0 22px,rgba(255,255,255,.75) 22px 24px,rgba(255,255,255,0) 24px 70px),linear-gradient(172deg,#eef1f6 0%,#d6dce6 28%,#ffffff 46%,#c9d1dd 68%,#eef1f5 100%);overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;right:0;bottom:0;width:clamp(160px,18vw,320px);height:clamp(110px,12vw,200px);background:#d0021b;clip-path:polygon(100% 0,100% 100%,0 100%)"></div>
+  <div aria-hidden="true" style="font:700 clamp(84px,14vw,240px)/.9 Outfit,sans-serif;letter-spacing:-0.04em;white-space:nowrap;color:#1c3f94;padding-left:clamp(24px,3vw,48px)">Facility</div>
+  <div style="max-width:1400px;margin:0 auto;padding:clamp(40px,4vw,64px) clamp(24px,8vw,160px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px 64px;align-items:start">
+    <div data-reveal="">
+      <div style="display:flex;align-items:center;gap:14px"><span style="width:20px;height:30px;background:#d0021b;transform:skewX(-28deg);display:block"></span><span style="font:700 15px 'Zen Kaku Gothic New',sans-serif;letter-spacing:.2em">工場設備・環境</span></div>
+      <p style="margin:18px 0 0;font:700 15px/2.1 'Zen Kaku Gothic New',sans-serif">加工エリアは温度管理を行い、季節による寸法変化を抑えています。動線を分けたレイアウトで、安全と効率を両立しています。</p>
+      <dl style="margin:28px 0 0;background:#fff;border-radius:4px;padding:6px 28px">
+        <sc-for list="{{ facility }}" as="f" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:clamp(6em,26vw,8em) 1fr;gap:16px;padding:16px 0;border-bottom:1px solid #e3e7ee;font-size:14px;line-height:1.8">
+            <dt style="font-weight:700;color:#1c3f94">{{ f.k }}</dt>
+            <dd style="margin:0;font-weight:500">{{ f.v }}</dd>
+          </div>
+        </sc-for>
+      </dl>
+    </div>
+    <div data-reveal="" style="position:relative;aspect-ratio:4/3;background:#dfe4ec;border-radius:4px;overflow:hidden">
+      <image-slot id="equip-floor" shape="rect" placeholder="工場フロアマップ / レイアウト図"></image-slot>
+    </div>
+  </div>
+</section>
+
+<a href="./Products.dc.html" data-screen-label="Next" style="display:block;position:relative;padding:clamp(60px,6vw,90px) clamp(24px,8vw,160px);background:#1c3f94;color:#fff;transition:background .4s" style-hover="background:#2348a8;color:#fff">
+  <div style="max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+    <div>
+      <div style="font:600 13px Outfit,sans-serif;letter-spacing:.16em;display:flex;align-items:center;gap:10px"><span style="width:8px;height:16px;background:#d0021b;transform:skewX(-28deg);display:block"></span>NEXT PAGE</div>
+      <div style="margin-top:10px;font:600 clamp(40px,5vw,80px)/1 Outfit,sans-serif;letter-spacing:-0.03em">Products</div>
+      <div style="margin-top:10px;font-weight:700;letter-spacing:.2em">製品・実績</div>
+    </div>
+    <span style="width:72px;height:72px;border-radius:50%;border:1px solid #fff;display:flex;align-items:center;justify-content:center;font:400 24px Outfit">→</span>
+  </div>
+</a>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: 'all' };
+  componentDidMount() { setTimeout(() => window.setupSiteMotion && window.setupSiteMotion(), 80); }
+  renderVals() {
+    const M = [
+      ['machining', 'MACHINING', '5軸マシニングセンタ', 'メーカー名 / 型式 XXXX', 4, 'ストローク 000×000×000mm。複雑形状を1チャッキングで加工。'],
+      ['machining', 'MACHINING', '立形マシニングセンタ', 'メーカー名 / 型式 XXXX', 12, '主軸 00,000min⁻¹。アルミ・鋼材の量産加工に対応。'],
+      ['machining', 'MACHINING', 'CNC旋盤', 'メーカー名 / 型式 XXXX', 10, '最大加工径 φ000mm。バーフィーダ付きで連続加工。'],
+      ['machining', 'MACHINING', '複合加工機', 'メーカー名 / 型式 XXXX', 3, '旋削とミーリングを1台で完結し、工程を短縮。'],
+      ['machining', 'MACHINING', 'ワイヤー放電加工機', 'メーカー名 / 型式 XXXX', 2, '焼入れ鋼などの高硬度材を高精度に加工。'],
+      ['automation', 'AUTOMATION', '多関節ロボット', 'メーカー名 / 型式 XXXX', 8, '加工機へのワーク搬送。夜間の無人運転に対応。'],
+      ['automation', 'AUTOMATION', 'パレットチェンジャー', 'メーカー名 / 型式 XXXX', 4, '段取り替えを自動化し、稼働率を向上。'],
+      ['inspection', 'INSPECTION', '三次元測定機', 'メーカー名 / 型式 XXXX', 3, '測定範囲 000×000×000mm。温度管理室に設置。'],
+      ['inspection', 'INSPECTION', '画像測定機', 'メーカー名 / 型式 XXXX', 2, '非接触で多点寸法を短時間に測定。'],
+      ['inspection', 'INSPECTION', '表面粗さ測定機', 'メーカー名 / 型式 XXXX', 2, 'Ra・Rzなど加工面の粗さを数値管理。'],
+    ].map((r, i) => ({ cat: r[0], catEn: r[1], name: r[2], model: r[3], qty: r[4], spec: r[5], slot: 'eq-' + (i + 1),
+      // placeholder photos — replace with shots of the actual machines
+      img: './images/' + ['machine-closeup', 'factory-safety', 'plant-towers', 'construction-site', 'control-room'][i % 5] + '.jpg' }));
+    const cats = [['all', 'すべて'], ['machining', '加工'], ['automation', '自動化'], ['inspection', '検査']];
+    const cur = this.state.cat;
+    return {
+      summary: [
+        { label: '加工設備', value: '31', unit: '台' },
+        { label: '自動化設備', value: '12', unit: '台' },
+        { label: '検査設備', value: '7', unit: '台' },
+      ],
+      tabs: cats.map(([k, label]) => ({
+        label, sel: k === cur ? 'true' : 'false',
+        count: k === 'all' ? M.length : M.filter(m => m.cat === k).length,
+        bg: k === cur ? '#fff' : 'transparent', fg: k === cur ? '#0f1c48' : '#fff', border: k === cur ? '#fff' : 'rgba(255,255,255,.4)',
+        pick: () => this.setState({ cat: k }, () => window.siteCardsIn && window.siteCardsIn()),
+      })),
+      list: cur === 'all' ? M : M.filter(m => m.cat === cur),
+      facility: [
+        { k: '敷地面積', v: '0,000㎡' },
+        { k: '延床面積', v: '0,000㎡' },
+        { k: '加工エリア', v: '温度管理 20±X℃' },
+        { k: '稼働時間', v: '24時間（自動化ライン）' },
+        { k: 'クレーン', v: '天井クレーン X t × X基' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

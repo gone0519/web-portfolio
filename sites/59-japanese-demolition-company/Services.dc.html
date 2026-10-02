@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#111;color:#1a1a1a;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;
+--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+*{box-sizing:border-box}
+a{color:#c4161f;text-decoration:none}
+a:hover{color:#e0262f}
+body{overflow-x:clip}
+</style>
+</helmet>
+
+<dc-import name="SiteHeader" active="services" hint-size="100%,0px"></dc-import>
+
+<main id="top">
+<dc-import name="PageHero" en="SERVICES" jp="解体工事のサービス" img-id="services-hero" src="images/excavator-arms.jpg" ph="HERO — 重機による解体作業" hint-size="100%,520px"></dc-import>
+
+<section data-screen-label="Service list" style="background:#d8d8d8;background-image:var(--noise),linear-gradient(180deg,#e2e2e2,#d2d2d2);padding:clamp(80px,10vw,130px) clamp(20px,5vw,60px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center" data-reveal="">
+      <div style="width:14px;height:14px;transform:rotate(45deg);border:3px solid #c4161f"></div>
+      <h2 style="margin:0;font-family:'Dela Gothic One',sans-serif;font-weight:400;font-size:clamp(24px,3.2vw,40px);line-height:1.5;letter-spacing:.04em;color:#1a1a1a;text-wrap:balance">建物に合わせた、最適な解体を。</h2>
+      <p style="margin:0;max-width:680px;font-size:15px;line-height:2;letter-spacing:.05em;color:#333;text-wrap:pretty">建物の構造や規模、立地条件によって、適した工法や必要な準備は異なります。現地調査で状況を確認したうえで、安全で無駄のない解体方法をご提案します。</p>
+    </div>
+    <nav aria-label="サービス一覧" data-reveal="" style="margin-top:clamp(40px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:10px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="8">
+        <a href="#{{ s.anchor }}" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#f4f4f4;color:#1a1a1a;font-size:14px;font-weight:700;letter-spacing:.06em;border-left:4px solid #c4161f;transition:background .3s,color .3s" style-hover="background:#141414;color:#fff">
+          <span style="font-family:'Dela Gothic One',sans-serif;font-size:13px;color:#c4161f">{{ s.no }}</span>
+          <span>{{ s.jp }}</span>
+        </a>
+      </sc-for>
+    </nav>
+    <div style="margin-top:clamp(64px,8vw,96px);display:flex;flex-direction:column;gap:clamp(56px,7vw,88px)">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="8">
+        <article id="{{ s.anchor }}" data-reveal="" style="display:flex;flex-direction:column;scroll-margin-top:96px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px;background:linear-gradient(90deg,#7a080d 0%,#c4161f 45%,#8e0c12 100%);color:#fff;padding:12px clamp(16px,4vw,22px)">
+            <span style="font-family:'Dela Gothic One',sans-serif;font-size:22px;letter-spacing:.04em">{{ s.no }}</span>
+            <h3 style="margin:0;font-size:clamp(16px,1.7vw,20px);font-weight:900;letter-spacing:.1em">{{ s.jp }}</h3>
+            <span style="margin-left:auto;font-family:'Dela Gothic One',sans-serif;font-size:11px;letter-spacing:.16em;opacity:.85">{{ s.enUp }}</span>
+          </div>
+          <div style="margin-top:clamp(20px,3vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(22px,4vw,48px);align-items:center">
+            <div style="order:{{ s.imgOrder }};aspect-ratio:16/10;border:1px solid rgba(0,0,0,.18);padding:6px;background:#f4f4f4">
+              <image-slot id="{{ s.id }}" src="{{ s.src }}" shape="rect" placeholder="{{ s.ph }}"></image-slot>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:18px">
+              <p style="margin:0;font-size:15px;line-height:2.1;letter-spacing:.05em;color:#333;text-wrap:pretty">{{ s.desc }}</p>
+              <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(0,0,0,.15);padding-top:18px">
+                <span style="font-size:12px;font-weight:700;letter-spacing:.16em;color:#c4161f">このような方に</span>
+                <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+                  <sc-for list="{{ s.points }}" as="pt" hint-placeholder-count="3">
+                    <li style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700;letter-spacing:.05em;color:#1a1a1a">
+                      <span style="flex-shrink:0;width:8px;height:8px;transform:rotate(45deg);background:#c4161f"></span>
+                      <span>{{ pt }}</span>
+                    </li>
+                  </sc-for>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Flow" style="position:relative;overflow:hidden;background:#141414;background-image:var(--noise),linear-gradient(180deg,#1c1c1c,#0e0e0e);color:#fff;padding:clamp(80px,10vw,130px) clamp(20px,5vw,60px)">
+  <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:52%;width:44%;background:linear-gradient(90deg,#8e0c12,#c4161f);clip-path:polygon(38% 0,62% 0,24% 100%,0 100%);opacity:.55;pointer-events:none"></div>
+  <div style="position:relative;max-width:1160px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center" data-reveal="">
+      <div style="width:14px;height:14px;transform:rotate(45deg);border:3px solid #ff2a33"></div>
+      <span style="font-family:'Dela Gothic One',sans-serif;font-size:clamp(34px,5vw,64px);letter-spacing:.06em;line-height:1.1">FLOW</span>
+      <h2 style="margin:0;font-size:clamp(18px,2vw,24px);font-weight:900;letter-spacing:.12em;color:#ff4a52">ご依頼の流れ</h2>
+    </div>
+    <ol data-reveal="" style="margin:clamp(44px,6vw,64px) 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px">
+      <sc-for list="{{ flow }}" as="f" hint-placeholder-count="7">
+        <li style="display:flex;flex-direction:column;gap:10px;padding:22px 22px 24px;background:rgba(14,14,14,.85);border:1px solid rgba(255,255,255,.18)">
+          <span style="font-family:'Dela Gothic One',sans-serif;font-size:12px;letter-spacing:.2em;color:#ff4a52">STEP {{ f.no }}</span>
+          <span style="font-size:18px;font-weight:900;letter-spacing:.08em">{{ f.t }}</span>
+          <span style="font-size:14px;line-height:1.9;letter-spacing:.04em;color:rgba(255,255,255,.82)">{{ f.d }}</span>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section data-screen-label="Estimate" style="background:#e4e4e4;background-image:var(--noise);padding:clamp(70px,9vw,110px) clamp(20px,5vw,60px)">
+  <div data-reveal="" style="max-width:1160px;margin:0 auto;display:flex;flex-direction:column">
+    <div style="background:linear-gradient(90deg,#7a080d 0%,#c4161f 45%,#8e0c12 100%);color:#fff;padding:14px 22px;font-size:clamp(15px,1.6vw,18px);font-weight:900;letter-spacing:.1em">現地調査・お見積もりは無料です</div>
+    <div style="background:#f4f4f4;padding:clamp(22px,3vw,34px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
+      <p style="margin:0;flex:1 1 380px;font-size:15px;line-height:2;letter-spacing:.05em;color:#333;text-wrap:pretty">現地で建物の状態や周辺環境を確認したうえで、工事内容と費用の内訳を明確にしたお見積もりをご提示します。ご納得いただいてからのご契約ですので、安心してご相談ください。</p>
+      <a href="Contact.dc.html#form" style="display:flex;align-items:center;height:54px;padding:0 30px;border:2px solid #c4161f;color:#c4161f;font-weight:700;font-size:14px;letter-spacing:.1em;transform:skewX(-14deg);transition:background .3s,color .3s" style-hover="background:#c4161f;color:#fff">
+        <span style="transform:skewX(14deg)">無料見積もりを依頼する →</span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    // Content renders after load, so the browser's own #hash jump misses; redo it.
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (id) setTimeout(() => { const el = document.getElementById(id); if (el) el.scrollIntoView(); }, 300);
+  }
+  renderVals() {
+    const SVC_IMG = { bldg: 'excavator-crusher', wood: 'wooden-house', steel: 'scaffold-poles', rc: 'curing-sheet', interior: 'scaffold-inside', shop: 'teal-excavators', partial: 'skeleton-bucket', other: 'dump-truck' };
+    const services = [
+      ['bldg', '建物解体工事', 'Building Demolition', '戸建て住宅からアパート、事務所ビルまで、建物全体の解体を行います。各種届出や近隣へのご挨拶、ライフラインの停止確認から、解体後の整地まで一貫して対応します。', ['建物を取り壊して土地を売却・活用したい', '建て替えを予定している', '手続きもまとめて任せたい']],
+      ['wood', '木造住宅解体', 'Wooden House Demolition', '瓦や内装材などを手作業で先行して撤去し、木材・金属・がれき類を丁寧に分別しながら解体します。住宅密集地では養生と散水を徹底し、騒音や粉じんを抑えます。', ['空き家になった実家を解体したい', '古い木造住宅を建て替えたい', '住宅が密集した場所にある']],
+      ['steel', '鉄骨造解体', 'Steel Structure Demolition', '工場・倉庫・店舗などの鉄骨造建物を、構造を確認したうえで適切な手順で解体します。切断した鋼材は分別し、再資源化にまわします。', ['使わなくなった倉庫・工場を撤去したい', '鉄骨造の店舗を解体したい', '跡地を別の用途で活用したい']],
+      ['rc', 'RC造解体', 'Reinforced Concrete Demolition', 'マンションやビルなど鉄筋コンクリート造の建物を、圧砕機などの重機を用いて解体します。騒音・振動・粉じんへの対策と、周辺の安全確保を徹底します。', ['老朽化したビル・マンションを解体したい', '大規模な建物の解体を検討している', '周辺環境への影響が心配']],
+      ['interior', '内装解体', 'Interior Demolition', 'テナント退去時の原状回復や、リフォーム・リノベーション前の内装撤去を行います。残す部分を傷めないよう、範囲を確認しながら作業を進めます。', ['テナント退去に伴い原状回復したい', 'リノベーション前にスケルトンにしたい', '営業中のビル内で工事をしたい']],
+      ['shop', '店舗・施設解体', 'Commercial Facility Demolition', '店舗・事務所・各種施設の解体を行います。営業スケジュールや周辺施設の利用者に配慮し、作業時間や搬出経路を調整して進めます。', ['閉店に伴い店舗を解体したい', '施設の建て替えを予定している', '作業時間に制約がある']],
+      ['partial', '部分解体', 'Partial Demolition', '増築部分や離れ、車庫、ブロック塀など、必要な箇所だけを解体します。残す建物の構造に影響が出ないよう、切り離し方を事前に計画します。', ['増築部分だけを撤去したい', '古いブロック塀を撤去したい', '離れや倉庫だけを解体したい']],
+      ['other', 'その他解体・撤去工事', 'Other Removal Works', 'カーポートや土間コンクリート、庭石・樹木、残置物の撤去など、解体に関わるさまざまな工事に対応します。内容が決まっていない段階でもご相談ください。', ['庭やカーポートを撤去したい', '家の中の残置物を片付けたい', 'どこに相談すればよいか分からない']]
+    ].map((s, i) => ({ id: 'svc-' + s[0], anchor: 'svc-' + s[0], no: String(i + 1).padStart(2, '0'), jp: s[1], enUp: s[2].toUpperCase(), desc: s[3], points: s[4], imgOrder: i % 2 ? 1 : 0, ph: s[2].toUpperCase(), src: 'images/' + SVC_IMG[s[0]] + '.jpg' }));
+    return {
+      services,
+      flow: [
+        ['お問い合わせ', 'お電話またはフォームから、建物の概要やご希望をお知らせください。'],
+        ['現地調査', '建物の構造や周辺環境、搬出経路などを現地で確認します。'],
+        ['お見積もり', '工事内容と費用の内訳を明確にしたお見積もりをご提示します。'],
+        ['ご契約', '内容にご納得いただいたうえで、ご契約となります。'],
+        ['近隣ご挨拶・届出', '着工前に近隣へのご挨拶と、必要な届出を行います。'],
+        ['解体工事', '養生・分別を徹底し、安全管理のもと工事を進めます。'],
+        ['整地・完了', '廃材を適正に処理し、整地後にお客様と完了確認を行います。']
+      ].map((f, i) => ({ no: String(i + 1).padStart(2, '0'), t: f[0], d: f[1] }))
+    };
+  }
+}
+</script>
+</body>
+</html>

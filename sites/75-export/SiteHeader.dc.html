@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:relative;background:#fff;box-shadow:0 1px 0 #f1e7da;font-family:'Shippori Mincho',serif;color:#33241a">
+  <div style="max-width:1920px;margin:0 auto;padding:14px clamp(12px,1.6vw,20px) 10px clamp(14px,1.8vw,30px);display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="index.dc.html" style="display:flex;align-items:center;gap:clamp(8px,1.2vw,14px);flex:1 1 auto;min-width:0;color:#33241a;text-decoration:none">
+      <span style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 10px;border-radius:6px;box-shadow:0 2px 6px rgba(80,50,20,0.16);font-family:'Zen Maru Gothic',sans-serif;font-size:clamp(11px,1vw,15px);line-height:1.35;font-weight:700;letter-spacing:0.08em;flex-shrink:0">医療法人<br>美桜会</span>
+      <span style="display:flex;flex-direction:column;gap:4px;min-width:0;font-family:'Zen Maru Gothic',sans-serif">
+        <span style="font-size:clamp(11px,1vw,15px);font-weight:700;letter-spacing:0.02em">安心・丁寧なカウンセリングと診療</span>
+        <span style="font-size:clamp(15px,1.9vw,28px);font-weight:700;color:#ee6a17;letter-spacing:0.02em;line-height:1.2;text-wrap:balance">みおか皮ふ科・美容クリニック</span>
+      </span>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;gap:20px">
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+          <a href="tel:0335550148" style="display:flex;align-items:center;gap:8px;color:#ee6a17;white-space:nowrap;text-decoration:none"><span style="font-size:14px;letter-spacing:0.08em">お電話での予約</span><span style="font-size:32px;letter-spacing:0.1em;font-weight:500;line-height:1">03-5550-0148</span></a>
+          <span style="font-size:14px;letter-spacing:0.08em;white-space:nowrap">休診：木曜・祝日　※土日も診療しています</span>
+        </div>
+        <a href="Reservation.dc.html#form" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:158px;height:102px;background:linear-gradient(135deg,#f7931e,#f25c05);color:#fff;border-radius:4px;font-size:17px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:filter .3s" style-hover="filter:brightness(1.08)">
+          <span style="width:24px;height:22px;border:2px solid #fff;border-top-width:6px;border-radius:2px"></span>美容診療予約
+        </a>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="メニューを開く" style="width:54px;height:54px;border:none;border-radius:4px;background:linear-gradient(135deg,#f7931e,#f25c05);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;flex-shrink:0;color:#fff;font-size:10px;letter-spacing:0.1em;font-family:inherit">
+        <span style="width:22px;height:2px;background:#fff"></span><span style="width:22px;height:2px;background:#fff"></span><span style="width:22px;height:2px;background:#fff"></span>MENU
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メイン" style="display:flex;justify-content:center;padding:14px 0 26px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="7">
+        <a href="{{ n.href }}" style="min-width:clamp(120px,9vw,172px);padding:8px 20px;text-align:center;border-left:1px solid #e0d6ca;color:{{ n.color }};font-size:17px;letter-spacing:0.1em;text-decoration:none;transition:color .25s" style-hover="color:#ee6a17">{{ n.label }}</a>
+      </sc-for>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav aria-label="モバイル" style="position:absolute;left:0;right:0;top:100%;z-index:60;background:#fffaf4;border-top:1px solid #f1e7da;box-shadow:0 20px 40px rgba(80,50,20,0.12);padding:8px 20px 24px;display:flex;flex-direction:column">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="7">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="padding:16px 4px;border-bottom:1px dashed #edd9c3;color:{{ n.color }};font-size:16px;letter-spacing:0.12em;display:flex;justify-content:space-between;text-decoration:none">{{ n.label }}<span style="color:#ee6a17">›</span></a>
+      </sc-for>
+      <div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <a href="tel:0335550148" style="display:flex;justify-content:center;align-items:center;min-height:52px;border:1px solid #ee6a17;color:#ee6a17;font-size:15px;letter-spacing:0.08em;text-decoration:none">電話で予約</a>
+        <a href="Reservation.dc.html#form" style="display:flex;justify-content:center;align-items:center;min-height:52px;background:linear-gradient(135deg,#f7931e,#f25c05);color:#fff;font-size:15px;letter-spacing:0.08em;text-decoration:none">美容診療予約</a>
+      </div>
+    </nav>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1400px&quot;,&quot;height&quot;:&quot;200px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;clinic&quot;,&quot;treatments&quot;,&quot;price&quot;,&quot;doctor&quot;,&quot;cases&quot;,&quot;first&quot;,&quot;reservation&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth, menuOpen: window.innerWidth < 1180 ? this.state.menuOpen : false });
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const isMobile = this.state.w < 1180, cur = this.props.current ?? 'top';
+    const items = [
+      ['clinic', '医院案内', 'Clinic.dc.html'], ['treatments', '診療メニュー', 'Treatments.dc.html'],
+      ['price', '料金表', 'Treatments.dc.html#price'], ['doctor', '医師紹介', 'Doctor.dc.html'],
+      ['cases', '症例紹介', 'Doctor.dc.html#cases'], ['first', '初診の方へ', 'Reservation.dc.html#flow'],
+      ['reservation', 'ご予約・アクセス', 'Reservation.dc.html']
+    ];
+    return {
+      isMobile, isDesktop: !isMobile, menuOpen: isMobile && this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      nav: items.map(([k, label, href]) => ({ label, href, color: k === cur ? '#ee6a17' : '#33241a' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; -webkit-font-smoothing: antialiased; }
+  a { color: #1a6faf; text-decoration: none; }
+  a:hover { color: #d4000e; }
+</style>
+</helmet>
+<div data-progress="" style="position: fixed; top: 0; left: 0; height: 3px; width: 0; background: #d4000e; z-index: 90; transition: width .12s linear;"></div>
+<header style="position: sticky; top: 0; z-index: 50; background: #ffffff; border-bottom: 3px solid #d4000e; font-family: 'Zen Kaku Gothic New', sans-serif;">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+    <a href="Home.dc.html" style="display: flex; align-items: center; gap: 12px; color: #1a1a1a;">
+      <span style="width: 36px; height: 36px; background: #d4000e; display: grid; place-items: center; flex: none; border-radius: 3px;">
+        <span style="color: #fff; font-family: 'Shippori Mincho', serif; font-weight: 800; font-size: 19px; line-height: 1;">A</span>
+      </span>
+      <span style="display: flex; flex-direction: column; gap: 3px;">
+        <span style="font-family: 'Shippori Mincho', serif; font-weight: 800; font-size: 22px; letter-spacing: 0.06em; line-height: 1;">株式会社アクセルグロース</span>
+        <span style="font-size: 9.5px; letter-spacing: 0.32em; color: #8c8c8c; line-height: 1;">AXEL GROWTH INC.</span>
+      </span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 18px;">
+      <a href="tel:0359998420" style="display: flex; align-items: center; gap: 9px; color: #1a1a1a;">
+        <span style="width: 23px; height: 23px; border-radius: 50%; background: #1a6faf; display: grid; place-items: center; color: #fff; font-size: 11px;">✆</span>
+        <span style="font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: 22px; letter-spacing: 0.02em;">03-5999-8420</span>
+      </a>
+      <a href="#contact" style="background: #d4000e; color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; padding: 11px 20px; display: flex; align-items: center; gap: 8px; border-radius: 3px; transition: background .25s;" style-hover="background: #1a1a1a;">
+        <span style="font-size: 11px;">✉</span>お問い合わせ
+      </a>
+    </div>
+  </div>
+  <nav style="border-top: 1px solid #e3e3e3; background: #fff;">
+    <ul style="max-width: 1240px; margin: 0 auto; padding: 0 24px; list-style: none; display: flex; flex-wrap: wrap; align-items: stretch;">
+      <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+        <li style="flex: 1 1 auto; border-left: 1px solid #e3e3e3; text-align: center;">
+          <a href="{{ item.href }}" style="{{ item.style }}" style-hover="color: #d4000e;">
+            <span style="font-size: 13.5px; font-weight: 500; letter-spacing: 0.1em;">{{ item.ja }}</span>
+            <span style="font-size: 8.5px; letter-spacing: 0.2em; color: #a5a5a5;">{{ item.en }}</span>
+          </a>
+        </li>
+      </sc-for>
+      <li style="border-left: 1px solid #e3e3e3; border-right: 1px solid #e3e3e3; width: 0;"></li>
+    </ul>
+  </nav>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:140},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;services&quot;,&quot;cases&quot;,&quot;about&quot;,&quot;pricing&quot;,&quot;recruit&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    import("./motion.js").then(m => m.initMotion());
+  }
+  renderVals() {
+    const active = this.props.active || "home";
+    const items = [
+      { key: "home", ja: "ホーム", en: "HOME", href: "Home.dc.html" },
+      { key: "services", ja: "サービス", en: "SERVICES", href: "Services.dc.html" },
+      { key: "cases", ja: "導入実績", en: "CASE STUDIES", href: "Cases.dc.html" },
+      { key: "about", ja: "会社案内", en: "ABOUT", href: "About.dc.html" },
+      { key: "pricing", ja: "料金プラン", en: "PRICING", href: "Pricing.dc.html" },
+      { key: "recruit", ja: "採用情報", en: "RECRUIT", href: "Recruit.dc.html" }
+    ];
+    return {
+      nav: items.map(it => ({
+        ...it,
+        style: "display:flex;flex-direction:column;align-items:center;gap:4px;padding:15px 10px;color:" +
+          (it.key === active ? "#d4000e" : "#1a1a1a") +
+          ";transition:color .2s;box-shadow:" + (it.key === active ? "inset 0 -3px 0 #d4000e" : "none")
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

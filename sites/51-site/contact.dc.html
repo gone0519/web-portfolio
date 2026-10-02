@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Shippori+Mincho+B1:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+h1,h2,h3{font-family:"Shippori Mincho B1",serif}
+body{margin:0;font-family:"Zen Kaku Gothic New",sans-serif;color:#333;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#0d6b47;text-decoration:none}
+a:hover{color:#5cb531}
+input,textarea,select,button{font-family:inherit}
+/* responsive */
+.flow-list,.price-grid{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1100px){.price-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:1000px){.flow-wrap{flex-direction:column;align-items:stretch!important}.flow-wrap>*{flex:none!important}.flow-list{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.hd-brand{flex:1;width:auto!important;min-width:0!important}.flow-list,.price-grid{grid-template-columns:1fr}.pc-br{display:none}.contact-tel{border-right:0!important;border-bottom:1px solid #e3e3e3}}
+</style>
+</helmet>
+
+<header style="position:relative;z-index:20;display:flex;justify-content:space-between;align-items:stretch;background:#fff">
+  <div class="hd-brand" style="background:#e4eef0;padding:10px clamp(16px,2vw,28px) 18px;width:min(560px,52%);min-width:220px">
+    <p style="margin:0 0 6px;font-size:10px;color:#7b8a8e;letter-spacing:.05em">東京都○○区の税理士事務所、しるべ税理士事務所です。</p>
+    <a href="top.dc.html" style="display:flex;align-items:center;gap:10px;color:#0d6b47">
+      <span style="width:34px;height:34px;border-radius:50%;background:#5cb531;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond;font-weight:500;font-size:18px">S</span>
+      <span style="display:flex;flex-direction:column;line-height:1.2">
+        <span style="font-size:10px;color:#555;letter-spacing:.1em">税理士事務所</span>
+        <span style="font-size:clamp(15px,1.6vw,19px);font-weight:500;letter-spacing:.14em;color:#5cb531;white-space:nowrap">しるべ税理士事務所</span>
+      </span>
+    </a>
+  </div>
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:12px;padding-right:0">
+      <div style="display:flex;align-items:center">
+        <a href="tel:0300000000" style="font-family:Cormorant Garamond;font-size:20px;color:#222;letter-spacing:.04em;padding:0 22px;display:flex;align-items:center;gap:8px"><span style="font-size:14px">☎</span>03-0000-0000</a>
+        <a data-shine="" href="contact.dc.html" style="background:#5cb531;color:#fff;font-size:12px;font-weight:700;padding:11px 18px;letter-spacing:.06em" style-hover="background:#4a9a25;color:#fff">無料相談のご予約</a>
+        <a href="contact.dc.html" style="background:#0d6b47;color:#fff;font-size:12px;font-weight:700;padding:11px 20px;letter-spacing:.06em" style-hover="background:#095637;color:#fff">お問い合わせ</a>
+      </div>
+      <nav aria-label="メインメニュー" style="display:flex;gap:28px;padding-right:22px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" style="white-space:nowrap;font-size:12px;font-weight:500;color:#333;letter-spacing:.06em;padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#0d6b47;border-bottom:1px solid #5cb531">{{ n.label }}</a>
+        </sc-for>
+      </nav>
+    </div>
+  </sc-if>
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" aria-expanded="{{ menuOpen }}" style="width:64px;border:0;background:#0d6b47;color:#fff;font-size:10px;letter-spacing:.1em;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+      <span style="width:22px;height:2px;background:#fff"></span><span style="width:22px;height:2px;background:#fff"></span><span style="width:22px;height:2px;background:#fff"></span>
+      <span style="margin-top:2px;font-family:Cormorant Garamond">MENU</span>
+    </button>
+  </sc-if>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:50;background:#0d6b47;color:#fff;display:flex;flex-direction:column;padding:24px">
+    <button onClick="{{ toggleMenu }}" aria-label="閉じる" style="align-self:flex-end;background:none;border:1px solid rgba(255,255,255,.5);color:#fff;width:44px;height:44px;font-size:20px;cursor:pointer">×</button>
+    <nav style="display:flex;flex-direction:column;margin-top:24px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="color:#fff;font-size:17px;font-weight:500;padding:18px 4px;border-bottom:1px solid rgba(255,255,255,.2);display:flex;justify-content:space-between;letter-spacing:.08em"><span>{{ n.label }}</span><span style="font-family:Cormorant Garamond;font-size:12px;opacity:.7">{{ n.en }}</span></a>
+      </sc-for>
+    </nav>
+    <a href="tel:0300000000" style="margin-top:32px;background:#fff;color:#0d6b47;text-align:center;padding:16px;font-family:Cormorant Garamond;font-size:22px">☎ 03-0000-0000</a>
+    <a href="contact.dc.html" onClick="{{ closeMenu }}" style="margin-top:10px;background:#5cb531;color:#fff;text-align:center;padding:16px;font-weight:700">無料相談のご予約</a>
+  </div>
+</sc-if>
+
+<main id="top">
+
+<section data-screen-label="Page Hero" aria-labelledby="ph-h" style="position:relative">
+  <div style="position:absolute;left:0;top:0;width:min(560px,52%);min-width:220px;height:calc(100% - 20px);background:#e4eef0"></div>
+  <div style="position:relative;margin-left:clamp(0px,1.2vw,16px);height:clamp(260px,26vw,340px);overflow:hidden">
+    <div data-kenburns="" style="position:absolute;inset:0"><image-slot id="ph-contact" src="images/contact-hero-entrance.jpg" shape="rect" placeholder="事務所入口・受付の写真"></image-slot></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,70,46,.78) 0%,rgba(12,70,46,.45) 50%,rgba(12,70,46,.1) 100%);pointer-events:none"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden"><span data-float="" style="position:absolute;right:10%;top:18%;width:100px;height:100px;border:1px solid rgba(255,255,255,.5);border-radius:50%"></span><span data-float="" style="position:absolute;right:28%;bottom:20%;width:14px;height:14px;background:#5cb531;transform:rotate(45deg)"></span></div>
+    <div style="position:absolute;left:clamp(20px,14vw,210px);right:20px;top:50%;translate:0 -50%;color:#fff;pointer-events:none">
+      <p data-anim="letters" style="margin:0;font-family:Cormorant Garamond;font-style:italic;font-weight:400;font-size:clamp(44px,6vw,80px);line-height:1;letter-spacing:.02em">Contact</p>
+      <h1 id="ph-h" data-anim="mask" data-delay="400" style="margin:14px 0 0;font-size:clamp(16px,1.6vw,20px);font-weight:700;letter-spacing:.14em;display:flex;align-items:center;gap:14px"><span style="width:32px;height:2px;background:#5cb531"></span>お問い合わせ・アクセス</h1>
+    </div>
+  </div>
+</section>
+<nav aria-label="パンくずリスト" style="max-width:1120px;margin:0 auto;padding:20px 20px 0;font-size:11px;color:#777;display:flex;gap:10px;letter-spacing:.06em"><a href="top.dc.html" style="color:#0d6b47">TOP</a><span>›</span><span>お問い合わせ・アクセス</span></nav>
+
+<section id="contact" data-screen-label="05 Contact" aria-labelledby="contact-h">
+  <div style="position:relative;overflow:hidden;padding:clamp(56px,6vw,72px) 20px clamp(64px,7vw,88px)">
+    <div data-parallax="0.25" style="position:absolute;left:0;right:0;top:-25%;bottom:-25%">
+      <image-slot id="contact-bg" src="images/contact-handshake.jpg" shape="rect" placeholder="背景：落ち着いたオフィス／街並みの写真（暗めに処理）"></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;background:rgba(20,28,26,.72);pointer-events:none"></div>
+    <div style="position:relative;max-width:900px;margin:0 auto;color:#fff;text-align:center;pointer-events:none" data-anim="up">
+      <p style="margin:0;font-family:Cormorant Garamond;font-style:italic;font-size:16px;letter-spacing:.06em">Contact</p>
+      <h2 id="contact-h" style="margin:14px 0 0;font-size:clamp(18px,2vw,24px);font-weight:700;line-height:1.8;letter-spacing:.08em">決算の時期でなくても、構いません。<br>気になることがあれば、まずはお話をお聞かせください。</h2>
+    </div>
+    <div data-anim="zoom" data-delay="300" style="position:relative;max-width:900px;margin:34px auto 0;background:#fff;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+      <div class="contact-tel" style="padding:28px 24px;text-align:center;border-right:1px solid #e3e3e3">
+        <p style="margin:0;font-size:12px">お電話でのご相談</p>
+        <a href="tel:0300000000" style="display:block;margin-top:6px;font-family:Cormorant Garamond;font-size:clamp(30px,3.2vw,38px);color:#222;letter-spacing:.02em">☎ 03-0000-0000</a>
+        <p style="margin:6px 0 0;font-size:10.5px;color:#666">受付時間：平日 9:00〜18:00（土日祝は事前予約で対応）</p>
+      </div>
+      <div style="padding:28px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+        <p style="margin:0;font-size:12px;letter-spacing:.2em">メールでのご相談</p>
+        <a data-shine="" href="#form" style="width:min(100%,260px);background:#0d6b47;color:#fff;padding:14px;font-size:13px;font-weight:700;letter-spacing:.06em" style-hover="background:#5cb531;color:#fff">✉　フォームから相談する</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#e4eef0;padding:clamp(64px,7vw,90px) 20px">
+    <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px;align-items:start">
+      <form id="form" onSubmit="{{ submit }}" data-anim="left" style="background:#fff;padding:clamp(28px,3.4vw,44px);box-shadow:0 6px 28px rgba(20,50,40,.1);position:relative">
+        <span style="position:absolute;left:12px;top:-1px;width:20px;height:3px;background:#5cb531"></span>
+        <p style="margin:0;font-size:clamp(18px,1.8vw,22px);font-weight:700;color:#0d6b47">初回相談のお申し込み</p>
+        <p style="margin:8px 0 0;font-size:12px;color:#555;line-height:1.9">2営業日以内に担当よりご連絡いたします。</p>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="margin-top:28px;border:1px solid #5cb531;background:#f2f8ef;padding:28px 22px;text-align:center">
+            <p style="margin:0;font-weight:700;color:#0d6b47">送信ありがとうございました。</p>
+            <p style="margin:10px 0 0;font-size:12px;line-height:1.9;color:#444">内容を確認のうえ、担当よりご連絡いたします。</p>
+            <button type="button" onClick="{{ reset }}" style="margin-top:16px;background:none;border:0;color:#0d6b47;font-size:12px;text-decoration:underline;cursor:pointer">もう一度入力する</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:24px;display:grid;gap:16px">
+            <label style="display:grid;gap:6px;font-size:12px;font-weight:700">ご相談の種類
+              <select name="type" value="{{ form.type }}" onChange="{{ onField }}" style="height:46px;border:1px solid #cfd8da;padding:0 12px;font-size:14px;background:#fff">
+                <sc-for list="{{ topics }}" as="t" hint-placeholder-count="5"><option value="{{ t }}">{{ t }}</option></sc-for>
+              </select>
+            </label>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px">
+              <label style="display:grid;gap:6px;font-size:12px;font-weight:700"><span>お名前<span style="color:#d6372c;font-size:10px;margin-left:8px">必須</span></span>
+                <input name="name" required="" value="{{ form.name }}" onChange="{{ onField }}" autocomplete="name" style="height:46px;border:1px solid #cfd8da;padding:0 12px;font-size:14px" style-focus="outline:2px solid #5cb531;border-color:#5cb531">
+              </label>
+              <label style="display:grid;gap:6px;font-size:12px;font-weight:700">会社名・屋号
+                <input name="company" value="{{ form.company }}" onChange="{{ onField }}" autocomplete="organization" style="height:46px;border:1px solid #cfd8da;padding:0 12px;font-size:14px" style-focus="outline:2px solid #5cb531;border-color:#5cb531">
+              </label>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px">
+              <label style="display:grid;gap:6px;font-size:12px;font-weight:700"><span>メールアドレス<span style="color:#d6372c;font-size:10px;margin-left:8px">必須</span></span>
+                <input type="email" name="email" required="" value="{{ form.email }}" onChange="{{ onField }}" autocomplete="email" style="height:46px;border:1px solid #cfd8da;padding:0 12px;font-size:14px" style-focus="outline:2px solid #5cb531;border-color:#5cb531">
+              </label>
+              <label style="display:grid;gap:6px;font-size:12px;font-weight:700">電話番号
+                <input type="tel" name="tel" value="{{ form.tel }}" onChange="{{ onField }}" autocomplete="tel" style="height:46px;border:1px solid #cfd8da;padding:0 12px;font-size:14px" style-focus="outline:2px solid #5cb531;border-color:#5cb531">
+              </label>
+            </div>
+            <label style="display:grid;gap:6px;font-size:12px;font-weight:700">ご相談内容
+              <textarea name="message" rows="5" value="{{ form.message }}" onChange="{{ onField }}" placeholder="わかる範囲で構いません" style="border:1px solid #cfd8da;padding:12px;font-size:14px;resize:vertical;line-height:1.7" style-focus="outline:2px solid #5cb531;border-color:#5cb531"></textarea>
+            </label>
+            <button data-shine="" type="submit" style="margin-top:6px;height:54px;border:0;background:#5cb531;color:#fff;font-size:14px;font-weight:700;letter-spacing:.1em;display:flex;align-items:center;justify-content:center;gap:16px;cursor:pointer;transition:background .25s" style-hover="background:#0d6b47">送信する<span>→</span></button>
+          </div>
+        </sc-if>
+      </form>
+
+      <div data-anim="right" data-delay="200" style="display:flex;flex-direction:column;gap:16px">
+        <div style="background:#fff;padding:clamp(24px,3vw,36px)">
+          <p style="margin:0;font-family:Cormorant Garamond;font-weight:400;font-size:32px;line-height:1"><span style="color:#0d6b47">A</span>ccess</p>
+          <p style="margin:6px 0 0;font-size:12px;letter-spacing:.1em">事務所案内・アクセス</p>
+          <dl style="margin:22px 0 0;display:grid;grid-template-columns:auto 1fr;font-size:13px;line-height:1.8">
+            <sc-for list="{{ office }}" as="o" hint-placeholder-count="5">
+              <dt style="padding:10px 18px 10px 0;border-top:1px solid #e3e3e3;color:#0d6b47;font-weight:700;font-size:12px">{{ o.k }}</dt>
+              <dd style="margin:0;padding:10px 0;border-top:1px solid #e3e3e3">{{ o.v }}</dd>
+            </sc-for>
+          </dl>
+        </div>
+        <div style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#d7e3e5 0 10px,#dfe9eb 10px 20px);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:ui-monospace,monospace;font-size:12px;color:#5d7176;background:rgba(255,255,255,.7);padding:6px 10px">map embed — Google マップ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer style="background:linear-gradient(120deg,#0b5a3c,#0d6b47 50%,#06805e);color:#fff;padding:clamp(56px,6vw,72px) 20px 28px">
+  <div style="max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:34px;height:34px;border-radius:50%;background:#fff;color:#0d6b47;display:flex;align-items:center;justify-content:center;font-family:Cormorant Garamond;font-weight:500;font-size:18px">S</span>
+        <span style="display:flex;flex-direction:column;line-height:1.2"><span style="font-size:10px;letter-spacing:.1em">税理士事務所</span><span style="font-size:18px;letter-spacing:.14em">しるべ税理士事務所</span></span>
+      </div>
+      <p style="margin:18px 0 0;font-size:12px;line-height:1.9">〒000-0000 東京都○○区○○ 0-0-0 ○○ビル 5F<br>○○線「○○駅」徒歩3分</p>
+    </div>
+    <nav aria-label="フッターメニュー" style="display:grid;grid-template-columns:repeat(2,auto);gap:10px 40px;align-content:start">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="color:#fff;font-size:12px" style-hover="color:#c9ec9f">{{ n.label }}</a>
+      </sc-for>
+    </nav>
+  </div>
+  <p style="margin:48px 0 0;text-align:center;font-family:Cormorant Garamond;font-size:11px;opacity:.7">© Shirube Tax Accounting Office</p>
+</footer>
+
+<sc-if value="{{ showFloat }}" hint-placeholder-val="{{ false }}">
+  <a href="#top" aria-label="ページ上部へ" style="position:fixed;right:18px;bottom:18px;z-index:30;width:48px;height:48px;background:#5cb531;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 4px 14px rgba(0,0,0,.2)" style-hover="background:#0d6b47;color:#fff">↑</a>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;backToTop&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Page&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;subtle&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;'full' | 'subtle'&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;intro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menuOpen: false, scrolled: false, sent: false,
+    form: { type: '税務顧問について', name: '', company: '', email: '', tel: '', message: '' } };
+  componentDidMount() {
+    this.reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onScroll = () => { const s = window.scrollY > 500; if (s !== this.state.scrolled) this.setState({ scrolled: s }); this.scrollFx(); };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.bar = document.createElement('div');
+    Object.assign(this.bar.style, { position: 'fixed', left: 0, top: 0, height: '3px', width: '100%', zIndex: 90, background: 'linear-gradient(90deg,#5cb531,#0d6b47)', transformOrigin: 'left', transform: 'scaleX(0)', pointerEvents: 'none' });
+    document.body.appendChild(this.bar);
+    this.introEnd = 0;
+    if (!this.reduce && (this.props.intro ?? true)) this.intro();
+    this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { this.io.unobserve(e.target); const t = e.target; [...(t._proxyFor || []), ...(t._anim ? [t] : [])].forEach(x => this.play(x)); } }), { threshold: 0.12 });
+    setTimeout(() => { this.observe(); if (!this.reduce) this.ambient(); this.scrollFx(); }, 30);
+  }
+  componentDidUpdate() { this.observe(); }
+  amp() { return (this.props.motion ?? 'full') === 'full' ? 1 : 0.4; }
+  intro() {
+    const o = document.createElement('div');
+    Object.assign(o.style, { position: 'fixed', inset: 0, zIndex: 100, background: 'linear-gradient(120deg,#0b5a3c,#0d6b47 50%,#06805e)', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', fontFamily: '"Shippori Mincho B1",serif' });
+    o.innerHTML = '<span style="font-size:clamp(22px,3vw,34px);letter-spacing:.2em;font-weight:500">しるべ税理士事務所</span><span style="font-family:Cormorant Garamond;font-style:italic;font-size:13px;letter-spacing:.2em;opacity:.8">Shirube Tax Accounting Office</span><span style="width:0;height:1px;background:#5cb531;margin-top:10px"></span>';
+    document.body.appendChild(o);
+    const [t1, t2, line] = o.children;
+    t1.animate([{ opacity: 0, translate: '0 20px', letterSpacing: '.6em' }, { opacity: 1, translate: '0 0', letterSpacing: '.2em' }], { duration: 900, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'both' });
+    t2.animate([{ opacity: 0 }, { opacity: .8 }], { duration: 700, delay: 300, fill: 'both' });
+    line.animate([{ width: '0' }, { width: '200px' }], { duration: 900, delay: 200, easing: 'cubic-bezier(.6,0,.2,1)', fill: 'both' });
+    o.animate([{ clipPath: 'inset(0 0 0 0)' }, { clipPath: 'inset(0 0 100% 0)' }], { duration: 900, delay: 1300, easing: 'cubic-bezier(.8,0,.2,1)', fill: 'forwards' }).onfinish = () => o.remove();
+    this.introEnd = performance.now() + 1700;
+  }
+  frames(k, a) {
+    const d = 50 * a;
+    return ({
+      up: [{ opacity: 0, translate: '0 ' + d + 'px' }, { opacity: 1, translate: '0 0' }],
+      left: [{ opacity: 0, translate: -d * 1.6 + 'px 0' }, { opacity: 1, translate: '0 0' }],
+      right: [{ opacity: 0, translate: d * 1.6 + 'px 0' }, { opacity: 1, translate: '0 0' }],
+      zoom: [{ opacity: 0, scale: 1 - .15 * a }, { opacity: 1, scale: 1 }],
+      pop: [{ opacity: 0, scale: 1 - .45 * a, translate: '0 ' + d * .5 + 'px' }, { opacity: 1, scale: 1 + .07 * a, translate: '0 0', offset: .65 }, { opacity: 1, scale: 1, translate: '0 0' }],
+      mask: [{ clipPath: 'inset(-30% 100% -30% 0)', translate: -d * .5 + 'px 0' }, { clipPath: 'inset(-30% -10% -30% 0)', translate: '0 0' }],
+      curtain: [{ clipPath: 'inset(0 100% 0 0)', scale: 1 + .12 * a }, { clipPath: 'inset(0 0 0 0)', scale: 1 }],
+      letters: [{ opacity: 0, letterSpacing: .6 * a + 'em', filter: 'blur(10px)' }, { opacity: 1, letterSpacing: '.02em', filter: 'blur(0)' }],
+      band: [{ scale: '0 1' }, { scale: '1 1' }]
+    })[k] || [{ opacity: 0 }, { opacity: 1 }];
+  }
+  observe() {
+    document.querySelectorAll('[data-anim]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '1');
+      if (this.reduce) return;
+      if (el.dataset.anim === 'band') el.style.transformOrigin = 'left';
+      const sibs = [...el.parentElement.children].filter(c => c.dataset.anim === el.dataset.anim);
+      const delay = (+el.dataset.delay || 0) + (sibs.length > 1 ? sibs.indexOf(el) * 110 : 0);
+      const dur = { letters: 1400, curtain: 1300, band: 1400, mask: 1100 }[el.dataset.anim] || 950;
+      const a = el.animate(this.frames(el.dataset.anim, this.amp()), { duration: dur, delay, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'both' });
+      a.pause();
+      a.onfinish = () => a.cancel();
+      el._anim = a;
+      if (/^(mask|curtain)$/.test(el.dataset.anim)) { const p = el.parentElement; (p._proxyFor = p._proxyFor || []).push(el); this.io.observe(p); } else this.io.observe(el);
+    });
+  }
+  play(el) {
+    const a = el._anim; if (!a) return;
+    setTimeout(() => a.play(), Math.max(0, this.introEnd - performance.now()));
+  }
+  ambient() {
+    const amp = this.amp(), wait = Math.max(0, this.introEnd - performance.now());
+    document.querySelectorAll('[data-kenburns]').forEach(el => {
+      el.animate([{ scale: 1 + .25 * amp, opacity: .3 }, { scale: 1, opacity: 1 }], { duration: 2600, delay: wait, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }).onfinish = () =>
+        el.animate([{ scale: 1 }, { scale: 1 + .06 * amp }], { duration: 14000, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' });
+    });
+    document.querySelectorAll('[data-float]').forEach((el, i) => {
+      const y = (14 + (i % 3) * 8) * amp;
+      el.animate([{ translate: '0 0', scale: 0, opacity: 0 }, { translate: '0 0', scale: 1, opacity: 1 }], { duration: 900, delay: wait + 800 + i * 150, easing: 'cubic-bezier(.3,1.6,.5,1)', fill: 'backwards' }).onfinish = () =>
+        el.animate([{ translate: '0 0' }, { translate: (i % 2 ? 10 : -10) * amp + 'px ' + -y + 'px' }], { duration: 3600 + i * 700, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' });
+    });
+    document.querySelectorAll('[data-marquee]').forEach(el => el.animate([{ translate: '0 0' }, { translate: 'calc(-50% - 30px) 0' }], { duration: 38000 / Math.max(amp, .5), iterations: Infinity }));
+    document.querySelectorAll('[data-pulse]').forEach(el => el.animate([{ boxShadow: '0 8px 24px rgba(0,0,0,.18), 0 0 0 0 rgba(92,181,49,.7)' }, { boxShadow: '0 8px 24px rgba(0,0,0,.18), 0 0 0 22px rgba(92,181,49,0)' }], { duration: 1800, delay: wait + 2200, iterations: Infinity }));
+    document.querySelectorAll('[data-shine]').forEach((el, i) => {
+      el.style.backgroundImage = 'linear-gradient(110deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%)';
+      el.style.backgroundSize = '250% 100%';
+      el.style.backgroundRepeat = 'no-repeat';
+      el.animate([{ backgroundPosition: '130% 0' }, { backgroundPosition: '-30% 0', offset: .35 }, { backgroundPosition: '-30% 0' }], { duration: 3400, delay: i * 400, iterations: Infinity, easing: 'ease-in-out' });
+    });
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+      el.style.transition = 'transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s';
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        el.style.transform = 'perspective(800px) rotateX(' + (-y * 10 * amp) + 'deg) rotateY(' + (x * 12 * amp) + 'deg) translateY(-6px)';
+        el.style.boxShadow = '0 18px 40px rgba(20,50,40,.2)';
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; el.style.boxShadow = ''; });
+    });
+  }
+  scrollFx() {
+    const vh = window.innerHeight, max = document.documentElement.scrollHeight - vh;
+    if (this.bar) this.bar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+    if (this.reduce) return;
+    const amp = this.amp();
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+      const r = el.parentElement.getBoundingClientRect();
+      el.style.translate = '0 ' + ((r.top + r.height / 2 - vh / 2) * -(+el.dataset.parallax) * amp).toFixed(1) + 'px';
+    });
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); this.io && this.io.disconnect(); this.bar && this.bar.remove(); }
+  renderVals() {
+    const wide = this.state.w >= 1180;
+    return {
+      wide, narrow: !wide, menuOpen: this.state.menuOpen && !wide,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      showBadges: this.props.showBadges ?? true,
+      showFloat: (this.props.backToTop ?? true) && this.state.scrolled,
+      sent: this.state.sent, notSent: !this.state.sent, form: this.state.form,
+      onField: e => { const { name, value } = e.target; this.setState(s => ({ form: { ...s.form, [name]: value } })); },
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false }),
+      nav: [
+        { label: '事務所について', en: 'About', href: 'about.dc.html' },
+        { label: '業務案内', en: 'Service', href: 'service.dc.html' },
+        { label: '代表紹介', en: 'Profile', href: 'profile.dc.html' },
+        { label: 'ご相談の流れ・料金', en: 'Flow & Price', href: 'flow-price.dc.html' },
+        { label: 'お問い合わせ・アクセス', en: 'Contact', href: 'contact.dc.html' }
+      ],
+      badges: [
+        { top: '初回相談', em: '無料' },
+        { top: '平日夜・土曜', em: '相談可' },
+        { top: 'オンライン', em: '面談対応' }
+      ],
+      values: [
+        { en: 'Clarity', title: 'わかる言葉で、伝える。', body: '専門用語に頼らず、数字が経営にとって何を意味するのかをお伝えします。納得して判断していただくことが、私たちの仕事の前提です。' },
+        { en: 'Foresight', title: '一年先を、一緒に考える。', body: '申告は一年の振り返りです。その結果をもとに、資金繰りや設備投資、次の決算に向けて何ができるかを早めにご提案します。' },
+        { en: 'Partnership', title: '長く、続く関係を。', body: '創業から事業承継まで、会社の節目は何度も訪れます。その都度相談できる相手として、担当が変わらない体制でお付き合いします。' }
+      ],
+      featured: [
+        { no: '01', title: 'はじめて税理士をお探しの方へ', body: '創業直後・個人事業からの法人化など、最初の一歩から伴走します' },
+        { no: '02', title: '税理士の変更をお考えの方へ', body: '「相談しにくい」「提案がない」とお感じの経営者様へ' }
+      ],
+      services: [
+        { no: '01', title: '税務顧問', sub: '日々のご相談・税務判断', body: '取引や投資の税務上の扱い、役員報酬の決め方など、日々の判断をその都度ご相談いただけます。定期面談で数字の動きも共有します。', for: '身近に相談できる税理士がほしい法人・個人事業主の方' },
+        { no: '02', title: '法人決算・申告', sub: '法人税・消費税の申告', body: '決算書と法人税・消費税・地方税の申告書を作成します。決算前に着地見込みを確認し、納税額と資金の準備を早めにご案内します。', for: '決算・申告を正確に、余裕をもって進めたい法人様' },
+        { no: '03', title: '確定申告', sub: '個人事業主・不動産所得など', body: '事業所得や不動産所得、医療費控除など、個人の確定申告を作成します。書類の集め方からご説明します。', for: '初めての申告や、毎年の申告に負担を感じている方' },
+        { no: '04', title: '記帳・月次会計', sub: '会計ソフト導入・月次試算表', body: '記帳の代行、または会計ソフトの導入と自計化のサポートを行います。月次の試算表で経営状況をタイムリーに把握できます。', for: '経理に手が回らない、数字を毎月確認したい方' },
+        { no: '05', title: '創業・会社設立支援', sub: '設立手続き・融資のご相談', body: '法人化の判断から設立手続き、創業融資の事業計画づくり、設立後の届出まで一貫してサポートします。', for: 'これから起業する方、個人事業から法人化を考えている方' },
+        { no: '06', title: '事業承継・相続', sub: '株式対策・承継計画の策定', body: '自社株の評価や承継の時期・方法を整理し、後継者様と一緒に計画を立てます。相続税の申告にも対応します。', for: '会社を次の世代へ引き継ぐ準備を始めたい経営者様' }
+      ],
+      strengths: [
+        { no: '1', title: '代表税理士が直接担当', sub: '窓口が変わらない安心感', body: 'ご相談から申告まで代表が責任をもって担当し、会社の状況を継続的に把握します。' },
+        { no: '2', title: 'ご連絡は原則当日中', sub: 'スピードを大切に', body: 'メール・チャットでのご質問には、原則として当日中にお返事いたします。' },
+        { no: '3', title: '月次で経営状況を共有', sub: '数字を「見える化」', body: '試算表をもとに、利益や資金の動きを毎月わかりやすくご説明します。' },
+        { no: '4', title: '明瞭な料金体系', sub: 'ご契約前にお見積り', body: '業務内容と費用を事前にご提示し、ご納得いただいてから契約を進めます。' },
+        { no: '5', title: 'オンラインで完結', sub: '遠方・多忙な方にも', body: '面談や資料のやり取りはオンラインでも対応。移動の負担を減らします。' },
+        { no: '6', title: '専門家ネットワーク', sub: '士業との連携', body: '登記や労務など税務以外のご相談も、提携する専門家と連携して対応します。' }
+      ],
+      flow: [
+        { no: '1', title: 'お問い合わせ', body: 'お電話またはフォームから、ご相談の概要をお知らせください。' },
+        { no: '2', title: '初回面談（無料）', body: '現在の状況やお困りごとを伺い、進め方をご説明します。' },
+        { no: '3', title: 'お見積り・ご提案', body: '必要な業務と費用をご提示します。比較検討も歓迎です。' },
+        { no: '4', title: 'ご契約・サポート開始', body: 'ご納得いただけましたらご契約。前任の税理士様からの引継ぎもお手伝いします。' }
+      ],
+      career: [
+        { y: '19XX年', t: '○○大学 経済学部 卒業' },
+        { y: '19XX年', t: '税理士法人○○ 入所。中小企業の法人税務・事業承継を担当' },
+        { y: '19XX年', t: '税理士登録' },
+        { y: '1998年', t: 'しるべ税理士事務所 開業' },
+        { y: '20XX年', t: '事業承継・創業支援の専門チームを設置' }
+      ],
+      prices: [
+        { name: '初回相談', price: '無料', unit: '', note: 'ご契約前のご相談・お見積りは費用をいただきません。', items: ['面談 60分程度', 'オンライン面談可', '比較検討中でも歓迎'] },
+        { name: '税務顧問', price: '○○,000', unit: '円〜／月', note: '売上規模・訪問頻度に応じてお見積りします。', items: ['随時の税務相談', '月次試算表のご説明', '定期面談'] },
+        { name: '決算・申告', price: '○○○,000', unit: '円〜／年', note: '顧問契約とあわせてのご依頼が一般的です。', items: ['決算書の作成', '法人税・消費税申告', '決算前の着地見込み'] },
+        { name: '確定申告', price: '○○,000', unit: '円〜', note: '所得の種類・書類の量により変動します。', items: ['事業・不動産所得', '医療費控除など', '書類整理のご案内'] }
+      ],
+      topics: ['税務顧問について', '決算・確定申告について', '会社設立・創業について', '事業承継・相続について', '税理士の変更について', 'その他'],
+      office: [
+        { k: '事務所名', v: 'しるべ税理士事務所' },
+        { k: '所在地', v: '〒000-0000 東京都○○区○○ 0-0-0 ○○ビル 5F' },
+        { k: '電話', v: '03-0000-0000' },
+        { k: 'メール', v: 'info@example.jp' },
+        { k: '営業時間', v: '平日 9:00〜18:00（土日祝は事前予約制）' },
+        { k: 'アクセス', v: '○○線「○○駅」○番出口より徒歩3分' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

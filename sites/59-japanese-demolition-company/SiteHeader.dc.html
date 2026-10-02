@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@media (max-width:420px){
+  .sh-header{height:64px!important}
+  .sh-logo{gap:8px!important}
+  .sh-logo-en{font-size:13px!important;letter-spacing:.08em!important}
+  .sh-logo-jp{font-size:10px!important;letter-spacing:.12em!important}
+}
+</style>
+</helmet>
+<header class="sh-header" style="position:fixed;top:0;left:0;right:0;z-index:50;height:76px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 clamp(16px,3vw,40px);background:{{ headerBg }};transition:background .4s ease, box-shadow .4s ease;box-shadow:{{ headerShadow }};font-family:'Noto Sans JP',sans-serif">
+  <a href="Top.dc.html" class="sh-logo" style="display:flex;align-items:center;gap:12px;min-width:0;color:{{ logoColor }};text-decoration:none;transition:color .4s">
+    <div style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <div style="width:24px;height:24px;transform:rotate(45deg);border:4px solid #c4161f;display:flex;align-items:center;justify-content:center">
+        <div style="width:6px;height:6px;background:currentColor"></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;line-height:1.15">
+      <span class="sh-logo-en" style="font-family:'Dela Gothic One',sans-serif;font-size:15px;letter-spacing:.14em;white-space:nowrap">{{ companyEn }}</span>
+      <span class="sh-logo-jp" style="font-size:11px;font-weight:700;letter-spacing:.2em;white-space:nowrap">{{ companyName }}</span>
+    </div>
+  </a>
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:clamp(18px,2.4vw,36px)">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" aria-current="{{ n.current }}" style="display:flex;flex-direction:column;align-items:center;gap:2px;color:{{ n.color }};text-decoration:none;text-shadow:0 1px 8px rgba(0,0,0,.5);border-bottom:2px solid {{ n.line }};padding-bottom:3px" style-hover="color:#ff4a52">
+          <span style="font-family:'Dela Gothic One',sans-serif;font-size:13px;letter-spacing:.14em">{{ n.en }}</span>
+          <span style="font-size:10px;font-weight:500;letter-spacing:.16em;opacity:.8">{{ n.jp }}</span>
+        </a>
+      </sc-for>
+      <a href="Contact.dc.html#form" style="display:flex;align-items:center;height:46px;padding:0 26px;background:#c4161f;color:#fff;text-decoration:none;font-weight:700;font-size:14px;letter-spacing:.08em;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);transition:background .3s" style-hover="background:#e0262f;color:#fff">無料見積もり</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" aria-expanded="{{ menuOpen }}" style="flex-shrink:0;width:48px;height:48px;border:none;background:#c4161f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)">
+      <span style="display:block;width:20px;height:2px;background:#fff"></span>
+      <span style="display:block;width:20px;height:2px;background:#fff"></span>
+      <span style="display:block;width:20px;height:2px;background:#fff"></span>
+    </button>
+  </sc-if>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#0d0d0d;background-image:var(--noise),linear-gradient(135deg,#1a0304 0%,#0d0d0d 60%);display:flex;flex-direction:column;padding:24px;font-family:'Noto Sans JP',sans-serif;overflow:auto">
+    <div style="display:flex;justify-content:flex-end">
+      <button onClick="{{ toggleMenu }}" aria-label="閉じる" style="width:48px;height:48px;border:1px solid #c4161f;background:transparent;color:#fff;font-size:22px;cursor:pointer">×</button>
+    </div>
+    <nav aria-label="モバイルナビゲーション" style="display:flex;flex-direction:column;gap:4px;margin-top:24px">
+      <sc-for list="{{ navAll }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;gap:14px;padding:18px 4px;border-bottom:1px solid rgba(255,255,255,.12);color:#fff;text-decoration:none">
+          <span style="font-family:'Dela Gothic One',sans-serif;font-size:26px;letter-spacing:.1em">{{ n.en }}</span>
+          <span style="font-size:12px;letter-spacing:.16em;color:#ff4a52">{{ n.jp }}</span>
+        </a>
+      </sc-for>
+    </nav>
+    <a href="Contact.dc.html#form" onClick="{{ closeMenu }}" style="margin-top:32px;display:flex;align-items:center;justify-content:center;height:58px;background:#c4161f;color:#fff;text-decoration:none;font-weight:700;letter-spacing:.1em">無料見積もり・お問い合わせ</a>
+    <a href="tel:{{ tel }}" style="margin-top:14px;text-align:center;color:#fff;text-decoration:none;font-family:'Dela Gothic One',sans-serif;font-size:22px;letter-spacing:.06em">TEL {{ tel }}</a>
+  </div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:120},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;about&quot;,&quot;services&quot;,&quot;strengths&quot;,&quot;works&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;companyName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;〇〇解体工業株式会社&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;companyEn&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;MARUMARU KAITAI&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;000-000-0000&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, scrolled: false, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => {
+      const w = window.innerWidth;
+      this.setState(w >= 1200 ? { w, menuOpen: false } : { w });
+    };
+    this.onScroll = () => { const s = window.scrollY > 60; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+  componentDidUpdate() {
+    // Lock page scroll behind the mobile menu overlay.
+    document.body.style.overflow = this.state.menuOpen ? 'hidden' : '';
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    document.body.style.overflow = '';
+  }
+  renderVals() {
+    // The logo must sit on the hero's light triangle and the white nav must clear
+    // it; both only fit from ~1200px. Below that use the hamburger menu.
+    const wide = this.state.w >= 1200;
+    // On narrow screens the logo would sit half over the light triangle and
+    // half over the photo, so the header is always solid there.
+    const scrolled = this.state.scrolled || this.state.menuOpen || !wide;
+    const active = this.props.active ?? '';
+    const pages = [
+      { en: 'ABOUT', jp: '私たちについて', href: 'About.dc.html' },
+      { en: 'SERVICES', jp: 'サービス', href: 'Services.dc.html' },
+      { en: 'STRENGTHS', jp: '強み・安全', href: 'Strengths.dc.html' },
+      { en: 'WORKS', jp: '施工実績', href: 'Works.dc.html' },
+      { en: 'CONTACT', jp: 'お問い合わせ', href: 'Contact.dc.html' }
+    ];
+    const nav = pages.map(n => {
+      const on = n.en.toLowerCase() === active;
+      return { ...n, current: on ? 'page' : undefined, color: on ? '#ff4a52' : '#fff', line: on ? '#c4161f' : 'transparent' };
+    });
+    return {
+      wide, narrow: !wide, nav,
+      navAll: [{ en: 'TOP', jp: 'トップ', href: 'Top.dc.html' }].concat(pages),
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      headerBg: scrolled ? 'rgba(14,14,14,.94)' : 'transparent',
+      headerShadow: scrolled ? '0 2px 20px rgba(0,0,0,.35)' : 'none',
+      logoColor: scrolled ? '#fff' : '#111',
+      companyName: this.props.companyName ?? '〇〇解体工業株式会社',
+      companyEn: this.props.companyEn ?? 'MARUMARU KAITAI',
+      tel: this.props.tel ?? '000-000-0000'
+    };
+  }
+}
+</script>
+</body>
+</html>

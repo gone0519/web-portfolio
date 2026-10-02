@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site.css">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#2a2a28;font-family:'Noto Serif JP',serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#8a1414;text-decoration:none}
+a:hover{color:#5e0c0c}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="farming" hint-size="100%,44px"></dc-import>
+<main>
+<section data-screen-label="Farming Hero" style="position:relative;height:56vh;min-height:380px;max-height:620px;overflow:hidden;background:#141412;color:#fff">
+  <div data-hero-parallax="1" style="position:absolute;inset:-12% 0 0 0"><image-slot id="farming-hero" src="images/tractor-red.jpg" shape="rect" placeholder="FARMING HERO — 農業機械と圃場"></image-slot></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,9,0.45),rgba(10,10,9,0.3) 50%,rgba(10,10,9,0.6))"></div>
+  <div style="position:relative;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:64px 20px 20px;pointer-events:none">
+    <span data-intro="first" style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.4em;color:rgba(255,255,255,0.75)">03</span>
+    <h1 data-split="1" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(42px,7vw,96px);letter-spacing:0.3em;padding-left:0.3em;line-height:1">FARMING</h1>
+    <p data-intro="1" style="margin:0;font-size:16px;letter-spacing:0.4em;padding-left:0.4em">私たちの農業</p>
+  </div>
+  <dc-import name="GrassEdge" color="#ffffff" height="56" seed="13" style="position:absolute;left:0;right:0;bottom:-1px;z-index:3" hint-size="100%,56px"></dc-import>
+</section>
+<nav aria-label="パンくずリスト" style="max-width:1160px;margin:0 auto;padding:18px 24px;display:flex;gap:12px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.2em;color:#8a877d">
+  <a href="Farm%20Website.dc.html" style="color:#8a877d">HOME</a><span>/</span><span style="color:#2a2a28">FARMING</span>
+</nav>
+
+<section data-screen-label="Intro" style="max-width:680px;margin:0 auto;padding:clamp(56px,7vw,96px) 24px 0;text-align:center">
+  <h2 data-reveal="1" style="margin:0;color:#8a1414;font-weight:600;font-size:clamp(24px,3.2vw,38px);letter-spacing:0.08em;line-height:1.6">「受け継ぐ技術と、新しい農業。」</h2>
+  <p data-reveal="1" style="margin:10px 0 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;letter-spacing:0.08em;color:#6b685f">Tradition, Technology, and a Better Future.</p>
+  <p data-reveal="1" style="margin:30px 0 0;font-size:15px;line-height:2.2;letter-spacing:0.06em;color:#3d3b36;text-wrap:pretty">先人から受け継いできた知恵と、新しい技術。その両方を大切にしながら、おいしく、安心できる作物づくりに取り組んでいます。</p>
+</section>
+
+<section data-screen-label="Strengths" style="max-width:1160px;margin:0 auto;padding:clamp(70px,8vw,110px) 24px;display:flex;flex-direction:column;gap:clamp(64px,8vw,110px)">
+  <sc-for list="{{ strengths }}" as="s" hint-placeholder-count="5">
+    <article data-reveal="zoom" style="display:flex;flex-wrap:wrap;flex-direction:{{ s.dir }};align-items:center;gap:clamp(32px,5vw,72px)">
+      <div style="flex:1 1 420px;min-width:0;position:relative;aspect-ratio:3/2"><image-slot id="{{ s.slot }}" src="{{ s.img }}" shape="rect" placeholder="{{ s.ph }}"></image-slot></div>
+      <div style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(56px,6vw,80px);line-height:0.9;color:#e3ded2">{{ s.no }}</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.3em;color:#8a877d">{{ s.en }}</span>
+        <h3 style="margin:0;color:#8a1414;font-weight:600;font-size:clamp(20px,2.2vw,26px);letter-spacing:0.1em">“{{ s.title }}”</h3>
+        <span style="height:1px;background:#8a877d;width:min(100%,360px)"></span>
+        <p style="margin:0;font-size:14.5px;line-height:2.2;letter-spacing:0.05em;color:#3d3b36;text-wrap:pretty">{{ s.desc }}</p>
+      </div>
+    </article>
+  </sc-for>
+</section>
+
+<div aria-hidden="true" style="position:relative;height:0;z-index:2"><dc-import name="GrassEdge" color="#141412" height="60" seed="29" style="position:absolute;left:0;right:0;bottom:-1px" hint-size="100%,60px"></dc-import></div>
+<section data-screen-label="Process" style="background:#141412;color:#fff;padding:clamp(80px,9vw,120px) clamp(20px,5vw,72px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;margin-bottom:56px">
+      <span style="display:inline-flex;align-items:flex-end;gap:10px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.4em;color:#d77a7a"><dc-import name="Sprout" color="#d77a7a" hint-size="18px,16px"></dc-import>PROCESS</span>
+      <h2 style="margin:0;font-weight:500;font-size:clamp(24px,3vw,36px);letter-spacing:0.14em">一年の仕事</h2>
+    </div>
+    <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:0;border-top:1px solid rgba(255,255,255,0.3)">
+      <sc-for list="{{ process }}" as="p" hint-placeholder-count="5">
+        <li data-reveal="1" class="process-li" style="padding:28px 20px 8px;display:flex;flex-direction:column;gap:12px;border-left:1px solid rgba(255,255,255,0.14)">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.24em;color:#a9a69c">STEP {{ p.no }}・{{ p.season }}</span>
+          <h3 style="margin:0;font-weight:500;font-size:19px;letter-spacing:0.14em">{{ p.title }}</h3>
+          <p style="margin:0;font-size:13px;line-height:2;letter-spacing:0.04em;color:#c9c6bd">{{ p.desc }}</p>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section data-screen-label="Environment" style="position:relative;max-width:1080px;margin:0 auto;padding:clamp(80px,9vw,120px) 24px"><dc-import name="DriftLeaves" seed="12" count="9" color="#dcd7cb" style="position:absolute;inset:0" hint-size="100%,100%"></dc-import>
+  <div data-reveal="1" style="display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;margin-bottom:48px">
+    <span style="display:inline-flex;align-items:flex-end;gap:10px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.4em;color:#8a1414"><dc-import name="Sprout" color="#8a1414" hint-size="18px,16px"></dc-import>ENVIRONMENT</span>
+    <h2 style="margin:0;font-weight:500;font-size:clamp(24px,3vw,34px);letter-spacing:0.14em">自然とともに続ける農業</h2>
+    <p style="margin:6px 0 0;max-width:560px;font-size:14px;line-height:2.1;letter-spacing:0.05em;color:#4a4842">土・水・生きもの・資源。農業を続けていくために欠かせないものを、守りながら活かしていきます。</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px">
+    <sc-for list="{{ env }}" as="e" hint-placeholder-count="4">
+      <div data-reveal="1" style="background:#f6f4ee;padding:32px 26px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:34px;color:#8a1414;line-height:1">{{ e.kanji }}</span>
+        <h3 style="margin:0;font-weight:600;font-size:17px;letter-spacing:0.12em">{{ e.title }}</h3>
+        <p style="margin:0;font-size:13px;line-height:2;letter-spacing:0.04em;color:#4a4842">{{ e.desc }}</p>
+      </div>
+    </sc-for>
+  </div>
+  <p style="margin:14px 0 0;font-size:11px;color:#9a968b;text-align:right">※具体的な取り組み内容・認証等は実際の内容に差し替えてください。</p>
+</section>
+
+<div aria-hidden="true" style="position:relative;height:0;z-index:2"><dc-import name="GrassEdge" color="#eeebe0" height="60" seed="47" style="position:absolute;left:0;right:0;bottom:-1px" hint-size="100%,60px"></dc-import></div>
+<section data-screen-label="CTA" style="position:relative;overflow:hidden;background:#eeebe0;padding:clamp(70px,8vw,130px) 24px;text-align:center"><dc-import name="GrassTuft" color="#d6d1c3" seed="47" width="200" height="130" count="16" ears="3" style="position:absolute;left:2%;bottom:0;z-index:0" hint-size="200px,130px"></dc-import><dc-import name="GrassTuft" color="#d6d1c3" seed="52" width="150" height="100" count="12" ears="2" style="position:absolute;right:3%;bottom:0;z-index:0" hint-size="150px,100px"></dc-import>
+  <div data-reveal="1" style="position:relative;z-index:1;max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:18px">
+    <h2 style="margin:0;color:#8a1414;font-weight:500;font-size:clamp(28px,3.6vw,44px);letter-spacing:0.08em;line-height:1.4">農業の未来を、ともにつくる。</h2>
+    <p style="margin:0;font-size:14px;line-height:2;letter-spacing:0.06em;color:#4a4842">協業・視察・取材のご相談もお気軽にどうぞ。</p>
+    <div class="btn-row" style="margin-top:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+      <a href="Contact.dc.html" style="display:flex;align-items:center;justify-content:center;min-height:54px;min-width:210px;padding:0 28px;background:#8a1414;color:#fff;font-size:15px;letter-spacing:0.16em;transition:background .3s" style-hover="background:#a51c1c;color:#fff">お問い合わせ</a>
+      <a href="Vision.dc.html" style="display:flex;align-items:center;justify-content:center;min-height:54px;min-width:210px;padding:0 28px;border:1px solid #8a1414;color:#8a1414;font-size:15px;letter-spacing:0.16em;transition:background .3s,color .3s" style-hover="background:#8a1414;color:#fff">私たちのビジョン</a>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const s = [
+      ['QUALITY & CULTIVATION', '品質へのこだわり', '土の状態や生育を日々確かめながら、作物ごとに適した方法で栽培しています。収穫後の選別・調製まで、品質を安定させるための工程を一つひとつ丁寧に積み重ねています。', '作物を確かめる手元'],
+      ['EXPERIENCED FARMERS', '経験を重ねた生産者', '長年の農作業の中で培ってきた知識と経験。天候や土の変化を読み取る力を、スタッフ全員で共有し、次の世代へと受け継いでいます。', 'ベテラン生産者と若手'],
+      ['TECHNOLOGY & INNOVATION', '技術と新しい挑戦', '農業機械や栽培データなど、新しい技術を必要に応じて取り入れています。作業の効率化と品質の向上を両立させ、より良い作物づくりにつなげています。', '農業機械・データ管理'],
+      ['ENVIRONMENT', '環境への配慮', '土や水、周辺の自然環境に配慮した農業に取り組んでいます。具体的な取り組み内容（栽培方法・資材・認証など）をここに記載してください。', '水田・用水と生きもの'],
+      ['REGIONAL CONTRIBUTION', '地域とともに', '地域の皆さまや事業者さまとの関わりを大切にしています。地域の行事や食育、新規就農者の受け入れなど、具体的な取り組みをここに記載してください。', '地域の方々との交流']
+    ];
+    return {
+      strengths: s.map(([en, title, desc, ph], i) => ({ no: '0' + (i + 1), en, title, desc, ph, slot: 'farming-strength-' + (i + 1), img: 'images/' + ['rice-ears', 'team-paddy', 'tractor-rotary', 'water-wheel', 'harvest-couple'][i] + '.jpg', dir: i % 2 ? 'row-reverse' : 'row' })),
+      process: [
+        { season: '冬', title: '土づくり', desc: '収穫を終えた畑を休ませ、次の一年に向けて土を整えます。' },
+        { season: '春', title: '種まき・育苗', desc: '健やかな苗を育てることが、良い作物への第一歩です。' },
+        { season: '春〜夏', title: '育成・管理', desc: '水や草の管理、生育の観察を毎日欠かさず行います。' },
+        { season: '夏〜秋', title: '収穫', desc: 'もっともおいしい時期を見極めて収穫します。' },
+        { season: '通年', title: '選別・出荷', desc: '一つひとつ確かめ、品質を揃えてお届けします。' }
+      ].map((p, i) => ({ ...p, no: '0' + (i + 1) })),
+      env: [
+        { kanji: '土', title: '土壌', desc: '土の健康を保つための取り組みを記載します。' },
+        { kanji: '水', title: '水', desc: '水資源を大切に使うための取り組みを記載します。' },
+        { kanji: '生', title: '生きもの', desc: '田畑とその周りの生態系への配慮を記載します。' },
+        { kanji: '環', title: '資源循環', desc: '資材の削減や再利用などの取り組みを記載します。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

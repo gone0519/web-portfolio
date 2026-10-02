@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>お問い合わせ | ARCLINE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+<link href="responsive.css" rel="stylesheet" />
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #ffffff; color: #10151d; font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #14367a; text-decoration: none; }
+  a:hover { color: #1f5ad6; }
+  * { box-sizing: border-box; }
+  [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  [data-reveal].is-in { opacity: 1; transform: none; }
+  .f-input { display: block; width: 100%; font-family: inherit; font-size: 15px; color: #10151d; background: #fff; border: 1px solid #d5dce6; border-radius: 4px; padding: 14px 16px; transition: border-color .2s, box-shadow .2s; }
+  .f-input:focus { outline: none; border-color: #1f5ad6; box-shadow: 0 0 0 3px rgba(31,90,214,0.15); }
+  .f-input::placeholder { color: #aab2bd; }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] { opacity: 1; transform: none; transition: none; }
+    * { animation: none !important; }
+  }
+</style>
+</helmet>
+
+<div id="top" style="width:100%; overflow-x:hidden;">
+
+  <dc-import name="SiteHeader" current="contact" hint-size="100%,0px"></dc-import>
+  <dc-import name="PageHero" en="CONTACT" ja="お問い合わせ" lead="ご相談・お見積り・無料アカウント診断のご依頼は、こちらから承ります。2営業日以内に担当者よりご連絡いたします。" hint-size="100%,496px"></dc-import>
+
+  <section id="form" class="r-sec" style="padding:104px 40px; background:#fff; scroll-margin-top:76px;">
+    <div data-reveal="" class="r-contact-grid" style="max-width:1180px; margin:0 auto; display:grid; grid-template-columns:380px 1fr; gap:64px; align-items:start;">
+
+      <div>
+        <div style="background:#14367a; color:#fff; padding:40px 34px;">
+          <span style="display:block; font-family:Archivo,sans-serif; font-size:12px; font-weight:600; letter-spacing:0.2em; color:#8fb4ff;">TEL</span>
+          <span style="display:block; margin-top:14px; font-size:14px; color:rgba(255,255,255,0.85);">お電話でのお問い合わせ</span>
+          <span style="display:block; margin-top:10px; font-family:Archivo,sans-serif; font-size:34px; font-weight:700; line-height:1.2;">{{ tel }}</span>
+          <span style="display:block; margin-top:10px; font-size:13px; color:rgba(255,255,255,0.75);">受付時間／平日 9:00〜18:00</span>
+        </div>
+        <div style="background:#f4f6fa; padding:36px 34px;">
+          <span style="display:block; font-family:Archivo,sans-serif; font-size:12px; font-weight:600; letter-spacing:0.2em; color:#1f5ad6;">FREE CHECK</span>
+          <h3 style="margin:12px 0 16px; font-size:18px; font-weight:700; line-height:1.6; color:#10151d;">無料アカウント診断で<br />わかること</h3>
+          <sc-for list="{{ checks }}" as="ck" hint-placeholder-count="4">
+            <span style="display:flex; align-items:flex-start; gap:10px; padding:7px 0; font-size:14px; line-height:1.7; color:#3c444f;"><span style="width:6px; height:6px; margin-top:9px; background:#1f5ad6; transform:rotate(45deg); flex:none;"></span>{{ ck }}</span>
+          </sc-for>
+        </div>
+      </div>
+
+      <div>
+        <sc-if value="{{ !sent }}">
+          <form onSubmit="{{ onSubmit }}" style="display:flex; flex-direction:column; gap:28px;">
+            <div class="r-form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+              <label style="display:block;">
+                <span style="display:flex; align-items:center; gap:10px; margin-bottom:10px; font-size:14px; font-weight:700; color:#10151d;">会社名<span style="font-size:11px; color:#fff; background:#c8102e; padding:2px 8px; border-radius:2px;">必須</span></span>
+                <input class="f-input" type="text" name="company" required="required" placeholder="アークライン株式会社" />
+              </label>
+              <label style="display:block;">
+                <span style="display:flex; align-items:center; gap:10px; margin-bottom:10px; font-size:14px; font-weight:700; color:#10151d;">お名前<span style="font-size:11px; color:#fff; background:#c8102e; padding:2px 8px; border-radius:2px;">必須</span></span>
+                <input class="f-input" type="text" name="name" required="required" placeholder="山田 太郎" />
+              </label>
+            </div>
+            <div class="r-form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+              <label style="display:block;">
+                <span style="display:flex; align-items:center; gap:10px; margin-bottom:10px; font-size:14px; font-weight:700; color:#10151d;">メールアドレス<span style="font-size:11px; color:#fff; background:#c8102e; padding:2px 8px; border-radius:2px;">必須</span></span>
+                <input class="f-input" type="email" name="email" required="required" placeholder="example@arcline.co.jp" />
+              </label>
+              <label style="display:block;">
+                <span style="display:flex; align-items:center; gap:10px; margin-bottom:10px; font-size:14px; font-weight:700; color:#10151d;">電話番号<span style="font-size:11px; color:#5a636e; background:#e2e7ee; padding:2px 8px; border-radius:2px;">任意</span></span>
+                <input class="f-input" type="tel" name="tel" placeholder="03-0000-0000" />
+              </label>
+            </div>
+            <label style="display:block;">
+              <span style="display:flex; align-items:center; gap:10px; margin-bottom:10px; font-size:14px; font-weight:700; color:#10151d;">ご相談内容<span style="font-size:11px; color:#fff; background:#c8102e; padding:2px 8px; border-radius:2px;">必須</span></span>
+              <select class="f-input" name="topic" required="required">
+                <option value="">選択してください</option>
+                <option value="diagnosis">無料アカウント診断の依頼</option>
+                <option value="ads">広告運用について</option>
+                <option value="seo">SEO・コンテンツについて</option>
+                <option value="web">サイト・LP制作について</option>
+                <option value="analytics">分析・計測環境について</option>
+                <option value="other">その他</option>
+              </select>
+            </label>
+            <label style="display:block;">
+              <span style="display:flex; align-items:center; gap:10px; margin-bottom:10px; font-size:14px; font-weight:700; color:#10151d;">お問い合わせ内容<span style="font-size:11px; color:#5a636e; background:#e2e7ee; padding:2px 8px; border-radius:2px;">任意</span></span>
+              <textarea class="f-input" name="message" rows="7" placeholder="現在の課題や、月間の広告予算の目安などをご記入ください。" style="resize:vertical; line-height:1.8;"></textarea>
+            </label>
+            <label style="display:flex; align-items:center; justify-content:center; gap:10px; font-size:14px; color:#3c444f; cursor:pointer;">
+              <input type="checkbox" name="agree" required="required" style="width:18px; height:18px; accent-color:#14367a; flex:none;" />
+              <span><a href="#" style="text-decoration:underline;">個人情報の取り扱い</a>に同意する</span>
+            </label>
+            <div style="display:flex; justify-content:center;">
+              <button type="submit" class="r-form-btn" style="display:inline-flex; align-items:center; gap:16px; background:#c8102e; color:#fff; font-family:inherit; font-size:16px; font-weight:700; padding:22px 72px; border:none; border-radius:999px; cursor:pointer; transition:transform .25s, box-shadow .25s;" style-hover="transform:translateY(-3px); box-shadow:0 14px 34px rgba(200,16,46,0.35);">送信する<span style="width:16px; height:1px; background:#fff;"></span></button>
+            </div>
+          </form>
+        </sc-if>
+        <sc-if value="{{ sent }}">
+          <div class="r-card-pad" style="border:1px solid #e2e7ee; padding:72px 48px; text-align:center;">
+            <div style="width:24px; height:24px; margin:0 auto 32px; background:#1f5ad6; transform:rotate(45deg);"></div>
+            <span style="display:block; font-family:Archivo,sans-serif; font-size:13px; font-weight:600; letter-spacing:0.22em; color:#1f5ad6;">THANK YOU</span>
+            <h2 style="margin:16px 0 20px; font-size:26px; font-weight:700; color:#14367a;">お問い合わせを受け付けました</h2>
+            <p style="margin:0 0 36px; font-size:15px; line-height:2; color:#5a636e;">内容を確認のうえ、2営業日以内に担当者よりご連絡いたします。<br />しばらくお待ちください。</p>
+            <a href="Home.dc.html" style="display:inline-flex; align-items:center; gap:16px; background:#14367a; color:#fff; font-family:Archivo,sans-serif; font-size:13px; font-weight:600; letter-spacing:0.14em; padding:19px 44px; border-radius:999px; transition:background .25s;" style-hover="background:#1f5ad6; color:#fff;">BACK TO TOP<span style="width:18px; height:1px; background:#fff;"></span></a>
+          </div>
+        </sc-if>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="faq" class="r-sec" style="padding:104px 40px; background:#f4f6fa;">
+    <div data-reveal="" style="max-width:900px; margin:0 auto;">
+      <span style="display:block; font-family:Archivo,sans-serif; font-size:13px; font-weight:600; letter-spacing:0.22em; color:#1f5ad6;">FAQ</span>
+      <h2 class="r-h2" style="margin:20px 0 48px; font-size:32px; font-weight:700; line-height:1.6; letter-spacing:0.02em; color:#14367a;">よくあるご質問</h2>
+      <div style="display:flex; flex-direction:column; gap:2px; background:#dde3ec; border-top:1px solid #dde3ec; border-bottom:1px solid #dde3ec;">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+          <div style="background:#fff;">
+            <button type="button" onClick="{{ q.onClick }}" class="r-faq-q" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:24px; text-align:left; background:none; border:none; padding:26px 30px; cursor:pointer; font-family:inherit; font-size:16px; font-weight:700; color:#10151d;">
+              <span>{{ q.q }}</span>
+              <span style="{{ q.iconStyle }}">+</span>
+            </button>
+            <div style="{{ q.bodyStyle }}">
+              <p class="r-faq-a" style="margin:0; padding:0 30px 28px; font-size:14.5px; line-height:2.05; color:#5a636e; text-wrap:pretty;">{{ q.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,180px"></dc-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;tel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;03-6427-1180&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;内容&quot;},&quot;faqSingleOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;挙動&quot;}}">
+class Component extends DCLogic {
+  state = { sent: false, openFaq: 0, openMany: [0] };
+
+  componentDidMount() {
+    const io = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+    this._io = io;
+
+    if (location.hash) {
+      this._hashTimer = setTimeout(() => {
+        const el = document.getElementById(location.hash.slice(1));
+        if (el) el.scrollIntoView();
+      }, 400);
+    }
+  }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    clearTimeout(this._hashTimer);
+  }
+
+  renderVals() {
+    const single = this.props.faqSingleOpen ?? true;
+    const faqSrc = [
+      { q: '最低契約期間はありますか？', a: '広告運用は3ヶ月からのご契約をお願いしています。計測環境の整備と初回の改善サイクルに、およそその程度の期間が必要になるためです。制作単体のご依頼に契約期間の定めはありません。' },
+      { q: '広告アカウントは自社名義のままにできますか？', a: 'はい。アカウントは貴社名義での開設・運用を標準としています。契約終了後もそのままご利用いただけます。' },
+      { q: '予算規模が小さくても相談できますか？', a: '月額30万円程度からご支援しています。まずは投資対効果が見込めるチャネルに絞る提案を行いますので、現在の状況をお聞かせください。' },
+      { q: '既存の制作会社と併走することは可能ですか？', a: '可能です。役割分担を最初に整理したうえで、計測と改善提案の部分をARCLINEが担うケースも多くあります。' },
+      { q: '成果が出なかった場合はどうなりますか？', a: '初回の3ヶ月時点で目標との差分を検証し、継続・体制変更・終了のいずれかを一緒に判断します。継続を前提とした引き止めは行いません。' },
+    ];
+    return {
+      tel: this.props.tel ?? '03-6427-1180',
+      sent: this.state.sent,
+      onSubmit: (e) => {
+        e.preventDefault();
+        this.setState({ sent: true });
+        const el = document.getElementById('form');
+        if (el) el.scrollIntoView();
+      },
+      checks: [
+        '計測の抜け漏れと、その影響の大きさ',
+        'アカウント構造上のムダな配信',
+        '予算配分の見直しで改善できる余地',
+        '最初の3ヶ月で優先すべき施策',
+      ],
+      faqs: faqSrc.map((f, i) => {
+        const open = single ? this.state.openFaq === i : this.state.openMany.includes(i);
+        return {
+          q: f.q, a: f.a,
+          onClick: single
+            ? () => this.setState(s => ({ openFaq: s.openFaq === i ? -1 : i }))
+            : () => this.setState(s => ({ openMany: s.openMany.includes(i) ? s.openMany.filter(x => x !== i) : [...s.openMany, i] })),
+          iconStyle: `font-family:Archivo,sans-serif; font-size:22px; font-weight:500; color:#1f5ad6; transition:transform .3s; transform:rotate(${open ? 45 : 0}deg); flex:none;`,
+          bodyStyle: `overflow:hidden; transition:max-height .35s ease, opacity .3s ease; max-height:${open ? 400 : 0}px; opacity:${open ? 1 : 0};`,
+        };
+      }),
+    };
+  }
+}
+</script>
+</body>
+</html>

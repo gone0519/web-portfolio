@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #ffffff; -webkit-font-smoothing: antialiased; }
+  a { color: #1a6faf; text-decoration: none; }
+  a:hover { color: #d4000e; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="cases" hint-size="100%,140px"></dc-import>
+
+<main style="font-family: 'Zen Kaku Gothic New', sans-serif; color: #1a1a1a;">
+  <section style="position: relative; background-color: #2b3a45; background-image: url(images/building-facade.jpg); background-size: cover; background-position: center; padding: clamp(60px, 8vw, 104px) 24px;">
+    <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(0,0,0,0.8), rgba(0,0,0,0.35));"></div>
+    <div style="position: relative; max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) both;">
+      <span style="font-size: 10.5px; letter-spacing: 0.34em; color: #8ccdea;">CASE STUDIES</span>
+      <h1 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(28px, 4vw, 44px); letter-spacing: 0.16em; color: #fff;">導入実績</h1>
+      <p style="margin: 0; font-size: 14px; line-height: 2.1; color: rgba(255,255,255,0.85); max-width: 40em; text-wrap: pretty;">課題・戦略・打ち手・結果を、実際の数字とともに公開しています。掲載許諾をいただいた事例のみを掲載しています。</p>
+    </div>
+  </section>
+  <div style="border-bottom: 1px solid #e3e3e3;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 14px 24px; font-size: 12px; color: #8c8c8c; display: flex; gap: 10px;">
+      <a href="Home.dc.html" style="color: #8c8c8c;">ホーム</a><span>›</span><span style="color: #1a1a1a;">導入実績</span>
+    </div>
+  </div>
+
+  <section style="padding: clamp(48px, 6vw, 72px) 24px 0;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+        <button type="button" onClick="{{ f.pick }}" style="{{ f.style }}">{{ f.label }}</button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding: clamp(40px, 5vw, 64px) 24px clamp(64px, 8vw, 100px);">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px;">
+      <sc-for list="{{ shown }}" as="c" hint-placeholder-count="3">
+        <article data-reveal="rise" style="border: 1px solid #e3e3e3; background: #fff; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); transition: box-shadow .3s;" style-hover="box-shadow: 0 16px 40px rgba(0,0,0,0.08);">
+          <div style="background-color: #e2e2e2; min-height: 280px; position: relative; overflow: hidden;">
+            <img src="{{ c.img }}" alt="{{ c.title }}" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;" />
+          </div>
+          <div style="padding: clamp(26px, 3.4vw, 44px); display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+              <span style="font-size: 10.5px; letter-spacing: 0.16em; color: #fff; background: #1a6faf; padding: 5px 12px;">{{ c.industry }}</span>
+              <span style="font-size: 11.5px; color: #8c8c8c;">{{ c.scope }}</span>
+            </div>
+            <h2 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(20px, 2.4vw, 27px); line-height: 1.65; letter-spacing: 0.06em; text-wrap: pretty;">{{ c.title }}</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; border-top: 1px solid #e3e3e3; border-bottom: 1px solid #e3e3e3; padding: 18px 0;">
+              <sc-for list="{{ c.metrics }}" as="m" hint-placeholder-count="3">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                  <span data-count="" style="font-family: 'Shippori Mincho', serif; font-size: 26px; line-height: 1; color: #d4000e;">{{ m.value }}</span>
+                  <span style="font-size: 11px; color: #6d6d6d; line-height: 1.6;">{{ m.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <dl style="margin: 0; display: flex; flex-direction: column; gap: 14px;">
+              <sc-for list="{{ c.rows }}" as="r" hint-placeholder-count="3">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                  <dt style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.14em; color: #1a1a1a; border-left: 3px solid #8ccdea; padding-left: 9px;">{{ r.k }}</dt>
+                  <dd style="margin: 0; font-size: 13.5px; line-height: 2; color: #575757; text-wrap: pretty;">{{ r.v }}</dd>
+                </div>
+              </sc-for>
+            </dl>
+            <p style="margin: 0; font-size: 12.5px; line-height: 1.95; color: #8c8c8c; border-top: 1px dashed #e3e3e3; padding-top: 14px;">{{ c.voice }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="background: #f2f2f2; padding: clamp(56px, 7vw, 88px) 24px;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div data-reveal="" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; margin-bottom: 44px;">
+        <h2 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: clamp(24px, 3vw, 34px); letter-spacing: 0.22em;">実績サマリー</h2>
+        <span style="font-size: 10.5px; letter-spacing: 0.44em; color: #d4000e;">PERFORMANCE</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 30px 20px;">
+        <sc-for list="{{ summary }}" as="s" hint-placeholder-count="4">
+          <div data-reveal="" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;">
+            <span data-count="" style="font-family: 'Shippori Mincho', serif; font-size: clamp(34px, 4.6vw, 50px); line-height: 1; color: #1a1a1a;">{{ s.value }}</span>
+            <span style="font-size: 12.5px; letter-spacing: 0.08em; color: #575757;">{{ s.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: "すべて" };
+  componentDidMount() {
+    import("./motion.js").then(m => m.initMotion());
+  }
+  renderVals() {
+    const cases = [
+      {
+        industry: "BtoB SaaS", scope: "広告運用 / LP改善 / 計測設計", img: "images/meeting-tablet.jpg",
+        title: "商談単価を維持したまま、有効商談数を3.1倍に",
+        metrics: [{ value: "+212%", label: "有効商談数" }, { value: "-18%", label: "商談単価" }, { value: "9ヶ月", label: "取り組み期間" }],
+        rows: [
+          { k: "課題", v: "リード数は足りているが、営業が追える質の商談に繋がらない。媒体レポート上のCPAは良いのに、受注が伸びていない状態でした。" },
+          { k: "戦略", v: "商談の質を定義し直し、受注実績から逆算したターゲット企業属性をキーワードとオーディエンスに反映。MAと広告の連携でオフラインCVを計測対象に加えました。" },
+          { k: "打ち手", v: "ホワイトペーパー7本の再設計、指名検索の強化、フォーム項目の最小化と商談化率の高い訴求へのLP集約。" }
+        ],
+        voice: "「判断理由が毎回言語化されて残るので、社内稟議が驚くほど早く通るようになりました」執行役員 マーケティング本部長"
+      },
+      {
+        industry: "EC・D2C", scope: "広告運用 / クリエイティブ制作", img: "images/smartphone.jpg",
+        title: "広告費を14%削減しながら、売上を過去最高へ",
+        metrics: [{ value: "428%", label: "ROAS" }, { value: "-14%", label: "広告費" }, { value: "+31%", label: "売上" }],
+        rows: [
+          { k: "課題", v: "媒体ごとに担当が分かれ、予算配分が前年踏襲のまま固定化。新規獲得の伸び代が見えなくなっていました。" },
+          { k: "戦略", v: "初回購入ではなく90日LTVを評価軸に変更。媒体横断で配分をシミュレーションし、上限CPAを商品群ごとに再設定しました。" },
+          { k: "打ち手", v: "動画クリエイティブの量産体制構築（月32本）、定期購入導線の見直し、在庫連動の配信制御。" }
+        ],
+        voice: "「月次会議の時間が、報告から議論に変わりました」事業部長"
+      },
+      {
+        industry: "人材・採用", scope: "SEO / コンテンツ制作", img: "images/recruit-duo.jpg",
+        title: "指名検索を起点に、応募単価を半分以下に",
+        metrics: [{ value: "-58%", label: "応募単価" }, { value: "3.4倍", label: "自然検索流入" }, { value: "216本", label: "記事再構成数" }],
+        rows: [
+          { k: "課題", v: "求人媒体への依存度が高く、採用コストが景況に左右される構造。オウンドメディアは記事数だけが増えていました。" },
+          { k: "戦略", v: "検索意図を「情報収集」「比較」「応募直前」の3層に整理し、層ごとに到達させるページと導線を定義しました。" },
+          { k: "打ち手", v: "216記事の統合・リライト、内部リンク設計の刷新、社員インタビューによる一次情報の拡充。" }
+        ],
+        voice: "「インハウス化を前提に支援してもらい、1年で社内運用に移せました」経営企画室"
+      },
+      {
+        industry: "医療・クリニック", scope: "サイト制作 / ローカルSEO", img: "images/team-huddle.jpg",
+        title: "3院同時リニューアルで、予約完了率を1.9倍に",
+        metrics: [{ value: "+92%", label: "予約完了率" }, { value: "1.2秒", label: "LCP" }, { value: "3院", label: "同時公開" }],
+        rows: [
+          { k: "課題", v: "スマートフォンでの予約離脱が多く、院ごとにサイト体裁もばらついていました。" },
+          { k: "戦略", v: "共通のデザインシステムと院別コンテンツを分離し、予約行動に必要な情報だけを先頭に配置する構成へ変更。" },
+          { k: "打ち手", v: "ヘッドレスCMS導入、予約フォームのステップ分割、ローカル検索向け構造化データの整備。" }
+        ],
+        voice: "「更新が自分たちでできるようになり、情報の鮮度が保てています」事務長"
+      },
+      {
+        industry: "製造・BtoB", scope: "戦略設計 / 分析基盤", img: "images/handshake.jpg",
+        title: "問い合わせの質を可視化し、営業と同じ数字で会話できる状態へ",
+        metrics: [{ value: "+147%", label: "有効問い合わせ" }, { value: "12ヶ月", label: "伴走期間" }, { value: "4名", label: "内製化人数" }],
+        rows: [
+          { k: "課題", v: "問い合わせ件数しか追えず、営業側と成果の認識が合っていませんでした。" },
+          { k: "戦略", v: "SFAと計測基盤を接続し、案件ステージごとの貢献を可視化。KPIツリーを事業計画から逆算して再定義しました。" },
+          { k: "打ち手", v: "サーバーサイド計測の実装、Looker Studioダッシュボード構築、社内メンバー4名へのトレーニング。" }
+        ],
+        voice: "「事業の数字で会話できる相手は初めてでした」取締役"
+      }
+    ];
+    const cats = ["すべて", "BtoB SaaS", "EC・D2C", "人材・採用", "医療・クリニック", "製造・BtoB"];
+    const cat = this.state.cat;
+    return {
+      filters: cats.map(c => ({
+        label: c,
+        pick: () => this.setState({ cat: c }),
+        style: "font-family:inherit;cursor:pointer;font-size:13px;letter-spacing:0.08em;padding:11px 22px;border-radius:3px;transition:all .25s;border:1px solid " +
+          (c === cat ? "#d4000e" : "#dcdcdc") + ";background:" + (c === cat ? "#d4000e" : "#fff") + ";color:" + (c === cat ? "#fff" : "#575757")
+      })),
+      shown: cat === "すべて" ? cases : cases.filter(c => c.industry === cat),
+      summary: [
+        { value: "184社", label: "累計支援社数" },
+        { value: "94%", label: "契約継続率" },
+        { value: "38億円", label: "年間運用予算総額" },
+        { value: "11業種", label: "支援業種数" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

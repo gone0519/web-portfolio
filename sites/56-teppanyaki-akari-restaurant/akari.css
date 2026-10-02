@@ -1,0 +1,34 @@
+/* 鉄板焼 燈 — shared responsive overrides. Layout lives in inline styles, so these need !important. */
+
+/* Staggered offsets only make sense side by side; drop them once columns stack. */
+@media (max-width: 860px) {
+  .ak-stagger { padding-top: 0 !important; }
+}
+@media (max-width: 600px) {
+  .ak-stagger-1col { padding-top: 0 !important; }
+}
+
+/* Four pillars: 4 → 2 → 1 columns, never a 3 + 1 orphan row. */
+@media (max-width: 1000px) {
+  .ak-pillars { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 600px) {
+  .ak-pillars { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
+/* Alternating course rows: once stacked, always image first and text flush left. */
+@media (max-width: 1000px) {
+  .ak-course-row { flex-direction: row !important; }
+}
+
+/* Chef block bleeds to the right edge on desktop; stacked, give it even gutters. */
+@media (max-width: 900px) {
+  .ak-chef { padding-left: clamp(24px, 5vw, 72px) !important; padding-right: clamp(24px, 5vw, 72px) !important; }
+  .ak-chef-text { padding-right: 0 !important; }
+}
+
+@media (max-width: 600px) {
+  .ak-hide-sp { display: none !important; }
+  /* Keep the fixed TEL / Top buttons from covering the footer's last lines. */
+  .ak-footer { padding-bottom: 96px !important; }
+}

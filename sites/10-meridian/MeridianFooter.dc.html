@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<footer style="background:oklch(0.22 0.025 205);color:oklch(0.88 0.012 200);padding:clamp(56px,7vw,84px) 24px 34px">
+  <div style="max-width:1240px;margin:0 auto">
+    <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;color:oklch(0.72 0.09 70)">SITEMAP</p>
+    <div class="mrd-footer-grid" style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px 24px;padding-bottom:36px;border-bottom:1px solid oklch(1 0 0 / 0.12)">
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+        <div>
+          <a href="{{ g.href }}" style="display:block;font-size:13px;font-weight:700;letter-spacing:.08em;color:oklch(0.95 0.008 90)" style-hover="color:oklch(0.82 0.08 70)">{{ g.title }}</a>
+          <ul style="list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:11px;font-size:12.5px">
+            <sc-for list="{{ g.links }}" as="l" hint-placeholder-count="5">
+              <li><a href="{{ l.href }}" style="color:oklch(0.85 0.012 200)" style-hover="color:oklch(0.82 0.08 70)">{{ l.label }}</a></li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between">
+      <a href="MERIDIAN Home.dc.html" style="display:flex;align-items:baseline;gap:11px;color:oklch(0.96 0.008 90)" style-hover="color:oklch(0.82 0.08 70)"><span style="font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:.2em">MERIDIAN</span><span style="font-size:10px;letter-spacing:.24em;color:oklch(0.75 0.015 200)">DIGITAL</span></a>
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:.12em;color:oklch(0.72 0.015 200)">© 2026 MERIDIAN Digital Inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const about = 'MERIDIAN About.dc.html', services = 'MERIDIAN Services.dc.html', cases = 'MERIDIAN Cases.dc.html', insights = 'MERIDIAN Insights.dc.html', contact = 'MERIDIAN Contact.dc.html';
+    const g = (title, href, links) => ({ title, href, links: links.map(l => ({ label: l[0], href: l[1] })) });
+    return {
+      groups: [
+        g('会社について', about, [['企業理念', about + '#mission'], ['創業の経緯', about + '#story'], ['経営チーム', about + '#leadership'], ['沿革', about + '#timeline'], ['会社概要', about + '#company']]),
+        g('サービス', services, [['SEO', services + '#service-2'], ['Google 広告 / PPC', services + '#service-3'], ['SNS マーケティング', services + '#service-4'], ['サイト制作・LP', services + '#service-5'], ['分析・レポーティング', services + '#service-9']]),
+        g('導入実績・インサイト', cases, [['導入実績', cases], ['インサイト', insights], ['お知らせ', 'MERIDIAN Home.dc.html#news']]),
+        g('お問い合わせ', contact, [['無料診断のお申し込み', contact], ['拠点・アクセス', contact + '#offices'], ['よくあるご質問', contact + '#faq']])
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

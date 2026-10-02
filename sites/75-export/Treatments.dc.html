@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#33241a;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+*{box-sizing:border-box}
+a{color:#ee6a17;text-decoration:none}
+a:hover{color:#b84a06}
+button{font-family:inherit}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="treatments" hint-size="100%,150px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+
+<main id="top">
+<section data-hero="" data-screen-label="Treatments Title" style="position:relative;overflow:hidden;background:linear-gradient(115deg,#f58a1c 0%,#f5700f 45%,#f7861a 100%)">
+  <div data-drift="" style="position:absolute;left:-15%;top:-120px;width:70%;height:320px;background:rgba(255,255,255,0.1);border-radius:50%;transform:rotate(-10deg);pointer-events:none"></div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(56px,6vw,90px) clamp(16px,3vw,40px);text-align:center;color:#fff;display:flex;flex-direction:column;gap:12px">
+    <h1 style="margin:0;font-size:clamp(30px,3vw,44px);font-weight:500;letter-spacing:0.24em">診療メニュー・料金表</h1>
+    <p style="margin:0;font-size:15px;letter-spacing:0.3em;font-weight:600">Medical Menu &amp; Price</p>
+  </div>
+</section>
+<nav aria-label="パンくず" style="max-width:1200px;margin:0 auto;padding:16px clamp(16px,3vw,40px);font-size:13px;letter-spacing:0.08em;display:flex;gap:10px"><a href="index.dc.html">トップ</a><span>›</span><span>診療メニュー・料金表</span></nav>
+
+<section data-screen-label="Menu" style="padding:clamp(28px,4vw,56px) clamp(12px,3vw,40px) clamp(56px,6vw,88px)">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center">
+      <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:500;letter-spacing:0.14em;color:#ee6a17">お悩みから探す</h2>
+      <p style="margin:0;font-size:15px;line-height:2;letter-spacing:0.08em">気になるお悩みを選ぶと、該当する治療が表示されます。</p>
+    </div>
+    <div role="tablist" style="margin-top:28px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="6">
+        <button role="tab" aria-selected="{{ c.on }}" onClick="{{ c.pick }}" style="min-height:48px;padding:0 22px;border:1px solid #ee6a17;border-radius:30px;background:{{ c.bg }};color:{{ c.fg }};font-size:15px;letter-spacing:0.1em;cursor:pointer;transition:background .25s,color .25s">{{ c.label }}</button>
+      </sc-for>
+    </div>
+    <div style="margin-top:clamp(32px,4vw,48px);display:flex;flex-direction:column;gap:clamp(20px,3vw,32px)">
+      <sc-for list="{{ shown }}" as="t" hint-placeholder-count="4">
+        <article style="border:1px solid #e3dcd3;border-radius:6px;background:#fff;display:flex;flex-wrap:wrap;overflow:hidden">
+          <div style="flex:1 1 340px;min-height:240px;position:relative;overflow:hidden"><img data-photo="" src="{{ t.photo }}" alt="{{ t.name }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div style="flex:2 1 420px;min-width:0;padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;padding-bottom:14px;border-bottom:1px dashed #ee6a17">
+              <h3 style="margin:0;font-size:clamp(20px,1.8vw,24px);font-weight:500;letter-spacing:0.12em;color:#ee6a17">{{ t.name }}</h3>
+              <span style="font-size:13px;letter-spacing:0.08em;color:#6d5a4d">{{ t.tags }}</span>
+            </div>
+            <p style="margin:0;font-size:15px;line-height:2;letter-spacing:0.06em;text-wrap:pretty">{{ t.desc }}</p>
+            <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:#eadfd2;border:1px solid #eadfd2">
+              <div style="background:#fdf8f2;padding:10px 14px;display:flex;flex-direction:column;gap:4px"><dt style="font-size:12px;color:#ee6a17;letter-spacing:0.1em">施術時間</dt><dd style="margin:0;font-size:14px">{{ t.time }}</dd></div>
+              <div style="background:#fdf8f2;padding:10px 14px;display:flex;flex-direction:column;gap:4px"><dt style="font-size:12px;color:#ee6a17;letter-spacing:0.1em">ダウンタイム</dt><dd style="margin:0;font-size:14px">{{ t.down }}</dd></div>
+              <div style="background:#fdf8f2;padding:10px 14px;display:flex;flex-direction:column;gap:4px"><dt style="font-size:12px;color:#ee6a17;letter-spacing:0.1em">回数の目安</dt><dd style="margin:0;font-size:14px">{{ t.count }}</dd></div>
+            </dl>
+            <p style="margin:0;font-size:12.5px;line-height:1.8;color:#6d5a4d">主なリスク・副作用：{{ t.risk }}</p>
+            <a href="Reservation.dc.html#form" style="align-self:flex-start;min-height:48px;padding:0 30px;display:flex;align-items:center;gap:10px;background:linear-gradient(90deg,#f7931e,#f25c05);color:#fff;font-size:15px;letter-spacing:0.1em;transition:filter .3s" style-hover="filter:brightness(1.08);color:#fff"><span style="font-size:9px">▶</span>この施術を相談する</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="price" data-screen-label="Price" style="padding:clamp(56px,6vw,88px) clamp(12px,3vw,40px);background:linear-gradient(115deg,#f8f3ea 0%,#efe4d2 50%,#f6eee1 100%)">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center">
+      <h2 style="margin:0;font-size:clamp(26px,2.4vw,34px);font-weight:500;letter-spacing:0.24em;color:#ee6a17">料金表</h2>
+      <p style="margin:0;font-size:14px;letter-spacing:0.28em;font-weight:600;color:#6d5a4d">Price</p>
+    </div>
+    <div style="margin-top:clamp(28px,4vw,44px);background:#fff;border-radius:8px;padding:clamp(16px,3vw,32px);display:flex;flex-direction:column;gap:28px">
+      <sc-for list="{{ all }}" as="t" hint-placeholder-count="8">
+        <div style="display:flex;flex-direction:column">
+          <div style="background:linear-gradient(90deg,#f7801a,#f25c05);color:#fff;padding:10px 16px;font-size:16px;letter-spacing:0.14em">{{ t.name }}</div>
+          <sc-for list="{{ t.prices }}" as="p" hint-placeholder-count="2">
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 16px;border-bottom:1px dashed #edd9c3;font-size:15px;letter-spacing:0.06em"><span>{{ p.n }}</span><span style="white-space:nowrap;color:#ee6a17">{{ p.v }}</span></div>
+          </sc-for>
+        </div>
+      </sc-for>
+      <p style="margin:0;font-size:13px;line-height:1.9;color:#6d5a4d">※表示価格はすべて税込です。自由診療（保険適用外）となります。<br>※初回カウンセリング・肌診断は無料です。治療内容・回数は診察のうえご提案します。</p>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,700px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: 'all' };
+  renderVals() {
+    const T = [
+      { cat: 'skin', slot: 't-skin', photo: 'images/14.jpg', img: 'スキンケア・フェイシャル', name: '美肌・肌質改善', tags: 'くすみ・乾燥・ハリ不足', desc: 'ケミカルピーリングや美容成分の導入治療で、古い角質を整え、うるおいのある明るい肌を目指します。定期的なケアとして続けやすい施術です。', time: '約30〜45分', down: 'ほぼなし', count: '2〜4週に1回', risk: '赤み、ヒリヒリ感、乾燥', prices: [{ n: 'ケミカルピーリング（顔全体）', v: '8,800円' }, { n: 'ハイドラフェイシャル', v: '16,500円' }] },
+      { cat: 'skin', slot: 't-aesthetic', photo: 'images/21.jpg', img: '肌診断・カウンセリング', name: 'メディカルエステ', tags: '総合的なケア・イベント前', desc: '肌診断の結果をもとに、医師が複数の施術を組み合わせたプランを作成します。大切な予定に合わせたスケジュールもご相談ください。', time: '約60分', down: '施術内容による', count: 'プランによる', risk: '組み合わせる施術に準じます', prices: [{ n: '肌診断＋プラン作成', v: '無料' }, { n: 'コンビネーションケア', v: '22,000円〜' }] },
+      { cat: 'spot', slot: 't-laser', photo: 'images/10.jpg', img: 'レーザー機器', name: 'レーザー治療', tags: 'シミ・そばかす・肝斑・赤ら顔', desc: 'シミの種類や肌質に合わせて、レーザーの種類と出力を医師が選びます。肝斑には低出力のトーニングで慎重に治療します。', time: '約15〜30分', down: '赤み 数時間〜数日', count: '5〜10回', risk: '赤み、腫れ、一時的な色素沈着、かさぶた', prices: [{ n: 'レーザートーニング（顔全体）', v: '16,500円' }, { n: 'シミ取りレーザー（5mm以下）', v: '5,500円／1個' }] },
+      { cat: 'aging', slot: 't-inject', photo: 'images/17.jpg', img: '注入治療', name: 'ボトックス・ヒアルロン酸', tags: '表情じわ・ボリューム減少', desc: '表情の自然さを大切に、必要な量を必要な部位にだけ注入します。初めての方には控えめな量からご提案します。', time: '約15〜30分', down: '内出血 数日〜1週間', count: '3〜6ヶ月ごと', risk: '内出血、腫れ、左右差、まれにアレルギー反応', prices: [{ n: 'ボトックス（額・眉間・目尻 1部位）', v: '13,200円' }, { n: 'ヒアルロン酸（1本）', v: '66,000円' }] },
+      { cat: 'acne', slot: 't-acne', photo: 'images/05.jpg', img: '素肌のクローズアップ', name: 'ニキビ・ニキビ跡', tags: '炎症ニキビ・クレーター・色素沈着', desc: '炎症のあるニキビは保険診療で治療し、残ってしまった凹凸や色素沈着には美容治療を組み合わせます。', time: '約20〜40分', down: '赤み 1〜3日', count: '3〜5回', risk: '赤み、腫れ、一時的な色素沈着、かさぶた', prices: [{ n: 'フラクショナルレーザー（顔全体）', v: '33,000円' }, { n: 'ダーマペン（顔全体）', v: '27,500円' }] },
+      { cat: 'skin', slot: 't-pore', photo: 'images/19.jpg', img: '肌のキメ', name: '毛穴・肌のキメ', tags: '開き毛穴・ザラつき', desc: '肌の再生を促す治療で、毛穴の目立ちやキメの乱れにアプローチします。ホームケアのアドバイスも行います。', time: '約30分', down: '赤み 1〜2日', count: '3〜5回', risk: '赤み、乾燥、点状出血', prices: [{ n: 'ポテンツァ（顔全体）', v: '38,500円' }] },
+      { cat: 'aging', slot: 't-aging', photo: 'images/15.jpg', img: '大人の女性ポートレート', name: 'しわ・たるみ', tags: '小じわ・たるみ・フェイスライン', desc: '高周波や超音波を用いた、ダウンタイムの少ないリフトアップ治療をご用意しています。', time: '約45〜60分', down: 'ほぼなし', count: '6ヶ月〜1年に1回', risk: '赤み、むくみ、一時的な筋肉痛のような痛み', prices: [{ n: 'HIFU（顔全体）', v: '44,000円' }, { n: '高周波リフト（顔全体）', v: '55,000円' }] },
+      { cat: 'body', slot: 't-body', photo: 'images/09.jpg', img: 'ボディ施術', name: '医療脱毛・ボディ', tags: '全身脱毛・部分痩せ', desc: '個室で行う医療レーザー脱毛と、ボディの引き締め治療。肌質や毛質に合わせて照射条件を調整します。', time: '約30〜120分', down: '赤み 数時間', count: '5〜8回', risk: '赤み、毛嚢炎、まれにやけど', prices: [{ n: '全身脱毛（顔・VIO除く）1回', v: '33,000円' }, { n: 'ワキ脱毛 1回', v: '3,300円' }] }
+    ];
+    const cats = [['all', 'すべて'], ['skin', '肌質改善'], ['spot', 'シミ・赤み'], ['aging', 'しわ・たるみ'], ['acne', 'ニキビ'], ['body', '脱毛・ボディ']];
+    const cur = this.state.cat;
+    return {
+      cats: cats.map(([k, label]) => ({ label, on: k === cur, bg: k === cur ? '#ee6a17' : '#fff', fg: k === cur ? '#fff' : '#ee6a17', pick: () => this.setState({ cat: k }) })),
+      shown: T.filter(t => cur === 'all' || t.cat === cur),
+      all: T
+    };
+  }
+}
+</script>
+</body>
+</html>

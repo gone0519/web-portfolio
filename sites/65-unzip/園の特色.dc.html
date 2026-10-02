@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+<link href="./site.css" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>html{scroll-behavior:smooth}body{margin:0;color:#3d3a38;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}a{color:#e8555b}a:hover{color:#c93d44}*{box-sizing:border-box}</style>
+</helmet>
+<dc-import name="SiteHeader" current="feature" style="position:sticky;top:0;z-index:50;display:block" hint-size="100%,72px"></dc-import>
+<main lang="ja">
+<section data-screen-label="Feature banner" style="position:relative;background:#dff3f8;padding:56px 16px 96px;text-align:center">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+    <span style="width:44px;height:44px;border-radius:50%;background:#f6c343;color:#fff;display:grid;place-items:center;font-family:'Mochiy Pop One'">特</span>
+    <h1 style="margin:0;font-family:'Mochiy Pop One';font-weight:400;font-size:clamp(28px,4vw,40px);color:#e8555b;letter-spacing:.1em">園の特色</h1>
+    <span style="font-size:12px;color:#5a8fa3"><a href="index.dc.html" style="color:#5a8fa3">TOP</a> ＞ 園の特色</span>
+  </div>
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;left:0;bottom:-1px;width:100%;height:50px"><path d="M0 30 C 300 0 500 60 720 34 C 960 8 1200 56 1440 24 L1440 60 L0 60 Z" fill="#fff"></path></svg>
+</section>
+
+<section style="padding:64px 16px;max-width:1000px;margin:0 auto;text-align:center">
+  <span data-reveal="1" style="display:inline-block;font-size:13px;font-weight:900;color:#5a8fa3;letter-spacing:.2em">保育理念</span>
+  <h2 data-reveal="1" style="margin:12px 0 20px;font-size:clamp(22px,3vw,32px);font-weight:900;color:#e8555b;letter-spacing:.08em;line-height:1.6">体験で伸ばす、一人ひとりの可能性</h2>
+  <p data-reveal="1" style="margin:0 auto;max-width:620px;font-size:15px;line-height:2.1;text-wrap:pretty">「百聞は一見に如かず」という言葉のとおり、自分の目で見て、耳で聞いて、体で感じたことは、子どもたちの一生の財産になります。昭和保育園は、幼いころにたくさんの本物に出会えるよう、自然・文化・音楽・運動・学習の5つの体験を柱に保育を行っています。</p>
+  <div data-reveal="1" style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:36px">
+    <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="5">
+      <span style="width:84px;height:84px;border-radius:50%;background:{{ p.color }};color:#fff;display:grid;place-items:center;font-family:'Mochiy Pop One';font-size:18px;border:4px solid #fff;box-shadow:0 4px 0 rgba(0,0,0,.06)">{{ p.label }}</span>
+    </sc-for>
+  </div>
+</section>
+
+<section style="padding:24px 16px 80px;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,7vw,80px)">
+  <sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+    <article data-reveal="1" style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,48px);align-items:center;flex-direction:{{ v.dir }}">
+      <div style="flex:1 1 360px;aspect-ratio:4/3"><image-slot id="{{ v.id }}" radius="12" src="{{ v.src }}" placeholder="{{ v.ph }}"></image-slot></div>
+      <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:14px">
+        <span style="font-family:'Mochiy Pop One';font-size:40px;color:{{ v.color }};line-height:1">{{ v.no }}</span>
+        <h3 style="margin:0;font-size:clamp(20px,2.4vw,24px);font-weight:900;color:#e8555b;letter-spacing:.06em">{{ v.title }}</h3>
+        <p style="margin:0;font-size:14px;line-height:2.1;text-wrap:pretty">{{ v.text }}</p>
+      </div>
+    </article>
+  </sc-for>
+</section>
+
+<section style="background:#fdf6f2;padding:72px 16px">
+  <div style="max-width:1000px;margin:0 auto">
+    <h2 data-reveal="1" style="margin:0 0 32px;text-align:center;font-size:clamp(20px,2.6vw,26px);font-weight:900;color:#e8555b;letter-spacing:.1em">年齢ごとのねらい</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px">
+      <sc-for list="{{ ages }}" as="a" hint-placeholder-count="3">
+        <div data-reveal="1" style="background:#fff;border-radius:20px;padding:28px 24px;border-top:6px solid {{ a.color }};display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Mochiy Pop One';font-size:22px;color:{{ a.color }}">{{ a.age }}</span>
+          <strong style="font-size:15px">{{ a.title }}</strong>
+          <p style="margin:0;font-size:13px;line-height:1.9">{{ a.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="padding:72px 16px;max-width:1000px;margin:0 auto">
+  <h2 data-reveal="1" style="margin:0 0 32px;text-align:center;font-size:clamp(20px,2.6vw,26px);font-weight:900;color:#e8555b;letter-spacing:.1em">安心・安全への取り組み</h2>
+  <div class="r-2col" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+    <sc-for list="{{ safety }}" as="s" hint-placeholder-count="4">
+      <div data-reveal="1" style="background:#dff3f8;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px">
+        <strong style="font-size:15px;color:#e8555b">{{ s.title }}</strong>
+        <span style="font-size:13px;line-height:1.8">{{ s.text }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const io = this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'none'; io.unobserve(e.target); } }), { threshold: .12 });
+    setTimeout(() => document.querySelectorAll('[data-reveal]').forEach(el => { if (el.getBoundingClientRect().top < innerHeight) return; const sib = [...el.parentElement.children].filter(c => c.hasAttribute('data-reveal')).indexOf(el); el.style.opacity = 0; el.style.transform = 'translateY(32px) scale(.97)'; el.style.transition = 'opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1)'; el.style.transitionDelay = Math.max(0, sib) * .12 + 's'; io.observe(el); }), 300);
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); }
+  renderVals() {
+    return {
+      pillars: [{ label: '自然', color: '#8cc97a' }, { label: '文化', color: '#f39a6b' }, { label: '音楽', color: '#f39aa0' }, { label: '運動', color: '#7cc5e0' }, { label: '学習', color: '#b39ad6' }],
+      values: [
+        { id: 'fp-1', src: 'images/cooking-potato.jpg', ph: '身支度をする子どもの写真', no: '01', color: '#f6c343', dir: 'row', title: '自分でできた！を大切に', text: '着替えや片づけ、食事の準備など、身のまわりのことを自分でやってみる機会を毎日つくっています。大人は先回りせず、できるまで待つこと、できたときに一緒に喜ぶことを心がけています。' },
+        { id: 'fp-2', src: 'images/circle-play.jpg', ph: '異年齢で遊ぶ写真', no: '02', color: '#7cc5e0', dir: 'row-reverse', title: 'いっしょが楽しい', text: '異年齢で過ごす時間や行事を通して、年下の子を思いやる気持ち、年上の子に憧れる気持ちが自然と育ちます。けんかも大切な経験として、気持ちを言葉にする手助けをしています。' },
+        { id: 'fp-3', src: 'images/drawing.jpg', ph: '製作・自然あそびの写真', no: '03', color: '#8cc97a', dir: 'row', title: 'なんでだろう？を育てる', text: '畑での野菜づくり、和太鼓、リトミック、絵画製作など、本物にふれる活動をカリキュラムに取り入れています。子どもの「なんで？」をそのままにせず、一緒に調べて、試してみます。' },
+      ],
+      ages: [
+        { age: '0・1歳', color: '#f39aa0', title: '安心できる大人との関係', text: '担当の保育士が一人ひとりの生活リズムに合わせて関わり、心の安定を土台に、見る・さわる・動く喜びを育てます。' },
+        { age: '2歳', color: '#f6c343', title: '「じぶんで」の気持ち', text: '自我の芽ばえを受けとめ、やってみたい気持ちを尊重します。ことばのやりとりや、友だちへの関心も広がる時期です。' },
+        { age: '3〜5歳', color: '#7cc5e0', title: '友だちと協力する力', text: '集団あそびや行事への取り組みを通して、目標に向かう力や、友だちと考えを出し合う力を育て、就学につなげます。' },
+      ],
+      safety: [
+        { title: '午睡チェック', text: '0〜2歳児は5分ごとに呼吸と体位を確認し記録しています。' },
+        { title: '防犯対策', text: 'オートロック・防犯カメラを設置し、来園者を確認しています。' },
+        { title: '避難訓練', text: '毎月、火災・地震・不審者を想定した訓練を実施しています。' },
+        { title: 'アレルギー対応', text: '医師の指示書に基づき、除去食・代替食を提供しています。' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
