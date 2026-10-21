@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>お問い合わせ・資料請求｜蒼陵大学 入試ガイド</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./site-motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fffaf3;color:#3b3530;font-family:"M PLUS Rounded 1c",sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#f15a24;text-decoration:none}
+a:hover{color:#cf4517}
+input,select,textarea{font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:3px solid #f9d77e;outline-offset:1px}
+@keyframes twinkle{0%,100%{opacity:.4;transform:scale(.75);filter:brightness(1)}50%{opacity:1;transform:scale(1.15);filter:brightness(1.35)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="contact" style="position:sticky;top:0;z-index:50" hint-size="100%,80px"></dc-import>
+
+<section data-screen-label="Contact Hero" style="position:relative;overflow:hidden;background:#8a9982;color:#fff;padding:clamp(80px,8vw,130px) 20px 0">
+  {{ stars }}
+  <div data-anim="sway" style="position:absolute;top:60px;right:10%;width:90px;height:90px;border-radius:50%;box-shadow:22px 0 0 0 #f9d77e;pointer-events:none"></div>
+  <div style="position:absolute;top:170px;right:24%;width:140px;height:64px;pointer-events:none;animation:floaty 6s ease-in-out infinite">
+    <div style="position:absolute;left:0;bottom:0;width:140px;height:40px;border-radius:999px;background:#bfe0e8"></div>
+    <div style="position:absolute;left:22px;bottom:16px;width:56px;height:56px;border-radius:50%;background:#bfe0e8"></div>
+    <div style="position:absolute;left:62px;bottom:10px;width:64px;height:64px;border-radius:50%;background:#bfe0e8"></div>
+  </div>
+  <div data-anim="drift" style="position:absolute;right:-4%;bottom:120px;font-family:Quicksand,sans-serif;font-weight:700;font-size:clamp(140px,22vw,380px);line-height:1;color:transparent;-webkit-text-stroke:3px rgba(255,255,255,.25);white-space:nowrap;pointer-events:none">HELLO</div>
+  <div style="position:relative;max-width:1110px;margin:0 auto;padding-bottom:70px">
+    <div data-reveal="up" style="display:flex;gap:12px;align-items:center;font-size:14px;font-weight:700"><a href="Top.dc.html" style="color:#f9d77e">TOP</a><span style="color:#f9d77e">★</span><span>お問い合わせ</span></div>
+    <div data-reveal="pop" style="margin-top:18px;font-family:Quicksand,sans-serif;font-weight:700;font-size:clamp(72px,10vw,160px);line-height:1;color:#f9d77e;text-shadow:6px 6px 0 #f15a24,12px 12px 0 #c1272d">Contact</div>
+    <h1 data-reveal="up" style="margin:18px 0 0;font-size:clamp(30px,3.4vw,48px);font-weight:800;letter-spacing:.1em">お問い合わせ・資料請求</h1>
+    <p data-reveal="up" style="max-width:640px;margin:20px 0 0;font-size:17px;line-height:1.95;font-weight:700">資料請求、オープンキャンパスの予約、入試に関するご質問は、こちらのフォームから受け付けています。</p>
+  </div>
+  <div style="height:10px;display:flex"><div style="flex:1;background:#f4efe6"></div><div style="flex:1;background:#c1272d"></div></div>
+</section>
+
+<section data-screen-label="Form" style="position:relative;overflow:hidden;background:#fffaf3;padding:90px 20px 120px">
+  {{ sparks }}
+  <div style="position:relative;max-width:860px;margin:0 auto">
+    <div data-reveal="up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:24px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <button onClick="{{ t.pick }}" style="height:60px;border-radius:999px;border:3px solid #f15a24;background:{{ t.bg }};color:{{ t.fg }};font:inherit;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #cf4517">{{ t.label }}</button>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ sent }}">
+      <div data-reveal="pop" style="background:#fff;border:3px solid #f15a24;border-radius:32px;padding:56px 28px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;box-shadow:10px 10px 0 #f9d77e">
+        <div data-anim="wave" style="display:flex;gap:14px;color:#f9d77e;font-size:36px"><span>★</span><span>★</span><span>★</span></div>
+        <h2 style="margin:0;font-size:clamp(24px,3vw,36px);font-weight:800;color:#cf4517">送信ありがとうございました</h2>
+        <p style="margin:0;font-size:15px;line-height:1.9">{{ sentMsg }}<br>（このフォームはサンプルのため、実際には送信されません）</p>
+        <button onClick="{{ reset }}" style="height:52px;padding:0 32px;border-radius:999px;border:0;background:#f15a24;color:#fff;font:inherit;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #cf4517">フォームに戻る</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ editing }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" noValidate="{{ true }}" style="background:#fff;border:3px solid #f15a24;border-radius:32px;padding:clamp(24px,4vw,44px);display:flex;flex-direction:column;gap:22px;box-shadow:10px 10px 0 #f9d77e">
+        <p style="margin:0;font-size:14px;line-height:1.8;color:#6b625a">{{ tabNote }}　<span style="color:#c1272d;font-weight:800">＊</span>は必須項目です。</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:800">お名前 <span style="color:#c1272d">＊</span>
+            <input name="name" onInput="{{ onField }}" placeholder="蒼陵 花子" style="height:52px;border-radius:14px;border:2px solid #e6d6bd;padding:0 16px;font-size:16px;background:#fffaf3">
+            <sc-if value="{{ err.name }}"><span style="color:#c1272d;font-size:13px">お名前を入力してください</span></sc-if>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:800">ふりがな <span style="color:#c1272d">＊</span>
+            <input name="kana" onInput="{{ onField }}" placeholder="そうりょう はなこ" style="height:52px;border-radius:14px;border:2px solid #e6d6bd;padding:0 16px;font-size:16px;background:#fffaf3">
+            <sc-if value="{{ err.kana }}"><span style="color:#c1272d;font-size:13px">ふりがなを入力してください</span></sc-if>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:800">メールアドレス <span style="color:#c1272d">＊</span>
+            <input name="email" type="email" onInput="{{ onField }}" placeholder="example@mail.jp" style="height:52px;border-radius:14px;border:2px solid #e6d6bd;padding:0 16px;font-size:16px;background:#fffaf3">
+            <sc-if value="{{ err.email }}"><span style="color:#c1272d;font-size:13px">正しいメールアドレスを入力してください</span></sc-if>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:800">電話番号（任意）
+            <input name="tel" type="tel" onInput="{{ onField }}" placeholder="000-0000-0000" style="height:52px;border-radius:14px;border:2px solid #e6d6bd;padding:0 16px;font-size:16px;background:#fffaf3">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:800">高校名（任意）
+            <input name="school" onInput="{{ onField }}" placeholder="○○高等学校" style="height:52px;border-radius:14px;border:2px solid #e6d6bd;padding:0 16px;font-size:16px;background:#fffaf3">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:800">学年・ご立場
+            <select name="role" onChange="{{ onField }}" style="height:52px;border-radius:14px;border:2px solid #e6d6bd;padding:0 12px;font-size:16px;background:#fffaf3">
+              <option>高校3年生</option><option>高校2年生</option><option>高校1年生</option><option>既卒生</option><option>保護者</option><option>高校教員</option>
+            </select>
+          </label>
+        </div>
+
+        <sc-if value="{{ isDocs }}">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:15px;font-weight:800">ご希望の資料</span>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <sc-for list="{{ docs }}" as="d">
+                <label style="display:flex;gap:8px;align-items:center;padding:10px 18px;border-radius:999px;border:2px solid #f15a24;font-size:14px;font-weight:700;cursor:pointer"><input type="checkbox" style="accent-color:#f15a24;width:18px;height:18px">{{ d }}</label>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isOC }}">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:800">参加希望日 <span style="color:#c1272d">＊</span>
+            <select name="date" onChange="{{ onField }}" style="height:52px;border-radius:14px;border:2px solid #e6d6bd;padding:0 12px;font-size:16px;background:#fffaf3">
+              <option value="">選択してください</option><option>○月○日（○）来場型（サンプル）</option><option>○月○日（○）来場型（サンプル）</option><option>オンライン説明会（サンプル）</option>
+            </select>
+            <sc-if value="{{ err.date }}"><span style="color:#c1272d;font-size:13px">参加希望日を選択してください</span></sc-if>
+          </label>
+        </sc-if>
+
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:800">{{ msgLabel }}
+          <textarea name="message" onInput="{{ onField }}" rows="5" placeholder="ご質問やご要望をご記入ください" style="border-radius:14px;border:2px solid #e6d6bd;padding:14px 16px;font-size:16px;background:#fffaf3;resize:vertical"></textarea>
+          <sc-if value="{{ err.message }}"><span style="color:#c1272d;font-size:13px">お問い合わせ内容を入力してください</span></sc-if>
+        </label>
+
+        <label style="display:flex;gap:10px;align-items:center;font-size:14px;font-weight:700;cursor:pointer"><input name="agree" type="checkbox" onChange="{{ onAgree }}" style="accent-color:#f15a24;width:20px;height:20px">個人情報の取り扱いに同意する <span style="color:#c1272d">＊</span></label>
+        <sc-if value="{{ err.agree }}"><span style="color:#c1272d;font-size:13px;margin-top:-12px">同意が必要です</span></sc-if>
+
+        <button type="submit" style="align-self:center;height:62px;padding:0 56px;border-radius:999px;border:0;background:#f15a24;color:#fff;font:inherit;font-size:18px;font-weight:800;cursor:pointer;box-shadow:0 5px 0 #cf4517" style-hover="background:#e04e1a">★ {{ submitLabel }}</button>
+      </form>
+    </sc-if>
+  </div>
+</section>
+
+<section data-screen-label="Access" style="position:relative;overflow:hidden;background:#8a9982;color:#fff;padding:110px 20px 120px">
+  {{ stars2 }}
+  <div style="position:relative;max-width:1110px;margin:0 auto">
+    <div data-reveal="up" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-bottom:56px">
+      <span data-anim="wiggle" style="display:inline-block;color:#f9d77e;font-size:28px;letter-spacing:.3em">★ ★ ★</span>
+      <span style="font-family:Quicksand,sans-serif;font-weight:700;font-size:clamp(56px,7vw,110px);line-height:1;color:#f9d77e;text-shadow:5px 5px 0 #f15a24">Access</span>
+      <span style="font-size:clamp(22px,2vw,28px);font-weight:800;letter-spacing:.14em">窓口・アクセス</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;align-items:center">
+      <div data-reveal="zoom" style="position:relative;aspect-ratio:4/3;border-radius:28px;overflow:hidden;border:8px solid #fff;background:#a7b49f;box-shadow:12px 12px 0 #f15a24"><image-slot id="ct-map" shape="rect" placeholder="キャンパスマップ・地図"></image-slot></div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div data-reveal="right" style="background:#fffaf3;color:#3b3530;border-radius:24px;padding:24px 26px;display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:14px;font-weight:800;color:#cf4517">入試課（サンプル）</span>
+          <span style="font-family:Quicksand,sans-serif;font-size:30px;font-weight:700">00-0000-0000</span>
+          <span style="font-size:14px">受付時間：平日 9:00–17:00</span>
+        </div>
+        <div data-reveal="right" style="background:#fffaf3;color:#3b3530;border-radius:24px;padding:24px 26px;display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:14px;font-weight:800;color:#cf4517">メール</span>
+          <span style="font-family:Quicksand,sans-serif;font-size:22px;font-weight:700">admissions@example.ac.jp</span>
+        </div>
+        <div data-reveal="right" style="background:#fffaf3;color:#3b3530;border-radius:24px;padding:24px 26px;display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:14px;font-weight:800;color:#cf4517">所在地</span>
+          <span style="font-size:15px;line-height:1.8;font-weight:700">〒000-0000 ○○県○○市○○町0-0-0<br>○○駅から徒歩○分（サンプル）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<dc-import name="SiteFooter" hint-size="100%,380px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sm: 0, tab: 'docs', err: {}, sent: false };
+  f = {};
+  componentDidMount() {
+    const q = (location.hash || '').replace('#', '');
+    if (['docs', 'oc', 'ask'].includes(q)) this.setState({ tab: q });
+    const go = () => { if (window.SiteMotion) this.setState({ sm: 1 }, () => { this._s = setTimeout(() => window.SiteMotion.setup(), 120); }); else this._t = setTimeout(go, 50); };
+    go();
+  }
+  componentWillUnmount() { clearTimeout(this._t); clearTimeout(this._s); }
+  renderVals() {
+    const SM = window.SiteMotion, h = React.createElement, tab = this.state.tab;
+    const tabDefs = [['docs', '資料請求'], ['oc', 'オープンキャンパス予約'], ['ask', '入試のお問い合わせ']];
+    const notes = { docs: '大学案内パンフレットや入試ガイドを無料でお送りします。', oc: 'オープンキャンパス・個別見学のご予約を受け付けます。', ask: '入試制度や出願、学費に関するご質問にお答えします。' };
+    const labels = { docs: '資料を請求する', oc: '予約する', ask: '送信する' };
+    const sentMsgs = { docs: '資料は1週間ほどでお届けします。', oc: 'ご予約の確認メールをお送りします。', ask: '入試課より、数日以内にご連絡します。' };
+    return {
+      stars: SM ? SM.field(h, 32, 7, 'star') : null,
+      stars2: SM ? SM.field(h, 28, 19, 'star') : null,
+      sparks: SM ? SM.field(h, 14, 11, 'spark') : null,
+      tabs: tabDefs.map(([k, label]) => ({ label, bg: tab === k ? '#f15a24' : '#fff', fg: tab === k ? '#fff' : '#cf4517', pick: () => { this.f = {}; this.setState({ tab: k, err: {}, sent: false }); } })),
+      tabNote: notes[tab], submitLabel: labels[tab], sentMsg: sentMsgs[tab],
+      isDocs: tab === 'docs', isOC: tab === 'oc',
+      msgLabel: tab === 'ask' ? 'お問い合わせ内容 ＊' : 'ご質問・ご要望（任意）',
+      docs: ['大学案内', '入試ガイド', '学部別パンフレット', '奨学金のご案内'],
+      err: this.state.err,
+      sent: this.state.sent, editing: !this.state.sent,
+      onField: e => { this.f[e.target.name] = e.target.value; },
+      onAgree: e => { this.f.agree = e.target.checked; },
+      reset: () => { this.f = {}; this.setState({ sent: false, err: {} }); },
+      submit: e => {
+        e.preventDefault();
+        const f = this.f, err = {};
+        if (!(f.name || '').trim()) err.name = true;
+        if (!(f.kana || '').trim()) err.kana = true;
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email || '')) err.email = true;
+        if (tab === 'oc' && !f.date) err.date = true;
+        if (tab === 'ask' && !(f.message || '').trim()) err.message = true;
+        if (!f.agree) err.agree = true;
+        if (Object.keys(err).length) this.setState({ err }); else this.setState({ sent: true, err: {} });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

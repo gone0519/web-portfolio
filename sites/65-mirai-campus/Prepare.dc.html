@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho+B1:wght@600;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./site-anim.js"></script>
+<link rel="stylesheet" href="./responsive.css">
+<style>html{scroll-behavior:smooth}body{margin:0;background:#f5f1ec;color:#5b4e43;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}a{color:#7a6650;text-decoration:none}a:hover{color:#e8847a}*{box-sizing:border-box}</style>
+</helmet>
+<div style="min-height:100vh;background:#f5f1ec;overflow-x:hidden">
+<dc-import name="SubHero" current="prepare" num="02" en="Prepare" jp="受験対策" vertical="STUDY" slot-id="hero-prepare" slot-ph="自習・図書館で学ぶ様子" slot-src="img/14.jpg" lead="学年別の進め方から入試方式の違い、教科ごとの勉強法まで。合格に向けた準備を順に整理しました。" hint-size="100%,520px"></dc-import>
+
+<main style="max-width:1000px;margin:0 auto;padding:40px 20px 110px;display:flex;flex-direction:column;gap:90px">
+
+  <section data-screen-label="Prepare / Roadmap">
+    <dc-import name="SectionHead" num="01" en="Roadmap" jp="学年別ロードマップ" hint-size="100%,130px"></dc-import>
+    <p data-anim="up" style="margin:0 0 26px;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:clamp(26px,4vw,44px);line-height:1.4;letter-spacing:.08em;color:#5b4e43">受験は、<span style="font-size:1.25em;color:#fff;-webkit-text-stroke:1.5px #e8847a;text-emphasis:filled dot #e8847a;-webkit-text-emphasis:filled dot #e8847a">準備</span>で<span style="white-space:nowrap">変わる。</span></p>
+    <div style="position:relative;padding-left:34px">
+      <span style="position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:repeating-linear-gradient(#e1d0bd 0 6px,transparent 6px 12px)"></span>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <sc-for list="{{ roadmap }}" as="r" hint-placeholder-count="6">
+          <div data-anim="up" data-stagger="1" style="position:relative;background:#fff;padding:18px 22px;display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
+            <span style="position:absolute;left:-30px;top:20px;width:16px;height:16px;border-radius:50%;background:{{ r.tone }};border:3px solid #f5f1ec"></span>
+            <div style="flex:0 0 auto;min-width:150px">
+              <div style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:20px;color:#5b4e43;letter-spacing:.06em">{{ r.when }}</div>
+              <div style="font-size:11px;color:#e8847a;font-weight:700;letter-spacing:.1em;margin-top:2px;white-space:nowrap">{{ r.goal }}</div>
+            </div>
+            <ul style="flex:1 1 300px;margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px">
+              <sc-for list="{{ r.todo }}" as="t" hint-placeholder-count="2">
+                <li style="font-size:12.5px;line-height:1.75;color:#5b4e43;display:flex;gap:6px"><span style="color:#b9a993">・</span><span>{{ t }}</span></li>
+              </sc-for>
+            </ul>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Prepare / Methods">
+    <dc-import name="SectionHead" num="02" en="Methods" jp="入試方式の比較" hint-size="100%,130px"></dc-import>
+    <div class="rs-sp" style="font-size:10.5px;color:#8a7a6a;margin-bottom:6px">← 横にスクロールできます →</div>
+    <div data-anim="up" style="overflow-x:auto;background:#fff">
+      <table style="width:100%;min-width:640px;border-collapse:collapse;font-size:12px;line-height:1.75">
+        <tr>
+          <th style="width:110px;background:#f5f1ec;position:sticky;left:0;z-index:1"></th>
+          <th style="padding:16px 12px;background:#fcc5c8;color:#fff;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:17px;letter-spacing:.1em;border-left:2px solid #fff">一般選抜</th>
+          <th style="padding:16px 12px;background:#a9cfe0;color:#fff;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:17px;letter-spacing:.1em;border-left:2px solid #fff">学校推薦型選抜</th>
+          <th style="padding:16px 12px;background:#a8d9c6;color:#fff;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:17px;letter-spacing:.1em;border-left:2px solid #fff">総合型選抜</th>
+        </tr>
+        <sc-for list="{{ methods }}" as="m" hint-placeholder-count="5">
+          <tr style="border-top:1px dotted #e1d6c8">
+            <th style="text-align:left;padding:14px 12px;font-size:11.5px;font-weight:700;color:#7a6650;background:#faf7f3;position:sticky;left:0;z-index:1">{{ m.k }}</th>
+            <td style="padding:14px 14px;vertical-align:top;color:#5b4e43">{{ m.a }}</td>
+            <td style="padding:14px 14px;vertical-align:top;color:#5b4e43;border-left:1px dotted #e1d6c8">{{ m.b }}</td>
+            <td style="padding:14px 14px;vertical-align:top;color:#5b4e43;border-left:1px dotted #e1d6c8">{{ m.c }}</td>
+          </tr>
+        </sc-for>
+      </table>
+    </div>
+    <p style="margin:10px 0 0;font-size:11px;color:#8a7a6a">※ 時期は例年の一般的な目安です。実施内容・日程は大学ごとに異なるため、必ず募集要項でご確認ください。</p>
+  </section>
+
+  <section data-screen-label="Prepare / Subjects">
+    <dc-import name="SectionHead" num="03" en="Subjects" jp="教科別の勉強法" hint-size="100%,130px"></dc-import>
+    <div class="rs-ppsec" style="position:relative;padding:0 0 22px 22px">
+      <div style="position:absolute;left:0;top:22px;right:18px;bottom:0;border:3px solid #fff"></div>
+      <div data-anim="scale" class="rs-ppbox" style="position:relative;background:linear-gradient(118deg,#fcc5c8 0%,#fcc5c8 58%,#fdd4d6 58%,#fdd4d6 100%);padding:28px 26px 30px">
+        <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:22px">
+          <sc-for list="{{ subjTabs }}" as="t" hint-placeholder-count="5">
+            <button onClick="{{ t.select }}" style="cursor:pointer;background:#fff;border:3px solid {{ t.bd }};border-radius:999px;padding:10px 22px;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:16px;color:#8a6a5c;letter-spacing:.1em;box-shadow:0 3px 0 rgba(232,140,150,.25)">{{ t.label }}</button>
+          </sc-for>
+        </div>
+        <div class="rs-ppcard" style="background:#fff;padding:22px 24px;border-radius:4px">
+          <div style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:clamp(18px,4.6vw,22px);color:#b23a50;letter-spacing:.06em;margin-bottom:14px;text-wrap:balance">{{ subj.title }}</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
+            <sc-for list="{{ subj.tips }}" as="tp" hint-placeholder-count="3">
+              <div style="background:#fbf4f1;padding:14px 14px 16px;border-top:2px solid #f7b8bd">
+                <div style="font-size:12.5px;font-weight:700;color:#7a6650;margin-bottom:6px">{{ tp.h }}</div>
+                <div style="font-size:11.5px;line-height:1.8;color:#6b5c4f">{{ tp.t }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Prepare / Resources">
+    <dc-import name="SectionHead" num="04" en="Resources" jp="対策資料" hint-size="100%,130px"></dc-import>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+      <sc-for list="{{ resources }}" as="r" hint-placeholder-count="4">
+        <a data-anim="up" data-stagger="1" href="Contact.dc.html?type=docs" style="position:relative;display:flex;flex-direction:column;gap:8px;background:linear-gradient(135deg,#fff 0%,#fff 55%,{{ r.tone }} 55%,{{ r.tone }} 100%);border:1px solid #e6ddd1;padding:18px 16px 22px;min-height:160px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 6px 16px rgba(120,95,70,.12)">
+          <span style="font-size:10.5px;letter-spacing:.14em;color:#e8847a;font-weight:700">{{ r.tag }}</span>
+          <span style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:17px;color:#5b4e43;letter-spacing:.04em">{{ r.title }}</span>
+          <span style="font-size:11.5px;line-height:1.7;color:#6b5c4f">{{ r.text }}</span>
+          <span style="margin-top:auto;font-family:'Josefin Sans';font-weight:600;font-size:15px;color:#fff">REQUEST →</span>
+          <span style="position:absolute;right:0;bottom:0;width:0;height:0;border-left:12px solid transparent;border-bottom:12px solid #b9a993"></span>
+        </a>
+      </sc-for>
+    </div>
+    <p style="margin:12px 0 0;font-size:11px;color:#8a7a6a">※ 資料の内容はサンプルです。</p>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { subj: 0 };
+  renderVals() {
+    const subjects = [
+      { label: '英語', title: '英語は「毎日の積み重ね」が得点になる', tips: [{ h: '単語・熟語', t: '1日の量を決めて毎日触れることが大切です。音声と一緒に覚えると定着しやすくなります。' }, { h: '長文読解', t: '文構造を意識して読み、復習では音読で読むスピードを上げていきましょう。' }, { h: 'リスニング', t: '共通テスト形式の問題で、設問を先に読む習慣をつけておきます。' }] },
+      { label: '数学', title: '数学は「解き方を説明できる」まで', tips: [{ h: '典型問題', t: '教科書・基本問題集の解法を、自力で再現できるまで繰り返します。' }, { h: '間違いノート', t: 'ミスの原因を「計算」「方針」「知識」に分けて記録すると弱点が見えます。' }, { h: '時間配分', t: '過去問演習では、解く順番と見切りのタイミングを決めて臨みましょう。' }] },
+      { label: '国語', title: '国語は「根拠を探す」読み方を', tips: [{ h: '現代文', t: '選択肢の根拠を本文から探し、線を引く習慣をつけましょう。' }, { h: '古文', t: '単語と助動詞の意味を固めると、読める文章が一気に増えます。' }, { h: '漢文', t: '句形を覚えれば短期間でも得点源にしやすい分野です。' }] },
+      { label: '理科', title: '理科は「現象のイメージ」を持つ', tips: [{ h: '基礎理解', t: '公式を覚えるだけでなく、図やグラフで現象をイメージしましょう。' }, { h: '計算問題', t: '単位を書きながら解く習慣が、ケアレスミスを減らします。' }, { h: '実験考察', t: '教科書の実験の目的・手順・結果をセットで整理しておきます。' }] },
+      { label: '社会', title: '社会は「流れ」と「つながり」で覚える', tips: [{ h: '歴史', t: '年号の暗記より先に、出来事の原因と結果の流れをつかみましょう。' }, { h: '地理', t: '統計資料は、なぜその数値になるのかを考えると記憶に残ります。' }, { h: '公民', t: 'ニュースと結びつけて学ぶと、用語の理解が深まります。' }] },
+    ];
+    const s = this.state.subj;
+    return {
+      roadmap: [
+        { when: '高校1年', goal: '学習習慣をつくる', tone: '#d5e9f2', todo: ['定期テストの対策を丁寧に行い、評定の土台をつくる', '英単語・計算など毎日の学習習慣を身につける'] },
+        { when: '高校2年', goal: '基礎を固め、進路を考える', tone: '#d3ede4', todo: ['苦手科目を早めに洗い出し、基礎を復習する', 'オープンキャンパスに参加し、志望分野を考える'] },
+        { when: '高3・春', goal: '志望校と方式を決める', tone: '#f3e8c4', todo: ['志望校の入試科目・方式・配点を確認する', '年間の学習計画を立て、模試の予定を書き込む'] },
+        { when: '高3・夏', goal: '実戦力を伸ばす', tone: '#fcc5c8', todo: ['入試標準レベルの問題集で演習量を増やす', '総合型選抜を受ける人は、志望理由書の準備を進める'] },
+        { when: '高3・秋', goal: '過去問で戦略を固める', tone: '#f2958c', todo: ['志望校の過去問を解き、時間配分と得点目標を決める', '推薦型・総合型の面接・小論文対策を行う'] },
+        { when: '高3・冬', goal: '仕上げと体調管理', tone: '#d6336c', todo: ['共通テスト形式の演習で本番の流れに慣れる', '睡眠と生活リズムを整え、試験当日に備える'] },
+      ],
+      methods: [
+        { k: '主な評価', a: '学力試験の得点', b: '高校の成績・推薦書・面接など', c: '志望理由・活動実績・面接など' },
+        { k: '出願時期の目安', a: '1月〜2月頃', b: '11月頃', c: '9月以降' },
+        { k: '主な選考内容', a: '共通テスト、大学独自の個別試験', b: '書類審査、面接、小論文、基礎学力検査', c: '書類審査、面接、プレゼンテーション、課題' },
+        { k: '向いている人', a: '学力試験で力を発揮したい人', b: '高校での学習を着実に積み重ねてきた人', c: '学びたいことや目標が明確な人' },
+        { k: '準備のポイント', a: '過去問分析と計画的な演習', b: '評定の維持と校内選考の確認', c: 'アドミッション・ポリシーの理解' },
+      ],
+      subjTabs: subjects.map((x, i) => ({ label: x.label, select: () => this.setState({ subj: i }), bd: s === i ? '#f2958c' : '#fde4e5' })),
+      subj: subjects[s],
+      resources: [
+        { tag: 'GUIDE', title: '教科別 学習ガイド', text: '5教科の勉強法と、時期別の進め方をまとめた冊子です。', tone: '#f6e1cf' },
+        { tag: 'SHEET', title: '学習計画シート', text: '週単位で計画と振り返りを書き込めるシートです。', tone: '#d5e9f2' },
+        { tag: 'WORK', title: '志望理由書ワーク', text: '自分の経験を整理し、志望理由を組み立てるための記入式ワークです。', tone: '#d3ede4' },
+        { tag: 'Q&A', title: '面接質問集', text: 'よく聞かれる質問と、答えを準備するときの考え方をまとめています。', tone: '#f0d9ee' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

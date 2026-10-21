@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Caveat:wght@500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>html{scroll-behavior:smooth}body{margin:0;font-family:'Noto Sans JP',sans-serif;color:#333;background:#fff;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#5e9e1a;text-decoration:none}a:hover{color:#f0913a}button{font-family:inherit}</style>
+<link rel="stylesheet" href="site.css">
+<script src="anim.js"></script>
+</helmet>
+<div style="min-height:100vh;overflow-x:clip">
+<dc-import name="SiteHeader" current="prep" style="position:sticky;top:0;z-index:50" hint-size="100%,100px"></dc-import>
+
+<div data-screen-label="Prep Hero" style="position:relative;background:#eef5e1;height:clamp(220px,24vw,300px);overflow:hidden;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+  <div role="img" aria-label="自習する学生" style="background:#e3ecd2 url(img/p33.jpg) center/cover no-repeat;display:flex;justify-content:center;padding-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#71825a"></div>
+  <div style="background:#e3ecd2 url(img/p28.jpg) center/cover no-repeat"></div>
+  <div role="img" aria-label="参考書とノート" style="background:#e3ecd2 url(img/p13.jpg) center/cover no-repeat;display:flex;justify-content:center;padding-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#71825a"></div>
+  <div style="position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);background:rgba(255,255,255,.96);border-radius:50%/40%;padding:20px clamp(32px,6vw,72px);text-align:center;z-index:2;white-space:nowrap">
+    <div style="font-weight:900;font-size:clamp(13px,1.4vw,16px);letter-spacing:.06em">自信をもって本番へ</div>
+    <h1 style="margin:0;font-weight:900;font-size:clamp(26px,3.6vw,42px);color:#6aa82a;letter-spacing:.06em;line-height:1.3">受験対策</h1>
+    <div style="font-family:'Caveat',cursive;color:#8dba43;font-size:20px;line-height:1">◆ Exam Prep</div>
+  </div>
+  <div style="position:absolute;left:-5%;right:-5%;bottom:-2px;height:56px;background:#8dba43;border-radius:50% 50% 0 0 / 100% 100% 0 0;z-index:1"></div>
+  <div style="position:absolute;left:-5%;right:-5%;bottom:-24px;height:56px;background:#fff;border-radius:50% 50% 0 0 / 100% 100% 0 0;z-index:1"></div>
+</div>
+<div style="max-width:1000px;margin:0 auto;padding:18px 16px 0;font-size:12px;color:#777;display:flex;gap:8px"><a href="University Admissions.dc.html">TOP</a><span>›</span><span>受験対策</span></div>
+
+<section style="padding:40px 16px 64px">
+  <div style="max-width:1000px;margin:0 auto">
+    <img src="img/il-idea.png" alt="" class="illust" style="width:200px;margin:0 auto 10px">
+    <h2 style="margin:0 0 10px;text-align:center;font-size:clamp(20px,2.4vw,26px);font-weight:900;letter-spacing:.12em">3つの<span style="color:#6aa82a">入試方式</span></h2>
+    <p style="margin:0 0 30px;text-align:center;font-size:14px;line-height:1.8">方式によって評価のポイントと準備の進め方が異なります。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+      <sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid #3b3b3b;border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="background:#6aa82a;color:#fff;padding:14px 20px"><div style="font-weight:900;font-size:18px;letter-spacing:.08em">{{ m.title }}</div><div style="font-family:'Caveat',cursive;font-size:17px;line-height:1">{{ m.en }}</div></div>
+          <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:14px;flex:1">
+            <p style="margin:0;font-size:13px;line-height:1.9;text-wrap:pretty">{{ m.desc }}</p>
+            <div style="display:flex;gap:10px;font-size:12px;line-height:1.7"><span style="flex:0 0 64px;background:#ddf0b4;text-align:center;padding:2px 0;height:fit-content">主な選考</span><span>{{ m.select }}</span></div>
+            <div style="display:flex;gap:10px;font-size:12px;line-height:1.7"><span style="flex:0 0 64px;background:#ddf0b4;text-align:center;padding:2px 0;height:fit-content">準備開始</span><span>{{ m.start }}</span></div>
+            <div style="border-top:1px dashed #bbb;padding-top:12px;display:flex;flex-direction:column;gap:6px">
+              <div style="font-weight:700;font-size:13px;color:#f0913a">準備のポイント</div>
+              <sc-for list="{{ m.points }}" as="pt" hint-placeholder-count="3">
+                <div style="display:flex;gap:8px;font-size:12px;line-height:1.7"><span style="color:#8dba43">✓</span><span>{{ pt }}</span></div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="background:#8dba43;padding:56px 16px">
+  <img src="img/il-desk.png" alt="" class="illust" style="width:200px;margin:0 auto 14px">
+  <div style="max-width:420px;margin:0 auto 28px;background:#fff;border-radius:4px;text-align:center;padding:14px 16px;font-size:14px;font-weight:700">合格までの<span style="color:#f0913a">学習スケジュール</span>の目安</div>
+  <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+    <sc-for list="{{ phases }}" as="p" hint-placeholder-count="4">
+      <div style="background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 3px 0 rgba(50,80,20,.2)">
+        <div style="background:#f0913a;color:#fff;text-align:center;font-weight:700;font-size:13px;padding:7px">{{ p.when }}</div>
+        <div style="padding:14px 18px 18px;text-align:center">
+          <div style="color:#f0913a;font-weight:900;font-size:24px;letter-spacing:.04em">{{ p.title }}</div>
+          <p style="margin:8px 0 0;font-size:12px;line-height:1.8;text-align:left;text-wrap:pretty">{{ p.text }}</p>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="padding:64px 16px 80px">
+  <img src="img/il-jump.png" alt="" class="illust" style="width:120px;margin:0 auto 8px">
+  <h2 style="margin:0 0 44px;text-align:center;font-size:clamp(20px,2.4vw,26px);font-weight:900;letter-spacing:.12em"><span style="color:#6aa82a">合格</span>をつかむ 3つのポイント</h2>
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:56px">
+    <sc-for list="{{ tips }}" as="tp" hint-placeholder-count="3">
+      <div style="display:flex;flex-direction:{{ tp.dir }};align-items:center;flex-wrap:wrap">
+        <div role="img" aria-label="{{ tp.photo }}" style="flex:1 1 380px;aspect-ratio:16/9;background:#e3ecd2 url(img/{{ tp.img }}) center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:#71825a"></div>
+        <div style="flex:1 1 380px;background:#fff;border-radius:6px;box-shadow:0 6px 24px rgba(70,100,30,.14);padding:clamp(22px,3vw,36px);margin:{{ tp.margin }};position:relative;z-index:1">
+          <span style="display:inline-block;background:#8dba43;color:#fff;font-weight:900;font-size:13px;padding:2px 14px;border-radius:3px">◆ {{ tp.no }}</span>
+          <h3 style="margin:12px 0 0;font-size:clamp(17px,1.8vw,21px);font-weight:900;line-height:1.6">{{ tp.title }}</h3>
+          <div style="width:22px;height:2px;background:#8dba43;margin:16px 0"></div>
+          <p style="margin:0;font-size:13px;line-height:2;text-wrap:pretty">{{ tp.text }}</p>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="background:#eef5e1;padding:64px 16px 80px">
+  <div style="max-width:780px;margin:0 auto">
+    <img src="img/il-library.png" alt="" class="illust" style="width:210px;margin:0 auto 10px">
+    <h2 style="margin:0 0 24px;text-align:center;font-size:clamp(20px,2.4vw,26px);font-weight:900;letter-spacing:.24em;display:flex;align-items:baseline;justify-content:center;gap:12px;flex-wrap:wrap">学習リソース<span style="font-family:'Caveat',cursive;color:#8dba43;font-size:20px;letter-spacing:0">Resources</span></h2>
+    <div class="tabs" style="display:flex;gap:4px;flex-wrap:wrap;padding-left:clamp(0px,4vw,36px)">
+      <sc-for list="{{ resTabs }}" as="t" hint-placeholder-count="4">
+        <button onClick="{{ t.pick }}" style="border:1px solid #6aa82a;border-bottom:0;background:{{ t.bg }};color:{{ t.fg }};font-weight:700;font-size:13px;padding:8px 20px;min-width:110px;cursor:pointer">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="background:#fff;border:1px solid #777;padding:clamp(14px,3vw,26px)">
+      <sc-for list="{{ resources }}" as="r" hint-placeholder-count="4">
+        <a href="Contact.dc.html?type=consult" style="display:flex;align-items:center;gap:16px;padding:14px 4px;border-bottom:1px solid #444;color:#333;font-size:14px" style-hover="background:#f7fbef;color:#333">
+          <span style="flex:0 0 76px;background:#ddf0b4;text-align:center;font-size:12px;padding:3px 0">{{ r.tag }}</span>
+          <span style="flex:1;line-height:1.6">{{ r.text }}</span><span style="font-weight:700">›</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, rt: 0 };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const s = this.state;
+    const resData = [
+      { label:'ALL', rows:null },
+      { label:'一般選抜', rows:[{ tag:'過去問', text:'過去問の効果的な使い方と復習のしかた' },{ tag:'教科別', text:'教科別・参考書と問題集の選び方' },{ tag:'模試', text:'模試の結果を学習計画に生かすコツ' }] },
+      { label:'推薦・総合型', rows:[{ tag:'書類', text:'志望理由書の構成と書き方の基本' },{ tag:'小論文', text:'小論文の練習テーマと添削の受け方' },{ tag:'面接', text:'面接でよく聞かれる質問と答え方の準備' }] },
+      { label:'生活・メンタル', rows:[{ tag:'生活', text:'受験期の睡眠・食事・生活リズムの整え方' },{ tag:'メンタル', text:'不安やプレッシャーとの向き合い方' }] },
+    ];
+    resData[0].rows = resData.slice(1).flatMap(r => r.rows.slice(0,2));
+    return {
+      methods: [
+        { title:'一般選抜', en:'General', desc:'学力試験を中心に合否が判定される方式です。共通テストと各大学の個別試験を組み合わせる大学が多くあります。', select:'学力試験（共通テスト・個別試験）', start:'高2〜高3春ごろから計画的に', points:['志望校の試験科目と配点を確認する','過去問で出題傾向と時間配分をつかむ','共通テストと個別試験のバランスを意識する'] },
+        { title:'学校推薦型選抜', en:'School Recommendation', desc:'高校からの推薦にもとづき、調査書や面接、小論文などで総合的に評価される方式です。', select:'調査書・推薦書・面接・小論文など', start:'高1からの評定の積み重ねが大切', points:['評定平均など出願条件を早めに確認する','志望理由を自分の言葉で話せるようにする','小論文は第三者の添削を受ける'] },
+        { title:'総合型選抜', en:'Comprehensive', desc:'書類審査や面接、プレゼンテーションなどを通して、意欲や適性を多面的に評価する方式です。', select:'志望理由書・面接・課題・プレゼンなど', start:'高2〜高3春に情報収集を開始', points:['アドミッション・ポリシーを読み込む','活動実績と志望理由のつながりを整理する','オープンキャンパスで大学を深く知る'] },
+      ],
+      phases: [
+        { when:'高1 〜 高2', title:'土台づくり', text:'授業の内容をその都度理解し、定期テストで評定を積み重ねます。興味のある分野を探し始める時期です。' },
+        { when:'高2 〜 高3春', title:'基礎固め', text:'教科書レベルの内容を確実にし、苦手分野を洗い出します。志望校や入試方式の情報収集も進めましょう。' },
+        { when:'高3 夏', title:'応用・演習', text:'問題演習を重ねて応用力をつけます。総合型選抜を考える人は出願書類の準備も並行して進めます。' },
+        { when:'高3 秋〜冬', title:'実戦・仕上げ', text:'過去問や模試で本番形式に慣れ、時間配分を調整します。体調管理も大切な準備のひとつです。' },
+      ],
+      tips: [
+        { no:'01', photo:'学習計画を立てる学生', img:'p16.jpg', title:'ゴールから逆算して、無理のない学習計画を', text:'志望校の入試科目と配点を確認し、試験日から逆算して月ごと・週ごとの目標を設定しましょう。模試の結果などを見ながら計画を見直していくことが大切です。' },
+        { no:'02', photo:'自習室で集中する様子', img:'p14.jpg', title:'限られた時間を生かす、時間管理のコツ', text:'すき間時間は暗記、まとまった時間は演習というように、時間の長さに合わせて取り組む内容を決めると効率が上がります。睡眠時間を削らないことも長期戦を乗り切るポイントです。' },
+        { no:'03', photo:'参考書と問題集', img:'p13.jpg', title:'自分に合った教材と相談先を見つける', text:'参考書は一冊をくり返し解くことで力がつきます。迷ったときは学校の先生や先輩、大学の入試相談窓口など、身近な相談先を活用しましょう。' },
+      ].map((t,i) => ({ ...t, dir: i%2 ? 'row-reverse' : 'row', margin: s.w < 820 ? '-40px 16px 0' : (i%2 ? '60px -60px 0 0' : '60px 0 0 -60px') })),
+      resTabs: resData.map((t,i) => ({ label:t.label, bg: s.rt===i ? '#fff' : '#6aa82a', fg: s.rt===i ? '#333' : '#fff', pick: () => this.setState({ rt:i }) })),
+      resources: resData[s.rt].rows,
+    };
+  }
+}
+</script>
+</body>
+</html>

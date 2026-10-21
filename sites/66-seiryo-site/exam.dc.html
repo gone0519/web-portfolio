@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:ital,wght@0,700;0,800;0,900;1,800&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site.css">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Noto Sans JP",sans-serif;color:#1f1f1f;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#2f7d2c}
+a:hover{color:#1f5e1d}
+h1,h2,h3,h4,p{margin:0}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="exam" hint-size="100%,72px"></dc-import>
+<main>
+<dc-import name="PageHero" slot="exam" num="PAGE 02" en="EXAM GUIDE" ja="入試対策ガイド" lead="入試方式の違い、学習計画の立て方、毎日の時間の使い方まで。受験までの道のりを、ひとつずつ確認していきましょう。" img1="自習する学生" img2="参考書とノート" img1-src="img/33-lecture-notes.jpg" img2-src="img/20-group-study-desk.jpg" badge-en="3 METHODS" badge-ja="3つの入試方式" hint-size="100%,560px"></dc-import>
+
+<section data-screen-label="Methods" style="padding:clamp(64px,8vw,104px) 24px">
+  <div style="max-width:1140px;margin:0 auto">
+    <div data-reveal="" style="margin-bottom:32px">
+      <p style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:800;color:#3e9a3c;letter-spacing:.24em">METHODS</p>
+      <h2 style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:clamp(22px,2.6vw,28px);font-weight:900;margin-top:6px">入試方式を知る</h2>
+    </div>
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <button onClick="{{ t.pick }}" style="flex:1 1 200px;border:2px solid #1f1f1f;background:{{ t.bg }};color:{{ t.color }};border-radius:16px;padding:16px 20px;font-family:inherit;text-align:left;cursor:pointer;display:flex;align-items:center;gap:14px;transition:background .2s,color .2s">
+          <span style="font-family:Montserrat,sans-serif;font-weight:900;font-size:22px">{{ t.no }}</span>
+          <span style="display:flex;flex-direction:column"><span style="font-weight:900;font-size:15px">{{ t.title }}</span><span style="font-size:11px;opacity:.8">{{ t.sub }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="background:#1f4a1e;color:#fff;border-radius:28px;padding:clamp(24px,4vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(24px,4vw,48px);position:relative;overflow:hidden">
+      <span style="position:absolute;right:-10px;bottom:-40px;font-family:Montserrat,sans-serif;font-weight:900;font-size:220px;line-height:1;color:rgba(255,255,255,.05);pointer-events:none">{{ m.no }}</span>
+      <div style="position:relative">
+        <span style="background:#3e9a3c;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px">{{ m.sub }}</span>
+        <h3 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:clamp(26px,3vw,34px);margin:14px 0 16px">{{ m.title }}</h3>
+        <p style="font-size:13.5px;line-height:2;opacity:.92">{{ m.desc }}</p>
+        <dl style="display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:13px;margin:22px 0 0">
+          <dt style="font-weight:900;color:#9fd88f">主な評価</dt><dd style="margin:0">{{ m.eval }}</dd>
+          <dt style="font-weight:900;color:#9fd88f">向いている人</dt><dd style="margin:0">{{ m.fit }}</dd>
+        </dl>
+      </div>
+      <div style="position:relative;background:#fff;color:#1f1f1f;border-radius:20px;padding:24px">
+        <p style="display:flex;align-items:center;gap:8px;font-weight:900;font-size:15px;margin-bottom:14px"><span style="font-family:Montserrat,sans-serif;font-size:10px;font-weight:800;color:#fff;background:#d7322b;border-radius:6px;padding:3px 7px">POINT</span>対策のポイント</p>
+        <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ m.points }}" as="pt">
+            <li style="display:flex;gap:12px;font-size:13px;line-height:1.85"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#d7322b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900;margin-top:2px">✓</span>{{ pt }}</li>
+          </sc-for>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Timeline" style="background:#f3eada;padding:clamp(64px,8vw,104px) 24px;border-radius:clamp(32px,6vw,80px) clamp(32px,6vw,80px) 0 0">
+  <div style="max-width:900px;margin:0 auto">
+    <div data-reveal="" style="text-align:center;margin-bottom:48px">
+      <div class="wm" style="font-family:Montserrat,sans-serif;font-weight:900;font-size:clamp(52px,7vw,88px);line-height:.9;color:#e6dac4">SCHEDULE</div>
+      <h2 style="font-size:18px;font-weight:900;margin-top:-22px;position:relative">受験までの学習スケジュール（例）</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0;position:relative">
+      <div style="position:absolute;left:27px;top:10px;bottom:10px;width:2px;background:#3e9a3c;opacity:.4"></div>
+      <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="5">
+        <div data-reveal="" style="display:flex;gap:20px;padding:12px 0;position:relative">
+          <span style="flex:none;width:56px;height:56px;border-radius:50%;background:#3e9a3c;color:#fff;border:4px solid #f3eada;display:grid;place-items:center;font-size:12px;font-weight:900;text-align:center;line-height:1.2">{{ t.when }}</span>
+          <div style="flex:1;background:#fff;border-radius:20px;padding:18px 22px">
+            <p style="font-weight:900;font-size:15px;margin-bottom:4px">{{ t.title }}</p>
+            <p style="font-size:13px;line-height:1.9;color:#555">{{ t.desc }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Daily plan" style="padding:clamp(64px,8vw,104px) 24px">
+  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(32px,5vw,64px);align-items:start">
+    <div data-reveal="">
+      <p style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:800;color:#3e9a3c;letter-spacing:.24em">TIME MANAGEMENT</p>
+      <h2 style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:clamp(22px,2.6vw,28px);font-weight:900;margin:6px 0 18px">1日の時間の使い方（例）</h2>
+      <p style="font-size:13.5px;line-height:2;color:#4a4a4a;margin-bottom:22px">平日と休日で学習の進め方を分けると、無理なく続けられます。下の例を参考に、自分の生活リズムに合わせた計画を立ててみましょう。</p>
+      <div style="display:inline-flex;background:#f3eada;border-radius:999px;padding:4px">
+        <sc-for list="{{ dayTabs }}" as="d"><button onClick="{{ d.pick }}" style="border:0;background:{{ d.bg }};color:{{ d.color }};border-radius:999px;padding:10px 24px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer">{{ d.label }}</button></sc-for>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-end;margin-top:32px"><img src="img/illust/hand-library.png" alt="" style="width:46%;max-width:220px;height:auto"><img src="img/illust/hand-laptop.png" alt="" style="width:46%;max-width:220px;height:auto"></div>
+    </div>
+    <div data-reveal="" style="border:2px solid #1f1f1f;border-radius:24px;overflow:hidden">
+      <sc-for list="{{ day }}" as="r" hint-placeholder-count="5">
+        <div style="display:flex;gap:16px;align-items:center;padding:16px 22px;border-top:1px solid #eee;background:{{ r.bg }}">
+          <span style="flex:none;width:96px;font-family:Montserrat,sans-serif;font-weight:800;font-size:13px;color:#2f7d2c">{{ r.time }}</span>
+          <span style="font-size:13.5px;font-weight:700">{{ r.what }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Guides" style="padding:0 24px clamp(64px,8vw,104px)">
+  <div style="max-width:1140px;margin:0 auto">
+    <div data-reveal="" style="margin-bottom:32px">
+      <p style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:800;color:#3e9a3c;letter-spacing:.24em">STUDY TIPS</p>
+      <h2 style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:clamp(22px,2.6vw,28px);font-weight:900;margin-top:6px">科目別・学習のヒント</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:20px">
+      <sc-for list="{{ tips }}" as="g" hint-placeholder-count="4">
+        <div data-reveal="" style="background:#f3eada;border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:10px"><img src="{{ g.img }}" alt="" style="width:100%;height:130px;object-fit:contain;margin-bottom:6px">
+          <span style="align-self:flex-start;font-family:Montserrat,sans-serif;font-size:11px;font-weight:800;letter-spacing:.14em;color:#fff;background:#1a1a1a;padding:3px 10px;border-radius:4px">{{ g.en }}</span>
+          <p style="font-weight:900;font-size:17px">{{ g.title }}</p>
+          <p style="font-size:12.5px;line-height:1.9;color:#555">{{ g.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div data-reveal="" class="cta-illust"><img src="img/illust/happy-pair.png" alt=""><div class="cta-illust-btn">
+      <a href="admission.dc.html" style="display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-width:260px;padding:14px 14px 14px 30px;background:#1a1a1a;color:#fff;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;transition:background .25s,gap .25s" style-hover="background:#2f7d2c;color:#fff;gap:36px">出願・入試日程を確認する<span style="width:24px;height:24px;border-radius:50%;background:#fff;color:#1a1a1a;display:grid;place-items:center;font-size:11px">→</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" slot="exam" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 0, day: 'weekday' };
+  methods = [
+    { no: '01', title: '一般選抜', sub: '学力試験による選抜', desc: '共通テスト利用方式と大学独自試験方式があります。科目の配点や併願の組み合わせを確認し、計画的に準備しましょう。', eval: '学力試験の得点', fit: 'コツコツと学力を積み上げてきた人', points: ['過去問で出題傾向と時間配分をつかむ', '得点源にする科目を決めて重点的に対策する', '併願校の日程を早めに組み立てる'] },
+    { no: '02', title: '学校推薦型選抜', sub: '在籍高校の推薦による選抜', desc: '調査書・推薦書に加え、小論文や面接で評価します。高校での学習成績が出願条件になる場合があります。', eval: '調査書・推薦書・小論文・面接', fit: '高校の授業や活動に真剣に取り組んできた人', points: ['日々の授業と定期試験を大切にする', '小論文は書いた後に先生に添削してもらう', '面接で話す内容を志望理由と結びつける'] },
+    { no: '03', title: '総合型選抜', sub: '志望理由・活動実績による選抜', desc: '志望理由書やプレゼンテーション、面接などを通して、学ぶ意欲と大学との相性を総合的に評価します。', eval: '志望理由書・活動実績・面接・プレゼンテーション', fit: '学びたいことがはっきりしている人', points: ['「なぜこの学部か」を自分の言葉で語る', '活動の記録を写真やメモで残しておく', 'オープンキャンパスで学部の学びを体験する'] }
+  ];
+  days = {
+    weekday: [['6:30', '起床・英単語の復習'], ['7:30〜16:00', '登校・授業（休み時間に小テスト対策）'], ['17:00〜19:00', '苦手科目の演習'], ['20:00〜22:00', '得意科目の応用問題・過去問'], ['22:30', '1日の振り返りと翌日の計画']],
+    holiday: [['7:00', '起床・朝食'], ['8:00〜12:00', '過去問演習（本番と同じ時間配分で）'], ['13:00〜16:00', '間違えた問題の復習・解き直し'], ['17:00〜19:00', '自由時間・休憩'], ['20:00〜22:00', '1週間の学習の見直し']]
+  };
+  renderVals() {
+    const s = this.state;
+    return {
+      tabs: this.methods.map((m, i) => ({ ...m, bg: s.tab === i ? '#1a1a1a' : '#fff', color: s.tab === i ? '#fff' : '#1f1f1f', pick: () => this.setState({ tab: i }) })),
+      m: this.methods[s.tab],
+      timeline: [
+        { when: '高2<br>冬', title: '志望分野を考える', desc: '興味のある学部を調べ、オープンキャンパスや説明会の日程を確認します。' },
+        { when: '高3<br>春', title: '基礎を固める', desc: '全科目の基礎を総復習。推薦・総合型を考える方は志望理由の整理を始めます。' },
+        { when: '高3<br>夏', title: '実力を伸ばす', desc: '苦手分野の克服と応用問題への挑戦。総合型選抜の出願準備も進めます。' },
+        { when: '高3<br>秋', title: '過去問に取り組む', desc: '志望校の過去問を解き、出題傾向に合わせて対策を調整します。' },
+        { when: '高3<br>冬', title: '本番に備える', desc: '体調管理を最優先に。本番と同じ時間帯で演習し、試験のリズムをつくります。' }
+      ].map(t => ({ ...t, when: t.when.replace('<br>', ' ') })),
+      dayTabs: [['weekday', '平日'], ['holiday', '休日']].map(([k, label]) => ({ label, bg: s.day === k ? '#1a1a1a' : 'transparent', color: s.day === k ? '#fff' : '#1f1f1f', pick: () => this.setState({ day: k }) })),
+      day: this.days[s.day].map(([time, what], i) => ({ time, what, bg: i % 2 ? '#fbf6ec' : '#fff' })),
+      tips: [
+        { en: 'ENGLISH', img: 'img/illust/study-library.png', title: '英語', desc: '単語は毎日少しずつ。長文は時間を計って読み、設問の根拠に線を引く習慣をつけましょう。' },
+        { en: 'JAPANESE', img: 'img/illust/study-desk.png', title: '国語', desc: '現代文は筆者の主張を一文でまとめる練習を。古文は文法と単語を早めに固めます。' },
+        { en: 'MATH', img: 'img/illust/study-lecture.png', title: '数学', desc: '解法を暗記するのではなく、なぜその解き方になるのかを説明できるようにしましょう。' },
+        { en: 'ESSAY', img: 'img/illust/study-board.png', title: '小論文', desc: '結論を先に書き、理由と具体例で支える構成を意識。書いたら必ず添削を受けましょう。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

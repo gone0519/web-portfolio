@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Zen Kaku Gothic New",sans-serif;color:#1d3340;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1f6f93;text-decoration:none}
+a:hover{color:#3d9cc0}
+button{font-family:inherit}
+</style>
+<script src="motion.js"></script>
+<link rel="stylesheet" href="responsive.css">
+</helmet>
+<dc-import name="SiteHeader" current="admissions" style="position:absolute;top:0;left:0;right:0;z-index:30" hint-size="100%,86px"></dc-import>
+
+<section data-screen-label="Admissions Hero" style="background:#3d9cc0;color:#fff;display:flex;flex-wrap:wrap">
+  <div style="flex:1 1 420px;padding:clamp(150px,13vw,220px) clamp(20px,5vw,60px) 70px clamp(20px,8vw,160px);display:flex;flex-direction:column;gap:14px;justify-content:flex-end">
+    <div style="display:flex;gap:10px;font-size:12px;letter-spacing:.06em"><a href="University%20Admissions.dc.html" style="color:#fff">トップ</a><span>／</span><span>入試・出願情報</span></div>
+    <h1 style="margin:0;font-family:Jost;font-weight:400;font-size:clamp(52px,5.6vw,92px);line-height:1">Admissions</h1>
+    <span style="font-size:18px;font-weight:700;letter-spacing:.12em">入試・出願情報</span>
+    <p style="margin:10px 0 0;max-width:460px;font-size:15px;line-height:2">2027年度入試の日程、募集人員、出願の流れと必要書類をご案内します。</p>
+  </div>
+  <div class="sub-hero-photo" style="flex:1 1 460px;min-height:clamp(320px,32vw,560px);position:relative;background:#dfeae8 url(img/hero-admissions.jpg) center/cover no-repeat" data-photo role="img" aria-label="キャンパスの校舎">
+    <svg viewBox="0 0 200 1000" preserveAspectRatio="none" style="position:absolute;left:-1px;top:0;height:100%;width:clamp(60px,8vw,150px)"><path d="M0,0 L120,0 C20,320 200,640 40,1000 L0,1000 Z" fill="#3d9cc0"></path></svg>
+  </div>
+</section>
+
+<nav style="background:#fff;border-bottom:1px solid #e1edf2;padding:0 clamp(20px,5vw,60px);position:sticky;top:0;z-index:20">
+  <div style="max-width:1200px;margin:0 auto;display:flex;gap:28px;overflow-x:auto;scrollbar-width:none">
+    <a href="#news" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">入試ニュース</a>
+    <a href="#schedule" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">入試日程</a>
+    <a href="#capacity" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">募集人員</a>
+    <a href="#flow" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">出願の流れ</a>
+    <a href="#docs" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">必要書類</a>
+    <a href="#apply" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">ネット出願</a>
+  </div>
+</nav>
+
+<section id="news" data-screen-label="News" style="padding:90px clamp(20px,5vw,60px) 40px;scroll-margin-top:60px">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="margin:0;font-family:Jost;font-weight:400;font-size:clamp(40px,3.6vw,56px);color:#2b86ad;line-height:1">News</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 10px">
+      <sc-for list="{{ newsTabs }}" as="t" hint-placeholder-count="4">
+        <button onClick="{{ t.onClick }}" style="border:0;cursor:pointer;border-radius:999px;padding:4px 16px;font-size:14px;font-weight:700;letter-spacing:.08em;background:{{ t.bg }};color:{{ t.fg }}">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <sc-for list="{{ news }}" as="nw" hint-placeholder-count="4">
+      <div style="display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;padding:22px 0;border-bottom:1px solid #d4e5ec">
+        <span style="display:flex;align-items:center;gap:12px;min-width:200px"><span style="background:#2b86ad;color:#fff;font-size:10.5px;padding:2px 8px">{{ nw.cat }}</span><span style="font-family:Jost;font-size:15px">{{ nw.date }}</span></span>
+        <span style="font-size:15px;font-weight:500;line-height:1.8;flex:1;min-width:260px">{{ nw.title }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="schedule" data-screen-label="Schedule" style="background:#3d9cc0;color:#fff;margin-top:70px;padding:0 clamp(20px,5vw,60px) 100px;scroll-margin-top:60px">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style="display:block;width:calc(100% + 2 * clamp(20px,5vw,60px));margin:0 calc(-1 * clamp(20px,5vw,60px));height:80px"><path d="M0,0 L1440,0 L1440,40 C1080,120 520,10 0,90 Z" fill="#fff"></path></svg>
+  <div style="max-width:1200px;margin:60px auto 0">
+    <h2 style="margin:0;font-family:Jost;font-weight:400;font-size:clamp(40px,3.6vw,56px);line-height:1">Schedule</h2>
+    <span style="display:block;margin-top:10px;font-size:15px;font-weight:700;letter-spacing:.12em">2027年度 入試日程</span>
+    <div style="margin-top:36px;background:#fff;color:#1d3340;padding:clamp(20px,3vw,40px);overflow-x:auto">
+      <div class="rt-wrap" style="min-width:760px">
+        <div class="rt-head" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;background:#2b86ad;color:#fff;font-size:13px;font-weight:700">
+          <span style="padding:14px 16px">入試区分</span><span style="padding:14px 16px">エントリー／出願</span><span style="padding:14px 16px">試験日</span><span style="padding:14px 16px">合格発表</span><span style="padding:14px 16px">入学手続締切</span>
+        </div>
+        <sc-for list="{{ schedule }}" as="sc" hint-placeholder-count="6">
+          <div class="rt" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;border-bottom:1px solid #d4e5ec;font-size:14px">
+            <span style="padding:16px;font-weight:700;color:#1f6f93">{{ sc.type }}</span><span data-label="出願" style="padding:16px">{{ sc.apply }}</span><span data-label="試験日" style="padding:16px">{{ sc.exam }}</span><span data-label="合格発表" style="padding:16px">{{ sc.result }}</span><span data-label="手続締切" style="padding:16px">{{ sc.due }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <span style="display:block;margin-top:16px;font-size:12px;color:#c0473a;font-weight:700">※日程はサンプルです。確定日程は募集要項で公表します。</span>
+    </div>
+  </div>
+</section>
+
+<section id="capacity" data-screen-label="Capacity" style="padding:90px clamp(20px,5vw,60px) 40px;scroll-margin-top:60px">
+  <div style="max-width:1200px;margin:0 auto">
+    <span style="font-family:Jost;font-size:13px;letter-spacing:.2em;color:#3d9cc0">CAPACITY</span>
+    <h2 style="margin:10px 0 0;font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:.06em;line-height:1.5">学部別 募集人員・試験科目</h2>
+    <div style="margin-top:36px;overflow-x:auto">
+      <div class="rt-wrap" style="min-width:760px">
+        <div class="rt-head" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 2fr;border-bottom:2px solid #2b86ad;font-size:13px;font-weight:700;color:#1f6f93">
+          <span style="padding:14px 12px">学部</span><span style="padding:14px 12px">総合型</span><span style="padding:14px 12px">推薦</span><span style="padding:14px 12px">一般</span><span style="padding:14px 12px">一般選抜 試験科目（例）</span>
+        </div>
+        <sc-for list="{{ capacity }}" as="c" hint-placeholder-count="6">
+          <div class="rt" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 2fr;border-bottom:1px solid #d4e5ec;font-size:14px;line-height:1.7">
+            <span style="padding:16px 12px;font-weight:700">{{ c.name }}</span><span data-label="募集人員" style="padding:16px 12px;color:#5a7380">募集要項で公表</span><span class="rt-sp-hide" style="padding:16px 12px;color:#5a7380">募集要項で公表</span><span class="rt-sp-hide" style="padding:16px 12px;color:#5a7380">募集要項で公表</span><span data-label="一般選抜科目" style="padding:16px 12px">{{ c.subj }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flow" data-screen-label="Flow" style="padding:80px clamp(20px,5vw,60px) 40px;scroll-margin-top:60px">
+  <div style="max-width:1200px;margin:0 auto">
+    <span style="font-family:Jost;font-size:13px;letter-spacing:.2em;color:#3d9cc0">FLOW</span>
+    <h2 style="margin:10px 0 0;font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:.06em;line-height:1.5">出願の流れ</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:2px;margin-top:36px">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+        <div style="background:#eef6f9;padding:26px 22px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:Jost;font-size:32px;font-weight:300;color:#2b86ad;line-height:1">{{ st.no }}</span>
+          <span style="font-size:16px;font-weight:700">{{ st.title }}</span>
+          <span style="font-size:13px;line-height:1.85;color:#3c5563">{{ st.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="docs" data-screen-label="Documents" style="padding:80px clamp(20px,5vw,60px) 40px;scroll-margin-top:60px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:60px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-family:Jost;font-size:13px;letter-spacing:.2em;color:#3d9cc0">CHECKLIST</span>
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:.06em;line-height:1.5">必要書類チェックリスト</h2>
+      <p style="margin:0;font-size:14.5px;line-height:2;color:#3c5563">準備できた書類にチェックを入れて、出願前の確認にご利用ください。入試方式によって必要な書類は異なります。</p>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+        <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#1f6f93"><span>準備状況</span><span>{{ doneCount }} / {{ docTotal }}</span></div>
+        <div style="height:8px;background:#e1edf2"><div style="height:8px;background:#5aa58c;width:{{ progress }};transition:width .3s"></div></div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #d4e5ec">
+      <sc-for list="{{ docs }}" as="d" hint-placeholder-count="6">
+        <button onClick="{{ d.onClick }}" style="width:100%;background:none;border:0;border-bottom:1px solid #d4e5ec;cursor:pointer;display:flex;gap:16px;align-items:center;text-align:left;padding:18px 4px;color:#1d3340">
+          <span style="flex:0 0 24px;height:24px;border:1.5px solid #3d9cc0;background:{{ d.box }};color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px">{{ d.mark }}</span>
+          <span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:700">{{ d.name }}</span><span style="font-size:12.5px;color:#5a7380">{{ d.note }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="apply" data-screen-label="Apply" style="padding:80px clamp(20px,5vw,60px) 20px;scroll-margin-top:60px">
+  <div style="max-width:1200px;margin:0 auto;background:#3d9cc0;color:#fff;padding:clamp(30px,4vw,60px);display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:640px">
+      <span style="font-family:Jost;font-size:13px;letter-spacing:.2em">WEB APPLICATION</span>
+      <span style="font-family:'Shippori Mincho',serif;font-size:clamp(26px,2.4vw,36px);letter-spacing:.06em;line-height:1.5">出願はインターネットで。</span>
+      <span style="font-size:14px;line-height:1.9">出願サイトは出願期間の開始日に公開します。事前にメールアドレスと顔写真データをご用意ください。</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;min-width:260px">
+      <a href="#apply" style="background:#5670b5;color:#fff;padding:18px 30px;text-align:center;font-size:16px;letter-spacing:.06em" style-hover="background:#4860a3;color:#fff">ネット出願サイトへ（準備中）</a>
+      <a href="Support.dc.html#faq" style="background:#fff;color:#1f6f93;padding:16px 30px;text-align:center;font-weight:700;font-size:14px" style-hover="background:#eef6f9">出願に関するよくある質問</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" show-cta="{{ true }}" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 'すべて', done: {} };
+  renderVals() {
+    const news = [
+      { cat: '入試情報', date: '2026.10.15', title: '2027年度 入学者選抜要項（サンプル）を公開しました' },
+      { cat: 'イベント', date: '2026.10.02', title: '秋の入試対策講座（小論文・面接）の参加申込を受け付けています' },
+      { cat: '入試情報', date: '2026.09.05', title: '総合型選抜 エントリー受付について' },
+      { cat: '重要', date: '2026.08.20', title: '一般選抜 学外試験会場の設置予定について' },
+      { cat: 'イベント', date: '2026.08.01', title: '保護者向けオンライン入試説明会を開催します' },
+    ];
+    const docs = [
+      { name: '入学志願票', note: 'ネット出願サイトで入力・印刷' },
+      { name: '調査書', note: '出身高等学校で発行（厳封）' },
+      { name: '志望理由書', note: '総合型・推薦のみ／本学所定様式' },
+      { name: '推薦書', note: '学校推薦型選抜のみ' },
+      { name: '顔写真データ', note: '出願登録時にアップロード' },
+      { name: '入学検定料の支払い', note: 'コンビニ・クレジットカード等' },
+    ];
+    const done = this.state.done;
+    const count = docs.filter((_, i) => done[i]).length;
+    return {
+      newsTabs: ['すべて', '入試情報', 'イベント', '重要'].map(t => ({ label: t, bg: this.state.tab === t ? '#2b86ad' : 'transparent', fg: this.state.tab === t ? '#fff' : '#1f6f93', onClick: () => this.setState({ tab: t }) })),
+      news: this.state.tab === 'すべて' ? news : news.filter(n => n.cat === this.state.tab),
+      schedule: [
+        { type: '総合型選抜 Ⅰ期', apply: '9月上旬〜中旬', exam: '10月上旬', result: '11月上旬', due: '11月中旬' },
+        { type: '総合型選抜 Ⅱ期', apply: '10月下旬', exam: '11月中旬', result: '12月上旬', due: '12月中旬' },
+        { type: '学校推薦型選抜', apply: '11月上旬', exam: '11月下旬', result: '12月上旬', due: '12月中旬' },
+        { type: '一般選抜 前期', apply: '1月上旬〜下旬', exam: '2月上旬', result: '2月中旬', due: '2月下旬' },
+        { type: '共通テスト利用', apply: '1月上旬〜中旬', exam: '本学独自試験なし', result: '2月中旬', due: '2月下旬' },
+        { type: '一般選抜 後期', apply: '2月中旬', exam: '3月上旬', result: '3月中旬', due: '3月下旬' },
+      ],
+      capacity: [
+        { name: '文学部', subj: '国語・外国語・選択（地歴／数学）' },
+        { name: '経済経営学部', subj: '外国語・選択2科目' },
+        { name: '国際コミュニケーション学部', subj: '外国語・国語' },
+        { name: '教育学部', subj: '国語・外国語・選択' },
+        { name: '健康科学部', subj: '外国語・理科・選択' },
+        { name: '情報デザイン学部', subj: '数学・外国語・選択' },
+      ],
+      steps: [
+        { no: '01', title: '募集要項の確認', text: '出願資格と必要書類を確認します。' },
+        { no: '02', title: 'Web出願登録', text: '出願サイトで志望学科と方式を登録します。' },
+        { no: '03', title: '検定料の支払い', text: 'コンビニ・クレジットカード等で支払います。' },
+        { no: '04', title: '書類の郵送', text: '調査書などを期間内に簡易書留で郵送します。' },
+        { no: '05', title: '受験票の印刷', text: '試験日前に出願サイトから印刷します。' },
+        { no: '06', title: '受験・合格発表', text: '合否は出願サイトで確認できます。' },
+      ],
+      docs: docs.map((d, i) => ({ ...d, box: done[i] ? '#3d9cc0' : '#fff', mark: done[i] ? '✓' : '', onClick: () => this.setState(s => ({ done: { ...s.done, [i]: !s.done[i] } })) })),
+      doneCount: count, docTotal: docs.length, progress: Math.round(count / docs.length * 100) + '%',
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho+B1:wght@600;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./site-anim.js"></script>
+<style>html{scroll-behavior:smooth}body{margin:0;background:#f5f1ec;color:#5b4e43;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}a{color:#7a6650;text-decoration:none}a:hover{color:#e8847a}*{box-sizing:border-box}</style>
+</helmet>
+<div style="min-height:100vh;background:#f5f1ec;overflow-x:hidden">
+<dc-import name="SubHero" current="programs" num="01" en="Programs" jp="学部・学科" vertical="FACULTY" slot-id="hero-programs" slot-ph="講義・ゼミの様子" lead="興味のある分野から、学べる内容・将来の進路・高校で関連する科目を比べてみましょう。" hint-size="100%,520px"></dc-import>
+
+<main style="max-width:1000px;margin:0 auto;padding:40px 20px 110px;display:flex;flex-direction:column;gap:90px">
+
+  <section data-screen-label="Programs / Fields">
+    <dc-import name="SectionHead" num="01" en="Fields" jp="系統から探す" hint-size="100%,130px"></dc-import>
+    <p data-anim="up" style="margin:0 0 24px;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:clamp(24px,3.4vw,36px);line-height:1.45;letter-spacing:.06em;color:#5b4e43">「好き」を<span style="color:#e8847a;text-emphasis:filled dot #e8847a;-webkit-text-emphasis:filled dot #e8847a">専門</span>に変える場所。</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px">
+      <sc-for list="{{ chips }}" as="c" hint-placeholder-count="5">
+        <button onClick="{{ c.select }}" style="cursor:pointer;border:2px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};border-radius:999px;padding:9px 18px;font:700 12px 'Zen Kaku Gothic New';letter-spacing:.06em;transition:all .2s">{{ c.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">
+      <sc-for list="{{ depts }}" as="d" hint-placeholder-count="8">
+        <article data-anim="up" data-stagger="1" style="position:relative;background:#fff;padding:20px 18px 26px;display:flex;flex-direction:column;gap:10px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-3px);box-shadow:0 8px 20px rgba(120,95,70,.10)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+            <span style="font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#fff;background:{{ d.tone }};padding:3px 8px">{{ d.field }}</span>
+            <span style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:28px;color:#e6dccd;line-height:1">{{ d.glyph }}</span>
+          </div>
+          <h3 style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:20px;letter-spacing:.08em;color:#5b4e43;padding-bottom:10px;border-bottom:2px dotted #dcd0c0">{{ d.name }}</h3>
+          <div style="font-size:12px;line-height:1.8;color:#5b4e43">{{ d.learn }}</div>
+          <div style="font-size:11px;color:#8a7a6a;line-height:1.7"><span style="font-weight:700;color:#7a6650">主な進路　</span>{{ d.career }}</div>
+          <div style="font-size:11px;color:#8a7a6a;line-height:1.7"><span style="font-weight:700;color:#7a6650">関連科目　</span>{{ d.subj }}</div>
+          <a href="Contact.dc.html?type=docs" style="margin-top:4px;font-size:11.5px;font-weight:700;color:#e8847a;letter-spacing:.06em">資料を請求する →</a>
+          <span style="position:absolute;right:0;bottom:0;width:0;height:0;border-left:14px solid transparent;border-bottom:14px solid #c8b8a2"></span>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Programs / Learning">
+    <dc-import name="SectionHead" num="02" en="Learning" jp="大学での学び方" hint-size="100%,130px"></dc-import>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px">
+      <sc-for list="{{ styles }}" as="s" hint-placeholder-count="4">
+        <div data-anim="up" data-stagger="1" style="background:#fff;padding:10px 10px 18px;position:relative">
+          <div style="position:relative;height:140px;background:#efe8de"><image-slot id="{{ s.id }}" shape="rect" placeholder="{{ s.ph }}"></image-slot></div>
+          <div style="display:flex;align-items:baseline;gap:10px;margin:14px 6px 6px"><span style="font-family:'Josefin Sans';font-weight:600;font-size:22px;color:#e3d6c4">{{ s.no }}</span><span style="font-size:14px;font-weight:700;color:#7a6650">{{ s.title }}</span></div>
+          <div style="font-size:11.5px;line-height:1.8;color:#6b5c4f;margin:0 6px">{{ s.text }}</div>
+          <span style="position:absolute;right:0;bottom:0;width:0;height:0;border-left:14px solid transparent;border-bottom:14px solid #c8b8a2"></span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Programs / Steps">
+    <dc-import name="SectionHead" num="03" en="Steps" jp="学部選びの3ステップ" hint-size="100%,130px"></dc-import>
+    <div style="display:flex;flex-direction:column;background:#fff">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+        <div data-anim="left" data-stagger="1" style="display:flex;gap:26px;align-items:flex-start;padding:26px 28px;border-bottom:1px dotted #e1d6c8;flex-wrap:wrap">
+          <span style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:56px;line-height:1;color:#f2958c;flex:none;width:64px">{{ st.no }}</span>
+          <div style="flex:1 1 280px">
+            <div style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:20px;color:#5b4e43;letter-spacing:.06em;margin-bottom:6px">{{ st.title }}</div>
+            <div style="font-size:12.5px;line-height:1.9;color:#6b5c4f">{{ st.text }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
+      <a href="Prepare.dc.html" style="background:#f2958c;color:#fff;border-radius:999px;padding:13px 24px;font-size:12.5px;font-weight:700;letter-spacing:.06em" style-hover="background:#ea7f75;color:#fff">受験対策を見る →</a>
+      <a href="Campus.dc.html" style="border:2px solid #f2958c;color:#e8847a;border-radius:999px;padding:11px 24px;font-size:12.5px;font-weight:700;letter-spacing:.06em">オープンキャンパスへ →</a>
+    </div>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { field: 'all' };
+  renderVals() {
+    const F = { hum: ['人文・社会', '#c9a67a'], sci: ['理工・情報', '#8fb3c9'], med: ['医療・看護', '#e8a0a6'], int: ['国際・芸術', '#9cc9b4'] };
+    const D = [
+      ['hum', '文', '文学部', '言語・文学・歴史・哲学などを通して、人間の思考や文化を深く読み解きます。', '出版・教育・公務員・企業の企画職', '国語・世界史・日本史'],
+      ['hum', '法', '法学部', '法律や政治のしくみを学び、社会の課題を論理的に考え解決する力を養います。', '公務員・法曹・企業法務・金融', '公民・国語・英語'],
+      ['hum', '経', '経済・経営学部', '経済の動きや企業の戦略を、データと理論の両面から分析します。', '金融・商社・メーカー・起業', '数学・公民・英語'],
+      ['hum', '教', '教育学部', '教育の理論と実践を学び、子どもの成長を支える専門性を身につけます。', '教員・教育関連企業・公務員', '各教科・国語'],
+      ['sci', '理', '理学部', '数学・物理・化学・生物などの自然法則を、実験と理論で探究します。', '研究職・教員・技術職・大学院進学', '数学・物理・化学・生物'],
+      ['sci', '工', '工学部', '機械・電気・建築・化学工学など、ものづくりと社会基盤の技術を学びます。', 'メーカー・建設・エネルギー・技術職', '数学・物理・化学'],
+      ['sci', '情', '情報学部', 'プログラミング、データサイエンス、AIなど、情報技術の基礎と応用を学びます。', 'IT企業・データ分析・研究開発', '数学・情報・英語'],
+      ['sci', '農', '農学部', '食料・環境・生命をテーマに、自然と人の暮らしをつなぐ科学を学びます。', '食品・環境・農業関連・公務員', '生物・化学・数学'],
+      ['med', '医', '医学部', '人体と疾患について学び、臨床実習を通して医師としての知識と姿勢を養います。', '医師・研究医', '生物・化学・物理・数学'],
+      ['med', '薬', '薬学部', '薬の作用や安全性を学び、医療を支える薬の専門家を目指します。', '薬剤師・製薬企業・研究職', '化学・生物・数学'],
+      ['med', '看', '看護学部', '看護の知識と技術を、講義と病院などでの実習を通して段階的に身につけます。', '看護師・保健師・助産師', '生物・化学・国語'],
+      ['med', '保', '保健医療学部', '理学療法・作業療法・臨床検査など、チーム医療を担う専門職を目指します。', '医療技術職・リハビリ職', '生物・物理・化学'],
+      ['int', '際', '国際教養学部', '英語で学ぶ授業や留学を通して、幅広い教養と国際的な視野を身につけます。', '外資系企業・国際機関・航空', '英語・世界史・公民'],
+      ['int', '語', '外国語学部', '言語の運用力とともに、その言語が話される地域の文化や社会を学びます。', '通訳・翻訳・観光・商社', '英語・国語・世界史'],
+      ['int', '芸', '芸術学部', '美術・デザイン・音楽・映像などの表現技法と、その理論を学びます。', 'デザイナー・クリエイター・学芸員', '美術・音楽・国語'],
+      ['int', '体', 'スポーツ科学部', '身体の仕組みやトレーニング理論、スポーツと社会の関係を科学的に学びます。', 'スポーツ関連企業・指導者・教員', '保健体育・生物'],
+    ];
+    const f = this.state.field;
+    const chipDefs = [['all', 'すべて'], ...Object.entries(F).map(([k, v]) => [k, v[0]])];
+    return {
+      chips: chipDefs.map(([k, l]) => ({ label: l, select: () => this.setState({ field: k }), bg: f === k ? '#f2958c' : '#fff', fg: f === k ? '#fff' : '#8a6a5c', bd: f === k ? '#f2958c' : '#f3d9d6' })),
+      depts: D.filter(d => f === 'all' || d[0] === f).map(([k, glyph, name, learn, career, subj]) => ({ field: F[k][0], tone: F[k][1], glyph, name, learn, career, subj })),
+      styles: [
+        { id: 'learn-1', no: '01', title: '講義', text: '専門分野の基礎から応用まで、体系的に知識を身につけます。', ph: '講義室' },
+        { id: 'learn-2', no: '02', title: 'ゼミ', text: '少人数で特定のテーマを探究し、発表や議論を重ねます。', ph: 'ゼミの様子' },
+        { id: 'learn-3', no: '03', title: '実験・実習', text: '実際に手を動かし、理論を確かめながら技術を磨きます。', ph: '実験室' },
+        { id: 'learn-4', no: '04', title: '卒業研究', text: '4年間の学びの集大成として、自らの問いに取り組みます。', ph: '研究発表' },
+      ],
+      steps: [
+        { no: '一', title: '「好き」と「得意」を書き出す', text: '好きな教科、夢中になれること、将来やってみたい仕事を書き出してみましょう。共通点が、学びたい分野のヒントになります。' },
+        { no: '二', title: '学べる内容と進路を調べる', text: '同じ名前の学部でも、大学によってカリキュラムや強みは異なります。資料やWebサイトで、授業内容と卒業後の進路を比べましょう。' },
+        { no: '三', title: '実際に足を運んで確かめる', text: 'オープンキャンパスや模擬授業に参加すると、学びの雰囲気や通学のイメージがつかめます。在学生に直接質問するのもおすすめです。' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

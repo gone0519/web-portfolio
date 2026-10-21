@@ -1,0 +1,56 @@
+/* 清陵大学 入試情報サイト：全ページ共通のレスポンシブ調整
+   インラインstyleを上書きするため、メディアクエリ内は !important を使っています。 */
+
+/* 装飾テキストや登場アニメーションによる横スクロールを防ぐ */
+html,body{overflow-x:clip}
+
+/* 見出しを文節単位で改行し、「へ」「す。」だけが次の行に残るのを防ぐ（html lang="ja" が必要） */
+h1,h2,h3,h4,.phrase{word-break:auto-phrase}
+/* この範囲は途中で改行しない */
+.nobr{display:inline-block}
+
+/* 表の「横スクロールできます」案内（スマホのみ表示） */
+.scroll-hint{display:none;margin:0 0 8px;font-size:11px;color:#777;text-align:right}
+
+/* 入試対策ページ最後のボタン：イラストの2人の間にボタンを置く */
+.cta-illust{position:relative;max-width:960px;margin:56px auto 0;text-align:center}
+.cta-illust > img{display:block;width:100%;height:auto}
+.cta-illust-btn{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%)}
+
+/* ─── タブレット以下（ヘッダーがMENUボタンに切り替わる幅） ─── */
+@media (max-width:959px){
+  /* トップのOPEN CAMPUSバッジはヒーロー内のボタンと重なるため隠す（追従ボタンで代替） */
+  .oc-badge{display:none !important}
+}
+
+/* ─── スマホ ─── */
+@media (max-width:640px){
+  /* 背景の大きな英字（ABOUT / ADMISSION など）を画面幅に収める */
+  .wm{font-size:clamp(34px,11.5vw,64px) !important}
+  .wm + h1{margin-top:-8px !important}
+  .wm + h2,.wm + h3{margin-top:-10px !important}
+
+  /* トップのヒーロー写真：6列×3段 → 3列×6段 */
+  .hero-grid{grid-template-columns:repeat(3,1fr) !important;grid-template-rows:repeat(6,1fr) !important}
+
+  /* 写真主体のカードは2列にして縦長になりすぎないようにする */
+  .m-2col{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:24px 14px !important}
+
+  /* ページ上部の緑バッジ（8 FACULTIES など）がはみ出さないように */
+  .ph-badge-en{font-size:20px !important}
+
+  /* トップのモーダル */
+  .modal-card{padding:28px 20px 24px !important}
+
+  .scroll-hint{display:block}
+
+  /* イラスト */
+  .cta-illust-btn{position:static;transform:none;margin-top:16px}
+  .illust-point{width:110px !important}
+
+  /* 出願の流れが縦並びになるので横向きの矢印は消す */
+  .step-arrow{display:none !important}
+
+  /* iOSで入力欄をタップしたときに画面が拡大されるのを防ぐ */
+  input,select,textarea{font-size:16px !important}
+}

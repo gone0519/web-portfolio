@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Zen Kaku Gothic New",sans-serif;color:#1d3340;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1f6f93;text-decoration:none}
+a:hover{color:#3d9cc0}
+button{font-family:inherit}
+</style>
+<script src="motion.js"></script>
+<link rel="stylesheet" href="responsive.css">
+</helmet>
+<dc-import name="SiteHeader" current="prep" style="position:absolute;top:0;left:0;right:0;z-index:30" hint-size="100%,86px"></dc-import>
+
+<section data-screen-label="Prep Hero" style="background:#3d9cc0;color:#fff;display:flex;flex-wrap:wrap">
+  <div style="flex:1 1 420px;padding:clamp(150px,13vw,220px) clamp(20px,5vw,60px) 70px clamp(20px,8vw,160px);display:flex;flex-direction:column;gap:14px;justify-content:flex-end">
+    <div style="display:flex;gap:10px;font-size:12px;letter-spacing:.06em"><a href="University%20Admissions.dc.html" style="color:#fff">トップ</a><span>／</span><span>入試準備ガイド</span></div>
+    <h1 style="margin:0;font-family:Jost;font-weight:400;font-size:clamp(52px,5.6vw,92px);line-height:1">Preparation</h1>
+    <span style="font-size:18px;font-weight:700;letter-spacing:.12em">入試準備ガイド</span>
+    <p style="margin:10px 0 0;max-width:460px;font-size:15px;line-height:2">入試方式の選び方から、学習計画、科目別の対策まで。受験までの道のりを一緒に整理しましょう。</p>
+  </div>
+  <div class="sub-hero-photo" style="flex:1 1 460px;min-height:clamp(320px,32vw,560px);position:relative;background:#dfeae8 url(img/hero-prep.jpg) center/cover no-repeat" data-photo role="img" aria-label="教室で笑顔を見せる学生たち">
+    <svg viewBox="0 0 200 1000" preserveAspectRatio="none" style="position:absolute;left:-1px;top:0;height:100%;width:clamp(60px,8vw,150px)"><path d="M0,0 L120,0 C20,320 200,640 40,1000 L0,1000 Z" fill="#3d9cc0"></path></svg>
+  </div>
+</section>
+
+<nav style="background:#fff;border-bottom:1px solid #e1edf2;padding:0 clamp(20px,5vw,60px);position:sticky;top:0;z-index:20">
+  <div style="max-width:1200px;margin:0 auto;display:flex;gap:28px;overflow-x:auto;scrollbar-width:none">
+    <a href="#methods" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">入試方式の比較</a>
+    <a href="#plan" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">学習スケジュール</a>
+    <a href="#subjects" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">科目別対策</a>
+    <a href="#time" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">時間の使い方</a>
+    <a href="#resources" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">対策資料・講座</a>
+  </div>
+</nav>
+
+<section id="methods" data-screen-label="Methods" style="padding:90px clamp(20px,5vw,60px) 40px;scroll-margin-top:60px">
+  <div style="max-width:1200px;margin:0 auto">
+    <span style="font-family:Jost;font-size:13px;letter-spacing:.2em;color:#3d9cc0">METHODS</span>
+    <h2 style="margin:10px 0 0;font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:.06em;line-height:1.5">3つの入試方式を比べる</h2>
+    <div style="margin-top:40px;overflow-x:auto">
+      <div class="cmp" style="min-width:760px;display:grid;grid-template-columns:150px repeat(3,1fr)">
+        <span class="cmp-blank" style="padding:16px"></span>
+        <sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+          <button class="cmp-btn" onClick="{{ m.onClick }}" style="border:0;cursor:pointer;padding:18px 16px;font-size:16px;font-weight:700;letter-spacing:.06em;background:{{ m.bg }};color:{{ m.fg }};transition:background .2s">{{ m.name }}</button>
+        </sc-for>
+        <sc-for list="{{ rows }}" as="r" hint-placeholder-count="4">
+          <span class="cmp-k" style="padding:18px 16px;font-size:13px;font-weight:700;color:#1f6f93;border-bottom:1px solid #d4e5ec;background:#eef6f9">{{ r.k }}</span>
+          <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="3">
+            <span class="{{ c.cls }}" style="padding:18px 16px;font-size:14px;line-height:1.8;border-bottom:1px solid #d4e5ec;background:{{ c.bg }}">{{ c.v }}</span>
+          </sc-for>
+        </sc-for>
+      </div>
+    </div>
+    <div style="margin-top:28px;background:#3d9cc0;color:#fff;padding:clamp(24px,3vw,40px);display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:720px">
+        <span style="font-size:19px;font-weight:700;letter-spacing:.06em">{{ active.name }}の準備ポイント</span>
+        <span style="font-size:14px;line-height:1.9">{{ active.tip }}</span>
+      </div>
+      <a href="Admissions.dc.html" style="background:#fff;color:#1f6f93;padding:14px 28px;font-weight:700;font-size:14px" style-hover="background:#eef6f9">日程・出願方法をみる</a>
+    </div>
+    <span style="display:block;margin-top:12px;font-size:12px;color:#5a7380">※記載内容はサンプルです。正式な情報は募集要項をご確認ください。</span>
+  </div>
+</section>
+
+<section id="plan" data-screen-label="Study Plan" style="background:#3d9cc0;color:#fff;margin-top:80px;padding:0 clamp(20px,5vw,60px) 110px;scroll-margin-top:60px">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style="display:block;width:calc(100% + 2 * clamp(20px,5vw,60px));margin:0 calc(-1 * clamp(20px,5vw,60px));height:80px"><path d="M0,0 L1440,0 L1440,40 C1080,120 520,10 0,90 Z" fill="#fff"></path></svg>
+  <div style="max-width:1200px;margin:60px auto 0">
+    <h2 style="margin:0;font-family:Jost;font-weight:400;font-size:clamp(40px,3.6vw,56px);line-height:1">Schedule</h2>
+    <span style="display:block;margin-top:10px;font-size:15px;font-weight:700;letter-spacing:.12em">受験までの学習スケジュール</span>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:2px;margin-top:44px">
+      <sc-for list="{{ plan }}" as="p" hint-placeholder-count="6">
+        <div style="background:rgba(255,255,255,.12);padding:26px 22px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:Jost;font-size:12px;letter-spacing:.16em">{{ p.step }}</span>
+          <span style="font-size:20px;font-weight:700;letter-spacing:.04em">{{ p.when }}</span>
+          <span style="font-size:15px;font-weight:700">{{ p.title }}</span>
+          <span style="font-size:13px;line-height:1.85">{{ p.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="subjects" data-screen-label="Subjects" style="padding:100px clamp(20px,5vw,60px) 40px;scroll-margin-top:60px">
+  <div style="max-width:1200px;margin:0 auto">
+    <span style="font-family:Jost;font-size:13px;letter-spacing:.2em;color:#3d9cc0">SUBJECTS</span>
+    <h2 style="margin:10px 0 0;font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:.06em;line-height:1.5">科目別の対策</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:24px;margin-top:40px">
+      <sc-for list="{{ subjects }}" as="s" hint-placeholder-count="6">
+        <div style="border:1px solid #cfe2ea;padding:28px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <span style="font-size:20px;font-weight:700;letter-spacing:.06em">{{ s.name }}</span>
+            <span style="font-family:Jost;font-size:12px;letter-spacing:.14em;color:#3d9cc0">{{ s.en }}</span>
+          </div>
+          <sc-for list="{{ s.tips }}" as="tp" hint-placeholder-count="3">
+            <div style="display:flex;gap:10px;font-size:14px;line-height:1.8"><span style="flex:0 0 6px;height:6px;margin-top:10px;background:#3d9cc0;border-radius:50%"></span><span>{{ tp }}</span></div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="time" data-screen-label="Time Management" style="padding:80px clamp(20px,5vw,60px) 40px;scroll-margin-top:60px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:60px;align-items:center">
+    <div data-photo role="img" aria-label="教室で学習する学生たち" style="aspect-ratio:4/3;background:#e6eff2 url(img/prep-plan.jpg) center/cover no-repeat"></div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <span style="font-family:Jost;font-size:13px;letter-spacing:.2em;color:#3d9cc0">TIME MANAGEMENT</span>
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:.06em;line-height:1.5">続けられる計画の立て方</h2>
+      <div style="border-top:1px solid #d4e5ec">
+        <sc-for list="{{ timeTips }}" as="t" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:50px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid #d4e5ec">
+            <span style="font-family:Jost;font-size:22px;color:#3d9cc0">{{ t.no }}</span>
+            <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:16px;font-weight:700">{{ t.title }}</span><span style="font-size:13.5px;line-height:1.85;color:#3c5563">{{ t.text }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resources" data-screen-label="Resources" style="padding:80px clamp(20px,5vw,60px) 20px;scroll-margin-top:60px">
+  <div style="max-width:1200px;margin:0 auto">
+    <span style="font-family:Jost;font-size:13px;letter-spacing:.2em;color:#3d9cc0">RESOURCES</span>
+    <h2 style="margin:10px 0 0;font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:.06em;line-height:1.5">対策資料・講座</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;margin-top:40px">
+      <sc-for list="{{ resources }}" as="r" hint-placeholder-count="4">
+        <a href="{{ r.href }}" style="background:#eef6f9;padding:26px;display:flex;flex-direction:column;gap:10px;color:#1d3340;transition:background .2s" style-hover="background:#e1eff5;color:#1d3340">
+          <span style="align-self:flex-start;background:#2b86ad;color:#fff;font-size:11px;padding:2px 8px">{{ r.type }}</span>
+          <span style="font-size:17px;font-weight:700;letter-spacing:.04em">{{ r.title }}</span>
+          <span style="font-size:13px;line-height:1.8;color:#3c5563;flex:1">{{ r.text }}</span>
+          <span style="font-size:13px;font-weight:700;color:#1f6f93">{{ r.cta }} ↗</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" show-cta="{{ true }}" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { m: 0 };
+  renderVals() {
+    const M = [
+      { name: '総合型選抜', tip: '志望理由書は「なぜこの学科か」を、高校での経験と結びつけて書きましょう。夏のオープンキャンパスでの事前面談が出願要件になる場合があります。' },
+      { name: '学校推薦型選抜', tip: '評定平均値の基準を早めに確認し、高3の1学期まで定期試験に力を入れましょう。小論文は週1本のペースで書き、先生に添削してもらうのが効果的です。' },
+      { name: '一般選抜', tip: '秋までに基礎を固め、11月以降は過去問題を本番と同じ時間で解きます。共通テスト利用方式との併願で受験機会を増やすこともできます。' },
+    ];
+    const cells = [
+      ['学ぶ意欲・探究活動', '高校での学習成績と人物', '学力試験の得点'],
+      ['9月〜10月', '11月', '1月〜2月'],
+      ['書類・課題レポート・プレゼンテーション', '書類審査・小論文・面接', '筆記試験（3教科）／共通テスト'],
+      ['やりたいことが明確な人', '高校の成績を積み上げてきた人', '学力で勝負したい人'],
+    ];
+    const keys = ['評価の軸', '出願時期（目安）', '主な選考', '向いている人'];
+    return {
+      methods: M.map((m, i) => ({ name: m.name, bg: this.state.m === i ? '#2b86ad' : '#eef6f9', fg: this.state.m === i ? '#fff' : '#1f6f93', onClick: () => this.setState({ m: i }) })),
+      rows: keys.map((k, r) => ({ k, cells: cells[r].map((v, i) => ({ v, bg: this.state.m === i ? '#f3f9fb' : '#fff', cls: this.state.m === i ? 'cmp-c' : 'cmp-c cmp-off' })) })),
+      active: M[this.state.m],
+      plan: [
+        { step: 'STEP 01', when: '高2・冬', title: '志望分野を絞る', text: '興味のある学問を書き出し、資料請求やWeb説明会で学部を比べます。' },
+        { step: 'STEP 02', when: '高3・4〜5月', title: '入試方式を決める', text: '評定や課外活動をふまえ、軸にする方式と併願先を決めます。' },
+        { step: 'STEP 03', when: '高3・6〜8月', title: '基礎固めと体験', text: '苦手科目の基礎を固めつつ、オープンキャンパスに参加します。' },
+        { step: 'STEP 04', when: '高3・9〜10月', title: '出願準備', text: '志望理由書や調査書の準備。総合型選抜はこの時期に出願します。' },
+        { step: 'STEP 05', when: '高3・11〜12月', title: '実戦演習', text: '過去問題を時間を計って解き、弱点の分野を集中的に復習します。' },
+        { step: 'STEP 06', when: '高3・1〜2月', title: '本番', text: '体調管理を最優先に。試験前日は新しい問題に手を広げないこと。' },
+      ],
+      subjects: [
+        { name: '英語', en: 'ENGLISH', tips: ['長文は段落ごとの要旨をメモしながら読む', '単語は毎日決まった数を繰り返す', '過去問題で設問の形式に慣れる'] },
+        { name: '国語', en: 'JAPANESE', tips: ['現代文は本文の根拠に線を引いて答える', '古文は助動詞と敬語を優先して復習', '記述問題は字数の8割以上を目安に'] },
+        { name: '数学', en: 'MATHEMATICS', tips: ['教科書の例題を解き直して基礎を確認', '間違えた問題は解き方を言葉で説明する', '計算ミスの傾向を記録しておく'] },
+        { name: '小論文', en: 'ESSAY', tips: ['結論→理由→具体例→結論の型で書く', '志望分野の新聞記事を週に数本読む', '書いたら必ず第三者に読んでもらう'] },
+        { name: '面接', en: 'INTERVIEW', tips: ['志望理由を1分・3分の2パターンで話せるように', '想定質問への答えは丸暗記しない', '入退室の動作も一度練習しておく'] },
+        { name: '志望理由書', en: 'STATEMENT', tips: ['学科で学びたいことを具体的に書く', '高校での経験と志望をつなげる', '下書きは複数回見直す'] },
+      ],
+      timeTips: [
+        { no: '01', title: '1週間単位で計画する', text: '毎日の予定を細かく決めるより、週の目標と予備日を設けるほうが続けやすくなります。' },
+        { no: '02', title: '朝の30分を固定する', text: '単語や計算など短時間でできる学習を、毎朝同じ時間に行う習慣をつけます。' },
+        { no: '03', title: '記録して振り返る', text: '学習時間と内容を記録し、週末に計画とのずれを確認します。' },
+        { no: '04', title: '休む時間も予定に入れる', text: '睡眠と休息を削らないことが、長期間の受験勉強を乗り切るコツです。' },
+      ],
+      resources: [
+        { type: 'PDF', title: '入試ガイド2027', text: '各入試方式の概要と出願の流れをまとめた冊子です（サンプル）。', cta: 'ダウンロード', href: 'CampusLife.dc.html#contact' },
+        { type: 'Web', title: '過去問題・解答例', text: '一般選抜の過去3年分を科目別に閲覧できます。', cta: '過去問題をみる', href: 'Admissions.dc.html' },
+        { type: '動画', title: '小論文対策講座', text: '本学教員が小論文の書き方を解説するオンライン講座です。', cta: '講座をみる', href: 'CampusLife.dc.html#opencampus' },
+        { type: '講座', title: '面接対策セミナー', text: '模擬面接と個別アドバイスを行います。日程は調整中です。', cta: '予約する', href: 'CampusLife.dc.html#contact' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

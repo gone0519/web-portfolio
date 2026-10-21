@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Caveat:wght@500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>html{scroll-behavior:smooth}body{margin:0;font-family:'Noto Sans JP',sans-serif;color:#333;background:#fff;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#5e9e1a;text-decoration:none}a:hover{color:#f0913a}button{font-family:inherit}</style>
+<link rel="stylesheet" href="site.css">
+<script src="anim.js"></script>
+</helmet>
+<div style="min-height:100vh;overflow-x:clip">
+<dc-import name="SiteHeader" current="programs" style="position:sticky;top:0;z-index:50" hint-size="100%,100px"></dc-import>
+
+<div data-screen-label="Programs Hero" style="position:relative;background:#eef5e1;height:clamp(220px,24vw,300px);overflow:hidden;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+  <div role="img" aria-label="講義風景" style="background:#e3ecd2 url(img/p24.jpg) center/cover no-repeat;display:flex;justify-content:center;padding-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#71825a"></div>
+  <div style="background:#e3ecd2 url(img/p06.jpg) center/cover no-repeat"></div>
+  <div role="img" aria-label="キャンパス" style="background:#e3ecd2 url(img/p15.jpg) center/cover no-repeat;display:flex;justify-content:center;padding-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#71825a"></div>
+  <div style="position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);background:rgba(255,255,255,.96);border-radius:50%/40%;padding:20px clamp(32px,6vw,72px);text-align:center;z-index:2;white-space:nowrap">
+    <div style="font-weight:900;font-size:clamp(13px,1.4vw,16px);letter-spacing:.06em">学びたいが、きっと見つかる</div>
+    <h1 style="margin:0;font-weight:900;font-size:clamp(26px,3.6vw,42px);color:#6aa82a;letter-spacing:.06em;line-height:1.3">大学・学部紹介</h1>
+    <div style="font-family:'Caveat',cursive;color:#8dba43;font-size:20px;line-height:1">◆ Programs</div>
+  </div>
+  <div style="position:absolute;left:-5%;right:-5%;bottom:-2px;height:56px;background:#8dba43;border-radius:50% 50% 0 0 / 100% 100% 0 0;z-index:1"></div>
+  <div style="position:absolute;left:-5%;right:-5%;bottom:-24px;height:56px;background:#fff;border-radius:50% 50% 0 0 / 100% 100% 0 0;z-index:1"></div>
+</div>
+<div style="max-width:1000px;margin:0 auto;padding:18px 16px 0;font-size:12px;color:#777;display:flex;gap:8px"><a href="University Admissions.dc.html">TOP</a><span>›</span><span>大学・学部紹介</span></div>
+
+<section style="padding:40px 16px 64px">
+  <div style="max-width:1000px;margin:0 auto">
+    <img src="img/il-friends.png" alt="" class="illust" style="width:min(340px,80%);margin:0 auto 16px">
+    <p style="margin:0 auto 28px;max-width:640px;text-align:center;font-size:14px;line-height:1.9;text-wrap:pretty">興味のある分野から学部を探してみましょう。各学部で学べる内容と主な特徴を紹介しています。<br><span style="font-size:12px;color:#777">※掲載している学部・特徴はサンプルです。</span></p>
+    <div class="pills" style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:30px">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+        <button onClick="{{ f.pick }}" style="border:2px solid #8dba43;background:{{ f.bg }};color:{{ f.fg }};font-weight:700;font-size:13px;padding:8px 22px;border-radius:30px;cursor:pointer;transition:all .2s">{{ f.label }}<span style="margin-left:6px;font-size:11px;opacity:.8">{{ f.count }}</span></button>
+      </sc-for>
+    </div>
+    <div class="fac-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(440px,100%),1fr));gap:22px">
+      <sc-for list="{{ faculties }}" as="fc" hint-placeholder-count="6">
+        <article style="background:#fff;border:1px solid #3b3b3b;border-radius:4px;overflow:hidden;display:flex;flex-wrap:wrap">
+          <div role="img" aria-label="{{ fc.photo }}" style="position:relative;flex:1 1 170px;min-height:180px;background:#e3ecd2 url(img/{{ fc.img }}) center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:#71825a"><div style="position:absolute;top:8px;left:8px;width:52px;height:46px;background:{{ fc.badgeBg }};color:#fff;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:14px">{{ fc.type }}</div></div>
+          <div style="flex:1.4 1 240px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+            <div style="font-weight:900;font-size:18px">{{ fc.name }}<span style="font-family:'Caveat',cursive;color:#8dba43;font-size:17px;margin-left:8px;font-weight:700">{{ fc.en }}</span></div>
+            <p style="margin:0;font-size:13px;line-height:1.8;text-wrap:pretty">{{ fc.desc }}</p>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11px"><span style="background:#8dba43;color:#fff;font-weight:700;padding:2px 8px">分野</span><span>{{ fc.fields }}</span></div>
+            <div style="display:flex;flex-direction:column;gap:4px;margin-top:2px">
+              <sc-for list="{{ fc.features }}" as="ft" hint-placeholder-count="3">
+                <div style="display:flex;gap:8px;font-size:12px;line-height:1.6"><span style="color:#f0913a">●</span><span>{{ ft }}</span></div>
+              </sc-for>
+            </div>
+            <a href="Contact.dc.html?type=form" style="margin-top:auto;align-self:flex-end;font-size:12px;font-weight:700;color:#e24a2a">資料を請求する ›</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="background:#8dba43;padding:64px 16px">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="text-align:center;color:#fff;margin-bottom:32px">
+      <h2 style="margin:0;font-size:clamp(22px,2.6vw,28px);font-weight:900;letter-spacing:.14em;text-shadow:0 2px 0 rgba(60,90,20,.35)">大学の種類を知ろう</h2>
+      <div style="font-family:'Caveat',cursive;font-size:20px">◆ Types of Universities</div>
+    </div>
+    <img src="img/il-campus.png" alt="" class="illust" style="width:min(320px,80%);margin:-8px auto 24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+      <sc-for list="{{ kinds }}" as="k" hint-placeholder-count="3">
+        <div style="background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 3px 0 rgba(50,80,20,.2)">
+          <div style="background:#f0913a;color:#fff;text-align:center;font-weight:900;font-size:16px;padding:9px;letter-spacing:.1em">{{ k.title }}</div>
+          <p style="margin:0;padding:16px 20px 20px;font-size:13px;line-height:1.9;text-wrap:pretty">{{ k.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="background:#f6f9ee;padding:64px 16px 80px">
+  <div style="max-width:780px;margin:0 auto">
+    <img src="img/il-point.png" alt="" class="illust" style="width:110px;margin:0 auto 6px">
+    <h2 style="margin:0 0 28px;text-align:center;font-size:clamp(20px,2.4vw,26px);font-weight:900;letter-spacing:.12em"><span style="color:#6aa82a">学部選び</span>の3つのポイント</h2>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ points }}" as="p" hint-placeholder-count="3">
+        <div style="background:#fff;border-radius:6px;padding:20px 24px;display:flex;gap:18px;align-items:flex-start;box-shadow:0 2px 10px rgba(70,100,30,.08)">
+          <span style="flex:0 0 auto;background:#8dba43;color:#fff;font-weight:900;font-size:13px;padding:3px 12px;border-radius:3px">◆ {{ p.no }}</span>
+          <div><div style="font-weight:900;font-size:16px;margin-bottom:6px">{{ p.title }}</div><p style="margin:0;font-size:13px;line-height:1.9;text-wrap:pretty">{{ p.text }}</p></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filter: 'すべて' };
+  renderVals() {
+    const typeColor = { '文系':'#e24a2a', '理系':'#2f7fc1', '融合':'#f0913a' };
+    const all = [
+      { name:'文学部', en:'Letters', type:'文系', photo:'図書館', img:'p28.jpg', fields:'日本文学・歴史・哲学', desc:'言葉や文化、歴史を深く読み解き、人間について考える力を養います。', features:['少人数ゼミで文献を精読','フィールドワークや資料調査','卒業論文で研究成果をまとめる'] },
+      { name:'法学部', en:'Law', type:'文系', photo:'模擬法廷', img:'p20.jpg', fields:'法律・政治・行政', desc:'社会のルールを学び、論理的に考え判断する力を身につけます。', features:['判例研究による論理的思考','模擬裁判などの実践授業','公務員・法曹を目指すコース'] },
+      { name:'経済学部', en:'Economics', type:'文系', photo:'グループ討論', img:'p32.jpg', fields:'経済・経営・会計', desc:'データと理論から社会や企業の動きを分析する視点を学びます。', features:['統計・データ分析の基礎','企業と連携したプロジェクト','会計資格の学習サポート'] },
+      { name:'国際教養学部', en:'Liberal Arts', type:'融合', photo:'留学生との交流', img:'p18.jpg', fields:'語学・国際関係・異文化', desc:'語学力と幅広い教養を土台に、多様な価値観の中で活躍する力を育てます。', features:['英語で学ぶ専門科目','海外留学・研修プログラム','文理を横断する教養科目'] },
+      { name:'理工学部', en:'Science & Eng.', type:'理系', photo:'実験室', img:'p25.jpg', fields:'機械・電気・化学', desc:'実験と実習を通して、ものづくりや科学の原理を体系的に学びます。', features:['充実した実験・実習設備','研究室での卒業研究','企業との共同研究機会'] },
+      { name:'情報科学部', en:'Informatics', type:'理系', photo:'PCルーム', img:'p26.jpg', fields:'プログラミング・AI・データ', desc:'情報技術の基礎から応用までを学び、社会の課題解決に生かします。', features:['プログラミング演習','AI・データサイエンス科目','チーム開発プロジェクト'] },
+      { name:'看護・医療学部', en:'Health Sciences', type:'理系', photo:'実習室', img:'p29.jpg', fields:'看護・リハビリ・栄養', desc:'人の健康と命を支える専門知識と、寄り添う姿勢を身につけます。', features:['臨地実習で現場を経験','国家試験対策のサポート','多職種連携の学び'] },
+      { name:'教育学部', en:'Education', type:'融合', photo:'模擬授業', img:'p33.jpg', fields:'教育・心理・子ども', desc:'学びと成長のしくみを理解し、教育に携わる専門性を養います。', features:['教育実習・学校ボランティア','教員免許取得のサポート','心理学・発達学の科目'] },
+    ];
+    const fl = ['すべて','文系','理系','文理融合'];
+    const key = l => l === '文理融合' ? '融合' : l;
+    const s = this.state;
+    const list = s.filter === 'すべて' ? all : all.filter(f => f.type === key(s.filter));
+    return {
+      filters: fl.map(l => ({ label:l, count: l==='すべて' ? all.length : all.filter(f => f.type===key(l)).length, bg: s.filter===l ? '#8dba43' : '#fff', fg: s.filter===l ? '#fff' : '#5e9e1a', pick: () => this.setState({ filter:l }) })),
+      faculties: list.map(f => ({ ...f, badgeBg: typeColor[f.type] })),
+      kinds: [
+        { title:'国立大学', text:'国が設置する大学です。一般選抜では共通テストと個別試験の両方を課す大学が多く、幅広い教科の対策が必要になります。' },
+        { title:'公立大学', text:'都道府県や市などの自治体が設置する大学です。地域に根ざした教育や研究に力を入れている大学も多くあります。' },
+        { title:'私立大学', text:'学校法人が設置する大学です。建学の精神にもとづく特色ある教育が行われ、入試方式や試験科目のバリエーションも豊富です。' },
+      ],
+      points: [
+        { no:'01', title:'「好き」「得意」から考える', text:'興味のある教科や、時間を忘れて取り組めることをヒントに、関連する学問分野を調べてみましょう。' },
+        { no:'02', title:'卒業後の進路から逆算する', text:'目指したい職業や資格がある場合は、必要な学部・学科やカリキュラムを確認することが大切です。' },
+        { no:'03', title:'実際に足を運んで確かめる', text:'オープンキャンパスや説明会では、授業の雰囲気や在学生の声に直接ふれることができます。' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

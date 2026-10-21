@@ -1,0 +1,46 @@
+/* Shared responsive rules. Page layouts are inline styles; these only patch what inline styles can't (breakpoints, phrase-aware wrapping). */
+
+/* Japanese line breaks: wrap at phrase boundaries so headings don't leave a single kana on the last line */
+body { word-break: auto-phrase; }
+p { word-break: normal; }
+
+/* Anchor targets land below the sticky header */
+[id] { scroll-margin-top: 76px; }
+
+/* Equal-width segmented tabs (入試方式・お問い合わせ種別) */
+.seg-tabs > * { flex: 1 1 0 !important; min-width: 0; }
+.seg-tabs.ruled > *:last-child { border-right: 0 !important; }
+
+/* Card rows that never leave an empty slot: the last row's cards stretch to fill it (set --min on the container) */
+.fill-row { display: flex !important; flex-wrap: wrap; }
+.fill-row > * { flex: 1 1 var(--min, 260px); min-width: 0; }
+
+/* Hero visual is sized for the 2-column layout; once it stacks (≈1015px) keep it from dominating the screen */
+@media (max-width: 1015px) {
+  .hero-visual { max-width: 440px !important; }
+}
+
+/* Mobile/tablet only helpers */
+.sp-only { display: none; }
+
+@media (max-width: 640px) {
+  .sp-only { display: block; }
+  .pc-only { display: none !important; }
+
+  /* Page-local anchor chips: 2 per row */
+  .chips { display: grid !important; grid-template-columns: 1fr 1fr; }
+  .chips > a { text-align: center; }
+
+  /* Hero badge would cover the small photo; move it above */
+  .hero-badge { bottom: auto !important; top: 2% !important; left: 0 !important; }
+
+  /* Tuition table → one card per row with labelled cells */
+  .tuition { border: 0 !important; border-radius: 0 !important; overflow: visible !important; display: flex; flex-direction: column; gap: 12px; }
+  .tuition-inner { min-width: 0 !important; display: contents; }
+  .tuition-head { display: none !important; }
+  .tuition-row { grid-template-columns: 1fr 1fr !important; border: 2px solid #141a22 !important; border-radius: 14px; overflow: hidden; }
+  .tuition-row > :first-child { grid-column: 1 / -1; background: #141a22; color: #fff; }
+  .tuition-row > [data-label] { text-align: left !important; padding: 10px 14px !important; border-top: 1px solid #cfd8e0; }
+  .tuition-row > [data-label]::before { content: attr(data-label); display: block; font-size: 11px; font-weight: 700; color: #5b6773; }
+  .tuition-row > [data-label]:nth-child(odd) { border-left: 1px solid #cfd8e0; }
+}

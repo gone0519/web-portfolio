@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(16px,2vw,24px);pointer-events:none">
+  <a href="Top.dc.html" style="pointer-events:auto;display:flex;flex-direction:column;gap:2px;line-height:1;text-decoration:none">
+    <span style="font-family:'Jost',sans-serif;font-weight:800;font-size:22px;letter-spacing:0.02em;color:#111">MANABIYA<span style="color:#e2561b">.</span></span>
+    <span style="font-family:'Noto Sans JP',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;color:#111">大学入試ナビ</span>
+  </a>
+  <button onClick="{{ toggle }}" aria-label="メニューを開く" style="pointer-events:auto;display:flex;align-items:center;gap:10px;background:none;border:0;cursor:pointer;padding:0">
+    <span style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
+      <span style="font-family:'Jost',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.08em;color:#111">MENU</span>
+      <span style="display:block;width:44px;height:1px;background:#111"></span>
+    </span>
+    <span style="display:block;width:46px;height:46px;background:#e2561b;border-radius:58% 42% 50% 50% / 45% 55% 45% 55%;transform:rotate(-12deg);transition:transform .3s" style-hover="transform:rotate(20deg) scale(1.06)"></span>
+  </button>
+</header>
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+  <nav style="position:fixed;inset:0;z-index:60;background:#111;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,8vw,120px);gap:clamp(12px,2vw,22px);overflow:auto">
+    <button onClick="{{ toggle }}" style="position:absolute;top:18px;right:24px;background:none;border:1px solid #fff;color:#fff;font-family:'Jost',sans-serif;font-weight:700;letter-spacing:0.1em;padding:8px 16px;cursor:pointer;border-radius:999px">CLOSE ×</button>
+    <sc-for list="{{ items }}" as="n" hint-placeholder-count="6">
+      <a href="{{ n.href }}" style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;color:#fff;border-bottom:1px solid #444;padding-bottom:12px;text-decoration:none" style-hover="color:#e2561b">
+        <span style="font-family:'Jost',sans-serif;font-weight:700;color:#e2561b;font-size:14px;letter-spacing:0.1em">{{ n.no }}</span>
+        <span style="font-family:'Shippori Mincho',serif;font-size:clamp(24px,3.6vw,44px);font-weight:600">{{ n.ja }}</span>
+        <span style="font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.16em;color:#999">{{ n.en }}</span>
+        <span style="font-family:'Jost',sans-serif;font-size:11px;font-weight:700;color:#e2561b">{{ n.mark }}</span>
+      </a>
+    </sc-for>
+  </nav>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:120},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;programs&quot;,&quot;exam&quot;,&quot;admissions&quot;,&quot;support&quot;,&quot;campus&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { open: false };
+  renderVals() {
+    const cur = this.props.current || 'top';
+    const items = [
+      ['top', '00', 'トップ', 'TOP', 'Top.dc.html'],
+      ['programs', '01', '学部・学問を探す', 'PROGRAMS', 'Programs.dc.html'],
+      ['exam', '02', '入試対策', 'EXAM PREP', 'Exam.dc.html'],
+      ['admissions', '03', '入試方式・出願', 'ADMISSIONS', 'Admissions.dc.html'],
+      ['support', '04', '学費・奨学金・FAQ', 'SUPPORT', 'Support.dc.html'],
+      ['campus', '05', 'キャンパス・オープンキャンパス', 'CAMPUS', 'Campus.dc.html']
+    ].map(([k, no, ja, en, href]) => ({ no, ja, en, href, mark: k === cur ? '● NOW' : '' }));
+    return { open: this.state.open, toggle: () => this.setState(s => ({ open: !s.open })), items };
+  }
+}
+</script>
+</body>
+</html>

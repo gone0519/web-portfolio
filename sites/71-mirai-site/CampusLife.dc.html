@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Caveat:wght@500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>html{scroll-behavior:smooth}body{margin:0;font-family:'Noto Sans JP',sans-serif;color:#333;background:#fff;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#5e9e1a;text-decoration:none}a:hover{color:#f0913a}button{font-family:inherit}</style>
+<link rel="stylesheet" href="site.css">
+<script src="anim.js"></script>
+</helmet>
+<div style="min-height:100vh;overflow-x:clip">
+<dc-import name="SiteHeader" current="campus" style="position:sticky;top:0;z-index:50" hint-size="100%,100px"></dc-import>
+
+<div data-screen-label="Campus Hero" style="position:relative;background:#eef5e1;height:clamp(220px,24vw,300px);overflow:hidden;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+  <div role="img" aria-label="部活動" style="background:#e3ecd2 url(img/p19.jpg) center/cover no-repeat;display:flex;justify-content:center;padding-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#71825a"></div>
+  <div style="background:#e3ecd2 url(img/p12.jpg) center/cover no-repeat"></div>
+  <div role="img" aria-label="学園祭" style="background:#e3ecd2 url(img/p09.jpg) center/cover no-repeat;display:flex;justify-content:center;padding-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#71825a"></div>
+  <div style="position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);background:rgba(255,255,255,.96);border-radius:50%/40%;padding:20px clamp(32px,6vw,72px);text-align:center;z-index:2;white-space:nowrap">
+    <div style="font-weight:900;font-size:clamp(13px,1.4vw,16px);letter-spacing:.06em">新しい毎日が待っている</div>
+    <h1 style="margin:0;font-weight:900;font-size:clamp(26px,3.6vw,42px);color:#6aa82a;letter-spacing:.06em;line-height:1.3">キャンパスライフ</h1>
+    <div style="font-family:'Caveat',cursive;color:#8dba43;font-size:20px;line-height:1">◆ Campus Life</div>
+  </div>
+  <div style="position:absolute;left:-5%;right:-5%;bottom:-2px;height:56px;background:#8dba43;border-radius:50% 50% 0 0 / 100% 100% 0 0;z-index:1"></div>
+  <div style="position:absolute;left:-5%;right:-5%;bottom:-24px;height:56px;background:#fff;border-radius:50% 50% 0 0 / 100% 100% 0 0;z-index:1"></div>
+</div>
+<div style="max-width:1000px;margin:0 auto;padding:18px 16px 0;font-size:12px;color:#777;display:flex;gap:8px"><a href="University Admissions.dc.html">TOP</a><span>›</span><span>キャンパスライフ</span></div>
+
+<section style="padding:40px 16px 64px">
+  <div style="max-width:1000px;margin:0 auto">
+    <p style="margin:0 auto 32px;max-width:620px;text-align:center;font-size:14px;line-height:1.9;text-wrap:pretty">授業だけでなく、仲間との活動やキャンパスの外での経験も、大学生活の大切な学びです。</p>
+    <img src="img/il-campuslife.png" alt="" class="illust" style="width:min(640px,100%);border-radius:10px;margin:0 auto 32px">
+    <div class="life-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px">
+      <sc-for list="{{ life }}" as="lf" hint-placeholder-count="6">
+        <div style="background:#fff;border:1px solid #3b3b3b;border-radius:4px;overflow:hidden;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-4px);box-shadow:0 10px 20px rgba(40,70,10,.16)">
+          <div role="img" aria-label="{{ lf.photo }}" style="aspect-ratio:4/3;background:#e3ecd2 url(img/{{ lf.img }}) center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:#71825a"></div>
+          <div style="padding:16px 18px 20px">
+            <div style="font-weight:900;font-size:16px">{{ lf.title }}<span style="font-family:'Caveat',cursive;color:#8dba43;font-size:17px;margin-left:8px">{{ lf.en }}</span></div>
+            <p style="margin:8px 0 0;font-size:13px;line-height:1.85;text-wrap:pretty">{{ lf.text }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="background:#8dba43;padding:56px 16px">
+  <div style="max-width:780px;margin:0 auto">
+    <img src="img/il-sports.png" alt="" class="illust" style="width:180px;margin:0 auto 14px">
+    <div style="max-width:420px;margin:0 auto 28px;background:#fff;border-radius:4px;text-align:center;padding:14px 16px;font-size:14px;font-weight:700">大学生の<span style="color:#f0913a">1日の過ごし方</span>（例）</div>
+    <div style="background:#fff;border-radius:6px;padding:clamp(18px,3vw,30px)">
+      <sc-for list="{{ day }}" as="d" hint-placeholder-count="6">
+        <div style="display:flex;gap:16px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed #d6dfc6">
+          <span style="flex:0 0 64px;background:#f0913a;color:#fff;font-weight:900;font-size:13px;text-align:center;padding:4px 0;border-radius:3px">{{ d.time }}</span>
+          <div style="flex:1"><div style="font-weight:900;font-size:14px">{{ d.title }}</div><div style="font-size:12px;line-height:1.7;color:#555">{{ d.text }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="opencampus" style="background:#f6f9ee;padding:64px 16px 80px">
+  <div style="max-width:1000px;margin:0 auto">
+    <h2 style="margin:0 0 28px;text-align:center;font-size:clamp(20px,2.4vw,26px);font-weight:900;letter-spacing:.2em;display:flex;align-items:baseline;justify-content:center;gap:12px;flex-wrap:wrap">オープンキャンパス<span style="font-family:'Caveat',cursive;color:#8dba43;font-size:22px;letter-spacing:0">◆ Open Campus</span></h2>
+    <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:stretch;margin-bottom:40px">
+      <div role="img" aria-label="オープンキャンパス告知" style="flex:1 1 360px;min-height:280px;border-radius:6px;background:#fff url(img/il-opencampus.png) center/contain no-repeat;border:1px solid #e4ead8;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:#a36d3a"></div>
+      <div style="flex:1 1 360px;background:#fff;border-radius:6px;box-shadow:0 4px 18px rgba(70,100,30,.1);padding:26px 28px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-weight:900;font-size:17px;line-height:1.6">【開催予定】オープンキャンパス／キャンパス見学ツアー</div>
+        <div style="border-top:1px dashed #bbb"></div>
+        <p style="margin:0;font-size:13px;line-height:1.9;text-wrap:pretty">模擬授業、学部説明会、在学生とのキャンパスツアー、個別相談などを予定しています。保護者の方もご参加いただけます。</p>
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:13px">
+          <div style="display:flex;gap:10px"><span style="flex:0 0 52px;background:#8dba43;color:#fff;font-size:11px;font-weight:700;text-align:center;padding:2px 0">日程</span><span>調整中（決まり次第お知らせします）</span></div>
+          <div style="display:flex;gap:10px"><span style="flex:0 0 52px;background:#8dba43;color:#fff;font-size:11px;font-weight:700;text-align:center;padding:2px 0">会場</span><span>各大学キャンパス／オンライン</span></div>
+          <div style="display:flex;gap:10px"><span style="flex:0 0 52px;background:#8dba43;color:#fff;font-size:11px;font-weight:700;text-align:center;padding:2px 0">参加</span><span>事前予約制・参加無料（予定）</span></div>
+        </div>
+        <a href="Contact.dc.html?type=oc" style="margin-top:auto;align-self:flex-start;background:#f0913a;color:#fff;font-weight:900;font-size:14px;padding:13px 32px;border-radius:30px;box-shadow:0 3px 0 #cf7322" style-hover="background:#e27d22;color:#fff">参加を予約する ›</a>
+      </div>
+    </div>
+    <h3 style="margin:0 0 16px;text-align:center;font-size:18px;font-weight:900;letter-spacing:.08em">主なプログラム（予定）</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+      <sc-for list="{{ programs }}" as="p" hint-placeholder-count="4">
+        <div style="background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 2px 10px rgba(70,100,30,.08)">
+          <div style="background:#f0913a;color:#fff;text-align:center;font-weight:700;font-size:13px;padding:7px">{{ p.title }}</div>
+          <img src="img/{{ p.il }}" alt="" style="display:block;height:120px;max-width:90%;object-fit:contain;margin:14px auto 0">
+          <p style="margin:0;padding:14px 16px 16px;font-size:12px;line-height:1.8;text-wrap:pretty">{{ p.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      life: [
+        { title:'サークル・部活動', en:'Clubs', photo:'サークル活動', img:'p19.jpg', text:'スポーツから文化系まで、興味に合わせて仲間と打ち込める活動がたくさんあります。' },
+        { title:'学園祭・イベント', en:'Festival', photo:'学園祭', img:'p09.jpg', text:'学生が企画・運営する学園祭や季節のイベントは、学部を越えた交流のきっかけになります。' },
+        { title:'留学・海外研修', en:'Global', photo:'海外研修', img:'p27.jpg', text:'短期の語学研修から長期の交換留学まで、海外で学ぶプログラムが用意されています。' },
+        { title:'地域連携・ボランティア', en:'Local', photo:'地域活動', img:'p01.jpg', text:'地域の課題に取り組むプロジェクトやボランティアを通して、社会とつながる経験ができます。' },
+        { title:'キャリア支援', en:'Career', photo:'キャリアセンター', img:'p05.jpg', text:'インターンシップや就職ガイダンスなど、卒業後の進路を考えるためのサポートがあります。' },
+        { title:'学生生活サポート', en:'Support', photo:'学生相談室', img:'p17.jpg', text:'一人暮らしの相談や健康管理、学習面の相談など、安心して過ごせる体制が整っています。' },
+      ],
+      day: [
+        { time:'9:00', title:'1限・2限の授業', text:'専門科目や語学の授業。少人数のゼミ形式の授業もあります。' },
+        { time:'12:10', title:'昼休み', text:'学食やラウンジで友人とランチ。' },
+        { time:'13:00', title:'3限・4限の授業', text:'実験・実習やグループワークなど、主体的に学ぶ授業も。' },
+        { time:'16:30', title:'図書館で課題', text:'レポートや発表の準備。グループ学習室も利用できます。' },
+        { time:'18:00', title:'サークル・アルバイト', text:'授業後は課外活動やアルバイトなど、思い思いの時間に。' },
+      ],
+      programs: [
+        { title:'模擬授業', il:'il-lecture.png', text:'大学の授業を体験できます。学部ごとの学びの雰囲気を知ることができます。' },
+        { title:'学部・学科説明', il:'il-teacher.png', text:'カリキュラムや取得できる資格、卒業後の進路について説明します。' },
+        { title:'キャンパスツアー', il:'il-bench.png', text:'在学生の案内で、教室や図書館、学食などの施設を見学します。' },
+        { title:'個別相談', il:'il-point.png', text:'入試・学費・奨学金など、気になることを個別に相談できます。' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

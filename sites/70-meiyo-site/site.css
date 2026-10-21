@@ -1,0 +1,61 @@
+/* 全ページ共通のレスポンシブ調整（インラインstyleを上書きするため !important を使用） */
+
+/* ---- タブレット以下（1099px以下） ---- */
+@media (max-width: 1099px) {
+  /* トップ：入試方式カード下の黄色い円が見出しに重なるため非表示 */
+  .exam-circle { display: none; }
+  /* 下層ページヒーローのイラスト：重ならないよう本文の下に右寄せで配置 */
+  .hero-illust { position: static !important; display: block; width: min(52vw, 260px) !important; margin: 28px 0 0 auto; }
+  .wide-only { display: none !important; }
+}
+/* 入試情報ページはアンカーボタンと重なる幅でイラストを隠す */
+@media (min-width: 1100px) and (max-width: 1279px) {
+  .hero-illust-wide { display: none !important; }
+}
+
+/* ---- スマートフォン（640px以下） ---- */
+@media (max-width: 640px) {
+  /* 下層ページヒーローの装飾ブロック：見出しと重ならないよう小さく */
+  .hero-deco-y { width: 56px !important; height: 64px !important; right: 16px !important; top: 0 !important; }
+  .hero-deco-k { display: none !important; }
+
+  /* トップヒーローのボタンを同じ幅に揃える */
+  .hero-cta > a { min-width: 0 !important; flex: 1 1 100%; }
+
+  /* 中央揃えの長文は左揃えに */
+  .intro-text { text-align: left; }
+
+  /* 丸ボタン（フィルター・アンカー）を小さめに */
+  .pill-sm { padding: 9px 16px !important; font-size: 13px !important; }
+  .filter-label { display: none; }
+
+  /* 縦積みになったステップの区切り線 */
+  .steps > li { border-right: 0 !important; border-bottom: 1px solid #ececec; }
+
+  /* 入試方式タブ（2列） */
+  .tab-sm { padding: 14px 16px !important; }
+  .tab-sm > span:first-child { font-size: 13px !important; white-space: nowrap; }
+  .tab-sm > span:last-child { font-size: 15px !important; }
+
+  /* 見出し横のイラストは小さめに */
+  .head-illust { height: 76px !important; }
+
+  /* FAQ のカテゴリ表示は省略して質問文の幅を確保 */
+  .faq-cat { display: none; }
+
+  /* 表をカード表示に切り替え */
+  .rtable { min-width: 0 !important; }
+  .rtable thead { display: none; }
+  .rtable, .rtable tbody, .rtable tr { display: block; width: 100%; }
+  .rtable tr { padding: 14px 16px; border-bottom: 1px solid #ececec; }
+  .rtable td { display: flex !important; justify-content: space-between; align-items: baseline; gap: 12px; padding: 5px 0 !important; text-align: left !important; }
+  .rtable td:first-child { display: block !important; padding-bottom: 8px !important; font-size: 16px; }
+  .rtable td[data-label]::before { content: attr(data-label); font-family: "Zen Kaku Gothic New", sans-serif; font-size: 12px; font-weight: 700; color: #1e1e1e; }
+
+  /* オープンキャンパスのバナーを画面下のコンパクトなバーに */
+  .oc-banner { left: 10px !important; right: 10px !important; bottom: 10px !important; width: auto !important; display: flex; align-items: center; gap: 12px; padding: 10px 40px 10px 14px !important; border-width: 3px !important; }
+  .oc-banner .ocb-eyebrow, .oc-banner .ocb-note { display: none; }
+  .oc-banner .ocb-title { flex: 1; margin: 0 !important; font-size: 15px !important; }
+  .oc-banner .ocb-btn { width: auto !important; flex: none; gap: 10px; margin: 0 !important; padding: 9px 12px !important; font-size: 13px !important; }
+  .oc-banner .ocb-close { top: 50% !important; transform: translateY(-50%); }
+}

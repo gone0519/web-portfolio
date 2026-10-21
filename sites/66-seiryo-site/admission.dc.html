@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:ital,wght@0,700;0,800;0,900;1,800&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site.css">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Noto Sans JP",sans-serif;color:#1f1f1f;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#2f7d2c}
+a:hover{color:#1f5e1d}
+h1,h2,h3,h4,p{margin:0}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="admission" hint-size="100%,72px"></dc-import>
+<main>
+<dc-import name="PageHero" slot="admission" num="PAGE 03" en="ADMISSION" ja="出願・学費" lead="入試日程、出願の手順、必要書類、学費と奨学金制度をまとめています。保護者の方もあわせてご確認ください。" img1="Web出願をする学生" img2="入試相談の様子" img1-src="img/29-group-work-laptop.jpg" img2-src="img/30-consultation-table.jpg" badge-en="WEB ENTRY" badge-ja="出願はすべてWebで" hint-size="100%,560px"></dc-import>
+
+<div style="padding:32px 24px 0">
+  <p style="max-width:1040px;margin:0 auto;background:#fcefee;border:2px solid #d7322b;border-radius:16px;padding:14px 20px;font-size:13px;font-weight:700;color:#9b1f1a;line-height:1.8">※このページの日程・金額・条件はすべてサンプルです。正式な情報は必ず最新の学生募集要項でご確認ください。</p>
+</div>
+
+<section data-screen-label="Schedule" style="padding:clamp(56px,7vw,88px) 24px">
+  <div style="max-width:1040px;margin:0 auto">
+    <div data-reveal="" style="margin-bottom:28px">
+      <p style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:800;color:#3e9a3c;letter-spacing:.24em">SCHEDULE</p>
+      <h2 style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:clamp(22px,2.6vw,28px);font-weight:900;margin-top:6px">入試スケジュール</h2>
+    </div>
+    <p class="scroll-hint">表は横にスクロールできます →</p>
+    <div data-reveal="" style="overflow-x:auto;border-radius:20px;border:2px solid #1f1f1f">
+      <table style="width:100%;min-width:680px;border-collapse:collapse;font-size:13.5px">
+        <thead><tr style="background:#1a1a1a;color:#fff"><th style="padding:16px 20px;text-align:left">入試方式</th><th style="padding:16px 20px;text-align:left">出願期間</th><th style="padding:16px 20px;text-align:left">試験日</th><th style="padding:16px 20px;text-align:left">合格発表</th><th style="padding:16px 20px;text-align:left">入学手続締切</th></tr></thead>
+        <tbody>
+          <sc-for list="{{ schedule }}" as="r" hint-placeholder-count="5">
+            <tr style="border-top:1px solid #e5e5e5;background:{{ r.bg }}"><td style="padding:18px 20px;font-weight:900;white-space:nowrap">{{ r.name }}</td><td style="padding:18px 20px;color:#555">○月○日〜○月○日</td><td style="padding:18px 20px;color:#555">{{ r.exam }}</td><td style="padding:18px 20px;color:#555">○月○日</td><td style="padding:18px 20px;color:#555">○月○日</td></tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Flow" style="background:#f3eada;padding:clamp(64px,8vw,104px) 24px;border-radius:clamp(32px,6vw,80px) clamp(32px,6vw,80px) 0 0">
+  <div style="max-width:1040px;margin:0 auto">
+    <div data-reveal="" style="text-align:center;margin-bottom:44px">
+      <div class="wm" style="font-family:Montserrat,sans-serif;font-weight:900;font-size:clamp(52px,7vw,88px);line-height:.9;color:#e6dac4">FLOW</div>
+      <h2 style="font-size:18px;font-weight:900;margin-top:-22px;position:relative">出願の流れ</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px;margin-bottom:56px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div data-reveal="" style="background:#fff;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:8px;position:relative">
+          <span style="width:52px;height:52px;border-radius:50%;background:#3e9a3c;color:#fff;display:grid;place-items:center;font-family:Montserrat,sans-serif;font-weight:900;font-size:17px">{{ s.no }}</span>
+          <p style="font-weight:900;font-size:15px;margin-top:8px">{{ s.title }}</p>
+          <p style="font-size:12.5px;line-height:1.85;color:#555">{{ s.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div data-reveal="" style="background:#fff;border-radius:24px;padding:clamp(22px,3vw,32px)">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px">
+        <p style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:18px">必要書類チェックリスト</p>
+        <span style="background:#f3eada;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700">{{ checkedLabel }}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:10px">
+        <sc-for list="{{ docs }}" as="d" hint-placeholder-count="6">
+          <button onClick="{{ d.toggle }}" style="display:flex;align-items:center;gap:12px;border:1.5px solid {{ d.border }};background:{{ d.bg }};border-radius:14px;padding:14px 16px;font-family:inherit;font-size:13px;font-weight:700;text-align:left;cursor:pointer;color:#1f1f1f;transition:background .2s">
+            <span style="flex:none;width:22px;height:22px;border-radius:6px;border:2px solid #3e9a3c;background:{{ d.box }};color:#fff;display:grid;place-items:center;font-size:12px">{{ d.mark }}</span>{{ d.label }}
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tuition" data-screen-label="Tuition" style="padding:clamp(64px,8vw,104px) 24px;scroll-margin-top:72px">
+  <div style="max-width:1040px;margin:0 auto">
+    <div data-reveal="" style="margin-bottom:28px">
+      <p style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:800;color:#3e9a3c;letter-spacing:.24em">TUITION &amp; SCHOLARSHIP</p>
+      <h2 style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:clamp(22px,2.6vw,28px);font-weight:900;margin-top:6px">学費・奨学金</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:24px;margin-bottom:24px">
+      <div data-reveal="" style="border:2px solid #1f1f1f;border-radius:24px;overflow:hidden">
+        <p style="background:#1a1a1a;color:#fff;padding:16px 22px;font-weight:900;font-size:15px">初年度納入金（サンプル）</p>
+        <sc-for list="{{ fees }}" as="f" hint-placeholder-count="4">
+          <div style="display:flex;justify-content:space-between;gap:12px;padding:15px 22px;border-top:1px solid #eee;font-size:13.5px"><span style="font-weight:700">{{ f }}</span><span style="color:#555">○○○,○○○円</span></div>
+        </sc-for>
+        <p style="padding:14px 22px;font-size:12px;color:#777;border-top:1px solid #eee;line-height:1.8">学部により異なります。分納制度もご利用いただけます。</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <sc-for list="{{ scholarships }}" as="s" hint-placeholder-count="3">
+          <div data-reveal="" style="background:#f3eada;border-radius:20px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start">
+            <span style="flex:none;width:46px;height:46px;border-radius:14px;background:{{ s.color }};color:#fff;display:grid;place-items:center;font-size:18px;font-weight:900">{{ s.icon }}</span>
+            <div><p style="font-weight:900;font-size:15px;margin-bottom:4px">{{ s.title }}</p><p style="font-size:12.5px;line-height:1.85;color:#555">{{ s.desc }}</p></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div data-reveal="" style="background:#1f4a1e;color:#fff;border-radius:28px;padding:clamp(24px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px;align-items:center">
+      <div>
+        <p style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:800;color:#9fd88f;letter-spacing:.24em">FOR PARENTS</p>
+        <p style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:clamp(20px,2.4vw,26px);margin:6px 0 12px">保護者の方へ</p>
+        <p style="font-size:13.5px;line-height:2;opacity:.92">入試制度・学費・奨学金・卒業後の進路など、保護者の方からのご相談を入試課で受け付けています。オープンキャンパスでは保護者向け説明会も開催しています。</p>
+      </div>
+      <a href="contact.dc.html?type=q" style="justify-self:start;display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-width:240px;padding:14px 14px 14px 28px;background:#fff;color:#1a1a1a;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;transition:gap .25s" style-hover="gap:36px;color:#1a1a1a">保護者相談を申し込む<span style="width:24px;height:24px;border-radius:50%;background:#1a1a1a;color:#fff;display:grid;place-items:center;font-size:11px">→</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" slot="admission" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { checked: {} };
+  docs = ['入学志願票（Web出願で作成）', '調査書', '写真（Web登録）', '推薦書（学校推薦型のみ）', '志望理由書（総合型のみ）', '共通テスト成績請求票（利用方式のみ）'];
+  renderVals() {
+    const c = this.state.checked, n = Object.values(c).filter(Boolean).length;
+    return {
+      schedule: [['総合型選抜', '○月○日'], ['学校推薦型選抜', '○月○日'], ['一般選抜（前期）', '○月○日・○日'], ['一般選抜（後期）', '○月○日'], ['共通テスト利用', '本学独自試験なし']].map(([name, exam], i) => ({ name, exam, bg: i % 2 ? '#fbf6ec' : '#fff' })),
+      steps: [
+        { no: '01', title: '募集要項を確認', desc: '入試方式・出願資格・必要書類を確認します。' },
+        { no: '02', title: 'Web出願登録', desc: '出願サイトで必要事項を入力し、検定料を納入します。' },
+        { no: '03', title: '書類を郵送', desc: '調査書など必要書類を期限内に郵送します。' },
+        { no: '04', title: '受験票を印刷', desc: '出願完了後、受験票をダウンロードして試験当日に持参します。' }
+      ],
+      docs: this.docs.map((label, i) => ({ label, mark: c[i] ? '✓' : '', box: c[i] ? '#3e9a3c' : '#fff', bg: c[i] ? '#eef6e8' : '#fff', border: c[i] ? '#3e9a3c' : '#ddd', toggle: () => this.setState({ checked: { ...c, [i]: !c[i] } }) })),
+      checkedLabel: `準備済み ${n} / ${this.docs.length}`,
+      fees: ['入学金', '授業料', '施設設備費', 'その他諸費'],
+      scholarships: [
+        { icon: '★', color: '#3e9a3c', title: '成績優秀者奨学金（給付型）', desc: '入試成績が優秀な方を対象に、授業料の一部を給付します（内容はサンプル）。' },
+        { icon: '♡', color: '#d7322b', title: '経済支援奨学金', desc: '家計の状況に応じて学修を支援する大学独自の制度です。' },
+        { icon: '◎', color: '#1f4a1e', title: '国の修学支援制度', desc: '授業料等の減免と給付型奨学金の対象となる場合があります。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

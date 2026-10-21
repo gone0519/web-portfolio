@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Saira+Semi+Condensed:wght@600;700&family=Saira+Extra+Condensed:wght@700;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',sans-serif;color:#1d2a3a;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#1565c0;text-decoration:none}
+a:hover{color:#0a3d8f}
+button,input,select,textarea{font-family:inherit}
+</style>
+</helmet>
+
+<dc-import name="SiteHeader" current="contact" style="position:sticky;top:0;z-index:50" hint-size="100%,64px"></dc-import>
+<dc-import name="PageHero" en="Contact" ja="お問い合わせ・資料請求" lead="資料請求、オープンキャンパスの申し込み、入試に関するご質問はこちらから。" slot="hero-contact" photo="入試課・相談窓口の写真" hint-size="100%,500px"></dc-import>
+
+<main data-screen-label="Contact" style="max-width:1000px;margin:0 auto;padding:32px 20px 72px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+  <div style="flex:1.6 1 460px;min-width:0">
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px solid #1b5fb8;padding:40px 28px;text-align:center">
+        <p data-anim="slide-right" style="margin:0;font-family:'Saira Semi Condensed',sans-serif;font-weight:700;font-size:28px;color:#5aa8ec">Thank you</p>
+        <h2 data-anim="fade-up" style="margin:8px 0 0;font-size:20px;color:#0a3d8f">送信が完了しました</h2>
+        <p style="margin:14px 0 24px;font-size:14px;line-height:1.9">内容を確認のうえ、入試課より3営業日以内にご連絡します。<br>（サンプルサイトのため、実際には送信されません）</p>
+        <button onClick="{{ reset }}" style="background:#1b5fb8;color:#fff;border:0;font-weight:700;font-size:14px;padding:12px 32px;cursor:pointer" style-hover="background:#0a3d8f">フォームに戻る</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form data-stagger="80" onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:22px">
+        <fieldset style="border:0;margin:0;padding:0">
+          <legend style="font-size:14px;font-weight:700;color:#0a3d8f;margin-bottom:10px">お問い合わせ種別 <span style="background:#c62828;color:#fff;font-size:10px;padding:2px 6px;margin-left:6px">必須</span></legend>
+          <div data-stagger="110" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px">
+            <sc-for list="{{ types }}" as="t" hint-placeholder-count="4">
+              <button type="button" onClick="{{ t.select }}" style="border:1px solid #1b5fb8;background:{{ t.bg }};color:{{ t.fg }};padding:12px 10px;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s">{{ t.label }}</button>
+            </sc-for>
+          </div>
+        </fieldset>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;color:#0a3d8f">氏名 <input required name="name" placeholder="蒼翔 太郎" style="border:1px solid #9bbbe0;padding:12px 14px;font-size:15px;font-weight:400;color:#1d2a3a"></label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;color:#0a3d8f">メールアドレス <input required type="email" name="email" placeholder="example@mail.jp" style="border:1px solid #9bbbe0;padding:12px 14px;font-size:15px;font-weight:400;color:#1d2a3a"></label>
+        <div data-stagger="110" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;color:#0a3d8f">学年・立場
+            <select name="grade" style="border:1px solid #9bbbe0;padding:12px 14px;font-size:15px;font-weight:400;color:#1d2a3a;background:#fff">
+              <option>高校3年生</option><option>高校2年生</option><option>高校1年生</option><option>既卒生</option><option>保護者</option><option>高校教員</option>
+            </select>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;color:#0a3d8f">興味のある学部
+            <select name="faculty" style="border:1px solid #9bbbe0;padding:12px 14px;font-size:15px;font-weight:400;color:#1d2a3a;background:#fff">
+              <option>未定</option><option>文学部</option><option>経済経営学部</option><option>理工学部</option><option>看護福祉学部</option>
+            </select>
+          </label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;color:#0a3d8f">お問い合わせ内容・資料送付先 <textarea name="message" rows="6" placeholder="資料請求の場合は、送付先のご住所をご記入ください。" style="border:1px solid #9bbbe0;padding:12px 14px;font-size:15px;font-weight:400;color:#1d2a3a;resize:vertical"></textarea></label>
+        <label style="display:flex;align-items:center;gap:10px;font-size:13px"><input required type="checkbox" style="width:18px;height:18px"> 個人情報の取り扱いに同意する</label>
+        <button type="submit" style="align-self:center;min-width:280px;background:#ffe600;color:#0a3d8f;border:0;font-weight:700;font-size:16px;padding:16px 32px;cursor:pointer;transition:background .2s" style-hover="background:#f5d800">送信する ›</button>
+      </form>
+    </sc-if>
+  </div>
+
+  <aside data-stagger="150" data-child="slide-right" style="flex:1 1 280px;display:flex;flex-direction:column;gap:16px">
+    <div style="background:#1b6fc6;color:#fff;padding:22px 24px">
+      <p data-anim="slide-right" style="margin:0;font-family:'Saira Semi Condensed',sans-serif;font-weight:700;font-size:22px;color:#cfe6ff">Admissions Office</p>
+      <p style="margin:6px 0 0;font-size:16px;font-weight:700">蒼翔大学 入試課</p>
+      <p style="margin:12px 0 0;font-size:13px;line-height:1.9">〒000-0000 ◯◯県◯◯市◯◯町0-0<br>TEL <strong style="font-size:18px">00-0000-0000</strong><br>受付 平日 9:00〜17:00<br>E-mail nyushi@example.ac.jp</p>
+    </div>
+    <div style="border:1px solid #1b5fb8">
+      <div style="position:relative;background:#1b78d6;color:#fff;padding:10px;text-align:center;font-weight:700;font-size:14px"><span style="position:absolute;left:0;top:0;width:34px;height:100%;background:#0a3d8f;clip-path:polygon(0 0,100% 0,0 100%)"></span>お問い合わせの前に</div>
+      <div style="padding:14px 18px;display:flex;flex-direction:column;gap:8px;font-size:13px">
+        <a href="Admissions.dc.html#faq" style="display:flex;align-items:center;gap:8px"><span style="width:0;height:0;border-left:8px solid #ffd400;border-top:5px solid transparent;border-bottom:5px solid transparent"></span>よくある質問</a>
+        <a href="Admissions.dc.html#schedule" style="display:flex;align-items:center;gap:8px"><span style="width:0;height:0;border-left:8px solid #ffd400;border-top:5px solid transparent;border-bottom:5px solid transparent"></span>入試日程</a>
+        <a href="CampusLife.dc.html#opencampus" style="display:flex;align-items:center;gap:8px"><span style="width:0;height:0;border-left:8px solid #ffd400;border-top:5px solid transparent;border-bottom:5px solid transparent"></span>オープンキャンパス日程</a>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { type: 0, sent: false };
+  renderVals() {
+    const labels = ['資料請求', 'オープンキャンパス予約', '入試に関する質問', '個別相談の予約'];
+    return {
+      sent: this.state.sent, notSent: !this.state.sent,
+      types: labels.map((label, i) => ({
+        label, bg: this.state.type === i ? '#1b5fb8' : '#fff', fg: this.state.type === i ? '#fff' : '#0a3d8f',
+        select: () => this.setState({ type: i })
+      })),
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header data-anim="down" data-delay="250" style="position:relative;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(20px,2vw,36px) clamp(20px,4vw,76px)">
+  <a href="Admissions%20Site.dc.html" style="display:flex;flex:none;align-items:center;gap:12px;text-decoration:none">
+    <div style="position:relative;width:46px;height:46px;background:#1e1e1e;flex:none">
+      <div style="position:absolute;right:0;top:0;width:0;height:0;border-left:22px solid transparent;border-top:22px solid #ffdb3d"></div>
+      <div style="position:absolute;left:9px;bottom:9px;width:14px;height:14px;border:3px solid #fff;border-radius:50%"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;line-height:1">
+      <span style="font-family:Poppins,sans-serif;font-weight:700;font-size:24px;letter-spacing:.04em;color:#1e1e1e">MEIYO</span>
+      <span style="font-family:Poppins,sans-serif;font-weight:600;font-size:10px;letter-spacing:.22em;white-space:nowrap;color:#1e1e1e;margin-top:4px">UNIVERSITY 明陽大学</span>
+    </div>
+  </a>
+  <div style="display:flex;align-items:center;gap:clamp(20px,3vw,58px)">
+    <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:clamp(18px,2.6vw,56px)">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+          <a href="{{ n.href }}" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding-bottom:10px;text-decoration:none;transition:opacity .2s" style-hover="opacity:.55">
+            <span style="font-family:Poppins,sans-serif;font-weight:600;font-size:clamp(14px,1.15vw,22px);letter-spacing:.08em;color:#1e1e1e">{{ n.en }}</span>
+            <span style="font-size:11px;font-weight:700;color:#1e1e1e;white-space:nowrap">{{ n.jp }}</span>
+            <span style="position:absolute;left:20%;right:20%;bottom:0;height:4px;background:{{ n.bar }}"></span>
+          </a>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <button onClick="{{ openMenu }}" aria-label="メニューを開く" style="width:clamp(56px,4.4vw,84px);height:clamp(56px,4.4vw,84px);border-radius:50%;background:#1e1e1e;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;flex:none;transition:transform .25s" style-hover="transform:scale(1.06)">
+      <span style="display:block;width:32%;height:2px;background:#fff"></span><span style="display:block;width:32%;height:2px;background:#fff"></span><span style="display:block;width:32%;height:2px;background:#fff"></span>
+    </button>
+  </div>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div data-anim="wipe" data-dur="650" style="position:fixed;inset:0;z-index:60;background:#1e1e1e;color:#fff;overflow:auto;padding:clamp(24px,3vw,40px) clamp(20px,4vw,76px)">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-family:Poppins,sans-serif;font-weight:700;font-size:22px;letter-spacing:.06em;color:#fff">MEIYO <span style="color:#ffdb3d">UNIVERSITY</span></span>
+      <button onClick="{{ closeMenu }}" aria-label="メニューを閉じる" style="width:64px;height:64px;border-radius:50%;background:#ffdb3d;border:0;font-size:26px;cursor:pointer;color:#1e1e1e">×</button>
+    </div>
+    <nav data-stagger="up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:4px 60px;max-width:1200px;margin:clamp(40px,6vw,90px) auto 0">
+      <sc-for list="{{ menuNav }}" as="n" hint-placeholder-count="7">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:22px 0;border-bottom:1px solid #3a3a3a;color:#fff;text-decoration:none;transition:color .2s" style-hover="color:#ffdb3d">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,4vw,68px);line-height:1">{{ n.en }}</span>
+          <span style="font-size:14px;font-weight:700">{{ n.jp }}</span>
+        </a>
+      </sc-for>
+    </nav>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;140px&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;about&quot;,&quot;faculty&quot;,&quot;exam&quot;,&quot;admission&quot;,&quot;campus&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+    this.onKey = e => { if (e.key === 'Escape') this.setState({ menuOpen: false }); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('keydown', this.onKey); }
+  renderVals() {
+    const active = this.props.active ?? '';
+    const items = [
+      { key: 'about', en: 'ABOUT', jp: '大学紹介', href: 'About.dc.html' },
+      { key: 'faculty', en: 'FACULTY', jp: '学部・学科', href: 'Faculty.dc.html' },
+      { key: 'exam', en: 'EXAM', jp: '入試対策', href: 'Exam.dc.html' },
+      { key: 'admission', en: 'ADMISSION', jp: '入試情報', href: 'Admission.dc.html' },
+      { key: 'campus', en: 'CAMPUS', jp: 'キャンパスライフ', href: 'Campus.dc.html' },
+      { key: 'contact', en: 'CONTACT', jp: 'お問い合わせ', href: '#contact' },
+    ];
+    const nav = items.map(n => ({ ...n, bar: n.key === active ? '#ffdb3d' : 'transparent' }));
+    return {
+      nav,
+      menuNav: [{ en: 'TOP', jp: 'トップページ', href: 'Admissions%20Site.dc.html' }, ...nav],
+      showNav: this.state.w >= 1024,
+      menuOpen: this.state.menuOpen,
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

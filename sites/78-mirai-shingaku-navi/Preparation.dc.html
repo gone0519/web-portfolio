@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Outfit:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Zen Kaku Gothic New",sans-serif;color:#141a22;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1873c9;text-decoration:none}
+a:hover{color:#0f5596}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+<link href="site.css" rel="stylesheet">
+<script src="anim.js"></script>
+</helmet>
+<div style="min-height:100vh;overflow-x:clip">
+<dc-import name="Header" current="prep" hint-size="100%,68px" style="position:sticky;top:0;z-index:50"></dc-import>
+
+<section data-screen-label="Prep Hero" style="background-color:#f6f8fa;background-image:linear-gradient(#e8edf2 1px,transparent 1px),linear-gradient(90deg,#e8edf2 1px,transparent 1px);background-size:28px 28px;border-bottom:1px solid #e3e9ef">
+  <div style="max-width:1160px;margin:0 auto;padding:clamp(40px,6vw,72px) 24px;display:flex;flex-wrap:wrap;align-items:center;gap:24px 40px">
+    <div style="flex:1 1 480px;min-width:0">
+    <div style="font-size:12px;font-weight:700;color:#5b6773;display:flex;gap:8px"><a href="University Admissions.dc.html">トップ</a><span>›</span><span>受験対策</span></div>
+    <h1 style="margin:18px 0 0;font-family:Outfit;font-weight:900;font-size:clamp(44px,8vw,84px);line-height:1;color:#1873c9">PREPARATION</h1>
+    <div style="font-family:'Dela Gothic One';font-size:clamp(22px,3vw,32px);margin-top:10px">合格に向けた受験対策ガイド</div>
+    <p style="max-width:640px;font-size:14px;line-height:1.9;color:#3a4550;margin-top:16px;text-wrap:pretty">入試方式ごとの特徴を知り、自分に合った準備を早めに始めることが合格への近道です。学習計画の立て方や時間管理のコツもあわせて紹介します。</p>
+    <div class="chips" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
+      <a href="#methods" style="background:#fff;border:2px solid #141a22;border-radius:999px;padding:6px 16px;font-size:12px;font-weight:900;color:#141a22">入試方式</a>
+      <a href="#plan" style="background:#fff;border:2px solid #141a22;border-radius:999px;padding:6px 16px;font-size:12px;font-weight:900;color:#141a22">年間学習プラン</a>
+      <a href="#subjects" style="background:#fff;border:2px solid #141a22;border-radius:999px;padding:6px 16px;font-size:12px;font-weight:900;color:#141a22">教科別対策</a>
+      <a href="#resources" style="background:#fff;border:2px solid #141a22;border-radius:999px;padding:6px 16px;font-size:12px;font-weight:900;color:#141a22">お役立ち資料</a>
+    </div>
+    </div>
+    <img src="img/il-study.png" alt="" style="flex:0 1 400px;width:min(100%,400px);height:auto;margin-inline:auto">
+  </div>
+</section>
+
+<section id="methods" data-screen-label="Methods" style="background:#79bde8;padding:clamp(40px,6vw,64px) clamp(12px,3vw,40px)">
+  <div style="max-width:1160px;margin:0 auto;background-color:#fff;background-image:linear-gradient(#edf2f6 1px,transparent 1px),linear-gradient(90deg,#edf2f6 1px,transparent 1px);background-size:24px 24px;border-radius:32px;padding:clamp(32px,5vw,56px) clamp(16px,4vw,56px)">
+    <h2 style="margin:0;font-family:'Dela Gothic One';font-weight:400;font-size:clamp(24px,3vw,32px)">3つの入試方式と対策</h2>
+    <div style="display:flex;flex-direction:column;gap:20px;margin-top:28px">
+      <sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px;border:2px solid #141a22;border-radius:16px;padding:clamp(18px,4vw,26px);background:#fff">
+          <div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="flex:none;width:56px;height:56px;background:#1873c9;color:#fff;clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900">{{ m.badge }}</div>
+              <div style="font-size:21px;font-weight:900">{{ m.name }}</div>
+            </div>
+            <p style="margin:14px 0 0;font-size:13px;line-height:1.9;color:#3a4550;text-wrap:pretty">{{ m.desc }}</p>
+            <div style="margin-top:12px;font-size:12px;font-weight:700"><span style="color:#1873c9">主な評価：</span>{{ m.eval }}</div>
+          </div>
+          <div style="background:#eaf4fb;border-radius:12px;padding:18px 20px">
+            <div style="font-size:14px;font-weight:900">対策のポイント</div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+              <sc-for list="{{ m.points }}" as="pt">
+                <div style="display:flex;gap:8px;align-items:flex-start;font-size:13px;font-weight:700;line-height:1.6"><span style="flex:none;width:16px;height:16px;margin-top:3px;border-radius:50%;background:#1873c9;color:#fff;font-size:9px;display:flex;align-items:center;justify-content:center">✓</span>{{ pt }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="plan" data-screen-label="Plan" style="background:#fff;padding:clamp(48px,7vw,88px) 24px">
+  <div style="max-width:1160px;margin:0 auto">
+    <h2 style="margin:0;font-family:Outfit;font-weight:900;font-size:clamp(36px,6vw,60px);line-height:1;color:#1873c9">STUDY PLAN</h2>
+    <div style="font-size:16px;font-weight:900;margin-top:6px">合格までの年間学習プラン</div>
+    <div class="fill-row" style="--min:200px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));border:2px solid #141a22;border-radius:16px;overflow:hidden;margin-top:32px">
+      <sc-for list="{{ plan }}" as="s" hint-placeholder-count="5">
+        <div style="padding:22px 20px;border-right:1px solid #cfd8e0;border-bottom:1px solid #cfd8e0">
+          <div style="font-family:Outfit;font-weight:900;font-size:13px;color:#1873c9">STEP {{ s.no }}</div>
+          <div style="font-size:16px;font-weight:900;margin-top:4px">{{ s.when }}</div>
+          <p style="margin:8px 0 0;font-size:12px;line-height:1.8;color:#3a4550">{{ s.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;margin-top:28px">
+      <div style="background:#eaf4fb;border-radius:16px;padding:26px">
+        <div style="font-size:17px;font-weight:900">時間管理のコツ</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
+          <sc-for list="{{ tips }}" as="t"><div style="display:flex;gap:10px;font-size:13px;line-height:1.7"><span style="font-family:Outfit;font-weight:900;color:#1873c9">{{ t.n }}</span><span>{{ t.t }}</span></div></sc-for>
+        </div>
+      </div>
+      <div style="background:#eaf4fb;border-radius:16px;padding:26px">
+        <div style="font-size:17px;font-weight:900">1日の学習スケジュール例（休日）</div>
+        <div style="display:flex;flex-direction:column;margin-top:10px">
+          <sc-for list="{{ day }}" as="d"><div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:8px 0;border-bottom:1px solid #c7dcec;font-size:13px"><span style="font-family:Outfit;font-weight:800;color:#1873c9">{{ d.t }}</span><span>{{ d.a }}</span></div></sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="subjects" data-screen-label="Subjects" style="background:#1873c9;padding:clamp(40px,6vw,64px) clamp(12px,3vw,40px)">
+  <div style="max-width:1160px;margin:0 auto;background:#fff;border:2px solid #141a22">
+    <div style="text-align:center;padding:20px 16px;border-bottom:2px solid #141a22"><h2 style="margin:0;font-family:'Dela Gothic One';font-weight:400;font-size:clamp(22px,3vw,30px)">教科別 対策のポイント</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))">
+      <sc-for list="{{ subjects }}" as="s" hint-placeholder-count="6">
+        <div style="padding:22px;border-right:1px solid #cfd8e0;border-bottom:1px solid #cfd8e0">
+          <div style="display:flex;align-items:center;gap:10px"><span style="background:#1873c9;color:#fff;font-family:Outfit;font-weight:900;font-size:14px;padding:3px 9px">{{ s.no }}</span><span style="font-size:17px;font-weight:900">{{ s.name }}</span></div>
+          <p style="margin:12px 0 0;font-size:13px;line-height:1.8;color:#3a4550">{{ s.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="resources" data-screen-label="Resources" style="background:#fff;padding:clamp(48px,7vw,88px) 24px">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px">
+    <div>
+      <div style="font-family:Outfit;font-weight:900;font-size:36px;color:#1873c9;line-height:1">RESOURCES</div>
+      <div style="font-size:14px;font-weight:900;margin-top:4px">対策ガイド・お役立ち資料</div>
+      <p style="font-size:13px;line-height:1.8;color:#3a4550;margin-top:16px">各ガイドは資料請求フォームからお申し込みいただけます。</p>
+    </div>
+    <div style="grid-column:span 2;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+      <sc-for list="{{ guides }}" as="g" hint-placeholder-count="6">
+        <a href="Campus.dc.html#contact" style="display:flex;justify-content:space-between;align-items:center;gap:12px;border:2px solid #141a22;border-radius:14px;padding:16px 18px;color:#141a22;font-size:14px;font-weight:900;transition:background .2s" style-hover="background:#f2f8fd;color:#141a22">{{ g }}<span style="flex:none;width:22px;height:22px;border-radius:50%;background:#1873c9;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center">›</span></a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,760px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      methods: [
+        { badge: '学力', name: '一般選抜', eval: '大学入学共通テスト・個別学力試験', desc: '学力試験の得点を中心に合否を判定する方式です。国公立大学では共通テストと個別試験の合計で判定するのが一般的で、私立大学では大学独自の試験や共通テスト利用方式があります。', points: ['志望校の教科・科目と配点を早めに確認する', '過去問で出題形式と時間配分に慣れる', '共通テストと個別試験の対策バランスを考える', '併願校を組み合わせて受験日程を組む'] },
+        { badge: '推薦', name: '学校推薦型選抜', eval: '調査書・推薦書・小論文・面接など', desc: '在籍する高校の校長の推薦をもとに出願する方式です。評定平均などの出願条件が設けられていることが多く、高校生活全体の取り組みが評価の土台になります。', points: ['評定平均などの出願条件を確認する', '日々の授業と定期テストを大切にする', '小論文・面接の練習を早めに始める', '校内選考のスケジュールを担任に確認する'] },
+        { badge: '総合', name: '総合型選抜', eval: '志望理由書・活動報告書・面接・プレゼンなど', desc: '大学のアドミッション・ポリシーと志望者の意欲・適性が合っているかを多面的に評価する方式です。出願時期が早いため、高校2年生のうちから準備を始めると安心です。', points: ['アドミッション・ポリシーを読み込む', '探究活動や課外活動を振り返り整理する', '志望理由を言葉にして何度も推敲する', '学力試験を課す大学もあるため基礎学力も維持する'] },
+      ],
+      plan: [
+        { no: '01', when: '高校1〜2年', text: '基礎科目の理解を固め、興味のある分野をオープンキャンパスなどで探す。' },
+        { no: '02', when: '高校3年 4〜6月', text: '志望校と入試方式を決め、逆算した年間学習計画を立てる。' },
+        { no: '03', when: '高校3年 7〜8月', text: '苦手科目の克服と総復習。総合型選抜の書類準備も本格化。' },
+        { no: '04', when: '高校3年 9〜12月', text: '過去問演習と模試の振り返り。推薦・総合型の試験に対応。' },
+        { no: '05', when: '高校3年 1〜3月', text: '本番を想定した演習と体調管理。出願手続きを確実に。' },
+      ],
+      tips: [
+        { n: '01', t: '1週間単位で「やること」を書き出し、達成度を見える化する' },
+        { n: '02', t: '集中する時間と休む時間を決めて、メリハリをつける' },
+        { n: '03', t: '模試の結果は点数より「間違えた理由」を分析する' },
+        { n: '04', t: '試験当日の時間帯に頭が働く生活リズムを整える' },
+      ],
+      day: [{ t: '7:00', a: '起床・朝食・英単語の確認' }, { t: '8:30–12:00', a: '過去問演習（主要科目）' }, { t: '13:00–16:00', a: '苦手分野の復習' }, { t: '16:30–18:00', a: '休憩・運動' }, { t: '19:30–22:00', a: '暗記科目・1日の振り返り' }, { t: '23:00', a: '就寝' }],
+      subjects: [
+        { no: '01', name: '英語', text: '単語・文法の基礎を固めたうえで、長文読解とリスニングを毎日少しずつ継続しましょう。' },
+        { no: '02', name: '国語', text: '現代文は論理構造を意識して読む練習を。古文・漢文は単語と文法を早めに押さえることが大切です。' },
+        { no: '03', name: '数学', text: '公式の暗記だけでなく、解法の理由を説明できるようにすると応用問題に強くなります。' },
+        { no: '04', name: '理科', text: '教科書の図表や実験を理解し、計算問題は繰り返し解いて手順を身につけましょう。' },
+        { no: '05', name: '地理歴史・公民', text: '流れや因果関係を意識して整理し、資料・グラフを読み取る問題にも慣れておきましょう。' },
+        { no: '06', name: '情報', text: 'プログラミングやデータ活用の基本的な考え方を、問題演習を通じて確認しましょう。' },
+      ],
+      guides: ['志望理由書の書き方ガイド', '小論文・面接対策のポイント', '共通テスト対策の進め方', '過去問の効果的な使い方', '併願校の組み方ガイド', '保護者向け受験サポートブック'],
+    };
+  }
+}
+</script>
+</body>
+</html>

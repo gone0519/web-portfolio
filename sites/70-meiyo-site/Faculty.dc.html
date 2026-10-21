@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="./site.css">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1e1e1e;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1e1e1e;text-decoration:none}
+a:hover{color:#8c6d00}
+*{box-sizing:border-box}
+button,input,select,textarea{font-family:inherit}
+</style>
+</helmet>
+<div style="position:relative;overflow-x:hidden;background:#fff">
+<dc-import name="SiteHeader" active="faculty" hint-size="100%,130px"></dc-import>
+
+<section data-screen-label="Faculty Hero" style="position:relative;overflow:hidden;padding:clamp(30px,4vw,70px) clamp(20px,4vw,76px) clamp(50px,5vw,90px)">
+  <div aria-hidden="true" data-parallax=".1" style="position:absolute;right:-1vw;top:2vw;font-family:Poppins,sans-serif;font-weight:800;font-size:clamp(90px,16vw,300px);line-height:.8;color:#f4f4f2;white-space:nowrap;pointer-events:none">FACULTY</div>
+  <div aria-hidden="true" data-float="10" data-anim="zoom" data-delay="200" class="hero-deco-y" style="position:absolute;right:8vw;top:0;width:clamp(80px,12vw,230px);height:clamp(90px,13vw,250px);background:#ffe24f"></div>
+  <div aria-hidden="true" data-float="10" data-anim="zoom" data-delay="200" class="hero-deco-k" style="position:absolute;right:3vw;top:clamp(110px,15vw,290px);width:clamp(40px,5vw,96px);height:clamp(40px,5vw,96px);background:#1e1e1e"></div>
+  <div data-anim="fade" data-delay="200" style="position:relative;display:flex;gap:10px;font-size:12px;font-weight:700"><a href="Admissions%20Site.dc.html">TOP</a><span>/</span><span style="color:#8c8c8c">学部・学科</span></div>
+  <h1 data-anim="clip" data-delay="350" data-dur="1200" style="position:relative;margin:clamp(24px,3vw,50px) 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:min(220px,max(min(22vw,84px),11vw));line-height:.84">FACULTY</h1>
+  <div data-anim="up" data-delay="600" style="position:relative;margin-top:10px;font-size:clamp(17px,1.3vw,24px);font-weight:900;letter-spacing:.06em">学部・学科</div>
+  <p data-anim="up" data-delay="750" style="position:relative;margin:clamp(20px,2vw,32px) 0 0;max-width:640px;font-size:15px;line-height:2;text-wrap:pretty">6学部14学科の学びの特色、所属学科、卒業後の主な進路を紹介します。興味のある分野から絞り込んでください。</p>
+  <img class="hero-illust" src="images/illust/study-desk.png" alt="" aria-hidden="true" data-anim="up" data-delay="900" style="position:absolute;right:12vw;bottom:clamp(24px,3vw,50px);width:clamp(240px,24vw,400px);height:auto;z-index:1;pointer-events:none">
+</section>
+
+<section data-screen-label="Faculty List" style="padding:0 clamp(20px,4vw,40px) clamp(80px,8vw,140px)">
+  <div style="max-width:1640px;margin:0 auto">
+    <div style="position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:16px 0;background:rgba(255,255,255,.95);border-bottom:1px solid #ececec">
+      <span class="filter-label" style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;margin-right:12px">FILTER</span>
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+        <button onClick="{{ f.onClick }}" class="pill-sm" style="padding:10px 24px;border-radius:999px;border:2px solid #1e1e1e;background:{{ f.bg }};color:{{ f.fg }};font-weight:700;font-size:14px;cursor:pointer;transition:background .2s,color .2s">{{ f.label }}</button>
+      </sc-for>
+      <span style="margin-left:auto;font-size:13px;color:#8c8c8c">{{ countLabel }}</span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <sc-for list="{{ list }}" as="c" hint-placeholder-count="3">
+        <article id="{{ c.id }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(30px,4vw,80px);padding:clamp(50px,5vw,90px) 0;border-bottom:1px solid #e6e6e6">
+          <div style="position:relative">
+            <div aria-hidden="true" data-float="10" data-anim="zoom" data-delay="200" style="position:absolute;left:-14px;top:-14px;width:30%;height:30%;background:#ffdb3d"></div>
+            <div data-anim="wipe" data-dur="1300" style="position:relative;aspect-ratio:4/3;background:#f3f3f1">
+              <image-slot id="{{ c.slot }}" src="images/fac-{{ c.id }}.jpg" shape="rect" placeholder="{{ c.ph }}"></image-slot>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:14px">
+              <span style="padding:6px 12px;background:#1e1e1e;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.06em;line-height:1">{{ c.no }}</span>
+              <span style="font-family:Poppins,sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;color:#8c8c8c">{{ c.en }}</span>
+            </div>
+            <h2 style="margin:16px 0 0;font-weight:900;font-size:clamp(30px,2.6vw,48px);letter-spacing:.06em">{{ c.name }}</h2>
+            <p style="margin:16px 0 0;font-size:15px;line-height:2;color:#333;max-width:680px;text-wrap:pretty">{{ c.desc }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px">
+              <sc-for list="{{ c.tags }}" as="t" hint-placeholder-count="3">
+                <span style="padding:5px 12px;background:#f3f3f1;font-size:12px;font-weight:500">#{{ t }}</span>
+              </sc-for>
+            </div>
+            <div style="margin-top:28px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;color:#8c8c8c">DEPARTMENTS 学科</div>
+            <ul data-stagger="right" data-step="70" style="margin:10px 0 0;padding:0;list-style:none;border-top:2px solid #1e1e1e">
+              <sc-for list="{{ c.depts }}" as="d" hint-placeholder-count="2">
+                <li style="display:grid;grid-template-columns:minmax(140px,auto) minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid #ececec;align-items:baseline">
+                  <span style="display:flex;align-items:center;gap:10px;font-size:16px;font-weight:900"><span style="width:8px;height:8px;border-radius:50%;background:#ffdb3d;flex:none"></span>{{ d.n }}</span>
+                  <span style="font-size:13px;line-height:1.8;color:#555">{{ d.d }}</span>
+                </li>
+              </sc-for>
+            </ul>
+            <div style="margin-top:24px;padding:18px 22px;background:#f7f7f5;font-size:13px;line-height:1.9"><span style="font-weight:900">主な進路（例）</span>　{{ c.career }}</div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Minor" style="padding:0 clamp(20px,4vw,40px) clamp(80px,8vw,140px)">
+  <div style="position:relative;overflow:hidden;max-width:1640px;margin:0 auto;background:#ffe24f;padding:clamp(40px,4vw,80px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:30px">
+    <div aria-hidden="true" data-float="20" data-anim="pop" data-dur="1200" style="position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;border:18px solid #1e1e1e"></div>
+    <div style="position:relative;flex:1 1 480px">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.08em">MINOR PROGRAM</div>
+      <h3 style="margin:8px 0 0;font-size:clamp(24px,2.2vw,38px);font-weight:900;letter-spacing:.04em">学部を越えて学べる「副専攻制度」</h3>
+      <p style="margin:16px 0 0;font-size:15px;line-height:2;max-width:640px;text-wrap:pretty">所属学部の専門に加えて、他学部の科目群をまとめて履修できます。たとえば経済経営学部で学びながら情報科学の副専攻を修めることも可能です。</p>
+    </div>
+    <img src="images/illust/point.png" alt="" aria-hidden="true" data-anim="up" style="position:relative;height:clamp(140px,13vw,210px);width:auto;align-self:flex-end">
+    <a href="Exam.dc.html" style="position:relative;display:inline-flex;align-items:center;justify-content:space-between;gap:30px;min-width:260px;padding:20px 34px;border-radius:999px;background:#1e1e1e;color:#fff;font-weight:700;font-size:15px;transition:transform .2s" style-hover="transform:translateY(-2px)">入試方式を確認する<span style="font-size:10px">▶</span></a>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filter: 'all' };
+  renderVals() {
+    const K = '#1e1e1e';
+    const all = [
+      { id: 'lit', cat: 'hum', no: 'F-01', name: '文学部', en: 'FACULTY OF LETTERS', ph: '図書館・文学部の授業風景', desc: '言葉・歴史・文化を手がかりに、人間と社会を深く読み解く力を養います。少人数の演習で文献を読み込み、自分の問いを卒業論文にまとめます。', tags: ['人文学', '語学', '文化', '教職'], depts: [{ n: '日本文学科', d: '古典から現代文学、日本語学までを幅広く研究します。' }, { n: '英米文化学科', d: '英語運用力と英語圏の文学・社会・文化を学びます。' }, { n: '歴史学科', d: '史料を読み解き、地域と時代の成り立ちを考察します。' }], career: '出版・メディア、教育、公務員、一般企業 など' },
+      { id: 'eco', cat: 'hum', no: 'F-02', name: '経済経営学部', en: 'FACULTY OF ECONOMICS', ph: 'ゼミ・ディスカッションの写真', desc: '経済理論とデータ分析、経営の実践を往復しながら学びます。企業と連携した課題解決型の授業で、現場の課題に取り組みます。', tags: ['経済', '経営', 'データ分析', '会計'], depts: [{ n: '経済学科', d: 'ミクロ・マクロ経済学と統計を基礎に、社会の仕組みを分析します。' }, { n: '経営学科', d: 'マーケティング、会計、組織論を実践的に学びます。' }], career: '金融、メーカー、商社、IT、起業 など' },
+      { id: 'law', cat: 'hum', no: 'F-03', name: '法学部', en: 'FACULTY OF LAW', ph: '模擬裁判・講義の写真', desc: '法律を「使う」視点から、社会のルールと公共の課題を考えます。公務員や法曹を目指す学生向けのコースも選べます。', tags: ['法律', '政治', '公共政策'], depts: [{ n: '法律学科', d: '憲法・民法・刑法を中心に、法的なものの見方を身につけます。' }, { n: '政治学科', d: '政治・行政・国際関係の理論と実際を学びます。' }], career: '公務員、法律事務所、金融、一般企業 など' },
+      { id: 'sci', cat: 'sci', no: 'F-04', name: '理工学部', en: 'FACULTY OF SCIENCE & ENG.', ph: '実験室・研究設備の写真', desc: '数学・物理を土台に、ものづくりと研究の手法を体系的に修得します。1年次から実験・実習に取り組み、4年次は研究室で卒業研究を行います。', tags: ['機械', '電気電子', '化学', '研究'], depts: [{ n: '機械工学科', d: '設計・材料・制御を学び、ものづくりの基礎を固めます。' }, { n: '電気電子工学科', d: 'エネルギーから通信まで、電気電子技術を幅広く扱います。' }, { n: '応用化学科', d: '物質の性質を理解し、新しい材料の開発に挑みます。' }], career: 'メーカー、エネルギー、建設、大学院進学 など' },
+      { id: 'inf', cat: 'sci', no: 'F-05', name: '情報科学部', en: 'FACULTY OF INFORMATICS', ph: 'プログラミング演習の写真', desc: 'プログラミング、AI、情報デザインまでを横断的に学びます。チームでのアプリ開発演習を通じて、実践的な開発力を身につけます。', tags: ['AI', 'プログラミング', '情報デザイン'], depts: [{ n: '情報科学科', d: 'アルゴリズム、データサイエンス、AIの基礎と応用を学びます。' }, { n: '情報デザイン学科', d: '人とシステムをつなぐUI・UXや映像表現を学びます。' }], career: 'IT・ソフトウェア、Web制作、通信、大学院進学 など' },
+      { id: 'med', cat: 'med', no: 'F-06', name: '看護医療学部', en: 'FACULTY OF NURSING & HEALTH', ph: '看護実習・シミュレーション室の写真', desc: '附属病院や地域の医療機関での実習を通して、専門職としての知識と倫理観を育てます。国家試験に向けた学習支援も行います。', tags: ['看護', '医療', '国家試験'], depts: [{ n: '看護学科', d: '看護師に必要な知識と技術を、講義と臨地実習で身につけます。' }, { n: '臨床検査学科', d: '検体検査・生理機能検査を学び、医療チームを支える力を養います。' }], career: '病院、クリニック、検査センター、行政 など' },
+    ];
+    const f = this.state.filter;
+    const list = all.filter(c => f === 'all' || c.cat === f).map(c => ({ ...c, slot: 'facpage-' + c.id }));
+    return {
+      filters: [['all', 'すべて'], ['hum', '文系'], ['sci', '理系'], ['med', '医療・看護']].map(([v, label]) => ({ label, bg: f === v ? K : '#fff', fg: f === v ? '#fff' : K, onClick: () => this.setState({ filter: v }) })),
+      list,
+      countLabel: list.length + '学部を表示中',
+    };
+  }
+}
+</script>
+</body>
+</html>

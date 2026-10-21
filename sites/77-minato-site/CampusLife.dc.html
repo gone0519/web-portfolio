@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Zen Kaku Gothic New",sans-serif;color:#1d3340;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1f6f93;text-decoration:none}
+a:hover{color:#3d9cc0}
+button,input,select,textarea{font-family:inherit}
+</style>
+<script src="motion.js"></script>
+<link rel="stylesheet" href="responsive.css">
+</helmet>
+<dc-import name="SiteHeader" current="campus" style="position:absolute;top:0;left:0;right:0;z-index:30" hint-size="100%,86px"></dc-import>
+
+<section data-screen-label="Campus Hero" style="background:#3d9cc0;color:#fff;display:flex;flex-wrap:wrap">
+  <div style="flex:1 1 420px;padding:clamp(150px,13vw,220px) clamp(20px,5vw,60px) 70px clamp(20px,8vw,160px);display:flex;flex-direction:column;gap:14px;justify-content:flex-end">
+    <div style="display:flex;gap:10px;font-size:12px;letter-spacing:.06em"><a href="University%20Admissions.dc.html" style="color:#fff">トップ</a><span>／</span><span>キャンパスライフ</span></div>
+    <h1 style="margin:0;font-family:Jost;font-weight:400;font-size:clamp(52px,5.6vw,92px);line-height:1">Campus Life</h1>
+    <span style="font-size:18px;font-weight:700;letter-spacing:.12em">キャンパスライフ・オープンキャンパス</span>
+    <p style="margin:10px 0 0;max-width:460px;font-size:15px;line-height:2">海の見えるキャンパスで過ごす4年間。授業のあとの時間も、ここでの大切な学びです。</p>
+  </div>
+  <div class="sub-hero-photo" style="flex:1 1 460px;min-height:clamp(320px,32vw,560px);position:relative;background:#dfeae8 url(img/hero-campus.jpg) center/cover no-repeat" data-photo role="img" aria-label="高台から街を見渡す学生たち">
+    <svg viewBox="0 0 200 1000" preserveAspectRatio="none" style="position:absolute;left:-1px;top:0;height:100%;width:clamp(60px,8vw,150px)"><path d="M0,0 L120,0 C20,320 200,640 40,1000 L0,1000 Z" fill="#3d9cc0"></path></svg>
+  </div>
+</section>
+
+<nav style="background:#fff;border-bottom:1px solid #e1edf2;padding:0 clamp(20px,5vw,60px);position:sticky;top:0;z-index:20">
+  <div style="max-width:1200px;margin:0 auto;display:flex;gap:28px;overflow-x:auto;scrollbar-width:none">
+    <a href="#day" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">学生の1日</a>
+    <a href="#activities" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">課外活動・施設</a>
+    <a href="#opencampus" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">オープンキャンパス</a>
+    <a href="#access" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">アクセス</a>
+    <a href="#contact" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;color:#1f6f93">資料請求・お問い合わせ</a>
+  </div>
+</nav>
+
+<section id="day" data-screen-label="A Day" style="padding:90px clamp(20px,5vw,60px) 40px;scroll-margin-top:60px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:60px">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <span style="font-family:Jost;font-size:13px;letter-spacing:.2em;color:#3d9cc0">A DAY ON CAMPUS</span>
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:.06em;line-height:1.5">在学生の1日</h2>
+      <span style="font-size:13px;color:#5a7380">健康科学部 栄養学科 2年生の例</span>
+      <div data-photo role="img" aria-label="並木道を歩く在学生" style="aspect-ratio:4/3;background:#e6eff2 url(img/campus-student.jpg) center/cover no-repeat"></div>
+    </div>
+    <div style="border-left:2px solid #cfe2ea;padding-left:28px;display:flex;flex-direction:column">
+      <sc-for list="{{ day }}" as="d" hint-placeholder-count="6">
+        <div style="position:relative;padding:18px 0;display:flex;flex-direction:column;gap:4px">
+          <span style="position:absolute;left:-35px;top:24px;width:12px;height:12px;border-radius:50%;background:#3d9cc0;border:2px solid #fff"></span>
+          <span style="font-family:Jost;font-size:18px;color:#2b86ad">{{ d.t }}</span>
+          <span style="font-size:16px;font-weight:700">{{ d.title }}</span>
+          <span style="font-size:13.5px;line-height:1.85;color:#3c5563">{{ d.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="activities" data-screen-label="Activities" style="background:#3d9cc0;color:#fff;margin-top:70px;padding:0 clamp(20px,5vw,60px) 100px;scroll-margin-top:60px">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style="display:block;width:calc(100% + 2 * clamp(20px,5vw,60px));margin:0 calc(-1 * clamp(20px,5vw,60px));height:80px"><path d="M0,0 L1440,0 L1440,40 C1080,120 520,10 0,90 Z" fill="#fff"></path></svg>
+  <div style="max-width:1200px;margin:60px auto 0">
+    <h2 style="margin:0;font-family:Jost;font-weight:400;font-size:clamp(40px,3.6vw,56px);line-height:1">Activities</h2>
+    <span style="display:block;margin-top:10px;font-size:15px;font-weight:700;letter-spacing:.12em">課外活動・キャンパス施設</span>
+    <div class="grid-2sp" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:24px;margin-top:40px">
+      <sc-for list="{{ facilities }}" as="c" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div data-photo role="img" aria-label="{{ c.img }}" style="aspect-ratio:4/5;background:#5aaecd url({{ c.photo }}) center/cover no-repeat"></div>
+          <span style="font-size:17px;font-weight:700;letter-spacing:.06em">{{ c.title }}</span>
+          <span style="font-size:13.5px;line-height:1.9">{{ c.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <span style="display:block;margin-top:56px;font-size:15px;font-weight:700;letter-spacing:.08em">サークル・部活動（一部）</span>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px">
+      <sc-for list="{{ clubs }}" as="cl" hint-placeholder-count="10">
+        <span style="border:1px solid rgba(255,255,255,.6);padding:6px 16px;font-size:13.5px">{{ cl }}</span>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="opencampus" data-screen-label="Open Campus" style="padding:100px clamp(20px,5vw,60px) 40px;scroll-margin-top:60px">
+  <div style="max-width:1200px;margin:0 auto">
+    <span style="align-self:flex-start;background:#2b86ad;color:#fff;border-radius:999px;padding:4px 16px;font-family:Jost;font-size:14px;letter-spacing:.06em">OPEN CAMPUS 2027</span>
+    <h2 style="margin:20px 0 0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(24px,3.4vw,52px);line-height:1.35;letter-spacing:.06em;color:#15262f">未来の自分に、会いにきてください。</h2>
+    <p style="margin:18px 0 0;max-width:720px;font-size:15px;line-height:2">模擬授業、在学生とのキャンパスツアー、入試個別相談を開催します。ご家族でのご参加も歓迎します。日程は決まり次第このページでお知らせします。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;margin-top:40px">
+      <sc-for list="{{ programs }}" as="p" hint-placeholder-count="4">
+        <div style="border:1px solid #cfe2ea;padding:26px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:Jost;font-size:28px;font-weight:300;color:#2b86ad;line-height:1">{{ p.no }}</span>
+          <span style="font-size:17px;font-weight:700">{{ p.title }}</span>
+          <span style="font-size:13.5px;line-height:1.85;color:#3c5563">{{ p.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:16px">
+      <a href="#contact" onClick="{{ pickReserve }}" style="background:#5aa58c;color:#fff;padding:18px 32px;font-size:16px;letter-spacing:.06em" style-hover="background:#4a957c;color:#fff">参加を予約する</a>
+      <a href="#contact" onClick="{{ pickRequest }}" style="background:#5670b5;color:#fff;padding:18px 32px;font-size:16px;letter-spacing:.06em" style-hover="background:#4860a3;color:#fff">資料請求（無料）</a>
+    </div>
+  </div>
+</section>
+
+<section id="access" data-screen-label="Access" style="padding:90px clamp(20px,5vw,60px) 40px;scroll-margin-top:60px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:50px">
+    <div style="min-height:340px;background:repeating-linear-gradient(135deg,#e6eff2 0 12px,#d9e7ec 12px 24px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6d8a90">map — キャンパス周辺地図</div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="font-family:Jost;font-size:13px;letter-spacing:.2em;color:#3d9cc0">ACCESS</span>
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:.06em;line-height:1.5">アクセス</h2>
+      <span style="font-size:14px;line-height:2">〒000-0000　〇〇県〇〇市〇〇町0-0-0</span>
+      <div style="border-top:1px solid #d4e5ec">
+        <sc-for list="{{ access }}" as="a" hint-placeholder-count="3">
+          <div style="display:grid;grid-template-columns:110px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #d4e5ec;font-size:14px;line-height:1.8">
+            <span style="font-weight:700;color:#1f6f93">{{ a.k }}</span><span>{{ a.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" data-screen-label="Contact" style="background:#3d9cc0;margin-top:70px;padding:0 clamp(20px,5vw,60px) 100px;scroll-margin-top:60px">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style="display:block;width:calc(100% + 2 * clamp(20px,5vw,60px));margin:0 calc(-1 * clamp(20px,5vw,60px));height:80px"><path d="M0,0 L1440,0 L1440,30 C960,110 420,0 0,70 Z" fill="#fff"></path></svg>
+  <div style="max-width:860px;margin:60px auto 0;background:#fff;padding:clamp(26px,4vw,56px)">
+    <h2 style="margin:0;font-family:Jost;font-weight:400;font-size:clamp(36px,3.2vw,48px);color:#2b86ad;line-height:1">Contact</h2>
+    <span style="display:block;margin-top:10px;font-size:15px;font-weight:700;letter-spacing:.1em">予約・資料請求・お問い合わせ</span>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:36px;background:#eef6f9;padding:36px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:19px;font-weight:700;color:#1f6f93">{{ sentTitle }}</span>
+        <span style="font-size:14px;line-height:1.9">{{ form.name }} 様、ありがとうございます。ご入力のメールアドレス（{{ form.email }}）に確認メールをお送りします（デモのため実際には送信されません）。</span>
+        <button onClick="{{ reset }}" style="align-self:flex-start;margin-top:8px;border:1px solid #3d9cc0;background:#fff;color:#1f6f93;padding:12px 24px;cursor:pointer;font-weight:700">別の内容で送る</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;margin-top:30px;border-bottom:1px solid #cfe2ea">
+        <sc-for list="{{ types }}" as="t" hint-placeholder-count="3">
+          <button class="form-tab" onClick="{{ t.onClick }}" style="flex:1;background:none;border:0;border-bottom:3px solid {{ t.line }};margin-bottom:-1px;padding:14px 6px;cursor:pointer;font-size:15px;font-weight:700;color:{{ t.fg }}"><span class="pc-only">{{ t.label }}</span><span class="sp-only">{{ t.short }}</span></button>
+        </sc-for>
+      </div>
+      <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:20px;margin-top:28px">
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700">お名前 <input required value="{{ form.name }}" onChange="{{ onName }}" placeholder="例）港 花子" style="border:1px solid #bfdbe6;padding:14px;font-size:15px;font-weight:400"></label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700">メールアドレス <input required type="email" value="{{ form.email }}" onChange="{{ onEmail }}" placeholder="example@mail.com" style="border:1px solid #bfdbe6;padding:14px;font-size:15px;font-weight:400"></label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700">ご身分
+          <select value="{{ form.grade }}" onChange="{{ onGrade }}" style="border:1px solid #bfdbe6;padding:14px;font-size:15px;font-weight:400;background:#fff">
+            <option>高校3年生</option><option>高校2年生</option><option>高校1年生</option><option>既卒生</option><option>保護者</option><option>高校教員</option>
+          </select>
+        </label>
+        <sc-if value="{{ isReserve }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:700">参加希望プログラム
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <sc-for list="{{ progPick }}" as="pp" hint-placeholder-count="4">
+                <button type="button" onClick="{{ pp.onClick }}" style="border:1px solid #3d9cc0;padding:8px 16px;font-size:13.5px;cursor:pointer;background:{{ pp.bg }};color:{{ pp.fg }}">{{ pp.title }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700">{{ msgLabel }} <textarea rows="4" value="{{ form.msg }}" onChange="{{ onMsg }}" style="border:1px solid #bfdbe6;padding:14px;font-size:15px;font-weight:400;resize:vertical"></textarea></label>
+        <button type="submit" style="background:#5aa58c;color:#fff;border:0;padding:18px;font-size:16px;letter-spacing:.08em;cursor:pointer">{{ submitLabel }}</button>
+      </form>
+    </sc-if>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,300px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { type: 0, sent: false, picks: {}, form: { name: '', email: '', grade: '高校3年生', msg: '' } };
+  setF(k) { return e => { const v = e.target.value; this.setState(s => ({ form: { ...s.form, [k]: v } })); }; }
+  renderVals() {
+    const s = this.state;
+    const T = [
+      { label: 'オープンキャンパス予約', short: 'OC予約', submit: '予約内容を送信する', msg: 'ご質問・ご要望（任意）', done: 'ご予約を受け付けました' },
+      { label: '資料請求', short: '資料請求', submit: '資料を請求する', msg: '送付先住所', done: '資料請求を受け付けました' },
+      { label: 'お問い合わせ', short: 'お問い合わせ', submit: '問い合わせを送信する', msg: 'お問い合わせ内容', done: 'お問い合わせを受け付けました' },
+    ];
+    const programs = [
+      { no: '01', title: '模擬授業', text: '各学科の教員による30分の体験授業です。' },
+      { no: '02', title: 'キャンパスツアー', text: '在学生の案内で、教室や実習室、学生食堂をめぐります。' },
+      { no: '03', title: '入試個別相談', text: '入試方式や出願書類について、職員が個別にお答えします。' },
+      { no: '04', title: '保護者向け説明会', text: '学費・奨学金や就職実績について説明します。' },
+    ];
+    return {
+      day: [
+        { t: '8:50', title: '登校', text: '最寄り駅からスクールバスで約10分。' },
+        { t: '9:00', title: '1限 臨床栄養学', text: '病院での栄養管理を、事例をもとに学びます。' },
+        { t: '12:30', title: 'お昼休み', text: '学生食堂で友人とランチ。日替わり定食が人気です。' },
+        { t: '13:30', title: '3限 調理学実習', text: '実習室で献立づくりから調理までを行います。' },
+        { t: '16:30', title: 'サークル活動', text: '料理研究会で地域イベント用のメニューを考案中。' },
+        { t: '18:30', title: '帰宅', text: '試験前は図書館で勉強してから帰ることも。' },
+      ],
+      facilities: [
+        { img: '笑顔で肩を組む学生', photo: 'img/life-club.jpg', title: 'サークル・部活動', text: '運動系・文化系あわせて多くの団体が活動しています。' },
+        { img: 'テラス席のあるカフェ前の広場', photo: 'img/life-cafe.jpg', title: '学生食堂・カフェ', text: '栄養学科が監修する日替わりメニューがあります。' },
+        { img: 'ガラス張りの図書館', photo: 'img/life-library.jpg', title: '図書館・ラーニングコモンズ', text: '試験期間は夜まで開館し、グループ学習もできます。' },
+        { img: '青空の下で声をかけ合う学生', photo: 'img/life-festival.jpg', title: '大学祭・地域イベント', text: '毎年秋の大学祭には地域の方も多く訪れます。' },
+      ],
+      clubs: ['バレーボール部', 'ダンス部', '軽音楽部', '吹奏楽部', '茶道部', '写真部', '料理研究会', '国際交流サークル', 'ボランティア部', '英語ディベート部'],
+      programs,
+      pickReserve: () => this.setState({ type: 0, sent: false }),
+      pickRequest: () => this.setState({ type: 1, sent: false }),
+      access: [
+        { k: '電車', v: '〇〇線「〇〇駅」から徒歩約12分' },
+        { k: 'バス', v: '「〇〇駅前」から市バスで約8分、「大学前」下車' },
+        { k: 'スクールバス', v: '〇〇駅から運行（平日のみ・サンプル）' },
+      ],
+      types: T.map((t, i) => ({ label: t.label, short: t.short, line: s.type === i ? '#2b86ad' : 'transparent', fg: s.type === i ? '#1f6f93' : '#8aa3ae', onClick: () => this.setState({ type: i }) })),
+      isReserve: s.type === 0,
+      progPick: programs.map((p, i) => ({ title: p.title, bg: s.picks[i] ? '#2b86ad' : '#fff', fg: s.picks[i] ? '#fff' : '#1f6f93', onClick: () => this.setState(st => ({ picks: { ...st.picks, [i]: !st.picks[i] } })) })),
+      msgLabel: T[s.type].msg, submitLabel: T[s.type].submit, sentTitle: T[s.type].done,
+      form: s.form, sent: s.sent, notSent: !s.sent,
+      onName: this.setF('name'), onEmail: this.setF('email'), onGrade: this.setF('grade'), onMsg: this.setF('msg'),
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false, form: { name: '', email: '', grade: '高校3年生', msg: '' }, picks: {} }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

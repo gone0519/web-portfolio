@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho+B1:wght@600;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./site-anim.js"></script>
+<style>html{scroll-behavior:smooth}body{margin:0;background:#f5f1ec;color:#5b4e43;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}a{color:#7a6650;text-decoration:none}a:hover{color:#e8847a}*{box-sizing:border-box}input,select,textarea{font-family:'Zen Kaku Gothic New',sans-serif}</style>
+</helmet>
+<div style="min-height:100vh;background:#f5f1ec;overflow-x:hidden">
+<dc-import name="SubHero" current="contact" num="05" en="Contact" jp="お問い合わせ" vertical="CONTACT" slot-id="hero-contact" slot-ph="相談窓口・スタッフの様子" lead="資料請求、オープンキャンパスの参加予約、入試に関するご相談はこちらから。保護者の方もお気軽にどうぞ。" hint-size="100%,520px"></dc-import>
+
+<main style="max-width:1000px;margin:0 auto;padding:40px 20px 110px">
+  <section data-screen-label="Contact / Form">
+    <dc-import name="SectionHead" num="01" en="Form" jp="お申し込みフォーム" hint-size="100%,130px"></dc-import>
+    <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start">
+      <div style="flex:1 1 520px;min-width:0">
+        <div style="display:flex;gap:6px;margin-bottom:18px">
+          <sc-for list="{{ stepList }}" as="st" hint-placeholder-count="3">
+            <div style="flex:1;text-align:center;padding:10px 6px;background:{{ st.bg }};color:{{ st.fg }};font-size:12px;font-weight:700;letter-spacing:.1em"><span style="font-family:'Josefin Sans';margin-right:6px">{{ st.no }}</span>{{ st.label }}</div>
+          </sc-for>
+        </div>
+
+        <div style="display:{{ formDisplay }};background:#fff;padding:26px 26px 28px">
+          <div style="font-size:11.5px;font-weight:700;color:#7a6650;margin-bottom:8px">お問い合わせ種別</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:22px">
+            <sc-for list="{{ types }}" as="t" hint-placeholder-count="4">
+              <button type="button" onClick="{{ t.select }}" style="cursor:pointer;border:2px solid {{ t.bd }};background:{{ t.bg }};color:{{ t.fg }};border-radius:999px;padding:11px 10px;font:700 12px 'Zen Kaku Gothic New';letter-spacing:.04em">{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <form onSubmit="{{ toConfirm }}" style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;font-weight:700;color:#7a6650"><span>お名前 <span style="color:#e8847a;font-size:10px">必須</span></span><input name="お名前" required="" placeholder="未来 花子" style="border:1px solid #e1d6c8;padding:12px;font-size:14px;background:#fbf9f6"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;font-weight:700;color:#7a6650">ふりがな<input name="ふりがな" placeholder="みらい はなこ" style="border:1px solid #e1d6c8;padding:12px;font-size:14px;background:#fbf9f6"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;font-weight:700;color:#7a6650"><span>メールアドレス <span style="color:#e8847a;font-size:10px">必須</span></span><input name="メールアドレス" type="email" required="" placeholder="example@example.jp" style="border:1px solid #e1d6c8;padding:12px;font-size:14px;background:#fbf9f6"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;font-weight:700;color:#7a6650">区分<select name="区分" style="border:1px solid #e1d6c8;padding:12px;font-size:14px;background:#fbf9f6"><option>高校3年生</option><option>高校1・2年生</option><option>既卒生</option><option>保護者の方</option><option>高校の先生</option></select></label>
+            </div>
+            <sc-if value="{{ isDocs }}" hint-placeholder-val="{{ false }}">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;font-weight:700;color:#7a6650"><span>資料の送付先住所 <span style="color:#e8847a;font-size:10px">必須</span></span><input name="送付先住所" required="" placeholder="〒000-0000 東京都…" style="border:1px solid #e1d6c8;padding:12px;font-size:14px;background:#fbf9f6"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;font-weight:700;color:#7a6650">希望する分野<select name="希望分野" style="border:1px solid #e1d6c8;padding:12px;font-size:14px;background:#fbf9f6"><option>人文・社会科学系</option><option>理工・情報系</option><option>医療・看護系</option><option>国際・芸術系</option><option>まだ決めていない</option></select></label>
+            </sc-if>
+            <sc-if value="{{ isOC }}" hint-placeholder-val="{{ false }}">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;font-weight:700;color:#7a6650">参加したいプログラム<select name="希望プログラム" style="border:1px solid #e1d6c8;padding:12px;font-size:14px;background:#fbf9f6"><option>模擬授業</option><option>学部・学科説明会</option><option>入試説明会</option><option>個別相談</option><option>キャンパスツアー</option></select></label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;font-weight:700;color:#7a6650">参加人数<select name="参加人数" style="border:1px solid #e1d6c8;padding:12px;font-size:14px;background:#fbf9f6"><option>1名</option><option>2名（保護者同伴）</option><option>3名以上</option></select></label>
+            </sc-if>
+            <sc-if value="{{ isConsult }}" hint-placeholder-val="{{ false }}">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;font-weight:700;color:#7a6650">相談方法<select name="相談方法" style="border:1px solid #e1d6c8;padding:12px;font-size:14px;background:#fbf9f6"><option>WEB面談</option><option>電話</option><option>メール</option></select></label>
+            </sc-if>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:11.5px;font-weight:700;color:#7a6650">ご質問・ご相談内容<textarea name="内容" rows="5" placeholder="{{ msgPh }}" style="border:1px solid #e1d6c8;padding:12px;font-size:14px;background:#fbf9f6;resize:vertical"></textarea></label>
+            <label style="display:flex;gap:10px;align-items:center;font-size:12px;color:#5b4e43"><input type="checkbox" required="" style="width:18px;height:18px;accent-color:#f2958c">個人情報の取り扱いに同意する</label>
+            <button type="submit" style="align-self:center;min-width:240px;border:0;cursor:pointer;background:#f2958c;color:#fff;border-radius:999px;padding:15px 30px;font:700 14px 'Zen Kaku Gothic New';letter-spacing:.1em" style-hover="background:#ea7f75">入力内容を確認する</button>
+          </form>
+        </div>
+
+        <sc-if value="{{ isConfirm }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#fff;padding:26px">
+            <div style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:18px;margin-bottom:14px;color:#5b4e43">以下の内容で送信します</div>
+            <sc-for list="{{ rows }}" as="r" hint-placeholder-count="4">
+              <div style="display:flex;gap:16px;padding:12px 0;border-bottom:1px dotted #e1d6c8;font-size:12.5px;flex-wrap:wrap"><span style="flex:0 0 130px;font-weight:700;color:#7a6650">{{ r.k }}</span><span style="flex:1 1 200px;color:#5b4e43;white-space:pre-wrap">{{ r.v }}</span></div>
+            </sc-for>
+            <div style="display:flex;gap:10px;justify-content:center;margin-top:22px;flex-wrap:wrap">
+              <button onClick="{{ back }}" style="cursor:pointer;border:2px solid #d9ccb9;background:#fff;color:#8a7a6a;border-radius:999px;padding:13px 28px;font:700 13px 'Zen Kaku Gothic New'">戻って修正する</button>
+              <button onClick="{{ send }}" style="cursor:pointer;border:0;background:#f2958c;color:#fff;border-radius:999px;padding:15px 34px;font:700 13px 'Zen Kaku Gothic New';letter-spacing:.1em">送信する</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#fff;padding:44px 26px;text-align:center">
+            <div style="font-family:'Josefin Sans';font-weight:600;font-size:52px;color:#ddd0bf;line-height:1">Thank you</div>
+            <p style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:18px;color:#5b4e43;margin:16px 0 8px">送信を受け付けました（デモ）</p>
+            <p style="font-size:12.5px;line-height:1.9;color:#6b5c4f;margin:0 0 22px">担当者より、ご入力のメールアドレス宛にご連絡いたします。</p>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+              <a href="Top.dc.html" style="background:#f2958c;color:#fff;border-radius:999px;padding:13px 26px;font-size:13px;font-weight:700" style-hover="background:#ea7f75;color:#fff">トップへ戻る</a>
+              <button onClick="{{ reset }}" style="cursor:pointer;border:2px solid #d9ccb9;background:#fff;color:#8a7a6a;border-radius:999px;padding:11px 24px;font:700 13px 'Zen Kaku Gothic New'">続けて別の申し込みをする</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <aside style="flex:1 1 240px;display:flex;flex-direction:column;gap:12px">
+        <div style="background:#d5e9f2;padding:22px 20px">
+          <div style="font-size:11px;letter-spacing:.2em;color:#4f7d93;font-weight:700;margin-bottom:6px">TEL</div>
+          <div style="font-family:'Josefin Sans';font-weight:600;font-size:28px;color:#3f5b6a;letter-spacing:.04em">03-0000-0000</div>
+          <div style="font-size:11.5px;line-height:1.8;color:#3f5b6a;margin-top:6px">平日 10:00〜18:00（サンプル）<br>土日祝はWEB相談のみ受付</div>
+        </div>
+        <div style="position:relative;background:#fff;border:1px solid #e6ddd1;padding:20px">
+          <div style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:16px;color:#5b4e43;margin-bottom:8px">保護者の方へ</div>
+          <div style="font-size:11.5px;line-height:1.85;color:#6b5c4f">費用の見通し、奨学金、出願手続きなどのご相談も受け付けています。種別「入試相談」からお申し込みください。</div>
+          <span style="position:absolute;right:0;bottom:0;width:0;height:0;border-left:12px solid transparent;border-bottom:12px solid #b9a993"></span>
+        </div>
+        <a href="Admissions.dc.html" style="position:relative;background:#fff;border:1px solid #e6ddd1;padding:20px;display:block">
+          <div style="font-family:'Josefin Sans';font-weight:600;font-size:20px;color:#ddd0bf">FAQ</div>
+          <div style="font-size:12px;color:#5b4e43;margin-top:4px">よくあるご質問を見る →</div>
+          <span style="position:absolute;right:0;bottom:0;width:0;height:0;border-left:12px solid transparent;border-bottom:12px solid #b9a993"></span>
+        </a>
+      </aside>
+    </div>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { type: 'docs', step: 1, rows: [] };
+  componentDidMount() {
+    try { const t = new URLSearchParams(window.location.search).get('type'); if (['docs', 'oc', 'consult', 'other'].includes(t)) this.setState({ type: t }); } catch (e) {}
+  }
+  renderVals() {
+    const s = this.state;
+    const T = { docs: '資料請求', oc: 'オープンキャンパス予約', consult: '入試相談', other: 'その他' };
+    const ph = { docs: '特に知りたい内容があればご記入ください。', oc: '参加にあたってのご質問があればご記入ください。', consult: '志望校選び、入試方式、費用など、ご相談内容をご記入ください。', other: 'お問い合わせ内容をご記入ください。' };
+    return {
+      stepList: [['01', '入力'], ['02', '確認'], ['03', '完了']].map(([no, label], i) => ({ no, label, bg: s.step === i + 1 ? '#f2958c' : '#fff', fg: s.step === i + 1 ? '#fff' : '#b9a993' })),
+      types: Object.entries(T).map(([k, label]) => ({ label, select: () => this.setState({ type: k }), bg: s.type === k ? '#f2958c' : '#fff', fg: s.type === k ? '#fff' : '#8a6a5c', bd: s.type === k ? '#f2958c' : '#f3d9d6' })),
+      isDocs: s.type === 'docs', isOC: s.type === 'oc', isConsult: s.type === 'consult', msgPh: ph[s.type],
+      formDisplay: s.step === 1 ? 'block' : 'none', isConfirm: s.step === 2, isDone: s.step === 3,
+      rows: s.rows,
+      toConfirm: e => {
+        e.preventDefault();
+        const rows = [{ k: '種別', v: T[s.type] }];
+        new FormData(e.target).forEach((v, k) => { if (k && String(v).trim()) rows.push({ k, v: String(v) }); });
+        this.setState({ step: 2, rows }); window.scrollTo({ top: 380, behavior: 'smooth' });
+      },
+      back: () => this.setState({ step: 1 }),
+      send: () => { this.setState({ step: 3 }); window.scrollTo({ top: 380, behavior: 'smooth' }); },
+      reset: () => this.setState({ step: 1, rows: [] }),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Zen Kaku Gothic New",sans-serif;color:#1d3340;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1f6f93;text-decoration:none}
+a:hover{color:#3d9cc0}
+button{font-family:inherit}
+</style>
+<script src="motion.js"></script>
+<link rel="stylesheet" href="responsive.css">
+</helmet>
+<dc-import name="SiteHeader" current="faculties" style="position:absolute;top:0;left:0;right:0;z-index:30" hint-size="100%,86px"></dc-import>
+
+<section data-screen-label="Faculties Hero" style="background:#3d9cc0;color:#fff;display:flex;flex-wrap:wrap">
+  <div style="flex:1 1 420px;padding:clamp(150px,13vw,220px) clamp(20px,5vw,60px) 70px clamp(20px,8vw,160px);display:flex;flex-direction:column;gap:14px;justify-content:flex-end">
+    <div style="display:flex;gap:10px;font-size:12px;letter-spacing:.06em"><a href="University%20Admissions.dc.html" style="color:#fff">トップ</a><span>／</span><span>学部・学科</span></div>
+    <h1 style="margin:0;font-family:Jost;font-weight:400;font-size:clamp(52px,5.6vw,92px);line-height:1">Faculties</h1>
+    <span style="font-size:18px;font-weight:700;letter-spacing:.12em">学部・学科</span>
+    <p style="margin:10px 0 0;max-width:460px;font-size:15px;line-height:2">6学部14学科。興味のある分野から、4年間の学びと卒業後の進路を確かめてください。</p>
+  </div>
+  <div class="sub-hero-photo" style="flex:1 1 460px;min-height:clamp(320px,32vw,560px);position:relative;background:#dfeae8 url(img/hero-faculties.jpg) center/cover no-repeat" data-photo role="img" aria-label="講義を受ける学生">
+    <svg viewBox="0 0 200 1000" preserveAspectRatio="none" style="position:absolute;left:-1px;top:0;height:100%;width:clamp(60px,8vw,150px)"><path d="M0,0 L120,0 C20,320 200,640 40,1000 L0,1000 Z" fill="#3d9cc0"></path></svg>
+  </div>
+</section>
+
+<nav style="background:#fff;border-bottom:1px solid #e1edf2;padding:0 clamp(20px,5vw,60px);position:sticky;top:0;z-index:20">
+  <div style="max-width:1200px;margin:0 auto;display:flex;gap:28px;overflow-x:auto;scrollbar-width:none">
+    <sc-for list="{{ anchors }}" as="an" hint-placeholder-count="6">
+      <a href="{{ an.href }}" onClick="{{ an.onClick }}" style="flex:0 0 auto;padding:20px 0;font-size:14px;font-weight:700;letter-spacing:.06em;color:#1f6f93" style-hover="color:#3d9cc0">{{ an.label }}</a>
+    </sc-for>
+  </div>
+</nav>
+
+<section data-screen-label="Faculty List" style="padding:80px clamp(20px,5vw,60px) 40px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px">
+      <span style="font-family:'Shippori Mincho',serif;font-size:clamp(26px,2.4vw,36px);letter-spacing:.06em;line-height:1.5">分野から探す</span>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <sc-for list="{{ fieldTabs }}" as="t" hint-placeholder-count="6">
+          <button onClick="{{ t.onClick }}" style="border:1px solid #3d9cc0;cursor:pointer;border-radius:999px;padding:6px 18px;font-size:14px;font-weight:700;letter-spacing:.06em;background:{{ t.bg }};color:{{ t.fg }};transition:background .2s">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:90px;margin-top:60px">
+      <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="3">
+        <article id="{{ f.id }}" style="display:flex;flex-wrap:wrap;gap:clamp(30px,4vw,64px);flex-direction:{{ f.dir }};scroll-margin-top:80px">
+          <div data-photo role="img" aria-label="{{ f.img }}" style="flex:1 1 400px;aspect-ratio:4/3;background:#e6eff2 url({{ f.photo }}) center/cover no-repeat"></div>
+          <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="background:#2b86ad;color:#fff;font-size:11px;padding:2px 8px;letter-spacing:.06em">{{ f.field }}</span>
+              <span style="font-family:Jost;font-size:13px;color:#3d9cc0;letter-spacing:.14em">{{ f.en }}</span>
+            </div>
+            <h2 style="margin:0;font-size:clamp(20px,6vw,32px);font-weight:700;letter-spacing:.06em">{{ f.name }}</h2>
+            <span style="font-family:'Shippori Mincho',serif;font-size:19px;color:#1f6f93;letter-spacing:.04em">{{ f.catch }}</span>
+            <p style="margin:0;font-size:14.5px;line-height:2;color:#3c5563">{{ f.desc }}</p>
+            <div style="border-top:1px solid #d4e5ec">
+              <sc-for list="{{ f.depts }}" as="d" hint-placeholder-count="2">
+                <div class="dept-row" style="display:grid;grid-template-columns:minmax(120px,170px) 1fr;gap:16px;padding:14px 0;border-bottom:1px solid #d4e5ec;font-size:14px;line-height:1.8">
+                  <span style="font-weight:700;color:#1f6f93">{{ d.n }}</span><span>{{ d.t }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+              <div style="background:#eef6f9;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+                <span style="font-size:12px;font-weight:700;color:#1f6f93;letter-spacing:.08em">目指せる進路（例）</span>
+                <span style="font-size:13.5px;line-height:1.8">{{ f.career }}</span>
+              </div>
+              <div style="background:#eef6f9;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+                <span style="font-size:12px;font-weight:700;color:#1f6f93;letter-spacing:.08em">取得をめざせる資格（例）</span>
+                <span style="font-size:13.5px;line-height:1.8">{{ f.license }}</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:4px">
+              <a href="Admissions.dc.html" style="background:#5aa58c;color:#fff;padding:14px 26px;font-size:14px;letter-spacing:.06em" style-hover="background:#4a957c;color:#fff">この学部の入試情報</a>
+              <a href="CampusLife.dc.html#opencampus" style="border:1px solid #3d9cc0;color:#1f6f93;padding:13px 26px;font-size:14px;letter-spacing:.06em" style-hover="background:#eef6f9">模擬授業をみる</a>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Learning Features" style="background:#3d9cc0;color:#fff;margin-top:80px;padding:0 clamp(20px,5vw,60px) 110px">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style="display:block;width:calc(100% + 2 * clamp(20px,5vw,60px));margin:0 calc(-1 * clamp(20px,5vw,60px));height:80px"><path d="M0,0 L1440,0 L1440,40 C1080,120 520,10 0,90 Z" fill="#fff"></path></svg>
+  <div style="max-width:1200px;margin:60px auto 0">
+    <h2 style="margin:0;font-family:Jost;font-weight:400;font-size:clamp(40px,3.6vw,56px);line-height:1">Features</h2>
+    <span style="display:block;margin-top:10px;font-size:15px;font-weight:700;letter-spacing:.12em">全学部共通の学び</span>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px;margin-top:44px">
+      <sc-for list="{{ features }}" as="ft" hint-placeholder-count="4">
+        <div style="border-top:1px solid rgba(255,255,255,.5);padding-top:24px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:Jost;font-size:34px;font-weight:300;line-height:1">{{ ft.no }}</span>
+          <span style="font-size:17px;font-weight:700;letter-spacing:.06em">{{ ft.title }}</span>
+          <span style="font-size:13.5px;line-height:1.9">{{ ft.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" show-cta="{{ true }}" hint-size="100%,560px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { field: 'すべて' };
+  renderVals() {
+    const all = [
+      { id: 'lit', field: '人文', name: '文学部', en: 'LITERATURE', img: 'ホワイトボードを見ながら考える学生', photo: 'img/fac-lit.jpg', catch: '言葉の奥にある、人の心を読む。', desc: '古典から現代文学、英語圏の文化まで、テキストを丁寧に読み解く力を養います。少人数の演習で、自分の考えを言葉にして伝える訓練を重ねます。', depts: [{ n: '日本文学科', t: '古典・近現代文学、日本語学、創作を学ぶ' }, { n: '英語文化学科', t: '英米文学と英語学、通訳・翻訳の基礎を学ぶ' }], career: '出版・広告、教員、公務員、一般企業', license: '中学・高校教諭一種（国語・英語）、司書' },
+      { id: 'eco', field: '社会', name: '経済経営学部', en: 'ECONOMICS', img: 'ゼミ教室で机を囲む学生', photo: 'img/fac-eco.jpg', catch: '地域の課題を、ビジネスで解く。', desc: '経済理論と経営の実務をバランスよく学びます。地域企業と連携したプロジェクト型授業で、商品企画やデータ分析を実践します。', depts: [{ n: '経済学科', t: 'ミクロ・マクロ経済、地域経済、データ分析' }, { n: '経営学科', t: 'マーケティング、会計、起業・事業計画' }], career: '金融、メーカー、商社、地方自治体', license: '日商簿記、ITパスポート（支援講座あり）' },
+      { id: 'glo', field: '社会', name: '国際コミュニケーション学部', en: 'GLOBAL', img: '留学生と一緒にキャンパスを歩く学生', photo: 'img/fac-glo.jpg', catch: '世界と、自分の言葉で話す。', desc: '全員参加の短期留学と、20名以下の語学授業で実践的な語学力を身につけます。異文化理解や国際協力についても学びます。', depts: [{ n: '国際コミュニケーション学科', t: '英語・中国語・韓国語から選択、観光・国際協力' }], career: '航空・旅行、ホテル、外資系企業、国際機関', license: 'TOEIC®対策、国内旅行業務取扱管理者' },
+      { id: 'edu', field: '教育', name: '教育学部', en: 'EDUCATION', img: '教室で授業を受ける学生', photo: 'img/fac-edu.jpg', catch: '子どもの「わかった」に寄り添う。', desc: '1年次から地域の学校・園での体験活動に参加し、現場で学ぶ姿勢を育てます。教員採用試験に向けた対策講座も充実しています。', depts: [{ n: '初等教育学科', t: '小学校教育、特別支援教育' }, { n: '幼児教育学科', t: '幼稚園教育、保育、子育て支援' }], career: '小学校教員、幼稚園教諭、保育士', license: '小学校教諭一種、幼稚園教諭一種、保育士' },
+      { id: 'hea', field: '医療・福祉', name: '健康科学部', en: 'HEALTH', img: '実習室に立つ白衣の学生', photo: 'img/fac-hea.jpg', catch: '人の暮らしと、いのちを支える。', desc: '学内の実習室と地域の医療・福祉施設での実習を通して、専門職としての知識と技術、そして人と向き合う力を育てます。', depts: [{ n: '看護学科', t: '基礎看護から在宅看護まで' }, { n: '栄養学科', t: '臨床栄養、食育、スポーツ栄養' }, { n: '社会福祉学科', t: '地域福祉、児童・高齢者福祉' }], career: '病院、福祉施設、給食・食品企業', license: '看護師・保健師国家試験受験資格、管理栄養士国家試験受験資格、社会福祉士国家試験受験資格' },
+      { id: 'des', field: '理工', name: '情報デザイン学部', en: 'DESIGN', img: 'PC室で制作する学生', photo: 'img/fac-des.jpg', catch: 'データとデザインで、暮らしを変える。', desc: 'プログラミング、データサイエンス、UI・グラフィックデザインを横断的に学びます。チームでのサービス開発を通して、構想から形にするまでを経験します。', depts: [{ n: '情報システム学科', t: 'プログラミング、AI・データ分析' }, { n: 'デザイン学科', t: 'グラフィック、UI/UX、映像' }], career: 'IT企業、Web制作、メーカー、広告', license: '基本情報技術者、色彩検定（支援講座あり）' },
+    ];
+    const fields = ['すべて', '人文', '社会', '教育', '医療・福祉', '理工'];
+    const list = this.state.field === 'すべて' ? all : all.filter(f => f.field === this.state.field);
+    return {
+      // 分野で絞り込み中でも学部へジャンプできるよう、絞り込みを解除してから移動する
+      anchors: all.map(f => ({
+        label: f.name, href: '#' + f.id,
+        onClick: e => {
+          if (this.state.field === 'すべて') return;
+          e.preventDefault();
+          this.setState({ field: 'すべて' }, () => document.getElementById(f.id)?.scrollIntoView({ behavior: 'smooth' }));
+        },
+      })),
+      fieldTabs: fields.map(f => ({ label: f, bg: this.state.field === f ? '#2b86ad' : '#fff', fg: this.state.field === f ? '#fff' : '#1f6f93', onClick: () => this.setState({ field: f }) })),
+      faculties: list.map((f, i) => ({ ...f, dir: i % 2 ? 'row-reverse' : 'row' })),
+      features: [
+        { no: '01', title: '少人数ゼミ', text: '1年次から20名程度のゼミに所属し、教員と近い距離で学びます。' },
+        { no: '02', title: '学部横断の副専攻', text: 'データサイエンスや地域学など、他学部の科目も体系的に履修できます。' },
+        { no: '03', title: '実習・留学', text: '地域の企業や海外協定校と連携した学外プログラムを用意しています。' },
+        { no: '04', title: 'キャリア支援', text: '担当アドバイザーが1年次から進路の相談に応じます。' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

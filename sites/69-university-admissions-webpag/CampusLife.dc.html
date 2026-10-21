@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Saira+Semi+Condensed:wght@600;700&family=Saira+Extra+Condensed:wght@700;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',sans-serif;color:#1d2a3a;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#1565c0;text-decoration:none}
+a:hover{color:#0a3d8f}
+button,input,select,textarea{font-family:inherit}
+</style>
+</helmet>
+
+<dc-import name="SiteHeader" current="campus" style="position:sticky;top:0;z-index:50" hint-size="100%,64px"></dc-import>
+<dc-import name="PageHero" en="Campus Life" ja="キャンパスライフ" lead="学び以外の時間も、大学生活の大切な一部です。蒼翔大学での4年間を紹介します。" slot="hero-campus" photo="キャンパスで過ごす学生の写真" hint-size="100%,500px"></dc-import>
+
+<main data-screen-label="Campus Life">
+  <section style="max-width:1000px;margin:0 auto;padding:32px 20px 0">
+    <div data-stagger="110" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px 22px">
+      <sc-for list="{{ campus }}" as="c" hint-placeholder-count="6">
+        <figure style="margin:0">
+          <div style="height:210px;clip-path:polygon(0 0,100% 0,100% calc(100% - 24px),calc(100% - 24px) 100%,0 100%)"><image-slot id="campus-{{ $index }}" shape="rect" placeholder="{{ c.photo }}"></image-slot></div>
+          <figcaption style="padding:14px 2px 0">
+            <p style="margin:0;font-size:16px;font-weight:700;color:#0a3d8f;display:flex;align-items:center;gap:8px"><span style="width:0;height:0;border-left:10px solid #ffd400;border-top:6px solid transparent;border-bottom:6px solid transparent"></span>{{ c.title }}</p>
+            <p style="margin:6px 0 0;font-size:13px;line-height:1.8">{{ c.text }}</p>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="margin-top:64px;background:linear-gradient(162deg,#fff 0 14%,#e2f1fd 14% 100%);padding:64px 20px">
+    <div style="max-width:1000px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:32px">
+        <h2 data-anim="fade-up" style="margin:0;font-size:24px;letter-spacing:.14em;color:#0a3d8f">1年間の主な行事</h2>
+        <p data-anim="fade-up" data-delay="150" style="margin:2px 0 0;font-family:'Saira Semi Condensed',sans-serif;font-weight:700;font-size:26px;color:#5aa8ec">Annual Events</p>
+      </div>
+      <div data-stagger="110" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:4px">
+        <sc-for list="{{ year }}" as="y" hint-placeholder-count="4">
+          <div style="background:#fff">
+            <div style="background:#1b5fb8;color:#fff;padding:10px 26px 10px 16px;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%);font-weight:700">{{ y.season }}</div>
+            <p style="margin:0;padding:14px 16px 18px;font-size:13px;line-height:1.9">{{ y.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="opencampus" style="background:linear-gradient(118deg,#1b6fc6 0 62%,#0a3d8f 62% 100%);padding:56px 20px;scroll-margin-top:64px">
+    <div style="max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;align-items:center;color:#fff">
+      <div data-anim="slide-left" style="flex:1 1 400px">
+        <p data-anim="slide-right" style="margin:0;font-family:'Saira Semi Condensed',sans-serif;font-weight:700;font-size:clamp(40px,5vw,64px);line-height:1;color:#cfe6ff">Open Campus</p>
+        <h2 data-anim="fade-up" style="margin:12px 0 0;padding-bottom:8px;border-bottom:1px solid #fff;font-size:20px;letter-spacing:.1em">オープンキャンパス・キャンパス見学</h2>
+        <p style="margin:12px 0 0;font-size:14px;line-height:1.9;text-wrap:pretty">模擬授業、学部ガイダンス、入試対策講座、在学生によるキャンパスツアーを実施します。保護者の方の参加も歓迎しています。</p>
+        <div data-stagger="60" data-child="pop" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
+          <sc-for list="{{ programs }}" as="p" hint-placeholder-count="5">
+            <span style="border:1px solid #fff;border-radius:20px;padding:5px 14px;font-size:12px">{{ p }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div data-anim="zoom" data-delay="200" style="flex:1 1 300px;background:#fff;color:#1d2a3a;padding:22px 24px;display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid #cfe0f4;padding-bottom:10px"><span style="font-weight:700;color:#0a3d8f">{{ e.name }}</span><span style="font-size:13px">{{ e.date }}</span></div>
+        </sc-for>
+        <p style="margin:0;font-size:11px;color:#4a5a6e">※日程は決定次第お知らせします。</p>
+        <a href="Contact.dc.html" style="margin-top:4px;background:#ffe600;color:#0a3d8f;font-weight:700;text-align:center;padding:14px" style-hover="background:#f5d800;color:#0a3d8f">参加を申し込む ›</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:1000px;margin:0 auto;padding:72px 20px;text-align:center">
+    <p data-anim="blur-in" data-dur="1200" style="margin:0;font-size:clamp(22px,2.6vw,30px);font-weight:900;color:#0a3d8f;letter-spacing:.06em;line-height:1.6">目標に向かうあなたを、<br>蒼翔大学は全力で応援します。</p>
+    <div data-stagger="120" data-child="pop" style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px">
+      <a href="Contact.dc.html" style="min-width:220px;background:#0a3d8f;color:#fff;font-weight:700;padding:16px 28px" style-hover="background:#061f5c;color:#fff">資料請求</a>
+      <a href="Contact.dc.html" style="min-width:220px;background:#ffe600;color:#0a3d8f;font-weight:700;padding:16px 28px" style-hover="background:#f5d800;color:#0a3d8f">オープンキャンパス予約</a>
+    </div>
+  </div>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      campus: [
+        { title: 'クラブ・サークル', text: '運動系・文化系あわせて80以上の団体が活動しています。', photo: 'サークル活動' },
+        { title: '学習支援センター', text: '自習スペースとライティング相談で、日々の学びを支えます。', photo: '図書館・自習室' },
+        { title: '国際交流', text: '留学生との交流イベントや語学ラウンジを定期的に開催しています。', photo: '国際交流イベント' },
+        { title: '蒼翔祭', text: '毎年秋に開催する学園祭。学生が企画から運営まで担います。', photo: '学園祭' },
+        { title: '学生食堂・カフェ', text: '日替わりメニューとカフェスペースで、授業の合間にひと息。', photo: '学生食堂' },
+        { title: '学生寮・住まい', text: '大学近くの学生寮や、一人暮らしの物件探しをサポートします。', photo: '学生寮' }
+      ],
+      year: [
+        { season: '春 4〜6月', text: '入学式、新入生オリエンテーション、サークル新歓' },
+        { season: '夏 7〜9月', text: '前期試験、夏期海外研修、オープンキャンパス' },
+        { season: '秋 10〜12月', text: '蒼翔祭、ゼミ発表会、インターンシップ' },
+        { season: '冬 1〜3月', text: '後期試験、春期留学、卒業式' }
+      ],
+      programs: ['模擬授業', '学部ガイダンス', '入試対策講座', 'キャンパスツアー', '個別相談', '保護者説明会'],
+      events: [
+        { name: '夏のオープンキャンパス', date: '◯月◯日（◯）' },
+        { name: '秋の入試対策説明会', date: '◯月◯日（◯）' },
+        { name: '個別キャンパス見学', date: '平日随時' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

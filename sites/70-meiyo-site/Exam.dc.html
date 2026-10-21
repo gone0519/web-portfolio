@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="./site.css">
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1e1e1e;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1e1e1e;text-decoration:none}
+a:hover{color:#8c6d00}
+*{box-sizing:border-box}
+button,input,select,textarea{font-family:inherit}
+</style>
+</helmet>
+<div style="position:relative;overflow-x:hidden;background:#fff">
+<dc-import name="SiteHeader" active="exam" hint-size="100%,130px"></dc-import>
+
+<section data-screen-label="Exam Hero" style="position:relative;overflow:hidden;padding:clamp(30px,4vw,70px) clamp(20px,4vw,76px) clamp(50px,5vw,90px)">
+  <div aria-hidden="true" data-parallax=".1" style="position:absolute;right:-1vw;top:2vw;font-family:Poppins,sans-serif;font-weight:800;font-size:clamp(90px,16vw,300px);line-height:.8;color:#f4f4f2;white-space:nowrap;pointer-events:none">EXAM</div>
+  <div aria-hidden="true" data-float="10" data-anim="zoom" data-delay="200" class="hero-deco-y" style="position:absolute;right:8vw;top:0;width:clamp(80px,12vw,230px);height:clamp(90px,13vw,250px);background:#ffe24f"></div>
+  <div aria-hidden="true" data-float="10" data-anim="zoom" data-delay="200" class="hero-deco-k" style="position:absolute;right:3vw;top:clamp(110px,15vw,290px);width:clamp(40px,5vw,96px);height:clamp(40px,5vw,96px);background:#1e1e1e"></div>
+  <div data-anim="fade" data-delay="200" style="position:relative;display:flex;gap:10px;font-size:12px;font-weight:700"><a href="Admissions%20Site.dc.html">TOP</a><span>/</span><span style="color:#8c8c8c">入試対策</span></div>
+  <h1 data-anim="clip" data-delay="350" data-dur="1200" style="position:relative;margin:clamp(24px,3vw,50px) 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:min(220px,max(min(22vw,84px),11vw));line-height:.84">EXAM</h1>
+  <div data-anim="up" data-delay="600" style="position:relative;margin-top:10px;font-size:clamp(17px,1.3vw,24px);font-weight:900;letter-spacing:.06em">入試対策・入試方式</div>
+  <p data-anim="up" data-delay="750" style="position:relative;margin:clamp(20px,2vw,32px) 0 0;max-width:640px;font-size:15px;line-height:2;text-wrap:pretty">入試方式ごとの特徴、学習計画の立て方、科目別の対策ポイントをまとめました。</p>
+  <img class="hero-illust" src="images/illust/aha.png" alt="" aria-hidden="true" data-anim="up" data-delay="900" style="position:absolute;right:12vw;bottom:clamp(24px,3vw,50px);width:clamp(240px,24vw,400px);height:auto;z-index:1;pointer-events:none">
+</section>
+
+<section data-screen-label="Methods" style="position:relative;padding:0 clamp(20px,4vw,40px) clamp(80px,8vw,140px)">
+  <div style="max-width:1640px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;column-gap:16px;row-gap:6px"><h2 data-anim="clip" data-dur="1100" style="margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(56px,4.4vw,84px);line-height:.9">METHODS</h2><span style="font-size:13px;font-weight:700;white-space:nowrap">入試方式を知る</span></div>
+    <div data-stagger="up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px;margin-top:36px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <button onClick="{{ t.onClick }}" class="tab-sm" style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:22px 24px;border:2px solid #1e1e1e;background:{{ t.bg }};color:{{ t.fg }};cursor:pointer;text-align:left;transition:background .2s">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.08em;opacity:.7">{{ t.no }} / {{ t.en }}</span>
+          <span style="font-size:18px;font-weight:900">{{ t.name }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div data-stagger="up" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:0;margin-top:20px">
+      <div style="background:#ffe24f;padding:clamp(30px,3.4vw,64px)">
+        <span style="padding:6px 16px;background:#1e1e1e;color:#fff;font-size:13px;font-weight:700;letter-spacing:.08em">入試方式 {{ active.no }}</span>
+        <h3 style="margin:20px 0 0;font-weight:900;font-size:clamp(30px,2.8vw,52px);letter-spacing:.06em">{{ active.name }}</h3>
+        <p style="margin:20px 0 0;font-size:15px;line-height:2;font-weight:500;text-wrap:pretty">{{ active.desc }}</p>
+        <div style="margin-top:24px;padding:20px 22px;background:#1e1e1e;color:#fff">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.06em;color:#ffdb3d">POINT</div>
+          <div style="margin-top:8px;font-size:14px;line-height:1.9">{{ active.tip }}</div>
+        </div>
+      </div>
+      <div style="background:#f7f7f5;padding:clamp(30px,3.4vw,64px)">
+        <dl style="margin:0">
+          <sc-for list="{{ active.rows }}" as="r" hint-placeholder-count="4">
+            <div style="padding:18px 0;border-bottom:1px solid #e3e3e1">
+              <dt style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.08em;color:#8c8c8c">{{ r.en }}</dt>
+              <dd style="margin:4px 0 0;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline"><span style="font-size:13px;font-weight:700;min-width:96px">{{ r.k }}</span><span style="font-size:15px;font-weight:700;line-height:1.7">{{ r.v }}</span></dd>
+            </div>
+          </sc-for>
+        </dl>
+        <p style="margin:18px 0 0;font-size:12px;line-height:1.8;color:#8c8c8c">※時期は一般的な目安です。本学の日程・科目は入学試験要項でご確認ください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Study Plan" style="padding:0 clamp(12px,1.8vw,36px) clamp(80px,8vw,140px)">
+  <div style="position:relative;overflow:hidden;background:#1e1e1e;color:#fff;padding:clamp(50px,5vw,100px) clamp(20px,4vw,70px)">
+    <div aria-hidden="true" data-drift="36" data-anim="wipe" data-dur="1400" style="position:absolute;right:clamp(20px,3vw,60px);top:clamp(30px,3vw,60px);width:clamp(120px,14vw,260px);height:48px;background:repeating-linear-gradient(-50deg,#ffdb3d 0 4px,transparent 4px 18px)"></div>
+    <div style="max-width:1640px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;column-gap:16px;row-gap:6px"><h2 data-anim="clip" data-dur="1100" style="margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(56px,4.4vw,84px);line-height:.9;color:#ffdb3d">STUDY PLAN</h2><span style="font-size:13px;font-weight:700;white-space:nowrap">学習計画の立て方</span></div>
+      <p style="margin:24px 0 0;max-width:640px;font-size:15px;line-height:2;color:#d6d6d6;text-wrap:pretty">本番から逆算して時期ごとの目標を決めておくと、迷う時間が減ります。標準的な進め方の例です。</p>
+      <ol data-stagger="up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1px;margin:44px 0 0;padding:0;list-style:none;background:#3a3a3a;border:1px solid #3a3a3a">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <li style="background:#1e1e1e;padding:30px clamp(18px,1.8vw,30px)">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+              <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;line-height:.9;color:#ffdb3d">{{ s.no }}</span>
+              <span style="padding:4px 10px;background:#ffdb3d;color:#1e1e1e;font-size:12px;font-weight:700">{{ s.when }}</span>
+            </div>
+            <h3 style="margin:18px 0 0;font-size:20px;font-weight:900">{{ s.title }}</h3>
+            <p style="margin:10px 0 0;font-size:14px;line-height:1.9;color:#d6d6d6;text-wrap:pretty">{{ s.body }}</p>
+            <ul data-stagger="right" data-step="70" style="margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ s.checks }}" as="c" hint-placeholder-count="3">
+                <li style="display:flex;gap:10px;font-size:13px;line-height:1.7"><span style="width:14px;height:14px;margin-top:3px;border:2px solid #ffdb3d;flex:none"></span>{{ c }}</li>
+              </sc-for>
+            </ul>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Subjects" style="padding:0 clamp(20px,4vw,40px) clamp(80px,8vw,140px)">
+  <div style="max-width:1640px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:clamp(20px,5vw,90px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;column-gap:16px;row-gap:6px"><h2 data-anim="clip" data-dur="1100" style="margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(56px,4.4vw,84px);line-height:.9">SUBJECTS</h2><span style="font-size:13px;font-weight:700;white-space:nowrap">科目別の対策</span></div>
+      <p data-anim="up" data-delay="150" style="margin:0;flex:1 1 380px;font-size:15px;line-height:2;text-wrap:pretty">どの方式でも土台になるのは、教科ごとの基礎力です。</p><img class="head-illust" src="images/illust/wc-laptop.png" alt="" aria-hidden="true" data-anim="up" style="margin-left:auto;align-self:flex-end;height:clamp(90px,9vw,140px);width:auto">
+    </div>
+    <div data-stagger="up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,1.6vw,28px);margin-top:40px">
+      <sc-for list="{{ subjects }}" as="s" hint-placeholder-count="4">
+        <div style="border-top:4px solid #1e1e1e;padding:26px 4px 0">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <h3 style="margin:0;font-size:22px;font-weight:900">{{ s.t }}</h3>
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:#ffc800">{{ s.en }}</span>
+          </div>
+          <ul data-stagger="right" data-step="70" style="margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ s.tips }}" as="t" hint-placeholder-count="3">
+              <li style="display:flex;gap:10px;font-size:14px;line-height:1.8"><span style="width:8px;height:8px;margin-top:8px;border-radius:50%;background:#ffdb3d;flex:none"></span>{{ t }}</li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Resources" style="padding:0 clamp(20px,4vw,40px) clamp(80px,8vw,140px)">
+  <div style="max-width:1640px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;column-gap:16px;row-gap:6px"><h2 data-anim="clip" data-dur="1100" style="margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(56px,4.4vw,84px);line-height:.9">RESOURCES</h2><span style="font-size:13px;font-weight:700;white-space:nowrap">対策資料</span><img class="head-illust" src="images/illust/joy-man.png" alt="" aria-hidden="true" data-anim="up" style="margin-left:auto;align-self:flex-end;height:clamp(90px,9vw,140px);width:auto"></div>
+    <div data-stagger="up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-top:36px">
+      <sc-for list="{{ resources }}" as="r" hint-placeholder-count="3">
+        <a href="{{ r.href }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:28px;background:#f5f5f3;transition:background .25s" style-hover="background:#ffe24f">
+          <span style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.06em;color:#8c8c8c">{{ r.en }}</span>
+            <span style="font-size:17px;font-weight:700;color:#1e1e1e">{{ r.title }}</span>
+            <span style="font-size:12px;color:#666">{{ r.note }}</span>
+          </span>
+          <span style="width:42px;height:42px;border-radius:50%;background:#1e1e1e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;flex:none">▶</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { i: 0 };
+  renderVals() {
+    const K = '#1e1e1e';
+    const methods = [
+      { en: 'GENERAL', name: '一般選抜', desc: '大学独自の個別学力試験の結果で合否を判定する方式です。教科・科目の得点が評価の中心で、多くの大学で募集人員が最も多い入試区分です。', tip: '志望学部の試験科目と配点を確認し、過去問題で出題形式と時間配分に慣れておきましょう。', rows: [['EVALUATION', '主な評価', '個別学力試験（筆記）'], ['SCHEDULE', '時期の目安', '1月下旬〜3月'], ['FOR YOU', '向いている人', '学力試験で実力を発揮したい人'], ['PREPARE', '主な準備', '教科の基礎固めと過去問演習']] },
+      { en: 'COMMON TEST', name: '共通テスト利用選抜', desc: '大学入学共通テストの成績を利用して合否を判定する方式です。個別試験を課さない方式もあり、複数学部への併願がしやすいのが特徴です。', tip: '利用する教科・科目は学部ごとに異なります。出願前に必要科目を必ず確認してください。', rows: [['EVALUATION', '主な評価', '大学入学共通テストの得点'], ['SCHEDULE', '時期の目安', '1月中旬（共通テスト）'], ['FOR YOU', '向いている人', '幅広い教科をバランスよく得点できる人'], ['PREPARE', '主な準備', 'マーク式問題の演習と時間配分']] },
+      { en: 'RECOMMENDATION', name: '学校推薦型選抜', desc: '出身高校の校長の推薦にもとづいて出願する方式です。調査書の評定平均に加え、面接や小論文などで総合的に評価します。', tip: '評定平均は高1からの積み重ねです。推薦基準を早めに確認し、日々の授業を大切にしましょう。', rows: [['EVALUATION', '主な評価', '調査書・推薦書・面接・小論文'], ['SCHEDULE', '時期の目安', '11月以降に出願'], ['FOR YOU', '向いている人', '高校での学習成績を積み重ねてきた人'], ['PREPARE', '主な準備', '評定の維持、小論文・面接の練習']] },
+      { en: 'COMPREHENSIVE', name: '総合型選抜', desc: '志望理由や活動実績、入学後に学びたいことを多面的に評価する方式です。書類審査・面接・プレゼンテーションなどを組み合わせて選考します。', tip: 'オープンキャンパスで学部の学びを知り、「なぜこの大学か」を自分の言葉で語れるよう準備しましょう。', rows: [['EVALUATION', '主な評価', '志望理由書・面接・活動報告'], ['SCHEDULE', '時期の目安', '9月以降に出願'], ['FOR YOU', '向いている人', '学びたいことが明確で、意欲を伝えたい人'], ['PREPARE', '主な準備', '志望理由の整理、活動の振り返り']] },
+    ].map((m, i) => ({ ...m, no: String(i + 1).padStart(2, '0'), rows: m.rows.map(([en, k, v]) => ({ en, k, v })) }));
+    const i = this.state.i;
+    return {
+      tabs: methods.map((m, j) => ({ ...m, bg: j === i ? K : '#fff', fg: j === i ? '#fff' : K, onClick: () => this.setState({ i: j }) })),
+      active: methods[i],
+      steps: [
+        { no: '01', when: '高2冬〜高3春', title: '現状を知る', body: '模試の結果から得意・不得意を整理し、志望校の合格ラインとの差を数字で確認します。', checks: ['模試の成績を教科別に整理', '志望校・学部の候補を3つ挙げる', '入試方式と必要科目を確認'] },
+        { no: '02', when: '高3春', title: '年間計画を立てる', body: '本番日から逆算し、月ごとの到達目標を決めます。週単位で学習時間を記録すると修正しやすくなります。', checks: ['月ごとの到達目標を決める', '1週間の学習時間を記録する', '学校行事・模試の日程を書き込む'] },
+        { no: '03', when: '高3夏', title: '基礎を固める', body: '教科書レベルの理解を総点検。まとまった時間が取れる夏休みに苦手分野を集中的に克服します。', checks: ['苦手単元を一覧にして潰す', 'オープンキャンパスに参加する', '総合型選抜の書類準備を始める'] },
+        { no: '04', when: '高3秋〜冬', title: '実戦演習', body: '過去問題を本番と同じ時間で解き、時間配分と見直しの手順を身につけます。', checks: ['過去問を時間を計って解く', '間違えた問題を解き直す', '体調管理と生活リズムを整える'] },
+      ],
+      subjects: [
+        { t: '英語', en: 'ENGLISH', tips: ['単語・文法は毎日少しずつ継続する', '長文は段落ごとに要旨をつかむ練習を', 'リスニングは音声に合わせて音読する'] },
+        { t: '国語', en: 'JAPANESE', tips: ['現代文は本文の根拠に線を引いて解く', '古文は単語と助動詞を早めに固める', '記述問題は字数を意識して書き直す'] },
+        { t: '数学', en: 'MATHEMATICS', tips: ['典型問題の解法を説明できるまで復習', '計算ミスの傾向をノートに記録する', '途中式を省かず書く習慣をつける'] },
+        { t: '理科・社会', en: 'SCIENCE / SOCIAL', tips: ['教科書の図表と用語をセットで覚える', '一問一答で知識を定着させる', '資料問題は読み取り練習を重ねる'] },
+      ],
+      resources: [
+        { en: 'PAST EXAMS', title: '過去問題・出題傾向', note: '直近3年分を掲載予定（準備中）', href: '#contact' },
+        { en: 'GUIDEBOOK', title: '入学試験要項（PDF）', note: '公開時期は本サイトでお知らせします', href: 'Admission.dc.html' },
+        { en: 'SEMINAR', title: '入試対策講座・動画', note: 'オープンキャンパスで実施予定', href: 'Campus.dc.html#opencampus' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

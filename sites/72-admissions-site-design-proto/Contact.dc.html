@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#05060b;color:#f7f3ea;font-family:"Zen Kaku Gothic New","Shippori Mincho",sans-serif;font-weight:500;-webkit-font-smoothing:antialiased;text-shadow:0 1px 10px rgba(0,0,0,0.7)}
+*{box-sizing:border-box}
+a{color:#f0d592;text-decoration:none}
+a:hover{color:#fff}
+input,select,textarea{font-family:inherit}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="contact" hint-size="100%,1px"></dc-import>
+<div style="position:relative;overflow:hidden">
+
+<section data-screen-label="05 Contact Hero" style="position:relative;overflow:hidden;background:radial-gradient(ellipse at 25% 40%,rgba(120,96,48,0.35),transparent 60%);padding:170px 24px 90px">
+  <div style="position:relative;max-width:1140px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:8px;background:rgba(7,8,20,0.82);padding:clamp(24px,4vw,44px);border:1px solid rgba(240,213,146,0.35)">
+    <span style="font-size:14.5px;letter-spacing:0.16em;color:#dcd3c0;margin-bottom:14px"><a href="Home.dc.html" style="color:#dcd3c0">TOP</a>　/　資料請求・お問い合わせ</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:64px;line-height:1">05</span>
+    <h1 style="margin:0;background:#8a7034;padding:2px 14px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,5vw,56px);letter-spacing:0.06em">Contact</h1>
+    <span style="background:#8a7034;padding:2px 12px;font-size:18px;letter-spacing:0.16em">資料請求・お問い合わせ</span>
+    <p style="margin:22px 0 0;max-width:520px;font-size:17px;line-height:2.1;color:#f3eee4">大学案内・募集要項の請求、オープンキャンパスの予約、入試に関するご質問を受け付けています。</p>
+  </div>
+</section>
+
+<section id="form" data-screen-label="05 Form" style="padding:40px 24px 100px;scroll-margin-top:80px">
+  <div style="max-width:1140px;margin:0 auto;background:rgba(7,8,20,0.88);padding:clamp(28px,5vw,64px);border:1px solid rgba(240,213,146,0.35);display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:28px;flex:2 1 520px;min-width:0">
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid rgba(217,191,127,0.6)">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <sc-if value="{{ t.active }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ t.select }}" style="padding:18px 10px;background:#8a7034;color:#fff;border:none;cursor:pointer;font-family:inherit;font-size:17px;letter-spacing:0.06em;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;font-size:17px">{{ t.en }}</span>{{ t.ja }}</button>
+          </sc-if>
+          <sc-if value="{{ t.idle }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ t.select }}" style="padding:18px 10px;background:transparent;color:#f3eee4;border:none;cursor:pointer;font-family:inherit;font-size:17px;letter-spacing:0.06em;display:flex;flex-direction:column;align-items:center;gap:4px" style-hover="background:rgba(138,112,52,0.2)"><span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;font-size:17px;color:#f0d592">{{ t.en }}</span>{{ t.ja }}</button>
+          </sc-if>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:56px 32px;border:1px solid rgba(217,191,127,0.6);display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;font-size:40px;color:#f0d592">Thank you.</span>
+          <span style="font-size:18px;line-height:2">{{ sentMsg }}<br>ご登録のメールアドレスに確認メールをお送りしました。（デモ表示）</span>
+          <button onClick="{{ reset }}" style="margin-top:8px;padding:12px 26px;background:none;border:1px solid rgba(255,255,255,0.7);color:#fff;cursor:pointer;font-family:inherit;font-size:16.5px">別の内容を送信する</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ editing }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:22px">
+          <p style="margin:0;font-size:16.5px;line-height:1.9;color:#efe9dd">{{ tabLead }}</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:16.5px">お名前 <span style="font-size:14.5px;color:#f0d592">必須</span>
+              <input required="" name="name" placeholder="青葉 花子" style="padding:14px 16px;background:#14110b;border:1px solid rgba(255,255,255,0.25);color:#f3eee4;font-size:17px;outline:none" style-focus="border-color:#f0d592"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:16.5px">メールアドレス <span style="font-size:14.5px;color:#f0d592">必須</span>
+              <input required="" type="email" name="email" placeholder="example@mail.jp" style="padding:14px 16px;background:#14110b;border:1px solid rgba(255,255,255,0.25);color:#f3eee4;font-size:17px;outline:none" style-focus="border-color:#f0d592"></label>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:16.5px">ご本人との関係
+              <select name="role" style="padding:14px 16px;background:#14110b;border:1px solid rgba(255,255,255,0.25);color:#f3eee4;font-size:17px">
+                <option>高校生・受験生本人</option><option>保護者</option><option>高校教員</option><option>その他</option>
+              </select></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:16.5px">興味のある学部
+              <select name="faculty" style="padding:14px 16px;background:#14110b;border:1px solid rgba(255,255,255,0.25);color:#f3eee4;font-size:17px">
+                <option>未定</option><option>文学部</option><option>経済学部</option><option>国際教養学部</option><option>理工学部</option><option>情報科学部</option><option>看護学部</option>
+              </select></label>
+          </div>
+          <sc-if value="{{ isRequest }}" hint-placeholder-val="{{ true }}">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:16.5px">送付先住所 <span style="font-size:14.5px;color:#f0d592">必須</span>
+              <input required="" name="address" placeholder="〒000-0000　都道府県・市区町村・番地" style="padding:14px 16px;background:#14110b;border:1px solid rgba(255,255,255,0.25);color:#f3eee4;font-size:17px;outline:none" style-focus="border-color:#f0d592"></label>
+          </sc-if>
+          <sc-if value="{{ isOC }}" hint-placeholder-val="{{ false }}">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:16.5px">参加希望日 <span style="font-size:14.5px;color:#f0d592">必須</span>
+              <select name="date" style="padding:14px 16px;background:#14110b;border:1px solid rgba(255,255,255,0.25);color:#f3eee4;font-size:17px">
+                <option>X月XX日（日）全学部対象</option><option>X月XX日（日）入試対策講座</option><option>X月XX日（土）オンライン</option><option>平日の個別キャンパスツアー</option>
+              </select></label>
+          </sc-if>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:16.5px">{{ msgLabel }}
+            <textarea name="msg" rows="5" style="padding:14px 16px;background:#14110b;border:1px solid rgba(255,255,255,0.25);color:#f3eee4;font-size:17px;resize:vertical;outline:none" style-focus="border-color:#f0d592"></textarea></label>
+          <button type="submit" style="align-self:flex-start;padding:16px 40px;background:#8a7034;color:#fff;border:none;cursor:pointer;font-family:inherit;font-size:17px;letter-spacing:0.12em;transition:background .3s" style-hover="background:#a3863f">{{ submitLabel }} →</button>
+        </form>
+      </sc-if>
+    </div>
+
+    <aside style="display:flex;flex-direction:column;gap:28px;flex:1 1 280px;min-width:0">
+      <div style="position:relative;width:min(260px,80%);aspect-ratio:1;align-self:center">
+        <div style="position:absolute;left:10.40%;top:10.40%;width:79.20%;height:79.20%;border:1px solid rgba(255,255,255,0.55);transform:rotate(45deg)"></div>
+        <div style="position:absolute;inset:0;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);background:repeating-linear-gradient(135deg,#5d5241 0 8px,#6b5f4c 8px 16px);display:grid;place-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:13.5px;color:#e8dcc2">入試課の窓口</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;border-top:1px solid #f0d592;font-size:16.5px">
+        <div style="display:flex;flex-direction:column;gap:4px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.18)"><span style="color:#f0d592;font-size:15.5px">電話</span><span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px">XX-XXXX-XXXX</span><span style="color:#dcd3c0;font-size:15.5px">平日 9:00–17:00</span></div>
+        <div style="display:flex;flex-direction:column;gap:4px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.18)"><span style="color:#f0d592;font-size:15.5px">メール</span><span>admission@example.ac.jp</span></div>
+        <div style="display:flex;flex-direction:column;gap:4px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.18)"><span style="color:#f0d592;font-size:15.5px">所在地</span><span style="line-height:1.8">〒XXX-XXXX<br>〇〇県〇〇市〇〇町X-X</span><span style="color:#dcd3c0;font-size:15.5px">〇〇駅から徒歩X分</span></div>
+      </div>
+      <a href="Admissions.dc.html#faq" style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:16.5px" style-hover="border-color:#f0d592;color:#f0d592">よくある質問を見る<span>→</span></a>
+    </aside>
+  </div>
+</section>
+
+<section style="padding:0 24px 100px">
+  <div style="max-width:1140px;margin:0 auto;aspect-ratio:21/8;min-height:240px;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);background:repeating-linear-gradient(135deg,#1c1913 0 8px,#24201a 8px 16px);border:1px solid rgba(255,255,255,0.12);display:grid;place-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:14.5px;color:#dcd3c0">アクセスマップ</span></div>
+</section>
+</div>
+<dc-import name="SiteFooter" cta="{{ false }}" hint-size="100%,300px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 0, sent: false };
+  componentDidMount() {
+    const h = (window.location.hash || '').replace('#', '');
+    if (h === 'oc') this.setState({ tab: 1 });
+  }
+  renderVals() {
+    const T = [
+      { en: 'Request', ja: '資料請求', lead: '大学案内・募集要項を無料でお送りします。', label: 'ご質問・ご要望（任意）', submit: '資料を請求する', done: '資料請求を受け付けました。' },
+      { en: 'Open Campus', ja: 'OC予約', lead: 'オープンキャンパス・キャンパスツアーの参加予約です。保護者の方の同伴も可能です。', label: '同伴者の人数・ご質問（任意）', submit: '参加を予約する', done: 'オープンキャンパスの予約を受け付けました。' },
+      { en: 'Inquiry', ja: 'お問い合わせ', lead: '入試・学費・学生生活についてのご質問にお答えします。', label: 'お問い合わせ内容', submit: '送信する', done: 'お問い合わせを受け付けました。' },
+    ];
+    const cur = T[this.state.tab];
+    return {
+      tabs: T.map((t, i) => ({ en: t.en, ja: t.ja, active: i === this.state.tab, idle: i !== this.state.tab, select: () => this.setState({ tab: i, sent: false }) })),
+      tabLead: cur.lead, msgLabel: cur.label, submitLabel: cur.submit, sentMsg: cur.done,
+      isRequest: this.state.tab === 0, isOC: this.state.tab === 1,
+      sent: this.state.sent, editing: !this.state.sent,
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>入試対策｜MANABIYA 大学入試ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;600;800&family=Jost:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f2f2f2;color:#111;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#111;text-decoration:none}
+a:hover{color:#e2561b}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="exam" hint-size="100%,0px"></dc-import>
+
+<section data-screen-label="Exam hero" style="position:relative;padding:clamp(110px,12vw,150px) 24px 60px;overflow:hidden">
+  <div style="position:relative;max-width:1000px;margin:0 auto">
+    <div aria-hidden="true" style="position:absolute;top:-30px;left:-6%;right:-6%;height:clamp(200px,28vw,320px);background:#e6e6e6"></div>
+    <div aria-hidden="true" style="position:absolute;top:-20px;right:-4%;font-family:'Shippori Mincho',serif;font-weight:800;font-size:clamp(130px,26vw,340px);line-height:0.9;color:#ffe800;white-space:nowrap;text-shadow:6px 6px 0 #111">合格。</div>
+    <div style="position:relative;display:flex;gap:10px;font-family:'Jost',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em"><a href="Top.dc.html">TOP</a><span>/</span><span style="color:#e2561b">EXAM PREP</span></div>
+    <div style="position:relative;margin-top:40px;font-family:'Jost',sans-serif;font-weight:700;color:#e2561b;font-size:13px;letter-spacing:0.14em">PAGE 02 — PASS ROUTE</div>
+    <h1 style="position:relative;margin:16px 0 0;display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px;font-weight:900;font-size:clamp(34px,6vw,72px);line-height:1">
+      <span style="font-family:'Shippori Mincho',serif;font-weight:600;background:#111;color:#fff;padding:10px 20px 14px;box-shadow:-8px 8px 0 #e2561b">入試対策</span><span>ガイド</span>
+    </h1>
+    <p style="position:relative;margin:40px 0 0;max-width:560px;font-weight:700;font-size:15px;line-height:2.2">合格への道は、ゴールから逆算してつくる。<br>学年ごとの準備、科目別のポイント、計画の立て方をまとめました。</p>
+  </div>
+</section>
+<div aria-hidden="true" style="background:#111;color:#fff;font-family:'Jost',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;padding:6px 0">{{ ticker }}</div>
+
+<section data-screen-label="Roadmap" style="padding:80px 24px">
+  <div style="max-width:1000px;margin:0 auto">
+    <span style="display:inline-flex;align-items:baseline;gap:8px;background:#111;color:#fff;padding:6px 12px"><span style="font-weight:700">#</span><span style="font-weight:900;font-size:20px">ロードマップ</span><span style="font-family:'Jost',sans-serif;font-weight:700;font-size:14px">ROAD MAP</span></span>
+    <div data-reveal="1" style="margin-top:40px;border-left:2px solid #e2561b;display:flex;flex-direction:column">
+      <sc-for list="{{ road }}" as="r" hint-placeholder-count="6">
+        <div style="position:relative;display:grid;grid-template-columns:minmax(110px,200px) minmax(0,1fr);gap:20px;padding:0 0 34px 34px">
+          <span style="position:absolute;left:-9px;top:6px;width:16px;height:16px;background:#e2561b;border-radius:50%"></span>
+          <span style="font-family:'Shippori Mincho',serif;font-weight:800;font-size:22px;line-height:1.3">{{ r.when }}</span>
+          <div><div style="font-weight:900;font-size:17px">{{ r.title }}</div><div style="font-size:13px;line-height:1.9;margin-top:6px">{{ r.body }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Subjects" style="padding:80px 24px;background:#fff">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="font-family:'Jost',sans-serif;font-weight:800;font-size:clamp(40px,8vw,96px);color:#ececec;line-height:1">SUBJECTS</div>
+    <p style="margin:-0.6em 0 0;position:relative;font-family:'Shippori Mincho',serif;font-size:clamp(24px,3.4vw,36px);font-weight:600;letter-spacing:0.08em">科目別の<span style="font-family:'Noto Sans JP';font-weight:900;background:#ffe800;padding:0 8px">対策ポイント</span></p>
+    <div style="display:flex;flex-wrap:wrap;gap:0;margin-top:30px;border-bottom:2px solid #111">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <button onClick="{{ t.pick }}" style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:16px;padding:12px 26px;border:0;cursor:pointer;background:{{ t.bg }};color:{{ t.fg }}">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;padding-top:30px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-family:'Jost',sans-serif;font-weight:800;font-size:13px;letter-spacing:0.14em;color:#e2561b">{{ sub.en }}</span>
+        <span style="font-family:'Shippori Mincho',serif;font-weight:800;font-size:clamp(40px,6vw,64px);line-height:1">{{ sub.label }}</span>
+        <p style="margin:6px 0 0;font-size:14px;line-height:2;font-weight:500">{{ sub.lead }}</p>
+      </div>
+      <div style="display:flex;flex-direction:column;border-top:1px solid #111">
+        <sc-for list="{{ sub.points }}" as="p" hint-placeholder-count="3">
+          <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #111"><span style="font-family:'Jost',sans-serif;font-weight:800;color:#e2561b">{{ p.no }}</span><span style="font-size:14px;line-height:1.8;font-weight:700">{{ p.text }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Weekly plan" style="padding:80px 24px">
+  <div style="max-width:1000px;margin:0 auto">
+    <span style="display:inline-flex;align-items:baseline;gap:8px;background:#111;color:#fff;padding:6px 12px"><span style="font-weight:700">#</span><span style="font-weight:900;font-size:20px">学習計画</span><span style="font-family:'Jost',sans-serif;font-weight:700;font-size:14px">WEEKLY PLAN</span></span>
+    <p style="margin:18px 0 0;font-size:14px;line-height:2;font-weight:500;max-width:620px">1週間の計画例（受験学年・平日学校がある場合のサンプル）。休む時間と復習の時間を先に決めるのがコツです。</p>
+    <div data-reveal="1" style="margin-top:28px;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;overflow-x:auto">
+      <sc-for list="{{ week }}" as="d" hint-placeholder-count="7">
+        <div style="display:flex;flex-direction:column;gap:4px;min-width:84px">
+          <span style="background:#111;color:#fff;text-align:center;font-weight:900;padding:8px 0">{{ d.day }}</span>
+          <sc-for list="{{ d.blocks }}" as="b" hint-placeholder-count="3">
+            <span style="background:{{ b.bg }};color:#111;font-size:11px;font-weight:700;padding:10px 6px;text-align:center;line-height:1.5">{{ b.t }}</span>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font-size:11px;font-weight:700">
+      <span style="display:flex;gap:6px;align-items:center"><span style="width:12px;height:12px;background:#ffe800"></span>演習・新出</span>
+      <span style="display:flex;gap:6px;align-items:center"><span style="width:12px;height:12px;background:#f1e6a3"></span>復習</span>
+      <span style="display:flex;gap:6px;align-items:center"><span style="width:12px;height:12px;background:#fff;border:1px solid #111"></span>休息</span>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Essay interview" style="padding:80px 24px;background:#3c3c3c;color:#fff">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="font-family:'Jost',sans-serif;font-weight:800;font-size:clamp(36px,6vw,64px);color:#e2561b;letter-spacing:0.04em;line-height:1">ESSAY &amp; INTERVIEW</div>
+    <p style="margin:12px 0 0;font-size:15px;font-weight:700">小論文・面接・志望理由書</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:36px">
+      <sc-for list="{{ essay }}" as="e" hint-placeholder-count="3">
+        <div style="border-top:4px solid #e2561b;padding-top:18px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Shippori Mincho',serif;font-weight:600;font-size:24px">{{ e.title }}</span>
+          <span style="font-size:13px;line-height:1.95">{{ e.body }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Next page" style="padding:80px 24px">
+  <a href="Admissions.dc.html" style="max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;border-top:2px solid #111;border-bottom:2px solid #111;padding:34px 0" style-hover="color:#e2561b">
+    <span style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Jost',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;color:#e2561b">NEXT PAGE 03</span><span style="font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(28px,4vw,44px)">入試方式・出願</span></span>
+    <span style="width:64px;height:64px;border-radius:50%;background:#e2561b;color:#fff;display:grid;place-items:center;font-size:20px">▸</span>
+  </a>
+</section>
+<dc-import name="SiteFooter" hint-size="100%,360px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 0 };
+  subjects = [
+    { label: '英語', en: 'ENGLISH', lead: '語彙・文法の土台を固めたうえで、長文を速く正確に読む力を養います。リスニングは毎日少しずつ。', points: ['単語帳は1冊を繰り返し、例文ごと覚える', '長文は時間を計って解き、根拠に線を引く', 'リスニングは音読・シャドーイングとセットで'] },
+    { label: '数学', en: 'MATHEMATICS', lead: '公式の暗記より「なぜそうなるか」の理解を。典型問題の解法を自分で再現できるかが鍵です。', points: ['典型問題を解法ごとに整理したノートを作る', '間違えた問題は3日後・1週間後に解き直す', '計算ミスの傾向を記録して対策する'] },
+    { label: '国語', en: 'JAPANESE', lead: '現代文は論理の流れを、古文・漢文は単語と文法を。読み方の型を身につけることが近道です。', points: ['接続語・指示語に注目して段落の役割をつかむ', '古文単語と助動詞は早めに一通り覚える', '記述は「要素を落とさない」ことを意識'] },
+    { label: '理科', en: 'SCIENCE', lead: '用語の暗記と現象の理解を往復させましょう。図やグラフを自分で描けると定着します。', points: ['教科書の図を見ずに再現できるか確認', '計算問題は単位まで書く習慣をつける', '分野ごとに得点の取りやすさを把握する'] },
+    { label: '社会', en: 'SOCIAL STUDIES', lead: '流れと因果関係を押さえてから、細かい用語を肉付けすると効率よく覚えられます。', points: ['年表や地図に自分で書き込みながら整理', '一問一答は「なぜ」をセットで確認', '資料問題は過去問で読み取りの型を練習'] }
+  ];
+  componentDidMount() {
+    const io = this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'none'; io.unobserve(e.target); } }), { threshold: 0.08 });
+    document.querySelectorAll('[data-reveal]').forEach(el => { el.style.transition = 'opacity .9s, transform .9s cubic-bezier(.2,.8,.2,1)'; el.style.opacity = 0; el.style.transform = 'translateY(40px)'; io.observe(el); });
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); }
+  mq(t, d) { const h = React.createElement, r = Array(8).fill(t).join(''); return h('div', { style: { overflow: 'hidden', whiteSpace: 'nowrap' } }, h('div', { style: { display: 'inline-flex', animation: `mq ${d}s linear infinite` } }, [0, 1].map(k => h('span', { key: k }, r)))); }
+  renderVals() {
+    const t = this.state.tab, s = this.subjects[t];
+    const B = (x) => ({ t: x, bg: x === '休息' ? '#fff' : x.includes('復習') ? '#f1e6a3' : '#ffe800' });
+    const week = [['月', ['英語長文', '数学演習', '復習30分']], ['火', ['古文', '理科', '復習30分']], ['水', ['英単語', '数学演習', '社会']], ['木', ['現代文', '理科', '復習30分']], ['金', ['英語長文', '数学', '社会']], ['土', ['過去問', '過去問', '週の復習']], ['日', ['弱点補強', '休息', '計画見直し']]].map(([day, b]) => ({ day, blocks: b.map(B) }));
+    return {
+      ticker: this.mq('EXAM PREP ✦ 入試対策 ✦ PASS ROUTE ✦ ', 30),
+      road: [
+        { when: '高校1年', title: '学習習慣をつくる', body: '授業の予習・復習を毎日のルーティンに。英語・数学の基礎は早いほど有利です。' },
+        { when: '高校2年 春〜夏', title: '興味分野を探す', body: '学部・学問を調べ、オープンキャンパスに参加。志望の方向性を考え始めます。' },
+        { when: '高校2年 冬', title: '受験学年のスタート', body: '苦手分野の洗い出しと克服。志望校の入試科目・方式を確認しておきましょう。' },
+        { when: '高校3年 春〜夏', title: '基礎の完成', body: '夏までに全範囲の基礎を一通り。総合型選抜の人は志望理由書の準備を。' },
+        { when: '高校3年 秋', title: '過去問・実戦演習', body: '志望校の過去問で傾向をつかみ、時間配分を練習します。出願書類も準備。' },
+        { when: '高校3年 冬', title: '本番に向けて', body: '新しい教材は増やさず、総復習と体調管理を優先。会場の下見も忘れずに。' }
+      ],
+      tabs: this.subjects.map((x, i) => ({ label: x.label, bg: i === t ? '#111' : 'transparent', fg: i === t ? '#fff' : '#111', pick: () => this.setState({ tab: i }) })),
+      sub: { ...s, points: s.points.map((text, i) => ({ no: String(i + 1).padStart(2, '0'), text })) },
+      week,
+      essay: [
+        { title: '志望理由書', body: '「なぜこの大学・学部なのか」を、自分の経験と将来像をつないで具体的に書きます。先生など第三者に読んでもらいましょう。' },
+        { title: '小論文', body: '主張→理由→具体例→結論の型を身につけ、制限時間内に書く練習を。新聞やニュースで社会の課題に触れておくと役立ちます。' },
+        { title: '面接', body: '提出書類の内容と矛盾しないように準備。想定質問への答えは丸暗記せず、要点を自分の言葉で話せるようにします。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

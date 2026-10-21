@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho+B1:wght@600;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./site-anim.js"></script>
+<style>html{scroll-behavior:smooth}body{margin:0;background:#f5f1ec;color:#5b4e43;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}a{color:#7a6650;text-decoration:none}a:hover{color:#e8847a}*{box-sizing:border-box}</style>
+</helmet>
+<div style="min-height:100vh;background:#f5f1ec;overflow-x:hidden">
+<dc-import name="SubHero" current="admissions" num="03" en="Admissions" jp="入試情報" vertical="ENTRY" slot-id="hero-admissions" slot-ph="出願書類・手続きのイメージ" lead="出願までの流れ、準備する書類、学費と奨学金。受験生とご家族が押さえておきたい情報をまとめました。" hint-size="100%,520px"></dc-import>
+
+<main style="max-width:1000px;margin:0 auto;padding:40px 20px 110px;display:flex;flex-direction:column;gap:90px">
+
+  <section data-screen-label="Admissions / Schedule">
+    <dc-import name="SectionHead" num="01" en="Schedule" jp="入試スケジュール" hint-size="100%,130px"></dc-import>
+    <p data-anim="up" style="margin:0 0 22px;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:clamp(24px,3.4vw,36px);line-height:1.45;letter-spacing:.06em;color:#5b4e43"><span style="color:#e8847a;text-emphasis:filled dot #e8847a;-webkit-text-emphasis:filled dot #e8847a">逆算</span>こそが、合格への近道。</p>
+    <div data-anim="up" style="background:#eef0f3;padding:10px;border-radius:6px">
+      <div style="background:#fff;border-radius:4px;padding:14px 14px 10px">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+          <span style="font-size:13px;font-weight:700;color:#3c4043">入試の流れ（例年の目安・サンプル）</span>
+          <div style="display:flex;gap:6px;margin-left:auto;flex-wrap:wrap">
+            <sc-for list="{{ filters }}" as="fl" hint-placeholder-count="4">
+              <button onClick="{{ fl.select }}" style="cursor:pointer;border:1px solid #dadce0;background:{{ fl.bg }};color:{{ fl.fg }};border-radius:999px;padding:5px 12px;font:500 11px 'Zen Kaku Gothic New'">{{ fl.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="overflow-x:auto">
+          <div style="min-width:560px">
+            <div style="display:grid;grid-template-columns:120px repeat(7,minmax(0,1fr));border-bottom:1px solid #e3e3e3">
+              <span></span>
+              <sc-for list="{{ months }}" as="m" hint-placeholder-count="7">
+                <span style="text-align:center;font-size:11px;color:#70757a;padding:6px 0;border-left:1px solid #eee">{{ m }}</span>
+              </sc-for>
+            </div>
+            <sc-for list="{{ schedRows }}" as="r" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:120px repeat(7,minmax(0,1fr));grid-auto-rows:22px;row-gap:4px;padding:10px 0;border-bottom:1px solid #eee">
+                <span style="grid-row:1 / span 2;font-size:11.5px;font-weight:700;color:#5b4e43;display:flex;align-items:center">{{ r.label }}</span>
+                <sc-for list="{{ r.bars }}" as="b" hint-placeholder-count="2">
+                  <span style="grid-column:{{ b.col }};grid-row:{{ b.row }};background:{{ b.color }};color:#fff;font-size:10.5px;font-weight:700;border-radius:3px;padding:0 6px;display:flex;align-items:center;margin:0 2px;white-space:nowrap;overflow:hidden">{{ b.text }}</span>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:10.5px;color:#70757a">※ 実際の日程は年度・大学ごとに異なります。必ず各大学の募集要項でご確認ください。</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Admissions / Flow">
+    <dc-import name="SectionHead" num="02" en="Flow" jp="出願の流れ" hint-size="100%,130px"></dc-import>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">
+      <sc-for list="{{ flow }}" as="f" hint-placeholder-count="6">
+        <div data-anim="up" data-stagger="1" style="position:relative;background:#fff;padding:20px 14px 22px;text-align:center">
+          <div style="font-family:'Josefin Sans';font-weight:700;font-size:13px;letter-spacing:.2em;color:#f2958c">STEP</div>
+          <div style="font-family:'Josefin Sans';font-weight:600;font-size:44px;line-height:1;color:#e3d6c4;margin:2px 0 10px">{{ f.no }}</div>
+          <div style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:15px;color:#5b4e43;letter-spacing:.04em;margin-bottom:8px">{{ f.title }}</div>
+          <div style="font-size:11px;line-height:1.75;color:#6b5c4f;text-align:left">{{ f.text }}</div>
+          <span style="position:absolute;right:0;bottom:0;width:0;height:0;border-left:14px solid transparent;border-bottom:14px solid #c8b8a2"></span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Admissions / Checklist">
+    <dc-import name="SectionHead" num="03" en="Checklist" jp="出願チェックリスト" hint-size="100%,130px"></dc-import>
+    <div style="background:#fff;padding:22px 24px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap">
+        <span style="font-family:'Josefin Sans';font-weight:600;font-size:30px;color:#f2958c;line-height:1">{{ doneCount }}<span style="font-size:16px;color:#b9a993"> / {{ totalCount }}</span></span>
+        <div style="flex:1 1 200px;height:8px;background:#f1ebe3;border-radius:99px;overflow:hidden"><div style="height:100%;width:{{ progress }};background:#f2958c;border-radius:99px;transition:width .4s cubic-bezier(.22,1,.36,1)"></div></div>
+        <span style="font-size:11.5px;color:#8a7a6a">{{ progressLabel }}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px 24px">
+        <sc-for list="{{ checks }}" as="c" hint-placeholder-count="8">
+          <label style="display:flex;gap:12px;align-items:flex-start;padding:12px 4px;border-bottom:1px dotted #e1d6c8;cursor:pointer">
+            <input type="checkbox" checked="{{ c.on }}" onChange="{{ c.toggle }}" style="width:18px;height:18px;margin:2px 0 0;accent-color:#f2958c;flex:none">
+            <span style="font-size:12.5px;line-height:1.7;color:{{ c.color }}">{{ c.label }}</span>
+          </label>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Admissions / Cost">
+    <dc-import name="SectionHead" num="04" en="Cost" jp="学費・奨学金" hint-size="100%,130px"></dc-import>
+    <div data-anim="up" style="overflow-x:auto;background:#fff;margin-bottom:16px">
+      <table style="width:100%;min-width:560px;border-collapse:collapse;font-size:12px;text-align:center">
+        <tr style="background:#d9ccb9;color:#fff"><th style="padding:12px;font-weight:700;text-align:left">項目（初年度）</th><th style="font-weight:700">国公立大学</th><th style="font-weight:700">私立大学（文系）</th><th style="font-weight:700">私立大学（理系）</th></tr>
+        <sc-for list="{{ costRows }}" as="c" hint-placeholder-count="4">
+          <tr style="border-top:1px dotted #e1d6c8"><th style="padding:12px;text-align:left;font-weight:700;color:#7a6650;background:#faf7f3">{{ c.k }}</th><td style="color:#5b4e43">○○○,○○○円</td><td style="color:#5b4e43">○○○,○○○円</td><td style="color:#5b4e43">○○○,○○○円</td></tr>
+        </sc-for>
+      </table>
+    </div>
+    <p style="margin:0 0 22px;font-size:11px;color:#8a7a6a">※ 金額はプレースホルダーです。公開前に、各大学が公表している最新の金額に差し替えてください。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+      <sc-for list="{{ scholarships }}" as="s" hint-placeholder-count="3">
+        <div data-anim="up" data-stagger="1" style="position:relative;background:linear-gradient(135deg,#fff 0%,#fff 60%,{{ s.tone }} 60%,{{ s.tone }} 100%);border:1px solid #e6ddd1;padding:20px 18px 24px">
+          <div style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:18px;color:#5b4e43;margin-bottom:8px;letter-spacing:.06em">{{ s.title }}</div>
+          <div style="font-size:11.5px;line-height:1.8;color:#6b5c4f">{{ s.text }}</div>
+          <span style="position:absolute;right:0;bottom:0;width:0;height:0;border-left:12px solid transparent;border-bottom:12px solid #b9a993"></span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Admissions / FAQ">
+    <dc-import name="SectionHead" num="05" en="FAQ" jp="よくあるご質問" hint-size="100%,130px"></dc-import>
+    <div style="background:#fff">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
+        <div style="border-bottom:1px dotted #e1d6c8">
+          <button onClick="{{ q.toggle }}" style="width:100%;text-align:left;border:0;background:none;cursor:pointer;padding:17px 18px;display:flex;gap:12px;align-items:center;font:500 13px 'Zen Kaku Gothic New';color:#5b4e43">
+            <span style="font-family:'Josefin Sans';font-weight:600;color:#f2958c;font-size:18px">Q</span><span style="flex:1">{{ q.q }}</span><span style="font-family:'Josefin Sans';color:#b9a993;font-size:18px">{{ q.sign }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 18px 18px 46px;font-size:12.5px;line-height:1.9;color:#6b5c4f">{{ q.a }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
+      <a href="Contact.dc.html?type=consult" style="background:#f2958c;color:#fff;border-radius:999px;padding:13px 24px;font-size:12.5px;font-weight:700;letter-spacing:.06em" style-hover="background:#ea7f75;color:#fff">入試について相談する →</a>
+    </div>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filter: 'all', faq: 0, checks: {} };
+  renderVals() {
+    const s = this.state;
+    const bar = (a, b, row, color, text) => ({ col: `${a + 2} / ${b + 3}`, row: String(row), color, text });
+    const Y = '#e0b43c', P = '#d6336c', B = '#8fb3c9';
+    const rows = [
+      { key: 'comp', label: '総合型選抜', bars: [bar(0, 1, 1, Y, '出願'), bar(1, 2, 2, P, '書類審査・面接'), bar(2, 3, 1, B, '合格発表')] },
+      { key: 'rec', label: '学校推薦型選抜', bars: [bar(2, 2, 1, Y, '出願'), bar(2, 3, 2, P, '面接・小論文'), bar(3, 3, 1, B, '発表')] },
+      { key: 'gen', label: '共通テスト', bars: [bar(0, 1, 1, Y, '出願'), bar(4, 4, 2, P, '試験'), bar(4, 4, 1, B, '自己採点')] },
+      { key: 'gen', label: '一般選抜（個別）', bars: [bar(4, 5, 1, Y, '出願'), bar(5, 5, 2, P, '個別試験'), bar(5, 6, 1, B, '合格発表')] },
+    ];
+    const checkItems = ['志望校の募集要項を入手した', '出願資格・出願条件を確認した', '試験科目・配点・試験日を確認した', 'WEB出願のアカウントを登録した', '調査書の発行を高校に依頼した', '証明写真を用意した', '検定料の支払い方法を確認した', '試験会場までの交通手段を調べた'];
+    const done = checkItems.filter((_, i) => s.checks[i]).length;
+    const faqData = [
+      ['志望校はいつまでに決めればよいですか？', '早いほど対策の時間を確保できますが、高校3年生の夏頃までに候補を絞る人が多いです。オープンキャンパスや資料を活用して比較しましょう。'],
+      ['推薦型・総合型と一般選抜は併願できますか？', '併願できる場合と、合格したら必ず入学する「専願」の場合があります。条件は大学・方式ごとに異なるため、募集要項で必ず確認してください。'],
+      ['調査書はいつ頃依頼すればよいですか？', '発行には日数がかかることがあります。出願時期が決まったら、早めに高校の先生に相談しましょう。'],
+      ['学費以外にどのような費用がかかりますか？', '受験料、受験時の交通費・宿泊費、入学金、教科書代、一人暮らしの場合は住居費などがあります。早めに総額の見通しを立てておくと安心です。'],
+      ['奨学金はいつ申し込めますか？', '高校在学中に申し込む「予約採用」と、入学後に申し込む「在学採用」があります。申込時期は制度によって異なるため、高校や各機関の案内を確認してください。'],
+      ['保護者が相談することはできますか？', 'はい。費用や手続き、受験期の生活面についてのご相談も受け付けています。お問い合わせページからお申し込みください。'],
+    ];
+    return {
+      months: ['9月', '10月', '11月', '12月', '1月', '2月', '3月'],
+      filters: [['all', 'すべて'], ['gen', '一般選抜'], ['rec', '推薦型'], ['comp', '総合型']].map(([k, l]) => ({ label: l, bg: s.filter === k ? '#1a73e8' : '#fff', fg: s.filter === k ? '#fff' : '#3c4043', select: () => this.setState({ filter: k }) })),
+      schedRows: rows.filter(r => s.filter === 'all' || r.key === s.filter),
+      flow: [
+        { no: '01', title: '募集要項の確認', text: '出願資格、試験科目、日程、必要書類を確認します。' },
+        { no: '02', title: 'WEB出願の登録', text: '出願サイトでアカウントを作成し、志願者情報を入力します。' },
+        { no: '03', title: '検定料の支払い', text: 'コンビニ・クレジットカードなど、指定の方法で支払います。' },
+        { no: '04', title: '書類の郵送', text: '調査書などの書類を、期限内に必着で送付します。' },
+        { no: '05', title: '受験票の印刷', text: '受験票を出願サイトから印刷し、試験当日に持参します。' },
+        { no: '06', title: '受験・合格発表', text: '合格後は入学手続きの期限を確認し、遅れずに進めます。' },
+      ],
+      checks: checkItems.map((label, i) => ({ label, on: !!s.checks[i], color: s.checks[i] ? '#b9a993' : '#5b4e43', toggle: () => this.setState({ checks: { ...s.checks, [i]: !s.checks[i] } }) })),
+      doneCount: String(done), totalCount: String(checkItems.length), progress: `${(done / checkItems.length) * 100}%`,
+      progressLabel: done === checkItems.length ? 'すべて完了しました' : `あと${checkItems.length - done}項目`,
+      costRows: [{ k: '入学金' }, { k: '授業料（年額）' }, { k: '施設設備費など' }, { k: '初年度合計' }],
+      scholarships: [
+        { title: '給付型奨学金', text: '返済の必要がない奨学金です。家計の状況や学業成績などの条件があります。', tone: '#d3ede4' },
+        { title: '貸与型奨学金', text: '卒業後に返済する奨学金です。無利子・有利子など、複数の種類があります。', tone: '#d5e9f2' },
+        { title: '大学独自の制度', text: '特待生制度や授業料減免など、大学ごとに独自の支援制度があります。', tone: '#fcd9db' },
+      ],
+      faqs: faqData.map(([q, a], i) => ({ q, a, open: s.faq === i, sign: s.faq === i ? '−' : '+', toggle: () => this.setState({ faq: s.faq === i ? -1 : i }) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

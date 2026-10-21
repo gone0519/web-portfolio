@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</helmet>
+<div aria-hidden="true" style="position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:#07061a">
+  <div data-cosmos="bg" style="position:absolute;inset:-4%;background:url('assets/space-galaxy.jpg') center/cover no-repeat"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(6,6,20,0.58),rgba(4,4,14,0.82) 75%),linear-gradient(180deg,rgba(5,6,18,0.35),rgba(5,6,18,0.15) 50%,rgba(5,6,18,0.45))"></div>
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 11px 23px,rgba(255,255,255,0.75) 0 0.5px,transparent 1px),radial-gradient(circle at 58px 71px,rgba(200,215,255,0.7) 0 0.5px,transparent 1px),radial-gradient(circle at 83px 9px,rgba(255,255,255,0.6) 0 0.4px,transparent 0.9px);background-size:97px 83px"></div>
+  <div data-cosmos="drift" style="position:absolute;inset:0;background-image:radial-gradient(circle at 23px 41px,rgba(255,255,255,0.9) 0 0.8px,transparent 1.4px),radial-gradient(circle at 97px 13px,rgba(255,255,255,0.7) 0 0.6px,transparent 1.2px),radial-gradient(circle at 151px 118px,rgba(255,255,255,0.8) 0 0.7px,transparent 1.3px),radial-gradient(circle at 61px 157px,rgba(245,230,192,0.8) 0 0.8px,transparent 1.4px),radial-gradient(circle at 128px 176px,rgba(210,225,255,0.7) 0 0.6px,transparent 1.2px);background-size:173px 191px"></div>
+  <div data-cosmos="tw1" style="position:absolute;inset:0;background-image:radial-gradient(circle at 40px 60px,#fff 0 1.2px,rgba(255,255,255,0.25) 2px,transparent 4px),radial-gradient(circle at 190px 150px,#f7e9c4 0 1.1px,rgba(247,233,196,0.25) 2px,transparent 4px),radial-gradient(circle at 120px 210px,#dfe8ff 0 1px,transparent 3px);background-size:251px 233px"></div>
+  <div data-cosmos="tw2" style="position:absolute;inset:0;background-image:radial-gradient(circle at 80px 90px,#fff 0 1.6px,rgba(255,255,255,0.3) 2.5px,transparent 6px),radial-gradient(circle at 300px 260px,#cfe0ff 0 1.5px,rgba(207,224,255,0.3) 2.5px,transparent 6px),radial-gradient(circle at 220px 40px,#fbefd0 0 1.3px,transparent 5px);background-size:397px 359px"></div>
+  <div data-cosmos="shoot" style="position:absolute;top:14%;left:62%;width:160px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0),#fff);opacity:0"></div>
+  <div data-cosmos="shoot" style="position:absolute;top:48%;left:30%;width:120px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0),#e6eeff);opacity:0"></div>
+</div>
+<div data-cosmos="progress" style="position:fixed;top:0;left:0;right:0;height:2px;z-index:60;background:linear-gradient(90deg,#8a7034,#f3dfa6,#b9c8ff);transform:scaleX(0);transform-origin:left;pointer-events:none"></div>
+<div data-cosmos="sparks" style="position:fixed;inset:0;z-index:70;pointer-events:none;overflow:hidden"></div>
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;background:linear-gradient(180deg,rgba(11,10,8,0.85),rgba(11,10,8,0));font-family:'Shippori Mincho',serif">
+  <a href="Home.dc.html" style="display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none">
+    <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(26px,3vw,36px);line-height:0.9;letter-spacing:0.04em;display:flex;flex-direction:column"><span>AOBA</span><span>GAKUIN</span></span>
+    <span style="display:flex;flex-direction:column;gap:3px;font-size:9px;letter-spacing:0.2em;line-height:1.4;border-left:1px solid rgba(255,255,255,0.5);padding-left:10px"><span>青葉学院大学</span><span>ADMISSIONS</span><span>20XX</span></span>
+  </a>
+  <div style="display:flex;align-items:center;gap:24px">
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:22px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;letter-spacing:0.08em">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <sc-if value="{{ n.active }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ n.href }}" style="color:#f0d592;text-decoration:none;border-bottom:1px solid #f0d592;padding-bottom:2px">{{ n.en }}</a>
+          </sc-if>
+          <sc-if value="{{ n.idle }}" hint-placeholder-val="{{ true }}">
+            <a href="{{ n.href }}" style="color:#fff;text-decoration:none;padding-bottom:2px" style-hover="color:#f0d592">{{ n.en }}</a>
+          </sc-if>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:48px;height:44px;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 4px;position:relative;z-index:2">
+      <span style="height:1px;background:#fff;width:100%"></span><span style="height:1px;background:#fff;width:100%"></span><span style="height:1px;background:#fff;width:70%;align-self:flex-end"></span>
+    </button>
+  </div>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:49;background:rgba(11,10,8,0.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;text-align:center;font-family:'Shippori Mincho',serif">
+    <a href="Home.dc.html" style="display:flex;flex-direction:column;gap:4px;color:#fff;text-decoration:none"><span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px">Home</span><span style="font-size:15.5px;letter-spacing:0.2em;color:#f0d592">トップ</span></a>
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+      <a href="{{ n.href }}" style="display:flex;flex-direction:column;gap:4px;color:#fff;text-decoration:none"><span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px">{{ n.no }} {{ n.en }}</span><span style="font-size:15.5px;letter-spacing:0.2em;color:#f0d592">{{ n.ja }}</span></a>
+    </sc-for>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;programs&quot;,&quot;prep&quot;,&quot;admissions&quot;,&quot;campus&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menu: false };
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.anims = [];
+    const q = (k) => Array.from(document.querySelectorAll('[data-cosmos="' + k + '"]'));
+    const run = (el, kf, o) => this.anims.push(el.animate(kf, Object.assign({ iterations: Infinity, easing: 'ease-in-out' }, o)));
+    q('bg').forEach(el => run(el, [{ transform: 'scale(1) translate(0,0)' }, { transform: 'scale(1.06) translate(-1.5%,1%)' }], { duration: 40000, direction: 'alternate' }));
+    q('drift').forEach(el => run(el, [{ backgroundPosition: '0 0' }, { backgroundPosition: '-173px 191px' }], { duration: 120000, easing: 'linear' }));
+    q('tw1').forEach(el => run(el, [{ opacity: 1 }, { opacity: 0.3 }], { duration: 2600, direction: 'alternate' }));
+    q('tw2').forEach(el => run(el, [{ opacity: 0.35 }, { opacity: 1 }], { duration: 3700, direction: 'alternate' }));
+    q('shoot').forEach((el, i) => run(el, [{ transform: 'rotate(155deg) translateX(0)', opacity: 0 }, { opacity: 1, offset: 0.03 }, { transform: 'rotate(155deg) translateX(560px)', opacity: 0, offset: 0.12 }, { transform: 'rotate(155deg) translateX(560px)', opacity: 0 }], { duration: 9000 + i * 4000, delay: 2500 + i * 5000, easing: 'ease-out' }));
+    this.fx();
+  }
+  fx() {
+    const prog = document.querySelector('[data-cosmos="progress"]');
+    this.onS = () => { const m = document.documentElement.scrollHeight - innerHeight; if (prog) prog.style.transform = 'scaleX(' + (m > 0 ? scrollY / m : 0) + ')'; };
+    addEventListener('scroll', this.onS, { passive: true }); this.onS();
+    const layers = [['drift', 5], ['tw1', 10], ['tw2', 18], ['bg', 0]].map(([k, d]) => [document.querySelector('[data-cosmos="' + k + '"]'), d]);
+    const sparks = document.querySelector('[data-cosmos="sparks"]');
+    const fine = matchMedia('(pointer:fine)').matches;
+    let raf = 0, last = 0, mx = 0, my = 0;
+    this.onM = (e) => {
+      mx = e.clientX; my = e.clientY;
+      if (!raf) raf = requestAnimationFrame(() => {
+        raf = 0; const dx = mx / innerWidth - 0.5, dy = my / innerHeight - 0.5;
+        layers.forEach(([el, d]) => { if (el && d) el.style.transform = 'translate(' + (-dx * d * 2) + 'px,' + (-dy * d * 2) + 'px)'; });
+      });
+      const now = performance.now();
+      if (fine && sparks && now - last > 45) {
+        last = now;
+        const s = document.createElement('span'); const z = 3 + Math.random() * 4;
+        s.style.cssText = 'position:absolute;left:' + mx + 'px;top:' + my + 'px;width:' + z + 'px;height:' + z + 'px;margin:-' + z / 2 + 'px;border-radius:50%;background:radial-gradient(circle,#fff,' + (Math.random() > 0.5 ? '#f3dfa6' : '#b9c8ff') + ' 45%,transparent 70%)';
+        sparks.appendChild(s);
+        const a = s.animate([{ transform: 'translate(0,0) scale(1)', opacity: 1 }, { transform: 'translate(' + (Math.random() * 40 - 20) + 'px,' + (18 + Math.random() * 30) + 'px) scale(0)', opacity: 0 }], { duration: 900, easing: 'ease-out' });
+        a.onfinish = () => s.remove();
+      }
+    };
+    addEventListener('mousemove', this.onM);
+    this.revealT = setTimeout(() => this.reveal(), 350);
+  }
+  reveal() {
+    const EASE = 'cubic-bezier(.2,.7,.2,1)';
+    const els = document.querySelectorAll('section div, section span, section p, section h1, section h2, section a, section article');
+    const items = [];
+    els.forEach(el => {
+      if (el.closest('[data-anim],header,footer,form')) return;
+      const cs = getComputedStyle(el); let kf = null;
+      if (cs.clipPath && cs.clipPath.indexOf('polygon(50% 0') === 0) kf = [{ transform: 'scale(0.6) rotate(-14deg)', opacity: 0, filter: 'brightness(2)' }, { transform: 'none', opacity: 1, filter: 'brightness(1)' }];
+      else if (cs.position === 'absolute' && /^matrix\(0\.70/.test(cs.transform) && cs.borderTopWidth === '1px') { const b = cs.transform; kf = [{ transform: b + ' scale(0.5) rotate(-90deg)', opacity: 0 }, { transform: b, opacity: 1 }]; }
+      else if (cs.backgroundColor === 'rgb(138, 112, 52)' && el.offsetHeight < 90) kf = [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }];
+      else if (/^(P|H1|H2|ARTICLE)$/.test(el.tagName) || (cs.borderTopStyle === 'solid' && cs.borderTopWidth === '1px' && /grid|flex/.test(cs.display) && el.parentElement && el.parentElement.children.length > 2)) kf = [{ transform: 'translateY(32px)', opacity: 0 }, { transform: 'none', opacity: 1 }];
+      if (kf) items.push([el, kf]);
+    });
+    const sib = new Map();
+    this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { this.io.unobserve(e.target); const a = e.target.__rv; if (a) a.play(); } }), { threshold: 0.12 });
+    items.forEach(([el, kf]) => {
+      const p = el.parentElement; const i = sib.get(p) || 0; sib.set(p, i + 1);
+      const a = el.animate(kf, { duration: 1100, delay: Math.min(i * 110, 660), easing: EASE, fill: 'both' });
+      a.pause(); a.currentTime = 0; el.__rv = a; this.anims && this.anims.push(a);
+      this.io.observe(el);
+    });
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onR); removeEventListener('scroll', this.onS); removeEventListener('mousemove', this.onM);
+    clearTimeout(this.revealT); if (this.io) this.io.disconnect(); (this.anims || []).forEach(a => a.cancel());
+  }
+  renderVals() {
+    const cur = this.props.current ?? '';
+    const items = [
+      ['programs', '01', 'Programs', '学部・学科', 'Programs.dc.html'],
+      ['prep', '02', 'Exam Prep', '入試対策', 'ExamPrep.dc.html'],
+      ['admissions', '03', 'Admissions', '入試情報・サポート', 'Admissions.dc.html'],
+      ['campus', '04', 'Campus Life', 'キャンパスライフ', 'CampusLife.dc.html'],
+      ['contact', '05', 'Contact', '資料請求・お問い合わせ', 'Contact.dc.html'],
+    ];
+    return {
+      wide: this.state.w > 900,
+      menuOpen: this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      nav: items.map(([k, no, en, ja, href]) => ({ no, en, ja, href, active: k === cur, idle: k !== cur })),
+    };
+  }
+}
+</script>
+</body>
+</html>

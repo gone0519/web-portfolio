@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Outfit:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Zen Kaku Gothic New",sans-serif;color:#141a22;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1873c9;text-decoration:none}
+a:hover{color:#0f5596}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+<link href="site.css" rel="stylesheet">
+<script src="anim.js"></script>
+</helmet>
+<div style="min-height:100vh;overflow-x:clip">
+<dc-import name="Header" current="admissions" hint-size="100%,68px" style="position:sticky;top:0;z-index:50"></dc-import>
+
+<section data-screen-label="Admissions Hero" style="background-color:#f6f8fa;background-image:linear-gradient(#e8edf2 1px,transparent 1px),linear-gradient(90deg,#e8edf2 1px,transparent 1px);background-size:28px 28px;border-bottom:1px solid #e3e9ef">
+  <div style="max-width:1160px;margin:0 auto;padding:clamp(40px,6vw,72px) 24px;display:flex;flex-wrap:wrap;align-items:center;gap:24px 40px">
+    <div style="flex:1 1 480px;min-width:0">
+    <div style="font-size:12px;font-weight:700;color:#5b6773;display:flex;gap:8px"><a href="University Admissions.dc.html">トップ</a><span>›</span><span>入試・出願情報</span></div>
+    <h1 style="margin:18px 0 0;font-family:Outfit;font-weight:900;font-size:clamp(44px,8vw,84px);line-height:1;color:#1873c9">ADMISSIONS</h1>
+    <div style="font-family:'Dela Gothic One';font-size:clamp(22px,3vw,32px);margin-top:10px">入試・出願情報</div>
+    <p style="max-width:640px;font-size:14px;line-height:1.9;color:#3a4550;margin-top:16px;text-wrap:pretty">出願スケジュール、手続きの流れ、必要書類、試験当日の準備をまとめました。日程や条件は大学・入試方式ごとに異なるため、必ず各大学の募集要項をご確認ください。</p>
+    </div>
+    <img src="img/il-banzai.png" alt="" style="flex:0 1 300px;width:min(100%,300px);height:auto;margin-inline:auto">
+  </div>
+</section>
+
+<section data-screen-label="Schedule" style="background:#fff;padding:clamp(48px,7vw,80px) 24px">
+  <div style="max-width:1160px;margin:0 auto">
+    <h2 style="margin:0;font-family:Outfit;font-weight:900;font-size:clamp(36px,6vw,60px);line-height:1;color:#1873c9">SCHEDULE</h2>
+    <div style="font-size:16px;font-weight:900;margin-top:6px">入試方式別 出願スケジュール</div>
+    <div style="margin-top:32px;border:2px solid #141a22;border-radius:16px;overflow:hidden">
+      <div class="seg-tabs ruled" style="display:flex;border-bottom:2px solid #141a22">
+        <sc-for list="{{ schedTabs }}" as="t" hint-placeholder-count="3">
+          <button onClick="{{ t.pick }}" style="height:54px;padding:0 6px;line-height:1.3;border:0;border-right:1px solid #141a22;font:inherit;font-size:clamp(12px,3.4vw,14px);font-weight:900;cursor:pointer;background:{{ t.bg }};color:{{ t.fg }};transition:background .2s">{{ t.label }}</button>
+        </sc-for>
+      </div>
+      <div style="padding:clamp(18px,3vw,28px)">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:baseline">
+          <div style="font-size:14px;line-height:1.8;color:#3a4550;max-width:620px">{{ schedNote }}</div>
+          <div style="font-size:11px;font-weight:700;color:#c0392b">※日程はサンプルです。</div>
+        </div>
+        <div class="fill-row" style="--min:170px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:12px;margin-top:16px">
+          <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="5">
+            <div style="background:#eaf4fb;border-radius:12px;padding:16px">
+              <div style="font-family:Outfit;font-weight:900;font-size:11px;color:#1873c9">{{ s.no }}</div>
+              <div style="font-size:14px;font-weight:900;margin-top:2px">{{ s.label }}</div>
+              <div style="font-size:13px;margin-top:6px;color:#3a4550">{{ s.when }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Flow" style="background:#79bde8;padding:clamp(40px,6vw,64px) clamp(12px,3vw,40px)">
+  <div style="max-width:1160px;margin:0 auto;background-color:#fff;background-image:linear-gradient(#edf2f6 1px,transparent 1px),linear-gradient(90deg,#edf2f6 1px,transparent 1px);background-size:24px 24px;border-radius:32px;padding:clamp(32px,5vw,56px) clamp(16px,4vw,56px)">
+    <h2 style="margin:0;font-family:'Dela Gothic One';font-weight:400;font-size:clamp(24px,3vw,32px)">出願手続きの流れ</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:12px;margin-top:28px">
+      <sc-for list="{{ flow }}" as="f" hint-placeholder-count="6">
+        <div style="background:#fff;border:2px solid #141a22;border-radius:14px;padding:18px 16px;text-align:center">
+          <div style="margin:0 auto;width:44px;height:44px;border-radius:50%;background:#1873c9;color:#fff;font-family:Outfit;font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center">{{ f.no }}</div>
+          <div style="font-size:14px;font-weight:900;margin-top:10px">{{ f.t }}</div>
+          <p style="margin:6px 0 0;font-size:12px;line-height:1.7;color:#3a4550">{{ f.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Documents" style="background:#fff;padding:clamp(48px,7vw,88px) 24px">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px">
+    <div>
+      <h2 style="margin:0;font-family:Outfit;font-weight:900;font-size:clamp(32px,5vw,48px);line-height:1;color:#1873c9">DOCUMENTS</h2>
+      <div style="font-size:16px;font-weight:900;margin-top:6px">主な出願書類</div>
+      <div style="margin-top:24px;border:2px solid #141a22;border-radius:16px;overflow:hidden">
+        <div style="display:grid;grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr));background:#141a22;color:#fff;font-size:12px;font-weight:900">
+          <div style="padding:12px 14px">書類</div><div style="padding:12px 6px;text-align:center">一般</div><div style="padding:12px 6px;text-align:center">推薦</div><div style="padding:12px 6px;text-align:center">総合</div>
+        </div>
+        <sc-for list="{{ docs }}" as="d" hint-placeholder-count="6">
+          <div style="display:grid;grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr));border-top:1px solid #cfd8e0;font-size:13px">
+            <div style="padding:12px 14px;font-weight:700">{{ d.n }}</div><div style="padding:12px 6px;text-align:center;color:#1873c9;font-weight:900">{{ d.a }}</div><div style="padding:12px 6px;text-align:center;color:#1873c9;font-weight:900">{{ d.b }}</div><div style="padding:12px 6px;text-align:center;color:#1873c9;font-weight:900">{{ d.c }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font-size:11px;color:#5b6773;margin-top:10px">◯＝多くの大学で必要　△＝大学により必要　ー＝通常不要（一般的な傾向のサンプルです）</div>
+    </div>
+    <div>
+      <h2 style="margin:0;font-family:Outfit;font-weight:900;font-size:clamp(32px,5vw,48px);line-height:1;color:#1873c9">CHECKLIST</h2>
+      <div style="font-size:16px;font-weight:900;margin-top:6px">試験当日の持ち物チェック</div>
+      <div style="margin-top:24px;background:#eaf4fb;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:6px">
+        <sc-for list="{{ checklist }}" as="c" hint-placeholder-count="7">
+          <button onClick="{{ c.toggle }}" style="display:flex;align-items:center;gap:12px;padding:10px 12px;border:0;border-radius:10px;background:#fff;font:inherit;font-size:14px;font-weight:700;text-align:left;cursor:pointer;color:#141a22">
+            <span style="flex:none;width:22px;height:22px;border-radius:6px;border:2px solid #1873c9;background:{{ c.bg }};color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center">{{ c.mark }}</span>{{ c.t }}
+          </button>
+        </sc-for>
+        <div style="font-size:12px;font-weight:900;color:#1873c9;margin-top:6px">{{ checkCount }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,760px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sched: 0, checked: {} };
+  renderVals() {
+    const s = this.state;
+    const scheds = [
+      { label: '総合型選抜', note: '出願時期が最も早い入試方式です。エントリーや事前面談を設けている大学もあります。', items: [['出願準備・エントリー', '〇月〜'], ['出願期間', '〇月〇日〜〇月〇日'], ['書類審査', '〇月中旬'], ['面接・プレゼン', '〇月〇日'], ['合格発表', '〇月〇日']] },
+      { label: '学校推薦型選抜', note: '出願前に高校での校内選考が行われるのが一般的です。担任の先生と早めに相談しましょう。', items: [['校内選考', '〇月頃'], ['出願期間', '〇月〇日〜〇月〇日'], ['試験（小論文・面接など）', '〇月〇日'], ['合格発表', '〇月〇日'], ['入学手続', '〇月〇日まで']] },
+      { label: '一般選抜', note: '共通テストの出願と各大学の個別試験の出願は別に行います。締切を一覧にして管理しましょう。', items: [['共通テスト出願', '〇月〇日〜〇月〇日'], ['共通テスト', '〇月〇日・〇日'], ['個別試験出願', '〇月〇日〜〇月〇日'], ['個別学力試験', '〇月〇日'], ['合格発表・入学手続', '〇月〇日〜']] },
+    ];
+    const items = ['受験票', '筆記用具（鉛筆・消しゴム）', '時計（計時機能のみのもの）', '昼食・飲み物', '会場までの経路と時刻表', '常備薬・ハンカチ・ティッシュ', '防寒具・上着'];
+    const n = Object.values(s.checked).filter(Boolean).length;
+    return {
+      schedTabs: scheds.map((x, i) => ({ label: x.label, bg: i === s.sched ? '#1873c9' : '#fff', fg: i === s.sched ? '#fff' : '#141a22', pick: () => this.setState({ sched: i }) })),
+      schedNote: scheds[s.sched].note,
+      schedule: scheds[s.sched].items.map((x, i) => ({ no: 'STEP 0' + (i + 1), label: x[0], when: x[1] })),
+      flow: [
+        { no: '01', t: '募集要項の確認', d: '出願資格・日程・試験科目を確認' },
+        { no: '02', t: 'ネット出願登録', d: '大学の出願サイトで情報を入力' },
+        { no: '03', t: '検定料の支払い', d: 'コンビニ・クレジットカードなど' },
+        { no: '04', t: '書類の郵送', d: '調査書などを期限内に送付' },
+        { no: '05', t: '受験票の受け取り', d: '印刷またはダウンロード' },
+        { no: '06', t: '受験・合格発表', d: '合格後は入学手続きへ' },
+      ],
+      docs: [
+        { n: '入学志願票（ネット出願）', a: '◯', b: '◯', c: '◯' },
+        { n: '調査書', a: '◯', b: '◯', c: '◯' },
+        { n: '推薦書', a: 'ー', b: '◯', c: '△' },
+        { n: '志望理由書', a: 'ー', b: '△', c: '◯' },
+        { n: '活動報告書', a: 'ー', b: '△', c: '◯' },
+        { n: '共通テスト成績請求票', a: '△', b: '△', c: '△' },
+      ],
+      checklist: items.map((t, i) => ({ t, mark: s.checked[i] ? '✓' : '', bg: s.checked[i] ? '#1873c9' : '#fff', toggle: () => this.setState(st => ({ checked: { ...st.checked, [i]: !st.checked[i] } })) })),
+      checkCount: n === items.length ? '準備完了！自信をもって試験に臨もう' : `${n} / ${items.length} 準備済み`,
+    };
+  }
+}
+</script>
+</body>
+</html>

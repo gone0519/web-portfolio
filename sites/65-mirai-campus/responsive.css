@@ -1,0 +1,29 @@
+/* Responsive overrides shared by every page (and the SubHero / SiteFooter components).
+   Most layout lives in inline styles, so phone-width overrides need !important. */
+.rs-sp { display: none; }
+
+@media (max-width: 700px) {
+  .rs-sp { display: block !important; }
+
+  /* Top: keep the marquee from colliding with the "02" outline numeral */
+  .rs-body { padding-top: 84px !important; }
+  /* Top: portrait slot spans the column instead of sitting as a small left tile */
+  /* min-width:0 — the image-slot's 3:2 aspect ratio would otherwise widen the flex item past the column */
+  .rs-portrait { flex: 1 1 100% !important; max-width: none !important; min-width: 0 !important; height: 240px !important; }
+
+  /* Pink "Prepare" panels: less nested padding so content gets usable width */
+  .rs-ppsec { padding-left: 14px !important; padding-bottom: 18px !important; }
+  .rs-ppbox { padding: 24px 16px 26px !important; }
+  .rs-ppcard { padding: 20px 18px 22px !important; }
+
+  /* Wide letter-spaced labels would wrap into two overlapping lines */
+  .rs-spaced { letter-spacing: .35em !important; font-size: 12px !important; }
+
+  /* Footer CTA buttons: one consistent column instead of ragged centered pills */
+  .rs-cta { flex-direction: column; align-items: center; }
+  .rs-cta > * { width: 100%; max-width: 320px; text-align: center; }
+  .rs-tel { font-size: 28px !important; }
+
+  /* Campus "One day": portrait full width above the timeline */
+  .rs-oneday { flex: 1 1 100% !important; min-width: 0 !important; height: 260px !important; }
+}

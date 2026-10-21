@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="display:flex;justify-content:space-between;align-items:flex-start;padding:22px 0 0 clamp(16px,2.4vw,44px)">
+  <a href="University%20Admissions.dc.html" style="display:flex;align-items:center;gap:12px;color:#fff">
+    <div style="width:46px;height:46px;border:1.5px solid #fff;border-radius:50% 50% 50% 8px;display:flex;align-items:center;justify-content:center;font-family:Jost;font-size:18px;letter-spacing:.04em">MG</div>
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <span style="font-size:22px;font-weight:500;letter-spacing:.08em;text-shadow:0 1px 8px rgba(20,60,80,.25)">みなと学園大学</span>
+      <span style="font-family:Jost;font-size:9.5px;letter-spacing:.14em">MINATO GAKUEN UNIVERSITY</span>
+    </div>
+  </a>
+  <div style="display:flex;align-items:flex-start;gap:clamp(12px,2vw,40px)">
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;flex-direction:column;align-items:flex-end;gap:12px;padding-top:4px;color:#fff;text-shadow:0 1px 8px rgba(20,60,80,.3)">
+        <div style="display:flex;gap:20px;font-size:12px;letter-spacing:.06em">
+          <a href="ExamPrep.dc.html" style="color:#fff">受験生の方</a>
+          <a href="Support.dc.html#parents" style="color:#fff">保護者の方</a>
+          <a href="Support.dc.html#faq" style="color:#fff">よくある質問</a>
+          <a href="CampusLife.dc.html#contact" style="color:#fff">お問い合わせ</a>
+          <a href="CampusLife.dc.html#access" style="color:#fff">アクセス</a>
+        </div>
+        <div style="display:flex;gap:26px;font-size:15px;font-weight:700;letter-spacing:.06em">
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+            <a href="{{ n.href }}" style="color:#fff;padding-bottom:6px;border-bottom:2px solid {{ n.line }}" style-hover="opacity:.7;color:#fff">{{ n.label }}</a>
+          </sc-for>
+        </div>
+      </nav>
+    </sc-if>
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:86px;height:86px;margin-top:-22px;background:#3d9cc0;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
+      <span style="width:40px;height:1.5px;background:#fff;display:block"></span>
+      <span style="width:40px;height:1.5px;background:#fff;display:block"></span>
+      <span style="width:40px;height:1.5px;background:#fff;display:block"></span>
+    </button>
+  </div>
+</header>
+
+<sc-if value="{{ showAside }}" hint-placeholder-val="{{ true }}">
+  <aside style="position:fixed;right:0;top:86px;z-index:25;width:86px;background:#fff;display:flex;flex-direction:column;box-shadow:0 4px 18px rgba(20,60,80,.08)">
+    <sc-for list="{{ sideLinks }}" as="s" hint-placeholder-count="4">
+      <a href="{{ s.href }}" style="height:82px;border-bottom:1px solid #e3eef3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#1f6f93;font-size:10.5px;letter-spacing:.06em;text-align:center;line-height:1.25;transition:background .2s" style-hover="background:#eef7fa">
+        <span style="width:20px;height:16px;border:1.5px solid #3d9cc0;border-radius:{{ s.r }}"></span>
+        <span style="white-space:pre-line">{{ s.label }}</span>
+      </a>
+    </sc-for>
+  </aside>
+</sc-if>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:40;background:#2b86ad;color:#fff;overflow:auto;padding:30px clamp(20px,5vw,80px)">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-family:Jost;font-size:13px;letter-spacing:.2em">MENU</span>
+      <button onClick="{{ toggleMenu }}" style="background:none;border:1px solid #fff;color:#fff;border-radius:999px;padding:10px 22px;cursor:pointer;font-size:13px">閉じる</button>
+    </div>
+    <div style="max-width:900px;margin:60px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:4px 40px">
+      <a href="University%20Admissions.dc.html" style="color:#fff;display:flex;justify-content:space-between;align-items:baseline;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.35)">
+        <span style="font-size:18px;font-weight:700;letter-spacing:.06em">トップ</span>
+        <span style="font-family:Jost;font-size:12px;letter-spacing:.12em">HOME</span>
+      </a>
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="color:#fff;display:flex;justify-content:space-between;align-items:baseline;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.35)">
+          <span style="font-size:18px;font-weight:700;letter-spacing:.06em">{{ n.label }}</span>
+          <span style="font-family:Jost;font-size:12px;letter-spacing:.12em">{{ n.en }}</span>
+        </a>
+      </sc-for>
+    </div>
+    <div style="max-width:900px;margin:44px auto 0;display:flex;flex-wrap:wrap;gap:12px">
+      <sc-for list="{{ sideLinks }}" as="s" hint-placeholder-count="4">
+        <a href="{{ s.href }}" style="background:#fff;color:#1f6f93;padding:14px 26px;font-size:14px;font-weight:700;letter-spacing:.06em">{{ s.labelFlat }}</a>
+      </sc-for>
+    </div>
+  </div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;faculties&quot;,&quot;prep&quot;,&quot;admissions&quot;,&quot;support&quot;,&quot;campus&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, menuOpen: false };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const cur = this.props.current ?? '';
+    const items = [
+      { key: 'faculties', label: '学部・学科', en: 'FACULTIES', href: 'Faculties.dc.html' },
+      { key: 'prep', label: '入試準備', en: 'PREPARATION', href: 'ExamPrep.dc.html' },
+      { key: 'admissions', label: '入試・出願情報', en: 'ADMISSIONS', href: 'Admissions.dc.html' },
+      { key: 'support', label: '学費・サポート', en: 'SUPPORT', href: 'Support.dc.html' },
+      { key: 'campus', label: 'キャンパスライフ', en: 'CAMPUS LIFE', href: 'CampusLife.dc.html' },
+    ];
+    return {
+      isDesktop: this.state.w >= 1100,
+      // 右端の固定メニューは本文（最大1200px）と重ならない幅でのみ表示
+      showAside: this.state.w >= 1400,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      navItems: items.map(n => ({ ...n, line: n.key === cur ? '#fff' : 'transparent' })),
+      sideLinks: [
+        { label: '資料請求', labelFlat: '資料請求', href: 'CampusLife.dc.html#contact', r: '2px' },
+        { label: 'OPEN\nCAMPUS', labelFlat: 'オープンキャンパス', href: 'CampusLife.dc.html#opencampus', r: '2px 2px 8px 8px' },
+        { label: 'ネット出願', labelFlat: 'ネット出願', href: 'Admissions.dc.html#apply', r: '2px' },
+        { label: 'よくある質問', labelFlat: 'よくある質問', href: 'Support.dc.html#faq', r: '50%' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

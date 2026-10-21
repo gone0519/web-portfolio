@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>キャンパス・オープンキャンパス｜MANABIYA 大学入試ナビ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;600;800&family=Jost:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f2f2f2;color:#111;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#111;text-decoration:none}
+a:hover{color:#e2561b}
+input,select,textarea{font-family:'Noto Sans JP',sans-serif}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="campus" hint-size="100%,0px"></dc-import>
+
+<section data-screen-label="Campus hero" style="position:relative;padding:clamp(110px,12vw,150px) 24px 60px;overflow:hidden">
+  <div style="position:relative;max-width:1000px;margin:0 auto">
+    <div aria-hidden="true" style="position:absolute;top:-30px;left:-6%;right:-6%;height:clamp(200px,28vw,320px);background:#e6e6e6"></div>
+    <div aria-hidden="true" style="position:absolute;top:-20px;right:-4%;font-weight:900;font-size:clamp(130px,26vw,340px);line-height:0.9;color:#fff;white-space:nowrap;letter-spacing:-0.04em">春。</div>
+    <div style="position:relative;display:flex;gap:10px;font-family:'Jost',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em"><a href="Top.dc.html">TOP</a><span>/</span><span style="color:#e2561b">CAMPUS</span></div>
+    <div style="position:relative;margin-top:40px;font-family:'Jost',sans-serif;font-weight:700;color:#e2561b;font-size:13px;letter-spacing:0.14em">PAGE 05 — CAMPUS LIFE &amp; OPEN CAMPUS</div>
+    <h1 style="position:relative;margin:16px 0 0;display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px;font-weight:900;font-size:clamp(34px,6vw,72px);line-height:1">
+      <span style="font-family:'Shippori Mincho',serif;font-weight:600;background:#111;color:#fff;padding:10px 20px 14px;box-shadow:-8px 8px 0 #e2561b">キャンパス</span><span>へ行こう</span>
+    </h1>
+    <p style="position:relative;margin:40px 0 0;max-width:560px;font-weight:700;font-size:15px;line-height:2.2">見て、聞いて、確かめる。<br>大学生活のリアルと、オープンキャンパスの楽しみ方を紹介します。</p>
+  </div>
+</section>
+<div aria-hidden="true" style="font-family:'Jost',sans-serif;font-weight:800;font-size:clamp(60px,12vw,180px);color:#fff;line-height:1">{{ ocMarquee }}</div>
+
+<section data-screen-label="Campus life" style="padding:70px 24px;background:#fff">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="text-align:center;font-family:'Jost',sans-serif;font-weight:800;font-size:28px;color:#d9d9d9;letter-spacing:0.04em">CAMPUS LIFE</div>
+    <p style="margin:6px 0 0;text-align:center;font-size:14px;font-weight:500">授業だけじゃない、大学生活のいろいろ。</p>
+    <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px 30px;margin-top:40px">
+      <sc-for list="{{ campus }}" as="c" hint-placeholder-count="6">
+        <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+          <div style="position:relative;width:190px;height:176px">
+            <div style="position:absolute;inset:0;background:#e2561b;clip-path:{{ c.back }}"></div>
+            <div style="position:absolute;inset:9px;background:#ddd;clip-path:{{ c.front }}"><image-slot id="{{ c.slot }}" shape="rect" placeholder="{{ c.label }}"></image-slot></div>
+          </div>
+          <span style="font-size:15px;font-weight:900">{{ c.label }}</span>
+          <span style="font-size:12px;line-height:1.8;text-align:center;max-width:220px">{{ c.body }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Year events" style="padding:80px 24px">
+  <div style="max-width:1000px;margin:0 auto">
+    <span style="display:inline-flex;align-items:baseline;gap:8px;background:#111;color:#fff;padding:6px 12px"><span style="font-weight:700">#</span><span style="font-weight:900;font-size:20px">大学の1年</span><span style="font-family:'Jost',sans-serif;font-weight:700;font-size:14px">CALENDAR</span></span>
+    <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-top:30px;background:#111;border:2px solid #111">
+      <sc-for list="{{ year }}" as="y" hint-placeholder-count="4">
+        <div style="background:#f2f2f2;padding:24px 20px;display:flex;gap:16px">
+          <span style="writing-mode:vertical-rl;background:{{ y.bg }};color:#111;font-family:'Shippori Mincho',serif;font-weight:800;font-size:22px;padding:10px 6px;letter-spacing:0.12em;align-self:flex-start">{{ y.season }}</span>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.8;font-weight:500">
+            <sc-for list="{{ y.items }}" as="it" hint-placeholder-count="3"><span>・{{ it }}</span></sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Open campus" style="padding:80px 24px;background:#3c3c3c;color:#fff">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="font-family:'Jost',sans-serif;font-weight:800;font-size:clamp(40px,7vw,72px);color:#e2561b;letter-spacing:0.06em;line-height:1;text-align:center">OPEN CAMPUS</div>
+    <p style="margin:14px 0 0;text-align:center;font-size:15px;font-weight:700">オープンキャンパスで体験できること</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:40px">
+      <sc-for list="{{ programs }}" as="p" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="font-family:'Jost',sans-serif;font-weight:800;font-size:24px;color:#e2561b;border-bottom:1px solid #666;line-height:1.1">{{ p.no }}</div>
+          <div style="aspect-ratio:9/10;background:#555"><image-slot id="{{ p.slot }}" shape="rect" placeholder="{{ p.title }}の写真"></image-slot></div>
+          <span style="font-weight:900;font-size:16px">{{ p.title }}</span>
+          <span style="font-size:12px;line-height:1.8">{{ p.body }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="form" data-screen-label="Form" style="padding:90px 24px">
+  <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:50px">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <span style="display:inline-flex;align-self:flex-start;align-items:baseline;gap:8px;background:#e2561b;color:#fff;padding:6px 12px"><span style="font-weight:700">#</span><span style="font-weight:900;font-size:20px">申込・資料請求</span><span style="font-family:'Jost',sans-serif;font-weight:700;font-size:14px">ENTRY</span></span>
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(28px,4vw,44px);font-weight:600;line-height:1.5">きみの春は、<br>ここから始まる。</p>
+      <p style="margin:0;font-size:14px;line-height:2">オープンキャンパスの申込、資料請求、入試相談を受け付けています。保護者の方のお申し込みも歓迎です。</p>
+      <div style="display:flex;flex-direction:column;border-top:1px solid #111;margin-top:10px">
+        <sc-for list="{{ dates }}" as="d" hint-placeholder-count="3">
+          <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid #111;font-size:13px"><span style="font-family:'Shippori Mincho',serif;font-weight:800;font-size:16px">{{ d.when }}</span><span style="font-weight:700">{{ d.what }}</span></div>
+        </sc-for>
+      </div>
+      <p style="margin:0;font-size:11px;color:#666">※日程はサンプルです。実際の開催日は各大学の公式サイトをご確認ください。</p>
+    </div>
+
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#111;color:#fff;padding:48px 36px;display:flex;flex-direction:column;gap:16px;justify-content:center;box-shadow:-10px 10px 0 #e2561b">
+        <span style="font-family:'Jost',sans-serif;font-weight:800;color:#e2561b;letter-spacing:0.14em">THANK YOU</span>
+        <span style="font-family:'Shippori Mincho',serif;font-size:30px;font-weight:600">お申し込みを受け付けました</span>
+        <span style="font-size:14px;line-height:2">{{ sentName }} さん、ありがとうございます。ご登録のメールアドレスに確認のご案内をお送りします（デモのため実際には送信されません）。</span>
+        <button onClick="{{ reset }}" style="align-self:flex-start;background:#e2561b;color:#fff;border:0;font-weight:700;padding:12px 22px;border-radius:999px;cursor:pointer;font-family:'Noto Sans JP',sans-serif">別の申込をする</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" style="background:#fff;padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:18px;border-top:4px solid #111">
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ kinds }}" as="k" hint-placeholder-count="3">
+            <button type="button" onClick="{{ k.pick }}" style="font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:13px;padding:8px 16px;border:2px solid #111;border-radius:999px;cursor:pointer;background:{{ k.bg }};color:{{ k.fg }}">{{ k.label }}</button>
+          </sc-for>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">お名前 <span style="color:#e2561b;font-size:11px">必須</span>
+          <input value="{{ name }}" onChange="{{ onName }}" placeholder="例）山田 花子" style="font-size:15px;padding:12px;border:1px solid #111;background:#f7f7f7"></input>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">メールアドレス <span style="color:#e2561b;font-size:11px">必須</span>
+          <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="example@mail.jp" style="font-size:15px;padding:12px;border:1px solid #111;background:#f7f7f7"></input>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">区分
+          <select value="{{ role }}" onChange="{{ onRole }}" style="font-size:15px;padding:12px;border:1px solid #111;background:#f7f7f7">
+            <option value="高校3年生">高校3年生</option><option value="高校2年生">高校2年生</option><option value="高校1年生">高校1年生</option><option value="保護者">保護者</option><option value="その他">その他</option>
+          </select>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700">ご質問・ご要望
+          <textarea value="{{ msg }}" onChange="{{ onMsg }}" rows="4" placeholder="気になる学部や質問があればご記入ください" style="font-size:15px;padding:12px;border:1px solid #111;background:#f7f7f7;resize:vertical"></textarea>
+        </label>
+        <sc-if value="{{ error }}" hint-placeholder-val="{{ false }}"><span style="color:#c43c0b;font-size:13px;font-weight:700">{{ error }}</span></sc-if>
+        <button type="submit" style="display:flex;justify-content:center;align-items:center;gap:12px;background:#e2561b;color:#fff;border:0;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:16px;padding:18px;cursor:pointer;transition:background .2s" style-hover="background:#111">{{ submitLabel }} ▸</button>
+      </form>
+    </sc-if>
+  </div>
+</section>
+<dc-import name="SiteFooter" hint-size="100%,360px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { kind: 0, name: '', email: '', role: '高校3年生', msg: '', error: '', sent: false };
+  kinds = ['オープンキャンパス申込', '資料請求', '入試相談'];
+  componentDidMount() {
+    const io = this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'none'; io.unobserve(e.target); } }), { threshold: 0.08 });
+    document.querySelectorAll('[data-reveal]').forEach(el => { el.style.transition = 'opacity .9s, transform .9s cubic-bezier(.2,.8,.2,1)'; el.style.opacity = 0; el.style.transform = 'translateY(40px)'; io.observe(el); });
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); }
+  mq(t, d) { const h = React.createElement, r = Array(6).fill(t).join(''); return h('div', { style: { overflow: 'hidden', whiteSpace: 'nowrap' } }, h('div', { style: { display: 'inline-flex', animation: `mq ${d}s linear infinite` } }, [0, 1].map(k => h('span', { key: k }, r)))); }
+  renderVals() {
+    const s = this.state;
+    const backs = ['polygon(10% 0,100% 12%,88% 100%,0 80%)', 'polygon(0 14%,92% 0,100% 86%,14% 100%)', 'polygon(18% 0,100% 20%,84% 100%,0 70%)'];
+    const fronts = ['polygon(16% 6%,96% 18%,84% 94%,6% 78%)', 'polygon(6% 18%,88% 6%,94% 82%,18% 94%)', 'polygon(22% 6%,94% 24%,80% 94%,6% 68%)'];
+    const life = [['サークル・部活動', '運動系から文化系まで。学年や学部を越えた仲間ができます。'], ['学園祭', '企画・運営も学生が中心。大学ごとの個性が出るイベントです。'], ['図書館・自習室', '専門書や学習スペースが充実。試験前の強い味方。'], ['学生食堂', '安くてボリュームのあるメニューが学生生活を支えます。'], ['研究室・ゼミ', '少人数で専門を深める、大学の学びの中心です。'], ['留学・国際交流', '短期・長期の留学や、留学生との交流プログラム。']];
+    const set = k => e => this.setState({ [k]: e.target.value, error: '' });
+    return {
+      ocMarquee: this.mq('OPEN CAMPUS ✦ ', 22),
+      campus: life.map(([label, body], k) => ({ label, body, slot: 'cl-' + k, back: backs[k % 3], front: fronts[k % 3] })),
+      year: [
+        { season: '春', bg: '#ffe800', items: ['入学式・オリエンテーション', '履修登録', 'サークル新歓'] },
+        { season: '夏', bg: '#f1e6a3', items: ['前期試験', '夏休み・短期留学', 'インターンシップ'] },
+        { season: '秋', bg: '#e2561b', items: ['後期授業開始', '学園祭', 'ゼミ選び'] },
+        { season: '冬', bg: '#fff', items: ['後期試験', '春休み', '新学年の準備'] }
+      ],
+      programs: [
+        { no: '01', slot: 'oc-0', title: '模擬授業', body: '大学の先生による授業を体験。学問のおもしろさに触れられます。' },
+        { no: '02', slot: 'oc-1', title: 'キャンパスツアー', body: '在学生の案内で、教室・図書館・食堂などを見学します。' },
+        { no: '03', slot: 'oc-2', title: '入試説明会', body: '入試方式や出願のポイントを、担当者が直接説明します。' },
+        { no: '04', slot: 'oc-3', title: '個別相談', body: '学部選びや学費、一人暮らしの相談も。保護者の方もどうぞ。' }
+      ],
+      dates: [{ when: '○月○日（土）', what: '春のオープンキャンパス' }, { when: '○月○日（日）', what: '夏のオープンキャンパス' }, { when: '○月○日（土）', what: '入試直前相談会' }],
+      kinds: this.kinds.map((label, i) => ({ label, bg: i === s.kind ? '#111' : 'transparent', fg: i === s.kind ? '#fff' : '#111', pick: () => this.setState({ kind: i }) })),
+      name: s.name, email: s.email, role: s.role, msg: s.msg, error: s.error,
+      onName: set('name'), onEmail: set('email'), onRole: set('role'), onMsg: set('msg'),
+      submitLabel: this.kinds[s.kind] + 'を送信',
+      sent: s.sent, notSent: !s.sent, sentName: s.name,
+      submit: e => {
+        e.preventDefault();
+        if (!s.name.trim()) return this.setState({ error: 'お名前を入力してください。' });
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s.email)) return this.setState({ error: 'メールアドレスを正しく入力してください。' });
+        this.setState({ sent: true });
+      },
+      reset: () => this.setState({ sent: false, name: '', email: '', msg: '' })
+    };
+  }
+}
+</script>
+</body>
+</html>
