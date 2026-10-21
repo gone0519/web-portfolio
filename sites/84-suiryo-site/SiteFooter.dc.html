@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="font-family:'Noto Sans JP',sans-serif;color:#333">
+  <sc-if value="{{ showContact }}" hint-placeholder-val="{{ true }}">
+    <div style="margin:0 clamp(0px,0.3vw,6px);background:#464646;color:#fff;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+      <div style="padding:70px clamp(24px,7vw,140px);display:flex;flex-direction:column;gap:18px;border-right:1px solid #5a5a5a">
+        <span style="font-family:'Lexend Exa',sans-serif;font-size:clamp(34px,3vw,48px);font-weight:400">Contact</span>
+        <p style="margin:0;font-size:13px;line-height:2;font-weight:500">夢への一歩を、ここから。<br>入試や学びについて、お気軽にお問い合わせください。</p>
+      </div>
+      <div style="padding:60px clamp(24px,5vw,100px);display:flex;flex-direction:column;justify-content:center;gap:16px">
+        <a href="Contact.dc.html?type=inquiry" style="display:flex;align-items:center;justify-content:center;height:56px;border:1px solid #fff;border-radius:40px;color:#fff;text-decoration:none;font-size:13.5px;font-weight:700;letter-spacing:0.08em" style-hover="background:#fff;color:#333">入試に関するお問い合わせ</a>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <a href="Contact.dc.html?type=oc" style="display:flex;align-items:center;justify-content:center;text-align:center;height:56px;border-radius:40px;background:#1fb2c3;color:#fff;text-decoration:none;font-size:13px;font-weight:700" style-hover="background:#169aaa">オープンキャンパス予約</a>
+          <a href="Contact.dc.html?type=docs" style="display:flex;align-items:center;justify-content:center;height:56px;border:1px solid #888;border-radius:40px;color:#fff;text-decoration:none;font-size:13px;font-weight:700" style-hover="border-color:#fff">資料請求</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <footer style="position:relative;background:#f4f4f4;padding:0 clamp(20px,7vw,140px)">
+    <a href="#" aria-label="ページトップへ" style="position:absolute;right:clamp(20px,3vw,40px);top:-14px;width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;color:#333;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,0.06)">↑</a>
+    <div style="display:flex;flex-wrap:wrap-reverse;justify-content:space-between;gap:40px;padding:90px 0 70px">
+      <div style="display:flex;flex-direction:column;gap:30px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <svg width="54" height="60" viewBox="0 0 34 38"><polygon points="17,2 32,10.5 32,27.5 17,36 2,27.5 2,10.5" fill="none" stroke="#1fb2c3" stroke-width="3"></polygon><polygon points="17,11 24,15 24,23 17,27 10,23 10,15" fill="#1fb2c3"></polygon></svg>
+          <span style="font-size:20px;font-weight:500;letter-spacing:0.12em">翠陵大学 入試課</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px 50px;font-size:12px;line-height:1.9">
+          <div><p style="margin:0 0 4px;font-weight:700">入試課（本部キャンパス）</p><p style="margin:0;color:#1fb2c3">〒000-0000</p><p style="margin:0">○○県○○市○○町0-0-0</p><p style="margin:0">TEL：00-0000-0000（平日 9:00–17:00）</p></div>
+          <div><p style="margin:0 0 4px;font-weight:700">入試情報 メール窓口</p><p style="margin:0">nyushi@example.ac.jp</p><p style="margin:0">※ 連絡先はすべて仮の表記です</p></div>
+        </div>
+        <a href="#" style="font-size:11px;color:#333;text-decoration:none">プライバシーポリシー</a>
+      </div>
+      <nav style="display:flex;gap:20px;align-items:flex-start">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+          <a href="{{ n.href }}" style="writing-mode:vertical-rl;font-size:12px;font-weight:500;letter-spacing:0.2em;line-height:1.3;text-decoration:none;color:{{ n.color }}" style-hover="color:#1fb2c3">{{ n.label }}</a>
+        </sc-for>
+      </nav>
+    </div>
+    <p style="text-align:center;font-size:10px;padding:18px 0;background:#fff;margin:0 calc(-1 * clamp(20px,7vw,140px))">© Suiryo University (Sample). All Rights Reserved.</p>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:600},&quot;active&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;},&quot;showContact&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const active = this.props.active ?? 0;
+    return {
+      showContact: this.props.showContact ?? true,
+      nav: [
+        ['ホーム', 'University%20Admissions.dc.html'], ['学部・学科', 'Faculties.dc.html'], ['入試対策', 'Preparation.dc.html'],
+        ['入試・出願', 'Admissions.dc.html'], ['キャンパスライフ', 'CampusLife.dc.html'], ['お問い合わせ', 'Contact.dc.html'],
+      ].map(([label, href], i) => ({ label, href, color: i === active ? '#1fb2c3' : '#333' })),
+    };
+  }
+}
+</script>
+</body>
+</html>

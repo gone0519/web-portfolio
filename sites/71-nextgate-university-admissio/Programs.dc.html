@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./site-motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',sans-serif;letter-spacing:.04em;color:#1d2433;background:#fff;-webkit-font-smoothing:antialiased}
+a{color:#0b2d8c;text-decoration:none}a:hover{color:#1d5be0}*{box-sizing:border-box}
+@keyframes ng-up{from{opacity:0;translate:0 36px}to{opacity:1;translate:0 0}}
+@keyframes ng-float{from{translate:0 0}to{translate:0 -16px}}
+@keyframes ng-rot{to{rotate:360deg}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="programs" style="position:sticky;top:0;z-index:50" hint-size="100%,72px"></dc-import>
+<dc-import name="PageHero" no="02" en="Programs" ja="学部・学科" lead="文系・理系の枠にとらわれず、興味のあることから学びを探してみましょう。分野ごとの特徴と、大学で身につく力を紹介します。" slot="programs-hero" ph="学部・学科のイメージ写真（講義・研究室など）" hint-size="100%,560px"></dc-import>
+
+<section data-screen-label="Programs / Search" style="position:relative;overflow:hidden;padding:clamp(64px,8vw,104px) clamp(16px,3vw,32px)">
+  <div aria-hidden="true" data-parallax="1" style="position:absolute;left:-1vw;top:60px;font-family:Lexend,sans-serif;font-weight:600;font-size:clamp(90px,15vw,240px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(11,45,140,.1);white-space:nowrap;pointer-events:none">FIELDS</div>
+  <div style="position:relative;max-width:1180px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;font-family:Lexend,sans-serif;font-size:11px;letter-spacing:.28em;color:#f08300;margin-bottom:14px"><span>01</span><span style="width:36px;height:1px;background:currentColor"></span></div>
+        <h2 data-reveal="up" style="margin:0;font-family:Lexend,sans-serif;font-weight:300;font-size:clamp(36px,4.4vw,56px);color:#0b2d8c;line-height:1.05;letter-spacing:-.01em">Find by Field</h2>
+        <div style="font-size:12px;font-weight:700;margin-top:6px">分野から探す</div>
+      </div>
+      <div style="font-family:Lexend,sans-serif;font-size:13px;color:#3a4356"><span style="font-size:32px;font-weight:200;color:#0b2d8c">{{ count }}</span> 件の学問分野</div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:32px">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
+        <button onClick="{{ c.select }}" style="border:1px solid #0b2d8c;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:9px 18px;border-radius:999px;background:{{ c.bg }};color:{{ c.fg }};transition:background .2s,color .2s">{{ c.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:24px;margin-top:36px">
+      <sc-for list="{{ items }}" as="p" hint-placeholder-count="6">
+        <a data-reveal="up" href="Preparation.dc.html" style="display:flex;flex-direction:column;background:#fff;border:1px solid #e1e6f0;color:#1d2433;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 20px 40px rgba(11,45,140,.16);color:#1d2433">
+          <div style="position:relative;aspect-ratio:16/10"><span style="position:absolute;left:0;top:0;z-index:2;background:#0b2d8c;color:#fff;font-family:Lexend,sans-serif;font-size:10px;letter-spacing:.2em;padding:6px 10px;pointer-events:none">{{ p.en }}</span><image-slot id="{{ p.slot }}" shape="rect" placeholder="{{ p.ph }}"></image-slot></div>
+          <div style="padding:18px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <span style="font-size:11px;font-weight:700;color:#1d5be0">{{ p.catLabel }}</span>
+            <h3 style="margin:0;font-size:17px;font-weight:700">{{ p.title }}</h3>
+            <p style="margin:0;font-size:12px;line-height:1.85;color:#3a4356;text-wrap:pretty">{{ p.desc }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px"><sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="2"><span style="font-size:10px;color:#1d5be0;border:1px solid #bcd0ee;padding:3px 8px;border-radius:999px">#{{ t }}</span></sc-for></div>
+          </div>
+          <div style="border-top:1px solid #e1e6f0;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;font-size:12px;font-weight:700;color:#0b2d8c">入試対策を見る<span style="width:26px;height:26px;border-radius:50%;background:#0b2d8c;color:#fff;display:grid;place-items:center;font-size:12px">→</span></div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Programs / Features" style="position:relative;overflow:hidden;background:#0b2d8c;color:#fff;padding:clamp(64px,8vw,104px) clamp(16px,3vw,32px)">
+  <div aria-hidden="true" data-float="1" style="position:absolute;right:0;top:0;width:200px;height:140px;background-image:radial-gradient(rgba(255,255,255,.3) 1.6px,transparent 1.8px);background-size:16px 16px;pointer-events:none"></div>
+  <div aria-hidden="true" data-parallax="1" style="position:absolute;right:-1vw;bottom:-3vw;font-family:Lexend,sans-serif;font-weight:600;font-size:clamp(90px,16vw,260px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.14);white-space:nowrap;pointer-events:none">LEARN</div>
+  <div style="position:relative;max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:12px;font-family:Lexend,sans-serif;font-size:11px;letter-spacing:.28em;color:#f6a54a;margin-bottom:14px"><span>02</span><span style="width:36px;height:1px;background:currentColor"></span></div>
+    <h2 data-reveal="up" style="margin:0;font-family:Lexend,sans-serif;font-weight:300;font-size:clamp(36px,4.4vw,56px);line-height:1.05">Learning Features</h2>
+    <div style="font-size:12px;font-weight:700;margin-top:6px">大学での学びの特徴</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:0;margin-top:44px;border-top:1px solid rgba(255,255,255,.4)">
+      <div data-reveal="up" style="padding:28px 24px 8px 0;display:flex;flex-direction:column;gap:12px"><span style="font-family:Lexend,sans-serif;font-size:48px;font-weight:200;line-height:1;color:#f6a54a">01</span><span style="font-family:Lexend,sans-serif;font-size:10px;letter-spacing:.22em;opacity:.8">SEMINAR</span><h3 style="margin:0;font-size:18px;font-weight:700">少人数ゼミ・研究室</h3><p style="margin:0;font-size:13px;line-height:1.9;opacity:.92;text-wrap:pretty">教員や仲間と議論を重ね、自分でテーマを立てて探究する力を身につけます。</p></div>
+      <div data-reveal="up" style="padding:28px 24px 8px 0;display:flex;flex-direction:column;gap:12px"><span style="font-family:Lexend,sans-serif;font-size:48px;font-weight:200;line-height:1;color:#f6a54a">02</span><span style="font-family:Lexend,sans-serif;font-size:10px;letter-spacing:.22em;opacity:.8">GLOBAL</span><h3 style="margin:0;font-size:18px;font-weight:700">留学・国際交流</h3><p style="margin:0;font-size:13px;line-height:1.9;opacity:.92;text-wrap:pretty">短期・長期の留学制度や留学生との交流を通して、多様な価値観にふれられます。</p></div>
+      <div data-reveal="up" style="padding:28px 24px 8px 0;display:flex;flex-direction:column;gap:12px"><span style="font-family:Lexend,sans-serif;font-size:48px;font-weight:200;line-height:1;color:#f6a54a">03</span><span style="font-family:Lexend,sans-serif;font-size:10px;letter-spacing:.22em;opacity:.8">CAREER</span><h3 style="margin:0;font-size:18px;font-weight:700">キャリア・資格支援</h3><p style="margin:0;font-size:13px;line-height:1.9;opacity:.92;text-wrap:pretty">インターンシップや資格取得講座など、卒業後の進路につながる支援があります。</p></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Programs / How to choose" style="padding:clamp(64px,8vw,104px) clamp(16px,3vw,32px);background-image:radial-gradient(rgba(29,91,224,.14) 1.6px,transparent 1.8px);background-size:22px 22px;background-color:#f4f7fc">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="text-align:center;display:flex;flex-direction:column;align-items:center">
+      <div style="display:flex;align-items:center;gap:12px;font-family:Lexend,sans-serif;font-size:11px;letter-spacing:.28em;color:#f08300;margin-bottom:14px"><span>03</span><span style="width:36px;height:1px;background:currentColor"></span></div>
+      <h2 data-reveal="up" style="margin:0;font-family:Lexend,sans-serif;font-weight:300;font-size:clamp(36px,4.4vw,56px);color:#0b2d8c;line-height:1.05">How to Choose</h2>
+      <div style="font-size:12px;font-weight:700;margin-top:6px">学部・学科選びの3つの視点</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:40px">
+      <div data-reveal="left" style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;background:#fff;padding:24px 28px;border:1px solid #d3dbe8"><span style="width:56px;height:56px;border-radius:50%;background:#0b2d8c;color:#fff;display:grid;place-items:center;font-family:Lexend,sans-serif;font-weight:300;font-size:20px;flex:none">1</span><div style="flex:1;min-width:220px"><h3 style="margin:0 0 6px;font-size:16px;font-weight:700;color:#0b2d8c">興味・関心から考える</h3><p style="margin:0;font-size:13px;line-height:1.85;color:#3a4356">好きな教科や気になるニュース、熱中してきたことから、学びたいテーマを書き出してみましょう。</p></div></div>
+      <div data-reveal="left" style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;background:#fff;padding:24px 28px;border:1px solid #d3dbe8"><span style="width:56px;height:56px;border-radius:50%;background:#1d5be0;color:#fff;display:grid;place-items:center;font-family:Lexend,sans-serif;font-weight:300;font-size:20px;flex:none">2</span><div style="flex:1;min-width:220px"><h3 style="margin:0 0 6px;font-size:16px;font-weight:700;color:#0b2d8c">将来像から逆算する</h3><p style="margin:0;font-size:13px;line-height:1.85;color:#3a4356">就きたい職業や必要な資格がある場合は、その道につながる学部・学科を確認しましょう。</p></div></div>
+      <div data-reveal="left" style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;background:#fff;padding:24px 28px;border:1px solid #d3dbe8"><span style="width:56px;height:56px;border-radius:50%;background:#f08300;color:#fff;display:grid;place-items:center;font-family:Lexend,sans-serif;font-weight:300;font-size:20px;flex:none">3</span><div style="flex:1;min-width:220px"><h3 style="margin:0 0 6px;font-size:16px;font-weight:700;color:#0b2d8c">学ぶ環境を比べる</h3><p style="margin:0;font-size:13px;line-height:1.85;color:#3a4356">カリキュラム、ゼミの規模、キャンパスの立地など、4年間を過ごす環境も大切な判断材料です。</p></div></div>
+    </div>
+  </div>
+</section>
+<dc-import name="SiteFooter" hint-size="100%,760px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: 'all' };
+  renderVals() {
+    const C = { all: 'すべて', hum: '人文・社会科学', sci: '理学・工学', med: '医療・看護・福祉', edu: '教育・芸術・スポーツ' };
+    const P = [
+      ['hum', 'LITERATURE', '文学・言語学', '言葉や文学作品を通して、人間の思考や文化の成り立ちを探ります。', ['日本文学', '言語', '表現']],
+      ['hum', 'LAW', '法学', '社会のルールの仕組みを学び、論理的に考え判断する力を養います。', ['法律', '政治', '公務員']],
+      ['hum', 'ECONOMICS', '経済学・経営学', 'お金や企業の動きを分析し、社会や組織の課題を解決する視点を学びます。', ['経済', 'マーケティング', '会計']],
+      ['hum', 'GLOBAL', '国際・グローバル', '語学力と異文化理解を深め、世界とつながる力を身につけます。', ['語学', '留学', '国際関係']],
+      ['sci', 'DATA SCIENCE', '情報・データサイエンス', 'プログラミングと統計を土台に、データで社会の課題を読み解きます。', ['AI', 'プログラミング', '統計']],
+      ['sci', 'ENGINEERING', '機械・電気・建築', 'ものづくりや都市の仕組みを、設計と実験を通して学びます。', ['設計', '実験', 'ものづくり']],
+      ['sci', 'SCIENCE', '理学（数学・物理・化学・生物）', '自然界の法則を探究し、科学的な考え方の基礎を固めます。', ['研究', '実験', '理論']],
+      ['med', 'NURSING', '看護学', '実習を重視したカリキュラムで、人の健康と暮らしを支える専門職をめざします。', ['実習', '国家資格', 'チーム医療']],
+      ['med', 'PHARMACY', '医学・薬学', '病気の仕組みや薬の働きを学び、医療の最前線を支える知識を身につけます。', ['医療', '研究', '国家資格']],
+      ['med', 'WELFARE', '福祉・リハビリテーション', '一人ひとりの生活を支えるための知識と支援の技術を学びます。', ['福祉', '支援', '地域']],
+      ['edu', 'EDUCATION', '教育学', '子どもの成長や学びの仕組みを理解し、教育に携わる力を養います。', ['教員免許', '心理', '子ども']],
+      ['edu', 'ART & SPORTS', '芸術・デザイン・スポーツ科学', '表現する力や身体の仕組みを、実技と理論の両面から学びます。', ['デザイン', '音楽', 'スポーツ']]
+    ];
+    const items = P.filter(p => this.state.cat === 'all' || p[0] === this.state.cat).map((p, i) => ({
+      cat: p[0], catLabel: C[p[0]], en: p[1], title: p[2], desc: p[3], tags: p[4], slot: 'prog-' + p[1].toLowerCase().replace(/[^a-z]/g, ''), ph: p[2] + 'のイメージ'
+    }));
+    return {
+      count: items.length, items,
+      cats: Object.keys(C).map(k => ({ label: C[k], bg: k === this.state.cat ? '#0b2d8c' : '#fff', fg: k === this.state.cat ? '#fff' : '#0b2d8c', select: () => this.setState({ cat: k }) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

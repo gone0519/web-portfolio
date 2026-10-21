@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Noto Sans JP",sans-serif;color:#222;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#222;text-decoration:none}
+a:hover{color:#d7000f}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="faculties" hint-size="100%,0px"></dc-import>
+
+<main>
+<section data-screen-label="Faculties Hero" style="position:relative;height:440px;background:#1a1a1a;overflow:hidden;display:flex;align-items:flex-end">
+  <div data-kenburns="1" style="position:absolute;inset:0"><image-slot src="_filled/68-group-smile.jpg" id="fp-hero" shape="rect" placeholder="ページ背景：講義室で学ぶ学生"></image-slot></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35) 50%,rgba(0,0,0,.7));pointer-events:none"></div>
+  <div data-parallax="1" style="position:absolute;right:-20px;bottom:-30px;font-family:Oswald;font-weight:500;font-size:clamp(110px,17vw,240px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.22);white-space:nowrap;pointer-events:none">FACULTIES</div>
+  <div data-float="1" style="position:absolute;right:-90px;top:110px;width:460px;height:16px;background:#d7000f;transform:rotate(-35deg);pointer-events:none"></div>
+  <div style="position:relative;max-width:1100px;width:100%;margin:0 auto;padding:0 24px 64px;color:#fff;pointer-events:none">
+    <h1 data-hero="0" style="margin:0;font-family:Oswald;font-weight:300;font-size:clamp(52px,7vw,92px);line-height:1;letter-spacing:.02em"><span style="color:#ff3344">F</span>aculties</h1>
+    <p data-hero="1" style="margin:12px 0 0;font-size:14px;font-weight:700;letter-spacing:.2em">学部・学科紹介</p>
+  </div>
+</section>
+<nav style="max-width:1100px;margin:0 auto;padding:16px 24px;font-size:11px;color:#888;display:flex;gap:10px"><a href="Top.dc.html" style="color:#888">TOP</a><span>›</span><span>学部・学科</span></nav>
+
+<section style="max-width:900px;margin:0 auto;padding:48px 24px 40px;text-align:center">
+  <h2 data-reveal="up" style="margin:0;font-size:clamp(22px,3vw,30px);font-weight:900;letter-spacing:.1em;line-height:1.6">5学部13学科で、<span style="color:#d7000f">「好き」</span>を<br>一生の強みに。</h2>
+  <p data-reveal="up" style="margin:24px auto 0;font-size:13px;line-height:2.2;color:#555;max-width:640px;text-wrap:pretty">文系・理系の枠をこえて学べる清嶺大学。興味のある分野から、学部・学科の学びや目指せる進路をご覧ください。</p>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:36px">
+    <sc-for list="{{ facs }}" as="f" hint-placeholder-count="5">
+      <a data-reveal="pop" href="#{{ f.id }}" style="display:flex;align-items:center;gap:10px;padding:12px 20px;border:1px solid #222;font-size:13px;font-weight:700;transition:background .2s,color .2s" style-hover="background:#d7000f;border-color:#d7000f;color:#fff"><span style="font-family:Oswald;color:#d7000f;font-weight:400">{{ f.no }}</span>{{ f.name }}<span style="font-size:11px">↓</span></a>
+    </sc-for>
+  </div>
+</section>
+
+<sc-for list="{{ facs }}" as="f" hint-placeholder-count="5">
+  <section id="{{ f.id }}" style="scroll-margin-top:64px;position:relative;overflow:hidden;background:{{ f.bg }};padding:90px 24px">
+    <div data-parallax="1" style="position:absolute;left:-10px;top:30px;font-family:Oswald;font-weight:500;font-size:clamp(80px,13vw,180px);line-height:1;color:rgba(0,0,0,.045);white-space:nowrap;pointer-events:none">{{ f.en }}</div>
+    <div style="position:relative;max-width:1100px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;gap:40px 56px;align-items:center">
+        <div data-reveal="left" style="flex:1 1 420px;height:340px;position:relative;box-shadow:-18px 18px 0 #d7000f;margin:0 0 18px 18px;background:#ddd"><image-slot id="{{ f.img }}" shape="rect" placeholder="{{ f.ph }}"></image-slot></div>
+        <div data-reveal="right" style="flex:1 1 380px">
+          <div style="display:flex;align-items:flex-end;gap:18px">
+            <span style="font-family:Oswald;font-weight:300;font-size:80px;line-height:.85;color:transparent;-webkit-text-stroke:1.5px #d7000f;transform:skewX(-12deg)">{{ f.no }}</span>
+            <span style="font-family:Oswald;font-size:13px;letter-spacing:.2em;color:#d7000f">FACULTY OF {{ f.en }}</span>
+          </div>
+          <h2 style="margin:18px 0 0;font-size:clamp(26px,3vw,34px);font-weight:900;letter-spacing:.1em">{{ f.name }}</h2>
+          <p style="margin:8px 0 0;font-size:15px;font-weight:700;color:#d7000f;letter-spacing:.08em">{{ f.catch }}</p>
+          <p style="margin:18px 0 0;font-size:13px;line-height:2.1;color:#555">{{ f.desc }}</p>
+        </div>
+      </div>
+      <div style="margin-top:56px;display:flex;align-items:center;gap:16px"><span style="font-family:Oswald;font-size:24px"><span style="color:#d7000f">D</span>epartments</span><span style="font-size:12px;font-weight:700">学科紹介</span><span style="flex:1;height:1px;background:#ccc"></span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px;margin-top:20px">
+        <sc-for list="{{ f.depts }}" as="d" hint-placeholder-count="3">
+          <div data-reveal="up" style="background:#fff;padding:24px 22px;border-top:3px solid #d7000f;box-shadow:0 10px 26px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-6px);box-shadow:0 18px 36px rgba(0,0,0,.12)">
+            <h3 style="margin:0;font-size:16px;font-weight:700">{{ d.n }}</h3>
+            <p style="margin:10px 0 0;font-size:12px;line-height:1.9;color:#555">{{ d.t }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;margin-top:28px">
+        <div data-reveal="up" style="background:#1e1e1e;color:#fff;padding:28px 26px">
+          <div style="font-family:Oswald;font-size:13px;letter-spacing:.15em;color:#ff3344">FEATURES</div>
+          <div style="font-size:15px;font-weight:700;margin-top:4px">学びの特徴</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
+            <sc-for list="{{ f.feats }}" as="x" hint-placeholder-count="3">
+              <div style="display:flex;gap:12px;font-size:13px;line-height:1.8"><span style="flex:0 0 8px;height:8px;margin-top:8px;background:#d7000f;transform:rotate(45deg)"></span>{{ x }}</div>
+            </sc-for>
+          </div>
+        </div>
+        <div data-reveal="up" style="background:#fff;padding:28px 26px;border:1px solid #ddd">
+          <div style="font-family:Oswald;font-size:13px;letter-spacing:.15em;color:#d7000f">CAREER</div>
+          <div style="font-size:15px;font-weight:700;margin-top:4px">目指せる進路（例）</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">
+            <sc-for list="{{ f.career }}" as="x" hint-placeholder-count="4">
+              <span style="font-size:12px;padding:6px 12px;background:#efefef">{{ x }}</span>
+            </sc-for>
+          </div>
+          <div style="font-size:15px;font-weight:700;margin-top:22px">目指せる資格（例）</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+            <sc-for list="{{ f.lic }}" as="x" hint-placeholder-count="3">
+              <span style="font-size:12px;padding:6px 12px;border:1px solid #d7000f;color:#d7000f">{{ x }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px 36px;margin-top:32px">
+        <a href="Examination.dc.html" style="display:inline-flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.1em">この学部の入試方式を見る<span style="width:30px;height:30px;border:1px solid #d7000f;color:#d7000f;border-radius:50%;display:grid;place-items:center;font-size:12px">→</span></a>
+        <a href="CampusLife.dc.html#oc" style="display:inline-flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.1em">模擬授業に参加する<span style="width:30px;height:30px;border:1px solid #d7000f;color:#d7000f;border-radius:50%;display:grid;place-items:center;font-size:12px">→</span></a>
+      </div>
+    </div>
+  </section>
+</sc-for>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,460px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const go = () => window.SiteMotion ? (this.stop = window.SiteMotion.init()) : (this.mt = setTimeout(go, 80));
+    this.mt = setTimeout(go, 60);
+  }
+  componentWillUnmount() { clearTimeout(this.mt); if (this.stop) this.stop(); }
+  renderVals() {
+    const F = [
+      { id: 'lit', en: 'LITERATURE', name: '文学部', catch: 'ことばと文化を学ぶ', ph: '文学部：ゼミで議論する学生',
+        desc: '人間が残してきた言葉や思想、歴史を読み解き、現代社会を見つめ直す学部です。少人数ゼミを中心に、読む・考える・書く・伝える力を4年間かけて磨きます。',
+        depts: [['日本文学科', '古典から現代文学まで、日本語の表現と文化を深く学びます。'], ['英米文学科', '英語圏の文学・言語を学び、高度な英語運用力を身につけます。'], ['歴史学科', '史料を読み解き、過去から現在を考える視点を養います。'], ['哲学科', '問いを立て、論理的に考え抜く力を鍛えます。']],
+        feats: ['1年次から始まる少人数ゼミ', '協定校への短期・長期留学プログラム', '中学・高校の教職課程を設置'],
+        career: ['出版・編集', '教員', '公務員', '広告・メディア', '一般企業'], lic: ['中学校・高校教諭一種', '学芸員', '司書'] },
+      { id: 'eco', en: 'ECONOMICS', name: '経済学部', catch: '社会の仕組みを読み解く', ph: '経済学部：グループワーク',
+        desc: '経済の理論とデータ分析の手法を学び、企業や地域が抱える課題を解決する力を養います。企業と連携したプロジェクト型授業で、実社会の課題に取り組みます。',
+        depts: [['経済学科', '理論・統計・政策を学び、経済の動きを分析します。'], ['経営学科', '組織・マーケティング・会計など、企業経営を総合的に学びます。']],
+        feats: ['統計ソフトを使ったデータ分析演習', '企業連携のPBL（課題解決型学習）', '簿記・FPなどの資格取得支援講座'],
+        career: ['金融', 'メーカー', 'コンサルティング', '商社', '公務員'], lic: ['日商簿記', 'ファイナンシャル・プランナー', 'ITパスポート'] },
+      { id: 'law', en: 'LAW', name: '法学部', catch: '公正な社会を考える', ph: '法学部：模擬法廷',
+        desc: '法律や政治の仕組みを学び、社会のルールを多角的にとらえる学部です。模擬裁判や政策立案演習を通して、論理的に考え、相手に伝わるように説明する力を身につけます。',
+        depts: [['法律学科', '憲法・民法・刑法などを体系的に学び、法的思考力を養います。'], ['政治学科', '政治・行政・国際関係を学び、政策を考える力を育てます。']],
+        feats: ['実際の法廷を再現した模擬法廷教室', '公務員試験対策講座', '法科大学院への進学サポート'],
+        career: ['公務員', '法曹（大学院経由）', '金融・保険', '一般企業の法務'], lic: ['行政書士', '宅地建物取引士', 'ビジネス実務法務検定'] },
+      { id: 'eng', en: 'ENGINEERING', name: '理工学部', catch: 'ものづくりで未来を描く', ph: '理工学部：実験・研究設備',
+        desc: '数学・物理・化学の基礎を土台に、ものづくりの専門技術を学びます。1年次から実験・実習に取り組み、3年次からは研究室に所属して研究に挑戦します。',
+        depts: [['機械工学科', '設計・材料・制御を学び、機械システムを開発します。'], ['電気電子工学科', 'エネルギーや電子回路など、社会を支える技術を学びます。'], ['建築学科', '設計・構造・環境を学び、安全で快適な空間をつくります。'], ['応用化学科', '新素材や環境技術など、化学の力で課題に挑みます。']],
+        feats: ['1年次から本格的な実験・実習', '3年次から研究室に所属', '大学院への内部進学制度'],
+        career: ['メーカー技術職', '建設・設計', 'エネルギー', '研究職'], lic: ['一級・二級建築士（受験資格）', '電気主任技術者', '危険物取扱者'] },
+      { id: 'inf', en: 'INFORMATICS', name: '情報科学部', catch: 'データで社会を動かす', ph: '情報科学部：PC演習室',
+        desc: 'プログラミング、ネットワーク、AIなど情報技術の基礎から応用までを学びます。チームでのソフトウェア開発演習を通じて、実践的なスキルと協働する力を養います。',
+        depts: [['情報工学科', 'ソフトウェア・ネットワーク・セキュリティを学びます。'], ['データサイエンス学科', '統計とAIを使い、データから価値を引き出します。']],
+        feats: ['1人1台のPCを使った演習中心の授業', 'チーム開発演習とIT企業インターンシップ', 'AI・機械学習の専門科目'],
+        career: ['ITエンジニア', 'データサイエンティスト', 'Webサービス企画', 'SIer'], lic: ['基本情報技術者', '応用情報技術者', '統計検定'] },
+    ];
+    return {
+      facs: F.map((f, i) => ({ ...f, no: '0' + (i + 1), img: 'fp-' + f.id, bg: i % 2 ? '#fff' : '#efefef', depts: f.depts.map(([n, t]) => ({ n, t })) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

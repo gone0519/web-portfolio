@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#333;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#333;text-decoration:none}
+a:hover{color:#1fb2c3}
+p,h1,h2,h3,h4,ul{margin:0}
+</style>
+</helmet>
+<div style="position:relative;overflow:hidden;min-width:320px">
+  <dc-import name="SiteHeader" active="{{ 2 }}" style="position:absolute;top:0;left:0;right:0;z-index:20" hint-size="100%,72px"></dc-import>
+  <dc-import name="PageHero" en="Prepare" title="入試対策" lead="入試方式の違いを知り、時期ごとに準備を進めることが合格への近道です。受験生のみなさんが自信をもって本番を迎えられるよう、準備のポイントをまとめました。" img="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=900&amp;q=70&amp;auto=format&amp;fit=crop" hint-size="100%,560px"></dc-import>
+
+  <section data-screen-label="Methods" style="padding:100px clamp(20px,5vw,80px) 110px;max-width:1400px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:56px">
+      <p style="font-family:'Lexend Exa',sans-serif;font-size:11px;font-weight:500;margin-bottom:10px">Admission Types</p>
+      <h2 style="font-size:clamp(24px,2.2vw,32px);font-weight:700;letter-spacing:0.12em">3つの入試方式を比べる</h2>
+    </div>
+    <div style="overflow-x:auto">
+      <div style="min-width:760px;display:grid;grid-template-columns:160px repeat(3,1fr);border-top:1px solid #e0e0e0">
+        <span style="padding:22px 16px;border-bottom:1px solid #e0e0e0"></span>
+        <sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+          <span style="padding:22px 20px;border-bottom:3px solid {{ m.color }};display:flex;flex-direction:column;gap:4px"><span style="font-family:'Lexend Exa',sans-serif;font-size:9px;color:#888">{{ m.en }}</span><span style="font-size:17px;font-weight:700;color:{{ m.color }}">{{ m.name }}</span></span>
+        </sc-for>
+        <sc-for list="{{ rows }}" as="r" hint-placeholder-count="5">
+          <span style="padding:20px 16px;border-bottom:1px solid #e0e0e0;background:#f4f4f4;font-size:13px;font-weight:700">{{ r.label }}</span>
+          <span style="padding:20px;border-bottom:1px solid #e0e0e0;font-size:13px;line-height:1.9">{{ r.a }}</span>
+          <span style="padding:20px;border-bottom:1px solid #e0e0e0;font-size:13px;line-height:1.9">{{ r.b }}</span>
+          <span style="padding:20px;border-bottom:1px solid #e0e0e0;font-size:13px;line-height:1.9">{{ r.c }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <p style="font-size:11.5px;color:#888;margin-top:16px">※ 一般的な特徴をまとめたものです。実施内容・時期は最新の募集要項をご確認ください。</p>
+  </section>
+
+  <section data-screen-label="Roadmap" style="background:#f1f6f6;padding:110px clamp(20px,5vw,80px)">
+    <div style="max-width:1300px;margin:0 auto;display:flex;gap:clamp(30px,5vw,90px);flex-wrap:wrap">
+      <div style="display:flex;gap:10px;flex-shrink:0">
+        <h2 style="writing-mode:vertical-rl;font-size:clamp(24px,2vw,30px);font-weight:700;letter-spacing:0.25em">合格までの道のり</h2>
+        <span style="writing-mode:vertical-rl;font-family:'Lexend Exa',sans-serif;font-size:9px;font-weight:500">Study Roadmap</span>
+      </div>
+      <div style="flex:1 1 500px;display:flex;flex-direction:column;background:#fff;padding:clamp(24px,4vw,56px)">
+        <sc-for list="{{ roadmap }}" as="rm" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:minmax(90px,130px) 1fr;gap:24px;padding:26px 0;border-bottom:1px solid #e6e6e6">
+            <span style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Lexend Exa',sans-serif;font-size:22px;font-weight:300;color:#1fb2c3">{{ rm.no }}</span><span style="font-size:13px;font-weight:700">{{ rm.term }}</span></span>
+            <span style="display:flex;flex-direction:column;gap:8px"><span style="font-size:15px;font-weight:700;letter-spacing:0.05em">{{ rm.title }}</span><span style="font-size:13px;line-height:2;color:#555;text-wrap:pretty">{{ rm.text }}</span></span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Subjects" style="padding:110px clamp(20px,5vw,80px);max-width:1500px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:20px 60px;margin-bottom:56px">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <span style="font-family:'Lexend Exa',sans-serif;font-size:clamp(56px,7vw,110px);font-weight:400;line-height:1;color:#e3e3e3;letter-spacing:-0.03em">Subjects</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.1em">科目別の対策</span>
+      </div>
+      <p style="font-size:13px;line-height:2;padding-bottom:30px">科目ごとに押さえておきたい<br>学習のポイントです。</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:#e6e6e6;border:1px solid #e6e6e6">
+      <sc-for list="{{ subjects }}" as="s" hint-placeholder-count="6">
+        <div style="position:relative;background:#fff;padding:44px clamp(24px,3vw,48px);display:flex;flex-direction:column;gap:14px">
+          <span style="position:absolute;top:-1px;left:clamp(24px,3vw,48px);width:64px;height:3px;background:{{ s.color }}"></span>
+          <span style="font-family:'Lexend Exa',sans-serif;font-weight:300;font-size:40px;line-height:1;color:{{ s.color }}">{{ s.no }}</span>
+          <h3 style="font-size:19px;font-weight:700;letter-spacing:0.06em;color:{{ s.color }}">{{ s.name }}</h3>
+          <p style="font-size:13px;line-height:2;text-wrap:pretty">{{ s.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Resources" style="position:relative;padding:0 0 110px">
+    <div style="position:absolute;left:0;top:0;bottom:0;width:18.5%;background:repeating-linear-gradient(45deg,#d1e0e3 0 8px,#dce8ea 8px 16px);overflow:hidden">
+      <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=700&amp;q=70&amp;auto=format&amp;fit=crop" alt="図書館" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+    <div style="position:relative;margin-left:18.5%;padding:80px clamp(20px,7vw,140px) 0">
+      <p style="font-family:'Lexend Exa',sans-serif;font-size:11px;font-weight:500;margin-bottom:10px">Resources</p>
+      <h2 style="font-size:clamp(22px,2vw,28px);font-weight:700;letter-spacing:0.1em;margin-bottom:36px">対策に役立つ資料・イベント</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px">
+        <sc-for list="{{ resources }}" as="r" hint-placeholder-count="6">
+          <a href="{{ r.href }}" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px;border:1px solid #ddd;background:#fff" style-hover="border-color:#1fb2c3;color:#1fb2c3">
+            <span style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Lexend Exa',sans-serif;font-size:9px;color:#888">{{ r.en }}</span><span style="font-size:14px;font-weight:700">{{ r.title }}</span><span style="font-size:12px;color:#777;line-height:1.7">{{ r.text }}</span></span>
+            <span style="width:22px;height:22px;border-radius:50%;background:#333;color:#fff;font-size:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0">▶</span>
+          </a>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:48px">
+        <a href="Admissions.dc.html" style="display:flex;align-items:center;gap:16px" style-hover="opacity:0.8">
+          <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;border-bottom:1px solid #333;padding-bottom:4px">入試・出願情報へ</span>
+          <span style="width:64px;height:64px;border-radius:50%;background:#1fb2c3;color:#fff;display:flex;align-items:center;justify-content:center">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <dc-import name="SiteFooter" active="{{ 2 }}" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const C = ['#5f9e95', '#4f7192', '#b98a4c', '#8d8f94', '#b5545c', '#7a5aa0'];
+    return {
+      methods: [
+        { name: '一般選抜', en: 'General', color: C[1] },
+        { name: '学校推薦型選抜', en: 'Recommendation', color: C[0] },
+        { name: '総合型選抜', en: 'Comprehensive', color: C[2] },
+      ],
+      rows: [
+        { label: '評価の中心', a: '学力試験の得点', b: '調査書・推薦書と面接・小論文', c: '志望理由書・面接・課題など多面的な評価' },
+        { label: '出願の目安', a: '1月〜2月頃', b: '11月頃', c: '9月頃〜' },
+        { label: '主な提出物', a: '調査書など', b: '調査書・推薦書・志望理由書', c: '志望理由書・活動報告書など' },
+        { label: '準備のポイント', a: '過去問題演習と時間配分の練習', b: '評定平均の維持と面接対策', c: '学びたいテーマを言語化し、根拠をそろえる' },
+        { label: '向いている人', a: '試験本番で実力を発揮したい人', b: '高校での学習を継続して積み重ねてきた人', c: '学びたいことが明確で、考えを伝えたい人' },
+      ],
+      roadmap: [
+        { term: '高校1〜2年', title: '基礎を固め、興味を広げる', text: '授業の復習を習慣にし、英語・数学・国語の基礎を固めます。探究学習や課外活動の記録は、総合型選抜の材料にもなります。' },
+        { term: '高校3年 春', title: '志望校と入試方式を決める', text: 'オープンキャンパスや説明会に参加し、志望校を絞り込みます。入試科目と配点を確認し、学習計画を立てましょう。' },
+        { term: '高校3年 夏', title: '苦手を克服する', text: '夏休みは苦手分野をまとめて克服する好機です。総合型選抜を受ける人は志望理由書の下書きを始めます。' },
+        { term: '高校3年 秋', title: '実戦力を養う', text: '過去問題演習を本格化させます。推薦・総合型選抜の出願準備と面接練習も並行して進めます。' },
+        { term: '高校3年 冬', title: '本番に備える', text: '本番と同じ時間配分で演習し、見直しの手順を身につけます。体調管理と生活リズムを整えることも大切です。' },
+      ].map((r, i) => ({ ...r, no: String(i + 1).padStart(2, '0') })),
+      subjects: [
+        { name: '英語', text: '単語と文法を毎日少しずつ積み重ね、長文は段落ごとの要旨をつかむ練習を。リスニングは音読とシャドーイングが効果的です。' },
+        { name: '数学', text: '公式は導き方まで理解し、典型問題を繰り返し解きましょう。間違えた問題は解き直しノートで管理すると定着します。' },
+        { name: '国語', text: '現代文は筆者の主張と根拠を区別して読む練習を。古文・漢文は単語と句法を固めれば得点源になります。' },
+        { name: '理科・社会', text: '教科書の図表や用語を自分の言葉で説明できるかを確認しましょう。一問一答と記述問題をバランスよく。' },
+        { name: '小論文', text: '課題文の論点を整理し、「主張→理由→具体例→結論」の型で書く練習を。書いたら必ず第三者に読んでもらいましょう。' },
+        { name: '面接・志望理由書', text: 'なぜこの大学・学部なのか、入学後に何を学びたいのかを具体的に。自分の経験と結びつけると説得力が増します。' },
+      ].map((s, i) => ({ ...s, no: String(i + 1).padStart(2, '0'), color: C[i] })),
+      resources: [
+        { en: 'Past Exams', title: '過去問題の閲覧', text: '過去3年分の問題を掲載予定（サンプル）', href: 'Contact.dc.html?type=docs' },
+        { en: 'Guidebook', title: '入試ガイドブック', text: '入試方式・日程をまとめた冊子', href: 'Contact.dc.html?type=docs' },
+        { en: 'Essay Guide', title: '小論文・面接対策講座', text: 'オープンキャンパス内で実施', href: 'CampusLife.dc.html' },
+        { en: 'Online Seminar', title: 'オンライン入試説明会', text: '自宅から参加できる説明会', href: 'Contact.dc.html?type=oc' },
+        { en: 'Consultation', title: '個別相談', text: '入試課スタッフが個別に回答', href: 'Contact.dc.html?type=inquiry' },
+        { en: 'FAQ', title: 'よくあるご質問', text: '出願・併願に関するQ&A', href: 'Admissions.dc.html' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

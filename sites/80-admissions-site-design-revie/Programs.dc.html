@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1a1a1a;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#E2332B;text-decoration:none}
+a:hover{color:#b8241d}
+</style>
+<script src="motion.js"></script>
+</helmet>
+<dc-import name="SiteHeader" current="programs" hint-size="100%,65px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+<main>
+<section data-screen-label="Programs Hero" style="background:#E2332B;color:#fff;clip-path:polygon(0 0,100% 0,100% calc(100% - 60px),93% 100%,7% 100%,0 calc(100% - 60px));padding:56px 20px 110px">
+  <div style="max-width:960px;margin:0 auto">
+    <div style="font-size:11px;font-weight:700;display:flex;gap:8px"><a href="University%20Admissions.dc.html" style="color:#fff">TOP</a><span>›</span><span>学部・学科</span></div>
+    <div style="margin-top:28px;font-size:13px;font-weight:700">学部・学科</div>
+    <h1 style="margin:4px 0 16px;font-family:Kanit;font-weight:600;font-size:clamp(52px,8vw,104px);line-height:.9">PROGRAMS</h1>
+    <p style="margin:0;max-width:34em;font-size:14px;line-height:1.9;font-weight:500;text-wrap:pretty">8学部24学科（サンプル）。興味のある分野から、4年間の学びと将来の進路をイメージしてみましょう。</p>
+  </div>
+</section>
+
+<section style="max-width:960px;margin:0 auto;padding:48px 20px 72px">
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">
+    <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+      <button onClick="{{ t.select }}" style="border:2px solid #111;background:{{ t.bg }};color:{{ t.fg }};border-radius:999px;padding:8px 20px;font:700 13px 'Zen Kaku Gothic New',sans-serif;cursor:pointer;transition:background .2s">{{ t.label }}</button>
+    </sc-for>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:24px">
+    <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="4">
+      <article style="display:flex;flex-wrap:wrap;border-radius:10px;overflow:hidden;background:#efefef">
+        <div style="flex:1 1 280px;min-height:240px;position:relative;background:repeating-linear-gradient(135deg,#b9b9b5 0 8px,#c4c4c0 8px 16px);display:flex;flex-direction:column;justify-content:space-between;padding:18px">
+          <div style="font-family:Kanit;font-weight:600;font-size:30px;line-height:1;color:transparent;-webkit-text-stroke:1px #fff">{{ f.en }}</div>
+          <div style="font:10px ui-monospace,monospace;color:#555">{{ f.img }}</div>
+          <span style="position:absolute;top:14px;right:14px;background:#E2332B;color:#fff;font-size:11px;font-weight:700;padding:3px 8px">{{ f.cat }}</span>
+        </div>
+        <div style="flex:1.4 1 340px;padding:28px clamp(20px,3vw,32px);background:#fff;border:1px solid #e5e5e5;border-left:0">
+          <h2 style="margin:0;font-size:22px;font-weight:900">{{ f.ja }}</h2>
+          <div style="margin-top:8px;display:flex;flex-direction:column;align-items:flex-start;gap:3px">
+            <span style="background:#E2332B;color:#fff;font-size:12px;font-weight:700;padding:3px 8px">{{ f.copy }}</span>
+          </div>
+          <p style="margin:12px 0 0;font-size:13px;line-height:1.9;color:#333;text-wrap:pretty">{{ f.desc }}</p>
+          <div style="margin-top:14px;font-size:11px;font-weight:700;color:#E2332B">学科</div>
+          <div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ f.depts }}" as="d" hint-placeholder-count="3">
+              <span style="border:1px solid #111;border-radius:4px;padding:4px 10px;font-size:12px;font-weight:700">{{ d }}</span>
+            </sc-for>
+          </div>
+          <div style="margin-top:14px;font-size:11px;font-weight:700;color:#E2332B">卒業後の主な進路（例）</div>
+          <div style="margin-top:4px;font-size:12px;color:#444">{{ f.career }}</div>
+          <a href="Admissions.dc.html" style="margin-top:18px;display:inline-flex;align-items:center;gap:24px;background:#111;color:#fff;border-radius:6px;padding:7px 7px 7px 22px;font-weight:700;font-size:12px;transition:background .2s" style-hover="background:#E2332B;color:#fff">この学部の入試情報<span style="width:24px;height:24px;border-radius:4px;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;font-size:16px">›</span></a>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section style="background:#efefef;clip-path:polygon(0 60px,7% 0,93% 0,100% 60px,100% 100%,0 100%);padding:110px 20px 80px">
+  <div style="max-width:960px;margin:0 auto">
+    <div style="display:flex;gap:6px;align-items:center;font-size:11px;font-weight:700;color:#E2332B"><span style="background:#E2332B;color:#fff;padding:2px 6px">学びの特色</span><span style="background:#E2332B;color:#fff;padding:2px 6px">FEATURES</span></div>
+    <div style="margin-top:6px;font-family:Kanit;font-weight:600;font-size:clamp(64px,8vw,104px);line-height:.85;color:#E2332B">06<span style="font-size:.16em;letter-spacing:.1em;margin-left:6px">POINTS</span></div>
+    <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+      <sc-for list="{{ features }}" as="ft" hint-placeholder-count="6">
+        <div style="background:#fff;border-radius:6px;overflow:hidden">
+          <div style="aspect-ratio:16/9;background:repeating-linear-gradient(135deg,#dcdcd8 0 8px,#e6e6e2 8px 16px);display:flex;align-items:flex-end;padding:8px;font:10px ui-monospace,monospace;color:#777">{{ ft.img }}</div>
+          <div style="padding:14px 16px 18px"><div style="font-family:Kanit;font-weight:600;color:#E2332B;font-size:13px">POINT {{ ft.no }}</div><div style="margin-top:2px;font-size:15px;font-weight:900">{{ ft.title }}</div><div style="margin-top:6px;font-size:12px;color:#444;line-height:1.8">{{ ft.text }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:40px">
+      <a href="ExamPrep.dc.html" style="display:flex;align-items:center;gap:28px;background:#111;color:#fff;border-radius:6px;padding:8px 8px 8px 28px;font-weight:700;font-size:13px;transition:background .2s" style-hover="background:#E2332B;color:#fff">入試対策を見る<span style="width:26px;height:26px;border-radius:4px;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;font-size:18px">›</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,640px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: 'すべて' };
+  renderVals() {
+    const all = [
+      ['LITERATURE', '文学部', '文系', 'ことばと文化から、人間を深く理解する', '文学・歴史・思想を通して、人と社会を多角的に読み解く力を養います。少人数ゼミで資料を読み、議論し、論文にまとめる経験を重ねます。', ['日本文学科', '英米文学科', '史学科'], '出版・報道、教員、公務員、一般企業', 'library'],
+      ['ECONOMICS', '経済学部', '文系', 'データで読み解く、社会と経済のしくみ', '経済理論と統計分析を基礎から学び、地域や企業の実際の課題に取り組むプロジェクト型授業を展開します。', ['経済学科', '経営学科', '地域政策学科'], '金融、メーカー、商社、公務員', 'seminar room'],
+      ['LAW', '法学部', '文系', 'ルールを知り、社会を支える力を', '法律の基礎から政治・国際関係までを学びます。模擬裁判や政策立案演習で、論理的に考え伝える力を身につけます。', ['法律学科', '政治学科', '国際関係法学科'], '公務員、法律事務所、一般企業、法科大学院', 'moot court'],
+      ['EDUCATION', '教育学部', '文系', '子どもの成長に、専門性で向き合う', '教育学と心理学を軸に、学校現場での実習を重視。教員免許の取得をめざすカリキュラムを用意しています。', ['初等教育学科', '心理学科', '子ども学科'], '小学校教員、保育士、心理職', 'classroom'],
+      ['SCIENCE & ENG.', '理工学部', '理系', 'ものづくりと研究で、未来の技術を創る', '情報・機械・化学の3領域で、実験と研究を重視。3年次から研究室に所属し、最先端のテーマに挑みます。', ['情報工学科', '機械工学科', '応用化学科'], 'IT、製造業、研究開発職、大学院進学', 'laboratory'],
+      ['ENVIRONMENT', '環境デザイン学部', '理系', '人と環境が共生するまちをデザインする', '建築・環境・都市計画を横断的に学び、模型製作やフィールドワークを通じて実践力を養います。', ['建築学科', '環境学科', '都市デザイン学科'], '建設、設計事務所、環境コンサルタント', 'design studio'],
+      ['HEALTH SCIENCE', '医療保健学部', '医療・看護', '人の健康に寄り添う専門職へ', '看護・リハビリテーション・臨床検査の専門職をめざし、学内演習と病院実習で確かな技術を身につけます。', ['看護学科', '理学療法学科', '臨床検査学科'], '病院、医療機関、福祉施設', 'clinical training'],
+      ['GLOBAL STUDIES', '国際教養学部', '国際', '世界とつながる、実践的な語学力', '少人数の英語授業と留学プログラムを組み合わせ、多文化の中で活躍できる教養と語学力を育てます。', ['国際教養学科', '英語コミュニケーション学科', '観光学科'], '航空・観光、外資系企業、国際機関', 'study abroad'],
+    ].map(([en, ja, cat, copy, desc, depts, career, img]) => ({ en, ja, cat, copy, desc, depts, career, img }));
+    const cat = this.state.cat;
+    const tabs = ['すべて', '文系', '理系', '医療・看護', '国際'].map(label => ({
+      label, bg: label === cat ? '#111' : '#fff', fg: label === cat ? '#fff' : '#111', select: () => this.setState({ cat: label }),
+    }));
+    return {
+      tabs, faculties: cat === 'すべて' ? all : all.filter(f => f.cat === cat),
+      features: [
+        ['1年次からの少人数ゼミ', '20名前後のクラスで、主体的に学ぶ姿勢を身につけます。', 'seminar'],
+        ['充実した留学プログラム', '短期・長期の留学先から、目的に合わせて選べます。', 'overseas campus'],
+        ['企業・自治体との連携授業', '実際の課題に取り組むプロジェクト型の学び。', 'project work'],
+        ['学部横断の副専攻制度', '専門分野に加え、データサイエンスなどを幅広く学べます。', 'computer room'],
+        ['24時間利用できる学習スペース', '図書館と自習室で、学びたいときに学べる環境。', 'study space'],
+        ['4年間一貫のキャリア支援', '面談やインターンシップで、進路選択を早期からサポート。', 'career center'],
+      ].map(([title, text, img], i) => ({ no: i + 1, title, text, img })),
+    };
+  }
+}
+</script>
+</body>
+</html>

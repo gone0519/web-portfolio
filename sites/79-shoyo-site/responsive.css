@@ -1,0 +1,30 @@
+/* レスポンシブ調整（全ページ共通・各ページの helmet から読み込み） */
+html,body{overflow-x:clip}
+img{max-width:100%;height:auto}
+
+@media (max-width:640px){
+  /* トップ：ヒーローは赤パネルを先頭に、写真グリッドは低く */
+  .hero-main{order:-1}
+  .hero-tiles{min-height:220px!important}
+  .hero-tiles-sub{display:none!important}
+
+  /* 表はカード型に組み替え（横スクロールさせない） */
+  .rtable{min-width:0!important}
+  .rtable thead{display:none}
+  .rtable,.rtable tbody,.rtable tr,.rtable td{display:block;width:100%}
+  .rtable tr{padding:12px 0}
+  .rtable td{padding:3px 16px!important;white-space:normal!important}
+  .rtable td[data-label]::before{content:attr(data-label);display:block;font-size:11px;font-weight:700;color:#E2332B}
+
+  /* iOS で入力時にズームされないよう 16px 以上に */
+  input,select,textarea{font-size:16px!important}
+
+  /* フッターの関連リンクは縦並び */
+  .related-links{grid-template-columns:1fr!important}
+
+  /* 下層ページのヒーローのイラストは小さめに中央寄せ */
+  .hero-il{flex:0 0 auto!important;width:min(280px,80%)!important;margin:0 auto}
+
+  /* PC 用の改行はスマホでは不要 */
+  .pc-br br{display:none}
+}

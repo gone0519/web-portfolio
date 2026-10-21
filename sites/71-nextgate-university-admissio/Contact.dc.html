@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./site-motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',sans-serif;letter-spacing:.04em;color:#1d2433;background:#fff;-webkit-font-smoothing:antialiased}
+a{color:#0b2d8c;text-decoration:none}a:hover{color:#1d5be0}*{box-sizing:border-box}
+input,select,textarea{font-family:inherit}
+@keyframes ng-up{from{opacity:0;translate:0 36px}to{opacity:1;translate:0 0}}
+@keyframes ng-float{from{translate:0 0}to{translate:0 -16px}}
+@keyframes ng-rot{to{rotate:360deg}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="contact" style="position:sticky;top:0;z-index:50" hint-size="100%,72px"></dc-import>
+<dc-import name="PageHero" no="06" en="Contact" ja="資料請求・お問い合わせ" lead="資料請求、オープンキャンパスの予約、入試に関するご相談はこちらから。受験生・保護者の方、どなたでもお気軽にどうぞ。" slot="contact-hero" ph="相談窓口・キャンパスの写真" hint-size="100%,560px"></dc-import>
+
+<section data-screen-label="Contact / Form" style="position:relative;overflow:hidden;padding:clamp(64px,8vw,104px) clamp(16px,3vw,32px);background-image:radial-gradient(rgba(29,91,224,.14) 1.6px,transparent 1.8px);background-size:22px 22px;background-color:#f4f7fc">
+  <div style="position:relative;max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+    <div style="flex:1 1 260px;display:flex;flex-direction:column;gap:20px">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;font-family:Lexend,sans-serif;font-size:11px;letter-spacing:.28em;color:#f08300;margin-bottom:14px"><span>01</span><span style="width:36px;height:1px;background:currentColor"></span></div>
+        <h2 data-reveal="up" style="margin:0;font-family:Lexend,sans-serif;font-weight:300;font-size:clamp(36px,4.4vw,56px);color:#0b2d8c;line-height:1.05">Request Form</h2>
+        <div style="font-size:12px;font-weight:700;margin-top:6px">お申し込みフォーム</div>
+      </div>
+      <div style="background:#0b2d8c;color:#fff;padding:24px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-family:Lexend,sans-serif;font-size:10px;letter-spacing:.22em;color:#f6a54a">CONTACT</span>
+        <strong style="font-size:15px">お電話でのお問い合わせ</strong>
+        <span style="font-family:Lexend,sans-serif;font-size:26px;font-weight:300">00-0000-0000</span>
+        <span style="font-size:12px;opacity:.88">平日 9:00〜17:00（土日祝・年末年始を除く）</span>
+      </div>
+      <a href="Admissions.dc.html" style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid #d3dbe8;padding:18px 20px;font-size:13px;font-weight:700" style-hover="border-color:#0b2d8c">よくあるご質問を見る<span style="width:26px;height:26px;border-radius:50%;background:#0b2d8c;color:#fff;display:grid;place-items:center">→</span></a>
+    </div>
+
+    <div style="flex:2 1 min(100%,520px);background:#fff;border:1px solid #d3dbe8;padding:clamp(24px,4vw,44px)">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:40px 0">
+          <span style="width:72px;height:72px;border-radius:50%;background:#0b2d8c;color:#fff;display:grid;place-items:center;font-size:28px">✓</span>
+          <h3 style="margin:0;font-size:20px;color:#0b2d8c">送信が完了しました</h3>
+          <p style="margin:0;font-size:13px;line-height:1.9;color:#3a4356">{{ name }} 様、「{{ typeLabel }}」のお申し込みありがとうございます。<br>ご入力いただいたメールアドレスへ確認メールをお送りします。（デモ表示）</p>
+          <button onClick="{{ reset }}" style="margin-top:8px;border:1px solid #0b2d8c;background:#fff;color:#0b2d8c;font-family:inherit;font-weight:700;font-size:13px;padding:10px 24px;border-radius:999px;cursor:pointer">フォームに戻る</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ editing }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:13px;font-weight:700">お問い合わせの種類 <span style="color:#f08300;font-size:11px">必須</span></span>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px">
+              <sc-for list="{{ types }}" as="t" hint-placeholder-count="4">
+                <button onClick="{{ t.select }}" style="border:1px solid #0b2d8c;background:{{ t.bg }};color:{{ t.fg }};font-family:inherit;font-size:13px;font-weight:700;padding:12px 8px;cursor:pointer;transition:background .2s,color .2s">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700"><span>お名前 <span style="color:#f08300;font-size:11px">必須</span></span>
+              <input value="{{ name }}" onChange="{{ onName }}" placeholder="例）進学 太郎" style="border:1px solid {{ nameBorder }};padding:12px 14px;font-size:14px;font-weight:400;outline:none;background:#fbfcfe"></input>
+              <sc-if value="{{ nameErr }}" hint-placeholder-val="{{ false }}"><span style="color:#d0342c;font-size:11px;font-weight:500">お名前を入力してください</span></sc-if>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700">ふりがな
+              <input value="{{ kana }}" onChange="{{ onKana }}" placeholder="例）しんがく たろう" style="border:1px solid #c7cfdb;padding:12px 14px;font-size:14px;font-weight:400;outline:none;background:#fbfcfe"></input>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700"><span>メールアドレス <span style="color:#f08300;font-size:11px">必須</span></span>
+              <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="example@mail.jp" style="border:1px solid {{ emailBorder }};padding:12px 14px;font-size:14px;font-weight:400;outline:none;background:#fbfcfe"></input>
+              <sc-if value="{{ emailErr }}" hint-placeholder-val="{{ false }}"><span style="color:#d0342c;font-size:11px;font-weight:500">正しいメールアドレスを入力してください</span></sc-if>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700">学年・ご関係
+              <select value="{{ grade }}" onChange="{{ onGrade }}" style="border:1px solid #c7cfdb;padding:12px 14px;font-size:14px;font-weight:400;background:#fbfcfe">
+                <option value="">選択してください</option><option value="高校1年">高校1年</option><option value="高校2年">高校2年</option><option value="高校3年">高校3年</option><option value="既卒">既卒</option><option value="保護者">保護者</option><option value="その他">その他</option>
+              </select>
+            </label>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:13px;font-weight:700">興味のある分野（複数選択可）</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ fields }}" as="f" hint-placeholder-count="5">
+                <button onClick="{{ f.toggle }}" style="border:1px solid #1d5be0;background:{{ f.bg }};color:{{ f.fg }};font-family:inherit;font-size:12px;font-weight:700;padding:7px 14px;border-radius:999px;cursor:pointer;transition:background .2s">#{{ f.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700">ご質問・ご相談内容
+            <textarea value="{{ msg }}" onChange="{{ onMsg }}" rows="5" placeholder="入試方式やオープンキャンパスについてなど、自由にご記入ください。" style="border:1px solid #c7cfdb;padding:12px 14px;font-size:14px;font-weight:400;line-height:1.8;outline:none;background:#fbfcfe;resize:vertical"></textarea>
+          </label>
+          <button onClick="{{ toggleAgree }}" style="display:flex;align-items:center;gap:12px;border:0;background:none;padding:0;cursor:pointer;font-family:inherit;font-size:13px;color:#1d2433;text-align:left">
+            <span style="width:22px;height:22px;border:1.5px solid {{ agreeBorder }};border-radius:4px;background:{{ agreeBox }};color:#fff;display:grid;place-items:center;font-size:12px;flex:none">{{ agreeMark }}</span>
+            <span>個人情報の取り扱いに同意する <span style="color:#f08300;font-size:11px;font-weight:700">必須</span></span>
+          </button>
+          <button onClick="{{ submit }}" style="align-self:center;display:flex;align-items:center;gap:16px;border:0;background:#0b2d8c;color:#fff;font-family:inherit;font-weight:700;font-size:15px;padding:14px 16px 14px 36px;border-radius:999px;cursor:pointer;transition:background .2s" style-hover="background:#1d5be0">内容を送信する<span style="width:32px;height:32px;border-radius:50%;background:#fff;color:#0b2d8c;display:grid;place-items:center">→</span></button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+<dc-import name="SiteFooter" hide-cta="true" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { type: 0, name: '', kana: '', email: '', grade: '', msg: '', fields: {}, agree: false, tried: false, sent: false };
+  renderVals() {
+    const s = this.state;
+    const T = ['資料請求', 'オープンキャンパス予約', '入試相談', 'その他'];
+    const F = ['人文・社会', '理学・工学', '情報', '医療・看護', '教育', '芸術・スポーツ', '国際'];
+    const set = k => e => this.setState({ [k]: e.target.value });
+    const nameErr = s.tried && !s.name.trim();
+    const emailErr = s.tried && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email);
+    const agreeErr = s.tried && !s.agree;
+    return {
+      sent: s.sent, editing: !s.sent, typeLabel: T[s.type],
+      types: T.map((label, i) => ({ label, bg: i === s.type ? '#0b2d8c' : '#fff', fg: i === s.type ? '#fff' : '#0b2d8c', select: () => this.setState({ type: i }) })),
+      fields: F.map(label => ({ label, bg: s.fields[label] ? '#1d5be0' : '#fff', fg: s.fields[label] ? '#fff' : '#1d5be0', toggle: () => this.setState(st => ({ fields: { ...st.fields, [label]: !st.fields[label] } })) })),
+      name: s.name, kana: s.kana, email: s.email, grade: s.grade, msg: s.msg,
+      onName: set('name'), onKana: set('kana'), onEmail: set('email'), onGrade: set('grade'), onMsg: set('msg'),
+      nameErr, emailErr, nameBorder: nameErr ? '#d0342c' : '#c7cfdb', emailBorder: emailErr ? '#d0342c' : '#c7cfdb',
+      agreeBox: s.agree ? '#0b2d8c' : '#fff', agreeMark: s.agree ? '✓' : '', agreeBorder: agreeErr ? '#d0342c' : '#0b2d8c',
+      toggleAgree: () => this.setState({ agree: !s.agree }),
+      submit: () => {
+        const ok = s.name.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email) && s.agree;
+        this.setState({ tried: true, sent: !!ok });
+        if (ok) window.scrollTo({ top: 300, behavior: 'smooth' });
+      },
+      reset: () => this.setState({ sent: false, tried: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

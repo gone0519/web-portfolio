@@ -1,0 +1,120 @@
+/* 共通レスポンシブ調整
+   各ページはインラインstyleでレイアウトしているため、ここでの上書きは !important を使います。
+   ブレークポイント: 899px 以下 = タブレット縦・スマホ / 599px 以下 = スマホ */
+
+/* iOSでフォーム入力時に拡大されないよう 16px 以上に */
+input, textarea, select { font-size: 16px !important; }
+
+/* イラスト共通 */
+.illust { display: block; max-width: 100%; height: auto; pointer-events: none; user-select: none; position: relative; }
+
+/* ヘッダー：大学名を折り返さない */
+.hd-name { white-space: nowrap; }
+
+@media (max-width: 899px) {
+  /* 汎用：スマホ・タブレットで非表示 */
+  .m-hide { display: none !important; }
+
+  /* 見出し下の英字（OUR FACULTY など）：右寄せのずらしをやめ、見出しの下に中央配置 */
+  .sec-en {
+    transform: none !important;
+    margin-top: -6px !important;
+    font-size: clamp(26px, 7.4vw, 40px) !important;
+    text-align: center;
+  }
+  /* 背景の大きな番号（02, 03…）を控えめに */
+  .big-no { font-size: 96px !important; }
+
+  /* トップ：ヒーローの縦書きコピーを横書きに */
+  .hero-h1 {
+    writing-mode: horizontal-tb !important;
+    width: 100%;
+    text-align: center;
+    padding: 12px 16px 0 !important;
+    font-size: clamp(24px, 6.6vw, 34px) !important;
+    letter-spacing: .1em !important;
+    line-height: 1.6 !important;
+  }
+  .hero-h1 > span { display: inline-block; }
+  /* トップ：サブ写真2枚を横並びに */
+  .hero-subs {
+    flex-direction: row !important;
+    max-width: none !important;
+    gap: 12px !important;
+    padding-left: 16px;
+  }
+  .hero-subs > .hero-sub { flex: 1 1 0; width: auto !important; min-width: 0; }
+  .hero-subs > .hero-sub-pad { padding: 0 !important; }
+  .hero-marquee { margin-top: 8px !important; }
+
+  /* 学部カルーセル：左右の余白を詰め、矢印はスワイプに任せて非表示 */
+  .prog-track { padding: 8px 20px 16px !important; scroll-padding: 0 20px !important; }
+  .prog-track > article { flex-basis: min(78vw, 300px) !important; }
+  .prog-arrow { display: none !important; }
+
+  /* 上部にラベルが飛び出すカードを縦に積むときの間隔 */
+  .badge-stack { row-gap: 36px !important; }
+
+  /* 入試方式の円ボタンを3つ横並びに収める */
+  .method-btns { gap: 8px !important; }
+  .method-btns > button { width: 84px !important; height: 84px !important; }
+
+  /* 担当者写真を小さく */
+  .staff-img { max-width: 170px !important; }
+
+  /* 学生の1日：縦長写真を横長バナーに */
+  .day-img { aspect-ratio: 16 / 10 !important; max-width: none !important; }
+
+  /* 固定の「資料請求はこちら」タブはフッターに重なるため非表示（ヘッダーに導線あり） */
+  .side-cta { display: none !important; }
+
+  /* 表をカード型に（横スクロールなし） */
+  .rtable-wrap { overflow: visible !important; border: 0 !important; }
+  .rtable { min-width: 0 !important; }
+  .rtable thead { display: none; }
+  .rtable tbody, .rtable tr, .rtable td { display: block; }
+  .rtable tr {
+    border: 1px solid #eee !important;
+    border-radius: 12px;
+    padding: 6px 0;
+    margin-bottom: 10px;
+    background: #fff;
+  }
+  .rtable td {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 16px !important;
+    text-align: right !important;
+  }
+  .rtable td::before {
+    content: attr(data-label);
+    color: #777;
+    font-weight: 500;
+    font-family: "Noto Sans JP", sans-serif;
+    text-align: left;
+    flex: 0 0 auto;
+  }
+  .rtable td.rt-head {
+    font-size: 14px;
+    border-bottom: 1px dashed #eee;
+    margin-bottom: 4px;
+    text-align: left !important;
+  }
+  .rtable td.rt-head::before { content: none; }
+}
+
+@media (max-width: 599px) {
+  /* ヘッダーを1行に収める */
+  .hd-name { font-size: 15px !important; }
+  .hd-sub { font-size: 9px !important; }
+  .hd-logo { gap: 8px !important; padding: 0 12px !important; }
+  .hd-logo > span:first-child { width: 32px !important; height: 32px !important; font-size: 17px !important; }
+
+  /* 受験対策ロードマップの番号を小さく */
+  .road-no { width: 40px !important; height: 40px !important; font-size: 14px !important; }
+  .road-row { gap: 14px !important; }
+
+  /* 学部紹介の写真背面の飾りは画面が狭いと重なって見えるため非表示 */
+  .fac-plate { display: none !important; }
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho+B1:wght@600;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./site-anim.js"></script>
+<style>html{scroll-behavior:smooth}body{margin:0;background:#f5f1ec;color:#5b4e43;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}a{color:#7a6650;text-decoration:none}a:hover{color:#e8847a}*{box-sizing:border-box}</style>
+</helmet>
+<div style="min-height:100vh;background:#f5f1ec;overflow-x:hidden">
+<dc-import name="SubHero" current="campus" num="04" en="Campus Life" jp="キャンパスライフ" vertical="CAMPUS" slot-id="hero-campus" slot-ph="キャンパスで過ごす学生" lead="授業の合間の過ごし方、サークル、イベント。入学後の毎日を、少し先取りしてみましょう。" hint-size="100%,520px"></dc-import>
+
+<main style="max-width:1000px;margin:0 auto;padding:40px 20px 90px;display:flex;flex-direction:column;gap:90px">
+  <section data-screen-label="Campus / Life">
+    <dc-import name="SectionHead" num="01" en="Life" jp="キャンパスの過ごし方" hint-size="100%,130px"></dc-import>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+      <sc-for list="{{ campus }}" as="c" hint-placeholder-count="4">
+        <div data-anim="up" data-stagger="1" style="background:#fff;padding:10px 10px 18px;position:relative">
+          <div style="position:relative;height:160px;background:#efe8de"><image-slot id="{{ c.id }}" shape="rect" placeholder="{{ c.ph }}"></image-slot></div>
+          <div style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:16px;color:#5b4e43;margin:14px 4px 6px;letter-spacing:.04em">{{ c.title }}</div>
+          <div style="font-size:11.5px;line-height:1.75;color:#6b5c4f;margin:0 4px">{{ c.text }}</div>
+          <span style="position:absolute;right:0;bottom:0;width:0;height:0;border-left:14px solid transparent;border-bottom:14px solid #c8b8a2"></span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Campus / One day">
+    <dc-import name="SectionHead" num="02" en="One Day" jp="大学生の1日（例）" hint-size="100%,130px"></dc-import>
+    <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start">
+      <div style="flex:0 1 260px;position:relative;height:320px;background:#ebe3d8;max-width:100%">
+        <image-slot src="_filled/01-31-trio-portrait.jpg" id="oneday-portrait" shape="rect" placeholder="在学生ポートレート"></image-slot>
+      </div>
+      <div style="flex:1 1 320px;min-width:0;background:#fff;padding:8px 22px">
+        <sc-for list="{{ day }}" as="d" hint-placeholder-count="6">
+          <div data-anim="right" data-stagger="1" style="display:flex;gap:18px;padding:14px 0;border-bottom:1px dotted #e1d6c8;align-items:baseline">
+            <span style="font-family:'Josefin Sans';font-weight:600;font-size:20px;color:#f2958c;flex:none;width:58px">{{ d.t }}</span>
+            <div><div style="font-size:13px;font-weight:700;color:#5b4e43">{{ d.h }}</div><div style="font-size:11.5px;line-height:1.7;color:#6b5c4f;margin-top:2px">{{ d.x }}</div></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Campus / Open campus">
+    <dc-import name="SectionHead" num="03" en="Open Campus" jp="オープンキャンパス" hint-size="100%,130px"></dc-import>
+    <div style="position:relative;padding:0 0 22px 22px">
+      <div style="position:absolute;left:0;top:22px;right:18px;bottom:0;border:3px solid #fff"></div>
+      <div data-anim="scale" style="position:relative;background:linear-gradient(118deg,#fcc5c8 0%,#fcc5c8 58%,#fdd4d6 58%,#fdd4d6 100%);padding:30px 28px 32px">
+        <p style="margin:0 0 22px;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:clamp(24px,3.6vw,38px);line-height:1.4;letter-spacing:.08em;color:#b23a50">百聞は、<span style="font-size:1.25em;color:#fff;-webkit-text-stroke:1.5px #b23a50">一見</span>にしかず。</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px">
+          <sc-for list="{{ programs }}" as="p" hint-placeholder-count="5">
+            <div style="background:#fff;border-radius:999px;padding:12px 18px;display:flex;align-items:center;gap:10px;box-shadow:0 3px 0 rgba(232,140,150,.25)">
+              <span style="width:28px;height:28px;flex:none;border-radius:50%;background:#f2958c;color:#fff;font:600 12px 'Josefin Sans';display:flex;align-items:center;justify-content:center;padding-top:2px">{{ p.no }}</span>
+              <span style="font-size:12.5px;font-weight:700;color:#8a6a5c">{{ p.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:#fff;margin-top:20px;padding:18px 22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+          <div style="font-size:12px;line-height:1.85;color:#5b4e43;flex:1 1 300px">開催日程・内容・参加方法は大学ごとに異なります。最新情報は各大学の公式サイトでご確認ください。参加予約の代行・ご相談も受け付けています（サンプル）。</div>
+          <a href="Contact.dc.html?type=oc" style="background:#f2958c;color:#fff;border-radius:999px;padding:13px 26px;font-size:13px;font-weight:700;letter-spacing:.06em" style-hover="background:#ea7f75;color:#fff">参加予約をする →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Campus / Voices">
+    <dc-import name="SectionHead" num="04" en="Voices" jp="在学生の声" hint-size="100%,130px"></dc-import>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+        <div data-anim="up" data-stagger="1" style="position:relative;background:#fff;padding:24px 22px 26px;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:60px;line-height:.6;color:#fcc5c8;height:26px">“</span>
+          <div style="font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:15px;line-height:1.9;color:#5b4e43">{{ v.q }}</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:auto">
+            <div style="position:relative;width:52px;height:52px;flex:none"><image-slot id="{{ v.id }}" shape="circle" placeholder="顔写真"></image-slot></div>
+            <div style="font-size:11px;line-height:1.6;color:#8a7a6a">{{ v.who }}</div>
+          </div>
+          <span style="position:absolute;right:0;bottom:0;width:0;height:0;border-left:14px solid transparent;border-bottom:14px solid #c8b8a2"></span>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:12px 0 0;font-size:11px;color:#8a7a6a">※ 掲載している声はサンプルです。実際のインタビュー内容に差し替えてください。</p>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      campus: [
+        { id: 'campus-1', title: 'サークル・部活動', text: '学部や学年を越えた仲間と、好きなことに打ち込めます。', ph: 'サークル活動' },
+        { id: 'campus-2', title: '図書館・学習施設', text: '静かな閲覧室からグループ学習の場まで、学ぶ環境が整っています。', ph: '図書館' },
+        { id: 'campus-3', title: '学園祭・イベント', text: '企画から運営まで学生が主体となり、キャンパスを盛り上げます。', ph: '学園祭' },
+        { id: 'campus-4', title: '留学・国際交流', text: '留学生との交流プログラムや短期研修で視野を広げられます。', ph: '国際交流' },
+      ],
+      day: [
+        { t: '9:00', h: '1限 専門基礎の講義', x: '学部の基礎となる科目を学びます。' },
+        { t: '10:40', h: '2限 語学クラス', x: '少人数クラスで、話す・書く練習を重ねます。' },
+        { t: '12:20', h: '昼休み', x: '学食や中庭で友人とランチ。' },
+        { t: '13:10', h: '3限 ゼミ', x: 'テーマについて調べた内容を発表し、議論します。' },
+        { t: '15:00', h: '図書館で課題', x: 'レポートの資料集めや、グループでの準備を進めます。' },
+        { t: '17:00', h: 'サークル活動', x: '授業のあとは、仲間と好きなことに打ち込みます。' },
+      ],
+      programs: [{ no: '01', label: '模擬授業' }, { no: '02', label: '学部・学科説明会' }, { no: '03', label: '入試説明会' }, { no: '04', label: '個別相談' }, { no: '05', label: 'キャンパスツアー' }, { no: '06', label: '在学生トーク' }],
+      voices: [
+        { id: 'voice-1', q: 'オープンキャンパスで受けた模擬授業がきっかけで、この学部に決めました。', who: '文学部 2年（サンプル）' },
+        { id: 'voice-2', q: '実験の時間が長く大変ですが、仮説が確かめられた瞬間が一番楽しいです。', who: '理学部 3年（サンプル）' },
+        { id: 'voice-3', q: '学内の留学プログラムで、半年間海外の大学で学ぶことができました。', who: '国際教養学部 4年（サンプル）' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

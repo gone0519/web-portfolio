@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,#c9d9e7 0%,#dde5ec 35%,#e7ebef 70%,#eceef0 100%)">
+  <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent 0 170px,rgba(255,255,255,.55) 170px 186px,transparent 186px 200px),repeating-linear-gradient(-8deg,transparent 0 12px,rgba(255,255,255,.28) 12px 16px);opacity:.8"></div>
+</div>
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none">
+  <a class="site-logo" href="Top.dc.html" style="pointer-events:auto;background:#fff;display:flex;align-items:center;gap:10px;padding:14px 22px 14px 18px;text-decoration:none">
+    <span style="width:26px;height:26px;background:#00c8ff;transform:rotate(45deg) scale(.78);display:block"></span>
+    <span style="display:flex;flex-direction:column;line-height:1.1">
+      <span style="font-weight:900;font-size:16px;letter-spacing:.08em;color:#14365a">青嶺大学</span>
+      <span style="font-family:'Bebas Neue';font-size:12px;letter-spacing:.18em;color:#14365a">SEIREI UNIVERSITY ADMISSIONS</span>
+    </span>
+  </a>
+  <button class="menu-btn" onClick="{{ toggleMenu }}" aria-label="メニュー" style="pointer-events:auto;margin:16px 20px 0 0;width:56px;height:56px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(55,62,70,.78);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;transition:background .3s" style-hover="background:#00b8e6">
+    <span style="display:block;width:18px;height:1px;background:#fff;transform:{{ bar1 }};transition:transform .3s"></span>
+    <span style="display:block;width:18px;height:1px;background:#fff;opacity:{{ bar2 }};transition:opacity .3s"></span>
+    <span style="display:block;width:18px;height:1px;background:#fff;transform:{{ bar3 }};transition:transform .3s"></span>
+  </button>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <nav style="position:fixed;inset:0;z-index:40;background:rgba(12,32,52,.95);display:flex;align-items:center;justify-content:center;padding:100px 24px 40px;overflow:auto">
+    <div style="display:flex;flex-direction:column;gap:20px;min-width:260px">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+        <a class="m-nav-link" href="{{ n.href }}" style="display:flex;align-items:baseline;gap:18px;color:{{ n.color }};text-decoration:none" style-hover="color:#00c8ff">
+          <span style="font-family:'Bebas Neue';font-size:46px;letter-spacing:.06em;line-height:1">{{ n.en }}</span>
+          <span style="font-size:13px;letter-spacing:.15em">{{ n.jp }}</span>
+        </a>
+      </sc-for>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px">
+        <a href="Contact.dc.html#reserve" style="padding:12px 26px;border-radius:999px;background:#00c8ff;color:#06263f;font-weight:700;font-size:14px;text-decoration:none">オープンキャンパス予約</a>
+        <a href="Contact.dc.html#request" style="padding:12px 26px;border-radius:999px;border:1px solid #fff;color:#fff;font-weight:700;font-size:14px;text-decoration:none">資料請求</a>
+      </div>
+    </div>
+  </nav>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;faculties&quot;,&quot;preparation&quot;,&quot;admissions&quot;,&quot;campus&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { open:false };
+  items = [
+    {k:'top',en:'TOP',jp:'トップ',href:'Top.dc.html'},
+    {k:'faculties',en:'FACULTIES',jp:'学部・学科',href:'Faculties.dc.html'},
+    {k:'preparation',en:'PREPARATION',jp:'入試対策',href:'Preparation.dc.html'},
+    {k:'admissions',en:'ADMISSIONS',jp:'入試情報',href:'Admissions.dc.html'},
+    {k:'campus',en:'CAMPUS LIFE',jp:'キャンパスライフ',href:'CampusLife.dc.html'},
+    {k:'contact',en:'CONTACT',jp:'お問い合わせ・資料請求',href:'Contact.dc.html'}
+  ];
+  renderVals() {
+    const o = this.state.open, cur = this.props.current;
+    return {
+      menuOpen:o, toggleMenu:()=>this.setState({open:!o}),
+      bar1:o?'translateY(6px) rotate(45deg)':'none', bar2:o?0:1, bar3:o?'translateY(-6px) rotate(-45deg)':'none',
+      navItems:this.items.map(i=>({...i, color:i.k===cur?'#00c8ff':'#fff'}))
+    };
+  }
+}
+</script>
+</body>
+</html>

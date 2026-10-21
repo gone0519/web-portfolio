@@ -1,0 +1,82 @@
+/* 全ページ共通の補正・レスポンシブ用スタイル
+   各要素の見た目は style 属性（インライン）で指定しているため、
+   ここでの上書きには !important を付けています。 */
+
+/* 画像枠（空のとき）の案内文字：暗い背景でも読めるように */
+image-slot{color:rgba(255,255,255,.78)}
+/* 文字やボタンを重ねた画像枠は、案内文字を下寄せにして重なりを避ける */
+image-slot[data-cap="bottom"]::part(empty){justify-content:flex-end;padding-bottom:14px;font-size:11px}
+
+/* 写真の上に重ねた文字を読みやすく */
+image-slot ~ div span, image-slot ~ button span, image-slot ~ div{text-shadow:0 1px 8px rgba(0,0,0,.55)}
+
+/* イラスト */
+.hero-illust{position:absolute;right:clamp(24px,6vw,120px);bottom:-36px;width:clamp(220px,24vw,340px);height:auto;pointer-events:none;z-index:2}
+.hero-illust-top{position:absolute;right:clamp(16px,4vw,60px);bottom:clamp(80px,12vh,140px);width:min(32vw,460px);height:auto;pointer-events:none}
+@media (max-width:1100px){
+  .hero-illust,.hero-illust-top{position:static;display:block;width:min(72%,320px);margin:28px 0 0 auto}
+  #top > div:first-child{flex-wrap:wrap}
+  .hero-illust-top{order:2}
+}
+
+/* スマホでだけ表示する要素 */
+.sp-only{display:none}
+
+/* ---------- タブレット以下（〜1024px） ---------- */
+@media (max-width:1024px){
+  /* トップ：学部スライダー右の学部リストを横並びに */
+  .fac-list{flex:1 1 100% !important;flex-direction:row !important;flex-wrap:wrap !important;justify-content:flex-start !important;align-items:center !important;gap:6px 16px !important;padding-top:24px !important}
+}
+
+/* ---------- スマートフォン（〜768px） ---------- */
+@media (max-width:768px){
+  /* 下層ページのヒーロー余白・見出しサイズ */
+  main > section:first-child:not(#top){padding-top:120px !important}
+  main h1{font-size:min(15.5vw,90px) !important}
+
+  /* ヘッダー */
+  .site-logo{padding:10px 16px 10px 14px !important}
+  .menu-btn{margin:10px 12px 0 0 !important;width:48px !important;height:48px !important}
+  .m-nav-link{flex-wrap:wrap !important;gap:2px 14px !important}
+  .m-nav-link > span:first-child{font-size:38px !important}
+
+  /* フッター */
+  .site-footer{padding-top:60px !important}
+  .f-brand{flex:1 1 100% !important}
+  .f-links{grid-template-columns:1fr 1fr !important;column-gap:16px !important}
+  .f-links > a{font-size:12px !important;letter-spacing:0 !important;white-space:nowrap}
+
+  /* スマホでは隠す装飾要素 */
+  .hide-sp{display:none !important}
+
+  /* 縦書きラベル＋本文の2カラム → 縦積みに */
+  .vside{flex-direction:column !important;gap:24px !important}
+  .vlabel{padding:0 24px !important;align-items:baseline !important;flex-wrap:wrap !important}
+  .vlabel > span{writing-mode:horizontal-tb !important;margin-top:0 !important}
+  .vlabel > span:first-child{font-size:56px !important}
+  .vcontent{width:100% !important;padding-left:24px !important;padding-right:24px !important}
+
+  /* トップ：学部スライダー */
+  .fac-stage{aspect-ratio:16/10 !important}
+  .fac-more{width:80px !important;height:80px !important;right:10px !important;bottom:-40px !important}
+  .fac-en{font-size:14px !important;letter-spacing:.25em !important;padding:0 10px 0 calc(10px + .25em) !important}
+  .fac-offset{margin-left:0 !important}
+
+  /* 写真に重ねたキャプション帯 */
+  .cap-tags{left:10px !important;bottom:-26px !important}
+  .cap-tags > span{font-size:11px !important;padding:5px 10px !important}
+
+  /* 背景の大きな文字 */
+  .bg-word{font-size:11vw !important}
+  .oc-word{font-size:15vw !important}
+  .sp-only{display:block}
+  .day-row{grid-template-columns:64px 1fr 72px !important;gap:12px !important;padding:16px !important}
+  .heading-illust{height:84px !important}
+
+  /* お問い合わせ：タブ */
+  .c-tab{padding:14px 4px !important}
+  .c-tab > span{font-size:11px !important;letter-spacing:.02em !important;word-break:keep-all}
+
+  /* iOSで入力時に拡大されないよう16pxに */
+  input,select,textarea{font-size:16px !important}
+}

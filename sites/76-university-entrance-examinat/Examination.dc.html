@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Noto Sans JP",sans-serif;color:#222;background:#fff;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#222;text-decoration:none}
+a:hover{color:#d7000f}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="exam" hint-size="100%,0px"></dc-import>
+
+<main>
+<section data-screen-label="Exam Hero" style="position:relative;height:440px;background:#1a1a1a;overflow:hidden;display:flex;align-items:flex-end">
+  <div data-kenburns="1" style="position:absolute;inset:0"><image-slot src="_filled/66-life-lecture.png" id="ep-hero" shape="rect" placeholder="ページ背景：自習室で机に向かう受験生"></image-slot></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35) 50%,rgba(0,0,0,.7));pointer-events:none"></div>
+  <div data-parallax="1" style="position:absolute;right:-20px;bottom:-30px;font-family:Oswald;font-weight:500;font-size:clamp(110px,17vw,240px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.22);white-space:nowrap;pointer-events:none">EXAMINATION</div>
+  <div data-float="1" style="position:absolute;left:-80px;bottom:140px;width:420px;height:16px;background:#d7000f;transform:rotate(-35deg);pointer-events:none"></div>
+  <div style="position:relative;max-width:1100px;width:100%;margin:0 auto;padding:0 24px 64px;color:#fff;pointer-events:none">
+    <h1 data-hero="0" style="margin:0;font-family:Oswald;font-weight:300;font-size:clamp(52px,7vw,92px);line-height:1;letter-spacing:.02em"><span style="color:#ff3344">E</span>xamination</h1>
+    <p data-hero="1" style="margin:12px 0 0;font-size:14px;font-weight:700;letter-spacing:.2em">入試制度・入試対策</p>
+  </div>
+</section>
+<nav style="max-width:1100px;margin:0 auto;padding:16px 24px;font-size:11px;color:#888;display:flex;gap:10px"><a href="Top.dc.html" style="color:#888">TOP</a><span>›</span><span>入試制度・入試対策</span></nav>
+
+<section style="position:relative;background-image:radial-gradient(#dcdcdc 1px,transparent 1px);background-size:18px 18px;padding:60px 24px 100px">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="text-align:center">
+      <h2 data-reveal="up" style="margin:0;font-family:Oswald;font-weight:300;font-size:clamp(40px,5vw,56px);line-height:1.1"><span style="color:#d7000f">M</span>ethods</h2>
+      <p style="margin:6px 0 0;font-size:12px;font-weight:700;letter-spacing:.1em">3つの入試制度</p>
+      <p data-reveal="up" style="margin:28px auto 0;font-size:13px;line-height:2.2;color:#555;max-width:640px">入試制度によって、評価されるポイントや準備のスケジュールが異なります。それぞれの特徴を知り、自分の強みが活かせる方式を選びましょう。</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-top:40px">
+      <sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+        <button onClick="{{ m.select }}" style="flex:1 1 220px;max-width:320px;padding:20px 16px;border:0;cursor:pointer;font-family:inherit;background:{{ m.tabBg }};color:{{ m.tabColor }};clip-path:polygon(6% 0,100% 0,94% 100%,0 100%);transition:background .3s">
+          <div style="font-family:Oswald;font-size:12px;letter-spacing:.15em;opacity:.8">METHOD {{ m.no }}</div>
+          <div style="font-size:17px;font-weight:700;margin-top:4px;letter-spacing:.08em">{{ m.name }}</div>
+        </button>
+      </sc-for>
+    </div>
+    <div style="margin-top:28px;background:#fff;box-shadow:0 20px 50px rgba(0,0,0,.08);display:flex;flex-wrap:wrap">
+      <div style="flex:1 1 340px;min-height:320px;position:relative;background:#ddd"><image-slot id="{{ cur.img }}" shape="rect" placeholder="{{ cur.ph }}"></image-slot></div>
+      <div style="flex:1 1 400px;padding:40px 36px;position:relative;overflow:hidden">
+        <div style="position:absolute;right:16px;top:-10px;font-family:Oswald;font-weight:500;font-size:150px;line-height:1;color:rgba(215,0,15,.07);pointer-events:none">{{ cur.no }}</div>
+        <div style="position:relative">
+          <div style="font-family:Oswald;font-size:13px;letter-spacing:.15em;color:#d7000f">{{ cur.en }}</div>
+          <h3 style="margin:4px 0 0;font-size:26px;font-weight:900;letter-spacing:.08em">{{ cur.name }}</h3>
+          <p style="margin:16px 0 0;font-size:13px;line-height:2;color:#555">{{ cur.desc }}</p>
+          <div style="font-size:13px;font-weight:700;margin-top:22px">主な選考方法</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">
+            <sc-for list="{{ cur.sel }}" as="x" hint-placeholder-count="3"><span style="font-size:12px;padding:6px 12px;background:#d7000f;color:#fff">{{ x }}</span></sc-for>
+          </div>
+          <div style="font-size:13px;font-weight:700;margin-top:22px">こんな人におすすめ</div>
+          <p style="margin:8px 0 0;font-size:13px;line-height:1.9;color:#555">{{ cur.fit }}</p>
+          <div style="font-size:13px;font-weight:700;margin-top:22px">準備のポイント</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+            <sc-for list="{{ cur.tips }}" as="x" hint-placeholder-count="3"><div style="display:flex;gap:12px;font-size:13px;line-height:1.8"><span style="flex:0 0 8px;height:8px;margin-top:8px;background:#d7000f;transform:rotate(45deg)"></span>{{ x }}</div></sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal="up" style="margin-top:72px">
+      <div style="display:flex;align-items:center;gap:16px"><span style="font-family:Oswald;font-size:26px"><span style="color:#d7000f">C</span>omparison</span><span style="font-size:12px;font-weight:700">評価項目の比較（目安）</span><span style="flex:1;height:1px;background:#ccc"></span></div>
+      <div style="overflow-x:auto;margin-top:20px">
+        <table style="width:100%;min-width:640px;border-collapse:collapse;background:#fff;font-size:13px;text-align:center">
+          <thead><tr style="background:#1e1e1e;color:#fff"><th style="padding:14px;text-align:left;font-weight:700">入試制度</th><th style="padding:14px">学力試験</th><th style="padding:14px">調査書</th><th style="padding:14px">面接</th><th style="padding:14px">小論文</th><th style="padding:14px">志望理由書</th></tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #ddd"><td style="padding:16px 14px;text-align:left;font-weight:700">一般選抜</td><td style="color:#d7000f;font-size:18px">◎</td><td>△</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr style="border-bottom:1px solid #ddd"><td style="padding:16px 14px;text-align:left;font-weight:700">学校推薦型選抜</td><td>○</td><td style="color:#d7000f;font-size:18px">◎</td><td style="color:#d7000f;font-size:18px">◎</td><td>○</td><td>○</td></tr>
+            <tr style="border-bottom:1px solid #ddd"><td style="padding:16px 14px;text-align:left;font-weight:700">総合型選抜</td><td>△</td><td>○</td><td style="color:#d7000f;font-size:18px">◎</td><td>○</td><td style="color:#d7000f;font-size:18px">◎</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin:12px 0 0;font-size:11px;color:#888">◎ 特に重視　○ 評価に含む　△ 学部により異なる　— 原則なし ／ ※サンプル表示です。実際の選考方法は学部・方式ごとに要項で定めます。</p>
+    </div>
+  </div>
+</section>
+
+<section id="guide" style="scroll-margin-top:64px;position:relative;background:#1e1e1e;color:#fff;overflow:hidden;padding:96px 24px">
+  <div style="position:absolute;inset:0;opacity:.3"><image-slot src="_filled/67-wc-laptop.png" id="ep-guide-bg" shape="rect" placeholder="背景：参考書とノート"></image-slot></div>
+  <div style="position:absolute;inset:0;background:rgba(20,20,20,.6);pointer-events:none"></div>
+  <div data-parallax="1" style="position:absolute;left:-20px;top:30px;font-family:Oswald;font-weight:500;font-size:clamp(100px,15vw,210px);line-height:1;color:rgba(255,255,255,.05);white-space:nowrap;pointer-events:none">STUDY GUIDE</div>
+  <div style="position:absolute;left:-5%;right:-5%;top:58%;height:200px;background:#d7000f;transform:skewY(-5deg);pointer-events:none"></div>
+  <div style="position:relative;max-width:1100px;margin:0 auto">
+    <h2 data-reveal="up" style="margin:0;font-family:Oswald;font-weight:300;font-size:clamp(40px,5vw,56px);line-height:1.1">Study Guide</h2>
+    <p style="margin:6px 0 0;font-size:12px;font-weight:700;letter-spacing:.1em">合格をつかむ学習ガイド</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;margin-top:40px">
+      <sc-for list="{{ guides }}" as="g" hint-placeholder-count="6">
+        <article data-reveal="up" style="background:#fff;color:#222;box-shadow:0 14px 30px rgba(0,0,0,.35);transition:transform .3s" style-hover="transform:translateY(-8px)">
+          <div style="height:170px;position:relative;background:#eee"><image-slot id="{{ g.img }}" shape="rect" placeholder="{{ g.ph }}"></image-slot><span style="position:absolute;left:0;top:0;background:#d7000f;color:#fff;font-family:Oswald;font-size:18px;padding:6px 14px;pointer-events:none">{{ g.no }}</span></div>
+          <div style="padding:20px 22px 24px">
+            <div style="display:flex;gap:10px;align-items:center"><h3 style="margin:0;font-size:16px;font-weight:700">{{ g.t }}</h3><span style="font-family:Oswald;font-size:11px;background:#222;color:#fff;padding:1px 8px">{{ g.tag }}</span></div>
+            <p style="margin:10px 0 0;font-size:12px;line-height:1.9;color:#555">{{ g.d }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="padding:100px 24px;position:relative;overflow:hidden">
+  <div style="position:absolute;top:0;right:0;width:45%;height:100%;background:#efefef;clip-path:polygon(30% 0,100% 0,100% 100%,0 100%);pointer-events:none"></div>
+  <div style="position:relative;max-width:900px;margin:0 auto">
+    <div style="text-align:center">
+      <h2 data-reveal="up" style="margin:0;font-family:Oswald;font-weight:300;font-size:clamp(40px,5vw,56px);line-height:1.1"><span style="color:#d7000f">R</span>oadmap</h2>
+      <p style="margin:6px 0 0;font-size:12px;font-weight:700;letter-spacing:.1em">合格までの学習ロードマップ（例）</p>
+    </div>
+    <div style="position:relative;margin-top:48px;padding-left:44px">
+      <div style="position:absolute;left:17px;top:8px;bottom:8px;width:2px;background:repeating-linear-gradient(180deg,#d7000f 0 8px,transparent 8px 14px)"></div>
+      <sc-for list="{{ road }}" as="r" hint-placeholder-count="5">
+        <div data-reveal="left" style="position:relative;margin-bottom:22px;background:#fff;box-shadow:0 10px 26px rgba(0,0,0,.07);padding:22px 26px">
+          <span style="position:absolute;left:-44px;top:20px;width:36px;height:36px;border-radius:50%;background:#d7000f;color:#fff;display:grid;place-items:center;font-family:Oswald;font-size:14px;box-shadow:0 0 0 5px #fff">{{ r.no }}</span>
+          <div style="display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline"><span style="font-size:12px;font-weight:700;color:#d7000f">{{ r.when }}</span><h3 style="margin:0;font-size:17px;font-weight:700">{{ r.t }}</h3></div>
+          <p style="margin:8px 0 0;font-size:13px;line-height:1.9;color:#555">{{ r.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="background:#efefef;padding:90px 24px">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:16px"><span style="font-family:Oswald;font-size:30px"><span style="color:#d7000f">R</span>esources</span><span style="font-size:12px;font-weight:700">受験生向け資料</span><span style="flex:1;height:1px;background:#ccc"></span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;margin-top:28px">
+      <a data-reveal="up" href="Contact.dc.html?type=doc" style="display:block;background:#fff;padding:30px 26px;border-top:3px solid #d7000f;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-6px);box-shadow:0 18px 36px rgba(0,0,0,.12);color:#222"><div style="font-family:Oswald;font-size:13px;color:#d7000f;letter-spacing:.15em">PAST EXAMS</div><div style="font-size:17px;font-weight:700;margin-top:6px">過去問題集</div><p style="margin:10px 0 0;font-size:12px;line-height:1.9;color:#555">一般選抜の過去問題と解答例を収録（冊子・無料）。</p><div style="margin-top:14px;font-size:12px;font-weight:700;color:#d7000f">請求する →</div></a>
+      <a data-reveal="up" href="Contact.dc.html?type=doc" style="display:block;background:#fff;padding:30px 26px;border-top:3px solid #d7000f;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-6px);box-shadow:0 18px 36px rgba(0,0,0,.12);color:#222"><div style="font-family:Oswald;font-size:13px;color:#d7000f;letter-spacing:.15em">GUIDE BOOK</div><div style="font-size:17px;font-weight:700;margin-top:6px">入試ガイド</div><p style="margin:10px 0 0;font-size:12px;line-height:1.9;color:#555">入試制度・日程・出願方法をまとめたガイドブック。</p><div style="margin-top:14px;font-size:12px;font-weight:700;color:#d7000f">請求する →</div></a>
+      <a data-reveal="up" href="CampusLife.dc.html#oc" style="display:block;background:#fff;padding:30px 26px;border-top:3px solid #d7000f;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-6px);box-shadow:0 18px 36px rgba(0,0,0,.12);color:#222"><div style="font-family:Oswald;font-size:13px;color:#d7000f;letter-spacing:.15em">SEMINAR</div><div style="font-size:17px;font-weight:700;margin-top:6px">入試対策講座</div><p style="margin:10px 0 0;font-size:12px;line-height:1.9;color:#555">オープンキャンパスで出題傾向の解説講座を実施予定です。</p><div style="margin-top:14px;font-size:12px;font-weight:700;color:#d7000f">日程を見る →</div></a>
+    </div>
+    <div style="text-align:center;margin-top:48px"><a href="Admissions.dc.html" style="display:inline-flex;align-items:center;gap:16px;padding:16px 28px 16px 36px;background:#222;color:#fff;font-size:13px;font-weight:700;letter-spacing:.12em;transition:background .2s" style-hover="background:#d7000f;color:#fff">入試日程・出願方法を見る<span style="width:28px;height:28px;border:1px solid #fff;border-radius:50%;display:grid;place-items:center;font-size:12px">→</span></a></div>
+  </div>
+</section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,460px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { m: 0 };
+  componentDidMount() {
+    const go = () => window.SiteMotion ? (this.stop = window.SiteMotion.init()) : (this.mt = setTimeout(go, 80));
+    this.mt = setTimeout(go, 60);
+  }
+  componentWillUnmount() { clearTimeout(this.mt); if (this.stop) this.stop(); }
+  renderVals() {
+    const M = [
+      { en: 'GENERAL SELECTION', name: '一般選抜', ph: '一般選抜：試験会場の様子',
+        desc: '大学独自の筆記試験や大学入学共通テストの成績をもとに選考します。学部ごとに試験科目や配点が設定されており、複数の日程・方式から選んで受験できます。',
+        sel: ['大学独自試験', '共通テスト利用', '調査書'], fit: '教科の学力でしっかり勝負したい人。複数の日程・学部に挑戦したい人。',
+        tips: ['志望学部の試験科目と配点を早めに確認する', '過去問を本番と同じ時間配分で解く', '共通テストの出題形式に模試で慣れておく'] },
+      { en: 'SCHOOL RECOMMENDATION', name: '学校推薦型選抜', ph: '学校推薦型選抜：面接の様子',
+        desc: '高等学校長の推薦にもとづき、調査書・面接・小論文などで選考します。高校での学習成績や、学校生活への取り組みが評価の中心になります。',
+        sel: ['調査書', '面接', '小論文', '推薦書'], fit: '高校の授業に継続して取り組み、評定を積み重ねてきた人。',
+        tips: ['出願条件（評定平均など）を要項で確認する', '先生に模擬面接や小論文の添削を依頼する', '志望理由を具体的なエピソードで語れるようにする'] },
+      { en: 'COMPREHENSIVE SELECTION', name: '総合型選抜', ph: '総合型選抜：プレゼンテーションの様子',
+        desc: '志望理由書・活動報告書・面談・プレゼンテーションなどを通じて、学ぶ意欲や適性を総合的に評価します。学校長の推薦は不要です。',
+        sel: ['志望理由書', '面談', 'プレゼンテーション', '活動報告書'], fit: '学びたいことがはっきりしている人。部活動や探究活動など、取り組んできた経験を伝えたい人。',
+        tips: ['オープンキャンパスで学部の学びを具体的に知る', '自己分析をして、経験と志望理由をつなげる', 'エントリー時期が早いため、高3春から準備を始める'] },
+    ];
+    const m = this.state.m;
+    const methods = M.map((x, i) => ({ ...x, no: '0' + (i + 1), img: 'ep-method-' + (i + 1), tabBg: i === m ? '#d7000f' : '#8a8a8a', tabColor: '#fff', select: () => this.setState({ m: i }) }));
+    const G = [
+      ['年間学習計画の立て方', 'PLAN', 'スケジュール帳', '入試日から逆算し、基礎固め・応用・実践演習の3期に分けて計画を立てます。月ごとの目標を決め、週単位で見直しましょう。'],
+      ['時間管理のコツ', 'TIME', '時計とノート', '1日の学習を科目ごとに区切り、集中する時間と休む時間を決めます。通学時間などのすき間時間は暗記に活用しましょう。'],
+      ['過去問の活用法', 'PAST', '過去問題集', '本番と同じ時間で解き、間違えた問題は解説と照らし合わせて弱点を洗い出します。最低でも2〜3年分に取り組みましょう。'],
+      ['共通テスト対策', 'TEST', 'マークシート', '出題形式に慣れることが得点につながります。模試を受けて、解答ペースと時間配分を確認しましょう。'],
+      ['小論文の書き方', 'ESSAY', '原稿用紙とペン', '結論→理由→具体例→まとめの型を身につけ、書いたら必ず先生に添削してもらいましょう。'],
+      ['面接対策', 'TALK', '面接練習の様子', '志望理由・高校で頑張ったこと・入学後に学びたいことを自分の言葉で話せるよう、模擬面接で練習を重ねます。'],
+    ];
+    const R = [
+      ['高1〜高2', '基礎を固める', '授業の予習・復習を習慣にし、苦手科目を早めに克服します。興味のある分野を探しておきましょう。'],
+      ['高3 4〜6月', '志望校・入試方式を決める', 'オープンキャンパスや模試の結果をもとに、志望校と受験する入試方式を決めます。'],
+      ['高3 7〜8月', '応用力を伸ばす', '夏休みに苦手分野を集中的に克服し、過去問で出題傾向をつかみます。総合型選抜はエントリー準備も。'],
+      ['高3 9〜11月', '実践演習・推薦対策', '本番形式の演習を重ねます。学校推薦型選抜の出願・面接・小論文対策もこの時期です。'],
+      ['高3 12〜3月', '最終調整と出願', '共通テスト・一般選抜に向けて総仕上げ。出願書類の準備と体調管理も忘れずに。'],
+    ];
+    return {
+      methods, cur: methods[m],
+      guides: G.map(([t, tag, ph, d], i) => ({ t, tag, ph, d, no: '0' + (i + 1), img: 'ep-guide-' + (i + 1) })),
+      road: R.map(([when, t, d], i) => ({ when, t, d, no: '0' + (i + 1) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

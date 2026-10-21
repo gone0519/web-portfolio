@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;500;700;900&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<link href="./site.css" rel="stylesheet">
+<script src="./site-motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',sans-serif;color:#111;background:#e6eaee;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#111;text-decoration:none}
+a:hover{color:#00b8e6}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="campus" hint-size="100%,0px"></dc-import>
+<main style="position:relative;z-index:1">
+  <section data-screen-label="Campus Hero" style="position:relative;padding:170px clamp(24px,8vw,140px) 0">
+    <div style="display:flex;gap:10px;font-size:11px;letter-spacing:.1em"><a href="Top.dc.html">TOP</a><span>/</span><span style="color:#0a90c0">キャンパスライフ</span></div>
+    <h1 style="margin:18px 0 0;font-family:'Bebas Neue';font-weight:400;font-size:clamp(72px,12vw,180px);line-height:.85;letter-spacing:.04em">CAMPUS <span style="color:#00c8ff">LIFE</span></h1>
+    <div style="display:flex;align-items:center;gap:14px;margin-top:10px"><span style="width:36px;height:2px;background:#00c8ff"></span><span style="font-size:14px;font-weight:700;letter-spacing:.3em">キャンパスライフ</span></div>
+    <img class="hero-illust" src="images/illust/campus-life.png" alt="" style="width:clamp(220px,22vw,320px);bottom:-60px">
+  </section>
+
+  <section style="position:relative;margin-top:80px;background:#f1f3f8;padding:90px 0 110px">
+    <div style="max-width:1180px;margin:0 auto;padding:0 clamp(24px,5vw,60px);display:flex;flex-wrap:wrap;gap:24px;justify-content:center;align-items:flex-start">
+      <div style="position:relative;flex:0 1 760px;width:100%">
+        <div style="position:relative;aspect-ratio:16/8;background:#2c3e50">
+          <image-slot id="cl-main" src="images/campus-life-main.jpg" shape="rect" placeholder="キャンパス全景・学生が集う写真"></image-slot>
+        </div>
+        <div class="cap-tags" style="position:absolute;left:-30px;bottom:-30px;display:flex;flex-direction:column;align-items:flex-start;gap:6px">
+          <span style="background:#111;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;letter-spacing:.06em">授業、サークル、留学、そして仲間。</span>
+          <span style="background:#111;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;letter-spacing:.06em">ここでしか出会えない4年間を。</span>
+        </div>
+      </div>
+      <span class="hide-sp" style="writing-mode:vertical-rl;font-size:13px;font-weight:700;letter-spacing:.3em;line-height:1.6">青嶺大学の<br>キャンパスライフ</span>
+    </div>
+
+    <div style="max-width:1180px;margin:110px auto 0;padding:0 clamp(24px,5vw,60px);display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px 28px">
+      <sc-for list="{{ life }}" as="l" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="aspect-ratio:4/3;background:#2c3e50"><image-slot id="{{ l.slot }}" src="{{ l.img }}" shape="rect" placeholder="{{ l.ph }}"></image-slot></div>
+          <div style="display:flex;flex-direction:column;gap:6px;border-left:1px solid #111;padding-left:16px">
+            <span style="font-family:'Bebas Neue';font-size:13px;letter-spacing:.25em;color:#00a8d8">{{ l.en }}</span>
+            <span style="font-size:16px;font-weight:700">{{ l.t }}</span>
+            <span style="font-size:12.5px;line-height:1.9;color:#333">{{ l.d }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section class="vside" style="display:flex;align-items:flex-start;gap:clamp(16px,4vw,60px);padding:120px 0">
+    <div class="vlabel" style="flex:0 0 auto;display:flex;gap:10px;align-items:flex-start">
+      <span style="writing-mode:vertical-rl;font-family:'Bebas Neue';font-size:clamp(56px,7vw,96px);line-height:.9;letter-spacing:.04em">FACILITIES</span>
+      <span style="writing-mode:vertical-rl;font-size:12px;font-weight:700;letter-spacing:.4em;margin-top:6px">施設紹介</span>
+    </div>
+    <div class="vcontent" style="flex:1 1 auto;min-width:0;padding-right:clamp(24px,5vw,60px);display:flex;flex-direction:column;gap:56px">
+      <div style="display:flex;gap:14px;overflow-x:auto;padding-bottom:12px">
+        <sc-for list="{{ facilities }}" as="f" hint-placeholder-count="5">
+          <div style="position:relative;flex:0 0 200px;height:300px;border-radius:6px;overflow:hidden;background:#24384f">
+            <image-slot data-cap="bottom" id="{{ f.slot }}" src="{{ f.img }}" shape="rect" placeholder="{{ f.ph }}"></image-slot>
+            <div style="position:absolute;inset:0;pointer-events:none;background:rgba(8,22,40,.42);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#fff">
+              <span style="font-family:'Bebas Neue';font-size:12px;letter-spacing:.2em;color:#00c8ff">{{ f.en }}</span>
+              <span style="font-size:15px;font-weight:700;letter-spacing:.06em">{{ f.t }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap"><span style="font-family:'Bebas Neue';font-size:40px;letter-spacing:.06em;color:#00c8ff">ONE DAY</span><span style="font-size:16px;font-weight:700">在学生の1日（例）</span></div>
+        <div style="display:flex;flex-direction:column;background:rgba(255,255,255,.88)">
+          <sc-for list="{{ day }}" as="d" hint-placeholder-count="5">
+            <div class="day-row" style="display:grid;grid-template-columns:90px 1fr 110px;gap:20px;padding:14px 24px;border-bottom:1px solid #dde2e8;align-items:center">
+              <span style="font-family:'Bebas Neue';font-size:26px;line-height:1;color:#00c8ff">{{ d.time }}</span>
+              <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;font-weight:700">{{ d.t }}</span><span style="font-size:12.5px;color:#333;line-height:1.8">{{ d.d }}</span></span>
+              <img src="{{ d.img }}" alt="" style="width:100%;height:76px;object-fit:contain">
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="oc-word" style="position:relative;z-index:2;text-align:right;font-family:'Bebas Neue';font-size:clamp(84px,13vw,190px);line-height:.82;letter-spacing:.06em;color:#00c8ff;margin:0 -4px -0.3em 0">OPEN CAMPUS</div>
+  <section id="opencampus" style="position:relative;background:#1b4d72;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 2px,transparent 2px 6px);color:#fff;padding:clamp(90px,10vw,130px) clamp(24px,5vw,60px) 130px;overflow:hidden">
+    <div class="bg-word" style="position:absolute;left:0;right:0;top:40px;text-align:center;font-family:'Yuji Syuku',serif;font-size:clamp(52px,10vw,150px);color:rgba(220,228,236,.3);letter-spacing:.06em;line-height:1;pointer-events:none;white-space:nowrap">未来を見に来よう</div>
+    <div style="position:relative;max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center">
+      <p style="margin:clamp(40px,6vw,80px) 0 0;font-size:14px;line-height:2.1;letter-spacing:.06em;max-width:540px;text-wrap:pretty">模擬授業やキャンパスツアー、在学生との個別相談、保護者向け説明会など、大学の学びと生活を体験できるプログラムを用意しています（内容・日程はサンプル）。</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2px;width:100%">
+        <sc-for list="{{ programs }}" as="p" hint-placeholder-count="4">
+          <div style="background:rgba(255,255,255,.1);padding:20px;display:flex;flex-direction:column;gap:6px;text-align:left">
+            <span style="font-family:'Bebas Neue';font-size:13px;letter-spacing:.2em;color:#7fe4ff">{{ p.en }}</span>
+            <span style="font-size:15px;font-weight:700">{{ p.t }}</span>
+            <span style="font-size:12px;line-height:1.8">{{ p.d }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2px;width:100%;max-width:620px">
+        <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+          <div style="border:1px solid rgba(255,255,255,.4);padding:16px;display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:'Bebas Neue';font-size:22px;letter-spacing:.06em;color:#7fe4ff">{{ e.d }}</span>
+            <span style="font-size:12px">{{ e.t }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <a href="Contact.dc.html#reserve" style="display:flex;align-items:center;gap:14px;background:#fff;color:#111;padding:15px 34px 15px 18px;border-radius:999px;font-weight:700;font-size:14px;letter-spacing:.08em"><span style="width:16px;height:16px;border-radius:50%;border:4px solid #00c8ff;display:block"></span>オープンキャンパスを予約する</a>
+    </div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:46px;background:#e8ecf1;clip-path:polygon(0 100%,3.25% 100%,6.25% 0,9.25% 100%,15.75% 100%,18.75% 0,21.75% 100%,28.25% 100%,31.25% 0,34.25% 100%,40.75% 100%,43.75% 0,46.75% 100%,53.25% 100%,56.25% 0,59.25% 100%,65.75% 100%,68.75% 0,71.75% 100%,78.25% 100%,81.25% 0,84.25% 100%,90.75% 100%,93.75% 0,96.75% 100%,100% 100%)"></div>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const h = location.hash; if (h) setTimeout(()=>{const el=document.querySelector(h); if(el) window.scrollTo({top:el.getBoundingClientRect().top+scrollY-90});},300);
+  }
+  renderVals() {
+    const life = [
+      {en:'CLUBS', t:'サークル・部活動', d:'運動系・文化系あわせて多彩な団体が活動しています。学部や学年を越えた仲間と出会えます。', ph:'サークル活動の写真'},
+      {en:'ABROAD', t:'海外留学', d:'短期研修から長期の交換留学まで、目的に合わせて選べるプログラムを用意しています。', ph:'留学・国際交流の写真'},
+      {en:'CAREER', t:'キャリア支援', d:'1年次からのキャリア教育と個別面談で、一人ひとりの進路選択をサポートします。', ph:'キャリア相談の写真'},
+      {en:'COMMUNITY', t:'地域連携', d:'地域の企業や自治体と協働するプロジェクトに参加し、社会の課題に向き合います。', ph:'地域活動の写真'}
+    ].map((l,i)=>({...l, slot:'cl-life-'+i, img:'images/'+['life-clubs','life-abroad','life-career','life-community'][i]+'.jpg'}));
+    const facilities = [
+      {en:'LIBRARY', t:'図書館', ph:'図書館の写真'},{en:'CAFETERIA', t:'学生食堂', ph:'学生食堂の写真'},
+      {en:'LABORATORY', t:'研究施設', ph:'実験室の写真'},{en:'LOUNGE', t:'ラーニングコモンズ', ph:'自習スペースの写真'},
+      {en:'MAIN HALL', t:'本館', ph:'本館の写真'}
+    ].map((f,i)=>({...f, slot:'cl-fac-'+i, img:'images/'+['facility-library','facility-cafeteria','fac-scieng','facility-lounge','facility-main'][i]+'.jpg'}));
+    return {
+      life, facilities,
+      day:[
+        {time:'09:00', t:'1限 専門科目', d:'学部の専門分野を学ぶ講義。', img:'images/illust/lecture.png'},
+        {time:'10:40', t:'2限 語学', d:'少人数クラスで英語や第二外国語を学ぶ。', img:'images/illust/teacher.png'},
+        {time:'12:20', t:'昼休み', d:'学生食堂で友人とランチ。', img:'images/illust/bench.png'},
+        {time:'13:10', t:'3–4限 ゼミ・実習', d:'少人数で議論や実験に取り組む。', img:'images/illust/study-desks.png'},
+        {time:'17:00', t:'サークル・アルバイト', d:'放課後は課外活動やそれぞれの時間を楽しむ。', img:'images/illust/basketball.png'}
+      ],
+      programs:[
+        {en:'LECTURE', t:'模擬授業', d:'各学部の教員による体験授業。'},
+        {en:'TOUR', t:'キャンパスツアー', d:'在学生の案内で施設を見学。'},
+        {en:'CONSULT', t:'個別相談', d:'入試や学生生活の疑問に回答。'},
+        {en:'PARENTS', t:'保護者向け説明会', d:'学費・奨学金・進路について説明。'}
+      ],
+      events:[{d:'20XX.06.XX', t:'春のオープンキャンパス'},{d:'20XX.08.XX', t:'夏のオープンキャンパス'},{d:'EVERY WEEK', t:'個別キャンパス見学'}]
+    };
+  }
+}
+</script>
+</body>
+</html>

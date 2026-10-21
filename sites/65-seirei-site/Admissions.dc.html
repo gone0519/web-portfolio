@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="./site.css" rel="stylesheet">
+<script src="./site-motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',sans-serif;color:#111;background:#e6eaee;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#111;text-decoration:none}
+a:hover{color:#00b8e6}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="admissions" hint-size="100%,0px"></dc-import>
+<main style="position:relative;z-index:1">
+  <section data-screen-label="Admissions Hero" style="position:relative;padding:170px clamp(24px,8vw,140px) 0">
+    <div style="display:flex;gap:10px;font-size:11px;letter-spacing:.1em"><a href="Top.dc.html">TOP</a><span>/</span><span style="color:#0a90c0">入試情報</span></div>
+    <h1 style="margin:18px 0 0;font-family:'Bebas Neue';font-weight:400;font-size:clamp(72px,12vw,180px);line-height:.85;letter-spacing:.04em">ADMISSIONS</h1>
+    <div style="display:flex;align-items:center;gap:14px;margin-top:10px"><span style="width:36px;height:2px;background:#00c8ff"></span><span style="font-size:14px;font-weight:700;letter-spacing:.3em">入試情報・学生サポート</span></div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:32px">
+      <sc-for list="{{ jumps }}" as="j" hint-placeholder-count="5">
+        <a href="{{ j.href }}" style="display:flex;align-items:center;gap:10px;background:#fff;padding:12px 18px;font-size:13px;font-weight:700;transition:background .25s" style-hover="background:#111;color:#fff"><span style="color:#00c8ff;font-size:10px">▼</span>{{ j.t }}</a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="margin-top:70px;background:rgba(240,243,247,.92);padding:110px 0 130px;clip-path:polygon(0 0,100% 50px,100% 100%,0 100%)">
+    <div style="max-width:1180px;margin:0 auto;padding:0 clamp(24px,5vw,60px);display:flex;flex-direction:column;gap:80px">
+      <sc-if value="{{ sampleNote }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-size:12px;padding:10px 14px;border:1px solid #111;letter-spacing:.04em;text-align:center">※本ページの日程・金額・要件はすべてサンプルです。正式な情報は必ず最新の募集要項でご確認ください。</p>
+      </sc-if>
+
+      <div id="schedule" style="display:flex;flex-direction:column;gap:20px;scroll-margin-top:100px">
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap"><span style="font-family:'Bebas Neue';font-size:40px;letter-spacing:.06em;color:#00c8ff">SCHEDULE</span><span style="font-size:16px;font-weight:700">入試日程（サンプル）</span></div>
+        <p class="sp-only" style="margin:-8px 0 0;font-size:11px;color:#555">← 表は横にスクロールできます →</p>
+        <div style="overflow-x:auto;background:#fff">
+          <div style="min-width:680px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr">
+            <span style="background:#111;color:#fff;font-size:12px;font-weight:700;padding:14px 18px">選抜区分</span>
+            <span style="background:#111;color:#fff;font-size:12px;font-weight:700;padding:14px 18px">出願期間</span>
+            <span style="background:#111;color:#fff;font-size:12px;font-weight:700;padding:14px 18px">試験日</span>
+            <span style="background:#111;color:#fff;font-size:12px;font-weight:700;padding:14px 18px">合格発表</span>
+            <sc-for list="{{ schedule }}" as="r" hint-placeholder-count="4">
+              <span style="font-size:13px;font-weight:700;padding:16px 18px;border-bottom:1px solid #e1e5ea;display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:#00c8ff;flex:0 0 auto"></span>{{ r.k }}</span>
+              <span style="font-size:13px;padding:16px 18px;border-bottom:1px solid #e1e5ea">{{ r.a }}</span>
+              <span style="font-size:13px;padding:16px 18px;border-bottom:1px solid #e1e5ea">{{ r.b }}</span>
+              <span style="font-size:13px;padding:16px 18px;border-bottom:1px solid #e1e5ea">{{ r.c }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div id="apply" style="display:flex;flex-direction:column;gap:20px;scroll-margin-top:100px">
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap"><span style="font-family:'Bebas Neue';font-size:40px;letter-spacing:.06em;color:#00c8ff">HOW TO APPLY</span><span style="font-size:16px;font-weight:700">出願の流れ・必要書類</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+            <div style="background:#fff;padding:26px 24px;display:flex;flex-direction:column;gap:10px">
+              <span style="font-family:'Bebas Neue';font-size:44px;line-height:1;color:#00c8ff">{{ s.no }}</span>
+              <span style="font-size:15px;font-weight:700">{{ s.t }}</span>
+              <span style="font-size:12.5px;line-height:1.9;color:#333">{{ s.d }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:#fff;padding:28px;display:flex;flex-wrap:wrap;gap:32px">
+          <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:15px;font-weight:700">主な必要書類（例）</span>
+            <sc-for list="{{ docs }}" as="d" hint-placeholder-count="4">
+              <div style="display:flex;gap:10px;font-size:13px;line-height:1.8"><span style="color:#00c8ff;font-size:9px;padding-top:5px">●</span>{{ d }}</div>
+            </sc-for>
+          </div>
+          <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:15px;font-weight:700">出願前のチェックポイント</span>
+            <sc-for list="{{ checks }}" as="d" hint-placeholder-count="4">
+              <div style="display:flex;gap:10px;font-size:13px;line-height:1.8"><span style="color:#e040fb;font-size:9px;padding-top:5px">●</span>{{ d }}</div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div id="tuition" style="display:flex;flex-direction:column;gap:20px;scroll-margin-top:100px">
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap"><span style="font-family:'Bebas Neue';font-size:40px;letter-spacing:.06em;color:#00c8ff">TUITION &amp; SUPPORT</span><span style="font-size:16px;font-weight:700">学費・奨学金</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+          <sc-for list="{{ money }}" as="c" hint-placeholder-count="3">
+            <div style="background:#fff;padding:28px;display:flex;flex-direction:column;gap:12px;border-top:3px solid {{ c.accent }}">
+              <span style="font-family:'Bebas Neue';font-size:12px;letter-spacing:.3em;color:#666">{{ c.en }}</span>
+              <span style="font-size:17px;font-weight:900">{{ c.t }}</span>
+              <span style="font-family:'Bebas Neue';font-size:30px;letter-spacing:.04em">{{ c.v }}</span>
+              <span style="font-size:12.5px;line-height:1.9;color:#333">{{ c.d }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:48px">
+        <div id="faq" style="flex:2 1 460px;display:flex;flex-direction:column;gap:20px;scroll-margin-top:100px">
+          <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap"><span style="font-family:'Bebas Neue';font-size:40px;letter-spacing:.06em;color:#00c8ff">FAQ</span><span style="font-size:16px;font-weight:700">よくあるご質問</span><img class="heading-illust" src="images/illust/question.png" alt="" style="height:110px;width:auto;margin-left:auto;align-self:flex-end"></div>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+              <div style="background:#fff">
+                <button onClick="{{ q.toggle }}" style="width:100%;border:none;background:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:18px 22px;text-align:left;font-family:inherit;color:#111" style-hover="color:#0a90c0">
+                  <span style="font-family:'Bebas Neue';font-size:22px;color:#00c8ff;line-height:1">Q</span>
+                  <span style="flex:1;font-size:14px;font-weight:700;line-height:1.6">{{ q.q }}</span>
+                  <span style="font-size:20px;font-weight:300;width:20px;text-align:center">{{ q.mark }}</span>
+                </button>
+                <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;gap:16px;padding:0 22px 20px">
+                    <span style="font-family:'Bebas Neue';font-size:22px;color:#e040fb;line-height:1">A</span>
+                    <span style="flex:1;font-size:13px;line-height:2;color:#333">{{ q.a }}</span>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div id="parents" style="flex:1 1 300px;display:flex;flex-direction:column;gap:20px;scroll-margin-top:100px">
+          <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap"><span style="font-family:'Bebas Neue';font-size:40px;letter-spacing:.06em;color:#00c8ff">FOR PARENTS</span><span style="font-size:16px;font-weight:700">保護者の方へ</span></div>
+          <img src="images/illust/campus-building.png" alt="" style="width:100%;max-width:340px;height:auto;align-self:center">
+          <div style="background:#111;color:#fff;padding:30px 28px;display:flex;flex-direction:column;gap:16px">
+            <p style="margin:0;font-size:13px;line-height:2.1;text-wrap:pretty">受験生の進路選びを支える保護者の皆さまに向けて、学費・奨学金の相談窓口や、卒業後の進路に関する資料をご用意しています。オープンキャンパスでは保護者向け説明会も開催予定です。</p>
+            <a href="CampusLife.dc.html#opencampus" style="color:#fff;font-size:13px;display:flex;gap:10px;align-items:center" style-hover="color:#00c8ff"><span style="color:#00c8ff;font-size:9px">●</span>保護者向け説明会について</a>
+            <a href="Contact.dc.html#request" style="color:#fff;font-size:13px;display:flex;gap:10px;align-items:center" style-hover="color:#00c8ff"><span style="color:#00c8ff;font-size:9px">●</span>保護者向け資料を請求する</a>
+            <a href="Contact.dc.html#contact" style="color:#fff;font-size:13px;display:flex;gap:10px;align-items:center" style-hover="color:#00c8ff"><span style="color:#00c8ff;font-size:9px">●</span>学費・奨学金の相談をする</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showSampleNotice&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { faq:0 };
+  componentDidMount() {
+    const h = location.hash; if (h) setTimeout(()=>{const el=document.querySelector(h); if(el) window.scrollTo({top:el.getBoundingClientRect().top+scrollY-90});},300);
+  }
+  faqs = [
+    {q:'複数の選抜方式に出願することはできますか？', a:'選抜方式によって併願の可否が異なります。学校推薦型選抜など専願を条件とする方式もありますので、募集要項で必ずご確認ください。'},
+    {q:'出願書類はいつ頃から準備すればよいですか？', a:'調査書の発行には時間がかかる場合があります。出願開始の1か月前を目安に、高校の先生に相談しながら準備を始めることをおすすめします。'},
+    {q:'オープンキャンパスに保護者も参加できますか？', a:'はい、保護者の方のご参加も歓迎しています。保護者向けの説明会も予定しています（サンプル）。'},
+    {q:'奨学金の申し込みはいつ行いますか？', a:'制度によって、入学前に申し込むものと入学後に申し込むものがあります。詳細は入試課または学生支援窓口にお問い合わせください。'},
+    {q:'試験会場は本学以外にもありますか？', a:'選抜方式によっては学外試験会場を設ける場合があります。会場は年度ごとに異なるため、募集要項でご確認ください。'},
+    {q:'入試に関する質問はどこにすればよいですか？', a:'お問い合わせページのフォーム、または入試課（アドミッションセンター）までご連絡ください。'}
+  ];
+  renderVals() {
+    const f = this.state.faq;
+    return {
+      sampleNote: this.props.showSampleNotice ?? true,
+      jumps:[{t:'入試日程',href:'#schedule'},{t:'出願の流れ',href:'#apply'},{t:'学費・奨学金',href:'#tuition'},{t:'よくあるご質問',href:'#faq'},{t:'保護者の方へ',href:'#parents'}],
+      schedule:[
+        {k:'総合型選抜', a:'20XX年9月上旬〜中旬', b:'20XX年10月下旬', c:'20XX年11月上旬'},
+        {k:'学校推薦型選抜', a:'20XX年11月上旬', b:'20XX年11月下旬', c:'20XX年12月上旬'},
+        {k:'一般選抜（前期）', a:'20XX年1月上旬〜下旬', b:'20XX年2月上旬', c:'20XX年2月中旬'},
+        {k:'一般選抜（後期）', a:'20XX年2月中旬', b:'20XX年3月上旬', c:'20XX年3月中旬'}
+      ],
+      steps:[
+        {no:'01', t:'Web出願登録', d:'出願サイトでアカウントを作成し、志望学部・選抜方式などを入力します。'},
+        {no:'02', t:'入学検定料の支払い', d:'コンビニエンスストアやクレジットカードなど、指定の方法で納入します。'},
+        {no:'03', t:'出願書類の郵送', d:'調査書などの必要書類を、期間内に必着で郵送します。'},
+        {no:'04', t:'受験票の印刷', d:'出願完了後、出願サイトから受験票をダウンロードして印刷します。'}
+      ],
+      docs:['調査書（出身高校が作成）','推薦書（学校推薦型選抜）','志望理由書（総合型選抜など）','大学入学共通テスト成績請求票（利用方式のみ）'],
+      checks:['出願資格を満たしているか','選抜方式ごとの併願可否','書類の提出期限（必着か消印有効か）','顔写真データの規格'],
+      money:[
+        {en:'TUITION', t:'学費（初年度納入金）', v:'○○○,○○○円〜', d:'学部・学科により異なります。分納制度の有無を含め、正式な金額は募集要項をご確認ください。', accent:'#00c8ff'},
+        {en:'SCHOLARSHIP', t:'大学独自の奨学金', v:'給付型・減免型', d:'入試成績や家計状況に応じた制度の例です。対象・金額・人数は年度ごとに定められます。', accent:'#a8e63a'},
+        {en:'SUPPORT', t:'公的支援・教育ローン', v:'国の修学支援など', d:'高等教育の修学支援新制度や日本学生支援機構の奨学金などの利用について、窓口でご相談いただけます。', accent:'#e040fb'}
+      ],
+      faqs:this.faqs.map((q,i)=>({...q, open:f===i, mark:f===i?'−':'+', toggle:()=>this.setState({faq:f===i?-1:i})}))
+    };
+  }
+}
+</script>
+</body>
+</html>

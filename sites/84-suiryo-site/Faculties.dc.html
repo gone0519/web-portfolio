@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#333;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#333;text-decoration:none}
+a:hover{color:#1fb2c3}
+p,h1,h2,h3,h4,ul{margin:0}
+</style>
+</helmet>
+<div style="position:relative;overflow:hidden;min-width:320px">
+  <dc-import name="SiteHeader" active="{{ 1 }}" style="position:absolute;top:0;left:0;right:0;z-index:20" hint-size="100%,72px"></dc-import>
+  <dc-import name="PageHero" en="Faculties" title="学部・学科" lead="6学部15学科（サンプル）で、文系・理系・医療系の幅広い分野を学べます。興味のあるキーワードから、自分に合う学びを探してみましょう。" img="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=900&amp;q=70&amp;auto=format&amp;fit=crop" hint-size="100%,560px"></dc-import>
+
+  <section data-screen-label="Faculties List" style="padding:100px clamp(20px,5vw,80px) 120px;max-width:1500px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:56px">
+      <div>
+        <p style="font-family:'Lexend Exa',sans-serif;font-size:11px;font-weight:500;margin-bottom:10px">Find Your Field</p>
+        <h2 style="font-size:clamp(24px,2.2vw,32px);font-weight:700;letter-spacing:0.12em">分野から探す</h2>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+          <button onClick="{{ f.select }}" style="font-family:inherit;font-size:13px;font-weight:700;padding:10px 22px;border:1px solid #1fb2c3;border-radius:30px;cursor:pointer;background:{{ f.bg }};color:{{ f.fg }};transition:all .2s">{{ f.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1px;background:#e6e6e6;border:1px solid #e6e6e6">
+      <sc-for list="{{ list }}" as="p" hint-placeholder-count="6">
+        <article style="position:relative;background:#fff;padding:clamp(36px,4vw,64px) clamp(24px,4vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px clamp(30px,5vw,80px)">
+          <span style="position:absolute;top:-1px;left:clamp(24px,4vw,72px);width:64px;height:3px;background:{{ p.color }}"></span>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;align-items:baseline;gap:18px">
+              <span style="font-family:'Lexend Exa',sans-serif;font-weight:300;font-size:52px;line-height:1;color:{{ p.color }}">{{ p.no }}</span>
+              <span style="font-family:'Lexend Exa',sans-serif;font-size:10px;font-weight:500;color:#888">{{ p.en }}</span>
+            </div>
+            <h3 style="font-size:24px;font-weight:700;letter-spacing:0.08em;color:{{ p.color }}">{{ p.name }}</h3>
+            <p style="font-size:13.5px;line-height:2.1;letter-spacing:0.04em;text-wrap:pretty">{{ p.desc }}</p>
+            <div style="aspect-ratio:16/9;background:repeating-linear-gradient(45deg,#ececec 0 8px,#f5f5f5 8px 16px);overflow:hidden;margin-top:6px">
+              <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block">
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:28px">
+            <div>
+              <h4 style="font-size:13px;font-weight:700;letter-spacing:0.1em;margin-bottom:12px">学科（サンプル）</h4>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ p.depts }}" as="d" hint-placeholder-count="2">
+                  <span style="font-size:12.5px;font-weight:500;padding:6px 14px;background:#f1f6f6">{{ d }}</span>
+                </sc-for>
+              </div>
+            </div>
+            <div>
+              <h4 style="font-size:13px;font-weight:700;letter-spacing:0.1em;margin-bottom:6px">学びのポイント</h4>
+              <sc-for list="{{ p.points }}" as="pt" hint-placeholder-count="3">
+                <p style="display:flex;gap:12px;font-size:13px;line-height:1.9;padding:10px 0;border-bottom:1px dotted #ccc"><span style="color:#1fb2c3;font-weight:700">✓</span>{{ pt }}</p>
+              </sc-for>
+            </div>
+            <div>
+              <h4 style="font-size:13px;font-weight:700;letter-spacing:0.1em;margin-bottom:8px">想定される進路の例</h4>
+              <p style="font-size:13px;line-height:1.9;color:#555">{{ p.career }}</p>
+            </div>
+            <a href="Contact.dc.html?type=docs" style="display:flex;align-items:center;gap:12px;align-self:flex-end;font-size:12px;font-weight:700"><span style="border-bottom:1px solid #333;padding-bottom:3px">学部パンフレットを請求</span><span style="width:20px;height:20px;border-radius:50%;background:#333;color:#fff;font-size:8px;display:flex;align-items:center;justify-content:center">▶</span></a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Cross Programs" style="background:#f4f4f4;padding:110px clamp(20px,5vw,80px)">
+    <div style="max-width:1500px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:20px 60px;margin-bottom:56px">
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <span style="font-family:'Lexend Exa',sans-serif;font-size:clamp(56px,7vw,110px);font-weight:400;line-height:1;color:#e3e3e3;letter-spacing:-0.03em">Programs</span>
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em">学部横断プログラム</span>
+        </div>
+        <p style="font-size:13px;line-height:2;letter-spacing:0.05em;padding-bottom:30px">所属学部に関係なく参加できる、<br>翠陵大学ならではの学びです。</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(24px,3vw,48px)">
+        <sc-for list="{{ featured }}" as="f" hint-placeholder-count="3">
+          <div style="background:#fff;display:flex;flex-direction:column">
+            <div style="aspect-ratio:4/3;background:repeating-linear-gradient(45deg,#ececec 0 8px,#f5f5f5 8px 16px);overflow:hidden">
+              <img src="{{ f.img }}" alt="{{ f.title }}" style="width:100%;height:100%;object-fit:cover;display:block">
+            </div>
+            <div style="padding:28px;display:flex;flex-direction:column;gap:12px">
+              <span style="font-family:'Lexend Exa',sans-serif;font-size:10px;font-weight:500">{{ f.en }}</span>
+              <h3 style="font-size:19px;font-weight:700;letter-spacing:0.06em">{{ f.title }}</h3>
+              <p style="font-size:13px;line-height:2;text-wrap:pretty">{{ f.desc }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:48px">
+        <a href="Preparation.dc.html" style="display:flex;align-items:center;gap:16px" style-hover="opacity:0.8">
+          <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;border-bottom:1px solid #333;padding-bottom:4px">入試対策を見る</span>
+          <span style="width:64px;height:64px;border-radius:50%;background:#1fb2c3;color:#fff;display:flex;align-items:center;justify-content:center">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <div style="height:110px"></div>
+  <dc-import name="SiteFooter" active="{{ 1 }}" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filter: 'all' };
+  renderVals() {
+    const u = (id, w = 900) => `https://images.unsplash.com/photo-${id}?w=${w}&q=70&auto=format&fit=crop`;
+    const C = ['#5f9e95', '#4f7192', '#b98a4c', '#8d8f94', '#b5545c', '#7a5aa0'];
+    const all = [
+      { cat: 'hum', en: 'Faculty of Humanities', name: '人文学部', desc: '文学・歴史・哲学・心理学などを通して、人と文化の成り立ちを深く考えます。少人数のゼミで、読み、書き、議論する力を4年間かけて鍛えます。', depts: ['日本文学科', '歴史学科', '心理学科'], points: ['1年次から少人数ゼミで研究の基礎を学ぶ', '古文書や資料を使った実践的な演習', '心理学実験室での実験・調査'], career: '出版・メディア、教育、公務員、一般企業の企画・広報など', img: u('1457369804613-52c61a468e7d') },
+      { cat: 'hum', en: 'Faculty of Law', name: '法学部', desc: '社会のルールである法を学び、公平な判断力と論理的な思考力を身につけます。模擬裁判や行政機関でのインターンシップなど、実社会に近い学びを用意しています。', depts: ['法律学科', '政治学科'], points: ['模擬裁判を通じて法的思考を体験', '公務員・法曹をめざすコース制', '自治体と連携した政策提案演習'], career: '公務員、法律事務所、金融・保険、法科大学院への進学など', img: u('1589829545856-d10d557cf95f') },
+      { cat: 'hum', en: 'Faculty of Economics & Management', name: '経済・経営学部', desc: '市場や企業、地域経済の仕組みをデータと理論の両面から分析します。企業と連携した課題解決型の授業が特色です。', depts: ['経済学科', '経営学科'], points: ['統計・データ分析の基礎を全員が習得', '企業から出された課題に取り組むPBL', '簿記・会計の資格取得サポート'], career: '金融、メーカー、商社、コンサルティング、起業など', img: u('1454165804606-c3d57bc86b40') },
+      { cat: 'sci', en: 'Faculty of Science & Engineering', name: '理工学部', desc: '数学・物理を基盤に、機械・電気・建築など幅広い分野を学びます。実験と卒業研究を通じて、ものづくりの力を育てます。', depts: ['機械工学科', '電気電子工学科', '建築学科'], points: ['1年次から実験・実習を重視したカリキュラム', '最新設備を備えた研究室での卒業研究', '大学院との一貫教育プログラム'], career: '製造業、建設・設計、エネルギー、大学院進学など', img: u('1532094349884-543bc11b234d') },
+      { cat: 'sci', en: 'Faculty of Information Science', name: '情報科学部', desc: 'プログラミングやAI、データサイエンスを学び、情報技術で社会課題を解決する力を身につけます。', depts: ['情報科学科', 'データサイエンス学科'], points: ['プログラミング未経験から始められる導入科目', 'AI・機械学習の演習とチーム開発', '企業と連携したデータ分析プロジェクト'], career: 'IT・ソフトウェア、通信、データ分析職、研究開発など', img: u('1515879218367-8466d910aaa4') },
+      { cat: 'med', en: 'Faculty of Nursing & Health', name: '看護・医療学部', desc: '人の健康と生活を支える専門職をめざします。附属施設での臨地実習を通して、知識と実践を結びつけます。', depts: ['看護学科', 'リハビリテーション学科'], points: ['シミュレーション室での実践的な演習', '附属施設・連携病院での臨地実習', '国家試験に向けた学習サポート'], career: '病院・クリニック、介護・福祉施設、行政の保健部門など', img: u('1576091160550-2173dba999ef') },
+    ].map((p, i) => ({ ...p, no: String(i + 1).padStart(2, '0'), color: C[i] }));
+    const F = [['all', 'すべて'], ['hum', '文系'], ['sci', '理系'], ['med', '医療系']];
+    return {
+      filters: F.map(([k, label]) => ({ label, bg: this.state.filter === k ? '#1fb2c3' : '#fff', fg: this.state.filter === k ? '#fff' : '#1fb2c3', select: () => this.setState({ filter: k }) })),
+      list: this.state.filter === 'all' ? all : all.filter(p => p.cat === this.state.filter),
+      featured: [
+        { en: 'Study Abroad', title: '海外留学プログラム', desc: '協定校への短期・長期留学を、全学部の学生が選択できます。留学前の語学サポートも充実しています。', img: u('1606761568499-6d2451b23c66', 700) },
+        { en: 'Data Science Minor', title: 'データサイエンス副専攻', desc: '文系・理系を問わず、データ分析の基礎から応用までを体系的に学べる学部横断型のプログラムです。', img: u('1551288049-bebda4e38f71', 700) },
+        { en: 'Project Based Learning', title: '地域連携プロジェクト', desc: '自治体や企業と協働し、地域の課題解決に取り組みます。学年や学部を越えたチームで活動します。', img: u('1531482615713-2afd69097998', 700) },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

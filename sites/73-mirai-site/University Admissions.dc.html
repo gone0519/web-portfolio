@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site.css">
+<script src="./image-slot.js"></script>
+<script src="./images.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#ebe7e5;color:#222;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#d8343b;text-decoration:none}
+a:hover{color:#b3262d}
+*{box-sizing:border-box}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#ebe7e5;overflow-x:hidden">
+
+<dc-import name="SiteHeader" current="top" style="position:sticky;top:0;z-index:50;display:block" hint-size="100%,118px"></dc-import>
+
+<!-- SECTION 1: HERO -->
+<section id="top" data-sakura="96" data-screen-label="01 Hero" style="position:relative;padding-top:clamp(24px,3vw,40px)">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(20px,3vw,48px);padding-right:clamp(16px,3vw,56px)">
+    <div style="flex:1 1 520px;position:relative;padding:0 18px 22px 0">
+      <div style="position:absolute;right:0;bottom:0;top:24px;width:80%;background:#f6f3f2;border-radius:0 14px 14px 0"></div>
+      <div class="m-hide" style="position:absolute;left:28px;bottom:-36px;width:200px;height:120px;background-image:radial-gradient(#d8343b 1.3px,transparent 1.7px);background-size:14px 14px;opacity:.5;pointer-events:none"></div>
+      <div style="position:relative;aspect-ratio:16/10.5;border-radius:0 14px 14px 0;overflow:hidden">
+        <image-slot src="_filled/12-hero-student.jpg" id="hero-main" shape="rect" placeholder="キャンパスで笑顔を見せる学生たち（横長写真）"></image-slot>
+      </div>
+      <div style="position:absolute;right:-8px;bottom:-34px;width:clamp(116px,10vw,150px);aspect-ratio:1/1;z-index:5;pointer-events:none">
+        <div data-spin="26" style="position:absolute;inset:0">
+          <svg viewBox="0 0 150 150" width="100%" height="100%"><defs><path id="badgeRing" d="M75,75 m-56,0 a56,56 0 1,1 112,0 a56,56 0 1,1 -112,0"></path></defs><circle cx="75" cy="75" r="74" fill="#d8343b"></circle><text font-family="Jost" font-size="11" letter-spacing="2.6" fill="#fff"><textPath href="#badgeRing">ADMISSIONS 20XX ✦ OPEN CAMPUS ✦ MIRAI SOSEI ✦ </textPath></text></svg>
+        </div>
+        <div style="position:absolute;inset:26%;border-radius:50%;background:#fff;color:#d8343b;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.25;text-align:center">
+          <span style="font-family:Jost;font-weight:600;font-size:clamp(14px,1.3vw,18px)">20XX</span>
+          <span style="font-size:clamp(9px,.8vw,11px);font-weight:900;letter-spacing:.06em">入試情報<br>公開中</span>
+        </div>
+      </div>
+    </div>
+    <h1 data-reveal="clip" class="hero-h1" style="margin:0;writing-mode:vertical-rl;font-size:clamp(28px,2.6vw,42px);font-weight:900;letter-spacing:.14em;line-height:1.55;padding-top:12px;flex:0 0 auto;padding-left:16px">
+      <span>未来への扉を、</span><span>自分の手で<span style="color:#d8343b">開</span>く。</span>
+    </h1>
+    <div class="hero-subs" style="flex:1 1 260px;display:flex;flex-direction:column;gap:22px;max-width:440px;position:relative">
+      <div class="m-hide" style="position:absolute;right:4%;bottom:-46px;width:96px;height:96px;border:1.5px solid #d8343b;border-radius:50%;pointer-events:none"></div>
+      <div class="m-hide" style="position:absolute;right:calc(4% + 78px);bottom:18px;width:16px;height:16px;background:#d8343b;border-radius:50%;pointer-events:none"></div>
+      <div class="hero-sub hero-sub-pad" style="position:relative;padding:14px 0 0 14px">
+        <div class="m-hide" style="position:absolute;left:0;top:0;right:-30px;bottom:30px;background:#d8343b;border-radius:16px 0 0 16px"></div>
+        <div style="position:relative;aspect-ratio:4/2.6;border-radius:12px;overflow:hidden">
+          <image-slot src="_filled/13-student-a.jpg" id="hero-sub1" shape="rect" placeholder="講義を受ける学生（アップ）"></image-slot>
+        </div>
+      </div>
+      <div class="hero-sub" style="position:relative;aspect-ratio:4/2.6;width:84%;border-radius:12px;overflow:hidden">
+        <image-slot src="_filled/14-exercise-jump.jpg" id="hero-sub2" shape="rect" placeholder="図書館で学ぶ学生"></image-slot>
+      </div>
+    </div>
+  </div>
+  <sc-if value="{{ showMarquee }}" hint-placeholder-val="{{ true }}">
+    <div class="hero-marquee" style="position:relative;margin-top:clamp(-70px,-4vw,-30px);overflow:hidden;pointer-events:none;z-index:2">{{ marquee }}</div>
+  </sc-if>
+
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(32px,4vw,56px) clamp(16px,3vw,40px) clamp(56px,6vw,96px);display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,56px);align-items:center;justify-content:center">
+    <div style="flex:1 1 220px;max-width:300px;display:flex;flex-direction:column;gap:20px">
+      <div style="aspect-ratio:4/2.6;border-radius:12px;overflow:hidden;position:relative"><image-slot src="_filled/15-building-exterior.jpg" id="intro-a" shape="rect" placeholder="正門・キャンパス外観"></image-slot></div>
+      <span style="font-family:Jost;font-weight:600;font-size:clamp(72px,8vw,120px);line-height:.9;color:#d8343b;letter-spacing:-.02em">M</span>
+    </div>
+    <div style="flex:1 1 340px;max-width:460px;display:flex;flex-direction:column;gap:22px">
+      <h2 style="margin:0;color:#d8343b;font-size:clamp(22px,2.2vw,28px);font-weight:700;letter-spacing:.1em;line-height:1.6;text-align:center">一歩ずつ、確かに。<br>合格の、その先へ。</h2>
+      <p style="margin:0;font-size:13px;font-weight:500;line-height:2.1;letter-spacing:.06em;text-wrap:pretty">未来創成大学 入試情報サイトでは、学部・学科の紹介から入試方式、出願の流れ、学費・奨学金、キャンパスライフまで、受験に必要な情報をひとつにまとめています。志望校選びに迷っている方も、受験勉強の真っ最中の方も、ここから自分らしい進路を見つけてください。保護者の方に向けた情報もご用意しています。</p>
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:12px">
+        <a href="Admissions.dc.html" style="display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-width:240px;background:#d8343b;color:#fff;border-radius:999px;padding:14px 26px;font-size:13px;font-weight:700;letter-spacing:.06em;transition:all .2s" style-hover="background:#b3262d;color:#fff;transform:translateY(-2px)"><span style="flex:1;text-align:center">入試情報を見る</span><span>›</span></a>
+        <a href="Faculties.dc.html" style="display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-width:240px;background:#fff;color:#d8343b;border:1.5px solid #d8343b;border-radius:999px;padding:13px 26px;font-size:13px;font-weight:700;letter-spacing:.06em;transition:all .2s" style-hover="background:#fff5f5;color:#b3262d;transform:translateY(-2px)"><span style="flex:1;text-align:center">学部・学科を探す</span><span>›</span></a>
+      </div>
+    </div>
+    <div style="flex:1 1 260px;max-width:360px;position:relative;padding:0 18px 18px 0">
+      <div style="position:absolute;right:0;bottom:0;top:30px;left:30px;background:#f6f3f2;border-radius:14px"></div>
+      <div style="position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden"><image-slot src="_filled/16-building-clock.jpg" id="intro-b" shape="rect" placeholder="ゼミで議論する学生"></image-slot></div>
+    </div>
+  </div>
+</section>
+
+<div aria-hidden="true" style="position:relative;height:150px;margin:0 0 -40px;z-index:3;pointer-events:none">
+  <div style="position:absolute;left:-5%;right:-5%;top:44px;transform:rotate(2.2deg);background:#fff;border-top:1px solid #d8343b;border-bottom:1px solid #d8343b;overflow:hidden;padding:10px 0">
+    <div data-marquee="60" data-marquee-reverse="1" style="display:flex;align-items:center;width:max-content"><span style="font-family:Jost;font-weight:500;font-size:clamp(18px,1.8vw,26px);letter-spacing:.12em;color:#d8343b;white-space:nowrap;padding:0 28px">OPEN CAMPUS 20XX</span><span style="color:#d8343b;font-size:14px">✦</span><span style="font-family:Jost;font-weight:500;font-size:clamp(18px,1.8vw,26px);letter-spacing:.12em;color:#d8343b;white-space:nowrap;padding:0 28px">未来への扉を、自分の手で開く。</span><span style="color:#d8343b;font-size:14px">✦</span><span style="font-family:Jost;font-weight:500;font-size:clamp(18px,1.8vw,26px);letter-spacing:.12em;color:#d8343b;white-space:nowrap;padding:0 28px">ADMISSIONS GUIDE</span><span style="color:#d8343b;font-size:14px">✦</span><span style="font-family:Jost;font-weight:500;font-size:clamp(18px,1.8vw,26px);letter-spacing:.12em;color:#d8343b;white-space:nowrap;padding:0 28px">未来創成大学</span><span style="color:#d8343b;font-size:14px">✦</span><span style="font-family:Jost;font-weight:500;font-size:clamp(18px,1.8vw,26px);letter-spacing:.12em;color:#d8343b;white-space:nowrap;padding:0 28px">サクラサク、その日まで。</span><span style="color:#d8343b;font-size:14px">✦</span><span style="font-family:Jost;font-weight:500;font-size:clamp(18px,1.8vw,26px);letter-spacing:.12em;color:#d8343b;white-space:nowrap;padding:0 28px">OPEN CAMPUS 20XX</span><span style="color:#d8343b;font-size:14px">✦</span><span style="font-family:Jost;font-weight:500;font-size:clamp(18px,1.8vw,26px);letter-spacing:.12em;color:#d8343b;white-space:nowrap;padding:0 28px">未来への扉を、自分の手で開く。</span><span style="color:#d8343b;font-size:14px">✦</span><span style="font-family:Jost;font-weight:500;font-size:clamp(18px,1.8vw,26px);letter-spacing:.12em;color:#d8343b;white-space:nowrap;padding:0 28px">ADMISSIONS GUIDE</span><span style="color:#d8343b;font-size:14px">✦</span><span style="font-family:Jost;font-weight:500;font-size:clamp(18px,1.8vw,26px);letter-spacing:.12em;color:#d8343b;white-space:nowrap;padding:0 28px">未来創成大学</span><span style="color:#d8343b;font-size:14px">✦</span><span style="font-family:Jost;font-weight:500;font-size:clamp(18px,1.8vw,26px);letter-spacing:.12em;color:#d8343b;white-space:nowrap;padding:0 28px">サクラサク、その日まで。</span><span style="color:#d8343b;font-size:14px">✦</span></div>
+  </div>
+  <div style="position:absolute;left:-5%;right:-5%;top:52px;transform:rotate(-2.4deg);background:#d8343b;overflow:hidden;padding:14px 0;box-shadow:0 12px 30px rgba(216,52,59,.28)">
+    <div data-marquee="45" style="display:flex;align-items:center;width:max-content"><span style="font-family:Noto Sans JP;font-weight:700;font-size:clamp(15px,1.4vw,20px);letter-spacing:.12em;color:#fff;white-space:nowrap;padding:0 28px">OPEN CAMPUS 20XX</span><span style="color:#fff;font-size:14px">✦</span><span style="font-family:Noto Sans JP;font-weight:700;font-size:clamp(15px,1.4vw,20px);letter-spacing:.12em;color:#fff;white-space:nowrap;padding:0 28px">未来への扉を、自分の手で開く。</span><span style="color:#fff;font-size:14px">✦</span><span style="font-family:Noto Sans JP;font-weight:700;font-size:clamp(15px,1.4vw,20px);letter-spacing:.12em;color:#fff;white-space:nowrap;padding:0 28px">ADMISSIONS GUIDE</span><span style="color:#fff;font-size:14px">✦</span><span style="font-family:Noto Sans JP;font-weight:700;font-size:clamp(15px,1.4vw,20px);letter-spacing:.12em;color:#fff;white-space:nowrap;padding:0 28px">未来創成大学</span><span style="color:#fff;font-size:14px">✦</span><span style="font-family:Noto Sans JP;font-weight:700;font-size:clamp(15px,1.4vw,20px);letter-spacing:.12em;color:#fff;white-space:nowrap;padding:0 28px">サクラサク、その日まで。</span><span style="color:#fff;font-size:14px">✦</span><span style="font-family:Noto Sans JP;font-weight:700;font-size:clamp(15px,1.4vw,20px);letter-spacing:.12em;color:#fff;white-space:nowrap;padding:0 28px">OPEN CAMPUS 20XX</span><span style="color:#fff;font-size:14px">✦</span><span style="font-family:Noto Sans JP;font-weight:700;font-size:clamp(15px,1.4vw,20px);letter-spacing:.12em;color:#fff;white-space:nowrap;padding:0 28px">未来への扉を、自分の手で開く。</span><span style="color:#fff;font-size:14px">✦</span><span style="font-family:Noto Sans JP;font-weight:700;font-size:clamp(15px,1.4vw,20px);letter-spacing:.12em;color:#fff;white-space:nowrap;padding:0 28px">ADMISSIONS GUIDE</span><span style="color:#fff;font-size:14px">✦</span><span style="font-family:Noto Sans JP;font-weight:700;font-size:clamp(15px,1.4vw,20px);letter-spacing:.12em;color:#fff;white-space:nowrap;padding:0 28px">未来創成大学</span><span style="color:#fff;font-size:14px">✦</span><span style="font-family:Noto Sans JP;font-weight:700;font-size:clamp(15px,1.4vw,20px);letter-spacing:.12em;color:#fff;white-space:nowrap;padding:0 28px">サクラサク、その日まで。</span><span style="color:#fff;font-size:14px">✦</span></div>
+  </div>
+</div>
+<!-- SECTION 2: PROGRAMS -->
+<section id="programs" data-screen-label="02 Programs" style="position:relative;border-radius:28px 28px 0 0;overflow:hidden;padding:72px 0 88px;scroll-margin-top:110px">
+  <div data-parallax="0.25" style="position:absolute;inset:0 0 auto 0;height:440px"><image-slot src="_filled/17-building-trees.jpg" id="programs-bg" shape="rect" placeholder="キャンパス全景（背景用・横長）"></image-slot></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(70,190,214,.72) 0px,rgba(150,215,228,.6) 260px,#ebe7e5 440px)"></div>
+  <span aria-hidden="true" class="big-no" style="position:absolute;left:3%;top:24px;font-family:Jost;font-weight:600;font-size:clamp(120px,16vw,240px);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.75);pointer-events:none">02</span>
+  <div style="position:relative;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 16px">
+    <span style="background:#d8343b;color:#fff;font-size:clamp(13px,1.2vw,16px);font-weight:700;padding:3px 18px;letter-spacing:.08em">あなたに合う学びが見つかる</span>
+    <h2 data-reveal="wipe" style="margin:0;background:#d8343b;color:#fff;font-size:clamp(30px,3.6vw,46px);font-weight:900;padding:4px 22px;letter-spacing:.14em">学部を知る</h2>
+    <span data-reveal="fade" class="sec-en" style="font-family:Jost;font-weight:500;font-size:clamp(34px,4.4vw,58px);line-height:1;color:#fff;letter-spacing:.04em;margin-top:-30px;transform:translateX(min(36%,200px))">OUR FACULTY</span>
+  </div>
+
+  <div style="position:relative;margin-top:36px">
+    <div ref="{{ programsRef }}" class="prog-track" style="display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 60px 16px;scroll-padding:0 60px;scrollbar-width:none">
+      <sc-for list="{{ programs }}" as="p" hint-placeholder-count="6">
+        <article style="flex:0 0 clamp(250px,22vw,300px);scroll-snap-align:start;background:rgba(255,255,255,.94);border-radius:12px;border-bottom:3px solid #d8343b;padding:18px 18px 22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 4px 18px rgba(0,0,0,.05);transition:transform .25s" style-hover="transform:translateY(-6px);box-shadow:0 18px 36px rgba(216,52,59,.16)">
+          <div style="position:relative;aspect-ratio:3/2;overflow:hidden;border-radius:4px"><image-slot id="{{ p.img }}" shape="rect" placeholder="{{ p.ph }}"></image-slot><span style="position:absolute;left:0;top:0;background:#d8343b;color:#fff;font-family:Jost;font-weight:600;font-size:13px;padding:5px 11px;letter-spacing:.08em;pointer-events:none;border-radius:0 0 6px 0">{{ p.no }}</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+            <h3 style="margin:0;color:#d8343b;font-size:16px;font-weight:700;letter-spacing:.08em;text-align:center">{{ p.name }}</h3>
+            <span style="font-family:Jost;font-size:10.5px;letter-spacing:.18em;color:#aaa">{{ p.en }}</span>
+          </div>
+          <p style="margin:0;font-size:12px;line-height:2;letter-spacing:.05em;font-weight:500;flex:1">{{ p.desc }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="3">
+              <span style="font-size:11px;background:#ebe7e5;border-radius:999px;padding:2px 10px;color:#444">{{ t }}</span>
+            </sc-for>
+          </div>
+          <a href="Faculties.dc.html" style="font-size:12px;font-weight:700;color:#d8343b;display:flex;justify-content:space-between;border-top:1px solid #eee;padding-top:12px" style-hover="color:#b3262d">学科・カリキュラムを見る<span>›</span></a>
+        </article>
+      </sc-for>
+    </div>
+    <button onClick="{{ prevProg }}" aria-label="前へ" class="prog-arrow" style="position:absolute;left:6px;top:calc(50% - 22px);width:44px;height:44px;border-radius:50%;border:1px solid #d8343b;background:rgba(255,255,255,.75);color:#d8343b;font-size:18px;cursor:pointer;transition:all .2s" style-hover="background:#d8343b;color:#fff">‹</button>
+    <button onClick="{{ nextProg }}" aria-label="次へ" class="prog-arrow" style="position:absolute;right:6px;top:calc(50% - 22px);width:44px;height:44px;border-radius:50%;border:1px solid #d8343b;background:rgba(255,255,255,.75);color:#d8343b;font-size:18px;cursor:pointer;transition:all .2s" style-hover="background:#d8343b;color:#fff">›</button>
+  </div>
+
+  <div style="position:relative;max-width:1100px;margin:36px auto 0;padding:0 clamp(16px,3vw,32px);display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
+    <sc-for list="{{ features }}" as="f" hint-placeholder-count="3">
+      <div style="flex:1 1 260px;display:flex;gap:14px;align-items:flex-start;background:#f6f3f2;border-radius:12px;padding:18px 20px">
+        <span style="font-family:Jost;font-weight:600;color:#d8343b;font-size:22px;line-height:1">{{ f.no }}</span>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <strong style="font-size:14px;letter-spacing:.06em">{{ f.title }}</strong>
+          <span style="font-size:12px;line-height:1.9;color:#444">{{ f.desc }}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="position:relative;display:flex;justify-content:center;margin-top:40px;padding:0 16px">
+    <img src="images/illust/students-five.png" alt="" class="illust" style="width:100%;max-width:440px">
+  </div>
+  <div style="position:relative;display:flex;justify-content:center;margin-top:20px">
+    <a href="Faculties.dc.html" style="display:inline-flex;align-items:center;gap:24px;min-width:260px;background:#d8343b;color:#fff;border-radius:999px;padding:14px 26px;font-size:13px;font-weight:700;letter-spacing:.06em;transition:all .2s" style-hover="background:#b3262d;color:#fff;transform:translateY(-2px)"><span style="flex:1;text-align:center">学部・学科一覧はこちら</span><span>›</span></a>
+  </div>
+</section>
+
+<!-- SECTION 3: PREPARATION -->
+<section id="prep" data-screen-label="03 Preparation" style="scroll-margin-top:110px;padding-bottom:clamp(56px,6vw,96px)">
+  <div style="background:#fff;border-radius:28px;padding:clamp(40px,5vw,72px) clamp(20px,5vw,80px);display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,56px);align-items:flex-start;position:relative">
+    <span aria-hidden="true" class="big-no" style="position:absolute;left:3%;top:-0.42em;font-family:Jost;font-weight:600;font-size:clamp(120px,16vw,240px);line-height:1;color:transparent;-webkit-text-stroke:1.5px #f0c4c7;pointer-events:none">03</span>
+    <div class="m-hide" style="position:absolute;left:clamp(20px,5vw,80px);bottom:28px;width:160px;height:84px;background-image:radial-gradient(#d8343b 1.3px,transparent 1.7px);background-size:14px 14px;opacity:.35;pointer-events:none"></div>
+    <div style="flex:1 1 280px;max-width:340px;display:flex;flex-direction:column;gap:16px;padding-top:24px">
+      <span style="font-size:12px;font-weight:700;letter-spacing:.08em;display:flex;align-items:center;gap:8px"><span style="width:5px;height:5px;background:#d8343b;border-radius:50%"></span>合格までの道のりを逆算する</span>
+      <h2 style="margin:0;color:#d8343b;font-size:clamp(24px,2.4vw,32px);font-weight:700;line-height:1.5;letter-spacing:.06em">受験対策と<br>学習計画</h2>
+      <span style="width:18px;height:2px;background:#d8343b"></span>
+      <p style="margin:0;font-size:12.5px;line-height:2.1;letter-spacing:.05em;font-weight:500;text-wrap:pretty">合格のカギは、早めに全体像をつかみ、時期ごとにやるべきことを明確にすることです。学年・時期を選ぶと、その時期に取り組みたい学習のポイントを確認できます。</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px">
+        <sc-for list="{{ resources }}" as="r" hint-placeholder-count="3">
+          <a href="ExamPrep.dc.html" style="display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;color:#222;padding:12px 0;border-bottom:1px solid #eee;transition:color .2s" style-hover="color:#d8343b">{{ r }}<span style="color:#d8343b">›</span></a>
+        </sc-for>
+      </div>
+      <img src="images/illust/study-desk.png" alt="" class="illust" style="width:100%;max-width:280px;margin-top:8px">
+    </div>
+    <div style="flex:2 1 480px;min-width:0;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div style="display:flex;gap:6px;flex-wrap:wrap" role="tablist">
+          <sc-for list="{{ prepTabs }}" as="t" hint-placeholder-count="4">
+            <button onClick="{{ t.select }}" role="tab" style="border:1px solid #d8343b;border-radius:999px;padding:8px 16px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;background:{{ t.bg }};color:{{ t.fg }}">{{ t.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:4px">
+          <sc-for list="{{ prepTabs }}" as="t" hint-placeholder-count="4">
+            <span style="height:3px;border-radius:2px;transition:all .3s;width:{{ t.barW }};background:{{ t.bar }}"></span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px">
+        <div style="flex:2 1 320px;position:relative;aspect-ratio:16/11;border-radius:12px;overflow:hidden"><image-slot src="_filled/18-14.jpg" id="prep-main" shape="rect" placeholder="自習室で勉強する高校生"></image-slot></div>
+        <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:12px">
+          <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden"><image-slot src="_filled/19-study-desk.png" id="prep-sub" shape="rect" placeholder="学習計画ノート・参考書"></image-slot></div>
+          <div style="background:#f6f3f2;border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:Jost;font-size:12px;letter-spacing:.12em;color:#d8343b;font-weight:600">{{ prep.period }}</span>
+            <strong style="font-size:16px;color:#d8343b;letter-spacing:.06em">{{ prep.title }}</strong>
+            <ul style="margin:0;padding-left:1.1em;font-size:12px;line-height:1.95;color:#333">
+              <sc-for list="{{ prep.points }}" as="pt" hint-placeholder-count="3"><li>{{ pt }}</li></sc-for>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <span style="writing-mode:vertical-rl;font-family:Jost;font-size:64px;font-weight:500;letter-spacing:.1em;color:#fff;-webkit-text-stroke:1px #c8c2bf;line-height:1;align-self:flex-end;flex:0 0 auto">PREPARE</span>
+    </sc-if>
+  </div>
+
+  <div style="max-width:1120px;margin:clamp(48px,6vw,88px) auto 0;padding:0 clamp(16px,3vw,32px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:start">
+    <div style="grid-row:1;grid-column:{{ methodImgCol }};position:relative;aspect-ratio:16/8.5;border-radius:12px;overflow:hidden"><image-slot src="_filled/20-res-consultation.jpg" id="method-bg" shape="rect" placeholder="入試相談会で話す教職員と受験生"></image-slot></div>
+    <div style="grid-row:{{ methodCardRow }};grid-column:{{ methodCardCol }};margin-top:{{ methodCardTop }};position:relative;z-index:2;background:rgba(246,243,242,.94);backdrop-filter:blur(6px);border-radius:12px;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:14px">
+      <span style="font-size:12px;font-weight:700;letter-spacing:.08em;display:flex;align-items:center;gap:8px"><span style="width:5px;height:5px;background:#d8343b;border-radius:50%"></span>自分に合った受け方を選ぶ</span>
+      <h2 style="margin:0;color:#d8343b;font-size:clamp(26px,2.8vw,36px);font-weight:700;letter-spacing:.06em">3つの入試方式</h2>
+      <span style="width:18px;height:2px;background:#d8343b"></span>
+      <p style="margin:0;font-size:12.5px;line-height:2;letter-spacing:.05em;font-weight:500">本学では、学力試験を中心とする選抜に加え、高校での学びや意欲を多面的に評価する選抜を実施しています。円をクリックすると各方式の概要が表示されます。</p>
+      <div class="method-btns" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px">
+        <sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+          <button onClick="{{ m.select }}" style="width:clamp(92px,9vw,112px);height:clamp(92px,9vw,112px);border-radius:50%;border:2px solid #fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:inherit;transition:all .25s;background:{{ m.bg }};color:{{ m.fg }};box-shadow:{{ m.shadow }}">
+            <span style="font-size:26px;font-weight:900;line-height:1">{{ m.char }}</span>
+            <span style="font-size:10.5px;font-weight:700;letter-spacing:.02em">{{ m.name }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="background:#fff;border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+        <strong style="color:#d8343b;font-size:14px;letter-spacing:.06em">{{ method.name }}</strong>
+        <span style="font-size:12px;line-height:1.9;color:#333">{{ method.desc }}</span>
+        <span style="font-size:11px;color:#777">主な評価：{{ method.eval }}</span>
+      </div>
+      <div style="display:flex;justify-content:center">
+        <a href="Admissions.dc.html" style="display:inline-flex;align-items:center;gap:24px;min-width:240px;background:#d8343b;color:#fff;border-radius:999px;padding:13px 26px;font-size:13px;font-weight:700;letter-spacing:.06em;transition:all .2s" style-hover="background:#b3262d;color:#fff;transform:translateY(-2px)"><span style="flex:1;text-align:center">入試方式の詳細はこちら</span><span>›</span></a>
+      </div>
+    </div>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="grid-row:1;grid-column:9 / 13;margin-top:calc(100% * 0 + 340px);display:flex;gap:18px;align-items:flex-end;justify-content:flex-end">
+        <div style="position:relative;width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden"><image-slot src="_filled/21-students-watercolor.png" id="method-sub" shape="rect" placeholder="面接練習の様子"></image-slot></div>
+        <span style="writing-mode:vertical-rl;font-family:Jost;font-size:56px;font-weight:500;letter-spacing:.1em;color:#fff;-webkit-text-stroke:1px #bdb6b3;line-height:1">METHOD</span>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<!-- SECTION 4: ADMISSIONS -->
+<section id="admissions" data-screen-label="04 Admissions" style="position:relative;border-radius:28px 28px 0 0;overflow:hidden;padding:72px 0 88px;scroll-margin-top:110px">
+  <div data-parallax="0.25" style="position:absolute;inset:0 0 auto 0;height:460px"><image-slot src="_filled/22-cooking.jpg" id="admissions-bg" shape="rect" placeholder="在学生の集合写真（背景用・横長）"></image-slot></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(246,170,178,.75) 0px,rgba(250,215,218,.7) 280px,#ebe7e5 460px)"></div>
+  <span aria-hidden="true" class="big-no" style="position:absolute;left:3%;top:24px;font-family:Jost;font-weight:600;font-size:clamp(120px,16vw,240px);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.75);pointer-events:none">04</span>
+  <div style="position:relative;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 16px">
+    <span style="background:#d8343b;color:#fff;font-size:clamp(13px,1.2vw,16px);font-weight:700;padding:3px 18px;letter-spacing:.08em">出願から入学までをサポート</span>
+    <h2 data-reveal="wipe" style="margin:0;background:#d8343b;color:#fff;font-size:clamp(30px,3.6vw,46px);font-weight:900;padding:4px 22px;letter-spacing:.14em">入試を知る</h2>
+    <span data-reveal="fade" class="sec-en" style="font-family:Jost;font-weight:500;font-size:clamp(34px,4.4vw,58px);line-height:1;color:#fff;letter-spacing:.04em;margin-top:-30px;transform:translateX(min(36%,200px))">ADMISSIONS</span>
+  </div>
+  <p style="position:relative;max-width:640px;margin:28px auto 0;padding:0 20px;font-size:13px;line-height:2.1;letter-spacing:.05em;font-weight:500;text-align:center;text-wrap:pretty">出願スケジュール、必要書類、学費や奨学金など、受験生と保護者の方に知っておいていただきたい情報をまとめました。掲載内容はすべてサンプルです。正式な情報は必ず最新の募集要項でご確認ください。</p>
+
+  <div class="badge-stack" style="position:relative;max-width:1160px;margin:44px auto 0;padding:0 clamp(16px,3vw,32px);display:flex;flex-wrap:wrap;gap:clamp(18px,2.4vw,32px)">
+    <div style="flex:1 1 300px;background:#fff;border-radius:14px;padding:34px 22px 24px;position:relative;display:flex;flex-direction:column;gap:14px">
+      <span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#d8343b;color:#fff;font-size:14px;font-weight:700;padding:4px 22px;letter-spacing:.1em;white-space:nowrap">出願スケジュール</span>
+      <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="3">
+        <div style="border-bottom:1px dashed #ddd;padding-bottom:12px;display:flex;flex-direction:column;gap:6px">
+          <strong style="font-size:13px;color:#d8343b;letter-spacing:.06em">{{ s.name }}</strong>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:12px;color:#333">
+            <span style="color:#777">出願期間</span><span>{{ s.apply }}</span>
+            <span style="color:#777">試験日</span><span>{{ s.exam }}</span>
+            <span style="color:#777">合格発表</span><span>{{ s.result }}</span>
+          </div>
+        </div>
+      </sc-for>
+      <span style="font-size:11px;color:#888">※日程はサンプルです。募集要項で必ずご確認ください。</span>
+    </div>
+    <div style="flex:1 1 300px;background:#fff;border-radius:14px;padding:34px 22px 24px;position:relative;display:flex;flex-direction:column;gap:12px">
+      <span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#d8343b;color:#fff;font-size:14px;font-weight:700;padding:4px 22px;letter-spacing:.1em;white-space:nowrap">出願の流れ・必要書類</span>
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <span style="flex:0 0 34px;height:34px;border-radius:50%;background:#ebe7e5;color:#d8343b;font-family:Jost;font-weight:600;display:flex;align-items:center;justify-content:center;font-size:14px">{{ st.no }}</span>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <strong style="font-size:13px;letter-spacing:.04em">{{ st.title }}</strong>
+            <span style="font-size:12px;line-height:1.8;color:#555">{{ st.desc }}</span>
+          </div>
+        </div>
+      </sc-for>
+      <a href="Admissions.dc.html" style="margin-top:auto;font-size:12px;font-weight:700;display:flex;justify-content:space-between;border:1px solid #d8343b;border-radius:999px;padding:10px 20px" style-hover="background:#fff5f5">募集要項（PDF）を見る<span>›</span></a>
+    </div>
+    <div style="flex:1 1 300px;background:#fff;border-radius:14px;padding:34px 22px 24px;position:relative;display:flex;flex-direction:column;gap:14px">
+      <span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#d8343b;color:#fff;font-size:14px;font-weight:700;padding:4px 22px;letter-spacing:.1em;white-space:nowrap">学費・奨学金</span>
+      <div style="background:#f6f3f2;border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+        <span style="font-size:12px;color:#555">初年度納付金（サンプル）</span>
+        <strong style="font-family:Jost;font-size:24px;color:#d8343b;letter-spacing:.04em">¥X,XXX,XXX</strong>
+        <span style="font-size:11px;color:#888">入学金・授業料・施設設備費を含む／学部により異なります</span>
+      </div>
+      <sc-for list="{{ scholarships }}" as="sc" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:2px;border-bottom:1px dashed #ddd;padding-bottom:10px">
+          <strong style="font-size:13px;color:#d8343b">{{ sc.name }}</strong>
+          <span style="font-size:12px;line-height:1.8;color:#555">{{ sc.desc }}</span>
+        </div>
+      </sc-for>
+      <a href="TuitionSupport.dc.html" style="margin-top:auto;font-size:12px;font-weight:700;display:flex;justify-content:space-between;border:1px solid #d8343b;border-radius:999px;padding:10px 20px" style-hover="background:#fff5f5">奨学金制度の詳細<span>›</span></a>
+    </div>
+  </div>
+
+  <div style="position:relative;max-width:1160px;margin:clamp(40px,5vw,64px) auto 0;padding:0 clamp(16px,3vw,32px);display:flex;flex-wrap:wrap;gap:clamp(18px,2.4vw,32px);align-items:flex-start">
+    <div style="flex:2 1 460px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:8px">
+        <h3 style="margin:0;font-size:20px;font-weight:700;letter-spacing:.1em;display:flex;align-items:baseline;gap:14px">よくある質問<span style="font-family:Jost;font-size:13px;color:#d8343b;letter-spacing:.14em">FAQ</span></h3>
+        <img src="images/illust/think-pair.png" alt="" class="illust" style="width:150px">
+      </div>
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+        <div style="background:#fff;border-radius:12px;overflow:hidden">
+          <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;display:flex;gap:14px;align-items:center;padding:16px 20px;border:0;background:transparent;cursor:pointer;font-family:inherit;text-align:left">
+            <span style="font-family:Jost;font-weight:600;color:#d8343b;font-size:18px">Q</span>
+            <span style="flex:1;font-size:13.5px;font-weight:700;letter-spacing:.04em;color:#222">{{ q.q }}</span>
+            <span style="width:26px;height:26px;border-radius:50%;background:#d8343b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 auto">{{ q.sign }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:14px;padding:0 20px 18px 20px;border-top:1px dashed #eee;padding-top:14px">
+              <span style="font-family:Jost;font-weight:600;color:#888;font-size:18px">A</span>
+              <span style="flex:1;font-size:12.5px;line-height:1.95;color:#444">{{ q.a }}</span>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:18px">
+      <sc-for list="{{ supportCards }}" as="c" hint-placeholder-count="2">
+        <div style="background:#d8343b;border-radius:6px;color:#fff;padding:16px 16px 20px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:11px;font-weight:700">
+            <span>{{ c.tag }}</span><span style="font-family:Jost;font-size:16px;letter-spacing:.06em">{{ c.en }}</span>
+          </div>
+          <div style="position:relative;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:#fff"><image-slot id="{{ c.img }}" shape="rect" placeholder="{{ c.ph }}"></image-slot></div>
+          <strong style="font-size:17px;letter-spacing:.08em">{{ c.title }}</strong>
+          <span style="font-size:12px;line-height:1.9">{{ c.desc }}</span>
+          <a href="TuitionSupport.dc.html" style="align-self:flex-start;background:#fff;color:#d8343b;border-radius:999px;padding:8px 18px;font-size:12px;font-weight:700;display:flex;gap:16px" style-hover="color:#b3262d;transform:translateY(-1px)">{{ c.cta }}<span>›</span></a>
+          <span style="position:absolute;right:-14px;bottom:-30px;font-family:Jost;font-weight:600;font-size:120px;line-height:1;color:rgba(255,255,255,.12);pointer-events:none">M</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: CAMPUS LIFE / CONTACT -->
+<section id="campus" data-screen-label="05 Campus & Contact" style="position:relative;border-radius:28px 28px 0 0;overflow:hidden;padding:72px 0 0;scroll-margin-top:110px">
+  <div data-parallax="0.25" style="position:absolute;inset:0 0 auto 0;height:420px"><image-slot src="_filled/23-jump.png" id="campus-bg" shape="rect" placeholder="学園祭・サークル活動（背景用・横長）"></image-slot></div>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(214,150,120,.7) 0px,rgba(236,205,190,.65) 260px,#ebe7e5 420px)"></div>
+  <span aria-hidden="true" class="big-no" style="position:absolute;left:3%;top:24px;font-family:Jost;font-weight:600;font-size:clamp(120px,16vw,240px);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.75);pointer-events:none">05</span>
+  <div style="position:relative;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 16px">
+    <span style="background:#d8343b;color:#fff;font-size:clamp(13px,1.2vw,16px);font-weight:700;padding:3px 18px;letter-spacing:.08em">まずはキャンパスに来てみよう</span>
+    <h2 data-reveal="wipe" style="margin:0;background:#d8343b;color:#fff;font-size:clamp(30px,3.6vw,46px);font-weight:900;padding:4px 22px;letter-spacing:.14em">キャンパスを知る</h2>
+    <span data-reveal="fade" class="sec-en" style="font-family:Jost;font-weight:500;font-size:clamp(34px,4.4vw,58px);line-height:1;color:#fff;letter-spacing:.04em;margin-top:-30px;transform:translateX(min(36%,200px))">CAMPUS LIFE</span>
+  </div>
+
+  <div style="position:relative;max-width:1120px;margin:48px auto 0;padding:0 clamp(16px,3vw,32px);display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,48px)">
+    <div style="flex:1 1 400px;display:flex;flex-direction:column;gap:14px">
+      <h3 style="margin:0;text-align:center;font-size:18px;font-weight:700;letter-spacing:.12em">オープンキャンパス・説明会</h3>
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+        <div style="background:#fff;border-radius:10px;padding:14px;display:flex;gap:14px;align-items:stretch">
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;min-width:0">
+            <span style="align-self:flex-start;background:#d8343b;color:#fff;font-size:10.5px;font-weight:700;padding:1px 10px">{{ e.tag }}</span>
+            <strong style="font-size:13.5px;color:#d8343b;letter-spacing:.04em">{{ e.title }}</strong>
+            <span style="font-size:11.5px;line-height:1.8;color:#555">{{ e.desc }}</span>
+            <span style="font-size:11px;color:#888;font-family:Jost,sans-serif">{{ e.date }}</span>
+          </div>
+          <div style="flex:0 0 clamp(110px,30%,170px);position:relative;border-radius:6px;overflow:hidden;min-height:110px"><image-slot id="{{ e.img }}" shape="rect" placeholder="{{ e.ph }}"></image-slot></div>
+        </div>
+      </sc-for>
+      <a href="CampusLife.dc.html#oc" style="align-self:center;display:inline-flex;align-items:center;gap:24px;min-width:240px;background:#d8343b;color:#fff;border-radius:999px;padding:13px 26px;font-size:13px;font-weight:700;letter-spacing:.06em;margin-top:8px;transition:all .2s" style-hover="background:#b3262d;color:#fff;transform:translateY(-2px)"><span style="flex:1;text-align:center">イベント一覧を見る</span><span>›</span></a>
+    </div>
+    <div style="flex:1 1 400px;display:flex;flex-direction:column;gap:14px">
+      <h3 style="margin:0;text-align:center;font-size:18px;font-weight:700;letter-spacing:.12em">学生生活</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+        <sc-for list="{{ life }}" as="l" hint-placeholder-count="9">
+          <div style="position:relative;aspect-ratio:1/1;border-radius:4px;overflow:hidden">
+            <image-slot id="{{ l.id }}" shape="rect" placeholder="{{ l.ph }}"></image-slot>
+            <span style="position:absolute;left:0;bottom:0;background:rgba(255,255,255,.92);font-size:10.5px;font-weight:700;padding:2px 8px;pointer-events:none;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.ph }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <a href="CampusLife.dc.html" style="align-self:center;display:inline-flex;align-items:center;gap:24px;min-width:240px;background:#d8343b;color:#fff;border-radius:999px;padding:13px 26px;font-size:13px;font-weight:700;letter-spacing:.06em;margin-top:8px;transition:all .2s" style-hover="background:#b3262d;color:#fff;transform:translateY(-2px)"><span style="flex:1;text-align:center">キャンパスライフを見る</span><span>›</span></a>
+    </div>
+  </div>
+
+  <div id="contact" data-sakura="52" style="position:relative;max-width:960px;margin:clamp(56px,7vw,96px) auto 0;padding:0 clamp(16px,3vw,32px) clamp(56px,6vw,88px);scroll-margin-top:110px">
+    <div style="position:absolute;right:-30px;top:-50px;width:150px;height:150px;border:1.5px solid #d8343b;border-radius:50%;pointer-events:none"></div>
+    <div style="position:absolute;left:-10px;bottom:30px;width:180px;height:100px;background-image:radial-gradient(#d8343b 1.3px,transparent 1.7px);background-size:14px 14px;opacity:.4;pointer-events:none"></div>
+    <div style="position:relative;background:#d8343b;color:#fff;font-size:clamp(12px,1.2vw,14px);font-weight:700;letter-spacing:.06em;padding:8px 20px;border-radius:10px 10px 0 0">受験生・保護者の方のご相談は、お電話・メールフォームからお気軽にどうぞ</div>
+    <div style="position:relative;background:#fff;border-radius:0 0 10px 10px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;padding:24px clamp(18px,3vw,40px) 0;box-shadow:0 20px 50px rgba(0,0,0,.06)">
+      <div style="flex:2 1 380px;display:flex;flex-direction:column;gap:14px;padding-bottom:28px">
+        <p style="margin:0;font-size:clamp(17px,1.8vw,22px);font-weight:700;letter-spacing:.08em;line-height:1.6">あなたの「学びたい」を、<span style="color:#d8343b">ここから</span>始めよう。</p>
+        <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+          <span style="font-family:Jost;font-weight:500;font-size:clamp(30px,3.6vw,44px);letter-spacing:.02em">☎ 0X-XXXX-XXXX</span>
+          <span style="font-size:13px;font-weight:700">【入試課】平日 9:00〜17:00（サンプル）</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <sc-for list="{{ ctas }}" as="c" hint-placeholder-count="3">
+            <a href="{{ c.href }}" onClick="{{ c.onClick }}" style="flex:1 1 180px;display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:12px 18px;font-size:12.5px;font-weight:700;letter-spacing:.04em;transition:all .2s;background:{{ c.bg }};color:{{ c.fg }};border:1.5px solid #d8343b" style-hover="transform:translateY(-2px);opacity:.92">{{ c.label }}<span>›</span></a>
+          </sc-for>
+        </div>
+        <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+          <span style="font-size:12px;color:#d8343b;font-weight:700">{{ toast }}</span>
+        </sc-if>
+      </div>
+      <div class="staff-img" style="flex:1 1 200px;max-width:240px;position:relative;aspect-ratio:3/4;border-radius:120px 120px 0 0;overflow:hidden;margin:0 auto"><image-slot src="_filled/24-31-trio-portrait.jpg" id="contact-staff" shape="rect" placeholder="入試課スタッフ（上半身）"></image-slot></div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" show-cta="{{ false }}" hint-size="100%,260px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showMarquee&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;marqueeText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Open the Door to Your Future.  &quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;marqueeSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:40,&quot;min&quot;:10,&quot;max&quot;:90,&quot;step&quot;:5,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1400, menuOpen: false, prepIdx: 0, methodIdx: 0, faqOpen: 0, toast: '' };
+  programsRef = React.createRef();
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  scrollProg(dir) {
+    const el = this.programsRef.current;
+    if (el) el.scrollBy({ left: dir * 320, behavior: 'smooth' });
+  }
+  renderVals() {
+    const s = this.state;
+    const isMobile = s.w < 900;
+    const speed = this.props.marqueeSpeed ?? 40;
+    const text = this.props.marqueeText ?? 'Open the Door to Your Future.  ';
+    const marquee = React.createElement('div', { style: { display: 'flex', width: 'max-content', animation: `marquee ${speed}s linear infinite` } },
+      [0, 1, 2, 3].map(i => React.createElement('span', { key: i, style: { fontFamily: 'Jost, sans-serif', fontWeight: 500, fontSize: 'clamp(48px,6.4vw,110px)', lineHeight: 1.1, color: '#fff', WebkitTextStroke: '1px #bfb7b4', whiteSpace: 'pre', letterSpacing: '.01em', paddingRight: '0.4em' } }, text)));
+
+    const prepData = [
+      { label: '高1・高2', period: 'STAGE 01', title: '基礎を固める時期', points: ['授業の復習を習慣化し、苦手科目を早めに把握する', '英単語・古文単語など積み上げ型の学習を毎日少しずつ', 'オープンキャンパスで志望分野のイメージを持つ'] },
+      { label: '高3 春〜夏', period: 'STAGE 02', title: '志望校を定め、総復習', points: ['志望校の入試方式と出題科目を確認する', '夏休みは全範囲の総復習に充てる', '模試の結果から科目ごとの学習時間を見直す'] },
+      { label: '高3 秋〜冬', period: 'STAGE 03', title: '過去問で実戦力をつける', points: ['過去問は時間を計って解き、出題傾向をつかむ', '推薦・総合型選抜の書類や面接の準備を進める', '週単位で計画を立て、進み具合を記録する'] },
+      { label: '直前期', period: 'STAGE 04', title: '体調を整え、総仕上げ', points: ['新しい教材より、解いた問題の見直しを優先', '試験開始時刻に合わせて生活リズムを整える', '受験票・持ち物・会場までの経路を事前に確認'] },
+    ];
+    const prepTabs = prepData.map((p, i) => ({ label: p.label, bg: i === s.prepIdx ? '#d8343b' : '#fff', fg: i === s.prepIdx ? '#fff' : '#d8343b', bar: i === s.prepIdx ? '#d8343b' : '#f0b9bc', barW: i === s.prepIdx ? '40px' : '14px', select: () => this.setState({ prepIdx: i }) }));
+
+    const methodData = [
+      { char: '般', name: '一般選抜', desc: '各学部が指定する教科・科目の学力試験によって選抜します。大学独自の試験のほか、共通テストの成績を利用する方式もあります（サンプル）。', eval: '学力試験の得点' },
+      { char: '推', name: '学校推薦型', desc: '出身高校の校長の推薦に基づき、調査書・推薦書・面接などで選抜します。推薦基準は募集要項でご確認ください（サンプル）。', eval: '調査書・推薦書・面接・小論文' },
+      { char: '総', name: '総合型選抜', desc: '志望理由書やプレゼンテーション、面談などを通じて、学びへの意欲や適性を多面的に評価します（サンプル）。', eval: '志望理由書・面談・課題' },
+    ];
+    const methods = methodData.map((m, i) => ({ ...m, bg: i === s.methodIdx ? '#d8343b' : '#fff', fg: i === s.methodIdx ? '#fff' : '#d8343b', shadow: i === s.methodIdx ? '0 6px 16px rgba(216,52,59,.3)' : '0 2px 8px rgba(0,0,0,.06)', select: () => this.setState({ methodIdx: i }) }));
+
+    const faqData = [
+      { q: '複数の入試方式に出願することはできますか？', a: '入試方式や日程が重ならない範囲で、併願が可能な場合があります。併願の可否や条件は募集要項でご確認ください。' },
+      { q: '出願はインターネットのみですか？', a: '本サイトのサンプルでは、Web出願を基本とし、一部の書類のみ郵送する想定です。実際の方法は各年度の募集要項に従ってください。' },
+      { q: '奨学金はいつ申し込めばよいですか？', a: '入学前に申し込む予約型と、入学後に申し込む在学採用型があります。募集時期は制度ごとに異なるため、学生支援窓口にお問い合わせください。' },
+      { q: 'オープンキャンパスは保護者も参加できますか？', a: '保護者の方のご参加も歓迎しています。保護者向けの説明プログラムを用意する回もあります。' },
+      { q: '入試について個別に相談できますか？', a: '入試課では電話・メール・オンラインでの個別相談を受け付けています。ページ下部のお問い合わせ窓口をご利用ください。' },
+    ];
+    const faqs = faqData.map((f, i) => ({ ...f, open: s.faqOpen === i, sign: s.faqOpen === i ? '−' : '+', toggle: () => this.setState({ faqOpen: s.faqOpen === i ? -1 : i }) }));
+
+    const showToast = (msg) => (e) => { this.setState({ toast: msg }); clearTimeout(this.tt); this.tt = setTimeout(() => this.setState({ toast: '' }), 3500); };
+
+    return {
+      isMobile, isDesktop: !isMobile,
+      menuOpen: s.menuOpen && isMobile,
+      menuIcon: s.menuOpen ? '×' : '≡',
+      toggleMenu: () => this.setState({ menuOpen: !s.menuOpen }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      showMarquee: this.props.showMarquee ?? true,
+      marquee,
+      nav: [
+        { label: 'トップ', href: '#top' }, { label: '学部・学科', href: '#programs' }, { label: '受験対策', href: '#prep' },
+        { label: '入試方式', href: '#prep' }, { label: '出願・学費', href: '#admissions' }, { label: 'よくある質問', href: '#admissions' },
+        { label: 'キャンパスライフ', href: '#campus' }, { label: 'オープンキャンパス', href: '#campus' }, { label: 'お問い合わせ', href: '#contact' },
+      ],
+      programsRef: this.programsRef,
+      prevProg: () => this.scrollProg(-1), nextProg: () => this.scrollProg(1),
+      programs: [
+        { no: '01', en: 'LETTERS', name: '文学部', img: 'prog-lit', ph: '図書館・文献資料', desc: '言語・文学・歴史・思想を通じて人間と文化を深く考え、読み解く力と表現する力を養います。', tags: ['日本文学', '史学', '英語英文'] },
+        { no: '02', en: 'LAW', name: '法学部', img: 'prog-law', ph: '模擬法廷・ゼミ風景', desc: '法律と政治の仕組みを学び、社会の課題を論理的に分析して解決策を考える力を身につけます。', tags: ['法律学', '政治学', '公務員志望'] },
+        { no: '03', en: 'ECONOMICS', name: '経済学部', img: 'prog-eco', ph: 'データ分析の授業', desc: '経済理論とデータ分析を軸に、地域から世界までの経済の動きを読み解く視点を養います。', tags: ['経済学', '経営', 'データ分析'] },
+        { no: '04', en: 'SCIENCE & ENGINEERING', name: '理工学部', img: 'prog-sci', ph: '実験室・研究設備', desc: '数学・物理・情報を基盤に、実験とものづくりを通して技術で社会を支える力を育てます。', tags: ['機械', '情報工学', '建築'] },
+        { no: '05', en: 'LIBERAL ARTS', name: '国際教養学部', img: 'prog-intl', ph: '留学生との交流', desc: '英語で学ぶ授業や留学プログラムを通じて、多様な価値観の中で協働できる力を磨きます。', tags: ['英語で学ぶ', '留学', '異文化理解'] },
+        { no: '06', en: 'NURSING', name: '看護学部', img: 'prog-nurse', ph: '看護実習室', desc: '講義と臨地実習を組み合わせ、人に寄り添う看護の知識と技術を段階的に身につけます。', tags: ['看護学', '臨地実習', '国家試験'] },
+      ],
+      features: [
+        { no: '01', title: '少人数ゼミ', desc: '1年次から少人数のゼミで、学び方の基礎と考える力を身につけます。' },
+        { no: '02', title: '学部を越えた学び', desc: '他学部の科目も履修でき、関心に合わせて学びを広げられます。' },
+        { no: '03', title: '実践型プログラム', desc: '企業・地域と連携した課題解決型の授業やインターンシップを用意。' },
+      ],
+      resources: ['過去の入試問題・出題傾向', '学習計画シート（ダウンロード）', 'オンライン個別相談'],
+      prepTabs, prep: prepData[s.prepIdx],
+      methods, method: methodData[s.methodIdx],
+      methodImgCol: isMobile ? '1 / -1' : '4 / 13',
+      methodCardCol: isMobile ? '1 / -1' : '1 / 8',
+      methodCardRow: isMobile ? '2' : '1',
+      methodCardTop: isMobile ? '-40px' : '56px',
+      schedule: [
+        { name: '総合型選抜', apply: 'XX月XX日〜XX月XX日', exam: 'XX月XX日', result: 'XX月XX日' },
+        { name: '学校推薦型選抜', apply: 'XX月XX日〜XX月XX日', exam: 'XX月XX日', result: 'XX月XX日' },
+        { name: '一般選抜', apply: 'XX月XX日〜XX月XX日', exam: 'XX月XX日〜XX日', result: 'XX月XX日' },
+      ],
+      steps: [
+        { no: '01', title: '募集要項の確認', desc: '入試方式・出願資格・試験科目を確認します。' },
+        { no: '02', title: 'Web出願登録', desc: '出願サイトで必要事項を入力し、検定料を納入します。' },
+        { no: '03', title: '書類の提出', desc: '調査書・志望理由書など指定書類を期限内に提出します。' },
+        { no: '04', title: '受験票の受け取り', desc: '受験票を印刷し、試験当日に持参します。' },
+      ],
+      scholarships: [
+        { name: '成績優秀者奨学金（サンプル）', desc: '入試の成績上位者を対象に、授業料の一部を減免する制度です。' },
+        { name: '経済支援奨学金（サンプル）', desc: '家計状況により修学が困難な学生を対象とした給付型の制度です。' },
+        { name: '公的奨学金・修学支援制度', desc: '日本学生支援機構の奨学金や国の修学支援制度の申請をサポートします。' },
+      ],
+      faqs,
+      supportCards: [
+        { tag: '保護者の方へ', en: 'FOR PARENTS', img: 'support-parents', ph: '保護者説明会の様子', title: '進学を支えるご家族へ', desc: '学費の納入時期や奨学金、卒業後の進路、学生生活のサポート体制など、保護者の方が気になる情報をまとめてご案内します。', cta: '保護者向け情報を見る' },
+        { tag: '学生サポート', en: 'SUPPORT', img: 'support-students', ph: '学習支援センターでの相談', title: '入学後も、ひとりにしない', desc: '学習相談、キャリア支援、学生相談室など、在学中の学びと生活を支える窓口を整えています。', cta: 'サポート体制を見る' },
+      ],
+      events: [
+        { tag: 'OPEN CAMPUS', title: 'オープンキャンパス', desc: '模擬授業、学部説明、キャンパスツアー、在学生との個別相談を実施します。', date: '20XX年X月X日（X）・X日（X）※サンプル', img: 'ev-open', ph: '模擬授業' },
+        { tag: 'TOUR', title: 'キャンパス見学会', desc: '在学生スタッフの案内で、施設や学生生活の様子を少人数で見学できます。', date: '20XX年X月〜X月の土曜日 ※サンプル', img: 'ev-tour', ph: 'キャンパスツアー' },
+        { tag: 'ONLINE', title: 'オンライン入試説明会', desc: '自宅から参加できる入試説明会。各入試方式のポイントを解説します。', date: '20XX年X月X日（X）※サンプル', img: 'ev-online', ph: 'オンライン説明会' },
+      ],
+      life: ['サークル活動', '学園祭', '学生食堂', 'ゼミ合宿', '留学プログラム', 'スポーツ', 'ラーニングコモンズ', 'ボランティア', '学生寮'].map((ph, i) => ({ ph, id: 'life-' + i })),
+      ctas: [
+        { label: 'オープンキャンパスに申し込む', href: '#contact', bg: '#d8343b', fg: '#fff', onClick: showToast('オープンキャンパス申込フォームへ移動します（デモ）') },
+        { label: '資料請求', href: '#contact', bg: '#d8343b', fg: '#fff', onClick: showToast('資料請求フォームへ移動します（デモ）') },
+        { label: '入試に関するお問い合わせ', href: '#contact', bg: '#fff', fg: '#d8343b', onClick: showToast('お問い合わせフォームへ移動します（デモ）') },
+      ],
+      toast: s.toast,
+    };
+  }
+}
+</script>
+</body>
+</html>

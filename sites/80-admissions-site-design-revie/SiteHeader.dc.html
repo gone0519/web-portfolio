@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="background:#fff;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px clamp(12px,2vw,24px);border-bottom:1px solid #eee;font-family:'Zen Kaku Gothic New',sans-serif">
+  <a href="University%20Admissions.dc.html" style="display:flex;align-items:center;gap:10px;color:#1a1a1a;text-decoration:none">
+    <div style="width:44px;height:44px;background:#E2332B;color:#fff;font-weight:900;font-size:15px;line-height:1.05;display:flex;align-items:center;justify-content:center;text-align:center">翔陽<br>大学</div>
+    <div style="font-size:11px;line-height:1.5;font-weight:500">翔陽大学 入試情報サイト<br>2027年度 入学者選抜<span style="color:#888">（サンプル）</span></div>
+  </a>
+  <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;align-items:center;gap:clamp(12px,2vw,28px);font-size:13px;font-weight:700">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="color:{{ n.color }};text-decoration:none;padding:6px 0;border-bottom:2px solid {{ n.line }};transition:color .2s" style-hover="color:#E2332B">{{ n.label }}</a>
+      </sc-for>
+      <a href="CampusLife.dc.html#contact" style="background:#111;color:#fff;border-radius:999px;padding:10px 22px;font-size:12px;text-decoration:none;transition:background .2s" style-hover="background:#E2332B;color:#fff">資料請求</a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ showBurger }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:44px;height:44px;border:0;border-radius:6px;background:#111;color:#fff;font-size:18px;cursor:pointer">{{ burgerIcon }}</button>
+  </sc-if>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;top:65px;left:0;right:0;z-index:49;background:#fff;border-bottom:4px solid #E2332B;display:flex;flex-direction:column;padding:8px 20px 20px;font-family:'Zen Kaku Gothic New',sans-serif">
+    <a href="University%20Admissions.dc.html" style="color:#1a1a1a;font-weight:700;padding:14px 0;border-bottom:1px solid #eee;text-decoration:none">トップ</a>
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+      <a href="{{ n.href }}" style="color:{{ n.color }};font-weight:700;padding:14px 0;border-bottom:1px solid #eee;text-decoration:none">{{ n.label }}</a>
+    </sc-for>
+    <a href="CampusLife.dc.html#contact" style="margin-top:16px;background:#111;color:#fff;border-radius:999px;padding:14px;text-align:center;font-weight:700;text-decoration:none">資料請求</a>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1280px&quot;,&quot;height&quot;:&quot;80px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;programs&quot;,&quot;prep&quot;,&quot;admissions&quot;,&quot;support&quot;,&quot;campus&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { narrow: false, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ narrow: window.innerWidth < 900 });
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const { narrow, menuOpen } = this.state;
+    const cur = this.props.current;
+    const nav = [
+      ['programs', '学部・学科', 'Programs.dc.html'], ['prep', '入試対策', 'ExamPrep.dc.html'],
+      ['admissions', '入試情報', 'Admissions.dc.html'], ['support', '学費・サポート', 'Support.dc.html'],
+      ['campus', 'キャンパスライフ', 'CampusLife.dc.html'],
+    ].map(([k, label, href]) => ({ label, href, color: k === cur ? '#E2332B' : '#1a1a1a', line: k === cur ? '#E2332B' : 'transparent' }));
+    return {
+      nav, showNav: !narrow, showBurger: narrow, menuOpen: narrow && menuOpen,
+      burgerIcon: menuOpen ? '×' : '≡', toggleMenu: () => this.setState({ menuOpen: !menuOpen }),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="./site.css" rel="stylesheet">
+<script src="./site-motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',sans-serif;color:#111;background:#e6eaee;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#111;text-decoration:none}
+a:hover{color:#00b8e6}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="contact" hint-size="100%,0px"></dc-import>
+<main style="position:relative;z-index:1">
+  <section data-screen-label="Contact Hero" style="position:relative;padding:170px clamp(24px,8vw,140px) 0">
+    <div style="display:flex;gap:10px;font-size:11px;letter-spacing:.1em"><a href="Top.dc.html">TOP</a><span>/</span><span style="color:#0a90c0">お問い合わせ・資料請求</span></div>
+    <h1 style="margin:18px 0 0;font-family:'Bebas Neue';font-weight:400;font-size:clamp(72px,12vw,180px);line-height:.85;letter-spacing:.04em">CONTACT</h1>
+    <div style="display:flex;align-items:center;gap:14px;margin-top:10px"><span style="width:36px;height:2px;background:#00c8ff"></span><span style="font-size:14px;font-weight:700;letter-spacing:.3em">お問い合わせ・資料請求</span></div>
+    <img class="hero-illust" src="images/illust/open-campus-guide.png" alt="" style="width:clamp(160px,15vw,220px)">
+  </section>
+
+  <section style="max-width:1180px;margin:0 auto;padding:70px clamp(24px,5vw,60px) 140px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+    <div style="flex:2 1 520px;display:flex;flex-direction:column;gap:0">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <button class="c-tab" onClick="{{ t.select }}" style="border:none;cursor:pointer;padding:18px 10px;display:flex;flex-direction:column;align-items:center;gap:4px;background:{{ t.bg }};color:{{ t.fg }};font-family:inherit;transition:background .25s">
+            <span style="font-family:'Bebas Neue';font-size:13px;letter-spacing:.2em;color:#00c8ff">{{ t.en }}</span>
+            <span style="font-size:13px;font-weight:700;letter-spacing:.04em">{{ t.jp }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="background:#fff;padding:clamp(26px,4vw,48px);border-top:4px solid #00c8ff;display:flex;flex-direction:column;gap:18px">
+        <p style="margin:0;font-size:13.5px;line-height:2">{{ cur.lead }}</p>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:16px;padding:20px 0">
+            <img src="images/illust/happy.png" alt="" style="width:100%;max-width:440px;height:auto">
+            <span style="font-family:'Bebas Neue';font-size:44px;letter-spacing:.04em;color:#00c8ff;line-height:1">THANK YOU</span>
+            <p style="margin:0;font-size:14px;line-height:2">{{ form.name }} 様<br>{{ cur.jp }}を受け付けました（デモ）。ご入力いただいたメールアドレス宛に確認のご案内をお送りします。</p>
+            <button onClick="{{ reset }}" style="align-self:flex-start;padding:12px 28px;border-radius:999px;border:none;background:#111;color:#fff;font-weight:700;cursor:pointer;font-family:inherit">続けて入力する</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" noValidate="{{ true }}" style="display:flex;flex-direction:column;gap:16px">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700">お名前 <input value="{{ form.name }}" onChange="{{ setName }}" placeholder="山田 花子" style="font:inherit;font-weight:400;font-size:14px;padding:12px;border:1px solid #c9d0d8;outline-color:#00c8ff"></input><span style="color:#d0247a;font-weight:400">{{ errors.name }}</span></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700">メールアドレス <input type="email" value="{{ form.email }}" onChange="{{ setEmail }}" placeholder="example@mail.com" style="font:inherit;font-weight:400;font-size:14px;padding:12px;border:1px solid #c9d0d8;outline-color:#00c8ff"></input><span style="color:#d0247a;font-weight:400">{{ errors.email }}</span></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700">区分 <select value="{{ form.grade }}" onChange="{{ setGrade }}" style="font:inherit;font-weight:400;font-size:14px;padding:12px;border:1px solid #c9d0d8;background:#fff"><option value="">選択してください</option><option value="高校3年生">高校3年生</option><option value="高校2年生">高校2年生</option><option value="高校1年生">高校1年生</option><option value="既卒生">既卒生</option><option value="保護者">保護者</option><option value="高校教員">高校教員</option></select><span style="color:#d0247a;font-weight:400">{{ errors.grade }}</span></label>
+            <sc-if value="{{ isReserve }}" hint-placeholder-val="{{ true }}">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700">参加希望日 <select value="{{ form.extra }}" onChange="{{ setExtra }}" style="font:inherit;font-weight:400;font-size:14px;padding:12px;border:1px solid #c9d0d8;background:#fff"><option value="">選択してください</option><option value="春のオープンキャンパス（20XX.06.XX）">春のオープンキャンパス（20XX.06.XX）</option><option value="夏のオープンキャンパス（20XX.08.XX）">夏のオープンキャンパス（20XX.08.XX）</option><option value="個別キャンパス見学">個別キャンパス見学</option></select><span style="color:#d0247a;font-weight:400">{{ errors.extra }}</span></label>
+            </sc-if>
+            <sc-if value="{{ isRequest }}" hint-placeholder-val="{{ false }}">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700">送付先住所 <input value="{{ form.extra }}" onChange="{{ setExtra }}" placeholder="〒000-0000 ○○県○○市…" style="font:inherit;font-weight:400;font-size:14px;padding:12px;border:1px solid #c9d0d8;outline-color:#00c8ff"></input><span style="color:#d0247a;font-weight:400">{{ errors.extra }}</span></label>
+            </sc-if>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700">{{ cur.msgLabel }} <textarea value="{{ form.msg }}" onChange="{{ setMsg }}" rows="4" style="font:inherit;font-weight:400;font-size:14px;padding:12px;border:1px solid #c9d0d8;resize:vertical"></textarea><span style="color:#d0247a;font-weight:400">{{ errors.msg }}</span></label>
+            <button type="submit" style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:12px;padding:16px;border-radius:999px;border:none;background:#111;color:#fff;font-weight:700;letter-spacing:.1em;cursor:pointer;font-family:inherit;transition:background .25s" style-hover="background:#00a8d8"><span style="width:14px;height:14px;border-radius:50%;border:3px solid #00c8ff;display:block"></span>{{ cur.submit }}</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+    <aside style="flex:1 1 280px;display:flex;flex-direction:column;gap:20px">
+      <div style="background:#111;color:#fff;padding:30px 28px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-family:'Bebas Neue';font-size:14px;letter-spacing:.25em;color:#00c8ff">ADMISSION CENTER</span>
+        <span style="font-size:16px;font-weight:700">入試課（アドミッションセンター）</span>
+        <span style="font-size:12.5px;line-height:2">〒000-0000　○○県○○市○○町0-0<br>TEL. 00-0000-0000<br>受付 平日9:00–17:00（土日祝を除く）<br>MAIL. admission@example.ac.jp</span>
+      </div>
+      <div style="position:relative;background:rgba(255,255,255,.86);padding:26px 28px;display:flex;flex-direction:column;gap:12px">
+        <img src="images/illust/pointing.png" alt="" style="position:absolute;right:12px;bottom:12px;width:110px;height:auto;pointer-events:none">
+        <span style="font-family:'Bebas Neue';font-size:14px;letter-spacing:.25em;color:#00a8d8">BEFORE YOU ASK</span>
+        <span style="font-size:14px;font-weight:700">お問い合わせの前に</span>
+        <a href="Admissions.dc.html#faq" style="font-size:13px;display:flex;gap:10px;align-items:center"><span style="color:#00c8ff;font-size:9px">●</span>よくあるご質問</a>
+        <a href="Admissions.dc.html#schedule" style="font-size:13px;display:flex;gap:10px;align-items:center"><span style="color:#00c8ff;font-size:9px">●</span>入試日程</a>
+        <a href="CampusLife.dc.html#opencampus" style="font-size:13px;display:flex;gap:10px;align-items:center"><span style="color:#00c8ff;font-size:9px">●</span>オープンキャンパスの内容</a>
+      </div>
+    </aside>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab:'reserve', submitted:false, form:{name:'',email:'',grade:'',extra:'',msg:''}, errors:{} };
+  tabsDef = {
+    reserve:{en:'OPEN CAMPUS', jp:'オープンキャンパス​予約', lead:'参加を希望するプログラムを選んでお申し込みください。保護者の方のみのご参加も可能です。', msgLabel:'ご質問・ご要望（任意）', submit:'予約する'},
+    request:{en:'REQUEST', jp:'資料請求', lead:'大学案内・募集要項（サンプル）をご希望の住所へお送りします。', msgLabel:'希望する資料・学部（任意）', submit:'資料を請求する'},
+    contact:{en:'CONTACT', jp:'お問い合わせ', lead:'入試・学費・学生生活に関するご質問を受け付けています。回答までに数日かかる場合があります。', msgLabel:'お問い合わせ内容', submit:'送信する'}
+  };
+  componentDidMount() {
+    const set = () => { const k = location.hash.slice(1); if (this.tabsDef[k]) this.setState({tab:k, submitted:false, errors:{}}); };
+    set(); window.addEventListener('hashchange', set); this._off = () => window.removeEventListener('hashchange', set);
+  }
+  componentWillUnmount() { this._off && this._off(); }
+  setField = (k) => (e) => { const v = e.target.value; this.setState(s => ({form:{...s.form,[k]:v}, errors:{...s.errors,[k]:''}})); };
+  submit = (e) => {
+    e.preventDefault();
+    const f = this.state.form, t = this.state.tab, er = {};
+    if (!f.name.trim()) er.name = 'お名前を入力してください';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) er.email = '正しいメールアドレスを入力してください';
+    if (!f.grade) er.grade = '区分を選択してください';
+    if (t==='reserve' && !f.extra) er.extra = '参加希望日を選択してください';
+    if (t==='request' && !f.extra.trim()) er.extra = '送付先住所を入力してください';
+    if (t==='contact' && !f.msg.trim()) er.msg = 'お問い合わせ内容を入力してください';
+    if (Object.keys(er).length) return this.setState({errors:er});
+    this.setState({submitted:true});
+  };
+  renderVals() {
+    const s = this.state;
+    return {
+      tabs:Object.keys(this.tabsDef).map(k=>({...this.tabsDef[k], bg:k===s.tab?'#fff':'rgba(255,255,255,.5)', fg:'#111',
+        select:()=>this.setState({tab:k, submitted:false, errors:{}, form:{...s.form, extra:''}})})),
+      cur:this.tabsDef[s.tab], isReserve:s.tab==='reserve', isRequest:s.tab==='request',
+      submitted:s.submitted, showForm:!s.submitted, form:s.form, errors:s.errors,
+      setName:this.setField('name'), setEmail:this.setField('email'), setGrade:this.setField('grade'), setExtra:this.setField('extra'), setMsg:this.setField('msg'),
+      submit:this.submit, reset:()=>this.setState({submitted:false, form:{name:'',email:'',grade:'',extra:'',msg:''}})
+    };
+  }
+}
+</script>
+</body>
+</html>

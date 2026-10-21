@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1a1a1a;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#E2332B;text-decoration:none}
+a:hover{color:#b8241d}
+</style>
+<script src="motion.js"></script>
+</helmet>
+<dc-import name="SiteHeader" current="admissions" hint-size="100%,65px" style="position:sticky;top:0;z-index:50;display:block"></dc-import>
+<main>
+<section data-screen-label="Admissions Hero" style="background:#E2332B;color:#fff;clip-path:polygon(0 0,100% 0,100% calc(100% - 60px),93% 100%,7% 100%,0 calc(100% - 60px));padding:56px 20px 110px">
+  <div style="max-width:960px;margin:0 auto">
+    <div style="font-size:11px;font-weight:700;display:flex;gap:8px"><a href="University%20Admissions.dc.html" style="color:#fff">TOP</a><span>›</span><span>入試情報</span></div>
+    <div style="margin-top:28px;font-size:13px;font-weight:700">入試情報・入試日程</div>
+    <h1 style="margin:4px 0 16px;font-family:Kanit;font-weight:600;font-size:clamp(52px,8vw,104px);line-height:.9">ADMISSIONS</h1>
+    <p style="margin:0;max-width:34em;font-size:14px;line-height:1.9;font-weight:500">入試日程、試験科目、出願の流れをまとめています。掲載内容はすべてサンプルです。正式な情報は学生募集要項でご確認ください。</p>
+  </div>
+</section>
+
+<section style="max-width:960px;margin:0 auto;padding:48px 20px 64px">
+  <div style="font-size:12px;font-weight:700;color:#E2332B">入試日程</div>
+  <h2 style="margin:2px 0 8px;font-family:Kanit;font-weight:600;font-size:44px;line-height:1">SCHEDULE</h2>
+  <div style="height:4px;width:120px;background:repeating-linear-gradient(90deg,#E2332B 0 22px,transparent 22px 28px)"></div>
+  <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:8px">
+    <sc-for list="{{ methodTabs }}" as="t" hint-placeholder-count="3">
+      <button onClick="{{ t.select }}" style="border:2px solid #111;background:{{ t.bg }};color:{{ t.fg }};border-radius:999px;padding:8px 22px;font:700 13px 'Zen Kaku Gothic New',sans-serif;cursor:pointer">{{ t.label }}</button>
+    </sc-for>
+  </div>
+  <div style="margin-top:12px">
+    <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="5">
+      <div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px 20px;align-items:center;padding:16px 0;border-bottom:1px solid #e5e5e5">
+        <span style="background:#111;color:#fff;font-size:11px;font-weight:700;padding:4px 8px;text-align:center">{{ s.tag }}</span>
+        <div><div style="font-family:Kanit;font-size:13px;color:#E2332B">{{ s.date }}</div><div style="font-size:14px;font-weight:700">{{ s.title }}</div></div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="background:#efefef;padding:64px 20px">
+  <div style="max-width:960px;margin:0 auto">
+    <div style="font-size:12px;font-weight:700;color:#E2332B">学部別 試験科目（一般選抜）</div>
+    <h2 style="margin:2px 0 20px;font-family:Kanit;font-weight:600;font-size:44px;line-height:1">SUBJECTS</h2>
+    <div style="overflow-x:auto;background:#fff;border-radius:8px">
+      <table style="width:100%;min-width:620px;border-collapse:collapse;font-size:13px">
+        <thead><tr style="background:#111;color:#fff;text-align:left"><th style="padding:12px 16px">学部</th><th style="padding:12px 16px">本学独自試験</th><th style="padding:12px 16px">共通テスト利用</th></tr></thead>
+        <tbody>
+          <sc-for list="{{ subjects }}" as="r" hint-placeholder-count="8">
+            <tr style="border-bottom:1px solid #e5e5e5"><td style="padding:12px 16px;font-weight:900;white-space:nowrap">{{ r.f }}</td><td style="padding:12px 16px">{{ r.a }}</td><td style="padding:12px 16px">{{ r.b }}</td></tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin:10px 0 0;font-size:11px;color:#666">※科目・配点はサンプルです。</p>
+  </div>
+</section>
+
+<section style="max-width:960px;margin:0 auto;padding:64px 20px 72px;display:flex;flex-wrap:wrap;gap:40px">
+  <div style="flex:1.3 1 420px">
+    <div style="font-size:12px;font-weight:700;color:#E2332B">出願の流れ</div>
+    <h2 style="margin:2px 0 20px;font-family:Kanit;font-weight:600;font-size:44px;line-height:1">HOW TO APPLY</h2>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{ steps }}" as="a" hint-placeholder-count="5">
+        <div style="display:flex;gap:16px;background:#efefef;border-radius:8px;padding:16px 18px"><div style="flex:none;font-family:Kanit;font-weight:600;color:#E2332B;font-size:13px;line-height:1.2;text-align:center">STEP<br><span style="font-size:28px">{{ a.no }}</span></div><div><div style="font-size:15px;font-weight:900">{{ a.title }}</div><div style="margin-top:4px;font-size:12px;line-height:1.8;color:#444">{{ a.text }}</div></div></div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="flex:1 1 300px">
+    <div style="font-size:12px;font-weight:700;color:#E2332B">出願書類チェックリスト</div>
+    <h2 style="margin:2px 0 20px;font-family:Kanit;font-weight:600;font-size:44px;line-height:1">CHECKLIST</h2>
+    <div style="border:2px solid #111;border-radius:10px;padding:8px 18px">
+      <sc-for list="{{ checklist }}" as="c" hint-placeholder-count="6">
+        <label style="display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #e5e5e5;cursor:pointer;font-size:13px;font-weight:700"><input type="checkbox" checked="{{ c.done }}" onChange="{{ c.toggle }}" style="width:18px;height:18px;accent-color:#E2332B"><span style="color:{{ c.color }}">{{ c.label }}</span></label>
+      </sc-for>
+      <div style="padding:12px 0 6px;font-size:12px;font-weight:700;color:#E2332B">{{ progress }}</div>
+    </div>
+    <div style="margin-top:20px;background:#E2332B;color:#fff;border-radius:8px;padding:16px 18px;font-size:12px;line-height:1.9"><b>受験上の注意</b><br>出願締切日の消印・受付時刻は方式により異なります。書類に不備があると受理できない場合がありますので、余裕をもって準備してください。</div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,640px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { method: '一般選抜', checked: {} };
+  renderVals() {
+    const data = {
+      '総合型選抜': [['エントリー', '2026.09.XX〜09.XX', 'エントリーシート受付'], ['面談', '2026.10.XX', '面談・プレゼンテーション'], ['出願', '2026.11.XX〜11.XX', '出願書類受付'], ['発表', '2026.11.XX', '合格発表'], ['手続', '2026.12.XX まで', '入学手続き締切']],
+      '学校推薦型選抜': [['出願', '2026.11.XX〜11.XX', '出願受付期間'], ['試験', '2026.11.XX', '面接・小論文'], ['発表', '2026.12.XX', '合格発表'], ['手続', '2026.12.XX まで', '入学手続き締切']],
+      '一般選抜': [['出願', '2027.01.XX〜01.XX', '出願受付期間'], ['試験', '2027.02.XX', '本学独自試験'], ['共通テスト', '2027.01.XX', '大学入学共通テスト（利用方式）'], ['発表', '2027.02.XX', '合格発表'], ['手続', '2027.03.XX まで', '入学手続き締切']],
+    };
+    const m = this.state.method;
+    const items = ['入学志願票（Web出願登録後に印刷）', '調査書', '推薦書（学校推薦型のみ）', '志望理由書（総合型・推薦型）', '写真（縦4cm×横3cm）', '検定料の支払い証明'];
+    const ch = this.state.checked;
+    const done = items.filter((_, i) => ch[i]).length;
+    return {
+      methodTabs: Object.keys(data).map(label => ({ label, bg: label === m ? '#111' : '#fff', fg: label === m ? '#fff' : '#111', select: () => this.setState({ method: label }) })),
+      schedule: data[m].map(([tag, date, title]) => ({ tag, date: date + '（サンプル）', title })),
+      subjects: [
+        ['文学部', '外国語・国語・選択1科目', '3教科3科目'], ['経済学部', '外国語・国語または数学・選択1科目', '3教科3科目'],
+        ['法学部', '外国語・国語・選択1科目', '3教科3科目'], ['教育学部', '外国語・国語・選択1科目', '3教科3科目'],
+        ['理工学部', '外国語・数学・理科1科目', '数学・理科を含む3教科'], ['環境デザイン学部', '外国語・数学・理科または国語', '数学を含む3教科'],
+        ['医療保健学部', '外国語・数学または国語・理科1科目', '理科を含む3教科'], ['国際教養学部', '外国語・国語', '外国語を含む2教科'],
+      ].map(([f, a, b]) => ({ f, a, b })),
+      steps: [
+        ['募集要項の確認', '出願資格・試験科目・日程・検定料を確認します。'],
+        ['Web出願サイトで登録', 'メールアドレスを登録し、志望学部・方式を選択して必要事項を入力します。'],
+        ['検定料の支払い', 'コンビニエンスストア、クレジットカード等で支払います。'],
+        ['出願書類の郵送', '入学志願票と必要書類を、締切までに郵送します。'],
+        ['受験票の印刷', '出願サイトから受験票をダウンロード・印刷し、試験当日に持参します。'],
+      ].map(([title, text], i) => ({ no: i + 1, title, text })),
+      checklist: items.map((label, i) => ({ label, done: !!ch[i], color: ch[i] ? '#999' : '#1a1a1a', toggle: () => this.setState({ checked: { ...ch, [i]: !ch[i] } }) })),
+      progress: `${done} / ${items.length} 準備完了`,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="background:#fff;position:relative;transition:box-shadow .3s;box-shadow:{{ shadow }};font-family:'Noto Sans JP',sans-serif">
+  <div style="display:flex;align-items:stretch;justify-content:space-between;min-height:72px">
+    <a href="University%20Admissions.dc.html" class="hd-logo" style="display:flex;align-items:center;gap:12px;padding:0 clamp(16px,2.5vw,48px);color:#222;text-decoration:none;min-width:0">
+      <span style="width:38px;height:38px;border-radius:50%;background:#d8343b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Jost;font-weight:600;font-size:20px;flex:0 0 auto">M</span>
+      <span style="display:flex;flex-direction:column;line-height:1.3">
+        <span class="hd-name" style="font-weight:900;font-size:17px;letter-spacing:.06em">未来創成大学</span>
+        <span class="hd-sub" style="font-family:Jost;font-size:10px;letter-spacing:.14em;color:#777;white-space:nowrap">ADMISSIONS GUIDE</span>
+      </span>
+    </a>
+    <div style="display:flex;align-items:stretch">
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;justify-content:center;align-items:flex-end;padding:0 28px;gap:4px">
+          <span style="color:#d8343b;font-family:Jost;font-weight:500;font-size:22px;letter-spacing:.04em">☎ 0X-XXXX-XXXX</span>
+          <span style="background:#ebe7e5;border-radius:999px;padding:1px 12px;font-size:11px;color:#444">【入試課】平日 9:00〜17:00（サンプル）</span>
+        </div>
+      </sc-if>
+      <a href="CampusLife.dc.html#contact" style="background:#d8343b;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0 clamp(16px,2vw,36px);font-size:12px;font-weight:700;letter-spacing:.06em;border-radius:0 0 0 14px;transition:background .2s;text-decoration:none" style-hover="background:#b3262d;color:#fff">
+        <span style="font-size:16px">✉</span><span style="white-space:nowrap">{{ ctaLabel }}</span>
+      </a>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:64px;border:0;background:#222;color:#fff;font-size:22px;cursor:pointer">{{ menuIcon }}</button>
+      </sc-if>
+    </div>
+  </div>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav style="border-top:1px solid #eee;display:flex;justify-content:center;flex-wrap:wrap;gap:4px clamp(16px,2.6vw,44px);padding:12px 16px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="7">
+        <a href="{{ n.href }}" style="font-size:12px;font-weight:700;letter-spacing:.06em;padding:4px 0;transition:all .2s;text-decoration:none;color:{{ n.color }};border-bottom:2px solid {{ n.line }}" style-hover="color:#d8343b;border-bottom-color:#d8343b">{{ n.label }}</a>
+      </sc-for>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav style="position:absolute;top:100%;left:0;right:0;background:#fff;display:flex;flex-direction:column;padding:8px 20px 24px;box-shadow:0 12px 24px rgba(0,0,0,.12)">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="7">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="font-size:15px;font-weight:700;padding:14px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;text-decoration:none;color:{{ n.color }}">{{ n.label }}<span style="color:#d8343b">›</span></a>
+      </sc-for>
+    </nav>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;130px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;faculties&quot;,&quot;prep&quot;,&quot;admissions&quot;,&quot;tuition&quot;,&quot;campus&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1400, menuOpen: false };
+  componentDidMount() { this.onResize = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onResize); this.onScroll = () => { const sc = window.scrollY > 40; if (sc !== this.state.scrolled) this.setState({ scrolled: sc }); }; window.addEventListener('scroll', this.onScroll, { passive: true }); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); }
+  renderVals() {
+    const cur = this.props.current ?? 'top';
+    const isMobile = this.state.w < 900;
+    const items = [
+      ['top', 'トップ', 'University%20Admissions.dc.html'], ['faculties', '学部・学科', 'Faculties.dc.html'], ['prep', '受験対策', 'ExamPrep.dc.html'],
+      ['admissions', '入試情報', 'Admissions.dc.html'], ['tuition', '学費・サポート', 'TuitionSupport.dc.html'], ['campus', 'キャンパスライフ', 'CampusLife.dc.html'],
+      ['contact', 'お問い合わせ', 'CampusLife.dc.html#contact'],
+    ];
+    return {
+      shadow: this.state.scrolled ? '0 8px 24px rgba(0,0,0,.08)' : '0 1px 0 rgba(0,0,0,.06)',
+      isMobile, isDesktop: !isMobile,
+      ctaLabel: this.state.w < 600 ? '資料請求' : '資料請求・お問い合わせ',
+      menuOpen: this.state.menuOpen && isMobile,
+      menuIcon: this.state.menuOpen ? '×' : '≡',
+      toggleMenu: () => this.setState({ menuOpen: !this.state.menuOpen }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      nav: items.map(([k, label, href]) => ({ label, href, color: k === cur ? '#d8343b' : '#222', line: k === cur ? '#d8343b' : 'transparent' })),
+    };
+  }
+}
+</script>
+</body>
+</html>

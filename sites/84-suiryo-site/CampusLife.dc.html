@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#333;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#333;text-decoration:none}
+a:hover{color:#1fb2c3}
+p,h1,h2,h3,h4,ul{margin:0}
+</style>
+</helmet>
+<div style="position:relative;overflow:hidden;min-width:320px">
+  <dc-import name="SiteHeader" active="{{ 4 }}" style="position:absolute;top:0;left:0;right:0;z-index:20" hint-size="100%,72px"></dc-import>
+  <dc-import name="PageHero" en="Campus Life" title="キャンパスライフ" lead="授業の外にも、仲間と出会い、自分を広げる機会がたくさんあります。キャンパスでの1年と、学生生活を支える環境をご紹介します。" img="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&amp;q=70&amp;auto=format&amp;fit=crop" hint-size="100%,560px"></dc-import>
+
+  <section data-screen-label="Calendar" style="padding:100px clamp(20px,5vw,80px) 110px;max-width:1400px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:56px">
+      <p style="font-family:'Lexend Exa',sans-serif;font-size:11px;font-weight:500;margin-bottom:10px">Campus Calendar</p>
+      <h2 style="font-size:clamp(24px,2.2vw,32px);font-weight:700;letter-spacing:0.12em">キャンパスの1年</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:#e6e6e6;border:1px solid #e6e6e6">
+      <sc-for list="{{ calendar }}" as="c" hint-placeholder-count="6">
+        <div style="background:#fff;padding:30px 22px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Lexend Exa',sans-serif;font-size:30px;font-weight:300;color:#1fb2c3;line-height:1">{{ c.m }}<span style="font-size:12px;margin-left:4px">月</span></span>
+          <span style="font-size:14px;font-weight:700">{{ c.title }}</span>
+          <span style="font-size:12px;line-height:1.8;color:#666">{{ c.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Facilities" style="position:relative;padding:90px 0 110px">
+    <div style="position:absolute;left:0;top:0;bottom:0;width:min(100%,68%);background:#e2e2e2"></div>
+    <div style="position:relative;max-width:1500px;margin:0 auto;padding:0 clamp(20px,5vw,80px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:20px 60px;margin-bottom:56px">
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <span style="font-family:'Lexend Exa',sans-serif;font-size:clamp(56px,7vw,110px);font-weight:400;line-height:1;color:#f2f2f2;letter-spacing:-0.03em">Facilities</span>
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em">施設・サポート</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,3vw,40px)">
+        <sc-for list="{{ facilities }}" as="f" hint-placeholder-count="4">
+          <div style="background:#fff;display:flex;flex-direction:column">
+            <div style="aspect-ratio:4/3;background:repeating-linear-gradient(45deg,#ececec 0 8px,#f5f5f5 8px 16px);overflow:hidden">
+              <img src="{{ f.img }}" alt="{{ f.title }}" style="width:100%;height:100%;object-fit:cover;display:block">
+            </div>
+            <div style="padding:26px;display:flex;flex-direction:column;gap:10px">
+              <span style="font-family:'Lexend Exa',sans-serif;font-size:10px;font-weight:500">{{ f.en }}</span>
+              <h3 style="font-size:18px;font-weight:700;letter-spacing:0.05em">{{ f.title }}</h3>
+              <p style="font-size:13px;line-height:2;text-wrap:pretty">{{ f.text }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Clubs & Voices" style="padding:110px clamp(20px,5vw,80px);max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:60px clamp(30px,5vw,100px)">
+    <div>
+      <p style="font-family:'Lexend Exa',sans-serif;font-size:11px;font-weight:500;margin-bottom:10px">Clubs &amp; Activities</p>
+      <h2 style="font-size:clamp(22px,2vw,28px);font-weight:700;letter-spacing:0.1em;margin-bottom:18px">サークル・課外活動</h2>
+      <p style="font-size:13.5px;line-height:2.1;margin-bottom:28px">体育会・文化会あわせて約80団体（サンプル）が活動しています。</p>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <sc-for list="{{ clubs }}" as="c" hint-placeholder-count="3">
+          <div>
+            <h4 style="font-size:13px;font-weight:700;color:{{ c.color }};margin-bottom:10px">{{ c.cat }}</h4>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ c.items }}" as="i" hint-placeholder-count="5">
+                <span style="font-size:12.5px;font-weight:500;padding:7px 14px;background:#f4f4f4;border-radius:30px">{{ i }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="position:relative;background:#f1f6f6;clip-path:polygon(50% 0,100% 14%,100% 86%,50% 100%,0 86%,0 14%);padding:clamp(90px,8vw,120px) clamp(28px,6vw,80px)">
+      <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:24px">
+        <h2 style="writing-mode:vertical-rl;font-size:22px;font-weight:700;letter-spacing:0.25em">在学生の声</h2>
+        <span style="font-family:'Lexend Exa',sans-serif;font-size:clamp(44px,4.5vw,72px);font-weight:400;color:#dfe8e9;line-height:1;letter-spacing:-0.03em">Voices</span>
+      </div>
+      <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+        <div style="padding:20px 0;border-bottom:1px solid #dde6e7;display:flex;flex-direction:column;gap:8px">
+          <span style="display:flex;align-items:center;gap:12px"><span style="font-size:10px;font-weight:700;color:#fff;background:#1fb2c3;padding:2px 10px">{{ v.tag }}</span><span style="font-size:12px;font-weight:700">{{ v.who }}</span></span>
+          <span style="font-size:13px;line-height:1.9">{{ v.text }}</span>
+        </div>
+      </sc-for>
+      <p style="font-size:11px;color:#888;margin-top:14px">※ コメントはサンプルです</p>
+    </div>
+  </section>
+
+  <section id="oc" data-screen-label="Open Campus" style="background:#f4f4f4;padding:110px clamp(20px,5vw,80px)">
+    <div style="max-width:1300px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:50px">
+        <p style="font-family:'Lexend Exa',sans-serif;font-size:11px;font-weight:500;margin-bottom:10px">Open Campus</p>
+        <h2 style="font-size:clamp(24px,2.2vw,32px);font-weight:700;letter-spacing:0.12em">オープンキャンパス・見学会</h2>
+        <p style="font-size:11px;color:#b5545c;font-weight:700;margin-top:14px">※ 日程はサンプルです</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <sc-for list="{{ events }}" as="ev" hint-placeholder-count="4">
+          <div style="background:#fff;padding:28px clamp(20px,3vw,40px);display:flex;flex-wrap:wrap;align-items:center;gap:20px 40px">
+            <span style="font-family:'Lexend Exa',sans-serif;font-size:26px;font-weight:300;color:#1fb2c3;min-width:150px">{{ ev.date }}</span>
+            <span style="flex:1 1 320px;display:flex;flex-direction:column;gap:8px">
+              <span style="display:flex;gap:10px;align-items:center"><span style="font-size:10px;font-weight:700;color:#fff;background:#333;padding:2px 10px">{{ ev.type }}</span><span style="font-size:16px;font-weight:700">{{ ev.title }}</span></span>
+              <span style="font-size:12.5px;line-height:1.9;color:#555">{{ ev.text }}</span>
+            </span>
+            <a href="Contact.dc.html?type=oc" style="font-size:13px;font-weight:700;padding:14px 28px;border-radius:40px;background:#1fb2c3;color:#fff" style-hover="background:#169aaa;color:#fff">予約する</a>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <div style="height:110px"></div>
+  <dc-import name="SiteFooter" active="{{ 4 }}" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const u = (id, w = 700) => `https://images.unsplash.com/photo-${id}?w=${w}&q=70&auto=format&fit=crop`;
+    return {
+      calendar: [
+        { m: 4, title: '入学式・オリエンテーション', text: '履修登録やサークル紹介で新生活がスタート' },
+        { m: 5, title: '新入生歓迎イベント', text: '学部ごとの交流会で仲間づくり' },
+        { m: 8, title: '夏休み・短期留学', text: '海外協定校での語学研修に参加可能' },
+        { m: 10, title: '翠陵祭（学園祭）', text: 'サークルや学部の企画が集まる2日間' },
+        { m: 12, title: 'ゼミ発表会', text: '研究の成果を学内で発表' },
+        { m: 3, title: '卒業式', text: '4年間の学びを終え、次のステージへ' },
+      ],
+      facilities: [
+        { en: 'Library', title: '図書館', text: '約80万冊（サンプル）の蔵書と、グループ学習ができるラーニングコモンズを備えています。', img: u('1481627834876-b7833e8f5570') },
+        { en: 'Cafeteria', title: '学生食堂・カフェ', text: '栄養バランスに配慮した日替わりメニューを、学生向けの価格で提供しています。', img: u('1554118811-1e0d58224f24') },
+        { en: 'Dormitory', title: '学生寮', text: 'キャンパスから徒歩圏内に、セキュリティの整った学生寮を用意しています。', img: u('1555854877-bab0e564b8d5') },
+        { en: 'Career Center', title: 'キャリアセンター', text: '1年次からのキャリア教育と、インターンシップ・就職活動の個別相談で進路を支えます。', img: u('1522202176988-66273c2fd55f') },
+      ],
+      clubs: [
+        { cat: '体育会', color: '#4f7192', items: ['サッカー部', 'バスケットボール部', '陸上競技部', '弓道部', 'テニス部'] },
+        { cat: '文化会', color: '#b98a4c', items: ['吹奏楽部', '写真部', '演劇部', '軽音楽部', '茶道部'] },
+        { cat: 'ボランティア・その他', color: '#5f9e95', items: ['地域連携ボランティア', '国際交流サークル', 'プログラミング研究会', '学園祭実行委員会'] },
+      ],
+      voices: [
+        { tag: '人文学部 2年', who: '在学生A', text: '少人数のゼミで、先生や仲間と意見を交わす時間が一番の楽しみです。' },
+        { tag: '情報科学部 3年', who: '在学生B', text: '企業との共同プロジェクトで、授業で学んだ技術を実際に使う経験ができました。' },
+        { tag: '看護・医療学部 4年', who: '在学生C', text: '実習先の方々に支えられ、患者さんに寄り添う看護の大切さを学んでいます。' },
+      ],
+      events: [
+        { date: '7.20 SUN', type: '来場型', title: '夏のオープンキャンパス', text: '模擬授業、学部説明、キャンパスツアー、在学生との座談会を実施します。' },
+        { date: '8.24 SUN', type: '来場型', title: '入試対策講座', text: '入試問題の解説や、志望理由書の書き方を紹介します。' },
+        { date: '9.14 SUN', type: 'オンライン', title: 'オンライン入試説明会', text: '入試方式や出願の流れを、自宅から確認できます。' },
+        { date: '随時', type: '個別', title: 'キャンパス見学・個別相談', text: '平日のキャンパス見学や、入試課スタッフとの個別相談を受け付けています。' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

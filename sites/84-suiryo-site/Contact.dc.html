@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#333;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#333;text-decoration:none}
+a:hover{color:#1fb2c3}
+p,h1,h2,h3,h4,ul{margin:0}
+input,select,textarea{font-family:inherit}
+</style>
+</helmet>
+<div style="position:relative;overflow:hidden;min-width:320px">
+  <dc-import name="SiteHeader" active="{{ 5 }}" style="position:absolute;top:0;left:0;right:0;z-index:20" hint-size="100%,72px"></dc-import>
+  <dc-import name="PageHero" en="Contact" title="お問い合わせ" lead="入試に関するご質問、資料請求、オープンキャンパスのご予約は、こちらのフォームから受け付けています。" img="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=900&amp;q=70&amp;auto=format&amp;fit=crop" hint-size="100%,560px"></dc-import>
+
+  <section data-screen-label="Form" style="padding:100px clamp(20px,5vw,80px) 110px;max-width:960px;margin:0 auto">
+    <div>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#f1f6f6;padding:clamp(40px,6vw,80px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center">
+          <span style="width:64px;height:64px;border-radius:50%;background:#1fb2c3;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px">✓</span>
+          <h2 style="font-size:22px;font-weight:700;letter-spacing:0.1em">送信が完了しました</h2>
+          <p style="font-size:13.5px;line-height:2.1">{{ sentMsg }}<br>内容を確認のうえ、入試課よりご連絡いたします。（デモのため実際には送信されません）</p>
+          <button onClick="{{ reset }}" style="font-family:inherit;font-size:13px;font-weight:700;padding:14px 32px;border:1px solid #333;border-radius:40px;background:#fff;cursor:pointer" style-hover="background:#333;color:#fff">フォームに戻る</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column">
+          <p style="font-family:'Lexend Exa',sans-serif;font-size:11px;font-weight:500;margin-bottom:10px">Form</p>
+          <h2 style="font-size:clamp(22px,2vw,28px);font-weight:700;letter-spacing:0.1em;margin-bottom:12px">お問い合わせフォーム</h2>
+          <p style="font-size:12.5px;color:#666;margin-bottom:30px"><span style="color:#b5545c;font-weight:700">必須</span> の項目は必ずご入力ください。</p>
+
+          <div style="display:grid;grid-template-columns:minmax(120px,200px) minmax(0,1fr);gap:0;border-top:1px solid #e0e0e0">
+            <span style="padding:22px 16px;background:#f4f4f4;border-bottom:1px solid #e0e0e0;font-size:13px;font-weight:700;display:flex;gap:8px;align-items:center">種別<span style="font-size:10px;color:#fff;background:#b5545c;padding:1px 6px">必須</span></span>
+            <div style="padding:16px;border-bottom:1px solid #e0e0e0;display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ types }}" as="t" hint-placeholder-count="3">
+                <button onClick="{{ t.select }}" style="font-family:inherit;font-size:13px;font-weight:700;padding:10px 18px;border:1px solid #1fb2c3;border-radius:30px;cursor:pointer;background:{{ t.bg }};color:{{ t.fg }}">{{ t.label }}</button>
+              </sc-for>
+            </div>
+
+            <span style="padding:22px 16px;background:#f4f4f4;border-bottom:1px solid #e0e0e0;font-size:13px;font-weight:700;display:flex;gap:8px;align-items:center">お名前<span style="font-size:10px;color:#fff;background:#b5545c;padding:1px 6px">必須</span></span>
+            <div style="padding:16px;border-bottom:1px solid #e0e0e0;display:flex;flex-direction:column;gap:6px">
+              <input value="{{ f.name }}" onChange="{{ on.name }}" placeholder="翠陵 花子" style="width:100%;padding:12px 14px;border:1px solid #ccc;font-size:14px;border-radius:2px">
+              <sc-if value="{{ err.name }}" hint-placeholder-val="{{ false }}"><span style="font-size:11.5px;color:#b5545c">お名前を入力してください</span></sc-if>
+            </div>
+
+            <span style="padding:22px 16px;background:#f4f4f4;border-bottom:1px solid #e0e0e0;font-size:13px;font-weight:700">フリガナ</span>
+            <div style="padding:16px;border-bottom:1px solid #e0e0e0"><input value="{{ f.kana }}" onChange="{{ on.kana }}" placeholder="スイリョウ ハナコ" style="width:100%;padding:12px 14px;border:1px solid #ccc;font-size:14px;border-radius:2px"></div>
+
+            <span style="padding:22px 16px;background:#f4f4f4;border-bottom:1px solid #e0e0e0;font-size:13px;font-weight:700;display:flex;gap:8px;align-items:center">メール<span style="font-size:10px;color:#fff;background:#b5545c;padding:1px 6px">必須</span></span>
+            <div style="padding:16px;border-bottom:1px solid #e0e0e0;display:flex;flex-direction:column;gap:6px">
+              <input type="email" value="{{ f.email }}" onChange="{{ on.email }}" placeholder="example@mail.com" style="width:100%;padding:12px 14px;border:1px solid #ccc;font-size:14px;border-radius:2px">
+              <sc-if value="{{ err.email }}" hint-placeholder-val="{{ false }}"><span style="font-size:11.5px;color:#b5545c">正しいメールアドレスを入力してください</span></sc-if>
+            </div>
+
+            <span style="padding:22px 16px;background:#f4f4f4;border-bottom:1px solid #e0e0e0;font-size:13px;font-weight:700">電話番号</span>
+            <div style="padding:16px;border-bottom:1px solid #e0e0e0"><input type="tel" value="{{ f.tel }}" onChange="{{ on.tel }}" placeholder="000-0000-0000" style="width:100%;padding:12px 14px;border:1px solid #ccc;font-size:14px;border-radius:2px"></div>
+
+            <span style="padding:22px 16px;background:#f4f4f4;border-bottom:1px solid #e0e0e0;font-size:13px;font-weight:700">ご身分</span>
+            <div style="padding:16px;border-bottom:1px solid #e0e0e0">
+              <select value="{{ f.grade }}" onChange="{{ on.grade }}" style="width:100%;padding:12px 14px;border:1px solid #ccc;font-size:14px;border-radius:2px;background:#fff">
+                <option value="">選択してください</option><option>高校1年生</option><option>高校2年生</option><option>高校3年生</option><option>既卒生</option><option>保護者</option><option>高校教員</option><option>その他</option>
+              </select>
+            </div>
+
+            <span style="padding:22px 16px;background:#f4f4f4;border-bottom:1px solid #e0e0e0;font-size:13px;font-weight:700">{{ msgLabel }}</span>
+            <div style="padding:16px;border-bottom:1px solid #e0e0e0"><textarea value="{{ f.msg }}" onChange="{{ on.msg }}" rows="6" placeholder="{{ msgPlaceholder }}" style="width:100%;padding:12px 14px;border:1px solid #ccc;font-size:14px;border-radius:2px;resize:vertical"></textarea></div>
+          </div>
+
+          <label style="display:flex;gap:10px;align-items:center;justify-content:center;font-size:13px;margin-top:30px;cursor:pointer">
+            <input type="checkbox" checked="{{ f.agree }}" onChange="{{ on.agree }}" style="width:18px;height:18px;accent-color:#1fb2c3"><span><a href="#" style="border-bottom:1px solid #333">個人情報の取り扱い</a>に同意する</span>
+          </label>
+          <sc-if value="{{ err.agree }}" hint-placeholder-val="{{ false }}"><p style="font-size:11.5px;color:#b5545c;text-align:center;margin-top:8px">同意が必要です</p></sc-if>
+          <button onClick="{{ submit }}" style="align-self:center;margin-top:28px;font-family:inherit;width:min(100%,320px);height:60px;border:0;border-radius:40px;background:#1fb2c3;color:#fff;font-size:14px;font-weight:700;letter-spacing:0.1em;cursor:pointer" style-hover="background:#169aaa">送信する</button>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section data-screen-label="Access" style="background:#f4f4f4;padding:110px clamp(20px,5vw,80px)">
+    <div style="max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:50px clamp(30px,5vw,80px);align-items:center">
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <span style="font-family:'Lexend Exa',sans-serif;font-size:clamp(56px,7vw,100px);font-weight:400;line-height:1;color:#e3e3e3;letter-spacing:-0.03em">Access</span>
+        <h2 style="font-size:clamp(22px,2vw,28px);font-weight:700;letter-spacing:0.1em">入試課・アクセス</h2>
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:12px 20px;font-size:13px;line-height:1.9">
+          <span style="font-weight:700">所在地</span><span>〒000-0000 ○○県○○市○○町0-0-0</span>
+          <span style="font-weight:700">電話</span><span>00-0000-0000（平日 9:00–17:00）</span>
+          <span style="font-weight:700">メール</span><span>nyushi@example.ac.jp</span>
+          <span style="font-weight:700">交通</span><span>○○線「○○駅」より徒歩10分（サンプル）</span>
+        </div>
+        <p style="font-size:11.5px;color:#888">※ 住所・連絡先はすべて仮の表記です</p>
+      </div>
+      <div style="aspect-ratio:4/3;background:repeating-linear-gradient(45deg,#e3e3e3 0 8px,#ececec 8px 16px);display:flex;align-items:center;justify-content:center">
+        <span style="font-family:ui-monospace,monospace;font-size:12px;color:#888;background:#f4f4f4;padding:6px 12px">地図（Google マップ埋め込み）</span>
+      </div>
+    </div>
+  </section>
+  <dc-import name="SiteFooter" active="{{ 5 }}" show-contact="{{ false }}" hint-size="100%,500px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { type: 'inquiry', f: { name: '', kana: '', email: '', tel: '', grade: '', msg: '', agree: false }, err: {}, sent: false };
+  componentDidMount() {
+    const t = new URLSearchParams(window.location.search).get('type');
+    if (['inquiry', 'docs', 'oc'].includes(t)) this.setState({ type: t });
+  }
+  renderVals() {
+    const T = { inquiry: ['お問い合わせ', 'お問い合わせ内容', 'ご質問内容をご記入ください'], docs: ['資料請求', '請求資料・送付先', '希望する資料（募集要項・学部パンフレットなど）と送付先住所をご記入ください'], oc: ['オープンキャンパス予約', '参加希望日・人数', '参加希望のイベント・日程と、同伴者の人数をご記入ください'] };
+    const set = k => e => { const v = k === 'agree' ? e.target.checked : e.target.value; this.setState(s => ({ f: { ...s.f, [k]: v } })); };
+    const cur = T[this.state.type];
+    return {
+      f: this.state.f, err: this.state.err, sent: this.state.sent, notSent: !this.state.sent,
+      on: Object.fromEntries(Object.keys(this.state.f).map(k => [k, set(k)])),
+      types: Object.entries(T).map(([k, v]) => ({ label: v[0], bg: this.state.type === k ? '#1fb2c3' : '#fff', fg: this.state.type === k ? '#fff' : '#1fb2c3', select: () => this.setState({ type: k }) })),
+      msgLabel: cur[1], msgPlaceholder: cur[2],
+      sentMsg: `「${cur[0]}」を受け付けました。`,
+      submit: () => {
+        const f = this.state.f;
+        const err = { name: !f.name.trim(), email: !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email), agree: !f.agree };
+        if (err.name || err.email || err.agree) return this.setState({ err });
+        this.setState({ err: {}, sent: true });
+        window.scrollTo({ top: 400, behavior: 'smooth' });
+      },
+      reset: () => this.setState({ sent: false, f: { name: '', kana: '', email: '', tel: '', grade: '', msg: '', agree: false } }),
+    };
+  }
+}
+</script>
+</body>
+</html>

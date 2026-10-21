@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans JP',sans-serif;letter-spacing:.04em;color:#1d2433;background:#fff;-webkit-font-smoothing:antialiased}
+a{color:#0b2d8c;text-decoration:none}
+a:hover{color:#1d5be0}
+*{box-sizing:border-box}
+</style>
+</helmet>
+
+<header ref="{{ headerRef }}" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid #eef1f6">
+  <div style="max-width:1400px;margin:0 auto;padding:14px clamp(16px,3vw,32px);display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;color:#0b2d8c">
+      <span style="width:30px;height:30px;background:linear-gradient(135deg,#1d5be0 0 50%,#f08300 50% 100%);transform:skewX(-14deg);border-radius:3px"></span>
+      <span style="display:flex;flex-direction:column;line-height:1">
+        <span style="font-family:Lexend,sans-serif;font-weight:600;font-size:24px;letter-spacing:.12em">NEXTGATE</span>
+        <span style="font-size:10px;letter-spacing:.2em;color:#4a5670;margin-top:4px">大学受験・進学ナビ</span>
+      </span>
+    </a>
+    <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:26px;font-size:12px;font-weight:500">
+        <a href="#programs" style="color:#2b3447" style-hover="color:#1d5be0">学部・学科</a>
+        <a href="#prep" style="color:#2b3447" style-hover="color:#1d5be0">入試対策</a>
+        <a href="#admissions" style="color:#2b3447" style-hover="color:#1d5be0">入試情報・サポート</a>
+        <a href="#campus" style="color:#2b3447" style-hover="color:#1d5be0">キャンパスライフ</a>
+        <a href="#contact" style="background:#0b2d8c;color:#fff;padding:9px 18px;border-radius:999px;transition:background .2s" style-hover="background:#1d5be0;color:#fff">資料請求</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:44px;height:44px;border:0;background:#0b2d8c;border-radius:50%;color:#fff;font-size:18px;cursor:pointer">{{ menuIcon }}</button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;flex-direction:column;background:#0b2d8c;padding:8px 24px 20px">
+      <a href="#programs" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.2)">学部・学科</a>
+      <a href="#prep" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.2)">入試対策</a>
+      <a href="#admissions" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.2)">入試情報・サポート</a>
+      <a href="#campus" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.2)">キャンパスライフ</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="color:#fff;padding:14px 0">資料請求・お問い合わせ</a>
+    </nav>
+  </sc-if>
+</header>
+
+<!-- 01 HERO -->
+<section id="top" data-screen-label="01 Hero" style="position:relative;overflow:hidden;background:#fff">
+  <sc-if value="{{ showDecor }}" hint-placeholder-val="{{ true }}">
+    <svg viewBox="0 0 800 600" preserveAspectRatio="none" style="position:absolute;right:0;top:0;width:58%;height:100%;pointer-events:none">
+      <path d="M800 0 L520 0 C430 120 470 260 640 330 C720 362 780 380 800 395 Z" fill="#1d5be0"></path>
+      <path d="M800 130 C640 160 560 300 700 420 C740 455 780 470 800 476 Z" fill="#0b2d8c" opacity=".85"></path>
+      <path d="M330 600 C420 470 600 420 800 470 L800 600 Z" fill="#2c6ff0" opacity=".55"></path>
+    </svg>
+  </sc-if>
+  <div style="position:relative;max-width:1400px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,3vw,32px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px;align-items:start">
+    <div style="aspect-ratio:4/3;width:100%;max-width:760px">
+      <image-slot src="_filled/13-campus-student.jpg" id="hero-visual" shape="rect" placeholder="メインビジュアル：キャンパス・学生のイラストまたは写真（4:3）"></image-slot>
+    </div>
+    <div style="padding:clamp(8px,4vw,56px) 0 32px;display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:center;gap:14px;font-family:Lexend,sans-serif;font-size:11px;letter-spacing:.32em;color:#1d5be0"><span style="width:44px;height:1px;background:#1d5be0"></span>UNIVERSITY ADMISSIONS GUIDE</div>
+      <div style="display:flex;align-items:flex-start;gap:clamp(14px,2vw,28px)">
+        <h1 style="margin:0;font-weight:700;font-size:clamp(40px,6vw,92px);line-height:1.14;letter-spacing:.06em;color:#0b2d8c">未来へ、<br>もっと先へ。</h1>
+        <span style="writing-mode:vertical-rl;font-size:13px;letter-spacing:.42em;color:#4a5670;padding-top:8px;border-left:1px solid #c7d3ea;padding-left:10px">夢をかなえる進学ガイド</span>
+      </div>
+      <a href="#admissions" style="display:flex;gap:14px;align-items:center;background:#fff;padding:12px;max-width:360px;box-shadow:0 8px 24px rgba(11,45,140,.14);color:#1d2433;transition:transform .2s" style-hover="transform:translateY(-3px);color:#1d2433">
+        <span style="width:96px;height:64px;flex:none"><image-slot src="_filled/14-p03.jpg" id="hero-news" shape="rect" placeholder="写真"></image-slot></span>
+        <span style="display:flex;flex-direction:column;gap:6px">
+          <span style="align-self:flex-start;background:#1d5be0;color:#fff;font-size:10px;font-weight:700;padding:2px 8px">お知らせ</span>
+          <span style="font-size:13px;font-weight:700;line-height:1.5">オープンキャンパス 参加予約の受付を開始しました（サンプル）</span>
+        </span>
+      </a>
+    </div>
+  </div>
+  <div style="position:relative;overflow:hidden;background:#0b2d8c;color:#fff;margin-top:-8px">
+    <div aria-hidden="true" style="position:absolute;right:-1vw;bottom:-3vw;font-family:Lexend,sans-serif;font-weight:600;font-size:clamp(90px,16vw,260px);line-height:1;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.16);white-space:nowrap;pointer-events:none">GATE</div>
+    <div style="position:relative;max-width:1100px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,4vw,32px) clamp(64px,8vw,112px);display:flex;flex-direction:column;gap:24px">
+      <div style="font-family:Lexend,sans-serif;font-size:11px;letter-spacing:.28em;color:#f6a54a">01 — INTRODUCTION</div>
+      <h2 style="margin:0;font-family:Lexend,sans-serif;font-weight:300;font-size:clamp(36px,5vw,64px);letter-spacing:-.01em;line-height:1.05">Open the Gate</h2>
+      <p style="margin:0;font-size:14px;line-height:2.1;max-width:760px;text-wrap:pretty">NEXTGATEは、大学進学をめざす高校生と保護者の方のための入試・進学情報サイトです。<br>学部・学科選びから入試方式の理解、受験対策、出願手続きまで、志望校合格までの道のりをわかりやすくサポートします。</p>
+      <p style="margin:0;font-size:14px;line-height:2.1;max-width:760px;text-wrap:pretty">大学での学びは、あなたの可能性を大きく広げる一歩です。いまの努力を未来へつなぎ、自分らしい進路を見つけましょう。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:8px">
+        <a href="#programs" style="display:flex;align-items:center;gap:14px;background:#fff;color:#0b2d8c;padding:12px 14px 12px 26px;border-radius:999px;font-weight:700;font-size:14px;transition:background .2s" style-hover="background:#e8f0fb;color:#0b2d8c">大学・学部を探す<span style="width:28px;height:28px;border-radius:50%;background:#0b2d8c;color:#fff;display:grid;place-items:center">→</span></a>
+        <a href="#admissions" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(255,255,255,.7);color:#fff;padding:12px 26px;border-radius:999px;font-weight:700;font-size:14px;transition:background .2s" style-hover="background:rgba(255,255,255,.12);color:#fff">入試情報を見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PROGRAMS -->
+<section id="programs" data-screen-label="02 Programs" style="background:#fff;padding:clamp(64px,8vw,104px) 0 0">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));align-items:stretch">
+    <div style="position:relative;min-height:380px;padding:0 clamp(16px,3vw,32px)">
+      <div style="position:absolute;inset:0 18px 0 clamp(16px,3vw,32px)"><image-slot src="_filled/15-building-fence.jpg" id="programs-visual" shape="rect" placeholder="学びのイメージ：講義・研究室・図書館など"></image-slot></div>
+      <div style="position:absolute;right:0;top:28px;bottom:0;width:18px;background:#f08300"></div>
+    </div>
+    <div style="position:relative;overflow:hidden;background:#0b2d8c;color:#fff;padding:clamp(40px,6vw,72px) clamp(24px,5vw,64px)">
+      <sc-if value="{{ showDecor }}" hint-placeholder-val="{{ true }}">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="none" style="position:absolute;right:0;top:15%;width:55%;height:70%;pointer-events:none"><path d="M400 0 C260 60 220 200 400 300 Z" fill="#1d5be0" opacity=".6"></path></svg>
+      </sc-if>
+      <div style="position:relative;display:flex;flex-direction:column;gap:32px;max-width:560px">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;font-family:Lexend,sans-serif;font-size:11px;letter-spacing:.28em;color:#f6a54a;margin-bottom:14px"><span>02</span><span style="width:36px;height:1px;background:currentColor"></span></div><h2 style="margin:0;font-family:Lexend,sans-serif;font-weight:300;font-size:clamp(36px,4.4vw,56px);letter-spacing:-.01em;line-height:1.05">Programs</h2>
+          <div style="font-size:13px;font-weight:700;margin-top:4px">学部・学科を知る</div>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ fields }}" as="f" hint-placeholder-count="4">
+            <a href="#featured" style="display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.55);color:#fff" style-hover="color:#fff;background:rgba(255,255,255,.06)">
+              <span style="font-family:Lexend,sans-serif;font-size:26px;font-weight:200;width:40px">{{ f.no }}</span>
+              <span style="flex:1;border-left:1px solid rgba(255,255,255,.6);padding-left:16px">
+                <span style="display:block;font-weight:700;font-size:16px">{{ f.title }}</span>
+                <span style="display:block;font-size:11px;margin-top:4px;opacity:.9">{{ f.sub }}</span>
+              </span>
+              <span style="width:30px;height:30px;border-radius:50%;background:#fff;color:#0b2d8c;display:grid;place-items:center;font-size:14px;flex:none">→</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="featured" style="background:#ececec;margin-top:clamp(56px,7vw,88px);padding:clamp(40px,5vw,56px) clamp(16px,3vw,32px)">
+    <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px">
+      <div style="padding-right:12px">
+        <h3 style="margin:0;font-family:Lexend,sans-serif;font-weight:300;font-size:clamp(30px,3vw,40px);color:#0b2d8c;letter-spacing:-.01em">Featured</h3>
+        <div style="font-size:12px;font-weight:700;margin-top:4px">注目の学び</div>
+        <p style="font-size:13px;line-height:1.9;margin:18px 0 0;color:#3a4356;text-wrap:pretty">まだ志望分野が決まっていない方も、気になる学びから探してみましょう。</p>
+      </div>
+      <sc-for list="{{ featured }}" as="c" hint-placeholder-count="3">
+        <a href="#prep" style="display:flex;flex-direction:column;background:#fff;color:#1d2433;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 20px 40px rgba(11,45,140,.16);color:#1d2433">
+          <div style="aspect-ratio:16/10"><image-slot id="{{ c.slot }}" shape="rect" placeholder="{{ c.ph }}"></image-slot></div>
+          <p style="margin:0;padding:16px 16px 18px;font-size:12px;line-height:1.8;color:#3a4356;flex:1;text-wrap:pretty">{{ c.desc }}</p>
+          <div style="background:#0b2d8c;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;font-size:13px;font-weight:700">{{ c.title }}<span style="width:26px;height:26px;border-radius:50%;border:1.5px solid #fff;display:grid;place-items:center;font-size:12px">→</span></div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PREP -->
+<section id="prep" data-screen-label="03 Exam Prep" style="background:#fff;padding:clamp(64px,8vw,104px) clamp(16px,3vw,32px)">
+  <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px">
+    <div style="flex:1 1 200px">
+      <div style="display:flex;align-items:center;gap:12px;font-family:Lexend,sans-serif;font-size:11px;letter-spacing:.28em;color:#f08300;margin-bottom:14px"><span>03</span><span style="width:36px;height:1px;background:currentColor"></span></div><h2 style="margin:0;font-family:Lexend,sans-serif;font-weight:300;font-size:clamp(36px,4.4vw,56px);color:#0b2d8c;line-height:1.05;letter-spacing:-.01em">Preparation</h2>
+      <div style="font-size:12px;font-weight:700;margin-top:6px">入試対策</div>
+    </div>
+    <div style="flex:3 1 min(100%,480px);min-width:0;display:flex;flex-direction:column;gap:8px">
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+        <sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+          <button onClick="{{ m.select }}" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:8px 6px;border-radius:999px;background:{{ m.bg }};color:{{ m.fg }};transition:background .2s">{{ m.label }}</button>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 4px;font-size:13px;line-height:1.9;color:#3a4356;text-wrap:pretty">{{ method.lead }}</p>
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ method.rows }}" as="r" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:20px;padding:16px 0;border-bottom:1px solid #e3e6ec;flex-wrap:wrap">
+            <span style="background:#eceef2;font-size:11px;padding:6px 0;width:96px;text-align:center;flex:none;color:#3a4356">{{ r.tag }}</span>
+            <span style="font-size:13px;line-height:1.8;flex:1;min-width:220px">{{ r.text }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <a href="#admissions" style="align-self:flex-end;margin-top:24px;background:#0b2d8c;color:#fff;font-family:Lexend,sans-serif;font-size:12px;font-weight:600;padding:7px 20px;border-radius:999px" style-hover="background:#1d5be0;color:#fff">more</a>
+    </div>
+  </div>
+
+  <div style="max-width:1000px;margin:clamp(56px,7vw,88px) auto 0;background:#e8f0fb;border:1px solid #bcd0ee;border-radius:4px;padding:clamp(28px,4vw,44px) clamp(20px,3vw,40px)">
+    <div style="text-align:center;padding-bottom:20px;border-bottom:2px solid #1d5be0">
+      <h3 style="margin:0;font-family:Lexend,sans-serif;font-weight:300;font-size:clamp(30px,3vw,40px);color:#0b2d8c;letter-spacing:-.01em">Study Plan</h3>
+      <div style="font-size:12px;font-weight:700;margin-top:4px">学習計画と時間の使い方</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px;margin-top:28px">
+      <sc-for list="{{ plan }}" as="p" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:11px;font-weight:700;color:#0b2d8c">- {{ p.term }} -</div>
+          <div style="background:#fff;border:1px solid #c7cfdb;padding:16px;flex:1">
+            <div style="font-weight:700;font-size:15px;margin-bottom:8px">{{ p.title }}</div>
+            <div style="font-size:12px;line-height:1.85;color:#3a4356;text-wrap:pretty">{{ p.text }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px">
+      <a href="#contact" style="background:#0b2d8c;color:#fff;font-size:12px;font-weight:700;padding:9px 22px;border-radius:999px" style-hover="background:#1d5be0;color:#fff">受験対策ガイドを請求する</a>
+      <a href="#admissions" style="background:#fff;color:#0b2d8c;border:1px solid #0b2d8c;font-size:12px;font-weight:700;padding:9px 22px;border-radius:999px" style-hover="background:#0b2d8c;color:#fff">試験科目・配点を確認する</a>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ADMISSIONS -->
+<section id="admissions" data-screen-label="04 Admissions" style="background:#e8f0fb;padding:clamp(64px,8vw,104px) clamp(16px,3vw,32px)">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="text-align:center;display:flex;flex-direction:column;align-items:center">
+      <div style="display:flex;align-items:center;gap:12px;font-family:Lexend,sans-serif;font-size:11px;letter-spacing:.28em;color:#f08300;margin-bottom:14px"><span>04</span><span style="width:36px;height:1px;background:currentColor"></span></div><h2 style="margin:0;font-family:Lexend,sans-serif;font-weight:300;font-size:clamp(36px,4.4vw,56px);color:#0b2d8c;line-height:1.05;letter-spacing:-.01em">Admissions</h2>
+      <div style="font-size:12px;font-weight:700;margin-top:4px">入試情報・学生サポート</div>
+    </div>
+
+    <div style="background:#fff;margin-top:40px;padding:clamp(24px,4vw,40px)">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;border-bottom:2px solid #1d5be0;padding-bottom:12px">
+        <h3 style="margin:0;font-size:17px;font-weight:700;color:#0b2d8c">入試スケジュール</h3>
+        <span style="font-size:11px;color:#6a7488">※サンプル表示です。正式な日程は各大学の募集要項をご確認ください。</span>
+      </div>
+      <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="5">
+        <div style="display:flex;align-items:center;gap:20px;padding:15px 0;border-bottom:1px solid #e3e6ec;flex-wrap:wrap">
+          <span style="font-size:12px;width:120px;color:#3a4356;flex:none">{{ s.date }}</span>
+          <span style="background:#eceef2;font-size:11px;padding:5px 0;width:110px;text-align:center;flex:none">{{ s.tag }}</span>
+          <span style="font-size:13px;line-height:1.7;flex:1;min-width:200px">{{ s.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));margin-top:48px;border-top:1px solid #c7cfdb;border-bottom:1px solid #c7cfdb">
+      <sc-for list="{{ support }}" as="s" hint-placeholder-count="3">
+        <div style="padding:28px 24px;border-left:1px solid #c7cfdb;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:Lexend,sans-serif;color:#1d5be0;font-size:40px;font-weight:200;line-height:1">{{ s.no }}</span>
+          <h4 style="margin:0;font-size:15px;font-weight:700;color:#0b2d8c">{{ s.title }}</h4>
+          <p style="margin:0;font-size:12px;line-height:1.9;color:#3a4356;flex:1;text-wrap:pretty">{{ s.text }}</p>
+          <a href="#contact" style="font-size:12px;font-weight:700">{{ s.link }} →</a>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="margin-top:56px">
+      <h3 style="margin:0 0 16px;font-size:17px;font-weight:700;color:#0b2d8c">よくあるご質問</h3>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+          <div style="background:#fff;border:1px solid #d3dbe8">
+            <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;display:flex;align-items:center;gap:14px;border:0;background:none;padding:16px 18px;text-align:left;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;color:#1d2433">
+              <span style="font-family:Lexend,sans-serif;color:#1d5be0">Q</span>
+              <span style="flex:1">{{ q.q }}</span>
+              <span style="width:24px;height:24px;border-radius:50%;background:#0b2d8c;color:#fff;display:grid;place-items:center;font-size:14px;flex:none">{{ q.icon }}</span>
+            </button>
+            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:14px;padding:0 18px 18px;font-size:13px;line-height:1.9;color:#3a4356">
+                <span style="font-family:Lexend,sans-serif;color:#f08300;font-weight:600">A</span>
+                <span style="flex:1;text-wrap:pretty">{{ q.a }}</span>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CAMPUS + CTA -->
+<section id="campus" data-screen-label="05 Campus Life" style="background:#fff">
+  <div style="position:relative;min-height:440px;overflow:hidden">
+    <div style="position:absolute;inset:0"><image-slot src="_filled/16-circle-play.jpg" id="campus-bg" shape="rect" placeholder="キャンパスライフの写真（学生・サークル活動など）"></image-slot></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(11,45,140,.9) 0%,rgba(29,91,224,.62) 60%,rgba(29,91,224,.35) 100%);pointer-events:none"></div>
+    <div style="position:relative;pointer-events:none;max-width:1100px;margin:0 auto;padding:clamp(56px,7vw,88px) clamp(20px,4vw,32px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px;color:#fff">
+      <div style="max-width:560px;display:flex;flex-direction:column;gap:20px">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;font-family:Lexend,sans-serif;font-size:11px;letter-spacing:.28em;color:#fff;margin-bottom:14px"><span>05</span><span style="width:36px;height:1px;background:currentColor"></span></div><h2 style="margin:0;font-family:Lexend,sans-serif;font-weight:300;font-size:clamp(40px,5vw,68px);line-height:1.05;letter-spacing:-.01em">Campus Life</h2>
+          <div style="font-size:12px;font-weight:700;margin-top:4px">キャンパスライフ</div>
+        </div>
+        <p style="margin:0;font-size:14px;line-height:2;text-wrap:pretty">授業だけでなく、サークルや部活動、ボランティア、留学、地域連携プロジェクトなど、大学には新しい仲間と出会い、自分の世界を広げる機会があふれています。</p>
+        <p style="margin:0;font-size:14px;line-height:2">まずはオープンキャンパスで、実際の雰囲気を体感してみませんか。</p>
+      </div>
+      <a href="#contact" style="pointer-events:auto;display:flex;align-items:center;gap:16px;background:#fff;color:#0b2d8c;padding:12px 14px 12px 28px;border-radius:999px;font-weight:700;font-size:14px" style-hover="background:#e8f0fb;color:#0b2d8c">オープンキャンパスを予約<span style="width:32px;height:32px;border-radius:50%;background:#0b2d8c;color:#fff;display:grid;place-items:center">→</span></a>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:clamp(56px,7vw,88px) clamp(16px,3vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px">
+    <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+      <div style="display:flex;flex-direction:column;border:1px solid #d3dbe8">
+        <div style="aspect-ratio:16/9"><image-slot id="{{ e.slot }}" shape="rect" placeholder="{{ e.ph }}"></image-slot></div>
+        <div style="padding:18px 18px 22px;display:flex;flex-direction:column;gap:8px">
+          <span style="align-self:flex-start;background:#1d5be0;color:#fff;font-size:10px;font-weight:700;padding:2px 8px">{{ e.tag }}</span>
+          <h4 style="margin:0;font-size:15px;font-weight:700">{{ e.title }}</h4>
+          <p style="margin:0;font-size:12px;line-height:1.85;color:#3a4356;text-wrap:pretty">{{ e.text }}</p>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div id="contact" style="background:#e8f0fb;padding:clamp(56px,7vw,88px) clamp(16px,3vw,32px)">
+    <div style="max-width:1000px;margin:0 auto;text-align:center">
+      <h2 style="margin:0;font-family:Lexend,sans-serif;font-weight:300;font-size:clamp(36px,4.4vw,56px);color:#0b2d8c;line-height:1.05;letter-spacing:-.01em">Next Step</h2>
+      <div style="font-size:12px;font-weight:700;margin-top:4px">未来への一歩を、ここから</div>
+      <p style="margin:24px auto 0;max-width:560px;font-size:14px;line-height:2;color:#3a4356;text-wrap:pretty">迷ったときは、ひとりで抱え込まずに相談してください。資料請求や個別相談を通じて、あなたに合った進路選びをお手伝いします。</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));margin-top:36px;border-top:1px solid #c7cfdb;border-bottom:1px solid #c7cfdb">
+        <sc-for list="{{ ctas }}" as="c" hint-placeholder-count="3">
+          <a href="#contact" onClick="{{ c.click }}" style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:28px 16px;border-left:1px solid #c7cfdb;color:#0b2d8c;transition:background .2s" style-hover="background:#fff;color:#0b2d8c">
+            <span style="width:44px;height:44px;border-radius:50%;border:1.5px solid #0b2d8c;display:grid;place-items:center;font-family:Lexend,sans-serif;font-size:13px">{{ c.no }}</span>
+            <span style="font-size:13px;font-weight:700">{{ c.label }}</span>
+          </a>
+        </sc-for>
+      </div>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:20px 0 0;font-size:13px;color:#0b2d8c;font-weight:700">「{{ sentLabel }}」のフォームは準備中です（デモ表示）。</p>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#3a3a3a;color:#d6d6d6">
+  <div style="max-width:1100px;margin:0 auto;padding:56px clamp(20px,4vw,32px) 40px;display:flex;flex-wrap:wrap;gap:40px">
+    <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;align-items:center;gap:10px;color:#fff">
+        <span style="width:28px;height:28px;background:linear-gradient(135deg,#fff 0 50%,#f08300 50% 100%);transform:skewX(-14deg);border-radius:3px"></span>
+        <span style="font-family:Lexend,sans-serif;font-weight:600;font-size:22px;letter-spacing:.12em">NEXTGATE</span>
+      </div>
+      <div style="font-size:12px;line-height:1.9">
+        <div style="color:#fff;font-weight:700;margin-bottom:4px">運営事務局</div>
+        〒000-0000 ○○県○○市○○ 0-0-0<br>TEL 00-0000-0000（平日 9:00〜17:00）<br>MAIL info@example.jp
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;font-size:12px;flex:2 1 min(100%,420px)">
+      <div style="display:flex;flex-direction:column;gap:9px"><span style="color:#fff;font-weight:700">学部・学科</span><a href="#programs" style="color:#cfcfcf">分野から探す</a><a href="#featured" style="color:#cfcfcf">注目の学び</a></div>
+      <div style="display:flex;flex-direction:column;gap:9px"><span style="color:#fff;font-weight:700">入試</span><a href="#prep" style="color:#cfcfcf">入試対策</a><a href="#admissions" style="color:#cfcfcf">入試スケジュール</a><a href="#admissions" style="color:#cfcfcf">学費・奨学金</a><a href="#admissions" style="color:#cfcfcf">よくあるご質問</a></div>
+      <div style="display:flex;flex-direction:column;gap:9px"><span style="color:#fff;font-weight:700">お問い合わせ</span><a href="#campus" style="color:#cfcfcf">オープンキャンパス</a><a href="#contact" style="color:#cfcfcf">資料請求</a><a href="#contact" style="color:#cfcfcf">入試相談</a></div>
+    </div>
+  </div>
+  <div aria-hidden="true" style="max-width:1100px;margin:0 auto;padding:0 clamp(20px,4vw,32px);font-family:Lexend,sans-serif;font-weight:600;font-size:clamp(56px,12vw,170px);line-height:.9;letter-spacing:.04em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.18);overflow:hidden;white-space:nowrap">NEXTGATE</div>
+  <div style="border-top:1px solid #555;padding:18px;text-align:center;font-size:11px;color:#bdbdbd">Copyright © NEXTGATE All rights reserved.</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showDecor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;faqOpenFirst&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menu: false, tab: 0, faq: 0, sent: null };
+  headerRef = React.createRef();
+  componentDidMount() {
+    this.mq = window.matchMedia('(max-width: 859px)');
+    this.onResize = () => this.setState({ w: this.mq.matches ? 0 : 9999, tick: Date.now() });
+    this.mq.addEventListener('change', this.onResize);
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('load', this.onResize);
+    requestAnimationFrame(this.onResize);
+    let n = 0; this.iv = setInterval(() => { this.onResize(); if (++n > 10) clearInterval(this.iv); }, 250);
+    if (this.props.faqOpenFirst === false) this.setState({ faq: -1 });
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('load', this.onResize); this.mq && this.mq.removeEventListener('change', this.onResize); clearInterval(this.iv); }
+  renderVals() {
+    const mobile = typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(max-width: 859px)').matches : this.state.w < 860;
+    const M = [
+      { label: '一般選抜', lead: '学力試験を中心に評価する方式です。大学入学共通テストと各大学の個別試験を組み合わせる形が一般的です。', rows: [
+        { tag: '戦略', text: '志望校の出題科目・配点を早めに確認し、配点の高い科目から優先的に対策しましょう。' },
+        { tag: '過去問', text: '過去問は時間を計って解き、出題傾向と自分の弱点を把握することが大切です。' },
+        { tag: '時間管理', text: '1週間単位で学習計画を立て、復習の時間をあらかじめ確保しておきましょう。' },
+        { tag: '資料', text: '各大学の募集要項・入試ガイドで、試験科目と出願条件を必ず確認してください。' } ] },
+      { label: '学校推薦型選抜', lead: '出身高校の校長の推薦にもとづき、調査書・面接・小論文などで評価する方式です。', rows: [
+        { tag: '評定', text: '多くの場合、評定平均などの出願条件があります。日々の授業と定期考査が土台になります。' },
+        { tag: '面接', text: '志望理由や高校での取り組みを、自分の言葉で具体的に話せるよう準備しましょう。' },
+        { tag: '小論文', text: '志望分野に関するニュースや課題に触れ、考えを文章にまとめる練習を重ねましょう。' },
+        { tag: '相談', text: '校内選考の時期や条件は学校ごとに異なります。早めに担任の先生へ相談しましょう。' } ] },
+      { label: '総合型選抜', lead: '志望理由書や面接、活動実績などから、学ぶ意欲や大学との適性を総合的に評価する方式です。', rows: [
+        { tag: '自己分析', text: 'これまでの経験を振り返り、大学で学びたいことと将来像を整理しましょう。' },
+        { tag: '大学研究', text: 'アドミッション・ポリシーを読み込み、求められる人物像を理解しましょう。' },
+        { tag: '書類', text: '志望理由書は何度も書き直し、先生や家族に読んでもらうと説得力が増します。' },
+        { tag: '体験', text: 'オープンキャンパスや模擬授業への参加は、志望理由を深めるきっかけになります。' } ] }
+    ];
+    const faqs = [
+      { q: '入試方式はどのように選べばよいですか？', a: '志望校の募集要項で実施方式と出願条件を確認し、自分の成績や活動実績、準備に使える時間をふまえて検討しましょう。複数の方式を併願できる場合もあります。' },
+      { q: '学費はどれくらいかかりますか？', a: '学費は大学・学部によって大きく異なります。入学金・授業料・施設費などの内訳を、各大学の公式資料で確認してください。（本サイトの金額表示はありません）' },
+      { q: '奨学金にはどのような種類がありますか？', a: '返済不要の給付型と、返済が必要な貸与型があります。国や自治体、大学独自の制度など窓口もさまざまです。申込時期が早いものもあるため、早めの情報収集をおすすめします。' },
+      { q: '保護者も相談できますか？', a: 'はい、保護者の方からのご相談も受け付けています。出願手続きや費用、進路選びの進め方など、お気軽にお問い合わせください。' },
+      { q: 'オープンキャンパスには何回参加すべきですか？', a: '回数に決まりはありませんが、気になる大学は一度は訪れることをおすすめします。比較のために複数校へ参加する方も多くいます。' }
+    ];
+    return {
+      headerRef: this.headerRef, desktop: !mobile, mobile, menuVisible: mobile && this.state.menu, menuIcon: this.state.menu ? '×' : '≡',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      showDecor: this.props.showDecor ?? true,
+      fields: [
+        { no: '01', title: '人文・社会科学系', sub: '文学・法学・経済学・経営学・国際関係' },
+        { no: '02', title: '理学・工学系', sub: '数学・物理・情報工学・建築・環境' },
+        { no: '03', title: '医療・看護・福祉系', sub: '医学・薬学・看護学・リハビリテーション' },
+        { no: '04', title: '教育・芸術・スポーツ系', sub: '教育学・デザイン・音楽・スポーツ科学' }
+      ],
+      featured: [
+        { slot: 'feat-1', ph: '情報・データサイエンスの授業風景', title: '情報・データサイエンス', desc: 'プログラミングと統計を土台に、社会の課題をデータで読み解く力を養います。' },
+        { slot: 'feat-2', ph: '国際系学部・留学のイメージ', title: '国際・グローバル', desc: '語学力と異文化理解を深め、留学やフィールドワークを通して世界とつながります。' },
+        { slot: 'feat-3', ph: '看護・医療系の実習風景', title: '看護・医療', desc: '実習を重視したカリキュラムで、人の健康と暮らしを支える専門職をめざします。' }
+      ],
+      methods: M.map((m, i) => ({ label: m.label, bg: i === this.state.tab ? '#0b2d8c' : '#f1f3f7', fg: i === this.state.tab ? '#fff' : '#2b3447', select: () => this.setState({ tab: i }) })),
+      method: M[this.state.tab],
+      plan: [
+        { term: '高校1・2年', title: '基礎を固める', text: '授業の予習・復習を習慣にし、英語・数学など積み上げ型の科目の基礎を固めます。興味のある分野を探す時期でもあります。' },
+        { term: '高校3年 春〜夏', title: '志望校を定める', text: '志望校と入試方式を決め、必要な科目を整理します。夏休みは苦手分野の克服にまとまった時間をあてましょう。' },
+        { term: '高校3年 秋〜直前期', title: '実戦力を高める', text: '過去問演習と模試の復習を中心に、本番を想定した時間配分を身につけます。体調管理も大切な準備です。' }
+      ],
+      schedule: [
+        { date: '○月○日〜', tag: '総合型選抜', text: 'エントリー・出願受付開始（サンプル）' },
+        { date: '○月○日〜', tag: '学校推薦型', text: '出願受付期間（サンプル）' },
+        { date: '○月○日', tag: '共通テスト', text: '大学入学共通テスト 実施日（サンプル）' },
+        { date: '○月○日〜', tag: '一般選抜', text: '個別学力試験 出願・試験期間（サンプル）' },
+        { date: '○月○日', tag: '入学手続', text: '合格発表・入学手続き締切（サンプル）' }
+      ],
+      support: [
+        { no: '01', title: '出願手続き・試験要件', text: '出願書類の準備から検定料の支払い、受験票の受け取りまでの流れと、方式ごとの必要書類を解説します。', link: '出願の流れを見る' },
+        { no: '02', title: '学費・奨学金・経済的支援', text: '学費の内訳の見方や、給付型・貸与型奨学金、授業料減免制度など、進学にかかる費用の基本をまとめています。', link: '支援制度を調べる' },
+        { no: '03', title: '保護者の方へ', text: '受験期のお子さまの支え方や、費用・手続きのスケジュールなど、ご家族が知っておきたい情報をご案内します。', link: '保護者向けガイド' }
+      ],
+      faqs: faqs.map((f, i) => { const open = this.state.faq === i; return { ...f, open, icon: open ? '−' : '+', toggle: () => this.setState({ faq: open ? -1 : i }) }; }),
+      events: [
+        { slot: 'ev-1', ph: 'オープンキャンパスの様子', tag: 'OPEN CAMPUS', title: 'オープンキャンパス', text: '模擬授業や入試説明会、在学生との個別相談を通して大学の雰囲気を体感できます。' },
+        { slot: 'ev-2', ph: 'キャンパスツアーの様子', tag: 'CAMPUS TOUR', title: 'キャンパスツアー', text: '在学生スタッフの案内で、講義棟・図書館・学生食堂などの施設を見学します。' },
+        { slot: 'ev-3', ph: 'サークル・課外活動の写真', tag: 'STUDENT LIFE', title: 'サークル・課外活動', text: '運動系・文化系のサークルやボランティアなど、学生生活を彩る活動を紹介します。' }
+      ],
+      ctas: [
+        { no: '01', label: '資料請求' }, { no: '02', label: 'オープンキャンパス予約' }, { no: '03', label: '入試相談・お問い合わせ' }
+      ].map(c => ({ ...c, click: () => this.setState({ sent: c.label }) })),
+      sent: !!this.state.sent, sentLabel: this.state.sent
+    };
+  }
+}
+</script>
+</body>
+</html>
