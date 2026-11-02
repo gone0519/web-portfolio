@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7dccf;color:#3b2c26;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#c4553d;text-decoration:none}
+a:hover{color:#8f3a27}
+:focus-visible{outline:2px solid #c4553d;outline-offset:3px}
+</style>
+</helmet>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(16px,3vw,40px);background:{{ headerBg }};transition:background .3s">
+  <a href="#top" aria-label="白椿女子大学 トップへ" style="display:flex;flex-direction:column;gap:2px;color:#3b2c26;line-height:1.1">
+    <span style="font-family:'Shippori Mincho',serif;font-size:17px;letter-spacing:.18em;font-weight:500">白椿女子大学</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:10.5px;letter-spacing:.24em">SHIRATSUBAKI WOMEN'S UNIVERSITY</span>
+  </a>
+  <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:clamp(16px,2.4vw,36px)">
+      <a href="#top" style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.12em;color:#3b2c26;white-space:nowrap" style-hover="color:#c4553d">Top</a>
+      <a href="#about" style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.12em;color:#3b2c26;white-space:nowrap" style-hover="color:#c4553d">About</a>
+      <a href="#academics" style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.12em;color:#3b2c26;white-space:nowrap" style-hover="color:#c4553d">Academics</a>
+      <a href="#campus" style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.12em;color:#3b2c26;white-space:nowrap" style-hover="color:#c4553d">Campus Life</a>
+      <a href="#admissions" style="font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.12em;color:#3b2c26;white-space:nowrap" style-hover="color:#c4553d">Admissions</a>
+      <a href="#opencampus" style="display:flex;align-items:center;gap:10px;padding:11px 20px;background:#c4553d;color:#fff;font-size:13px;letter-spacing:.12em;font-weight:500;white-space:nowrap" style-hover="background:#8f3a27;color:#fff">オープンキャンパス予約 <span aria-hidden="true">→</span></a>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="メニューを開く" aria-expanded="{{ menuOpen }}" style="width:48px;height:48px;border:0;background:transparent;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:6px;cursor:pointer;padding:0 4px">
+      <span style="display:block;width:26px;height:1px;background:#3b2c26"></span>
+      <span style="display:block;width:18px;height:1px;background:#3b2c26"></span>
+      <span style="display:block;width:26px;height:1px;background:#3b2c26"></span>
+    </button>
+  </sc-if>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-label="メニュー" style="position:fixed;inset:0;z-index:60;background:#f7dccf;display:flex;flex-direction:column;padding:24px 28px">
+    <div style="display:flex;justify-content:flex-end">
+      <button onClick="{{ closeMenu }}" aria-label="メニューを閉じる" style="width:48px;height:48px;border:0;background:transparent;font-size:28px;color:#3b2c26;cursor:pointer;font-family:'Cormorant Garamond',serif">×</button>
+    </div>
+    <nav aria-label="モバイルナビゲーション" style="display:flex;flex-direction:column;gap:6px;margin-top:24px">
+      <a href="#top" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid #e4b9a6;color:#3b2c26;font-family:'Cormorant Garamond',serif;font-size:28px">Top <span style="font-size:12px;font-family:'Zen Kaku Gothic New',sans-serif;letter-spacing:.1em">トップ</span></a>
+      <a href="#about" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid #e4b9a6;color:#3b2c26;font-family:'Cormorant Garamond',serif;font-size:28px">About <span style="font-size:12px;font-family:'Zen Kaku Gothic New',sans-serif;letter-spacing:.1em">大学について</span></a>
+      <a href="#academics" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid #e4b9a6;color:#3b2c26;font-family:'Cormorant Garamond',serif;font-size:28px">Academics <span style="font-size:12px;font-family:'Zen Kaku Gothic New',sans-serif;letter-spacing:.1em">学部・学び</span></a>
+      <a href="#campus" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid #e4b9a6;color:#3b2c26;font-family:'Cormorant Garamond',serif;font-size:28px">Campus Life <span style="font-size:12px;font-family:'Zen Kaku Gothic New',sans-serif;letter-spacing:.1em">キャンパスライフ</span></a>
+      <a href="#admissions" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid #e4b9a6;color:#3b2c26;font-family:'Cormorant Garamond',serif;font-size:28px">Admissions <span style="font-size:12px;font-family:'Zen Kaku Gothic New',sans-serif;letter-spacing:.1em">入試情報</span></a>
+    </nav>
+    <a href="#opencampus" onClick="{{ closeMenu }}" style="margin-top:32px;display:flex;justify-content:center;gap:10px;padding:18px;background:#c4553d;color:#fff;font-size:14px;letter-spacing:.12em">オープンキャンパス予約 →</a>
+  </div>
+</sc-if>
+
+<sc-if value="{{ showRail }}" hint-placeholder-val="{{ true }}">
+  <div aria-hidden="true" style="position:fixed;right:clamp(8px,1.4vw,22px);top:50%;transform:translateY(-50%);z-index:40;writing-mode:vertical-rl;display:flex;gap:18px;align-items:center;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.3em;color:#9a6f5e">
+    <span>ADMISSIONS</span><span style="display:block;width:1px;height:40px;background:#c99a86"></span><span>2027</span>
+  </div>
+</sc-if>
+
+<main>
+<!-- 01 HERO -->
+<section id="top" data-screen-label="01 Hero" aria-label="メインビジュアル" style="position:relative;overflow:hidden;padding-top:72px">
+  <sc-if value="{{ showDecor }}" hint-placeholder-val="{{ true }}">
+    <div aria-hidden="true" style="position:absolute;top:110px;right:6%;width:120px;height:120px;pointer-events:none;z-index:1">
+      <div style="position:absolute;left:0;top:30px;width:58px;height:58px;border-radius:0 100% 0 100%;transform:rotate(-20deg);background:linear-gradient(135deg,transparent 49%,#f3d3c4 49.6%,#f3d3c4 50.4%,transparent 51%),#fff"></div>
+      <div style="position:absolute;left:48px;top:0;width:44px;height:44px;border-radius:0 100% 0 100%;transform:rotate(40deg);background:linear-gradient(135deg,transparent 49%,#f3d3c4 49.6%,#f3d3c4 50.4%,transparent 51%),#fff"></div>
+      <div style="position:absolute;left:62px;top:62px;width:34px;height:34px;border-radius:0 100% 0 100%;transform:rotate(100deg);background:linear-gradient(135deg,transparent 49%,#f3d3c4 49.6%,#f3d3c4 50.4%,transparent 51%),#fff;opacity:.85"></div>
+    </div>
+    <div aria-hidden="true" style="position:absolute;bottom:clamp(300px,40vw,500px);left:2%;width:46px;height:46px;border-radius:0 100% 0 100%;transform:rotate(-60deg);background:linear-gradient(135deg,transparent 49%,#f3d3c4 49.6%,#f3d3c4 50.4%,transparent 51%),#fff;pointer-events:none;z-index:1"></div>
+  </sc-if>
+  <div aria-hidden="true" style="position:absolute;top:80px;left:50%;transform:translateX(-30%);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(110px,19vw,300px);line-height:1;color:#efc7b4;white-space:nowrap;pointer-events:none">Bloom</div>
+  <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(32px,6vw,72px) clamp(20px,5vw,64px) clamp(48px,8vw,110px);display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);align-items:flex-end">
+    <div style="flex:1 1 380px;position:relative;min-width:0">
+      <sc-if value="{{ showDecor }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="position:absolute;top:-28px;right:8%;width:72px;height:72px;z-index:2;background:repeating-linear-gradient(45deg,#ef8c97 0 3px,transparent 3px 8px)"></div>
+      </sc-if>
+      <div style="position:relative;width:100%;aspect-ratio:4/5;max-height:640px">
+        <image-slot src="_filled/46-group-smile.jpg" id="hero-main" shape="rect" placeholder="メインビジュアル：キャンパスを歩く学生（縦位置）"></image-slot>
+      </div>
+    </div>
+    <div style="flex:1 1 360px;display:flex;gap:clamp(24px,4vw,56px);align-items:flex-start;justify-content:center;min-width:0">
+      <div style="display:flex;flex-direction:column;gap:28px;max-width:360px;padding-bottom:8px;order:2">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.3em;color:#9a6f5e">WOMEN'S UNIVERSITY</span>
+        <p style="margin:0;font-size:14px;line-height:2.2;letter-spacing:.06em;text-wrap:pretty">問いを持つこと。自分の言葉で語ること。<br>白椿女子大学は、一人ひとりの「知りたい」に寄り添い、社会で凛として生きる力を育てる大学です。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px">
+          <a href="#about" style="display:flex;align-items:center;gap:12px;padding:15px 24px;background:#3b2c26;color:#fff;font-size:13px;letter-spacing:.14em" style-hover="background:#c4553d;color:#fff">大学を知る <span aria-hidden="true">→</span></a>
+          <a href="#admissions" style="display:flex;align-items:center;gap:12px;padding:14px 23px;border:1px solid #3b2c26;color:#3b2c26;font-size:13px;letter-spacing:.14em" style-hover="background:#3b2c26;color:#fff">入試情報 <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <h1 style="margin:0;order:1;writing-mode:vertical-rl;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(26px,3.2vw,40px);line-height:1.9;letter-spacing:.32em;color:#c4553d;height:max-content">自分の言葉で、<br>　未来をひらく。</h1>
+    </div>
+  </div>
+  <div style="position:relative;height:clamp(260px,36vw,460px)">
+    <image-slot src="_filled/47-building-clock.jpg" id="hero-band" shape="rect" placeholder="ワイド写真：講義室・中庭など、学びの風景"></image-slot>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;padding:0 20px;background:linear-gradient(transparent,rgba(40,24,18,.25),transparent)">
+      <p style="margin:0;color:#fff;text-align:center;font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.4vw,30px);letter-spacing:.42em;text-shadow:0 1px 12px rgba(0,0,0,.35)">Learn, and become who you are.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ABOUT -->
+<section id="about" data-screen-label="02 About" aria-labelledby="about-h" style="position:relative;overflow:hidden;scroll-margin-top:72px">
+  <sc-if value="{{ showDecor }}" hint-placeholder-val="{{ true }}">
+    <div aria-hidden="true" style="position:absolute;top:48%;right:7%;width:110px;height:110px;pointer-events:none">
+      <div style="position:absolute;left:0;top:20px;width:64px;height:64px;border-radius:0 100% 0 100%;transform:rotate(10deg);background:linear-gradient(135deg,transparent 49%,#f3d3c4 49.6%,#f3d3c4 50.4%,transparent 51%),#fff"></div>
+      <div style="position:absolute;left:54px;top:50px;width:40px;height:40px;border-radius:0 100% 0 100%;transform:rotate(80deg);background:linear-gradient(135deg,transparent 49%,#f3d3c4 49.6%,#f3d3c4 50.4%,transparent 51%),#fff;opacity:.85"></div>
+    </div>
+    <div aria-hidden="true" style="position:absolute;bottom:8%;left:40%;width:38px;height:38px;border-radius:0 100% 0 100%;transform:rotate(-30deg);background:linear-gradient(135deg,transparent 49%,#f3d3c4 49.6%,#f3d3c4 50.4%,transparent 51%),#fff;pointer-events:none"></div>
+  </sc-if>
+  <div aria-hidden="true" style="position:absolute;top:clamp(60px,10vw,140px);left:45%;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(90px,14vw,220px);line-height:1;color:#efc7b4;white-space:nowrap;pointer-events:none">Philosophy</div>
+  <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(72px,10vw,140px) clamp(20px,5vw,64px) 0;display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,64px);align-items:stretch">
+    <div style="flex:1 1 320px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-width:0">
+      <sc-if value="{{ showDecor }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="display:flex;flex-direction:column;gap:14px;padding-left:12%">
+          <div style="width:68px;height:68px;background:repeating-linear-gradient(45deg,#ef8c97 0 3px,transparent 3px 8px)"></div>
+          <div style="width:64px;height:50px;margin-left:34px;background-image:radial-gradient(#f0a238 2px,transparent 2.6px);background-size:12px 12px"></div>
+        </div>
+      </sc-if>
+      <div style="position:relative;width:100%;max-width:440px;aspect-ratio:1/1">
+        <image-slot src="_filled/48-31-students-three-portrait.jpg" id="about-portrait" shape="rect" placeholder="学生のポートレート（後ろ姿・横顔など）"></image-slot>
+      </div>
+    </div>
+    <div style="flex:2 1 460px;display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);justify-content:center;align-items:flex-start;min-width:0">
+      <div style="display:flex;gap:28px;align-items:flex-start">
+        <h2 id="about-h" style="margin:0;writing-mode:vertical-rl;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(24px,2.6vw,34px);line-height:1.9;letter-spacing:.3em;color:#c4553d">しなやかに、<br>　凛として。</h2>
+        <span style="writing-mode:vertical-rl;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.3em;color:#9a6f5e">ABOUT</span>
+      </div>
+      <div style="flex:1 1 280px;max-width:380px;display:flex;flex-direction:column;gap:20px;padding-top:clamp(0px,16vw,260px)">
+        <div style="height:1px;background:#3b2c26;opacity:.5"></div>
+        <p style="margin:0;font-size:14px;line-height:2.2;letter-spacing:.05em;text-wrap:pretty">白椿女子大学は「自ら問い、自ら選び、他者とともに生きる」を教育の理念に掲げています。少人数の対話を大切にした学びのなかで、知識だけでなく、考えを言葉にする力、人を思いやる力を育てます。</p>
+        <p style="margin:0;font-size:14px;line-height:2.2;letter-spacing:.05em;text-wrap:pretty">女性が学び、働き、生きる道が広がる今だからこそ、自分らしい選択ができる人に。それが私たちの願いです。</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;background:#fdf8f5;max-width:none;margin:0;padding:clamp(72px,10vw,140px) max(clamp(20px,5vw,64px),calc((100% - 1152px)/2)) clamp(72px,10vw,140px);display:flex;flex-wrap:wrap-reverse;gap:clamp(40px,6vw,80px);align-items:center">
+    <div style="flex:1 1 320px;display:flex;gap:32px;align-items:flex-start;justify-content:center;min-width:0">
+      <div style="display:flex;flex-direction:column;gap:28px;max-width:320px;padding-top:clamp(0px,10vw,160px)">
+        <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:22px">
+          <li style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #e4b9a6;padding-bottom:18px"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4553d">01</span><span style="display:flex;flex-direction:column;gap:6px"><strong style="font-family:'Shippori Mincho',serif;font-weight:500;font-size:16px;letter-spacing:.08em">対話を重ねる少人数教育</strong><span style="font-size:13px;line-height:1.9">1年次からゼミ形式の授業で、先生や仲間と議論しながら学びます。</span></span></li>
+          <li style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #e4b9a6;padding-bottom:18px"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4553d">02</span><span style="display:flex;flex-direction:column;gap:6px"><strong style="font-family:'Shippori Mincho',serif;font-weight:500;font-size:16px;letter-spacing:.08em">学部を越えて学べる環境</strong><span style="font-size:13px;line-height:1.9">他学部の科目や副専攻を通じて、関心の幅を広げられます。</span></span></li>
+          <li style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #e4b9a6;padding-bottom:18px"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4553d">03</span><span style="display:flex;flex-direction:column;gap:6px"><strong style="font-family:'Shippori Mincho',serif;font-weight:500;font-size:16px;letter-spacing:.08em">4年間のキャリア伴走</strong><span style="font-size:13px;line-height:1.9">卒業生との交流や面談を重ね、自分に合う進路を一緒に考えます。</span></span></li>
+        </ol>
+      </div>
+      <h3 style="margin:0;writing-mode:vertical-rl;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(22px,2.2vw,30px);line-height:1.9;letter-spacing:.3em;color:#c4553d">ここにしかない、<br>　学びのかたち。</h3>
+    </div>
+    <div style="flex:1 1 360px;position:relative;min-width:0;padding-bottom:18%">
+      <div style="position:relative;width:78%;margin-left:auto;aspect-ratio:4/3">
+        <image-slot src="_filled/49-face-2.jpg" id="about-stack-1" shape="rect" placeholder="ゼミ・少人数授業の様子"></image-slot>
+      </div>
+      <div style="position:absolute;right:12%;bottom:0;width:56%;aspect-ratio:4/3;box-shadow:0 0 0 10px #fdf8f5">
+        <image-slot src="_filled/50-05.jpg" id="about-stack-2" shape="rect" placeholder="校舎・図書館のディテール"></image-slot>
+      </div>
+      <sc-if value="{{ showDecor }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="position:absolute;left:4%;bottom:12%;width:60px;height:48px;background-image:radial-gradient(#f0a238 2px,transparent 2.6px);background-size:12px 12px"></div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<!-- 03 ACADEMICS -->
+<section id="academics" data-screen-label="03 Academics" aria-labelledby="acad-h" style="position:relative;scroll-margin-top:72px">
+  <div style="position:relative;overflow:hidden;text-align:center;padding:clamp(40px,6vw,80px) 20px 0">
+    <sc-if value="{{ showDecor }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="position:absolute;top:30px;left:10%;width:52px;height:52px;border-radius:0 100% 0 100%;transform:rotate(-15deg);background:linear-gradient(135deg,transparent 49%,#f3d3c4 49.6%,#f3d3c4 50.4%,transparent 51%),#fff;pointer-events:none"></div>
+      <div aria-hidden="true" style="position:absolute;top:70px;left:calc(10% + 44px);width:34px;height:34px;border-radius:0 100% 0 100%;transform:rotate(70deg);background:linear-gradient(135deg,transparent 49%,#f3d3c4 49.6%,#f3d3c4 50.4%,transparent 51%),#fff;opacity:.85;pointer-events:none"></div>
+    </sc-if>
+    <div aria-hidden="true" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(80px,13vw,200px);line-height:.8;color:#efc7b4;white-space:nowrap">Academics</div>
+    <h2 id="acad-h" style="position:absolute;left:0;right:0;bottom:clamp(-6px,1vw,14px);margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(18px,1.8vw,22px);letter-spacing:.3em;color:#3b2c26">学部・学び</h2>
+  </div>
+
+  <article style="display:flex;flex-wrap:wrap;margin-top:clamp(32px,5vw,56px)">
+    <div style="flex:1 1 420px;background:#fdf8f5;padding:clamp(24px,5vw,60px);min-width:0">
+      <div style="position:relative;width:100%;aspect-ratio:4/3"><image-slot src="_filled/51-26-pc-room.jpg" id="fac-letters" shape="rect" placeholder="文学部：書籍・資料を読む学生"></image-slot></div>
+    </div>
+    <div style="flex:1 1 420px;display:flex;flex-direction:column;background:#9b6f4a;color:#fff;min-width:0">
+      <div style="flex:1;padding:clamp(32px,5vw,64px);display:flex;flex-direction:column;gap:18px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.3em">FACULTY 01</span>
+        <h3 style="margin:0;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(28px,3vw,38px);letter-spacing:.04em">Letters</span><span style="font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.2em">文学部</span></h3>
+        <p style="margin:0;font-size:14px;line-height:2;max-width:460px;text-wrap:pretty">ことばと文化を手がかりに、人間と社会を深く読み解く力を養います。古典から現代、日本から世界へ。読む・書く・伝える力を磨きます。</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px"><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px;letter-spacing:.08em">日本文学科</li><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px;letter-spacing:.08em">英語英米文化学科</li><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px;letter-spacing:.08em">歴史文化学科</li></ul>
+        <a href="#admissions" style="align-self:flex-start;margin-top:6px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:17px;border-bottom:1px solid #fff;padding-bottom:2px" style-hover="color:#ffe9dd;border-color:#ffe9dd">View More</a>
+      </div>
+      <div style="position:relative;height:clamp(110px,12vw,150px)"><image-slot src="_filled/52-campus-pair.jpg" id="fac-letters-strip" shape="rect" placeholder="ディテール写真"></image-slot></div>
+    </div>
+  </article>
+
+  <article style="display:flex;flex-wrap:wrap">
+    <div style="flex:1 1 420px;background:#fdf8f5;padding:clamp(24px,5vw,60px);min-width:0">
+      <div style="position:relative;width:100%;aspect-ratio:4/3"><image-slot src="_filled/53-trio-laptop.jpg" id="fac-human" shape="rect" placeholder="人間科学部：グループワークの様子"></image-slot></div>
+    </div>
+    <div style="flex:1 1 420px;display:flex;flex-direction:column;background:#4a807d;color:#fff;min-width:0">
+      <div style="flex:1;padding:clamp(32px,5vw,64px);display:flex;flex-direction:column;gap:18px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.3em">FACULTY 02</span>
+        <h3 style="margin:0;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(28px,3vw,38px);letter-spacing:.04em">Human Sciences</span><span style="font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.2em">人間科学部</span></h3>
+        <p style="margin:0;font-size:14px;line-height:2;max-width:460px;text-wrap:pretty">こころ・育ち・支え合いを科学的に学びます。実習やフィールドワークを通して、人に寄り添う専門性を身につけます。</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px"><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px;letter-spacing:.08em">心理学科</li><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px;letter-spacing:.08em">教育学科</li><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px;letter-spacing:.08em">社会福祉学科</li></ul>
+        <a href="#admissions" style="align-self:flex-start;margin-top:6px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:17px;border-bottom:1px solid #fff;padding-bottom:2px" style-hover="color:#e2f3f1;border-color:#e2f3f1">View More</a>
+      </div>
+      <div style="position:relative;height:clamp(110px,12vw,150px)"><image-slot src="_filled/54-cp-2.jpg" id="fac-human-strip" shape="rect" placeholder="ディテール写真"></image-slot></div>
+    </div>
+  </article>
+
+  <article style="display:flex;flex-wrap:wrap">
+    <div style="flex:1 1 420px;background:#fdf8f5;padding:clamp(24px,5vw,60px);min-width:0">
+      <div style="position:relative;width:100%;aspect-ratio:4/3"><image-slot src="_filled/55-cooking-potato.jpg" id="fac-life" shape="rect" placeholder="生活科学部：実験・実習室の様子"></image-slot></div>
+    </div>
+    <div style="flex:1 1 420px;display:flex;flex-direction:column;background:#a8625e;color:#fff;min-width:0">
+      <div style="flex:1;padding:clamp(32px,5vw,64px);display:flex;flex-direction:column;gap:18px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.3em">FACULTY 03</span>
+        <h3 style="margin:0;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(28px,3vw,38px);letter-spacing:.04em">Human Life Sciences</span><span style="font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.2em">生活科学部</span></h3>
+        <p style="margin:0;font-size:14px;line-height:2;max-width:460px;text-wrap:pretty">食・住まい・データの視点から、暮らしをより良くする方法を探ります。実験と演習を軸に、実践的な専門力を育てます。</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px"><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px;letter-spacing:.08em">食物栄養学科</li><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px;letter-spacing:.08em">住環境デザイン学科</li><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px;letter-spacing:.08em">生活データサイエンス学科</li></ul>
+        <a href="#admissions" style="align-self:flex-start;margin-top:6px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:17px;border-bottom:1px solid #fff;padding-bottom:2px" style-hover="color:#ffe9e6;border-color:#ffe9e6">View More</a>
+      </div>
+      <div style="position:relative;height:clamp(110px,12vw,150px)"><image-slot src="_filled/56-13.jpg" id="fac-life-strip" shape="rect" placeholder="ディテール写真"></image-slot></div>
+    </div>
+  </article>
+
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(56px,8vw,100px) clamp(20px,5vw,64px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(28px,4vw,56px)">
+    <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid #3b2c26;padding-top:20px"><span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;color:#c4553d">PRACTICE</span><h4 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.1em">現場で学ぶ</h4><p style="margin:0;font-size:13px;line-height:2">地域や企業と連携した実習・プロジェクト型授業で、学びを社会につなげます。</p></div>
+    <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid #3b2c26;padding-top:20px"><span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;color:#c4553d">RESEARCH</span><h4 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.1em">問いを深める</h4><p style="margin:0;font-size:13px;line-height:2">卒業研究では、指導教員と一対一で向き合い、自分だけのテーマを探究します。</p></div>
+    <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid #3b2c26;padding-top:20px"><span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em;color:#c4553d">INTERDISCIPLINARY</span><h4 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.1em">学部を越える</h4><p style="margin:0;font-size:13px;line-height:2">副専攻や共通科目で、ことば・人・暮らしを横断的に学ぶことができます。</p></div>
+  </div>
+</section>
+
+<!-- 04 CAMPUS LIFE -->
+<section id="campus" data-screen-label="04 Campus Life" aria-labelledby="campus-h" style="position:relative;overflow:hidden;scroll-margin-top:72px;padding-top:clamp(80px,11vw,150px);background:#fdf8f5">
+  <sc-if value="{{ showDecor }}" hint-placeholder-val="{{ true }}">
+    <div aria-hidden="true" style="position:absolute;top:40px;right:12%;width:100px;height:90px;pointer-events:none">
+      <div style="position:absolute;left:0;top:10px;width:56px;height:56px;border-radius:0 100% 0 100%;transform:rotate(30deg);background:linear-gradient(135deg,transparent 49%,#fdf8f5 49.6%,#fdf8f5 50.4%,transparent 51%),#f4cdbb"></div>
+      <div style="position:absolute;left:50px;top:36px;width:36px;height:36px;border-radius:0 100% 0 100%;transform:rotate(110deg);background:linear-gradient(135deg,transparent 49%,#fdf8f5 49.6%,#fdf8f5 50.4%,transparent 51%),#f4cdbb;opacity:.85"></div>
+    </div>
+  </sc-if>
+  <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,64px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+      <div style="display:flex;align-items:center;gap:20px">
+        <h2 id="campus-h" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(22px,2.2vw,28px);letter-spacing:.14em">CAMPUS LIFE</h2>
+        <span aria-hidden="true" style="display:block;width:56px;height:1px;background:#3b2c26"></span>
+        <span style="font-size:12px;letter-spacing:.14em;color:#7a5a4d">キャンパスライフ</span>
+      </div>
+      <a href="#stories" style="font-family:'Cormorant Garamond',serif;font-size:16px;color:#3b2c26;border-bottom:1px solid #3b2c26;padding-bottom:2px" style-hover="color:#c4553d;border-color:#c4553d">Student Stories</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(24px,3vw,40px);margin-top:clamp(36px,5vw,56px)">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#7a5a4d">CLUBS</span>
+        <div style="position:relative;width:100%;aspect-ratio:1/1"><image-slot src="_filled/57-16.jpg" id="life-clubs" shape="circle" placeholder="クラブ活動"></image-slot></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px solid #e4b9a6;padding-bottom:12px"><span style="font-size:13px;line-height:1.7">クラブ・サークル<br><span style="color:#7a5a4d;font-size:12px">文化系・運動系の多彩な活動</span></span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#7a5a4d">LIBRARY</span>
+        <div style="position:relative;width:100%;aspect-ratio:1/1"><image-slot src="_filled/58-tree-path.jpg" id="life-library" shape="circle" placeholder="図書館"></image-slot></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px solid #e4b9a6;padding-bottom:12px"><span style="font-size:13px;line-height:1.7">図書館・ラーニングコモンズ<br><span style="color:#7a5a4d;font-size:12px">一人でも、仲間とでも学べる場所</span></span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#7a5a4d">FESTIVAL</span>
+        <div style="position:relative;width:100%;aspect-ratio:1/1"><image-slot src="_filled/59-question.png" id="life-festival" shape="circle" placeholder="学園祭"></image-slot></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px solid #e4b9a6;padding-bottom:12px"><span style="font-size:13px;line-height:1.7">学園祭・年間行事<br><span style="color:#7a5a4d;font-size:12px">学生が企画・運営する行事</span></span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#7a5a4d">SUPPORT</span>
+        <div style="position:relative;width:100%;aspect-ratio:1/1"><image-slot src="_filled/60-seminar-talk.jpg" id="life-support" shape="circle" placeholder="学生ラウンジ・相談窓口"></image-slot></div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px solid #e4b9a6;padding-bottom:12px"><span style="font-size:13px;line-height:1.7">学生生活サポート<br><span style="color:#7a5a4d;font-size:12px">学修・生活・進路の相談窓口</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="stories" style="scroll-margin-top:72px;display:flex;flex-wrap:wrap;align-items:center;margin-top:clamp(80px,10vw,140px)">
+    <div style="flex:1 1 380px;background:#f0c2b6;padding:clamp(40px,6vw,80px) clamp(24px,5vw,72px);display:flex;flex-direction:column;gap:22px;min-width:0;align-self:stretch;justify-content:center">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.3em;color:#7a3e30">STUDENT STORIES · {{ storyCounter }}</span>
+      <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(20px,2vw,26px);line-height:1.7;letter-spacing:.1em">在学生の声</h3>
+      <blockquote style="margin:0;display:flex;flex-direction:column;gap:16px" aria-live="polite">
+        <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(16px,1.5vw,19px);line-height:2;letter-spacing:.06em;text-wrap:pretty">{{ story.quote }}</p>
+        <footer style="font-size:12px;letter-spacing:.08em;color:#5a3a30">{{ story.who }}</footer>
+      </blockquote>
+      <div style="display:flex;gap:12px;margin-top:6px">
+        <button onClick="{{ prevStory }}" aria-label="前のストーリー" style="width:48px;height:48px;border:1px solid #3b2c26;background:transparent;color:#3b2c26;cursor:pointer;font-size:16px" style-hover="background:#3b2c26;color:#fff">←</button>
+        <button onClick="{{ nextStory }}" aria-label="次のストーリー" style="width:48px;height:48px;border:1px solid #3b2c26;background:transparent;color:#3b2c26;cursor:pointer;font-size:16px" style-hover="background:#3b2c26;color:#fff">→</button>
+      </div>
+      <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}"><span style="font-size:11px;color:#6b4a3e">※ 掲載のコメントは仮の内容です。</span></sc-if>
+    </div>
+    <div style="flex:1.3 1 420px;padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;gap:12px;min-width:0">
+      <div style="position:relative;width:100%;aspect-ratio:4/3"><image-slot src="_filled/61-cooking.jpg" id="story-photo" shape="rect" placeholder="在学生のポートレート（キャンパス内）"></image-slot></div>
+      <span style="font-size:11px;letter-spacing:.1em;color:#7a5a4d;text-align:right">キャンパスでの一日</span>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ADMISSIONS -->
+<section id="admissions" data-screen-label="05 Admissions" aria-labelledby="adm-h" style="position:relative;overflow:hidden;scroll-margin-top:72px;padding-top:clamp(80px,11vw,150px)">
+  <div aria-hidden="true" style="position:absolute;top:clamp(40px,6vw,90px);left:30%;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(90px,14vw,220px);line-height:1;color:#efc7b4;white-space:nowrap;pointer-events:none">Admissions</div>
+  <div style="position:relative;max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,64px);display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,80px)">
+    <div style="flex:0 1 auto;display:flex;gap:24px;align-items:flex-start">
+      <h2 id="adm-h" style="margin:0;writing-mode:vertical-rl;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(24px,2.6vw,34px);line-height:1.9;letter-spacing:.3em;color:#c4553d">一歩を、<br>　ここから。</h2>
+      <span style="writing-mode:vertical-rl;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.3em;color:#9a6f5e">ADMISSIONS</span>
+    </div>
+    <div style="flex:1 1 480px;display:flex;flex-direction:column;gap:28px;min-width:0">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px">
+        <p style="margin:0;font-size:14px;line-height:2;max-width:520px">入試制度は大きく4つ。自分の強みや準備状況に合わせて選ぶことができます。</p>
+        <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}"><span style="font-size:11px;letter-spacing:.06em;padding:4px 10px;border:1px dashed #9a6f5e;color:#6b4a3e">仮掲載 · 正式情報は募集要項で公開</span></sc-if>
+      </div>
+      <dl style="margin:0;display:flex;flex-direction:column;border-top:1px solid #3b2c26">
+        <div style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:22px 0;border-bottom:1px solid #e4b9a6"><dt style="flex:0 0 200px;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.08em">総合型選抜</dt><dd style="flex:1 1 260px;margin:0;font-size:13px;line-height:1.9">面談やプレゼンテーションを通して、学ぶ意欲と人物を総合的に評価します。</dd></div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:22px 0;border-bottom:1px solid #e4b9a6"><dt style="flex:0 0 200px;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.08em">学校推薦型選抜</dt><dd style="flex:1 1 260px;margin:0;font-size:13px;line-height:1.9">高等学校長の推薦にもとづき、書類・面接などで選考します。</dd></div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:22px 0;border-bottom:1px solid #e4b9a6"><dt style="flex:0 0 200px;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.08em">一般選抜</dt><dd style="flex:1 1 260px;margin:0;font-size:13px;line-height:1.9">本学独自の筆記試験で、各学部に必要な学力を評価します。</dd></div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:22px 0;border-bottom:1px solid #e4b9a6"><dt style="flex:0 0 200px;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.08em">共通テスト利用選抜</dt><dd style="flex:1 1 260px;margin:0;font-size:13px;line-height:1.9">大学入学共通テストの成績を利用して選考します。</dd></div>
+      </dl>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+        <a href="#admissions" style="display:flex;justify-content:space-between;align-items:center;padding:18px 22px;background:#3b2c26;color:#fff;font-size:13px;letter-spacing:.12em" style-hover="background:#c4553d;color:#fff">入試概要を見る <span aria-hidden="true">→</span></a>
+        <a href="#admissions" style="display:flex;justify-content:space-between;align-items:center;padding:17px 21px;border:1px solid #3b2c26;color:#3b2c26;font-size:13px;letter-spacing:.12em" style-hover="background:#3b2c26;color:#fff">募集要項 <span aria-hidden="true">→</span></a>
+        <a href="#admissions" style="display:flex;justify-content:space-between;align-items:center;padding:17px 21px;border:1px solid #3b2c26;color:#3b2c26;font-size:13px;letter-spacing:.12em" style-hover="background:#3b2c26;color:#fff">資料請求 <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="opencampus" style="scroll-margin-top:72px;display:flex;flex-wrap:wrap;margin-top:clamp(80px,10vw,130px)">
+    <div style="flex:1.2 1 420px;position:relative;min-height:clamp(280px,34vw,480px)"><image-slot src="_filled/62-playroom.jpg" id="oc-photo" shape="rect" placeholder="オープンキャンパス：模擬授業・キャンパスツアー"></image-slot></div>
+    <div style="flex:1 1 380px;background:#4a807d;color:#fff;padding:clamp(40px,6vw,80px) clamp(24px,5vw,72px);display:flex;flex-direction:column;gap:22px;justify-content:center;min-width:0">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.3em">OPEN CAMPUS</span>
+      <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(22px,2.3vw,30px);line-height:1.7;letter-spacing:.1em">キャンパスで、<br>未来の自分に会いに来てください。</h3>
+      <p style="margin:0;font-size:14px;line-height:2;max-width:420px">模擬授業、キャンパスツアー、在学生との個別相談。実際に歩いて、話して、ここで過ごす4年間を確かめてください。</p>
+      <ul style="margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px"><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px">模擬授業</li><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px">キャンパスツアー</li><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px">入試相談</li><li style="border:1px solid rgba(255,255,255,.7);padding:5px 12px;font-size:12px">オンライン参加</li></ul>
+      <a href="#opencampus" style="align-self:flex-start;display:flex;gap:14px;align-items:center;padding:17px 26px;background:#fff;color:#2f5654;font-size:14px;letter-spacing:.12em;font-weight:500" style-hover="background:#f7dccf;color:#2f5654">オープンキャンパスを予約する <span aria-hidden="true">→</span></a>
+      <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}"><span style="font-size:11px;color:#e2f3f1">※ 開催日程は決定次第お知らせします。</span></sc-if>
+    </div>
+  </div>
+
+  <sc-if value="{{ showDecor }}" hint-placeholder-val="{{ true }}">
+    <div aria-hidden="true" style="position:absolute;bottom:60px;left:8%;width:110px;height:100px;pointer-events:none;z-index:1">
+      <div style="position:absolute;left:0;top:30px;width:60px;height:60px;border-radius:0 100% 0 100%;transform:rotate(-40deg);background:linear-gradient(135deg,transparent 49%,#fdf8f5 49.6%,#fdf8f5 50.4%,transparent 51%),#f4cdbb"></div>
+      <div style="position:absolute;left:52px;top:0;width:40px;height:40px;border-radius:0 100% 0 100%;transform:rotate(20deg);background:linear-gradient(135deg,transparent 49%,#fdf8f5 49.6%,#fdf8f5 50.4%,transparent 51%),#f4cdbb;opacity:.85"></div>
+    </div>
+    <div aria-hidden="true" style="position:absolute;bottom:140px;right:9%;width:44px;height:44px;border-radius:0 100% 0 100%;transform:rotate(60deg);background:linear-gradient(135deg,transparent 49%,#fdf8f5 49.6%,#fdf8f5 50.4%,transparent 51%),#f4cdbb;pointer-events:none;z-index:1"></div>
+  </sc-if>
+  <div style="position:relative;max-width:none;background:#fdf8f5;margin:0;padding:clamp(80px,10vw,130px) max(20px,calc((100% - 740px)/2));text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.2vw,28px);letter-spacing:.2em">NEXT STEP</span>
+    <p style="margin:0;font-size:14px;line-height:2;letter-spacing:.06em">迷っている今こそ、まずは知ることから。資料請求・個別相談はいつでも受け付けています。</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:8px">
+      <a href="#opencampus" style="display:flex;gap:12px;align-items:center;padding:16px 26px;background:#c4553d;color:#fff;font-size:13px;letter-spacing:.12em" style-hover="background:#8f3a27;color:#fff">オープンキャンパス予約 →</a>
+      <a href="#admissions" style="display:flex;gap:12px;align-items:center;padding:15px 25px;border:1px solid #3b2c26;color:#3b2c26;font-size:13px;letter-spacing:.12em" style-hover="background:#3b2c26;color:#fff">資料請求 →</a>
+      <a href="#footer" style="display:flex;gap:12px;align-items:center;padding:15px 25px;border:1px solid #3b2c26;color:#3b2c26;font-size:13px;letter-spacing:.12em" style-hover="background:#3b2c26;color:#fff">個別相談・お問い合わせ →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="footer" style="position:relative;overflow:hidden;background:#2b2725;color:#e9e1dc;padding:clamp(56px,7vw,90px) clamp(20px,5vw,64px) 40px">
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:48px">
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,88px)">
+      <nav aria-label="フッターナビゲーション" style="display:flex;flex-direction:column;gap:12px;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.14em">
+        <a href="#top" style="color:#e9e1dc" style-hover="color:#f2a48f">TOP</a>
+        <a href="#about" style="color:#e9e1dc" style-hover="color:#f2a48f">ABOUT</a>
+        <a href="#academics" style="color:#e9e1dc" style-hover="color:#f2a48f">ACADEMICS</a>
+        <a href="#campus" style="color:#e9e1dc" style-hover="color:#f2a48f">CAMPUS LIFE</a>
+        <a href="#admissions" style="color:#e9e1dc" style-hover="color:#f2a48f">ADMISSIONS</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:12.5px;letter-spacing:.06em">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.24em;color:#b7aaa2">ADMISSIONS</span>
+        <a href="#admissions" style="color:#e9e1dc" style-hover="color:#f2a48f">入試概要</a>
+        <a href="#admissions" style="color:#e9e1dc" style-hover="color:#f2a48f">募集要項</a>
+        <a href="#opencampus" style="color:#e9e1dc" style-hover="color:#f2a48f">オープンキャンパス</a>
+        <a href="#admissions" style="color:#e9e1dc" style-hover="color:#f2a48f">資料請求</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:12.5px;letter-spacing:.06em;line-height:1.8">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.24em;color:#b7aaa2">CONTACT</span>
+        <span>入試広報課（仮）</span>
+        <span>〒000-0000 ○○県○○市○○ 0-0-0</span>
+        <span>TEL 00-0000-0000</span>
+        <span>nyushi@example.ac.jp</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:28px;text-align:right">
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <span style="font-family:'Shippori Mincho',serif;font-size:22px;letter-spacing:.2em">白椿女子大学</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.24em;color:#b7aaa2">SHIRATSUBAKI WOMEN'S UNIVERSITY</span>
+      </div>
+      <div style="display:flex;gap:20px;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.12em">
+        <a href="#footer" style="color:#e9e1dc;border-bottom:1px solid #6a605b" style-hover="color:#f2a48f">Instagram</a>
+        <a href="#footer" style="color:#e9e1dc;border-bottom:1px solid #6a605b" style-hover="color:#f2a48f">X</a>
+        <a href="#footer" style="color:#e9e1dc;border-bottom:1px solid #6a605b" style-hover="color:#f2a48f">YouTube</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1180px;margin:56px auto 0;padding-top:20px;border-top:1px solid #4a4340;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:11px;color:#b7aaa2;letter-spacing:.08em">
+    <span>本サイトはデザイン用のサンプルです。大学名・連絡先・入試情報はすべて仮のものです。</span>
+    <span>© Shiratsubaki Women's University (Sample)</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showDecor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Display&quot;},&quot;showRail&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Display&quot;},&quot;showPlaceholderNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Display&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, scrolled: false, story: 0 };
+  stories = [
+    { quote: '少人数のゼミで、自分の意見を言葉にする楽しさを知りました。先生との距離が近く、質問しやすい環境です。', who: '在学生 Aさん（文学部 3年）※仮' },
+    { quote: '心理学の実習では、学んだ理論が人と関わる場面でどう生きるのかを実感できました。', who: '在学生 Bさん（人間科学部 2年）※仮' },
+    { quote: '学園祭の実行委員として、企画から運営まで経験しました。仲間と一つのものをつくる時間が宝物です。', who: '在学生 Cさん（生活科学部 4年）※仮' }
+  ];
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onScroll = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onResize(); this.onScroll();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+  }
+  renderVals() {
+    const isMobile = this.state.w < 1080;
+    const n = this.stories.length;
+    return {
+      isMobile, notMobile: !isMobile,
+      menuOpen: isMobile && this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      headerBg: this.state.scrolled ? 'rgba(247,220,207,.94)' : 'transparent',
+      story: this.stories[this.state.story],
+      storyCounter: `0${this.state.story + 1} / 0${n}`,
+      nextStory: () => this.setState(s => ({ story: (s.story + 1) % n })),
+      prevStory: () => this.setState(s => ({ story: (s.story - 1 + n) % n })),
+      showDecor: this.props.showDecor ?? true,
+      showRail: (this.props.showRail ?? true) && !isMobile,
+      showNotes: this.props.showPlaceholderNotes ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

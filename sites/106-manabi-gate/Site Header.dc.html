@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:relative;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 90px 22px 20px">
+  <a href="Manabi%20Gate.dc.html" style="display:flex;align-items:center;gap:12px;color:#2a2a2a">
+    <span style="display:block;width:18px;height:20px;background:#2a2a2a;clip-path:polygon(0 0,100% 50%,0 100%,0 62%,46% 50%,0 38%)"></span>
+    <span style="font-family:Michroma,sans-serif;font-size:12px;letter-spacing:.14em">MANABI GATE</span>
+  </a>
+  <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;flex-wrap:wrap;gap:8px 34px">
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
+        <a href="{{ l.href }}" style="font-size:11px;font-weight:700;letter-spacing:.12em;color:{{ l.color }};padding-bottom:4px;border-bottom:1px solid {{ l.line }};transition:color .3s" style-hover="color:#2d3a78">{{ l.ja }}</a>
+      </sc-for>
+    </nav>
+  </sc-if>
+</header>
+<button onClick="{{ toggle }}" aria-label="メニュー" style="position:fixed;top:18px;right:18px;z-index:60;width:52px;height:40px;border:0;background:rgba(40,40,40,.55);backdrop-filter:blur(6px);cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;transition:background .3s" style-hover="background:rgba(40,40,40,.8)">
+  <span style="display:block;width:26px;height:1px;background:#fff"></span>
+  <span style="display:block;width:26px;height:1px;background:#fff"></span>
+  <span style="display:block;width:26px;height:1px;background:#fff"></span>
+</button>
+<a href="CampusLife.dc.html#entry" style="position:fixed;right:0;top:33vh;z-index:50;background:#2b2b2b;color:#fff;padding:16px 9px 12px;display:flex;flex-direction:column;align-items:center;gap:12px;transition:background .3s" style-hover="background:#2d3a78;color:#fff">
+  <span style="writing-mode:vertical-rl;font-size:11px;letter-spacing:.3em">資料請求</span>
+  <span style="font-size:10px">›</span>
+</a>
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:55;background:rgba(245,244,241,.97);display:flex;flex-direction:column;justify-content:center;padding:0 12vw;gap:24px;overflow-y:auto">
+    <p style="margin:0;font-family:Marcellus,serif;font-size:14px;letter-spacing:.2em;color:#888">( Menu )</p>
+    <sc-for list="{{ menuLinks }}" as="l" hint-placeholder-count="6">
+      <a href="{{ l.href }}" style="display:flex;align-items:baseline;gap:20px;border-bottom:1px solid #ddd;padding-bottom:14px;color:#2a2a2a">
+        <span style="font-family:Marcellus,serif;font-size:clamp(24px,3.4vw,40px)">{{ l.en }}</span>
+        <span style="font-size:12px;letter-spacing:.16em;color:#666">{{ l.ja }}</span>
+      </a>
+    </sc-for>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1280px&quot;,&quot;height&quot;:&quot;90px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;programs&quot;,&quot;prep&quot;,&quot;admissions&quot;,&quot;tuition&quot;,&quot;campus&quot;],&quot;default&quot;:&quot;programs&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { open: false, w: (document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth) };
+  componentDidMount() { this.r = () => this.setState({ w: (document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth) }); window.addEventListener('resize', this.r); this.r(); this.t = setTimeout(this.r, 300); this.ro = new ResizeObserver(this.r); this.ro.observe(document.documentElement); }
+  componentWillUnmount() { window.removeEventListener('resize', this.r); this.ro && this.ro.disconnect(); }
+  renderVals() {
+    const cur = this.props.current || '';
+    const pages = [
+      ['Manabi%20Gate.dc.html', 'Top', 'トップ', 'top'],
+      ['Programs.dc.html', 'Programs', '学部・学科', 'programs'],
+      ['ExamPrep.dc.html', 'Exam Prep', '入試対策', 'prep'],
+      ['Admissions.dc.html', 'Admissions', '入試・出願', 'admissions'],
+      ['Tuition.dc.html', 'Tuition', '学費・奨学金', 'tuition'],
+      ['CampusLife.dc.html', 'Campus Life', 'キャンパスライフ', 'campus']
+    ].map(p => ({ href: p[0], en: p[1], ja: p[2], key: p[3], color: p[3] === cur ? '#2d3a78' : '#2a2a2a', line: p[3] === cur ? '#2d3a78' : 'transparent' }));
+    return {
+      desk: this.state.w >= 900, open: this.state.open,
+      toggle: () => this.setState(s => ({ open: !s.open })),
+      links: pages.slice(1), menuLinks: pages
+    };
+  }
+}
+</script>
+</body>
+</html>

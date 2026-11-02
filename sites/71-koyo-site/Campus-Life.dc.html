@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@200;300;400&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="./site.css" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#171717;color:#fff;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#fff;text-decoration:none}
+a:hover{color:#E8611A}
+a:focus-visible,button:focus-visible{outline:2px solid #E8611A;outline-offset:4px}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="campus" hint-size="100%,0px"></dc-import>
+<main>
+<section data-screen-label="Campus Hero" class="hero-sub" style="position:relative;overflow:hidden;min-height:clamp(460px,64vh,660px);background:linear-gradient(180deg,#0a1438 0%,#13246a 45%,#2d3a78 72%,#171717 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:150px clamp(20px,6vw,120px) 90px">
+  <dc-import name="Stars" seed="17" count="100" sparkles="16" shoot="2" top="85" style="position:absolute;inset:0;pointer-events:none" hint-size="100%,100%"></dc-import>
+  <nav aria-label="パンくずリスト" style="position:relative;display:flex;gap:10px;font-size:12px;color:#d4d8ea;letter-spacing:.08em"><a href="Koyo%20Womens%20University.dc.html">TOP</a><span aria-hidden="true">／</span><span>キャンパスライフ</span></nav>
+  <p aria-hidden="true" class="hero-en" style="position:relative;margin:28px 0 0;font-family:'Lexend Zetta',sans-serif;font-weight:200;font-size:clamp(40px,7.4vw,120px);line-height:1;letter-spacing:-0.06em">CAMPUS LIFE</p>
+  <h1 style="position:relative;margin:24px 0 0;font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:.4em">キャンパスライフ</h1>
+  <p style="position:relative;margin:24px 0 0;max-width:620px;font-size:15px;line-height:2.2;font-weight:500;letter-spacing:.06em">授業のあとも、毎日が発見になる。仲間と過ごす時間が、わたしを強くする。</p>
+</section>
+
+<section data-screen-label="Facilities" aria-labelledby="fc-h" style="position:relative;overflow:hidden;padding:110px clamp(20px,6vw,120px) 130px">
+  <dc-import name="Stars" seed="37" count="60" sparkles="10" opacity="0.75" style="position:absolute;inset:0;pointer-events:none" hint-size="100%,100%"></dc-import>
+  <h2 id="fc-h" style="position:relative;margin:0 0 56px;font-family:'Lexend Zetta',sans-serif;font-weight:300;font-size:20px;letter-spacing:-0.02em;color:#E8611A;max-width:1240px;margin-left:auto;margin-right:auto">FACILITIES</h2>
+  <div style="position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:48px 32px">
+    <sc-for list="{{ facilities }}" as="f" hint-placeholder-count="4">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="height:260px;filter:grayscale(1)"><image-slot id="{{ f.slot }}" src="{{ f.src }}" shape="rect" placeholder="{{ f.name }}の写真"></image-slot></div>
+        <h3 style="margin:10px 0 0;font-size:16px;font-weight:700;letter-spacing:.08em">{{ f.name }}</h3>
+        <p style="margin:0;font-size:13px;line-height:1.9;color:#d0d0d0">{{ f.desc }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Year" aria-labelledby="yr-h" style="position:relative;overflow:hidden;background:#fff;color:#2b2b2b;padding:120px 0 140px">
+  <dc-import name="Stars" seed="68" count="22" sparkles="14" dot="rgba(214,160,70,.7)" glow="232,150,60" core="#ffd27a" style="position:absolute;inset:0;pointer-events:none" hint-size="100%,100%"></dc-import>
+  <div style="position:relative;text-align:center;padding:0 24px">
+    <h2 id="yr-h" style="margin:0 0 20px;font-family:'Lexend Zetta',sans-serif;font-weight:300;font-size:20px;letter-spacing:-0.02em;color:#C24E0F">ONE YEAR</h2>
+    <p class="lead" style="margin:0;font-size:clamp(17px,1.5vw,21px);line-height:2.2;font-weight:700;letter-spacing:.14em">季節ごとに、キャンパスの表情が変わる。</p>
+  </div>
+  <div style="position:relative;max-width:1100px;margin:80px auto 0;padding:0 20px;display:flex;flex-direction:column;gap:36px">
+    <sc-for list="{{ seasons }}" as="s" hint-placeholder-count="4">
+      <div style="height:clamp(170px,18vw,230px);border-radius:999px;background:#E8611A;padding:3px;box-sizing:border-box;transition:padding .5s cubic-bezier(.2,.8,.2,1)" style-hover="padding:18px">
+        <div style="position:relative;height:100%;border-radius:999px;overflow:hidden;background:#141414">
+          <image-slot id="{{ s.slot }}" src="{{ s.src }}" shape="pill" placeholder="{{ s.ph }}"></image-slot>
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(15,15,15,.82) 0%,rgba(15,15,15,.3) 55%,rgba(15,15,15,0) 80%)"></div>
+          <div class="season-txt" style="position:absolute;left:8%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;pointer-events:none;color:#fff;max-width:60%">
+            <span style="font-family:'Lexend Zetta',sans-serif;font-weight:200;font-size:clamp(28px,3.4vw,52px);letter-spacing:-0.06em;line-height:1;color:#ff9a5c">{{ s.en }}</span>
+            <span style="font-size:15px;font-weight:700;letter-spacing:.14em">{{ s.jp }}</span>
+            <span style="font-size:13px;line-height:1.8;color:#e6e6e6">{{ s.events }}</span>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Clubs" aria-labelledby="cl-h" style="position:relative;overflow:hidden;padding:120px clamp(20px,6vw,120px)">
+  <dc-import name="Stars" seed="47" count="60" sparkles="10" opacity="0.8" style="position:absolute;inset:0;pointer-events:none" hint-size="100%,100%"></dc-import>
+  <div style="position:relative;max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:48px">
+    <div style="flex:1 1 320px;max-width:420px">
+      <h2 id="cl-h" style="margin:0 0 24px;font-family:'Lexend Zetta',sans-serif;font-weight:300;font-size:20px;letter-spacing:-0.02em;color:#E8611A">CLUBS</h2>
+      <p style="margin:0;font-size:15px;line-height:2.2;font-weight:500;letter-spacing:.04em;text-wrap:pretty">運動系・文化系・ボランティアなど、学年や学部を越えた仲間と出会える場があります。</p>
+    </div>
+    <div style="flex:1 1 520px;max-width:640px;display:flex;flex-wrap:wrap;gap:12px;align-content:flex-start">
+      <sc-for list="{{ clubs }}" as="c" hint-placeholder-count="12">
+        <span style="border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:12px 22px;font-size:14px;font-weight:700;letter-spacing:.06em;transition:border-color .3s,color .3s" style-hover="border-color:#E8611A;color:#E8611A">{{ c }}</span>
+      </sc-for>
+      <p style="width:100%;margin:12px 0 0;font-size:12px;color:#bdbdbd">※ 団体名はサンプルです。</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Voices" aria-labelledby="vc-h" style="position:relative;overflow:hidden;padding:40px clamp(20px,6vw,120px) 160px">
+  <dc-import name="Stars" seed="57" count="50" sparkles="10" opacity="0.8" style="position:absolute;inset:0;pointer-events:none" hint-size="100%,100%"></dc-import>
+  <h2 id="vc-h" style="position:relative;max-width:1200px;margin:0 auto 40px;font-family:'Lexend Zetta',sans-serif;font-weight:300;font-size:20px;letter-spacing:-0.02em;color:#E8611A">STUDENT VOICES</h2>
+  <div style="position:relative;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+    <sc-for list="{{ voices }}" as="v" hint-placeholder-count="4">
+      <figure class="voice-card" style="margin:0;background:#262626;border-radius:6px;padding:28px;display:flex;gap:22px;align-items:flex-start">
+        <div style="flex:none;width:84px;height:84px"><image-slot id="{{ v.slot }}" src="{{ v.src }}" fit="contain" style="background:#fff;border-radius:50%" shape="circle" placeholder="写真"></image-slot></div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="display:flex;flex-wrap:wrap;gap:12px;align-items:center"><span style="font-size:13px;color:#ddd">{{ v.dept }}</span><span style="font-size:10px;font-weight:700;letter-spacing:.06em;background:#3a3a3a;border-radius:999px;padding:4px 12px">STUDENT VOICE</span></span>
+          <blockquote style="margin:0;font-size:15px;line-height:1.9;font-weight:700;letter-spacing:.04em;text-wrap:pretty">{{ v.quote }}</blockquote>
+          <figcaption style="font-size:12px;color:#bdbdbd">{{ v.name }}</figcaption>
+        </div>
+      </figure>
+    </sc-for>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,760px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      facilities: [
+        { name: '図書館', desc: '静かに集中できる閲覧席と、グループで使える学習室があります。', src: 'images/library.jpg' },
+        { name: 'ラーニングコモンズ', desc: '授業の予習やグループワークに自由に使えるオープンスペース。', src: 'images/women-laptop.jpg' },
+        { name: 'カフェテリア', desc: '昼食や空き時間に、友人とゆっくり過ごせます。', src: 'images/terrace.jpg' },
+        { name: '学生寮', desc: '初めての一人暮らしでも安心して生活できる環境です。', src: 'images/tower.jpg' }
+      ].map((f, i) => ({ ...f, slot: 'fac-life-' + i })),
+      seasons: [
+        ['SPRING', '春', '入学式・新入生オリエンテーション・サークル紹介', '春のキャンパス・入学式'],
+        ['SUMMER', '夏', '前期試験・短期留学・オープンキャンパス', '夏の短期留学・研修'],
+        ['AUTUMN', '秋', '学園祭・ゼミ合宿・スポーツ大会', '学園祭の様子'],
+        ['WINTER', '冬', '卒業研究発表会・イルミネーション・卒業式', '冬のキャンパス・イルミネーション']
+      ].map(([en, jp, events, ph], i) => ({ en, jp, events, ph, slot: 'season-' + i, src: 'images/' + ['sakura', 'campus-path', 'women-bridge', 'building-concrete'][i] + '.jpg' })),
+      clubs: ['バレーボール部', 'テニスサークル', 'ダンス部', '弓道部', '茶道部', '軽音楽部', '合唱団', '写真部', '演劇部', '英語ディベート部', '国際交流サークル', '地域ボランティア', '学園祭実行委員会'],
+      voices: [
+        { dept: '文学部 3年', quote: '好きな作家をとことん調べたら、卒論のテーマが自然に決まりました。', name: 'Y.N.さん（仮名・サンプル）' },
+        { dept: '国際教養学部 2年', quote: '留学先で、言葉より先に「聞く姿勢」が伝わることを知りました。', name: 'A.S.さん（仮名・サンプル）' },
+        { dept: '人間科学部 4年', quote: 'ゼミで続けた子ども支援の研究が、そのまま進路につながりました。', name: 'M.K.さん（仮名・サンプル）' },
+        { dept: '情報デザイン学部 3年', quote: '苦手だったプログラミングも、仲間と一緒なら楽しめると気づけた。', name: 'R.T.さん（仮名・サンプル）' }
+      ].map((v, i) => ({ ...v, slot: 'voice-' + i, src: 'images/' + ['illust-aha', 'illust-cheer', 'illust-joy', 'illust-thinking'][i] + '.png' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<sc-if value="{{ intro }}" hint-placeholder-val="{{ false }}">
+  <div data-intro="" aria-hidden="true" style="position:fixed;inset:0;z-index:1000;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;pointer-events:none">
+    <span data-intro-mark="" style="width:84px;height:84px;border-radius:50%;background:#c22a2a;color:#fff;font-family:'Noto Serif JP',serif;font-weight:700;font-size:38px;display:flex;align-items:center;justify-content:center">鷺</span>
+    <span data-intro-text="" style="font-family:'Noto Serif JP',serif;font-size:20px;letter-spacing:0.4em;padding-left:0.4em;color:#1f1f1f">白鷺女子大学</span>
+  </div>
+</sc-if>
+<span data-progress="" aria-hidden="true" style="position:absolute;left:0;top:0;height:2px;width:100%;background:#c22a2a;transform-origin:left;transform:scaleX(0);z-index:2;pointer-events:none"></span>
+<header data-site-header="" style="background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);border-bottom:1px solid #f0eee9;transition:box-shadow .4s">
+
+  <div style="max-width:1440px;margin:0 auto;padding:10px clamp(16px,3vw,32px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="Home.dc.html" aria-label="白鷺女子大学 トップへ" style="display:flex;align-items:center;gap:12px;color:#1f1f1f;text-decoration:none">
+      <span style="width:34px;height:34px;flex:none;border-radius:50%;background:#c22a2a;color:#fff;font-family:'Noto Serif JP',serif;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center">鷺</span>
+      <span style="display:flex;flex-direction:column;gap:2px">
+        <span style="font-size:9px;letter-spacing:0.3em;color:#555">受験生のための入試サイト</span>
+        <span style="font-family:'Noto Serif JP',serif;font-weight:700;font-size:20px;letter-spacing:0.12em;line-height:1.1">白鷺女子大学</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:0.16em;color:#555">SHIRASAGI WOMEN'S UNIVERSITY</span>
+      </span>
+    </a>
+    <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+        <nav aria-label="サブメニュー" style="display:flex;gap:18px;font-size:10px">
+          <a href="Admissions.dc.html#materials" style="color:#555">資料請求</a><a href="About.dc.html#campus" style="color:#555">アクセス</a><a href="Admissions.dc.html#contact" style="color:#555">お問い合わせ</a><a href="#" style="color:#555">English</a>
+        </nav>
+        <div style="display:flex;align-items:center;gap:26px">
+          <nav aria-label="メインメニュー" style="display:flex;gap:24px;font-size:12px;font-weight:500;letter-spacing:0.08em">
+            <sc-for list="{{ items }}" as="it" hint-placeholder-count="5">
+              <a href="{{ it.href }}" aria-current="{{ it.current }}" style="position:relative;padding:4px 0;color:#1f1f1f" style-hover="color:#c22a2a">{{ it.label }}
+                <sc-if value="{{ it.active }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:#c22a2a"></span></sc-if>
+              </a>
+            </sc-for>
+          </nav>
+          <a href="OpenCampus.dc.html" style="background:#c22a2a;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.08em;padding:10px 20px;border-radius:999px;display:flex;align-items:center;gap:10px" style-hover="background:#1f1f1f;color:#fff">オープンキャンパス予約<span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-label="メニュー" style="background:#1f1f1f;border:none;border-radius:50%;width:48px;height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;padding:0">
+        <span style="width:18px;height:1px;background:#fff"></span><span style="width:18px;height:1px;background:#fff"></span><span style="width:12px;height:1px;background:#fff;margin-left:-6px"></span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+    <nav aria-label="メインメニュー" style="border-top:1px solid #eeece7;padding:8px 20px 24px;display:flex;flex-direction:column;font-size:15px;font-weight:500;background:#fff">
+      <sc-for list="{{ items }}" as="it" hint-placeholder-count="5">
+        <a href="{{ it.href }}" style="padding:16px 0;border-bottom:1px solid #eeece7;display:flex;gap:16px;color:#1f1f1f"><span style="font-family:'Cormorant Garamond',serif;color:#c22a2a">{{ it.no }}</span>{{ it.label }}</a>
+      </sc-for>
+      <a href="OpenCampus.dc.html" style="margin-top:18px;background:#c22a2a;color:#fff;padding:16px;text-align:center;font-weight:700;border-radius:999px">オープンキャンパス予約 →</a>
+    </nav>
+  </sc-if>
+</header>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1280px&quot;,&quot;height&quot;:&quot;90px&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;about&quot;,&quot;academics&quot;,&quot;campus&quot;,&quot;admissions&quot;,&quot;open&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState(s => ({ w: window.innerWidth, menuOpen: window.innerWidth < 960 ? s.menuOpen : false }));
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    this.runIntro();
+    this.setupFx();
+  }
+  runIntro() {
+    let seen = false;
+    try { seen = sessionStorage.getItem('sw-intro-seen') === '1'; sessionStorage.setItem('sw-intro-seen', '1'); } catch (e) {}
+    if (seen) return;
+    this.introDelay = 1500; setTimeout(() => { this.introDelay = 0; }, 1600);
+    this.setState({ intro: true }, () => {
+      const ov = document.querySelector('[data-intro]'); if (!ov) return;
+      const ease = 'cubic-bezier(.2,.7,.2,1)';
+      ov.querySelector('[data-intro-mark]').animate([{ scale: 0, rotate: '-90deg' }, { scale: 1, rotate: '0deg' }], { duration: 700, easing: ease, fill: 'both' });
+      ov.querySelector('[data-intro-text]').animate([{ opacity: 0, letterSpacing: '1em' }, { opacity: 1, letterSpacing: '0.4em' }], { duration: 800, delay: 300, easing: ease, fill: 'both' });
+      ov.animate([{ clipPath: 'circle(150% at 50% 50%)' }, { clipPath: 'circle(0% at 50% 50%)' }], { duration: 900, delay: 1300, easing: 'cubic-bezier(.7,0,.3,1)', fill: 'forwards' })
+        .onfinish = () => this.setState({ intro: false });
+    });
+  }
+  setupFx() {
+    const ease = 'cubic-bezier(.2,.7,.2,1)';
+    if (!document.getElementById('sw-fx')) {
+      const st = document.createElement('style'); st.id = 'sw-fx';
+      st.textContent = 'main a[style*="999px"]{transition:translate .3s,box-shadow .3s,background .25s,color .25s}main a[style*="999px"]:hover{translate:0 -3px;box-shadow:0 8px 20px rgba(0,0,0,.12)}main image-slot{transition:scale .8s cubic-bezier(.2,.7,.2,1)}main a:hover image-slot{scale:1.05}';
+      document.head.appendChild(st);
+    }
+    const loops = {
+      wave: el => el.animate([{ backgroundPositionX: '0px' }, { backgroundPositionX: '48px' }], { duration: 2400, iterations: Infinity }),
+      stamp: el => el.animate([{ rotate: '-6deg' }, { rotate: '6deg' }], { duration: 1800, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' }),
+      pulse: el => el.animate([{ boxShadow: '0 0 0 0 rgba(255,255,255,.6)' }, { boxShadow: '0 0 0 28px rgba(255,255,255,0)' }], { duration: 2000, iterations: Infinity }),
+      float: el => el.animate([{ translate: '0 0' }, { translate: '14px -6px' }], { duration: 3200, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' })
+    };
+    const from = {
+      up: { opacity: 0, translate: '0 48px' }, left: { opacity: 0, translate: '-60px 0' }, right: { opacity: 0, translate: '60px 0' },
+      zoom: { opacity: 0, scale: 0.6 }, heading: { opacity: 0, translate: '0 24px', filter: 'blur(8px)' },
+      wipe: { clipPath: 'inset(0 100% 0 0)' }, kanji: { opacity: 0, scale: 1.8, filter: 'blur(10px)' }
+    };
+    const to = { opacity: 1, translate: '0 0', scale: 1, filter: 'blur(0)', clipPath: 'inset(0 0% 0 0)' };
+    this.pending = [];
+    const prep = el => {
+      if (el.__fx) return; el.__fx = true;
+      const loop = el.getAttribute('data-anim');
+      if (loop && loops[loop]) loops[loop](el);
+      let type = el.getAttribute('data-reveal');
+      if (type === null) type = el.tagName === 'IMAGE-SLOT' ? 'wipe' : /^H[12]$/.test(el.tagName) ? 'heading' : loop === 'kanji' ? 'kanji' : null;
+      if (!type) return;
+      if (!from[type]) type = 'up';
+      const f = from[type];
+      el.__fxType = type;
+      Object.keys(f).forEach(k => el.style[k] = typeof f[k] === 'number' ? String(f[k]) : f[k]);
+      this.pending.push(el);
+    };
+    const scan = root => (root.querySelectorAll ? root : document).querySelectorAll('main [data-reveal], main image-slot, main h1, main h2, footer image-slot, [data-anim]').forEach(prep);
+    const parallax = () => {
+      const vh = window.innerHeight;
+      document.querySelectorAll('[data-parallax]').forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        el.style.translate = '0 ' + ((r.top + r.height / 2 - vh / 2) * -parseFloat(el.getAttribute('data-parallax'))).toFixed(1) + 'px';
+      });
+    };
+    this.check = () => {
+      const h = window.innerHeight * 0.9; let i = 0;
+      this.pending = this.pending.filter(el => {
+        if (!el.isConnected) return false;
+        if (el.getBoundingClientRect().top >= h) return true;
+        const type = el.__fxType, f = from[type], t = {};
+        Object.keys(f).forEach(k => t[k] = to[k]);
+        const a = el.animate([f, t], { duration: type === 'wipe' ? 1300 : type === 'kanji' ? 1100 : 1000, delay: (this.introDelay || 0) + Math.min(i++ * 110, 660) + (type === 'kanji' ? 350 : 0), easing: type === 'wipe' ? 'cubic-bezier(.7,0,.2,1)' : ease, fill: 'backwards' });
+        Object.keys(f).forEach(k => el.style[k] = '');
+        return false;
+      });
+      const se = document.scrollingElement, max = se.scrollHeight - window.innerHeight;
+      const bar = document.querySelector('[data-progress]'); if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? se.scrollTop / max : 0) + ')';
+      const hd = document.querySelector('[data-site-header]'); if (hd) hd.style.boxShadow = se.scrollTop > 10 ? '0 6px 24px rgba(0,0,0,.06)' : 'none';
+      parallax();
+    };
+    this.onScroll = () => { if (this.raf) return; this.raf = requestAnimationFrame(() => { this.raf = 0; this.check(); }); };
+    scan(document);
+    this.mo = new MutationObserver(ms => { let any = false; ms.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1) { scan(n); if (n.matches && n.matches('main [data-reveal], main image-slot, main h1, main h2, [data-anim]')) prep(n); any = true; } })); if (any) this.onScroll(); });
+    this.mo.observe(document.body, { childList: true, subtree: true });
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll);
+    requestAnimationFrame(() => this.check());
+    this.safety = setInterval(() => this.check(), 1500);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    clearInterval(this.safety);
+    if (this.mo) this.mo.disconnect();
+    if (this.onScroll) { window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); }
+  }
+  renderVals() {
+    const narrow = this.state.w < 960;
+    const active = this.props.active ?? 'home';
+    const nav = [['home', 'トップ', 'Home.dc.html'], ['about', '大学を知る', 'About.dc.html'], ['academics', '学部・学び', 'Academics.dc.html'], ['campus', 'キャンパスライフ', 'CampusLife.dc.html'], ['admissions', '入試情報', 'Admissions.dc.html'], ['open', 'オープンキャンパス', 'OpenCampus.dc.html']];
+    return {
+      intro: !!this.state.intro,
+      isWide: !narrow, isNarrow: narrow, menuOpen: this.state.menuOpen,
+      showMobileMenu: narrow && this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      items: nav.filter(n => narrow || n[0] !== 'open').map((n, i) => ({ key: n[0], label: n[1], href: n[2], no: String(i + 1).padStart(2, '0'), active: n[0] === active, current: n[0] === active ? 'page' : undefined }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

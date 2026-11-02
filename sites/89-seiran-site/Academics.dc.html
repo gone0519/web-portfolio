@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>学部・学科｜青嵐女子大学</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./responsive.css">
+<script src="./image-slot.js"></script>
+<script src="./anim.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#e9ebef;color:#26253d;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#3a31b0;text-decoration:none}
+a:hover{color:#df2f8a}
+*{box-sizing:border-box}
+:focus-visible{outline:2px solid #df2f8a;outline-offset:3px}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="academics" hint-size="100%,72px"></dc-import>
+<main>
+  <section data-screen-label="Academics Hero" style="position:relative;padding-top:72px">
+    <div style="position:relative;height:clamp(320px,52vh,480px)">
+      <div style="position:absolute;left:0;top:0;bottom:0;width:7%;background:#fff;clip-path:polygon(0 0,40% 0,100% 50%,40% 100%,0 100%)"></div>
+      <div style="position:absolute;left:4%;right:5%;top:0;bottom:0"><image-slot id="acad-hero" src="./images/09.jpg" shape="rect" mask="polygon(0 0,95% 0,100% 50%,95% 100%,0 100%,4% 50%)" placeholder="講義・演習の写真"></image-slot></div>
+      <div style="position:absolute;left:4%;right:5%;top:0;bottom:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.88),rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 72%);clip-path:polygon(0 0,95% 0,100% 50%,95% 100%,0 100%,4% 50%)"></div>
+      <div style="position:absolute;left:clamp(28px,10%,160px);top:50%;transform:translateY(-50%);pointer-events:none;display:flex;flex-direction:column;gap:10px">
+        <span style="font-family:Quicksand;font-weight:700;font-size:13px;letter-spacing:.18em;color:#df2f8a">Academics</span>
+        <h1 style="margin:0;font-weight:900;font-size:clamp(30px,4.4vw,56px);letter-spacing:.08em;background:linear-gradient(90deg,#3a31b0,#df2f8a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;width:fit-content">学部・学科</h1>
+        <p style="margin:0;font-size:14px;font-weight:700;color:#33307a;letter-spacing:.08em">「好き」を「問い」に、「問い」を「ちから」に。</p>
+      </div>
+    </div>
+    <nav aria-label="パンくずリスト" style="max-width:1120px;margin:0 auto;padding:18px clamp(20px,5vw,48px);display:flex;gap:10px;font-size:11px;color:#6b6a85"><a href="./Admissions%20Site.dc.html">トップ</a><span>/</span><span aria-current="page">学部・学科</span></nav>
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ faculties }}" as="fa" hint-placeholder-count="3">
+        <a href="#{{ fa.id }}" style="background:#fff;border:1px solid #d6d6e4;border-radius:999px;padding:8px 16px;font-size:12px;font-weight:700" style-hover="border-color:#3a31b0">{{ fa.name }}</a>
+      </sc-for>
+      <a href="#style" style="background:#fff;border:1px solid #d6d6e4;border-radius:999px;padding:8px 16px;font-size:12px;font-weight:700" style-hover="border-color:#3a31b0">学びの特色</a>
+      <a href="#curriculum" style="background:#fff;border:1px solid #d6d6e4;border-radius:999px;padding:8px 16px;font-size:12px;font-weight:700" style-hover="border-color:#3a31b0">4年間の流れ</a>
+    </div>
+  </section>
+
+  <section style="padding:70px 0 40px">
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;flex-direction:column;gap:56px">
+      <sc-for list="{{ faculties }}" as="fa" hint-placeholder-count="3">
+        <article id="{{ fa.id }}" style="scroll-margin-top:90px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:0;background:#fff">
+          <div style="position:relative;min-height:340px">
+            <image-slot id="{{ fa.slot }}" src="{{ fa.img }}" shape="rect" placeholder="{{ fa.ph }}"></image-slot>
+            <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(52,44,170,.9),rgba(223,47,138,.7))"></div>
+            <div style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;color:#fff;text-align:center;padding:24px">
+              <span style="font-family:Quicksand;font-weight:700;font-size:11px;letter-spacing:.16em">Faculty {{ fa.no }}</span>
+              <h2 style="margin:0;font-size:28px;font-weight:900;letter-spacing:.12em">{{ fa.name }}</h2>
+              <span style="font-family:Quicksand;font-weight:700;font-size:12px;letter-spacing:.1em">{{ fa.en }}</span>
+            </div>
+          </div>
+          <div style="padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:20px">
+            <p style="margin:0;font-size:15px;line-height:2;color:#33307a;font-weight:500;text-wrap:pretty">{{ fa.lead }}</p>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;background:#e9ebef">
+              <sc-for list="{{ fa.depts }}" as="d" hint-placeholder-count="3">
+                <li style="background:#fff;padding:14px 0;display:flex;flex-direction:column;gap:4px">
+                  <span style="font-size:15px;font-weight:700;color:#3a31b0;display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:#df2f8a;display:block"></span>{{ d.n }}</span>
+                  <span style="font-size:13px;line-height:1.8;color:#4a4964;padding-left:16px">{{ d.t }}</span>
+                </li>
+              </sc-for>
+            </ul>
+            <p style="margin:0;font-size:11px;color:#6b4a5e">※ 学科名・内容は掲載イメージです（仮）</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="style" style="position:relative;scroll-margin-top:72px;padding:90px 0">
+    <div style="position:absolute;inset:0;background:#fff;clip-path:polygon(0 0,70% 0,78% 50%,70% 100%,0 100%)"></div>
+    <div style="position:relative;max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,48px)">
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:32px"><span style="width:10px;height:10px;transform:rotate(45deg);background:#3a31b0;display:block"></span><h2 style="margin:0;font-size:22px;font-weight:700;color:#3a31b0;letter-spacing:.08em">学びの特色</h2><span style="font-family:Quicksand;font-weight:700;font-size:11px;color:#8a89a3;letter-spacing:.12em">Learning Style</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px">
+        <sc-for list="{{ learning }}" as="l" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="position:relative;aspect-ratio:16/10"><image-slot id="{{ l.slot }}" src="{{ l.img }}" shape="rect" mask="polygon(0 0,90% 0,100% 50%,90% 100%,0 100%,10% 50%)" placeholder="{{ l.ph }}"></image-slot></div>
+            <span style="font-family:Quicksand;font-weight:700;font-size:11px;color:#df2f8a;letter-spacing:.14em">{{ l.en }}</span>
+            <h3 style="margin:0;font-size:17px;font-weight:700">{{ l.title }}</h3>
+            <p style="margin:0;font-size:13px;line-height:1.9;color:#4a4964;text-wrap:pretty">{{ l.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="curriculum" style="scroll-margin-top:72px;padding:90px 0">
+    <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,48px)">
+      <h2 style="margin:0 0 36px;font-weight:900;font-size:clamp(24px,3vw,36px);letter-spacing:.08em;background:linear-gradient(90deg,#3a31b0,#df2f8a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;width:fit-content">4年間の学びの流れ</h2>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:6px">
+        <sc-for list="{{ years }}" as="y" hint-placeholder-count="4">
+          <li style="background:#fff;clip-path:polygon(0 0,90% 0,100% 50%,90% 100%,0 100%,8% 50%);padding:28px 18% 28px 14%;display:flex;flex-direction:column;gap:8px;min-height:180px">
+            <span style="font-family:Quicksand;font-weight:700;font-size:20px;color:#df2f8a">{{ y.y }}</span>
+            <span style="font-size:15px;font-weight:700;color:#3a31b0">{{ y.t }}</span>
+            <span style="font-size:12px;line-height:1.8;color:#4a4964">{{ y.b }}</span>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <section style="padding:0 clamp(0px,4vw,60px) 90px">
+    <div style="background:linear-gradient(100deg,#3a31b0,#8b31a8 55%,#df2f8a);clip-path:polygon(0 0,96% 0,100% 50%,96% 100%,0 100%);color:#fff;padding:clamp(36px,5vw,60px) clamp(28px,6vw,80px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:8px"><span style="font-family:Quicksand;font-weight:700;font-size:12px;letter-spacing:.16em">Open Campus</span><p style="margin:0;font-size:clamp(20px,2.6vw,28px);font-weight:900;letter-spacing:.08em">模擬授業で、学びを体験しよう。</p></div>
+      <a href="./OpenCampus.dc.html" style="display:flex;align-items:center;gap:14px;background:#fff;color:#3a31b0;font-size:14px;font-weight:700;padding:17px 30px;margin-right:4%" style-hover="color:#df2f8a">オープンキャンパスへ<span style="width:6px;height:6px;border-radius:50%;background:#df2f8a;display:block"></span></a>
+    </div>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      faculties: [
+        { id: 'humanities', no: '01', slot: 'acad-f1', img: './images/06.jpg', ph: '人文学部の授業風景', name: '人文学部', en: 'Faculty of Humanities', lead: 'ことば・文学・歴史を手がかりに、人と社会を深く読み解く力を養います。読む、書く、話すを繰り返し、自分の考えを確かな言葉にしていきます。',
+          depts: [{ n: '日本文学科', t: '古典から現代文学まで、作品と時代を読み解く。' }, { n: '英語コミュニケーション学科', t: '実践的な英語力と、異文化を理解する視点を身につける。' }, { n: '歴史文化学科', t: '史料や地域の文化財をもとに、過去と現在をつなぐ。' }] },
+        { id: 'lifescience', no: '02', slot: 'acad-f2', img: './images/05.jpg', ph: '生活科学部の実習風景', name: '生活科学部', en: 'Faculty of Human Life Sciences', lead: '食・住まい・子どもの育ちなど、毎日の暮らしを科学の目で見つめます。実験・実習を通して、人の生活を支える専門性を身につけます。',
+          depts: [{ n: '食物栄養学科', t: '栄養と健康を学び、食で人を支える専門職を目指す。' }, { n: '生活デザイン学科', t: '衣・住・プロダクトから、心地よい暮らしをデザインする。' }, { n: '子ども教育学科', t: '子どもの発達を理解し、保育・教育の現場で活かす。' }] },
+        { id: 'global', no: '03', slot: 'acad-f3', img: './images/39.jpg', ph: '国際情報学部の演習風景', name: '国際情報学部', en: 'Faculty of Global Studies and Informatics', lead: '国際社会の課題とデジタル技術の両面から、これからの社会のあり方を考えます。データと対話を組み合わせ、課題を解決する力を育てます。',
+          depts: [{ n: '国際社会学科', t: '国際関係・多文化共生・ジェンダーを多角的に学ぶ。' }, { n: '情報デザイン学科', t: 'データ活用やウェブ制作を通して、情報を伝える技術を磨く。' }] },
+      ],
+      learning: [
+        { slot: 'acad-l1', img: './images/31.jpg', ph: '地域プロジェクトの様子', en: 'Practice', title: '地域・企業と取り組む実践型プロジェクト', body: '学外のパートナーと一緒に課題に取り組み、学んだ知識を実際の場で試します。' },
+        { slot: 'acad-l2', img: './images/45.jpg', ph: '研究室の様子', en: 'Research', title: '早い時期から始める研究体験', body: '調査や実験の基礎を段階的に学び、3年次からの研究室・ゼミでの探究につなげます。' },
+        { slot: 'acad-l3', img: './images/41.jpg', ph: 'ディスカッションの様子', en: 'Interdisciplinary', title: '学部横断のテーマ科目', body: 'ジェンダー、環境、データなど、学部をこえたテーマを多様な視点から学びます。' },
+      ],
+      years: [
+        { y: '1st', t: '学びの土台をつくる', b: '初年次ゼミで、調べる・まとめる・発表する基礎を身につけます。' },
+        { y: '2nd', t: '関心を広げる', b: '専門科目と学部横断科目を組み合わせ、テーマを探ります。' },
+        { y: '3rd', t: '専門を深める', b: 'ゼミ・研究室に所属し、実践型プロジェクトにも挑戦します。' },
+        { y: '4th', t: '学びをかたちに', b: '卒業研究・卒業制作を通して、4年間の学びをまとめます。' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

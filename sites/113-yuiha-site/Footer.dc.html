@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<footer style="padding:0 clamp(16px,6vw,96px) 32px;font-family:'Zen Kaku Gothic New',sans-serif;color:#232323;letter-spacing:.06em">
+  <div style="font-size:10px;color:#555;padding-bottom:12px;border-bottom:1px solid #232323;display:flex;gap:8px">
+    <a href="Yuiha%20Womens%20University.dc.html" style="color:#555;text-decoration:none">トップページ</a>
+    <sc-if value="{{ hasCrumb }}" hint-placeholder-val="{{ false }}"><span>／</span><span>{{ crumb }}</span></sc-if>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;padding-top:40px">
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,6vw,80px)">
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:11px;line-height:1.8">
+        <span style="font-size:12px;font-weight:700">学校法人 結葉学園 結葉女子大学</span>
+        <span>〒000-0000 ○○県○○市○○ 0-0-0（ダミー）</span>
+        <a href="Open-Campus.dc.html#access" style="color:#232323;text-decoration:underline">アクセス</a>
+        <span>入試広報課 T. 000-000-0000（ダミー）</span>
+        <span>受付 9:00〜17:00（土日祝を除く）</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <nav aria-label="フッターナビゲーション" style="display:flex;flex-wrap:wrap;gap:8px 16px;font-family:'Josefin Sans',sans-serif;font-size:11px;max-width:280px">
+          <sc-for list="{{ links }}" as="n" hint-placeholder-count="6">
+            <a href="{{ n.href }}" style="color:#232323;text-decoration:none" style-hover="text-decoration:underline">{{ n.en }}</a>
+          </sc-for>
+        </nav>
+        <div style="display:flex;gap:16px;font-family:'Josefin Sans',sans-serif;font-size:11px">
+          <a href="#" style="color:#555;text-decoration:none" style-hover="text-decoration:underline">Instagram</a>
+          <a href="#" style="color:#555;text-decoration:none" style-hover="text-decoration:underline">X</a>
+          <a href="#" style="color:#555;text-decoration:none" style-hover="text-decoration:underline">YouTube</a>
+          <a href="#" style="color:#555;text-decoration:none" style-hover="text-decoration:underline">LINE</a>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:32px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:40px">
+        <span style="display:flex;align-items:center;gap:10px">
+          <span aria-hidden="true" style="position:relative;width:30px;height:24px">
+            <span style="position:absolute;left:0;top:0;width:15px;height:13px;background:#232323;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)"></span>
+            <span style="position:absolute;left:0;top:11px;width:15px;height:13px;background:#232323;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)"></span>
+            <span style="position:absolute;left:12px;top:5px;width:16px;height:14px;border:1.5px solid #232323;border-radius:50%"></span>
+          </span>
+          <span style="display:flex;flex-direction:column;line-height:1.15;font-family:'Josefin Sans',sans-serif;letter-spacing:.12em"><b style="font-size:13px;font-weight:600">YUIHA</b><span style="font-size:11px">WOMEN'S <b style="font-weight:600">UNIV.</b></span></span>
+        </span>
+        <span style="font-size:9px;color:#555;font-family:'Josefin Sans',sans-serif">Copyright © Yuiha Women's University. All rights reserved.</span>
+      </div>
+      <button onClick="{{ toTop }}" aria-label="ページの先頭へ" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:4px;border:0;background:transparent;cursor:pointer;color:#232323">
+        <span style="width:1px;height:34px;background:#232323;position:relative"><span style="position:absolute;top:0;left:-3px;width:7px;height:7px;border-top:1px solid #232323;border-left:1px solid #232323;transform:rotate(45deg)"></span></span>
+        <span style="writing-mode:vertical-rl;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.12em">Pagetop</span>
+      </button>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1280px&quot;,&quot;height&quot;:&quot;260px&quot;},&quot;crumb&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      crumb: this.props.crumb ?? '',
+      hasCrumb: !!this.props.crumb,
+      toTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+      links: [
+        { en: 'Top', href: 'Yuiha%20Womens%20University.dc.html' },
+        { en: 'About', href: 'About.dc.html' },
+        { en: 'Academics', href: 'Academics.dc.html' },
+        { en: 'Campus Life', href: 'Campus-Life.dc.html' },
+        { en: 'Admissions', href: 'Admissions.dc.html' },
+        { en: 'Open Campus', href: 'Open-Campus.dc.html' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

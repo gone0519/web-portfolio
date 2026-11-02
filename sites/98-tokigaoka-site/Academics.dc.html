@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zilla+Slab:wght@600;700&family=Klee+One:wght@600&display=swap">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1b1b1b;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#E60012}
+a:hover{color:#b8000e}
+a:focus-visible,button:focus-visible{outline:3px solid #1b1b1b;outline-offset:3px}
+.g3,.g4,.g6{display:grid}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g6{grid-template-columns:repeat(3,minmax(0,1fr))}@media (max-width:1099px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:899px){.g3{grid-template-columns:minmax(0,1fr)}.g6{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:599px){.g4,.g6{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1023px){.deco-ring{display:none}}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="academics" hint-size="100%,0px"></dc-import>
+<main>
+<section data-screen-label="Academics Hero" style="position:relative;overflow:hidden;background:#E60012;color:#fff;padding:clamp(130px,12vw,170px) clamp(20px,4vw,72px) clamp(72px,7vw,100px)">
+  <div aria-hidden="true" class="deco-ring" style="position:absolute;top:-200px;left:-160px;width:620px;height:620px;border:1.5px solid rgba(255,255,255,.7);border-radius:50%;pointer-events:none"></div>
+  <div aria-hidden="true" class="deco-ring" style="position:absolute;bottom:-300px;right:-180px;width:700px;height:700px;border:1.5px solid rgba(255,255,255,.7);border-radius:50%;pointer-events:none"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+    <nav aria-label="パンくずリスト" style="display:flex;gap:10px;font-size:12px;font-weight:500;margin-bottom:12px"><a href="Admissions Site.dc.html" style="color:#fff">TOP</a><span aria-hidden="true">›</span><span>学部・学科</span></nav>
+    <h1 style="margin:0;font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(64px,9vw,128px);line-height:.95">Academics</h1>
+    <span style="font-weight:700;font-size:15px;letter-spacing:.12em">学部・学科</span>
+    <p style="margin:20px 0 0;max-width:640px;font-size:15px;line-height:2.1;font-weight:500;text-wrap:pretty">4学部・9学科で、ことば・人・社会・暮らしを学びます。1年次は学部を越えた共通教育で視野を広げ、2年次から専門へ。興味の入口から、将来の進路へつながる学びをデザインできます。</p>
+    <ul style="list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="4">
+        <li><a href="#{{ f.anchor }}" style="display:block;padding:10px 22px;border:2px solid #fff;border-radius:999px;color:#fff;text-decoration:none;font-weight:700;font-size:14px;transition:background .2s, color .2s" style-hover="background:#fff;color:#E60012">{{ f.no }} {{ f.name }}</a></li>
+      </sc-for>
+    </ul>
+  </div>
+</section>
+
+<section data-screen-label="Faculties" style="background:#fff;padding:clamp(72px,7vw,110px) clamp(20px,4vw,72px)">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(72px,8vw,120px)">
+    <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="4">
+      <article id="{{ f.anchor }}" style="display:flex;flex-wrap:wrap;flex-direction:{{ f.dir }};gap:clamp(32px,5vw,72px);align-items:center;scroll-margin-top:100px">
+        <div style="flex:1 1 440px;position:relative;min-height:380px">
+          <div style="position:absolute;inset:24px -12px -12px 24px;background:#FCE6E6;border-radius:12px"></div>
+          <div style="position:absolute;inset:0 12px 12px 0;border-radius:12px;overflow:hidden"><image-slot id="{{ f.id }}" src="images/{{ f.id }}.jpg" shape="rect" placeholder="{{ f.ph }}"></image-slot></div>
+        </div>
+        <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:baseline;gap:14px">
+            <span style="font-family:'Zilla Slab',serif;font-weight:700;font-size:64px;color:#E60012;line-height:1">{{ f.no }}</span>
+            <span style="font-family:'Zilla Slab',serif;font-weight:700;font-size:15px;color:#E60012">{{ f.en }}</span>
+          </div>
+          <h2 style="margin:0;font-size:clamp(26px,2.6vw,34px);font-weight:700">{{ f.name }}</h2>
+          <p style="margin:0;font-size:15px;line-height:2;text-wrap:pretty">{{ f.body }}</p>
+          <ul style="list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;border-top:1px solid #e4e4e4">
+            <sc-for list="{{ f.depts }}" as="d" hint-placeholder-count="2">
+              <li style="display:grid;grid-template-columns:minmax(140px,auto) 1fr;gap:16px;padding:16px 0;border-bottom:1px solid #e4e4e4;align-items:baseline">
+                <span style="font-weight:700;font-size:15px;color:#E60012">{{ d.n }}</span>
+                <span style="font-size:13.5px;line-height:1.8">{{ d.b }}</span>
+              </li>
+            </sc-for>
+          </ul>
+          <p style="margin:6px 0 0;font-size:12.5px;line-height:1.8;color:#555"><strong style="color:#1b1b1b">めざせる進路（例）</strong>　{{ f.career }}</p>
+        </div>
+      </article>
+    </sc-for>
+    <p style="margin:0;font-size:11.5px;color:#555">※学部・学科の名称と内容はデザイン用のサンプルです。</p>
+  </div>
+</section>
+
+<section data-screen-label="Learning Points" style="position:relative;overflow:hidden;background:#EBEBEB;padding:clamp(80px,8vw,120px) clamp(20px,4vw,72px)">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+      <h2 style="margin:0;font-family:'Zilla Slab',serif;font-weight:700;color:#E60012;font-size:clamp(44px,5vw,68px);line-height:1">Learning</h2>
+      <span style="color:#E60012;font-weight:700;font-size:13px">学びの特長</span>
+    </div>
+    <div class="g3" style="gap:28px">
+      <sc-for list="{{ points }}" as="p" hint-placeholder-count="3">
+        <article style="background:#fff;border-radius:16px;padding:32px 28px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+          <div style="width:150px;height:150px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 6px #FCE6E6"><image-slot id="{{ p.id }}" src="images/{{ p.id }}.jpg" shape="circle" placeholder="{{ p.ph }}"></image-slot></div>
+          <span style="font-family:'Zilla Slab',serif;font-weight:700;font-size:24px;color:#E60012">{{ p.no }}</span>
+          <h3 style="margin:0;font-size:19px;font-weight:700">{{ p.title }}</h3>
+          <p style="margin:0;font-size:13.5px;line-height:1.95;text-wrap:pretty">{{ p.body }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="4 Years" style="background:#fff;padding:clamp(80px,8vw,120px) clamp(20px,4vw,72px)">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:44px">
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:14px">
+      <h2 style="margin:0;font-family:'Zilla Slab',serif;font-weight:700;color:#E60012;font-size:clamp(44px,5vw,68px);line-height:1">4 Years</h2>
+      <span style="color:#E60012;font-weight:700;font-size:13px">4年間の学びの流れ</span>
+    </div>
+    <ol class="g4" style="list-style:none;margin:0;padding:0;gap:0">
+      <sc-for list="{{ years }}" as="y" hint-placeholder-count="4">
+        <li style="position:relative;padding:28px 24px 28px;border-top:4px solid #E60012;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Zilla Slab',serif;font-weight:700;font-size:40px;color:#E60012;line-height:1">{{ y.y }}</span>
+          <span style="font-weight:700;font-size:17px">{{ y.t }}</span>
+          <span style="font-size:13.5px;line-height:1.9">{{ y.b }}</span>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section data-screen-label="Next" style="background:#E60012;color:#fff;padding:clamp(56px,6vw,80px) clamp(20px,4vw,72px)">
+  <a href="CampusLife.dc.html" style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;color:#fff;text-decoration:none" style-hover="color:#fff">
+    <span style="display:flex;flex-direction:column;gap:8px"><span style="font-size:13px;font-weight:700">Next</span><span style="font-family:'Zilla Slab',serif;font-weight:700;font-size:clamp(40px,5vw,64px);line-height:1">Campus Life</span><span style="font-size:14px;font-weight:700">キャンパスライフを見る</span></span>
+    <span style="display:flex;align-items:center;gap:10px;padding:13px 40px;border:2px solid #fff;border-radius:50%;font-family:'Zilla Slab',serif;font-weight:700;font-size:17px">More ›</span>
+  </a>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const f = [
+      { anchor: 'lit', id: 'ac-f1', no: '01', en: 'Faculty of Literature', name: '文学部', ph: '文学・語学の授業', body: '日本と世界のことば、文学、歴史を読み解き、自分の言葉で表現する力を磨きます。読む・書く・話す力は、どんな進路でも活きる土台になります。', career: '出版・広告、教員、公務員、一般企業 など',
+        depts: [{ n: '日本文学科', b: '古典から現代文学まで、日本語と日本文化を深く探究します。' }, { n: '英語英米文学科', b: '英語運用力と英語圏の文学・文化を総合的に学びます。' }, { n: '史学科', b: '史料を読み解き、過去から現在の社会を考えます。' }] },
+      { anchor: 'hum', id: 'ac-f2', no: '02', en: 'Faculty of Human Sciences', name: '人間科学部', ph: '心理学の実験', body: '心理・教育・福祉の視点から人を理解し、人と社会を支える専門性を身につけます。実習や実験を通して、理論を実践につなげます。', career: '教員・保育者、福祉職、心理職、人事 など',
+        depts: [{ n: '心理学科', b: '実験や調査を通じて、人の心と行動を科学的に学びます。' }, { n: '教育学科', b: '子どもの育ちと学びを支える教育のあり方を学びます。' }, { n: '社会福祉学科', b: '誰もが暮らしやすい社会をつくる福祉の専門性を養います。' }] },
+      { anchor: 'glo', id: 'ac-f3', no: '03', en: 'Faculty of Global Studies', name: '国際コミュニケーション学部', ph: '英語でのディスカッション', body: '語学力と異文化理解を土台に、国際社会で活躍するためのコミュニケーション力を磨きます。留学を組み込んだカリキュラムが特長です。', career: '航空・観光、商社、国際機関、外資系企業 など',
+        depts: [{ n: '国際コミュニケーション学科', b: '英語ともう一つの言語を学び、多文化共生の課題を考えます。' }] },
+      { anchor: 'life', id: 'ac-f4', no: '04', en: 'Faculty of Life Design', name: '生活デザイン学部', ph: '食物・被服の実習', body: '食・住まい・衣服など、毎日の暮らしにかかわるテーマを、科学とデザインの両面から探究します。', career: '管理栄養士、食品・アパレル、住宅・インテリア など',
+        depts: [{ n: '食物栄養学科', b: '食と健康を科学的に学び、栄養の専門職をめざします。' }, { n: '生活環境デザイン学科', b: '住まいや衣服、プロダクトを通して心地よい暮らしをデザインします。' }] }
+    ];
+    return {
+      faculties: f.map((x, i) => ({ ...x, dir: i % 2 ? 'row-reverse' : 'row' })),
+      points: [
+        { id: 'ac-p1', no: 'Point 01', ph: 'フィールドワーク', title: '実践型プロジェクト', body: '企業・地域と連携し、学んだ知識を社会の課題解決に生かします。' },
+        { id: 'ac-p2', no: 'Point 02', ph: '研究室', title: '早くから研究に触れる', body: '少人数ゼミで先生と一緒に、卒業研究につながるテーマを育てます。' },
+        { id: 'ac-p3', no: 'Point 03', ph: '学部横断の授業', title: '学部横断プログラム', body: 'データサイエンスやジェンダー論など、学部を越えて学べる科目群。' }
+      ],
+      years: [
+        { y: '1st', t: '視野を広げる', b: '共通教育と初年次ゼミで、学びの基礎と大学での学び方を身につけます。' },
+        { y: '2nd', t: '専門にふれる', b: '学科の専門科目が本格スタート。副専攻や留学も選択できます。' },
+        { y: '3rd', t: '深める・試す', b: 'ゼミに所属し、実習やプロジェクトで学びを社会で試します。' },
+        { y: '4th', t: 'かたちにする', b: '卒業研究に取り組み、4年間の学びを自分の言葉でまとめます。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

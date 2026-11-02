@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="./responsive.css">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f3f4f6;color:#232427;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#0b3fd9;text-decoration:none}
+a:hover{color:#072fa6}
+*{box-sizing:border-box}
+</style>
+<script src="./motion.js"></script>
+</helmet>
+<div id="top" style="position:relative;overflow-x:hidden;background:#f3f4f6;min-height:100vh">
+<dc-import name="SiteHeader" current="admissions" hint-size="100%,100px"></dc-import>
+
+<section data-screen-label="Admissions Hero" style="position:relative;max-width:1920px;margin:0 auto;padding:clamp(48px,5vw,90px) clamp(20px,7.8vw,150px) clamp(56px,5vw,90px)">
+  <div data-drift style="overflow:hidden;position:absolute;right:0;top:0;width:52%;height:100%;pointer-events:none;background:repeating-linear-gradient(to bottom,#2347e6 0 1.5px,transparent 1.5px 13px);-webkit-mask-image:radial-gradient(ellipse 60% 60% at 80% 50%,#000 0 30%,transparent 70%);mask-image:radial-gradient(ellipse 60% 60% at 80% 50%,#000 0 30%,transparent 70%);opacity:.6"><img src="_filled/01-11.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div data-reveal="fade" data-delay="250" style="position:relative;display:flex;gap:10px;font-size:13px;color:#6b7180"><a href="University Admissions.dc.html" style="color:#6b7180">TOP</a><span>/</span><span style="color:#232427">入試情報</span></div>
+  <div data-reveal="left" data-delay="350" style="position:relative;display:flex;align-items:center;gap:10px;margin-top:48px;color:#0b3fd9;font-size:15px;font-weight:700"><span style="width:13px;height:9px;background:#0b3fd9;border-radius:50% 50% 50% 50% / 100% 0 100% 0;transform:rotate(-30deg)"></span>入試情報・学生支援</div>
+  <h1 data-reveal="mask" data-delay="450" style="position:relative;margin:10px 0 0;font-family:'Hanken Grotesk',sans-serif;font-size:clamp(60px,7vw,136px);font-weight:600;letter-spacing:-.015em;line-height:1">Admissions</h1>
+  <div style="position:relative;display:inline-flex;align-items:center;gap:10px;margin-top:36px;padding:8px 14px;background:#fff;border:1px solid #d9dce2;font-size:13px;color:#4a4e57"><span style="background:#232427;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;letter-spacing:.08em">SAMPLE</span>掲載している日程・金額はサンプルです。正式な情報は必ず最新の募集要項でご確認ください。</div>
+  <div class="rs-anchors" data-stagger style="position:relative;display:flex;flex-wrap:wrap;gap:8px;margin-top:32px">
+    <sc-for list="{{ anchors }}" as="a" hint-placeholder-count="5">
+      <a href="{{ a.href }}" style="display:flex;align-items:center;gap:14px;height:48px;padding:0 20px;background:#fff;color:#232427;font-size:14px;font-weight:700;transition:background .2s" style-hover="background:#e5ecfb;color:#0b3fd9">{{ a.label }}<span style="color:#0b3fd9">↓</span></a>
+    </sc-for>
+  </div>
+</section>
+
+<section id="schedule" style="max-width:1920px;margin:0 auto;padding:clamp(40px,4vw,70px) clamp(20px,7.8vw,150px) clamp(80px,8vw,140px)">
+  <div data-reveal="left" style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:700;color:#0b3fd9;letter-spacing:.1em">SCHEDULE</div>
+  <h2 data-reveal="up" style="margin:8px 0 0;font-size:clamp(26px,2.2vw,38px);font-weight:700">入試日程</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,90px);margin-top:40px">
+    <div class="rs-schedtabs" data-stagger style="flex:0 1 240px;display:flex;flex-direction:column;gap:2px;min-width:180px">
+      <sc-for list="{{ schedTabs }}" as="t" hint-placeholder-count="4">
+        <button onClick="{{ t.select }}" data-active="{{ t.active }}" style="text-align:left;height:52px;padding:0 20px;border:0;background:{{ t.bg }};color:{{ t.fg }};font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:background .2s">{{ t.name }}</button>
+      </sc-for>
+    </div>
+    <div data-stagger data-swap="stagger" style="flex:1 1 560px;min-width:0;border-top:1px solid #d1d5dd">
+      <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="5">
+        <div class="rs-sched" style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.2fr) minmax(0,1fr) minmax(0,.8fr);gap:12px 24px;align-items:center;padding:24px 0;border-bottom:1px solid #d1d5dd">
+          <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+            <span style="align-self:flex-start;border:1px solid #0b3fd9;color:#0b3fd9;font-size:12px;font-weight:700;padding:2px 10px">{{ s.type }}</span>
+            <span style="font-size:17px;font-weight:700">{{ s.name }}</span>
+          </div>
+          <div class="rs-kv" style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:#6b7180">出願期間<span style="font-size:15px;color:#232427;font-weight:500">{{ s.apply }}</span></div>
+          <div class="rs-kv" style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:#6b7180">試験日<span style="font-size:15px;color:#232427;font-weight:500">{{ s.exam }}</span></div>
+          <div class="rs-kv" style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:#6b7180">合格発表<span style="font-size:15px;color:#232427;font-weight:500">{{ s.result }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="apply" style="background:#e5ecfb">
+  <div style="max-width:1920px;margin:0 auto;padding:clamp(80px,8vw,140px) clamp(20px,7.8vw,150px)">
+    <div data-reveal="left" style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:700;color:#0b3fd9;letter-spacing:.1em">HOW TO APPLY</div>
+    <h2 data-reveal="up" style="margin:8px 0 0;font-size:clamp(26px,2.2vw,38px);font-weight:700">出願の流れ</h2>
+    <div data-stagger style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:2px;margin-top:40px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+        <div style="display:flex;flex-direction:column;gap:10px;background:#fff;padding:28px 24px">
+          <span style="font-family:'Hanken Grotesk',sans-serif;font-size:28px;font-weight:600;color:#0b3fd9">{{ s.n }}</span>
+          <span style="font-size:17px;font-weight:700">{{ s.title }}</span>
+          <span style="font-size:14px;line-height:1.85;color:#4a4e57">{{ s.desc }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px;margin-top:20px">
+      <div style="background:#fff;padding:clamp(28px,3vw,48px)">
+        <div style="font-size:20px;font-weight:700">出願資格（概要）</div>
+        <div data-stagger style="margin-top:16px;border-top:1px solid #eceef2">
+          <sc-for list="{{ eligibility }}" as="e" hint-placeholder-count="3"><div style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #eceef2;font-size:14px;line-height:1.8"><span style="color:#0b3fd9;font-weight:700">—</span>{{ e }}</div></sc-for>
+        </div>
+      </div>
+      <div style="background:#fff;padding:clamp(28px,3vw,48px)">
+        <div style="font-size:20px;font-weight:700">主な提出書類</div>
+        <div data-stagger style="margin-top:16px;border-top:1px solid #eceef2">
+          <sc-for list="{{ documents }}" as="d" hint-placeholder-count="4"><div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #eceef2;font-size:14px;line-height:1.8"><span>{{ d.name }}</span><span style="color:#6b7180">{{ d.note }}</span></div></sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tuition" style="max-width:1920px;margin:0 auto;padding:clamp(80px,8vw,140px) clamp(20px,7.8vw,150px)">
+  <div data-reveal="left" style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:700;color:#0b3fd9;letter-spacing:.1em">TUITION &amp; SCHOLARSHIP</div>
+  <h2 data-reveal="up" style="margin:8px 0 0;font-size:clamp(26px,2.2vw,38px);font-weight:700">学費・奨学金</h2>
+  <div class="rs-fees" data-reveal="up" style="margin-top:40px;overflow-x:auto;background:#fff">
+    <div style="min-width:640px">
+      <div class="rs-fees-head" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;padding:18px 28px;background:#232427;color:#fff;font-size:13px;font-weight:700"><span>学部</span><span>入学金</span><span>授業料（年額）</span><span>施設設備費（年額）</span></div>
+      <sc-for list="{{ fees }}" as="f" hint-placeholder-count="6">
+        <div class="rs-fees-row" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;padding:18px 28px;border-bottom:1px solid #eceef2;font-size:15px"><span style="font-weight:700">{{ f }}</span><span data-label="入学金" style="font-family:'Hanken Grotesk',sans-serif;color:#6b7180">¥◯◯◯,◯◯◯</span><span data-label="授業料（年額）" style="font-family:'Hanken Grotesk',sans-serif;color:#6b7180">¥◯◯◯,◯◯◯</span><span data-label="施設設備費（年額）" style="font-family:'Hanken Grotesk',sans-serif;color:#6b7180">¥◯◯◯,◯◯◯</span></div>
+      </sc-for>
+    </div>
+  </div>
+  <p data-reveal="up" style="margin:14px 0 0;font-size:13px;color:#6b7180">金額は募集要項で公表します。分割納入制度があります。</p>
+  <div data-stagger style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;margin-top:48px">
+    <sc-for list="{{ scholarships }}" as="s" hint-placeholder-count="4">
+      <div style="display:flex;flex-direction:column;gap:12px;background:#e5ecfb;padding:32px">
+        <span style="align-self:flex-start;background:#fff;color:#0b3fd9;font-size:12px;font-weight:700;padding:4px 10px">{{ s.type }}</span>
+        <span style="font-size:19px;font-weight:700">{{ s.name }}</span>
+        <span style="font-size:14px;line-height:1.9;color:#4a4e57">{{ s.desc }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="faq" style="max-width:1920px;margin:0 auto;padding:0 clamp(20px,7.8vw,150px) clamp(80px,8vw,140px)">
+  <div class="rs-stack" style="display:grid;grid-template-columns:minmax(240px,1fr) minmax(0,2fr);gap:clamp(40px,6vw,120px)">
+    <div>
+      <div data-reveal="left" style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:700;color:#0b3fd9;letter-spacing:.1em">FAQ</div>
+      <h2 data-reveal="up" style="margin:8px 0 0;font-size:clamp(26px,2.2vw,38px);font-weight:700">よくあるご質問</h2>
+      <p data-reveal="up" style="margin:20px 0 0;font-size:15px;line-height:2;color:#4a4e57">解決しない場合は入試課までお問い合わせください。</p>
+      <a class="rs-btn-full" href="Contact.dc.html#form" style="display:inline-flex;align-items:center;justify-content:space-between;gap:60px;height:56px;margin-top:28px;padding:0 24px;background:#0b3fd9;color:#fff;font-size:15px;font-weight:700" style-hover="background:#072fa6;color:#fff"><span>お問い合わせ</span><span>→</span></a>
+    </div>
+    <div data-stagger style="min-width:0;border-top:1px solid #d1d5dd">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
+        <div style="border-bottom:1px solid #d1d5dd">
+          <button onClick="{{ q.toggle }}" style="width:100%;display:flex;align-items:center;gap:18px;padding:22px 0;border:0;background:transparent;font-family:inherit;font-size:16px;font-weight:700;color:#232427;text-align:left;cursor:pointer">
+            <span style="font-family:'Hanken Grotesk',sans-serif;color:#0b3fd9;font-size:18px">Q</span><span style="flex:1">{{ q.q }}</span><span style="color:#0b3fd9;font-size:20px;width:20px;text-align:center">{{ q.icon }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <div data-reveal="up" style="display:flex;gap:18px;padding:0 38px 24px 0;font-size:14px;line-height:1.9;color:#4a4e57"><span style="font-family:'Hanken Grotesk',sans-serif;color:#6b7180;font-size:18px;font-weight:600">A</span><span style="flex:1">{{ q.a }}</span></div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sched: 0, faq: 0 };
+  renderVals() {
+    const S = this.state, blue = '#0b3fd9';
+    const d = '◯月◯日';
+    const all = [
+      { cat: 1, type: '総合型', name: '総合型選抜（Ⅰ期）', apply: `${d}〜${d}`, exam: d, result: d },
+      { cat: 1, type: '総合型', name: '総合型選抜（Ⅱ期）', apply: `${d}〜${d}`, exam: d, result: d },
+      { cat: 2, type: '推薦', name: '学校推薦型選抜（指定校）', apply: `${d}〜${d}`, exam: d, result: d },
+      { cat: 2, type: '推薦', name: '学校推薦型選抜（公募）', apply: `${d}〜${d}`, exam: d, result: d },
+      { cat: 3, type: '一般', name: '一般選抜（前期日程）', apply: `${d}〜${d}`, exam: `${d}〜${d}`, result: d },
+      { cat: 3, type: '一般', name: '大学入学共通テスト利用選抜', apply: `${d}〜${d}`, exam: '個別試験なし', result: d },
+      { cat: 3, type: '一般', name: '一般選抜（後期日程）', apply: `${d}〜${d}`, exam: d, result: d },
+    ];
+    const faqData = [
+      { q: '複数の入試方式に併願できますか？', a: '多くの方式で併願が可能です。ただし、専願が条件となる方式もあるため、募集要項で各方式の条件をご確認ください。' },
+      { q: '出願はインターネットのみですか？', a: '出願はWeb出願が基本です。登録後、入学検定料の支払いと必要書類の郵送をもって出願完了となります。' },
+      { q: '既卒生も出願できますか？', a: '多くの方式で出願できます。学校推薦型選抜など、卒業年度に条件がある方式もあります。' },
+      { q: '地方会場で受験できますか？', a: '一般選抜では学外試験会場を設ける予定です。会場は募集要項で公表します。' },
+      { q: '奨学金はいつ申請できますか？', a: '入学前に申請できる予約型と、入学後に申請する制度があります。申請時期は制度ごとに異なります。' },
+      { q: '入学手続き後に辞退した場合、納入金は返還されますか？', a: '所定の期日までに辞退を申し出た場合、入学金を除く納入金を返還します。詳細は募集要項をご確認ください。' },
+    ];
+    return {
+      anchors: [
+        { label: '入試日程', href: '#schedule' }, { label: '出願の流れ', href: '#apply' },
+        { label: '学費・奨学金', href: '#tuition' }, { label: 'よくある質問', href: '#faq' },
+      ],
+      schedTabs: ['すべて', '総合型選抜', '学校推薦型選抜', '一般選抜'].map((name, i) => ({ name, active: String(i === S.sched), select: () => this.setState({ sched: i }), bg: i === S.sched ? '#e6e9ef' : 'transparent', fg: i === S.sched ? blue : '#232427' })),
+      schedule: all.filter(s => S.sched === 0 || s.cat === S.sched),
+      steps: [
+        { n: '01', title: 'Web出願登録', desc: '出願サイトで必要事項を入力し、方式・学部を選択します。' },
+        { n: '02', title: '検定料の支払い', desc: 'コンビニエンスストア・クレジットカード等で支払います。' },
+        { n: '03', title: '書類の郵送', desc: '調査書など必要書類を期限内に郵送します。' },
+        { n: '04', title: '受験票の印刷', desc: '出願サイトから受験票をダウンロードします。' },
+        { n: '05', title: '受験・合格発表', desc: '合格発表後、期日までに入学手続きを行います。' },
+      ],
+      eligibility: ['高等学校もしくは中等教育学校を卒業した者、または卒業見込みの者', '通常の課程による12年の学校教育を修了した者、または修了見込みの者', 'その他、法令により同等以上の学力があると認められる者'],
+      documents: [{ name: '調査書', note: '全方式' }, { name: '推薦書', note: '学校推薦型選抜' }, { name: '志望理由書', note: '総合型選抜' }, { name: '共通テスト成績請求票', note: '共通テスト利用' }],
+      fees: ['文学部', '経済学部', '法学部', '理工学部', '情報科学部', '看護学部'],
+      scholarships: [
+        { type: '給付型', name: '蒼稜大学給付奨学金', desc: '経済的支援を必要とする学生に、返還不要の奨学金を給付します。' },
+        { type: '入試連動', name: '入試成績優秀者特待', desc: '一般選抜の成績上位者を対象に、授業料を減免します。' },
+        { type: '予約型', name: '入学前予約型奨学金', desc: '出願前に申請し、合格と同時に採用が決まる奨学金です。' },
+        { type: '制度', name: '学費分納制度', desc: '授業料を分割して納入できる制度です。' },
+      ],
+      faqs: faqData.map((f, i) => ({ ...f, open: S.faq === i, icon: S.faq === i ? '−' : '+', toggle: () => this.setState(s => ({ faq: s.faq === i ? -1 : i })) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

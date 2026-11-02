@@ -1,0 +1,57 @@
+/* レスポンシブ調整（インラインスタイルを上書きするため !important を使用） */
+
+/* スマホ時だけ表示する補助ラベル */
+.sm-only{display:none}
+
+/* ヒーローの英字の上端が画面上端・ヘッダーで切れないように */
+main > section:first-child [data-anim=word]{margin-top:.06em !important}
+
+/* サイドバーのメニュー：「入試・オープンキャンパス」が1文字だけ折り返さないように */
+aside nav{padding-left:20px !important;padding-right:14px !important}
+aside nav > a{letter-spacing:0 !important;white-space:nowrap}
+
+/* トップのリード文は行の長さをそろえる */
+#top p{text-wrap:balance}
+
+/* PC：トップの KANADE / FUTURE が写真に食い込まないよう左カラム幅に合わせる */
+/* PC幅でもヒーローが1カラムになる範囲（サイドバーあり・900〜1055px） */
+@media (min-width:900px) and (max-width:1055px){
+  .scroll-ind{display:none !important}
+  .hero-photos{padding:10px 40px 18px !important}
+}
+@media (min-width:900px){
+  #top [data-anim=word]{font-size:min(11vw,calc((100vw - 176px) / 8.6)) !important}
+}
+
+/* 全幅CTAのコピーは行の長さをそろえて折り返す */
+main > a > span:first-child > span{text-wrap:balance}
+
+@media (max-width:899px){
+  /* FUTURE と写真が重ならないように */
+  .hero-photos{margin-top:10px}
+  /* トップのヒーロー写真：Scroll 表示を消して左右の余白をそろえる */
+  .scroll-ind{display:none !important}
+  .hero-photos{padding:0 clamp(18px,4vw,40px) 18px !important;min-height:420px !important}
+}
+
+@media (max-width:600px){
+  /* 見出しの字間を詰めて、1〜2文字だけ改行されるのを防ぐ */
+  main h1,main h2{letter-spacing:.1em !important}
+  main h3{letter-spacing:.06em !important}
+
+  /* 全幅のオレンジCTA：矢印を外してコピーを横幅いっぱいに */
+  main > a > [data-arrow]{display:none !important}
+  main > a > span:first-child > span:first-child{letter-spacing:.08em !important}
+  main > a{padding-top:44px !important;padding-bottom:44px !important}
+
+  /* 入試日程表：方式名を見出しにして、日程は3列に */
+  .sched-head{display:none !important}
+  .sched-row{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:4px 10px !important}
+  .sched-row > div:first-child{grid-column:1 / -1}
+  .sm-only{display:block;font-size:10px;color:#8A7B6E;margin-bottom:2px}
+
+  /* キャンパスライフのヒーロー写真：大1枚＋小2枚を縦積みに */
+  .campus-hero{grid-template-columns:1fr !important}
+  .campus-hero > div:last-child{grid-template-rows:none !important;grid-template-columns:1fr 1fr !important}
+  .campus-hero > div:last-child > div{aspect-ratio:4 / 3}
+}

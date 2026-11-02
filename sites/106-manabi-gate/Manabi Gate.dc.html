@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>MANABI GATE｜大学受験・入試情報</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Michroma&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<script src="./image-slot.js"></script>
+<script src="./images.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f5f4f1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");color:#2a2a2a;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#2a2a2a;text-decoration:none}
+a:hover{color:#2d3a78}
+[data-noscroll]::-webkit-scrollbar{display:none}
+</style>
+</helmet>
+
+<div style="position:relative;overflow-x:hidden">
+
+<a href="#top" style="position:absolute;top:22px;left:20px;z-index:30;display:flex;align-items:center;gap:10px">
+  <span style="display:block;width:18px;height:20px;background:#fff;clip-path:polygon(0 0,100% 50%,0 100%,0 62%,46% 50%,0 38%)"></span>
+</a>
+
+<sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+<nav style="position:absolute;top:28px;right:180px;z-index:30;display:grid;grid-template-columns:repeat(2,auto);column-gap:52px;row-gap:12px">
+  <a href="Programs.dc.html" style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#fff">学部・学科</a>
+  <a href="ExamPrep.dc.html" style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#fff">入試対策</a>
+  <a href="Admissions.dc.html" style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#fff">入試・出願</a>
+  <a href="Tuition.dc.html" style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#fff">学費・奨学金</a>
+  <a href="CampusLife.dc.html" style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#fff">キャンパスライフ</a>
+  <a href="CampusLife.dc.html#entry" style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#fff">オープンキャンパス</a>
+</nav>
+</sc-if>
+
+<button onClick="{{ toggleMenu }}" aria-label="メニュー" style="position:fixed;top:18px;right:18px;z-index:60;width:52px;height:40px;border:0;background:rgba(40,40,40,.35);backdrop-filter:blur(6px);cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;transition:background .3s" style-hover="background:rgba(40,40,40,.6)">
+  <span style="display:block;width:26px;height:1px;background:#fff"></span>
+  <span style="display:block;width:26px;height:1px;background:#fff"></span>
+  <span style="display:block;width:26px;height:1px;background:#fff"></span>
+</button>
+
+<a href="CampusLife.dc.html#entry" style="position:fixed;right:0;top:33vh;z-index:50;background:#2b2b2b;color:#fff;padding:16px 9px 12px;display:flex;flex-direction:column;align-items:center;gap:12px;transition:background .3s" style-hover="background:#2d3a78;color:#fff">
+  <span style="writing-mode:vertical-rl;font-size:11px;letter-spacing:.3em">資料請求</span>
+  <span style="font-size:10px">›</span>
+</a>
+
+<sc-if value="{{ menu }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:55;background:rgba(245,244,241,.97);display:flex;flex-direction:column;justify-content:center;padding:0 12vw;gap:28px">
+  <p style="margin:0;font-family:Marcellus,serif;font-size:14px;letter-spacing:.2em;color:#888">( Menu )</p>
+  <sc-for list="{{ menuLinks }}" as="l" hint-placeholder-count="6">
+    <a href="{{ l.href }}" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;gap:20px;border-bottom:1px solid #ddd;padding-bottom:14px">
+      <span style="font-family:Marcellus,serif;font-size:clamp(24px,3.4vw,40px)">{{ l.en }}</span>
+      <span style="font-size:12px;letter-spacing:.16em;color:#666">{{ l.ja }}</span>
+    </a>
+  </sc-for>
+</div>
+</sc-if>
+
+<!-- SECTION 1 : HERO -->
+<section id="top" data-screen-label="01 Hero" style="position:relative">
+  <div style="position:relative;height:{{ heroH }};background:radial-gradient(ellipse 60% 70% at 72% 40%,#c9c9cb 0%,#9a9a9e 55%,#f5f4f1 100%)">
+    <div style="position:absolute;left:0;top:0;bottom:0;width:{{ heroLeftW }};background:#2e2e30">
+      <image-slot src="_filled/01-student-portrait.jpg" id="hero-main" shape="rect" placeholder="メインビジュアル：図書館で学ぶ学生"></image-slot>
+    </div>
+    <div style="position:absolute;left:12px;top:150px;z-index:5;display:flex;flex-direction:column;align-items:center;gap:10px;color:#fff;pointer-events:none">
+      <span style="writing-mode:vertical-rl;font-family:Marcellus,serif;font-size:13px;letter-spacing:.14em">campus</span>
+      <span style="width:16px;height:16px;border:1px solid #fff;border-radius:50%;font-size:7px;display:flex;align-items:center;justify-content:center">01</span>
+      <span style="writing-mode:vertical-rl;font-size:10px;letter-spacing:.2em">中央図書館｜学習スペース</span>
+    </div>
+    <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;left:67.2%;top:max(13.8%, 130px);width:15.6%;aspect-ratio:3/4;background:#5b6b5e">
+        <image-slot src="_filled/02-12-lounge-smartphones.jpg" id="hero-sub" shape="rect" placeholder="キャンパスの風景"></image-slot>
+      </div>
+      <p style="position:absolute;left:83.6%;top:max(13.6%, 130px);margin:0;writing-mode:vertical-rl;font-family:'Shippori Mincho',serif;font-size:clamp(14px,1.3vw,24px);letter-spacing:.32em;color:#fff">未来の自分に</p>
+      <div style="position:absolute;left:calc(50% - 70px);top:46%;z-index:6"><dc-import name="Circle Badge" href="#programs" size="140px" text="SCROLL • LEARN &amp; PICTURE FUTURE • " hint-size="140px,140px"></dc-import></div>
+      <p style="position:absolute;left:64.8%;top:max(23.6%, 200px);margin:0;writing-mode:vertical-rl;font-family:'Shippori Mincho',serif;font-size:clamp(14px,1.3vw,24px);letter-spacing:.32em;color:#fff">会いにいく春へ</p>
+    </sc-if>
+    <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
+      <p style="position:absolute;right:28px;top:110px;margin:0;writing-mode:vertical-rl;font-family:'Shippori Mincho',serif;font-size:20px;letter-spacing:.32em;line-height:2;color:#fff;text-shadow:0 0 16px rgba(0,0,0,.4);pointer-events:none">未来の自分に<br>会いにいく春へ</p>
+    </sc-if>
+    <h1 style="position:absolute;left:2vw;right:2vw;bottom:1.6vw;margin:0;font-family:Michroma,sans-serif;font-weight:400;font-size:{{ wordSize }};line-height:1;letter-spacing:.08em;color:#fff;white-space:nowrap;display:flex;justify-content:space-between;pointer-events:none"><span>MANABI</span><span>GATE</span></h1>
+  </div>
+
+  <div style="position:relative;display:flex;flex-wrap:wrap;padding-top:clamp(80px,12vw,240px)">
+    <div style="flex:1 1 420px;padding-left:{{ pad }};padding-right:20px">
+      <h2 style="margin:0 0 44px;font-family:Marcellus,serif;font-weight:400;font-size:clamp(36px,4.8vw,92px);line-height:1.1;letter-spacing:.01em">Learn <span style="font-size:.6em">&amp;</span> Picture FUTURE</h2>
+      <p style="margin:0;font-size:clamp(13px,.95vw,17px);line-height:2.6;letter-spacing:.16em;color:#3a3a3a;text-wrap:pretty">どの大学で、何を学ぶか。<br>その選択は、これからの毎日を形づくります。<br>MANABI GATEは、大学受験に向き合う高校生と<br>そのご家族のための入試情報サイトです。<br>学部・学科の探し方から、入試方式の違い、<br>出願の流れ、学費や奨学金のことまで。<br>必要な情報を、わかりやすく整理しました。<br>焦らず、一歩ずつ。<br>あなたの「行きたい」を、一緒に見つけましょう。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:40px;margin-top:clamp(48px,4.4vw,84px)">
+        <a href="#programs" style="display:flex;justify-content:space-between;align-items:center;width:200px;padding-bottom:8px;border-bottom:1px solid #cfcfcf;font-size:12px;letter-spacing:.12em;transition:border-color .3s" style-hover="border-color:#2a2a2a">大学・学部をさがす<span style="border-left:1px solid #cfcfcf;padding-left:10px">›</span></a>
+        <a href="#admission" style="display:flex;justify-content:space-between;align-items:center;width:200px;padding-bottom:8px;border-bottom:1px solid #cfcfcf;font-size:12px;letter-spacing:.12em;transition:border-color .3s" style-hover="border-color:#2a2a2a">入試情報を見る<span style="border-left:1px solid #cfcfcf;padding-left:10px">›</span></a>
+      </div>
+    </div>
+    <div style="flex:{{ introFlex }};min-width:300px;margin-top:clamp(40px,9.6vw,190px);aspect-ratio:426/267;background:#3a3633">
+      <image-slot src="_filled/03-student-notebook.jpg" id="intro-1" shape="rect" placeholder="講義室・ゼミの様子"></image-slot>
+    </div>
+  </div>
+  <div style="margin:clamp(40px,4vw,80px) 0 0 {{ intro2L }};width:{{ intro2W }};aspect-ratio:240/146;background:#2e2e30">
+    <image-slot src="_filled/04-22.jpg" id="intro-2" shape="rect" placeholder="図書館の書架"></image-slot>
+  </div>
+  <div style="position:relative;padding:clamp(90px,10vw,200px) 4vw clamp(40px,5vw,100px);display:flex;flex-direction:column;gap:clamp(4px,1vw,18px)">
+    <p style="margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:.25em;font-family:Marcellus,serif;font-size:clamp(34px,9vw,176px);line-height:1;letter-spacing:-.01em">Learn<span style="display:inline-block;width:2.1em;height:.78em;border-radius:999px;overflow:hidden;background:#8a7a62"><image-slot src="_filled/05-laptop-pointing.jpg" id="type-1" shape="pill" placeholder="ノート"></image-slot></span><span style="font-size:.45em;color:#2d3a78">&amp;</span></p>
+    <p style="margin:0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.25em;font-family:Marcellus,serif;font-size:clamp(34px,9vw,176px);line-height:1;letter-spacing:-.01em"><span style="font-style:italic;font-family:'Shippori Mincho',serif;font-size:.32em;letter-spacing:.3em;writing-mode:vertical-rl">学びを</span>Picture<span style="display:inline-block;width:1.6em;height:.78em;border-radius:999px;overflow:hidden;background:#5f7d5a"><image-slot src="_filled/06-05.jpg" id="type-2" shape="pill" placeholder="キャンパス"></image-slot></span></p>
+    <p style="margin:0;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:.25em;font-family:Marcellus,serif;font-size:clamp(34px,9vw,176px);line-height:1;letter-spacing:-.01em"><span style="display:inline-block;width:2.6em;height:.78em;border-radius:999px;overflow:hidden;background:#7a8698"><image-slot src="_filled/07-student-books.jpg" id="type-3" shape="pill" placeholder="笑顔の学生"></image-slot></span>your Future.</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:clamp(30px,4vw,70px);padding-top:22px;border-top:1px solid #d6d6d6">
+      <p style="margin:0;font-family:Marcellus,serif;font-size:11px;letter-spacing:.24em;color:#666">( Statement )　MANABI GATE — 2027</p>
+      <p style="margin:0;max-width:420px;font-size:12px;line-height:2.2;letter-spacing:.1em;color:#444">学ぶことは、まだ見ぬ自分を思い描くこと。<br>ここから始まる選択が、あなたの未来の景色になります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 : PROGRAMS -->
+<section id="programs" data-screen-label="02 Programs" style="position:relative;padding-top:20px">
+  <div style="position:relative;width:100%;height:clamp(280px,46vw,900px);background:#3b3a37">
+    <image-slot src="_filled/08-building-exterior.jpg" id="prog-wide" shape="rect" placeholder="キャンパス外観・並木道"></image-slot>
+  </div>
+  <div style="position:relative;display:flex;justify-content:flex-end;margin-top:-6vw;padding-right:2vw">
+    <div style="width:clamp(240px,40vw,770px);aspect-ratio:384/236;background:#d8d1c6">
+      <image-slot src="_filled/09-14-lecture-student.jpg" id="prog-detail" shape="rect" placeholder="実験・実習のディテール"></image-slot>
+    </div>
+  </div>
+
+  <div style="position:relative;padding:clamp(60px,8vw,160px) 20px 0 {{ pad }}">
+    <p aria-hidden="true" style="position:absolute;right:-2vw;top:clamp(20px,3vw,60px);margin:0;font-family:Marcellus,serif;font-size:17vw;line-height:1;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(42,42,42,.1);pointer-events:none;user-select:none">Programs</p>
+    <p style="margin:0 0 10px;font-family:Marcellus,serif;font-size:11px;letter-spacing:.1em;color:#666">( 01 )</p>
+    <h2 style="margin:0;font-family:Marcellus,serif;font-weight:400;font-size:clamp(34px,4.4vw,84px);line-height:1.1">Academic Fields</h2>
+    <div style="margin:clamp(40px,4vw,80px) 0 0 auto;max-width:600px;width:100%;padding-right:{{ padR }}">
+      <h3 style="margin:0 0 24px;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(18px,1.6vw,30px);line-height:1.6;letter-spacing:.18em">学びたいことから、<br>進む大学を選ぶ。</h3>
+      <p style="margin:0;font-size:13px;line-height:2.2;letter-spacing:.08em;color:#444;text-wrap:pretty">偏差値や知名度だけで大学を選ぶと、入学後に「思っていた学びと違った」と感じることがあります。まずは、自分が興味を持てる分野を知ることから。各学部で何を学び、どんな力が身につき、どのような進路につながるのかを分野ごとにまとめました。</p>
+      <a href="Programs.dc.html" style="display:flex;justify-content:space-between;align-items:center;width:200px;margin-top:44px;padding-bottom:8px;border-bottom:1px solid #cfcfcf;font-size:12px;letter-spacing:.12em;transition:border-color .3s" style-hover="border-color:#2a2a2a">学部一覧を見る<span style="border-left:1px solid #cfcfcf;padding-left:10px">›</span></a>
+    </div>
+  </div>
+
+  <div id="programs-list" style="margin-top:clamp(80px,9vw,180px);padding:clamp(70px,8vw,160px) 0 clamp(60px,7vw,140px);background:rgba(0,0,0,.035)">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;padding:0 {{ padR }} 0 {{ pad }}">
+      <div>
+        <p style="margin:0 0 10px;font-family:Marcellus,serif;font-size:11px;letter-spacing:.1em;color:#666">( Faculties )</p>
+        <h3 style="margin:0;font-family:Marcellus,serif;font-weight:400;font-size:clamp(32px,4vw,76px);line-height:1.1">Programs</h3>
+        <p style="margin:18px 0 0;font-size:12px;letter-spacing:.2em;color:#444">学部・学科紹介</p>
+      </div>
+      <a href="Programs.dc.html" style="display:flex;justify-content:space-between;align-items:center;width:200px;padding-bottom:8px;border-bottom:1px solid #cfcfcf;font-size:12px;letter-spacing:.12em;transition:border-color .3s" style-hover="border-color:#2a2a2a">学部一覧ページへ<span>›</span></a>
+    </div>
+    <div ref="{{ scroller }}" onScroll="{{ onScroll }}" data-noscroll="" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 {{ pad }};scrollbar-width:none;margin-top:52px;padding:0 {{ pad }}">
+      <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="5">
+        <a href="Programs.dc.html" style="flex:0 0 clamp(220px,16vw,306px);scroll-snap-align:start;display:block;color:#2a2a2a">
+          <div style="position:relative;aspect-ratio:306/330;background:#3a3836;overflow:hidden">
+            <image-slot id="{{ f.id }}" shape="rect" placeholder="{{ f.ph }}"></image-slot>
+            <span style="position:absolute;left:14px;bottom:8px;font-family:Marcellus,serif;font-size:54px;line-height:1;color:#fff;opacity:.9;pointer-events:none">{{ f.no }}</span>
+            <span style="position:absolute;right:12px;top:12px;padding:4px 10px;border-radius:999px;background:rgba(245,244,241,.9);font-size:9.5px;letter-spacing:.1em;color:#2a2a2a;pointer-events:none">{{ f.cat }}</span>
+          </div>
+          <p style="margin:14px 0 4px;font-size:10px;letter-spacing:.06em;color:#777">{{ f.cat }}</p>
+          <p style="margin:0;font-size:14px;font-weight:500;letter-spacing:.08em">{{ f.name }}</p>
+          <p style="margin:8px 0 0;font-size:11.5px;line-height:1.9;color:#555;text-wrap:pretty">{{ f.desc }}</p>
+          <p style="margin:10px 0 0;font-family:Marcellus,serif;font-size:10px;text-align:right;color:#777">( field No.{{ f.no }} )</p>
+        </a>
+      </sc-for>
+      <div style="flex:0 0 1px"></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:24px;margin-top:44px;padding:0 {{ padR }} 0 {{ pad }}">
+      <div style="flex:1;height:2px;background:#d6d6d6;position:relative">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:{{ progW }};background:#777;transition:width .2s"></div>
+      </div>
+      <button onClick="{{ prev }}" aria-label="前へ" style="border:0;background:none;cursor:pointer;font-size:18px;color:#999;padding:6px 10px;transition:color .3s" style-hover="color:#2a2a2a">←</button>
+      <span style="width:1px;height:26px;background:#ccc"></span>
+      <button onClick="{{ next }}" aria-label="次へ" style="border:0;background:none;cursor:pointer;font-size:18px;color:#444;padding:6px 10px;transition:color .3s" style-hover="color:#2d3a78">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 : EXAM PREP -->
+<section id="prep" data-screen-label="03 Exam Prep">
+  <div style="position:relative;width:100%;height:clamp(240px,44.6vw,860px);background:#c9b9a3">
+    <image-slot src="_filled/10-group-laptop.jpg" id="prep-wide" shape="rect" placeholder="参考書・ノートが並ぶ学習机"></image-slot>
+  </div>
+  <div style="position:relative;overflow:hidden;background:rgba(0,0,0,.035);padding:clamp(60px,8vw,160px) {{ padR }} clamp(60px,8vw,160px) {{ pad }}">
+    <p aria-hidden="true" style="position:absolute;left:-3vw;top:clamp(10px,2vw,40px);margin:0;font-family:Marcellus,serif;font-size:17vw;line-height:1;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(42,42,42,.1);pointer-events:none;user-select:none">Preparation</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px">
+      <div>
+        <p style="margin:0 0 10px;font-family:Marcellus,serif;font-size:11px;letter-spacing:.1em;color:#666">( 02 )</p>
+        <h2 style="margin:0;font-family:Marcellus,serif;font-weight:400;font-size:clamp(34px,4.4vw,84px);line-height:1.12">Exam<br>Preparation</h2>
+      </div>
+      <div style="max-width:560px;padding-top:clamp(0px,3.4vw,66px)">
+        <h3 style="margin:0 0 22px;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(17px,1.5vw,28px);line-height:1.6;letter-spacing:.18em">迷わず進むための、<br>受験準備の地図。</h3>
+        <p style="margin:0;font-size:12.5px;line-height:2.2;letter-spacing:.06em;color:#444;text-wrap:pretty">入試方式の違いを知り、逆算して計画を立て、正しい教材で積み重ねる。受験準備は特別なことではなく、毎日の小さな選択の連続です。ここでは代表的な入試方式と、時期ごとの学習の目安をまとめています。</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:clamp(48px,4vw,80px)">
+      <div style="background:#fff;padding:30px 20px 26px;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.06)">
+        <p style="margin:0;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#2d3a78">一般選抜</p>
+        <p style="margin:14px 0 10px;text-align:center;font-family:Michroma,sans-serif;font-size:28px;color:#2d3a78">01<span style="font-family:'Zen Kaku Gothic New';font-size:12px;font-weight:700;margin-left:4px">学力試験</span></p>
+        <p style="margin:0;background:#ececec;text-align:center;font-size:10px;padding:5px;color:#555">共通テスト・個別試験</p>
+        <p style="margin:16px 0 0;font-size:11px;line-height:1.9;color:#444">学力試験の結果を中心に合否を判定する、最も受験者数の多い方式です。大学入学共通テストと各大学の個別試験を組み合わせる形が一般的です。</p>
+      </div>
+      <div style="background:#fff;padding:30px 20px 26px;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.06)">
+        <p style="margin:0;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#2d3a78">学校推薦型選抜</p>
+        <p style="margin:14px 0 10px;text-align:center;font-family:Michroma,sans-serif;font-size:28px;color:#2d3a78">02<span style="font-family:'Zen Kaku Gothic New';font-size:12px;font-weight:700;margin-left:4px">学校長推薦</span></p>
+        <p style="margin:0;background:#ececec;text-align:center;font-size:10px;padding:5px;color:#555">調査書・面接・小論文など</p>
+        <p style="margin:16px 0 0;font-size:11px;line-height:1.9;color:#444">在籍する高校の校長の推薦を受けて出願する方式です。評定平均などの出願条件が設けられることが多く、日頃の学習の積み重ねが評価されます。</p>
+      </div>
+      <div style="background:#fff;padding:30px 20px 26px;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.06)">
+        <p style="margin:0;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#2d3a78">総合型選抜</p>
+        <p style="margin:14px 0 10px;text-align:center;font-family:Michroma,sans-serif;font-size:28px;color:#2d3a78">03<span style="font-family:'Zen Kaku Gothic New';font-size:12px;font-weight:700;margin-left:4px">意欲・適性</span></p>
+        <p style="margin:0;background:#ececec;text-align:center;font-size:10px;padding:5px;color:#555">志望理由書・面接・活動実績など</p>
+        <p style="margin:16px 0 0;font-size:11px;line-height:1.9;color:#444">大学が求める学生像（アドミッション・ポリシー）と志願者の意欲や適性を照らし合わせて評価する方式です。早めの準備が鍵になります。</p>
+      </div>
+      <div style="background:#fff;padding:30px 20px 26px;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.06)">
+        <p style="margin:0;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#2d3a78">基礎固めの時期</p>
+        <p style="margin:14px 0 10px;text-align:center;font-family:Michroma,sans-serif;font-size:28px;color:#2d3a78">12<span style="font-family:'Zen Kaku Gothic New';font-size:12px;font-weight:700;margin-left:4px">ヶ月前〜</span></p>
+        <p style="margin:0;background:#ececec;text-align:center;font-size:10px;padding:5px;color:#555">学習計画の一例（目安）</p>
+        <p style="margin:16px 0 0;font-size:11px;line-height:1.9;color:#444">教科書レベルの理解を確実にする時期。苦手分野を洗い出し、毎日の学習時間を固定して習慣化することから始めましょう。</p>
+      </div>
+      <div style="background:#fff;padding:30px 20px 26px;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.06)">
+        <p style="margin:0;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#2d3a78">実戦演習の時期</p>
+        <p style="margin:14px 0 10px;text-align:center;font-family:Michroma,sans-serif;font-size:28px;color:#2d3a78">6<span style="font-family:'Zen Kaku Gothic New';font-size:12px;font-weight:700;margin-left:4px">ヶ月前〜</span></p>
+        <p style="margin:0;background:#ececec;text-align:center;font-size:10px;padding:5px;color:#555">学習計画の一例（目安）</p>
+        <p style="margin:16px 0 0;font-size:11px;line-height:1.9;color:#444">模試の結果を振り返り、志望校の出題傾向に合わせた問題演習へ。時間配分を意識して解く練習を重ねます。</p>
+      </div>
+      <div style="background:#fff;padding:30px 20px 26px;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.06)">
+        <p style="margin:0;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#2d3a78">総仕上げの時期</p>
+        <p style="margin:14px 0 10px;text-align:center;font-family:Michroma,sans-serif;font-size:28px;color:#2d3a78">3<span style="font-family:'Zen Kaku Gothic New';font-size:12px;font-weight:700;margin-left:4px">ヶ月前〜</span></p>
+        <p style="margin:0;background:#ececec;text-align:center;font-size:10px;padding:5px;color:#555">学習計画の一例（目安）</p>
+        <p style="margin:16px 0 0;font-size:11px;line-height:1.9;color:#444">過去問を本番と同じ時間で解き、間違えた問題を繰り返し確認。体調管理と生活リズムも、この時期の大切な準備です。</p>
+      </div>
+      <a href="#admission" style="background:#fff;padding:30px 20px 26px;display:block;color:#2a2a2a;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.06)">
+        <p style="margin:0;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#2d3a78">時間管理のコツ</p>
+        <p style="margin:14px 0 10px;text-align:center;font-family:Marcellus,serif;font-size:26px;color:#2d3a78">Planning</p>
+        <p style="margin:0;background:#ececec;text-align:center;font-size:10px;padding:5px;color:#555">週単位で計画を見直す</p>
+        <p style="margin:16px 0 0;font-size:11px;line-height:1.9;color:#444">1日の計画は詰め込みすぎず、週末に予備の時間を残しておくと、遅れが出ても立て直しやすくなります。</p>
+      </a>
+      <a href="#admission" style="background:#fff;padding:30px 20px 26px;display:block;color:#2a2a2a;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.06)">
+        <p style="margin:0;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#2d3a78">過去問の活用</p>
+        <p style="margin:14px 0 10px;text-align:center;font-family:Marcellus,serif;font-size:26px;color:#2d3a78">Review</p>
+        <p style="margin:0;background:#ececec;text-align:center;font-size:10px;padding:5px;color:#555">解きっぱなしにしない</p>
+        <p style="margin:16px 0 0;font-size:11px;line-height:1.9;color:#444">点数よりも「なぜ間違えたか」を記録することが大切。ミスの傾向を把握すると、残りの時間の使い方が見えてきます。</p>
+      </a>
+      <a href="CampusLife.dc.html#entry" style="background:#fff;padding:30px 20px 26px;display:block;color:#2a2a2a;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.06)">
+        <p style="margin:0;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;color:#2d3a78">受験準備ガイド</p>
+        <p style="margin:14px 0 10px;text-align:center;font-family:Marcellus,serif;font-size:26px;color:#2d3a78">Guide</p>
+        <p style="margin:0;background:#ececec;text-align:center;font-size:10px;padding:5px;color:#555">PDF資料（準備中）</p>
+        <p style="margin:16px 0 0;font-size:11px;line-height:1.9;color:#444">入試方式の比較表や学習計画シートをまとめたガイドを配布予定です。資料請求フォームからお申し込みいただけます。</p>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:44px">
+      <a href="ExamPrep.dc.html" style="display:flex;justify-content:space-between;align-items:center;width:300px;padding-bottom:8px;border-bottom:1px solid #cfcfcf;font-size:12px;letter-spacing:.12em;transition:border-color .3s" style-hover="border-color:#2a2a2a">入試方式をもっと詳しく知る<span>›</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 : ADMISSIONS & SUPPORT -->
+<section id="admission" data-screen-label="04 Admissions" style="position:relative;overflow:hidden;padding:clamp(70px,8vw,160px) {{ padR }} clamp(80px,9vw,180px) {{ pad }}">
+  <p aria-hidden="true" style="position:absolute;right:-3vw;top:clamp(10px,2vw,40px);margin:0;font-family:Marcellus,serif;font-size:17vw;line-height:1;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(42,42,42,.1);pointer-events:none;user-select:none">Admissions</p>
+  <div style="position:relative;display:flex;flex-wrap:wrap;gap:clamp(40px,4vw,80px)">
+    <div style="flex:1 1 220px;display:flex;flex-direction:column">
+      <p style="margin:0 0 10px;font-family:Marcellus,serif;font-size:11px;letter-spacing:.1em;color:#666">( 03 )</p>
+      <h2 style="margin:0;font-family:Marcellus,serif;font-weight:400;font-size:clamp(34px,4.4vw,84px);line-height:1.1">Admissions</h2>
+      <p style="margin:18px 0 0;font-size:12px;letter-spacing:.2em;color:#444">出願・入学までの流れ</p>
+      <p style="margin:auto 0 0;padding-top:40px;font-size:11px;line-height:1.9;color:#666">※掲載している日程はサンプルです。<br>実際の日程は必ず各大学の<br>募集要項でご確認ください。</p>
+      <a href="Admissions.dc.html" style="display:flex;justify-content:space-between;align-items:center;width:200px;margin-top:24px;padding-bottom:8px;border-bottom:1px solid #cfcfcf;font-size:12px;letter-spacing:.12em;transition:border-color .3s" style-hover="border-color:#2a2a2a">入試・出願ガイドへ<span>›</span></a>
+    </div>
+    <div style="flex:2 1 380px;display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="4">
+        <a href="Admissions.dc.html" style="display:block;position:relative;background:#fff;padding:22px 64px 22px 22px;box-shadow:0 2px 8px rgba(0,0,0,.05);color:#2a2a2a;transition:box-shadow .3s,transform .3s" style-hover="box-shadow:0 10px 24px rgba(0,0,0,.08);transform:translateX(4px)">
+          <p style="margin:0 0 6px;font-size:10px;letter-spacing:.06em;color:#777">{{ s.step }}　{{ s.when }}</p>
+          <p style="margin:0;font-size:13.5px;font-weight:500;letter-spacing:.08em">{{ s.title }}</p>
+          <p style="margin:6px 0 0;font-size:11px;line-height:1.8;color:#555">{{ s.note }}</p>
+          <span style="position:absolute;right:16px;bottom:14px;font-size:10px;color:#666;border-left:1px solid #ccc;padding-left:8px">›</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:clamp(60px,6vw,120px)">
+    <div style="background:#fff;padding:30px 22px">
+      <p style="margin:0 0 6px;font-family:Marcellus,serif;font-size:11px;color:#888">( Tuition )</p>
+      <p style="margin:0 0 14px;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.14em;color:#2d3a78">学費について</p>
+      <p style="margin:0;font-size:11.5px;line-height:1.9;color:#444">入学金・授業料・施設設備費などは大学や学部によって大きく異なります。金額は各大学の公式サイトに掲載されている最新の情報をご確認ください。</p>
+      <p style="margin:16px 0 0;background:#ececec;font-size:10px;padding:6px 10px;color:#555">金額：各大学の公式情報を掲載予定</p>
+    </div>
+    <div style="background:#fff;padding:30px 22px">
+      <p style="margin:0 0 6px;font-family:Marcellus,serif;font-size:11px;color:#888">( Scholarship )</p>
+      <p style="margin:0 0 14px;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.14em;color:#2d3a78">奨学金・修学支援</p>
+      <p style="margin:0;font-size:11.5px;line-height:1.9;color:#444">返済の必要がない給付型と、卒業後に返還する貸与型があります。日本学生支援機構（JASSO）のほか、大学独自や自治体・民間団体の制度もあります。</p>
+      <p style="margin:16px 0 0;background:#ececec;font-size:10px;padding:6px 10px;color:#555">申込時期は高校3年の春が目安（予約採用の場合）</p>
+    </div>
+    <div style="background:#fff;padding:30px 22px">
+      <p style="margin:0 0 6px;font-family:Marcellus,serif;font-size:11px;color:#888">( For Parents )</p>
+      <p style="margin:0 0 14px;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.14em;color:#2d3a78">保護者の方へ</p>
+      <p style="margin:0;font-size:11.5px;line-height:1.9;color:#444">受験期の費用計画、出願スケジュールの確認、体調面のサポートなど、ご家族ができることをまとめています。お子さまと一緒に予定を共有するところから始めましょう。</p>
+      <p style="margin:16px 0 0;background:#ececec;font-size:10px;padding:6px 10px;color:#555">保護者向け説明資料（準備中）</p>
+    </div>
+  </div>
+
+  <div id="faq" style="margin-top:clamp(60px,6vw,120px);display:flex;flex-wrap:wrap;gap:clamp(30px,4vw,80px)">
+    <div style="flex:1 1 220px">
+      <p style="margin:0 0 10px;font-family:Marcellus,serif;font-size:11px;letter-spacing:.1em;color:#666">( FAQ )</p>
+      <h3 style="margin:0;font-family:Marcellus,serif;font-weight:400;font-size:clamp(28px,2.8vw,52px)">Questions</h3>
+      <p style="margin:14px 0 0;font-size:12px;letter-spacing:.2em;color:#444">よくある質問</p>
+    </div>
+    <div style="flex:2 1 380px;border-top:1px solid #d8d8d8">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+        <div style="border-bottom:1px solid #d8d8d8">
+          <button onClick="{{ q.toggle }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 4px;border:0;background:none;cursor:pointer;text-align:left;font-family:'Zen Kaku Gothic New',sans-serif;font-size:13.5px;font-weight:500;letter-spacing:.06em;color:#2a2a2a">
+            <span style="display:flex;gap:14px"><span style="font-family:Marcellus,serif;color:#2d3a78">Q.</span>{{ q.q }}</span>
+            <span style="font-size:16px;color:#777">{{ q.icon }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;padding:0 4px 22px 34px;font-size:12px;line-height:2;color:#555;text-wrap:pretty">{{ q.a }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 : CAMPUS LIFE / CTA -->
+<section id="campus" data-screen-label="05 Campus Life">
+  <div style="background:#f5f4f1;overflow:hidden;padding:18px 0;white-space:nowrap">
+    <div ref="{{ m1 }}" style="display:inline-flex;align-items:center;gap:36px;will-change:transform">
+      <sc-for list="{{ ribbon }}" as="r" hint-placeholder-count="8">
+        <span style="display:inline-flex;align-items:center;gap:36px;font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.4vw,46px);color:#2a2a2a">{{ r.t }}<span style="display:inline-block;width:2.2em;height:1em;border-radius:999px;background:{{ r.c }}"></span><span style="font-family:'Zen Kaku Gothic New';font-size:.6em;color:#888">→</span></span>
+      </sc-for>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(50%,160px),1fr))">
+    <sc-for list="{{ strip }}" as="p" hint-placeholder-count="6">
+      <div style="aspect-ratio:320/330;background:{{ p.bg }}"><image-slot id="{{ p.id }}" shape="rect" placeholder="{{ p.ph }}"></image-slot></div>
+    </sc-for>
+  </div>
+  <div style="background:#f5f4f1;overflow:hidden;padding:18px 0;white-space:nowrap">
+    <div ref="{{ m2 }}" style="display:inline-flex;align-items:center;gap:36px;will-change:transform">
+      <sc-for list="{{ ribbon }}" as="r" hint-placeholder-count="8">
+        <span style="display:inline-flex;align-items:center;gap:36px;font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.4vw,46px);color:#2a2a2a">{{ r.t }}<span style="display:inline-block;width:2.2em;height:1em;border-radius:999px;background:{{ r.c }}"></span><span style="font-family:'Zen Kaku Gothic New';font-size:.6em;color:#888">→</span></span>
+      </sc-for>
+    </div>
+  </div>
+
+  <div id="opencampus" style="position:relative;min-height:clamp(560px,35vw,700px);background:#3a4250;color:#fff">
+    <div style="position:absolute;inset:0"><image-slot src="_filled/11-hero-student.jpg" id="oc-bg" shape="rect" placeholder="オープンキャンパス：在学生と話す高校生"></image-slot></div>
+    <div style="position:absolute;inset:0;background:rgba(30,36,48,.45);pointer-events:none"></div>
+    <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;right:clamp(20px,5vw,96px);top:clamp(30px,5vw,96px);z-index:3"><dc-import name="Circle Badge" href="CampusLife.dc.html#entry" size="150px" icon="→" text="ENTRY • OPEN CAMPUS 2027 • ENTRY • " hint-size="150px,150px"></dc-import></div></sc-if>
+    <div style="position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:inherit;pointer-events:none">
+      <div style="padding:clamp(48px,6vw,120px) 20px 40px clamp(20px,4.2vw,80px)">
+        <h2 style="margin:0;font-family:Marcellus,serif;font-weight:400;font-size:clamp(36px,4.6vw,88px);line-height:1.1">Open Campus</h2>
+        <p style="margin:14px 0 0;font-family:'Shippori Mincho',serif;font-size:clamp(17px,1.7vw,32px);letter-spacing:.2em">大学を、自分の目で確かめる。</p>
+        <p style="margin:36px 0 0;font-size:12px;font-weight:500;letter-spacing:.14em;line-height:2">模擬授業・研究室見学・在学生との個別相談。<br>パンフレットでは分からない「空気」に触れてください。</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;flex-direction:{{ ocDir }};align-items:{{ ocAlign }};justify-content:space-between;gap:28px;padding:32px clamp(20px,4.2vw,80px);background:rgba(30,36,48,.35);backdrop-filter:blur(2px)">
+        <div style="display:flex;flex-wrap:wrap;flex-direction:{{ ocDir }};gap:12px;pointer-events:auto">
+          <a href="CampusLife.dc.html#entry" style="display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 22px;background:#fff;color:#2a2a2a;font-size:12.5px;font-weight:500;letter-spacing:.12em;transition:background .3s,color .3s" style-hover="background:#2d3a78;color:#fff">オープンキャンパスに申し込む<span>›</span></a>
+          <a href="CampusLife.dc.html#entry" style="display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 22px;border:1px solid rgba(255,255,255,.8);color:#fff;font-size:12.5px;letter-spacing:.12em;transition:background .3s" style-hover="background:rgba(255,255,255,.15);color:#fff">資料を請求する<span>›</span></a>
+          <a href="CampusLife.dc.html#entry" style="display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 22px;border:1px solid rgba(255,255,255,.8);color:#fff;font-size:12.5px;letter-spacing:.12em;transition:background .3s" style-hover="background:rgba(255,255,255,.15);color:#fff">入試について問い合わせる<span>›</span></a>
+        </div>
+        <div style="display:flex;align-items:center;gap:28px">
+          <p style="margin:0;font-size:11.5px;font-weight:500;line-height:2;letter-spacing:.1em">受験は、未来を選ぶための準備です。<br>不安なことは、ひとりで抱えずに相談してください。<br>あなたの一歩を、私たちは応援しています。</p>
+          <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}"><a href="CampusLife.dc.html#entry" aria-label="お問い合わせへ" style="flex:0 0 auto;width:44px;height:44px;border:1px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;pointer-events:auto;transition:background .3s" style-hover="background:#fff;color:#2a2a2a">→</a></sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="contact"><dc-import name="Site Footer" show-cta="{{ false }}" hint-size="100%,600px"></dc-import></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: (document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth), menu: false, faq: 0, prog: 0.25 };
+  scroller = React.createRef(); m1 = React.createRef(); m2 = React.createRef();
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: (document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth) });
+    window.addEventListener('resize', this.onResize); this.onResize(); setTimeout(this.onResize, 300); this.ro = new ResizeObserver(this.onResize); this.ro.observe(document.documentElement);
+    let x = 0;
+    const tick = () => {
+      x += 0.5 + Math.min(Math.abs(window.__mgVel || 0) * 0.15, 10);
+      [[this.m1, 1], [this.m2, -1]].forEach(([r, d]) => {
+        const el = r.current; if (!el) return;
+        const half = el.scrollWidth / 2 || 1;
+        const o = x % half;
+        el.style.transform = `translateX(${d > 0 ? -o : o - half}px)`;
+      });
+      this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+    setTimeout(() => this.onScroll(), 300);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); cancelAnimationFrame(this.raf); }
+  onScroll = () => {
+    const el = this.scroller.current; if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    const vis = el.clientWidth / el.scrollWidth;
+    this.setState({ prog: max > 0 ? vis + (1 - vis) * (el.scrollLeft / max) : 1 });
+  };
+  step = d => { const el = this.scroller.current; if (el) el.scrollBy({ left: d * (el.clientWidth * 0.6), behavior: 'smooth' }); };
+  renderVals() {
+    const { w, menu, faq, prog } = this.state;
+    const mob = w < 820;
+    const faculties = [
+      ['人文科学系', '文学部', '言語・文学・歴史・哲学を通して、人と社会を深く読み解く力を養います。', '文学部：ゼミ・書庫'],
+      ['社会科学系', '法学部', '法の仕組みと社会の課題を結びつけ、論理的に考え伝える力を身につけます。', '法学部：模擬法廷'],
+      ['社会科学系', '経済学部・経営学部', '市場や企業の動きをデータから捉え、社会の仕組みを多角的に学びます。', '経済学部：講義風景'],
+      ['理工系', '理工学部', '数学・物理・化学を基盤に、ものづくりや研究開発の基礎を実験で学びます。', '理工学部：実験室'],
+      ['情報系', '情報学部', 'プログラミングやデータサイエンスを学び、技術で課題を解決する力を養います。', '情報学部：PC演習'],
+      ['医療・保健系', '看護学部・医療系学部', '専門知識と実習を通して、人の健康と暮らしを支える専門職を目指します。', '看護学部：実習室'],
+      ['教育系', '教育学部', '子どもの成長や学びの仕組みを理解し、教える力と支える力を育てます。', '教育学部：模擬授業'],
+      ['芸術系', '芸術学部', '表現技法と理論の両面から、自分だけの表現を探求します。', '芸術学部：アトリエ']
+    ].map((f, i) => ({ id: 'fac-' + i, cat: f[0], name: f[1], desc: f[2], ph: f[3], no: String(i + 1).padStart(2, '0') }));
+    const schedule = [
+      { step: 'STEP 01', when: '高校3年 9月頃〜（例）', title: '総合型選抜 出願・選考', note: '志望理由書や面接などで評価。大学ごとに日程が大きく異なります。' },
+      { step: 'STEP 02', when: '高校3年 11月頃〜（例）', title: '学校推薦型選抜 出願・選考', note: '校内選考を経て出願。高校の先生と早めに相談しましょう。' },
+      { step: 'STEP 03', when: '高校3年 1月（例）', title: '大学入学共通テスト', note: '出願は前年の秋。受験票・受験科目の確認を忘れずに。' },
+      { step: 'STEP 04', when: '高校3年 2月〜3月（例）', title: '一般選抜 個別試験・合格発表', note: '入学手続きの締切日は大学ごとに異なるため、事前に一覧で管理を。' }
+    ];
+    const faqData = [
+      ['入試方式は併願できますか？', '大学・方式によって異なります。総合型選抜や学校推薦型選抜には「専願」を条件とするものもあるため、各大学の募集要項で出願条件を必ずご確認ください。'],
+      ['いつから受験勉強を始めればよいですか？', '早いに越したことはありませんが、大切なのは始めた時点から計画を立てることです。志望校の入試科目を確認し、逆算して学習計画を作りましょう。'],
+      ['奨学金はいつ申し込めばよいですか？', '日本学生支援機構の予約採用は、在籍する高校を通じて申し込むのが一般的です。時期や条件は高校の進路指導室や公式情報でご確認ください。'],
+      ['オープンキャンパスには保護者も参加できますか？', '多くの大学で保護者の参加を受け付けています。保護者向けの説明会を設けている場合もあるため、各大学の案内をご確認ください。']
+    ];
+    const faqs = faqData.map((d, i) => ({ q: d[0], a: d[1], open: faq === i, icon: faq === i ? '−' : '+', toggle: () => this.setState({ faq: faq === i ? -1 : i }) }));
+    const rb = [['Campus Life', '#8a7a62'], ['未来をひらく学び', '#5f7d5a'], ['Open Campus', '#7a8698'], ['仲間と出会う場所', '#b39a76']];
+    const ribbon = [...rb, ...rb, ...rb, ...rb].map(r => ({ t: r[0], c: r[1] }));
+    const strip = ['サークル活動', '学園祭', '学生食堂', 'ゼミ発表', '留学・国際交流', '夕暮れのキャンパス']
+      .map((ph, i) => ({ id: 'life-' + i, ph, bg: ['#3a3633', '#5a5f52', '#c8c2b8', '#4a4744', '#7a8090', '#2e3038'][i] }));
+    const menuLinks = [
+      ['#top', 'Top', 'トップ'], ['Programs.dc.html', 'Programs', '学部・学科'], ['ExamPrep.dc.html', 'Exam Prep', '入試対策'],
+      ['Admissions.dc.html', 'Admissions', '入試・出願'], ['Tuition.dc.html', 'Tuition', '学費・奨学金'], ['CampusLife.dc.html', 'Campus Life', 'キャンパスライフ']
+    ].map(l => ({ href: l[0], en: l[1], ja: l[2] }));
+    return {
+      desk: !mob, mob, menu, menuLinks,
+      toggleMenu: () => this.setState({ menu: !menu }), closeMenu: () => this.setState({ menu: false }),
+      heroH: mob ? '640px' : 'clamp(560px, 47.4vw, 1000px)',
+      heroLeftW: mob ? '100%' : '50%',
+      wordSize: mob ? '6.8vw' : '6.6vw',
+      pad: mob ? '20px' : '20.8vw', padR: mob ? '20px' : '10vw',
+      introFlex: mob ? '1 1 100%' : '0 1 44.4%',
+      intro2L: mob ? '20px' : '2vw', intro2W: mob ? '62%' : 'clamp(200px,25vw,480px)',
+      ocDir: mob ? 'column' : 'row', ocAlign: mob ? 'stretch' : 'center',
+      faculties, schedule, faqs, ribbon, strip,
+      scroller: this.scroller, m1: this.m1, m2: this.m2,
+      onScroll: this.onScroll, prev: () => this.step(-1), next: () => this.step(1),
+      progW: Math.round(prog * 100) + '%'
+    };
+  }
+}
+</script>
+</body>
+</html>

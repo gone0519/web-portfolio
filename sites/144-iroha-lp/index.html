@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Yomogi&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fbf0f3;color:#3a3236;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#d9607f}a:hover{color:#b8456a}
+*{box-sizing:border-box}
+img{display:block}
+body{word-break:auto-phrase;line-break:strict}
+.ib{display:inline-block}
+.hero-badge-l{width:clamp(88px,29vw,118px);height:clamp(88px,29vw,118px)}
+.hero-badge-s{width:clamp(80px,26vw,104px);height:clamp(80px,26vw,104px)}
+@media (max-width:400px){
+  .hero-badge-l>span:first-child{font-size:11px!important}
+  .hero-badge-l>span:last-child{font-size:17px!important}
+  .spec-dl{grid-template-columns:6em 1fr!important}
+  .hero-badge-s>span{font-size:12px!important}
+  .hero-ribbon-txt{font-size:13px!important;letter-spacing:0!important}
+  .hero-catch{font-size:10px!important;letter-spacing:0!important}
+  .hero-en{letter-spacing:.12em!important}
+  .hero-name{font-size:20px!important}
+  .site-logo{font-size:15px!important}
+  .site-header{padding:14px 14px!important}
+  .plan-price{font-size:19px!important}
+}
+@keyframes petalFall{0%{transform:translate3d(0,-12vh,0) rotate(0deg)}50%{transform:translate3d(40px,50vh,0) rotate(180deg)}100%{transform:translate3d(-30px,115vh,0) rotate(360deg)}}
+@keyframes heroIn{0%{opacity:0;transform:translateY(30px) scale(.96);filter:blur(10px)}100%{opacity:1;transform:none;filter:blur(0)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pouchIn{0%{opacity:0;transform:translateY(40px) rotate(6deg)}100%{opacity:1;transform:none}}
+@keyframes pouchFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(-1.5deg)}}
+@keyframes ribbon{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(-1deg) scale(1.03)}}
+@keyframes ctaShine{0%{background-position:160% 0,0 0}60%,100%{background-position:-60% 0,0 0}}
+@keyframes ctaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+@keyframes wiggle{0%,100%{transform:rotate(-12deg)}25%{transform:rotate(-2deg) scale(1.08)}50%{transform:rotate(-16deg)}}
+@keyframes headerIn{0%{opacity:0;transform:translateY(-100%)}100%{opacity:1;transform:none}}
+@keyframes faqIn{0%{opacity:0;transform:translateY(-8px)}100%{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+
+<sc-if value="{{ showPetals }}" hint-placeholder-val="{{ true }}">
+<div aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden">
+<div data-anim="petal" style="position:absolute;left:6%;top:8%;width:70px;height:46px;border-radius:70% 30% 70% 30%;background:#f6c9d5;opacity:.7;transform:rotate(-24deg)"></div>
+<div data-anim="petal" style="position:absolute;left:14%;top:38%;width:44px;height:30px;border-radius:70% 30% 70% 30%;background:#f3b6c7;opacity:.55;transform:rotate(38deg)"></div>
+<div data-anim="petal" style="position:absolute;left:3%;top:66%;width:90px;height:58px;border-radius:70% 30% 70% 30%;background:#f8d6df;opacity:.8;transform:rotate(12deg)"></div>
+<div data-anim="petal" style="position:absolute;left:20%;top:86%;width:52px;height:34px;border-radius:70% 30% 70% 30%;background:#f3b6c7;opacity:.5;transform:rotate(-50deg)"></div>
+<div data-anim="petal" style="position:absolute;right:8%;top:14%;width:58px;height:38px;border-radius:70% 30% 70% 30%;background:#f3b6c7;opacity:.6;transform:rotate(60deg)"></div>
+<div data-anim="petal" style="position:absolute;right:16%;top:46%;width:86px;height:56px;border-radius:70% 30% 70% 30%;background:#f8d6df;opacity:.8;transform:rotate(-14deg)"></div>
+<div data-anim="petal" style="position:absolute;right:4%;top:72%;width:46px;height:30px;border-radius:70% 30% 70% 30%;background:#f6c9d5;opacity:.65;transform:rotate(28deg)"></div>
+<div data-anim="petal" style="position:absolute;right:22%;top:92%;width:64px;height:42px;border-radius:70% 30% 70% 30%;background:#f3b6c7;opacity:.5;transform:rotate(-36deg)"></div>
+</div>
+</sc-if>
+
+<div style="position:relative;z-index:1;max-width:520px;margin:0 auto;background:#fff;box-shadow:0 0 40px rgba(217,96,127,.12);overflow:hidden">
+
+<!-- HEADER -->
+<header class="site-header" data-anim="header" style="position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:18px 22px">
+<div class="site-logo" style="font-family:'Noto Serif JP',serif;font-size:19px;letter-spacing:.04em;color:#b08a4a;font-weight:600">Botanical Iroha</div>
+<nav aria-label="ページ内ナビゲーション" style="display:flex;gap:8px">
+<a href="#features" style="font-size:12px;color:#5a4a50;text-decoration:none;padding:6px 10px;background:rgba(255,255,255,.75);border-radius:999px">こだわり</a>
+<a href="#buy" style="font-size:12px;color:#fff;text-decoration:none;padding:6px 12px;background:#d9607f;border-radius:999px;font-weight:700">購入する</a>
+</nav>
+</header>
+
+<!-- SECTION 1 HERO -->
+<section id="hero" data-screen-label="01 Hero" style="position:relative;background:linear-gradient(180deg,#f3f1f2 0%,#fbeff3 100%);padding:78px 0 26px">
+<h1 style="position:relative;margin:0;padding:0 20px;font-family:'Noto Serif JP',serif;font-weight:900;line-height:1.05;letter-spacing:-.02em;-webkit-text-stroke:8px #fff;paint-order:stroke fill;text-shadow:0 4px 18px rgba(255,255,255,.95),0 6px 24px rgba(120,60,80,.18)">
+<span data-anim="heroLine" style="display:block;font-size:clamp(40px,14vw,76px);white-space:nowrap"><span style="color:#dc5f84">まいにち</span><span style="color:#1fa3b2">酵素</span></span>
+<span data-anim="heroLine" style="display:block;font-size:clamp(38px,13vw,74px);color:#2f2a2d;margin-top:6px;padding-left:18%;white-space:nowrap">わたし習慣</span>
+</h1>
+<div data-reveal="zoom" style="position:relative;margin:18px 16px 0;aspect-ratio:16/10;border-radius:12px;overflow:hidden;box-shadow:0 10px 24px rgba(190,80,115,.18)">
+<img src="images/20.jpg" alt="水とサプリメントを手に微笑む女性" style="width:100%;height:100%;object-fit:cover;object-position:40% 30%">
+</div>
+<div style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px;margin-top:-36px;align-items:end">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center">
+<div class="hero-badge-l" data-anim="float" style="border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0%,#fbd4df 55%,#f2a9bd 100%);box-shadow:0 6px 16px rgba(220,95,132,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+<span style="font-size:13px;font-weight:700;color:#b8456a">植物原料</span>
+<span style="font-family:'Noto Serif JP',serif;font-size:30px;font-weight:900;font-style:italic;color:#a8742f">〔00〕<span style="font-size:15px">種</span></span>
+</div>
+<div class="hero-badge-s" data-anim="float" style="border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0%,#fbd4df 55%,#f2a9bd 100%);box-shadow:0 6px 16px rgba(220,95,132,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin-top:24px">
+<span style="font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;color:#a8742f;line-height:1.35">〔製造拠点〕<br>で製造</span>
+</div>
+</div>
+<div data-anim="ribbon" style="position:relative;background:linear-gradient(90deg,#c9a656,#f1dfa8 50%,#c9a656);padding:2px 0;transform:rotate(-3deg)">
+<div class="hero-ribbon-txt" style="background:#fffaf0;text-align:center;font-weight:700;font-size:16px;padding:8px 4px;color:#3a3236;letter-spacing:.06em">1日〔0〕粒で<span class="ib">手軽に</span></div>
+</div>
+<div style="text-align:center">
+<div class="hero-catch" style="font-size:12px;color:#1fa3b2;font-weight:700;letter-spacing:.05em">植物発酵の酵素サプリメント</div>
+<div class="hero-name" style="margin-top:6px;background:#3fb3bf;color:#fff;font-family:'Noto Serif JP',serif;font-weight:700;font-size:24px;line-height:1.3;padding:10px 6px;letter-spacing:.08em">いろは<br>植物酵素</div>
+<div class="hero-en" style="font-size:10px;letter-spacing:.3em;color:#8a7f83;margin-top:6px">IROHA BOTANICAL ENZYME</div>
+</div>
+</div>
+<div data-anim="pouch" style="position:relative;aspect-ratio:3/4;border-radius:14px 14px 6px 6px;background:linear-gradient(160deg,#fde6ec 0%,#f7bfcf 60%,#f9d7e0 100%);box-shadow:0 14px 30px rgba(190,80,115,.28);padding:16px 12px;display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden">
+<div style="position:absolute;left:-20px;top:30%;width:90px;height:60px;border-radius:70% 30% 70% 30%;background:rgba(255,255,255,.5);transform:rotate(-20deg)"></div>
+<div style="position:absolute;right:-16px;bottom:22%;width:70px;height:46px;border-radius:70% 30% 70% 30%;background:rgba(255,255,255,.45);transform:rotate(30deg)"></div>
+<div style="font-family:'Noto Serif JP',serif;font-size:10px;color:#b08a4a">Botanical Iroha</div>
+<div style="font-size:9px;margin-top:10px;color:#6a5a60">植物発酵の酵素サプリメント</div>
+<div style="font-family:'Noto Serif JP',serif;font-weight:900;font-size:22px;line-height:1.2;margin-top:4px"><span style="color:#dc5f84">いろは</span><br><span style="color:#1fa3b2">植物酵素</span></div>
+<div style="display:flex;gap:6px;margin-top:14px">
+<div style="width:46px;height:46px;border-radius:50%;background:#3fb3bf;color:#fff;font-size:9px;display:flex;align-items:center;justify-content:center;line-height:1.2">〔00〕<br>種</div>
+<div style="width:46px;height:46px;border-radius:50%;background:#e98aa4;color:#fff;font-size:9px;display:flex;align-items:center;justify-content:center;line-height:1.2">〔00〕<br>日分</div>
+</div>
+<div style="margin-top:auto;font-family:ui-monospace,monospace;font-size:9px;color:#8a6a74;background:rgba(255,255,255,.7);padding:3px 6px">PACKAGE MOCK</div>
+</div>
+</div>
+<div style="position:relative;padding:22px 24px 0;display:flex;flex-direction:column;gap:16px;align-items:center">
+<p style="margin:0;font-size:15px;line-height:1.9;text-align:center;text-wrap:pretty">植物由来の原料を発酵させた酵素を、<br>毎日続けやすいかたちにしました。</p>
+<a data-anim="cta" href="#buy" style="display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:62px;border-radius:999px;background:linear-gradient(180deg,#8fd067 0%,#4aa236 55%,#3a8b2a 100%);border:3px solid #fff;box-shadow:0 0 0 2px #3a8b2a,0 6px 14px rgba(40,100,30,.35);color:#fff;text-decoration:none;font-size:clamp(15px,4.6vw,19px);font-weight:700;letter-spacing:.06em;white-space:nowrap">商品の詳細・ご購入はこちら <span style="width:26px;height:26px;border-radius:50%;background:#fff;color:#3a8b2a;display:flex;align-items:center;justify-content:center;font-size:12px">▶</span></a>
+<p style="margin:0;font-size:11px;color:#8a7f83;align-self:flex-end">※〔 〕内は仮表示です</p>
+</div>
+</section>
+
+<!-- SECTION 2 NEEDS + CONCEPT -->
+<section id="concept" data-screen-label="02 Concept">
+<div style="position:relative;background:#5b5558;padding:56px 22px 70px;color:#fff;overflow:hidden">
+<img src="images/17.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% center">
+<div aria-hidden="true" style="position:absolute;inset:0;background:rgba(58,50,54,.72)"></div>
+<div style="position:relative;text-align:center">
+<p data-reveal="up" style="margin:0;font-family:'Yomogi',cursive;font-size:26px;line-height:1.5;transform:rotate(-3deg)">毎日を大切にしたい<br>あなたへ</p>
+<div aria-hidden="true" style="width:240px;height:14px;margin:4px auto 0;border-bottom:2px solid rgba(255,255,255,.8);border-radius:0 0 50% 50%"></div>
+<h2 data-reveal="up" style="margin:22px 0 0;font-family:'Noto Serif JP',serif;font-weight:700;font-size:clamp(22px,7.2vw,38px);line-height:1.45;letter-spacing:.04em">こんなこと、<br><span data-anim="marker" style="background:linear-gradient(transparent 62%,#e6d84a 62%,#e6d84a 82%,transparent 82%)">気になっていませんか？</span></h2>
+</div>
+<ul style="position:relative;list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ needs }}" as="n" hint-placeholder-count="5">
+<li data-reveal="left" style="display:flex;align-items:center;gap:12px;background:#f4f2f3;color:#3a3236;padding:12px 14px;font-size:15px;font-weight:500;letter-spacing:.04em">
+<span aria-hidden="true" style="flex:none;width:20px;height:20px;border:2px solid #5b5558;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#5b5558">✓</span>{{ n }}</li>
+</sc-for>
+</ul>
+</div>
+<div style="position:relative;display:flex;justify-content:center;margin-top:-22px;z-index:2">
+<div data-reveal="pop" style="background:#3a3236;color:#fff;font-family:'Yomogi',cursive;font-size:19px;padding:8px 32px;border-radius:999px">そんな方に</div>
+</div>
+<div style="background:linear-gradient(180deg,#eef4f8 0%,#fff 60%);padding:34px 22px 56px;text-align:center">
+<h2 data-reveal="up" style="margin:0;font-family:'Noto Serif JP',serif;font-weight:700;color:#2f2a2d;line-height:1.5"><span style="display:block;font-size:clamp(28px,8vw,38px)">植物のめぐみを、</span><span style="display:block;font-size:clamp(20px,5.6vw,26px)">毎日のひと粒に。</span></h2>
+<div style="margin-top:26px;display:grid;grid-template-columns:1fr 1.1fr;gap:12px;align-items:center">
+<div data-reveal="zoom" style="aspect-ratio:4/5;border-radius:4px;overflow:hidden"><img src="images/10.jpg" alt="野菜や果物などの植物原料" style="width:100%;height:100%;object-fit:cover;object-position:55% center"></div>
+<div data-reveal="zoom" style="aspect-ratio:4/5;border-radius:4px;overflow:hidden"><img src="images/18.jpg" alt="手のひらにのせたサプリメント" style="width:100%;height:100%;object-fit:cover;object-position:45% center"></div>
+</div>
+<p data-reveal="up" style="margin:26px 0 0;font-family:'Noto Serif JP',serif;font-size:20px;font-weight:600;line-height:1.7;color:#2f2a2d"><span style="color:#dc5f84">いろは植物酵素</span>は<br><span style="font-size:26px;color:#1fa3b2">続けやすさ</span>を考えた<br>酵素サプリメントです。</p>
+<p data-reveal="up" style="margin:16px 0 0;font-size:15px;line-height:2;text-align:left;text-wrap:pretty">〔00〕種の植物原料を〔製法名〕で発酵。持ち運びやすい〔形状〕タイプなので、忙しい日でもご自分のペースで取り入れられます。</p>
+</div>
+</section>
+
+<!-- SECTION 3 FEATURES -->
+<section id="features" data-screen-label="03 Features" style="background:#fff">
+<div style="padding:48px 20px 12px;text-align:center">
+<p style="margin:0;font-family:'Noto Serif JP',serif;font-size:16px;font-weight:600;letter-spacing:.06em">いろは植物酵素が大切にしている</p>
+<h2 data-reveal="up" style="margin:4px 0 0;font-family:'Noto Serif JP',serif;font-weight:900;font-size:clamp(34px,11vw,60px);color:#2f2a2d;line-height:1.1;white-space:nowrap"><span style="font-style:italic;font-size:1.25em">3</span>つのこだわり</h2>
+</div>
+<sc-for list="{{ features }}" as="f" hint-placeholder-count="3">
+<article data-reveal="up" style="padding:40px 22px 48px;background:linear-gradient(180deg,#fff 0%,#fdf1f4 100%);text-align:center;border-bottom:1px solid #f6dbe3">
+<div data-reveal="pop" style="font-family:'Noto Serif JP',serif;font-size:62px;font-weight:500;color:#dc5f84;line-height:1">{{ f.num }}</div>
+<div style="font-family:'Noto Serif JP',serif;font-size:11px;letter-spacing:.2em;color:#dc5f84">| POINT |</div>
+<div data-reveal="zoom" style="display:inline-block;margin-top:16px;background:#e47a95;color:#fff;font-family:'Noto Serif JP',serif;font-size:22px;font-weight:600;padding:4px 22px;letter-spacing:.08em">{{ f.label }}</div>
+<h3 data-reveal="up" style="margin:10px 0 0;font-family:'Noto Serif JP',serif;font-size:clamp(24px,6.8vw,32px);font-weight:600;line-height:1.5;color:#2f2a2d;white-space:pre-line">{{ f.title }}</h3>
+<div data-reveal="zoom" style="margin-top:20px;aspect-ratio:16/10;border-radius:4px;overflow:hidden;box-shadow:0 8px 20px rgba(190,80,115,.15)"><img src="{{ f.img }}" alt="{{ f.alt }}" style="width:100%;height:100%;object-fit:cover;object-position:{{ f.pos }}"></div>
+<p data-reveal="up" style="margin:18px 0 0;font-size:15px;line-height:2;text-align:left;text-wrap:pretty">{{ f.body }}</p>
+<div style="margin-top:22px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
+<sc-for list="{{ f.chips }}" as="c" hint-placeholder-count="4">
+<div data-reveal="pop" data-float="1" style="width:92px;height:92px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0%,#fce0e8 55%,#f3b3c5 100%);box-shadow:0 4px 12px rgba(220,95,132,.2);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Noto Serif JP',serif;font-size:13px;font-weight:600;color:#b8456a;line-height:1.35;padding:6px">{{ c }}</div>
+</sc-for>
+</div>
+</article>
+</sc-for>
+<div style="padding:36px 22px 48px;background:#fdf1f4">
+<h3 data-reveal="up" style="margin:0 0 16px;text-align:center;font-family:'Noto Serif JP',serif;font-size:22px;font-weight:600">商品概要</h3>
+<dl class="spec-dl" data-reveal="up" style="margin:0;background:#fff;border:1px solid #f1d0da;display:grid;grid-template-columns:7.5em 1fr">
+<sc-for list="{{ specs }}" as="s" hint-placeholder-count="6">
+<dt style="padding:12px;background:#fbe3ea;font-size:14px;font-weight:700;border-bottom:1px solid #f1d0da">{{ s.k }}</dt>
+<dd style="margin:0;padding:12px;font-size:14px;border-bottom:1px solid #f1d0da;line-height:1.6">{{ s.v }}</dd>
+</sc-for>
+</dl>
+<p style="margin:10px 0 0;font-size:11px;color:#8a7f83;line-height:1.7">※〔 〕内および記載内容は仮のものです。実際の商品情報に差し替えてください。</p>
+</div>
+</section>
+
+<!-- SECTION 4 HOW TO USE + FAQ -->
+<section id="howto" data-screen-label="04 How to use" style="background:#fff">
+<div style="padding:48px 22px 40px;text-align:center">
+<div style="font-family:'Noto Serif JP',serif;font-size:13px;letter-spacing:.3em;color:#1fa3b2">HOW TO USE</div>
+<h2 data-reveal="up" style="margin:6px 0 0;font-family:'Noto Serif JP',serif;font-size:clamp(28px,8vw,36px);font-weight:600;line-height:1.4">毎日の取り入れ方</h2>
+<div data-reveal="zoom" style="margin-top:24px;aspect-ratio:16/10;overflow:hidden"><img src="images/6.jpg" alt="朝のテーブルで水とサプリメントを手に取る様子" style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+<ol style="list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:12px;text-align:left">
+<sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+<li data-reveal="right" style="display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #cfe7ea;box-shadow:0 2px 8px rgba(31,163,178,.08);padding:14px 16px">
+<span style="flex:none;width:44px;height:44px;border-radius:50%;background:#1fa3b2;color:#fff;font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ st.n }}</span>
+<span style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:16px">{{ st.t }}</strong><span style="font-size:13px;color:#6a6064;line-height:1.6">{{ st.d }}</span></span>
+</li>
+</sc-for>
+</ol>
+<p style="margin:14px 0 0;font-size:12px;color:#6a6064;line-height:1.8;text-align:left">※お召し上がり方は必ず商品パッケージの表示をご確認ください。<br>※体質や体調に合わない場合はご使用をお控えください。</p>
+</div>
+<div style="background:#e6f6f7;padding:44px 22px 48px">
+<div style="text-align:center;font-family:'Noto Serif JP',serif;font-size:26px;color:#1fa3b2;font-weight:600">Q&amp;A</div>
+<h3 data-reveal="up" style="margin:2px 0 22px;text-align:center;font-family:'Noto Serif JP',serif;font-size:clamp(26px,7.4vw,34px);font-weight:600">よくあるご質問</h3>
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
+<div data-reveal="up">
+<button type="button" onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;display:flex;align-items:center;gap:12px;background:#11a2b1;color:#fff;border:0;padding:12px 14px;min-height:52px;text-align:left;font-family:inherit;font-size:16px;font-weight:500;letter-spacing:.04em;cursor:pointer">
+<span aria-hidden="true" style="flex:none;width:30px;height:30px;border-radius:50%;background:#fff;color:#11a2b1;font-family:'Noto Serif JP',serif;font-size:19px;display:flex;align-items:center;justify-content:center">Q</span>
+<span style="flex:1;line-height:1.5">{{ q.q }}</span><span aria-hidden="true" style="font-size:18px">{{ q.icon }}</span>
+</button>
+<sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+<div data-anim="faqA" style="background:#fff;padding:14px 16px 16px 56px;font-size:14px;line-height:1.9;position:relative"><span style="position:absolute;left:16px;top:12px;font-family:'Noto Serif JP',serif;font-size:20px;color:#dc5f84">A</span>{{ q.a }}</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- SECTION 5 PURCHASE -->
+<section id="buy" data-screen-label="05 Purchase" style="background:linear-gradient(160deg,#e9708f 0%,#f2a0b4 50%,#e27a96 100%);padding:40px 16px 36px">
+<div style="text-align:center;position:relative">
+<div aria-hidden="true" style="display:flex;justify-content:center;gap:16px;color:#f8e08a;font-size:14px;line-height:1;margin-left:90px">• • •</div>
+<h2 data-reveal="up" style="margin:4px 0 0;font-family:'Noto Serif JP',serif;font-weight:600;font-size:clamp(20px,5.8vw,27px);color:#fff;letter-spacing:.02em">毎日の酵素習慣を<span style="color:#fbe7a0;font-size:1.15em">お得に始めたい</span>方へ</h2>
+</div>
+<div style="margin-top:18px;background:#fff;padding:22px 16px 24px;display:flex;flex-direction:column;gap:18px">
+<div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:12px;align-items:center">
+<div data-reveal="zoom" style="position:relative;aspect-ratio:3/4;border-radius:12px 12px 5px 5px;background:linear-gradient(160deg,#fde6ec 0%,#f7bfcf 60%,#f9d7e0 100%);box-shadow:0 8px 18px rgba(190,80,115,.25);padding:12px 8px;display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden">
+<div style="font-family:'Noto Serif JP',serif;font-size:9px;color:#b08a4a">Botanical Iroha</div>
+<div style="font-family:'Noto Serif JP',serif;font-weight:900;font-size:17px;line-height:1.2;margin-top:12px"><span style="color:#dc5f84">いろは</span><br><span style="color:#1fa3b2">植物酵素</span></div>
+<div style="margin-top:auto;font-family:ui-monospace,monospace;font-size:8px;color:#8a6a74;background:rgba(255,255,255,.7);padding:2px 5px">PACKAGE MOCK</div>
+</div>
+<div>
+<div style="font-family:'Noto Serif JP',serif;font-weight:900;font-size:clamp(22px,6.4vw,30px);line-height:1.25"><span style="color:#e47a95">いろは</span><br><span style="color:#1fa3b2">植物酵素</span></div>
+<div style="margin-top:8px;font-size:13px;color:#6a6064">内容量〔00〕粒（約〔00〕日分）</div>
+</div>
+</div>
+<div role="radiogroup" aria-label="購入プラン" style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ plans }}" as="p" hint-placeholder-count="2">
+<button data-reveal="up" type="button" role="radio" aria-checked="{{ p.selected }}" onClick="{{ p.select }}" style="display:flex;align-items:center;gap:12px;width:100%;text-align:left;font-family:inherit;cursor:pointer;background:{{ p.bg }};border:2px solid {{ p.border }};padding:14px;min-height:64px">
+<span aria-hidden="true" style="flex:none;width:22px;height:22px;border-radius:50%;border:2px solid {{ p.border }};display:flex;align-items:center;justify-content:center"><span style="width:10px;height:10px;border-radius:50%;background:{{ p.dot }}"></span></span>
+<span style="flex:1;display:flex;flex-direction:column;gap:2px"><strong style="font-size:16px;color:#3a3236">{{ p.name }}</strong><span style="font-size:12px;color:#6a6064">{{ p.note }}</span></span>
+<span class="plan-price" style="font-family:'Noto Serif JP',serif;font-size:24px;font-weight:700;color:#dc5f84;white-space:nowrap">{{ p.price }}<span style="font-size:13px">円<span style="font-size:10px;color:#6a6064">(税込)</span></span></span>
+</button>
+</sc-for>
+</div>
+<div data-reveal="zoom" style="position:relative;border:2px solid #c9a656;outline:1px solid #e8d49a;outline-offset:3px;padding:18px 14px 16px;text-align:center;margin:6px 4px 0">
+<div data-anim="wiggle" style="position:absolute;left:-14px;top:-20px;width:62px;height:62px;border-radius:50%;background:#1fa3b2;color:#fff;font-family:'Yomogi',cursive;font-size:15px;display:flex;align-items:center;justify-content:center;transform:rotate(-12deg)">特典</div>
+<div style="font-size:15px;font-weight:700;letter-spacing:.06em">〔初回特典の内容〕</div>
+<div style="margin-top:6px;font-family:'Noto Serif JP',serif;font-size:22px;font-weight:700;color:#a88435">確定時のみ記載してください</div>
+<div style="margin-top:6px;font-size:12px;color:#6a6064">※価格・特典は仮表示です</div>
+</div>
+<button data-anim="cta" type="button" onClick="{{ purchase }}" style="display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:66px;border-radius:999px;background:linear-gradient(180deg,#8fd067 0%,#4aa236 55%,#3a8b2a 100%);border:3px solid #fff;box-shadow:0 0 0 2px #3a8b2a,0 6px 14px rgba(40,100,30,.35);color:#fff;font-family:inherit;font-size:clamp(16px,4.8vw,19px);font-weight:700;letter-spacing:.06em;cursor:pointer;white-space:nowrap">{{ ctaLabel }}<span style="width:26px;height:26px;border-radius:50%;background:#fff;color:#3a8b2a;display:flex;align-items:center;justify-content:center;font-size:12px">▶</span></button>
+<sc-if value="{{ notice }}" hint-placeholder-val="{{ false }}">
+<p role="status" style="margin:-6px 0 0;text-align:center;font-size:13px;color:#3a8b2a">{{ notice }}</p>
+</sc-if>
+<nav aria-label="購入関連リンク" style="display:flex;justify-content:center;flex-wrap:wrap;gap:6px 18px;font-size:13px">
+<a href="#features">商品詳細</a><a href="#howto">お召し上がり方</a><a href="#">配送について</a><a href="#">お問い合わせ</a>
+</nav>
+</div>
+</section>
+
+<footer style="background:#fff;padding:24px 16px 32px;text-align:center">
+<nav aria-label="フッター" style="display:flex;justify-content:center;flex-wrap:wrap;gap:6px 18px;font-size:12px">
+<a href="#" style="color:#3a3236">会社概要</a><a href="#" style="color:#3a3236">お問い合わせ</a><a href="#" style="color:#3a3236">プライバシーポリシー</a><a href="#" style="color:#3a3236">利用規約</a><a href="#" style="color:#3a3236">特定商取引法に基づく表記</a>
+</nav>
+<p style="margin:14px 0 0;font-size:11px;color:#8a7f83">© 2026 〔会社名〕 All Rights Reserved.</p>
+</footer>
+
+<sc-if value="{{ stickyCta }}" hint-placeholder-val="{{ false }}">
+<div style="position:sticky;bottom:0;z-index:10;padding:10px 14px;background:rgba(255,255,255,.94);box-shadow:0 -4px 14px rgba(0,0,0,.08)">
+<a href="#buy" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:linear-gradient(180deg,#8fd067,#3a8b2a);color:#fff;text-decoration:none;font-weight:700;font-size:16px">購入プランを見る</a>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showPetals&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;stickyCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { open: 0, plan: 0, notice: '' };
+  componentDidMount() {
+    if ((this.props.animations ?? true) === false) return;
+    const hidden = { up: 'translateY(36px)', left: 'translateX(-48px)', right: 'translateX(48px)', zoom: 'scale(.88)', pop: 'scale(.4)' };
+    this.io = new IntersectionObserver(es => es.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target; this.io.unobserve(el);
+      el.style.opacity = '1'; el.style.transform = 'none';
+      if (el.dataset.float) setTimeout(() => { el.style.transition = 'none'; el.style.animation = `floatY ${3 + Math.random() * 2}s ease-in-out ${Math.random()}s infinite`; }, 1200);
+    }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    const anims = {
+      petal: el => { el.style.top = '-10%'; el.style.animation = `petalFall ${9 + Math.random() * 8}s linear ${-Math.random() * 14}s infinite`; },
+      header: el => { el.style.animation = 'headerIn .8s cubic-bezier(.2,.8,.2,1) both'; },
+      heroLine: (el, i) => { el.style.animation = `heroIn 1.1s cubic-bezier(.2,.8,.2,1) ${0.15 + i * 0.3}s both`; },
+      float: (el, i) => { el.style.animation = `heroIn .9s ease ${0.7 + i * 0.2}s both, floatY ${3.2 + i * 0.6}s ease-in-out ${1.6 + i * 0.3}s infinite`; },
+      pouch: el => { el.style.animation = 'pouchIn 1.2s cubic-bezier(.2,.8,.2,1) .5s both, pouchFloat 4.5s ease-in-out 1.8s infinite'; },
+      ribbon: el => { el.style.animation = 'ribbon 3s ease-in-out infinite'; },
+      cta: el => {
+        const bg = getComputedStyle(el).backgroundImage;
+        el.style.backgroundImage = `linear-gradient(110deg,transparent 35%,rgba(255,255,255,.55) 48%,transparent 60%),${bg}`;
+        el.style.backgroundSize = '250% 100%,100% 100%'; el.style.backgroundRepeat = 'no-repeat';
+        el.style.animation = 'ctaShine 3s ease-in-out infinite, ctaPulse 1.6s ease-in-out infinite';
+      },
+      wiggle: el => { el.style.animation = 'wiggle 2.4s ease-in-out infinite'; },
+      faqA: el => { el.style.animation = 'faqIn .35s ease both'; },
+      marker: el => {
+        el.style.backgroundRepeat = 'no-repeat'; el.style.backgroundSize = '0% 100%';
+        el.style.transition = 'background-size 1.2s cubic-bezier(.6,0,.2,1) .4s';
+        const mo = new IntersectionObserver(([en]) => { if (en.isIntersecting) { el.style.backgroundSize = '100% 100%'; mo.disconnect(); } }, { threshold: 0.6 });
+        mo.observe(el);
+      }
+    };
+    const scan = () => {
+      const counts = {};
+      document.querySelectorAll('[data-anim]:not([data-done])').forEach(el => {
+        const k = el.dataset.anim; counts[k] = (counts[k] || 0); el.setAttribute('data-done', '');
+        anims[k] && anims[k](el, counts[k]++);
+      });
+      document.querySelectorAll('[data-reveal]:not([data-done])').forEach(el => {
+        el.setAttribute('data-done', '');
+        const sib = [...el.parentElement.children].filter(c => c.dataset.reveal);
+        const i = Math.min(sib.indexOf(el), 6);
+        el.style.opacity = '0'; el.style.transform = hidden[el.dataset.reveal] || hidden.up;
+        el.style.transition = `opacity .8s ease ${i * 0.09}s, transform .9s cubic-bezier(.2,.9,.25,1.15) ${i * 0.09}s`;
+        this.io.observe(el);
+      });
+    };
+    scan();
+    this.mo = new MutationObserver(scan);
+    this.mo.observe(document.body, { childList: true, subtree: true });
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); this.mo && this.mo.disconnect(); }
+  renderVals() {
+    const { open, plan, notice } = this.state;
+    const faqData = [
+      ['どんな方におすすめですか？', '植物由来の原料や酵素に関心があり、毎日のサプリメント習慣を手軽に続けたい方におすすめです。'],
+      ['いつ飲めばいいですか？', '〔推奨タイミング：商品表示に基づき記載〕。決まったタイミングがない場合は、ご自分の続けやすい時間にお召し上がりください。'],
+      ['1日の目安量はどのくらいですか？', '1日〔0〕粒を目安にお召し上がりください。〔商品表示に基づき記載〕'],
+      ['他のサプリや薬と一緒に飲んでも大丈夫ですか？', 'お薬を服用中の方、通院中の方は、医師・薬剤師にご相談ください。'],
+      ['妊娠中・授乳中でも飲めますか？', '妊娠中・授乳中の方は、事前に医師にご相談ください。'],
+      ['定期便はいつでも解約できますか？', '〔定期便の解約条件を記載〕']
+    ];
+    const planData = [
+      { name: '定期便', note: '〔お届け周期・条件を記載〕', price: '0,000' },
+      { name: '通常購入（1袋）', note: '1回のみのお届け', price: '0,000' }
+    ];
+    return {
+      showPetals: this.props.showPetals ?? true,
+      stickyCta: this.props.stickyCta ?? false,
+      needs: ['食事のバランスが偏りがち', '植物由来の原料にこだわりたい', '手軽に続けられるものを探している', '酵素サプリの選び方がわからない', '毎日の習慣をととのえたい'],
+      features: [
+        { num: '01', label: '原材料', title: '〔00〕種の植物原料を\nひと粒に', img: 'images/16.jpg', alt: 'いちごなどの植物原料', pos: '70% center', body: '〔原材料A〕〔原材料B〕〔原材料C〕など、〔00〕種の植物原料を使用しています。原材料名と配合比率は、確定した商品情報に差し替えてください。', chips: ['〔原材料A〕', '〔原材料B〕', '〔原材料C〕', '〔原材料D〕', '〔原材料E〕'] },
+        { num: '02', label: '製法', title: '〔製法名〕で\nじっくり発酵', img: 'images/5.jpg', alt: '発酵に使う米こうじ', pos: 'center', body: '〔発酵期間・工程など、確認済みの製法情報を記載〕。手間をかけた原料づくりを大切にしています。', chips: ['〔工程1〕', '〔工程2〕', '〔工程3〕'] },
+        { num: '03', label: '品質', title: '〔製造拠点〕で\nていねいに製造', img: 'images/21.jpg', alt: '器に入ったカプセルと錠剤', pos: 'center', body: '〔品質管理体制・取得認証など、確認済みの情報のみ記載〕。毎日口にするものだから、つくる場所にもこだわりました。', chips: ['〔認証・基準〕', '〔検査項目〕'] }
+      ],
+      specs: [
+        { k: '名称', v: '〔食品の名称〕' }, { k: '内容量', v: '〔00〕粒（約〔00〕日分）' },
+        { k: '形状', v: '〔カプセル／粒／顆粒〕' }, { k: '原材料', v: '〔原材料一覧〕' },
+        { k: '栄養成分', v: '〔栄養成分表示〕' }, { k: '製造', v: '〔製造国・製造者〕' }
+      ],
+      steps: [
+        { n: '1', t: '1日〔0〕粒を目安に', d: '〔商品表示に基づく目安量〕' },
+        { n: '2', t: '〔水またはぬるま湯〕と一緒に', d: '〔確認済みのお召し上がり方〕' },
+        { n: '3', t: 'ご自分のペースで続ける', d: '持ち歩きやすいので、外出先でも取り入れやすい' }
+      ],
+      faqs: faqData.map(([q, a], i) => ({ q, a, open: open === i, icon: open === i ? '−' : '+', toggle: () => this.setState({ open: open === i ? -1 : i }) })),
+      plans: planData.map((p, i) => ({ ...p, selected: plan === i, bg: plan === i ? '#fff5f8' : '#fff', border: plan === i ? '#dc5f84' : '#e5d9dd', dot: plan === i ? '#dc5f84' : 'transparent', select: () => this.setState({ plan: i, notice: '' }) })),
+      ctaLabel: plan === 0 ? '定期便で購入する' : '通常購入する',
+      notice,
+      purchase: () => this.setState({ notice: `「${planData[plan].name}」を選択中：購入ページのURLを設定してください` })
+    };
+  }
+}
+</script>
+</body>
+</html>

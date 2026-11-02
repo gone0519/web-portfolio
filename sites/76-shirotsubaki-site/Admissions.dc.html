@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#e4f4f0;color:#7a5f17;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#8a6a12;text-decoration:none}
+a:hover{color:#5f4808}
+a:focus-visible,button:focus-visible{outline:2px solid #8a6a12;outline-offset:3px}
+*{box-sizing:border-box}
+</style>
+<link rel="stylesheet" href="responsive.css">
+<script src="motion.js"></script>
+</helmet>
+<div id="top" style="min-height:100vh;background:#e4f4f0;overflow-x:hidden">
+<dc-import name="SiteHeader" current="admissions" hint-size="100%,200px"></dc-import>
+<main>
+  <section data-screen-label="Admissions 01 Title" style="padding:0 20px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px">
+    <nav aria-label="パンくず" style="display:flex;gap:8px;font-size:11px;letter-spacing:.1em;margin-bottom:18px"><a href="Shirotsubaki%20University.dc.html">トップ</a><span>›</span><span>入試情報</span></nav>
+    <h1 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:clamp(44px,6vw,62px);color:#b0902e;line-height:1.1">Admissions</h1>
+    <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.3em">入試情報</p>
+    <p class="note-pill" style="margin:24px 0 0;max-width:620px;padding:12px 20px;background:#fff;border-radius:999px;font-size:12px;line-height:1.8;color:#6f5a20">2027年度入試の日程・募集人員は決定次第公開します。掲載内容はすべて仮のものです。</p>
+  </section>
+
+  <section data-screen-label="Admissions 02 Types" style="padding:30px 20px 90px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:36px">
+      <h2 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:42px;color:#b0902e;line-height:1.1">Selection</h2>
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.3em">入試制度</p>
+    </div>
+    <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:20px">
+      <sc-for list="{{ exams }}" as="e" hint-placeholder-count="4">
+        <article style="background:#fff;padding:28px 28px 24px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:16px;align-items:center">
+            <span style="flex-shrink:0;width:58px;height:58px;border-radius:50%;background:{{ e.bg }};display:flex;align-items:center;justify-content:center;font-family:'Shippori Mincho',serif;font-size:22px;color:#6e5512">{{ e.mark }}</span>
+            <span style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Parisienne',cursive;font-size:18px;color:#b0902e">{{ e.en }}</span><h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:19px;letter-spacing:.1em;color:#6e5512">{{ e.name }}</h3></span>
+          </div>
+          <p style="margin:0;font-size:13px;line-height:2;color:#6f5a20;text-wrap:pretty">{{ e.text }}</p>
+          <dl style="margin:4px 0 0;display:grid;grid-template-columns:90px 1fr;border-top:1px dotted #e0d3a6">
+            <dt style="padding:9px 0;border-bottom:1px dotted #e0d3a6;font-size:11px;letter-spacing:.1em;color:#7a6a3a">主な評価</dt><dd style="margin:0;padding:9px 0;border-bottom:1px dotted #e0d3a6;font-size:12px;color:#6f5a20">{{ e.eval }}</dd>
+            <dt style="padding:9px 0;border-bottom:1px dotted #e0d3a6;font-size:11px;letter-spacing:.1em;color:#7a6a3a">出願期間</dt><dd style="margin:0;padding:9px 0;border-bottom:1px dotted #e0d3a6;font-size:12px;color:#6f5a20">決定次第公開</dd>
+            <dt style="padding:9px 0;border-bottom:1px dotted #e0d3a6;font-size:11px;letter-spacing:.1em;color:#7a6a3a">試験日</dt><dd style="margin:0;padding:9px 0;border-bottom:1px dotted #e0d3a6;font-size:12px;color:#6f5a20">決定次第公開</dd>
+          </dl>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Admissions 03 Flow" style="padding:20px 0 90px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:40px;padding:0 20px">
+      <h2 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:42px;color:#b0902e;line-height:1.1">Application Flow</h2>
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.3em">出願の流れ</p>
+    </div>
+    <div style="position:relative">
+      <div class="sh-band" style="position:absolute;left:max(20px,calc(50% - 500px));right:max(20px,calc(50% - 500px));top:30px;height:22px;background:#efd56a;clip-path:polygon(0 0,100% 0,98.5% 50%,100% 100%,0 100%,1.5% 50%)"></div>
+      <ol class="flow-list" style="position:relative;max-width:1000px;margin:0 auto;padding:0 20px;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:18px">
+        <sc-for list="{{ flow }}" as="f" hint-placeholder-count="5">
+          <li style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+            <span style="width:82px;height:82px;border-radius:50%;background:#fff;box-shadow:0 4px 14px rgba(150,130,60,.15);display:flex;flex-direction:column;align-items:center;justify-content:center"><span style="font-family:'Parisienne',cursive;font-size:14px;color:#b0902e;line-height:1">Step</span><span style="font-family:'Shippori Mincho',serif;font-size:22px;color:#6e5512">{{ f.no }}</span></span>
+            <h3 style="margin:6px 0 0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:15px;letter-spacing:.1em;color:#6e5512">{{ f.t }}</h3>
+            <p style="margin:0;font-size:12px;line-height:1.9;color:#6f5a20;text-wrap:pretty">{{ f.d }}</p>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <section data-screen-label="Admissions 04 Docs" style="padding:0 20px 90px">
+    <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:40px;align-items:start">
+      <div>
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-bottom:22px"><h2 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:36px;color:#b0902e;line-height:1.1">Documents</h2><span style="font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.24em">資料・ダウンロード</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ docs }}" as="d" hint-placeholder-count="4">
+            <a href="#top" style="display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;padding:16px 20px;font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.08em;color:#6e5512;transition:background .3s" style-hover="background:#fffbea"><span>{{ d.t }}</span><span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;color:#8a6a12">{{ d.tag }} →</span></a>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-bottom:22px"><h2 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:36px;color:#b0902e;line-height:1.1">Q &amp; A</h2><span style="font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.24em">よくある質問</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+            <div style="background:#fff">
+              <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;display:flex;gap:14px;align-items:center;padding:16px 20px;border:0;background:transparent;cursor:pointer;text-align:left;font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.06em;color:#6e5512">
+                <span style="font-family:'Parisienne',cursive;font-size:22px;color:#b0902e;line-height:1">Q</span><span style="flex:1">{{ q.q }}</span><span style="font-size:16px;color:#b0902e">{{ q.sign }}</span>
+              </button>
+              <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0;padding:0 20px 18px 56px;font-size:13px;line-height:2;color:#6f5a20;text-wrap:pretty">{{ q.a }}</p>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Admissions 05 Contact" style="background:#fbf1ef;padding:70px 20px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+    <span style="font-family:'Parisienne',cursive;font-size:30px;color:#b0902e">Contact</span>
+    <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(18px,2.2vw,22px);letter-spacing:.16em;color:#6e5512">入試に関するお問い合わせ</p>
+    <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:24px;letter-spacing:.06em;color:#8a6a12">tel.00-0000-0000 <span style="font-size:12px">入試課</span></p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:8px">
+      <a href="#top" style="display:flex;gap:12px;align-items:center;padding:14px 32px;border-radius:999px;background:#fff;color:#8a6a12;font-size:13px;letter-spacing:.2em;transition:background .3s,color .3s" style-hover="background:#ece49c;color:#5f4808">資料請求する <span>→</span></a>
+      <a href="OpenCampus.dc.html#reserve" style="display:flex;gap:12px;align-items:center;padding:14px 32px;border-radius:999px;background:#a8862a;color:#fff;font-size:13px;letter-spacing:.2em;transition:background .3s" style-hover="background:#7a5f17;color:#fff">個別相談を予約する <span>→</span></a>
+    </div>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { open: 0 };
+  renderVals() {
+    const faqs = [
+      { q: '複数の入試方式に出願できますか？', a: '方式によって併願の可否が異なります。詳細は入学試験要項でご確認ください。' },
+      { q: '総合型選抜ではどのような準備が必要ですか？', a: '志望理由書や面談に向けて、なぜその学科で学びたいかを自分の言葉で整理しておくことが大切です。オープンキャンパスの個別相談もご活用ください。' },
+      { q: '奨学金制度はありますか？', a: '学内外の奨学金制度があります。対象や条件は年度ごとに異なるため、最新の案内をご確認ください。' },
+      { q: '過去の入試問題は見られますか？', a: '過去問題の閲覧・請求方法は、資料・ダウンロードのページから案内しています。' }
+    ].map((f, i) => ({ ...f, open: this.state.open === i, sign: this.state.open === i ? '−' : '+', toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })) }));
+    return {
+      faqs,
+      exams: [
+        { mark: '総', bg: '#efcfd2', en: 'Comprehensive', name: '総合型選抜', text: '本学で学びたいという意欲と、これまでの活動を多面的に評価します。', eval: '書類審査・面談・小論文など' },
+        { mark: '推', bg: '#ece49c', en: 'Recommendation', name: '学校推薦型選抜', text: '高等学校長の推薦にもとづき、学習成績や人物を総合的に評価します。', eval: '書類審査・面接' },
+        { mark: '一', bg: '#cfe7e3', en: 'General', name: '一般選抜', text: '本学独自の筆記試験により、学力を中心に評価します。', eval: '学力試験（科目は要項参照）' },
+        { mark: '共', bg: '#f3e6d6', en: 'Common Test', name: '共通テスト利用選抜', text: '大学入学共通テストの成績を利用し、本学での個別試験は課しません。', eval: '共通テストの成績' }
+      ],
+      flow: [
+        { no: '1', t: '情報を集める', d: '入学試験要項・大学案内を確認' },
+        { no: '2', t: '大学を体験する', d: 'オープンキャンパス・個別相談' },
+        { no: '3', t: 'インターネット出願', d: '出願サイトで登録・支払い' },
+        { no: '4', t: '受験', d: '受験票を確認し試験当日へ' },
+        { no: '5', t: '合格発表・入学手続', d: '期日までに手続を完了' }
+      ],
+      docs: [
+        { t: '2027年度 入学試験要項', tag: 'PDF' },
+        { t: '大学案内パンフレット', tag: '資料請求' },
+        { t: 'インターネット出願ガイド', tag: 'PDF' },
+        { t: '過去の入試問題', tag: '請求' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

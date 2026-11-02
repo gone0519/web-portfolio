@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学部・学科｜澄花女子大学（サンプル）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Shippori+Mincho:wght@500;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fcf7f2;color:#4a3f3a;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#4a3f3a;text-decoration:none}
+a:hover{color:#c2615a}
+.deco{position:absolute;z-index:0;pointer-events:none;user-select:none;height:auto;animation:deco-float 7s ease-in-out infinite alternate}
+@keyframes deco-float{from{translate:0 0;rotate:-1.5deg}to{translate:0 -10px;rotate:1.5deg}}
+@media (max-width:1199px){.deco{display:none}}
+@media (prefers-reduced-motion:reduce){.deco{animation:none}}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #5a84b8;outline-offset:3px}
+</style>
+</helmet>
+<div style="position:relative;display:flex;align-items:flex-start;min-height:100vh;overflow-x:clip;background:#fcf7f2">
+  <dc-import name="SiteNav" current="academics" hint-size="0px,0px"></dc-import>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><div style="width:216px;flex:none"></div></sc-if>
+  <main style="flex:1;min-width:0;position:relative">
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><div style="height:64px"></div></sc-if>
+    <div style="max-width:1320px;margin:0 auto;padding:44px clamp(20px,4vw,56px) 0 clamp(36px,5vw,72px);display:flex;flex-direction:column;gap:96px">
+      <dc-import name="PageHero" color="#9ad8bd" ring="#d3f0e4" tab="学部・学科" en="ACADEMICS" title="好きなことを、&#10;学問にする。" lead="4学部9学科。専門を深めながら、学部をこえて学べる副専攻や、地域・企業と取り組む実践型の授業を用意しています。" img-id="aca-hero" ph="授業・研究の様子" img="images/29.jpg" hint-size="100%,420px"></dc-import>
+
+      <nav aria-label="学部一覧" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:-48px">
+        <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="4">
+          <a href="#{{ f.id }}" style="flex:1 1 180px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#fffdf8;border:2px solid #9ad8bd;border-radius:14px;padding:14px 18px;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:15px" style-hover="background:#9ad8bd;color:#4a3f3a">{{ f.name }}<span style="font-size:12px">↓</span></a>
+        </sc-for>
+      </nav>
+
+      <section aria-label="学部の紹介" style="display:flex;flex-direction:column;gap:28px">
+        <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="4">
+          <article id="{{ f.id }}" style="scroll-margin-top:80px;background:#fffdf8;border-radius:40px;padding:clamp(24px,4vw,44px);display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,40px)">
+            <div style="flex:1 1 min(100%,300px);height:clamp(220px,24vw,280px);border-radius:28px;overflow:hidden"><image-slot id="aca-fac-{{ $index }}" shape="rect" placeholder="{{ f.ph }}" src="{{ f.img }}"></image-slot></div>
+            <div style="flex:1.2 1 min(100%,340px);display:flex;flex-direction:column;gap:12px">
+              <span style="font-size:11px;font-weight:700;letter-spacing:.14em;color:#3a8f6c">{{ f.en }}</span>
+              <h2 style="margin:0;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(24px,2.6vw,30px)">{{ f.name }}</h2>
+              <p style="margin:0;font-size:14px;line-height:1.9;color:#5d5650">{{ f.text }}</p>
+              <ul style="list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ f.depts }}" as="d" hint-placeholder-count="2">
+                  <li style="background:#fcf7f2;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+                    <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:15px">{{ d.n }}</span>
+                    <span style="font-size:12px;line-height:1.7;color:#5d5650">{{ d.t }}</span>
+                  </li>
+                </sc-for>
+              </ul>
+            </div>
+          </article>
+        </sc-for>
+      </section>
+
+      <section aria-labelledby="minor-h" style="position:relative;background:#f8ece8;border-radius:40px;padding:clamp(28px,5vw,56px);display:flex;flex-wrap:wrap;gap:32px;align-items:center">
+        <img class="deco" src="images/deco/clover-pink.png" alt="" aria-hidden="true" style="left:-40px;bottom:-55px;width:170px">
+        <div style="flex:1 1 min(100%,300px);display:flex;flex-direction:column;gap:12px">
+          <span style="align-self:flex-start;background:#9ad8bd;border-radius:6px;padding:4px 14px;font-size:11px;font-weight:700;letter-spacing:.12em">MINOR</span>
+          <h2 id="minor-h" style="margin:0;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(24px,2.6vw,30px)">副専攻プログラム</h2>
+          <p style="margin:0;font-size:14px;line-height:2;color:#5d5650">所属学部の専門に加えて、関心のあるテーマを他学部の授業で体系的に学べます。所定の単位を修得すると修了証が交付されます。</p>
+        </div>
+        <ul style="flex:1 1 min(100%,300px);list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ minors }}" as="m" hint-placeholder-count="6">
+            <li style="background:#fffdf8;border-radius:999px;padding:10px 18px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:14px">{{ m }}</li>
+          </sc-for>
+        </ul>
+      </section>
+
+      <section aria-labelledby="flow-h" style="position:relative;display:flex;flex-direction:column;gap:28px">
+        <img class="deco" src="images/deco/study-desk.png" alt="" aria-hidden="true" style="right:0;top:-60px;width:200px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="align-self:flex-start;background:#9ad8bd;border-radius:6px;padding:4px 14px;font-size:11px;font-weight:700;letter-spacing:.12em">4 YEARS</span>
+          <h2 id="flow-h" style="margin:0;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(24px,2.6vw,30px)">4年間の学びの流れ</h2>
+        </div>
+        <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+          <sc-for list="{{ years }}" as="y" hint-placeholder-count="4">
+            <li style="background:#fffdf8;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:10px">
+              <span style="align-self:flex-start;width:52px;height:52px;border-radius:50%;background:#d3f0e4;display:grid;place-items:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:15px">{{ y.y }}</span>
+              <h3 style="margin:0;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:17px">{{ y.title }}</h3>
+              <p style="margin:0;font-size:12px;line-height:1.8;color:#5d5650">{{ y.text }}</p>
+            </li>
+          </sc-for>
+        </ol>
+      </section>
+
+      <section aria-labelledby="prac-h" style="position:relative;display:flex;flex-wrap:wrap;gap:16px">
+        <img class="deco" src="images/deco/mug.png" alt="" aria-hidden="true" style="right:16px;top:-20px;width:110px">
+        <div style="flex:1 1 100%;display:flex;flex-direction:column;gap:8px;margin-bottom:12px">
+          <span style="align-self:flex-start;background:#9ad8bd;border-radius:6px;padding:4px 14px;font-size:11px;font-weight:700;letter-spacing:.12em">PRACTICE</span>
+          <h2 id="prac-h" style="margin:0;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:clamp(24px,2.6vw,30px)">教室の外で学ぶ</h2>
+        </div>
+        <sc-for list="{{ practices }}" as="p" hint-placeholder-count="3">
+          <div style="flex:1 1 min(100%,260px);position:relative;height:240px;border-radius:28px;overflow:hidden">
+            <image-slot id="aca-prac-{{ $index }}" shape="rect" placeholder="{{ p.ph }}" src="{{ p.img }}"></image-slot>
+            <div style="position:absolute;left:12px;right:12px;bottom:12px;pointer-events:none;background:rgba(255,253,248,.94);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+              <span style="font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:15px">{{ p.title }}</span>
+              <span style="font-size:12px;line-height:1.6;color:#5d5650">{{ p.text }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </section>
+
+      <dc-import name="PageCta" hint-size="100%,260px"></dc-import>
+    </div>
+    <dc-import name="SiteFooter" hint-size="100%,320px"></dc-import>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: window.innerWidth };
+  componentDidMount() { this.r = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.r); }
+  componentWillUnmount() { window.removeEventListener('resize', this.r); }
+  renderVals() {
+    const d = this.state.w >= 900;
+    return {
+      isDesktop: d, isMobile: !d,
+      faculties: [
+        { id: 'lit', name: '文学部', en: 'FACULTY OF LITERATURE', ph: '文学部の授業', img: 'images/33.jpg', text: 'ことばと文化を手がかりに、人と社会を読み解きます。文献を読み込み、自分の解釈を書き、議論する力を養います。',
+          depts: [{ n: '日本文学科', t: '古典から現代文学、日本語学まで。作品を通して日本の文化を考えます。' }, { n: '英語英米文学科', t: '英語の運用力を高めながら、英語圏の文学・文化を学びます。' }] },
+        { id: 'hum', name: '人間科学部', en: 'FACULTY OF HUMAN SCIENCES', ph: '心理学の実験', img: 'images/32.jpg', text: '心理・教育・福祉の視点から、人の成長と支え合いを学びます。実習やフィールドワークの機会が豊富です。',
+          depts: [{ n: '心理学科', t: '実験や調査を通して、こころのしくみを科学的に探ります。' }, { n: '教育学科', t: '子どもの学びと発達を理解し、教育現場で生かせる力を身につけます。' }, { n: '社会福祉学科', t: '地域や制度について学び、人を支える専門性を養います。' }] },
+        { id: 'life', name: '生活科学部', en: 'FACULTY OF HUMAN LIFE', ph: '調理実習', img: 'images/14.jpg', text: '食・住まい・健康を科学し、暮らしをよりよくする方法を考えます。実験・実習を中心にした学びが特長です。',
+          depts: [{ n: '食物栄養学科', t: '栄養と食の科学を学び、管理栄養士をめざすことができます。' }, { n: '生活デザイン学科', t: '住まい・衣服・プロダクトを通して、生活の質を高めるデザインを学びます。' }] },
+        { id: 'glo', name: '国際教養学部', en: 'FACULTY OF GLOBAL STUDIES', ph: '英語での授業', img: 'images/03.jpg', text: '多文化の中で考え、発信する力を英語で磨きます。留学やオンライン交流を組み込んだカリキュラムです。',
+          depts: [{ n: '国際教養学科', t: '国際関係・文化・社会を幅広く学び、英語で議論する力を養います。' }, { n: '国際観光学科', t: '観光を通して地域と世界をつなぐ企画力を身につけます。' }] },
+      ],
+      minors: ['データサイエンス', 'ジェンダー研究', '日本語教育', '地域デザイン', '国際協力', '出版・編集'],
+      years: [
+        { y: '1年', title: '学びの基礎をつくる', text: '基礎ゼミで読む・書く・話す力を身につけ、幅広い教養科目に触れます。' },
+        { y: '2年', title: '専門の入口へ', text: '学科の専門科目が本格化。副専攻の選択もこの時期から始まります。' },
+        { y: '3年', title: 'テーマを見つける', text: '専門ゼミに所属し、実習や留学など学外での経験も重ねます。' },
+        { y: '4年', title: '自分の言葉でまとめる', text: '卒業論文・卒業制作に取り組み、4年間の学びを形にします。' },
+      ],
+      practices: [
+        { title: '地域連携プロジェクト', text: '自治体や地元企業と協働し、課題解決に取り組みます。', ph: '地域でのフィールドワーク', img: 'images/21.jpg' },
+        { title: '学外実習', text: '教育・福祉・栄養などの現場で、専門性を実践的に学びます。', ph: '実習先での様子', img: 'images/30.jpg' },
+        { title: '海外研修', text: '協定校での語学研修や、短期の海外フィールドワーク。', ph: '海外研修', img: 'images/28.jpg' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

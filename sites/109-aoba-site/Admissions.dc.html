@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FFF8EA;color:#2B2B2B;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1D5641}
+a:hover{color:#2B2B2B}
+*:focus-visible{outline:3px solid #F2A93B;outline-offset:3px}
+body{word-break:auto-phrase;line-break:strict}
+h1,h2,h3,h4{text-wrap:balance}
+@media (max-width:599px){
+  .sched{min-width:0!important}
+  .sched thead{display:none}
+  .sched,.sched tbody,.sched tr,.sched th,.sched td{display:block}
+  .sched tr{padding:14px 16px;border-bottom:1px dashed #C9C2B2}
+  .sched tr:last-child{border-bottom:0}
+  .sched th,.sched td{padding:2px 0!important;border:0!important}
+  .sched th{font-size:15px;margin-bottom:6px}
+  .sched td{display:flex;gap:12px}
+  .sched td::before{content:attr(data-label);flex:none;width:5em;font-weight:700}
+  .flow{grid-template-columns:1fr!important;gap:8px!important}
+  .flow>li{display:grid!important;grid-template-columns:36px 1fr;column-gap:14px;row-gap:2px!important;text-align:left!important;padding:12px 16px!important}
+  .flow>li>span:first-child{grid-row:span 2;align-self:center}
+}
+</style>
+<script src="motion.js"></script>
+</helmet>
+<dc-import name="Header" current="admissions" style="position:sticky;top:0;z-index:50;display:block" hint-size="100%,66px"></dc-import>
+<main>
+<dc-import name="PageHero" title="入試情報" en="admissions" lead="入試制度・日程・出願書類をまとめています。わからないことは入試課までお気軽にご相談ください。" hint-size="100%,420px"></dc-import>
+
+<div style="background:#FFF8EA;padding:20px 20px 0">
+  <p style="max-width:880px;margin:0 auto;box-sizing:border-box;background:#fff;border:2px dashed #2B2B2B;border-radius:12px;padding:12px 16px;font-size:13px;line-height:1.8">※このページの日程・内容は<b>仮</b>のものです。正式な情報は募集要項でご確認ください。</p>
+</div>
+
+<section id="systems" data-screen-label="Admissions 01 入試制度" aria-labelledby="sy-h" style="background:#FFF8EA;padding:40px 20px 64px;scroll-margin-top:70px">
+  <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:26px">
+    <h2 id="sy-h" style="margin:0;font-size:clamp(24px,3.4vw,30px);font-weight:900;letter-spacing:.12em;color:#fff;-webkit-text-stroke:1.4px #2B2B2B;paint-order:stroke fill;text-align:center">入試制度</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:12px;width:100%">
+      <sc-for list="{{ systems }}" as="s" hint-placeholder-count="4">
+        <article style="background:#FBFAF6;border:2px solid #2B2B2B;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px">
+          <p style="margin:0;font-size:12px;font-weight:700">{{ s.lead }}</p>
+          <h3 style="margin:0;font-size:20px;font-weight:900;color:#1D5641">{{ s.name }}</h3>
+          <p style="margin:0;font-size:13px;line-height:1.85;text-wrap:pretty">{{ s.body }}</p>
+          <p style="margin:0;font-size:12px;line-height:1.7"><b>おもな選考方法：</b>{{ s.method }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="schedule" data-screen-label="Admissions 02 入試日程" aria-labelledby="sc-h" style="background:#C5D97F;padding:56px 20px 64px;scroll-margin-top:70px">
+  <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:26px">
+    <h2 id="sc-h" style="margin:0;font-size:clamp(24px,3.4vw,30px);font-weight:900;letter-spacing:.12em;color:#fff;-webkit-text-stroke:1.4px #2B2B2B;paint-order:stroke fill;text-align:center">入試日程</h2>
+    <div style="width:100%;overflow-x:auto;background:#FBFAF6;border:2px solid #2B2B2B;border-radius:16px">
+      <table class="sched" style="width:100%;min-width:560px;border-collapse:collapse;font-size:13px">
+        <thead><tr style="background:#89C2C1"><th scope="col" style="text-align:left;padding:12px 16px;border-bottom:2px solid #2B2B2B">入試区分</th><th scope="col" style="text-align:left;padding:12px 16px;border-bottom:2px solid #2B2B2B">出願期間</th><th scope="col" style="text-align:left;padding:12px 16px;border-bottom:2px solid #2B2B2B">試験日</th><th scope="col" style="text-align:left;padding:12px 16px;border-bottom:2px solid #2B2B2B">合格発表</th></tr></thead>
+        <tbody>
+          <sc-for list="{{ systems }}" as="s" hint-placeholder-count="4">
+            <tr><th scope="row" style="text-align:left;padding:12px 16px;border-bottom:1px dashed #C9C2B2">{{ s.name }}</th><td data-label="出願期間" style="padding:12px 16px;border-bottom:1px dashed #C9C2B2">○月○日〜○月○日</td><td data-label="試験日" style="padding:12px 16px;border-bottom:1px dashed #C9C2B2">○月○日</td><td data-label="合格発表" style="padding:12px 16px;border-bottom:1px dashed #C9C2B2">○月○日</td></tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin:0;font-size:12px">日程は決まり次第、募集要項とこのページで公表します。</p>
+  </div>
+</section>
+
+<section id="flow" data-screen-label="Admissions 03 出願の流れ" aria-labelledby="fl-h" style="background:#FCDCD0;padding:56px 20px 64px;scroll-margin-top:70px">
+  <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:26px">
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px">
+      <h2 id="fl-h" style="margin:0;font-size:clamp(24px,3.4vw,30px);font-weight:900;letter-spacing:.12em;color:#fff;-webkit-text-stroke:1.4px #2B2B2B;paint-order:stroke fill;text-align:center">出願の流れ</h2>
+      <img src="images/illust/point.png" alt="" style="width:clamp(64px,12vw,96px);height:auto;display:block">
+    </div>
+    <ol class="flow" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px;width:100%">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="5">
+        <li style="background:#FBFAF6;border:2px solid #2B2B2B;border-radius:16px;padding:18px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+          <span style="width:36px;height:36px;border-radius:50%;border:2px solid #2B2B2B;background:#F2A93B;display:flex;align-items:center;justify-content:center;font-family:Quicksand,sans-serif;font-weight:700">{{ st.n }}</span>
+          <b style="font-size:15px">{{ st.title }}</b>
+          <span style="font-size:12px;line-height:1.7">{{ st.note }}</span>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section id="documents" data-screen-label="Admissions 04 募集要項・資料請求" aria-labelledby="dc-h" style="background:#FFF8EA;padding:56px 20px 64px;scroll-margin-top:70px">
+  <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:26px">
+    <h2 id="dc-h" style="margin:0;font-size:clamp(24px,3.4vw,30px);font-weight:900;letter-spacing:.12em;color:#fff;-webkit-text-stroke:1.4px #2B2B2B;paint-order:stroke fill;text-align:center">募集要項・資料請求</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:12px;width:100%">
+      <article style="background:#FBFAF6;border:2px solid #2B2B2B;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-size:17px;font-weight:900;color:#1D5641">学生募集要項</h3><p style="margin:0;font-size:13px;line-height:1.8">出願資格・選考方法・出願書類の詳細です。</p><a href="#documents" style="margin-top:auto;display:flex;align-items:center;justify-content:center;height:42px;border-radius:999px;border:2px solid #2B2B2B;background:#89C2C1;color:#2B2B2B;font-size:13px;font-weight:700;text-decoration:none" style-hover="background:#A6D3D2;color:#2B2B2B">PDFを見る（準備中）</a></article>
+      <article style="background:#FBFAF6;border:2px solid #2B2B2B;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-size:17px;font-weight:900;color:#1D5641">大学案内パンフレット</h3><p style="margin:0;font-size:13px;line-height:1.8">学部・学科やキャンパスの様子をまとめた冊子を無料でお届けします。</p><a href="#documents" style="margin-top:auto;display:flex;align-items:center;justify-content:center;height:42px;border-radius:999px;border:2px solid #2B2B2B;background:#1D5641;color:#fff;font-size:13px;font-weight:700;text-decoration:none" style-hover="background:#2B2B2B;color:#fff">資料を請求する</a></article>
+      <article style="background:#FBFAF6;border:2px solid #2B2B2B;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-size:17px;font-weight:900;color:#1D5641">過去の入試問題</h3><p style="margin:0;font-size:13px;line-height:1.8">一般選抜の過去問題を閲覧できます。</p><a href="#documents" style="margin-top:auto;display:flex;align-items:center;justify-content:center;height:42px;border-radius:999px;border:2px solid #2B2B2B;background:#89C2C1;color:#2B2B2B;font-size:13px;font-weight:700;text-decoration:none" style-hover="background:#A6D3D2;color:#2B2B2B">閲覧する（準備中）</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="faq" data-screen-label="Admissions 05 よくある質問" aria-labelledby="fq-h" style="background:#C5D97F;padding:56px 20px 64px;scroll-margin-top:70px">
+  <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:22px">
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px">
+      <img src="images/illust/question.png" alt="" style="width:clamp(56px,10vw,80px);height:auto;display:block">
+      <h2 id="fq-h" style="margin:0;font-size:clamp(24px,3.4vw,30px);font-weight:900;letter-spacing:.12em;color:#fff;-webkit-text-stroke:1.4px #2B2B2B;paint-order:stroke fill;text-align:center">よくある質問</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;width:100%">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+        <div style="background:#FBFAF6;border:2px solid #2B2B2B;border-radius:14px;overflow:hidden">
+          <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;display:flex;align-items:center;gap:12px;padding:16px 18px;background:transparent;border:0;font-family:inherit;font-size:15px;font-weight:700;color:#2B2B2B;text-align:left;cursor:pointer">
+            <span style="flex:none;width:28px;height:28px;border-radius:50%;background:#1D5641;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Quicksand,sans-serif">Q</span>
+            <span style="flex:1">{{ q.q }}</span>
+            <span aria-hidden="true" style="flex:none;font-size:20px">{{ q.icon }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;padding:0 18px 18px 58px;font-size:14px;line-height:1.9">{{ q.a }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="width:100%;box-sizing:border-box;background:#fff;border:2px dashed #2B2B2B;border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px">
+      <img src="images/illust/aha.png" alt="" style="flex:none;width:64px;height:auto;display:block">
+      <p style="margin:0;font-size:13px;line-height:1.8">ここにない質問も、入試課が一つひとつお答えします。<br><b>入試課 TEL 00-0000-0000</b>（平日 9:00–17:00）</p>
+    </div>
+  </div>
+</section>
+<dc-import name="CtaBand" hint-size="100%,340px"></dc-import>
+</main>
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { open: 0 };
+  renderVals() {
+    const F = [
+      ['複数の入試に出願できますか？', '入試区分によって併願できるものがあります。詳しくは募集要項でご確認ください。'],
+      ['総合型選抜では何が見られますか？', '志望理由や、高校時代に取り組んだこと、学びへの意欲を面談やレポートで確認します。'],
+      ['オープンキャンパスに参加しないと不利になりますか？', '参加の有無が合否に影響することはありません。大学を知る機会としてぜひご活用ください。'],
+      ['奨学金制度はありますか？', '大学独自の奨学金制度を設ける予定です。内容は決まり次第お知らせします。'],
+    ];
+    return {
+      systems: [
+        { lead: 'あなたの「好き」と意欲を見る', name: '総合型選抜', body: '志望理由や高校での活動をもとに、学びへの意欲と適性を総合的に評価します。', method: '書類審査・面談・レポート' },
+        { lead: '高校からの推薦で', name: '学校推薦型選抜', body: '在籍高校の推薦にもとづき、これまでの学習成果と人物を評価します。', method: '書類審査・小論文・面接' },
+        { lead: '学力を試験で', name: '一般選抜', body: '本学独自の筆記試験で、各学科で学ぶための基礎学力を評価します。', method: '筆記試験' },
+        { lead: '共通テストの成績で', name: '大学入学共通テスト利用選抜', body: '大学入学共通テストの成績を用いて選考します。本学での個別試験はありません。', method: '大学入学共通テストの成績' },
+      ],
+      steps: [
+        { n: 1, title: '情報を集める', note: '募集要項・オープンキャンパス' },
+        { n: 2, title: '出願登録', note: 'Web出願サイトで登録' },
+        { n: 3, title: '書類を送付', note: '期間内に必着' },
+        { n: 4, title: '受験', note: '受験票を忘れずに' },
+        { n: 5, title: '合格発表・入学手続', note: 'Webで確認' },
+      ],
+      faqs: F.map(([q, a], i) => ({ q, a, open: this.state.open === i, icon: this.state.open === i ? '−' : '+', toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

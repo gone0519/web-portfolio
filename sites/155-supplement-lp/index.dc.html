@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#faf6f1;color:#2b2326;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#b0174f;text-decoration:none}
+a:hover{color:#8a0f3c}
+a:focus-visible,button:focus-visible{outline:2px solid #b0174f;outline-offset:3px}
+h1,h2,h3,p,dl,dd,dt,ul{margin:0;padding:0}
+html,body{overflow-x:hidden}
+/* 写真が入っているスロットは点線枠を出さない */
+image-slot[src]::part(ring),image-slot[data-filled]::part(ring){display:none}
+/* 背景用スロットは写真未設定なら非表示（プレースホルダー文言を出さない） */
+#philosophy-bg:not([src]),#purchase-bg:not([src]){display:none}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:30;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(176,23,79,0.12)">
+  <div data-progress="" style="position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:linear-gradient(90deg,#b0174f,#e27aa0);transform-origin:left;scale:0 1"></div><div style="max-width:1280px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" style="display:flex;align-items:baseline;gap:10px;color:#2b2326">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:0.12em">[BRAND]</span>
+      <span style="font-family:'Noto Serif JP',serif;font-size:11px;letter-spacing:0.12em;color:#b0174f">[ロゴ差し替え]</span>
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:28px;font-family:'Noto Serif JP',serif;font-size:13px;letter-spacing:0.1em">
+        <a href="#about" style="color:#2b2326" style-hover="color:#b0174f">商品について</a>
+        <a href="#point" style="color:#2b2326" style-hover="color:#b0174f">成分</a>
+        <a href="#howto" style="color:#2b2326" style-hover="color:#b0174f">お召し上がり方</a>
+        <a href="#faq" style="color:#2b2326" style-hover="color:#b0174f">Q&amp;A</a>
+        <a href="#purchase" style="background:#b0174f;color:#fff;padding:12px 26px;letter-spacing:0.14em;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.35)" style-hover="background:#8a0f3c;color:#fff">{{ ctaLabel }}</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="メニューを開閉" aria-expanded="{{ menuOpen }}" style="width:48px;height:48px;border:1px solid #b0174f;background:#fff;color:#b0174f;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.12em;cursor:pointer">{{ menuLabel }}</button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;flex-direction:column;padding:4px 24px 24px;font-family:'Noto Serif JP',serif;font-size:16px;background:#fff">
+      <a href="#about" onClick="{{ closeMenu }}" style="color:#2b2326;padding:16px 0;border-bottom:1px solid #f0dfe5">商品について</a>
+      <a href="#point" onClick="{{ closeMenu }}" style="color:#2b2326;padding:16px 0;border-bottom:1px solid #f0dfe5">成分</a>
+      <a href="#howto" onClick="{{ closeMenu }}" style="color:#2b2326;padding:16px 0;border-bottom:1px solid #f0dfe5">お召し上がり方</a>
+      <a href="#faq" onClick="{{ closeMenu }}" style="color:#2b2326;padding:16px 0;border-bottom:1px solid #f0dfe5">よくあるご質問</a>
+      <a href="#purchase" onClick="{{ closeMenu }}" style="margin-top:18px;background:#b0174f;color:#fff;padding:16px;text-align:center;letter-spacing:0.14em">{{ ctaLabel }}</a>
+    </nav>
+  </sc-if>
+</header>
+
+<main id="top">
+
+<!-- ========== 01 HERO ========== -->
+<section data-screen-label="01 Hero" style="position:relative;overflow:hidden;background:{{ heroBg }}">
+  <div data-kenburns="" style="position:absolute;inset:0;opacity:{{ heroImgOpacity }};-webkit-mask-image:{{ heroImgMask }};mask-image:{{ heroImgMask }}"><image-slot id="hero-bg" shape="rect" src="img/tablets-white.jpg" placeholder="ヒーロー背景写真（ファブリック＋白いスタジオ）"></image-slot></div><span data-twinkle="0" style="position:absolute;left:8%;top:14%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px rgba(255,220,235,0.9);pointer-events:none"></span><span data-twinkle="1" style="position:absolute;left:22%;top:38%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px rgba(255,220,235,0.9);pointer-events:none"></span><span data-twinkle="2" style="position:absolute;left:14%;top:62%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px rgba(255,220,235,0.9);pointer-events:none"></span><span data-twinkle="3" style="position:absolute;left:30%;top:20%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px rgba(255,220,235,0.9);pointer-events:none"></span><span data-twinkle="4" style="position:absolute;left:4%;top:80%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px rgba(255,220,235,0.9);pointer-events:none"></span><span data-twinkle="5" style="position:absolute;left:34%;top:72%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px rgba(255,220,235,0.9);pointer-events:none"></span><span data-twinkle="6" style="position:absolute;left:26%;top:50%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px rgba(255,220,235,0.9);pointer-events:none"></span><span data-twinkle="7" style="position:absolute;left:18%;top:88%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px rgba(255,220,235,0.9);pointer-events:none"></span><span data-twinkle="8" style="position:absolute;left:38%;top:8%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px rgba(255,220,235,0.9);pointer-events:none"></span>
+  <div style="position:relative;max-width:{{ heroMaxW }};margin:0 auto;padding:56px 24px 64px;display:grid;grid-template-columns:{{ heroCols }};gap:{{ heroGap }};align-items:center;pointer-events:none">
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:28px;padding:32px 8px;background:{{ heroColBg }};color:#fff;text-align:center">
+      <div data-anim="blur" style="display:flex;flex-direction:column;gap:6px;font-family:'Noto Serif JP',serif;text-shadow:0 2px 14px rgba(110,8,44,0.45)">
+        <span style="font-size:clamp(16px,1.6vw,20px);letter-spacing:0.14em">毎日に寄り添う成分を</span>
+        <h1 style="font-weight:500;font-size:clamp(40px,4.6vw,60px);letter-spacing:0.1em;line-height:1.25">ていねいに配合</h1>
+      </div>
+      <div data-stagger="pop" data-delay="300" style="position:relative;width:250px;height:230px">
+        <div data-float="0" style="position:absolute;left:0;top:0;width:118px;height:118px;border-radius:50%;border:1px solid rgba(255,255,255,0.85);background:radial-gradient(circle at 50% 40%,rgba(255,255,255,0.22),rgba(255,255,255,0.02) 70%);box-shadow:0 0 28px rgba(255,190,215,0.55),inset 0 0 18px rgba(255,255,255,0.25);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;line-height:1.2"><span style="font-size:22px">[成分A]</span><span style="font-size:10px;letter-spacing:0.1em;margin-top:4px">[補足]</span></div>
+        <div data-float="1" style="position:absolute;right:0;top:-6px;width:118px;height:118px;border-radius:50%;border:1px solid rgba(255,255,255,0.85);background:radial-gradient(circle at 50% 40%,rgba(255,255,255,0.22),rgba(255,255,255,0.02) 70%);box-shadow:0 0 28px rgba(255,190,215,0.55),inset 0 0 18px rgba(255,255,255,0.25);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;line-height:1.2"><span style="font-size:10px;letter-spacing:0.1em;margin-bottom:4px">[補足]</span><span style="font-size:22px">[成分B]</span></div>
+        <div data-float="2" style="position:absolute;left:66px;bottom:0;width:118px;height:118px;border-radius:50%;border:1px solid rgba(255,255,255,0.85);background:radial-gradient(circle at 50% 40%,rgba(255,255,255,0.22),rgba(255,255,255,0.02) 70%);box-shadow:0 0 28px rgba(255,190,215,0.55),inset 0 0 18px rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;font-size:22px">[成分C]</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:28px">
+      <div data-anim="rise" data-delay="200" style="position:relative;width:230px;height:300px;pointer-events:auto;filter:drop-shadow(0 30px 26px rgba(70,20,40,0.28))">
+        <div data-float="3" style="position:absolute;inset:0;background:linear-gradient(90deg,#e9e4e6,#fff 40%,#f2eef0);border-radius:18px 18px 8px 8px"><image-slot src="_filled/01-step2-palms.jpg" id="hero-product" shape="rounded" radius="14" fit="contain" placeholder="商品パッケージ写真（透過PNG推奨）"></image-slot></div>
+      </div>
+      <div data-anim="up" data-delay="500" style="display:flex;flex-direction:column;gap:2px;align-self:stretch;max-width:300px;margin:0 auto;width:100%">
+        <span style="font-family:'Noto Serif JP',serif;font-size:14px;line-height:1.6;letter-spacing:0.08em">[主成分]配合<br>サプリメント</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.4vw,42px);letter-spacing:0.06em;line-height:1.1">[PRODUCT NAME]</span>
+        <span style="font-family:'Noto Serif JP',serif;font-size:13px;letter-spacing:0.12em;color:#b0174f">[フレーバー／タイプ名]</span>
+      </div>
+      <a href="#purchase" data-anim="up" data-delay="650" data-pulse="" style="position:relative;overflow:hidden;pointer-events:auto;display:flex;align-items:center;justify-content:center;gap:16px;width:100%;max-width:300px;background:linear-gradient(180deg,#c01f58,#a3134a);color:#fff;padding:18px 24px;font-family:'Noto Serif JP',serif;font-size:16px;letter-spacing:0.14em;box-shadow:0 14px 28px -14px rgba(176,23,79,0.8),inset 0 0 0 1px rgba(255,255,255,0.3)" style-hover="background:#8a0f3c;color:#fff"><span data-shine-bar="" style="position:absolute;top:0;bottom:0;left:0;width:35%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,0.45),rgba(255,255,255,0));pointer-events:none"></span>{{ ctaLabel }}<span style="font-family:'Cormorant Garamond',serif;font-size:20px">›</span></a>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:20px">
+      <div data-anim="vreveal" data-delay="400" style="display:flex;flex-direction:row-reverse;align-items:flex-start;gap:10px;font-family:'Noto Serif JP',serif">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;writing-mode:vertical-rl">
+          <span style="font-size:17px;letter-spacing:0.18em;color:#2b2326">話題の</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;margin-top:40px">
+          <span style="writing-mode:vertical-rl;background:#fff;padding:10px 6px;font-size:17px;letter-spacing:0.18em;box-shadow:0 4px 14px rgba(0,0,0,0.12)">[主成分]</span>
+          <span style="writing-mode:vertical-rl;font-size:17px;padding-top:6px">で</span>
+        </div>
+        <span style="writing-mode:vertical-rl;font-size:clamp(46px,4.8vw,64px);font-weight:500;letter-spacing:0.08em;color:#b0174f;line-height:1.05">毎日の</span>
+        <span style="writing-mode:vertical-rl;font-size:clamp(46px,4.8vw,64px);font-weight:500;letter-spacing:0.08em;color:#b0174f;line-height:1.05;margin-top:72px">内側ケア</span>
+        <span style="writing-mode:vertical-rl;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;letter-spacing:0.22em;color:#c995a8;margin-top:150px">inner care</span>
+      </div>
+      <div data-anim="zoomin" data-delay="700" data-float="4" style="position:relative;width:min(100%,300px);aspect-ratio:5/4;pointer-events:auto;border-radius:50%;background:radial-gradient(circle at 45% 40%,#f6c6d6,#e996b3 60%,rgba(233,150,179,0) 72%)"><image-slot id="hero-ingredient" shape="circle" src="img/vegetables-basket.jpg" placeholder="原料イメージ写真（透過PNG）"></image-slot></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 02 NEEDS & VALUE ========== -->
+<section id="about" data-screen-label="02 Needs & Value" style="scroll-margin-top:72px">
+  <div style="position:relative;overflow:hidden;background:linear-gradient(105deg,#e9e7e6 0%,#f4f3f2 45%,#dedad7 100%);padding:clamp(64px,8vw,104px) 20px 0">
+    <div style="position:absolute;inset:0;opacity:0.75"><image-slot id="concern-bg" shape="rect" src="img/fruits-blue.jpg" placeholder="背景写真（モノトーンの生活シーン）"></image-slot></div>
+    <div data-anim="up" style="position:relative;max-width:620px;margin:0 auto;background:#fff;padding:44px clamp(24px,5vw,60px) 52px;box-shadow:0 24px 48px -28px rgba(40,30,35,0.35);display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;font-family:'Noto Serif JP',serif">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.36em;color:#b9adb2">CONCERN</span>
+        <span style="font-size:clamp(20px,2.4vw,26px);letter-spacing:0.12em;line-height:1.8"><span style="text-emphasis:filled dot #2b2326;-webkit-text-emphasis:filled dot #2b2326">毎日の暮らし</span>の中で感じる</span>
+        <h2 data-anim="blur" data-delay="150" style="font-weight:600;font-size:clamp(28px,3.4vw,38px);letter-spacing:0.14em;padding:0 10px 6px;background:linear-gradient(transparent 82%,#d8c38c 82%,#d8c38c 90%,transparent 90%)">こんな気がかり</h2>
+      </div>
+      <ul data-stagger="left" data-delay="300" style="list-style:none;display:flex;flex-direction:column;gap:16px">
+        <sc-for list="{{ concerns }}" as="c" hint-placeholder-count="5">
+          <li style="display:flex;gap:14px;align-items:flex-start;font-size:15px;line-height:1.8"><span style="flex:0 0 20px;height:20px;margin-top:3px;border:1.5px solid #b9993f;color:#b9993f;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center">✓</span><span><span style="background:#efe7d2;padding:2px 6px;font-weight:700;box-decoration-break:clone;-webkit-box-decoration-break:clone">{{ c.em }}</span>{{ c.rest }}</span></li>
+        </sc-for>
+      </ul>
+    </div>
+    <div data-anim="vreveal" style="position:relative;width:1px;height:96px;background:#2b2326;margin:0 auto"><span style="position:absolute;left:-3px;bottom:-3px;width:7px;height:7px;border-radius:50%;background:#2b2326"></span></div>
+  </div>
+
+  <div style="position:relative;background:radial-gradient(circle at 8% 18%,rgba(255,214,231,0.9),rgba(255,255,255,0) 26%),radial-gradient(circle at 92% 10%,rgba(205,228,255,0.9),rgba(255,255,255,0) 24%),radial-gradient(circle at 80% 40%,rgba(255,244,205,0.8),rgba(255,255,255,0) 22%),radial-gradient(circle at 20% 55%,rgba(220,240,255,0.7),rgba(255,255,255,0) 20%),#fdfbfb;padding-top:48px;overflow:hidden"><span data-drift="0" style="position:absolute;left:6%;top:12%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,190,215,0.55),rgba(255,255,255,0) 70%);pointer-events:none"></span><span data-drift="1" style="position:absolute;right:8%;top:6%;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(190,215,255,0.55),rgba(255,255,255,0) 70%);pointer-events:none"></span><span data-drift="2" style="position:absolute;left:38%;top:30%;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(255,235,170,0.6),rgba(255,255,255,0) 70%);pointer-events:none"></span><span data-drift="3" style="position:absolute;right:28%;bottom:18%;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(255,190,215,0.45),rgba(255,255,255,0) 70%);pointer-events:none"></span><span data-drift="4" style="position:absolute;left:14%;bottom:10%;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(190,215,255,0.6),rgba(255,255,255,0) 70%);pointer-events:none"></span>
+    <div data-stagger="blur" style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;font-family:'Noto Serif JP',serif;padding:0 20px">
+      <span style="font-size:clamp(18px,2vw,24px);letter-spacing:0.1em">そんな毎日に、</span>
+      <h2 style="font-weight:500;font-size:clamp(34px,5.4vw,64px);letter-spacing:0.06em;line-height:1.3"><span style="color:#b0174f;border-bottom:2px solid #b0174f;padding:0 4px">[商品名]</span>という</h2>
+      <span style="font-size:clamp(18px,2vw,24px);letter-spacing:0.1em">新しい選択を。</span>
+    </div>
+    <div style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));align-items:center;gap:40px 0;margin-top:56px">
+      <div data-anim="wipe" style="position:relative;z-index:2;aspect-ratio:16/10;margin-bottom:{{ bandOverlap }};background:linear-gradient(135deg,#dfe9f3,#f2f6fa);box-shadow:0 18px 30px -18px rgba(30,50,80,0.35)"><image-slot id="value-lab" shape="rect" src="img/tablets-yellow.jpg" placeholder="研究・製造イメージ写真"></image-slot></div>
+      <div data-stagger="right" data-delay="300" style="padding:0 clamp(24px,5vw,72px) {{ textPadBottom }};display:flex;flex-direction:column;align-items:flex-start;gap:14px;font-family:'Noto Serif JP',serif">
+        <span style="font-size:16px;letter-spacing:0.08em">[商品名]は、</span>
+        <p style="font-size:clamp(20px,2.2vw,26px);line-height:2.1;letter-spacing:0.04em;color:#b0174f;font-weight:500"><span style="background:#fff;padding:3px 10px;box-shadow:2px 3px 10px rgba(60,20,35,0.14);box-decoration-break:clone;-webkit-box-decoration-break:clone">[主成分]を[配合量]配合した、<br>[形状]タイプの<br>サプリメント</span><span style="color:#2b2326;font-size:16px;margin-left:8px">です。</span></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:14px;line-height:2;color:#4d4246;max-width:30em">[商品のコンセプト・開発意図を、確認済みの情報に基づいて記入してください。]</p>
+      </div>
+    </div>
+    <div style="position:relative;background:#a8174a;color:#fff">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+        <div></div>
+        <div style="position:relative;padding:48px clamp(24px,5vw,72px) 56px;display:flex;flex-direction:column;gap:18px">
+          <span data-anim="right" data-parallax="-0.06" style="position:absolute;right:clamp(24px,5vw,72px);top:14px;font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,64px);letter-spacing:0.06em;color:rgba(255,255,255,0.16);line-height:1;pointer-events:none">FEATURE</span>
+          <h3 style="font-family:'Noto Serif JP',serif;font-weight:500;font-size:clamp(22px,2.4vw,28px);letter-spacing:0.12em">[商品名]の特長</h3>
+          <ul data-stagger="up" data-delay="200" style="list-style:none;display:flex;flex-direction:column;gap:14px;font-family:'Noto Serif JP',serif;font-size:15px">
+            <sc-for list="{{ features }}" as="f" hint-placeholder-count="3">
+              <li style="display:flex;gap:12px;align-items:baseline"><span style="font-family:'Cormorant Garamond',serif;font-size:20px">{{ f.n }}.</span><span style="border-bottom:1px solid rgba(255,255,255,0.7);padding-bottom:3px;letter-spacing:0.06em">{{ f.t }}</span></li>
+            </sc-for>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 03 INGREDIENTS ========== -->
+<section id="point" data-screen-label="03 Ingredients" style="scroll-margin-top:72px">
+  <div style="position:relative;background:linear-gradient(180deg,#fff 0%,#f3f1f2 70%,#e8e5e7 100%);padding:clamp(72px,8vw,104px) 0 clamp(56px,6vw,80px);overflow:hidden">
+    <span data-anim="fade" data-parallax="0.15" style="position:absolute;left:50%;transform:translateX(-50%);top:clamp(20px,3vw,36px);white-space:nowrap;font-family:'Cormorant Garamond',serif;font-size:clamp(32px,8vw,110px);letter-spacing:0.04em;color:rgba(176,23,79,0.07);line-height:1">What's INGREDIENT</span>
+    <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));align-items:start">
+      <div data-anim="left" data-delay="200" style="position:relative;z-index:2;margin-top:48px;margin-right:{{ panelOverlap }};background:rgba(247,232,238,0.95);padding:clamp(36px,5vw,56px) clamp(24px,5vw,64px);display:flex;flex-direction:column;gap:22px;justify-self:{{ panelJustify }};max-width:{{ panelMaxW }};width:100%">
+        <h2 style="font-family:'Noto Serif JP',serif;font-weight:500;font-size:clamp(28px,3.2vw,38px);letter-spacing:0.06em"><span style="color:#b0174f">[主成分]</span><span style="font-size:0.7em">とは？</span></h2>
+        <p style="font-size:14px;line-height:2.05;color:#4d4246">[主成分の概要を記入してください。どのような原料から得られる成分か、一般的にどのような食品に含まれるかなど、出典を確認できる情報のみを掲載します。]</p>
+        <p style="font-size:14px;line-height:2.05;color:#4d4246"><span style="color:#b0174f;font-weight:700">[強調したい事実：例 原料の産地や抽出方法]</span>について、[補足説明]。</p>
+      </div>
+      <div data-anim="wipe-r" style="aspect-ratio:16/11;background:linear-gradient(135deg,#e7a3bc,#c9567f);box-shadow:0 24px 40px -28px rgba(120,20,60,0.5)"><image-slot id="about-ingredient" shape="rect" src="img/flowers-capsules.jpg" placeholder="成分イメージ写真（ピンク系）"></image-slot></div>
+    </div>
+  </div>
+
+  <div style="background:#faf6f1;padding:clamp(72px,8vw,104px) 0 clamp(80px,9vw,120px)">
+    <div data-stagger="blur" style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:0 20px;font-family:'Noto Serif JP',serif">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:0.36em;color:#9c8f94">POINT</span>
+      <span style="font-size:clamp(20px,2.4vw,28px);letter-spacing:0.12em;margin-top:8px">[商品名]に<span style="text-emphasis:filled dot #2b2326;-webkit-text-emphasis:filled dot #2b2326">配合</span>した</span>
+      <h2 style="font-weight:500;font-size:clamp(26px,6.4vw,58px);letter-spacing:0.06em;color:#b0174f;line-height:1.4">こだわりの<span style="white-space:nowrap;border-bottom:2px solid #b0174f;padding:0 4px"><span style="font-size:1.25em">3</span>つの成分</span></h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:clamp(64px,8vw,104px);margin-top:clamp(56px,7vw,88px)">
+      <sc-for list="{{ points }}" as="p" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:{{ p.dir }};align-items:center;gap:clamp(32px,4vw,56px)">
+          <div data-anim="wipe" style="position:relative;flex:0 0 {{ p.imgBasis }};width:{{ p.imgWidth }};aspect-ratio:16/9">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,{{ p.tone1 }},{{ p.tone2 }});box-shadow:0 22px 34px -22px rgba(40,20,30,0.45)"><image-slot id="{{ p.slot }}" shape="rect" src="{{ p.src }}" placeholder="{{ p.image }}"></image-slot></div>
+            <div data-stagger="pop" data-delay="700" style="position:absolute;right:6%;top:-8%;display:flex;flex-direction:column;gap:10px;pointer-events:none">
+              <sc-for list="{{ p.badges }}" as="b" hint-placeholder-count="0">
+                <span data-float="1" style="width:clamp(72px,8vw,96px);height:clamp(72px,8vw,96px);border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff6cf 0%,#f0c95a 32%,#c48f22 72%,#8e6011 100%);box-shadow:0 8px 16px rgba(90,60,0,0.35),inset 0 -4px 10px rgba(80,50,0,0.35);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Noto Serif JP',serif;font-size:clamp(13px,1.3vw,16px);line-height:1.3;color:#fff;text-shadow:0 1px 3px rgba(90,50,0,0.7);margin-left:{{ b.shift }}">{{ b.t }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <div data-stagger="up" data-delay="250" style="flex:1 1 0;min-width:0;padding:0 clamp(24px,5vw,72px);display:flex;flex-direction:column;gap:20px;max-width:620px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+              <h3 style="font-family:'Noto Serif JP',serif;font-weight:500;font-size:clamp(24px,2.8vw,34px);line-height:1.45;letter-spacing:0.06em">{{ p.origin }}<br>{{ p.name }}</h3>
+              <span data-anim="blur" data-delay="500" style="position:relative;font-family:'Cormorant Garamond',serif;font-size:clamp(64px,7vw,92px);line-height:0.85;color:#e7aec3;flex:0 0 auto">{{ p.num }}<span style="position:absolute;left:-4px;top:42%;font-size:12px;letter-spacing:0.18em;color:#d48aa6;background:#faf6f1;padding:0 2px">POINT</span></span>
+            </div>
+            <p style="font-size:14px;line-height:2.05;color:#4d4246">{{ p.body }} <span style="color:#b0174f;font-weight:700">{{ p.em }}</span></p>
+            <span style="align-self:flex-start;font-family:'Noto Serif JP',serif;font-size:14px;letter-spacing:0.08em;border-top:1px solid #2b2326;padding-top:10px">配合量　{{ p.amount }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="max-width:1040px;margin:clamp(80px,9vw,120px) auto 0;padding:0 20px">
+      <div data-anim="up" style="position:relative;background:#fff;padding:clamp(32px,5vw,56px);box-shadow:0 24px 50px -36px rgba(60,20,35,0.4);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:48px">
+        <span style="position:absolute;right:24px;top:-0.6em;font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,64px);color:rgba(176,23,79,0.12);line-height:1">LABEL</span>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <h3 style="font-family:'Noto Serif JP',serif;font-weight:500;font-size:22px;letter-spacing:0.12em"><span style="color:#b0174f">栄養</span>成分表示</h3>
+          <span style="font-size:12px;color:#7a6c71">[1日目安量]あたり</span>
+          <dl data-stagger="fade" data-delay="300" style="display:flex;flex-direction:column;font-size:14px;border-top:1px solid #2b2326">
+            <sc-for list="{{ nutrition }}" as="n" hint-placeholder-count="5">
+              <div style="display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid #eadde2"><dt>{{ n.k }}</dt><dd style="color:#7a6c71">{{ n.v }}</dd></div>
+            </sc-for>
+          </dl>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <h3 style="font-family:'Noto Serif JP',serif;font-weight:500;font-size:22px;letter-spacing:0.12em"><span style="color:#b0174f">商品</span>情報</h3>
+          <span style="font-size:12px;color:#7a6c71">商品ラベルの表示内容に基づき記入</span>
+          <dl data-stagger="fade" data-delay="300" style="display:flex;flex-direction:column;font-size:14px;border-top:1px solid #2b2326">
+            <sc-for list="{{ specs }}" as="s" hint-placeholder-count="6">
+              <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:16px;padding:13px 0;border-bottom:1px solid #eadde2"><dt>{{ s.k }}</dt><dd style="color:#7a6c71">{{ s.v }}</dd></div>
+            </sc-for>
+          </dl>
+        </div>
+      </div>
+      <p style="margin-top:16px;font-size:12px;line-height:1.9;color:#7a6c71">※成分の配合は、特定の効果・効能を保証するものではありません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 04 HOW TO & WHY ========== -->
+<section id="howto" data-screen-label="04 How to use & Why" style="scroll-margin-top:72px">
+  <div style="position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 40%,#2f5a35,#18311d 60%,#0f2214);padding:clamp(80px,9vw,120px) 20px">
+    <div data-kenburns="" style="position:absolute;inset:0;opacity:0.9"><image-slot src="_filled/02-3.jpg" id="philosophy-bg" shape="rect" placeholder="背景写真（植物・グリーンウォール）"></image-slot></div>
+    <span data-anim="fade" data-parallax="0.12" style="position:absolute;left:50%;transform:translateX(-50%);top:-0.12em;white-space:nowrap;font-family:'Cormorant Garamond',serif;font-size:clamp(48px,8vw,104px);letter-spacing:0.06em;color:rgba(255,255,255,0.42);line-height:1;pointer-events:none">PHILOSOPHY</span>
+    <div style="position:relative;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(48px,6vw,80px);align-items:center;pointer-events:none">
+      <div style="position:relative;width:min(88%,420px);aspect-ratio:1/1.05;justify-self:center;margin-top:{{ philoCardTop }}">
+        <div data-anim="cardback" data-float="2" style="position:absolute;left:0;top:10%;width:72%;height:82%;background:linear-gradient(135deg,#fbe7a2,#f0c94f 55%,#e3ad2b);border:6px solid #fff;transform:rotate(-7deg);box-shadow:0 20px 34px rgba(0,0,0,0.35)"></div>
+        <div data-anim="cardfront" data-delay="200" data-float="3" style="position:absolute;right:0;top:0;width:78%;height:90%;background:#fff;padding:8px;transform:rotate(2deg);box-shadow:0 24px 40px rgba(0,0,0,0.4);pointer-events:auto"><div style="position:relative;width:100%;height:100%;background:linear-gradient(160deg,#fbf6e8,#efe2c2)"><image-slot id="philosophy-photo" shape="rect" src="img/woman-tablet-room.jpg" placeholder="原料・素材のクローズアップ写真"></image-slot></div></div>
+      </div>
+      <div data-stagger="up" data-delay="300" style="display:flex;flex-direction:column;gap:28px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.4)">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.36em;color:#f0d68a">WHY CHOOSE US</span>
+        <h2 style="font-family:'Noto Serif JP',serif;font-weight:400;font-size:clamp(30px,3.6vw,44px);line-height:1.55;letter-spacing:0.08em">[ブランドの想いを<br>表す見出し]</h2>
+        <p style="font-size:14px;line-height:2.1;color:#eef2ee">[ブランドの理念・商品開発の背景を記入してください。確認済みの情報のみを掲載します。]</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;font-family:'Noto Serif JP',serif;font-size:15px">
+          <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="3">
+            <li style="display:flex;gap:14px;align-items:baseline"><span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#f0d68a;min-width:22px">{{ r.n }}</span><span style="border-bottom:1px solid rgba(255,255,255,0.5);padding-bottom:3px">{{ r.t }}</span></li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;overflow:hidden;background:linear-gradient(100deg,#eef3ec 0%,#fbfcfa 50%,#f6f2ee 100%)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));align-items:stretch">
+      <div style="padding:clamp(56px,7vw,96px) clamp(20px,4vw,56px);display:flex;justify-content:flex-end;order:{{ howOrderText }}">
+        <div data-anim="up" style="position:relative;z-index:2;background:#fff;box-shadow:0 24px 48px -30px rgba(40,30,35,0.4);padding:clamp(32px,4vw,48px);display:flex;flex-direction:column;gap:28px;width:100%;max-width:520px;margin-right:{{ panelOverlap }}">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.36em;color:#9c8f94">HOW TO</span>
+            <h2 style="font-family:'Noto Serif JP',serif;font-weight:500;font-size:clamp(26px,3vw,34px);line-height:1.6;letter-spacing:0.08em;color:#b0174f;display:flex;flex-direction:column;align-items:flex-start"><span data-anim="wipe" data-delay="200" style="border-bottom:1px solid #b0174f">毎日の習慣にする</span><span data-anim="wipe" data-delay="200" style="border-bottom:1px solid #b0174f">お召し上がり方</span></h2>
+          </div>
+          <ol data-stagger="right" data-delay="300" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+            <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+              <li style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:12px;padding:16px 0;border-top:1px solid #eadde2">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1;color:#e7aec3">{{ s.num }}</span>
+                <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:600;letter-spacing:0.06em">{{ s.title }}</span><span style="font-size:14px;line-height:1.9;color:#4d4246">{{ s.body }}</span></div>
+              </li>
+            </sc-for>
+          </ol>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.9;background:#faf6f1;padding:16px 18px">
+            <span style="font-family:'Noto Serif JP',serif;font-weight:600;font-size:14px">保存方法</span>
+            <span style="color:#4d4246">[保存方法：商品ラベルの記載内容を転記]</span>
+          </div>
+        </div>
+      </div>
+      <div data-anim="wipe-r" style="position:relative;min-height:420px;background:linear-gradient(135deg,#f4f1ec,#e6e9e2);order:{{ howOrderImg }}"><image-slot id="howto-photo" shape="rect" src="img/woman-water-navy.jpg" placeholder="お召し上がりシーン写真（人物・水のグラス等）"></image-slot></div>
+    </div>
+    <p style="text-align:center;font-size:12px;line-height:1.9;color:#7a6c71;padding:20px 20px 28px;text-wrap:pretty">食生活は、主食、主菜、副菜を基本に、食事のバランスを。本品は医薬品ではなく、食事や治療の代わりになるものではありません。</p>
+  </div>
+</section>
+
+<!-- ========== 05 FAQ & PURCHASE ========== -->
+<section id="faq" data-screen-label="05 FAQ & Purchase" style="scroll-margin-top:72px">
+  <div style="position:relative;background:#faf6f1;padding:clamp(72px,8vw,104px) 20px">
+    <div style="max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:44px">
+      <div data-stagger="blur" style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:0.36em;color:#9c8f94">Q &amp; A</span>
+        <h2 style="font-family:'Noto Serif JP',serif;font-weight:500;font-size:clamp(28px,3.6vw,40px);letter-spacing:0.1em"><span style="color:#b0174f">よくある</span>ご質問</h2>
+      </div>
+      <div data-stagger="up" style="display:flex;flex-direction:column;border-top:1px solid #2b2326">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="8">
+          <div style="border-bottom:1px solid #e3d5da">
+            <button onClick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="width:100%;display:flex;align-items:center;gap:18px;padding:22px 8px;background:transparent;border:0;cursor:pointer;text-align:left;font-family:'Noto Serif JP',serif;font-size:16px;font-weight:500;color:#2b2326;line-height:1.6;letter-spacing:0.04em" style-hover="color:#b0174f">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1;color:#b0174f;flex:0 0 auto">Q</span>
+              <span style="flex:1">{{ f.q }}</span>
+              <span style="flex:0 0 28px;height:28px;border:1px solid #b0174f;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;color:#b0174f;font-family:'Noto Sans JP',sans-serif">{{ f.icon }}</span>
+            </button>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+              <div data-anim="faq" style="display:flex;gap:18px;padding:0 8px 24px;font-size:14px;line-height:2;color:#4d4246">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1;color:#d48aa6;flex:0 0 auto">A</span>
+                <p style="padding-top:2px">{{ f.a }}</p>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div id="purchase" style="position:relative;overflow:hidden;scroll-margin-top:72px;background:radial-gradient(circle at 12% 30%,rgba(214,232,246,0.95),rgba(255,255,255,0) 30%),radial-gradient(circle at 88% 70%,rgba(214,232,246,0.9),rgba(255,255,255,0) 30%),radial-gradient(circle at 50% 0%,rgba(255,228,238,0.8),rgba(255,255,255,0) 40%),#f8fbfd;padding:clamp(80px,9vw,120px) 20px"><span data-drift="0" style="position:absolute;left:6%;top:12%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(190,215,255,0.55),rgba(255,255,255,0) 70%);pointer-events:none"></span><span data-drift="1" style="position:absolute;right:8%;top:6%;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,222,0.55),rgba(255,255,255,0) 70%);pointer-events:none"></span><span data-drift="2" style="position:absolute;left:38%;top:30%;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(210,235,255,0.6),rgba(255,255,255,0) 70%);pointer-events:none"></span><span data-drift="3" style="position:absolute;right:28%;bottom:18%;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(190,215,255,0.45),rgba(255,255,255,0) 70%);pointer-events:none"></span><span data-drift="4" style="position:absolute;left:14%;bottom:10%;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,222,0.6),rgba(255,255,255,0) 70%);pointer-events:none"></span>
+    <div style="position:absolute;inset:0;opacity:0.7"><image-slot src="_filled/03-facial-care.jpg" id="purchase-bg" shape="rect" placeholder="背景写真（水・テクスチャ）"></image-slot></div>
+    <div data-stagger="up" style="position:relative;max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center;pointer-events:none">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:0.36em;color:#9c8f94">ORDER</span>
+      <div style="display:flex;flex-direction:column;gap:6px;font-family:'Noto Serif JP',serif">
+        <span style="font-size:clamp(20px,2.4vw,28px);letter-spacing:0.12em">[商品名]で、</span>
+        <h2 style="font-weight:500;font-size:clamp(34px,5vw,58px);letter-spacing:0.08em;color:#b0174f;line-height:1.4">今日からの習慣を</h2>
+      </div>
+      <div style="position:relative;width:200px;height:240px;filter:drop-shadow(0 26px 22px rgba(30,40,60,0.25));pointer-events:auto"><div data-float="2" style="position:absolute;inset:0;background:linear-gradient(90deg,#ebeef1,#fff 45%,#eef1f4);border-radius:16px 16px 8px 8px"><image-slot src="_filled/04-1.jpg" id="purchase-product" shape="rounded" radius="14" fit="contain" placeholder="商品パッケージ写真"></image-slot></div></div>
+      <div data-stagger="wipe" data-delay="300" style="display:flex;flex-direction:column;align-items:center;gap:6px;font-family:'Noto Serif JP',serif;font-size:clamp(15px,1.6vw,18px);letter-spacing:0.06em">
+        <span style="background:#b0174f;color:#fff;padding:5px 14px">[内容量]／約[日数]日分</span>
+        <span style="background:#b0174f;color:#fff;padding:5px 14px;font-size:1.3em">[価格]円<span style="font-size:0.65em">（税込）</span></span>
+        <span style="background:#b0174f;color:#fff;padding:5px 14px">[送料・定期購入の条件]</span>
+      </div>
+      <a href="#PURCHASE_URL" data-pulse="" style="position:relative;overflow:hidden;pointer-events:auto;display:flex;align-items:center;justify-content:center;gap:18px;width:min(100%,440px);background:linear-gradient(180deg,#c01f58,#a3134a);color:#fff;padding:22px 28px;font-family:'Noto Serif JP',serif;font-size:18px;letter-spacing:0.14em;box-shadow:0 18px 32px -16px rgba(176,23,79,0.8),inset 0 0 0 1px rgba(255,255,255,0.3)" style-hover="background:#8a0f3c;color:#fff"><span data-shine-bar="" style="position:absolute;top:0;bottom:0;left:0;width:35%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,0.45),rgba(255,255,255,0));pointer-events:none"></span>{{ ctaLabel }}<span style="font-family:'Cormorant Garamond',serif;font-size:22px">›</span></a>
+      <a href="#point" style="pointer-events:auto;font-family:'Noto Serif JP',serif;font-size:14px;letter-spacing:0.1em;color:#b0174f;border-bottom:1px solid #b0174f;padding-bottom:2px">商品詳細を見る</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:#2b2326;color:#e6dadf;padding:64px 24px {{ footerPadBottom }}">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:0.12em;color:#fff">[BRAND]</span>
+        <span style="font-size:13px;line-height:1.9">[販売会社名]<br>[所在地]</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+        <span style="font-family:'Noto Serif JP',serif;font-size:14px;color:#fff">商品情報</span>
+        <a href="#about" style="color:#e6dadf" style-hover="color:#fff">商品について</a>
+        <a href="#point" style="color:#e6dadf" style-hover="color:#fff">成分・栄養成分表示</a>
+        <a href="#howto" style="color:#e6dadf" style-hover="color:#fff">お召し上がり方</a>
+        <a href="#faq" style="color:#e6dadf" style-hover="color:#fff">よくあるご質問</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+        <span style="font-family:'Noto Serif JP',serif;font-size:14px;color:#fff">お問い合わせ</span>
+        <span>TEL：[電話番号]</span>
+        <span>受付時間：[受付時間]</span>
+        <a href="#CONTACT_URL" style="color:#e6dadf" style-hover="color:#fff">お問い合わせフォーム</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+        <span style="font-family:'Noto Serif JP',serif;font-size:14px;color:#fff">ご利用について</span>
+        <a href="#TOKUSHOHO_URL" style="color:#e6dadf" style-hover="color:#fff">特定商取引法に基づく表記</a>
+        <a href="#PRIVACY_URL" style="color:#e6dadf" style-hover="color:#fff">プライバシーポリシー</a>
+        <a href="#TERMS_URL" style="color:#e6dadf" style-hover="color:#fff">利用規約</a>
+      </div>
+    </div>
+    <p style="font-size:12px;line-height:1.9;color:#c4b5bb;border-top:1px solid #4a3e43;padding-top:24px;text-wrap:pretty">※本品は[食品区分]です。原材料をご確認のうえ、食物アレルギーのある方はお召し上がりにならないでください。1日の摂取目安量を守ってください。妊娠・授乳中の方、通院中・服薬中の方は、医師にご相談ください。体質や体調に合わない場合は摂取を中止してください。</p>
+    <span style="font-size:11px;color:#a3949a;letter-spacing:0.1em">© [COMPANY NAME] All Rights Reserved.</span>
+  </div>
+</footer>
+
+<sc-if value="{{ showStickyCta }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:25;padding:10px 16px;background:rgba(255,255,255,0.95);border-top:1px solid #f0dfe5">
+    <a href="#purchase" style="display:block;text-align:center;background:#b0174f;color:#fff;padding:15px;font-family:'Noto Serif JP',serif;letter-spacing:0.14em">{{ ctaLabel }}</a>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;商品を購入する&quot;,&quot;今すぐ購入する&quot;,&quot;公式オンラインショップはこちら&quot;],&quot;default&quot;:&quot;商品を購入する&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;stickyMobileCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menuOpen: false, open: { 0: true } };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.setupMotion();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    this.finishAll && window.removeEventListener('beforeprint', this.finishAll);
+    this.io && this.io.disconnect();
+    this.mo && this.mo.disconnect();
+    clearTimeout(this.flushT);
+    this.clearMotion && this.clearMotion();
+  }
+  clearMotion() {
+    document.getAnimations().forEach(a => { if (!(window.CSSAnimation && a instanceof CSSAnimation) && !(window.CSSTransition && a instanceof CSSTransition)) a.cancel(); });
+    ['float-on', 'kb-on', 'drift-on', 'tw-on', 'sh-on', 'pu-on'].forEach(k => document.querySelectorAll(`[data-${k}]`).forEach(el => el.removeAttribute(`data-${k}`)));
+  }
+  setupMotion() {
+    this.clearMotion();
+    const E = 'cubic-bezier(.2,.7,.2,1)';
+    const KF = {
+      up: [{ opacity: 0, translate: '0 40px' }, { opacity: 1, translate: '0 0' }],
+      left: [{ opacity: 0, translate: '-60px 0' }, { opacity: 1, translate: '0 0' }],
+      right: [{ opacity: 0, translate: '60px 0' }, { opacity: 1, translate: '0 0' }],
+      fade: [{ opacity: 0 }, { opacity: 1 }],
+      blur: [{ opacity: 0, filter: 'blur(12px)', translate: '0 14px' }, { opacity: 1, filter: 'blur(0)', translate: '0 0' }],
+      pop: [{ opacity: 0, scale: '0.4' }, { opacity: 1, scale: '1.08', offset: 0.7 }, { opacity: 1, scale: '1' }],
+      rise: [{ opacity: 0, translate: '0 90px', scale: '0.92' }, { opacity: 1, translate: '0 0', scale: '1' }],
+      zoomin: [{ opacity: 0, scale: '1.25' }, { opacity: 1, scale: '1' }],
+      wipe: [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }],
+      'wipe-r': [{ clipPath: 'inset(0 0 0 100%)' }, { clipPath: 'inset(0 0 0 0)' }],
+      vreveal: [{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0 0)' }],
+      cardback: [{ opacity: 0, translate: '-70px 60px', rotate: '-14deg' }, { opacity: 1, translate: '0 0', rotate: '0deg' }],
+      cardfront: [{ opacity: 0, translate: '70px 50px', rotate: '10deg' }, { opacity: 1, translate: '0 0', rotate: '0deg' }],
+      faq: [{ opacity: 0, translate: '0 -10px' }, { opacity: 1, translate: '0 0' }]
+    };
+    const DUR = { wipe: 1300, 'wipe-r': 1300, vreveal: 1400, pop: 800, faq: 450, rise: 1400, zoomin: 1600 };
+    this.anims = new Map();
+    this.revealed = new WeakSet();
+    this.done = new WeakSet();
+    const make = (el, type, delay) => {
+      const a = el.animate(KF[type] || KF.up, { duration: DUR[type] || 1100, delay, easing: E, fill: 'backwards' });
+      a.pause(); a.currentTime = 0;
+      return a;
+    };
+    const loop = (el, kf, opt) => el.animate(kf, { iterations: Infinity, direction: 'alternate', easing: 'ease-in-out', composite: 'add', ...opt });
+    this.io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        this.revealed.add(e.target);
+        (this.anims.get(e.target) || []).forEach(a => a.play());
+        this.io.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    const add = (target, a) => {
+      if (this.revealed.has(target)) { a.play(); return; }
+      if (!this.anims.has(target)) { this.anims.set(target, []); this.io.observe(target); }
+      this.anims.get(target).push(a);
+    };
+    this.scan = () => {
+      document.querySelectorAll('[data-anim]').forEach(el => {
+        if (this.done.has(el)) return; this.done.add(el);
+        const clip = /wipe|vreveal/.test(el.dataset.anim);
+        add(clip ? (el.parentElement || el) : el, make(el, el.dataset.anim, +(el.dataset.delay || 0)));
+      });
+      document.querySelectorAll('[data-stagger]').forEach(p => {
+        const base = +(p.dataset.delay || 0);
+        Array.from(p.children).forEach((c, i) => {
+          if (this.done.has(c)) return; this.done.add(c);
+          add(p, make(c, p.dataset.stagger, base + i * 130));
+        });
+      });
+      document.querySelectorAll('[data-float]').forEach(el => {
+        if (el.dataset.floatOn) return; el.dataset.floatOn = '1';
+        const n = +el.dataset.float;
+        loop(el, [{ translate: '0 0' }, { translate: '0 -12px' }], { duration: 2800 + n * 450, delay: -n * 700 });
+      });
+      document.querySelectorAll('[data-kenburns]').forEach(el => {
+        if (el.dataset.kbOn) return; el.dataset.kbOn = '1';
+        loop(el, [{ scale: '1' }, { scale: '1.08' }], { duration: 16000, composite: 'replace' });
+      });
+      document.querySelectorAll('[data-drift]').forEach(el => {
+        if (el.dataset.driftOn) return; el.dataset.driftOn = '1';
+        const n = +el.dataset.drift;
+        loop(el, [{ translate: '0 0', scale: '1' }, { translate: `${(n % 2 ? -1 : 1) * (30 + n * 8)}px ${-20 - n * 6}px`, scale: '1.15' }], { duration: 7000 + n * 1300, composite: 'replace' });
+      });
+      document.querySelectorAll('[data-twinkle]').forEach(el => {
+        if (el.dataset.twOn) return; el.dataset.twOn = '1';
+        const n = +el.dataset.twinkle;
+        el.animate([{ opacity: 0, scale: '0.3' }, { opacity: 1, scale: '1', offset: 0.5 }, { opacity: 0, scale: '0.3' }], { duration: 2200 + (n % 4) * 500, delay: n * 330, iterations: Infinity, easing: 'ease-in-out', fill: 'backwards' });
+      });
+      document.querySelectorAll('[data-shine-bar]').forEach(el => {
+        if (el.dataset.shOn) return; el.dataset.shOn = '1';
+        el.animate([{ translate: '-150% 0' }, { translate: '420% 0', offset: 0.45 }, { translate: '420% 0' }], { duration: 3600, iterations: Infinity, easing: 'ease-in-out', delay: 1200 });
+      });
+      document.querySelectorAll('[data-pulse]').forEach(el => {
+        if (el.dataset.puOn) return; el.dataset.puOn = '1';
+        el.animate([{ boxShadow: '0 14px 28px -14px rgba(176,23,79,0.8), inset 0 0 0 1px rgba(255,255,255,0.3)' }, { boxShadow: '0 18px 44px -8px rgba(176,23,79,0.95), inset 0 0 0 1px rgba(255,255,255,0.3)' }], { duration: 1600, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' });
+      });
+    };
+    this.entrance = [];
+    const origMake = make;
+    this.flushVisible = () => {
+      this.anims.forEach((list, target) => {
+        if (this.revealed.has(target)) return;
+        const r = target.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+          this.revealed.add(target);
+          list.forEach(a => document.visibilityState === 'hidden' ? a.finish() : a.play());
+          this.io.unobserve(target);
+        }
+      });
+    };
+    this.finishAll = () => { this.anims.forEach((list, t) => { this.revealed.add(t); list.forEach(a => a.finish()); }); };
+    window.addEventListener('beforeprint', this.finishAll);
+    this.scan();
+    if (document.visibilityState === 'hidden') this.finishAll();
+    this.flushT = setTimeout(this.flushVisible, 1200);
+    let queued = false;
+    this.mo = new MutationObserver(() => { if (queued) return; queued = true; setTimeout(() => { queued = false; this.scan(); if (document.visibilityState === 'hidden') this.finishAll(); else this.flushVisible(); }, 60); });
+    this.mo.observe(document.body, { childList: true, subtree: true });
+    let ticking = false;
+    this.onScroll = () => {
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        this.flushVisible && this.flushVisible();
+        const vh = window.innerHeight, max = document.documentElement.scrollHeight - vh;
+        const bar = document.querySelector('[data-progress]');
+        if (bar) bar.style.scale = `${max > 0 ? Math.min(1, window.scrollY / max) : 0} 1`;
+        document.querySelectorAll('[data-parallax]').forEach(el => {
+          const r = el.getBoundingClientRect();
+          if (r.bottom < -200 || r.top > vh + 200) return;
+          el.style.translate = `0 ${((r.top + r.height / 2) - vh / 2) * +el.dataset.parallax}px`;
+        });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+  renderVals() {
+    const w = this.state.w;
+    const narrow = w < 900;
+    const twoCol = w >= 860;
+    const magenta = 'linear-gradient(160deg,#c42a62 0%,#a3134a 55%,#7d0c35 100%)';
+    const faqData = [
+      ['どのような成分が含まれていますか？', '主な成分は[主成分]です。全成分は商品ラベルの原材料名表示をご確認ください。'],
+      ['どのように飲めばよいですか？', '[お召し上がり方：商品ラベルの記載内容を転記]'],
+      ['1日の目安量はどのくらいですか？', '1日[目安量]を目安にお召し上がりください。'],
+      ['何日分入っていますか？', '1袋に[内容量]入っており、約[日数]日分です。'],
+      ['保存方法を教えてください。', '[保存方法：商品ラベルの記載内容を転記]'],
+      ['価格はいくらですか？', '[価格]円（税込）です。送料・定期購入の条件は[条件]をご確認ください。'],
+      ['どこで購入できますか？', '公式オンラインショップ（[購入URL]）でご購入いただけます。[その他の取扱店舗]'],
+      ['注意事項はありますか？', '原材料をご確認のうえ、食物アレルギーのある方はお召し上がりにならないでください。妊娠・授乳中の方、通院中・服薬中の方は、事前に医師にご相談ください。1日の摂取目安量を守ってください。']
+    ];
+    const pts = [
+      { num: '01', origin: '[原産地]産', name: '[成分A]', slot: 'point-1', src: 'img/fruits-supplement.jpg', image: '成分Aイメージ写真', tone1: '#cfe3a8', tone2: '#8fbf55', body: '[成分Aの概要：どのような成分か、原料の由来などを確認済みの情報に基づいて記入]', em: '[強調したい事実]', amount: '[成分A配合量]', badges: [{ t: '[特徴]', shift: '0' }, { t: '[特徴]', shift: '-40px' }, { t: '[特徴]', shift: '10px' }] },
+      { num: '02', origin: '[原産地]産', name: '[成分B]', slot: 'point-2', src: 'img/dumbbell-capsules.jpg', image: '成分Bイメージ写真', tone1: '#f4ecec', tone2: '#e2d6d8', body: '[成分Bの概要：どのような成分か、原料の由来などを確認済みの情報に基づいて記入]', em: '[強調したい事実]', amount: '[成分B配合量]', badges: [] },
+      { num: '03', origin: '[原産地]産', name: '[成分C]', slot: 'point-3', src: 'img/gym-shake.jpg', image: '成分Cイメージ写真', tone1: '#f6d4e0', tone2: '#e290ae', body: '[成分Cの概要：どのような成分か、原料の由来などを確認済みの情報に基づいて記入]', em: '[強調したい事実]', amount: '[成分C配合量]', badges: [] }
+    ];
+    return {
+      wide: !narrow, narrow,
+      menuOpen: this.state.menuOpen,
+      showMobileMenu: narrow && this.state.menuOpen,
+      menuLabel: this.state.menuOpen ? 'CLOSE' : 'MENU',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      ctaLabel: this.props.ctaLabel ?? '商品を購入する',
+      showStickyCta: narrow && (this.props.stickyMobileCta ?? true) && !this.state.menuOpen,
+      heroBg: w >= 940 ? 'linear-gradient(100deg,#8e0f3e 0%,#b8215a 22%,#d0508a 31%,rgba(240,236,238,1) 40%,#fbfafa 70%,#ecebeb 100%)' : '#f6f3f4',
+      heroColBg: w >= 940 ? 'transparent' : magenta,
+      heroImgOpacity: w >= 940 ? 0.9 : 0.35,
+      heroImgMask: w >= 940 ? 'linear-gradient(90deg,transparent 30%,#000 50%)' : 'none',
+      philoCardTop: twoCol ? '0' : '24px',
+      heroCols: w >= 940 ? 'repeat(3,minmax(0,1fr))' : 'minmax(0,1fr)',
+      heroMaxW: w >= 940 ? '1280px' : '520px',
+      heroGap: w >= 940 ? '24px' : '48px',
+      panelJustify: twoCol ? 'end' : 'stretch',
+      panelMaxW: twoCol ? '640px' : 'none',
+      footerPadBottom: narrow && (this.props.stickyMobileCta ?? true) ? '120px' : '40px',
+      bandOverlap: twoCol ? '-140px' : '0',
+      textPadBottom: twoCol ? '170px' : '64px',
+      panelOverlap: twoCol ? '-96px' : '0',
+      howOrderText: 0, howOrderImg: twoCol ? 0 : -1,
+      concerns: [
+        { em: '食事のバランス', rest: 'が気になる' },
+        { em: '忙しくて食生活が不規則', rest: 'になりがち' },
+        { em: '手軽に続けられるもの', rest: 'を探している' },
+        { em: '毎日のコンディション', rest: 'を大切にしたい' },
+        { em: '[ターゲットの関心ごと]', rest: '' }
+      ],
+      features: [
+        { n: '01', t: '[特長1：例 毎日続けやすい形状]' },
+        { n: '02', t: '[特長2：例 主成分の配合量]' },
+        { n: '03', t: '[特長3：例 原料・品質へのこだわり]' }
+      ],
+      points: pts.map((p, i) => ({ ...p, dir: twoCol ? (i % 2 ? 'row-reverse' : 'row') : 'column', imgBasis: twoCol ? '48%' : 'auto', imgWidth: twoCol ? 'auto' : '100%' })),
+      nutrition: [
+        { k: 'エネルギー', v: '[　]kcal' }, { k: 'たんぱく質', v: '[　]g' }, { k: '脂質', v: '[　]g' },
+        { k: '炭水化物', v: '[　]g' }, { k: '食塩相当量', v: '[　]g' }
+      ],
+      specs: [
+        { k: '名称', v: '[名称]' }, { k: '原材料名', v: '[原材料名]' }, { k: '内容量', v: '[内容量]' },
+        { k: '形状', v: '[タブレット／カプセル／パウダー等]' }, { k: '製造', v: '[製造所・品質管理情報]' }, { k: '区分', v: '[食品区分]' }
+      ],
+      reasons: [
+        { n: 'i.', t: '[選ばれる理由1：例 製造・品質管理の体制]' },
+        { n: 'ii.', t: '[選ばれる理由2：例 原料の選定基準]' },
+        { n: 'iii.', t: '[選ばれる理由3：例 続けやすい価格・形状]' }
+      ],
+      steps: [
+        { num: '01', title: '1日の目安量', body: '1日[目安量]を目安にお召し上がりください。' },
+        { num: '02', title: 'タイミング', body: '[推奨タイミング：商品ラベルに記載がある場合のみ記入]' },
+        { num: '03', title: 'こんなときに', body: '朝の支度のあとや外出先など、生活リズムに合わせて。[利用シーン]' }
+      ],
+      faqs: faqData.map(([q, a], i) => {
+        const open = !!this.state.open[i];
+        return { q, a, open, icon: open ? '−' : '+', toggle: () => this.setState(s => ({ open: { ...s.open, [i]: !s.open[i] } })) };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

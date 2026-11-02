@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@200;300;400&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="./site.css" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#171717;color:#fff;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#fff;text-decoration:none}
+a:hover{color:#E8611A}
+a:focus-visible,button:focus-visible{outline:2px solid #E8611A;outline-offset:4px}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="academics" hint-size="100%,0px"></dc-import>
+<main>
+<section data-screen-label="Academics Hero" class="hero-sub" style="position:relative;overflow:hidden;min-height:clamp(460px,64vh,660px);background:linear-gradient(180deg,#0a1438 0%,#13246a 45%,#2d3a78 72%,#171717 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:150px clamp(20px,6vw,120px) 90px">
+  <dc-import name="Stars" seed="13" count="100" sparkles="16" shoot="2" top="85" style="position:absolute;inset:0;pointer-events:none" hint-size="100%,100%"></dc-import>
+  <nav aria-label="パンくずリスト" style="position:relative;display:flex;gap:10px;font-size:12px;color:#d4d8ea;letter-spacing:.08em"><a href="Koyo%20Womens%20University.dc.html">TOP</a><span aria-hidden="true">／</span><span>学部・学科</span></nav>
+  <p aria-hidden="true" class="hero-en" style="position:relative;margin:28px 0 0;font-family:'Lexend Zetta',sans-serif;font-weight:200;font-size:clamp(44px,8vw,128px);line-height:1;letter-spacing:-0.06em">ACADEMICS</p>
+  <h1 style="position:relative;margin:24px 0 0;font-size:clamp(18px,1.6vw,22px);font-weight:700;letter-spacing:.4em">学部・学科</h1>
+  <p style="position:relative;margin:24px 0 0;max-width:620px;font-size:15px;line-height:2.2;font-weight:500;letter-spacing:.06em;text-wrap:pretty">5つの学部で、ことば・人・暮らし・情報・世界を学びます。専門を深めながら、学部の垣根を越えた学びも選べます。</p>
+</section>
+
+<section data-screen-label="Faculties" aria-label="学部一覧" style="position:relative;overflow:hidden;padding:100px clamp(20px,6vw,120px) 120px">
+  <dc-import name="Stars" seed="31" count="70" sparkles="12" opacity="0.75" style="position:absolute;inset:0;pointer-events:none" hint-size="100%,100%"></dc-import>
+  <div style="position:relative;max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:120px">
+    <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="5">
+      <article id="{{ f.id }}" style="display:flex;flex-wrap:wrap;align-items:center;gap:56px;flex-direction:{{ f.dir }};scroll-margin-top:110px">
+        <div style="flex:1 1 440px;height:clamp(260px,30vw,400px);filter:grayscale(1)"><image-slot id="{{ f.slot }}" src="{{ f.src }}" shape="rect" placeholder="{{ f.ph }}"></image-slot></div>
+        <div style="flex:1 1 400px;max-width:520px;position:relative">
+          <span aria-hidden="true" style="position:absolute;left:-36px;top:-30px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,rgba(232,97,26,.5) 0%,rgba(232,97,26,0) 70%);pointer-events:none"></span>
+          <p style="position:relative;margin:0 0 14px;font-family:'Lexend Zetta',sans-serif;font-weight:300;font-size:14px;letter-spacing:-0.02em;color:#E8611A">{{ f.en }}</p>
+          <h2 style="position:relative;margin:0 0 22px;font-size:clamp(24px,2.4vw,32px);font-weight:700;letter-spacing:.14em">{{ f.name }}</h2>
+          <p style="margin:0 0 26px;font-size:15px;line-height:2.2;font-weight:500;letter-spacing:.04em;color:#e8e8e8;text-wrap:pretty">{{ f.desc }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <sc-for list="{{ f.depts }}" as="d" hint-placeholder-count="2">
+              <span style="border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:700;letter-spacing:.06em">{{ d }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+  <p style="position:relative;max-width:1240px;margin:80px auto 0;font-size:12px;color:#bdbdbd">※ 学部・学科の構成はサンプルです。</p>
+</section>
+
+<section data-screen-label="Learning" aria-labelledby="lr-h" style="position:relative;overflow:hidden;background:#fff;color:#2b2b2b;padding:120px clamp(20px,6vw,120px) 150px">
+  <dc-import name="Stars" seed="66" count="20" sparkles="12" dot="rgba(214,160,70,.7)" glow="232,150,60" core="#ffd27a" style="position:absolute;inset:0;pointer-events:none" hint-size="100%,100%"></dc-import>
+  <div style="position:relative;text-align:center">
+    <h2 id="lr-h" style="margin:0 0 20px;font-family:'Lexend Zetta',sans-serif;font-weight:300;font-size:20px;letter-spacing:-0.02em;color:#C24E0F">LEARNING</h2>
+    <p class="lead" style="margin:0;font-size:clamp(17px,1.5vw,21px);line-height:2.2;font-weight:700;letter-spacing:.14em">専門の外にも、学びは広がっている。</p>
+  </div>
+  <div style="position:relative;max-width:1200px;margin:80px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="height:240px;border-radius:999px;background:#E8611A;padding:3px;box-sizing:border-box;transition:padding .5s cubic-bezier(.2,.8,.2,1)" style-hover="padding:16px"><div style="position:relative;height:100%;border-radius:999px;overflow:hidden;background:#141414"><image-slot id="learn-minor" src="images/women-seminar.jpg" shape="pill" placeholder="ゼミ・ディスカッション"></image-slot></div></div>
+      <h3 style="margin:8px 0 0;font-size:18px;font-weight:700;letter-spacing:.12em;display:flex;align-items:center;gap:12px"><span style="width:12px;height:12px;border-radius:50%;background:radial-gradient(circle,#ffd27a 0%,#E8611A 70%)"></span>副専攻制度</h3>
+      <p style="margin:0;font-size:14px;line-height:2;color:#444;text-wrap:pretty">所属学部の専門に加え、他学部の科目をまとまって学び、もう一つの専門性を身につけられます。</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="height:240px;border-radius:999px;background:#E8611A;padding:3px;box-sizing:border-box;transition:padding .5s cubic-bezier(.2,.8,.2,1)" style-hover="padding:16px"><div style="position:relative;height:100%;border-radius:999px;overflow:hidden;background:#141414"><image-slot id="learn-project" src="images/women-project.jpg" shape="pill" placeholder="地域連携プロジェクト"></image-slot></div></div>
+      <h3 style="margin:8px 0 0;font-size:18px;font-weight:700;letter-spacing:.12em;display:flex;align-items:center;gap:12px"><span style="width:12px;height:12px;border-radius:50%;background:radial-gradient(circle,#ffd27a 0%,#E8611A 70%)"></span>実践型プロジェクト</h3>
+      <p style="margin:0;font-size:14px;line-height:2;color:#444;text-wrap:pretty">地域や企業から課題を受け取り、チームで調査・提案・発表まで取り組みます。</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="height:240px;border-radius:999px;background:#E8611A;padding:3px;box-sizing:border-box;transition:padding .5s cubic-bezier(.2,.8,.2,1)" style-hover="padding:16px"><div style="position:relative;height:100%;border-radius:999px;overflow:hidden;background:#141414"><image-slot id="learn-abroad" src="images/campus-path.jpg" shape="pill" placeholder="海外研修・留学先"></image-slot></div></div>
+      <h3 style="margin:8px 0 0;font-size:18px;font-weight:700;letter-spacing:.12em;display:flex;align-items:center;gap:12px"><span style="width:12px;height:12px;border-radius:50%;background:radial-gradient(circle,#ffd27a 0%,#E8611A 70%)"></span>留学・海外研修</h3>
+      <p style="margin:0;font-size:14px;line-height:2;color:#444;text-wrap:pretty">数週間の語学研修から1年間の交換留学まで、目的に合わせて選べます。</p>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,760px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const f = [
+      ['lit', 'FACULTY OF LETTERS', '文学部', 'ことばと物語、歴史を手がかりに、人と社会の成り立ちを読み解きます。原典を読み込み、自分の言葉で論じる力を養います。', ['日本文学科', '英米文学科', '史学科'], '文学部の授業風景'],
+      ['intl', 'FACULTY OF INTERNATIONAL STUDIES', '国際教養学部', '英語を使って学ぶ授業と留学を軸に、文化や価値観の違いを越えて協働する力を身につけます。', ['国際教養学科'], '国際教養学部・留学プログラム'],
+      ['human', 'FACULTY OF HUMAN SCIENCES', '人間科学部', '心理・教育・福祉の視点から、人の成長と暮らしを支える方法を学びます。実習やフィールドワークを重視しています。', ['心理学科', '教育学科', '社会福祉学科'], '人間科学部・実習'],
+      ['life', 'FACULTY OF HUMAN ENVIRONMENT', '生活環境学部', '食・住まい・衣服など、毎日の暮らしを科学的に捉え、よりよい環境をデザインします。', ['食物栄養学科', '住環境デザイン学科'], '生活環境学部・実験室'],
+      ['info', 'FACULTY OF INFORMATION DESIGN', '情報デザイン学部', 'データとデザインの両面から、情報を伝え、社会の課題を解決する方法を学びます。プログラミング未経験でも基礎から始められます。', ['データサイエンス学科', 'メディア表現学科'], '情報デザイン学部・制作風景']
+    ];
+    const img = { lit: 'women-seminar', intl: 'women-glass', human: 'women-three', life: 'building-concrete', info: 'women-laptop' };
+    return { faculties: f.map(([id, en, name, desc, depts, ph], i) => ({ id, en, name, desc, depts, ph, slot: 'acad-' + id, src: 'images/' + img[id] + '.jpg', dir: i % 2 ? 'row-reverse' : 'row' })) };
+  }
+}
+</script>
+</body>
+</html>

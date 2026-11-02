@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./anim.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Zen Kaku Gothic New',sans-serif;color:#4a2a36;background:#f8d3df;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#c24d76;text-decoration:none}
+a:hover{color:#a03a61}
+a:focus-visible,button:focus-visible{outline:2px solid #ffd76a;outline-offset:3px}
+h1,h2,h3,p{margin:0}
+</style>
+</helmet>
+
+<dc-import name="SiteHeader" current="top" hint-size="100%,0px"></dc-import>
+
+<main id="top">
+
+<!-- 01 HERO -->
+<section id="hero" data-screen-label="01 Hero" aria-label="メインビジュアル" style="position:relative;background:#f8d3df">
+  <div style="position:relative;height:clamp(620px,100vh,980px);overflow:hidden">
+    <div style="position:absolute;inset:0">
+      <image-slot src="_filled/04-student-b.jpg" id="hero-main" shape="rect" placeholder="メインビジュアル：白衣・私服の女子学生がキャンパスを歩く写真"></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(120,50,75,.28) 0%,rgba(120,50,75,0) 22%,rgba(255,255,255,0) 60%,rgba(120,50,75,.18) 100%);pointer-events:none"></div>
+    <div style="position:absolute;left:-18vw;bottom:-46vw;width:70vw;height:70vw;border-radius:50%;border:clamp(40px,7vw,110px) solid #f8d3df;border-left-color:transparent;border-bottom-color:transparent;transform:rotate(-20deg);pointer-events:none;opacity:.95"></div>
+    <div style="position:absolute;left:clamp(16px,8vw,160px);top:clamp(110px,16vh,180px);width:clamp(220px,28vw,420px);aspect-ratio:1/1;box-shadow:0 18px 40px rgba(90,30,50,.28);background:#fff">
+      <image-slot src="_filled/05-29.jpg" id="hero-oc-banner" shape="rect" placeholder="オープンキャンパス告知バナー（正方形）"></image-slot>
+    </div>
+    <div style="position:absolute;right:clamp(16px,8vw,130px);bottom:clamp(40px,9vh,100px);max-width:min(640px,calc(100% - 32px));color:#fff;text-shadow:0 2px 16px rgba(90,30,50,.45);pointer-events:none">
+      <p style="font-family:'Zen Old Mincho',serif;font-size:clamp(18px,2vw,26px);letter-spacing:.06em;margin-bottom:12px">2027年度 入学者選抜</p>
+      <h1 style="font-family:'Zen Old Mincho',serif;font-weight:500;font-size:clamp(36px,5.4vw,78px);line-height:1.22;letter-spacing:.08em;text-wrap:balance">いのちに寄り添う、<br>看護のひとになる。</h1>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:28px;pointer-events:auto;text-shadow:none">
+        <a href="#about" style="display:flex;align-items:center;gap:14px;background:#d06a86;color:#fff;padding:14px 26px;font-size:15px;font-weight:500;letter-spacing:.06em;box-shadow:4px 4px 0 rgba(255,255,255,.55)" style-hover="background:#b85571">大学を知る <span>→</span></a>
+        <a href="#admission" style="display:flex;align-items:center;gap:14px;background:#9a6bb8;color:#fff;padding:14px 26px;font-size:15px;font-weight:500;letter-spacing:.06em;box-shadow:4px 4px 0 rgba(255,255,255,.55)" style-hover="background:#845aa3">入試情報・オープンキャンパス <span>→</span></a>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;padding:16px clamp(16px,3vw,40px) 0">
+    <sc-for list="{{ pickups }}" as="p" hint-placeholder-count="4">
+      <a href="{{ p.href }}" style="display:flex;align-items:center;gap:14px;background:#fff;padding:10px;color:#4a2a36;font-size:12.5px;line-height:1.55" style-hover="background:#fdeef3">
+        <span style="flex:0 0 96px;height:60px;display:block"><image-slot id="{{ p.id }}" shape="rect" placeholder="バナー"></image-slot></span>
+        <span style="text-wrap:pretty">{{ p.text }}</span>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<!-- 02 ABOUT -->
+<section id="about" data-screen-label="02 About" aria-labelledby="about-h" style="background:linear-gradient(180deg,#f8d3df 0%,#fadde6 55%,#fdeef2 100%);padding:clamp(72px,10vw,130px) clamp(16px,4vw,40px) clamp(80px,10vw,140px);color:#8a3256">
+  <div style="max-width:1120px;margin:0 auto">
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em">✦ 本学について</p>
+    <h2 id="about-h" style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(34px,4vw,48px);letter-spacing:.02em;margin-top:6px">About</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,72px);margin-top:48px;align-items:center">
+      <div>
+        <p style="font-family:'Zen Old Mincho',serif;font-size:clamp(24px,2.6vw,34px);line-height:1.6;letter-spacing:.06em;text-wrap:balance">ひとを想う力を、<br>看護の力に。</p>
+        <p style="font-size:15px;line-height:2.05;margin-top:24px;text-wrap:pretty">白藍女子看護大学は、看護の専門職として自立した女性の育成を目指す看護単科大学です。確かな知識と技術に加え、患者さん一人ひとりの暮らしや想いに寄り添う姿勢を、少人数の学びと臨地での経験を通して育みます。</p>
+        <a href="About.dc.html" style="display:inline-flex;align-items:center;gap:14px;margin-top:28px;color:#8a3256;font-size:13px;font-weight:700" style-hover="opacity:.8">大学案内をみる <span style="width:30px;height:30px;border:1px solid #8a3256;border-radius:50%;display:grid;place-items:center;font-size:13px">↗</span></a>
+      </div>
+      <div style="aspect-ratio:4/3;border-radius:0 0 0 clamp(60px,9vw,120px);overflow:hidden">
+        <image-slot src="_filled/06-student-notebook.jpg" id="about-main" shape="rect" placeholder="講義・演習中の学生と教員の写真"></image-slot>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px;margin-top:clamp(56px,7vw,96px)">
+      <sc-for list="{{ features }}" as="f" hint-placeholder-count="3">
+        <article style="background:#fff6f8;color:#4a2a36;border-radius:0 0 0 56px;padding:28px 28px 32px;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:Montserrat,sans-serif;font-size:13px;color:#c24d76;letter-spacing:.12em">FEATURE {{ f.no }}</span>
+          <h3 style="font-size:19px;font-weight:700;line-height:1.5;color:#9b3560">{{ f.title }}</h3>
+          <p style="font-size:14px;line-height:1.95;text-wrap:pretty">{{ f.body }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 03 ACADEMICS -->
+<section id="academics" data-screen-label="03 Academics" aria-labelledby="ac-h" style="background:#fdeef2;position:relative">
+  <div style="background:#fff;border-radius:0 clamp(80px,14vw,220px) 0 0;max-width:calc(100% - clamp(0px,8vw,160px));padding:clamp(64px,8vw,110px) 0 0">
+    <div style="padding:0 clamp(16px,4vw,40px) 0 max(clamp(16px,4vw,40px),calc((100vw - 1120px)/2))">
+      <p style="font-size:12px;font-weight:700;color:#c24d76;letter-spacing:.08em">✦ 学部・大学院</p>
+      <h2 id="ac-h" style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(34px,4vw,48px);color:#c24d76;margin-top:6px">Academics</h2>
+      <a href="Academics.dc.html" style="display:inline-flex;align-items:center;gap:12px;margin-top:16px;color:#c24d76;font-size:13px;font-weight:700">学部・大学院をみる <span style="width:28px;height:28px;border:1px solid #c24d76;border-radius:50%;display:grid;place-items:center;font-size:12px">↗</span></a>
+    </div>
+  </div>
+  <div style="background:#fff;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));padding-top:40px">
+    <div style="aspect-ratio:4/3"><image-slot src="_filled/07-21.jpg" id="ac-1" shape="rect" placeholder="看護技術演習"></image-slot></div>
+    <div style="aspect-ratio:4/3"><image-slot src="_filled/08-hero-student.jpg" id="ac-2" shape="rect" placeholder="シミュレーション実習"></image-slot></div>
+    <div style="aspect-ratio:4/3"><image-slot src="_filled/09-student-a.jpg" id="ac-3" shape="rect" placeholder="臨地実習（病院）"></image-slot></div>
+    <div style="aspect-ratio:4/3"><image-slot src="_filled/10-students-glass.jpg" id="ac-4" shape="rect" placeholder="地域・在宅看護"></image-slot></div>
+    <div style="aspect-ratio:4/3"><image-slot src="_filled/11-indoor-slide.jpg" id="ac-5" shape="rect" placeholder="グループ学習"></image-slot></div>
+  </div>
+  <div style="background:#fff;padding:clamp(48px,6vw,80px) clamp(16px,4vw,40px) clamp(72px,9vw,120px)">
+    <div style="max-width:1120px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px 56px">
+        <sc-for list="{{ programs }}" as="pg" hint-placeholder-count="3">
+          <div>
+            <p style="font-size:12px;color:#85616d;font-weight:500">{{ pg.kind }}</p>
+            <h3 style="font-size:20px;font-weight:700;color:#c24d76;margin-top:4px;padding-bottom:12px;border-bottom:2px solid #c24d76">{{ pg.name }}</h3>
+            <p style="font-size:14px;line-height:1.9;margin-top:14px;text-wrap:pretty">{{ pg.body }}</p>
+            <div style="display:flex;flex-direction:column;margin-top:14px">
+              <sc-for list="{{ pg.links }}" as="l" hint-placeholder-count="2">
+                <a href="Academics.dc.html" style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #f3dde4;font-size:13.5px;color:#4a2a36" style-hover="color:#c24d76">{{ l }}<span style="width:22px;height:22px;border:1px solid #c24d76;border-radius:50%;display:grid;place-items:center;font-size:10px;color:#c24d76">↗</span></a>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:clamp(64px,8vw,100px)">
+        <p style="font-size:12px;font-weight:700;color:#c24d76;letter-spacing:.08em">✦ 4年間の学び</p>
+        <h3 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(26px,3vw,34px);color:#c24d76;margin-top:4px">Curriculum</h3>
+        <ol style="list-style:none;padding:0;margin:32px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px">
+          <sc-for list="{{ years }}" as="y" hint-placeholder-count="4">
+            <li style="background:linear-gradient(180deg,#fde9ef,#fffafb);padding:24px 22px 26px;border-radius:0 40px 0 0;display:flex;flex-direction:column;gap:10px">
+              <span style="font-family:Montserrat,sans-serif;font-size:40px;font-weight:300;color:#d0628a;line-height:1">{{ y.year }}<span style="font-size:13px;margin-left:4px;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700">年次</span></span>
+              <strong style="font-size:16px;color:#9b3560">{{ y.title }}</strong>
+              <p style="font-size:13.5px;line-height:1.85;text-wrap:pretty">{{ y.body }}</p>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CAMPUS LIFE -->
+<section id="campus" data-screen-label="04 Campus Life" aria-labelledby="cl-h" style="background:#fff;padding:0 clamp(16px,4vw,40px) clamp(80px,10vw,130px);border-top:1px solid #f6e3e9">
+  <div style="max-width:1120px;margin:0 auto;padding-top:clamp(64px,8vw,110px)">
+    <p style="font-size:12px;font-weight:700;color:#c24d76;letter-spacing:.08em">✦ 学生生活・施設</p>
+    <h2 id="cl-h" style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(34px,4vw,48px);color:#c24d76;margin-top:6px">Campus life</h2>
+    <a href="CampusLife.dc.html" style="display:inline-flex;align-items:center;gap:12px;margin-top:16px;color:#c24d76;font-size:13px;font-weight:700">学生生活をみる <span style="width:28px;height:28px;border:1px solid #c24d76;border-radius:50%;display:grid;place-items:center;font-size:12px">↗</span></a>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;margin-top:40px">
+      <sc-for list="{{ facilities }}" as="fc" hint-placeholder-count="3">
+        <a href="CampusLife.dc.html" style="position:relative;display:block;aspect-ratio:4/3;overflow:hidden;color:#fff">
+          <image-slot id="{{ fc.id }}" shape="rect" placeholder="{{ fc.ph }}"></image-slot>
+          <span style="position:absolute;left:0;right:0;bottom:0;padding:44px 18px 16px;background:linear-gradient(0deg,rgba(110,40,65,.75),rgba(110,40,65,0));display:flex;justify-content:space-between;align-items:flex-end;pointer-events:none">
+            <span><strong style="display:block;font-size:17px">{{ fc.title }}</strong><span style="font-size:12.5px">{{ fc.sub }}</span></span>
+            <span style="width:30px;height:30px;border:1px solid #fff;border-radius:50%;display:grid;place-items:center;font-size:12px">↗</span>
+          </span>
+        </a>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,5vw,72px);margin-top:clamp(64px,8vw,104px)">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+          <h3 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(26px,3vw,34px);color:#d06a86">Student Stories</h3>
+          <span style="font-size:12px;font-weight:700;color:#85616d">在学生・卒業生の声</span>
+        </div>
+        <div style="display:flex;flex-direction:column;margin-top:20px">
+          <sc-for list="{{ stories }}" as="s" hint-placeholder-count="3">
+            <article style="display:grid;grid-template-columns:104px minmax(0,1fr);gap:18px;padding:20px 0;border-bottom:1px solid #f3dde4;align-items:center">
+              <div style="width:104px;height:104px;border-radius:0 0 0 32px;overflow:hidden"><image-slot id="{{ s.id }}" shape="rect" placeholder="人物写真"></image-slot></div>
+              <div>
+                <p style="font-size:14.5px;line-height:1.8;font-weight:500;text-wrap:pretty">「{{ s.quote }}」</p>
+                <p style="display:flex;align-items:center;gap:8px;font-size:12px;color:#85616d;margin-top:8px"><span style="width:8px;height:8px;border-radius:50%;background:{{ s.dot }}"></span>{{ s.who }}</p>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+        <p style="font-size:11px;color:#8c6b76;margin-top:12px">※掲載のコメントはサンプルです。実際の学生インタビューに差し替えてください。</p>
+      </div>
+      <div style="background:linear-gradient(160deg,#f8d3df,#f5b9cb);color:#fff;padding:clamp(28px,4vw,44px);border-radius:0 0 0 72px;align-self:start">
+        <p style="font-size:12px;font-weight:700;letter-spacing:.08em">✦ 課外活動・行事</p>
+        <h3 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:28px;margin-top:4px">Clubs &amp; Events</h3>
+        <p style="font-size:14px;line-height:1.95;margin-top:16px;text-wrap:pretty">学年を越えた先輩・後輩のつながりは、実習や国家試験に向かう日々の支えにもなります。学園祭やスポーツ大会など、学年を越えて交流できる行事も充実しています。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
+          <sc-for list="{{ clubs }}" as="c" hint-placeholder-count="8">
+            <span style="background:rgba(255,255,255,.95);color:#9b3560;font-size:12.5px;font-weight:700;padding:7px 14px;border-radius:999px">{{ c }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ADMISSION -->
+<section id="admission" data-screen-label="05 Admission" aria-labelledby="ad-h" style="background:linear-gradient(180deg,#f8d3df 0%,#fadde6 60%,#fdf0f4 100%);color:#8a3256;padding:clamp(72px,10vw,130px) 0 clamp(80px,10vw,140px)">
+  <div style="max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px)">
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em">✦ 入試情報・オープンキャンパス</p>
+    <h2 id="ad-h" style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(34px,4vw,48px);margin-top:6px">Admission</h2>
+
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-top:48px">
+      <h3 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(26px,3vw,34px)">Open Campus</h3>
+      <a href="OpenCampus.dc.html" style="display:flex;align-items:center;gap:12px;color:#8a3256;font-size:12.5px;font-weight:700" style-hover="opacity:.8">イベント一覧をみる <span style="width:30px;height:30px;border:1px solid #8a3256;border-radius:50%;display:grid;place-items:center;font-size:12px">↗</span></a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px 36px;margin-top:24px;padding-left:28px">
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+        <article style="position:relative;background:#fff6f8;color:#4a2a36;border-radius:0 0 0 48px;padding:24px 22px 26px 64px;min-height:180px">
+          <div style="position:absolute;left:-28px;top:28px;width:64px;height:64px;border-radius:50%;background:#e7a3b9;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1">
+            <span style="font-size:10px;font-family:Montserrat,sans-serif">2027</span>
+            <span style="font-size:16px;font-weight:700">{{ e.season }}</span>
+          </div>
+          <span style="display:inline-block;background:#c24d76;color:#fff;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:3px">{{ e.tag }}</span>
+          <h4 style="font-size:16px;font-weight:700;margin:10px 0 0;line-height:1.55">{{ e.title }}</h4>
+          <p style="font-size:13px;line-height:1.8;margin-top:6px;text-wrap:pretty">{{ e.body }}</p>
+          <p style="font-size:12.5px;color:#c24d76;font-weight:700;margin-top:10px">開催日｜日程調整中（決定後に公開）</p>
+        </article>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:32px;margin-top:clamp(64px,8vw,96px)">
+      <div>
+        <h3 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(26px,3vw,34px)">Entrance Exam</h3>
+        <p style="font-size:14px;line-height:1.9;margin-top:12px;text-wrap:pretty">看護学部看護学科では、複数の選抜方式を実施予定です。出願資格・試験日程・選抜方法は、必ず最新の学生募集要項でご確認ください。</p>
+        <div style="display:flex;flex-direction:column;margin-top:20px;background:#fff;color:#4a2a36">
+          <sc-for list="{{ exams }}" as="x" hint-placeholder-count="4">
+            <a href="Admission.dc.html#exam" style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:18px 20px;border-bottom:1px solid #f3dde4;color:#4a2a36" style-hover="background:#fdeef3">
+              <strong style="font-size:15.5px;color:#9b3560">{{ x.name }}</strong>
+              <span style="grid-row:span 2;align-self:center;width:26px;height:26px;border:1px solid #c24d76;border-radius:50%;display:grid;place-items:center;font-size:11px;color:#c24d76">↗</span>
+              <span style="font-size:12.5px;line-height:1.7;color:#7a5763">{{ x.desc }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;align-self:end">
+        <a href="OpenCampus.dc.html#reserve" style="display:flex;justify-content:space-between;align-items:center;gap:16px;background:#fff;color:#9b3560;padding:24px 26px;border-radius:0 0 0 40px" style-hover="background:#fdeef3">
+          <span><span style="display:block;font-family:Montserrat,sans-serif;font-size:12px;letter-spacing:.12em;color:#d06a86">RESERVE</span><strong style="font-size:19px">オープンキャンパスを予約する</strong></span>
+          <span style="width:40px;height:40px;flex:none;border-radius:50%;background:#d06a86;color:#fff;display:grid;place-items:center">↗</span></a>
+        <a href="Admission.dc.html#exam" style="display:flex;justify-content:space-between;align-items:center;gap:16px;background:#fff;color:#9b3560;padding:24px 26px;border-radius:0 0 0 40px" style-hover="background:#fdeef3">
+          <span><span style="display:block;font-family:Montserrat,sans-serif;font-size:12px;letter-spacing:.12em;color:#9a6bb8">GUIDELINES</span><strong style="font-size:19px">学生募集要項・出願案内</strong></span>
+          <span style="width:40px;height:40px;flex:none;border-radius:50%;background:#9a6bb8;color:#fff;display:grid;place-items:center">↗</span></a>
+        <a href="Admission.dc.html#request" style="display:flex;justify-content:space-between;align-items:center;gap:16px;background:#fff;color:#9b3560;padding:24px 26px;border-radius:0 0 0 40px" style-hover="background:#fdeef3">
+          <span><span style="display:block;font-family:Montserrat,sans-serif;font-size:12px;letter-spacing:.12em;color:#c24d76">BROCHURE</span><strong style="font-size:19px">大学案内パンフレットを請求</strong></span>
+          <span style="width:40px;height:40px;flex:none;border-radius:50%;background:#c24d76;color:#fff;display:grid;place-items:center">↗</span></a>
+      </div>
+    </div>
+
+    <div style="margin-top:clamp(64px,8vw,100px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px">
+      <p style="font-family:'Zen Old Mincho',serif;font-size:clamp(24px,3vw,38px);letter-spacing:.08em;line-height:1.6;text-shadow:0 1px 12px rgba(150,60,90,.35)">看護の道の、最初の一歩を<br>このキャンパスで。</p>
+      <a href="OpenCampus.dc.html#reserve" style="display:flex;align-items:center;gap:16px;background:#fff;color:#c24d76;padding:18px 40px;font-size:16px;font-weight:700;letter-spacing:.06em;box-shadow:6px 6px 0 rgba(194,77,118,.35)" style-hover="background:#fdeef3">オープンキャンパスに参加する →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { menuOpen: false, w: typeof window !== 'undefined' ? window.innerWidth : 1280 };
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onR);
+    this.onK = (e) => { if (e.key === 'Escape') this.setState({ menuOpen: false }); };
+    window.addEventListener('keydown', this.onK);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); window.removeEventListener('keydown', this.onK); }
+  renderVals() {
+    return {
+      isDesktop: this.state.w >= 1100,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      navItems: [
+        { href: '#hero', en: 'Top', ja: 'トップ' },
+        { href: '#about', en: 'About', ja: '大学案内' },
+        { href: '#academics', en: 'Academics', ja: '学部・大学院' },
+        { href: '#campus', en: 'Campus life', ja: '学生生活' },
+        { href: '#admission', en: 'Admission', ja: '入試・オープンキャンパス' }
+      ],
+      pickups: [
+        { id: 'pk-1', href: 'Admission.dc.html', text: '2027年度 学生募集要項を公開しました（予定）' },
+        { id: 'pk-2', href: 'OpenCampus.dc.html#reserve', text: 'オープンキャンパスの参加予約を受付中' },
+        { id: 'pk-3', href: 'CampusLife.dc.html', text: '在学生が語る、看護大学の1日' },
+        { id: 'pk-4', href: 'Academics.dc.html', text: 'シミュレーションラボで学ぶ看護技術' }
+      ],
+      features: [
+        { no: '01', title: '少人数で学ぶ、確かな看護技術', body: '演習・実習は少人数のグループで行い、教員が一人ひとりの手技や判断に丁寧にフィードバックします。' },
+        { no: '02', title: '多様なフィールドでの臨地実習', body: '急性期病院から地域の訪問看護ステーションまで、提携施設での実習を通して看護の幅広い役割を学びます。' },
+        { no: '03', title: '国家試験と就職を4年間で支援', body: '1年次からの段階的な学習支援と模擬試験、キャリア面談で、看護師・保健師・助産師への道を後押しします。' }
+      ],
+      programs: [
+        { kind: '学部', name: '看護学部 看護学科', body: '人間・健康・環境・看護を軸に、生涯にわたる健康を支える看護を体系的に学びます。', links: ['学科の特色', 'カリキュラム', '取得可能な資格'] },
+        { kind: '専攻科', name: '助産学専攻科', body: '看護師資格を基盤に、妊娠・出産・育児期の女性と家族を支える助産の専門性を身につけます。', links: ['専攻科の概要', '実習施設'] },
+        { kind: '大学院', name: '看護学研究科', body: '臨床での問いを研究として深め、看護の実践・教育・研究をリードする人材を育成します。', links: ['修士課程', '研究分野・教員紹介'] }
+      ],
+      years: [
+        { year: '1', title: '看護の基礎を知る', body: '人体の構造や心理学など基礎科目と、看護の考え方を学ぶ導入科目に取り組みます。' },
+        { year: '2', title: '専門分野を学ぶ', body: '成人・老年・小児・母性・精神など各領域の看護と、演習による技術習得を進めます。' },
+        { year: '3', title: '臨地で実践する', body: '病院や地域の施設で各領域の実習を行い、患者さんとの関わりから看護を考えます。' },
+        { year: '4', title: '統合し、深める', body: '統合実習と卒業研究に取り組み、国家試験に向けた総仕上げを行います。' }
+      ],
+      facilities: [
+        { id: 'fc-1', title: 'シミュレーションラボ', sub: '病室を再現した実習環境', ph: 'シミュレーションラボ' },
+        { id: 'fc-2', title: 'ライブラリー', sub: '看護・医療の専門書と学習スペース', ph: '図書館・自習スペース' },
+        { id: 'fc-3', title: '学生寮', sub: '安心して暮らせる女子寮', ph: '学生寮の居室' }
+      ],
+      stories: [
+        { id: 'st-1', dot: '#f0a35e', quote: '初めての臨地実習で、患者さんの「ありがとう」に看護の意味を実感しました。', who: '看護学科 3年　Aさん' },
+        { id: 'st-2', dot: '#e36f6f', quote: '先生との距離が近く、国家試験の不安もすぐに相談できる環境でした。', who: '看護学科 卒業生　Bさん（看護師）' },
+        { id: 'st-3', dot: '#9a8fd6', quote: '同じ目標を持つ仲間と励まし合える時間が、何よりの支えです。', who: '看護学科 2年　Cさん' }
+      ],
+      clubs: ['軽音楽部', 'ダンス部', 'バレーボール部', '茶道部', '手話サークル', 'ボランティア部', '学園祭実行委員会', '国試対策サークル'],
+      events: [
+        { season: '春', tag: '高校生・保護者', title: 'オープンキャンパス', body: '学科説明、模擬授業、シミュレーションラボ見学、在学生との個別相談。' },
+        { season: '夏', tag: '高校生', title: '看護体験ワークショップ', body: '血圧測定や沐浴など、看護技術の一部を在学生と一緒に体験できます。' },
+        { season: '秋', tag: '受験生', title: '入試対策説明会', body: '各選抜方式のポイントや出願の流れを入試担当者が解説します。' }
+      ],
+      exams: [
+        { name: '総合型選抜', desc: '面談やプレゼンテーションを通じて、看護への意欲と適性を評価します。' },
+        { name: '学校推薦型選抜', desc: '高等学校からの推薦に基づき、書類・面接等で選考します。' },
+        { name: '一般選抜', desc: '本学独自の学力試験により選考します。' },
+        { name: '大学入学共通テスト利用選抜', desc: '大学入学共通テストの成績を利用して選考します。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

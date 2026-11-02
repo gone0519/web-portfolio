@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Quicksand:wght@500;700&family=DM+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<script src="anim.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fffdf6;color:#5b4a33;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#5b4a33}
+a:hover{color:#c9761f}
+:focus-visible{outline:3px solid #e89a3c;outline-offset:3px;border-radius:8px}
+section{scroll-margin-top:84px}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="campus" style="position:sticky;top:0;z-index:50;display:block" hint-size="100%,84px"></dc-import>
+<main>
+<section data-screen-label="Campus Hero" aria-labelledby="pg-h" style="position:relative;overflow:hidden;background:#fffdf6;padding:clamp(36px,5vw,64px) clamp(16px,5vw,64px) clamp(32px,4vw,48px)">
+  <img class="deco deco-sm-hide" src="images/deco/bookshelf-woman.png" alt="" style="top:24px;right:max(150px,calc(50% - 420px));width:clamp(110px,11vw,150px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap-reverse;gap:28px;justify-content:space-between;align-items:flex-start">
+    <div style="flex:1 1 480px;display:flex;flex-direction:column;gap:18px;align-items:flex-start">
+      <nav aria-label="パンくず" style="font-size:12px;color:#7d6b50;display:flex;gap:8px"><a href="Top.dc.html" style="text-decoration:none">トップ</a><span>＞</span><span>キャンパスライフ</span></nav>
+      <h1 id="pg-h" style="margin:0;display:flex;flex-direction:column;align-items:flex-start;gap:12px;font-size:clamp(20px,2.6vw,30px);letter-spacing:.08em;line-height:1.5">
+        <span style="padding:4px 16px 4px 6px;border-bottom:2px solid #5b4a33;border-right:2px solid #5b4a33;border-bottom-right-radius:10px;background:#fff">授業のあとも、</span>
+        <span style="padding:4px 16px 4px 6px;border-bottom:2px solid #5b4a33;border-right:2px solid #5b4a33;border-bottom-right-radius:10px;background:#fff">ここは、わたしの居場所。</span>
+      </h1>
+      <p style="margin:0;font-size:15px;line-height:2.1;max-width:36em;color:#6b5a40">学ぶ場所、くつろぐ場所、仲間と出会う場所。キャンパスでの毎日をのぞいてみてください。</p>
+    </div>
+    <div style="writing-mode:vertical-rl;display:flex;gap:12px;margin-left:auto">
+      <span style="font-size:clamp(26px,3vw,34px);font-weight:700;letter-spacing:.24em">キャンパスライフ</span>
+      <span style="font-family:Quicksand,sans-serif;font-size:11px;letter-spacing:.32em;color:#3f7299">CAMPUS LIFE</span>
+    </div>
+  </div>
+</section>
+
+<svg viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:60px"><path d="M0 45 C 260 10 520 70 760 40 C 1000 10 1220 65 1440 35 L1440 80 L0 80 Z" fill="#d3e5f2"></path></svg>
+<section id="facilities" aria-labelledby="fa-h" style="background:#d3e5f2;padding:20px clamp(12px,3vw,40px) 0">
+  <div style="max-width:1240px;margin:0 auto;background:#fff;border-radius:clamp(28px,5vw,64px) clamp(28px,5vw,64px) 0 0;padding:clamp(36px,6vw,72px) clamp(20px,5vw,64px);display:flex;flex-wrap:wrap-reverse;gap:clamp(28px,4vw,48px)">
+    <div style="flex:1 1 640px;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(18px,2.4vw,28px)">
+      <sc-for list="{{ facilities }}" as="p" hint-placeholder-count="6">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="position:relative;aspect-ratio:16/10;border-radius:22px;background:url({{ p.photo }}) center/cover" role="img" aria-label="{{ p.img }}">
+            <span style="position:absolute;top:0;right:12px;writing-mode:vertical-rl;background:#fff;border:1px solid #6f9fc4;border-top:none;color:#3f7299;font-size:11px;padding:8px 4px;border-radius:0 0 8px 8px;letter-spacing:.1em">{{ p.tag }}</span>
+          </div>
+          <strong style="font-size:15px">{{ p.title }}</strong>
+          <span style="font-size:13px;line-height:1.8;color:#6b5a40">{{ p.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="writing-mode:vertical-rl;display:flex;gap:12px;margin-left:auto">
+      <h2 id="fa-h" style="margin:0;font-size:clamp(22px,2.4vw,28px);letter-spacing:.24em">施設紹介</h2>
+      <span style="font-family:Quicksand,sans-serif;font-size:10px;letter-spacing:.3em;color:#3f7299">FACILITIES</span>
+    </div>
+  </div>
+</section>
+
+<section id="clubs" aria-labelledby="cl-h" style="position:relative;background:#fffdf6;padding:clamp(56px,8vw,96px) clamp(16px,4vw,48px)">
+  <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+    <h2 id="cl-h" style="margin:0;display:flex;align-items:center;gap:10px;font-size:clamp(22px,2.4vw,28px);letter-spacing:.16em"><span aria-hidden="true" style="width:20px;height:20px;border:2px solid #5b4a33;border-radius:5px"></span>クラブ・サークル</h2>
+    <span style="font-family:Quicksand,sans-serif;font-size:11px;letter-spacing:.32em;color:#c9761f">CLUBS &amp; CIRCLES</span>
+  </div>
+  <img class="deco deco-sm-hide" src="images/deco/clover-watercolor.png" alt="" style="left:max(2%,calc(50% - 600px));top:30px;width:clamp(130px,13vw,180px)">
+  <div style="max-width:1120px;margin:clamp(28px,4vw,40px) auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px">
+    <div style="background:#fff;border-radius:32px;padding:28px;box-shadow:6px 6px 0 #fcec9b;display:flex;flex-direction:column;gap:14px">
+      <strong style="font-size:16px">文化系</strong>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;font-size:12px">
+        <span style="background:#fdf3c4;border-radius:999px;padding:6px 12px">合唱部</span><span style="background:#fdf3c4;border-radius:999px;padding:6px 12px">茶道部</span><span style="background:#fdf3c4;border-radius:999px;padding:6px 12px">写真部</span><span style="background:#fdf3c4;border-radius:999px;padding:6px 12px">軽音楽部</span><span style="background:#fdf3c4;border-radius:999px;padding:6px 12px">文芸部</span><span style="background:#fdf3c4;border-radius:999px;padding:6px 12px">ボランティアサークル</span>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:32px;padding:28px;box-shadow:6px 6px 0 #dbe9bf;display:flex;flex-direction:column;gap:14px">
+      <strong style="font-size:16px">運動系</strong>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;font-size:12px">
+        <span style="background:#e8f1d6;border-radius:999px;padding:6px 12px">バレーボール部</span><span style="background:#e8f1d6;border-radius:999px;padding:6px 12px">テニス部</span><span style="background:#e8f1d6;border-radius:999px;padding:6px 12px">ダンス部</span><span style="background:#e8f1d6;border-radius:999px;padding:6px 12px">弓道部</span><span style="background:#e8f1d6;border-radius:999px;padding:6px 12px">バドミントンサークル</span>
+      </div>
+    </div>
+  </div>
+  <p style="max-width:1120px;margin:14px auto 0;font-size:11px;color:#7d6b50">※ 団体名はサンプルです</p>
+</section>
+
+<svg viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:60px"><path d="M0 40 C 240 0 480 70 740 40 C 1000 10 1220 70 1440 30 L1440 80 L0 80 Z" fill="#fcec9b"></path></svg>
+<section id="events" aria-labelledby="ev-h" style="background:#fcec9b;padding:clamp(40px,6vw,72px) clamp(16px,4vw,48px)">
+  <div style="max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap-reverse;gap:clamp(24px,4vw,48px)">
+    <ol style="flex:1 1 560px;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px">
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="8">
+        <li style="background:#fff;border-radius:24px;padding:18px 20px;display:flex;flex-direction:column;gap:6px"><strong style="font-family:Quicksand,sans-serif;font-size:13px;letter-spacing:.1em;color:#a8611a">{{ e.season }}</strong><span style="font-size:14px;font-weight:700">{{ e.name }}</span></li>
+      </sc-for>
+    </ol>
+    <div style="writing-mode:vertical-rl;display:flex;gap:12px;margin-left:auto">
+      <h2 id="ev-h" style="margin:0;font-size:clamp(22px,2.4vw,28px);letter-spacing:.24em">年間行事</h2>
+      <span style="font-family:Quicksand,sans-serif;font-size:10px;letter-spacing:.3em;color:#a8611a">EVENTS</span>
+    </div>
+  </div>
+</section>
+<svg viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true" style="display:block;width:100%;height:60px;background:#fcec9b"><path d="M0 45 C 300 10 560 70 820 40 C 1060 15 1260 60 1440 35 L1440 80 L0 80 Z" fill="#fffdf6"></path></svg>
+
+<section id="voices" aria-labelledby="vo-h" style="padding:clamp(48px,7vw,88px) clamp(16px,4vw,48px)">
+  <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+    <h2 id="vo-h" style="margin:0;display:flex;align-items:center;gap:10px;font-size:clamp(22px,2.4vw,28px);letter-spacing:.16em"><span aria-hidden="true" style="width:20px;height:20px;border:2px solid #5b4a33;border-radius:5px"></span>先輩たちのストーリー</h2>
+    <span style="font-family:Quicksand,sans-serif;font-size:11px;letter-spacing:.32em;color:#c9761f">STUDENT VOICES</span>
+    <span style="font-size:11px;color:#7d6b50">※ 掲載している声はサンプルです</span>
+  </div>
+  <div style="max-width:1120px;margin:clamp(28px,4vw,44px) auto 0;display:flex;flex-direction:column;gap:24px">
+    <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+      <article style="background:#fff;border-radius:40px;padding:clamp(20px,3vw,36px);box-shadow:8px 8px 0 {{ v.shadow }};display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,40px);align-items:center">
+        <div style="flex:0 1 260px;aspect-ratio:1;border-radius:50%;border:6px solid #fff;outline:1.5px solid {{ v.shadow }};background:url({{ v.photo }}) center/cover" role="img" aria-label="{{ v.img }}"></div>
+        <div style="flex:1 1 360px;display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="font-size:12px;background:{{ v.shadow }};border-radius:6px;padding:3px 10px">{{ v.dept }}</span><span style="font-size:12px;color:#7d6b50">{{ v.who }}</span></div>
+          <h3 style="margin:0;font-size:clamp(17px,1.8vw,20px);letter-spacing:.06em;padding:3px 14px 3px 4px;border-bottom:2px solid #5b4a33;border-right:2px solid #5b4a33;border-bottom-right-radius:8px">{{ v.title }}</h3>
+          <p style="margin:0;font-size:14px;line-height:2.1;color:#6b5a40;text-wrap:pretty">{{ v.text }}</p>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section id="support" aria-labelledby="su-h" style="padding:0 clamp(16px,4vw,48px) clamp(56px,8vw,96px)">
+  <div style="position:relative;max-width:1120px;margin:0 auto;background:#dbe9bf;border-radius:48px;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:24px">
+    <img class="deco deco-sm-hide" src="images/deco/books-cups.png" alt="" style="right:24px;top:-56px;width:clamp(160px,17vw,230px)">
+    <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:Quicksand,sans-serif;font-size:11px;letter-spacing:.32em;color:#4d7022">SUPPORT</span><h2 id="su-h" style="margin:0;font-size:clamp(20px,2.2vw,24px);letter-spacing:.12em">安心して学ぶためのサポート</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+      <div style="background:#fff;border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:6px"><strong style="font-size:15px">奨学金・学費サポート</strong><span style="font-size:13px;line-height:1.8;color:#6b5a40">本学独自の奨学金制度と、各種公的制度の申請をサポートします。</span></div>
+      <div style="background:#fff;border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:6px"><strong style="font-size:15px">学生寮・住まい探し</strong><span style="font-size:13px;line-height:1.8;color:#6b5a40">女子寮のほか、提携物件の紹介でひとり暮らしを応援します。</span></div>
+      <div style="background:#fff;border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:6px"><strong style="font-size:15px">キャリアセンター</strong><span style="font-size:13px;line-height:1.8;color:#6b5a40">1年次からの面談、インターンシップ紹介、就職・進学の個別支援。</span></div>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,360px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      facilities: [
+        { tag: '学ぶ', title: '図書館', img: '図書館', photo: 'images/library-building.jpg', text: '静かな閲覧席とグループ学習室。試験前は夜まで開いています。' },
+        { tag: '学ぶ', title: 'ラーニングコモンズ', img: 'ラーニングコモンズ', photo: 'images/laptop-team.jpg', text: '空きコマに友人と課題を進める、学生のいちばん人気の場所。' },
+        { tag: '学ぶ', title: '看護シミュレーション室', img: '演習室', photo: 'images/classroom.jpg', text: '実際の病室を再現した環境で、何度でも練習できます。' },
+        { tag: '過ごす', title: '学生食堂・カフェ', img: 'ラウンジで過ごす学生', photo: 'images/terrace.jpg', text: '日替わりメニューと、中庭に面したテラス席。' },
+        { tag: '過ごす', title: '中庭', img: '並木の中庭', photo: 'images/campus-tree.jpg', text: '季節の花が咲く中庭は、お昼休みの定番スポット。' },
+        { tag: '暮らす', title: '学生寮', img: '寮の仲間', photo: 'images/bench-chat.jpg', text: '県外出身の学生も安心して暮らせる女子寮です。' },
+      ],
+      events: [
+        { season: 'APRIL', name: '入学式・オリエンテーション' },
+        { season: 'MAY', name: '新入生歓迎会' },
+        { season: 'SUMMER', name: 'オープンキャンパス' },
+        { season: 'SUMMER', name: '海外研修' },
+        { season: 'AUTUMN', name: '大学祭' },
+        { season: 'WINTER', name: 'クリスマス音楽会' },
+        { season: 'WINTER', name: '卒業研究発表会' },
+        { season: 'MARCH', name: '卒業式' },
+      ],
+      voices: [
+        { shadow: '#fcec9b', img: '在学生ポートレート', photo: 'images/student-portrait.jpg', dept: '文学部', who: '英語英米文化学科 3年', title: '「話すのが苦手」だったわたしが、留学へ。', text: '入学したころは、授業で発言するのも緊張していました。少人数のゼミで先生や仲間が意見を待ってくれる環境のなかで、少しずつ自分の考えを言葉にできるようになり、2年次には半年間の留学にも挑戦しました。' },
+        { shadow: '#d3e5f2', img: '在学生ポートレート', photo: 'images/two-students.jpg', dept: '人間科学部', who: '児童教育学科 2年', title: '子どもたちの笑顔が、目標をはっきりさせてくれた。', text: '1年次から地域の小学校に行く機会があり、教室の中で学んだことを実際の子どもたちとの関わりで確かめられます。先生になりたいという気持ちが、日に日に強くなっています。' },
+        { shadow: '#dbe9bf', img: '在学生ポートレート', photo: 'images/three-portrait.jpg', dept: '看護学部', who: '看護学科 4年', title: '何度も練習できたから、実習で落ち着いていられた。', text: 'シミュレーション室では、空き時間にも自主練習ができます。友人と患者役を交代しながら練習を重ねたことで、臨地実習でも患者さんとしっかり向き合えました。' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#3a3236;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#d63d63;text-decoration:none}
+a:hover{color:#b02a4d}
+a:focus-visible,button:focus-visible{outline:3px solid #f6b8c8;outline-offset:3px}
+/* filled photos: hide the placeholder dashed ring */
+image-slot[src]::part(ring){display:none}
+image-slot[src]::part(frame){background:transparent}
+.nowrap-phrase{display:inline-block}
+.hex{font-size:13px !important;letter-spacing:-.06em;padding:0 !important}
+@media (max-width:900px){
+  .hd-in{padding:8px 14px 0 !important;gap:4px 10px !important}
+  .hd-nav{order:3;flex:1 1 100% !important;justify-content:safe center !important;margin:0 -14px !important;padding:0 6px 4px;scrollbar-width:none}
+  .hd-nav::-webkit-scrollbar{display:none}
+  main [id],main section{scroll-margin-top:104px !important}
+}
+/* let the hero photo bleed to the right edge on wide screens */
+@media (min-width:1101px){.hero-img{margin-right:calc(550px - 50vw) !important}}
+@media (max-width:760px){
+  .hd-nav{justify-content:flex-start !important}
+  .hd-nav a{padding:7px 7px !important;font-size:12.5px !important}
+  .hd-cta{padding:9px 16px !important;font-size:13px !important}
+  .hero-text{padding:32px 20px 32px !important;gap:16px !important}
+  .hero-ribbon{font-size:14px !important;padding:7px 24px !important;white-space:nowrap}
+  .hero-img{flex-basis:100% !important;min-height:min(92vw,420px) !important}
+  .hero-feats{gap:4px !important}
+  .hex{width:80px !important;height:88px !important;font-size:11px !important;letter-spacing:-.04em;padding:0 !important}
+  .ttl-concern{font-size:21px !important;letter-spacing:.02em !important}
+  .tel-block{align-items:center !important;text-align:center}
+  .reasons-box{gap:48px !important;padding-top:36px !important}
+  .reason-img{flex-basis:100% !important;height:240px !important}
+  .method-row{grid-template-columns:116px minmax(0,1fr) !important;font-size:13px}
+  .method-row>div{padding:12px 8px !important;display:flex;align-items:center}
+  .method-row>div:first-child{justify-content:center;white-space:nowrap}
+  .plans{gap:28px !important}
+  .ft-nav{gap:8px 16px !important}
+}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid #f3dbe2;backdrop-filter:blur(6px)">
+  <div class="hd-in" style="max-width:1200px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;color:#d63d63">
+      <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#f58aa5,#d63d63);color:#fff;display:grid;place-items:center;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:16px">L</span>
+      <span style="display:flex;flex-direction:column;line-height:1.2">
+        <span style="font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:16px">{{ bizName }}</span>
+        <span style="font-size:10px;letter-spacing:.12em;color:#b98c99">LOGO PLACEHOLDER</span>
+      </span>
+    </a>
+    <nav class="hd-nav" aria-label="ページ内リンク" style="flex:1 1 auto;display:flex;justify-content:safe center;gap:4px;overflow-x:auto;min-width:0">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" style="padding:8px 12px;font-size:14px;font-weight:500;color:#5a4a50;white-space:nowrap;border-radius:6px" style-hover="color:#d63d63;background:#fdf0f3">{{ n.label }}</a>
+      </sc-for>
+    </nav>
+    <a class="hd-cta" href="#reserve-url" style="margin-left:auto;padding:11px 22px;border-radius:999px;background:linear-gradient(180deg,#ef6a8b,#d63d63);color:#fff;font-weight:700;font-size:14px;box-shadow:0 4px 12px rgba(214,61,99,.28);white-space:nowrap" style-hover="filter:brightness(1.06);color:#fff">カウンセリング予約</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- SECTION 1: HERO -->
+<section data-screen-label="01 Hero" style="scroll-margin-top:70px">
+  <div style="position:relative;background:linear-gradient(110deg,#f4f4f6 0%,#fbfbfc 45%,#eef0f3 100%);overflow:hidden">
+    <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap-reverse;align-items:stretch">
+      <div class="hero-text" style="flex:1 1 440px;padding:48px 24px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;position:relative;z-index:2">
+        <div class="hero-ribbon" data-hero="ribbon" style="position:relative;background:linear-gradient(90deg,#f37d9a,#ea5a7e);color:#fff;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(15px,2vw,19px);letter-spacing:.08em;padding:8px 30px;transform:rotate(-3deg);box-shadow:0 3px 8px rgba(214,61,99,.25);clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%)">はじめての方も安心のカウンセリング</div>
+        <h1 style="margin:6px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:700;line-height:1.15;display:flex;flex-direction:column;align-items:center;gap:4px">
+          <span data-hero="l1" style="display:inline-block;font-size:clamp(28px,4.4vw,46px);color:#3a3236;letter-spacing:.04em">毎日のお手入れを、</span>
+          <span data-hero="l2" style="display:inline-block;font-size:clamp(44px,7vw,76px);letter-spacing:.02em;white-space:nowrap;background:linear-gradient(180deg,#f27596,#d63d63);-webkit-background-clip:text;background-clip:text;color:transparent">もっと軽やかに</span>
+        </h1>
+        <p style="margin:0;font-size:clamp(14px,1.6vw,16px);line-height:1.9;color:#4d4247;max-width:30em;text-wrap:pretty"><span class="nowrap-phrase">ご希望の部位やライフスタイルをうかがい、</span><span class="nowrap-phrase">あなたに合った脱毛プランをご提案します。</span></p>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+          <span style="font-size:13px;font-weight:700;letter-spacing:.1em">{{ bizName }}</span>
+          <span style="font-family:'Shippori Mincho B1',serif;font-size:clamp(20px,2.6vw,26px);font-weight:800;letter-spacing:.24em">{{ methodLabel }}</span>
+        </div>
+        <ul class="hero-feats" style="list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
+          <sc-for list="{{ heroFeatures }}" as="f" hint-placeholder-count="4">
+            <li class="hex" data-anim="hex" style="width:96px;height:106px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(160deg,#fde3ea,#f7b7c7);display:grid;place-items:center;text-align:center;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:14px;line-height:1.35;color:#c42f55;padding:0 6px;white-space:pre-line">{{ f }}</li>
+          </sc-for>
+        </ul>
+        <p style="margin:0;font-size:11px;color:#8c7f84">※特長は実際のサービス内容に合わせて編集してください</p>
+      </div>
+      <div class="hero-img" style="flex:1 1 380px;min-height:460px;position:relative">
+        <image-slot data-anim="kenburns" id="hero-main" src="img/hero.jpg" shape="rect" placeholder="ヒーロー写真（人物・やわらかい自然光）" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      </div>
+    </div>
+  </div>
+  <div style="background:linear-gradient(180deg,#ec5e80,#d63d63);padding:34px 20px 30px;color:#fff">
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center">
+      <p style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(18px,2.6vw,26px);letter-spacing:.1em">まずはお気軽にご相談ください！</p>
+      <a data-anim="cta" href="#reserve-url" style="position:relative;overflow:hidden;width:100%;max-width:520px;padding:20px 24px;border-radius:999px;background:linear-gradient(180deg,#fffaf0,#f2d9a4);color:#c42f55;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:clamp(17px,2.4vw,22px);letter-spacing:.08em;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 6px 0 rgba(150,30,60,.25),0 10px 20px rgba(120,20,50,.25)" style-hover="transform:translateY(2px);box-shadow:0 4px 0 rgba(150,30,60,.25),0 6px 14px rgba(120,20,50,.25);color:#c42f55">カウンセリングを予約する<span style="width:24px;height:24px;border-radius:50%;background:#d63d63;color:#fff;font-size:11px;display:grid;place-items:center">▶</span></a>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px 28px">
+        <sc-if value="{{ showLine }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start">
+              <span style="font-size:13px">LINEでのご予約は…</span>
+              <span style="font-size:11px;background:rgba(255,255,255,.22);padding:4px 12px;border-radius:3px">LINE ID：[@xxxxxxx]</span>
+            </div>
+            <div style="width:58px;height:58px;background:#fff;color:#8c7f84;font-family:monospace;font-size:10px;display:grid;place-items:center">QR</div>
+          </div>
+        </sc-if>
+        <a class="tel-block" href="tel:0000000000" style="display:flex;flex-direction:column;align-items:flex-start;color:#fff" style-hover="color:#fff;opacity:.9">
+          <span style="font-size:13px">お電話でのご予約は</span>
+          <span style="font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:clamp(26px,3.6vw,34px);color:#fff4d8;letter-spacing:.02em;line-height:1.1">0120-XXX-XXX</span>
+          <span style="font-size:11px">[ 受付時間 / 00:00〜00:00（定休日：〇曜日） ]</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: CONCERNS + REASONS -->
+<section id="concerns" data-screen-label="02 Concerns & Reasons" style="scroll-margin-top:70px">
+  <div style="background:linear-gradient(180deg,#eceef1,#f5f6f8);padding:56px 20px 0;position:relative">
+    <div style="max-width:1000px;margin:0 auto">
+      <h2 class="ttl-concern" data-reveal="up" style="margin:0 auto;text-align:center;font-family:'Shippori Mincho B1',serif;font-weight:600;font-size:clamp(24px,3.6vw,38px);letter-spacing:.06em;color:#3a3236">こんな<span style="font-size:1.3em;font-weight:700">お悩み</span>ありませんか？</h2>
+      <div style="width:min(420px,80%);height:1px;background:#3a3236;margin:16px auto 36px"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end">
+        <div data-reveal="left" style="flex:1 1 320px;height:400px;position:relative">
+          <image-slot id="concern-photo" src="img/concern.jpg" shape="rect" placeholder="お悩みイメージ写真（モノトーン寄り）" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+        </div>
+        <ul style="flex:1 1 360px;list-style:none;margin:0 0 40px;padding:0;display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ concerns }}" as="c" hint-placeholder-count="6">
+            <li data-reveal="left" style="display:flex;gap:12px;align-items:flex-start;padding-bottom:10px;border-bottom:1px dotted #9a8f93;font-size:clamp(15px,1.8vw,18px);font-weight:500;line-height:1.6">
+              <span style="flex:none;width:18px;height:18px;border:1.5px solid #3a3236;margin-top:4px;position:relative"><span style="position:absolute;left:4px;top:-4px;width:7px;height:13px;border:solid #d63d63;border-width:0 2.5px 2.5px 0;transform:rotate(40deg)"></span></span>
+              <span>{{ c.a }}<span style="color:#d63d63">{{ c.b }}</span>{{ c.c }}</span>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+    <div data-anim="bob" style="position:relative;z-index:2;width:min(520px,90%);margin:-10px auto -70px;height:110px;clip-path:polygon(0 0,100% 0,50% 100%);background:linear-gradient(180deg,#f7a6ba,#ef7b98);display:flex;flex-direction:column;align-items:center;padding-top:10px;color:#fff;font-family:'Shippori Mincho B1',serif;font-weight:700">
+      <span style="font-size:15px">そんな</span><span style="font-size:22px;letter-spacing:.1em">お悩みは</span>
+    </div>
+  </div>
+  <div style="background:#fff;padding:90px 20px 0;position:relative">
+    <div style="max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:center;gap:12px 56px">
+      <div style="flex:0 1 auto;text-align:center;padding-bottom:28px">
+        <p data-reveal="zoom" style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(30px,5vw,52px);color:#e04d72;letter-spacing:.04em;line-height:1.2">{{ bizName }}</p>
+        <p style="margin:10px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(18px,2.4vw,24px)">にご相談ください！</p>
+      </div>
+      <div data-reveal="right" style="flex:0 0 200px;height:230px;position:relative">
+        <image-slot id="staff-photo" src="img/staff.jpg" shape="rect" placeholder="スタッフ写真（切り抜き）" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      </div>
+    </div>
+  </div>
+  <div id="reasons" style="scroll-margin-top:70px;background:linear-gradient(90deg,#f26b8d,#e8506f 50%,#f26b8d);padding:20px;text-align:center;color:#fff">
+    <h2 data-reveal="up" style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(26px,4vw,40px);letter-spacing:.12em">選ばれる理由</h2>
+    <p style="margin:4px 0 0;font-family:'Shippori Mincho B1',serif;font-size:11px;letter-spacing:.3em">THE REASON OF THE CHOICE</p>
+  </div>
+  <div style="background-color:#fdf0f3;background-image:linear-gradient(60deg,rgba(240,140,170,.14) 25%,transparent 25%,transparent 75%,rgba(240,140,170,.14) 75%),linear-gradient(-60deg,rgba(255,255,255,.55) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.55) 75%);background-size:90px 156px">
+    <div class="reasons-box" style="max-width:1000px;margin:0 auto;background:#fff;padding:48px clamp(20px,5vw,56px) 60px;display:flex;flex-direction:column;gap:64px;box-shadow:0 0 30px rgba(230,120,150,.12)">
+      <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="4">
+        <article style="display:flex;flex-wrap:wrap;gap:32px;align-items:center;flex-direction:{{ r.dir }}">
+          <div class="reason-img" data-reveal="zoom" style="flex:1 1 300px;height:300px;position:relative">
+            <image-slot id="{{ r.img }}" src="{{ r.src }}" shape="rounded" radius="10" placeholder="{{ r.ph }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+          </div>
+          <div data-reveal="up" style="flex:1 1 320px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+            <div data-reveal="spin" style="width:58px;height:58px;background:linear-gradient(160deg,#f7a1b6,#ea6688);color:#fff;font-family:'Shippori Mincho B1',serif;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;box-shadow:3px 3px 0 #fbd3de">
+              <span style="font-size:9px;letter-spacing:.12em">POINT</span><span style="font-size:26px;font-weight:600">{{ r.no }}</span>
+            </div>
+            <h3 style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;line-height:1.35;display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:clamp(20px,2.6vw,26px);color:#3a3236;background:linear-gradient(transparent 62%,#fbd3de 62%);align-self:center;padding:0 4px">{{ r.t1 }}</span>
+              <span style="font-size:clamp(26px,3.6vw,36px);color:#e04d72">{{ r.t2 }}</span>
+            </h3>
+            <p style="margin:0;text-align:left;font-size:14px;line-height:2;text-wrap:pretty">{{ r.body }}<span style="color:#e04d72;font-weight:700;background:linear-gradient(transparent 65%,#fdf3a6 65%)">{{ r.mark }}</span></p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: AREAS & METHOD -->
+<section id="areas" data-screen-label="03 Areas & Method" style="scroll-margin-top:70px;background:#fff">
+  <div style="position:relative;height:200px">
+    <image-slot id="areas-band" src="img/treatment.jpg" shape="rect" placeholder="施術イメージ写真（肌・横長）" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+  </div>
+  <div style="max-width:1000px;margin:0 auto;padding:0 20px 70px">
+    <div data-anim="bob" style="position:relative;z-index:2;width:min(560px,94%);margin:-46px auto 0;height:110px;clip-path:polygon(0 0,100% 0,50% 100%);background:linear-gradient(180deg,#f27596,#e8506f);display:flex;flex-direction:column;align-items:center;padding-top:14px;color:#fff;font-family:'Shippori Mincho B1',serif;font-weight:700">
+      <span style="font-size:clamp(18px,2.6vw,24px);letter-spacing:.1em;color:#fff4d8">施術部位と方法</span><span style="font-size:11px;letter-spacing:.3em">TREATMENT AREA</span>
+    </div>
+    <h2 data-reveal="up" style="margin:28px 0 6px;text-align:center;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(24px,3.8vw,40px);line-height:1.4"><span class="nowrap-phrase">気になる部位を、</span><span class="nowrap-phrase" style="color:#e04d72;background:linear-gradient(transparent 65%,#fdf3a6 65%)">ご希望に合わせて</span></h2>
+    <p style="margin:0 auto 36px;text-align:center;font-size:14px;line-height:1.9;max-width:44em;color:#5a4a50"><span class="nowrap-phrase">対応部位・プランは店舗により異なります。</span><span class="nowrap-phrase">下記は掲載例です。</span><span class="nowrap-phrase">実際の対応可否に合わせて編集してください。</span></p>
+    <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(max(150px,22%),1fr));gap:14px">
+      <sc-for list="{{ areas }}" as="a" hint-placeholder-count="8">
+        <li data-reveal="pop" style="border:1px solid #f1b3c3;border-radius:6px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;background:#fff" style-hover="box-shadow:0 6px 16px rgba(230,100,140,.15)">
+          <span style="width:64px;height:64px;border-radius:50%;background:linear-gradient(160deg,#fdeef2,#f8c9d5);color:#d63d63;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:22px;display:grid;place-items:center">{{ a.k }}</span>
+          <span style="font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:17px">{{ a.name }}</span>
+          <span style="font-size:12px;color:#8c7f84;line-height:1.5">{{ a.detail }}</span>
+        </li>
+      </sc-for>
+    </ul>
+    <div style="margin-top:60px">
+      <h3 style="margin:0 auto 24px;text-align:center;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(20px,2.8vw,28px);display:flex;align-items:center;justify-content:center;gap:12px"><span style="width:12px;height:42px;border:1.5px solid #3a3236;border-right:none"></span>施術方法について<span style="width:12px;height:42px;border:1.5px solid #3a3236;border-left:none"></span></h3>
+      <div style="display:flex;flex-direction:column;gap:4px;font-size:14px;line-height:1.7">
+        <sc-for list="{{ methodRows }}" as="m" hint-placeholder-count="6">
+          <div class="method-row" data-reveal="left" style="display:grid;grid-template-columns:minmax(110px,30%) minmax(0,1fr);gap:4px">
+            <div style="background:#5a4f53;color:#fff;font-weight:700;padding:16px 14px;text-align:center">{{ m.k }}</div>
+            <div style="background:#fdf0f3;padding:16px 18px;color:#c42f55;font-weight:500">{{ m.v }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:14px 0 0;font-size:12px;color:#8c7f84;line-height:1.8">{{ methodNote }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: PRICE / CAMPAIGN / FLOW -->
+<section id="price" data-screen-label="04 Price & Flow" style="scroll-margin-top:70px">
+  <div style="background:linear-gradient(90deg,#f26b8d,#e8506f 50%,#f26b8d);padding:22px 20px;text-align:center;color:#fff">
+    <h2 data-reveal="up" style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(26px,4vw,40px);letter-spacing:.16em">施術料金</h2>
+    <p style="margin:4px 0 0;font-family:'Shippori Mincho B1',serif;font-size:11px;letter-spacing:.3em">PRICE</p>
+  </div>
+  <div style="background:#fff;padding:48px 20px 64px">
+    <div style="max-width:1000px;margin:0 auto">
+      <p style="margin:0 0 30px;text-align:center;font-size:13px;color:#8c7f84">※料金はすべて掲載用の仮表記です。確定した料金（税込）に差し替えてください。</p>
+      <div class="plans" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:36px 24px">
+        <sc-for list="{{ plans }}" as="p" hint-placeholder-count="6">
+          <div data-reveal="up" style="position:relative;border:1.5px solid #ef8ba5;padding:30px 20px 20px;display:flex;flex-direction:column;align-items:center;gap:12px">
+            <span style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#fff;padding:0 14px;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:16px;color:#e04d72;white-space:nowrap">{{ p.name }}</span>
+            <span style="font-size:12px;color:#8c7f84;text-align:center">{{ p.desc }}</span>
+            <dl style="margin:0;display:grid;grid-template-columns:auto auto;gap:4px 10px;align-items:baseline">
+              <sc-for list="{{ p.rows }}" as="row" hint-placeholder-count="4">
+                <dt style="font-size:13px;color:#5a4a50">{{ row.n }}…</dt>
+                <dd style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;color:#d63d63;font-size:24px">¥〇〇,〇〇〇<span style="font-size:11px;font-family:'Zen Kaku Gothic New',sans-serif;margin-left:4px;color:#5a4a50">(税込)</span></dd>
+              </sc-for>
+            </dl>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
+        <sc-for list="{{ support }}" as="s" hint-placeholder-count="3">
+          <div data-reveal="up" style="background:#fdf0f3;padding:20px 22px;border-radius:4px">
+            <p style="margin:0 0 8px;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:17px;color:#c42f55">{{ s.t }}</p>
+            <p style="margin:0;font-size:13px;line-height:1.8">{{ s.v }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  <div style="background-color:#fdeef2;background-image:linear-gradient(60deg,rgba(240,140,170,.16) 25%,transparent 25%,transparent 75%,rgba(240,140,170,.16) 75%),linear-gradient(-60deg,rgba(255,255,255,.6) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.6) 75%);background-size:90px 156px;padding:56px 20px">
+    <div style="max-width:1000px;margin:0 auto">
+      <h2 data-reveal="up" style="margin:0;text-align:center;font-family:'Shippori Mincho B1',serif;font-weight:500;font-size:clamp(28px,4vw,40px);letter-spacing:.2em;color:#e04d72">CAMPAIGN</h2>
+      <p style="margin:6px 0 28px;text-align:center;font-size:13px;letter-spacing:.3em">キャンペーン</p>
+      <div data-reveal="zoom" style="background:#fff;border-radius:8px;padding:30px clamp(18px,4vw,40px);display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:center;gap:0">
+          <span style="flex:none;width:52px;height:52px;border-radius:50%;background:#e8506f;border:3px solid #fff;box-shadow:0 0 0 2px #e8506f;color:#fff;font-family:'Shippori Mincho B1',serif;font-weight:700;display:grid;place-items:center;position:relative;z-index:2">特</span>
+          <span style="flex:1;margin-left:-14px;padding:10px 20px 10px 34px;background:linear-gradient(90deg,#f27596,#e8506f);color:#fff;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(16px,2.2vw,20px);box-shadow:2px 2px 0 #f8c3d0">[キャンペーン名を記載]</span>
+        </div>
+        <p style="margin:0;font-size:14px;line-height:1.9;padding-left:8px">[キャンペーン内容・適用条件・期間を記載]<br><span style="font-size:12px;color:#8c7f84">※割引・特典は内容が確定している場合のみ掲載してください。未定の場合はこのブロックを削除してください。</span></p>
+      </div>
+    </div>
+  </div>
+  <div id="flow" style="scroll-margin-top:70px;background:#fff;padding:60px 20px 70px">
+    <div style="max-width:1000px;margin:0 auto">
+      <h2 data-reveal="up" style="margin:0;text-align:center;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(24px,3.6vw,36px);letter-spacing:.1em">ご来店の流れ</h2>
+      <p style="margin:6px 0 36px;text-align:center;font-family:'Shippori Mincho B1',serif;font-size:11px;letter-spacing:.3em;color:#e04d72">FLOW</p>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
+        <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+          <li data-reveal="up" style="border:1.5px solid #f1b3c3;padding:30px 18px 22px;position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+            <span style="position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:linear-gradient(160deg,#f7a1b6,#ea6688);color:#fff;font-family:'Shippori Mincho B1',serif;font-size:11px;letter-spacing:.1em;padding:6px 14px">STEP <span style="font-size:18px">{{ st.no }}</span></span>
+            <span style="font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:16px;color:#c42f55;white-space:nowrap">{{ st.t }}</span>
+            <span style="font-size:13px;line-height:1.8;text-align:left">{{ st.d }}</span>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: FAQ + FINAL CTA -->
+<section id="faq" data-screen-label="05 FAQ & CTA" style="scroll-margin-top:70px">
+  <div style="background:linear-gradient(180deg,#f5f6f8,#eceef1);padding:60px 20px 70px">
+    <div style="max-width:860px;margin:0 auto">
+      <h2 data-reveal="up" style="margin:0;text-align:center;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(24px,3.6vw,36px);letter-spacing:.1em">よくあるご質問</h2>
+      <p style="margin:6px 0 32px;text-align:center;font-family:'Shippori Mincho B1',serif;font-size:11px;letter-spacing:.3em;color:#e04d72">Q&amp;A</p>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="7">
+          <div data-reveal="up" style="background:#fff;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+            <button type="button" onClick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="width:100%;border:none;background:none;padding:18px 20px;display:flex;align-items:center;gap:14px;text-align:left;cursor:pointer;font:inherit;color:inherit">
+              <span style="flex:none;width:34px;height:34px;border-radius:50%;background:#e8506f;color:#fff;font-family:'Shippori Mincho B1',serif;font-weight:700;display:grid;place-items:center">Q</span>
+              <span style="flex:1;font-weight:700;font-size:15px;line-height:1.6">{{ f.q }}</span>
+              <span style="flex:none;font-size:22px;color:#e8506f;width:20px;text-align:center">{{ f.icon }}</span>
+            </button>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:14px;padding:0 20px 20px;border-top:1px dotted #f1b3c3;padding-top:16px;margin:0 20px;padding-left:0;padding-right:0">
+                <span style="flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid #e8506f;color:#e8506f;font-family:'Shippori Mincho B1',serif;font-weight:700;display:grid;place-items:center">A</span>
+                <p style="margin:6px 0 0;font-size:14px;line-height:1.9">{{ f.a }}</p>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  <div style="background:linear-gradient(180deg,#ec5e80,#d63d63);padding:50px 20px 44px;color:#fff">
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center">
+      <p data-reveal="up" style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(22px,3.4vw,32px);letter-spacing:.08em;line-height:1.5">まずはカウンセリングで<br>お気軽にご相談ください</p>
+      <p style="margin:0;font-size:14px;line-height:1.9;opacity:.95">ご希望の部位やご予算、通いやすさなど、気になることは何でもお話しください。</p>
+      <a data-anim="cta" href="#reserve-url" style="position:relative;overflow:hidden;width:100%;max-width:520px;padding:20px 24px;border-radius:999px;background:linear-gradient(180deg,#fffaf0,#f2d9a4);color:#c42f55;font-family:'Shippori Mincho B1',serif;font-weight:800;font-size:clamp(17px,2.4vw,22px);letter-spacing:.08em;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 6px 0 rgba(150,30,60,.25),0 10px 20px rgba(120,20,50,.25)" style-hover="transform:translateY(2px);box-shadow:0 4px 0 rgba(150,30,60,.25),0 6px 14px rgba(120,20,50,.25);color:#c42f55">カウンセリングを予約する<span style="width:24px;height:24px;border-radius:50%;background:#d63d63;color:#fff;font-size:11px;display:grid;place-items:center">▶</span></a>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+        <a href="#contact-url" style="padding:10px 22px;border:1px solid rgba(255,255,255,.8);border-radius:999px;color:#fff;font-size:14px" style-hover="background:rgba(255,255,255,.15);color:#fff">お問い合わせはこちら</a>
+        <a href="tel:0000000000" style="padding:10px 22px;border:1px solid rgba(255,255,255,.8);border-radius:999px;color:#fff;font-size:14px" style-hover="background:rgba(255,255,255,.15);color:#fff">電話 0120-XXX-XXX</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:#fff;border-top:4px solid #f8c9d5;padding:44px 20px 24px;font-size:13px;color:#5a4a50">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between">
+    <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:8px;line-height:1.8">
+      <p style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:18px;color:#d63d63">{{ bizName }}</p>
+      <p style="margin:0">〒000-0000 [住所を記載]</p>
+      <p style="margin:0">TEL：0120-XXX-XXX ／ 受付時間：[00:00〜00:00]</p>
+      <p style="margin:0">定休日：[記載]</p>
+      <p style="margin:0">{{ footerInfo }}</p>
+    </div>
+    <nav class="ft-nav" aria-label="フッターリンク" style="flex:1 1 260px;display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;align-content:start">
+      <sc-for list="{{ footLinks }}" as="l" hint-placeholder-count="6">
+        <a href="{{ l.href }}" style="color:#5a4a50" style-hover="color:#d63d63">{{ l.label }}</a>
+      </sc-for>
+    </nav>
+  </div>
+  <p style="max-width:1000px;margin:28px auto 0;font-size:11px;line-height:1.8;color:#8c7f84">{{ disclosure }}</p>
+  <p style="margin:20px 0 0;text-align:center;font-size:11px;color:#a8999f">© [年] {{ bizName }} All Rights Reserved.</p>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;businessType&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;未定（中立表記）&quot;,&quot;サロン（光脱毛）&quot;,&quot;クリニック（医療レーザー脱毛）&quot;],&quot;default&quot;:&quot;未定（中立表記）&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showLine&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { open: 0 };
+  componentDidMount() {
+    this.reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.reduce) return;
+    const ease = 'cubic-bezier(.22,1,.36,1)';
+    const q = s => [...document.querySelectorAll(s)];
+    // hero entrance
+    const hero = { ribbon: [[{opacity:0,transform:'translateY(-40px) rotate(-12deg)'},{opacity:1,transform:'translateY(0) rotate(-3deg)'}],150], l1: [[{opacity:0,transform:'translateY(24px)',filter:'blur(6px)'},{opacity:1,transform:'none',filter:'blur(0)'}],450], l2: [[{opacity:0,transform:'scale(.85)',filter:'blur(10px)',letterSpacing:'.3em'},{opacity:1,transform:'none',filter:'blur(0)',letterSpacing:'.02em'}],700] };
+    q('[data-hero]').forEach(el => { const [k,d] = hero[el.dataset.hero]; el.animate(k,{duration:1100,delay:d,easing:ease,fill:'backwards'}); });
+    q('[data-anim="hex"]').forEach((el,i) => {
+      el.animate([{opacity:0,transform:'scale(.3) rotate(-30deg)'},{opacity:1,transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:800,delay:1100+i*140,easing:ease,fill:'backwards'});
+      el.animate([{transform:'translateY(0)'},{transform:'translateY(-7px)'},{transform:'translateY(0)'}],{duration:3200,delay:2000+i*400,iterations:Infinity,easing:'ease-in-out',composite:'add'});
+    });
+    q('[data-anim="kenburns"]').forEach(el => { el.animate([{opacity:0,transform:'scale(1.12)'},{opacity:1,transform:'scale(1)'}],{duration:2200,easing:ease,fill:'backwards'}); });
+    // CTA pulse + shine
+    q('[data-anim="cta"]').forEach((el,i) => {
+      el.animate([{transform:'scale(1)'},{transform:'scale(1.035)'},{transform:'scale(1)'}],{duration:1800,iterations:Infinity,easing:'ease-in-out',delay:i*300});
+      if (!el.querySelector('[data-shine]')) {
+        const s = document.createElement('span'); s.dataset.shine = '1';
+        Object.assign(s.style,{position:'absolute',top:'0',left:'0',width:'40%',height:'100%',background:'linear-gradient(100deg,transparent,rgba(255,255,255,.85),transparent)',pointerEvents:'none',transform:'translateX(-150%) skewX(-20deg)'});
+        el.appendChild(s);
+        s.animate([{transform:'translateX(-150%) skewX(-20deg)'},{transform:'translateX(350%) skewX(-20deg)',offset:.35},{transform:'translateX(350%) skewX(-20deg)'}],{duration:3200,iterations:Infinity,easing:'ease-in-out'});
+      }
+    });
+    q('[data-anim="bob"]').forEach(el => el.animate([{transform:'translateY(0)'},{transform:'translateY(10px)'},{transform:'translateY(0)'}],{duration:1800,iterations:Infinity,easing:'ease-in-out'}));
+    // header shadow
+    const hd = document.querySelector('header');
+    this.onScroll = () => { if (hd) hd.style.boxShadow = scrollY > 10 ? '0 4px 18px rgba(214,61,99,.12)' : 'none'; };
+    addEventListener('scroll', this.onScroll, {passive:true});
+    // scroll reveal
+    const K = { up:[{opacity:0,transform:'translateY(40px)'},{opacity:1,transform:'none'}], left:[{opacity:0,transform:'translateX(-50px)'},{opacity:1,transform:'none'}], right:[{opacity:0,transform:'translateX(50px)'},{opacity:1,transform:'none'}], zoom:[{opacity:0,transform:'scale(.88)'},{opacity:1,transform:'none'}], pop:[{opacity:0,transform:'scale(.6) translateY(20px)'},{opacity:1,transform:'scale(1.05)',offset:.7},{opacity:1,transform:'none'}], spin:[{opacity:0,transform:'rotate(-180deg) scale(.3)'},{opacity:1,transform:'none'}] };
+    this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target; this.io.unobserve(el);
+      const sib = [...el.parentElement.children].filter(c => c.dataset.reveal);
+      const d = Math.min(sib.indexOf(el), 8) * 100;
+      el.animate(K[el.dataset.reveal] || K.up, {duration:900, delay:d, easing:ease, fill:'backwards'});
+      el.style.opacity = '';
+      el.querySelectorAll('span').forEach(s => {
+        const st = s.getAttribute('style') || '';
+        if (/fdf3a6|fbd3de|253, 243, 166|251, 211, 222/.test(st)) { s.style.backgroundRepeat = 'no-repeat'; s.animate([{backgroundSize:'0% 100%'},{backgroundSize:'100% 100%'}],{duration:900,delay:d+500,easing:ease,fill:'backwards'}); }
+      });
+    }), {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+    this.scan();
+  }
+  componentDidUpdate() { if (!this.reduce) this.scan(); }
+  componentWillUnmount() { this.io && this.io.disconnect(); this.onScroll && removeEventListener('scroll', this.onScroll); }
+  scan() {
+    if (!this.io) return;
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => { el.dataset.rv = '1'; el.style.opacity = '0'; this.io.observe(el); });
+  }
+  renderVals() {
+    const type = this.props.businessType ?? '未定（中立表記）';
+    const B = {
+      '未定（中立表記）': { biz: '[店舗名]', method: '脱毛', staff: '[施術担当者の資格・体制を記載]', info: '[運営会社名・事業者情報を記載]', disc: '※本ページの施術内容・料金・特典は掲載用の仮表記です。実際のサービス内容に合わせて記載してください。効果・感じ方には個人差があります。', note: '※施術方式・機器・回数の目安などは、確認済みの情報のみ記載してください。' },
+      'サロン（光脱毛）': { biz: '[サロン名]', method: '光脱毛', staff: '[スタッフの研修体制を記載]', info: '[運営会社名・事業者情報を記載]', disc: '※当サロンの施術は医療行為ではありません。効果・感じ方には個人差があります。肌の状態によっては施術をお断りする場合があります。料金・特典は掲載用の仮表記です。', note: '※当サロンでは医療機関で行う医療脱毛は提供しておりません。施術内容の詳細はカウンセリングでご説明します。' },
+      'クリニック（医療レーザー脱毛）': { biz: '[クリニック名]', method: '医療レーザー脱毛', staff: '医師・看護師 [在籍体制を記載]', info: '管理者：[院長名] ／ 診療科目：[記載]', disc: '※医療脱毛は自由診療（保険適用外）です。標準的な費用：[記載]／治療期間・回数の目安：[記載]／主なリスク・副作用：[赤み、ヤケド、毛嚢炎などを記載]。効果には個人差があります。', note: '※医療脱毛は医師の管理のもとで行う医療行為です。施術前に医師による診察・説明を行います。' }
+    }[type] || {};
+    const faqRaw = [
+      ['どの部位を施術できますか？', `対応部位は[対応部位を記載]です。部位ごとの詳細はカウンセリングでご案内します。`],
+      ['どのような脱毛方法ですか？', `${B.method}を行っています。使用機器：[機器名を記載]。方式の詳細はカウンセリングでご説明します。`],
+      ['予約はどのようにすればよいですか？', 'Webフォーム、お電話、LINE[ご利用の窓口に合わせて編集]からご予約いただけます。'],
+      ['初回カウンセリングでは何をしますか？', 'ご希望の部位や肌の状態、ご予算などをうかがい、施術内容・料金・注意事項をご説明します。[所要時間の目安を記載]'],
+      ['料金はどのくらいかかりますか？', '料金は部位・回数によって異なります。料金表をご覧いただくか、カウンセリングでお見積もりをご案内します。'],
+      ['施術前後に気をつけることはありますか？', '[事前の自己処理方法、日焼け、施術後のケアなど、確認済みの注意事項を記載]'],
+      ['施術について不安があるときは？', 'カウンセリングや施術中に、気になることはいつでもスタッフにお伝えください。[施術後のご相談窓口を記載]']
+    ];
+    const reasonsRaw = [
+      ['プライバシーに', '配慮した空間', '[個室の有無・待合の仕様を記載]。はじめての方も周りを気にせず、落ち着いてお過ごしいただけるよう配慮しています。', 'リラックスして施術を受けていただけます。', 'reason-1', '施術室の写真', 'img/reason-space.jpg'],
+      ['あなたに合わせた', 'ご提案', 'ご希望の部位、通える頻度、ご予算をうかがったうえで、無理のないプランをご提案します。', '気になる部位だけのご相談も歓迎です。', 'reason-2', 'カウンセリング風景', 'img/reason-counseling.jpg'],
+      ['無理な勧誘は', '一切なし', 'カウンセリング後、その場でのご契約は必要ありません。ご自宅でゆっくりご検討ください。[勧誘方針を確認のうえ記載]', '納得してからお決めください。', 'reason-3', '書類・ペンのイメージ', 'img/reason-relax.jpg'],
+      ['はじめての方も安心', 'アフターケア', `施術後の肌のお手入れ方法をご案内し、気になることがあればご相談いただけます。施術担当：${B.staff}`, '施術後のご不安もお気軽にどうぞ。', 'reason-4', 'スタッフ写真', 'img/reason-aftercare.jpg']
+    ];
+    return {
+      bizName: B.biz, methodLabel: B.method, methodNote: B.note, disclosure: B.disc, footerInfo: B.info,
+      showLine: this.props.showLine ?? true,
+      nav: [['お悩み','#concerns'],['選ばれる理由','#reasons'],['施術部位','#areas'],['料金','#price'],['よくある質問','#faq']].map(([label,href])=>({label,href})),
+      heroFeatures: ['丁寧な\nカウンセリング','プライバシー\nに配慮','無理な\n勧誘なし','アフター\nケア'],
+      concerns: [['ムダ毛の','自己処理が面倒',''],['','毎日のお手入れ','の時間を減らしたい'],['','肌への負担','が気になる'],['プロに','相談してみたい',''],['','脱毛費用','の目安を知りたい'],['','予約の取りやすさ','が心配']].map(([a,b,c])=>({a,b,c})),
+      reasons: reasonsRaw.map((r,i)=>({no:i+1,t1:r[0],t2:r[1],body:r[2],mark:r[3],img:r[4],ph:r[5],src:r[6],dir:i%2?'row-reverse':'row'})),
+      areas: [['顔','顔','[対応範囲を記載]'],['脇','ワキ','[対応可否を記載]'],['腕','腕','ひじ上・ひじ下'],['脚','脚','ひざ上・ひざ下'],['V','VIO','[対応範囲を記載]'],['背','背中','[対応可否を記載]'],['手','手足の甲・指','[対応可否を記載]'],['全','全身','[含まれる部位を記載]']].map(([k,name,detail])=>({k,name,detail})),
+      methodRows: [['脱毛方式',B.method],['使用機器','[機器名を記載]'],['1回の施術時間','[部位ごとの目安を記載]'],['通う頻度の目安','[確認済みの目安を記載]'],['施術担当',B.staff],['カウンセリング','[所要時間・料金を記載]']].map(([k,v])=>({k,v})),
+      plans: [['全身脱毛','[含まれる部位を記載]'],['顔脱毛','[含まれる部位を記載]'],['VIO脱毛','[含まれる部位を記載]'],['ワキ脱毛','両ワキ'],['Sパーツ','[いずれか1部位・対象部位を記載]'],['Lパーツ','[いずれか1部位・対象部位を記載]']].map(([name,desc])=>({name,desc,rows:['1回','3回','5回','6回'].map(n=>({n}))})),
+      support: [['お支払い方法','[現金・クレジットカード・医療ローン等、対応方法を記載]'],['キャンセルについて','[キャンセル・変更の受付期限、手数料の有無を記載]'],['はじめての方へ','[初回の持ち物、来店時間、事前の自己処理などを記載]']].map(([t,v])=>({t,v})),
+      steps: [['カウンセリング予約','Webフォーム・お電話・LINEからご都合のよい日時をお選びください。'],['カウンセリング・ご相談','ご希望の部位や肌の状態、ご予算などをうかがいます。'],['プランのご案内','料金・回数・注意事項をご説明します。ご検討はご自宅でも大丈夫です。'],['施術・サービス開始','ご納得いただいたうえで、施術をスタートします。']].map(([t,d],i)=>({no:i+1,t,d})),
+      faqs: faqRaw.map(([q,a],i)=>({q,a,open:this.state.open===i,icon:this.state.open===i?'−':'＋',toggle:()=>this.setState(s=>({open:s.open===i?-1:i}))})),
+      footLinks: [['施術部位','#areas'],['料金表','#price'],['ご来店の流れ','#flow'],['よくある質問','#faq'],['プライバシーポリシー','#privacy-url'],['利用規約','#terms-url'],['特定商取引法に基づく表記','#tokushoho-url'],['お問い合わせ','#contact-url']].map(([label,href])=>({label,href}))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7f5f0;color:#1d2433;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1f3a6b;text-decoration:none}
+a:hover{color:#b2832f}
+button{font-family:inherit}
+</style>
+<script src="./motion.js"></script>
+</helmet>
+<div style="min-height:100vh;background:#f7f5f0">
+<dc-import name="SiteHeader" current="tuition" hint-size="100%,76px" style="position:sticky;top:0;z-index:50"></dc-import>
+
+<section data-screen-label="Tuition Hero" style="background:linear-gradient(90deg,rgba(31,58,107,0.96) 0%,rgba(31,58,107,0.84) 50%,rgba(31,58,107,0.5) 100%),url(images/two-campus.jpg) 50% 30%/cover no-repeat #1f3a6b;color:#f7f5f0">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(48px,6vw,88px) clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:18px">
+    <nav style="display:flex;gap:10px;font-size:12px;color:#a9b2c6"><a href="Admissions Site.dc.html" style="color:#a9b2c6">トップ</a><span>/</span><span>学費・奨学金</span></nav>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;color:#d9c18f">TUITION &amp; SCHOLARSHIPS</span>
+    <h1 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(34px,4.4vw,56px);font-weight:700;letter-spacing:0.05em">学費・奨学金</h1>
+    <p style="margin:0;max-width:36em;font-size:15px;line-height:1.95;color:#cfd5e2;text-wrap:pretty">経済的な理由で学びをあきらめることがないよう、大学独自の奨学金と国の支援制度を案内しています。保護者の方もあわせてご確認ください。</p>
+  </div>
+</section>
+
+<section data-screen-label="Fees" style="padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:24px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px">
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:0.05em">学部別の学費</h2>
+      <span style="font-size:12px;color:#8a5a12;background:#f5ead3;padding:6px 12px">金額は未掲載｜正式な金額は募集要項に記載します</span>
+    </div>
+    <sc-if value="{{ compact }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ feeTabs }}" as="t" hint-placeholder-count="8">
+            <button onClick="{{ t.select }}" style="padding:9px 14px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid #1d2433;background:{{ t.bg }};color:{{ t.fg }}">{{ t.label }}</button>
+          </sc-for>
+        </div>
+        <div style="background:#fff;border-top:2px solid #1d2433;padding:20px;display:flex;flex-direction:column;font-size:14px;font-variant-numeric:tabular-nums">
+          <span style="font-family:'Shippori Mincho',serif;font-size:19px;font-weight:700;padding-bottom:12px">{{ feeName }}</span>
+          <div style="display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid #efebe3"><span>入学金</span><span style="color:#6b7180;white-space:nowrap">〇〇〇,〇〇〇円</span></div>
+          <div style="display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid #efebe3"><span>授業料（年額）</span><span style="color:#6b7180;white-space:nowrap">〇〇〇,〇〇〇円</span></div>
+          <div style="display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid #efebe3"><span>施設設備費（年額）</span><span style="color:#6b7180;white-space:nowrap">〇〇〇,〇〇〇円</span></div>
+          <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 0 2px;border-top:2px solid #1d2433;font-weight:700"><span>初年度合計</span><span style="color:#6b7180;white-space:nowrap">〇,〇〇〇,〇〇〇円</span></div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ !compact }}" hint-placeholder-val="{{ true }}">
+    <div style="overflow-x:auto;border-top:2px solid #1d2433">
+      <table style="width:100%;min-width:720px;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums">
+        <thead><tr style="background:#efebe3"><th style="text-align:left;padding:16px;font-weight:700">学部</th><th style="text-align:right;padding:16px;font-weight:700">入学金</th><th style="text-align:right;padding:16px;font-weight:700">授業料（年額）</th><th style="text-align:right;padding:16px;font-weight:700">施設設備費（年額）</th><th style="text-align:right;padding:16px;font-weight:700">初年度合計</th></tr></thead>
+        <tbody>
+          <sc-for list="{{ fees }}" as="f" hint-placeholder-count="8">
+            <tr style="border-bottom:1px solid #e3ded3;background:#fff"><td style="padding:16px;font-weight:700">{{ f }}</td><td style="padding:16px;text-align:right;color:#6b7180">〇〇〇,〇〇〇円</td><td style="padding:16px;text-align:right;color:#6b7180">〇〇〇,〇〇〇円</td><td style="padding:16px;text-align:right;color:#6b7180">〇〇〇,〇〇〇円</td><td style="padding:16px;text-align:right;font-weight:700;color:#6b7180">〇,〇〇〇,〇〇〇円</td></tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+      <sc-for list="{{ payment }}" as="p" hint-placeholder-count="3">
+        <div style="border:1px solid #e3ded3;background:#fff;padding:24px;display:flex;flex-direction:column;gap:8px"><span style="font-size:15px;font-weight:700">{{ p.t }}</span><span style="font-size:13px;line-height:1.8;color:#454c5c">{{ p.b }}</span></div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Scholarships" style="background:#fff;border-top:1px solid #e3ded3;padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:28px">
+    <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:0.05em">奨学金・支援制度</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ typeTabs }}" as="t" hint-placeholder-count="3">
+        <button onClick="{{ t.select }}" style="padding:10px 20px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid #1d2433;background:{{ t.bg }};color:{{ t.fg }};transition:background .2s">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px">
+      <sc-for list="{{ scholarships }}" as="sc" hint-placeholder-count="4">
+        <article style="background:#f7f5f0;border:1px solid #e3ded3;padding:28px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><span style="font-size:12px;font-weight:700;padding:4px 10px;background:#1f3a6b;color:#fff">{{ sc.type }}</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border:1px solid #1f3a6b;color:#1f3a6b">{{ sc.timing }}</span></div>
+          <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-size:21px;font-weight:700">{{ sc.name }}</h3>
+          <p style="margin:0;font-size:14px;line-height:1.85;color:#454c5c;text-wrap:pretty">{{ sc.body }}</p>
+          <dl style="margin:0;display:grid;grid-template-columns:5em 1fr;gap:8px 12px;font-size:13px;padding-top:12px;border-top:1px solid #e3ded3">
+            <dt style="font-weight:700;color:#1f3a6b">支給内容</dt><dd style="margin:0">{{ sc.amount }}</dd>
+            <dt style="font-weight:700;color:#1f3a6b">対象</dt><dd style="margin:0;line-height:1.7">{{ sc.target }}</dd>
+          </dl>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Consultation" style="padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(32px,5vw,64px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <img src="images/illust/thinking-woman.png" alt="" loading="lazy" style="display:block;height:clamp(100px,10vw,140px);width:auto;align-self:flex-start">
+      <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#b2832f">保護者の方へ</span>
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(24px,2.6vw,32px);font-weight:700;line-height:1.6">学費や生活費のご相談は、<br>入学前から受け付けています。</h2>
+      <p style="margin:0;font-size:15px;line-height:1.95;color:#454c5c;text-wrap:pretty">奨学金の組み合わせ方、一人暮らしにかかる費用、教育ローンの利用など、ご家庭の状況に合わせて担当者がご説明します。</p>
+    </div>
+    <div style="background:#efebe3;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:12px;font-size:14px">
+      <span style="font-weight:700;font-size:16px">学生支援課（奨学金窓口）</span>
+      <span>電話　000-000-0000</span>
+      <span>受付　平日 9:00〜17:00（サンプル）</span>
+      <a href="#inquiry" style="margin-top:12px;align-self:flex-start;background:#1d2433;color:#fff;padding:14px 24px;font-size:14px;font-weight:700;transition:background .2s" style-hover="background:#1f3a6b;color:#fff">奨学金について相談する</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { type: 0, fac: 0, w: window.innerWidth };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const s = this.state;
+    const fees = ['文学部', '経済学部', '法学部', '国際学部', '理工学部', '情報学部', '看護学部', '生活科学部'];
+    const types = ['すべて', '給付型', '貸与型・その他'];
+    const list = [
+      { k: 1, type: '給付型', timing: '入試時', name: '入試成績優秀者 奨学金', body: '一般選抜の成績上位者を対象に、授業料の一部を給付します。申請は不要です。', amount: '授業料の〇割相当（サンプル）', target: '一般選抜の成績上位者' },
+      { k: 1, type: '給付型', timing: '入学前', name: '予約型 給付奨学金', body: '入学前に申し込み、合格後に採用が決まる制度です。進学にかかる費用の見通しを立てやすくなります。', amount: '年額〇〇万円（サンプル）', target: '家計基準を満たす受験生' },
+      { k: 1, type: '給付型', timing: '在学中', name: '国の修学支援新制度', body: '要件を満たす学生は、授業料・入学金の減免と給付型奨学金を受けられます。', amount: '世帯収入に応じて決定', target: '日本学生支援機構の基準を満たす学生' },
+      { k: 1, type: '給付型', timing: '在学中', name: '家計急変 支援奨学金', body: '在学中に家計が急変した学生に対し、学業を続けられるよう支援します。', amount: '授業料の一部（サンプル）', target: '家計が急変した在学生' },
+      { k: 2, type: '貸与型', timing: '在学中', name: '日本学生支援機構 貸与奨学金', body: '無利子の第一種と有利子の第二種があります。卒業後に返還します。', amount: '月額〇万円から選択', target: '基準を満たす学生' },
+      { k: 2, type: 'その他', timing: '入学前', name: '提携教育ローン', body: '大学と提携した金融機関の教育ローンを、優遇金利で利用できます。', amount: '金融機関により異なる', target: '学生の保護者' },
+    ];
+    return {
+      compact: s.w < 780,
+      fees,
+      feeName: fees[s.fac],
+      feeTabs: fees.map((label, i) => ({ label, bg: s.fac === i ? '#1d2433' : 'transparent', fg: s.fac === i ? '#fff' : '#1d2433', select: () => this.setState({ fac: i }) })),
+      payment: [
+        { t: '分納できます', b: '授業料等は前期・後期の2回に分けて納入できます。' },
+        { t: '納入方法', b: '銀行振込または口座振替。期限は合格通知でお知らせします。' },
+        { t: '入学辞退時の返還', b: '所定期日までの辞退で、入学金以外の納入金を返還します。' },
+      ],
+      typeTabs: types.map((label, i) => ({ label, bg: s.type === i ? '#1d2433' : 'transparent', fg: s.type === i ? '#fff' : '#1d2433', select: () => this.setState({ type: i }) })),
+      scholarships: list.filter(x => s.type === 0 || x.k === s.type),
+    };
+  }
+}
+</script>
+</body>
+</html>

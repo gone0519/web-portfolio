@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7f5f0;color:#1d2433;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1f3a6b;text-decoration:none}
+a:hover{color:#b2832f}
+button{font-family:inherit}
+</style>
+<script src="./motion.js"></script>
+</helmet>
+<div style="min-height:100vh;background:#f7f5f0">
+<dc-import name="SiteHeader" current="prep" hint-size="100%,76px" style="position:sticky;top:0;z-index:50"></dc-import>
+
+<section data-screen-label="Exam Prep Hero" style="background:linear-gradient(90deg,rgba(31,58,107,0.96) 0%,rgba(31,58,107,0.84) 50%,rgba(31,58,107,0.5) 100%),url(images/classroom-lecture.jpg) 50% 30%/cover no-repeat #1f3a6b;color:#f7f5f0">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(48px,6vw,88px) clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:18px">
+    <nav style="display:flex;gap:10px;font-size:12px;color:#a9b2c6"><a href="Admissions Site.dc.html" style="color:#a9b2c6">トップ</a><span>/</span><span>入試制度・受験対策</span></nav>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;color:#d9c18f">ADMISSION METHODS &amp; PREPARATION</span>
+    <h1 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(34px,4.4vw,56px);font-weight:700;letter-spacing:0.05em">入試制度・受験対策</h1>
+    <p style="margin:0;max-width:36em;font-size:15px;line-height:1.95;color:#cfd5e2;text-wrap:pretty">明翔大学の3つの入試方式と、それぞれに合った準備の進め方を紹介します。自分に合う方式を見つけるところから始めましょう。</p>
+  </div>
+</section>
+
+<section data-screen-label="Method comparison" style="padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 24px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:0.05em">3つの入試方式をくらべる</h2>
+        <span style="align-self:flex-start;font-size:12px;color:#8a5a12;background:#f5ead3;padding:6px 12px">サンプル内容｜正式な情報は募集要項でご確認ください</span>
+      </div>
+      <div aria-hidden="true" style="display:flex;align-items:flex-end;gap:12px">
+        <img src="images/illust/worried.png" alt="" loading="lazy" style="display:block;height:clamp(84px,9vw,120px);width:auto">
+        <span style="font-size:22px;color:#b2832f;padding-bottom:28px">→</span>
+        <img src="images/illust/cheer.png" alt="" loading="lazy" style="display:block;height:clamp(92px,10vw,132px);width:auto">
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px">
+      <sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+        <article style="background:#fff;border:1px solid #e3ded3;border-top:4px solid #1f3a6b;padding:32px 28px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-size:26px;font-weight:700">{{ m.name }}</h3>
+            <span style="font-size:12px;color:#6b7180">{{ m.alias }}</span>
+          </div>
+          <p style="margin:0;font-size:14px;line-height:1.9;color:#454c5c;text-wrap:pretty">{{ m.desc }}</p>
+          <dl style="margin:0;display:flex;flex-direction:column;font-size:14px">
+            <div style="display:grid;grid-template-columns:6.5em 1fr;gap:12px;padding:12px 0;border-top:1px solid #efebe3"><dt style="font-weight:700;color:#1f3a6b">出願時期</dt><dd style="margin:0">{{ m.period }}</dd></div>
+            <div style="display:grid;grid-template-columns:6.5em 1fr;gap:12px;padding:12px 0;border-top:1px solid #efebe3"><dt style="font-weight:700;color:#1f3a6b">主な選考</dt><dd style="margin:0;line-height:1.7">{{ m.selection }}</dd></div>
+            <div style="display:grid;grid-template-columns:6.5em 1fr;gap:12px;padding:12px 0;border-top:1px solid #efebe3"><dt style="font-weight:700;color:#1f3a6b">出願条件</dt><dd style="margin:0;line-height:1.7">{{ m.cond }}</dd></div>
+            <div style="display:grid;grid-template-columns:6.5em 1fr;gap:12px;padding:12px 0;border-top:1px solid #efebe3;border-bottom:1px solid #efebe3"><dt style="font-weight:700;color:#1f3a6b">向いている人</dt><dd style="margin:0;line-height:1.7">{{ m.fit }}</dd></div>
+          </dl>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#b2832f">対策のポイント</span>
+            <sc-for list="{{ m.tips }}" as="tip" hint-placeholder-count="3">
+              <div style="display:flex;gap:12px;font-size:14px;line-height:1.75"><span style="color:#b2832f">—</span><span>{{ tip }}</span></div>
+            </sc-for>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Study plan" style="background:#1f3a6b;color:#f7f5f0;padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:720px">
+        <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:0.05em">受験までの学習プラン例</h2>
+        <p style="margin:0;font-size:15px;line-height:1.9;color:#cfd5e2">一般選抜を受験する場合の目安です。推薦・総合型を受ける人は、夏までに書類と面接の準備を並行して進めます。</p>
+      </div>
+      <img src="images/illust/wc-library.png" alt="" loading="lazy" style="display:block;height:clamp(110px,12vw,160px);width:auto">
+    </div>
+    <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
+      <sc-for list="{{ plan }}" as="p" hint-placeholder-count="5">
+        <li style="display:flex;flex-wrap:wrap;gap:10px 24px;padding:28px 0;border-top:1px solid rgba(247,245,240,0.2)">
+          <span style="flex:0 0 200px;font-size:14px;font-weight:700;letter-spacing:0.08em;color:#d9c18f">{{ p.when }}</span>
+          <div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:8px">
+            <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-size:21px;font-weight:700">{{ p.title }}</h3>
+            <p style="margin:0;font-size:14px;line-height:1.9;color:#cfd5e2;text-wrap:pretty">{{ p.body }}</p>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section data-screen-label="Subject tips" style="padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:0.05em">教科別の対策</h2>
+      <img src="images/illust/desk-study.png" alt="" loading="lazy" style="display:block;height:clamp(80px,9vw,120px);width:auto">
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ subjectTabs }}" as="t" hint-placeholder-count="5">
+        <button onClick="{{ t.select }}" style="padding:10px 20px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid #1d2433;background:{{ t.bg }};color:{{ t.fg }};transition:background .2s">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="background:#fff;border:1px solid #e3ded3;padding:clamp(24px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:32px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#b2832f">出題の傾向（例）</span>
+        <p style="margin:0;font-size:15px;line-height:1.95;text-wrap:pretty">{{ subject.trend }}</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#b2832f">学習のすすめ方</span>
+        <sc-for list="{{ subject.tips }}" as="tip" hint-placeholder-count="3">
+          <div style="display:flex;gap:12px;font-size:14px;line-height:1.8;padding-bottom:10px;border-bottom:1px solid #efebe3"><span style="color:#b2832f">—</span><span>{{ tip }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Resources" style="background:#fff;border-top:1px solid #e3ded3;padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:0.05em">受験生のための資料</h2>
+      <img src="images/illust/teacher.png" alt="" loading="lazy" style="display:block;height:clamp(80px,9vw,120px);width:auto">
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+      <sc-for list="{{ resources }}" as="r" hint-placeholder-count="4">
+        <a href="{{ r.href }}" style="border:1px solid #e3ded3;background:#f7f5f0;padding:28px;display:flex;flex-direction:column;gap:10px;color:#1d2433;transition:border-color .2s" style-hover="border-color:#1f3a6b;color:#1d2433">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#1f3a6b">{{ r.tag }}</span>
+          <span style="font-family:'Shippori Mincho',serif;font-size:19px;font-weight:700">{{ r.title }}</span>
+          <span style="font-size:13px;line-height:1.8;color:#454c5c">{{ r.sub }}</span>
+          <span style="margin-top:auto;font-size:14px;font-weight:700;color:#1f3a6b">{{ r.cta }} →</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { subj: 0 };
+  renderVals() {
+    const subjects = [
+      { label: '英語', trend: '長文読解の比重が高く、語彙・文法の知識を文脈の中で使えるかを問う設問が中心です。', tips: ['毎日1題、時間を計って長文を読む', '単語帳は1冊を繰り返し、例文ごと覚える', '共通テスト型のリスニングにも週2回は触れる'] },
+      { label: '国語', trend: '現代文は評論が中心で、本文の論理を正確に追えるかを重視します。古文・漢文は基本的な文法・句法の理解を問います。', tips: ['評論文は段落ごとに要旨を一文でまとめる', '古文単語と助動詞は夏までに完成させる', '記述問題は解答例と比べて採点基準を意識する'] },
+      { label: '数学', trend: '教科書の典型問題を土台に、複数の分野を組み合わせて考える問題が出題されます。', tips: ['解法を暗記せず「なぜその方針か」を説明できるようにする', '間違えた問題はノートにまとめ、1週間後に解き直す', '計算ミスの傾向を記録し、見直しの手順を決める'] },
+      { label: '理科・地歴', trend: '基本事項の理解と、資料・グラフを読み取って考察する力をあわせて問います。', tips: ['用語は流れや因果関係とセットで覚える', '図表問題は「何が読み取れるか」を自分の言葉で書く', '苦手分野は教科書の太字から確認し直す'] },
+      { label: '小論文・面接', trend: '学校推薦型・総合型選抜で課されます。課題文の理解、自分の考えを筋道立てて述べる力、学部への関心を評価します。', tips: ['志望分野のニュースを週1本読み、800字で意見を書く', '先生に添削してもらい、指摘を次の1本に反映する', '面接は志望理由・高校での活動・入学後の計画を軸に準備する'] },
+    ];
+    const s = this.state;
+    return {
+      methods: [
+        { name: '一般選抜', alias: '学力試験による選抜', desc: '大学独自の学力試験、または大学入学共通テストの成績で合否を判定します。', period: '1月（サンプル）', selection: '個別学力試験、共通テスト利用', cond: '高等学校卒業（見込み）等', fit: '教科の学力を着実に積み上げてきた人', tips: ['過去問は最低3年分を本番と同じ時間配分で', '配点の高い科目から得点を安定させる', '共通テスト利用との併願で受験機会を増やす'] },
+        { name: '学校推薦型選抜', alias: '旧・推薦入試', desc: '高校長の推薦にもとづき、調査書・小論文・面接などで総合的に評価します。', period: '11月（サンプル）', selection: '書類審査、小論文、面接', cond: '学校長の推薦、評定平均の基準あり（学部により異なる）', fit: '高校での学習と活動を継続して積み重ねてきた人', tips: ['出願基準を早めに担任の先生と確認する', '小論文は志望分野の時事テーマで練習する', '志望理由を自分の経験と結びつけて話す'] },
+        { name: '総合型選抜', alias: '旧・AO入試', desc: '志望理由書や活動実績、面接・プレゼンテーションを通して、意欲と適性を多面的に評価します。', period: '9〜10月（サンプル）', selection: '志望理由書、活動報告書、面接、プレゼンテーション', cond: '学部が定める出願要件を満たす者', fit: '学びたいテーマがはっきりしていて、主体的に行動してきた人', tips: ['アドミッション・ポリシーとの接点を言葉にする', '活動は「何を考え、どう変わったか」まで整理する', 'オープンキャンパスで学部の学びを体験する'] },
+      ],
+      plan: [
+        { when: '高2・冬〜', title: '志望校と入試方式を決める', body: '興味のある学部を2〜3に絞り、入試方式と受験科目を確認します。試験日から逆算して大まかな計画を立てましょう。' },
+        { when: '高3・4〜7月', title: '基礎を固める', body: '教科書レベルの総復習を終え、苦手分野の穴をなくします。推薦・総合型を考えている人は志望理由の下書きを始めます。' },
+        { when: '高3・8月', title: 'オープンキャンパスと夏期集中', body: '大学の雰囲気を確かめつつ、まとまった時間で問題演習量を増やします。' },
+        { when: '高3・9〜12月', title: '実戦力をつける', body: '過去問演習と模試の復習を中心に、時間配分と得点の安定を図ります。' },
+        { when: '1月〜試験当日', title: '体調と生活を整える', body: '新しい教材には手を広げず、これまでの復習に集中します。試験時間帯に合わせて起床・学習のリズムを整えましょう。' },
+      ],
+      subjectTabs: subjects.map((x, i) => ({ label: x.label, bg: s.subj === i ? '#1d2433' : 'transparent', fg: s.subj === i ? '#fff' : '#1d2433', select: () => this.setState({ subj: i }) })),
+      subject: subjects[s.subj],
+      resources: [
+        { tag: 'PAST EXAMS', title: '過去問題・解答例', sub: '一般選抜の過去3年分を掲載予定です。', cta: '資料を請求', href: '#request' },
+        { tag: 'GUIDE', title: '入試ガイドブック', sub: '方式別の対策と合格者の声をまとめた冊子です。', cta: '資料を請求', href: '#request' },
+        { tag: 'ONLINE', title: 'オンライン入試説明会', sub: '入試課スタッフが各方式のポイントを解説します。', cta: '参加を予約', href: '#oc' },
+        { tag: 'SCHEDULE', title: '入試日程・出願方法', sub: '方式別の出願期間と手続きを確認できます。', cta: '日程を見る', href: 'Application.dc.html' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

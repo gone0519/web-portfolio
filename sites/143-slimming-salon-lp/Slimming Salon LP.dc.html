@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fbeeeb;color:#5b4846;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:#d9655f;text-decoration:none}
+a:hover{color:#c24f49}
+*{box-sizing:border-box}
+button{font-family:inherit}
+:focus-visible{outline:2px solid #d9655f;outline-offset:3px}
+@keyframes dcFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes dcPulse{0%{box-shadow:0 0 0 0 rgba(229,127,122,0.55)}70%{box-shadow:0 0 0 16px rgba(229,127,122,0)}100%{box-shadow:0 0 0 0 rgba(229,127,122,0)}}
+@keyframes dcSpin{to{transform:rotate(360deg)}}
+img{max-width:100%}
+.pc-nav{display:none}
+/* Tablet and up: widen the single mobile column */
+@media (min-width:768px){
+  .wrap-md{max-width:720px!important}
+  .wrap-lg{max-width:720px!important}
+  .menu-list{display:grid!important;grid-template-columns:1fr 1fr;gap:28px 20px!important}
+  .menu-narrow{max-width:600px;margin-left:auto!important;margin-right:auto!important}
+  .flow-info{grid-template-columns:repeat(4,1fr)!important}
+  .cta-narrow{max-width:440px;margin-left:auto!important;margin-right:auto!important}
+  .pt1-wrap{height:auto!important}
+  .pt1-img{height:340px!important}
+  .pt2-wrap{height:auto!important}
+  .pt2-img{height:260px!important;border-radius:130px!important}
+  .pt3-wrap{height:auto!important}
+  .pt3-img{height:280px!important}
+  .access-map{height:auto!important}
+  .access-map img,.access-map image-slot{height:280px!important}
+}
+/* Desktop: two-column layouts and inline header nav */
+@media (min-width:1024px){
+  .wrap-lg{max-width:1000px!important}
+  .pc-nav{display:flex;align-items:center;gap:28px;margin-right:8px}
+  .pc-nav a{color:#5b4846;font-size:13px;letter-spacing:0.1em}
+  .pc-nav a:hover{color:#d9655f}
+  .menu-btn{display:none!important}
+  .hero-inner{max-width:1040px!important;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;padding:80px 40px 0!important}
+  .hero-inner>.hero-h1{grid-column:1;grid-row:1;text-align:left!important;font-size:48px!important;align-self:end}
+  .hero-inner>.hero-visual{grid-column:2;grid-row:1/span 4;height:480px!important;margin:0!important;align-self:center}
+  .hero-inner>.hero-badges{grid-column:1;grid-row:2;margin-top:28px!important}
+  .hero-inner>.hero-lead{grid-column:1;grid-row:3;text-align:left!important}
+  .hero-inner>.hero-ctas{grid-column:1;grid-row:4;max-width:440px}
+  .hero-inner>.hero-rec-h2,.hero-inner>.hero-rec-list{grid-column:1/-1}
+  .hero-inner>.hero-rec-list{width:100%;max-width:640px;justify-self:center}
+  .hero-img-wrap{left:0!important;width:320px!important;height:440px!important}
+  .hero-img{width:320px!important;height:440px!important;border-radius:200px!important}
+  .hero-ring1{width:320px!important;height:320px!important;top:60px!important}
+  .hero-ring2{width:350px!important;height:350px!important;top:44px!important}
+  .hero-wide{height:600px!important}
+  .hero-wide img{height:600px!important;object-position:50% 35%!important}
+  .hero-wide-copy{left:calc(50% - 440px)!important;transform:none!important;top:140px!important;font-size:22px!important}
+  .hero-deco-text{left:-36px!important;top:70px!important}
+  .pt34{display:grid!important;grid-template-columns:1fr 1fr;align-items:stretch}
+  .voice-list{display:grid!important;grid-template-columns:repeat(3,1fr);gap:20px!important}
+  .access{display:grid;grid-template-columns:1fr 1fr;column-gap:40px;align-items:start}
+  .access>.access-title{grid-column:1/-1;margin-bottom:8px}
+  .access>.access-map,.access>dl{margin-top:20px!important}
+}
+</style>
+</helmet>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:rgba(255,248,246,0.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(229,127,122,0.18)">
+  <a href="#top" style="display:flex;flex-direction:column;line-height:1.1;color:#5b4846">
+    <span style="font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:20px;letter-spacing:0.14em">SALON NAME</span>
+    <span style="font-size:10px;letter-spacing:0.2em;color:#d9655f">ボディケア エステサロン</span>
+  </a>
+  <div style="display:flex;align-items:center;gap:10px">
+    <nav class="pc-nav" aria-label="ページ内ナビゲーション（PC）">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}">{{ n.ja }}</a>
+      </sc-for>
+    </nav>
+    <a href="{{ bookingUrl }}" style="height:40px;padding:0 18px;display:flex;align-items:center;border-radius:999px;background:#e57f7a;color:#fff;font-size:13px;font-weight:700;letter-spacing:0.1em" style-hover="background:#d9655f;color:#fff">予約する</a>
+    <button class="menu-btn" onClick="{{ toggleMenu }}" aria-label="メニューを開く" aria-expanded="{{ menuOpen }}" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(229,127,122,0.4);background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+      <span style="width:18px;height:1.5px;background:#d9655f"></span>
+      <span style="width:18px;height:1.5px;background:#d9655f"></span>
+      <span style="width:12px;height:1.5px;background:#d9655f;align-self:center"></span>
+    </button>
+  </div>
+  <div id="scroll-progress" aria-hidden="true" style="position:absolute;left:0;bottom:-1px;height:2px;width:0;background:#e57f7a"></div>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <nav aria-label="ページ内ナビゲーション" style="position:fixed;top:60px;left:0;right:0;bottom:0;z-index:49;background:rgba(251,238,235,0.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+    <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+      <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;flex-direction:column;align-items:center;padding:12px 24px;color:#5b4846" style-hover="color:#d9655f">
+        <span style="font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:22px;letter-spacing:0.14em;color:#e57f7a">{{ n.en }}</span>
+        <span style="font-size:13px;letter-spacing:0.12em">{{ n.ja }}</span>
+      </a>
+    </sc-for>
+    <a href="{{ bookingUrl }}" style="margin-top:18px;height:54px;padding:0 36px;display:flex;align-items:center;border-radius:999px;background:#e57f7a;color:#fff;font-weight:700;letter-spacing:0.1em">初回カウンセリングを予約</a>
+  </nav>
+</sc-if>
+
+<main id="top">
+
+<!-- SECTION 1: HERO -->
+<section id="hero" data-screen-label="01 Hero" style="position:relative;overflow:hidden;padding-top:60px;background:linear-gradient(170deg,#fdf3f1 0%,#f6cfc9 48%,#eea79f 100%)">
+  <div class="hero-inner" style="position:relative;z-index:1;max-width:440px;margin:0 auto;padding:44px 24px 0">
+    <div data-parallax="-0.15" aria-hidden="true" style="position:absolute;inset:0;z-index:-1;pointer-events:none">
+      <span data-loop="float" style="position:absolute;top:130px;left:-36px;width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.5)"></span>
+      <span data-loop="float" data-delay="1500" style="position:absolute;top:400px;right:-24px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.6)"></span>
+      <span data-loop="float" data-delay="800" style="position:absolute;top:56px;right:46px;width:16px;height:16px;border-radius:50%;background:#fff"></span>
+      <span data-loop="float" data-delay="2200" style="position:absolute;top:660px;left:14px;width:26px;height:26px;border-radius:50%;background:rgba(229,127,122,0.35)"></span>
+    </div>
+    <div class="hero-deco-text" data-anim="fade" data-delay="400" aria-hidden="true" style="position:absolute;top:30px;left:-8px;writing-mode:vertical-rl;font-family:'Josefin Sans',sans-serif;font-weight:200;font-size:46px;letter-spacing:0.12em;color:rgba(255,255,255,0.75)">BODY CARE</div>
+    <h1 class="hero-h1" data-anim="up" style="margin:0;text-align:center;font-weight:900;font-size:36px;line-height:1.3;letter-spacing:0.04em;color:#d9655f;text-wrap:pretty">
+      <span style="font-size:22px;color:#5b4846;font-weight:700;letter-spacing:0.12em;display:block;margin-bottom:6px">わたしに合わせた</span>
+      ボディケア時間を。
+    </h1>
+    <div class="hero-visual" style="position:relative;margin:26px auto 0;width:100%;height:330px">
+      <div class="hero-ring1" aria-hidden="true" data-loop="float" data-delay="600" style="position:absolute;right:-30px;top:20px;width:230px;height:230px;border-radius:50%;background:rgba(255,255,255,0.35)"></div>
+      <div class="hero-ring2" aria-hidden="true" data-loop="spin" style="position:absolute;right:-44px;top:6px;width:258px;height:258px;border-radius:50%;border:1px dashed rgba(255,255,255,0.85)"></div>
+      <div class="hero-img-wrap" data-anim="zoom" data-delay="200" style="position:absolute;left:28px;top:0;width:220px;height:300px">
+        <img class="hero-img" src="images/hero-main.jpg" alt="機器を使ったボディケアの様子" style="display:block;width:220px;height:300px;object-fit:cover;object-position:center 30%;border-radius:140px;box-shadow:0 18px 40px rgba(201,95,88,0.25)">
+      </div>
+      <p data-anim="down" data-delay="600" style="position:absolute;right:4px;top:10px;margin:0;writing-mode:vertical-rl;font-size:17px;font-weight:500;line-height:1.9;letter-spacing:0.22em;color:#5b4846">気になる<span style="color:#d9655f;font-weight:700">ライン</span>と<br>ゆっくり向き合う、<br>心地よいサロンケア</p>
+    </div>
+    <div class="hero-badges" data-stagger="up" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:-6px">
+      <div style="border-radius:999px;background:rgba(255,255,255,0.82);padding:14px 10px;text-align:center;font-size:12.5px;line-height:1.55;letter-spacing:0.06em"><span style="color:#d9655f;font-weight:700;font-size:14px">カウンセリング</span>から<br>はじまるプラン提案</div>
+      <div style="border-radius:999px;background:rgba(255,255,255,0.82);padding:14px 10px;text-align:center;font-size:12.5px;line-height:1.55;letter-spacing:0.06em">気になる部位に<br><span style="color:#d9655f;font-weight:700;font-size:14px">合わせたケア</span>を選べる</div>
+    </div>
+    <p class="hero-lead" data-anim="up" style="margin:22px 0 0;font-size:13.5px;line-height:2;letter-spacing:0.05em;text-align:center;text-wrap:pretty">ご希望やお悩みを伺い、手技と機器を組み合わせたボディケアをご提案するエステサロンです。はじめての方も、まずはお話からお気軽にどうぞ。</p>
+    <div class="hero-ctas" data-stagger="up" style="display:flex;flex-direction:column;gap:10px;margin-top:22px">
+      <a data-loop="pulse" href="{{ bookingUrl }}" style="height:60px;border-radius:999px;background:#e57f7a;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;font-size:16px;font-weight:700;letter-spacing:0.1em;box-shadow:0 8px 20px rgba(201,95,88,0.3)" style-hover="background:#d9655f;color:#fff">初回カウンセリングを予約する <span aria-hidden="true">›</span></a>
+      <a href="#menu" style="height:50px;border-radius:999px;background:#fff;color:#d9655f;border:1px solid #e57f7a;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;letter-spacing:0.1em" style-hover="background:#fdf0ee">メニュー・料金を見る</a>
+    </div>
+
+    <h2 class="hero-rec-h2" data-anim="up" style="margin:56px 0 0;text-align:center;color:#fff;font-weight:700;letter-spacing:0.14em;line-height:1.6;font-size:16px">SALON NAMEは<br><span style="font-size:21px;font-weight:900">こんな方におすすめです</span></h2>
+    <div class="hero-rec-list" data-anim="left" data-stagger="right" style="position:relative;z-index:2;margin:20px 0 0;background:#e57f7a;border-radius:0 0 24px 0;padding:14px 18px 20px;box-shadow:0 10px 30px rgba(201,95,88,0.25)">
+      <sc-for list="{{ checks }}" as="c" hint-placeholder-count="5">
+        <div style="display:flex;align-items:center;gap:10px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.4);font-size:13.5px;letter-spacing:0.06em;color:#fff">
+          <span aria-hidden="true" style="flex:none;width:16px;height:16px;border-radius:50%;border:1px solid #fff;display:flex;align-items:center;justify-content:center;font-size:9px">✓</span>
+          <span><span style="background:#fff;color:#d9655f;font-weight:700;padding:1px 4px">{{ c.hl }}</span>{{ c.rest }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div class="hero-wide" style="position:relative;margin-top:-40px;height:560px">
+    <img src="images/hero-wide.jpg" alt="" style="display:block;width:100%;height:560px;object-fit:cover;object-position:30% center">
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#f3bcb5 0%,rgba(243,188,181,0) 32%,rgba(255,255,255,0) 75%,#fbeeeb 100%)"></div>
+    <p class="hero-wide-copy" data-anim="fade" data-delay="200" style="position:absolute;top:110px;left:50%;transform:translateX(-170px);margin:0;writing-mode:vertical-rl;font-size:20px;font-weight:700;line-height:2;letter-spacing:0.22em;color:#5b4846;pointer-events:none;text-shadow:0 0 12px rgba(255,255,255,0.9)"><span style="color:#d9655f;border-left:1px solid #d9655f">無理なく、心地よく</span><br>理想のからだを<br>目指すあなたを<br>サポートします。</p>
+  </div>
+</section>
+
+<!-- SECTION 2: CONCEPT -->
+<section id="concept" data-screen-label="02 Concept" style="position:relative;background:#fbeeeb;scroll-margin-top:60px">
+  <div class="wrap-md" style="max-width:440px;margin:0 auto;padding:30px 24px 60px;text-align:center">
+    <p data-anim="fade" style="margin:0;font-size:12px;letter-spacing:0.18em;display:flex;justify-content:center;gap:10px;align-items:center"><span aria-hidden="true">●</span>一人ひとりに寄り添うボディケア<span aria-hidden="true">●</span></p>
+    <h2 data-anim="up" style="margin:12px 0 0;font-weight:700;font-size:24px;line-height:1.5;letter-spacing:0.1em">SALON NAMEの<br><span style="color:#d9655f;font-size:31px;font-weight:900">こだわりポイント</span></h2>
+
+    <div style="margin-top:40px">
+      <p data-anim="zoom" style="margin:0;color:#e57f7a;font-family:'Josefin Sans',sans-serif;font-weight:300;letter-spacing:0.1em;font-size:20px">POINT <span style="font-size:40px">01</span></p>
+      <h3 data-anim="up" data-delay="150" style="margin:6px 0 0;font-size:24px;font-weight:700;line-height:1.5;letter-spacing:0.12em">丁寧な<span style="color:#d9655f">カウンセリング</span>で<br>あなたに合うプランを</h3>
+      <div data-stagger="zoom" style="margin-top:22px;border:3px solid #f6d3ce;border-radius:14px;background:#fff7f5;padding:14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px"><span style="width:56px;height:56px;border-radius:50%;background:#f6d3ce;display:flex;align-items:center;justify-content:center;font-family:'Josefin Sans',sans-serif;font-size:20px;color:#d9655f">1</span>お悩み・<br>ご希望を伺う</div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px"><span style="width:56px;height:56px;border-radius:50%;background:#f1b8b1;display:flex;align-items:center;justify-content:center;font-family:'Josefin Sans',sans-serif;font-size:20px;color:#fff">2</span>生活習慣を<br>一緒に確認</div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px"><span style="width:56px;height:56px;border-radius:50%;background:#e57f7a;display:flex;align-items:center;justify-content:center;font-family:'Josefin Sans',sans-serif;font-size:20px;color:#fff">3</span>メニューを<br>ご提案</div>
+      </div>
+      <p data-anim="up" style="margin:20px 0 0;text-align:left;font-size:13.5px;line-height:2;letter-spacing:0.04em">気になる部位やなりたいイメージは人それぞれ。施術の前にしっかりお話を伺い、ご予算やご都合も踏まえてメニューをご提案します。無理な勧誘は行いません。</p>
+      <div class="pt1-wrap" data-anim="right" style="margin-top:24px;height:220px">
+        <img class="pt1-img" src="images/counseling.jpg" alt="カウンセリングシートと施術着" style="display:block;width:100%;height:220px;object-fit:cover;border-radius:6px;border:6px solid #fff;box-shadow:0 8px 24px rgba(201,95,88,0.18)">
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#e5a29b;position:relative;overflow:hidden">
+    <div class="wrap-md" style="max-width:440px;margin:0 auto;padding:50px 24px 56px;text-align:center;color:#fff">
+      <p data-anim="zoom" style="margin:0;font-family:'Josefin Sans',sans-serif;font-weight:300;letter-spacing:0.1em;font-size:20px">POINT <span style="font-size:40px">02</span></p>
+      <h3 data-anim="up" data-delay="150" style="margin:6px 0 0;font-size:24px;font-weight:700;line-height:1.5;letter-spacing:0.12em">ハンド<span style="font-weight:900">×</span>機器の<br>組み合わせケア</h3>
+      <div data-stagger="up" style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="pt2-wrap" style="height:170px"><img class="pt2-img" src="images/hand-care.jpg" alt="ハンドトリートメント" style="display:block;width:100%;height:170px;object-fit:cover;object-position:65% center;border-radius:85px"></div>
+        <div class="pt2-wrap" style="height:170px"><img class="pt2-img" src="images/machine-care.jpg" alt="機器を使ったケア" style="display:block;width:100%;height:170px;object-fit:cover;object-position:45% 40%;border-radius:85px"></div>
+      </div>
+      <p data-anim="up" style="margin:20px 0 0;text-align:left;font-size:13.5px;line-height:2;letter-spacing:0.04em">エステティシャンによる手技に、サロンで導入しているボディケア機器を組み合わせ、部位やご希望に合わせて施術内容を調整します。</p>
+      <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}"><p style="margin:12px 0 0;text-align:left;font-size:11.5px;line-height:1.7;background:rgba(255,255,255,0.22);padding:8px 10px;border-radius:6px">【要確認】実際に使用している機器名・方式に差し替えてください。</p></sc-if>
+    </div>
+  </div>
+
+  <div class="wrap-lg pt34" style="max-width:440px;margin:0 auto;padding:56px 24px 30px;display:flex;flex-direction:column;gap:28px">
+    <div data-anim="up" style="background:#fff;border-radius:0 0 18px 0;box-shadow:0 10px 30px rgba(201,95,88,0.14);overflow:hidden;text-align:center">
+      <p data-anim="zoom" style="margin:24px 0 0;color:#e57f7a;font-family:'Josefin Sans',sans-serif;font-weight:300;letter-spacing:0.1em;font-size:20px">POINT <span style="font-size:40px">03</span></p>
+      <h3 data-anim="up" data-delay="150" style="margin:4px 0 0;font-size:21px;font-weight:700;line-height:1.5;letter-spacing:0.1em">リラックスして過ごせる<br>落ち着いた空間</h3>
+      <div class="pt3-wrap" style="margin-top:18px;height:200px"><img class="pt3-img" src="images/salon-room.jpg" alt="アロマオイルとタオル" style="display:block;width:100%;height:200px;object-fit:cover"></div>
+      <p style="margin:0;padding:18px 22px 24px;text-align:left;font-size:13.5px;line-height:2">周りを気にせず施術に集中できるよう、照明や香り、温度に配慮した空間をご用意しています。着替えやパウダールームもご利用いただけます。</p>
+    </div>
+    <div data-anim="up" style="background:#fff;border-radius:0 0 18px 0;box-shadow:0 10px 30px rgba(201,95,88,0.14);overflow:hidden">
+      <div style="display:grid;grid-template-columns:1fr 130px">
+        <div style="padding:24px 0 0 22px">
+          <p data-anim="zoom" style="margin:0;color:#e57f7a;font-family:'Josefin Sans',sans-serif;font-weight:300;letter-spacing:0.1em;font-size:20px">POINT <span style="font-size:40px">04</span></p>
+          <h3 data-anim="up" data-delay="150" style="margin:4px 0 0;font-size:21px;font-weight:700;line-height:1.5;letter-spacing:0.08em">通いやすさに<br><span style="color:#d9655f">こだわった</span>料金</h3>
+        </div>
+        <div style="height:150px"><img src="images/staff.jpg" alt="施術中のスタッフ" style="display:block;width:100%;height:150px;object-fit:cover;object-position:75% 40%"></div>
+      </div>
+      <p style="margin:0;padding:16px 22px 0;font-size:13.5px;line-height:2">1回ごとのお支払いのほか、続けやすい回数プランもご用意。料金はすべて事前にご案内し、ご納得いただいてから施術に入ります。</p>
+      <div data-anim="zoom" style="margin:18px 16px 18px;background:#f8dcd7;border-radius:4px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <span style="font-size:13px;font-weight:700;line-height:1.5;white-space:nowrap">初回体験<br><span style="font-size:11px">（カウンセリング込）</span></span>
+        <span style="font-family:'Josefin Sans',sans-serif;font-size:28px;color:#e57f7a;line-height:1;white-space:nowrap">¥◯,◯◯◯<span style="font-family:'Zen Maru Gothic';font-size:12px;font-weight:700"> 税込</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: MENU -->
+<section id="menu" data-screen-label="03 Menu" style="position:relative;background:linear-gradient(180deg,#fbeeeb 0%,#f8e1dc 100%);scroll-margin-top:60px">
+  <div class="wrap-lg" style="max-width:440px;margin:0 auto;padding:50px 24px 64px">
+    <div style="text-align:center">
+      <h2 data-anim="blur" style="margin:0;font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:34px;letter-spacing:0.1em;color:#e57f7a">TREATMENT MENU</h2>
+      <p data-anim="fade" data-delay="250" style="margin:4px 0 0;font-size:13px;letter-spacing:0.2em">施術メニュー・料金</p>
+    </div>
+    <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}"><p style="margin:18px 0 0;font-size:11.5px;line-height:1.7;color:#a5504b;border:1px dashed #e57f7a;border-radius:6px;padding:8px 10px;background:#fff">【要確認】メニュー名・時間・料金・条件はすべて仮の表記です。公開前に実際の内容へ差し替えてください。</p></sc-if>
+
+    <div class="menu-narrow" data-anim="zoom" style="position:relative;margin-top:26px;background:#e57f7a;color:#fff;border-radius:18px;padding:30px 22px 24px;text-align:center;box-shadow:0 10px 30px rgba(201,95,88,0.25)">
+      <span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#fff;color:#d9655f;border-radius:999px;padding:5px 18px;font-size:12px;font-weight:700;letter-spacing:0.14em;white-space:nowrap">はじめての方へ</span>
+      <h3 style="margin:0;font-size:22px;font-weight:900;letter-spacing:0.1em">初回体験コース</h3>
+      <p style="margin:8px 0 0;font-size:13px;line-height:1.8">カウンセリング＋お好きな部位の体験施術</p>
+      <div style="margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:4px 8px"><span style="font-size:13px;white-space:nowrap">約◯◯分</span><span style="font-family:'Josefin Sans',sans-serif;font-size:38px;line-height:1;white-space:nowrap">¥◯,◯◯◯<span style="font-family:'Zen Maru Gothic';font-size:12px"> 税込</span></span></div>
+      <p style="margin:12px 0 0;font-size:11.5px;line-height:1.7;opacity:0.95">対象条件・ご利用回数は店舗の規定に準じます。</p>
+      <a data-loop="pulse" href="{{ bookingUrl }}" style="margin-top:18px;height:52px;border-radius:999px;background:#fff;color:#d9655f;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;letter-spacing:0.1em" style-hover="background:#fff4f2;color:#c24f49">体験コースを予約する ›</a>
+    </div>
+
+    <div class="menu-list" data-stagger="up" style="margin-top:30px;display:flex;flex-direction:column;gap:20px">
+      <sc-for list="{{ menus }}" as="m" hint-placeholder-count="4">
+        <article style="position:relative;background:#fff;border-radius:0 0 18px 0;box-shadow:0 8px 24px rgba(201,95,88,0.12);padding:22px 20px 20px">
+          <span style="position:absolute;top:-10px;left:18px;background:#e57f7a;color:#fff;border-radius:999px;padding:3px 14px;font-family:'Josefin Sans',sans-serif;font-size:13px;letter-spacing:0.12em">MENU {{ m.no }}</span>
+          <h3 style="margin:6px 0 0;font-size:19px;font-weight:700;letter-spacing:0.08em">{{ m.name }}</h3>
+          <p style="margin:8px 0 0;font-size:13px;line-height:1.9;text-wrap:pretty">{{ m.desc }}</p>
+          <dl style="margin:14px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:12.5px;line-height:1.6">
+            <dt style="color:#d9655f;font-weight:700">対象部位</dt><dd style="margin:0">{{ m.area }}</dd>
+            <dt style="color:#d9655f;font-weight:700">おすすめ</dt><dd style="margin:0">{{ m.for }}</dd>
+            <dt style="color:#d9655f;font-weight:700">ご注意</dt><dd style="margin:0">{{ m.note }}</dd>
+          </dl>
+          <div style="margin-top:14px;background:#fbeeeb;border-radius:4px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:13px">{{ m.time }}</span>
+            <span style="font-family:'Josefin Sans',sans-serif;font-size:28px;color:#e57f7a;line-height:1">{{ m.price }}<span style="font-family:'Zen Maru Gothic';font-size:11px;font-weight:700"> 税込</span></span>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+
+    <div class="menu-narrow" data-anim="up" style="margin-top:26px;background:#fff;border:3px solid #f6d3ce;border-radius:14px;padding:18px 18px 14px">
+      <h3 style="margin:0;text-align:center;font-size:16px;font-weight:700;letter-spacing:0.1em;color:#d9655f">回数プラン</h3>
+      <table style="width:100%;margin-top:10px;border-collapse:collapse;font-size:13px">
+        <thead><tr><th style="text-align:left;padding:8px 4px;border-bottom:1px solid #f1c9c3;font-weight:500;color:#a07572">プラン</th><th style="text-align:right;padding:8px 4px;border-bottom:1px solid #f1c9c3;font-weight:500;color:#a07572">料金（税込）</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:10px 4px;border-bottom:1px solid #f6dfdb">◯回コース</td><td style="padding:10px 4px;border-bottom:1px solid #f6dfdb;text-align:right;font-family:'Josefin Sans',sans-serif;font-size:18px;color:#e57f7a">¥◯◯,◯◯◯</td></tr>
+          <tr><td style="padding:10px 4px;border-bottom:1px solid #f6dfdb">◯回コース</td><td style="padding:10px 4px;border-bottom:1px solid #f6dfdb;text-align:right;font-family:'Josefin Sans',sans-serif;font-size:18px;color:#e57f7a">¥◯◯,◯◯◯</td></tr>
+          <tr><td style="padding:10px 4px">月額プラン</td><td style="padding:10px 4px;text-align:right;font-family:'Josefin Sans',sans-serif;font-size:18px;color:#e57f7a">¥◯◯,◯◯◯</td></tr>
+        </tbody>
+      </table>
+      <p style="margin:10px 0 0;font-size:11px;line-height:1.7;color:#8a6f6c">有効期限・中途解約の条件は契約前に書面でご説明します。</p>
+    </div>
+    <p style="margin:18px 0 0;font-size:11.5px;line-height:1.8;color:#8a6f6c">※エステティックは医療行為ではありません。感じ方・仕上がりには個人差があり、体重やサイズの減少をお約束するものではありません。</p>
+  </div>
+</section>
+
+<!-- SECTION 4: FLOW -->
+<section id="flow" data-screen-label="04 Flow" style="position:relative;background:#fff8f6;scroll-margin-top:60px">
+  <div aria-hidden="true" style="height:60px;background:#f8e1dc;border-radius:0 0 50% 50% / 0 0 100% 100%"></div>
+  <div class="wrap-md" style="max-width:440px;margin:0 auto;padding:40px 24px 60px">
+    <div style="text-align:center">
+      <h2 data-anim="blur" style="margin:0;font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:34px;letter-spacing:0.1em;color:#e57f7a">FLOW</h2>
+      <p data-anim="fade" data-delay="250" style="margin:4px 0 0;font-size:13px;letter-spacing:0.2em">ご来店から施術後までの流れ</p>
+    </div>
+    <ol data-stagger="left" style="list-style:none;margin:30px 0 0;padding:0;display:flex;flex-direction:column;gap:0">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="6">
+        <li style="display:grid;grid-template-columns:56px 1fr;gap:14px">
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <span style="width:56px;height:56px;border-radius:50%;background:#e57f7a;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Josefin Sans',sans-serif;line-height:1"><span style="font-size:9px;letter-spacing:0.1em">STEP</span><span style="font-size:20px">{{ s.no }}</span></span>
+            <span style="flex:1;width:1px;min-height:18px;background:#f1b8b1"></span>
+          </div>
+          <div style="padding:6px 0 24px">
+            <h3 style="margin:0;font-size:17px;font-weight:700;letter-spacing:0.08em">{{ s.title }}</h3>
+            <p style="margin:6px 0 0;font-size:13px;line-height:1.9">{{ s.text }}</p>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+    <div class="flow-info" data-stagger="up" style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="background:#fbeeeb;border-radius:12px;padding:14px"><p style="margin:0;font-size:13px;font-weight:700;color:#d9655f">持ち物・服装</p><p style="margin:6px 0 0;font-size:12px;line-height:1.8">施術着・タオルはご用意しています。手ぶらでお越しください。</p></div>
+      <div style="background:#fbeeeb;border-radius:12px;padding:14px"><p style="margin:0;font-size:13px;font-weight:700;color:#d9655f">施術前の準備</p><p style="margin:6px 0 0;font-size:12px;line-height:1.8">直前の満腹・空腹は避け、5〜10分前のご来店がおすすめです。</p></div>
+      <div style="background:#fbeeeb;border-radius:12px;padding:14px"><p style="margin:0;font-size:13px;font-weight:700;color:#d9655f">アフターケア</p><p style="margin:6px 0 0;font-size:12px;line-height:1.8">水分補給の目安など、施術後の過ごし方をお伝えします。</p></div>
+      <div style="background:#fbeeeb;border-radius:12px;padding:14px"><p style="margin:0;font-size:13px;font-weight:700;color:#d9655f">変更・キャンセル</p><p style="margin:6px 0 0;font-size:12px;line-height:1.8">前日◯時までにご連絡ください。<sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}"><span style="color:#a5504b">【要確認】</span></sc-if></p></div>
+    </div>
+    <p data-anim="up" style="margin:18px 0 0;font-size:12px;line-height:1.8;background:#fff;border:1px solid #f1c9c3;border-radius:10px;padding:12px 14px">妊娠中・授乳中の方、持病や治療中の症状がある方、ペースメーカー等をご使用の方は、施術を受けられない場合があります。ご予約時にご相談ください。</p>
+    <a class="cta-narrow" data-anim="up" href="{{ bookingUrl }}" style="margin-top:24px;height:60px;border-radius:999px;background:#e57f7a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;letter-spacing:0.1em;box-shadow:0 8px 20px rgba(201,95,88,0.3)" style-hover="background:#d9655f;color:#fff">カウンセリングを予約する ›</a>
+  </div>
+</section>
+
+<!-- SECTION 5: VOICE / FAQ / CTA -->
+<section id="voice" data-screen-label="05 Voice FAQ CTA" style="position:relative;background:#fff8f6;scroll-margin-top:60px">
+  <div style="background:#e5a29b;border-radius:50% 50% 0 0 / 70px 70px 0 0">
+    <div class="wrap-lg" style="max-width:440px;margin:0 auto;padding:60px 24px 56px">
+      <div style="text-align:center;color:#fff">
+        <h2 data-anim="blur" style="margin:0;font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:34px;letter-spacing:0.1em">USER'S VOICE</h2>
+        <p data-anim="fade" data-delay="250" style="margin:4px 0 0;font-size:13px;letter-spacing:0.2em">お客様の声</p>
+      </div>
+      <div class="voice-list" data-stagger="right" style="margin-top:28px;display:flex;flex-direction:column;gap:26px">
+        <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+          <div style="position:relative;background:#fbf1ef;border:2px solid #fff;border-radius:12px;padding:44px 20px 20px">
+            <div style="position:absolute;top:-18px;right:-8px;width:64px;height:64px"><img src="{{ v.img }}" alt="" style="display:block;width:64px;height:64px;object-fit:cover;object-position:{{ v.pos }};border-radius:50%;border:3px solid #fff"></div>
+            <span style="position:absolute;top:-10px;right:66px;background:#e57f7a;color:#fff;border-radius:999px;padding:2px 12px;font-family:'Josefin Sans',sans-serif;font-size:14px;letter-spacing:0.1em">VOICE {{ v.no }}</span>
+            <p style="margin:0;text-align:right;padding-right:56px;font-size:13px;color:#8a6f6c">◯◯代 / ◯性</p>
+            <p style="margin:12px 0 0;font-size:13px;line-height:2">掲載許可をいただいた実際のお客様のご感想をここに掲載します。</p>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}"><p style="margin:20px 0 0;font-size:11.5px;line-height:1.7;color:#fff">【要確認】実在するお客様の声のみ掲載してください。※個人の感想です。</p></sc-if>
+    </div>
+  </div>
+
+  <div id="faq" class="wrap-md" style="max-width:440px;margin:0 auto;padding:56px 24px 20px;scroll-margin-top:60px">
+    <div style="text-align:center">
+      <h2 data-anim="blur" style="margin:0;font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:34px;letter-spacing:0.1em;color:#e57f7a">Q&amp;A</h2>
+      <p data-anim="fade" data-delay="250" style="margin:4px 0 0;font-size:13px;letter-spacing:0.2em">よくあるご質問</p>
+    </div>
+    <div data-stagger="up" style="margin-top:24px;display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="8">
+        <div style="background:#fff;border-radius:12px;box-shadow:0 4px 14px rgba(201,95,88,0.08);overflow:hidden">
+          <button onClick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="width:100%;min-height:56px;border:0;background:transparent;display:flex;align-items:center;gap:12px;padding:12px 16px;text-align:left;cursor:pointer;color:#5b4846;font-size:14px;font-weight:700;line-height:1.6" style-hover="background:#fdf3f1">
+            <span style="flex:none;font-family:'Josefin Sans',sans-serif;font-size:20px;color:#e57f7a">Q</span>
+            <span style="flex:1">{{ f.q }}</span>
+            <span aria-hidden="true" style="flex:none;color:#e57f7a;font-size:18px">{{ f.icon }}</span>
+          </button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:12px;padding:0 16px 16px;font-size:13px;line-height:1.9">
+              <span style="flex:none;font-family:'Josefin Sans',sans-serif;font-size:20px;color:#d9a19b;line-height:1.3">A</span>
+              <span>{{ f.a }}</span>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div id="access" class="wrap-lg access" style="max-width:440px;margin:0 auto;padding:40px 24px 20px;scroll-margin-top:60px">
+    <div class="access-title" style="text-align:center">
+      <h2 data-anim="blur" style="margin:0;font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:34px;letter-spacing:0.1em;color:#e57f7a">SALON INFO</h2>
+      <p data-anim="fade" data-delay="250" style="margin:4px 0 0;font-size:13px;letter-spacing:0.2em">店舗情報</p>
+    </div>
+    <div class="access-map" data-anim="zoom" style="margin-top:20px;height:200px"><image-slot id="map" shape="rounded" radius="12" placeholder="店舗外観・地図" style="width:100%;height:200px"></image-slot></div>
+    <dl data-anim="up" style="margin:18px 0 0;display:grid;grid-template-columns:76px 1fr;font-size:13px;line-height:1.8">
+      <dt style="padding:10px 0;border-bottom:1px solid #f1c9c3;color:#d9655f;font-weight:700">所在地</dt><dd style="margin:0;padding:10px 0;border-bottom:1px solid #f1c9c3">〒◯◯◯-◯◯◯◯ ◯◯県◯◯市◯◯ ◯-◯-◯</dd>
+      <dt style="padding:10px 0;border-bottom:1px solid #f1c9c3;color:#d9655f;font-weight:700">アクセス</dt><dd style="margin:0;padding:10px 0;border-bottom:1px solid #f1c9c3">◯◯線「◯◯駅」徒歩◯分</dd>
+      <dt style="padding:10px 0;border-bottom:1px solid #f1c9c3;color:#d9655f;font-weight:700">営業時間</dt><dd style="margin:0;padding:10px 0;border-bottom:1px solid #f1c9c3">◯◯:◯◯〜◯◯:◯◯（最終受付 ◯◯:◯◯）</dd>
+      <dt style="padding:10px 0;border-bottom:1px solid #f1c9c3;color:#d9655f;font-weight:700">定休日</dt><dd style="margin:0;padding:10px 0;border-bottom:1px solid #f1c9c3">◯曜日</dd>
+      <dt style="padding:10px 0;color:#d9655f;font-weight:700">ご予約</dt><dd style="margin:0;padding:10px 0">WEB予約／お電話（◯◯-◯◯◯◯-◯◯◯◯）</dd>
+    </dl>
+  </div>
+
+  <div id="reserve" style="position:relative;margin-top:40px;background:linear-gradient(170deg,#f6cfc9 0%,#eea79f 100%);border-radius:50% 50% 0 0 / 60px 60px 0 0;scroll-margin-top:60px">
+    <div class="wrap-md" style="max-width:440px;margin:0 auto;padding:64px 24px 120px;text-align:center">
+      <p data-anim="fade" style="margin:0;font-size:13px;letter-spacing:0.18em;color:#5b4846">＼ はじめての方も安心 ／</p>
+      <h2 data-anim="up" style="margin:10px 0 0;font-size:28px;font-weight:900;line-height:1.5;letter-spacing:0.08em;color:#fff;text-shadow:0 2px 10px rgba(201,95,88,0.35)">まずは初回<br>カウンセリングから</h2>
+      <p data-anim="up" data-delay="150" style="margin:16px 0 0;font-size:13.5px;line-height:2;color:#5b4846">お話だけのご来店も歓迎しています。ご希望に合うメニューを一緒に考えましょう。</p>
+      <a class="cta-narrow" data-loop="pulse" data-anim="zoom" data-delay="250" href="{{ bookingUrl }}" style="margin-top:26px;height:64px;border-radius:999px;background:#fff;color:#d9655f;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;letter-spacing:0.1em;box-shadow:0 10px 24px rgba(201,95,88,0.3)" style-hover="background:#fff4f2;color:#c24f49">ご来店を予約する ›</a>
+      <a class="cta-narrow" href="#menu" style="margin-top:12px;height:50px;border-radius:999px;border:1px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;letter-spacing:0.1em" style-hover="background:rgba(255,255,255,0.15);color:#fff">メニュー・料金を見る</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:#e57f7a;color:#fff;text-align:center;padding:28px 24px 100px">
+  <p style="margin:0;font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:20px;letter-spacing:0.14em">SALON NAME</p>
+  <p style="margin:8px 0 0;font-size:11px;line-height:1.8;max-width:420px;margin-left:auto;margin-right:auto">当サロンのサービスはエステティックであり、医療行為ではありません。効果・感じ方には個人差があります。</p>
+  <p style="margin:12px 0 0;font-size:11px;font-family:'Josefin Sans',sans-serif;letter-spacing:0.1em">© SALON NAME</p>
+</footer>
+
+<sc-if value="{{ stickyCta }}" hint-placeholder-val="{{ true }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,248,246,0.92);backdrop-filter:blur(8px);border-top:1px solid rgba(229,127,122,0.2)">
+    <div id="sticky-inner" style="max-width:440px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:8px">
+      <a href="#menu" style="height:50px;border-radius:999px;border:1px solid #e57f7a;background:#fff;color:#d9655f;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">料金を見る</a>
+      <a href="{{ bookingUrl }}" style="height:50px;border-radius:999px;background:#e57f7a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;letter-spacing:0.08em" style-hover="background:#d9655f;color:#fff">WEB予約はこちら</a>
+    </div>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bookingUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#reserve&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Booking&quot;},&quot;stickyCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Booking&quot;},&quot;showNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false, open: 0 };
+  componentDidMount() {
+    this.onScroll = () => {
+      const d = document.documentElement, y = window.scrollY;
+      const bar = document.getElementById('scroll-progress');
+      if (bar) bar.style.width = (y / Math.max(1, d.scrollHeight - innerHeight) * 100) + '%';
+      if (this.props.animations === false) return;
+      document.querySelectorAll('[data-parallax]').forEach(el => { el.style.transform = 'translateY(' + (y * parseFloat(el.dataset.parallax)) + 'px)'; });
+    };
+    addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+    this.setupAnim();
+  }
+  componentDidUpdate() { this.setupAnim(); }
+  componentWillUnmount() { removeEventListener('scroll', this.onScroll); this.io && this.io.disconnect(); }
+  setupAnim() {
+    const off = this.props.animations === false || matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const FROM = { up: 'translateY(36px)', down: 'translateY(-30px)', left: 'translateX(-40px)', right: 'translateX(40px)', zoom: 'scale(0.86)', blur: 'translateY(12px)' };
+    const show = el => { el.style.opacity = '1'; if (FROM[el.dataset.animType]) el.style.transform = ''; el.style.filter = ''; };
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { show(e.target); this.io.unobserve(e.target); } }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    const prep = (el, type, delay) => {
+      if (el.dataset.animInit) return; el.dataset.animInit = '1';
+      if (off) return;
+      el.dataset.animType = type;
+      el.style.opacity = '0';
+      if (FROM[type]) el.style.transform = FROM[type];
+      if (type === 'blur') el.style.filter = 'blur(10px)';
+      const ease = 'cubic-bezier(.2,.75,.2,1)';
+      el.style.transition = 'opacity 1s ' + ease + ' ' + delay + 'ms, transform 1s ' + ease + ' ' + delay + 'ms, filter 1s ease ' + delay + 'ms';
+      this.io.observe(el);
+    };
+    document.querySelectorAll('[data-anim]').forEach(el => prep(el, el.dataset.anim, +el.dataset.delay || 0));
+    document.querySelectorAll('[data-stagger]').forEach(p => Array.from(p.children).forEach((c, i) => prep(c, p.dataset.stagger, 120 * i)));
+    const LOOP = { float: 'dcFloat 6s ease-in-out infinite', pulse: 'dcPulse 2.4s ease-out infinite', spin: 'dcSpin 40s linear infinite' };
+    document.querySelectorAll('[data-loop]').forEach(el => {
+      if (el.dataset.loopInit) return; el.dataset.loopInit = '1';
+      if (off) return;
+      el.style.animation = LOOP[el.dataset.loop];
+      el.style.animationDelay = (+el.dataset.delay || 0) + 'ms';
+    });
+    const st = document.getElementById('sticky-inner');
+    if (st && !st.dataset.animInit && !off) { st.dataset.animInit = '1'; st.style.transform = 'translateY(90px)'; st.style.transition = 'transform .8s cubic-bezier(.2,.75,.2,1) 900ms'; requestAnimationFrame(() => requestAnimationFrame(() => { st.style.transform = ''; })); }
+  }
+  renderVals() {
+    const faqs = [
+      ['初回はどのような流れですか？', 'カウンセリングでご希望や体調を伺い、施術内容と料金をご説明したうえで体験施術を行います。'],
+      ['施術時間はどのくらいですか？', 'メニューにより異なります。各メニューの所要時間をご確認ください。初回はカウンセリングの時間が加わります。'],
+      ['持ち物は必要ですか？', '施術着・タオルはご用意しています。特別な持ち物は必要ありません。'],
+      ['体験コースは予約できますか？', 'WEB予約またはお電話でご予約いただけます。ご利用条件は店舗の規定に準じます。'],
+      ['料金はいくらですか？', 'メニュー・料金セクションをご覧ください。施術前に必ず金額をご案内します。'],
+      ['施術前後に注意することは？', '施術前後の飲酒は控え、水分補給を心がけてください。体調に不安がある場合は事前にご相談ください。'],
+      ['自分の希望でメニューを選べますか？', 'はい。カウンセリングでご希望を伺い、ご一緒にメニューを決めていきます。'],
+      ['キャンセルポリシーは？', '前日◯時までにご連絡ください。それ以降の変更・キャンセルの扱いは店舗規定をご確認ください。（要確認）'],
+    ];
+    const url = this.props.bookingUrl ?? '#reserve';
+    return {
+      bookingUrl: url,
+      stickyCta: this.props.stickyCta ?? true,
+      showNotes: this.props.showNotes ?? true,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      navItems: [
+        { href: '#hero', en: 'TOP', ja: 'トップ' },
+        { href: '#concept', en: 'CONCEPT', ja: 'こだわり' },
+        { href: '#menu', en: 'MENU', ja: 'メニュー・料金' },
+        { href: '#flow', en: 'FLOW', ja: 'ご来店の流れ' },
+        { href: '#faq', en: 'Q&A', ja: 'よくあるご質問' },
+        { href: '#access', en: 'ACCESS', ja: '店舗情報' },
+      ],
+      checks: [
+        { hl: '自分に合ったケア', rest: 'を探している' },
+        { hl: '気になる部位', rest: 'を集中してケアしたい' },
+        { hl: '運動や食事', rest: 'と合わせて取り入れたい' },
+        { hl: '仕事帰り', rest: 'にも通いやすいサロンがいい' },
+        { hl: 'はじめてのエステ', rest: 'で少し不安がある' },
+      ],
+      menus: [
+        { no: '01', name: '全身ボディトリートメント', desc: 'ハンドトリートメントを中心に、全身をバランスよくケアするベーシックメニュー。', area: '全身', for: 'まずは全身を整えたい方', note: '体調によりご案内できない場合があります', time: '約◯◯分', price: '¥◯,◯◯◯' },
+        { no: '02', name: '部位集中ケア', desc: '気になる部位を選んで、集中的にケアするメニュー。', area: 'お腹・太もも・ふくらはぎ・二の腕 など', for: '特定の部位が気になる方', note: '組み合わせ可能な部位数は要確認', time: '約◯◯分', price: '¥◯,◯◯◯' },
+        { no: '03', name: '機器併用ボディケア', desc: 'サロン導入の機器とハンドを組み合わせたメニュー。', area: '部位を選択', for: 'しっかりケアしたい方', note: '機器の種類により施術不可の条件あり', time: '約◯◯分', price: '¥◯,◯◯◯' },
+        { no: '04', name: 'リラクゼーションボディ', desc: '温めとやさしい手技で、リラックスを重視したメニュー。', area: '背中・脚 など', for: '疲れを感じやすい方・癒やされたい方', note: '医療的な治療を目的としたものではありません', time: '約◯◯分', price: '¥◯,◯◯◯' },
+      ],
+      steps: [
+        { no: '01', title: 'ご予約', text: 'WEBまたはお電話でご希望の日時をお知らせください。' },
+        { no: '02', title: 'ご来店・カウンセリング', text: 'シートへのご記入後、体調や生活習慣について伺います。' },
+        { no: '03', title: 'ご希望・目標の共有', text: '気になる部位やなりたいイメージをお聞かせください。' },
+        { no: '04', title: 'メニューのご説明', text: '内容・時間・料金をご説明し、ご納得いただいてから進めます。' },
+        { no: '05', title: '施術', text: 'お着替えのうえ、リラックスして施術をお受けください。' },
+        { no: '06', title: 'アフターカウンセリング', text: '施術後の過ごし方やおうちでのケアをご案内します。' },
+      ],
+      voices: [
+        { no: '01', img: 'images/voice-1.jpg', pos: '50% 35%' },
+        { no: '02', img: 'images/voice-2.jpg', pos: '30% 45%' },
+        { no: '03', img: 'images/voice-3.jpg', pos: '70% 25%' },
+      ],
+      faqs: faqs.map(([q, a], i) => ({
+        q, a, open: this.state.open === i, icon: this.state.open === i ? '−' : '+',
+        toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

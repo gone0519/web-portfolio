@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@keyframes sf-twinkle{0%,100%{opacity:.2;transform:scale(.55) rotate(0deg)}50%{opacity:1;transform:scale(1.15) rotate(25deg)}}
+@keyframes sf-pulse{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes sf-shoot{0%{opacity:0;transform:translate(0,0) rotate(-29deg)}2%{opacity:1}9%{opacity:0;transform:translate(-420px,232px) rotate(-29deg)}100%{opacity:0;transform:translate(-420px,232px) rotate(-29deg)}}
+@keyframes sf-drift{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@keyframes sf-glow{0%,100%{box-shadow:0 0 0 10px rgba(245,227,90,.16),0 0 40px 8px rgba(245,227,90,.35)}50%{box-shadow:0 0 0 20px rgba(245,227,90,.1),0 0 80px 22px rgba(245,227,90,.5)}}
+@media (prefers-reduced-motion: reduce){[data-sf]{animation:none !important}}
+@media (max-width:640px){.sf-moon{width:40px !important;height:40px !important;top:3% !important}}
+</style>
+</helmet>
+<div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden">{{ field }}</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;800px&quot;,&quot;height&quot;:&quot;400px&quot;},&quot;count&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:36,&quot;tsType&quot;:&quot;number&quot;},&quot;seed&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:7,&quot;tsType&quot;:&quot;number&quot;},&quot;dim&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;shooting&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;clouds&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;moonX&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:null,&quot;tsType&quot;:&quot;number&quot;},&quot;moonY&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:null,&quot;tsType&quot;:&quot;number&quot;},&quot;moonSize&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:72,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    const count = Number(p.count ?? 36), dim = p.dim === true || p.dim === 'true';
+    const shooting = !(p.shooting === false || p.shooting === 'false') && !dim;
+    const clouds = p.clouds === true || p.clouds === 'true';
+    let s = Number(p.seed ?? 7) >>> 0;
+    const r = () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+    const h = React.createElement;
+    const SPARK = 'polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)';
+    const out = [];
+    for (let i = 0; i < count; i++) {
+      const x = r() * 100, y = r() * (p.maxY ? Number(p.maxY) : 85), kind = r();
+      const dur = 2.2 + r() * 3, delay = -r() * 5;
+      const col = r() < 0.18 ? '#f5e35a' : '#ffffff';
+      const base = { position: 'absolute', left: x + '%', top: y + '%' };
+      if (kind < 0.42) {
+        const z = (dim ? 8 : 10) + r() * (dim ? 8 : 16);
+        out.push(h('div', { key: i, style: { ...base, width: z, height: z, filter: `drop-shadow(0 0 ${z / 3}px ${col})`, opacity: dim ? 0.7 : 1 } },
+          h('div', { 'data-sf': 1, style: { width: '100%', height: '100%', background: col, clipPath: SPARK, animation: `sf-twinkle ${dur}s ease-in-out ${delay}s infinite` } })));
+      } else if (kind < 0.85) {
+        const z = 2 + r() * 3;
+        out.push(h('span', { key: i, 'data-sf': 1, style: { ...base, width: z, height: z, borderRadius: '50%', background: col, boxShadow: `0 0 ${z * 2}px ${z / 2}px ${col}`, opacity: dim ? 0.6 : 1, animation: `sf-pulse ${dur}s ease-in-out ${delay}s infinite` } }));
+      } else {
+        const z = 5 + r() * 4;
+        out.push(h('span', { key: i, 'data-sf': 1, style: { ...base, width: z, height: z, background: col, transform: 'rotate(45deg)', opacity: dim ? 0.5 : 0.9, animation: `sf-pulse ${dur}s ease-in-out ${delay}s infinite` } }));
+      }
+    }
+    if (shooting) {
+      [[78, 8, 1.5], [52, 4, 6.5], [96, 22, 11]].forEach(([x, y, d], i) => out.push(h('span', { key: 'sh' + i, 'data-sf': 1, style: { position: 'absolute', left: x + '%', top: y + '%', width: 140, height: 2, borderRadius: 2, background: 'linear-gradient(90deg,#fff,rgba(255,255,255,0))', boxShadow: '0 0 8px rgba(255,255,255,.8)', opacity: 0, animation: `sf-shoot 14s linear ${d}s infinite` } })));
+    }
+    if (clouds) {
+      [[6, 30, 1], [70, 46, 0.8], [36, 62, 0.65]].forEach(([x, y, sc], i) => out.push(h('div', { key: 'cl' + i, 'data-sf': 1, style: { position: 'absolute', left: x + '%', top: y + '%', width: 180 * sc, height: 50 * sc, animation: `sf-drift ${18 + i * 6}s ease-in-out ${-i * 4}s infinite alternate` } },
+        h('span', { style: { position: 'absolute', left: 0, bottom: 0, width: '100%', height: '55%', borderRadius: 999, background: 'rgba(255,255,255,.32)' } }),
+        h('span', { style: { position: 'absolute', left: '18%', bottom: '20%', width: '38%', height: '80%', borderRadius: '50%', background: 'rgba(255,255,255,.32)' } }),
+        h('span', { style: { position: 'absolute', left: '45%', bottom: '25%', width: '30%', height: '65%', borderRadius: '50%', background: 'rgba(255,255,255,.32)' } }))));
+    }
+    if (p.moonX != null) {
+      const ms = p.moonSize ?? 72;
+      out.push(h('div', { key: 'moon', 'data-sf': 1, className: 'sf-moon', style: { position: 'absolute', left: p.moonX + '%', top: p.moonY + '%', width: ms, height: ms, borderRadius: '50%', background: 'radial-gradient(circle at 35% 35%,#fff7b8,#f5e35a 55%,#e9cf3a)', animation: 'sf-glow 5s ease-in-out infinite' } },
+        h('span', { style: { position: 'absolute', left: '22%', top: '48%', width: '18%', height: '18%', borderRadius: '50%', background: 'rgba(214,186,40,.35)' } }),
+        h('span', { style: { position: 'absolute', left: '56%', top: '26%', width: '12%', height: '12%', borderRadius: '50%', background: 'rgba(214,186,40,.3)' } })));
+    }
+    return { field: out };
+  }
+}
+</script>
+</body>
+</html>

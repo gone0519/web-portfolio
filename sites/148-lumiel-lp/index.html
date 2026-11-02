@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f4f6f9;color:#3a3d44;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#4f6fa8;text-decoration:none}
+a:hover{color:#2f4f86}
+*{box-sizing:border-box}
+body{word-break:auto-phrase}
+.ib{display:inline-block}
+.ing-card{grid-template-columns:minmax(150px,1fr) minmax(0,2fr)}
+@media (max-width:899px){
+  .concern-img{aspect-ratio:4/3!important}
+}
+@media (max-width:640px){
+  .ing-card{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:759px){
+  .hero-badges{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px!important}
+  .hero-badges>div{width:auto!important;height:auto!important;aspect-ratio:1;font-size:12px!important}
+  .hero-cta>a:first-child{width:100%;justify-content:center}
+  .hero-cta{justify-content:center}
+  .hero-product{height:46%!important}
+  .deco-sm-hide{display:none!important}
+  .banner-img{position:relative!important;width:100%!important;height:min(64vw,300px)}
+  .banner-txt{min-height:0!important;justify-content:center!important;padding:0 20px 32px!important;margin-top:-40px}
+  .banner-txt>p{font-size:18px!important;padding:18px 24px!important;text-align:center}
+  .purchase-img{aspect-ratio:4/3!important}
+  .site-footer{padding-bottom:88px}
+}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(250,251,253,0.92);backdrop-filter:blur(10px);border-bottom:1px solid #e3e8ef;box-shadow:inset 0 2px 0 #c9ad6e">
+  <div style="max-width:1080px;margin:0 auto;padding:0 clamp(16px,4vw,32px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" style="display:flex;align-items:baseline;gap:10px;color:#3a3d44">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:0.18em;font-weight:500">LUMIEL</span>
+      <span style="font-family:'Shippori Mincho',serif;font-size:11px;letter-spacing:0.2em;color:#7a8090">ルミエル</span>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:28px;font-size:13px;letter-spacing:0.08em">
+        <a href="#concerns" style="color:#4a4e58">お悩み</a>
+        <a href="#features" style="color:#4a4e58">特長・成分</a>
+        <a href="#howto" style="color:#4a4e58">使い方</a>
+        <a href="#purchase" style="display:flex;align-items:center;height:40px;padding:0 22px;border-radius:999px;background:#545e8c;color:#fff;letter-spacing:0.12em" style-hover="background:#434c78;color:#fff">ご購入はこちら</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" aria-expanded="{{ menuOpen }}" style="width:44px;height:44px;border:none;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer">
+        <span style="width:22px;height:1px;background:#3a3d44"></span>
+        <span style="width:22px;height:1px;background:#3a3d44"></span>
+        <span style="width:22px;height:1px;background:#3a3d44"></span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;flex-direction:column;padding:8px 24px 24px;border-top:1px solid #e3e8ef;background:#fafbfd;font-size:15px;letter-spacing:0.08em">
+      <a href="#concerns" onClick="{{ closeMenu }}" style="padding:14px 0;border-bottom:1px solid #e9edf2;color:#4a4e58">お悩み</a>
+      <a href="#features" onClick="{{ closeMenu }}" style="padding:14px 0;border-bottom:1px solid #e9edf2;color:#4a4e58">特長・成分</a>
+      <a href="#howto" onClick="{{ closeMenu }}" style="padding:14px 0;border-bottom:1px solid #e9edf2;color:#4a4e58">使い方</a>
+      <a href="#purchase" onClick="{{ closeMenu }}" style="margin-top:18px;height:52px;display:flex;align-items:center;justify-content:center;border-radius:999px;background:#545e8c;color:#fff;letter-spacing:0.14em">ご購入はこちら</a>
+    </nav>
+  </sc-if>
+</header>
+
+<main id="top">
+
+<!-- 01 HERO -->
+<section data-screen-label="01 Hero" style="position:relative;overflow:hidden;background:linear-gradient(170deg,#e9eef5 0%,#dfe6f0 45%,#f3f5f9 100%)">
+  <div data-line="1" style="position:absolute;left:-10%;right:-10%;top:58%;height:1px;transform-origin:left center;background:linear-gradient(90deg,transparent,#c9ad6e 30%,#e2cd98 70%,transparent);transform:rotate(-8deg)"></div>
+  <span data-sparkle="1" style="position:absolute;left:8%;top:20%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px rgba(255,255,255,0.9);pointer-events:none"></span><span data-sparkle="1" style="position:absolute;left:46%;top:12%;width:4px;height:4px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px rgba(255,255,255,0.9);pointer-events:none"></span><span data-sparkle="1" style="position:absolute;left:62%;top:70%;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px rgba(255,255,255,0.9);pointer-events:none"></span><span data-sparkle="1" style="position:absolute;left:88%;top:30%;width:4px;height:4px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px rgba(255,255,255,0.9);pointer-events:none"></span><span data-sparkle="1" style="position:absolute;left:30%;top:84%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px rgba(255,255,255,0.9);pointer-events:none"></span><span data-sparkle="1" style="position:absolute;left:76%;top:52%;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px rgba(255,214,150,0.9);pointer-events:none"></span><span data-sparkle="1" style="position:absolute;left:18%;top:60%;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px rgba(255,214,150,0.9);pointer-events:none"></span>
+  <span data-parallax="0.15" aria-hidden="true" style="position:absolute;left:-2%;bottom:-4%;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(120px,22vw,300px);line-height:1;letter-spacing:0.04em;color:transparent;-webkit-text-stroke:1px rgba(120,140,180,0.28);pointer-events:none;white-space:nowrap">Lumiel</span>
+  <div style="position:relative;max-width:1080px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(20px,5vw,56px) clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(24px,4vw,48px);align-items:center">
+    <div data-stagger="200" style="display:flex;flex-direction:column;gap:22px;position:relative;z-index:2">
+      <div style="display:flex;align-items:stretch;width:fit-content;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:0.1em">
+        <span style="padding:5px 10px;border:1px solid #545e8c;color:#545e8c;background:rgba(255,255,255,0.7)">NEW</span>
+        <span style="padding:5px 12px;background:#545e8c;color:#fff">美容保湿クリーム</span>
+      </div>
+      <h1 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(36px,5.6vw,60px);line-height:1.3;letter-spacing:0.06em;color:#4f6fa8;text-wrap:pretty">うるおいを、<br><span style="color:#2f3442">肌の奥</span><span style="font-size:0.6em;color:#2f3442">※</span><span style="color:#2f3442">まで。</span></h1>
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(16px,1.8vw,20px);letter-spacing:0.32em;color:#3a3d44">美 容 ク リ ー ム 誕 生 。</p>
+      <p style="margin:0;font-size:14px;line-height:2;color:#4a4e58;max-width:30em;text-wrap:pretty">乾燥が気になる季節も、ゆらぎやすい日も。<br>濃密なクリームが肌を包みこみ、なめらかでやわらかな素肌へ導きます。</p>
+      <div class="hero-badges" style="display:flex;flex-wrap:wrap;gap:10px">
+        <div data-float="1" style="width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0%,#f1f3f7 60%,#dde3ec 100%);box-shadow:0 6px 16px rgba(80,95,130,0.18),inset 0 0 0 1px rgba(192,162,100,0.55),inset 0 0 0 4px #fff,inset 0 0 0 5px rgba(192,162,100,0.3);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;line-height:1.4;color:#2f3442">肌に<br>うるおい</div>
+        <div data-float="1" style="width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0%,#f1f3f7 60%,#dde3ec 100%);box-shadow:0 6px 16px rgba(80,95,130,0.18),inset 0 0 0 1px rgba(192,162,100,0.55),inset 0 0 0 4px #fff,inset 0 0 0 5px rgba(192,162,100,0.3);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;line-height:1.4;color:#2f3442">キメを<br>整える</div>
+        <div data-float="1" style="width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0%,#f1f3f7 60%,#dde3ec 100%);box-shadow:0 6px 16px rgba(80,95,130,0.18),inset 0 0 0 1px rgba(192,162,100,0.55),inset 0 0 0 4px #fff,inset 0 0 0 5px rgba(192,162,100,0.3);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;line-height:1.4;color:#2f3442">肌に<br>ハリを</div>
+        <div data-float="1" style="width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0%,#f1f3f7 60%,#dde3ec 100%);box-shadow:0 6px 16px rgba(80,95,130,0.18),inset 0 0 0 1px rgba(192,162,100,0.55),inset 0 0 0 4px #fff,inset 0 0 0 5px rgba(192,162,100,0.3);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Shippori Mincho',serif;font-size:13px;line-height:1.4;color:#2f3442">乾燥を<br>防ぐ</div>
+      </div>
+      <div class="hero-cta" style="display:flex;flex-wrap:wrap;align-items:center;gap:18px">
+        <a href="#purchase" data-glow="1" style="position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:14px;height:56px;padding:0 36px;border-radius:999px;background:#545e8c;color:#fff;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:0.14em;box-shadow:0 8px 20px rgba(84,94,140,0.28)" style-hover="background:#434c78;color:#fff"><span data-shine="1" style="position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.45),transparent);pointer-events:none;transform:translateX(-150%)"></span>ご購入はこちら<span style="font-size:12px">›</span></a>
+        <a href="#features" style="font-size:13px;letter-spacing:0.1em;color:#4f6fa8;border-bottom:1px solid #a9b8d4;padding-bottom:3px">製品の特長を見る</a>
+      </div>
+      <p style="margin:0;font-size:11px;color:#7a8090">※角質層まで</p>
+    </div>
+    <div class="hero-visual" style="position:relative;min-height:clamp(440px,48vw,560px)">
+      <p class="hero-vcopy" data-reveal="up" data-delay="900" style="position:absolute;left:0;top:2%;z-index:3;margin:0;writing-mode:vertical-rl;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:0.3em;color:#4a4e58;background:rgba(255,255,255,0.72);padding:12px 6px">素肌に、澄んだうるおいを。</p>
+      <div data-reveal="fade" data-delay="300" style="position:absolute;right:0;top:0;width:82%;height:88%;overflow:hidden">
+        <image-slot data-kenburns="1" id="hero-model" shape="rect" src="images/model-smile.jpg" placeholder="モデル写真（顔・肌のアップ）"></image-slot>
+      </div>
+      <div class="hero-product" data-reveal="up" data-delay="700" data-float="1" style="position:absolute;left:0;bottom:0;width:44%;height:47%;box-shadow:0 18px 40px rgba(60,75,110,0.22)">
+        <image-slot id="hero-product" shape="rect" src="images/jar-hands.jpg" placeholder="商品写真（容器）"></image-slot>
+      </div>
+      <p data-reveal="right" data-delay="1100" data-parallax="-0.08" style="position:absolute;right:2%;bottom:0;z-index:3;margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(24px,3vw,36px);letter-spacing:0.08em;color:#c0a264">Lumiel Crème</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CONCERNS & BENEFITS -->
+<section id="concerns" data-screen-label="02 Concerns" style="scroll-margin-top:64px">
+  <div style="background:#868d96">
+    <div style="max-width:1080px;margin:0 auto;padding:clamp(48px,7vw,80px) clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(28px,4vw,48px);align-items:center">
+      <div class="concern-img" data-reveal="left" style="aspect-ratio:4/5;width:100%;overflow:hidden">
+        <image-slot data-kenburns="1" id="concern-model" shape="rect" src="images/concern-mirror.jpg" placeholder="肌悩みを感じるモデル写真"></image-slot>
+      </div>
+      <div data-stagger="150" style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;gap:14px;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.6em;color:#e3e6ea"><span style="width:36px;height:1px;background:currentColor"></span>CONCERN<span style="width:36px;height:1px;background:currentColor"></span></div>
+        <h2 style="margin:0 0 12px;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(24px,3vw,32px);letter-spacing:0.1em;color:#fff"><span class="ib">こんなお悩み、</span><span class="ib">ありませんか？</span></h2>
+        <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,0.94);padding:16px 20px;box-shadow:0 10px 28px rgba(30,35,45,0.16);letter-spacing:0.04em;font-size:14px;line-height:1.7;color:#3a3d44"><span style="flex:none;margin-top:5px;width:14px;height:14px;border:1px solid #c0a264;display:flex;align-items:center;justify-content:center;color:#c0a264;font-size:10px;line-height:1">✓</span><span>夕方になると、<b>肌のつっぱりや乾燥</b>が気になる</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,0.94);padding:16px 20px;box-shadow:0 10px 28px rgba(30,35,45,0.16);letter-spacing:0.04em;font-size:14px;line-height:1.7;color:#3a3d44;margin-left:clamp(0px,4vw,40px)"><span style="flex:none;margin-top:5px;width:14px;height:14px;border:1px solid #c0a264;display:flex;align-items:center;justify-content:center;color:#c0a264;font-size:10px;line-height:1">✓</span><span>触れたときの<b>ごわつき・ざらつき</b>が気になる</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,0.94);padding:16px 20px;box-shadow:0 10px 28px rgba(30,35,45,0.16);letter-spacing:0.04em;font-size:14px;line-height:1.7;color:#3a3d44"><span style="flex:none;margin-top:5px;width:14px;height:14px;border:1px solid #c0a264;display:flex;align-items:center;justify-content:center;color:#c0a264;font-size:10px;line-height:1">✓</span><span>年齢とともに、<b>ハリ感の物足りなさ</b>を感じる</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,0.94);padding:16px 20px;box-shadow:0 10px 28px rgba(30,35,45,0.16);letter-spacing:0.04em;font-size:14px;line-height:1.7;color:#3a3d44;margin-left:clamp(0px,4vw,40px)"><span style="flex:none;margin-top:5px;width:14px;height:14px;border:1px solid #c0a264;display:flex;align-items:center;justify-content:center;color:#c0a264;font-size:10px;line-height:1">✓</span><span>忙しくて、<b>シンプルなお手入れ</b>で済ませたい</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="background:linear-gradient(180deg,#f3f5f9 0%,#e6ebf2 100%)">
+    <div style="max-width:880px;margin:0 auto;padding:clamp(56px,8vw,100px) clamp(20px,5vw,56px)">
+      <div data-reveal="up" style="border-left:1px solid #8fa6cf;border-top:1px solid #8fa6cf;border-top-left-radius:18px;padding:clamp(24px,4vw,40px) 0 0 clamp(20px,4vw,40px)">
+        <p style="margin:0 0 6px;font-family:'Shippori Mincho',serif;font-size:clamp(17px,2vw,21px);letter-spacing:0.1em;color:#3a3d44">そんな乾燥ゆらぎ肌に</p>
+        <h2 style="margin:0 0 28px;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(32px,4.6vw,48px);letter-spacing:0.08em;line-height:1.35;color:#4f6fa8"><span class="ib">一日中、</span><span class="ib" style="color:#2f3442">満ちる肌へ。</span></h2>
+        <p style="margin:0;max-width:34em;font-size:14px;line-height:2.1;color:#4a4e58;text-wrap:pretty">LUMIELは、乾燥しがちな肌にうるおいを与え、キメを整える美容クリームです。スキンケアの最後にひと塗りするだけで、肌をやわらかく包みこみ、なめらかな手ざわりへ導きます。</p>
+      </div>
+      <div data-stagger="0" style="margin-top:clamp(40px,6vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+        <div style="background:#fff;border-top:1px solid #c0a264;padding:32px 26px;box-shadow:0 10px 30px rgba(80,95,130,0.10);display:flex;flex-direction:column;gap:10px;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s" style-hover="transform:translateY(-8px);box-shadow:0 22px 44px rgba(80,95,130,0.18)">
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:44px;line-height:1;color:#c0a264;display:flex;align-items:center;gap:12px">01</span>
+          <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:19px;letter-spacing:0.06em;color:#2f3442">うるおいを与える</h3>
+          <p style="margin:0;font-size:13px;line-height:1.9;color:#5a5f6a">乾燥しがちな肌に、たっぷりのうるおいを与えます。</p>
+        </div>
+        <div style="background:#fff;border-top:1px solid #c0a264;padding:32px 26px;box-shadow:0 10px 30px rgba(80,95,130,0.10);display:flex;flex-direction:column;gap:10px;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s" style-hover="transform:translateY(-8px);box-shadow:0 22px 44px rgba(80,95,130,0.18)">
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:44px;line-height:1;color:#c0a264;display:flex;align-items:center;gap:12px">02</span>
+          <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:19px;letter-spacing:0.06em;color:#2f3442">キメを整える</h3>
+          <p style="margin:0;font-size:13px;line-height:1.9;color:#5a5f6a">ごわつきがちな肌を整え、なめらかな手ざわりへ。</p>
+        </div>
+        <div style="background:#fff;border-top:1px solid #c0a264;padding:32px 26px;box-shadow:0 10px 30px rgba(80,95,130,0.10);display:flex;flex-direction:column;gap:10px;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s" style-hover="transform:translateY(-8px);box-shadow:0 22px 44px rgba(80,95,130,0.18)">
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:44px;line-height:1;color:#c0a264;display:flex;align-items:center;gap:12px">03</span>
+          <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:19px;letter-spacing:0.06em;color:#2f3442">ハリとツヤを与える</h3>
+          <p style="margin:0;font-size:13px;line-height:1.9;color:#5a5f6a">うるおいで満たし、ハリとツヤのある印象の肌へ。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 FEATURES & INGREDIENTS -->
+<section id="features" data-screen-label="03 Features" style="position:relative;overflow:hidden;scroll-margin-top:64px;background:linear-gradient(180deg,#e6ebf2 0%,#f1f3f7 40%,#f7f7f5 100%)">
+  <span class="deco-sm-hide" data-parallax="0.1" aria-hidden="true" style="position:absolute;right:-4%;top:6%;writing-mode:vertical-rl;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(80px,12vw,160px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(120,140,180,0.22);pointer-events:none">Formula</span>
+  <div style="position:relative;max-width:880px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,5vw,56px)">
+    <div data-stagger="0" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;margin-bottom:clamp(40px,6vw,64px)">
+      <div data-reveal="fade" style="display:flex;align-items:center;gap:14px;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.6em;color:#9aa3b5"><span style="width:36px;height:1px;background:currentColor"></span>FORMULA<span style="width:36px;height:1px;background:currentColor"></span></div>
+      <span style="display:inline-block;padding:4px 18px;background:#868d96;color:#fff;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:0.3em;transform:skewX(-12deg)">肌をすこやかに保つ</span>
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(28px,4vw,40px);letter-spacing:0.08em;color:#2f3442"><span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5em;color:#4f6fa8">3</span>つのこだわり処方</h2>
+      <p style="margin:0;font-size:12px;color:#7a8090">※配合成分は確定情報に差し替えてください</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:clamp(28px,4vw,40px)">
+      <sc-for list="{{ ingredientGroups }}" as="g" hint-placeholder-count="3">
+        <div class="ing-card" data-reveal="up" style="position:relative;background:#fff;padding:clamp(24px,3vw,32px);display:grid;gap:20px;align-items:center;box-shadow:0 10px 30px rgba(80,95,130,0.08)">
+          <span data-parallax="-0.12" style="position:absolute;left:12px;top:-30px;font-family:'Cormorant Garamond',serif;font-size:76px;line-height:1;color:#dce3ee;pointer-events:none">{{ g.num }}</span>
+          <div style="position:relative;display:flex;flex-direction:column;gap:6px">
+            <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:22px;line-height:1.6;letter-spacing:0.08em;color:#2f3442;white-space:pre-line">{{ g.title }}</h3>
+            <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#7d96c4">{{ g.en }}</span>
+          </div>
+          <div data-stagger="250" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;min-width:0">
+            <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="3">
+              <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+                <div style="aspect-ratio:1/1;width:100%;overflow:hidden;transition:transform .6s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="{{ it.id }}" shape="rect" placeholder="成分イメージ"></image-slot></div>
+                <figcaption style="font-size:11px;text-align:center;color:#5a5f6a;line-height:1.5">{{ it.name }}</figcaption>
+              </figure>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="margin-top:clamp(64px,9vw,110px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(28px,4vw,48px);align-items:center">
+      <div data-reveal="left" style="display:flex;flex-direction:column;gap:18px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.8em;color:#8a90a0">TEXTURE</span>
+        <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(26px,3.4vw,34px);line-height:1.5;letter-spacing:0.06em;color:#2f3442">肌に<span style="font-size:1.3em;color:#4f6fa8">とろけて</span>、<br>なじむ濃密クリーム</h3>
+        <p style="margin:0;font-size:14px;line-height:2.1;color:#4a4e58;text-wrap:pretty">肌にのせると体温でやわらかくほどけ、すっとなじむテクスチャー。塗り込んだ後もベタつきにくく、しっとりとした手ざわりが続きます。</p>
+      </div>
+      <div data-reveal="zoom" data-parallax="-0.05" style="aspect-ratio:4/3;width:100%"><image-slot id="texture" shape="rect" src="images/cream-finger.jpg" placeholder="テクスチャー写真（クリームのアップ）"></image-slot></div>
+    </div>
+
+    <div data-reveal="up" style="margin-top:clamp(56px,8vw,88px);background:#fff;box-shadow:0 10px 30px rgba(80,95,130,0.08)">
+      <div style="padding:14px 24px;background:#545e8c;color:#fff;font-family:'Shippori Mincho',serif;font-size:15px;letter-spacing:0.2em;text-align:center">製品情報</div>
+      <dl style="margin:0;display:grid;grid-template-columns:minmax(90px,140px) minmax(0,1fr);font-size:13px;line-height:1.8">
+        <dt style="padding:14px 20px;background:#f1f4f8;border-bottom:1px solid #e6ebf2;color:#5a5f6a">商品名</dt><dd style="margin:0;padding:14px 20px;border-bottom:1px solid #e6ebf2">LUMIEL モイスチャークリーム（仮）</dd>
+        <dt style="padding:14px 20px;background:#f1f4f8;border-bottom:1px solid #e6ebf2;color:#5a5f6a">内容量</dt><dd style="margin:0;padding:14px 20px;border-bottom:1px solid #e6ebf2">○○g【確定情報に差し替え】</dd>
+        <dt style="padding:14px 20px;background:#f1f4f8;border-bottom:1px solid #e6ebf2;color:#5a5f6a">容器</dt><dd style="margin:0;padding:14px 20px;border-bottom:1px solid #e6ebf2">○○タイプ【確定情報に差し替え】</dd>
+        <dt style="padding:14px 20px;background:#f1f4f8;border-bottom:1px solid #e6ebf2;color:#5a5f6a">全成分</dt><dd style="margin:0;padding:14px 20px;border-bottom:1px solid #e6ebf2">【全成分表示を記載】</dd>
+        <dt style="padding:14px 20px;background:#f1f4f8;color:#5a5f6a">区分</dt><dd style="margin:0;padding:14px 20px">化粧品</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 04 HOW TO USE -->
+<section id="howto" data-screen-label="04 How to use" style="scroll-margin-top:64px">
+  <div style="position:relative;min-height:clamp(260px,34vw,380px);background:#7f8891;overflow:hidden">
+    <div class="banner-img" data-reveal="fade" style="position:absolute;inset:0;width:62%;overflow:hidden"><image-slot data-kenburns="1" id="howto-banner" shape="rect" src="images/models-three.jpg" placeholder="モデル写真（横長・笑顔）"></image-slot></div>
+    <div class="banner-txt" style="position:relative;max-width:1080px;margin:0 auto;min-height:clamp(260px,34vw,380px);padding:32px clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:flex-end;pointer-events:none">
+      <p data-reveal="right" data-delay="300" style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.8vw,28px);line-height:1.8;letter-spacing:0.12em;color:#fff;background:rgba(110,118,128,0.78);padding:24px 32px;outline:1px solid rgba(255,255,255,0.55);outline-offset:-10px">毎日のお手入れに、<br>やさしいひとときを。</p>
+    </div>
+  </div>
+  <div style="background:linear-gradient(180deg,#f6f7f9 0%,#eef1f5 100%)">
+    <div style="max-width:880px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,5vw,56px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(24px,4vw,48px);align-items:end;margin-bottom:clamp(40px,6vw,64px)">
+        <div data-stagger="0" style="display:flex;flex-direction:column;gap:18px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.6em;color:#8a90a0">HOW TO USE</span>
+          <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(28px,3.8vw,38px);line-height:1.5;letter-spacing:0.08em;color:#2f3442">スキンケアの<br><span class="ib">最後に、</span><span class="ib">ひと塗り。</span></h2>
+          <p style="margin:0;font-size:14px;line-height:2.1;color:#4a4e58;text-wrap:pretty">化粧水・美容液で肌を整えたあと、クリームでうるおいを包みこむのがおすすめです。朝晩のお手入れに取り入れやすいシンプルなステップです。</p>
+        </div>
+        <div data-reveal="right" data-parallax="-0.05" style="aspect-ratio:4/3;width:100%"><image-slot id="howto-hands" shape="rect" src="images/jar-finger.jpg" placeholder="手に取る様子の写真"></image-slot></div>
+      </div>
+
+      <sc-if value="{{ showRoutine }}" hint-placeholder-val="{{ true }}">
+        <div data-stagger="0" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin-bottom:clamp(32px,5vw,48px);font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:0.1em">
+          <span style="display:inline-flex;align-items:center;gap:10px"><span style="padding:10px 20px;border:1px solid #c5cfdf;background:#fff;color:#5a5f6a">洗顔</span><span style="color:#a9b8d4">—</span></span>
+          <span style="display:inline-flex;align-items:center;gap:10px"><span style="padding:10px 20px;border:1px solid #c5cfdf;background:#fff;color:#5a5f6a">化粧水</span><span style="color:#a9b8d4">—</span></span>
+          <span style="display:inline-flex;align-items:center;gap:10px"><span style="padding:10px 20px;border:1px solid #c5cfdf;background:#fff;color:#5a5f6a">美容液</span><span style="color:#a9b8d4">—</span></span>
+          <span style="padding:10px 20px;background:#545e8c;color:#fff">LUMIEL クリーム</span>
+        </div>
+      </sc-if>
+
+      <div data-reveal="up" style="background:#fff;box-shadow:0 14px 40px rgba(80,95,130,0.12);padding:clamp(24px,4vw,40px)">
+        <div data-stagger="300" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:clamp(20px,3vw,28px)">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="padding:6px 14px;background:linear-gradient(90deg,#9aa6b8,#c3ccd8);color:#fff;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:0.2em">STEP.<span style="font-size:20px">{{ s.n }}</span></div>
+              <div style="aspect-ratio:4/3;width:100%"><image-slot id="{{ s.id }}" shape="rect" src="{{ s.img }}" placeholder="{{ s.ph }}"></image-slot></div>
+              <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:0.06em;color:#2f3442">{{ s.title }}</h3>
+              <p style="margin:0;font-size:13px;line-height:1.9;color:#5a5f6a">{{ s.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:28px;padding-top:20px;border-top:1px solid #e6ebf2;font-size:12px;line-height:1.9;color:#6a707c">
+          ※使用量・使用頻度は【公式の使用方法に差し替え】<br>※お肌に異常が生じていないかよく注意してご使用ください。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 PURCHASE -->
+<section id="purchase" data-screen-label="05 Purchase" style="position:relative;overflow:hidden;scroll-margin-top:64px;background:linear-gradient(180deg,#eef1f5 0%,#e3e9f1 100%)">
+  <span class="deco-sm-hide" data-parallax="0.1" aria-hidden="true" style="position:absolute;left:-3%;top:10%;writing-mode:vertical-rl;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(80px,12vw,160px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(120,140,180,0.22);pointer-events:none">Lumiel</span>
+  <div style="position:relative;max-width:880px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,5vw,56px)">
+    <div data-stagger="0" style="text-align:center;margin-bottom:clamp(36px,5vw,56px);display:flex;flex-direction:column;gap:14px;align-items:center">
+      <div data-reveal="fade" style="display:flex;align-items:center;gap:14px;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.6em;color:#9aa3b5"><span style="width:36px;height:1px;background:currentColor"></span>ORDER<span style="width:36px;height:1px;background:currentColor"></span></div>
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,18px);letter-spacing:0.14em;color:#4a4e58">今日から、うるおいに満ちる毎日を</p>
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(30px,4.4vw,46px);letter-spacing:0.1em;color:#2f3442"><span class="ib">満ちる肌は、</span><span class="ib"><span style="color:#4f6fa8">ひと塗り</span>から。</span></h2>
+    </div>
+
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+      <div data-reveal="zoom" style="background:#fff;border:2px solid #b7c4dc">
+        <div style="padding:12px 20px;background:#8fa2c8;color:#fff;text-align:center;font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,19px);letter-spacing:0.16em">LUMIEL モイスチャークリーム</div>
+        <div style="padding:clamp(20px,4vw,36px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(20px,3vw,32px);align-items:center">
+          <div class="purchase-img" data-float="1" style="aspect-ratio:3/4;width:100%"><image-slot id="purchase-product" shape="rect" src="images/jar-lid.jpg" placeholder="商品写真（パッケージ）"></image-slot></div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:baseline;gap:10px;border-bottom:1px solid #d8dee8;padding-bottom:10px;flex-wrap:wrap">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:32px;letter-spacing:0.12em;color:#2f3442">LUMIEL</span>
+              <span style="font-size:12px;color:#6a707c">（1個）</span>
+            </div>
+            <p style="margin:0;font-size:13px;line-height:1.8;color:#4a4e58">美容保湿クリーム<br>内容量：○○g【差し替え】</p>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:13px;color:#3a3d44">
+              <li style="display:flex;gap:8px"><span style="color:#c0a264">◆</span>肌にうるおいを与える</li>
+              <li style="display:flex;gap:8px"><span style="color:#c0a264">◆</span>キメを整え、なめらかに</li>
+              <li style="display:flex;gap:8px"><span style="color:#c0a264">◆</span>とろけてなじむ濃密テクスチャー</li>
+            </ul>
+            <div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap">
+              <span style="padding:2px 8px;border:1px solid #545e8c;font-size:12px;color:#545e8c">価格</span>
+              <span style="font-family:'Shippori Mincho',serif;font-size:clamp(38px,5vw,48px);color:#2f3442;letter-spacing:0.02em">¥0,000</span>
+              <span style="font-size:12px;color:#6a707c">（税込）【差し替え】</span>
+            </div>
+            <p style="margin:0;font-size:12px;color:#6a707c">送料・お届け日数：【確定情報に差し替え】</p>
+          </div>
+        </div>
+        <div style="padding:0 clamp(20px,4vw,36px) clamp(24px,4vw,36px);display:flex;flex-direction:column;align-items:center;gap:12px">
+          <button onClick="{{ addToCart }}" data-glow="1" style="position:relative;overflow:hidden;width:100%;max-width:440px;height:64px;border:none;border-radius:999px;background:#545e8c;color:#fff;font-family:'Shippori Mincho',serif;font-size:17px;letter-spacing:0.16em;cursor:pointer;box-shadow:0 10px 24px rgba(84,94,140,0.3)" style-hover="background:#434c78"><span data-shine="1" style="position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.45),transparent);pointer-events:none;transform:translateX(-150%)"></span>{{ cartLabel }}</button>
+          <sc-if value="{{ added }}" hint-placeholder-val="{{ false }}">
+            <p role="status" style="margin:0;font-size:13px;color:#4f6fa8">カートに追加しました（デモ表示）</p>
+          </sc-if>
+        </div>
+      </div>
+
+      <div data-reveal="up" style="background:#fff;border:2px solid #d3bf8f">
+        <div style="padding:10px 20px;background:linear-gradient(90deg,#c6aa6c,#d9c491);color:#fff;text-align:center;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:0.16em">お得な購入プラン</div>
+        <p style="margin:0;padding:24px clamp(20px,4vw,36px);font-size:13px;line-height:1.9;color:#5a5f6a;text-align:center">定期便・セット販売などのプランは、内容確定後にこちらへ掲載します。<br>【確定した特典・価格のみ記載】</p>
+      </div>
+
+      <nav aria-label="購入に関する情報" style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px;font-size:13px">
+        <a href="#features">› 製品情報</a>
+        <a href="#purchase">› 配送・送料について</a>
+        <a href="#purchase">› 返品・交換について</a>
+        <a href="#purchase">› お問い合わせ</a>
+      </nav>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer" style="background:#3f4552;color:#d6dae2">
+  <div style="max-width:1080px;margin:0 auto;padding:48px clamp(20px,5vw,56px) 32px;display:flex;flex-direction:column;gap:28px;align-items:center;text-align:center">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:0.22em;color:#fff">LUMIEL</span>
+    <nav style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;font-size:12px;letter-spacing:0.06em">
+      <a href="#top" style="color:#d6dae2" style-hover="color:#fff">会社概要</a>
+      <a href="#top" style="color:#d6dae2" style-hover="color:#fff">お問い合わせ</a>
+      <a href="#top" style="color:#d6dae2" style-hover="color:#fff">特定商取引法に基づく表記</a>
+      <a href="#top" style="color:#d6dae2" style-hover="color:#fff">プライバシーポリシー</a>
+      <a href="#top" style="color:#d6dae2" style-hover="color:#fff">利用規約</a>
+    </nav>
+    <p style="margin:0;font-size:11px;color:#a6adba">© LUMIEL（ブランド名・社名は仮）</p>
+  </div>
+</footer>
+
+<sc-if value="{{ showSticky }}" hint-placeholder-val="{{ false }}">
+  <a href="#purchase" style="position:fixed;left:16px;right:16px;bottom:16px;z-index:60;height:56px;border-radius:999px;background:#545e8c;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:0.14em;box-shadow:0 10px 24px rgba(40,48,80,0.35)">ご購入はこちら</a>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showRoutine&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;mobileStickyCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false, added: false, scrolled: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onScroll = () => {
+      const s = window.scrollY > 500;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.motionT = setTimeout(() => this.setupMotion(), 60);
+  }
+  setupMotion() {
+    if (this.props.animations === false || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const E = 'cubic-bezier(.2,.7,.2,1)', loop = { iterations: Infinity, easing: 'ease-in-out' };
+    const from = { up: 'translateY(48px)', left: 'translateX(-56px)', right: 'translateX(56px)', zoom: 'scale(.9)', fade: 'none' };
+    const $ = s => [...document.querySelectorAll(s)];
+    $('[data-stagger]').forEach(c => [...c.children].forEach((ch, i) => {
+      if (!ch.dataset.reveal) { ch.dataset.reveal = 'up'; ch.dataset.delay = String((+c.dataset.stagger || 0) + i * 130); }
+    }));
+    this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting && e.target.__a) { e.target.__a.play(); this.io.unobserve(e.target); }
+    }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    $('[data-reveal]').forEach(el => {
+      const a = el.animate([{ opacity: 0, transform: from[el.dataset.reveal] || from.up, filter: 'blur(8px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }],
+        { duration: 1300, delay: +el.dataset.delay || 0, easing: E, fill: 'both' });
+      a.pause(); a.currentTime = 0; a.onfinish = () => a.cancel();
+      el.__a = a; this.io.observe(el);
+    });
+    $('[data-float]').forEach((el, i) => el.animate([{ translate: '0 0' }, { translate: '0 -12px' }, { translate: '0 0' }], { ...loop, duration: 3800 + (i % 4) * 400, delay: -i * 650 }));
+    $('[data-kenburns]').forEach((el, i) => el.animate([{ scale: '1' }, { scale: '1.1' }], { ...loop, duration: 16000, direction: 'alternate', delay: -i * 3000 }));
+    $('[data-sparkle]').forEach((el, i) => el.animate([{ opacity: 0, scale: '.3', translate: '0 0' }, { opacity: 1, scale: '1.2', offset: 0.5 }, { opacity: 0, scale: '.3', translate: '0 -36px' }], { ...loop, duration: 2600 + (i * 530) % 2200, delay: -i * 900 }));
+    $('[data-glow]').forEach(el => el.animate([{ boxShadow: '0 8px 20px rgba(84,94,140,.28), 0 0 0 0 rgba(84,94,140,.4)' }, { boxShadow: '0 8px 20px rgba(84,94,140,.28), 0 0 0 16px rgba(84,94,140,0)' }], { duration: 2200, iterations: Infinity, easing: 'ease-out' }));
+    $('[data-shine]').forEach((el, i) => el.animate([{ transform: 'translateX(-150%)' }, { transform: 'translateX(350%)', offset: 0.35 }, { transform: 'translateX(350%)' }], { duration: 3600, iterations: Infinity, delay: 1200 + i * 500, easing: 'ease-in-out' }));
+    $('[data-line]').forEach(el => {
+      el.animate([{ transform: 'rotate(-8deg) scaleX(0)' }, { transform: 'rotate(-8deg) scaleX(1)' }], { duration: 2000, delay: 500, easing: E, fill: 'both' });
+      el.animate([{ opacity: 1 }, { opacity: 0.35 }, { opacity: 1 }], { ...loop, duration: 4200, delay: 2500 });
+    });
+    this.px = $('[data-parallax]');
+    this.onPx = () => { cancelAnimationFrame(this.raf); this.raf = requestAnimationFrame(() => {
+      const vh = innerHeight;
+      this.px.forEach(el => { const r = el.getBoundingClientRect(); el.style.translate = '0 ' + ((r.top + r.height / 2 - vh / 2) * (+el.dataset.parallax)).toFixed(1) + 'px'; });
+    }); };
+    window.addEventListener('scroll', this.onPx, { passive: true }); this.onPx();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    clearTimeout(this.motionT);
+    if (this.io) this.io.disconnect();
+    if (this.onPx) window.removeEventListener('scroll', this.onPx);
+  }
+  renderVals() {
+    const isMobile = this.state.w < 760;
+    const p = (n, a) => a.map((name, i) => ({ id: `ing-${n}-${i}`, name }));
+    return {
+      isMobile, isDesktop: !isMobile,
+      menuOpen: this.state.menuOpen,
+      showMobileMenu: isMobile && this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      showRoutine: this.props.showRoutine ?? true,
+      showSticky: (this.props.mobileStickyCta ?? true) && isMobile && this.state.scrolled,
+      added: this.state.added,
+      cartLabel: this.state.added ? 'カートに追加済み' : 'カートに入れる',
+      addToCart: () => this.setState({ added: true }),
+      ingredientGroups: [
+        { num: '01', title: '肌にうるおいを\n与える', en: 'Deep Moist', items: p(1, ['保湿成分A（仮）', '保湿成分B（仮）', '保湿成分C（仮）']) },
+        { num: '02', title: 'キメを整え\nなめらかに', en: 'Smooth Skin', items: p(2, ['整肌成分A（仮）', '整肌成分B（仮）', '整肌成分C（仮）']) },
+        { num: '03', title: 'ハリとツヤを\n与える', en: 'Radiant Tone', items: p(3, ['エモリエント成分A（仮）', 'エモリエント成分B（仮）', 'エモリエント成分C（仮）']) }
+      ],
+      steps: [
+        { n: '1', id: 'step-1', img: 'images/model-cheek.jpg', ph: '化粧水で整える様子', title: '肌を整える', body: '洗顔後、化粧水・美容液などで肌を整えます。' },
+        { n: '2', id: 'step-2', img: 'images/cream-palm.jpg', ph: 'クリームを手に取る様子', title: '手に取る', body: '適量【公式表記に差し替え】を指先に取ります。' },
+        { n: '3', id: 'step-3', img: 'images/neck.jpg', ph: '顔全体になじませる様子', title: 'やさしくなじませる', body: '顔の内側から外側へ、包みこむようにやさしくなじませます。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#26292e;font-family:'Noto Sans JP',sans-serif;color:#1a2a44;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0b4ea2}a:hover{color:#08397a}
+input,select,textarea,button{font-family:inherit}
+@keyframes heroIn{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+@keyframes heroSlam{0%{opacity:0;transform:skewX(-10deg) scale(1.6);filter:blur(12px)}60%{opacity:1;transform:skewX(-10deg) scale(.96);filter:blur(0)}100%{opacity:1;transform:skewX(-10deg) scale(1)}}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12) translateX(-2%)}}
+@keyframes glowPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes ctaPulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}70%{box-shadow:0 0 0 14px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+@keyframes shine{0%{left:-40%}60%,100%{left:130%}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes spinIn{from{opacity:0;transform:rotate(-180deg) scale(.3)}to{opacity:1;transform:none}}
+@keyframes flipIn{from{opacity:0;transform:perspective(300px) rotateY(90deg)}to{opacity:1;transform:none}}
+@keyframes lineGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes barUp{from{transform:translate(-50%,100%)}to{transform:translate(-50%,0)}}
+/* responsive */
+@media (max-width:640px){
+  .nav-sub{display:none!important}
+  .hero{min-height:0!important}
+  .hero-photo{position:relative!important;width:100%!important;height:min(72vw,340px);background:linear-gradient(180deg,rgba(12,36,71,0) 55%,#0c2447 100%),url(img/hero.jpg) center 30%/cover!important}
+  .hero-text{margin-top:-40px;padding-top:0!important}
+}
+@media (max-width:560px){
+  .step{display:grid!important;grid-template-columns:54px 1fr;gap:12px 16px!important}
+  .step-img{grid-column:1/-1;width:100%}
+}
+@media (max-width:400px){
+  .bar-tel > span:first-child{font-size:18px!important}
+}
+</style>
+</helmet>
+<div style="max-width:800px;margin:0 auto;background:#fff;overflow:hidden;padding-bottom:{{ barPad }}">
+
+<header style="background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 1px 0 #e3e8ef">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;flex-wrap:wrap">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#0b2e5e">
+      <span style="width:30px;height:34px;background:#0b4ea2;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:grid;place-items:center;color:#fff;font-family:Oswald;font-size:15px">G</span>
+      <span style="display:flex;flex-direction:column;line-height:1.1"><span style="font-family:Oswald;font-size:20px;letter-spacing:.12em">GYM NAME</span><span style="font-size:10px;letter-spacing:.2em;color:#5a6b85">PERSONAL TRAINING</span></span>
+    </a>
+    <nav style="display:flex;gap:16px;flex-wrap:wrap;font-size:13px;font-weight:500">
+      <a class="nav-sub" href="#about" style="text-decoration:none;color:#1a2a44">特長</a>
+      <a class="nav-sub" href="#plan" style="text-decoration:none;color:#1a2a44">料金</a>
+      <a class="nav-sub" href="#flow" style="text-decoration:none;color:#1a2a44">流れ</a>
+      <a class="nav-sub" href="#faq" style="text-decoration:none;color:#1a2a44">FAQ</a>
+      <a href="#form" style="text-decoration:none;color:#fff;background:#0b4ea2;padding:4px 12px;border-radius:2px">体験予約</a>
+    </nav>
+  </div>
+</header>
+
+<section id="top" data-screen-label="01 Hero" aria-label="ファーストビュー">
+  <div class="hero" style="position:relative;min-height:520px;background:radial-gradient(ellipse at 75% 40%,#1f4f8a 0%,#0c2447 55%,#061226 100%);color:#fff;overflow:hidden">
+    <div class="hero-photo" role="img" aria-label="ジムでガッツポーズをする女性" style="position:absolute;right:0;top:0;bottom:0;width:52%;background:linear-gradient(90deg,#0c2447 0%,rgba(12,36,71,.7) 35%,rgba(12,36,71,0) 70%),url(img/hero.jpg) 55% center/cover"></div>
+    <div class="hero-text" style="position:relative;padding:56px 7% 40px;display:flex;flex-direction:column;gap:14px;max-width:560px">
+      <span style="align-self:flex-start;background:#e9e3d0;color:#0b2447;font-family:'Noto Serif JP';font-weight:700;font-size:clamp(18px,3.4vw,26px);padding:2px 10px">完全個室のパーソナルジム</span>
+      <span style="font-family:'Noto Serif JP';font-weight:700;font-size:clamp(20px,3.6vw,28px);display:inline-block;transform:skewX(-10deg);transform-origin:left">あなたのペースで</span>
+      <h1 style="margin:0;font-family:'Noto Serif JP';font-weight:900;font-size:clamp(38px,11vw,84px);line-height:1;letter-spacing:.02em;white-space:nowrap;transform:skewX(-10deg);transform-origin:left;text-shadow:0 6px 20px rgba(0,0,0,.5)">鍛える<span style="font-size:.4em;color:#7fb4ee">&amp;</span>続ける</h1>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:8px">
+        <span style="align-self:flex-start;background:#8fd3f4;color:#0b2447;font-size:12px;font-weight:700;padding:1px 8px">マンツーマン指導</span>
+        <span style="font-family:'Noto Serif JP';font-size:clamp(17px,2.8vw,22px);font-weight:700;line-height:1.5">目的と体力に合わせた<br>オーダーメイドのトレーニング</span>
+      </div>
+      <p style="margin:6px 0 0;font-family:'Noto Serif JP';font-size:14px;line-height:1.8;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:10px;text-wrap:pretty">運動が久しぶりの方も、記録を伸ばしたい方も。専属トレーナーが一人ひとりに寄り添います。</p>
+    </div>
+  </div>
+  <div style="background:linear-gradient(100deg,#9bd8f5 0%,#3d86c9 35%,#0b3e7e 100%);padding:22px 6%;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 24px;color:#fff">
+    <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start">
+      <span style="background:#0b2e5e;font-weight:900;font-style:italic;font-size:18px;padding:2px 14px">体験トレーニング</span>
+      <span style="background:#fff;color:#0b2e5e;font-weight:700;font-size:13px;padding:2px 14px;border-radius:20px">カウンセリング＋体験 約【◯◯】分</span>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:4px">
+      <span style="font-family:Oswald;font-weight:600;font-size:clamp(54px,10vw,80px);line-height:1;background:linear-gradient(180deg,#fff6a8,#f6c400 55%,#e09a00);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))">◯,◯◯◯</span>
+      <span style="display:flex;flex-direction:column;align-items:center;font-weight:900;color:#ffe25a"><span style="font-size:11px">（税込）</span><span style="font-size:28px;line-height:1">円</span></span>
+    </div>
+    <span style="width:100%;text-align:right;font-size:11px">※料金は仮表示です。実際の金額に差し替えてください。</span>
+  </div>
+  <div style="background:linear-gradient(90deg,#8fd3f4 0%,#1b5aa3 40%,#0a2a5c 100%);padding:22px 7%">
+    <p style="margin:0;color:#fff;font-family:'Noto Serif JP';font-weight:700;font-size:clamp(19px,3.6vw,28px);line-height:1.5;transform:skewX(-10deg);text-align:right">ひとりでは続かなかった運動を、<br>習慣に変えるために。</p>
+  </div>
+</section>
+
+<section id="about" data-screen-label="02 Philosophy" aria-labelledby="about-h" style="background:#e8eff8;padding:56px 7% 56px;display:flex;flex-direction:column;gap:44px">
+  <h2 id="about-h" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">トレーニングの考え方</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center">
+    <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:14px">
+      <h3 style="margin:0;font-weight:500;font-size:clamp(21px,3.4vw,26px);line-height:1.6;color:#0b2e5e">体力も目標も、人それぞれ。<br>だから、メニューもひとつずつ。</h3>
+      <p style="margin:0;font-size:13px;line-height:2;font-weight:500;text-wrap:pretty">初回のカウンセリングで、運動経験・生活リズム・目標をうかがい、その方に合ったトレーニング計画をご提案します。【ジム独自の指導方針をここに記載】</p>
+    </div>
+    <div role="img" aria-label="トレーナーがタブレットを見ながら指導する様子" style="flex:1 1 260px;aspect-ratio:3/2;background:#cfd9e6 url(img/counseling.jpg) center/cover"></div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap-reverse;gap:24px;align-items:center">
+    <div role="img" aria-label="トレーナーがフォームを確認する様子" style="flex:1 1 260px;aspect-ratio:3/2;background:#cfd9e6 url(img/coaching-squat.jpg) center/cover"></div>
+    <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:14px">
+      <h3 style="margin:0;font-weight:500;font-size:clamp(21px,3.4vw,26px);line-height:1.6;color:#0b2e5e">はじめての方にも<br>わかりやすい指導を</h3>
+      <p style="margin:0;font-size:13px;line-height:2;font-weight:500;text-wrap:pretty">フォームや器具の使い方は、一つずつ確認しながら進めます。<span style="background:linear-gradient(transparent 0%,#fff35a 0%)">無理のない負荷から始め、体調や進み具合に合わせて内容を調整します。</span></p>
+    </div>
+  </div>
+  <div style="margin:0 -8.14%;background:linear-gradient(90deg,#8fd3f4 0%,#1b5aa3 40%,#0a2a5c 100%);padding:18px 7%;text-align:center">
+    <p style="margin:0;color:#fff;font-family:'Noto Serif JP';font-weight:700;font-size:clamp(18px,3.2vw,26px);letter-spacing:.12em;transform:skewX(-10deg)">パーソナルトレーニング 3つの特長</p>
+  </div>
+  <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+    <sc-for list="{{ features }}" as="f" hint-placeholder-count="3">
+      <li style="background:#fff;padding:24px 20px;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;box-shadow:0 2px 10px rgba(11,46,94,.08)">
+        <span style="width:78px;height:78px;border-radius:50%;background:linear-gradient(160deg,#1e64b8,#0a2f66);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:13px;font-weight:700;line-height:1.3"><span style="font-family:Oswald;font-size:11px;letter-spacing:.1em">POINT</span><span style="font-family:Oswald;font-size:24px">{{ f.no }}</span></span>
+        <h4 style="margin:0;font-size:17px;color:#0b2e5e">{{ f.title }}</h4>
+        <p style="margin:0;font-size:13px;line-height:1.9;text-align:left;text-wrap:pretty">{{ f.body }}</p>
+      </li>
+    </sc-for>
+  </ol>
+</section>
+
+<section id="plan" data-screen-label="03 Programs & Pricing" aria-labelledby="plan-h" style="background:#fff;padding:0 0 56px">
+  <div style="background:linear-gradient(90deg,#8fd3f4 0%,#1b5aa3 40%,#0a2a5c 100%);padding:18px 7%;text-align:center">
+    <h2 id="plan-h" style="margin:0;color:#fff;font-family:'Noto Serif JP';font-weight:700;font-size:clamp(18px,3.2vw,26px);letter-spacing:.12em;transform:skewX(-10deg)">プログラム・設備・料金</h2>
+  </div>
+  <div style="padding:44px 7% 0;display:flex;flex-direction:column;gap:44px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+      <sc-for list="{{ programs }}" as="p" hint-placeholder-count="3">
+        <article style="border:2px solid #0b4ea2;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-6px);box-shadow:0 12px 24px rgba(11,46,94,.18)">
+          <div role="img" aria-label="{{ p.alt }}" style="aspect-ratio:4/3;background:#dbe4ef url({{ p.img }}) center/cover"></div>
+          <div style="padding:16px;display:flex;flex-direction:column;gap:8px">
+            <h3 style="margin:0;font-size:16px;color:#0b2e5e;border-bottom:1px solid #c9d6e6;padding-bottom:8px">{{ p.title }}</h3>
+            <p style="margin:0;font-size:13px;line-height:1.85;text-wrap:pretty">{{ p.body }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+
+    <div style="background:#e8eff8;padding:22px;display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+      <div role="img" aria-label="ジムの内観" style="flex:1 1 240px;aspect-ratio:16/10;background:#c3d0e0 url(img/facility.jpg) center/cover"></div>
+      <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:10px">
+        <h3 style="margin:0;font-size:18px;color:#0b2e5e">施設について</h3>
+        <p style="margin:0;font-size:13px;line-height:1.9">【設置機器・個室数・更衣室・シャワーの有無など、実際の設備情報を記載】</p>
+        <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;font-size:13px;border-top:1px solid #b9c9de">
+          <dt style="padding:8px 12px;background:#0b4ea2;color:#fff;font-weight:700;border-bottom:1px solid #fff">1回の時間</dt><dd style="margin:0;padding:8px 12px;background:#fff;border-bottom:1px solid #b9c9de">【◯◯分】</dd>
+          <dt style="padding:8px 12px;background:#0b4ea2;color:#fff;font-weight:700;border-bottom:1px solid #fff">通う頻度</dt><dd style="margin:0;padding:8px 12px;background:#fff;border-bottom:1px solid #b9c9de">【例：週1〜2回】</dd>
+          <dt style="padding:8px 12px;background:#0b4ea2;color:#fff;font-weight:700">レンタル</dt><dd style="margin:0;padding:8px 12px;background:#fff">【ウェア・シューズ等の有無】</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:20px">
+      <h3 style="margin:0;font-weight:500;font-size:28px;letter-spacing:.2em;color:#0b2e5e">料金</h3>
+      <div style="width:100%;border:1px solid #c9d6e6">
+        <div style="background:#0b4ea2;color:#fff;text-align:center;padding:10px;font-weight:700;font-size:14px">パーソナルトレーニング</div>
+        <div role="list" style="display:flex;flex-direction:column;font-size:14px">
+          <sc-for list="{{ prices }}" as="r" hint-placeholder-count="5">
+            <div role="listitem" style="border-bottom:1px dashed #c9d6e6;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px">
+              <span style="font-weight:500;display:flex;flex-direction:column">{{ r.name }}<span style="font-size:11px;color:#5a6b85;font-weight:400">{{ r.note }}</span></span>
+              <span style="white-space:nowrap"><span style="font-family:Oswald;font-size:24px;color:#0b4ea2">{{ r.price }}</span><span style="font-size:11px">円（税込）</span></span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <p style="margin:0;font-size:11px;color:#5a6b85;align-self:flex-start">※すべて仮の表示です。実際の料金・コース内容に差し替えてください。</p>
+    </div>
+
+    <div style="background:linear-gradient(180deg,#123a73,#0a2450);padding:22px 20px;display:flex;flex-direction:column;align-items:center;gap:14px">
+      <p style="margin:0;color:#ffe25a;font-weight:900;font-size:clamp(17px,3vw,22px);font-style:italic">＼ まずはお気軽にご相談ください ／</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;width:100%;max-width:520px">
+        <a href="tel:0000000000" style="background:linear-gradient(180deg,#e8323c,#b3101a);color:#fff;text-decoration:none;font-weight:900;font-size:17px;text-align:center;padding:14px;border-radius:4px;box-shadow:0 4px 0 #7a0910">電話で予約する</a>
+        <a href="#form" style="background:linear-gradient(180deg,#3fcf4b,#16982a);color:#fff;text-decoration:none;font-weight:900;font-size:17px;text-align:center;padding:14px;border-radius:4px;box-shadow:0 4px 0 #0b6a1b">WEBで予約する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flow" data-screen-label="04 Getting Started" aria-labelledby="flow-h" style="background:#f4f7fb;padding:56px 7%;display:flex;flex-direction:column;align-items:center;gap:28px">
+  <span style="width:2px;height:32px;background:#0b4ea2"></span>
+  <h2 id="flow-h" style="margin:0;font-weight:500;font-size:clamp(24px,4vw,32px);letter-spacing:.2em;color:#0b2e5e">体験の流れ</h2>
+  <ol style="list-style:none;margin:0;padding:0;width:100%;display:flex;flex-direction:column">
+    <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+      <li class="step" style="background:{{ s.bg }};border-top:1px solid #0b4ea2;padding:16px 20px;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap">
+        <span style="flex:none;width:54px;height:54px;background:#0b4ea2;color:#fff;display:grid;place-items:center;font-family:Oswald;font-size:28px;font-style:italic">{{ s.no }}</span>
+        <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:8px">
+          <h3 style="margin:0;font-weight:500;font-size:20px;color:#0b4ea2">{{ s.title }}</h3>
+          <p style="margin:0;font-size:13px;line-height:1.9;text-wrap:pretty">{{ s.body }}</p>
+        </div>
+        <div class="step-img" role="img" aria-label="{{ s.alt }}" style="flex:0 1 170px;aspect-ratio:5/3;background:#d6e0ec url({{ s.img }}) center/cover"></div>
+      </li>
+    </sc-for>
+  </ol>
+  <div style="width:100%;background:#fff;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 2px 12px rgba(11,46,94,.06)">
+    <h3 style="margin:0;text-align:center;font-size:16px">体験前にご確認ください</h3>
+    <div style="display:flex;flex-wrap:wrap">
+      <span style="flex:1 1 140px;background:linear-gradient(180deg,#1a63ba,#0a3f86);color:#fff;font-weight:700;font-style:italic;display:grid;place-items:center;padding:16px">持ち物</span>
+      <p style="flex:3 1 260px;margin:0;padding:16px;font-size:13px;line-height:1.9;background:#f4f7fb">動きやすい服装・室内用シューズ・タオル・飲み物をご用意ください。【レンタルの有無を記載】</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap">
+      <span style="flex:1 1 140px;background:linear-gradient(180deg,#1a63ba,#0a3f86);color:#fff;font-weight:700;font-style:italic;display:grid;place-items:center;padding:16px">体調について</span>
+      <p style="flex:3 1 260px;margin:0;padding:16px;font-size:13px;line-height:1.9;background:#f4f7fb">持病やけが、通院中の方は事前にお知らせください。当日の体調に合わせて内容を調整します。</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" data-screen-label="05 FAQ & Booking" aria-labelledby="faq-h" style="background:#e8eff8">
+  <div style="padding:56px 7%;display:flex;flex-direction:column;align-items:center;gap:28px">
+    <span style="width:2px;height:32px;background:#0b4ea2"></span>
+    <h2 id="faq-h" style="margin:0;font-weight:500;font-size:clamp(24px,4vw,32px);letter-spacing:.2em;color:#0b2e5e">よくある質問</h2>
+    <div style="width:100%;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+        <div style="background:#f6f8fb;border-bottom:2px solid #0b4ea2">
+          <button type="button" onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;border:0;background:transparent;display:flex;align-items:center;gap:14px;padding:14px;cursor:pointer;text-align:left">
+            <span style="flex:none;width:44px;height:50px;background:#0b4ea2;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);color:#fff;display:grid;place-items:center;font-size:20px">Q</span>
+            <span style="flex:1;font-weight:700;font-size:14px;color:#1a2a44">{{ q.q }}</span>
+            <span style="flex:none;width:48px;height:48px;background:#0b4ea2;color:#fff;display:grid;place-items:center;font-size:32px;font-weight:300;line-height:1">{{ q.icon }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#fff;padding:18px 14px;display:flex;gap:14px;align-items:flex-start;border-top:2px solid #0b4ea2">
+              <span style="flex:none;width:44px;height:50px;background:#0b4ea2;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:grid;place-items:center"><span style="width:40px;height:46px;background:#fff;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:grid;place-items:center;color:#0b4ea2;font-size:20px">A</span></span>
+              <p style="margin:0;font-size:13px;line-height:2;text-wrap:pretty">{{ q.a }}</p>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;background:#0b4ea2;color:#fff">
+    <div role="img" aria-label="地図（差し替え用）" style="flex:1 1 280px;min-height:260px;background:#cdd6e1 repeating-linear-gradient(135deg,rgba(11,46,94,.1) 0 2px,transparent 2px 12px);display:grid;place-items:center;font-family:monospace;font-size:11px;color:#3c4f6b">[ map embed ]</div>
+    <div style="flex:1 1 320px;padding:26px 5%;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="width:70px;height:70px;border-radius:50%;background:#ffe600;color:#0b2e5e;display:grid;place-items:center;text-align:center;font-weight:900;font-size:11px;line-height:1.3">【最寄駅】<br>徒歩◯分</span>
+        <span style="font-size:20px;font-weight:500;letter-spacing:.1em">ご予約・ご相談</span>
+      </div>
+      <a href="tel:0000000000" style="color:#fff;text-decoration:none;font-family:Oswald;font-weight:600;font-size:clamp(34px,6vw,46px);line-height:1">TEL 00-0000-0000</a>
+      <p style="margin:0;border-top:1px solid #fff;border-bottom:1px solid #fff;padding:8px 0;font-size:13px;font-weight:700">体験・カウンセリングのご予約を受け付けています。</p>
+      <div style="display:flex;flex-wrap:wrap">
+        <span style="flex:1 1 90px;background:#082d63;display:grid;place-items:center;padding:12px;font-weight:700;letter-spacing:.1em">営業時間</span>
+        <p style="flex:2 1 160px;margin:0;background:#fff;color:#1a2a44;padding:12px 14px;font-size:13px;line-height:1.9">平日　【00:00〜00:00】<br>土日祝【00:00〜00:00】<br>定休日【◯曜日】</p>
+      </div>
+      <p style="margin:0;font-size:12px;line-height:1.8">〒000-0000　【住所を記載】</p>
+    </div>
+  </div>
+
+  <div id="form" style="background:#fff;padding:56px 7%;display:flex;flex-direction:column;align-items:center;gap:28px;scroll-margin-top:60px">
+    <span style="width:2px;height:32px;background:#0b4ea2"></span>
+    <h2 style="margin:0;font-weight:500;font-size:clamp(24px,4vw,32px);letter-spacing:.2em;color:#0b2e5e">予約フォーム</h2>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div role="status" style="width:100%;background:#e8eff8;border-top:3px solid #0b4ea2;padding:32px;text-align:center;display:flex;flex-direction:column;gap:10px">
+        <p style="margin:0;font-weight:700;font-size:18px;color:#0b2e5e">送信ありがとうございました</p>
+        <p style="margin:0;font-size:13px;line-height:1.9">内容を確認のうえ、担当者よりご連絡いたします。（デモ表示：実際には送信されていません）</p>
+        <button type="button" onClick="{{ resetForm }}" style="align-self:center;border:1px solid #0b4ea2;background:#fff;color:#0b4ea2;padding:8px 20px;cursor:pointer">フォームに戻る</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" style="width:100%;display:flex;flex-direction:column;gap:24px">
+        <div style="border-top:2px solid #c9d6e6">
+          <sc-for list="{{ fields }}" as="f" hint-placeholder-count="5">
+            <div style="display:flex;flex-wrap:wrap;border-bottom:2px solid #c9d6e6">
+              <label for="{{ f.id }}" style="flex:1 1 180px;background:#e8eff8;padding:20px;font-size:13px;font-weight:700;display:flex;gap:10px;align-items:flex-start">{{ f.label }}<span style="background:#c4101c;color:#fff;font-size:10px;padding:2px 8px">{{ f.req }}</span></label>
+              <div style="flex:3 1 280px;padding:20px">
+                <input id="{{ f.id }}" name="{{ f.id }}" type="{{ f.type }}" placeholder="{{ f.ph }}" required="{{ f.required }}" style="width:100%;border:1px solid #b9c3d0;padding:12px;font-size:14px">
+              </div>
+            </div>
+          </sc-for>
+          <div style="display:flex;flex-wrap:wrap;border-bottom:2px solid #c9d6e6">
+            <span style="flex:1 1 180px;background:#e8eff8;padding:20px;font-size:13px;font-weight:700">ご希望の内容</span>
+            <div style="flex:3 1 280px;padding:20px;display:flex;flex-direction:column;gap:8px;font-size:14px">
+              <label style="display:flex;gap:8px;align-items:center"><input type="radio" name="kind" value="trial" checked>体験トレーニング</label>
+              <label style="display:flex;gap:8px;align-items:center"><input type="radio" name="kind" value="counsel">カウンセリングのみ</label>
+            </div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;border-bottom:2px solid #c9d6e6">
+            <label for="message" style="flex:1 1 180px;background:#e8eff8;padding:20px;font-size:13px;font-weight:700">ご相談事項</label>
+            <div style="flex:3 1 280px;padding:20px"><textarea id="message" name="message" rows="5" placeholder="目標や気になることなど、自由にご記入ください" style="width:100%;border:1px solid #b9c3d0;padding:12px;font-size:14px;resize:vertical"></textarea></div>
+          </div>
+        </div>
+        <p style="margin:0;font-size:12px;line-height:1.9;text-align:center">＜個人情報の取扱いについて＞<br>ご入力いただいた個人情報は、ご予約の対応にのみ使用します。<br>詳しくは<a href="#privacy">プライバシーポリシー</a>をご覧ください。</p>
+        <button type="submit" style="align-self:center;width:min(100%,400px);border:2px solid #9cc4ef;background:linear-gradient(180deg,#bcdcfb,#7fb4ee);color:#fff;font-size:20px;font-weight:700;letter-spacing:.2em;padding:18px;border-radius:4px;cursor:pointer;text-shadow:0 1px 2px rgba(11,46,94,.4)">送信する</button>
+      </form>
+    </sc-if>
+  </div>
+</section>
+
+<footer style="background:#fff">
+  <div style="padding:24px 7%;display:flex;flex-direction:column;align-items:center;gap:14px">
+    <span style="font-family:Oswald;font-size:22px;letter-spacing:.12em;color:#0b2e5e">GYM NAME</span>
+    <nav style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;font-size:12px">
+      <a href="#plan">料金</a><a href="#flow">体験の流れ</a><a href="#faq">アクセス</a><a href="#form">お問い合わせ</a><a id="privacy" href="#privacy">プライバシーポリシー</a>
+    </nav>
+  </div>
+  <p style="margin:0;background:#0b4ea2;color:#fff;text-align:center;font-size:11px;padding:12px">Copyright © GYM NAME All Rights Reserved</p>
+</footer>
+
+<sc-if value="{{ stickyBar }}" hint-placeholder-val="{{ true }}">
+  <div style="position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:800px;z-index:30;background:rgba(232,239,248,.97);box-shadow:0 -2px 10px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;gap:12px;padding:8px 12px">
+    <a class="bar-tel" href="tel:0000000000" style="flex:1 1 0;max-width:280px;min-height:48px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-decoration:none;color:#0b4ea2"><span style="font-family:Oswald;font-size:22px;line-height:1">TEL 00-0000-0000</span><span style="font-size:10px;color:#1a2a44">営業時間【00:00〜00:00】</span></a>
+    <a href="#form" style="flex:1 1 0;max-width:260px;min-height:48px;display:grid;place-items:center;background:linear-gradient(180deg,#3fcf4b,#16982a);color:#fff;text-decoration:none;font-weight:900;font-size:17px;border-radius:4px;box-shadow:0 3px 0 #0b6a1b">▶▶ WEB予約</a>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;stickyBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { open: 0, sent: false };
+  componentDidMount() { setTimeout(() => this.initAnim(), 60); }
+  componentWillUnmount() { this.io && this.io.disconnect(); window.removeEventListener('scroll', this.onScroll); this.bar && this.bar.remove(); }
+  componentDidUpdate() { this.animFaq(); }
+  initAnim() {
+    if (this.props.animations === false || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const $ = s => [...document.querySelectorAll(s)];
+    const ease = 'cubic-bezier(.2,.8,.2,1)';
+    // hero entrance
+    const hero = document.getElementById('top');
+    if (hero) {
+      const photo = hero.querySelector('[role=img]');
+      if (photo) photo.style.animation = 'kenburns 14s ease-in-out infinite alternate';
+      const kids = [...hero.firstElementChild.children[1].children];
+      kids.forEach((el, i) => {
+        if (el.tagName === 'H1') el.style.animation = `heroSlam .9s ${ease} ${0.25 + i * 0.15}s both`;
+        else el.style.animation = `heroIn .8s ${ease} ${0.1 + i * 0.15}s both`;
+      });
+    }
+    // gradient banners: shine sweep
+    $('section div').filter(d => d.style.background.includes('rgb(143, 211, 244)') || d.style.background.includes('#8fd3f4') || d.style.background.includes('rgb(155, 216, 245)')).forEach((d, i) => {
+      if (d.querySelector('[data-shine]')) return;
+      d.style.position = 'relative'; d.style.overflow = 'hidden';
+      const s = document.createElement('span'); s.dataset.shine = '1';
+      s.style.cssText = `position:absolute;top:0;bottom:0;width:30%;left:-40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);pointer-events:none;animation:shine 4s ease-in-out ${i * .7}s infinite`;
+      d.appendChild(s);
+    });
+    // price number pulse
+    $('span').filter(s => s.style.fontFamily.includes('Oswald') && s.style.backgroundClip === 'text').forEach(s => { s.style.display = 'inline-block'; s.style.animation = 'glowPulse 2.2s ease-in-out infinite'; });
+    // CTA pulse + bob
+    $('a').filter(a => /rgb\(63, 207, 75\)|rgb\(232, 50, 60\)|#3fcf4b|#e8323c/.test(a.style.background)).forEach((a, i) => {
+      a.style.animation = `ctaPulse 2s ease-out ${i * .4}s infinite`;
+      a.style.transition = 'transform .2s'; a.onmouseenter = () => a.style.transform = 'translateY(-3px) scale(1.03)'; a.onmouseleave = () => a.style.transform = '';
+    });
+    $('p').filter(p => p.textContent.includes('＼')).forEach(p => p.style.animation = 'bob 1.6s ease-in-out infinite');
+    // scroll reveal
+    const reveal = [];
+    const add = (el, from, delay = 0, kf) => { if (!el || el.dataset.anim) return; el.dataset.anim = '1'; reveal.push({ el, from, delay, kf }); };
+    $('section:not(#top) h2, section:not(#top) h3').forEach(el => add(el, 'translateY(30px)'));
+    $('section:not(#top) p').forEach(el => add(el, 'translateY(24px)', .1));
+    $('section:not(#top) [role=img]').forEach((el, i) => add(el, i % 2 ? 'translateX(60px)' : 'translateX(-60px)', .05));
+    $('#about ol > li, #plan article').forEach((el, i) => add(el, 'translateY(50px) scale(.95)', (i % 3) * .15));
+    $('#flow ol > li').forEach(el => add(el, 'translateX(-40px)', .05));
+    $('#faq button').forEach((el, i) => add(el.parentElement, 'translateY(30px)', i * .08));
+    $('#plan [role=list] > div').forEach((el, i) => add(el, 'translateX(40px)', i * .08));
+    $('form > div > div, #plan dl, #flow > div, #faq > div:nth-child(2) > div').forEach((el, i) => add(el, 'translateY(30px)', (i % 4) * .08));
+    $('#about li > span:first-child').forEach((el, i) => { el.dataset.kf = '1'; reveal.push({ el, kf: `spinIn .9s ${ease} ${.2 + (i % 3) * .15}s both` }); });
+    $('#flow li > span:first-child').forEach(el => reveal.push({ el, kf: `flipIn .7s ${ease} .2s both` }));
+    $('section > span:first-child, #form > span:first-child').forEach(el => { el.style.transformOrigin = 'top'; reveal.push({ el, kf: `lineGrow .8s ${ease} both` }); });
+    reveal.forEach(r => {
+      if (r.kf) { r.el.style.opacity = '0'; return; }
+      r.el.style.opacity = '0'; r.el.style.transform = r.from;
+      r.el.style.transition = `opacity .8s ${ease} ${r.delay}s, transform .9s ${ease} ${r.delay}s`;
+    });
+    const map = new Map(reveal.map(r => [r.el, r]));
+    this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const r = map.get(e.target); this.io.unobserve(e.target);
+      if (r.kf) { e.target.style.opacity = ''; e.target.style.animation = r.kf; }
+      else { e.target.style.opacity = '1'; e.target.style.transform = 'none'; }
+    }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    reveal.forEach(r => this.io.observe(r.el));
+    // scroll progress bar
+    this.bar = document.createElement('div');
+    this.bar.style.cssText = 'position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#8fd3f4,#0b4ea2,#ffe25a);z-index:50;pointer-events:none';
+    document.body.appendChild(this.bar);
+    this.onScroll = () => { const h = document.documentElement; this.bar.style.transform = `scaleX(${h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight)})`; };
+    window.addEventListener('scroll', this.onScroll, { passive: true }); this.onScroll();
+    const sticky = $('div').find(d => d.style.position === 'fixed' && d.style.bottom === '0px');
+    if (sticky) sticky.style.animation = `barUp .6s ${ease} 1.2s both`;
+    this.animReady = true;
+  }
+  animFaq() {
+    if (!this.animReady) return;
+    document.querySelectorAll('#faq button[aria-expanded="true"] + div').forEach(d => { if (!d.dataset.a) { d.dataset.a = 1; d.style.animation = 'fadeDown .4s ease both'; } });
+  }
+  renderVals() {
+    const sticky = this.props.stickyBar ?? true;
+    const faqData = [
+      ['運動経験がなくても大丈夫ですか？', '体力や経験に合わせて内容を組み立てますので、はじめての方もご利用いただけます。【ジムの対応方針に合わせて調整】'],
+      ['体験では何をしますか？', 'カウンセリングで目標や体調をうかがったあと、実際にトレーニングを体験していただきます。【所要時間・内容を記載】'],
+      ['料金はいくらですか？', '【料金プランを記載】料金表もあわせてご確認ください。'],
+      ['1回のトレーニング時間は？', '【◯◯分】です。カウンセリングや着替えの時間は別途【◯◯分】ほどみてください。'],
+      ['キャンセルや追加費用はありますか？', '【キャンセル規定・追加費用の有無を記載】']
+    ];
+    return {
+      barPad: sticky ? '72px' : '0',
+      stickyBar: sticky,
+      features: [
+        { no: '01', title: '目的に合わせた計画', body: 'カウンセリングの内容をもとに、目標と体力に合わせたトレーニング計画を作成します。' },
+        { no: '02', title: 'マンツーマン指導', body: 'トレーナーがそばでフォームや負荷を確認しながら、一回ずつ丁寧に進めます。' },
+        { no: '03', title: '経過の振り返り', body: '定期的に取り組みを振り返り、状況に合わせてメニューを見直します。【記録方法を記載】' }
+      ],
+      programs: [
+        { title: 'パーソナルトレーニング', body: '一人ひとりに合わせたマンツーマンのセッション。【内容を記載】', img: 'img/coaching-dumbbell.jpg', alt: 'トレーナーがダンベル運動をサポートする様子' },
+        { title: 'はじめての方向けプログラム', body: '基本の動きとフォームの習得から始めるプログラム。【提供の有無を確認】', img: 'img/beginner.jpg', alt: '笑顔でバーベルを持つ女性' },
+        { title: '生活習慣のアドバイス', body: '運動習慣づくりや日常生活でのポイントをお伝えします。【食事指導の有無を確認】', img: 'img/goods.jpg', alt: 'トレーニング用品' }
+      ],
+      prices: [
+        { name: '体験トレーニング', note: 'カウンセリング込み', price: '◯,◯◯◯' },
+        { name: '入会金', note: '', price: '◯◯,◯◯◯' },
+        { name: '月4回コース', note: '1回【◯◯】分', price: '◯◯,◯◯◯' },
+        { name: '月8回コース', note: '1回【◯◯】分', price: '◯◯,◯◯◯' },
+        { name: '回数券', note: '【◯回分】', price: '◯◯,◯◯◯' }
+      ],
+      steps: [
+        { title: 'お問い合わせ・ご予約', body: 'お電話または予約フォームから、ご希望の日時をお知らせください。', img: 'img/trainer.jpg', alt: '笑顔のトレーナー' },
+        { title: 'カウンセリング', body: '目標や運動経験、体調について詳しくうかがいます。', img: 'img/coaching-machine.jpg', alt: 'トレーナーと会話する女性' },
+        { title: 'トレーニング方針のご説明', body: 'お話をもとに、進め方やプランの考え方をご説明します。', img: 'img/bench.jpg', alt: 'トレーニングベンチ' },
+        { title: '体験トレーニング', body: 'トレーナーと一緒に、実際のトレーニングを体験していただきます。', img: 'img/dumbbell.jpg', alt: 'ダンベルでトレーニングする女性' },
+        { title: 'ご入会の検討', body: '体験後、内容に納得いただけた場合のみお手続きへ進みます。その場で決める必要はありません。', img: 'img/smile.jpg', alt: '笑顔の女性' }
+      ].map((s, i) => ({ ...s, no: i + 1, bg: i % 2 ? '#eef3fa' : '#fff' })),
+      faqs: faqData.map(([q, a], i) => ({
+        q, a, open: this.state.open === i, icon: this.state.open === i ? '−' : '+',
+        toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i }))
+      })),
+      fields: [
+        { id: 'name', label: 'お名前', type: 'text', ph: '例：山田 太郎' },
+        { id: 'kana', label: 'フリガナ', type: 'text', ph: '例：ヤマダ タロウ' },
+        { id: 'tel', label: '電話番号', type: 'tel', ph: '例：09012345678' },
+        { id: 'email', label: 'メールアドレス', type: 'email', ph: '例：info@example.jp' },
+        { id: 'date', label: '第一希望日', type: 'date', ph: '' }
+      ].map(f => ({ ...f, req: '必須', required: true })),
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      resetForm: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+/* レスポンシブ調整（各要素の style 属性を上書きするため !important を使っています） */
+
+/* 画像枠：既定の 3:2 比率が「最小幅＝高さ×1.5」になり、狭い画面ではみ出すのを防ぐ */
+image-slot{aspect-ratio:auto}
+
+/* タブレット以下 */
+@media (max-width:1024px){
+  .fac-card{width:calc(50% - 20px)!important;margin:0!important}
+  .fac-card > div{height:260px!important}
+  .acad-intro{margin-left:0!important}
+  /* ABOUT の3項目：ずらし配置をやめて横3列に */
+  .about-item{flex:1 1 0!important;min-width:0;padding-top:0!important;margin-left:0!important}
+  .about-item > span[aria-hidden]{top:-40px!important}
+  .about-item > div{width:min(220px,100%)!important;height:auto!important;aspect-ratio:1}
+  .about-item h3{font-size:26px!important}
+}
+
+/* スマホ */
+@media (max-width:767px){
+  br.pc{display:none}
+  .lead{letter-spacing:.04em!important;font-size:16px!important;text-wrap:balance}
+
+  /* トップ：ヒーロー */
+  .hero-top{min-height:auto!important}
+  .hero-copy h1{letter-spacing:.2em!important}
+  .hero-btns{padding-bottom:80px!important}
+
+  /* トップ：ABOUT の3項目（ずらし配置をやめる） */
+  .about-item{flex:1 1 100%!important}
+  .about-item > div{width:240px!important}
+  .about-item h3{font-size:28px!important}
+
+  /* トップ：学部カード */
+  .fac-card{width:100%!important}
+  .fac-card > div{height:220px!important}
+  .view-all{margin-right:0!important}
+
+  /* トップ：学生の声のイラスト／入試バナー */
+  .voices-img{flex-basis:100%!important;height:260px!important}
+  .banner-en{font-size:4.4vw!important}
+
+  /* 大きいボタン */
+  .cta-lg{gap:16px!important;padding:20px 18px 20px 28px!important;font-size:15px!important;letter-spacing:.06em!important}
+
+  /* 下層ページのヒーロー */
+  .hero-en{font-size:9vw!important}
+  .hero-sub{min-height:auto!important;padding-top:130px!important;padding-bottom:64px!important}
+
+  /* 入試：流れを2列に */
+  .flow{grid-template-columns:repeat(2,1fr)!important;gap:28px 12px!important}
+  .flow li > span:first-child{width:64px!important;height:64px!important;font-size:18px!important}
+
+  /* キャンパスライフ：季節の帯 */
+  .season-txt{max-width:64%!important;left:12%!important;gap:6px!important}
+  .season-txt > span:last-child{font-size:11px!important;line-height:1.6!important}
+  .season-txt::before{content:"";position:absolute;inset:-40px -30px -40px -60px;z-index:-1;background:radial-gradient(ellipse at 30% 50%,rgba(15,15,15,.75),rgba(15,15,15,0) 75%)}
+
+  /* 学生の声：写真を小さく */
+  .voice-card{padding:22px!important;gap:16px!important}
+  .voice-card > div:first-child{width:56px!important;height:56px!important}
+
+  /* フッター */
+  .foot-nav{column-gap:28px!important}
+  .foot-big{font-size:24px!important}
+}

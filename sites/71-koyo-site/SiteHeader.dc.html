@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;height:96px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,72px);transition:background .4s;background:{{ headerBg }};backdrop-filter:{{ headerBlur }};font-family:'Zen Kaku Gothic New',sans-serif">
+  <a href="Koyo%20Womens%20University.dc.html" aria-label="光葉女子大学 トップへ" style="display:flex;align-items:baseline;gap:12px;color:#E8611A;text-decoration:none">
+    <span style="font-family:'Lexend Zetta',sans-serif;font-weight:400;font-size:28px;letter-spacing:-0.06em;color:#E8611A">koyo</span>
+    <span style="font-size:11px;letter-spacing:.2em;color:#fff;font-weight:500">光葉女子大学</span>
+  </a>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:clamp(20px,2.6vw,44px);margin-right:150px">
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
+        <a href="{{ l.href }}" aria-current="{{ l.aria }}" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:14px;font-weight:700;letter-spacing:.14em;color:#fff;text-decoration:none;padding:8px 0" style-hover="color:#E8611A">{{ l.label }}<sc-if value="{{ l.active }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;bottom:-6px;width:6px;height:6px;border-radius:50%;background:#E8611A;box-shadow:0 0 10px #E8611A"></span></sc-if></a>
+      </sc-for>
+    </nav>
+  </sc-if>
+  <a href="Open-Campus.dc.html" aria-label="オープンキャンパス予約" style="position:absolute;right:clamp(12px,2vw,32px);top:14px;width:{{ ringSize }}px;height:{{ ringSize }}px;display:flex;align-items:center;justify-content:center;transition:transform .4s;text-decoration:none" style-hover="transform:scale(1.06)">
+    {{ ring }}
+    <span style="width:72%;height:72%;border-radius:50%;background:#E8611A;display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(232,97,26,.55)">
+      <span style="font-family:'Lexend Zetta',sans-serif;font-size:{{ ringFont }}px;font-weight:400;letter-spacing:-0.04em;color:#fff;line-height:1.15;text-align:center">OPEN<br>CAMPUS</span>
+    </span>
+  </a>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-label="メニュー" style="margin-right:96px;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:transparent;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+      <span style="width:18px;height:1.5px;background:#fff"></span>
+      <span style="width:18px;height:1.5px;background:#fff"></span>
+    </button>
+  </sc-if>
+</header>
+<sc-if value="{{ showMenu }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:40;background:rgba(13,20,52,.97);display:flex;flex-direction:column;justify-content:center;gap:20px;padding:120px 32px 48px;font-family:'Zen Kaku Gothic New',sans-serif">
+    <a href="Koyo%20Womens%20University.dc.html" style="font-size:22px;font-weight:700;letter-spacing:.16em;padding:8px 0;color:#fff;text-decoration:none">トップ</a>
+    <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
+      <a href="{{ l.href }}" style="font-size:22px;font-weight:700;letter-spacing:.16em;padding:8px 0;color:#fff;text-decoration:none">{{ l.label }}</a>
+    </sc-for>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:140},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;about&quot;,&quot;academics&quot;,&quot;campus&quot;,&quot;admissions&quot;,&quot;opencampus&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, menu: false, scrolled: false };
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth });
+    this.onS = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('resize', this.onR);
+    window.addEventListener('scroll', this.onS, { passive: true });
+    this.onS();
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); window.removeEventListener('scroll', this.onS); }
+  ring() {
+    if (this._ring) return this._ring;
+    const h = React.createElement;
+    return (this._ring = h('svg', { 'aria-hidden': true, viewBox: '0 0 120 120', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', animation: 'hdrspin 18s linear infinite' } },
+      h('style', null, '@keyframes hdrspin{to{transform:rotate(360deg)}}@media (prefers-reduced-motion:reduce){svg{animation:none!important}}'),
+      h('defs', null, h('path', { id: 'hdrRing', d: 'M60,60 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0' })),
+      h('text', { fill: '#fff', style: { fontFamily: "'Lexend Zetta',sans-serif", fontSize: 8.4, letterSpacing: '-0.02em' } },
+        h('textPath', { href: '#hdrRing' }, 'VISIT US · OPEN CAMPUS · VISIT US · OPEN CAMPUS ·'))));
+  }
+  renderVals() {
+    const { w, menu, scrolled } = this.state, mobile = w < 1100, cur = this.props.current ?? 'top';
+    const links = [['about', '大学紹介', 'About.dc.html'], ['academics', '学部・学科', 'Academics.dc.html'], ['campus', 'キャンパスライフ', 'Campus-Life.dc.html'], ['admissions', '入試情報', 'Admissions.dc.html'], ['opencampus', 'オープンキャンパス', 'Open-Campus.dc.html']]
+      .map(([id, label, href]) => ({ label, href, active: id === cur, aria: id === cur ? 'page' : undefined }));
+    return {
+      links, isMobile: mobile, isDesktop: !mobile, menuOpen: menu, showMenu: mobile && menu,
+      toggleMenu: () => this.setState({ menu: !menu }),
+      headerBg: scrolled || menu ? 'rgba(14,20,48,.82)' : 'rgba(14,20,48,0)',
+      headerBlur: scrolled ? 'blur(10px)' : 'none',
+      ringSize: mobile ? 84 : 124, ringFont: mobile ? 9 : 12, ring: this.ring()
+    };
+  }
+}
+</script>
+</body>
+</html>

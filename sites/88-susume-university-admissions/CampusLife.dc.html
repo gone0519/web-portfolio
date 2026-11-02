@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Libre+Caslon+Text:wght@400;700&family=Kaushan+Script&display=swap">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f2f2ef;color:#1c2633;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0b2b4c;text-decoration:none}
+a:hover{color:#e5531c}
+</style>
+</helmet>
+<div style="position:relative;overflow:hidden;background-color:#f2f2ef;background-image:radial-gradient(#dcdcd6 1px,transparent 1px);background-size:14px 14px">
+<dc-import name="SiteHeader" current="campus" hint-size="100%,140px"></dc-import>
+<dc-import name="PageHero" en="Campus Life" title="キャンパスライフ" lead="授業、サークル、研究、留学。大学での4年間には、教室の外にもたくさんの学びと出会いがあります。" img-id="campus-hero" img-label="キャンパスを歩く学生たち" hint-size="100%,520px"></dc-import>
+
+<section data-screen-label="Campus / Activities" style="padding:70px 20px 80px">
+  <div style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:30px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:'Libre Caslon Text',serif;font-size:14px;display:flex;align-items:center;gap:8px"><span style="width:7px;height:7px;background:#e5531c"></span>Activities</span>
+      <h2 style="margin:0;font-size:24px;font-weight:700">教室の外で広がる学び</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
+      <sc-for list="{{ life }}" as="l" hint-placeholder-count="4">
+        <div style="background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 6px 18px rgba(11,43,76,.06);display:flex;flex-direction:column">
+          <div style="position:relative;aspect-ratio:4/3"><image-slot id="{{ l.id }}" shape="rect" placeholder="{{ l.img }}"></image-slot></div>
+          <div style="padding:18px;display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:22px;font-weight:900">{{ l.n }}</span>
+            <span style="font-size:15px;font-weight:700">{{ l.t }}</span>
+            <span style="font-size:12px;line-height:1.7;color:#4a5462">{{ l.d }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Campus / Year" style="background:#0b2b4c;color:#fff;padding:80px 20px">
+  <div style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:30px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:'Libre Caslon Text',serif;font-size:14px;display:flex;align-items:center;gap:8px"><span style="width:7px;height:7px;background:#e5531c"></span>A Year on Campus</span>
+      <h2 style="margin:0;font-size:24px;font-weight:700">大学の1年間</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;background:rgba(255,255,255,.15)">
+      <sc-for list="{{ year }}" as="y" hint-placeholder-count="4">
+        <div style="background:#0b2b4c;padding:22px 18px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-family:'Libre Caslon Text',serif;font-size:13px;color:#9fd3dd">{{ y.en }}</span>
+          <span style="font-size:18px;font-weight:700">{{ y.s }}</span>
+          <span style="font-size:12px;line-height:1.8;opacity:.9">{{ y.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="oc" data-screen-label="Campus / Open Campus" style="padding:80px 20px">
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:50px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-family:'Libre Caslon Text',serif;font-size:14px;display:flex;align-items:center;gap:8px"><span style="width:7px;height:7px;background:#e5531c"></span>Open Campus</span>
+      <h2 style="margin:0;font-size:24px;line-height:1.6;font-weight:700">オープンキャンパスで、<br>未来の4年間を体験。</h2>
+      <p style="margin:0;font-size:13px;line-height:1.9">模擬授業、キャンパスツアー、在学生との個別相談など。保護者の方もご参加いただけます。</p>
+      <div style="position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden;max-width:380px"><image-slot src="_filled/01-43.jpg" id="campus-oc" shape="rounded" radius="6" placeholder="キャンパスツアーの様子"></image-slot></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;justify-content:flex-end"><span style="font-size:10px;font-weight:700;background:#e5531c;color:#fff;padding:3px 8px">日程はサンプルです</span></div>
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="4">
+        <div style="background:#fff;border-radius:4px;box-shadow:0 6px 18px rgba(11,43,76,.06);padding:18px 20px;display:grid;grid-template-columns:90px 1fr auto;gap:16px;align-items:center">
+          <span style="font-family:'Libre Caslon Text',serif;font-size:16px;color:#e5531c">{{ e.date }}</span>
+          <span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:14px;font-weight:700">{{ e.t }}</span><span style="font-size:11px;color:#5a6472">{{ e.type }}</span></span>
+          <a href="Contact.dc.html#oc" style="background:#0b2b4c;color:#fff;font-size:12px;font-weight:700;padding:8px 12px;border-radius:3px">予約</a>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Campus / Voices" style="padding:0 20px 80px">
+  <div style="max-width:1080px;margin:0 auto;position:relative;background:#e5531c;border-radius:16px;padding:50px clamp(20px,5vw,70px) 60px;overflow:hidden">
+    <div style="position:absolute;left:0;right:0;bottom:0;height:40%;background:#ef6a34;clip-path:polygon(0 40%,30% 40%,30% 20%,60% 20%,60% 0,100% 0,100% 100%,0 100%)"></div>
+    <div style="position:relative;display:flex;flex-direction:column;gap:30px">
+      <div style="display:flex;align-items:center;gap:14px;color:#fff"><span style="width:7px;height:7px;background:#fff"></span><span style="font-family:'Libre Caslon Text',serif;font-size:14px">Student Voice</span><span style="font-size:22px;font-weight:700">在学生の声</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px">
+        <sc-for list="{{ voices }}" as="v" hint-placeholder-count="3">
+          <figure style="margin:0;position:relative;background:#fff;padding:34px 22px 30px;text-align:center;display:flex;flex-direction:column;gap:10px">
+            <span style="position:absolute;left:-6px;top:-22px;font-family:'Libre Caslon Text',serif;font-size:56px;line-height:1;color:#0b2b4c">“</span>
+            <blockquote style="margin:0;font-size:13px;line-height:1.9;font-weight:500">{{ v.q }}</blockquote>
+            <figcaption style="font-size:11px;color:#5a6472">{{ v.who }}</figcaption>
+            <span style="position:absolute;right:-4px;bottom:-34px;font-family:'Libre Caslon Text',serif;font-size:56px;line-height:1;color:#0b2b4c">”</span>
+          </figure>
+        </sc-for>
+      </div>
+      <p style="margin:0;font-size:11px;color:#fff">※掲載している声はサンプルです。</p>
+    </div>
+  </div>
+</section>
+<dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      life: [
+        { n: '1', t: 'サークル・部活動', d: '学部や学年を越えて仲間と出会える。', img: 'サークル活動', id: 'cl-club' },
+        { n: '2', t: 'ゼミ・研究室', d: '少人数で専門テーマを深く掘り下げる。', img: 'ゼミの様子', id: 'cl-seminar' },
+        { n: '3', t: '留学・国際交流', d: '短期研修から交換留学まで選べる。', img: '海外研修', id: 'cl-abroad' },
+        { n: '4', t: '地域・ボランティア', d: '学んだことを地域の課題解決に活かす。', img: '地域活動', id: 'cl-local' }
+      ],
+      year: [
+        { en: 'Spring', s: '春', d: '入学式、新入生オリエンテーション、サークルの新歓。' },
+        { en: 'Summer', s: '夏', d: '前期試験、ゼミ合宿、短期留学やインターンシップ。' },
+        { en: 'Autumn', s: '秋', d: '後期授業のスタート、学園祭、研究発表会。' },
+        { en: 'Winter', s: '冬', d: '後期試験、卒業研究の発表、卒業式の準備。' }
+      ],
+      events: [
+        { date: '◯/◯', t: '来場型オープンキャンパス', type: '模擬授業・キャンパスツアー・個別相談' },
+        { date: '◯/◯', t: 'オンライン説明会', type: '自宅から参加できる入試説明' },
+        { date: '◯/◯', t: '保護者向け説明会', type: '学費・奨学金・学生生活の紹介' },
+        { date: '◯/◯', t: 'キャンパス見学会', type: '少人数でのキャンパスツアー' }
+      ],
+      voices: [
+        { q: 'ゼミで先輩と議論するうちに、研究したいテーマが見つかりました。', who: '経済学部 2年（サンプル）' },
+        { q: '短期留学で、英語を使って学ぶ楽しさを知りました。', who: '国際学部 3年（サンプル）' },
+        { q: 'サークルでは学部の違う友人ができ、視野が広がりました。', who: '工学部 1年（サンプル）' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

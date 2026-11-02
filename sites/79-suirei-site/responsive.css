@@ -1,0 +1,114 @@
+/* レスポンシブ調整（各ページの helmet から読み込み）
+   テンプレートはインラインstyleのため、上書きには !important が必要です。 */
+
+/* イラスト共通 */
+.illu { display: block; height: auto; max-width: 100%; pointer-events: none; user-select: none; }
+.illu-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+
+/* スマホ専用の改行／PC専用の空白 */
+@media (min-width: 768px) {
+  .sp-only { display: none; }
+}
+@media (max-width: 767px) {
+  .pc-only { display: none; }
+}
+
+/* ===== タブレット以下（〜1099px） ===== */
+@media (max-width: 1099px) {
+  /* 4枚並びのカードを 3+1 ではなく 2×2 に */
+  .g4-2, .g4-2m { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  /* トップ：導入部の小さな写真が見出しに重なるため非表示 */
+  .intro-thumbs { display: none !important; }
+}
+
+/* ===== 〜1023px ===== */
+@media (max-width: 1023px) {
+  /* 入試方式：サムネイル列を外して本文幅を確保 */
+  .m-thumbs { display: none !important; }
+}
+
+/* ===== スマホ（〜767px） ===== */
+@media (max-width: 767px) {
+  body { padding-bottom: 50px; }
+
+  /* 右端の縦型固定ボタン → 画面下部の固定バー */
+  .side-cta {
+    top: auto !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
+    writing-mode: horizontal-tb !important; text-align: center;
+    padding: 14px 10px calc(14px + env(safe-area-inset-bottom)) !important;
+    border-radius: 0 !important; font-size: 14px !important; letter-spacing: .12em !important;
+    box-shadow: 0 -6px 18px rgba(0, 0, 0, .12);
+  }
+
+  /* ピル型ボタン：途中で改行させない */
+  a[style*="999px"], button[style*="999px"] {
+    white-space: nowrap;
+    letter-spacing: .06em !important;
+    padding-left: 22px !important; padding-right: 22px !important;
+  }
+
+  /* トップ：ヒーロー */
+  .hero-grid { grid-template-columns: minmax(0, 1fr) !important; padding: 8px 16px 0; }
+  .hero-side { display: none !important; }
+  .hero-copy {
+    font-size: 15px !important; padding: 14px 9px !important;
+    top: 14px !important; right: 14px !important;
+  }
+  .hero-badge { width: 92px !important; right: -4px !important; bottom: -36px !important; }
+  .hero-badge span { font-size: 10px !important; }
+  .hero-label {
+    font-size: 11px !important; padding: 7px 12px !important;
+    left: 12px !important; bottom: 12px !important;
+  }
+
+  /* トップ：導入文 */
+  .intro-deco { display: none !important; }
+  .intro-vert {
+    writing-mode: horizontal-tb !important; height: auto !important;
+    font-size: 14px !important; line-height: 2.1 !important; letter-spacing: .06em !important;
+  }
+
+  /* トップ：四つの特長 */
+  .feat-title { font-size: 16px !important; letter-spacing: .06em !important; }
+  .feat-desc { font-size: 12px !important; }
+
+  /* トップ：入試方式の写真は横並びに */
+  .m-big { flex-direction: row !important; flex-basis: auto !important; padding: 0 16px; gap: 8px !important; }
+  .m-big > div { flex: 1 1 0; aspect-ratio: .85 !important; border-radius: 14px !important; }
+
+  /* トップ：オープンキャンパス申込 */
+  .cta-apply { flex-basis: 100% !important; font-size: 14px !important; letter-spacing: .08em !important; }
+
+  .hide-sp { display: none !important; }
+
+  /* イラスト：スマホでは控えめに */
+  .illu-hero { width: min(240px, 70%) !important; margin: 0 auto; }
+  .illu-side { width: 84px !important; }
+
+  /* 下層ページのワイド写真 */
+  .hero-wide { aspect-ratio: 1.7 !important; }
+
+  /* 共通フッターの見出し */
+  .ft-cta-title { font-size: 22px !important; letter-spacing: .08em !important; }
+}
+
+/* ===== 小さいスマホ（〜599px） ===== */
+@media (max-width: 599px) {
+  .g4-2 { grid-template-columns: minmax(0, 1fr) !important; }
+
+  /* トップ：出願スケジュール（日付・区分の下に内容） */
+  .sched-row { grid-template-columns: auto minmax(0, 1fr) !important; gap: 4px 14px !important; }
+  .sched-row > :nth-child(3) { grid-column: 1 / -1; }
+
+  /* 表 → カード表示（入試日程・初年度納入金） */
+  .tbl-inner { min-width: 0 !important; }
+  .tbl-head { display: none !important; }
+  .tbl-row { grid-template-columns: minmax(0, 1fr) !important; gap: 6px !important; }
+  .tbl-row > span:first-child { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .tbl-row > [data-label] { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
+  .tbl-row > [data-label]::before { content: attr(data-label); color: #6b645c; font-size: 12px; font-weight: 400; flex: 0 0 auto; }
+
+  /* 入試対策：一年間の学習計画 */
+  .tl-row { grid-template-columns: 14px minmax(0, 1fr) !important; gap: 8px 12px !important; }
+  .tl-row > :first-child { grid-column: 1 / -1; }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="./responsive.css">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f3f4f6;color:#232427;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#0b3fd9;text-decoration:none}
+a:hover{color:#072fa6}
+*{box-sizing:border-box}
+</style>
+<script src="./motion.js"></script>
+</helmet>
+<div id="top" style="position:relative;overflow-x:hidden;background:#f3f4f6;min-height:100vh">
+<dc-import name="SiteHeader" current="contact" hint-size="100%,100px"></dc-import>
+
+<section data-screen-label="Contact Hero" style="position:relative;max-width:1920px;margin:0 auto;padding:clamp(48px,5vw,90px) clamp(20px,7.8vw,150px) clamp(56px,5vw,90px)">
+  <div data-drift style="overflow:hidden;position:absolute;right:0;top:0;width:52%;height:100%;pointer-events:none;background:repeating-linear-gradient(to bottom,#2347e6 0 1.5px,transparent 1.5px 13px);-webkit-mask-image:radial-gradient(ellipse 60% 60% at 80% 50%,#000 0 30%,transparent 70%);mask-image:radial-gradient(ellipse 60% 60% at 80% 50%,#000 0 30%,transparent 70%);opacity:.6"><img src="_filled/03-alumni-group.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div data-reveal="fade" data-delay="250" style="position:relative;display:flex;gap:10px;font-size:13px;color:#6b7180"><a href="University Admissions.dc.html" style="color:#6b7180">TOP</a><span>/</span><span style="color:#232427">お問い合わせ・資料請求</span></div>
+  <div data-reveal="left" data-delay="350" style="position:relative;display:flex;align-items:center;gap:10px;margin-top:48px;color:#0b3fd9;font-size:15px;font-weight:700"><span style="width:13px;height:9px;background:#0b3fd9;border-radius:50% 50% 50% 50% / 100% 0 100% 0;transform:rotate(-30deg)"></span>お問い合わせ・資料請求</div>
+  <h1 data-reveal="mask" data-delay="450" style="position:relative;margin:10px 0 0;font-family:'Hanken Grotesk',sans-serif;font-size:clamp(60px,7vw,136px);font-weight:600;letter-spacing:-.015em;line-height:1">Contact</h1>
+  <p class="rs-phrase" data-reveal="up" data-delay="600" style="position:relative;margin:36px 0 0;max-width:760px;font-size:clamp(18px,1.4vw,24px);font-weight:700;line-height:1.8;letter-spacing:.04em">入試・出願・学生生活について、入試課のスタッフがお答えします。</p>
+</section>
+
+<section style="max-width:1920px;margin:0 auto;padding:clamp(20px,3vw,40px) clamp(20px,7.8vw,150px) clamp(80px,8vw,140px)">
+  <div class="rs-types" data-stagger style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px">
+    <sc-for list="{{ types }}" as="t" hint-placeholder-count="3">
+      <button onClick="{{ t.select }}" style="display:flex;flex-direction:column;gap:12px;text-align:left;padding:32px;border:2px solid {{ t.border }};background:#fff;font-family:inherit;color:#232427;cursor:pointer;transition:border-color .2s">
+        <span style="display:flex;justify-content:space-between;align-items:center;width:100%"><span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:700;color:#0b3fd9;letter-spacing:.1em">{{ t.en }}</span><span style="width:20px;height:20px;border-radius:50%;border:2px solid #0b3fd9;background:{{ t.dot }}"></span></span>
+        <span style="font-size:21px;font-weight:700">{{ t.name }}</span>
+        <span style="font-size:14px;line-height:1.85;color:#4a4e57">{{ t.desc }}</span>
+      </button>
+    </sc-for>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,90px);margin-top:clamp(56px,6vw,100px)">
+    <div id="form" data-reveal="up" data-swap style="flex:1 1 600px;min-width:0;background:#fff;padding:clamp(28px,4vw,72px);scroll-margin-top:24px">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:20px;padding:40px 0">
+          <span style="font-family:'Hanken Grotesk',sans-serif;font-size:clamp(40px,4vw,64px);font-weight:600;color:#0b3fd9;line-height:1">Thank you.</span>
+          <span style="font-size:22px;font-weight:700">{{ typeName }}を受け付けました。</span>
+          <p data-reveal="up" style="margin:0;font-size:15px;line-height:2;color:#4a4e57">ご入力いただいたメールアドレスに確認メールをお送りします（このページはサンプルのため送信は行われません）。</p>
+          <button onClick="{{ reset }}" style="align-self:flex-start;height:56px;padding:0 24px;border:1px solid #0b3fd9;background:#fff;color:#0b3fd9;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer">フォームに戻る</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="font-size:22px;font-weight:700">{{ typeName }}フォーム</div>
+        <div style="margin-top:6px;font-size:13px;color:#6b7180"><span style="color:#0b3fd9;font-weight:700">必須</span> の項目は必ずご入力ください。</div>
+        <div data-stagger style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px;margin-top:32px">
+          <sc-for list="{{ fields }}" as="f" hint-placeholder-count="6">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700">
+              <span style="display:flex;gap:8px;align-items:center">{{ f.label }}<sc-if value="{{ f.required }}" hint-placeholder-val="{{ true }}"><span style="background:#0b3fd9;color:#fff;font-size:11px;padding:1px 6px">必須</span></sc-if></span>
+              <input type="{{ f.type }}" value="{{ f.value }}" onChange="{{ f.onChange }}" placeholder="{{ f.placeholder }}" style="height:54px;padding:0 16px;border:1px solid {{ f.border }};background:#f6f7f9;font-family:inherit;font-size:15px;font-weight:400;color:#232427;outline:none" style-focus="border-color:#0b3fd9;background:#fff"></input>
+              <span style="font-size:12px;font-weight:500;color:#c62828;min-height:16px">{{ f.error }}</span>
+            </label>
+          </sc-for>
+        </div>
+        <sc-if value="{{ isDocs }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:12px;font-size:14px;font-weight:700">ご希望の資料</div>
+          <div data-stagger style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+            <sc-for list="{{ docs }}" as="d" hint-placeholder-count="4">
+              <button onClick="{{ d.toggle }}" style="height:44px;padding:0 16px;border:1px solid {{ d.border }};background:{{ d.bg }};color:{{ d.fg }};font-family:inherit;font-size:14px;font-weight:700;cursor:pointer">{{ d.mark }} {{ d.name }}</button>
+            </sc-for>
+          </div>
+        </sc-if>
+        <label style="display:flex;flex-direction:column;gap:8px;margin-top:28px;font-size:14px;font-weight:700">お問い合わせ内容
+          <textarea value="{{ message }}" onChange="{{ setMessage }}" rows="5" placeholder="ご質問・ご要望があればご記入ください" style="padding:14px 16px;border:1px solid #d9dce2;background:#f6f7f9;font-family:inherit;font-size:15px;font-weight:400;line-height:1.8;resize:vertical;outline:none" style-focus="border-color:#0b3fd9;background:#fff"></textarea>
+        </label>
+        <button onClick="{{ toggleAgree }}" style="display:flex;align-items:center;gap:12px;margin-top:28px;padding:0;border:0;background:transparent;font-family:inherit;font-size:14px;color:#232427;cursor:pointer">
+          <span style="width:22px;height:22px;border:2px solid #0b3fd9;background:{{ agreeBg }};color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center">{{ agreeMark }}</span>個人情報の取り扱いに同意する
+        </button>
+        <div style="font-size:12px;color:#c62828;min-height:18px;margin-top:8px">{{ agreeError }}</div>
+        <button onClick="{{ submit }}" style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:420px;height:64px;margin-top:16px;padding:0 28px;border:0;background:#0b3fd9;color:#fff;font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;transition:background .2s" style-hover="background:#072fa6"><span>送信する</span><span>→</span></button>
+      </sc-if>
+    </div>
+    <aside data-stagger style="flex:0 1 380px;min-width:260px;display:flex;flex-direction:column;gap:20px">
+      <div style="background:#0b3fd9;color:#fff;padding:36px">
+        <div style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;color:#cfd9ff">TEL</div>
+        <div style="margin-top:8px;font-family:'Hanken Grotesk',sans-serif;font-size:32px;font-weight:600">00-0000-0000</div>
+        <div style="margin-top:8px;font-size:14px;line-height:1.8">入試課（アドミッションセンター）<br>平日 9:00〜17:00</div>
+      </div>
+      <div style="background:#e5ecfb;padding:36px">
+        <div style="font-size:18px;font-weight:700">保護者の方へ</div>
+        <p data-reveal="up" style="margin:12px 0 0;font-size:14px;line-height:1.9;color:#4a4e57">学費・奨学金・住まいなどのご相談も受け付けています。資料請求では保護者向けガイドもお選びいただけます。</p>
+      </div>
+      <a href="Admissions Info.dc.html#faq" style="display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px;background:#fff;color:#232427;font-size:15px;font-weight:700" style-hover="color:#0b3fd9"><span>よくあるご質問を見る</span><span style="color:#0b3fd9">→</span></a>
+    </aside>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" show-contact="{{ false }}" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { type: 0, sent: false, agree: false, tried: false, message: '', docs: [0], v: { name: '', kana: '', email: '', tel: '', school: '', grade: '' } };
+  renderVals() {
+    const S = this.state, blue = '#0b3fd9';
+    const types = [
+      { en: 'REQUEST', name: '資料請求', desc: '大学案内・募集要項・保護者向けガイドをお送りします。' },
+      { en: 'OPEN CAMPUS', name: 'オープンキャンパス予約', desc: 'オープンキャンパス・キャンパス見学の参加予約です。' },
+      { en: 'INQUIRY', name: '入試に関するお問い合わせ', desc: '入試方式・出願・学費などのご質問を受け付けます。' },
+    ];
+    const defs = [
+      { key: 'name', label: '氏名', required: true, type: 'text', placeholder: '蒼稜 花子' },
+      { key: 'kana', label: 'フリガナ', required: true, type: 'text', placeholder: 'ソウリョウ ハナコ' },
+      { key: 'email', label: 'メールアドレス', required: true, type: 'email', placeholder: 'example@mail.com' },
+      { key: 'tel', label: '電話番号', required: false, type: 'tel', placeholder: '000-0000-0000' },
+      { key: 'school', label: '在籍高校名', required: false, type: 'text', placeholder: '◯◯高等学校' },
+      { key: 'grade', label: '学年', required: false, type: 'text', placeholder: '高校3年 / 既卒 / 保護者' },
+    ];
+    const err = k => {
+      const val = S.v[k].trim(), d = defs.find(x => x.key === k);
+      if (d.required && !val) return '入力してください';
+      if (k === 'email' && val && !/^\S+@\S+\.\S+$/.test(val)) return 'メールアドレスの形式が正しくありません';
+      return '';
+    };
+    const docNames = ['大学案内', '募集要項', '学部パンフレット', '保護者向けガイド'];
+    return {
+      types: types.map((t, i) => ({ ...t, select: () => this.setState({ type: i, sent: false }), border: i === S.type ? blue : 'transparent', dot: i === S.type ? blue : '#fff' })),
+      typeName: types[S.type].name,
+      isDocs: S.type === 0,
+      sent: S.sent, notSent: !S.sent,
+      fields: defs.map(d => {
+        const e = S.tried ? err(d.key) : '';
+        return { ...d, value: S.v[d.key], error: e, border: e ? '#c62828' : '#d9dce2', onChange: ev => { const val = ev.target.value; this.setState(s => ({ v: { ...s.v, [d.key]: val } })); } };
+      }),
+      docs: docNames.map((name, i) => {
+        const on = S.docs.includes(i);
+        return { name, mark: on ? '✓' : '+', border: on ? blue : '#d9dce2', bg: on ? '#e5ecfb' : '#fff', fg: on ? blue : '#232427', toggle: () => this.setState(s => ({ docs: s.docs.includes(i) ? s.docs.filter(x => x !== i) : [...s.docs, i] })) };
+      }),
+      message: S.message,
+      setMessage: ev => this.setState({ message: ev.target.value }),
+      agreeBg: S.agree ? blue : '#fff', agreeMark: S.agree ? '✓' : '',
+      agreeError: S.tried && !S.agree ? '同意が必要です' : '',
+      toggleAgree: () => this.setState(s => ({ agree: !s.agree })),
+      submit: () => {
+        const ok = defs.every(d => !err(d.key)) && S.agree;
+        this.setState({ tried: true, sent: ok });
+      },
+      reset: () => this.setState({ sent: false, tried: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

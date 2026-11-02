@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7f5f0;color:#1d2433;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1f3a6b;text-decoration:none}
+a:hover{color:#b2832f}
+button{font-family:inherit}
+</style>
+<script src="./motion.js"></script>
+</helmet>
+<div style="min-height:100vh;background:#f7f5f0">
+<dc-import name="SiteHeader" current="faculties" hint-size="100%,76px" style="position:sticky;top:0;z-index:50"></dc-import>
+
+<section data-screen-label="Faculties Hero" style="background:linear-gradient(90deg,rgba(31,58,107,0.96) 0%,rgba(31,58,107,0.84) 50%,rgba(31,58,107,0.5) 100%),url(images/seminar-laptop.jpg) 50% 35%/cover no-repeat #1f3a6b;color:#f7f5f0">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(48px,6vw,88px) clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:18px">
+    <nav style="display:flex;gap:10px;font-size:12px;color:#a9b2c6"><a href="Admissions Site.dc.html" style="color:#a9b2c6">トップ</a><span>/</span><span>学部・学科</span></nav>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;color:#d9c18f">FACULTIES &amp; PROGRAMS</span>
+    <h1 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(34px,4.4vw,56px);font-weight:700;letter-spacing:0.05em">学部・学科</h1>
+    <p style="margin:0;max-width:36em;font-size:15px;line-height:1.95;color:#cfd5e2;text-wrap:pretty">8学部22学科で、人文・社会から理工・情報、医療・生活まで幅広い学びを用意しています。学部をひらくと、学科の構成と主な進路を確認できます。</p>
+  </div>
+</section>
+
+<section data-screen-label="Faculty list" style="padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ fieldTabs }}" as="t" hint-placeholder-count="4">
+        <button onClick="{{ t.select }}" style="padding:10px 20px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid #1d2433;background:{{ t.bg }};color:{{ t.fg }};transition:background .2s">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="border-top:1px solid #1d2433">
+      <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="8">
+        <article style="border-bottom:1px solid #e3ded3">
+          <button onClick="{{ f.toggle }}" style="width:100%;background:none;border:none;padding:28px 0;cursor:pointer;text-align:left;color:#1d2433;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center">
+            <span style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px">
+              <span style="font-family:'Shippori Mincho',serif;font-size:clamp(22px,2.4vw,28px);font-weight:700;letter-spacing:0.04em;min-width:7em">{{ f.name }}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#8a8f9a;min-width:12em">{{ f.en }}</span>
+              <span style="font-size:14px;color:#454c5c">{{ f.short }}</span>
+            </span>
+            <span style="width:44px;height:44px;border:1px solid #1d2433;display:flex;align-items:center;justify-content:center;font-size:20px;color:#1f3a6b">{{ f.sign }}</span>
+          </button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 0 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px">
+              <div data-img="" role="img" aria-label="{{ f.name }}のイメージ" style="aspect-ratio:3/2;background:#e4e0d6 url({{ f.img }}) {{ f.pos }}/cover no-repeat"></div>
+              <div style="display:flex;flex-direction:column;gap:22px">
+                <p style="margin:0;font-size:15px;line-height:1.95;text-wrap:pretty">{{ f.desc }}</p>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#b2832f">学科</span>
+                  <sc-for list="{{ f.depts }}" as="d" hint-placeholder-count="3">
+                    <div style="display:flex;flex-direction:column;gap:2px;padding:12px 0;border-bottom:1px solid #efebe3"><span style="font-size:15px;font-weight:700">{{ d.n }}</span><span style="font-size:13px;color:#454c5c;line-height:1.7">{{ d.t }}</span></div>
+                  </sc-for>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;color:#b2832f">主な進路（例）</span>
+                  <div style="display:flex;flex-wrap:wrap;gap:6px">
+                    <sc-for list="{{ f.careers }}" as="c" hint-placeholder-count="4"><span style="font-size:12px;padding:6px 12px;background:#efebe3;color:#454c5c">{{ c }}</span></sc-for>
+                  </div>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:16px;font-size:14px;font-weight:700">
+                  <a href="ExamPrep.dc.html">この学部の入試制度 →</a>
+                  <a href="#oc">模擬授業に参加する →</a>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Learning features" style="background:#fff;border-top:1px solid #e3ded3;padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:0.05em">全学部共通の学び</h2>
+      <img src="images/illust/students-group.png" alt="" loading="lazy" style="display:block;height:clamp(70px,9vw,120px);width:auto;max-width:50%;object-fit:contain">
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:#e3ded3;border:1px solid #e3ded3">
+      <sc-for list="{{ features }}" as="ft" hint-placeholder-count="4">
+        <div style="background:#f7f5f0;padding:32px 28px;display:flex;flex-direction:column;gap:10px">
+          <img src="{{ ft.img }}" alt="" loading="lazy" style="display:block;height:130px;width:auto;max-width:100%;object-fit:contain;object-position:left bottom;margin-bottom:10px">
+          <span style="font-family:'Shippori Mincho',serif;font-size:15px;color:#b2832f;font-weight:700">{{ ft.no }}</span>
+          <h3 style="margin:0;font-size:17px;font-weight:700">{{ ft.title }}</h3>
+          <p style="margin:0;font-size:14px;line-height:1.85;color:#454c5c;text-wrap:pretty">{{ ft.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { field: 0, open: 0 };
+  renderVals() {
+    const s = this.state;
+    const fields = ['すべて', '人文・社会', '理工・情報', '医療・生活'];
+    const data = [
+      { g: 1, name: '文学部', en: 'LETTERS', short: '言葉・文化・歴史から人間を考える', photo: '写真：図書館で文献を読む学生', desc: '文学・言語・歴史の資料を読み解き、人間と社会を深く理解します。少人数ゼミで読み、書き、議論する力を4年間かけて磨きます。', depts: [{ n: '日本文学科', t: '古典から現代文学、日本語学まで' }, { n: '英米文学科', t: '英語圏の文学・文化と実践的な英語運用力' }, { n: '史学科', t: '日本史・東洋史・西洋史・考古学' }], careers: ['出版・メディア', '教員（国語・英語・社会）', '公務員', '学芸員'] },
+      { g: 1, name: '経済学部', en: 'ECONOMICS', short: 'データと理論で社会の仕組みを読む', photo: '写真：ゼミでディスカッション', desc: '経済理論と統計分析の基礎を固め、地域経済や企業経営の具体的な課題に取り組みます。', depts: [{ n: '経済学科', t: '理論・政策・データ分析' }, { n: '経営学科', t: '経営戦略・マーケティング・会計' }], careers: ['金融', 'メーカー', 'コンサルティング', '公務員'] },
+      { g: 1, name: '法学部', en: 'LAW', short: '法的思考で社会の課題に向き合う', photo: '写真：模擬法廷での授業', desc: '憲法・民法・刑法などの基本法を学び、論理的に考え説明する力を育てます。法曹や公務員を目指す学生向けの講座もあります。', depts: [{ n: '法律学科', t: '基本法から企業法務・国際法まで' }, { n: '政治学科', t: '政治理論・行政・国際関係' }], careers: ['法曹', '国家・地方公務員', '企業法務', '警察・消防'] },
+      { g: 1, name: '国際学部', en: 'GLOBAL STUDIES', short: '言語と地域研究で世界を知る', photo: '写真：留学生との交流授業', desc: '英語に加えてもう一つの言語を学び、地域研究と国際協力の視点を身につけます。全員が在学中に海外研修に参加します。', depts: [{ n: '国際関係学科', t: '国際政治・開発・平和研究' }, { n: '国際コミュニケーション学科', t: '多言語運用と異文化理解' }], careers: ['商社・航空', '国際機関・NGO', '観光', '教員（英語）'] },
+      { g: 2, name: '理工学部', en: 'SCIENCE & ENG.', short: '基礎科学からものづくりまで', photo: '写真：実験室での実習', desc: '数学・物理・化学の基礎を固め、1年次から実験・実習を重ねます。4年次は研究室に所属し、卒業研究に取り組みます。', depts: [{ n: '機械工学科', t: '設計・材料・ロボティクス' }, { n: '電気電子工学科', t: 'エネルギー・電子回路・通信' }, { n: '化学科', t: '物質化学・環境化学' }, { n: '建築学科', t: '建築設計・都市計画・構造' }], careers: ['メーカー（技術職）', 'インフラ', '建設・設計', '大学院進学'] },
+      { g: 2, name: '情報学部', en: 'INFORMATICS', short: 'AI・データで社会をアップデートする', photo: '写真：プログラミング演習', desc: 'プログラミング、AI、データサイエンスを体系的に学び、企業や自治体と連携したプロジェクトで社会実装を経験します。', depts: [{ n: '情報科学科', t: 'ソフトウェア・AI・セキュリティ' }, { n: 'データサイエンス学科', t: '統計・機械学習・データ活用' }], careers: ['IT・通信', 'データアナリスト', 'エンジニア', '大学院進学'] },
+      { g: 3, name: '看護学部', en: 'NURSING', short: '患者さんに寄り添う看護実践力', photo: '写真：看護実習室', desc: '附属病院と連携した臨地実習を通して、確かな知識と技術、人に寄り添う姿勢を育てます。看護師国家試験の受験資格を取得できます。', depts: [{ n: '看護学科', t: '看護師・保健師（選択制）養成課程' }], careers: ['病院看護師', '保健師', '訪問看護', '助産師課程進学'] },
+      { g: 3, name: '生活科学部', en: 'HUMAN LIFE SCIENCE', short: '食・健康・暮らしを科学する', photo: '写真：調理・栄養学の実習', desc: '食と栄養、子どもの発達、住まいと暮らしをテーマに、生活に身近な課題を科学的に考えます。', depts: [{ n: '食物栄養学科', t: '管理栄養士養成課程' }, { n: '子ども学科', t: '保育士・幼稚園教諭養成' }, { n: '生活デザイン学科', t: '住居・衣服・プロダクト' }], careers: ['管理栄養士', '保育士・幼稚園教諭', '食品メーカー', 'インテリア・住宅'] },
+    ];
+    const imgs = [['discussion', '50% center'], ['laptop-three', '50% center'], ['board', '60% center'], ['international', '50% 35%'], ['lab', '50% 30%'], ['computer', '60% center'], ['three-portrait', '50% 30%'], ['bridge-walk', '50% 60%']];
+    return {
+      fieldTabs: fields.map((label, i) => ({ label, bg: s.field === i ? '#1d2433' : 'transparent', fg: s.field === i ? '#fff' : '#1d2433', select: () => this.setState({ field: i }) })),
+      faculties: data.map((f, i) => ({ ...f, i, img: `images/${imgs[i][0]}.jpg`, pos: imgs[i][1] })).filter(f => s.field === 0 || f.g === s.field).map(f => ({ ...f, open: s.open === f.i, sign: s.open === f.i ? '−' : '+', toggle: () => this.setState({ open: s.open === f.i ? -1 : f.i }) })),
+      features: [
+        { no: '01', img: 'images/illust/lecture.png', title: '1年次からの少人数ゼミ', body: '入学直後から20名程度のゼミに所属し、教員や仲間と近い距離で学びます。' },
+        { no: '02', img: 'images/illust/library.png', title: '学部を越えて学べる副専攻', body: '情報・語学・地域づくりなど、他学部の科目を組み合わせて学べます。' },
+        { no: '03', img: 'images/illust/jump.png', title: '留学・インターンシップ', body: '海外協定校への短期・長期留学や、企業・自治体での実習の機会があります。' },
+        { no: '04', img: 'images/illust/board.png', title: 'キャリア支援', body: '1年次からキャリア科目を設け、担当職員が個別に就職活動を支えます。' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fffaf5;color:#3a2e2b;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#c8352b}
+a:hover{color:#a3251c}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Japanese line breaking: wrap at phrase boundaries, no single-character last lines */
+body{line-break:strict}
+h1,h2,h3,summary,p[style*="font-weight: 700"]{word-break:auto-phrase}
+.map-band>div{width:max-content}
+h1,h2,h3{text-wrap:balance}
+/* Faculty cards: tall portrait in narrow columns, landscape once the card is wide */
+.fac-card{container-type:inline-size}
+.fac-photo{aspect-ratio:4/5}
+@container (min-width:300px){.fac-photo{aspect-ratio:4/3}}
+/* Wide bands: aspect-ratio + min-height would widen the box past the screen on phones */
+.hero-band{aspect-ratio:21/9}
+.map-band{aspect-ratio:21/8}
+@media (max-width:640px){.hero-band,.map-band{aspect-ratio:4/3}}
+/* Section headings: keep the wavy rules visible and let the English label drop below */
+span:has(+h1),span:has(+h2),h1+span,h2+span{min-width:28px}
+h1:has(>span),h2:has(>span){flex-wrap:wrap;justify-content:center;row-gap:2px}
+</style>
+</helmet>
+
+<a href="#main" style="position:absolute;left:-9999px;top:8px;background:#c8352b;color:#fff;padding:8px 14px;border-radius:6px;z-index:100" style-focus="left:8px">本文へスキップ</a>
+
+<sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+  <header style="position:sticky;top:0;z-index:50;background:#fffaf5;border-bottom:1px dashed #e9b3ab">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 18px;gap:12px">
+      <a href="Admissions%20Site.dc.html" style="text-decoration:none;color:#c8352b;display:flex;align-items:baseline;gap:8px">
+        <span style="font-family:'Klee One',cursive;font-size:24px">葵ヶ丘</span>
+        <span style="font-size:12px;letter-spacing:0.2em;font-weight:700">女子大学</span>
+      </a>
+      <div style="display:flex;gap:8px;align-items:center">
+        <a href="OpenCampus.dc.html" style="background:#c8352b;color:#fff;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.1em;padding:0 12px;height:44px;display:flex;align-items:center;border-radius:8px">OC予約</a>
+        <button onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-controls="mnav" style="height:44px;min-width:56px;border:1.5px solid #c8352b;background:#fffaf5;color:#c8352b;border-radius:8px;font-family:inherit;font-weight:700;font-size:12px;letter-spacing:0.1em;cursor:pointer">{{ menuLabel }}</button>
+      </div>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <nav id="mnav" aria-label="メインメニュー" style="display:grid;gap:8px;padding:6px 18px 18px">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+          <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;min-height:48px;padding:0 16px;border-radius:8px;background:#fbe4df;color:#c8352b;text-decoration:none;font-weight:700;letter-spacing:0.3em;font-size:14px"><span>{{ n.label }}</span><span style="font-size:11px;letter-spacing:0.1em">{{ n.en }}</span></a>
+        </sc-for>
+      </nav>
+    </sc-if>
+  </header>
+</sc-if>
+
+<div id="top" style="display:flex;max-width:1320px;margin:0 auto;padding:0 clamp(16px,3.5vw,40px);gap:clamp(24px,3vw,44px);align-items:flex-start">
+
+<main id="main" style="flex:1;min-width:0;padding:32px 0 0">
+<section aria-labelledby="acp-h1" data-screen-label="01 まなぶ">
+<nav aria-label="パンくずリスト" style="font-size:11px;letter-spacing:0.1em;color:#c8352b;margin-bottom:22px;display:flex;gap:8px;flex-wrap:wrap"><a href="Admissions%20Site.dc.html" style="color:#c8352b">トップ</a><span aria-hidden="true">＞</span><span aria-current="page">まなぶ</span></nav>
+<div style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><span aria-hidden="true" style="flex:1;height:8px;background:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%278%27%3E%3Cpath d=%27M0 4 Q3.5 0 7 4 T14 4%27 fill=%27none%27 stroke=%27%23c8352b%27 stroke-width=%271.3%27/%3E%3C/svg%3E') repeat-x center"></span><h1 id="acp-h1" style="margin:0;color:#c8352b;font-size:18px;letter-spacing:0.4em;font-weight:700;display:flex;align-items:baseline;gap:10px">まなぶ<span style="font-size:11px;letter-spacing:0.15em;font-weight:500">Academics</span></h1><span aria-hidden="true" style="flex:1;height:8px;background:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%278%27%3E%3Cpath d=%27M0 4 Q3.5 0 7 4 T14 4%27 fill=%27none%27 stroke=%27%23c8352b%27 stroke-width=%271.3%27/%3E%3C/svg%3E') repeat-x center"></span></div>
+<p style="margin:0 0 24px;color:#2b2220;font-weight:700;font-size:clamp(22px,2.6vw,32px);letter-spacing:0.1em;line-height:1.55;text-wrap:pretty">6つの学部で、<br>「好き」を専門に育てる。</p>
+<div class="hero-band" style="position:relative;border-radius:28px;overflow:hidden;background:#f3e6e0"><image-slot id="acp-hero" src="images/12.jpg" shape="rect" placeholder="講義・実習の様子"></image-slot>
+<div style="position:absolute;top:0;right:0;background:#fffaf5;border-bottom-left-radius:24px;padding:10px 0 14px 20px;color:#c8352b;font-size:11px;letter-spacing:0.2em;font-weight:700;pointer-events:none">Academics</div></div>
+<div style="margin-top:24px;max-width:760px"><p style="margin:0;font-size:14px;line-height:2.1;letter-spacing:0.04em;text-wrap:pretty">ことば、こころ、食、データ、いのち、世界。葵ヶ丘には関心の入口が異なる6つの学部があり、どの学部からでも他学部の科目を組み合わせて学べます。</p></div></section><section id="acp-faculties" aria-labelledby="acp-faculties-t" data-screen-label="02 学部・学科" style="scroll-margin-top:72px;padding-top:72px"><div style="display:flex;align-items:center;gap:16px;margin-bottom:24px"><span aria-hidden="true" style="flex:1;height:8px;background:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%278%27%3E%3Cpath d=%27M0 4 Q3.5 0 7 4 T14 4%27 fill=%27none%27 stroke=%27%23c8352b%27 stroke-width=%271.3%27/%3E%3C/svg%3E') repeat-x center"></span><h2 id="acp-faculties-t" style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.35em;font-weight:700;display:flex;align-items:baseline;gap:10px;text-align:center">学部・学科<span style="font-size:11px;letter-spacing:0.15em;font-weight:500">Faculties</span></h2><span aria-hidden="true" style="flex:1;height:8px;background:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%278%27%3E%3Cpath d=%27M0 4 Q3.5 0 7 4 T14 4%27 fill=%27none%27 stroke=%27%23c8352b%27 stroke-width=%271.3%27/%3E%3C/svg%3E') repeat-x center"></span></div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:clamp(18px,2.4vw,28px)">
+      <article class="fac-card" style="display:flex;flex-direction:column;gap:12px">
+        <div class="fac-photo" style="position:relative;border-radius:16px;overflow:hidden"><image-slot id="acp-fac-1" src="images/03.jpg" shape="rounded" radius="16" placeholder="文学部の授業風景"></image-slot>
+          <div aria-hidden="true" style="position:absolute;top:0;right:14px;display:flex;flex-direction:column;align-items:center;pointer-events:none"><span style="background:#c8352b;color:#fff;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">01</span><span style="background:#fff;color:#c8352b;writing-mode:vertical-rl;padding:12px 8px;font-size:13px;letter-spacing:0.25em;font-weight:700">ことばで世界を読む</span></div>
+        </div>
+        <h3 style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.12em">文学部</h3>
+        <p style="margin:0;font-size:13px;line-height:1.9">日本文学科／英語英米文学科。ことばと物語を手がかりに、人間と文化を読み解きます。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">文学</span><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">言語</span><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">文化</span></div>
+      </article>
+      <article class="fac-card" style="display:flex;flex-direction:column;gap:12px">
+        <div class="fac-photo" style="position:relative;border-radius:16px;overflow:hidden"><image-slot id="acp-fac-2" src="images/23.jpg" shape="rounded" radius="16" placeholder="留学・語学の授業"></image-slot>
+          <div aria-hidden="true" style="position:absolute;top:0;right:14px;display:flex;flex-direction:column;align-items:center;pointer-events:none"><span style="background:#c8352b;color:#fff;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">02</span><span style="background:#fff;color:#c8352b;writing-mode:vertical-rl;padding:12px 8px;font-size:13px;letter-spacing:0.25em;font-weight:700">世界と話す</span></div>
+        </div>
+        <h3 style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.12em">国際コミュニケーション学部</h3>
+        <p style="margin:0;font-size:13px;line-height:1.9">国際交流学科。留学プログラムと多文化理解の授業を通じて、世界とつながる力を養います。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">留学</span><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">語学</span></div>
+      </article>
+      <article class="fac-card" style="display:flex;flex-direction:column;gap:12px">
+        <div class="fac-photo" style="position:relative;border-radius:16px;overflow:hidden"><image-slot id="acp-fac-3" src="images/51.jpg" shape="rounded" radius="16" placeholder="心理学の実験・演習"></image-slot>
+          <div aria-hidden="true" style="position:absolute;top:0;right:14px;display:flex;flex-direction:column;align-items:center;pointer-events:none"><span style="background:#c8352b;color:#fff;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">03</span><span style="background:#fff;color:#c8352b;writing-mode:vertical-rl;padding:12px 8px;font-size:13px;letter-spacing:0.25em;font-weight:700">こころを知る</span></div>
+        </div>
+        <h3 style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.12em">人間科学部</h3>
+        <p style="margin:0;font-size:13px;line-height:1.9">心理学科／子ども学科。人の心と発達を、実験や観察を通じて科学的に学びます。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">心理</span><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">教育</span></div>
+      </article>
+      <article class="fac-card" style="display:flex;flex-direction:column;gap:12px">
+        <div class="fac-photo" style="position:relative;border-radius:16px;overflow:hidden"><image-slot src="../_filled/53-face-5.jpg" id="acp-fac-4" shape="rounded" radius="16" placeholder="調理・栄養の実習"></image-slot>
+          <div aria-hidden="true" style="position:absolute;top:0;right:14px;display:flex;flex-direction:column;align-items:center;pointer-events:none"><span style="background:#c8352b;color:#fff;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">04</span><span style="background:#fff;color:#c8352b;writing-mode:vertical-rl;padding:12px 8px;font-size:13px;letter-spacing:0.25em;font-weight:700">食で人を支える</span></div>
+        </div>
+        <h3 style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.12em">生活科学部</h3>
+        <p style="margin:0;font-size:13px;line-height:1.9">食物栄養学科。食と健康について、実験・実習を中心に専門的に学びます。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">栄養</span><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">実習</span></div>
+      </article>
+      <article class="fac-card" style="display:flex;flex-direction:column;gap:12px">
+        <div class="fac-photo" style="position:relative;border-radius:16px;overflow:hidden"><image-slot id="acp-fac-5" src="images/49.jpg" shape="rounded" radius="16" placeholder="PC演習・グループワーク"></image-slot>
+          <div aria-hidden="true" style="position:absolute;top:0;right:14px;display:flex;flex-direction:column;align-items:center;pointer-events:none"><span style="background:#c8352b;color:#fff;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">05</span><span style="background:#fff;color:#c8352b;writing-mode:vertical-rl;padding:12px 8px;font-size:13px;letter-spacing:0.25em;font-weight:700">データで考える</span></div>
+        </div>
+        <h3 style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.12em">情報デザイン学部</h3>
+        <p style="margin:0;font-size:13px;line-height:1.9">データサイエンス学科。データとデザインの両面から、身近な課題の解決に取り組みます。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">情報</span><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">データ</span></div>
+      </article>
+      <article class="fac-card" style="display:flex;flex-direction:column;gap:12px">
+        <div class="fac-photo" style="position:relative;border-radius:16px;overflow:hidden"><image-slot src="../_filled/54-ill-worry.png" id="acp-fac-6" shape="rounded" radius="16" placeholder="看護の演習室"></image-slot>
+          <div aria-hidden="true" style="position:absolute;top:0;right:14px;display:flex;flex-direction:column;align-items:center;pointer-events:none"><span style="background:#c8352b;color:#fff;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">06</span><span style="background:#fff;color:#c8352b;writing-mode:vertical-rl;padding:12px 8px;font-size:13px;letter-spacing:0.25em;font-weight:700">いのちに寄り添う</span></div>
+        </div>
+        <h3 style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.12em">看護学部</h3>
+        <p style="margin:0;font-size:13px;line-height:1.9">看護学科。演習と臨地実習を重ね、看護の実践力と倫理観を身につけます。</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">医療</span><span style="border:1px solid #c8352b;color:#c8352b;border-radius:999px;padding:1px 10px;font-size:11px">実習</span></div>
+      </article>
+    </div>
+
+    <p style="margin:16px 0 0;font-size:11px;color:#8a4a43;line-height:1.8">※ 学部・学科構成はサンプルです。</p></section><section id="acp-features" aria-labelledby="acp-features-t" data-screen-label="03 学びの特色" style="scroll-margin-top:72px;padding-top:72px"><div style="display:flex;align-items:center;gap:16px;margin-bottom:24px"><span aria-hidden="true" style="flex:1;height:8px;background:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%278%27%3E%3Cpath d=%27M0 4 Q3.5 0 7 4 T14 4%27 fill=%27none%27 stroke=%27%23c8352b%27 stroke-width=%271.3%27/%3E%3C/svg%3E') repeat-x center"></span><h2 id="acp-features-t" style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.35em;font-weight:700;display:flex;align-items:baseline;gap:10px;text-align:center">学びの特色<span style="font-size:11px;letter-spacing:0.15em;font-weight:500">Learning</span></h2><span aria-hidden="true" style="flex:1;height:8px;background:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%278%27%3E%3Cpath d=%27M0 4 Q3.5 0 7 4 T14 4%27 fill=%27none%27 stroke=%27%23c8352b%27 stroke-width=%271.3%27/%3E%3C/svg%3E') repeat-x center"></span></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(20px,2.6vw,32px);align-items:start"><article style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:4/3;border-radius:16px;overflow:hidden"><image-slot id="acp-l1" src="images/52.jpg" shape="rounded" radius="16" placeholder="学部横断の授業"></image-slot></div><h3 style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.1em">学部横断プログラム</h3><p style="margin:0;font-size:13px;line-height:1.95">他学部の科目を組み合わせ、副専攻として体系的に学べます。文系・理系をまたぐ組み合わせも可能です。</p></article><article style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:4/3;border-radius:16px;overflow:hidden"><image-slot id="acp-l2" src="images/05.jpg" shape="rounded" radius="16" placeholder="フィールドワーク"></image-slot></div><h3 style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.1em">実践型の授業</h3><p style="margin:0;font-size:13px;line-height:1.95">フィールドワーク、インターンシップ、地域連携プロジェクトを単位として認定します。</p></article><article style="display:flex;flex-direction:column;gap:12px"><div style="aspect-ratio:4/3;border-radius:16px;overflow:hidden"><image-slot id="acp-l3" src="images/14.jpg" shape="rounded" radius="16" placeholder="研究室での卒業研究"></image-slot></div><h3 style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.1em">卒業研究</h3><p style="margin:0;font-size:13px;line-height:1.95">4年次には教員の指導のもとで研究テーマを決め、1年をかけて卒業研究にまとめます。</p></article></div></section><section id="acp-years" aria-labelledby="acp-years-t" data-screen-label="04 4年間の流れ" style="scroll-margin-top:72px;padding-top:72px"><div style="display:flex;align-items:center;gap:16px;margin-bottom:24px"><span aria-hidden="true" style="flex:1;height:8px;background:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%278%27%3E%3Cpath d=%27M0 4 Q3.5 0 7 4 T14 4%27 fill=%27none%27 stroke=%27%23c8352b%27 stroke-width=%271.3%27/%3E%3C/svg%3E') repeat-x center"></span><h2 id="acp-years-t" style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.35em;font-weight:700;display:flex;align-items:baseline;gap:10px;text-align:center">4年間の流れ<span style="font-size:11px;letter-spacing:0.15em;font-weight:500">4 Years</span></h2><span aria-hidden="true" style="flex:1;height:8px;background:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%278%27%3E%3Cpath d=%27M0 4 Q3.5 0 7 4 T14 4%27 fill=%27none%27 stroke=%27%23c8352b%27 stroke-width=%271.3%27/%3E%3C/svg%3E') repeat-x center"></span></div><ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:22px 32px"><li style="display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="width:52px;height:52px;border-radius:50%;background:#c8352b;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">1年</span><div><p style="margin:0 0 4px;color:#c8352b;font-weight:700;font-size:14px;letter-spacing:0.08em">学びの土台をつくる</p><p style="margin:0;font-size:13px;line-height:1.9">基礎ゼミと教養科目で、読む・書く・話す力を身につけます。</p></div></li><li style="display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="width:52px;height:52px;border-radius:50%;background:#c8352b;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">2年</span><div><p style="margin:0 0 4px;color:#c8352b;font-weight:700;font-size:14px;letter-spacing:0.08em">専門の入口に立つ</p><p style="margin:0;font-size:13px;line-height:1.9">学科の専門科目が本格的にスタート。留学や副専攻の選択も。</p></div></li><li style="display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="width:52px;height:52px;border-radius:50%;background:#c8352b;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">3年</span><div><p style="margin:0 0 4px;color:#c8352b;font-weight:700;font-size:14px;letter-spacing:0.08em">専門を深める</p><p style="margin:0;font-size:13px;line-height:1.9">研究室・ゼミに所属し、実習やインターンシップに取り組みます。</p></div></li><li style="display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start"><span aria-hidden="true" style="width:52px;height:52px;border-radius:50%;background:#c8352b;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">4年</span><div><p style="margin:0 0 4px;color:#c8352b;font-weight:700;font-size:14px;letter-spacing:0.08em">自分の問いをまとめる</p><p style="margin:0;font-size:13px;line-height:1.9">卒業研究に取り組み、学びの成果を発表します。</p></div></li></ol></section><section id="acp-career" aria-labelledby="acp-career-t" data-screen-label="05 キャリア支援" style="scroll-margin-top:72px;padding-top:72px"><div style="display:flex;align-items:center;gap:16px;margin-bottom:24px"><span aria-hidden="true" style="flex:1;height:8px;background:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%278%27%3E%3Cpath d=%27M0 4 Q3.5 0 7 4 T14 4%27 fill=%27none%27 stroke=%27%23c8352b%27 stroke-width=%271.3%27/%3E%3C/svg%3E') repeat-x center"></span><h2 id="acp-career-t" style="margin:0;color:#c8352b;font-size:15px;letter-spacing:0.35em;font-weight:700;display:flex;align-items:baseline;gap:10px;text-align:center">キャリア支援<span style="font-size:11px;letter-spacing:0.15em;font-weight:500">Career</span></h2><span aria-hidden="true" style="flex:1;height:8px;background:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2714%27 height=%278%27%3E%3Cpath d=%27M0 4 Q3.5 0 7 4 T14 4%27 fill=%27none%27 stroke=%27%23c8352b%27 stroke-width=%271.3%27/%3E%3C/svg%3E') repeat-x center"></span></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(20px,2.6vw,32px);align-items:start"><div><div style="aspect-ratio:4/3;border-radius:18px;overflow:hidden"><image-slot id="acp-career" src="images/50.jpg" shape="rounded" radius="18" placeholder="キャリア相談の様子"></image-slot></div></div><div style="display:flex;flex-direction:column;gap:18px"><p style="margin:0 0 28px;color:#c8352b;font-weight:700;font-size:clamp(17px,1.8vw,21px);letter-spacing:0.1em;line-height:1.7;text-wrap:pretty">卒業後の長い人生を見すえて、1年次から。</p><ul style="list-style:none;margin:0;padding:0;display:grid;gap:14px"><li style="border-bottom:1px dashed #e9b3ab;padding-bottom:12px"><p style="margin:0 0 4px;color:#c8352b;font-weight:700;font-size:14px;letter-spacing:0.08em">＜キャリア科目＞</p><p style="margin:0;font-size:13px;line-height:1.9">1年次から、働くことや生き方を考える授業があります。</p></li><li style="border-bottom:1px dashed #e9b3ab;padding-bottom:12px"><p style="margin:0 0 4px;color:#c8352b;font-weight:700;font-size:14px;letter-spacing:0.08em">＜個別相談＞</p><p style="margin:0;font-size:13px;line-height:1.9">キャリアセンターで、進路の相談を一対一で受けられます。</p></li><li style="border-bottom:1px dashed #e9b3ab;padding-bottom:12px"><p style="margin:0 0 4px;color:#c8352b;font-weight:700;font-size:14px;letter-spacing:0.08em">＜インターンシップ＞</p><p style="margin:0;font-size:13px;line-height:1.9">企業・自治体と連携したプログラムを紹介しています。</p></li><li style="border-bottom:1px dashed #e9b3ab;padding-bottom:12px"><p style="margin:0 0 4px;color:#c8352b;font-weight:700;font-size:14px;letter-spacing:0.08em">＜資格取得支援＞</p><p style="margin:0;font-size:13px;line-height:1.9">学科の学びと関連する資格の対策講座を開講しています。</p></li></ul></div></div></section><a href="CampusLife.dc.html" style="margin-top:80px;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px clamp(18px,3vw,32px);border:1.5px dashed #c8352b;border-radius:10px;color:#c8352b;text-decoration:none" style-hover="background:#fbe4df" style-focus="outline:2px solid #2b2220;outline-offset:3px"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:11px;letter-spacing:0.2em">NEXT</span><span style="font-size:clamp(17px,2vw,22px);font-weight:700;letter-spacing:0.3em">くらす<span style="font-size:11px;letter-spacing:0.1em;font-weight:500;margin-left:10px">Campus Life</span></span></span><span aria-hidden="true" style="font-size:22px">→</span></a>
+<footer style="margin-top:88px;padding-bottom:32px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:11px;letter-spacing:0.1em;margin-bottom:14px">
+      <nav aria-label="フッター" style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="About.dc.html" style="color:#c8352b;text-decoration:none">しる</a>
+        <a href="Academics.dc.html" style="color:#c8352b;text-decoration:none">まなぶ</a>
+        <a href="CampusLife.dc.html" style="color:#c8352b;text-decoration:none">くらす</a>
+        <a href="Admissions.dc.html" style="color:#c8352b;text-decoration:none">うける</a>
+        <a href="#" style="color:#c8352b;text-decoration:none">プライバシーポリシー</a>
+        <a href="#" style="color:#c8352b;text-decoration:none">お問い合わせ</a>
+      </nav>
+      <a href="#top" style="color:#c8352b;text-decoration:none">pagetop ↑</a>
+    </div>
+    <div class="map-band" style="position:relative;border-radius:14px;overflow:hidden;background:#fbe4df">
+      <image-slot id="access-map" shape="rect" placeholder="アクセスマップ（地図画像）"></image-slot>
+      <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#c8352b;color:#fff;border-radius:8px;padding:14px 20px;font-size:12px;line-height:1.9;letter-spacing:0.06em;pointer-events:none;max-width:90%">
+        <strong style="font-size:14px">葵ヶ丘女子大学 入試広報課</strong><br>〒000-0000 住所がここに入ります<br>TEL 00-0000-0000（平日 9:00–17:00）
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;font-size:11px;color:#c8352b;letter-spacing:0.1em">
+      <div style="display:flex;gap:16px"><a href="#" style="color:#c8352b">Instagram</a><a href="#" style="color:#c8352b">X</a><a href="#" style="color:#c8352b">YouTube</a><a href="#" style="color:#c8352b">LINE</a></div>
+      <span>© Aoigaoka Women's University（サンプル）</span>
+    </div>
+  </footer>
+</main>
+
+<sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+  <aside aria-label="サイトメニュー" style="flex:0 0 200px;position:sticky;top:0;padding:20px 0;max-height:100vh;overflow:auto;scrollbar-width:none">
+    <a href="Admissions%20Site.dc.html" style="display:block;text-decoration:none;color:#c8352b;text-align:center;margin-bottom:22px">
+      <span style="display:block;font-family:'Klee One',cursive;font-size:12px;text-align:left;padding-left:10px">Aoigaoka</span>
+      <span aria-hidden="true" style="display:block;width:120px;height:28px;margin:0 auto -6px;border-top:2px solid #c8352b;border-left:2px solid #c8352b;border-right:2px solid #c8352b;border-radius:60px 60px 0 0;border-bottom:none"></span>
+      <span style="display:block;font-family:'Klee One',cursive;font-size:38px;line-height:1.2">葵ヶ丘</span>
+      <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.5em;margin-top:2px">女子大学</span>
+      <span style="display:block;font-size:10px;letter-spacing:0.08em;margin-top:10px;line-height:1.7">ことばと、まなびと、<br>わたしの未来。</span>
+    </a>
+    <nav aria-label="メインメニュー" style="display:grid;gap:10px">
+      <a href="About.dc.html" style="display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;background:#c8352b;color:#fff;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:0.4em" style-hover="background:#a3251c;color:#fff" style-focus="outline:2px solid #2b2220;outline-offset:2px"><span>しる</span><span style="font-size:10px;letter-spacing:0.08em;border-left:1px dashed rgba(255,255,255,.7);padding-left:8px">About</span></a>
+      <a href="Academics.dc.html" aria-current="page" style="box-shadow:0 0 0 2px #fffaf5,0 0 0 4px #c8352b;display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;background:#fbe4df;color:#c8352b;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:0.4em" style-hover="background:#f6d0c8" style-focus="outline:2px solid #2b2220;outline-offset:2px"><span>まなぶ</span><span style="font-size:10px;letter-spacing:0.08em;border-left:1px dashed #c8352b;padding-left:8px">Study</span></a>
+      <a href="CampusLife.dc.html" style="display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;background:#fbe4df;color:#c8352b;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:0.4em" style-hover="background:#f6d0c8" style-focus="outline:2px solid #2b2220;outline-offset:2px"><span>くらす</span><span style="font-size:10px;letter-spacing:0.08em;border-left:1px dashed #c8352b;padding-left:8px">Life</span></a>
+      <a href="Admissions.dc.html" style="display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;background:#c8352b;color:#fff;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:0.4em" style-hover="background:#a3251c;color:#fff" style-focus="outline:2px solid #2b2220;outline-offset:2px"><span>うける</span><span style="font-size:10px;letter-spacing:0.08em;border-left:1px dashed rgba(255,255,255,.7);padding-left:8px">Exam</span></a>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <a href="OpenCampus.dc.html" style="display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:52px;border-radius:8px;background:#c8352b;color:#fff;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:0.05em;text-align:center;line-height:1.4" style-hover="background:#a3251c;color:#fff" style-focus="outline:2px solid #2b2220;outline-offset:2px">オープン<br>キャンパス</a>
+        <a href="Admissions.dc.html" style="display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:52px;border-radius:8px;background:#c8352b;color:#fff;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:0.1em" style-hover="background:#a3251c;color:#fff" style-focus="outline:2px solid #2b2220;outline-offset:2px">資料請求</a>
+      </div>
+      <a href="Admissions%20Site.dc.html#hero" style="display:flex;justify-content:center;align-items:center;min-height:36px;border-radius:8px;border:1.5px solid #c8352b;color:#c8352b;text-decoration:none;font-size:11px;letter-spacing:0.2em" style-hover="background:#fbe4df" style-focus="outline:2px solid #2b2220;outline-offset:2px">TOPICS</a>
+    </nav>
+    <div style="display:flex;justify-content:center;gap:12px;margin-top:18px;font-size:10px;letter-spacing:0.05em">
+      <a href="#" style="color:#c8352b">Instagram</a><a href="#" style="color:#c8352b">X</a><a href="#" style="color:#c8352b">YouTube</a>
+    </div>
+  </aside>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: window.innerWidth, slide: 0, menuOpen: false, sent: false };
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onR);
+    this.reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!this.reduce) {
+      this.t = setInterval(() => this.setState(s => ({ slide: (s.slide + 1) % 3 })), 6000);
+      setTimeout(() => this.runAnimations(), 60);
+    }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onR); clearInterval(this.t);
+    if (this.io) this.io.disconnect();
+    if (this.onS) window.removeEventListener('scroll', this.onS);
+    if (this.bar) this.bar.remove();
+  }
+  componentDidUpdate(pp, ps) {
+    if (!this.reduce && this.state.menuOpen && !ps.menuOpen) {
+      document.querySelectorAll('#mnav a').forEach((a, i) => a.animate([{ opacity: 0, transform: 'translateY(-10px)' }, { opacity: 1, transform: 'none' }], { duration: 380, delay: i * 55, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'both' }));
+    }
+    if (this.state.w !== ps.w && (this.state.w < 900) !== (ps.w < 900) && !this.reduce) setTimeout(() => this.runAnimations(true), 60);
+  }
+  runAnimations(again) {
+    const EASE = 'cubic-bezier(.2,.7,.2,1)', RED = 'rgb(200, 53, 43)';
+    const main = document.querySelector('main'); if (!main) return;
+    const cs = el => getComputedStyle(el);
+    const hero = main.querySelector('section');
+    const pending = new Map();
+    const prep = (el, kf, opt) => { if (pending.has(el)) return; const a = el.animate(kf, Object.assign({ fill: 'both', easing: EASE }, opt)); a.pause(); pending.set(el, a); };
+    const stagger = el => { const p = el && el.parentElement; return p ? Math.min([].indexOf.call(p.children, el), 8) * 90 : 0; };
+    if (!again) {
+      // wavy rules: draw outward from the heading, then keep flowing
+      main.querySelectorAll('span[aria-hidden="true"]').forEach(s => {
+        if (cs(s).backgroundImage.indexOf('svg') < 0) return;
+        const first = s === s.parentElement.firstElementChild;
+        s.style.transformOrigin = first ? 'right center' : 'left center';
+        prep(s, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 1200 });
+        s.animate([{ backgroundPositionX: '0px' }, { backgroundPositionX: first ? '28px' : '-28px' }], { duration: 1800, iterations: Infinity });
+      });
+      // vertical label strips unroll top to bottom
+      main.querySelectorAll('span, div').forEach(el => {
+        if (cs(el).writingMode !== 'vertical-rl') return;
+        prep(el, [{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)' }], { duration: 1000, delay: 350 });
+      });
+      // round red number badges pop in
+      main.querySelectorAll('span[aria-hidden="true"]').forEach(el => {
+        const c = cs(el); if (c.borderTopLeftRadius !== '50%' || c.backgroundColor !== RED) return;
+        prep(el, [{ transform: 'scale(0) rotate(-120deg)' }, { transform: 'scale(1.15) rotate(10deg)', offset: 0.7 }, { transform: 'none' }], { duration: 800, delay: 150 + stagger(el.closest('li') || el) });
+      });
+      // square badges drop
+      main.querySelectorAll('span').forEach(el => {
+        const c = cs(el); if (c.backgroundColor !== RED || c.width !== '34px' && c.width !== '40px') return;
+        prep(el, [{ transform: 'translateY(-40px)', opacity: 0 }, { transform: 'translateY(4px)', opacity: 1, offset: 0.75 }, { transform: 'none', opacity: 1 }], { duration: 700, delay: 200 });
+      });
+      // general fade-up reveal with sibling stagger
+      main.querySelectorAll('main section > *, main [style*="grid-template-columns"] > *, main ol > li, main ul > li, main footer > *, main article, main figure, main details').forEach(el => {
+        prep(el, [{ opacity: 0, transform: 'translateY(36px)' }, { opacity: 1, transform: 'none' }], { duration: 950, delay: stagger(el) });
+      });
+      // photos settle from zoomed + desaturated
+      main.querySelectorAll('image-slot').forEach(el => {
+        if (hero && hero.contains(el) && hero.id === 'hero') return;
+        prep(el, [{ transform: 'scale(1.18)', filter: 'saturate(0.3) brightness(1.08)' }, { transform: 'scale(1)', filter: 'none' }], { duration: 1700 });
+      });
+      this.io = new IntersectionObserver(es => es.forEach(e => {
+        if (!e.isIntersecting) return; const a = pending.get(e.target); if (a) a.play(); this.io.unobserve(e.target);
+      }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      pending.forEach((a, el) => this.io.observe(el));
+      // hero: slow ken-burns + notches slide in
+      if (hero) {
+        hero.querySelectorAll('image-slot').forEach((el, i) => {
+          if (hero.id !== 'hero') return;
+          el.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.1) translate(-1.5%,-1%)' }], { duration: 14000, direction: 'alternate', iterations: Infinity, easing: 'ease-in-out', delay: -i * 3000 });
+        });
+        hero.querySelectorAll('h1, p').forEach((el, i) => el.animate([{ opacity: 0, transform: 'translateY(18px)', filter: 'blur(4px)' }, { opacity: 1, transform: 'none', filter: 'none' }], { duration: 1000, delay: 500 + i * 140, easing: EASE, fill: 'backwards' }));
+        hero.querySelectorAll('button[aria-label]').forEach((el, i) => el.animate([{ transform: 'scale(0)' }, { transform: 'scale(1)' }], { duration: 500, delay: 1200 + i * 90, easing: EASE, fill: 'backwards' }));
+      }
+      // progress bar
+      this.bar = document.createElement('div');
+      Object.assign(this.bar.style, { position: 'fixed', left: '0', top: '0', height: '3px', width: '100%', background: '#c8352b', transformOrigin: 'left', transform: 'scaleX(0)', zIndex: '200', pointerEvents: 'none' });
+      document.body.appendChild(this.bar);
+      this.onS = () => { const h = document.documentElement.scrollHeight - window.innerHeight; this.bar.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')'; };
+      window.addEventListener('scroll', this.onS, { passive: true }); this.onS();
+      // card hover: photo zoom
+      main.querySelectorAll('article, figure, li').forEach(card => {
+        const img = card.querySelector('image-slot'); if (!img) return;
+        card.addEventListener('mouseenter', () => img.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.07)' }], { duration: 700, easing: EASE, fill: 'forwards' }));
+        card.addEventListener('mouseleave', () => img.animate([{ transform: 'scale(1.07)' }, { transform: 'scale(1)' }], { duration: 600, easing: EASE, fill: 'forwards' }));
+      });
+    }
+    // buttons: lift + arrow nudge; open-campus CTAs pulse
+    document.querySelectorAll('a, button').forEach(b => {
+      if (b.__anim || cs(b).borderTopLeftRadius !== '8px') return; b.__anim = true;
+      const arrows = b.querySelectorAll('span[aria-hidden="true"]'); const arrow = arrows[arrows.length - 1];
+      const down = arrow && arrow.textContent.indexOf('↓') >= 0, off = down ? 'translateY(4px)' : 'translateX(6px)';
+      b.addEventListener('mouseenter', () => { b.animate([{ transform: 'none' }, { transform: 'translateY(-3px)' }], { duration: 260, easing: EASE, fill: 'forwards' }); if (arrow) arrow.animate([{ transform: 'none' }, { transform: off }], { duration: 320, easing: EASE, fill: 'forwards' }); });
+      b.addEventListener('mouseleave', () => { b.animate([{ transform: 'translateY(-3px)' }, { transform: 'none' }], { duration: 260, easing: EASE, fill: 'forwards' }); if (arrow) arrow.animate([{ transform: off }, { transform: 'none' }], { duration: 320, easing: EASE, fill: 'forwards' }); });
+      if ((b.getAttribute('href') || '').indexOf('OpenCampus') >= 0 && cs(b).backgroundColor === RED && !b.hasAttribute('aria-current'))
+        b.animate([{ boxShadow: '0 0 0 0 rgba(200,53,43,.45)' }, { boxShadow: '0 0 0 12px rgba(200,53,43,0)' }], { duration: 2200, iterations: Infinity, easing: 'ease-out' });
+    });
+    // sidebar entrance + floating logo
+    const aside = document.querySelector('aside');
+    if (aside && !aside.__anim) {
+      aside.__anim = true;
+      aside.querySelectorAll('nav > a, nav > div > a').forEach((el, i) => el.animate([{ opacity: 0, transform: 'translateX(28px)' }, { opacity: 1, transform: 'none' }], { duration: 700, delay: 300 + i * 80, easing: EASE, fill: 'backwards' }));
+      const logo = aside.querySelector('a');
+      if (logo) {
+        logo.animate([{ opacity: 0, transform: 'translateY(-14px)' }, { opacity: 1, transform: 'none' }], { duration: 900, easing: EASE, fill: 'backwards' });
+        logo.querySelectorAll('span').forEach(s => {
+          if (s.textContent === '葵ヶ丘') s.animate([{ transform: 'translateY(0) rotate(0deg)' }, { transform: 'translateY(-3px) rotate(-1.5deg)' }], { duration: 2600, direction: 'alternate', iterations: Infinity, easing: 'ease-in-out' });
+          if (cs(s).borderTopLeftRadius === '60px') s.animate([{ clipPath: 'inset(0 50% 0 50%)' }, { clipPath: 'inset(0 0 0 0)' }], { duration: 1300, delay: 250, easing: EASE, fill: 'backwards' });
+        });
+      }
+    }
+  }
+  go(i) { clearInterval(this.t); this.setState({ slide: i }); }
+  renderVals() {
+    const w = this.state.w, isMobile = w < 900;
+    const phs = ['メインビジュアル1：キャンパスで笑う学生', 'メインビジュアル2：講義・ゼミの様子', 'メインビジュアル3：並木道・校舎'];
+    const slides = phs.map((ph, i) => {
+      const cur = i === this.state.slide;
+      return { key: i + 1, ph, op: cur ? 1 : 0, pe: cur ? 'auto' : 'none', dot: cur ? '#c8352b' : 'transparent', cur: cur ? 'true' : 'false', label: 'スライド ' + (i + 1), go: () => this.go(i) };
+    });
+    return {
+      isMobile, isDesktop: !isMobile, isWide: w >= 1200, notWide: w < 1200, slides,
+      menuOpen: this.state.menuOpen,
+      menuLabel: this.state.menuOpen ? '閉じる' : 'MENU',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      sent: this.state.sent, notSent: !this.state.sent,
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      resetForm: () => this.setState({ sent: false }),
+      navItems: [
+        { href: 'Admissions%20Site.dc.html', label: 'トップ', en: 'Top' },
+        { href: 'About.dc.html', label: 'しる', en: 'About' },
+        { href: 'Academics.dc.html', label: 'まなぶ', en: 'Academics' },
+        { href: 'CampusLife.dc.html', label: 'くらす', en: 'Campus Life' },
+        { href: 'Admissions.dc.html', label: 'うける', en: 'Admissions' },
+        { href: 'OpenCampus.dc.html', label: 'オープンキャンパス', en: 'Open Campus' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="background:rgba(252,252,251,.94);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px clamp(16px,3.5vw,40px);font-family:'Zen Kaku Gothic New',sans-serif;color:#232323;letter-spacing:.06em">
+  <div style="display:flex;align-items:center;gap:22px;min-width:0">
+    <a href="Yuiha%20Womens%20University.dc.html" aria-label="結葉女子大学 トップへ" style="display:flex;align-items:center;gap:10px;color:#232323;text-decoration:none">
+      <span aria-hidden="true" style="position:relative;width:30px;height:24px;flex:none">
+        <span style="position:absolute;left:0;top:0;width:15px;height:13px;background:#232323;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)"></span>
+        <span style="position:absolute;left:0;top:11px;width:15px;height:13px;background:#232323;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)"></span>
+        <span style="position:absolute;left:12px;top:5px;width:16px;height:14px;border:1.5px solid #232323;border-radius:50%"></span>
+      </span>
+      <span style="display:flex;flex-direction:column;line-height:1.15">
+        <span style="font-family:'Josefin Sans',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em">YUIHA</span>
+        <span style="font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:.12em">WOMEN'S <b style="font-weight:600">UNIV.</b></span>
+      </span>
+    </a>
+    <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
+      <span style="font-size:10px;line-height:1.6;color:#555;letter-spacing:.04em">結葉女子大学<br>〒000-0000 所在地（ダミー）</span>
+    </sc-if>
+  </div>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2vw,28px)">
+    <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="メインナビゲーション" style="display:flex;gap:22px;font-family:'Josefin Sans',sans-serif;font-size:12px;letter-spacing:.14em">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="padding:6px 0;color:#232323;text-decoration:none;border-bottom:1px solid {{ n.line }}" style-hover="border-bottom:1px solid #232323">{{ n.en }}</a>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <a href="Open-Campus.dc.html" style="background:#232323;color:#fff;text-decoration:none;font-size:12px;font-weight:500;padding:9px 26px 9px 18px;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,0 100%);white-space:nowrap" style-hover="background:#4a4a4a;color:#fff">オープンキャンパス</a>
+    <button onClick="{{ toggleMenu }}" aria-label="メニューを開く" aria-expanded="{{ menuOpen }}" style="width:44px;height:44px;border:0;background:transparent;cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:7px;padding:0">
+      <span style="display:block;width:38px;height:1px;background:#232323"></span>
+      <span style="display:block;width:30px;height:1px;background:#232323"></span>
+      <span style="display:block;width:38px;height:1px;background:#232323"></span>
+    </button>
+  </div>
+</header>
+<a href="Open-Campus.dc.html#reserve" aria-label="オープンキャンパスを予約する" class="reserve-badge" style="pointer-events:auto;position:fixed;right:clamp(12px,2.4vw,32px);bottom:clamp(12px,2.4vw,32px);z-index:40;width:clamp(96px,9vw,118px);aspect-ratio:1;border-radius:50%;background:#fcfcfb;box-shadow:0 0 0 1px #232323;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#232323" style-hover="background:#efefed">
+  <svg data-spin="" viewBox="0 0 120 120" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%">
+    <defs><path id="yuiha-badge-path" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"></path></defs>
+    <text fill="#232323" font-family="Josefin Sans, sans-serif" font-size="10.5" font-weight="600"><textPath href="#yuiha-badge-path" textLength="272" lengthAdjust="spacing">OPEN CAMPUS · RESERVE NOW · </textPath></text>
+  </svg>
+  <span style="position:relative;width:38%;aspect-ratio:1.15;background:#232323;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em">予約</span>
+</a>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-label="メニュー" style="position:fixed;inset:0;z-index:60;background-color:#fcfcfb;background-image:linear-gradient(#ececea 1px,transparent 1px),linear-gradient(90deg,#ececea 1px,transparent 1px);background-size:14px 14px;display:flex;flex-direction:column;padding:24px clamp(20px,5vw,60px);font-family:'Zen Kaku Gothic New',sans-serif;color:#232323">
+    <div style="display:flex;justify-content:flex-end">
+      <button onClick="{{ toggleMenu }}" aria-label="メニューを閉じる" style="width:44px;height:44px;border:0;background:#232323;color:#fff;font-size:20px;cursor:pointer">×</button>
+    </div>
+    <nav style="margin:auto 0;display:flex;flex-direction:column;gap:6px">
+      <sc-for list="{{ navAll }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 20px;padding:14px 0;border-bottom:1px solid #d9d9d6;color:#232323;text-decoration:none" style-hover="padding-left:8px">
+          <span style="font-family:'Josefin Sans',sans-serif;font-size:13px;width:28px;color:#666">{{ n.num }}</span>
+          <span style="font-size:clamp(20px,3vw,28px);font-weight:500;letter-spacing:.14em">{{ n.ja }}</span>
+          <span style="font-family:'Josefin Sans',sans-serif;font-size:12px;letter-spacing:.16em;color:#666">{{ n.en }}</span>
+        </a>
+      </sc-for>
+    </nav>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1280px&quot;,&quot;height&quot;:&quot;80px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;about&quot;,&quot;academics&quot;,&quot;campus&quot;,&quot;admissions&quot;,&quot;open&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { menu: false, w: typeof window !== 'undefined' ? window.innerWidth : 1280 };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const cur = this.props.current ?? 'top';
+    const all = [
+      { id: 'top', num: '00', ja: 'トップページ', en: 'Top', href: 'Yuiha%20Womens%20University.dc.html' },
+      { id: 'about', num: '01', ja: '大学について', en: 'About', href: 'About.dc.html' },
+      { id: 'academics', num: '02', ja: '学部・学科', en: 'Academics', href: 'Academics.dc.html' },
+      { id: 'campus', num: '03', ja: 'キャンパスライフ', en: 'Campus Life', href: 'Campus-Life.dc.html' },
+      { id: 'admissions', num: '04', ja: '入試情報', en: 'Admissions', href: 'Admissions.dc.html' },
+      { id: 'open', num: '05', ja: 'オープンキャンパス', en: 'Open Campus', href: 'Open-Campus.dc.html' },
+    ].map(n => ({ ...n, line: n.id === cur ? '#232323' : 'transparent', aria: n.id === cur ? 'page' : undefined }));
+    return {
+      isWide: this.state.w >= 1080,
+      menuOpen: this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      navItems: all.slice(1, 5),
+      navAll: all,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fafafa;color:#1a5486;font-family:"Shippori Mincho B1",serif;font-weight:500;line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:#1a5486;text-decoration:none}
+a:hover{color:#123d63}
+*{box-sizing:border-box}
+:focus-visible{outline:2px solid #1a5486;outline-offset:3px}
+summary::-webkit-details-marker{display:none}
+h1,h2,h3,h4{word-break:auto-phrase;text-wrap:balance}
+aside{container-type:inline-size}
+</style>
+</helmet>
+
+<sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+  <header style="position:fixed;top:0;left:0;right:0;z-index:50;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;background:rgba(253,236,235,0.96);border-bottom:1px solid #f3cfcc">
+    <a href="Admissions%20Site.dc.html" style="display:flex;flex-direction:column;line-height:1.1">
+      <span style="font-size:20px;letter-spacing:0.12em">白藍</span>
+      <span style="font-size:11px;letter-spacing:0.14em">女子大学</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px">
+      <a href="Open%20Campus.dc.html" style="background:#1a5486;color:#fff;font-size:14px;letter-spacing:0.06em;padding:10px 14px;border-radius:999px;min-height:44px;display:flex;align-items:center">オープンキャンパス</a>
+      <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" style="min-width:44px;height:44px;padding:0 14px;white-space:nowrap;border:1px solid #1a5486;border-radius:999px;background:transparent;color:#1a5486;font-family:'Shippori Mincho B1',serif;font-size:14px;cursor:pointer">{{ menuLabel }}</button>
+    </div>
+  </header>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav aria-label="メインメニュー" style="position:fixed;top:60px;left:0;right:0;bottom:0;z-index:49;background:#fdeceb;padding:32px;display:flex;flex-direction:column;gap:4px;overflow:auto">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid #f3cfcc">
+          <span style="font-size:22px">{{ n.label }}</span>
+          <span style="font-size:14px">{{ n.ja }}</span>
+        </a>
+      </sc-for>
+    </nav>
+  </sc-if>
+</sc-if>
+
+<div style="display:flex;align-items:flex-start;min-height:100vh">
+  <aside aria-hidden="true" style="flex:1 1 0;min-width:0;position:sticky;top:0;height:100vh;overflow:hidden">
+    <div data-petals="1" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:3"></div>
+    <sc-if value="{{ isPink }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(255,255,255,0.6) 2px,transparent 2.6px) 0 0/20px 20px,#f7c4c2">
+        <div style="position:absolute;left:-120px;bottom:-120px;width:420px;height:420px;border-radius:50%;border:1px solid #fff"></div>
+        <div style="overflow:hidden;position:absolute;left:-60px;bottom:-60px;width:300px;height:300px;border-radius:50%;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.55) 0 2px,transparent 2px 10px)"><img src="_filled/04-study-library.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="position:absolute;right:8%;bottom:10%;width:28%;aspect-ratio:3/4;outline:1px solid #fff;outline-offset:8px;background:url(images/{{ panelImg }}) center/cover"></div>
+        <div style="position:absolute;left:40px;right:40px;top:26%;display:flex;flex-direction:column;gap:14px;color:#174f80;--n:{{ titleLen }}">
+          <span style="font-size:14px;letter-spacing:0.14em">白藍女子大学 ／ {{ title }}</span>
+          <span style="font-size:clamp(24px,calc((100cqw - 80px) / var(--n) / 1.1),88px);font-weight:700;line-height:1.2;letter-spacing:0.08em">{{ title }}</span>
+          <span style="font-size:clamp(15px,1.1vw,18px);letter-spacing:0.12em">{{ sub }}</span>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isBlue }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,0.09) 0 1px,transparent 1px 28px),#5f8ea4">
+        <div style="position:absolute;right:-100px;top:-100px;width:380px;height:380px;border-radius:50%;border:1px solid rgba(255,255,255,0.6)"></div>
+        <div style="position:absolute;left:-60px;bottom:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.35) 2px,transparent 2.6px) 0 0/16px 16px"></div>
+        <div style="position:absolute;right:8%;bottom:10%;width:28%;aspect-ratio:3/4;outline:1px solid #fff;outline-offset:8px;background:url(images/{{ panelImg }}) center/cover"></div>
+        <div style="position:absolute;left:40px;right:40px;top:26%;display:flex;flex-direction:column;gap:14px;color:#fff;--n:{{ titleLen }}">
+          <span style="font-size:14px;letter-spacing:0.14em">白藍女子大学 ／ {{ title }}</span>
+          <span style="font-size:clamp(24px,calc((100cqw - 80px) / var(--n) / 1.1),88px);font-weight:700;line-height:1.2;letter-spacing:0.08em">{{ title }}</span>
+          <span style="font-size:clamp(15px,1.1vw,18px);letter-spacing:0.12em">{{ sub }}</span>
+        </div>
+      </div>
+    </sc-if>
+    <nav aria-label="ページ" style="position:absolute;top:44px;left:40px;right:40px;display:flex;flex-wrap:wrap;gap:8px 22px;z-index:2">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="position:relative;font-size:16px;padding:4px 0;color:{{ navColor }};transition:opacity .2s" style-hover="opacity:0.6">
+          {{ n.label }}
+          <span style="position:absolute;left:0;right:0;bottom:-2px;height:1px;background:{{ navColor }};opacity:{{ n.line }}"></span>
+        </a>
+      </sc-for>
+    </nav>
+  </aside>
+
+  <main style="flex:0 0 auto;width:min(100%,max(44vw,840px,(1280px - 100vw) * 1000));background:#fdeceb;overflow:hidden">
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><div style="height:60px"></div></sc-if>
+
+    <section aria-labelledby="page-title" style="position:relative;background:linear-gradient(#f4b4ae 0 300px,#fdeceb 300px);padding:120px 0 0">
+      <div data-petals="1" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1"></div>
+      <div aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:300px;background:radial-gradient(circle,rgba(255,255,255,0.55) 1.6px,transparent 2.2px) 0 0/18px 18px"></div>
+      <div aria-hidden="true" style="position:absolute;left:0;right:0;top:300px;height:18px;background:radial-gradient(circle at 14px 0,#f4b4ae 13px,transparent 13.6px) 0 0/28px 18px repeat-x"></div>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute;top:40px;right:40px;display:flex;align-items:center;gap:24px;z-index:2">
+          <a href="Open%20Campus.dc.html" style="background:#fff;color:#1a5486;font-size:15px;letter-spacing:0.08em;padding:12px 22px;border-radius:999px;transition:background .2s,color .2s" style-hover="background:#1a5486;color:#fff">オープンキャンパス予約</a>
+          <a href="Admissions%20Site.dc.html" style="display:flex;flex-direction:column;align-items:flex-end;line-height:1.1;color:#22303d">
+            <span style="font-size:24px;letter-spacing:0.14em;border-bottom:1px solid #22303d;padding-bottom:2px">白藍</span>
+            <span style="font-size:11px;letter-spacing:0.14em;margin-top:4px">女子大学</span>
+          </a>
+        </div>
+      </sc-if>
+      <div style="position:relative;width:min(480px,100% - 48px);margin:0 auto">
+        <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:14px;color:#174f80">
+          <a href="Admissions%20Site.dc.html" style="color:#174f80;border-bottom:1px solid #174f80">トップ</a><span>／</span><span>{{ title }}</span>
+        </p>
+        <h1 id="page-title" style="margin:16px 0 0;font-size:clamp(32px,4.4vw,44px);font-weight:700;letter-spacing:0.1em;line-height:1.3;color:#174f80">{{ title }}</h1>
+        <p style="margin:6px 0 0;font-size:16px;letter-spacing:0.1em;color:#174f80">{{ sub }}</p>
+        <div style="margin-top:40px;aspect-ratio:480/300;outline:1px solid #fff;outline-offset:8px;background:#efc6c4;overflow:hidden">
+          <img src="images/{{ heroImg }}" alt="{{ heroAlt }}" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+        <p style="margin:40px 0 0;font-size:17px;line-height:2.1;letter-spacing:0.05em;text-wrap:pretty">{{ lead }}</p>
+      </div>
+    </section>
+
+    <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="3">
+      <section style="width:min(480px,100% - 48px);margin:80px auto 0">
+        <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:14px;letter-spacing:0.14em;color:#b8423c"><span style="width:28px;height:1px;background:#b8423c"></span>{{ b.kicker }}</p>
+        <h2 style="margin:12px 0 0;font-size:clamp(22px,3vw,28px);font-weight:700;letter-spacing:0.08em;line-height:1.5;color:#174f80">{{ b.heading }}</h2>
+
+        <sc-if value="{{ b.isText }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:18px;margin-top:22px">
+            <sc-for list="{{ b.paras }}" as="pa" hint-placeholder-count="2">
+              <p style="margin:0;font-size:16px;line-height:2.1;letter-spacing:0.04em;color:#22303d;text-wrap:pretty">{{ pa }}</p>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isCards }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr));gap:14px;margin-top:26px">
+            <sc-for list="{{ b.items }}" as="c" hint-placeholder-count="3">
+              <article style="background:#fff;padding:14px 14px 22px;box-shadow:0 0 0 1px #f3cfcc inset;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 14px 30px rgba(23,79,128,0.14)">
+                <div style="aspect-ratio:3/2;background:#f3d0ce;overflow:hidden"><img src="images/{{ c.img }}" alt="{{ c.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+                <p style="margin:14px 0 0;font-size:14px;color:#b8423c;letter-spacing:0.08em">{{ c.tag }}</p>
+                <h3 style="margin:4px 0 0;font-size:18px;font-weight:700;letter-spacing:0.06em;color:#174f80">{{ c.title }}</h3>
+                <p style="margin:8px 0 0;font-size:15px;line-height:1.9;color:#22303d">{{ c.text }}</p>
+              </article>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isRows }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:24px;background:#fff;padding:4px 22px">
+            <sc-for list="{{ b.items }}" as="r" hint-placeholder-count="3">
+              <div style="padding:18px 0;border-bottom:1px solid #f1e3e2">
+                <p style="margin:0;font-size:17px;font-weight:700;letter-spacing:0.06em;color:#174f80">◇ {{ r.name }}</p>
+                <p style="margin:6px 0 0;font-size:15px;line-height:1.9;color:#22303d">{{ r.text }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isDates }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:24px">
+            <p style="margin:0;background:radial-gradient(circle,rgba(255,255,255,0.18) 1.2px,transparent 1.8px) 0 0/10px 10px,#4d7c92;color:#fff;text-align:center;font-size:16px;letter-spacing:0.14em;padding:12px">◇　{{ b.bar }}　◇</p>
+            <div style="background:#fff;padding:4px 22px">
+              <sc-for list="{{ b.items }}" as="d" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:1fr auto;gap:12px;padding:16px 0;border-bottom:1px solid #f1e3e2;align-items:center">
+                  <span style="font-size:16px;color:#22303d">{{ d.label }}</span>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#8e3a34">{{ d.when }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <p style="margin:12px 0 0;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;color:#8e3a34;border:1px dashed #e0a6a1;padding:10px 12px">［仮］は公式情報が未確定のサンプルです。最新の入学試験要項で必ずご確認ください。</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isSteps }}" hint-placeholder-val="{{ false }}">
+          <ol style="list-style:none;margin:24px 0 0;padding:22px;background:#fff;display:flex;flex-direction:column;gap:14px">
+            <sc-for list="{{ b.items }}" as="sp" hint-placeholder-count="4">
+              <li style="display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start">
+                <span style="width:40px;height:40px;border-radius:50%;border:1px solid #1a5486;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700">{{ sp.no }}</span>
+                <span style="display:flex;flex-direction:column;padding-top:6px">
+                  <span style="font-size:16px;font-weight:700;color:#174f80">{{ sp.title }}</span>
+                  <span style="font-size:15px;line-height:1.8;color:#22303d">{{ sp.text }}</span>
+                </span>
+              </li>
+            </sc-for>
+          </ol>
+        </sc-if>
+
+        <sc-if value="{{ b.isChips }}" hint-placeholder-val="{{ false }}">
+          <ul style="list-style:none;margin:22px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ b.items }}" as="ch" hint-placeholder-count="8">
+              <li style="font-size:15px;border:1px solid #c9dbe4;background:#f4f8fa;padding:8px 16px;border-radius:999px;color:#22303d">{{ ch }}</li>
+            </sc-for>
+          </ul>
+        </sc-if>
+
+        <sc-if value="{{ b.isQa }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ b.items }}" as="q" hint-placeholder-count="3">
+              <details style="background:#fff;box-shadow:0 0 0 1px #f3cfcc inset">
+                <summary style="list-style:none;cursor:pointer;display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;padding:18px 20px;font-size:16px;font-weight:700;color:#174f80">
+                  <span style="color:#b8423c">問</span><span>{{ q.q }}</span><span aria-hidden="true">＋</span>
+                </summary>
+                <div style="display:grid;grid-template-columns:28px 1fr;gap:10px;padding:0 20px 20px;font-size:15px;line-height:1.9;color:#22303d">
+                  <span style="color:#1a5486;font-weight:700">答</span><span>{{ q.a }}</span>
+                </div>
+              </details>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isLinks }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(210px,100%),1fr));gap:10px;margin-top:24px">
+            <sc-for list="{{ b.items }}" as="l" hint-placeholder-count="4">
+              <a href="{{ l.href }}" style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:16px 20px;min-height:56px;border:1px solid #1a5486;border-radius:999px;background:#fdeceb;font-size:16px;transition:background .2s,color .2s" style-hover="background:#1a5486;color:#fff">
+                <span>{{ l.label }}</span><span aria-hidden="true">→</span>
+              </a>
+            </sc-for>
+          </div>
+        </sc-if>
+      </section>
+    </sc-for>
+
+    <div style="width:min(480px,100% - 48px);margin:100px auto 0;padding-bottom:110px;display:flex;flex-direction:column;gap:28px">
+      <a href="{{ nextHref }}" style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:28px 26px;background:radial-gradient(circle,rgba(255,255,255,0.4) 1.6px,transparent 2.2px) 0 0/16px 16px,#f4b4ae;color:#174f80;transition:opacity .2s" style-hover="opacity:0.85">
+        <span style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-size:14px;letter-spacing:0.14em">次のページ</span>
+          <span style="font-size:24px;font-weight:700;letter-spacing:0.08em">{{ nextTitle }}</span>
+        </span>
+        <span aria-hidden="true" style="width:52px;height:52px;border-radius:50%;border:1px solid #174f80;display:flex;align-items:center;justify-content:center;font-size:20px">→</span>
+      </a>
+      <div style="border:1px solid #1a5486;border-radius:24px;outline:1px solid #1a5486;outline-offset:6px;background:radial-gradient(circle,#f6e1e0 1.4px,transparent 2px) 0 0/16px 16px,#fff;padding:34px 24px;text-align:center">
+        <p style="margin:0;font-size:clamp(20px,2.6vw,24px);font-weight:700;line-height:1.7;letter-spacing:0.1em;color:#174f80">まずは、キャンパスに<br>会いに来てください。</p>
+        <a href="Open%20Campus.dc.html" style="margin:22px auto 0;display:inline-flex;align-items:center;gap:14px;background:#1a5486;color:#fff;padding:18px 34px;border-radius:999px;font-size:17px;letter-spacing:0.1em;transition:background .2s" style-hover="background:#123d63;color:#fff">資料請求・来場予約 <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div aria-hidden="true" style="height:18px;background:radial-gradient(circle at 14px 18px,#d6e3ea 13px,transparent 13.6px) 0 0/28px 18px repeat-x,#fdeceb"></div>
+<footer style="display:flex;flex-wrap:wrap;background:radial-gradient(circle,rgba(255,255,255,0.5) 1.4px,transparent 2px) 0 0/18px 18px,#d6e3ea">
+  <div style="flex:1 1 300px;background:#fafafa;padding:48px 40px;display:flex;flex-direction:column;justify-content:space-between;gap:24px">
+    <a href="Admissions%20Site.dc.html" style="display:flex;flex-direction:column;line-height:1.1;color:#22303d">
+      <span style="font-size:26px;letter-spacing:0.14em">白藍</span>
+      <span style="font-size:12px;letter-spacing:0.14em;margin-top:6px">女子大学</span>
+    </a>
+    <p style="margin:0;font-size:13px;color:#4a5560">© 白藍女子大学（架空の大学名・サンプルサイト）</p>
+  </div>
+  <div style="flex:0 1 auto;width:min(100%,max(44vw,840px,(1280px - 100vw) * 1000));padding:48px clamp(24px,5vw,60px);display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
+    <nav aria-label="フッター">
+      <p style="margin:0 0 12px;font-size:17px;font-weight:700;color:#174f80">メニュー</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+          <a href="{{ n.href }}" style="font-size:15px;color:#174f80">{{ n.label }}</a>
+        </sc-for>
+      </div>
+    </nav>
+    <div>
+      <p style="margin:0 0 12px;font-size:17px;font-weight:700;color:#174f80">お問い合わせ</p>
+      <p style="margin:0;font-size:15px;line-height:1.9;color:#174f80">入試広報課［仮］<br>〒000-0000 ○○県○○市○○ 0-0<br>電話 00-0000-0000<br>admissions@example.ac.jp</p>
+    </div>
+    <div>
+      <p style="margin:0 0 12px;font-size:17px;font-weight:700;color:#174f80">公式SNS</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ socials }}" as="so" hint-placeholder-count="4">
+          <a href="#" style="font-size:14px;color:#174f80;border:1px solid #174f80;border-radius:999px;padding:6px 12px;transition:background .2s,color .2s" style-hover="background:#174f80;color:#fff">{{ so }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;page&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;about&quot;,&quot;academics&quot;,&quot;campus&quot;,&quot;exams&quot;,&quot;opencampus&quot;],&quot;default&quot;:&quot;about&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const TOP = 'Admissions%20Site.dc.html';
+const PAGES = [
+  { key: 'top', label: 'トップ', ja: 'はじめに', href: TOP },
+  { key: 'about', label: '大学について', ja: '理念・特色', href: 'About.dc.html' },
+  { key: 'academics', label: '学部・学び', ja: '五つの学部', href: 'Academics.dc.html' },
+  { key: 'campus', label: 'キャンパスライフ', ja: '先輩の声', href: 'Campus%20Life.dc.html' },
+  { key: 'exams', label: '入試案内', ja: '入試制度・日程', href: 'Entrance%20Exams.dc.html' },
+  { key: 'opencampus', label: 'オープンキャンパス', ja: '来場予約', href: 'Open%20Campus.dc.html' }
+];
+const T = (kicker, heading, paras) => ({ type: 'text', kicker, heading, paras });
+const B = (type, kicker, heading, items, extra) => Object.assign({ type, kicker, heading, items }, extra || {});
+const DATA = {
+  about: {
+    title: '大学について', sub: '理念・歩み・特色', theme: 'pink', panelImg: '31.jpg', heroImg: '2.jpg', heroAlt: '大きな木のある中庭',
+    lead: '白藍女子大学は、女性が自ら問いを立て、他者とつながり、自分らしく生きる力を育む大学です。少人数の学びと、学部をこえた交流を大切にしています。',
+    blocks: [
+      T('理念', '問い、つながり、自分らしく。', ['学ぶことは、自分を知ること。本学では、知識を覚えるだけでなく、問いを持ち、言葉にして、だれかと分かち合う経験を重ねていきます。', '社会に出たあとも学び続け、自分の選んだ道を歩いていける女性を育てることが、本学の願いです。']),
+      B('cards', '特色', '本学の三つの特色', [
+        { tag: '特色 一', title: '少人数で、深く考える', text: '一年次から少人数ゼミを設け、教員や仲間と対話しながら考えを磨きます。', img: '30.jpg', alt: '机を囲んで話し合う学生' },
+        { tag: '特色 二', title: '女性の主体性を育む', text: '学生が主体となるプロジェクトや委員会活動で、周りを動かす経験を重ねます。', img: '32.jpg', alt: 'ボードを見ながら考える学生' },
+        { tag: '特色 三', title: '地域と世界をつなぐ', text: '地域連携の授業や留学プログラムで、身近な社会と世界の両方に目を向けます。', img: '18.jpg', alt: '話しながら歩く学生たち' }
+      ]),
+      B('rows', '歩み', '本学の歩み', [
+        { name: '創立のころ［仮］', text: '女性の高等教育の場として開学しました。創立年などの詳細は公式資料をご確認ください。' },
+        { name: '学部の広がり［仮］', text: '時代の変化にあわせて学部・学科を広げ、文系から理系まで学べる大学になりました。' },
+        { name: 'これから', text: '地域や企業との連携を深め、学生一人ひとりの挑戦を支える環境づくりを進めています。' }
+      ]),
+      T('学長より', '学長メッセージ［仮］', ['大学の四年間は、自分の可能性を確かめる時間です。迷うことも、立ち止まることも、学びの一部です。白藍女子大学で、あなたらしい一歩を踏み出してください。（文面はサンプルです）'])
+    ]
+  },
+  academics: {
+    title: '学部・学び', sub: '五つの学部と学びのかたち', theme: 'blue', panelImg: '33.jpg', heroImg: '28.jpg', heroAlt: '図書館の外観',
+    lead: '一年次は幅広い教養科目から関心を広げ、学年が進むにつれて専門のゼミへ。他学部の科目も履修できるカリキュラムで、自分だけの学びの地図を描いていきます。',
+    blocks: [
+      B('cards', '学部紹介', '五つの学部', [
+        { tag: '文学部', title: '日本文学科／英語英米文学科', text: '言葉と文学を通して、人と文化を深く読み解く力を養います。', img: '27.jpg', alt: '並木の続くキャンパス' },
+        { tag: '国際コミュニケーション学部', title: '国際教養学科', text: '語学と異文化理解を軸に、世界とつながる力を身につけます。', img: '3.jpg', alt: 'ノートパソコンを抱えて話す学生' },
+        { tag: '人間科学部', title: '心理学科／教育学科', text: '人の心と成長を学び、支え合う社会づくりを考えます。', img: '29.jpg', alt: 'パソコンを囲んで話し合う学生' },
+        { tag: '生活科学部', title: '食物栄養学科／生活デザイン学科', text: '食と暮らしを科学の視点から見つめ、よりよい生活を提案します。', img: '15.jpg', alt: '学舎の外観' },
+        { tag: '理工学部', title: '情報データサイエンス学科', text: 'データと情報技術で、身近な課題の解決に取り組みます。', img: '6.jpg', alt: 'ガラス張りの校舎' }
+      ]),
+      B('steps', '四年間', '四年間の学びの流れ', [
+        { no: '1', title: '一年次　広げる', text: '教養科目と基礎ゼミで、学び方と関心の幅を広げます。' },
+        { no: '2', title: '二年次　深める', text: '学科の専門科目が本格的に始まります。' },
+        { no: '3', title: '三年次　問いを立てる', text: 'ゼミに所属し、自分の研究テーマを探します。' },
+        { no: '4', title: '四年次　かたちにする', text: '卒業研究で、四年間の学びをまとめます。' }
+      ]),
+      B('rows', '学びのかたち', '教室の外にも、学びは広がる', [
+        { name: '実践的な学び', text: '企業や自治体と協働する課題解決型授業、学外でのインターンシップに取り組めます。' },
+        { name: '研究に触れる', text: '三年次からのゼミと卒業研究で、調べ、まとめ、発表する力を身につけます。' },
+        { name: '学部をこえる', text: '副専攻制度や他学部履修で、文系・理系の枠をこえた学びが可能です。' }
+      ]),
+      B('chips', '資格', '目指せる資格・進路の例［仮］', ['教員免許（中学・高校）', '管理栄養士（受験資格）', '公認心理師（大学院進学）', '図書館司書', '学芸員', '情報系の資格'])
+    ]
+  },
+  campus: {
+    title: 'キャンパスライフ', sub: '先輩の声・部活動・施設', theme: 'pink', panelImg: '22.jpg', heroImg: '23.jpg', heroAlt: '並木道を歩く二人の学生',
+    lead: '授業のあとに集まるラウンジ、学部をこえて仲間ができる部活動、一年を通した行事。キャンパスには、たくさんの「はじめて」があります。',
+    blocks: [
+      B('cards', '先輩の声', '先輩たちの、ある一日', [
+        { tag: '国際コミュニケーション学部 3年 Aさん［仮］', title: '朝はゼミ、午後は語学カフェへ', text: '少人数の授業で話す機会が多く、今では留学生の友人と言葉を教え合っています。', img: '21.jpg', alt: '通路を並んで歩く二人の学生' },
+        { tag: '理工学部 4年 Bさん［仮］', title: '研究室で見つけたおもしろさ', text: '数学が好きという気持ちで選んだ学部。今は地域の交通データを分析しています。', img: '14.jpg', alt: '教室でノートをとる学生' },
+        { tag: '人間科学部 2年 Cさん［仮］', title: '学園祭の実行委員で学んだこと', text: '学部の違う仲間と一から企画をつくる経験が、自信につながりました。', img: '1.jpg', alt: '街を見下ろす丘に立つ学生たち' }
+      ]),
+      B('chips', '部活動・サークル', '部活動・サークル', ['茶道部', '軽音楽部', 'テニス部', '写真部', '合唱団', 'ダンス部', '国際交流サークル', 'ボランティア団体', '文芸部', '料理研究会']),
+      B('rows', '年間行事', '一年の行事', [
+        { name: '春', text: '入学式、新入生歓迎行事' },
+        { name: '夏', text: 'オープンキャンパス、短期留学プログラム［仮］' },
+        { name: '秋', text: '学園祭、ゼミ合同の研究発表会' },
+        { name: '冬', text: '卒業研究発表会、卒業式' }
+      ]),
+      B('rows', '施設・サポート', '学生生活を支える場所', [
+        { name: '図書館', text: '静かな閲覧席と、グループで話し合えるラーニングコモンズ。' },
+        { name: 'キャリアセンター', text: '一年次から相談できる個別面談と、卒業生との交流会。' },
+        { name: '学生相談室', text: '学業や生活の悩みを、専門の相談員に相談できます。' },
+        { name: '学生寮', text: '遠方からの入学者向けの寮を案内しています［仮］。' }
+      ])
+    ]
+  },
+  exams: {
+    title: '入試案内', sub: '入試制度・日程・出願', theme: 'blue', panelImg: '7.jpg', heroImg: '4.jpg', heroAlt: '青空に咲く桜',
+    lead: '入試制度・日程・出願方法の概要です。日程や募集人員などの詳細は、必ず最新の入学試験要項でご確認ください。',
+    blocks: [
+      B('rows', '入試制度', '入試制度', [
+        { name: '総合型選抜', text: '書類・面談などを通して、意欲や関心を多面的に評価します。' },
+        { name: '学校推薦型選抜', text: '在籍高等学校長の推薦にもとづく選抜です。' },
+        { name: '一般選抜', text: '本学独自の試験による選抜です。' },
+        { name: '大学入学共通テスト利用選抜', text: '共通テストの成績を利用する選抜です。' }
+      ]),
+      B('dates', '日程', '主な日程', [
+        { label: '総合型選抜 出願期間', when: '20XX.XX.XX［仮］' },
+        { label: '学校推薦型選抜 試験日', when: '20XX.XX.XX［仮］' },
+        { label: '一般選抜 出願期間', when: '20XX.XX.XX［仮］' },
+        { label: '一般選抜 試験日', when: '20XX.XX.XX［仮］' },
+        { label: '合格発表', when: '20XX.XX.XX［仮］' }
+      ], { bar: '20XX年度 入試日程' }),
+      B('steps', '出願の流れ', '出願の流れ', [
+        { no: '1', title: '要項を確認する', text: '入学試験要項で、出願資格と必要書類を確認します。' },
+        { no: '2', title: 'インターネットで登録', text: '出願サイトで必要事項を入力します。' },
+        { no: '3', title: '検定料の支払い・書類の郵送', text: '期限までに支払いと郵送を済ませます。' },
+        { no: '4', title: '受験票を受け取り、受験', text: '受験票を印刷し、試験当日に持参します。' }
+      ]),
+      B('qa', 'よくある質問', 'よくある質問', [
+        { q: '複数の入試制度に出願できますか？', a: '制度により異なります。詳しくは入学試験要項をご確認ください。' },
+        { q: '過去の試験問題は見られますか？', a: '入試広報課での閲覧や資料請求についてご案内しています［仮］。' },
+        { q: '奨学金の相談はできますか？', a: 'オープンキャンパスの個別相談や、入試広報課で受け付けています。' }
+      ]),
+      B('links', '資料', '入試の資料', [
+        { label: '入学試験要項', href: '#' }, { label: '出願ガイド', href: '#' }, { label: 'デジタルパンフレット', href: '#' }, { label: '個別相談の予約', href: 'Open%20Campus.dc.html' }
+      ])
+    ]
+  },
+  opencampus: {
+    title: 'オープンキャンパス', sub: 'キャンパスを体験する一日', theme: 'pink', panelImg: '27.jpg', heroImg: '3.jpg', heroAlt: '校舎の前で話す学生',
+    lead: '模擬授業、在学生とのキャンパスツアー、個別の入試相談。実際に歩いて、話して、本学の雰囲気を感じてください。保護者の方もご参加いただけます。',
+    blocks: [
+      B('cards', 'プログラム', '当日のプログラム［予定］', [
+        { tag: '体験', title: '模擬授業', text: '各学部の教員による、大学の授業を体験できます。', img: '33.jpg', alt: '教室で授業を受ける学生' },
+        { tag: '見学', title: 'キャンパスツアー', text: '在学生の案内で、図書館や研究室、ラウンジを巡ります。', img: '2.jpg', alt: '大きな木のある中庭' },
+        { tag: '相談', title: '個別相談', text: '入試、学びの内容、奨学金などを個別に相談できます。', img: '30.jpg', alt: '机を囲んで話す学生' },
+        { tag: '保護者向け', title: '保護者説明会', text: '学生生活や進路支援について説明します。', img: '29.jpg', alt: 'パソコンを囲んで話し合う学生' }
+      ]),
+      B('dates', '開催日', '開催日程', [
+        { label: '第1回 オープンキャンパス', when: '20XX.XX.XX［仮］' },
+        { label: '第2回 オープンキャンパス', when: '20XX.XX.XX［仮］' },
+        { label: '第3回 オープンキャンパス', when: '20XX.XX.XX［仮］' },
+        { label: 'オンライン説明会', when: '20XX.XX.XX［仮］' }
+      ], { bar: '20XX年度 開催日程' }),
+      B('steps', '予約', '予約から当日まで', [
+        { no: '1', title: '予約フォームに入力', text: '参加希望日とプログラムを選びます。' },
+        { no: '2', title: '確認メールを受け取る', text: '当日の受付に使う案内が届きます。' },
+        { no: '3', title: '当日、受付へ', text: '正門近くの受付でお名前をお伝えください。' }
+      ]),
+      B('rows', 'アクセス', 'アクセス［仮］', [
+        { name: '所在地', text: '〒000-0000 ○○県○○市○○ 0-0' },
+        { name: '電車', text: '○○線「○○駅」から徒歩○分［仮］' },
+        { name: 'バス', text: '○○駅から「白藍女子大学前」下車［仮］' }
+      ]),
+      B('links', '予約', '参加を予約する', [
+        { label: '来場予約フォーム', href: '#' }, { label: 'オンライン説明会に申し込む', href: '#' }
+      ])
+    ]
+  }
+};
+const ORDER = ['about', 'academics', 'campus', 'exams', 'opencampus'];
+
+class Component extends DCLogic {
+  state = { narrow: false, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => {
+      const n = window.innerWidth < 1280;
+      if (n !== this.state.narrow) this.setState({ narrow: n, menuOpen: false });
+    };
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
+    import(new URL('motion.js', document.baseURI).href).then(m => { this._motion = m.initMotion(document); }).catch(() => {});
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); if (this._motion) this._motion(); }
+  renderVals() {
+    const key = DATA[this.props.page] ? this.props.page : 'about';
+    const d = DATA[key];
+    const { narrow, menuOpen } = this.state;
+    const i = ORDER.indexOf(key);
+    const nextKey = ORDER[i + 1];
+    const next = nextKey ? PAGES.find(p => p.key === nextKey) : PAGES[0];
+    const isBlue = d.theme === 'blue';
+    return {
+      narrow, wide: !narrow, menuOpen, menuLabel: menuOpen ? '閉じる' : 'メニュー',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      navItems: PAGES.map(p => ({ href: p.href, label: p.label, ja: p.ja, line: p.key === key ? 1 : 0 })),
+      navColor: isBlue ? '#ffffff' : '#174f80',
+      isBlue, isPink: !isBlue,
+      title: d.title, titleLen: d.title.length, sub: d.sub, lead: d.lead, panelImg: d.panelImg, heroImg: d.heroImg, heroAlt: d.heroAlt,
+      nextHref: next.href, nextTitle: nextKey ? next.label : 'トップへ戻る',
+      blocks: d.blocks.map(b => ({ ...b, isText: b.type === 'text', isCards: b.type === 'cards', isRows: b.type === 'rows', isDates: b.type === 'dates', isSteps: b.type === 'steps', isChips: b.type === 'chips', isQa: b.type === 'qa', isLinks: b.type === 'links' })),
+      socials: ['インスタグラム', 'エックス', 'ユーチューブ', 'ライン']
+    };
+  }
+}
+</script>
+</body>
+</html>

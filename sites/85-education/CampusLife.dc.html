@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./anim.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Zen Kaku Gothic New',sans-serif;color:#4a2a36;background:#f8d3df;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#c24d76;text-decoration:none}
+a:hover{color:#a03a61}
+a:focus-visible,button:focus-visible{outline:2px solid #ffd76a;outline-offset:3px}
+h1,h2,h3,h4,p{margin:0}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="campus" hint-size="100%,0px"></dc-import>
+<main>
+<dc-import name="PageHero" en="Campus life" ja="学生生活" lead="学ぶ時間も、仲間と過ごす時間も。看護を志す4年間を、このキャンパスで。" img="cl-hero" ph="キャンパスで談笑する学生の写真" hint-size="100%,560px"></dc-import>
+
+<section data-screen-label="Campus / A Day" style="background:linear-gradient(180deg,#f8d3df,#fdeef2);color:#8a3256;padding:clamp(72px,9vw,120px) clamp(16px,4vw,40px)">
+  <div style="max-width:1120px;margin:0 auto">
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em">✦ 学生の1日</p>
+    <h2 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(32px,4vw,46px);margin-top:6px">A Day</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(32px,5vw,64px);margin-top:36px;align-items:start">
+      <div style="aspect-ratio:4/5;max-width:460px;border-radius:0 clamp(60px,9vw,120px) 0 0;overflow:hidden"><image-slot src="_filled/03-student-portrait.jpg" id="cl-day" shape="rect" placeholder="在学生のポートレート"></image-slot></div>
+      <div>
+        <p style="font-size:14px;line-height:1.8">看護学科 2年　Dさんのある1日（サンプル）</p>
+        <ol style="list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;background:#fff;color:#4a2a36">
+          <sc-for list="{{ day }}" as="d" hint-placeholder-count="6">
+            <li style="display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;padding:18px 22px;border-bottom:1px solid #f3dde4;align-items:baseline">
+              <span style="font-family:Montserrat,sans-serif;font-size:18px;color:#d0628a">{{ d.t }}</span>
+              <span><strong style="display:block;font-size:15px;color:#9b3560">{{ d.title }}</strong><span style="font-size:13px;line-height:1.75;color:#7a5763">{{ d.body }}</span></span>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Campus / Facilities" style="background:#fff;padding:clamp(72px,9vw,120px) clamp(16px,4vw,40px)">
+  <div style="max-width:1120px;margin:0 auto">
+    <p style="font-size:12px;font-weight:700;color:#c24d76;letter-spacing:.08em">✦ 施設紹介</p>
+    <h2 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(32px,4vw,46px);color:#c24d76;margin-top:6px">Facilities</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:28px 20px;margin-top:36px">
+      <sc-for list="{{ facilities }}" as="f" hint-placeholder-count="6">
+        <article style="display:flex;flex-direction:column;gap:12px">
+          <div style="aspect-ratio:4/3;overflow:hidden;border-radius:0 0 0 40px"><image-slot id="{{ f.id }}" shape="rect" placeholder="{{ f.name }}"></image-slot></div>
+          <h3 style="font-size:17px;color:#9b3560">{{ f.name }}</h3>
+          <p style="font-size:13.5px;line-height:1.85;text-wrap:pretty">{{ f.body }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Campus / Events" style="background:#fff6f8;padding:clamp(72px,9vw,120px) clamp(16px,4vw,40px)">
+  <div style="max-width:1120px;margin:0 auto">
+    <p style="font-size:12px;font-weight:700;color:#c24d76;letter-spacing:.08em">✦ 年間行事・課外活動</p>
+    <h2 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(32px,4vw,46px);color:#c24d76;margin-top:6px">Events &amp; Clubs</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;margin-top:36px">
+      <sc-for list="{{ seasons }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fff;border-radius:0 40px 0 0;padding:24px 22px 26px">
+          <span style="font-family:'Zen Old Mincho',serif;font-size:34px;color:#d0628a">{{ s.s }}</span>
+          <ul style="list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:8px;font-size:14px">
+            <sc-for list="{{ s.items }}" as="i" hint-placeholder-count="3"><li style="padding-bottom:8px;border-bottom:1px solid #f6e3e9">{{ i }}</li></sc-for>
+          </ul>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:36px">
+      <sc-for list="{{ clubs }}" as="c" hint-placeholder-count="10">
+        <span style="background:#d0628a;color:#fff;font-size:13px;font-weight:700;padding:8px 16px;border-radius:999px">{{ c }}</span>
+      </sc-for>
+    </div>
+    <p style="font-size:11px;color:#85616d;margin-top:14px">※行事・団体名は例示です</p>
+  </div>
+</section>
+
+<section data-screen-label="Campus / Support" style="background:linear-gradient(180deg,#f8d3df,#fbe3ea);color:#8a3256;padding:clamp(72px,9vw,120px) clamp(16px,4vw,40px)">
+  <div style="max-width:1120px;margin:0 auto">
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em">✦ 学生支援</p>
+    <h2 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(32px,4vw,46px);margin-top:6px">Support</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:20px;margin-top:36px">
+      <sc-for list="{{ support }}" as="s" hint-placeholder-count="4">
+        <article style="background:#fff6f8;color:#4a2a36;border-radius:0 0 0 48px;padding:26px 24px 30px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:Montserrat,sans-serif;font-size:12px;letter-spacing:.12em;color:#d06a86">{{ s.en }}</span>
+          <h3 style="font-size:17px;color:#9b3560">{{ s.name }}</h3>
+          <p style="font-size:13.5px;line-height:1.85;text-wrap:pretty">{{ s.body }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Campus / Stories" style="background:#fff;padding:clamp(72px,9vw,120px) clamp(16px,4vw,40px)">
+  <div style="max-width:1120px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+      <h2 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(32px,4vw,46px);color:#d06a86">Student Stories</h2>
+      <span style="font-size:12px;font-weight:700;color:#85616d">在学生・卒業生の声</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px;margin-top:36px">
+      <sc-for list="{{ stories }}" as="s" hint-placeholder-count="3">
+        <article style="display:flex;flex-direction:column;gap:14px">
+          <div style="aspect-ratio:1/1;border-radius:0 0 0 64px;overflow:hidden"><image-slot id="{{ s.id }}" shape="rect" placeholder="人物写真"></image-slot></div>
+          <p style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:#85616d;font-weight:700"><span style="width:8px;height:8px;border-radius:50%;background:{{ s.dot }}"></span>{{ s.who }}</p>
+          <h3 style="font-size:17px;line-height:1.6;color:#9b3560;text-wrap:pretty">「{{ s.quote }}」</h3>
+          <p style="font-size:13.5px;line-height:1.9;text-wrap:pretty">{{ s.body }}</p>
+        </article>
+      </sc-for>
+    </div>
+    <p style="font-size:11px;color:#85616d;margin-top:16px">※掲載のコメントはサンプルです。実際の学生インタビューに差し替えてください。</p>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      day: [
+        { t: '8:30', title: '登校', body: '友人と待ち合わせて、カフェテリアで予習の確認。' },
+        { t: '9:00', title: '講義「成人看護学」', body: '事例をもとに、術後の患者さんへの看護を考えます。' },
+        { t: '12:10', title: 'ランチ', body: 'ラウンジで先輩に実習の話を聞くことも。' },
+        { t: '13:00', title: '演習（シミュレーションラボ）', body: 'グループで援助技術を練習し、教員からフィードバック。' },
+        { t: '16:30', title: 'サークル活動', body: '週2回のダンスサークルで気分転換。' },
+        { t: '19:00', title: '帰宅・復習', body: '演習記録をまとめて1日を振り返ります。' }
+      ],
+      facilities: [
+        { id: 'cf-1', name: 'シミュレーションラボ', body: '病室や在宅の環境を再現し、実践に近い状況で看護技術を練習できます。' },
+        { id: 'cf-2', name: '看護実習室', body: 'ベッドや医療機器を備え、授業外でも自主練習に使えます。' },
+        { id: 'cf-3', name: 'ライブラリー', body: '看護・医療の専門書や雑誌、グループ学習スペースを備えています。' },
+        { id: 'cf-4', name: 'ラーニングコモンズ', body: '国家試験対策や課題に、仲間と集中して取り組める空間です。' },
+        { id: 'cf-5', name: 'カフェテリア', body: 'ランチや休憩に。学年を越えた交流の場にもなっています。' },
+        { id: 'cf-6', name: '学生寮', body: '女子学生専用の寮。初めての一人暮らしでも安心して生活できます。' }
+      ],
+      seasons: [
+        { s: '春', items: ['入学式', '新入生オリエンテーション', '健康診断'] },
+        { s: '夏', items: ['オープンキャンパス', '前期定期試験', '夏季休暇'] },
+        { s: '秋', items: ['学園祭', 'スポーツ大会', '領域別臨地実習'] },
+        { s: '冬', items: ['看護師国家試験', '卒業研究発表会', '卒業式'] }
+      ],
+      clubs: ['軽音楽部', 'ダンス部', 'バレーボール部', 'バドミントン部', '茶道部', '写真部', '手話サークル', 'ボランティア部', '学園祭実行委員会', '国試対策サークル'],
+      support: [
+        { en: 'SCHOLARSHIP', name: '奨学金制度', body: '日本学生支援機構の奨学金や本学独自の支援制度について、担当窓口が相談に応じます。' },
+        { en: 'COUNSELING', name: '学生相談室', body: '学業や生活の悩みを、専門のカウンセラーに気軽に相談できます。' },
+        { en: 'ADVISOR', name: 'アドバイザー制度', body: '少人数ごとに担当教員がつき、学修や実習の不安に寄り添います。' },
+        { en: 'CAREER', name: 'キャリア支援', body: '就職ガイダンスや面接練習、病院説明会などを段階的に実施します。' }
+      ],
+      stories: [
+        { id: 'cs-1', dot: '#f0a35e', who: '看護学科 3年　Aさん', quote: '患者さんの「ありがとう」に看護の意味を実感しました。', body: '初めての臨地実習は緊張の連続でしたが、指導者さんや先生に支えられ、患者さんに合わせた援助を考える楽しさを知りました。' },
+        { id: 'cs-2', dot: '#e36f6f', who: '看護学科 卒業生　Bさん（看護師）', quote: '先生との距離の近さが、国家試験の支えでした。', body: '不安なときはすぐに相談できる環境があり、仲間と一緒に最後まで走り切れました。今は急性期病棟で働いています。' },
+        { id: 'cs-3', dot: '#9a8fd6', who: '看護学科 2年　Cさん', quote: '同じ目標を持つ仲間と励まし合えることが力になります。', body: '演習でうまくいかなかった日も、友人と放課後に練習を重ねるうちに自信がつきました。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<sc-if value="{{ showBar }}" hint-placeholder-val="{{ true }}">
+  <header style="position:fixed;top:0;left:0;right:0;z-index:50;height:64px;background:rgba(255,255,255,.96);border-bottom:1.5px solid #1E2A3A;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 clamp(16px,3vw,32px);font-family:'Zen Kaku Gothic New',sans-serif">
+    <a href="Top.dc.html" aria-label="青嵐女子大学 トップへ" style="display:flex;align-items:baseline;gap:8px;color:#1E2A3A">
+      <span style="font-family:Archivo;font-weight:900;font-style:italic;font-size:24px;letter-spacing:-.02em;color:#DD4318">SEIRAN</span>
+      <span style="font-size:12px;font-weight:700">青嵐女子大学</span>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:22px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="font-size:13px;font-weight:700;color:{{ n.color }};padding:6px 0;border-bottom:2px solid {{ n.line }}" style-hover="color:#DD4318">{{ n.ja }}</a>
+        </sc-for>
+        <a href="OpenCampus.dc.html" style="display:flex;align-items:center;height:40px;padding:0 20px;border-radius:999px;background:#DD4318;color:#fff;font-size:13px;font-weight:700;border:1.5px solid #1E2A3A;box-shadow:3px 3px 0 #1E2A3A" style-hover="transform:translate(2px,2px);box-shadow:1px 1px 0 #1E2A3A;color:#fff">オープンキャンパス予約</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-label="メニュー" style="height:44px;padding:0 18px;border-radius:999px;border:1.5px solid #1E2A3A;background:#29B4E6;color:#1E2A3A;font-family:Archivo;font-weight:800;font-size:13px;letter-spacing:.08em;cursor:pointer">{{ menuLabel }}</button>
+    </sc-if>
+  </header>
+</sc-if>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;top:64px;left:0;right:0;bottom:0;z-index:49;background:#29B4E6;padding:28px 24px;display:flex;flex-direction:column;gap:12px;overflow:auto;font-family:'Zen Kaku Gothic New',sans-serif">
+    <a href="Top.dc.html" style="display:flex;align-items:center;justify-content:space-between;background:#fff;border:1.5px solid #1E2A3A;padding:16px 20px;color:#1E2A3A;box-shadow:5px 5px 0 #1E2A3A"><span style="font-weight:900;font-size:17px">トップ</span><span style="font-family:Archivo;font-style:italic;font-weight:900;font-size:13px;color:#DD4318">TOP</span></a>
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+      <a href="{{ n.href }}" style="display:flex;align-items:center;justify-content:space-between;background:#fff;border:1.5px solid #1E2A3A;padding:16px 20px;color:#1E2A3A;box-shadow:5px 5px 0 #1E2A3A">
+        <span style="font-weight:900;font-size:17px">{{ n.ja }}</span>
+        <span style="font-family:Archivo;font-style:italic;font-weight:900;font-size:13px;color:#DD4318">{{ n.en }}</span>
+      </a>
+    </sc-for>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;120px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;about&quot;,&quot;academics&quot;,&quot;campus&quot;,&quot;admissions&quot;,&quot;oc&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;overlay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, y: 0, menu: false };
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth });
+    this.onS = () => { const y = window.scrollY; if ((y > 640) !== (this.state.y > 640)) this.setState({ y }); };
+    window.addEventListener('resize', this.onR);
+    window.addEventListener('scroll', this.onS, { passive: true });
+    this.onR(); this.setState({ y: window.scrollY });
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); window.removeEventListener('scroll', this.onS); }
+  renderVals() {
+    const isMobile = this.state.w < 1040;
+    const cur = this.props.current || '';
+    const nav = [
+      { key: 'about', href: 'About.dc.html', ja: '大学紹介', en: 'ABOUT' },
+      { key: 'academics', href: 'Academics.dc.html', ja: '学部・学科', en: 'ACADEMICS' },
+      { key: 'campus', href: 'CampusLife.dc.html', ja: 'キャンパスライフ', en: 'CAMPUS LIFE' },
+      { key: 'admissions', href: 'Admissions.dc.html', ja: '入試情報', en: 'ADMISSIONS' },
+      { key: 'oc', href: 'OpenCampus.dc.html', ja: 'オープンキャンパス', en: 'OPEN CAMPUS' }
+    ].map(n => ({ ...n, color: n.key === cur ? '#DD4318' : '#1E2A3A', line: n.key === cur ? '#DD4318' : 'transparent', aria: n.key === cur ? 'page' : undefined }));
+    return {
+      nav, isMobile, isDesktop: !isMobile,
+      showBar: !this.props.overlay || isMobile || this.state.y > 640,
+      menuOpen: isMobile && this.state.menu,
+      menuLabel: this.state.menu ? 'CLOSE' : 'MENU',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu }))
+    };
+  }
+}
+</script>
+</body>
+</html>

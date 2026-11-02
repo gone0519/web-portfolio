@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:relative;z-index:20;max-width:1920px;margin:0 auto;padding:0 clamp(16px,2.4vw,46px)">
+  <div data-reveal="fade" style="display:flex;align-items:center;justify-content:space-between;gap:24px;height:100px;border-bottom:1px solid #d9dce2">
+    <a href="University Admissions.dc.html" style="display:flex;align-items:center;gap:12px;color:#0b3fd9;text-decoration:none">
+      <span style="width:26px;height:26px;background:#0b3fd9;clip-path:polygon(50% 0,100% 100%,62% 100%,50% 72%,38% 100%,0 100%)"></span>
+      <span style="display:flex;flex-direction:column;line-height:1.1">
+        <span style="font-size:20px;font-weight:700;letter-spacing:.06em">蒼稜大学</span>
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em">SORYO UNIVERSITY</span>
+      </span>
+    </a>
+    <div style="display:flex;align-items:center;gap:12px">
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;align-items:center;gap:32px;margin-right:24px">
+          <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="5">
+            <a href="{{ l.href }}" style="color:{{ l.color }};font-size:15px;font-weight:500;text-decoration:none;padding:6px 0;border-bottom:2px solid {{ l.line }};transition:color .2s" style-hover="color:#0b3fd9">{{ l.label }}</a>
+          </sc-for>
+        </nav>
+        <div style="display:flex;align-items:center;gap:10px;background:#e6e9ef;padding:8px 12px;font-size:12px;margin-right:24px">
+          <span style="color:#0b3fd9;font-weight:700">日本語</span><span style="color:#b7bcc6">|</span><span style="color:#6b7180">English</span>
+        </div>
+        <a href="Contact.dc.html" style="display:flex;align-items:center;justify-content:center;height:50px;padding:0 34px;background:#0b3fd9;color:#fff;font-size:15px;font-weight:700;text-decoration:none;transition:background .2s" style-hover="background:#072fa6;color:#fff">資料請求</a>
+      </sc-if>
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:80px;height:50px;border:0;background:#0b3fd9;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+        <span style="width:40px;height:2px;background:#fff"></span>
+        <span style="width:40px;height:2px;background:#fff"></span>
+        <span style="width:40px;height:2px;background:#fff"></span>
+      </button>
+    </div>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:50;background:#0b3fd9;color:#fff;padding:32px clamp(20px,5vw,110px);display:flex;flex-direction:column;gap:40px;overflow:auto">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:20px;font-weight:700;letter-spacing:.06em">蒼稜大学</span>
+        <button onClick="{{ toggleMenu }}" style="height:50px;padding:0 24px;border:1px solid #fff;background:transparent;color:#fff;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer">閉じる ×</button>
+      </div>
+      <nav style="display:flex;flex-direction:column">
+        <sc-for list="{{ menuLinks }}" as="l" hint-placeholder-count="6">
+          <a href="{{ l.href }}" style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.3);color:#fff;text-decoration:none">
+            <span style="font-size:clamp(22px,3vw,34px);font-weight:700">{{ l.label }}</span>
+            <span style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em">{{ l.en }} →</span>
+          </a>
+        </sc-for>
+      </nav>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:120},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;programs&quot;,&quot;prep&quot;,&quot;admissions&quot;,&quot;campus&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false, wide: true };
+  componentDidMount() {
+    this.onResize = () => this.setState({ wide: window.innerWidth >= 1240 });
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const cur = this.props.current || '';
+    const pages = [
+      { key: 'top', label: 'トップ', en: 'Top', href: 'University Admissions.dc.html' },
+      { key: 'programs', label: '学部・学科', en: 'Programs', href: 'Programs.dc.html' },
+      { key: 'prep', label: '入試対策', en: 'Preparation', href: 'Preparation.dc.html' },
+      { key: 'admissions', label: '入試情報', en: 'Admissions', href: 'Admissions Info.dc.html' },
+      { key: 'campus', label: 'キャンパスライフ', en: 'Campus Life', href: 'Campus Life.dc.html' },
+      { key: 'contact', label: 'お問い合わせ・資料請求', en: 'Contact', href: 'Contact.dc.html' },
+    ];
+    return {
+      wide: this.state.wide,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      navLinks: pages.slice(1, 5).map(p => ({ ...p, color: p.key === cur ? '#0b3fd9' : '#232427', line: p.key === cur ? '#0b3fd9' : 'transparent' })),
+      menuLinks: pages,
+    };
+  }
+}
+</script>
+</body>
+</html>

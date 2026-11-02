@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7f5f0;color:#1d2433;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1f3a6b;text-decoration:none}
+a:hover{color:#b2832f}
+button{font-family:inherit}
+</style>
+<script src="./motion.js"></script>
+</helmet>
+<div style="min-height:100vh;background:#f7f5f0">
+<dc-import name="SiteHeader" current="application" hint-size="100%,76px" style="position:sticky;top:0;z-index:50"></dc-import>
+
+<section data-screen-label="Application Hero" style="background:linear-gradient(90deg,rgba(31,58,107,0.96) 0%,rgba(31,58,107,0.84) 50%,rgba(31,58,107,0.5) 100%),url(images/plaza-modern.jpg) 50% 50%/cover no-repeat #1f3a6b;color:#f7f5f0">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(48px,6vw,88px) clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:18px">
+    <nav style="display:flex;gap:10px;font-size:12px;color:#a9b2c6"><a href="Admissions Site.dc.html" style="color:#a9b2c6">トップ</a><span>/</span><span>入試日程・出願</span></nav>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;color:#d9c18f">SCHEDULE &amp; APPLICATION</span>
+    <h1 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(34px,4.4vw,56px);font-weight:700;letter-spacing:0.05em">入試日程・出願</h1>
+    <p style="margin:0;max-width:36em;font-size:15px;line-height:1.95;color:#cfd5e2;text-wrap:pretty">入試方式ごとの日程、出願の流れ、必要書類をまとめています。出願前に必ず募集要項をご確認ください。</p>
+    <div style="display:flex;flex-wrap:wrap;gap:20px;font-size:14px;font-weight:700">
+      <a href="#schedule" style="color:#f7f5f0">入試日程 ↓</a><a href="#flow" style="color:#f7f5f0">出願の流れ ↓</a><a href="#docs" style="color:#f7f5f0">必要書類 ↓</a><a href="#faq" style="color:#f7f5f0">よくある質問 ↓</a>
+    </div>
+  </div>
+</section>
+
+<section id="schedule" data-screen-label="Schedule" style="scroll-margin-top:76px;padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:24px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px">
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:0.05em">入試日程</h2>
+      <span style="font-size:12px;color:#8a5a12;background:#f5ead3;padding:6px 12px">サンプル日程｜正式な日程は募集要項で公表します</span>
+    </div>
+    <sc-if value="{{ compact }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+        <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="6">
+          <div style="background:#fff;border-top:3px solid #1f3a6b;padding:22px 20px;display:flex;flex-direction:column;gap:12px">
+            <span style="font-family:'Shippori Mincho',serif;font-size:18px;font-weight:700">{{ s.name }}</span>
+            <dl style="margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);font-size:14px">
+              <dt style="padding:10px 0;border-top:1px dashed #e3ded3;color:#6b7180">出願期間</dt><dd style="margin:0;padding:10px 0;border-top:1px dashed #e3ded3;text-align:right;font-weight:700">{{ s.apply }}</dd>
+              <dt style="padding:10px 0;border-top:1px dashed #e3ded3;color:#6b7180">試験日</dt><dd style="margin:0;padding:10px 0;border-top:1px dashed #e3ded3;text-align:right;font-weight:700">{{ s.exam }}</dd>
+              <dt style="padding:10px 0;border-top:1px dashed #e3ded3;color:#6b7180">合格発表</dt><dd style="margin:0;padding:10px 0;border-top:1px dashed #e3ded3;text-align:right;font-weight:700;color:#1f3a6b">{{ s.result }}</dd>
+              <dt style="padding:10px 0;border-top:1px dashed #e3ded3;color:#6b7180">入学手続締切</dt><dd style="margin:0;padding:10px 0;border-top:1px dashed #e3ded3;text-align:right;font-weight:700">{{ s.enroll }}</dd>
+            </dl>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ !compact }}" hint-placeholder-val="{{ true }}">
+    <div style="overflow-x:auto;border-top:2px solid #1d2433">
+      <table style="width:100%;min-width:760px;border-collapse:collapse;font-size:14px">
+        <thead><tr style="background:#efebe3"><th style="text-align:left;padding:16px;font-weight:700">入試方式</th><th style="text-align:left;padding:16px;font-weight:700">出願期間</th><th style="text-align:left;padding:16px;font-weight:700">試験日</th><th style="text-align:left;padding:16px;font-weight:700">合格発表</th><th style="text-align:left;padding:16px;font-weight:700">入学手続締切</th></tr></thead>
+        <tbody>
+          <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="6">
+            <tr style="border-bottom:1px solid #e3ded3;background:#fff"><td style="padding:18px 16px;font-weight:700">{{ s.name }}</td><td style="padding:18px 16px;color:#454c5c">{{ s.apply }}</td><td style="padding:18px 16px;color:#454c5c">{{ s.exam }}</td><td style="padding:18px 16px;color:#454c5c">{{ s.result }}</td><td style="padding:18px 16px;color:#454c5c">{{ s.enroll }}</td></tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    </sc-if>
+  </div>
+</section>
+
+<section id="flow" data-screen-label="Flow" style="scroll-margin-top:76px;background:#fff;border-top:1px solid #e3ded3;padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:0.05em">出願の流れ</h2>
+      <img src="images/illust/yay-pair.png" alt="" loading="lazy" style="display:block;height:clamp(56px,7vw,96px);width:auto;max-width:55%;object-fit:contain">
+    </div>
+    <ol style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:20px">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+        <li style="border-top:2px solid #1f3a6b;padding-top:18px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-family:'Shippori Mincho',serif;font-size:32px;font-weight:700;color:#1f3a6b">{{ st.no }}</span>
+          <span style="font-size:16px;font-weight:700">{{ st.title }}</span>
+          <span style="font-size:13px;line-height:1.85;color:#454c5c">{{ st.body }}</span>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section id="docs" data-screen-label="Documents" style="scroll-margin-top:76px;padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:24px">
+    <div style="background:#fff;border:1px solid #e3ded3;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:18px">
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:26px;font-weight:700">必要書類</h2>
+      <sc-for list="{{ docs }}" as="d" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:14px 0;border-bottom:1px solid #efebe3;font-size:14px;align-items:baseline">
+          <span style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:700;font-size:15px">{{ d.n }}</span><span style="color:#6b7180;font-size:13px">{{ d.note }}</span></span>
+          <span style="font-size:12px;color:#1f3a6b;font-weight:700">{{ d.who }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background:#efebe3;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:18px">
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:26px;font-weight:700">受験にあたっての注意</h2>
+      <sc-for list="{{ notes }}" as="n" hint-placeholder-count="4">
+        <div style="display:flex;gap:12px;font-size:14px;line-height:1.85"><span style="color:#b2832f">—</span><span>{{ n }}</span></div>
+      </sc-for>
+      <div style="margin-top:auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px">
+        <a href="#inquiry" style="font-size:14px;font-weight:700">出願について問い合わせる →</a>
+        <img src="images/illust/bench.png" alt="" loading="lazy" style="display:block;height:clamp(100px,10vw,140px);width:auto;margin-left:auto">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" data-screen-label="FAQ" style="scroll-margin-top:76px;background:#fff;border-top:1px solid #e3ded3;padding:clamp(56px,7vw,96px) 0">
+  <div style="max-width:960px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:24px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+      <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:0.05em">よくある質問</h2>
+      <img src="images/illust/aha-pair.png" alt="" loading="lazy" style="display:block;height:clamp(72px,9vw,110px);width:auto">
+    </div>
+    <div style="border-top:1px solid #1d2433">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
+        <div style="border-bottom:1px solid #e3ded3">
+          <button onClick="{{ q.toggle }}" style="width:100%;background:none;border:none;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;text-align:left;color:#1d2433">
+            <span style="display:flex;gap:14px;font-size:15px;font-weight:700;line-height:1.6"><span style="font-family:'Shippori Mincho',serif;color:#b2832f">Q</span>{{ q.q }}</span>
+            <span style="font-size:20px;color:#1f3a6b;flex-shrink:0">{{ q.sign }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;padding:0 0 24px 30px;font-size:14px;line-height:1.9;color:#454c5c;text-wrap:pretty">{{ q.a }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { faq: 0, w: window.innerWidth };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const s = this.state;
+    const faqs = [
+      { q: '複数の入試方式を併願できますか？', a: '一般選抜内の複数方式は併願できます。学校推薦型選抜・総合型選抜には専願の方式があるため、募集要項で出願条件をご確認ください。' },
+      { q: '出願はインターネットのみですか？', a: '本サンプルではWeb出願を想定しています。出願登録・入学検定料の支払い・書類郵送までを期間内に完了してください。' },
+      { q: '出願後に志望学科を変更できますか？', a: '出願完了後の学科・方式の変更はできません。登録内容は送信前に必ず確認してください。' },
+      { q: '既卒生も出願できますか？', a: '出願資格を満たしていれば出願できます。学校推薦型選抜は卒業年度の条件がある場合があります。' },
+      { q: '障がい等により受験上の配慮が必要な場合は？', a: '出願前に入試課へご相談ください。試験時間の延長や別室受験などの配慮を個別に検討します。' },
+      { q: '遠方からの受験生向けの宿泊案内はありますか？', a: '試験会場周辺の宿泊施設のご案内を、出願期間前に掲載予定です。' },
+    ];
+    return {
+      compact: s.w < 820,
+      schedule: [
+        { name: '総合型選抜', apply: '9月○日〜○日', exam: '10月○日', result: '11月○日', enroll: '11月○日' },
+        { name: '学校推薦型選抜（指定校）', apply: '11月○日〜○日', exam: '11月○日', result: '12月○日', enroll: '12月○日' },
+        { name: '学校推薦型選抜（公募）', apply: '11月○日〜○日', exam: '11月○日', result: '12月○日', enroll: '12月○日' },
+        { name: '一般選抜（前期）', apply: '1月○日〜○日', exam: '2月○日〜○日', result: '2月○日', enroll: '2月○日' },
+        { name: '共通テスト利用選抜', apply: '1月○日〜○日', exam: '個別試験なし', result: '2月○日', enroll: '2月○日' },
+        { name: '一般選抜（後期）', apply: '2月○日〜○日', exam: '3月○日', result: '3月○日', enroll: '3月○日' },
+      ],
+      steps: [
+        { no: '01', title: '募集要項の確認', body: '出願資格・試験科目・必要書類を確認します。' },
+        { no: '02', title: 'Web出願登録', body: '出願サイトで個人情報と志望学科を入力します。' },
+        { no: '03', title: '検定料の支払い', body: 'コンビニ・クレジットカード・ペイジー等で支払います。' },
+        { no: '04', title: '書類の郵送', body: '調査書など必要書類を出願期間内に郵送します。' },
+        { no: '05', title: '受験票の印刷', body: '試験日の約1週間前から出願サイトで印刷できます。' },
+        { no: '06', title: '受験・合格発表', body: '合否は出願サイトで確認し、期限内に入学手続きを行います。' },
+      ],
+      docs: [
+        { n: '入学志願票', note: 'Web出願登録後に印刷', who: '全方式' },
+        { n: '調査書', note: '出身高校が作成・厳封したもの', who: '全方式' },
+        { n: '推薦書', note: '学校長が作成', who: '学校推薦型' },
+        { n: '志望理由書・活動報告書', note: '所定の様式で作成', who: '総合型' },
+        { n: '共通テスト成績請求票', note: '共通テスト受験時に交付', who: '共通テスト利用' },
+      ],
+      notes: ['試験当日は受験票と写真付きの身分証明書を持参してください。', '試験開始後20分を過ぎた場合は入室できません（サンプル）。', '悪天候や交通機関の乱れによる対応は、本サイトで速やかにお知らせします。', '提出書類に不備があると受理できない場合があります。'],
+      faqs: faqs.map((f, i) => ({ ...f, open: s.faq === i, sign: s.faq === i ? '−' : '+', toggle: () => this.setState({ faq: s.faq === i ? -1 : i }) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

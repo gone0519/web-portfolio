@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Klee+One:wght@600&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fbfaf6;color:#3a3a3a;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#d2461f;text-decoration:none}
+a:hover{color:#e8642a}
+*{box-sizing:border-box}
+@keyframes rv-up{from{opacity:0;transform:translateY(40px)}}
+@keyframes rv-down{from{opacity:0;transform:translateY(-100%)}}
+@keyframes rv-left{from{opacity:0;transform:translateX(-60px)}}
+@keyframes rv-right{from{opacity:0;transform:translateX(60px)}}
+@keyframes rv-zoom{from{opacity:0;transform:scale(.85)}}
+@keyframes rv-fade{from{opacity:0}}
+@keyframes rv-pop{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.08)}100%{transform:scale(1)}}
+@keyframes an-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes an-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-14px) rotate(1.5deg)}}
+@keyframes an-drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-40px) scale(1.18)}}
+@keyframes an-shine{0%{left:-60%}55%,100%{left:140%}}
+@keyframes an-wiggle{0%,100%{transform:rotate(0)}50%{transform:rotate(-12deg)}}
+@keyframes an-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes an-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+@keyframes an-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</helmet>
+
+<div style="max-width:960px;margin:0 auto;background:#fff;box-shadow:0 0 40px rgba(0,0,0,.04);overflow:clip">
+
+<!-- HEADER -->
+<header data-reveal="down" style="position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid #f0ede4">
+  <div data-progress="1" style="position:absolute;left:0;bottom:-1px;height:3px;width:0;background:linear-gradient(90deg,#f3b733,#f0782a,#e8452c);z-index:2"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(16px,4vw,40px);min-height:60px">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;color:#1d4f96">
+      <div style="width:34px;height:34px;border:1.5px dashed #1d4f96;border-radius:8px;display:flex;align-items:center;justify-content:center;font:10px ui-monospace,monospace">LOGO</div>
+      <span style="font-weight:900;font-size:18px;letter-spacing:.08em">BRAND NAME</span>
+    </a>
+    <nav style="display:{{ navDisplay }};align-items:center;gap:22px;font-size:13px;font-weight:500">
+      <a href="#features" style="color:#3a3a3a" style-hover="color:#e8452c">特長</a>
+      <a href="#ingredients" style="color:#3a3a3a" style-hover="color:#e8452c">成分・栄養</a>
+      <a href="#story" style="color:#3a3a3a" style-hover="color:#e8452c">ストーリー</a>
+      <a href="#faq" style="color:#3a3a3a" style-hover="color:#e8452c">よくある質問</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="#purchase-url-placeholder" style="display:flex;align-items:center;gap:8px;background:linear-gradient(180deg,#f0632f,#e8452c);color:#fff;font-weight:700;font-size:13px;padding:9px 22px;border-radius:2px;letter-spacing:.1em" style-hover="filter:brightness(1.08);color:#fff">購入する</a>
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="display:{{ burgerDisplay }};width:40px;height:40px;border:1px solid #e5e0d2;background:#fff;border-radius:4px;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer">
+        <span style="display:block;width:18px;height:2px;background:#3a3a3a"></span>
+        <span style="display:block;width:18px;height:2px;background:#3a3a3a"></span>
+        <span style="display:block;width:18px;height:2px;background:#3a3a3a"></span>
+      </button>
+    </div>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;border-top:1px solid #f0ede4;background:#fff;font-size:15px;font-weight:500">
+      <a href="#features" onClick="{{ closeMenu }}" style="padding:16px 24px;color:#3a3a3a;border-bottom:1px solid #f5f2ea">特長</a>
+      <a href="#ingredients" onClick="{{ closeMenu }}" style="padding:16px 24px;color:#3a3a3a;border-bottom:1px solid #f5f2ea">成分・栄養</a>
+      <a href="#story" onClick="{{ closeMenu }}" style="padding:16px 24px;color:#3a3a3a;border-bottom:1px solid #f5f2ea">ストーリー</a>
+      <a href="#faq" onClick="{{ closeMenu }}" style="padding:16px 24px;color:#3a3a3a">よくある質問</a>
+    </div>
+  </sc-if>
+</header>
+
+<!-- S1 HERO -->
+<section id="top" data-screen-label="01 Hero" style="position:relative;background:radial-gradient(circle at 12% 18%,rgba(255,255,255,.9) 0,rgba(255,255,255,0) 22%),radial-gradient(circle at 60% 8%,rgba(214,234,170,.9) 0,rgba(214,234,170,0) 30%),radial-gradient(circle at 88% 60%,rgba(190,222,150,.8) 0,rgba(190,222,150,0) 35%),radial-gradient(circle at 30% 85%,rgba(255,240,170,.9) 0,rgba(255,240,170,0) 40%),linear-gradient(160deg,#f3f8e4 0%,#e3efc6 45%,#fbf3cf 100%);padding:clamp(32px,6vw,56px) clamp(16px,4vw,40px) 36px;overflow:hidden">
+  <div data-anim="drift" data-delay="0" style="position:absolute;left:8%;top:20%;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,#fffbe0 0,rgba(255,255,255,0) 70%);opacity:.85;pointer-events:none"></div>
+  <div data-anim="drift" data-delay="-2300" style="position:absolute;left:38%;top:6%;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,#ffffff 0,rgba(255,255,255,0) 70%);opacity:.85;pointer-events:none"></div>
+  <div data-anim="drift" data-delay="-4600" style="position:absolute;left:62%;top:58%;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,#fff2b0 0,rgba(255,255,255,0) 70%);opacity:.85;pointer-events:none"></div>
+  <div data-anim="drift" data-delay="-6900" style="position:absolute;left:18%;top:72%;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,#eaf5d0 0,rgba(255,255,255,0) 70%);opacity:.85;pointer-events:none"></div>
+  <div data-anim="drift" data-delay="-9200" style="position:absolute;left:84%;top:22%;width:50px;height:50px;border-radius:50%;background:radial-gradient(circle,#ffffff 0,rgba(255,255,255,0) 70%);opacity:.85;pointer-events:none"></div>
+  <div data-anim="drift" data-delay="-11500" style="position:absolute;left:50%;top:88%;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,#fff6cf 0,rgba(255,255,255,0) 70%);opacity:.85;pointer-events:none"></div>
+  <div role="img" aria-label="商品を手に笑顔の女性" style="{{ heroPhotoStyle }}"></div>
+  <div style="position:relative;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end">
+    <div style="flex:1 1 440px;min-width:0;max-width:{{ heroTextMax }}">
+      <h1 style="margin:0;font-family:'Shippori Mincho B1',serif;font-weight:700;color:#4a4a48;line-height:1.35;letter-spacing:.04em;text-shadow:0 2px 12px rgba(255,255,255,.9);white-space:nowrap">
+        <span data-reveal="up" data-delay="150" style="display:block;font-size:clamp(23px,4vw,40px)">慌ただしい毎日に、</span>
+        <span data-reveal="up" data-delay="350" style="display:block;font-size:clamp(27px,4.8vw,46px);color:#3d3d3a">ひと息つける<span style="color:#d2461f">1</span>本を。</span>
+      </h1>
+      <div data-reveal="left" data-delay="550" style="margin-top:22px;display:inline-flex;align-items:center;gap:12px;background:linear-gradient(90deg,#4f8a33,#6ea64a 70%,rgba(110,166,74,0));color:#fff;padding:9px 60px 9px 22px;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(16px,2.6vw,24px);letter-spacing:.08em">3つのうれしいポイント</div>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px">
+        <div data-reveal="pop" data-anim="bob" data-delay="700" style="width:clamp(96px,16vw,118px);aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fffdf0 0%,#fde990 42%,#f3b733 100%);box-shadow:0 6px 16px rgba(220,150,20,.35),inset 0 -4px 10px rgba(200,120,0,.25);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Shippori Mincho B1',serif;font-weight:800;color:#c8401c;font-size:clamp(14px,2.2vw,18px);line-height:1.3">飲みやすい<br>風味</div>
+        <div data-reveal="pop" data-anim="bob" data-delay="850" style="width:clamp(96px,16vw,118px);aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fffdf0 0%,#fde990 42%,#f3b733 100%);box-shadow:0 6px 16px rgba(220,150,20,.35),inset 0 -4px 10px rgba(200,120,0,.25);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Shippori Mincho B1',serif;font-weight:800;color:#c8401c;font-size:clamp(14px,2.2vw,18px);line-height:1.3">持ち運べる<br>サイズ</div>
+        <div data-reveal="pop" data-anim="bob" data-delay="1000" style="width:clamp(96px,16vw,118px);aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fffdf0 0%,#fde990 42%,#f3b733 100%);box-shadow:0 6px 16px rgba(220,150,20,.35),inset 0 -4px 10px rgba(200,120,0,.25);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Shippori Mincho B1',serif;font-weight:800;color:#c8401c;font-size:clamp(14px,2.2vw,18px);line-height:1.3">[栄養成分]<br>配合</div>
+      </div>
+      <p data-reveal="up" data-delay="1150" style="margin:22px 0 0;font-size:14px;line-height:1.9;color:#4a4a48;max-width:440px;text-wrap:pretty">朝の支度から、仕事や勉強の合間まで。片手で手軽に飲める栄養ドリンクです。</p>
+      <div data-reveal="up" data-delay="1300" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:22px">
+        <a href="#purchase-url-placeholder" style="position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;flex:{{ heroBtnFlex }};min-width:220px;height:54px;padding:0 28px;background:linear-gradient(180deg,#f2552a,#d8321a);color:#fff;font-weight:700;font-size:16px;letter-spacing:.12em;border-radius:4px;box-shadow:0 4px 0 #a8240f,0 8px 18px rgba(216,50,26,.3)" style-hover="filter:brightness(1.08);color:#fff"><span data-anim="shine" data-delay="600" style="position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.5),rgba(255,255,255,0));transform:skewX(-20deg);pointer-events:none"></span><span style="position:relative">商品を購入する</span></a>
+        <a href="#ingredients" style="display:inline-flex;align-items:center;justify-content:center;flex:{{ heroBtnFlex }};height:54px;padding:0 26px;background:rgba(255,255,255,.85);color:#4f8a33;border:1.5px solid #6ea64a;font-weight:700;font-size:15px;letter-spacing:.08em;border-radius:4px" style-hover="background:#fff;color:#3f7426">成分を見る</a>
+      </div>
+    </div>
+  </div>
+  <p style="position:relative;max-width:{{ heroTextMax }};margin:24px 0 0;font-size:10.5px;color:#6f7366;line-height:1.7">※ポイントは仮のコピーです。実際の商品情報に基づいて差し替えてください。※画像はイメージです。</p>
+</section>
+
+<!-- S2 FEATURES & EVERYDAY -->
+<section id="features" data-screen-label="02 Features" style="background:radial-gradient(ellipse at 20% 10%,#f6f7ef 0,rgba(246,247,239,0) 50%),radial-gradient(ellipse at 80% 70%,#e6e9d9 0,rgba(230,233,217,0) 55%),#eef0e4;padding:clamp(32px,6vw,64px) clamp(12px,4vw,40px)">
+  <div style="background:rgba(255,255,255,.9);box-shadow:0 10px 30px rgba(90,100,60,.12);padding:clamp(32px,5vw,48px) clamp(16px,4vw,40px)">
+    <div data-reveal="up" style="text-align:center">
+      <div style="font-family:Parisienne,cursive;color:#b59a72;font-size:22px">Feature</div>
+      <h2 style="margin:4px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(24px,4vw,34px);color:#3f4256;letter-spacing:.1em"><span style="font-size:1.25em">5</span>つの商品の特徴</h2>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px 20px;margin-top:36px">
+      <sc-for list="{{ features }}" as="f" hint-placeholder-count="5">
+        <div data-reveal="up" data-stagger="1" style="flex:{{ featFlex }};min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center">
+          <div style="position:relative;width:clamp(112px,30vw,132px);aspect-ratio:1/1;border-radius:50%;border:2px dotted #e2c27a;padding:6px">
+            <div style="transition:transform .4s;width:100%;height:100%;border-radius:50%;background:#f9f6ec url({{ f.img }}) center/cover no-repeat" style-hover="transform:scale(1.08) rotate(-4deg)"></div>
+            <span data-anim="wiggle" style="position:absolute;right:-14px;top:-4px;font-family:Parisienne,cursive;font-size:clamp(24px,7vw,30px);color:#e2783a">{{ f.num }}</span>
+          </div>
+          <div style="margin-top:14px;font-size:12px;color:#555">{{ f.pre }}</div>
+          <div style="font-weight:900;font-size:clamp(16px,4.6vw,21px);color:#e0452f;line-height:1.35;letter-spacing:.04em">{{ f.title }}</div>
+          <div style="margin-top:4px;font-size:12px;color:#555;line-height:1.7;white-space:pre-line">{{ f.sub }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-reveal="up" style="margin-top:clamp(40px,6vw,64px);text-align:center">
+    <div style="font-family:'Shippori Mincho B1',serif;font-size:15px;color:#4a4a48;letter-spacing:.1em">＼ 片手でさっと飲めるから ／</div>
+    <h3 style="margin:6px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(22px,3.6vw,30px);color:#3f4256;letter-spacing:.08em">いろいろなシーンにどうぞ<span style="color:#e0452f">！</span></h3>
+  </div>
+  <div style="display:grid;grid-template-columns:{{ sceneCols }};gap:clamp(10px,2vw,16px);margin-top:28px">
+    <sc-for list="{{ scenes }}" as="s" hint-placeholder-count="4">
+      <div data-reveal="up" data-stagger="1" style="background:#fff;border:1px solid #ece6d4;padding:clamp(8px,2vw,14px);display:flex;flex-direction:column;gap:clamp(8px,2vw,12px);transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-8px);box-shadow:0 14px 28px rgba(160,120,40,.18)">
+        <div style="aspect-ratio:4/3;background:#fffaec url({{ s.img }}) {{ s.pos }}/cover no-repeat"></div>
+        <div style="font-family:'Klee One',cursive;font-size:clamp(15px,4vw,21px);line-height:1.4;color:#c8401c;text-align:center;text-wrap:balance">{{ s.title }}</div>
+        <div style="font-size:clamp(11.5px,3.2vw,12.5px);line-height:1.8;color:#555;text-wrap:pretty">{{ s.text }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- S3 INGREDIENTS -->
+<section id="ingredients" data-screen-label="03 Ingredients" style="background-color:#fff;background-image:linear-gradient(#f0eee8 1px,transparent 1px),linear-gradient(90deg,#f0eee8 1px,transparent 1px);background-size:22px 22px;padding:clamp(40px,7vw,72px) clamp(16px,4vw,40px)">
+  <div data-reveal="up" style="text-align:center">
+    <div style="font-family:Parisienne,cursive;color:#b59a72;font-size:22px">What's inside</div>
+    <h2 style="margin:4px 0 0;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(24px,4vw,34px);color:#3f4256;letter-spacing:.12em">成分と栄養のこと</h2>
+    <p style="margin:10px 0 0;font-size:13px;color:#555">原材料・栄養成分は、実際の商品表示にあわせて記載してください。</p>
+  </div>
+
+  <div data-reveal="zoom" style="max-width:620px;margin:32px auto 0;background:#fff7e6;padding:28px clamp(16px,4vw,36px);box-shadow:0 2px 0 #fbe8c2">
+    <div style="text-align:center;font-size:13px;color:#555">主な原材料</div>
+    <div style="text-align:center;margin-top:4px;font-weight:900;font-size:clamp(18px,3vw,24px)"><span style="color:#4f9a2a">[主要成分A]</span><span style="font-size:.7em;color:#555">と</span><span style="color:#e0452f">[主要成分B]</span></div>
+    <div style="display:flex;justify-content:center;margin-top:10px"><span style="background:#3f4256;color:#fff;font-size:12.5px;font-weight:700;padding:5px 18px">[成分の役割・特徴を一言で（表示可能な範囲で）]</span></div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px">
+      <sc-for list="{{ ingredients }}" as="ing" hint-placeholder-count="5">
+        <span data-reveal="pop" data-stagger="1" style="background:#fff;border:1px solid #f1d9a8;border-radius:999px;padding:7px 16px;font-size:13px;font-weight:500;color:#7a5a1c">{{ ing }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px;margin-top:40px;align-items:start">
+    <div data-reveal="left" style="background:#fff;border:1px solid #e9e4d6">
+      <div style="background:linear-gradient(90deg,#e8452c,#f0782a);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;letter-spacing:.08em">栄養成分表示 <span style="font-weight:500;font-size:12px">1本（[__]ml）あたり</span></div>
+      <sc-for list="{{ nutrition }}" as="n" hint-placeholder-count="8">
+        <div data-reveal="fade" data-stagger="1" style="display:flex;justify-content:space-between;gap:12px;padding:10px 16px;border-bottom:1px solid #f1eee6;font-size:13.5px">
+          <span style="color:#444">{{ n.k }}</span><span style="font-weight:700;color:#3f4256">{{ n.v }}</span>
+        </div>
+      </sc-for>
+      <div style="padding:10px 16px;font-size:11px;color:#777;line-height:1.7">※数値はすべて仮置きです。商品パッケージの表示に合わせて入力してください。</div>
+    </div>
+    <div data-reveal="right" style="display:flex;flex-direction:column;gap:16px">
+      <div style="background:#fff;border:1px solid #e9e4d6;padding:20px">
+        <div style="font-weight:900;color:#e0452f;font-size:17px">味わい</div>
+        <div style="font-family:'Shippori Mincho B1',serif;font-size:20px;color:#3f4256;margin-top:6px">[フレーバー名]</div>
+        <p style="margin:8px 0 0;font-size:13px;line-height:1.8;color:#555">[甘さ・酸味・後味などの味の特徴を記載]</p>
+      </div>
+      <div style="background:#fff;border:1px solid #e9e4d6;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div><div style="font-size:12px;color:#777">容器・内容量</div><div style="font-weight:700;color:#3f4256;margin-top:4px">[缶/瓶/紙パック] [__]ml</div></div>
+        <div><div style="font-size:12px;color:#777">入数</div><div style="font-weight:700;color:#3f4256;margin-top:4px">[__]本入り</div></div>
+        <div><div style="font-size:12px;color:#777">保存方法</div><div style="font-weight:700;color:#3f4256;margin-top:4px">[保存方法]</div></div>
+        <div><div style="font-size:12px;color:#777">区分</div><div style="font-weight:700;color:#3f4256;margin-top:4px">[清涼飲料水など]</div></div>
+      </div>
+      <div style="background:#fff;border:1px solid #e9e4d6;padding:20px">
+        <div style="font-weight:900;color:#e0452f;font-size:17px">ラインナップ</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px">
+          <sc-for list="{{ variants }}" as="v" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+              <div style="width:100%;aspect-ratio:3/4;background:#fff url({{ v.img }}) {{ v.pos }}/cover no-repeat;border:1px solid #f1e6c8"></div>
+              <span style="font-size:12px;color:#444">{{ v.name }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 STORY -->
+<section id="story" data-screen-label="04 Story" style="background:linear-gradient(180deg,#fffaf0 0%,#fff3d9 55%,#fff 100%);padding:clamp(48px,7vw,80px) clamp(16px,4vw,40px)">
+  <div data-reveal="up" style="text-align:center">
+    <div style="font-family:Parisienne,cursive;color:#b59a72;font-size:22px">Our Story</div>
+    <div data-reveal="zoom" data-delay="200" style="max-width:520px;margin:18px auto 0;font-family:'Shippori Mincho B1',serif;color:#4a4a48;letter-spacing:.14em">
+      <div style="font-size:clamp(17px,2.6vw,22px);padding-bottom:14px">[ブランドの想い・コンセプト]から</div>
+      <div style="border-top:1px solid #3f4256;border-bottom:1px solid #3f4256;padding:16px 0;font-size:clamp(22px,4vw,32px);font-weight:700;line-height:1.6;color:#3f4256">毎日のひと息に<br>寄り添う一本を</div>
+      <div style="font-size:clamp(17px,2.6vw,22px);padding-top:14px">つくりました<span style="color:#e0452f">！</span></div>
+    </div>
+    <p style="max-width:560px;margin:24px auto 0;font-size:13.5px;line-height:2;color:#555;text-wrap:pretty">[開発のきっかけ・商品に込めた想いを2〜3文で記載。会社の沿革や開発実績は、事実に基づく内容のみ掲載してください。]</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:{{ storyCols }};gap:28px;align-items:center;margin-top:48px">
+    <div data-reveal="left" data-delay="200" style="display:flex;flex-direction:column;gap:28px">
+      <div>
+        <div style="font-weight:900;font-size:20px;line-height:1.45;color:#e0452f">「[フレーバー]」の<br>すっきりとした味わい</div>
+        <p style="margin:10px 0 0;font-size:12.5px;line-height:1.9;color:#555;border-top:1px solid #f0c9a8;padding-top:10px">[風味・味のこだわりを記載]</p>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:20px;line-height:1.45;color:#e0452f">こだわりの<br>「[成分設計]」</div>
+        <p style="margin:10px 0 0;font-size:12.5px;line-height:1.9;color:#555;border-top:1px solid #f0c9a8;padding-top:10px">[配合・製法の特徴を記載（確認済みの内容のみ）]</p>
+      </div>
+    </div>
+    <div data-reveal="zoom" style="display:grid;place-items:center;order:{{ storyImgOrder }};grid-column:{{ storyImgSpan }}">
+      <div data-anim="spin" style="grid-area:1/1;width:min(112%,300px);aspect-ratio:1/1;border-radius:50%;border:2px dashed #f0c060"></div>
+      <div data-anim="float" style="grid-area:1/1;width:min(100%,260px);aspect-ratio:1/1;border-radius:50%;border:14px solid #8dc26a;background:#fffaec url(images/09-sparkling-glass.jpg) center/cover no-repeat"></div>
+    </div>
+    <div data-reveal="right" data-delay="200" style="display:flex;flex-direction:column;gap:28px">
+      <div>
+        <div style="font-weight:900;font-size:20px;line-height:1.45;color:#e0452f">持ち歩きにちょうどいい<br>「[容量]」サイズ</div>
+        <p style="margin:10px 0 0;font-size:12.5px;line-height:1.9;color:#555;border-top:1px solid #f0c9a8;padding-top:10px">[パッケージ・サイズのこだわりを記載]</p>
+      </div>
+      <div>
+        <div style="font-weight:900;font-size:20px;line-height:1.45;color:#e0452f">デザインにも<br>[パッケージの特徴]</div>
+        <p style="margin:10px 0 0;font-size:12.5px;line-height:1.9;color:#555;border-top:1px solid #f0c9a8;padding-top:10px">[デザインの意図を記載]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 OFFER + FAQ -->
+<section id="faq" data-screen-label="05 FAQ & CTA" style="padding:clamp(40px,6vw,64px) clamp(12px,4vw,40px) clamp(48px,7vw,72px);background:#fff">
+  <sc-if value="{{ showOffer }}" hint-placeholder-val="{{ true }}">
+    <div data-reveal="up" style="border:1px solid #f08a6a;box-shadow:0 18px 40px rgba(232,69,44,.12)">
+      <div style="background:linear-gradient(90deg,#e4402b,#f0782a);color:#fff;text-align:center;padding:14px 12px;font-family:'Shippori Mincho B1',serif;font-weight:700;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:4px 14px">
+        <span style="font-size:clamp(15px,2.4vw,22px);letter-spacing:.06em">初めての方限定／初回購入</span>
+        <span data-anim="pulse" style="display:inline-block;font-size:clamp(40px,7vw,64px);line-height:1;font-weight:800">[__]%OFF</span>
+      </div>
+      <div style="background:#fff7e6;padding:20px clamp(12px,3vw,28px) 16px">
+        <div style="background:#fff;display:flex;flex-wrap:wrap;gap:20px;align-items:center;padding:20px">
+          <div data-anim="float" role="img" aria-label="商品パッケージ" style="flex:0 0 130px;margin:0 auto;aspect-ratio:3/4;background:#fff url(images/14-bottles-5.jpg) center/cover no-repeat"></div>
+          <div style="flex:1 1 260px;min-width:0">
+            <div style="display:flex;justify-content:flex-end"><span style="background:#3f4256;color:#fff;font-size:10px;padding:2px 8px">[__]本入り</span></div>
+            <div style="font-weight:700;font-size:clamp(17px,2.6vw,21px);color:#333;border-bottom:1px solid #ccc;padding-bottom:8px;line-height:1.45">[商品名]</div>
+            <div style="margin-top:8px;font-size:12px;color:#555">通常価格 <span style="text-decoration:line-through;font-weight:700;font-size:15px">[__,___]円</span>（税込）</div>
+            <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;color:#e0452f">
+              <span style="font-size:13px;font-weight:700">お試し価格</span>
+              <span style="font-size:clamp(30px,5vw,40px);font-weight:900;line-height:1.1">[_,___]<span style="font-size:.5em">円</span></span>
+              <span style="font-size:11px;color:#555">（税込）送料[__]</span>
+            </div>
+            <a href="#purchase-url-placeholder" style="position:relative;overflow:hidden;margin-top:12px;display:flex;align-items:center;justify-content:center;height:46px;background:linear-gradient(180deg,#f2552a,#d8321a);color:#fff;font-weight:700;letter-spacing:.1em;border-radius:3px;box-shadow:0 3px 0 #a8240f" style-hover="filter:brightness(1.08);color:#fff"><span data-anim="shine" data-delay="1200" style="position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.5),rgba(255,255,255,0));transform:skewX(-20deg);pointer-events:none"></span><span style="position:relative">ご購入はこちら</span></a>
+          </div>
+        </div>
+        <p style="margin:10px 0 0;font-size:10.5px;color:#777;line-height:1.7">※価格・割引率・適用条件は仮置きです。実際の販売条件に合わせて記載してください。</p>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="text-align:center;margin-top:clamp(48px,7vw,72px)">
+    <div style="font-family:Parisienne,cursive;color:#b59a72;font-size:22px">Q &amp; A</div>
+    <h2 style="margin:4px 0 0;display:inline-block;font-family:'Shippori Mincho B1',serif;font-weight:700;font-size:clamp(24px,4vw,34px);color:#3f4256;letter-spacing:.12em;background:linear-gradient(transparent 62%,#fff35c 62%);padding:0 6px">よくあるご質問</h2>
+  </div>
+  <div style="max-width:720px;margin:28px auto 0;display:flex;flex-direction:column;gap:10px">
+    <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
+      <div data-reveal="up" data-stagger="1" style="border:1px solid #ece6d4;background:#fff">
+        <button onClick="{{ q.toggle }}" style="width:100%;display:flex;align-items:center;gap:14px;padding:16px 18px;background:#fff;border:0;cursor:pointer;text-align:left;font-family:inherit;font-size:15px;font-weight:700;color:#3a3a3a" style-hover="background:#fffaf0">
+          <span style="flex:0 0 30px;height:30px;border-radius:50%;background:#e8452c;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Shippori Mincho B1',serif;font-size:15px">Q</span>
+          <span style="flex:1">{{ q.q }}</span>
+          <span style="font-size:20px;color:#e8452c;width:20px;text-align:center">{{ q.icon }}</span>
+        </button>
+        <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+          <div data-reveal="fade" style="display:flex;gap:14px;padding:0 18px 18px">
+            <span style="flex:0 0 30px;height:30px;border-radius:50%;background:#fff3d6;color:#c8401c;display:flex;align-items:center;justify-content:center;font-family:'Shippori Mincho B1',serif;font-size:15px;font-weight:700">A</span>
+            <p style="margin:4px 0 0;font-size:14px;line-height:1.9;color:#555">{{ q.a }}</p>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+
+  <div data-reveal="up" style="margin-top:48px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px">
+    <div style="font-family:'Shippori Mincho B1',serif;font-size:clamp(18px,3vw,24px);color:#3f4256;letter-spacing:.1em">毎日のひと息に、[商品名]を。</div>
+    <a data-anim="breathe" href="#purchase-url-placeholder" style="position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;width:min(100%,380px);height:62px;background:linear-gradient(180deg,#f2552a,#d8321a);color:#fff;font-weight:700;font-size:18px;letter-spacing:.12em;border-radius:4px;box-shadow:0 4px 0 #a8240f,0 10px 22px rgba(216,50,26,.3)" style-hover="filter:brightness(1.08);color:#fff"><span data-anim="shine" data-delay="1800" style="position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.5),rgba(255,255,255,0));transform:skewX(-20deg);pointer-events:none"></span><span style="position:relative">オンラインショップはこちら</span></a>
+    <a href="#ingredients" style="font-size:13px;color:#e0452f;border-bottom:1px solid #f0b8a8;padding-bottom:2px" style-hover="color:#c8401c">商品詳細を見る</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#1d4f96;color:#fff;padding:40px clamp(16px,4vw,40px) {{ footerPadBottom }}">
+  <div data-reveal="fade" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px">
+    <div>
+      <div style="font-weight:900;font-size:18px;letter-spacing:.08em">BRAND NAME</div>
+      <p style="margin:10px 0 0;font-size:12px;line-height:1.9;color:#dce6f5">[会社名]<br>[所在地]</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+      <div style="font-size:11px;color:#a9c0e4;letter-spacing:.1em">商品情報</div>
+      <a href="#features" style="color:#fff" style-hover="color:#fff35c">特長</a>
+      <a href="#ingredients" style="color:#fff" style-hover="color:#fff35c">成分・栄養</a>
+      <a href="#faq" style="color:#fff" style-hover="color:#fff35c">よくあるご質問</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+      <div style="font-size:11px;color:#a9c0e4;letter-spacing:.1em">お問い合わせ</div>
+      <span style="color:#fff">[電話番号]（受付時間 [__:__〜__:__]）</span>
+      <a href="#contact-placeholder" style="color:#fff" style-hover="color:#fff35c">お問い合わせフォーム</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+      <div style="font-size:11px;color:#a9c0e4;letter-spacing:.1em">ご利用にあたって</div>
+      <a href="#privacy-placeholder" style="color:#fff" style-hover="color:#fff35c">プライバシーポリシー</a>
+      <a href="#terms-placeholder" style="color:#fff" style-hover="color:#fff35c">利用規約</a>
+      <a href="#tokushoho-placeholder" style="color:#fff" style-hover="color:#fff35c">特定商取引法に基づく表記</a>
+    </div>
+  </div>
+  <div style="margin-top:32px;padding-top:16px;border-top:1px solid rgba(255,255,255,.2);font-size:11px;color:#a9c0e4;text-align:center">© [__] [会社名] All Rights Reserved.</div>
+</footer>
+</div>
+
+<sc-if value="{{ showSticky }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 12px;background:rgba(255,255,255,.96);border-top:1px solid #eee;display:flex">
+    <a href="#purchase-url-placeholder" style="position:relative;overflow:hidden;flex:1;display:flex;align-items:center;justify-content:center;height:50px;background:linear-gradient(180deg,#f2552a,#d8321a);color:#fff;font-weight:700;letter-spacing:.12em;border-radius:4px"><span data-anim="shine" data-delay="2400" style="position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.5),rgba(255,255,255,0));transform:skewX(-20deg);pointer-events:none"></span><span style="position:relative">商品を購入する</span></a>
+  </div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showOffer&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conversion&quot;},&quot;stickyCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conversion&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false, open: { 0: true } };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+    this.onScroll = () => {
+      const bar = document.querySelector('[data-progress]');
+      if (!bar) return;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.pending = new Set();
+    this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) this.reveal(e.target); }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    this.check = () => this.pending.forEach(el => { const r = el.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) this.reveal(el); });
+    window.addEventListener('scroll', this.check, { passive: true });
+    window.addEventListener('resize', this.check);
+    this.revealAll = () => this.pending.forEach(el => this.reveal(el, true));
+    window.addEventListener('beforeprint', this.revealAll);
+    this.safety = setTimeout(() => this.check(), 1500);
+    this.onResize();
+    this.mo = new MutationObserver(() => { clearTimeout(this.t); this.t = setTimeout(() => this.setupAnims(), 60); });
+    this.mo.observe(document.body, { childList: true, subtree: true });
+    this.setupAnims();
+  }
+  componentDidUpdate() { this.setupAnims(); }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('scroll', this.check);
+    window.removeEventListener('resize', this.check);
+    window.removeEventListener('beforeprint', this.revealAll);
+    clearTimeout(this.safety);
+    this.io && this.io.disconnect(); this.mo && this.mo.disconnect();
+  }
+  loop(name, delay) {
+    const L = { bob: '4s ease-in-out', float: '5s ease-in-out', drift: '14s ease-in-out', shine: '3.4s ease-in-out', wiggle: '2.6s ease-in-out', pulse: '1.8s ease-in-out', breathe: '2.2s ease-in-out', spin: '40s linear' };
+    return L[name] ? `an-${name} ${L[name]} ${delay}ms infinite` : '';
+  }
+  reveal(el, instant) {
+    if (!this.pending.has(el)) return;
+    this.pending.delete(el); this.io.unobserve(el);
+    el.style.opacity = '';
+    if (instant) { el.style.animation = this.loop(el.dataset.anim, 0); return; }
+    const d = +el.dataset.rvDelay || 0;
+    let a = `rv-${el.dataset.reveal} .9s cubic-bezier(.2,.7,.2,1) ${d}ms backwards`;
+    const loop = this.loop(el.dataset.anim, d + 900);
+    if (loop) a += ', ' + loop;
+    el.style.animation = a;
+  }
+  setupAnims() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll('[data-anim]:not([data-reveal])').forEach(el => {
+      if (!this.handledA) this.handledA = new WeakSet();
+      if (this.handledA.has(el)) return; this.handledA.add(el);
+      el.style.animation = this.loop(el.dataset.anim, +el.dataset.delay || 0);
+    });
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (!this.handled) this.handled = new WeakSet();
+      if (this.handled.has(el)) return; this.handled.add(el);
+      el.style.opacity = '';
+      let d = +el.dataset.delay || 0;
+      if (el.hasAttribute('data-stagger') && el.parentElement) {
+        const sibs = Array.from(el.parentElement.children).filter(c => c.hasAttribute('data-stagger'));
+        d += (sibs.indexOf(el) % 8) * 110;
+      }
+      el.dataset.rvDelay = d;
+      this.pending.add(el);
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) { this.reveal(el); return; }
+      el.style.opacity = '0';
+      this.io.observe(el);
+    });
+  }
+  renderVals() {
+    const w = this.state.w;
+    const narrow = w < 760;
+    const sticky = narrow && (this.props.stickyCta ?? true);
+    const heroPhoto = 'background:url(images/17-woman-bottle-smile.jpg) ';
+    const faqData = [
+      ['主な原材料は何ですか？', '[原材料名を商品表示どおりに記載してください]'],
+      ['カフェインは入っていますか？', '[カフェインの有無・1本あたりの含有量を記載。含まない場合はその旨を記載]'],
+      ['内容量はどのくらいですか？', '1本あたり[__]mlです。[__]本入りでお届けします。'],
+      ['どのように保存すればよいですか？', '[保存方法を記載]。開封後はお早めにお召し上がりください。'],
+      ['価格はいくらですか？', '通常価格[__,___]円（税込）です。初回購入価格など最新の販売条件は購入ページをご確認ください。'],
+      ['どこで購入できますか？', '[公式オンラインショップ／取扱店舗など販売チャネルを記載]'],
+    ];
+    return {
+      navDisplay: narrow ? 'none' : 'flex',
+      burgerDisplay: narrow ? 'flex' : 'none',
+      menuOpen: narrow && this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      showOffer: this.props.showOffer ?? true,
+      showSticky: sticky,
+      heroPhotoStyle: narrow
+        ? heroPhoto + '58% 14%/cover no-repeat;position:relative;height:clamp(240px,62vw,360px);margin:calc(-1 * clamp(32px,6vw,56px)) calc(-1 * clamp(16px,4vw,40px)) 20px;mask-image:linear-gradient(180deg,#000 72%,transparent);-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent)'
+        : heroPhoto + '62% 15%/cover no-repeat;position:absolute;right:0;top:0;bottom:0;width:44%;mask-image:linear-gradient(90deg,transparent 0,#000 30%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%)',
+      heroTextMax: narrow ? 'none' : '58%',
+      heroBtnFlex: narrow ? '1 1 100%' : '0 0 auto',
+      featFlex: w < 600 ? '0 0 calc(50% - 10px)' : '0 1 220px',
+      sceneCols: w < 900 ? 'repeat(2,minmax(0,1fr))' : 'repeat(4,minmax(0,1fr))',
+      storyCols: w < 600 ? '1fr' : w < 900 ? 'repeat(2,minmax(0,1fr))' : 'repeat(3,minmax(0,1fr))',
+      storyImgOrder: w < 900 ? '-1' : '0',
+      storyImgSpan: w < 900 ? '1 / -1' : 'auto',
+      footerPadBottom: sticky ? '96px' : '28px',
+      features: [
+        { num: '01', img: 'images/13-bottles-3-top.jpg', pre: '片手で飲める', title: '[容量]サイズ', sub: 'バッグに入れて\n持ち歩きやすい' },
+        { num: '02', img: 'images/03-fruits-veg.jpg', pre: '主な成分', title: '[栄養成分]配合', sub: '1本あたり[__]mg' },
+        { num: '03', img: 'images/12-bottles-group.jpg', pre: '保存方法', title: '[常温保存など]', sub: 'デスクや自宅に\nストックしやすい' },
+        { num: '04', img: 'images/02-greens.jpg', pre: 'カロリー', title: '1本[__]kcal', sub: '[脂質・糖類などの表示]' },
+        { num: '05', img: 'images/01-green-juice.jpg', pre: '飲みやすい', title: '[フレーバー名]', sub: '[味の特徴をひとこと]' },
+      ],
+      scenes: [
+        { img: 'images/18-woman-breakfast.jpg', pos: 'center 40%', title: '朝の支度に', text: '時間のない朝も、冷蔵庫から取り出してさっと一本。' },
+        { img: 'images/16-woman-bottle-fist.jpg', pos: 'center 25%', title: '仕事・勉強の合間に', text: 'デスクに置いておけば、休憩のタイミングで手軽に。' },
+        { img: 'images/15-woman-bottle-front.jpg', pos: 'center 15%', title: '移動中に', text: '通勤や出張のバッグにも収まりやすいサイズです。' },
+        { img: 'images/22-woman-smile.jpg', pos: '30% 30%', title: 'おでかけに', text: '屋外でのレジャーやスポーツ観戦のおともに。' },
+      ],
+      ingredients: ['[成分名1]', '[成分名2]', '[ビタミン類]', '[ミネラル類]', '[その他]'],
+      nutrition: [
+        { k: 'エネルギー', v: '[__] kcal' }, { k: 'たんぱく質', v: '[__] g' }, { k: '脂質', v: '[__] g' },
+        { k: '炭水化物', v: '[__] g' }, { k: '食塩相当量', v: '[__] g' }, { k: 'カフェイン', v: '[__] mg' },
+        { k: '[ビタミン名]', v: '[__] mg' }, { k: '[その他成分]', v: '[__] mg' },
+      ],
+      variants: [
+        { name: '[フレーバー1]', img: 'images/11-bottles-row.jpg', pos: '18% center' },
+        { name: '[フレーバー2]', img: 'images/13-bottles-3-top.jpg', pos: 'center' },
+        { name: '[フレーバー3]', img: 'images/14-bottles-5.jpg', pos: 'center' },
+      ],
+      faqs: faqData.map(([q, a], i) => {
+        const open = !!this.state.open[i];
+        return { q, a, open, icon: open ? '−' : '+', toggle: () => this.setState(s => ({ open: { ...s.open, [i]: !s.open[i] } })) };
+      }),
+    };
+  }
+}
+</script>
+</body>
+</html>

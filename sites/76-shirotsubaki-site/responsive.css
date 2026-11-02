@@ -1,0 +1,58 @@
+/* Responsive overrides — inline styles carry the desktop design, so rules here need !important. */
+
+/* ---------- tablet & below ---------- */
+@media (max-width: 900px) {
+  /* hero: photo ring on its own row, the two link circles side by side under it */
+  .hero-row { display: grid !important; grid-template-columns: 1fr 1fr; justify-items: center; row-gap: 28px; }
+  .hero-ring { grid-column: 1 / -1; order: -1 !important; }
+  .hero-pill { width: 132px !important; height: 132px !important; }
+  .hero-pill > span:nth-child(2) { font-size: 25px !important; }
+}
+
+/* ---------- phone ---------- */
+@media (max-width: 640px) {
+  /* Open Campus badge: float bottom-right instead of hanging over the header */
+  .oc-badge { top: auto !important; bottom: 14px; right: 14px !important; animation: none !important; }
+  .oc-badge > span:first-child { display: none !important; }
+  .oc-badge > span:last-child { width: 76px !important; height: 76px !important; box-shadow: 0 0 0 3px #f3eab8, 0 6px 18px rgba(150,130,60,.28) !important; }
+  .oc-badge > span:last-child > span:first-child { font-size: 13px !important; }
+  .oc-badge > span:last-child > span:last-child { font-size: 12px !important; }
+  .hdr-row { padding-right: 0 !important; }
+
+  /* hero vertical copy turns horizontal under the ring */
+  .hero-ring { margin-bottom: 44px; }
+  .hero-copy { writing-mode: horizontal-tb !important; top: auto !important; bottom: -50px; left: 0; right: 0 !important; text-align: center; letter-spacing: .24em !important; line-height: 1.6 !important; font-size: 15px !important; }
+  .hero-copy br { display: none; }
+  .hero-h1 { font-size: 20px !important; letter-spacing: .1em !important; }
+
+  /* decorative bands only make sense behind a single row */
+  .sh-band { display: none !important; }
+
+  /* type that wrapped one or two characters onto a new line */
+  .about-lead { font-size: 14px !important; letter-spacing: .06em !important; line-height: 2.2 !important; }
+  .oc-lead { font-size: 19px !important; letter-spacing: .06em !important; }
+  .note-pill { border-radius: 18px !important; }
+
+  /* faculty cards on top: two up, last odd one centred */
+  .fac-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; width: calc(50% - 8px); justify-self: center; }
+
+  /* department rows: name above keywords */
+  .dept-row { flex-direction: column !important; gap: 2px !important; }
+
+  /* history: narrower year column */
+  .hist-li { grid-template-columns: 86px 1fr !important; gap: 14px !important; }
+
+  /* president portrait placeholder */
+  .pres { width: 220px !important; }
+
+  /* seasons: 2 x 2 */
+  .season-grid { grid-template-columns: 1fr 1fr !important; row-gap: 32px !important; }
+  .season-dot { width: 118px !important; height: 118px !important; }
+
+  /* application flow: vertical timeline */
+  .flow-list { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .flow-list > li { display: grid !important; grid-template-columns: 70px 1fr; column-gap: 18px; align-items: center; text-align: left !important; }
+  .flow-list > li > span { grid-row: span 2; width: 70px !important; height: 70px !important; }
+  .flow-list > li > h3 { margin: 0 !important; align-self: end; }
+  .flow-list > li > p { align-self: start; }
+}

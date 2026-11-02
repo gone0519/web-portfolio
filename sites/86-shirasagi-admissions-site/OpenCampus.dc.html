@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1f1f1f;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#1f1f1f;text-decoration:none;transition:color .25s,background .25s,border-color .25s}
+a:hover{color:#c22a2a}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #c22a2a;outline-offset:2px}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="open" style="position:sticky;top:0;z-index:50" hint-size="100%,72px"></dc-import>
+<main>
+<dc-import name="PageHero" no="05" title="オープンキャンパス" en="Open Campus" lead="模擬授業、キャンパスツアー、在学生との会話。パンフレットだけではわからない白鷺の空気を、実際に歩いて確かめてください。" img-id="oc-hero" img-label="在学生スタッフが案内するキャンパスツアー" hint-size="100%,560px"></dc-import>
+
+<section id="programs" data-screen-label="OC Programs" style="scroll-margin-top:80px;max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(40px,6vw,56px)">
+  <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+    <span style="font-family:'Noto Serif JP',serif;font-size:12px;font-weight:700;letter-spacing:0.1em">当日の</span>
+    <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.2vw,38px);font-weight:700;letter-spacing:0.24em">プログラム</h2>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic">Programs</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:clamp(32px,4vw,48px) 24px">
+    <sc-for list="{{ programs }}" as="p" hint-placeholder-count="4">
+      <article data-reveal="zoom" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px">
+        <div style="position:relative;width:min(100%,220px);aspect-ratio:1/1">
+          <span style="position:absolute;left:50%;top:-14px;transform:translateX(-50%);width:80px;height:16px;background:#1f1f1f;border-radius:50% 50% 4px 4px / 100% 100% 4px 4px;z-index:1"></span>
+          <image-slot id="oc-{{ p.key }}" shape="circle" placeholder="{{ p.photo }}"></image-slot>
+        </div>
+        <h3 style="margin:8px 0 0;font-size:15px;font-weight:700;color:#c22a2a;letter-spacing:0.1em;border-bottom:1px solid #c22a2a;padding-bottom:2px">{{ p.title }}</h3>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic">{{ p.en }}</span>
+        <p style="margin:0;font-size:13px;line-height:1.9;color:#444;max-width:260px">{{ p.desc }}</p>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section id="day" data-screen-label="OC Day" style="scroll-margin-top:80px;background:#f6f5f2">
+  <div style="max-width:1000px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(40px,6vw,56px)">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+      <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.2vw,38px);font-weight:700;letter-spacing:0.24em">当日の流れ</h2>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic">A Day at Open Campus</span>
+    </div>
+    <ol data-reveal="" style="list-style:none;margin:0;padding:0 0 0 28px;border-left:1px solid #1f1f1f;display:flex;flex-direction:column;gap:28px">
+      <sc-for list="{{ day }}" as="d" hint-placeholder-count="5">
+        <li style="position:relative;display:flex;flex-direction:column;gap:6px">
+          <span style="position:absolute;left:-36px;top:4px;width:15px;height:15px;border-radius:50%;background:#c22a2a;border:3px solid #f6f5f2"></span>
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#c22a2a">{{ d.en }}</span>
+          <span style="font-family:'Noto Serif JP',serif;font-size:18px;font-weight:500;letter-spacing:0.08em">{{ d.title }}</span>
+          <span style="font-size:13px;line-height:1.8;color:#555">{{ d.desc }}</span>
+        </li>
+      </sc-for>
+    </ol>
+    <p style="margin:0;font-size:11px;color:#666">※ 開催日程・時間は予約ページで公開します。内容は変更となる場合があります。</p>
+  </div>
+</section>
+
+<section id="reserve" data-screen-label="OC Reserve" style="scroll-margin-top:80px;max-width:1160px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,72px);align-items:start">
+  <div data-reveal="" style="display:flex;flex-direction:column;gap:22px;position:relative">
+    <span style="display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#c22a2a"><span style="width:24px;height:1px;background:#c22a2a"></span>Reservation</span>
+    <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(26px,3vw,38px);font-weight:400;letter-spacing:0.1em;line-height:1.6">キャンパスで、<br>未来の自分に会いにいく。</h2>
+    <p style="margin:0;font-size:13px;line-height:2;color:#444">参加は無料（予定）。保護者の方もご参加いただけます。ご予約後、確認メールをお送りします。</p>
+    <div style="position:relative;aspect-ratio:4/3;margin-top:12px">
+      <image-slot src="_filled/13-hero-student.jpg" id="oc-reserve" shape="rounded" radius="4" placeholder="模擬授業の様子"></image-slot>
+      <span data-anim="stamp" style="position:absolute;top:-24px;right:16px;width:90px;height:90px;border-radius:50%;background:#c22a2a;color:#fff;font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;line-height:1.4;display:flex;align-items:center;justify-content:center;text-align:center;pointer-events:none">予約<br>受付中</span>
+    </div>
+  </div>
+  <div data-reveal="" style="background:#fff;border:2px solid #1f1f1f;padding:clamp(24px,4vw,44px)">
+    <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+      <div role="status" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;padding:32px 0">
+        <span style="width:72px;height:72px;border-radius:50%;background:#c22a2a;color:#fff;font-family:'Noto Serif JP',serif;font-size:22px;display:flex;align-items:center;justify-content:center">済</span>
+        <h3 style="margin:0;font-family:'Noto Serif JP',serif;font-size:22px;font-weight:500;letter-spacing:0.1em">ご予約を受け付けました</h3>
+        <p style="margin:0;font-size:13px;line-height:1.9;color:#444">{{ doneName }} さん、ありがとうございます。<br>確認メールを {{ doneEmail }} へお送りします（デモのため送信はされません）。</p>
+        <button type="button" onClick="{{ reset }}" style="background:none;border:1px solid #1f1f1f;border-radius:999px;padding:12px 28px;font:inherit;font-size:13px;font-weight:700;cursor:pointer" style-hover="border-color:#c22a2a;color:#c22a2a">別の予約をする</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" noValidate="{{ true }}" style="display:flex;flex-direction:column;gap:20px">
+        <h3 style="margin:0;font-family:'Noto Serif JP',serif;font-size:20px;font-weight:500;letter-spacing:0.1em">参加予約フォーム</h3>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700">お名前 <span style="color:#c22a2a;font-size:10px">必須</span>
+          <input name="name" type="text" autoComplete="name" style="font:inherit;font-size:15px;font-weight:400;padding:12px 14px;border:1px solid #bdb9b0;border-radius:0;background:#fff">
+        </label>
+        <sc-if value="{{ errName }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:11px;color:#c22a2a;margin-top:-12px">お名前を入力してください</span></sc-if>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700">メールアドレス <span style="color:#c22a2a;font-size:10px">必須</span>
+          <input name="email" type="email" autoComplete="email" style="font:inherit;font-size:15px;font-weight:400;padding:12px 14px;border:1px solid #bdb9b0;border-radius:0;background:#fff">
+        </label>
+        <sc-if value="{{ errEmail }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:11px;color:#c22a2a;margin-top:-12px">正しいメールアドレスを入力してください</span></sc-if>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:16px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700">学年
+            <select name="grade" style="font:inherit;font-size:15px;font-weight:400;padding:12px 14px;border:1px solid #bdb9b0;border-radius:0;background:#fff"><option>高校3年生</option><option>高校2年生</option><option>高校1年生</option><option>既卒・その他</option></select>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700">参加人数
+            <select name="people" style="font:inherit;font-size:15px;font-weight:400;padding:12px 14px;border:1px solid #bdb9b0;border-radius:0;background:#fff"><option>本人のみ</option><option>本人＋保護者1名</option><option>本人＋保護者2名</option></select>
+          </label>
+        </div>
+        <fieldset style="border:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+          <legend style="font-size:12px;font-weight:700;margin-bottom:10px">興味のある学部（複数選択可）</legend>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="4">
+              <label style="display:flex;align-items:center;gap:8px;font-size:13px;border:1px solid #d8d5ce;border-radius:999px;padding:8px 14px;cursor:pointer"><input type="checkbox" name="fac" value="{{ f }}" style="accent-color:#c22a2a;margin:0">{{ f }}</label>
+            </sc-for>
+          </div>
+        </fieldset>
+        <button type="submit" style="background:#c22a2a;color:#fff;border:none;border-radius:999px;padding:18px 26px;font:inherit;font-size:14px;font-weight:700;letter-spacing:0.1em;cursor:pointer;display:flex;justify-content:space-between" style-hover="background:#1f1f1f">予約内容を送信する<span aria-hidden="true">→</span></button>
+        <span style="font-size:11px;color:#666">※ デモ用フォームです。送信内容は保存されません。</span>
+      </form>
+    </sc-if>
+  </div>
+</section>
+<dc-import name="CtaBand" img-id="cta-oc" hint-size="100%,360px"></dc-import>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { done: false, errName: false, errEmail: false, name: '', email: '' };
+  renderVals() {
+    return {
+      done: this.state.done, notDone: !this.state.done,
+      doneName: this.state.name, doneEmail: this.state.email,
+      errName: this.state.errName, errEmail: this.state.errEmail,
+      submit: (e) => {
+        e.preventDefault();
+        const fd = new FormData(e.currentTarget);
+        const name = String(fd.get('name') || '').trim(), email = String(fd.get('email') || '').trim();
+        const errName = !name, errEmail = !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+        if (errName || errEmail) return this.setState({ errName, errEmail });
+        this.setState({ done: true, name, email, errName: false, errEmail: false });
+      },
+      reset: () => this.setState({ done: false }),
+      faculties: ['文学部', '人間科学部', '理学部', '国際教養学部'],
+      programs: [
+        { key: 'class', title: '模擬授業', en: 'Trial Lectures', photo: '模擬授業', desc: '各学部の教員による、大学の授業を体験できるプログラム。' },
+        { key: 'tour', title: 'キャンパスツアー', en: 'Campus Tour', photo: 'キャンパスツアー', desc: '在学生スタッフと一緒に、図書館や実験棟を巡ります。' },
+        { key: 'consult', title: '入試・個別相談', en: 'Consultation', photo: '個別相談', desc: '入試方式や学部選びの疑問に、職員が個別にお答えします。' },
+        { key: 'lunch', title: '学食体験', en: 'Campus Lunch', photo: '学生食堂', desc: '学生会館の食堂で、在学生と同じランチを味わえます。' }
+      ],
+      day: [
+        { en: 'Reception', title: '受付', desc: '本館エントランスで受付。当日のプログラム案内をお渡しします。' },
+        { en: 'Overview', title: '全体説明', desc: '大学の特色と入試の概要を紹介します。' },
+        { en: 'Lecture', title: '模擬授業', desc: '興味のある学部の授業を選んで参加できます。' },
+        { en: 'Tour & Lunch', title: 'キャンパスツアー・学食体験', desc: '在学生と一緒にキャンパスを歩き、食堂でひと休み。' },
+        { en: 'Consultation', title: '個別相談', desc: '入試や学生生活の疑問を、その場で相談できます。' }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

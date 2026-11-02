@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Jost:wght@500;600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FCF8F3;color:#2E2A27;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#D9482A;text-decoration:none}
+a:hover{color:#B8381E}
+:focus-visible{outline:2px solid #D9482A;outline-offset:3px}
+</style>
+<link rel="stylesheet" href="site.css">
+<script src="motion.js"></script>
+</helmet>
+<dc-import name="Site Nav" current="academics" hint-size="0px,0px"></dc-import>
+<div style="padding-left:min(176px,max(0px,calc((100vw - 899px) * 1000)));padding-top:min(60px,max(0px,calc((900px - 100vw) * 1000)))">
+<main>
+<section data-screen-label="Academics Hero" style="overflow:hidden;border-bottom:1px solid #EFE4D8;padding-bottom:56px">
+  <div data-anim="word" aria-hidden="true" style="font-family:Jost,sans-serif;font-weight:700;color:#E2502F;font-size:min(clamp(64px,10vw,150px),14.5vw);line-height:.78;margin-top:-.08em">ACADEMICS</div>
+  <div style="max-width:880px;margin:0 auto;padding:44px clamp(18px,4vw,40px) 0">
+    <nav aria-label="パンくず" style="font-size:10.5px;color:#6E6259;display:flex;gap:8px"><a href="Kanade%20Womens%20University.dc.html" style="color:#6E6259">トップ</a><span>／</span><span>学部・学科</span></nav>
+    <h1 style="margin:18px 0 0;font-size:clamp(22px,2.6vw,28px);font-weight:500;letter-spacing:.24em;line-height:1.6">学部・学科</h1>
+    <p style="font-size:12.5px;line-height:2.1;letter-spacing:.04em;margin:18px 0 28px;max-width:44em;text-wrap:pretty">3学部8学科。専門を深く学びながら、副専攻やプロジェクト科目で分野をこえた視点を身につけます。</p>
+    <div role="tablist" aria-label="学部で絞り込む" style="display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <button role="tab" aria-selected="{{ t.active }}" onClick="{{ t.onClick }}" style="height:40px;padding:0 18px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};font-family:inherit;font-size:12px;font-weight:500;letter-spacing:.06em;cursor:pointer">{{ t.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<div style="max-width:880px;margin:0 auto;padding:0 clamp(18px,4vw,40px)">
+<sc-for list="{{ faculties }}" as="fa" hint-placeholder-count="3">
+  <section style="padding:64px 0;border-bottom:1px solid #EFE4D8">
+    <div style="font-family:Jost,sans-serif;font-size:11px;color:#E2502F;letter-spacing:.16em">{{ fa.en }}</div>
+    <h2 style="margin:6px 0 10px;font-size:clamp(20px,2.4vw,24px);font-weight:500;letter-spacing:.24em">{{ fa.name }}</h2>
+    <p style="margin:0 0 28px;font-size:12.5px;line-height:2;max-width:44em;text-wrap:pretty">{{ fa.body }}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px">
+      <sc-for list="{{ fa.depts }}" as="d" hint-placeholder-count="3">
+        <article style="background:#fff;border:1px solid #EFE4D8;border-radius:8px;overflow:hidden;display:flex;flex-direction:column">
+          <div role="img" aria-label="{{ d.name }}のイメージ" style="aspect-ratio:16/9;background:{{ d.bg }};display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8A7B6E">{{ d.ph }}</div>
+          <div style="padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <h3 style="margin:0;font-size:15px;font-weight:700;letter-spacing:.1em">{{ d.name }}</h3>
+            <p style="margin:0;font-size:12px;line-height:1.95;text-wrap:pretty">{{ d.body }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ d.tags }}" as="tg" hint-placeholder-count="3">
+                <span style="font-size:10.5px;border:1px solid #DCCFC2;border-radius:999px;padding:3px 10px;background:#FCF8F3">{{ tg }}</span>
+              </sc-for>
+            </div>
+            <div style="font-size:10.5px;color:#5E534B;line-height:1.8;border-top:1px solid #F3EBE2;padding-top:10px;margin-top:auto"><span style="font-weight:700;color:#2E2A27">めざせる資格（例）</span>　{{ d.cert }}</div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+</sc-for>
+
+<section style="padding:64px 0;border-bottom:1px solid #EFE4D8">
+  <div style="font-size:11px;color:#E2502F;letter-spacing:.12em;font-weight:500">学びの4年間</div>
+  <h2 style="margin:6px 0 28px;font-size:clamp(20px,2.4vw,24px);font-weight:500;letter-spacing:.24em">入学から卒業まで</h2>
+  <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:0;border-top:2px solid #E2502F">
+    <sc-for list="{{ years }}" as="y" hint-placeholder-count="4">
+      <li style="padding:20px 16px 8px 0">
+        <div style="font-family:Jost,sans-serif;font-size:22px;font-weight:600;color:#E2502F">{{ y.y }}</div>
+        <div style="font-size:14px;font-weight:700;letter-spacing:.1em;margin:6px 0 8px">{{ y.title }}</div>
+        <p style="margin:0;font-size:11.5px;line-height:1.9;text-wrap:pretty">{{ y.body }}</p>
+      </li>
+    </sc-for>
+  </ol>
+</section>
+
+<section style="padding:64px 0">
+  <div style="font-size:11px;color:#E2502F;letter-spacing:.12em;font-weight:500">副専攻プログラム</div>
+  <h2 style="margin:6px 0 10px;font-size:clamp(20px,2.4vw,24px);font-weight:500;letter-spacing:.24em">分野をこえて学ぶ</h2>
+  <p style="margin:0 0 24px;font-size:12.5px;line-height:2;max-width:44em">所属学科に関係なく、2年次から選択できます。</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:10px">
+    <sc-for list="{{ minors }}" as="m" hint-placeholder-count="4">
+      <div style="background:#fff;border:1px solid #EFE4D8;border-radius:8px;padding:18px">
+        <div style="font-size:13px;font-weight:700;letter-spacing:.08em">{{ m.name }}</div>
+        <div style="font-size:11px;line-height:1.85;margin-top:6px;color:#4A413B">{{ m.body }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <p style="font-size:10.5px;color:#9A4A33;margin:18px 0 0">※ 学部・学科・資格・プログラム名はサンプルです。</p>
+</section>
+</div>
+
+<a href="Kanade%20Admissions.dc.html#oc" style="display:flex;align-items:center;justify-content:space-between;gap:24px;background:#E2502F;color:#fff;margin-top:24px;padding:56px clamp(20px,8vw,120px)" style-hover="background:#C9401F;color:#fff">
+  <span><span style="display:block;font-size:clamp(18px,2.4vw,24px);font-weight:700;letter-spacing:.2em">模擬授業を受けてみませんか。</span><span style="display:block;font-size:12px;margin-top:10px;letter-spacing:.06em;font-weight:500">オープンキャンパスでは全学科の模擬授業を予定しています</span></span>
+  <span data-arrow="1" aria-hidden="true" style="display:flex;align-items:center;flex:none"><span style="width:56px;height:1px;background:#fff"></span><span style="width:12px;height:12px;border-top:1px solid #fff;border-right:1px solid #fff;transform:rotate(45deg);margin-left:-10px"></span></span>
+</a>
+</main>
+<dc-import name="Site Footer" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 'all' };
+  renderVals() {
+    const F = [
+      { id: 'lit', en: 'FACULTY OF LETTERS', name: '文学部', body: 'ことばと文化、歴史を手がかりに、人間の営みを読み解きます。精読と議論を重ね、根拠をもって自分の考えを述べる力を養います。', depts: [
+        { name: '日本語日本文学科', body: '古典から現代文学、日本語学までを扱い、テキストを精読して自分の解釈を論じる力を養います。', tags: ['古典文学', '日本語学', '創作演習'], cert: '中学校・高等学校教諭一種免許状（国語）' },
+        { name: '英語コミュニケーション学科', body: '英語運用力を土台に、言語学・異文化理解・翻訳を学びます。留学と組み合わせた履修が可能です。', tags: ['英語運用', '翻訳', '留学'], cert: '中学校・高等学校教諭一種免許状（英語）' },
+        { name: '歴史文化学科', body: '史料や地域の文化財に直接ふれながら、歴史を読み解く方法を身につけます。', tags: ['史料講読', '博物館学', 'フィールドワーク'], cert: '学芸員' }
+      ]},
+      { id: 'soc', en: 'FACULTY OF HUMAN AND SOCIAL STUDIES', name: '人間社会学部', body: '人の心と社会のしくみを、実験・調査・実践を通して学びます。データを扱う力と、現場で課題を見つける力の両方を重視します。', depts: [
+        { name: '心理学科', body: '実験・調査を通して人の心と行動を科学的に理解します。対人援助の基礎も学びます。', tags: ['実験心理学', '臨床心理', '統計'], cert: '認定心理士' },
+        { name: '現代社会学科', body: 'ジェンダー、メディア、地域社会など身近なテーマを社会調査の手法で考えます。', tags: ['社会調査', 'ジェンダー論', 'メディア論'], cert: '社会調査士' },
+        { name: '経営デザイン学科', body: '企業や地域団体と連携したプロジェクト型授業で、課題発見から提案までを実践します。', tags: ['マーケティング', '企業連携PBL', 'データ分析'], cert: 'ITパスポート（取得支援）' }
+      ]},
+      { id: 'life', en: 'FACULTY OF HUMAN LIFE SCIENCES', name: '生活科学部', body: '食と住まいという暮らしの基盤を、科学とデザインの両面から学びます。実験・実習が多く、専門職への道が開かれています。', depts: [
+        { name: '食物栄養学科', body: '食と健康を科学的に学び、管理栄養士国家試験受験資格の取得をめざします。', tags: ['栄養学', '調理科学', '臨地実習'], cert: '管理栄養士国家試験受験資格・栄養士' },
+        { name: '住環境デザイン学科', body: '住まいとまちの空間を、デザインと工学の両面から計画・設計します。', tags: ['建築設計', 'インテリア', 'まちづくり'], cert: '二級建築士受験資格' }
+      ]}
+    ];
+    // 学科ごとの写真（未指定の学科はプレースホルダー）
+    const IMG = { '日本語日本文学科': 'classroom', '英語コミュニケーション学科': 'students-glass', '歴史文化学科': 'campus-quad', '心理学科': 'group-work', '現代社会学科': 'seminar-talk', '経営デザイン学科': 'seminar-laptop', '食物栄養学科': 'study-laptop', '住環境デザイン学科': 'building-architecture' };
+    F.forEach(f => f.depts.forEach(d => {
+      d.bg = IMG[d.name] ? '#F1E5D8 url(images/' + IMG[d.name] + '.jpg) center/cover no-repeat' : 'repeating-linear-gradient(135deg,#F1E5D8 0 8px,#F7EFE6 8px 16px)';
+      d.ph = IMG[d.name] ? '' : 'photo: class scene';
+    }));
+    const tab = this.state.tab;
+    const tabs = [['all', 'すべて'], ...F.map(f => [f.id, f.name])].map(([id, label]) => {
+      const a = id === tab;
+      return { label, active: a, bg: a ? '#E2502F' : '#fff', color: a ? '#fff' : '#2E2A27', border: a ? '#E2502F' : '#DCCFC2', onClick: () => this.setState({ tab: id }) };
+    });
+    return {
+      tabs,
+      faculties: tab === 'all' ? F : F.filter(f => f.id === tab),
+      years: [
+        { y: '1st', title: '学びの基礎をつくる', body: '1年次ゼミで読む・書く・話す力を身につけ、学科の入門科目で専門の全体像をつかみます。' },
+        { y: '2nd', title: '関心を広げる', body: '専門科目が本格的に始まります。副専攻の選択や短期留学にも挑戦できます。' },
+        { y: '3rd', title: '専門を深める', body: '専門ゼミに所属し、調査や実習、企業・地域との連携プロジェクトに取り組みます。' },
+        { y: '4th', title: '卒業研究をまとめる', body: '4年間の問いを卒業論文・卒業制作として形にし、成果を発表します。' }
+      ],
+      minors: [
+        { name: 'データサイエンス', body: '統計とプログラミングの基礎から、データを読み解く力を養います。' },
+        { name: '国際協力', body: '国際機関やNGOの活動を学び、グローバルな課題を考えます。' },
+        { name: '地域デザイン', body: '地域の人と協働し、まちの課題解決に取り組みます。' },
+        { name: '日本語教育', body: '外国語として日本語を教えるための知識と方法を学びます。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1f1f1f;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#1f1f1f;text-decoration:none;transition:color .25s,background .25s,border-color .25s}
+a:hover{color:#c22a2a}
+a:focus-visible,button:focus-visible{outline:2px solid #c22a2a;outline-offset:3px}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="admissions" style="position:sticky;top:0;z-index:50" hint-size="100%,72px"></dc-import>
+<main>
+<dc-import name="PageHero" no="04" title="入試情報" en="Admissions" lead="入試の種類、出願までの流れ、よくある質問をまとめました。日程・募集人員などの詳細は、必ず最新の入学試験要項でご確認ください。" img-id="adm-hero" img-label="入試相談会の様子" hint-size="100%,560px"></dc-import>
+
+<div style="background:#fff;border-top:1px solid #e4e2dd;border-bottom:1px solid #e4e2dd">
+  <p style="max-width:1100px;margin:0 auto;padding:16px clamp(20px,4vw,40px);font-size:12px;line-height:1.8;display:flex;gap:12px;align-items:center"><span style="flex:none;background:#c22a2a;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px">ご注意</span>このページの内容はデザイン用のサンプルです。試験日程・募集人員・出願期間・検定料は掲載していません。</p>
+</div>
+
+<section id="exams" data-screen-label="Adm Exams" style="scroll-margin-top:80px;max-width:1160px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(40px,6vw,56px)">
+  <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+    <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.2vw,38px);font-weight:700;letter-spacing:0.24em">入試の種類</h2>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic">Types of Admission</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:24px">
+    <sc-for list="{{ exams }}" as="e" hint-placeholder-count="4">
+      <article data-reveal="" style="border:1px solid #d8d5ce;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:18px;position:relative">
+        <span style="position:absolute;top:-1px;left:-1px;width:56px;height:4px;background:#c22a2a"></span>
+        <div style="display:flex;align-items:baseline;gap:16px">
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#c22a2a;line-height:1">{{ e.no }}</span>
+          <h3 style="margin:0;font-family:'Noto Serif JP',serif;font-size:21px;font-weight:500;letter-spacing:0.06em">{{ e.name }}</h3>
+        </div>
+        <p style="margin:0;font-size:13px;line-height:1.9;color:#333">{{ e.desc }}</p>
+        <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:12px;border-top:1px dashed #d3cfc6;padding-top:16px">
+          <dt style="font-weight:700;color:#c22a2a">こんな人に</dt><dd style="margin:0;line-height:1.7">{{ e.for }}</dd>
+          <dt style="font-weight:700;color:#c22a2a">主な選考</dt><dd style="margin:0;line-height:1.7">{{ e.method }}</dd>
+        </dl>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section id="flow" data-screen-label="Adm Flow" style="scroll-margin-top:80px;background:#f6f5f2">
+  <div style="max-width:1160px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(40px,6vw,56px)">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+      <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.2vw,38px);font-weight:700;letter-spacing:0.24em">出願までの流れ</h2>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic">Steps to Apply</span>
+    </div>
+    <ol data-reveal="" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:16px">
+      <sc-for list="{{ flow }}" as="st" hint-placeholder-count="5">
+        <li style="background:#fff;padding:26px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px">
+          <span style="width:64px;height:64px;border-radius:50%;border:1px solid #1f1f1f;display:flex;flex-direction:column;align-items:center;justify-content:center"><span style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:0.1em">STEP</span><span style="font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1">{{ st.no }}</span></span>
+          <span style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:500;letter-spacing:0.08em">{{ st.title }}</span>
+          <span style="font-size:12px;line-height:1.7;color:#555">{{ st.desc }}</span>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section id="faq" data-screen-label="Adm FAQ" style="scroll-margin-top:80px;max-width:900px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(32px,5vw,48px)">
+  <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+    <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.2vw,38px);font-weight:700;letter-spacing:0.24em">よくある質問</h2>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic">FAQ</span>
+  </div>
+  <div style="border-top:1px solid #1f1f1f">
+    <sc-for list="{{ faq }}" as="q" hint-placeholder-count="5">
+      <div style="border-bottom:1px solid #d8d5ce">
+        <button type="button" onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;background:none;border:none;padding:22px 4px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;text-align:left;cursor:pointer;font:inherit;color:#1f1f1f" style-hover="color:#c22a2a">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#c22a2a;line-height:1">Q</span>
+          <span style="font-family:'Noto Serif JP',serif;font-size:15px;font-weight:500;line-height:1.6">{{ q.q }}</span>
+          <span aria-hidden="true" style="width:30px;height:30px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:14px">{{ q.icon }}</span>
+        </button>
+        <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:0 50px 24px 46px;font-size:13px;line-height:2;color:#333">{{ q.a }}</div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="materials" data-screen-label="Adm Materials" style="scroll-margin-top:80px;background:#f6f5f2">
+  <div style="max-width:1160px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,56px)">
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:22px">
+      <span style="display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#c22a2a"><span style="width:24px;height:1px;background:#c22a2a"></span>Materials</span>
+      <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(24px,2.8vw,32px);font-weight:500;letter-spacing:0.12em">資料請求・要項</h2>
+      <ul style="list-style:none;margin:0;padding:0;border-top:1px solid #1f1f1f">
+        <sc-for list="{{ docs }}" as="d" hint-placeholder-count="3">
+          <li style="border-bottom:1px solid #d8d5ce">
+            <a href="#materials" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 4px" style-hover="color:#c22a2a;padding-left:12px">
+              <span style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Noto Serif JP',serif;font-size:16px;font-weight:500">{{ d.title }}</span><span style="font-size:12px;color:#555">{{ d.desc }}</span></span>
+              <span style="flex:none;font-size:11px;font-weight:700;border:1px solid currentColor;border-radius:999px;padding:6px 14px">{{ d.action }}</span>
+            </a>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+    <div id="contact" data-reveal="" style="scroll-margin-top:96px;background:#fff;padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:18px;align-self:start;box-shadow:0 20px 50px rgba(0,0,0,0.06)">
+      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#c22a2a">Contact</span>
+      <h3 style="margin:0;font-family:'Noto Serif JP',serif;font-size:22px;font-weight:500;letter-spacing:0.1em">入試に関するお問い合わせ</h3>
+      <p style="margin:0;font-size:13px;line-height:1.9;color:#444">白鷺女子大学 入試広報課（仮）</p>
+      <a href="tel:000-000-0000" style="font-family:'Cormorant Garamond',serif;font-size:36px;letter-spacing:0.06em;line-height:1">000-000-0000</a>
+      <span style="font-size:11px;color:#666">受付 平日 9:00〜17:00（サンプル）</span>
+      <a href="mailto:admissions@example.ac.jp" style="background:#1f1f1f;color:#fff;font-size:13px;font-weight:700;padding:14px 24px;border-radius:999px;display:flex;justify-content:space-between" style-hover="background:#c22a2a;color:#fff">メールで問い合わせる<span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+<dc-import name="CtaBand" img-id="cta-adm" hint-size="100%,360px"></dc-import>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { open: 0 };
+  renderVals() {
+    const faq = [
+      { q: '複数の入試方式を併願できますか？', a: '併願の可否は入試方式ごとに異なります。最新の入学試験要項でご確認ください。' },
+      { q: '総合型選抜ではどのような準備が必要ですか？', a: '志望理由や高校での取り組みを、自分の言葉で説明できるよう整理しておくことをおすすめします。オープンキャンパスの入試相談もご活用ください。' },
+      { q: '学部・学科の選び方に迷っています。', a: '学部紹介ページやオープンキャンパスの模擬授業で、学びの内容を具体的に知ることができます。個別相談も受け付けています。' },
+      { q: '奨学金制度について知りたいです。', a: '各種奨学金の案内は大学案内パンフレットに掲載しています。詳細は入試広報課へお問い合わせください。' },
+      { q: '遠方からの受験でも相談できますか？', a: 'オンラインでの個別相談を予定しています。お問い合わせ窓口からご連絡ください。' }
+    ];
+    return {
+      exams: [
+        { no: 'i', name: '総合型選抜', desc: '面談やプレゼンテーションを通して、学ぶ意欲と本学との適性を総合的に評価します。', for: '学びたいテーマがはっきりしている人', method: '書類審査・面談・プレゼンテーション' },
+        { no: 'ii', name: '学校推薦型選抜', desc: '高等学校からの推薦に基づき、書類と面接等で選考します。', for: '高校での学習や活動に継続して取り組んできた人', method: '書類審査・面接・小論文' },
+        { no: 'iii', name: '一般選抜', desc: '本学独自の学力試験により選考します。', for: '教科の学力を中心に評価を受けたい人', method: '学力試験' },
+        { no: 'iv', name: '大学入学共通テスト利用選抜', desc: '大学入学共通テストの成績を利用して選考します。', for: '共通テストを受験する人', method: '共通テストの成績' }
+      ],
+      flow: [
+        { no: '1', title: '知る', desc: '資料請求や学部紹介で、学びを知る。' },
+        { no: '2', title: '体験する', desc: 'オープンキャンパスで雰囲気を確かめる。' },
+        { no: '3', title: '要項を確認', desc: '入学試験要項で出願資格と日程を確認。' },
+        { no: '4', title: '出願', desc: '期間内にWeb出願を行う。' },
+        { no: '5', title: '受験・合格発表', desc: '試験当日を迎え、結果を確認する。' }
+      ],
+      faq: faq.map((f, i) => ({ ...f, open: this.state.open === i, icon: this.state.open === i ? '−' : '+', toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })) })),
+      docs: [
+        { title: '大学案内パンフレット', desc: '学部・学び・キャンパスライフを一冊に。', action: '請求する' },
+        { title: '入学試験要項', desc: '出願資格・日程・選考方法の詳細。', action: '公開予定' },
+        { title: '過去の入試問題', desc: '一般選抜の出題傾向をつかむために。', action: '公開予定' }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

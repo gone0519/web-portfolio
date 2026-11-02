@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#e4f4f0;color:#7a5f17;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#8a6a12;text-decoration:none}
+a:hover{color:#5f4808}
+a:focus-visible,button:focus-visible{outline:2px solid #8a6a12;outline-offset:3px}
+*{box-sizing:border-box}
+</style>
+<link rel="stylesheet" href="responsive.css">
+<script src="motion.js"></script>
+</helmet>
+<div id="top" style="min-height:100vh;background:#e4f4f0;overflow-x:hidden">
+<dc-import name="SiteHeader" current="campus" hint-size="100%,200px"></dc-import>
+<main>
+  <section data-screen-label="Campus 01 Title" style="padding:0 20px 50px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px">
+    <nav aria-label="パンくず" style="display:flex;gap:8px;font-size:11px;letter-spacing:.1em;margin-bottom:18px"><a href="Shirotsubaki%20University.dc.html">トップ</a><span>›</span><span>キャンパスライフ</span></nav>
+    <h1 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:clamp(44px,6vw,62px);color:#b0902e;line-height:1.1">Campus Life</h1>
+    <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.3em">キャンパスライフ</p>
+  </section>
+
+  <section data-screen-label="Campus 02 Stories" style="padding:10px 0 90px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:36px;padding:0 20px">
+      <h2 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:44px;color:#b0902e;line-height:1.1">Student Stories</h2>
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.3em">在学生の声</p>
+    </div>
+    <div style="max-width:1000px;margin:0 auto;padding:0 20px;display:flex;flex-direction:column;gap:26px">
+      <sc-for list="{{ students }}" as="s" hint-placeholder-count="4">
+        <article style="background:rgba(255,255,255,.82);border-radius:28px;padding:clamp(22px,3vw,34px);display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,40px);align-items:center">
+          <div style="width:170px;flex-shrink:0;background:#fff;padding:5px;border-radius:12px;box-shadow:0 4px 14px rgba(120,150,140,.2)">
+            <div role="img" aria-label="{{ s.name }}" style="aspect-ratio:5/6;border-radius:8px;background:#eeeae2 url({{ s.photo }}) {{ s.pos }}/cover no-repeat"></div>
+          </div>
+          <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:8px">
+            <span style="font-size:11px;letter-spacing:.14em;color:#7a5f17">{{ s.dept }}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline"><span style="font-family:'Shippori Mincho',serif;font-size:19px;letter-spacing:.3em;color:#6e5512">{{ s.name }}</span><span style="font-family:'Parisienne',cursive;font-size:16px;color:#b0902e">{{ s.en }}</span></div>
+            <h3 style="margin:8px 0 0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:18px;letter-spacing:.1em;line-height:1.7;color:#6e5512;text-wrap:pretty">{{ s.head }}</h3>
+            <p style="margin:0;font-size:13px;line-height:2.1;color:#6f5a20;text-wrap:pretty">{{ s.text }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Campus 03 Year" style="padding:30px 0 90px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:40px;padding:0 20px">
+      <h2 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:44px;color:#b0902e;line-height:1.1">Four Seasons</h2>
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.3em">キャンパスの一年</p>
+    </div>
+    <div style="position:relative">
+      <div class="sh-band" style="position:absolute;left:0;right:0;top:66px;height:24px;background:#f2c9ce"></div>
+      <div class="season-grid" style="position:relative;max-width:1040px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:20px">
+        <sc-for list="{{ seasons }}" as="se" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+            <span class="season-dot" style="width:150px;height:150px;border-radius:50%;background:{{ se.bg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;box-shadow:0 0 0 6px rgba(255,255,255,.7)"><span style="font-family:'Parisienne',cursive;font-size:28px;color:#6e5512;line-height:1">{{ se.en }}</span><span style="font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.2em;color:#6e5512">{{ se.ja }}</span></span>
+            <ul style="margin:10px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px">
+              <sc-for list="{{ se.items }}" as="it" hint-placeholder-count="3"><li style="font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.08em;color:#6e5512">{{ it }}</li></sc-for>
+            </ul>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Campus 04 Facilities" style="padding:20px 20px 90px">
+    <div style="max-width:940px;margin:0 auto">
+      <div style="border-top:2px dotted #d9c98e;margin-bottom:46px"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:30px">
+        <h2 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:40px;color:#b0902e;line-height:1.1">Facilities &amp; Clubs</h2>
+        <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.3em">施設・課外活動</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
+        <sc-for list="{{ facilities }}" as="f" hint-placeholder-count="6">
+          <div style="display:grid;grid-template-columns:1.1fr 1fr;background:#fff;min-height:110px">
+            <span style="display:flex;flex-direction:column;justify-content:center;gap:4px;padding:14px 16px"><span style="font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.1em;color:#6e5512">{{ f.ja }}</span><span style="font-size:11px;line-height:1.7;color:#7a6a3a">{{ f.sub }}</span></span>
+            <span style="background:{{ f.bg }};display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:9px;color:#9a8e74">{{ f.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:34px;background:rgba(255,255,255,.75);border-radius:22px;padding:26px">
+        <p style="margin:0 0 14px;font-family:'Shippori Mincho',serif;font-size:15px;letter-spacing:.14em;color:#6e5512">クラブ・サークル（一例）</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ clubs }}" as="c" hint-placeholder-count="10"><span style="padding:6px 14px;border-radius:999px;background:#fff;border:1px solid #eadfb8;font-size:12px;color:#6f5a20">{{ c }}</span></sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Campus 05 Support" style="background:#fbf1ef;padding:80px 20px 90px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:36px">
+      <h2 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:40px;color:#b0902e;line-height:1.1">Student Support</h2>
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.3em">学生サポート</p>
+    </div>
+    <div style="max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+      <sc-for list="{{ support }}" as="sp" hint-placeholder-count="4">
+        <div style="background:#fff;padding:24px 20px;display:flex;flex-direction:column;gap:8px">
+          <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:15px;letter-spacing:.12em;color:#6e5512">{{ sp.t }}</h3>
+          <p style="margin:0;font-size:12px;line-height:1.9;color:#6f5a20;text-wrap:pretty">{{ sp.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:46px">
+      <a href="OpenCampus.dc.html" style="display:flex;gap:12px;align-items:center;padding:14px 32px;border-radius:999px;background:#a8862a;color:#fff;font-size:13px;letter-spacing:.2em;transition:background .3s" style-hover="background:#7a5f17;color:#fff">キャンパスを体験しに行く <span>→</span></a>
+    </div>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      students: [
+        { dept: '文学部 日本文学科 3年', name: '佐藤 美咲', en: 'Misaki Sato', photo: 'images/photo-3.jpg', pos: '84% center', head: '好きな物語を「研究する」面白さに出会った', text: '高校までは読むだけだった小説を、ゼミでは時代背景や言葉の選び方から読み解きます。仲間と意見をぶつけ合う時間が、一番の宝物です。' },
+        { dept: '国際学部 2年', name: '高橋 遥', en: 'Haruka Takahashi', photo: 'images/photo-13.jpg', pos: '72% center', head: '不安だった留学が、自信に変わった', text: '1年の夏に短期留学へ。出発前の準備講座や帰国後の振り返りまで、先生方が丁寧に支えてくれたので安心して挑戦できました。' },
+        { dept: '看護学部 4年', name: '中村 葵', en: 'Aoi Nakamura', photo: 'images/photo-51.jpg', pos: '55% center', head: '寄り添うことの意味を、実習で学んだ', text: '臨地実習では、知識だけでなく患者さんの気持ちに向き合う大切さを実感しました。同じ目標を持つ友人がいるから頑張れます。' },
+        { dept: '生活科学部 住環境デザイン学科 3年', name: '小林 結衣', en: 'Yui Kobayashi', photo: 'images/photo-42.jpg', pos: '50% center', head: 'まちの人と一緒に、空き家を再生', text: '地域連携プロジェクトで、商店街の空き家をカフェに改修する計画に参加。図面が実際の空間になる感動は忘れられません。' }
+      ],
+      seasons: [
+        { en: 'Spring', ja: '春', bg: '#efcfd2', items: ['入学式', '新入生オリエンテーション', 'クラブ紹介'] },
+        { en: 'Summer', ja: '夏', bg: '#cfe7e3', items: ['前期試験', '短期留学プログラム', 'オープンキャンパス'] },
+        { en: 'Autumn', ja: '秋', bg: '#ece49c', items: ['学園祭「椿祭」', 'ゼミ合同発表会', '地域連携イベント'] },
+        { en: 'Winter', ja: '冬', bg: '#f3e6d6', items: ['卒業研究発表', '後期試験', '卒業式'] }
+      ],
+      facilities: [
+        { ja: '図書館', sub: '静かな閲覧室とグループ学習室', img: 'library', photo: 'images/photo-26.jpg' },
+        { ja: 'ラーニングコモンズ', sub: '自由に集まり議論できる空間', img: 'commons', photo: 'images/photo-12.jpg' },
+        { ja: '学生食堂・カフェ', sub: '中庭に面した明るい食堂', img: 'cafe', photo: 'images/photo-27.jpg' },
+        { ja: '看護実習室', sub: '実際の病室を再現した実習環境', img: 'nursing lab' },
+        { ja: '調理実習室', sub: '最新設備のキッチンスタジオ', img: 'kitchen' },
+        { ja: '学生寮', sub: '初めての一人暮らしも安心', img: 'dormitory' }
+      ].map(f => ({ ...f, bg: f.photo ? `#eeeae2 url(${f.photo}) center/cover no-repeat` : 'repeating-linear-gradient(135deg,#f6f4ef 0 7px,#eeeae2 7px 14px)', label: f.photo ? '' : f.img })),
+      clubs: ['茶道部', '華道部', '軽音楽部', '合唱団', 'テニス部', 'バレーボール部', 'ダンス部', '写真部', '文芸部', 'ボランティアサークル', '国際交流サークル', '学園祭実行委員会'],
+      support: [
+        { t: '学生相談室', d: '学生生活や人間関係の悩みを、専門のカウンセラーに相談できます。' },
+        { t: '保健室', d: '体調不良時の対応や健康相談に応じます。' },
+        { t: '奨学金・経済支援', d: '学内外の奨学金制度について、窓口で個別に案内します。' },
+        { t: '学修サポート', d: 'レポートの書き方や学習方法の相談ができる窓口を設けています。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

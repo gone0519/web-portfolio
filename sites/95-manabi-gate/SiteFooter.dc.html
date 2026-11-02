@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<a href="{{ nextHref }}" style="display:block;position:relative;overflow:hidden;background:#E2532F;color:#17110F;text-decoration:none;padding:clamp(60px,6vw,110px) 4vw;transition:background .4s" style-hover="background:#EE6A47">
+  <span style="display:flex;justify-content:space-between;font-family:'Instrument Sans',sans-serif;font-size:12px;letter-spacing:.2em"><span>次のページ</span><span>→</span></span>
+  <span style="display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:20px">
+    <span style="font-family:'Shippori Mincho',serif;font-size:clamp(44px,7.5vw,140px);line-height:1.15;letter-spacing:-.02em">{{ nextJp }}</span>
+    <span style="flex:0 0 auto;width:clamp(70px,8vw,130px);height:clamp(70px,8vw,130px);border-radius:50%;background:#17110F;color:#E2532F;display:flex;align-items:center;justify-content:center;font-size:clamp(24px,3vw,44px)">→</span>
+  </span>
+</a>
+<footer style="position:relative;overflow:hidden;background:#17110F;color:#EEEAE1;padding:clamp(70px,6vw,110px) 4vw 40px;display:flex;flex-direction:column;gap:60px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:50px">
+    <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:20px;max-width:520px">
+      <span style="font-family:'Shippori Mincho',serif;font-size:36px;line-height:1.1">次の一歩は、<span style="color:#E2532F">ここから。</span></span>
+      <div style="font-size:12px;line-height:2;opacity:.85">運営：○○○○株式会社（サンプル）<br>〒000-0000 ○○県○○市○○町0-0-0<br>電話 000-000-0000（平日 10:00–17:00）<br>メール info@example.jp</div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,60px);font-family:'Instrument Sans',sans-serif;font-size:14px">
+      <div style="display:flex;flex-direction:column;gap:12px"><a href="Programs.dc.html" style="color:#EEEAE1;text-decoration:none">大学・学部</a></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><a href="Prepare.dc.html" style="color:#EEEAE1;text-decoration:none">入試対策</a></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><a href="Admissions.dc.html" style="color:#EEEAE1;text-decoration:none">出願・入学</a></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><a href="Campus.dc.html" style="color:#EEEAE1;text-decoration:none">キャンパスライフ</a></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><a href="Contact.dc.html" style="color:#EEEAE1;text-decoration:none">お問い合わせ</a></div>
+    </div>
+  </div>
+  <div style="font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:13.6vw;line-height:1;padding-bottom:.04em;letter-spacing:-.02em;white-space:nowrap;overflow:hidden">まなびゲート</div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;font-size:11px">
+    <span style="font-family:'Instrument Sans',sans-serif">© まなびゲート</span>
+    <div style="display:flex;align-items:center;gap:28px">
+      <a href="Contact.dc.html" style="color:#EEEAE1;text-decoration:none">プライバシーポリシー</a>
+      <a href="#" onClick="{{ toTop }}" style="display:inline-flex;align-items:center;gap:14px;height:44px;padding:0 8px 0 20px;border-radius:999px;background:#EEEAE1;color:#17110F;text-decoration:none;font-family:'Instrument Sans',sans-serif;font-size:12px">ページの先頭へ<span style="width:30px;height:30px;border-radius:50%;background:#E2532F;display:flex;align-items:center;justify-content:center">↑</span></a>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;nextHref&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Programs.dc.html&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;nextEn&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Programs&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;nextJp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;大学・学部&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      nextHref: this.props.nextHref ?? 'Programs.dc.html',
+      nextEn: this.props.nextEn ?? 'Programs',
+      nextJp: this.props.nextJp ?? '大学・学部',
+      toTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

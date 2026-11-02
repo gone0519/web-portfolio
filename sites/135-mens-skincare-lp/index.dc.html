@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0d0d0d;color:#151515;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#151515}
+a:hover{color:#d8232a}
+::selection{background:#d8232a;color:#fff}
+@keyframes kfup{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes kfleft{from{opacity:0;transform:translateX(-50px)}to{opacity:1;transform:none}}
+@keyframes kfright{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:none}}
+@keyframes kfzoom{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes kfpop{0%{opacity:0;transform:scale(.4)}70%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:none}}
+@keyframes kfreveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes kfrise2{from{opacity:0;clip-path:inset(100% 0 0 0);transform:translateY(30px)}to{opacity:1;clip-path:inset(0 0 0 0);transform:none}}
+@keyframes kfdrop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes kfrise{from{transform:translateY(100%)}to{transform:none}}
+@keyframes kfline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes kfken{from{transform:scale(1)}to{transform:scale(1.12) translate(-2%,-1%)}}
+@keyframes kffloat{from{transform:translateY(0)}to{transform:translateY(-8px)}}
+@keyframes kfspin{to{transform:rotate(360deg)}}
+@keyframes kfpulse{from{transform:scale(1)}to{transform:scale(1.05)}}
+@keyframes kfglow{0%{box-shadow:0 0 0 0 rgba(216,35,42,.55)}100%{box-shadow:0 0 0 14px rgba(216,35,42,0)}}
+@keyframes kfmarquee{to{transform:translateX(-50%)}}
+@keyframes kfblink{50%{opacity:.2}}
+.hd-cta{white-space:nowrap}
+.rail-cta{white-space:nowrap;max-width:100%}
+@media (max-width:1099px){.ft{padding-bottom:96px!important}}
+@media (max-width:480px){
+  .story{grid-template-columns:1fr!important;gap:24px!important}
+  .story-img{margin-top:0!important;aspect-ratio:4/3!important;order:-1}
+}
+@media (max-width:420px){
+  .hd-sub{display:none!important}
+  .hero-meta{grid-template-columns:1fr!important}
+  .hero-points{flex-direction:row!important}
+  .hero-points>div{flex:1 1 0;min-width:0}
+  .hero-points>div>span:last-child{white-space:normal!important;font-size:11px!important}
+}
+</style>
+</helmet>
+
+<sc-if value="{{ wide }}" hint-placeholder-val="{{ false }}">
+  <aside style="position:fixed;left:0;top:0;bottom:0;width:calc((100vw - 600px) / 2);display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden">
+    <p style="margin:0;writing-mode:vertical-rl;transform:rotate(180deg);font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(90px,9vw,150px);line-height:0.9;letter-spacing:0.02em;color:transparent;-webkit-text-stroke:1px #3a3a3a;white-space:nowrap">THE DAILY</p>
+    <p style="position:absolute;left:32px;bottom:32px;margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#6a6a6a">[BRAND NAME] — MEN'S SKIN CARE</p>
+  </aside>
+  <aside style="position:fixed;right:0;top:0;bottom:0;width:calc((100vw - 600px) / 2);display:flex;flex-direction:column;justify-content:center;padding-left:48px;gap:18px">
+    <sc-for list="{{ rail }}" as="r" hint-placeholder-count="5">
+      <a href="{{ r.href }}" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:{{ r.color }};transition:color .3s">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px">{{ r.no }}</span>
+        <span style="height:1px;width:{{ r.w }};background:currentColor;transition:width .4s"></span>
+        <span style="font-family:Oswald,sans-serif;font-size:14px;letter-spacing:0.14em">{{ r.en }}</span>
+      </a>
+    </sc-for>
+    <a href="#purchase" class="rail-cta" style="margin-top:20px;align-self:flex-start;display:flex;align-items:center;gap:10px;height:48px;padding:0 22px;border:1px solid #d8232a;color:#fff;background:#d8232a;font-size:13px;font-weight:700;text-decoration:none;transition:background .2s" style-hover="background:transparent;color:#fff">{{ ctaLabel }} →</a>
+  </aside>
+</sc-if>
+
+<header style="position:sticky;top:0;z-index:50;max-width:600px;margin:0 auto;background:rgba(13,13,13,0.92);backdrop-filter:blur(8px)">
+  <div data-progress="1" style="position:absolute;left:0;bottom:0;height:2px;width:100%;background:#d8232a;transform-origin:left;transform:scaleX(0)"></div>
+  <div style="padding:0 18px;height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <a href="#top" style="display:flex;align-items:baseline;gap:10px;text-decoration:none;color:#fff">
+      <span style="font-family:Oswald,sans-serif;font-weight:700;font-size:20px;letter-spacing:0.12em">[BRAND]</span>
+      <span class="hd-sub" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#8a8a8a;white-space:nowrap">MEN'S SKIN CARE</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:6px">
+      <a href="#purchase" class="hd-cta" style="display:flex;align-items:center;height:34px;padding:0 14px;border:1px solid #fff;color:#fff;font-size:11.5px;font-weight:700;text-decoration:none;transition:all .2s" style-hover="background:#fff;color:#111">{{ ctaLabel }}</a>
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="width:44px;height:44px;border:0;background:transparent;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;cursor:pointer">
+        <span style="width:24px;height:1.5px;background:#fff"></span>
+        <span style="width:16px;height:1.5px;background:#fff"></span>
+      </button>
+    </div>
+  </div>
+  <sc-if value="{{ menu }}" hint-placeholder-val="{{ false }}">
+    <nav data-anim="drop" style="display:flex;flex-direction:column;padding:6px 18px 22px;border-top:1px solid #2a2a2a">
+      <sc-for list="{{ rail }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:baseline;padding:16px 0;border-bottom:1px solid #222;color:#fff;text-decoration:none" style-hover="color:#d8232a">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#777">{{ n.no }}</span>
+          <span style="font-family:Oswald,sans-serif;font-size:22px;letter-spacing:0.06em">{{ n.en }}</span>
+          <span style="font-size:11px;color:#999">{{ n.ja }}</span>
+        </a>
+      </sc-for>
+    </nav>
+  </sc-if>
+</header>
+
+<main id="top" style="max-width:600px;margin:0 auto;background:#fff;overflow:hidden">
+
+<!-- 01 HERO -->
+<section id="hero" data-screen-label="01 Hero" style="background:#0d0d0d;color:#fff">
+  <div style="position:relative;aspect-ratio:3/4;overflow:hidden;background:#222 url(img/hero.jpg) 50% center/cover no-repeat">
+    <div data-loop="ken" style="position:absolute;inset:0;background:inherit"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.4) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 50%,rgba(13,13,13,1) 100%)"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(270deg,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.15) 28%,rgba(0,0,0,0) 45%)"></div>
+    <div style="position:absolute;inset:0;opacity:0.18;mix-blend-mode:overlay;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22160%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%22.9%22 numOctaves=%222%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>')"></div>
+    <div style="position:absolute;top:18px;left:18px;right:18px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#ddd">
+      <span>VOL.01 — DAILY BASIC</span><span style="display:flex;align-items:center;gap:6px"><span data-loop="blink" style="width:6px;height:6px;border-radius:50%;background:#d8232a"></span>[商品名]</span>
+    </div>
+    <p data-anim="up" data-delay="500" style="position:absolute;top:72px;right:22px;margin:0;writing-mode:vertical-rl;font-family:'Noto Serif JP',serif;font-weight:700;font-size:clamp(20px,5vw,28px);letter-spacing:0.32em;line-height:1.7;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.5),0 2px 18px rgba(0,0,0,0.5)">洗う、うるおす。<br>それだけ。</p>
+    <h1 data-anim="rise2" style="position:absolute;left:14px;right:14px;bottom:4px;margin:0;font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(88px,27vw,164px);line-height:0.8;letter-spacing:-0.01em;text-transform:uppercase">The<br><span style="color:transparent;-webkit-text-stroke:1.5px #fff">Daily</span></h1>
+  </div>
+  <div class="hero-meta" style="padding:26px 20px 34px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:end">
+    <div data-stagger="up">
+      <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#8a8a8a">MEN'S SKIN CARE / BASIC SET</p>
+      <p style="margin:10px 0 0;font-size:clamp(18px,4.8vw,22px);font-weight:900;line-height:1.5">[商品名]</p>
+      <p style="margin:10px 0 0;font-size:12.5px;line-height:1.95;color:#c9c9c9;text-wrap:pretty">洗顔のあと、毎日のお手入れをシンプルに。忙しい朝にも続けやすいスキンケアです。</p>
+    </div>
+    <div data-stagger="pop" data-delay="300" class="hero-points" style="display:flex;flex-direction:column;gap:8px">
+      <sc-for list="{{ heroPoints }}" as="p" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:10px;border-top:1px solid #333;padding-top:8px">
+          <span style="font-family:Oswald,sans-serif;font-size:20px;font-weight:300;color:#d8232a;line-height:1">{{ p.no }}</span>
+          <span style="font-size:11.5px;font-weight:700;white-space:nowrap">{{ p.t }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="overflow:hidden;border-top:1px solid #2a2a2a;border-bottom:1px solid #2a2a2a;padding:10px 0">
+    <div data-loop="marquee" style="display:flex;width:max-content;gap:26px;padding-right:26px;font-family:Oswald,sans-serif;font-weight:300;font-size:22px;letter-spacing:0.18em;white-space:nowrap;color:#fff">
+      <span>WASH</span><span style="color:#d8232a">✕</span><span style="color:transparent;-webkit-text-stroke:1px #fff">MOISTURIZE</span><span style="color:#d8232a">✕</span><span>REPEAT</span><span style="color:#d8232a">✕</span><span>WASH</span><span style="color:#d8232a">✕</span><span style="color:transparent;-webkit-text-stroke:1px #fff">MOISTURIZE</span><span style="color:#d8232a">✕</span><span>REPEAT</span><span style="color:#d8232a">✕</span><span>WASH</span><span style="color:#d8232a">✕</span><span style="color:transparent;-webkit-text-stroke:1px #fff">MOISTURIZE</span><span style="color:#d8232a">✕</span><span>REPEAT</span><span style="color:#d8232a">✕</span><span>WASH</span><span style="color:#d8232a">✕</span><span style="color:transparent;-webkit-text-stroke:1px #fff">MOISTURIZE</span><span style="color:#d8232a">✕</span><span>REPEAT</span><span style="color:#d8232a">✕</span>
+    </div>
+  </div>
+  <div style="background:#e8e6e1;padding:28px 18px 30px;color:#151515">
+    <div data-anim="zoom" style="display:grid;grid-template-columns:40px minmax(0,1fr);background:#fff;box-shadow:0 18px 40px rgba(0,0,0,0.12)">
+      <div style="background:#d8232a;color:#fff;writing-mode:vertical-rl;display:flex;align-items:center;justify-content:center;font-family:Oswald,sans-serif;font-size:13px;letter-spacing:0.32em">LIMITED OFFER</div>
+      <div style="padding:18px 16px;display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+        <div style="flex:1 1 200px">
+          <p style="margin:0;font-size:11px;font-weight:700;border-bottom:1px solid #151515;display:inline-block;padding-bottom:2px">[初回限定などのオファー名]</p>
+          <p style="margin:12px 0 0;font-size:11.5px;color:#777">通常価格 <span style="text-decoration:line-through">[¥◯,◯◯◯]</span>（税込）</p>
+          <p style="margin:2px 0 0;display:flex;align-items:baseline;gap:4px;color:#d8232a;font-weight:900"><span data-loop="pulse" style="display:inline-block;transform-origin:left bottom;font-family:Oswald,sans-serif;font-weight:500;font-size:60px;line-height:0.95;letter-spacing:-0.02em">[000]</span><span style="font-size:14px">円<span style="font-size:10.5px;color:#777;font-weight:500">（税込）</span></span></p>
+          <p style="margin:10px 0 0;font-family:'JetBrains Mono',monospace;font-size:10px;color:#777;letter-spacing:0.06em">SHIPPING : [送料情報]</p>
+        </div>
+        <div data-loop="float" style="flex:0 1 150px;aspect-ratio:4/5;margin:0 auto;background:#eee url(img/offer-set.jpg) 50% center/cover no-repeat"></div>
+      </div>
+    </div>
+    <a data-loop="glow" href="#purchase" style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;height:62px;padding:0 22px;background:#151515;color:#fff;text-decoration:none;transition:background .25s" style-hover="background:#d8232a"><span style="display:flex;flex-direction:column;line-height:1.35"><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.14em;color:#aaa">ORDER NOW</span><span style="font-size:16px;font-weight:900">{{ ctaLabel }}</span></span><span style="font-family:Oswald,sans-serif;font-size:22px">→</span></a>
+    <p style="margin:10px 0 0;font-size:10px;color:#666;line-height:1.6">※ 価格・オファー内容・購入条件は確定情報に差し替えてください。</p>
+  </div>
+</section>
+
+<!-- 02 CONCERNS -->
+<section id="concerns" data-screen-label="02 Concerns" style="background:#fff">
+  <div style="position:relative;padding:60px 20px 44px">
+    <span style="position:absolute;top:18px;right:-10px;font-family:Oswald,sans-serif;font-weight:700;font-size:190px;line-height:1;color:#f2f1ee;pointer-events:none">02</span>
+    <div data-anim="up" style="position:relative;display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#888"><span>02 / 05</span><span style="flex:1;height:1px;background:#d5d5d5"></span><span>ABOUT</span></div>
+    <h2 data-anim="up" style="position:relative;margin:22px 0 0;font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(46px,13vw,72px);line-height:0.9;letter-spacing:-0.01em">WHAT IS<br><span style="color:transparent;-webkit-text-stroke:1.2px #151515">[BRAND]?</span></h2>
+    <p data-anim="up" style="position:relative;margin:14px 0 0;font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700">[BRAND NAME] とは</p>
+    <div style="position:relative;margin:30px 18px 0 0">
+      <div style="position:absolute;inset:16px -16px -16px 16px;background:#151515"></div>
+      <div data-anim="reveal" style="position:relative;aspect-ratio:4/3;background:#eee url(img/lineup.jpg) center/cover no-repeat"></div>
+    </div>
+    <p data-anim="up" style="margin:40px 0 0;font-size:13.5px;line-height:2.1;color:#333;text-wrap:pretty"><strong>[BRAND NAME]</strong> は、男性の毎日のお手入れを考えたスキンケアブランドです。[ブランド概要：確認済みの事実のみ記載]</p>
+  </div>
+
+  <div style="background:#f3f2ef;padding:52px 20px 48px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <h3 data-anim="up" style="margin:0;font-family:Oswald,sans-serif;font-weight:500;font-size:38px;line-height:0.95;letter-spacing:0.02em">SKIN<br>TROUBLE</h3>
+      <p data-anim="up" style="margin:0;max-width:260px;font-size:12px;line-height:1.85;color:#555">肌の状態は人それぞれ。季節やひげそり、生活リズムでも変わります。</p>
+    </div>
+    <p data-anim="up" style="margin:18px 0 0;font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700">こんな肌の悩み、ありませんか？</p>
+    <div data-stagger="pop" style="margin-top:28px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+      <sc-for list="{{ troubles }}" as="t" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+          <div style="position:relative;width:min(100%,112px);aspect-ratio:1;padding:7px">
+            <div data-loop="spin" style="position:absolute;inset:0;border-radius:50%;border:1px dashed #999"></div>
+            <div style="width:100%;height:100%;border-radius:50%;background:#fff;border:1px solid #151515;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;transition:background .3s,color .3s" style-hover="background:#151515;color:#fff"><span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.16em">TYPE</span><span style="font-family:Oswald,sans-serif;font-size:30px;font-weight:300;margin-top:2px">{{ t.no }}</span></div>
+          </div>
+          <p style="margin:0;font-family:Oswald,sans-serif;font-size:12px;letter-spacing:0.12em;color:#d8232a">{{ t.en }}</p>
+          <p style="margin:0;font-size:12px;font-weight:700;line-height:1.5;white-space:pre-line">{{ t.ja }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <p data-anim="up" style="margin:36px 0 0;text-align:center;font-family:'Noto Serif JP',serif;font-size:clamp(17px,4.6vw,21px);font-weight:700;line-height:1.7">基本は、<span style="background:linear-gradient(transparent 62%,rgba(216,35,42,0.28) 62%)">「洗う」と「うるおす」</span>の<br>毎日のくり返し。</p>
+  </div>
+
+  <div style="position:relative;background:#0d0d0d;color:#fff;padding:72px 20px 52px;clip-path:polygon(0 28px,100% 0,100% 100%,0 100%);margin-top:-28px">
+    <div style="position:absolute;inset:0;opacity:0.14;mix-blend-mode:overlay;pointer-events:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22160%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%22.9%22 numOctaves=%222%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>')"></div>
+    <h3 data-anim="up" style="position:relative;margin:0;font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(34px,9vw,46px);line-height:0.95;letter-spacing:0.01em">SKIN TYPE<br><span style="color:#d8232a">CHECK.</span></h3>
+    <p style="position:relative;margin:12px 0 0;font-size:12.5px;color:#bbb">3つの質問で、肌の傾向をチェック</p>
+    <div data-anim="zoom" style="position:relative;margin-top:24px;background:#fff;color:#151515;padding:22px 18px 22px">
+      <div style="height:2px;background:#eee;margin-bottom:16px"><div style="height:2px;width:{{ quizPct }};background:#d8232a;transition:width .4s"></div></div>
+      <sc-if value="{{ quizActive }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#888">QUESTION {{ qNo }} / {{ qTotal }}</p>
+        <p data-quiz="1" style="margin:10px 0 0;font-size:16px;font-weight:700;line-height:1.65;min-height:54px">{{ qText }}</p>
+        <div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button onClick="{{ answerYes }}" style="height:52px;border:0;background:#d8232a;color:#fff;font-family:Oswald,sans-serif;font-size:18px;letter-spacing:0.16em;cursor:pointer;transition:background .2s" style-hover="background:#b81b21">YES</button>
+          <button onClick="{{ answerNo }}" style="height:52px;border:1px solid #151515;background:#fff;color:#151515;font-family:Oswald,sans-serif;font-size:18px;letter-spacing:0.16em;cursor:pointer;transition:all .2s" style-hover="background:#151515;color:#fff">NO</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ quizDone }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#d8232a">YOUR RESULT</p>
+        <p data-anim="pop" style="margin:8px 0 0;font-size:20px;font-weight:900">{{ result.title }}</p>
+        <p style="margin:10px 0 0;font-size:13px;line-height:1.85;color:#444">{{ result.text }}</p>
+        <button onClick="{{ resetQuiz }}" style="margin-top:16px;height:40px;padding:0 18px;border:1px solid #151515;background:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit" style-hover="background:#f2f2f2">もう一度チェックする ↺</button>
+      </sc-if>
+    </div>
+    <p style="position:relative;margin:12px 0 0;font-size:10px;color:#888">※ 簡易的な目安です。肌の状態が気になる場合は皮膚科専門医等にご相談ください。</p>
+  </div>
+</section>
+
+<!-- 03 FEATURES -->
+<section id="features" data-screen-label="03 Features" style="position:relative;background:#fff;padding:60px 20px 56px">
+  <span style="position:absolute;top:18px;right:-10px;font-family:Oswald,sans-serif;font-weight:700;font-size:190px;line-height:1;color:#f2f1ee;pointer-events:none">03</span>
+  <div data-anim="up" style="position:relative;display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#888"><span>03 / 05</span><span style="flex:1;height:1px;background:#d5d5d5"></span><span>INGREDIENTS</span></div>
+  <h2 data-anim="up" style="position:relative;margin:22px 0 0;font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(46px,13vw,72px);line-height:0.9">WHY<br><span style="color:transparent;-webkit-text-stroke:1.2px #151515">[BRAND]</span></h2>
+  <p data-anim="up" style="position:relative;margin:14px 0 0;font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700">選ばれる理由と、成分のこと</p>
+  <div style="position:relative;margin:30px -20px 0">
+    <div data-anim="reveal" style="aspect-ratio:1;background:#eee url(img/ingredients.jpg) center/cover no-repeat"></div>
+    <p style="position:absolute;right:20px;bottom:-22px;margin:0;background:#151515;color:#fff;padding:14px 18px;font-family:Oswald,sans-serif;font-size:13px;letter-spacing:0.18em">KEY INGREDIENTS ×3</p>
+  </div>
+  <div data-stagger="left" style="margin-top:44px;display:flex;flex-direction:column">
+    <sc-for list="{{ ingredients }}" as="i" hint-placeholder-count="3">
+      <div style="display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:14px;align-items:center;padding:18px 0;border-bottom:1px solid #e2e2e2;transition:padding .3s" style-hover="padding-left:8px">
+        <span style="font-family:Oswald,sans-serif;font-size:52px;font-weight:700;line-height:0.9;color:transparent;-webkit-text-stroke:1px #151515">{{ i.no }}</span>
+        <span><span style="display:block;font-size:15px;font-weight:900">{{ i.name }}</span><span style="display:block;margin-top:3px;font-size:12px;color:#666;line-height:1.7">{{ i.text }}</span></span>
+        <span style="font-family:Oswald,sans-serif;font-size:18px;color:#d8232a">→</span>
+      </div>
+    </sc-for>
+  </div>
+  <div data-anim="up" style="margin-top:40px;background:#f3f2ef;padding:22px 18px 14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #151515;padding-bottom:10px">
+      <p style="margin:0;font-family:Oswald,sans-serif;font-size:20px;font-weight:500;letter-spacing:0.1em">PRODUCT INFO</p>
+      <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:10px;color:#888">SPEC SHEET</p>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <sc-for list="{{ productInfo }}" as="r" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:12px 0;border-bottom:1px solid #dcdad5;font-size:13px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#888;padding-top:2px">{{ r.k }}</span><span>{{ r.v }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 04 HOW TO -->
+<section id="routine" data-screen-label="04 How to" style="position:relative;background:#0d0d0d;color:#fff;padding:84px 20px 60px;clip-path:polygon(0 0,100% 28px,100% 100%,0 100%)">
+  <div style="position:absolute;inset:0;opacity:0.14;mix-blend-mode:overlay;pointer-events:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22160%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%22.9%22 numOctaves=%222%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>')"></div>
+  <div data-anim="up" style="position:relative;display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#777"><span>04 / 05</span><span style="flex:1;height:1px;background:#333"></span><span>ROUTINE</span></div>
+  <h2 data-anim="up" style="position:relative;margin:22px 0 0;font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(46px,13vw,72px);line-height:0.9">HOW TO<br><span style="color:transparent;-webkit-text-stroke:1.2px #fff">DAILY CARE</span></h2>
+  <p data-anim="up" style="position:relative;margin:14px 0 0;font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700">朝と夜、3ステップでシンプルに。</p>
+  <div style="position:relative;margin-top:36px;display:flex;flex-direction:column;gap:42px">
+    <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+      <div data-anim="up" style="display:flex;flex-direction:column">
+        <div style="position:relative">
+          <div data-anim="reveal" style="aspect-ratio:16/10;background:#222 url({{ s.img }}) center/cover no-repeat"></div>
+          <span style="position:absolute;left:-4px;bottom:-30px;font-family:Oswald,sans-serif;font-weight:700;font-size:96px;line-height:0.8;color:transparent;-webkit-text-stroke:1.2px #fff">{{ s.no }}</span>
+        </div>
+        <div style="margin-top:14px;padding-left:120px">
+          <p style="margin:0;font-family:Oswald,sans-serif;font-size:24px;font-weight:500;letter-spacing:0.08em;line-height:1">{{ s.en }}</p>
+          <p style="margin:4px 0 0;font-size:13px;font-weight:700;color:#d8232a">{{ s.title }}</p>
+        </div>
+        <p style="margin:14px 0 0;font-size:12.5px;line-height:1.9;color:#cfcfcf;border-top:1px solid #2a2a2a;padding-top:14px">{{ s.text }}</p>
+      </div>
+    </sc-for>
+  </div>
+  <p style="position:relative;margin:18px 0 0;font-size:10px;color:#888">※ 使用量・使用方法は製品表示に合わせて差し替えてください。</p>
+
+  <div class="story" style="position:relative;margin-top:60px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <p data-anim="up" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#777">BRAND STORY</p>
+      <h3 data-anim="up" style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(19px,5vw,24px);font-weight:700;line-height:1.6">[ブランドの想い・見出し]</h3>
+      <p data-anim="up" style="margin:0;font-size:12.5px;line-height:2;color:#cfcfcf">[ブランドストーリー本文：ブランドの考え方や、商品を届けたい人について記載してください。開発背景・沿革は確認済みの事実のみ掲載します。]</p>
+    </div>
+    <div data-anim="reveal" class="story-img" style="margin-top:40px;aspect-ratio:3/4;background:#222 url(img/brand-story.jpg) center 70%/cover no-repeat"></div>
+  </div>
+</section>
+
+<!-- 05 FAQ + PURCHASE -->
+<section id="faq" data-screen-label="05 FAQ & Purchase" style="position:relative;background:#fff">
+  <div style="position:relative;padding:60px 20px 44px">
+    <span style="position:absolute;top:18px;right:-10px;font-family:Oswald,sans-serif;font-weight:700;font-size:190px;line-height:1;color:#f2f1ee;pointer-events:none">05</span>
+    <div data-anim="up" style="position:relative;display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#888"><span>05 / 05</span><span style="flex:1;height:1px;background:#d5d5d5"></span><span>Q&amp;A</span></div>
+    <h2 data-anim="up" style="position:relative;margin:22px 0 0;font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(46px,13vw,72px);line-height:0.9">FAQ<span style="color:#d8232a">.</span></h2>
+    <p data-anim="up" style="position:relative;margin:14px 0 0;font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700">よくあるご質問</p>
+    <div data-stagger="up" style="position:relative;margin-top:28px;display:flex;flex-direction:column;border-top:2px solid #151515">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+        <div style="border-bottom:1px solid #e0e0e0">
+          <button onClick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="width:100%;display:grid;grid-template-columns:44px minmax(0,1fr) 24px;gap:8px;align-items:center;padding:18px 0;background:transparent;border:0;cursor:pointer;text-align:left;font-family:inherit;font-size:14px;font-weight:700;color:#151515;transition:color .2s" style-hover="color:#d8232a">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#999">Q.{{ f.no }}</span>
+            <span style="line-height:1.6">{{ f.q }}</span>
+            <span style="width:24px;height:24px;border:1px solid currentColor;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;line-height:1">{{ f.icon }}</span>
+          </button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <div data-anim="drop" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;padding:0 0 20px;font-size:13px;line-height:1.9;color:#444">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#d8232a;padding-top:3px">A.</span>
+              <span>{{ f.a }}</span>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div id="purchase" style="position:relative;background:#e8e6e1;padding:52px 18px 40px;overflow:hidden">
+    <h2 data-anim="up" style="margin:0;font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(42px,12vw,64px);line-height:0.88">START<br><span style="color:transparent;-webkit-text-stroke:1.2px #151515">YOUR DAILY</span><br>BASIC<span style="color:#d8232a">.</span></h2>
+    <p data-anim="up" style="margin:14px 0 24px;font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700">今日から、シンプルなお手入れを。</p>
+    <div data-anim="zoom" style="display:grid;grid-template-columns:40px minmax(0,1fr);background:#fff;box-shadow:0 18px 40px rgba(0,0,0,0.12)">
+      <div style="background:#d8232a;color:#fff;writing-mode:vertical-rl;display:flex;align-items:center;justify-content:center;font-family:Oswald,sans-serif;font-size:13px;letter-spacing:0.32em">LIMITED OFFER</div>
+      <div style="padding:18px 16px;display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+        <div style="flex:1 1 200px">
+          <p style="margin:0;font-size:11px;font-weight:700;border-bottom:1px solid #151515;display:inline-block;padding-bottom:2px">[初回限定などのオファー名]</p>
+          <p style="margin:12px 0 0;font-size:15px;font-weight:900">[商品名]</p>
+          <p style="margin:2px 0 0;font-size:11.5px;color:#777">内容量 [◯◯mL]／通常価格 <span style="text-decoration:line-through">[¥◯,◯◯◯]</span></p>
+          <p style="margin:6px 0 0;display:flex;align-items:baseline;gap:4px;color:#d8232a;font-weight:900"><span data-loop="pulse" style="display:inline-block;transform-origin:left bottom;font-family:Oswald,sans-serif;font-weight:500;font-size:60px;line-height:0.95;letter-spacing:-0.02em">[000]</span><span style="font-size:14px">円<span style="font-size:10.5px;color:#777;font-weight:500">（税込）</span></span></p>
+        </div>
+        <div data-loop="float" style="flex:0 1 150px;aspect-ratio:4/5;margin:0 auto;background:#eee url(img/purchase-set.jpg) 45% center/cover no-repeat"></div>
+      </div>
+    </div>
+    <a data-loop="glow" href="#purchase-url-placeholder" style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;height:66px;padding:0 22px;background:#d8232a;color:#fff;text-decoration:none;transition:background .25s" style-hover="background:#151515"><span style="display:flex;flex-direction:column;line-height:1.35"><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.14em;color:#ffd6d7">[公式オンラインショップURL]</span><span style="font-size:17px;font-weight:900">{{ ctaLabel }}</span></span><span style="font-family:Oswald,sans-serif;font-size:24px">→</span></a>
+    <p style="margin:10px 0 0;font-size:10px;color:#666;line-height:1.6">※ 定期購入の有無・解約条件などは、確定情報をこの付近に明記してください。</p>
+  </div>
+</section>
+</main>
+
+<footer class="ft" style="max-width:600px;margin:0 auto;background:#0d0d0d;color:#bbb;padding:44px 20px 28px">
+  <p style="margin:0;font-family:Oswald,sans-serif;font-weight:700;font-size:44px;line-height:0.9;letter-spacing:0.04em;color:#fff">[BRAND]</p>
+  <p style="margin:6px 0 0;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#777">MEN'S SKIN CARE</p>
+  <p style="margin:22px 0 0;font-size:12px;line-height:1.9">お問い合わせ：[会社名] お客様窓口<br>TEL [000-0000-0000]（受付 [平日 00:00〜00:00]）<br>[mail@example.com]</p>
+  <nav style="margin-top:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px;font-size:11.5px;border-top:1px solid #262626;padding-top:20px">
+    <sc-for list="{{ footerLinks }}" as="l" hint-placeholder-count="6">
+      <a href="{{ l.href }}" style="color:#bbb;text-decoration:none;transition:color .2s" style-hover="color:#fff">{{ l.label }}</a>
+    </sc-for>
+  </nav>
+  <p style="margin:28px 0 0;font-family:'JetBrains Mono',monospace;font-size:10px;color:#666">© [YEAR] [会社名] All Rights Reserved.</p>
+</footer>
+
+<sc-if value="{{ showSticky }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;justify-content:center;pointer-events:none">
+    <a data-anim="rise" href="#purchase" style="pointer-events:auto;width:100%;max-width:600px;display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 22px;background:#d8232a;color:#fff;font-weight:900;font-size:15px;text-decoration:none;box-shadow:0 -6px 18px rgba(0,0,0,0.3);transition:background .2s" style-hover="background:#b81b21"><span>{{ ctaLabel }}</span><span style="font-family:Oswald,sans-serif;font-size:20px">→</span></a>
+  </div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;今すぐ購入する&quot;,&quot;商品詳細を見る&quot;,&quot;公式オンラインショップはこちら&quot;],&quot;default&quot;:&quot;今すぐ購入する&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;stickyCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { menu: false, open: 0, scrolled: false, q: 0, yes: 0, w: typeof window !== 'undefined' ? window.innerWidth : 1200, active: 0 };
+  componentDidMount() {
+    this.reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.ids = ['hero', 'concerns', 'features', 'routine', 'faq'];
+    this.onS = () => {
+      const s = window.scrollY > 700; if (s !== this.state.scrolled) this.setState({ scrolled: s });
+      let a = 0; this.ids.forEach((id, i) => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top < window.innerHeight * 0.45) a = i; });
+      if (a !== this.state.active) this.setState({ active: a });
+      if (this.io) this.sweep(window.innerHeight - 40);
+      const bar = document.querySelector('[data-progress]');
+      if (bar) { const max = document.documentElement.scrollHeight - window.innerHeight; bar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')'; }
+    };
+    this.onR = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('scroll', this.onS, { passive: true });
+    window.addEventListener('resize', this.onR);
+    document.querySelectorAll('[data-anim-init],[data-played],[data-pending]').forEach(el => { el.removeAttribute('data-anim-init'); el.removeAttribute('data-played'); el.removeAttribute('data-pending'); el.style.opacity = ''; Array.from(el.children).forEach(c => { if (c.style.opacity === '0') c.style.opacity = ''; }); });
+    if (!this.reduce) {
+      this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { this.play(e.target); this.io.unobserve(e.target); } }), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      this.scan(); setTimeout(() => this.scan(), 300);
+    }
+  }
+  componentDidUpdate(pp, ps) {
+    if (this.reduce || !this.io) return;
+    this.scan();
+    if (ps.q !== this.state.q) {
+      const el = document.querySelector('[data-quiz]');
+      if (el) { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = 'kfright .5s cubic-bezier(.2,.7,.2,1) backwards'; }
+    }
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onS); window.removeEventListener('resize', this.onR); this.io && this.io.disconnect(); clearTimeout(this.fb); }
+  anim(el, type, delay, dur) {
+    el.style.opacity = '';
+    el.style.animation = 'kf' + type + ' ' + (dur || 0.9) + 's cubic-bezier(.2,.7,.2,1) ' + delay + 'ms backwards';
+  }
+  sweep(limit) {
+    document.querySelectorAll('[data-anim-init]:not([data-played])').forEach(el => { if (el.getBoundingClientRect().top < limit) { this.play(el); this.io && this.io.unobserve(el); } });
+  }
+  play(el) {
+    if (el.hasAttribute('data-played')) return;
+    el.setAttribute('data-played', '1');
+    const d = +(el.dataset.delay || 0);
+    const t = el.dataset.anim;
+    if (t) this.anim(el, t, d, t === 'reveal' ? 1.2 : t === 'rise2' ? 1.3 : t === 'drop' ? 0.4 : 0.9);
+    if (el.dataset.stagger) {
+      const s = el.dataset.stagger;
+      Array.from(el.children).forEach((c, i) => this.anim(c, s === 'alt' ? (i % 2 ? 'right' : 'left') : s, d + i * 120, s === 'pop' ? 0.7 : 0.8));
+    }
+  }
+  scan() {
+    const loops = { ken: 'kfken 16s ease-in-out infinite alternate', float: 'kffloat 2.8s ease-in-out infinite alternate', spin: 'kfspin 16s linear infinite', pulse: 'kfpulse 1.4s ease-in-out infinite alternate', glow: 'kfglow 2.2s ease-out infinite', marquee: 'kfmarquee 26s linear infinite', blink: 'kfblink 1.2s steps(2) infinite' };
+    if (!this.reduce) document.querySelectorAll('[data-loop]:not([data-loop-init])').forEach(el => { el.setAttribute('data-loop-init', '1'); el.style.animation = loops[el.dataset.loop]; });
+    if (!this.io) return;
+    const vh = window.innerHeight || 800;
+    document.querySelectorAll('[data-anim]:not([data-anim-init]),[data-stagger]:not([data-anim-init])').forEach(el => {
+      el.setAttribute('data-anim-init', '1');
+      const r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) { this.play(el); return; }
+      if (el.dataset.anim) el.style.opacity = '0';
+      if (el.dataset.stagger) Array.from(el.children).forEach(c => { c.style.opacity = '0'; });
+      this.io.observe(el);
+    });
+    clearTimeout(this.fb);
+    this.fb = setTimeout(() => this.sweep(window.innerHeight || 800), 1500);
+  }
+  renderVals() {
+    const questions = [
+      '洗顔後、何もしないと肌がつっぱる感じがする',
+      '午後になると、おでこや鼻のテカリが気になる',
+      'ひげそりのあと、肌がヒリつくように感じることがある'
+    ];
+    const results = [
+      { title: '[タイプA：結果見出し]', text: '[タイプ別のお手入れアドバイス。商品情報に基づき、効果を断定しない表現で記載してください。]' },
+      { title: '[タイプB：結果見出し]', text: '[タイプ別のお手入れアドバイス]' },
+      { title: '[タイプC：結果見出し]', text: '[タイプ別のお手入れアドバイス]' }
+    ];
+    const answer = (y) => this.setState(s => ({ q: s.q + 1, yes: s.yes + (y ? 1 : 0) }));
+    const done = this.state.q >= questions.length;
+    const faqs = [
+      ['スキンケア初心者でも使えますか？', '[回答：使用方法がシンプルであることなど、商品情報に基づいて記載してください。]'],
+      ['どんな肌タイプ向けですか？', '[肌タイプ情報]。肌に合わないときは使用を中止し、皮膚科専門医等にご相談ください。'],
+      ['使い方を教えてください。', '洗顔後、適量 [◯プッシュ／◯円玉大] を手に取り、顔全体になじませてください。[製品表示の使用方法に差し替え]'],
+      ['毎日使えますか？', '[回答：朝晩の使用可否など、製品表示に基づいて記載してください。]'],
+      ['香りはありますか？', '[香り情報：無香料／◯◯の香り など]'],
+      ['主な成分は何ですか？', '[主要成分]。全成分はパッケージおよび製品情報をご確認ください。'],
+      ['内容量と価格を教えてください。', '内容量 [◯◯mL]、価格 [¥◯,◯◯◯]（税込）です。'],
+      ['どこで購入できますか？', '[公式オンラインショップ／取扱店舗] でご購入いただけます。']
+    ].map(([q, a], i) => ({ q, a, no: String(i + 1).padStart(2, '0'), open: this.state.open === i, icon: this.state.open === i ? '−' : '+', toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })) }));
+    const railData = [['01', 'TOP', 'トップ', '#hero'], ['02', 'ABOUT', '肌の悩み', '#concerns'], ['03', 'WHY', '特長・成分', '#features'], ['04', 'HOW TO', '使い方', '#routine'], ['05', 'FAQ', 'よくある質問', '#faq']];
+    return {
+      wide: this.state.w >= 1100,
+      rail: railData.map(([no, en, ja, href], i) => ({ no, en, ja, href, color: this.state.active === i ? '#ffffff' : '#5a5a5a', w: this.state.active === i ? '48px' : '16px' })),
+      menu: this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      ctaLabel: this.props.ctaLabel ?? '今すぐ購入する',
+      showSticky: (this.props.stickyCta ?? true) && this.state.scrolled && this.state.w < 1100,
+      heroPoints: [{ no: '01', t: '洗顔後すぐ' }, { no: '02', t: 'うるおいケア' }, { no: '03', t: '[特長3]' }],
+      troubles: [
+        { no: '01', en: 'DRY SKIN', ja: '洗顔後の\nつっぱり' },
+        { no: '02', en: 'OILY SKIN', ja: '気になる\nテカリ' },
+        { no: '03', en: 'AFTER SHAVE', ja: 'ひげそり後の\n肌' }
+      ],
+      quizActive: !done, quizDone: done,
+      quizPct: Math.round(Math.min(this.state.q, questions.length) / questions.length * 100) + '%',
+      qNo: Math.min(this.state.q + 1, questions.length), qTotal: questions.length,
+      qText: questions[Math.min(this.state.q, questions.length - 1)],
+      answerYes: () => answer(true), answerNo: () => answer(false),
+      result: results[Math.min(this.state.yes, 2)],
+      resetQuiz: () => this.setState({ q: 0, yes: 0 }),
+      ingredients: [
+        { no: '01', name: '[主要成分 1]', text: '[配合目的：例「保湿成分」]' },
+        { no: '02', name: '[主要成分 2]', text: '[配合目的]' },
+        { no: '03', name: '[主要成分 3]', text: '[配合目的]' }
+      ],
+      productInfo: [
+        { k: 'NAME', v: '[商品名]' }, { k: 'CATEGORY', v: '[化粧品／医薬部外品]' }, { k: 'VOLUME', v: '[◯◯mL]' },
+        { k: 'SCENT', v: '[香り情報]' }, { k: 'SKIN TYPE', v: '[肌タイプ情報]' }, { k: 'INGREDIENTS', v: '[全成分表示]' }
+      ],
+      steps: [
+        { no: '01', en: 'WASH', title: '洗う', text: '泡立てた洗顔料で、皮脂や汚れをやさしく洗い流します。', img: 'img/step-wash.jpg' },
+        { no: '02', en: 'TONE', title: '整える', text: '[商品名] を適量 [◯プッシュ] 手に取り、顔全体になじませます。', img: 'img/step-tone.jpg' },
+        { no: '03', en: 'MOISTURIZE', title: 'うるおす', text: '仕上げに [保湿アイテム] で、肌にうるおいを与えます。', img: 'img/step-moisturize.jpg' }
+      ],
+      faqs,
+      footerLinks: [
+        { label: '会社概要', href: '#company-placeholder' }, { label: '商品情報', href: '#features' },
+        { label: 'お問い合わせ', href: '#contact-placeholder' }, { label: 'プライバシーポリシー', href: '#privacy-placeholder' },
+        { label: '利用規約', href: '#terms-placeholder' }, { label: '特定商取引法に基づく表記', href: '#tokushoho-placeholder' }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

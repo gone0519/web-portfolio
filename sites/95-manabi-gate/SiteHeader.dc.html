@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 4vw;height:{{ headerH }};color:{{ fg }};background:{{ bg }};backdrop-filter:{{ blur }};-webkit-backdrop-filter:{{ blur }};transition:height .4s,background .4s,color .4s">
+  <a href="Home.dc.html" style="display:flex;align-items:baseline;gap:10px;color:{{ fg }};text-decoration:none;white-space:nowrap">
+    <span style="font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:{{ logoSize }};letter-spacing:-.01em">まなびゲート</span>
+    <sc-if value="{{ showSub }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Shippori Mincho',serif;font-size:16px">大学入試・進学情報ナビ</span></sc-if>
+  </a>
+  <div style="display:flex;align-items:center;gap:34px">
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:28px;font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:.04em">
+        <sc-for list="{{ navMain }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" style="color:{{ fg }};text-decoration:none;padding-bottom:4px;border-bottom:1px solid {{ n.line }}">{{ n.jp }}</a>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="height:44px;background:none;border:1px solid {{ fg }};border-radius:999px;color:{{ fg }};display:flex;align-items:center;gap:12px;padding:0 18px;font-family:'Instrument Sans',sans-serif;font-size:12px;letter-spacing:.12em;white-space:nowrap;flex-shrink:0;cursor:pointer">メニュー<span style="display:flex;flex-direction:column;gap:5px"><span style="display:block;width:20px;height:1px;background:{{ fg }}"></span><span style="display:block;width:20px;height:1px;background:{{ fg }}"></span></span></button>
+  </div>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#7A1020;color:#fff;display:flex;flex-direction:column;padding:28px 4vw;overflow:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:22px">まなびゲート</span>
+      <button onClick="{{ toggleMenu }}" style="background:#EEEAE1;border:none;color:#17110F;height:44px;padding:0 20px;border-radius:999px;font-family:'Instrument Sans',sans-serif;font-size:12px;letter-spacing:.12em;cursor:pointer">閉じる ×</button>
+    </div>
+    <nav style="margin:auto 0;display:flex;flex-direction:column">
+      <sc-for list="{{ navAll }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25);padding:14px 0">
+          <span style="display:flex;align-items:baseline;gap:20px"><span style="font-family:'Instrument Sans',sans-serif;font-size:12px;letter-spacing:.14em">{{ n.no }}</span><span style="font-family:'Shippori Mincho',serif;font-size:clamp(32px,7vw,96px);line-height:1;font-style:{{ n.fs }}">{{ n.jp }}</span></span>
+        </a>
+      </sc-for>
+    </nav>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;programs&quot;,&quot;prepare&quot;,&quot;admissions&quot;,&quot;campus&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, scrolled: false, menu: false };
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth });
+    this.onS = () => { const s = window.scrollY > 60; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('resize', this.onR); window.addEventListener('scroll', this.onS, { passive: true });
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); window.removeEventListener('scroll', this.onS); }
+  renderVals() {
+    const cur = this.props.current || 'home';
+    const all = [['home', 'Home.dc.html', 'Top', 'トップ'], ['programs', 'Programs.dc.html', 'Programs', '大学・学部'], ['prepare', 'Prepare.dc.html', 'Prepare', '入試対策'], ['admissions', 'Admissions.dc.html', 'Admissions', '出願・入学'], ['campus', 'Campus.dc.html', 'Campus', 'キャンパスライフ'], ['contact', 'Contact.dc.html', 'Contact', 'お問い合わせ']]
+      .map(([k, href, en, jp], i) => ({ href, en, jp, no: String(i).padStart(2, '0'), line: k === cur ? 'currentColor' : 'transparent', fs: k === cur ? 'italic' : 'normal' }));
+    return {
+      headerH: this.state.scrolled ? '68px' : '88px',
+      fg: this.state.scrolled ? '#EEEAE1' : (this.props.tone === 'dark' ? '#17110F' : '#FFFFFF'),
+      bg: this.state.scrolled ? 'rgba(23,17,15,.9)' : 'transparent',
+      blur: this.state.scrolled ? 'blur(12px)' : 'none',
+      isDesktop: this.state.w >= 1000,
+      // サブタイトルはナビと競合する 1000〜1279px とスマホ幅では隠す
+      showSub: this.state.w >= 1280 || (this.state.w >= 640 && this.state.w < 1000),
+      logoSize: this.state.w < 400 ? '19px' : '22px',
+      navMain: all.slice(1), navAll: all,
+      menuOpen: this.state.menu,
+      toggleMenu: () => this.setState({ menu: !this.state.menu })
+    };
+  }
+}
+</script>
+</body>
+</html>

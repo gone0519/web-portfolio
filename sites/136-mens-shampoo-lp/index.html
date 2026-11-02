@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Jost:wght@400;500;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1c1a17;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;word-break:auto-phrase;overflow-x:hidden}
+h1,h2,h3{text-wrap:balance}
+*{box-sizing:border-box}
+image-slot[src]:not([src=""])::part(ring){display:none}
+a{color:#ee5a2f;text-decoration:none}
+a:hover{color:#c8441c}
+a:focus-visible,button:focus-visible{outline:3px solid #1c1a17;outline-offset:3px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);border-bottom:1px solid #eee5d6">
+  <div style="max-width:1120px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="#top" style="display:flex;align-items:center;gap:12px;color:#1c1a17">
+      <span style="width:34px;height:34px;border-radius:50%;background:#1c1a17;color:#e8c48a;display:grid;place-items:center;font-family:Oswald,sans-serif;font-weight:600;font-size:15px">B</span>
+      <span style="display:flex;flex-direction:column;line-height:1.1">
+        <span style="font-family:Jost,sans-serif;font-weight:800;font-size:19px;letter-spacing:0.14em">[BRAND]</span>
+        <span style="font-family:Jost,sans-serif;font-size:9px;font-weight:500;letter-spacing:0.32em;color:#9c7a45">MEN'S HAIR CARE</span>
+      </span>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:30px;font-size:13px;font-weight:700">
+        <a href="#concern" style="display:flex;flex-direction:column;align-items:center;color:#1c1a17;line-height:1.3" style-hover="color:#ee5a2f"><span style="font-family:Jost,sans-serif;font-size:9px;letter-spacing:0.2em;color:#c49d68">CONCERN</span>お悩み</a>
+        <a href="#formula" style="display:flex;flex-direction:column;align-items:center;color:#1c1a17;line-height:1.3" style-hover="color:#ee5a2f"><span style="font-family:Jost,sans-serif;font-size:9px;letter-spacing:0.2em;color:#c49d68">FORMULA</span>成分・特長</a>
+        <a href="#howto" style="display:flex;flex-direction:column;align-items:center;color:#1c1a17;line-height:1.3" style-hover="color:#ee5a2f"><span style="font-family:Jost,sans-serif;font-size:9px;letter-spacing:0.2em;color:#c49d68">HOW TO</span>使い方</a>
+        <a href="#faq" style="display:flex;flex-direction:column;align-items:center;color:#1c1a17;line-height:1.3" style-hover="color:#ee5a2f"><span style="font-family:Jost,sans-serif;font-size:9px;letter-spacing:0.2em;color:#c49d68">Q&amp;A</span>よくある質問</a>
+        <a href="#lineup" style="display:flex;align-items:center;gap:10px;background:#ee5a2f;color:#fff;border-radius:999px;padding:11px 14px 11px 24px;box-shadow:0 3px 0 #b9401b" style-hover="background:#d4461d;color:#fff">今すぐ購入する<span style="width:18px;height:18px;border-radius:50%;background:#fff;color:#ee5a2f;display:grid;place-items:center;font-size:12px;line-height:1">›</span></a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:8px">
+        <a href="#lineup" style="background:#ee5a2f;color:#fff;border-radius:999px;padding:10px 16px;font-size:13px;font-weight:700" style-hover="color:#fff">購入する</a>
+        <button onClick="{{ toggleMenu }}" aria-label="メニュー" aria-expanded="{{ menuOpen }}" style="width:44px;height:44px;border:1px solid #d9cbb2;background:#fff;border-radius:50%;display:grid;place-items:center;cursor:pointer;font-size:16px;color:#1c1a17">{{ menuIcon }}</button>
+      </div>
+    </sc-if>
+  </div>
+  <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;flex-direction:column;border-top:1px solid #eee5d6;background:#fff;font-weight:700;font-size:15px">
+      <a href="#concern" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;padding:16px 20px;color:#1c1a17;border-bottom:1px solid #f2ece1">お悩み<span style="font-family:Jost,sans-serif;font-size:11px;letter-spacing:0.2em;color:#c49d68">CONCERN</span></a>
+      <a href="#formula" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;padding:16px 20px;color:#1c1a17;border-bottom:1px solid #f2ece1">成分・特長<span style="font-family:Jost,sans-serif;font-size:11px;letter-spacing:0.2em;color:#c49d68">FORMULA</span></a>
+      <a href="#howto" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;padding:16px 20px;color:#1c1a17;border-bottom:1px solid #f2ece1">使い方<span style="font-family:Jost,sans-serif;font-size:11px;letter-spacing:0.2em;color:#c49d68">HOW TO</span></a>
+      <a href="#faq" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;padding:16px 20px;color:#1c1a17">よくある質問<span style="font-family:Jost,sans-serif;font-size:11px;letter-spacing:0.2em;color:#c49d68">Q&amp;A</span></a>
+    </nav>
+  </sc-if>
+</header>
+
+<main>
+<!-- 01 HERO -->
+<section id="top" data-screen-label="01 Hero" style="scroll-margin-top:64px">
+  <div style="position:relative;padding:clamp(64px,10vw,150px) 16px clamp(110px,13vw,190px);overflow:hidden;background:radial-gradient(ellipse at 30% 30%,#e7a63a 0%,#a8601a 45%,#3d1e08 100%)">
+    <div style="position:absolute;inset:0">
+      <image-slot id="hero-bg" shape="rect" src="./images/15.jpg" placeholder="背景写真：琥珀色のシャンプー液・泡・水のクローズアップ"></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(40,18,2,0.35) 0%,rgba(40,18,2,0) 35%,rgba(40,18,2,0) 65%,rgba(40,18,2,0.45) 100%)"></div>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;left:clamp(16px,3vw,44px);top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-family:Jost,sans-serif;font-weight:500;font-size:11px;letter-spacing:0.5em;color:rgba(255,255,255,0.85);pointer-events:none;display:flex;align-items:center;gap:18px">MEN'S DAILY SHAMPOO<span style="width:1px;height:80px;background:rgba(255,255,255,0.6)"></span>[BRAND]</div>
+      <div style="position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-family:Jost,sans-serif;font-size:10px;letter-spacing:0.4em;color:#fff;pointer-events:none">SCROLL<span style="position:relative;width:1px;height:48px;background:rgba(255,255,255,0.3);overflow:hidden">{{ scrollLine }}</span></div>
+    </sc-if>
+    <div style="position:relative;max-width:880px;margin:0 auto;pointer-events:none">
+      <div style="position:relative;background:#fff;border-radius:12px;padding:8px;box-shadow:0 30px 80px rgba(40,18,0,0.35);pointer-events:auto">
+        <div style="border:1px solid #e4d4b8;border-radius:8px;padding:clamp(30px,5vw,50px) clamp(16px,4vw,46px) clamp(30px,4vw,42px);text-align:center">
+          <p style="margin:0 0 14px;display:flex;align-items:center;justify-content:center;gap:12px;font-family:Jost,sans-serif;font-weight:700;font-size:clamp(10px,2.8vw,12px);letter-spacing:clamp(0.18em,1vw,0.36em);white-space:nowrap;color:#9c7a45"><span style="width:28px;height:1px;background:#c49d68"></span>FOR MEN'S SCALP &amp; HAIR<span style="width:28px;height:1px;background:#c49d68"></span></p>
+          <h1 style="margin:0;font-weight:900;line-height:1.15;letter-spacing:0.02em;font-size:clamp(28px,5.4vw,58px)">
+            <span style="display:block"><span style="font-family:Oswald,sans-serif;font-weight:700;font-size:1.9em;line-height:1;vertical-align:-0.08em;margin-right:0.05em">1</span>本で、髪も頭皮も</span>
+            <span style="display:block">すっきり洗い上げる！</span>
+          </h1>
+          <p style="display:inline-block;margin:18px 0 0;background:#ee5a2f;color:#fff;font-weight:700;font-size:clamp(15px,3.6vw,30px);letter-spacing:0.08em;padding:2px clamp(12px,3vw,22px);line-height:1.5;white-space:nowrap;transform:skewX(-6deg)"><span style="display:inline-block;transform:skewX(6deg)">メンズのための毎日シャンプー</span></p>
+          <p style="margin:20px auto 0;max-width:640px;font-size:clamp(14px,1.6vw,17px);font-weight:700;line-height:1.95;text-wrap:pretty">皮脂や汗、ニオイの原因となる汚れを泡でしっかり洗い流し、<sc-if value="{{ isDesktop }}"><br></sc-if>洗い上がりはさっぱり。毎日のシャワーで手軽に使えます。</p>
+          <div style="display:flex;justify-content:center;gap:clamp(6px,2vw,10px);margin-top:24px">
+            <div style="width:{{ badgeSize }};height:{{ badgeSize }};border-radius:50%;background:#faf4ea;border:1px solid #e4d4b8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center"><span style="font-family:Jost,sans-serif;font-size:9px;letter-spacing:0.2em;color:#9c7a45">DAILY</span><span style="font-weight:900;font-size:13px;line-height:1.4">毎日の<br>シャンプーに</span></div>
+            <div style="width:{{ badgeSize }};height:{{ badgeSize }};border-radius:50%;background:#faf4ea;border:1px solid #e4d4b8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center"><span style="font-family:Jost,sans-serif;font-size:9px;letter-spacing:0.2em;color:#9c7a45">SCENT</span><span style="font-weight:900;font-size:12px;line-height:1.4">[香りの<br>情報]</span></div>
+            <div style="width:{{ badgeSize }};height:{{ badgeSize }};border-radius:50%;background:#faf4ea;border:1px solid #e4d4b8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center"><span style="font-family:Jost,sans-serif;font-size:9px;letter-spacing:0.2em;color:#9c7a45">VOLUME</span><span style="font-weight:900;font-size:12px;line-height:1.4">[内容量]</span></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px">
+            <a href="#lineup" style="display:flex;align-items:center;gap:14px;background:#ee5a2f;color:#fff;border-radius:999px;padding:16px 18px 16px 36px;font-weight:700;font-size:16px;box-shadow:0 4px 0 #b9401b" style-hover="background:#d4461d;color:#fff">今すぐ購入する<span style="width:22px;height:22px;border-radius:50%;background:#fff;color:#ee5a2f;display:grid;place-items:center;font-size:15px;line-height:1">›</span></a>
+            <a href="#formula" style="display:flex;align-items:center;gap:14px;background:#fff;color:#1c1a17;border:2px solid #1c1a17;border-radius:999px;padding:14px 18px 14px 32px;font-weight:700;font-size:16px" style-hover="background:#1c1a17;color:#fff">成分・特長を見る<span style="font-size:15px">›</span></a>
+          </div>
+          <sc-if value="{{ showMobileBottle }}" hint-placeholder-val="{{ false }}">
+            <div style="width:150px;height:260px;margin:28px auto 0">
+              <image-slot id="hero-bottle-m" src="{{ bottleSrc }}" shape="rounded" radius="8" fit="contain" placeholder="商品ボトル（切り抜き）"></image-slot>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <sc-if value="{{ bottleSrc }}">
+          <div style="position:absolute;right:-10%;bottom:-24%;width:clamp(150px,20vw,230px);height:clamp(330px,44vw,500px);pointer-events:auto">{{ floatBottle }}</div>
+        </sc-if>
+        <div style="position:absolute;left:-9%;bottom:-20%;width:clamp(130px,17vw,200px);height:clamp(130px,17vw,200px);pointer-events:auto;border-radius:50%;padding:6px;background:#fff;box-shadow:0 16px 30px rgba(0,0,0,0.3)">
+          <image-slot id="hero-sub" shape="circle" src="./images/04.jpg" placeholder="泡・テクスチャ"></image-slot>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="background:#e8dac0;background-image:radial-gradient(rgba(120,90,50,0.09) 1px,transparent 1px);background-size:5px 5px;padding:clamp(52px,7vw,84px) 16px clamp(60px,8vw,96px)">
+    <div style="max-width:880px;margin:0 auto">
+      <div style="text-align:center">
+        <p style="margin:0;font-family:Jost,sans-serif;font-weight:700;font-size:11px;letter-spacing:0.4em;color:#9c7a45">SCENE</p>
+        <p style="margin:6px 0 26px;font-weight:900;font-size:clamp(17px,2vw,20px);letter-spacing:0.1em;color:#3d2c14">こんなシーンで</p>
+      </div>
+      <div style="display:grid;grid-template-columns:{{ sceneCols }};gap:22px clamp(10px,2vw,16px);max-width:740px;margin:0 auto">
+        <sc-for list="{{ scenes }}" as="s" hint-placeholder-count="6">
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <span style="position:relative;z-index:1;background:#c49d68;color:#fff;font-size:12px;font-weight:700;border-radius:999px;padding:4px 16px;letter-spacing:0.08em;margin-bottom:-12px;box-shadow:0 2px 0 #a8834e">{{ s.label }}</span>
+            <div style="width:100%;aspect-ratio:4/3;border-radius:10px;padding:4px;background:#fff;box-shadow:0 8px 20px rgba(90,60,20,0.15)">
+              <image-slot id="{{ s.id }}" src="{{ s.src }}" shape="rounded" radius="7" placeholder="{{ s.ph }}"></image-slot>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="text-align:center;margin-top:52px">
+        <p style="display:inline-block;margin:0;color:#ee5a2f;font-weight:700;font-size:clamp(16px,2vw,20px);background:linear-gradient(transparent 65%,rgba(238,90,47,0.18) 65%);padding:0 6px">毎日使うものだから、</p>
+        <p style="margin:14px 0 0;font-weight:900;font-size:clamp(22px,3.4vw,34px);letter-spacing:0.04em">洗う時間を、<span style="font-size:1.25em;color:#3d2c14">“気持ちいい”</span>時間に。</p>
+      </div>
+    </div>
+  </div>
+  <div style="background:#1c1a17;color:#e8c48a;overflow:hidden;padding:14px 0;border-top:3px solid #c49d68">{{ marquee }}</div>
+</section>
+
+<!-- 02 CONCERNS -->
+<section id="concern" data-screen-label="02 Concerns" style="scroll-margin-top:64px;background:#fff;position:relative;overflow:hidden">
+  <span aria-hidden="true" style="position:absolute;right:-0.05em;top:0.2em;font-family:Jost,sans-serif;font-weight:800;font-size:clamp(90px,17vw,200px);line-height:1;color:transparent;-webkit-text-stroke:1.5px #e6d7bd;pointer-events:none;letter-spacing:-0.02em">CONCERN</span>
+  <div style="position:relative;max-width:880px;margin:0 auto;padding:clamp(72px,10vw,120px) 20px clamp(40px,6vw,70px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:44px;align-items:center">
+    <div>
+      <p style="margin:0 0 26px;display:flex;align-items:center;gap:12px;font-family:Jost,sans-serif;font-weight:700;font-size:12px;letter-spacing:0.3em;color:#9c7a45"><span style="font-family:Oswald,sans-serif;font-size:22px;letter-spacing:0;color:#1c1a17">01</span><span style="width:40px;height:1px;background:#c49d68"></span>CONCERN</p>
+      <span style="display:inline-block;background:#ee5a2f;color:#fff;font-weight:900;font-size:15px;padding:5px 16px;transform:rotate(-6deg);border-radius:3px;box-shadow:3px 3px 0 #1c1a17">こんな悩み、ありませんか？</span>
+      <p style="margin:16px 0 0 40px;color:#ee5a2f;font-weight:700;font-size:clamp(16px,1.9vw,20px);letter-spacing:0.06em">汗も皮脂も、毎日のことだから。</p>
+      <h2 style="margin:10px 0 0;font-weight:900;line-height:1.25;font-size:clamp(26px,3.6vw,36px)">
+        <span style="display:block">夕方の頭皮のベタつき、</span>
+        <span style="display:block;position:relative">
+          <span aria-hidden="true" style="position:absolute;left:-0.05em;top:-0.1em;font-size:2.4em;line-height:1;background:linear-gradient(120deg,#c49d68,#ead8b6 50%,#b8915a);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0.65;letter-spacing:-0.02em">爽快</span>
+          <span style="position:relative;display:block;padding:1em 0 0 1.6em">すっきり洗いたい。</span>
+        </span>
+      </h2>
+      <p style="margin:26px 0 0;font-size:14px;font-weight:500;line-height:2;text-wrap:pretty">髪や頭皮の状態は人それぞれ。でも、一日の終わりに「さっぱりしたい」と感じる瞬間は多いはずです。[商品名]は、余分な皮脂や汚れを洗い流し、洗い上がりの心地よさを大切にしたシャンプーです。</p>
+    </div>
+    <div style="position:relative;width:100%;max-width:400px;justify-self:center">
+      <div style="position:absolute;inset:18px -18px -18px 18px;border-radius:200px 200px 24px 24px;background:#efe4d0"></div>
+      <div style="position:relative;aspect-ratio:4/5">
+        <image-slot id="concern-photo" src="./images/13.jpg" shape="rounded" radius="24" mask="inset(0 round 200px 200px 24px 24px)" placeholder="泡立てたシャンプーのクローズアップ"></image-slot>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;max-width:880px;margin:0 auto;padding:0 20px clamp(40px,6vw,60px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:22px 14px">
+      <sc-for list="{{ concerns }}" as="c" hint-placeholder-count="6">
+        <div style="position:relative;background:#fff;border:2px solid #1c1a17;border-radius:14px;padding:20px 18px 18px;box-shadow:5px 5px 0 #e8dac0">
+          <span style="position:absolute;top:-14px;left:16px;background:#1c1a17;color:#e8c48a;font-family:Oswald,sans-serif;font-weight:600;font-size:13px;letter-spacing:0.08em;padding:3px 12px;border-radius:999px">CHECK {{ c.no }}</span>
+          <p style="margin:4px 0 0;font-weight:900;font-size:15px;line-height:1.6;display:flex;gap:10px;align-items:flex-start"><span style="flex:none;width:20px;height:20px;border-radius:50%;background:#ee5a2f;color:#fff;display:grid;place-items:center;font-size:12px;margin-top:3px">✓</span>{{ c.title }}</p>
+          <p style="margin:10px 0 0;padding-top:10px;border-top:1px dashed #d9c9ac;font-size:13px;line-height:1.8;color:#5e5448">{{ c.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:16px 0 0;font-size:11px;color:#7a6f62">※使用感には個人差があります。</p>
+  </div>
+
+  <div style="display:flex;justify-content:center;padding-bottom:10px">
+    <div style="width:0;height:0;border-left:36px solid transparent;border-right:36px solid transparent;border-top:24px solid #e8dac0"></div>
+  </div>
+
+  <div style="background:#f6efe4;clip-path:polygon(0 0,100% 12%,100% 100%,0 100%);padding:clamp(44px,6vw,64px) 20px 0">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 32px">
+      <div style="position:relative;width:min(100%,360px);aspect-ratio:3/2">
+        <image-slot id="concern-person" src="./images/02.jpg" shape="rect" placeholder="シャワー後の男性（上半身・自然な表情）"></image-slot>
+        <div style="position:absolute;right:-10px;top:-18px;width:clamp(80px,22vw,100px);height:clamp(80px,22vw,100px);border-radius:50%;background:#ee5a2f;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:3px solid #fff;outline:1px solid #ee5a2f;pointer-events:none;transform:rotate(8deg)"><span style="font-family:Jost,sans-serif;font-weight:500;font-size:9px;letter-spacing:0.2em">FOR MEN</span><span style="font-family:Oswald,sans-serif;font-weight:700;font-size:20px;line-height:1.1">DAILY<br>CARE</span></div>
+      </div>
+      <div style="flex:1 1 300px;margin:0 0 34px">
+        <p style="margin:0 0 6px;font-family:Jost,sans-serif;font-weight:700;font-size:11px;letter-spacing:0.36em;color:#9c7a45">ANSWER</p>
+        <p style="margin:0;font-weight:700;color:#ee5a2f;font-size:clamp(17px,2.2vw,22px);border-bottom:2px solid #ee5a2f;padding-bottom:6px;letter-spacing:0.04em">泡で包んで洗うだけで、<span style="font-size:1.35em;font-weight:900">“さっぱり”</span>が続く毎日へ。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 FORMULA -->
+<section id="formula" data-screen-label="03 Formula" style="scroll-margin-top:64px;background:#fff">
+  <div style="max-width:880px;margin:0 auto;padding:clamp(72px,10vw,120px) 20px clamp(56px,7vw,80px)">
+    <div style="position:relative;text-align:center">
+      <span aria-hidden="true" style="position:absolute;left:50%;top:-0.5em;transform:translateX(-50%);font-family:Jost,sans-serif;font-weight:800;font-size:clamp(64px,11vw,120px);line-height:1;color:#efe6d6;letter-spacing:-0.01em;white-space:nowrap">formula</span>
+      <p style="position:relative;margin:0 0 18px;display:flex;align-items:center;justify-content:center;gap:12px;font-family:Jost,sans-serif;font-weight:700;font-size:12px;letter-spacing:0.3em;color:#9c7a45"><span style="font-family:Oswald,sans-serif;font-size:22px;letter-spacing:0;color:#1c1a17">02</span><span style="width:40px;height:1px;background:#c49d68"></span>FORMULA</p>
+      <p style="position:relative;margin:0;color:#ee5a2f;font-weight:900;font-size:clamp(16px,2vw,20px);letter-spacing:0.08em">泡・香り・洗い上がりにこだわった処方</p>
+      <h2 style="position:relative;margin:10px 0 0;font-weight:900;font-size:clamp(28px,4.2vw,42px);line-height:1.35">毎日使いたくなる、<br>シンプルな心地よさ。</h2>
+      <p style="position:relative;margin:20px auto 0;max-width:600px;font-size:14px;font-weight:500;line-height:2;text-wrap:pretty">[商品名]の成分と特長をご紹介します。成分名や配合の情報は、パッケージ記載の内容に合わせて掲載してください。</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:40px clamp(12px,2vw,20px);margin-top:56px">
+      <sc-for list="{{ ingredients }}" as="ing" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
+          <div style="position:relative;width:{{ ingSize }};height:{{ ingSize }}">
+            <div style="position:absolute;inset:-8px;border-radius:50%;border:1px dashed #c49d68"></div>
+            <image-slot id="{{ ing.id }}" src="{{ ing.src }}" shape="circle" placeholder="{{ ing.ph }}"></image-slot>
+            <span style="position:absolute;left:-6px;top:-6px;width:clamp(36px,10vw,44px);height:clamp(36px,10vw,44px);border-radius:50%;background:#ee5a2f;color:#fff;display:grid;place-items:center;font-family:Oswald,sans-serif;font-weight:600;font-size:clamp(14px,4vw,17px);border:3px solid #fff;pointer-events:none">{{ ing.no }}</span>
+          </div>
+          <span style="margin-top:20px;font-family:Jost,sans-serif;font-weight:700;font-size:10px;letter-spacing:0.28em;color:#9c7a45">{{ ing.en }}</span>
+          <p style="margin:4px 0 0;font-weight:900;font-size:clamp(15px,4vw,17px)">{{ ing.title }}</p>
+          <p style="margin:8px 0 0;background:#faf4ea;border:1px solid #e4d4b8;border-radius:999px;padding:3px 12px;font-weight:700;font-size:clamp(11px,3vw,12px);color:#7a5a2c">{{ ing.tag }}：{{ ing.value }}</p>
+          <p style="margin:10px 0 0;font-size:13px;line-height:1.8;color:#5e5448;max-width:220px">{{ ing.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(105deg,#b89a68 0%,#e9dcc2 28%,#f6efe2 45%,#d7c19a 70%,#b2915c 100%);clip-path:polygon(0 8%,100% 0,100% 92%,0 100%);padding:clamp(84px,10vw,124px) 20px">
+    <div style="max-width:780px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:4px 18px">
+        <span style="font-family:Jost,sans-serif;font-weight:800;font-size:clamp(52px,8.5vw,90px);line-height:0.9;background:linear-gradient(180deg,#8a6a38,#c8a46b);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-0.01em">SPEC</span>
+        <h3 style="margin:0 0 6px;font-weight:900;font-size:clamp(22px,3vw,30px)">製品の特長をまとめました</h3>
+      </div>
+      <div style="overflow-x:auto;margin-top:26px;background:rgba(255,255,255,0.35);border-radius:12px;padding:6px">
+        <table style="width:100%;border-collapse:separate;border-spacing:3px;font-size:clamp(11px,3vw,13px);font-weight:700;text-align:center">
+          <thead>
+            <tr>
+              <th style="background:transparent"></th>
+              <th style="background:#1c1a17;color:#e8c48a;padding:12px 6px;border-radius:8px 8px 0 0;font-size:clamp(12px,3.4vw,14px)">シャンプー</th>
+              <th style="background:#c49d68;color:#fff;padding:12px 6px;border-radius:8px 8px 0 0;font-size:clamp(12px,3.4vw,14px)">[コンディショナー]</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ specs }}" as="r" hint-placeholder-count="8">
+              <tr>
+                <th style="background:#ee5a2f;color:#fff;padding:10px 6px;width:30%;line-height:1.4">{{ r.k }}</th>
+                <td style="background:#fff;padding:10px 6px;line-height:1.5">{{ r.a }}</td>
+                <td style="background:#fff;padding:10px 6px;line-height:1.5">{{ r.b }}</td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin:12px 0 0;font-size:11px;color:#3d3122">※全成分はパッケージおよび商品詳細ページをご確認ください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 HOW TO -->
+<section id="howto" data-screen-label="04 How to use" style="scroll-margin-top:64px;background:#fff">
+  <div style="max-width:920px;margin:0 auto;padding:clamp(60px,8vw,100px) 20px clamp(64px,8vw,100px)">
+    <div style="position:relative;text-align:center">
+      <span aria-hidden="true" style="position:absolute;left:50%;top:-0.5em;transform:translateX(-50%);font-family:Jost,sans-serif;font-weight:800;font-size:clamp(64px,11vw,120px);line-height:1;color:#efe6d6;white-space:nowrap">how to</span>
+      <p style="position:relative;margin:0 0 18px;display:flex;align-items:center;justify-content:center;gap:12px;font-family:Jost,sans-serif;font-weight:700;font-size:12px;letter-spacing:0.3em;color:#9c7a45"><span style="font-family:Oswald,sans-serif;font-size:22px;letter-spacing:0;color:#1c1a17">03</span><span style="width:40px;height:1px;background:#c49d68"></span>HOW TO USE</p>
+      <p style="position:relative;margin:0;color:#ee5a2f;font-weight:900;font-size:clamp(16px,1.9vw,20px);letter-spacing:0.08em">いつものシャワーで、4ステップ</p>
+      <h2 style="position:relative;margin:8px 0 0;font-weight:900;font-size:clamp(26px,3.8vw,38px)">毎日の使い方</h2>
+    </div>
+    <ol style="list-style:none;margin:52px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:40px clamp(12px,2vw,20px)">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+        <li style="position:relative;display:flex;flex-direction:column">
+          <span aria-hidden="true" style="position:absolute;right:-4px;top:-34px;font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(56px,15vw,72px);line-height:1;color:#efe6d6;z-index:0">{{ st.big }}</span>
+          <span style="position:relative;z-index:1;align-self:flex-start;background:#1c1a17;color:#e8c48a;font-family:Jost,sans-serif;font-weight:700;font-size:12px;letter-spacing:0.18em;border-radius:6px 6px 0 0;padding:5px 14px">STEP {{ st.no }}</span>
+          <div style="position:relative;z-index:1;aspect-ratio:1/1;border-radius:0 10px 10px 10px;overflow:hidden">
+            <image-slot id="{{ st.id }}" src="{{ st.src }}" shape="rect" placeholder="{{ st.ph }}"></image-slot>
+          </div>
+          <p style="margin:16px 0 0;font-weight:900;font-size:15px;line-height:1.55">{{ st.title }}</p>
+          <p style="margin:6px 0 0;font-size:13px;line-height:1.8;color:#5e5448">{{ st.body }}</p>
+        </li>
+      </sc-for>
+    </ol>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px;margin-top:40px;font-size:13px;font-weight:700">
+      <div style="display:flex;align-items:center;gap:14px;border:2px solid #1c1a17;border-radius:999px;padding:8px 20px 8px 8px"><span style="background:#ee5a2f;color:#fff;padding:8px 16px;border-radius:999px;white-space:nowrap">使用量の目安</span>[メーカー推奨の使用量]</div>
+      <div style="display:flex;align-items:center;gap:14px;border:2px solid #1c1a17;border-radius:999px;padding:8px 20px 8px 8px"><span style="background:#ee5a2f;color:#fff;padding:8px 16px;border-radius:999px;white-space:nowrap">使用頻度</span>[推奨される使用頻度]</div>
+    </div>
+  </div>
+
+  <div style="background:#e8dac0;background-image:radial-gradient(rgba(120,90,50,0.09) 1px,transparent 1px);background-size:5px 5px;padding:clamp(60px,8vw,96px) 20px">
+    <div style="max-width:880px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px;align-items:center">
+      <div style="position:relative">
+        <div style="position:absolute;inset:-14px 14px 14px -14px;border:1px solid #b8955f;border-radius:12px"></div>
+        <div style="position:relative;aspect-ratio:4/3">
+          <image-slot id="howto-lifestyle" src="./images/32.jpg" shape="rounded" radius="10" placeholder="清潔なバスルームに置かれたボトル"></image-slot>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0;font-family:Jost,sans-serif;font-weight:700;font-size:11px;letter-spacing:0.36em;color:#9c7a45">SCENT &amp; FEEL</p>
+        <p style="display:inline-block;margin:8px 0 0;color:#ee5a2f;font-weight:700;font-size:16px;border-bottom:2px solid #ee5a2f;padding-bottom:2px">香りと洗い心地</p>
+        <h3 style="margin:14px 0 0;font-weight:900;font-size:clamp(22px,3vw,30px);line-height:1.45">シャワーのあとまで、<br>心地よい香り。</h3>
+        <p style="margin:16px 0 0;font-size:14px;font-weight:500;line-height:2;color:#3d3122;text-wrap:pretty">香りは[香りの情報]。泡立ちから洗い流すまで、毎日のバスタイムを気持ちよく過ごせるよう仕上げています。</p>
+        <p style="margin:20px 0 0;font-size:13px;line-height:1.9;color:#5b4527;border-top:1px solid #cdb995;padding-top:14px">[ブランドフィロソフィー・開発への想い（確認済みの情報のみ掲載）]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 FAQ + PURCHASE -->
+<section id="faq" data-screen-label="05 FAQ & Purchase" style="scroll-margin-top:64px;background:#fff">
+  <div style="position:relative;overflow:hidden;padding:clamp(72px,10vw,120px) 20px clamp(60px,8vw,96px)">
+    <span aria-hidden="true" style="position:absolute;right:-0.06em;top:-0.16em;font-family:Jost,sans-serif;font-weight:800;font-size:clamp(130px,23vw,280px);line-height:1;color:#f1eadc;pointer-events:none">Q&amp;A</span>
+    <div style="position:relative;max-width:680px;margin:0 auto">
+      <p style="margin:0 0 18px;display:flex;align-items:center;justify-content:center;gap:12px;font-family:Jost,sans-serif;font-weight:700;font-size:12px;letter-spacing:0.3em;color:#9c7a45"><span style="font-family:Oswald,sans-serif;font-size:22px;letter-spacing:0;color:#1c1a17">04</span><span style="width:40px;height:1px;background:#c49d68"></span>FAQ</p>
+      <h2 style="margin:0;text-align:center;font-weight:900;font-size:clamp(26px,3.8vw,36px);letter-spacing:0.06em">よくある質問</h2>
+      <div style="margin-top:40px;display:flex;flex-direction:column;gap:14px">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="7">
+          <div style="background:#fff;border-radius:6px;box-shadow:0 2px 0 #eadfcb">
+            <button onClick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="position:relative;width:100%;display:flex;align-items:center;gap:14px;background:#c49d68;color:#fff;border:0;border-radius:6px;padding:12px 16px;text-align:left;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer" style-hover="background:#b48b55">
+              <span style="font-family:Oswald,sans-serif;font-weight:600;font-size:19px">Q{{ f.no }}</span>
+              <span style="flex:1;line-height:1.5">{{ f.q }}</span>
+              <span style="width:24px;height:24px;border-radius:50%;background:#fff;color:#c49d68;display:grid;place-items:center;font-size:15px;line-height:1">{{ f.icon }}</span>
+            </button>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;gap:14px;padding:16px 16px 14px">
+                <span style="font-family:Oswald,sans-serif;font-weight:600;font-size:19px;color:#ee5a2f;line-height:1.2">A{{ f.no }}</span>
+                <p style="margin:0;font-size:13px;font-weight:500;line-height:1.95">{{ f.a }}</p>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:center;margin-top:40px">
+        <a href="#[CONTACT_URL]" style="display:flex;align-items:center;gap:16px;background:#ee5a2f;color:#fff;border-radius:999px;padding:13px 16px 13px 40px;font-weight:700;font-size:14px;box-shadow:0 3px 0 #b9401b" style-hover="background:#d4461d;color:#fff">その他のご質問・お問い合わせ<span style="width:18px;height:18px;border-radius:50%;background:#fff;color:#ee5a2f;display:grid;place-items:center;font-size:12px;line-height:1">›</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="lineup" style="scroll-margin-top:64px;position:relative;overflow:hidden;background:linear-gradient(100deg,#b89a68 0%,#e3d3b5 25%,#f6efe2 48%,#dcc7a2 72%,#b5945f 100%);padding:clamp(64px,9vw,100px) 16px clamp(72px,10vw,110px)">
+    <div style="max-width:740px;margin:0 auto;position:relative">
+      <p style="margin:0;text-align:center;font-family:Jost,sans-serif;font-weight:700;font-size:12px;letter-spacing:0.4em;color:#6e522a">LINE UP</p>
+      <h2 style="margin:6px 0 0;text-align:center;font-weight:900;font-size:clamp(26px,3.8vw,36px);letter-spacing:0.06em">商品ラインナップ</h2>
+      <div style="display:flex;flex-direction:column;gap:40px;margin-top:44px">
+        <sc-for list="{{ products }}" as="p" hint-placeholder-count="2">
+          <div style="position:relative;background:#fff;border-radius:14px;padding:clamp(22px,3vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px 30px;align-items:center;box-shadow:0 14px 40px rgba(90,60,20,0.18)">
+            <span style="position:absolute;top:-14px;left:24px;background:#1c1a17;color:#e8c48a;font-family:Jost,sans-serif;font-weight:700;font-size:11px;letter-spacing:0.22em;padding:5px 14px;border-radius:999px">{{ p.badge }}</span>
+            <div style="aspect-ratio:1/1;max-width:260px;width:100%;justify-self:center;border-radius:10px;background:radial-gradient(circle at 50% 60%,#f6efe2,#fff 70%)">
+              <image-slot id="{{ p.id }}" src="{{ p.src }}" shape="rounded" radius="10" placeholder="{{ p.ph }}"></image-slot>
+            </div>
+            <div>
+              <p style="margin:0;font-size:12px;font-weight:700;color:#7a5a2c">{{ p.sub }}</p>
+              <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;margin-top:4px;padding-bottom:12px;border-bottom:1px dashed #d9c9ac">
+                <p style="margin:0;font-weight:900;font-size:20px">{{ p.name }}</p>
+                <p style="margin:0;color:#ee5a2f;font-weight:900"><span style="font-family:Jost,sans-serif;font-size:30px">{{ p.price }}</span><span style="font-size:15px">円</span><span style="font-size:13px;margin-left:4px">（税込）</span></p>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:16px">
+                <a href="#[OFFICIAL_STORE_URL]" style="display:flex;align-items:center;justify-content:space-between;gap:8px;background:#ee5a2f;color:#fff;border-radius:4px;padding:12px 12px;font-weight:700;font-size:13px;box-shadow:0 3px 0 #b9401b" style-hover="background:#d4461d;color:#fff">公式ストアで購入する<span style="width:16px;height:16px;border-radius:50%;background:#fff;color:#ee5a2f;display:grid;place-items:center;font-size:11px;line-height:1">›</span></a>
+                <a href="#[EC_URL_1]" style="display:flex;align-items:center;justify-content:space-between;gap:8px;background:#ee5a2f;color:#fff;border-radius:4px;padding:12px 12px;font-weight:700;font-size:13px;box-shadow:0 3px 0 #b9401b" style-hover="background:#d4461d;color:#fff">[ECモール1]で購入する<span style="width:16px;height:16px;border-radius:50%;background:#fff;color:#ee5a2f;display:grid;place-items:center;font-size:11px;line-height:1">›</span></a>
+                <a href="#[EC_URL_2]" style="display:flex;align-items:center;justify-content:space-between;gap:8px;background:#ee5a2f;color:#fff;border-radius:4px;padding:12px 12px;font-weight:700;font-size:13px;box-shadow:0 3px 0 #b9401b" style-hover="background:#d4461d;color:#fff">[ECモール2]で購入する<span style="width:16px;height:16px;border-radius:50%;background:#fff;color:#ee5a2f;display:grid;place-items:center;font-size:11px;line-height:1">›</span></a>
+                <a href="#[EC_URL_3]" style="display:flex;align-items:center;justify-content:space-between;gap:8px;background:#ee5a2f;color:#fff;border-radius:4px;padding:12px 12px;font-weight:700;font-size:13px;box-shadow:0 3px 0 #b9401b" style-hover="background:#d4461d;color:#fff">[ECモール3]で購入する<span style="width:16px;height:16px;border-radius:50%;background:#fff;color:#ee5a2f;display:grid;place-items:center;font-size:11px;line-height:1">›</span></a>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;overflow:hidden;background:radial-gradient(ellipse at 70% 40%,#c9822a 0%,#6e3a10 55%,#2a1405 100%);padding:clamp(60px,8vw,90px) 20px">
+    <div style="position:absolute;inset:0">
+      <image-slot id="final-bg" shape="rect" src="./images/18.jpg" placeholder="背景写真：水滴・泡（暗めの琥珀トーン）"></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;background:rgba(30,14,2,0.35);pointer-events:none"></div>
+    <div style="position:relative;max-width:880px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:28px 56px;pointer-events:none">
+      <sc-if value="{{ bottleSrc }}">
+        <div style="width:150px;height:280px;pointer-events:auto;filter:drop-shadow(0 20px 30px rgba(0,0,0,0.45))">
+          <image-slot id="final-bottle" src="{{ bottleSrc }}" shape="rounded" radius="10" fit="contain" placeholder="商品ボトル"></image-slot>
+        </div>
+      </sc-if>
+      <div style="text-align:center;color:#fff;pointer-events:auto">
+        <p style="margin:0;font-family:Jost,sans-serif;font-weight:500;font-size:12px;letter-spacing:0.4em;color:#f1d7a8">START TODAY</p>
+        <p style="margin:10px 0 0;font-weight:900;font-size:clamp(24px,3.6vw,36px);line-height:1.45;text-shadow:0 2px 12px rgba(0,0,0,0.3)">いつものシャンプーを、<br>[商品名]に。</p>
+        <div style="display:flex;justify-content:center;margin-top:24px">
+          <a href="#[OFFICIAL_STORE_URL]" style="display:flex;align-items:center;gap:14px;background:#ee5a2f;color:#fff;border-radius:999px;padding:17px 18px 17px 40px;font-weight:700;font-size:16px;box-shadow:0 4px 0 #9c3414" style-hover="background:#d4461d;color:#fff">公式オンラインショップはこちら<span style="width:22px;height:22px;border-radius:50%;background:#fff;color:#ee5a2f;display:grid;place-items:center;font-size:15px;line-height:1">›</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:#0d0c0b;color:#d9d2c7;padding:48px 20px 28px">
+  <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+      <span style="font-family:Jost,sans-serif;font-weight:800;font-size:22px;letter-spacing:0.16em;color:#fff">[BRAND]</span>
+      <span style="font-family:Jost,sans-serif;font-size:9px;letter-spacing:0.36em;color:#c49d68">MEN'S HAIR CARE</span>
+    </div>
+    <nav style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px 0;font-size:12px;font-weight:500">
+      <a href="#[PRODUCT_URL]" style="color:#d9d2c7;padding:0 14px;border-right:1px solid #4a443c" style-hover="color:#fff">商品情報</a>
+      <a href="#[COMPANY_URL]" style="color:#d9d2c7;padding:0 14px;border-right:1px solid #4a443c" style-hover="color:#fff">運営会社</a>
+      <a href="#[PRIVACY_URL]" style="color:#d9d2c7;padding:0 14px;border-right:1px solid #4a443c" style-hover="color:#fff">プライバシーポリシー</a>
+      <a href="#[TERMS_URL]" style="color:#d9d2c7;padding:0 14px;border-right:1px solid #4a443c" style-hover="color:#fff">利用規約</a>
+      <a href="#[TOKUSHOHO_URL]" style="color:#d9d2c7;padding:0 14px;border-right:1px solid #4a443c" style-hover="color:#fff">特定商取引法に基づく表記</a>
+      <a href="#[CONTACT_URL]" style="color:#d9d2c7;padding:0 14px" style-hover="color:#fff">お問い合わせ</a>
+    </nav>
+    <p style="margin:0;font-size:11px;line-height:1.9;color:#a79e90">[会社名]　[所在地]<br>お問い合わせ：[電話番号]（受付時間 [受付時間]）／[メールアドレス]</p>
+    <p style="margin:0;font-size:11px;color:#7d756a">© [YEAR] [BRAND] All Rights Reserved.</p>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;faqMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;accordion&quot;,&quot;all-open&quot;],&quot;default&quot;:&quot;accordion&quot;,&quot;tsType&quot;:&quot;'accordion'|'all-open'&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false, openFaq: { 0: true } };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  marquee() {
+    if (this._mq) return this._mq;
+    const words = ['CLEAN', 'FRESH', 'DAILY SCALP CARE', 'FOR MEN', '[BRAND]'];
+    const item = (k) => React.createElement('span', { key: k, style: { display: 'flex', alignItems: 'center', gap: 40, paddingRight: 40 } },
+      ...words.map((w, i) => React.createElement('span', { key: i, style: { display: 'flex', alignItems: 'center', gap: 40 } }, w, React.createElement('span', { style: { width: 6, height: 6, borderRadius: '50%', background: '#ee5a2f' } }))));
+    this._mq = React.createElement('div', { 'aria-hidden': 'true', style: { display: 'flex', width: 'max-content', whiteSpace: 'nowrap', fontFamily: 'Jost,sans-serif', fontWeight: 700, fontSize: 18, letterSpacing: '0.28em', animation: 'marquee 30s linear infinite' } }, item(1), item(2), item(3), item(4));
+    return this._mq;
+  }
+  renderVals() {
+    const mobile = this.state.w < 820;
+    const allOpen = (this.props.faqMode ?? 'accordion') === 'all-open';
+    const faqData = [
+      ['どんな髪・頭皮タイプの方におすすめですか？', '[推奨される髪・頭皮タイプ]の方におすすめです。髪や頭皮の状態には個人差があります。気になる点がある場合は、ご使用前にパッケージの注意事項をご確認ください。'],
+      ['毎日使えますか？', '[メーカー推奨の使用頻度を記載してください]'],
+      ['どんな香りですか？', '[香りの情報]です。'],
+      ['どんな成分が入っていますか？', '主な成分は[主な成分]です。全成分はパッケージおよび商品詳細ページに記載しています。'],
+      ['内容量はどれくらいですか？', '1本あたり[内容量]です。'],
+      ['同じシリーズのコンディショナーやトリートメントはありますか？', '[シリーズ製品の有無・商品名を記載してください]'],
+      ['価格と購入場所を教えてください。', '[価格]円（税込）です。公式オンラインショップのほか、[取扱店舗・ECモール]でお求めいただけます。'],
+    ];
+    const faqs = faqData.map(([q, a], i) => {
+      const open = allOpen || !!this.state.openFaq[i];
+      return { no: i + 1, q, a, open, icon: allOpen ? '−' : (open ? '−' : '+'),
+        toggle: () => !allOpen && this.setState(s => ({ openFaq: { ...s.openFaq, [i]: !s.openFaq[i] } })) };
+    });
+    // Cut-out bottle (transparent PNG). Hero and final-section bottle slots stay hidden while this is empty.
+    const bottleSrc = '';
+    if (!this._bottle) this._bottle = React.createElement('div', { style: { width: '100%', height: '100%', animation: 'floaty 5s ease-in-out infinite', filter: 'drop-shadow(0 24px 30px rgba(0,0,0,0.4))' } },
+      React.createElement('image-slot', { id: 'hero-bottle', src: bottleSrc || undefined, shape: 'rounded', radius: '10', fit: 'contain', placeholder: '商品ボトル（切り抜き・背景透過）' }));
+    if (!this._line) this._line = React.createElement('span', { style: { position: 'absolute', inset: 0, background: '#fff', animation: 'scrollLine 2.2s ease-in-out infinite' } });
+    return {
+      isMobile: mobile, isDesktop: !mobile,
+      bottleSrc, showMobileBottle: mobile && !!bottleSrc,
+      badgeSize: mobile ? '88px' : '104px',
+      ingSize: mobile ? '132px' : '170px',
+      sceneCols: this.state.w < 600 ? 'repeat(2,1fr)' : 'repeat(3,1fr)',
+      menuOpen: this.state.menuOpen, showMobileMenu: mobile && this.state.menuOpen,
+      menuIcon: this.state.menuOpen ? '✕' : '☰',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      marquee: this.marquee(), floatBottle: this._bottle, scrollLine: this._line,
+      scenes: [
+        { id: 'scene-1', label: '朝のシャワー', ph: '朝のシャワーシーン', src: './images/03.jpg' },
+        { id: 'scene-2', label: 'スポーツのあと', ph: 'ジム・ランニング後', src: './images/35.jpg' },
+        { id: 'scene-3', label: '仕事終わり', ph: '帰宅後のリラックス', src: './images/23.jpg' },
+        { id: 'scene-4', label: '夜のバスタイム', ph: '整ったバスルーム', src: './images/06.jpg' },
+        { id: 'scene-5', label: '出張・旅行', ph: '旅行用ポーチ・ホテル', src: './images/41.jpg' },
+        { id: 'scene-6', label: 'アウトドアのあと', ph: 'キャンプ・BBQ後', src: './images/21.jpg' },
+      ],
+      concerns: [
+        { no: '01', title: '夕方になると頭皮のベタつきが気になる', body: '余分な皮脂や汚れを、泡でしっかり洗い流します。' },
+        { no: '02', title: '汗をかいた日のニオイが気になる', body: 'ニオイの原因となる汚れを落とし、清潔な髪と頭皮に。' },
+        { no: '03', title: '洗ったあとの、つっぱり感が気になる', body: '[保湿成分]を配合し、髪と頭皮のうるおいを守ります。' },
+        { no: '04', title: '髪がまとまりにくい', body: '洗い上がりの髪をなめらかに整えます。[仕上がりの特徴]' },
+        { no: '05', title: 'シャワーでさっぱりリフレッシュしたい', body: '[香りの情報]の香りが広がる、心地よい洗い上がり。' },
+        { no: '06', title: '手軽に続けられるケアがいい', body: 'いつものシャンプーを替えるだけ。特別な手順はいりません。' },
+      ],
+      ingredients: [
+        { no: '01', en: 'CLEANSING', id: 'ing-1', tag: '洗浄成分', title: '泡で汚れを洗い流す', value: '[洗浄成分]', body: '髪と頭皮の皮脂や汚れを、泡で包んで洗い流します。', ph: '泡のテクスチャ', src: './images/08.jpg' },
+        { no: '02', en: 'MOISTURE', id: 'ing-2', tag: '保湿成分', title: 'うるおいを守る', value: '[保湿成分]', body: '洗い上がりの髪と頭皮にうるおいを与えます。', ph: '保湿成分のイメージ', src: './images/16.jpg' },
+        { no: '03', en: 'SCALP', id: 'ing-3', tag: '頭皮ケア', title: '頭皮をすこやかに保つ', value: '[成分名]', body: '頭皮を清浄にし、すこやかに保ちます。', ph: '頭皮ケアのイメージ', src: './images/12.jpg' },
+        { no: '04', en: 'SCENT', id: 'ing-4', tag: '香り', title: '心地よい香り', value: '[香りの情報]', body: 'シャワーの時間を気持ちよく過ごせる香り。', ph: '香りの素材イメージ', src: './images/05.jpg' },
+      ],
+      specs: [
+        { k: '内容量', a: '[内容量]', b: '[内容量]' },
+        { k: '主な洗浄成分', a: '[洗浄成分]', b: '—' },
+        { k: '保湿成分', a: '[保湿成分]', b: '[保湿成分]' },
+        { k: '頭皮コンディショニング成分', a: '[成分名]', b: '[成分名]' },
+        { k: '香り', a: '[香りの情報]', b: '[香りの情報]' },
+        { k: '泡立ち・洗い上がり', a: '[泡・仕上がりの特徴]', b: '[仕上がりの特徴]' },
+        { k: 'おすすめの髪・頭皮タイプ', a: '[推奨タイプ]', b: '[推奨タイプ]' },
+        { k: '製品区分', a: '[化粧品／医薬部外品]', b: '[化粧品／医薬部外品]' },
+      ],
+      steps: [
+        { no: 1, big: '01', id: 'step-1', title: '髪と頭皮をぬるま湯で予洗いする', body: 'ぬるま湯で髪と頭皮全体をしっかり濡らし、表面の汚れを流します。', ph: 'シャワーで予洗い', src: './images/34.jpg' },
+        { no: 2, big: '02', id: 'step-2', title: '適量のシャンプーを手に取る', body: '目安：[推奨使用量]。手のひらで軽くのばします。', ph: '手のひらにシャンプー', src: './images/01.jpg' },
+        { no: 3, big: '03', id: 'step-3', title: '泡立てながらやさしく洗う', body: '爪を立てず、指の腹で頭皮をもみほぐすように洗います。', ph: '泡立てて洗う', src: './images/04.jpg' },
+        { no: 4, big: '04', id: 'step-4', title: 'しっかりと洗い流す', body: '生え際や襟足まで、泡が残らないよう丁寧にすすぎます。', ph: 'すすぎ・流れる水', src: './images/17.jpg' },
+      ],
+      faqs,
+      products: [
+        { id: 'product-1', badge: 'SHAMPOO', sub: 'メンズシャンプー', name: '[商品名] シャンプー', price: '[価格]', ph: '商品ボトル写真', src: './images/07.jpg' },
+        { id: 'product-2', badge: 'SET', sub: '※シリーズ製品・セットがある場合', name: '[セット商品名]', price: '[価格]', ph: 'セット商品写真', src: './images/10.jpg' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

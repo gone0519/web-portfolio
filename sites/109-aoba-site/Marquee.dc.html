@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><style>@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}</style></helmet>{{ band }}
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1000,&quot;height&quot;:60}}">
+class Component extends DCLogic {
+  renderVals() {
+    const h = React.createElement;
+    const eye = (k) => h('span', { key: k, style: { width: 11, height: 11, borderRadius: '50%', border: '2px solid #2B2B2B', background: '#fff', display: 'inline-block' } });
+    const item = (i) => h('span', { key: i, style: { display: 'inline-flex', alignItems: 'center', gap: 6, paddingRight: 28 } },
+      eye('a'), eye('b'),
+      h('span', { style: { marginLeft: 8, fontFamily: 'Quicksand,sans-serif', fontWeight: 700, fontSize: 16, letterSpacing: '.1em', whiteSpace: 'nowrap', color: '#2B2B2B' } }, "aoba women's university  ·  open campus 2027"));
+    const band = h('div', { 'aria-hidden': true, style: { background: '#FFF8EA', borderTop: '5px solid #A9D3DE', borderBottom: '5px solid #A9D3DE', overflow: 'hidden', padding: '10px 0' } },
+      h('div', { style: { display: 'flex', width: 'max-content', animation: 'mq 40s linear infinite' } }, Array.from({ length: 12 }, (_, i) => item(i))));
+    return { band };
+  }
+}
+</script>
+</body>
+</html>

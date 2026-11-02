@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px 20px 10px">
+  <a href="University%20Admissions.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;color:#e5531c;text-decoration:none">
+    <span style="font-family:'Kaushan Script',cursive;font-size:46px;line-height:1">susume</span>
+    <span style="font-size:10px;letter-spacing:.3em;color:#e5531c">〔 ス ス メ 〕</span>
+  </a>
+  <nav style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 26px;font-size:13px;font-weight:500">
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+      <a href="{{ n.href }}" style="color:{{ n.color }};text-decoration:none;padding:4px 0;border-bottom:2px solid {{ n.line }};transition:color .2s" style-hover="color:#e5531c">{{ n.label }}</a>
+    </sc-for>
+    <a href="Contact.dc.html#request" style="background:#0b2b4c;color:#fff;text-decoration:none;font-size:12px;padding:8px 14px;border-radius:3px;transition:background .2s" style-hover="background:#e5531c;color:#fff">資料請求</a>
+  </nav>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:150},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;programs&quot;,&quot;prep&quot;,&quot;admissions&quot;,&quot;campus&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const cur = this.props.current ?? 'top';
+    const items = [
+      ['top', 'トップ', 'University%20Admissions.dc.html'],
+      ['programs', '学部・学科', 'Programs.dc.html'],
+      ['prep', '受験対策', 'ExamPrep.dc.html'],
+      ['admissions', '入試情報', 'Admissions.dc.html'],
+      ['campus', 'キャンパスライフ', 'CampusLife.dc.html'],
+      ['contact', 'お問い合わせ', 'Contact.dc.html']
+    ];
+    return { nav: items.map(([k, label, href]) => ({ label, href, color: k === cur ? '#e5531c' : '#0b2b4c', line: k === cur ? '#e5531c' : 'transparent' })) };
+  }
+}
+</script>
+</body>
+</html>

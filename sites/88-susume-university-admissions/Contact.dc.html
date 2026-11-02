@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Libre+Caslon+Text:wght@400;700&family=Kaushan+Script&display=swap">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f2f2ef;color:#1c2633;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0b2b4c;text-decoration:none}
+a:hover{color:#e5531c}
+</style>
+</helmet>
+<div style="position:relative;overflow:hidden;background-color:#f2f2ef;background-image:radial-gradient(#dcdcd6 1px,transparent 1px);background-size:14px 14px">
+<dc-import name="SiteHeader" current="contact" hint-size="100%,140px"></dc-import>
+<dc-import name="PageHero" en="Contact" title="資料請求・お問い合わせ" lead="大学案内パンフレットのご請求、オープンキャンパスのご予約、入試に関するご質問を受け付けています。" img-id="contact-hero" img-label="大学案内パンフレット" hint-size="100%,520px"></dc-import>
+
+<section data-screen-label="Contact / Form" style="padding:70px 20px 90px">
+  <div style="max-width:1080px;margin:0 auto">
+    <div style="background:#fff;border-radius:6px;box-shadow:0 8px 24px rgba(11,43,76,.08);overflow:hidden">
+      <div style="display:flex;flex-wrap:wrap;border-bottom:1px solid #eceae5">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <button onClick="{{ t.select }}" style="flex:1 1 140px;border:0;cursor:pointer;font:inherit;font-size:13px;font-weight:700;padding:16px 10px;background:{{ t.bg }};color:{{ t.fg }}">{{ t.label }}</button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:50px 30px;display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+          <span style="font-family:'Libre Caslon Text',serif;font-size:14px;color:#e5531c">Thank you</span>
+          <h2 style="margin:0;font-size:22px;font-weight:700">送信を受け付けました。</h2>
+          <p style="margin:0;font-size:14px;line-height:1.9">ご入力のメールアドレス宛に確認メールをお送りします。（デモ画面のため実際には送信されません）</p>
+          <button onClick="{{ reset }}" style="border:0;cursor:pointer;font:inherit;background:#0b2b4c;color:#fff;padding:12px 18px;border-radius:3px;font-weight:700">別の内容で送信する</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="padding:28px 30px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+          <p style="grid-column:1/-1;margin:0;font-size:13px;line-height:1.8">{{ tabDesc }}</p>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700">お名前 <input required="required" placeholder="進 春子" style="font:inherit;font-size:14px;padding:11px 12px;border:1px solid #c9ced6;border-radius:3px;background:#fbfbf9"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700">メールアドレス <input type="email" required="required" placeholder="example@mail.jp" style="font:inherit;font-size:14px;padding:11px 12px;border:1px solid #c9ced6;border-radius:3px;background:#fbfbf9"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700">ご区分 <select style="font:inherit;font-size:14px;padding:11px 12px;border:1px solid #c9ced6;border-radius:3px;background:#fbfbf9"><option>高校生・受験生</option><option>既卒生</option><option>保護者</option><option>高校教員</option></select></label>
+          <sc-if value="{{ isOC }}" hint-placeholder-val="{{ false }}">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700">希望日程（サンプル） <select style="font:inherit;font-size:14px;padding:11px 12px;border:1px solid #c9ced6;border-radius:3px;background:#fbfbf9"><option>◯/◯ 来場型オープンキャンパス</option><option>◯/◯ オンライン説明会</option><option>◯/◯ 保護者向け説明会</option></select></label>
+          </sc-if>
+          <sc-if value="{{ isRequest }}" hint-placeholder-val="{{ true }}">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700">送付先住所 <input required="required" placeholder="〒000-0000 ◯◯県◯◯市…" style="font:inherit;font-size:14px;padding:11px 12px;border:1px solid #c9ced6;border-radius:3px;background:#fbfbf9"></label>
+          </sc-if>
+          <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700">{{ msgLabel }} <textarea rows="4" style="font:inherit;font-size:14px;padding:11px 12px;border:1px solid #c9ced6;border-radius:3px;background:#fbfbf9;resize:vertical"></textarea></label>
+          <label style="grid-column:1/-1;display:flex;gap:10px;align-items:center;font-size:12px"><input type="checkbox" required="required"> プライバシーポリシーに同意する</label>
+          <button type="submit" style="grid-column:1/-1;justify-self:start;border:0;cursor:pointer;font:inherit;display:inline-flex;align-items:center;gap:30px;background:#e5531c;color:#fff;padding:14px 20px;border-radius:3px;font-size:15px;font-weight:700;transition:transform .2s" style-hover="transform:translateY(-2px)">送信する <span style="display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1.5px solid #fff;font-size:12px">→</span></button>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+  <div style="max-width:1080px;margin:40px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+    <div style="background:#0b2b4c;color:#fff;border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:8px">
+      <span style="font-family:'Libre Caslon Text',serif;font-size:13px;color:#9fd3dd">Phone</span>
+      <span style="font-size:22px;font-weight:700;font-family:'Libre Caslon Text',serif">000-0000-0000</span>
+      <span style="font-size:12px;opacity:.85">受付時間 ◯:◯〜◯:◯（土日祝を除く）</span>
+    </div>
+    <div style="background:#fff;border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:8px;box-shadow:0 6px 18px rgba(11,43,76,.06)">
+      <span style="font-family:'Libre Caslon Text',serif;font-size:13px;color:#e5531c">Email</span>
+      <span style="font-size:18px;font-weight:700">info@example.jp</span>
+      <span style="font-size:12px;color:#4a5462">返信まで数日いただく場合があります</span>
+    </div>
+    <a href="Admissions.dc.html" style="background:#fff;border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:8px;box-shadow:0 6px 18px rgba(11,43,76,.06)">
+      <span style="font-family:'Libre Caslon Text',serif;font-size:13px;color:#e5531c">FAQ</span>
+      <span style="font-size:16px;font-weight:700">よくある質問を見る →</span>
+      <span style="font-size:12px;color:#4a5462">出願・学費・奨学金について</span>
+    </a>
+  </div>
+</section>
+<dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 'request', submitted: false };
+  componentDidMount() {
+    this.onHash = () => { const h = location.hash.slice(1); if (['request', 'oc', 'contact'].includes(h)) this.setState({ tab: h, submitted: false }); };
+    this.onHash();
+    window.addEventListener('hashchange', this.onHash);
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this.onHash); }
+  renderVals() {
+    const { tab, submitted } = this.state;
+    const defs = {
+      request: { label: '資料請求', desc: '大学案内パンフレット・入試ガイドを無料でお送りします。', msg: 'ご希望の資料・学部（任意）' },
+      oc: { label: 'オープンキャンパス予約', desc: 'ご希望の日程を選択してください。保護者の方の同伴も可能です。', msg: '参加人数・ご質問（任意）' },
+      contact: { label: '入試のお問い合わせ', desc: '入試方式や出願手続きについてのご質問をお寄せください。', msg: 'お問い合わせ内容' }
+    };
+    return {
+      tabs: Object.keys(defs).map(k => ({ label: defs[k].label, select: () => this.setState({ tab: k, submitted: false }), bg: k === tab ? '#0b2b4c' : '#fff', fg: k === tab ? '#fff' : '#1c2633' })),
+      tabDesc: defs[tab].desc,
+      msgLabel: defs[tab].msg,
+      isOC: tab === 'oc', isRequest: tab === 'request',
+      submitted, notSubmitted: !submitted,
+      submit: (e) => { e.preventDefault(); this.setState({ submitted: true }); },
+      reset: () => this.setState({ submitted: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

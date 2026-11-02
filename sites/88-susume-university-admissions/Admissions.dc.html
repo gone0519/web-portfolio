@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Libre+Caslon+Text:wght@400;700&family=Kaushan+Script&display=swap">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f2f2ef;color:#1c2633;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0b2b4c;text-decoration:none}
+a:hover{color:#e5531c}
+</style>
+</helmet>
+<div style="position:relative;overflow:hidden;background-color:#f2f2ef;background-image:radial-gradient(#dcdcd6 1px,transparent 1px);background-size:14px 14px">
+<dc-import name="SiteHeader" current="admissions" hint-size="100%,140px"></dc-import>
+<dc-import name="PageHero" en="Admissions" title="入試情報" lead="出願から入学手続きまでの流れ、必要書類、学費・奨学金の情報をまとめました。詳細は必ず各大学の最新の募集要項をご確認ください。" img-id="adm-hero" img-label="願書を準備する受験生" hint-size="100%,520px"></dc-import>
+
+<section data-screen-label="Admissions / Flow" style="padding:70px 20px 80px">
+  <div style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:30px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:'Libre Caslon Text',serif;font-size:14px;display:flex;align-items:center;gap:8px"><span style="width:7px;height:7px;background:#e5531c"></span>Application Flow</span>
+      <h2 style="margin:0;font-size:24px;font-weight:700">出願から入学までの流れ</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px">
+      <sc-for list="{{ flow }}" as="f" hint-placeholder-count="6">
+        <div style="background:#fff;border-radius:4px;box-shadow:0 6px 18px rgba(11,43,76,.06);padding:20px 16px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-family:'Libre Caslon Text',serif;font-size:24px;color:#e5531c">{{ f.n }}</span>
+          <span style="font-size:14px;font-weight:700">{{ f.t }}</span>
+          <span style="font-size:12px;line-height:1.7;color:#4a5462">{{ f.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Admissions / Schedule" style="background:#0b2b4c;color:#fff;padding:80px 20px">
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:50px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-family:'Libre Caslon Text',serif;font-size:14px;display:flex;align-items:center;gap:8px"><span style="width:7px;height:7px;background:#e5531c"></span>Schedule</span>
+      <h2 style="margin:0;font-size:24px;line-height:1.6;font-weight:700">入試方式別<br>スケジュール</h2>
+      <p style="margin:0;font-size:13px;line-height:1.9;opacity:.9">日程は大学・年度により異なります。以下は構成のサンプルです。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <button onClick="{{ t.select }}" style="border:1.5px solid #fff;cursor:pointer;font:inherit;font-size:12px;font-weight:700;padding:8px 14px;border-radius:20px;background:{{ t.bg }};color:{{ t.fg }}">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.2)">
+        <span style="font-size:13px;font-weight:700">{{ tabName }}</span><span style="font-size:10px;font-weight:700;background:#e5531c;padding:3px 8px">サンプル</span>
+      </div>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:110px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:13px">
+          <span style="font-family:'Libre Caslon Text',serif;color:#9fd3dd">{{ r.date }}</span><span>{{ r.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Admissions / Documents & Fees" style="padding:80px 20px">
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start">
+    <div style="background:#fff;border-radius:4px;box-shadow:0 8px 24px rgba(11,43,76,.08);padding:26px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><h3 style="margin:0;font-size:18px;font-weight:700">主な出願書類</h3><span style="font-family:'Libre Caslon Text',serif;font-size:12px;color:#e5531c">Documents</span></div>
+      <sc-for list="{{ docs }}" as="d" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:18px 1fr;gap:12px;font-size:13px;line-height:1.7;padding:8px 0;border-bottom:1px solid #eceae5"><span style="width:8px;height:8px;background:#e5531c;margin-top:7px"></span><span><span style="font-weight:700">{{ d.t }}</span>　{{ d.d }}</span></div>
+      </sc-for>
+      <p style="margin:0;font-size:11px;color:#5a6472">※必要書類は入試方式・大学により異なります。</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ support }}" as="s" hint-placeholder-count="3">
+        <div style="background:#fff;border-radius:4px;box-shadow:0 8px 24px rgba(11,43,76,.08);padding:22px 24px;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><h3 style="margin:0;font-size:16px;font-weight:700">{{ s.t }}</h3><span style="font-family:'Libre Caslon Text',serif;font-size:12px;color:#e5531c">{{ s.en }}</span></div>
+          <p style="margin:0;font-size:13px;line-height:1.8">{{ s.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Admissions / FAQ" style="padding:0 20px 80px">
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:50px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-family:'Libre Caslon Text',serif;font-size:14px;display:flex;align-items:center;gap:8px"><span style="width:7px;height:7px;background:#e5531c"></span>FAQ</span>
+      <h2 style="margin:0;font-size:24px;line-height:1.6;font-weight:700">よくある質問</h2>
+      <a href="Contact.dc.html#contact" style="align-self:flex-start;background:#e5531c;color:#fff;font-size:13px;font-weight:700;padding:11px 16px;border-radius:3px">入試について問い合わせる →</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+        <div style="background:#fff;border-radius:4px;box-shadow:0 6px 18px rgba(11,43,76,.06)">
+          <button onClick="{{ f.toggle }}" style="width:100%;border:0;background:transparent;cursor:pointer;font:inherit;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;font-size:14px;font-weight:700;color:#1c2633">
+            <span style="display:flex;gap:12px"><span style="color:#e5531c;font-family:'Libre Caslon Text',serif">Q</span>{{ f.q }}</span>
+            <span style="flex:none;width:24px;height:24px;border-radius:50%;background:#0b2b4c;color:#fff;display:grid;place-items:center">{{ f.sign }}</span>
+          </button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 22px 20px 46px;font-size:13px;line-height:1.9;color:#3a4553">{{ f.a }}</p></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+<dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 0, faq: 0 };
+  renderVals() {
+    const { tab, faq } = this.state;
+    const sched = [
+      { label: '一般選抜', rows: [['◯月◯日〜', '出願期間'], ['◯月◯日', '大学入学共通テスト'], ['◯月◯日', '個別学力試験'], ['◯月◯日', '合格発表'], ['◯月◯日まで', '入学手続き締切']] },
+      { label: '学校推薦型選抜', rows: [['◯月◯日〜', '出願期間'], ['◯月◯日', '面接・小論文'], ['◯月◯日', '合格発表'], ['◯月◯日まで', '入学手続き締切']] },
+      { label: '総合型選抜', rows: [['◯月◯日〜', 'エントリー・書類提出'], ['◯月◯日', '面談・課題審査'], ['◯月◯日', '合格発表'], ['◯月◯日まで', '入学手続き締切']] }
+    ];
+    const faqList = [
+      { q: '出願はインターネットでできますか？', a: '多くの大学でインターネット出願が導入されています。書類の郵送が必要な場合もあるため、募集要項で確認してください。' },
+      { q: '複数の学部を併願できますか？', a: '大学・方式によって異なります。試験日が重ならないかも合わせて確認しましょう。' },
+      { q: '学費の目安はどこで確認できますか？', a: '各大学の公式サイトや募集要項に記載されています。本サイトでは金額の掲載は行っていません。' },
+      { q: '奨学金は入学前に申し込めますか？', a: '予約採用の制度がある奨学金もあります。高校の進路指導室にご相談ください。' },
+      { q: '既卒生でも受験できますか？', a: '多くの入試方式で既卒生も出願可能ですが、推薦型など条件がある方式もあります。' },
+      { q: '保護者向けの説明会はありますか？', a: 'オープンキャンパスなどで保護者向けプログラムを用意している大学があります。' }
+    ];
+    return {
+      flow: [
+        { n: '01', t: '情報収集', d: '募集要項・入試科目を確認' },
+        { n: '02', t: '出願準備', d: '調査書など書類を依頼' },
+        { n: '03', t: '出願', d: 'インターネット出願・検定料納付' },
+        { n: '04', t: '受験', d: '受験票と持ち物を確認' },
+        { n: '05', t: '合格発表', d: '発表方法を事前に確認' },
+        { n: '06', t: '入学手続き', d: '期限内に手続きを完了' }
+      ],
+      tabs: sched.map((s, i) => ({ label: s.label, select: () => this.setState({ tab: i }), bg: i === tab ? '#fff' : 'transparent', fg: i === tab ? '#0b2b4c' : '#fff' })),
+      tabName: sched[tab].label,
+      rows: sched[tab].rows.map(([date, label]) => ({ date, label })),
+      docs: [
+        { t: '入学志願票', d: 'インターネット出願で作成する場合が多い' },
+        { t: '調査書', d: '出身高校に発行を依頼（時間に余裕をもって）' },
+        { t: '推薦書', d: '学校推薦型選抜の場合' },
+        { t: '志望理由書', d: '総合型・推薦型で求められることが多い' },
+        { t: '検定料の払込証明', d: '支払い方法は大学ごとに異なる' }
+      ],
+      support: [
+        { t: '学費について', en: 'Tuition', d: '入学金・授業料・施設費などは大学・学部により異なります。各大学の募集要項でご確認ください。' },
+        { t: '奨学金・減免制度', en: 'Scholarship', d: '給付型・貸与型の奨学金や、大学独自の授業料減免制度があります。申込時期を早めに確認しましょう。' },
+        { t: '保護者の方へ', en: 'For Parents', d: '出願スケジュールや費用の準備、受験期の生活面のサポートについて、説明会や個別相談をご活用ください。' }
+      ],
+      faqs: faqList.map((f, i) => ({ ...f, open: i === faq, sign: i === faq ? '−' : '+', toggle: () => this.setState({ faq: i === faq ? -1 : i }) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

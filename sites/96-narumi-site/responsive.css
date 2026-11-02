@@ -1,0 +1,44 @@
+/* Responsive overrides. Inline styles win by default, so mobile rules use !important. */
+img{max-width:100%}
+
+/* header: keep the logo on one line */
+.logo-mark{white-space:nowrap}
+
+@media (max-width:1100px){
+  /* top-page sidebar wraps under the content: use the full width instead of a 280px column */
+  .sidebar{flex:1 1 100% !important;display:grid;grid-template-columns:1fr 1fr;gap:0 28px;align-items:start}
+  .sidebar > h3{grid-column:1 / -1}
+  /* 4 session cards: 2x2 instead of 3+1 */
+  .sessions{grid-template-columns:1fr 1fr !important}
+}
+
+@media (max-width:560px){
+  .sessions{grid-template-columns:1fr !important}
+}
+
+@media (max-width:860px){
+  /* hero watermark text sits behind copy on narrow screens */
+  .wm{opacity:.45}
+  .deco-m{display:none !important}
+}
+
+@media (max-width:640px){
+  .hdr-cta{display:none !important}
+  .logo-mark{font-size:20px !important}
+
+  /* vertical headings read as one or two characters per line on phones: lay them out horizontally */
+  .vt{writing-mode:horizontal-tb !important;letter-spacing:.04em !important}
+  :has(> .vt){flex-direction:column !important;align-items:flex-start !important;gap:6px !important;min-width:0 !important}
+  .vt-center:has(> .vt){align-items:center !important;text-align:center}
+  h1.vt{font-size:32px !important;line-height:1.35 !important}
+  h2.vt{font-size:26px !important;line-height:1.45 !important}
+  p.vt{font-size:28px !important}
+  .vt br{display:none}
+
+  .wm{display:none !important}
+  .bubble-r{right:10px !important;bottom:14px !important}
+  .spirit-circle{max-width:250px !important;padding:24px !important}
+  .span2{grid-row:auto !important}
+  .sidebar{grid-template-columns:1fr}
+  .long-cta{font-size:13px !important;padding:16px 20px !important}
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>入試・出願｜MANABI GATE</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Michroma&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<script src="./image-slot.js"></script>
+<script src="./images.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f5f4f1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");color:#2a2a2a;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#2a2a2a;text-decoration:none}
+a:hover{color:#2d3a78}
+</style>
+</helmet>
+<div style="overflow-x:hidden">
+<dc-import name="Site Header" current="admissions" hint-size="100%,72px"></dc-import>
+
+<dc-import name="Page Hero" no="03" en="Admissions" ja="入試・出願" crumb-en="Application Guide" v1="準備を整えて、" v2="扉をたたく。" lead1="出願は、" lead2="受験の最初の試験。" body="募集要項の確認から入学手続きまで、出願には多くのステップがあります。締切や必要書類を一覧で管理し、余裕を持って準備を進めましょう。" img1="ad-hero" img2="ad-sub" ph1="大学の正門・エントランス" ph2="願書と書類を整理する手元" hint-size="100%,1300px"></dc-import>
+
+<section data-screen-label="Flow" style="padding:clamp(80px,9vw,180px) {{ padR }} clamp(70px,8vw,160px) {{ pad }}">
+  <p style="margin:0 0 10px;font-family:Marcellus,serif;font-size:11px;letter-spacing:.1em;color:#666">( Flow )</p>
+  <h2 style="margin:0;font-family:Marcellus,serif;font-weight:400;font-size:clamp(32px,4vw,76px);line-height:1.1">Application Flow</h2>
+  <p style="margin:16px 0 0;font-size:12px;letter-spacing:.2em;color:#444">出願から入学までの流れ</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px;margin-top:48px">
+    <sc-for list="{{ flow }}" as="f" hint-placeholder-count="6">
+      <div style="background:#fff;padding:26px 18px">
+        <p style="margin:0;font-family:Michroma,sans-serif;font-size:24px;color:#2d3a78">{{ f.no }}</p>
+        <p style="margin:12px 0 10px;background:#ececec;text-align:center;font-size:11px;padding:6px;color:#333">{{ f.title }}</p>
+        <p style="margin:0;font-size:11px;line-height:1.9;color:#555">{{ f.body }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Schedule" style="padding:clamp(70px,8vw,160px) {{ padR }} clamp(70px,8vw,160px) {{ pad }};background:rgba(0,0,0,.035)">
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(40px,4vw,80px)">
+    <div style="flex:1 1 220px">
+      <p style="margin:0 0 10px;font-family:Marcellus,serif;font-size:11px;letter-spacing:.1em;color:#666">( Schedule )</p>
+      <h2 style="margin:0;font-family:Marcellus,serif;font-weight:400;font-size:clamp(32px,4vw,76px);line-height:1.1">Schedule</h2>
+      <p style="margin:16px 0 0;font-size:12px;letter-spacing:.2em;color:#444">年間スケジュール（例）</p>
+      <p style="margin:36px 0 0;font-size:11px;line-height:1.9;color:#666">※ 一般的な時期の目安です。実際の日程は<br>年度・大学ごとに異なります。</p>
+    </div>
+    <div style="flex:2 1 380px;display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="6">
+        <div style="background:#fff;padding:20px 22px;box-shadow:0 2px 8px rgba(0,0,0,.05);display:grid;grid-template-columns:{{ schCols }};gap:{{ schGap }}">
+          <p style="margin:0;font-size:11px;letter-spacing:.06em;color:#2d3a78;font-weight:700">{{ s.when }}</p>
+          <div><p style="margin:0;font-size:13.5px;font-weight:500;letter-spacing:.08em">{{ s.title }}</p><p style="margin:6px 0 0;font-size:11px;line-height:1.8;color:#555">{{ s.note }}</p></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Statement Band" words="Check,募集要項を読む,Prepare,書類をそろえる,Apply,期限を守って出願" img="ad-sb" ph="キャンパスへ続く道" label="Checkpoint" big="Apply" q1="締切は、" q2="余裕をもって迎えるもの。" note="出願期間の最終日ではなく、初日を目標に。書類の不備に気づいても、落ち着いて対応できます。" hint-size="100%,900px"></dc-import>
+<section data-screen-label="Documents" style="padding:clamp(70px,8vw,160px) {{ padR }} clamp(70px,8vw,160px) {{ pad }}">
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(40px,4vw,80px)">
+    <div style="flex:1 1 220px">
+      <p style="margin:0 0 10px;font-family:Marcellus,serif;font-size:11px;letter-spacing:.1em;color:#666">( Documents )</p>
+      <h2 style="margin:0;font-family:Marcellus,serif;font-weight:400;font-size:clamp(32px,4vw,76px);line-height:1.1">Checklist</h2>
+      <p style="margin:16px 0 0;font-size:12px;letter-spacing:.2em;color:#444">出願書類チェックリスト</p>
+      <p style="margin:40px 0 0;font-family:Michroma,sans-serif;font-size:44px;color:#2d3a78">{{ done }}<span style="font-size:16px;color:#888"> / {{ total }}</span></p>
+      <p style="margin:12px 0 0;font-size:11px;line-height:1.9;color:#666">必要書類は大学・方式により異なります。<br>募集要項と照らし合わせてご利用ください。</p>
+    </div>
+    <div style="flex:2 1 380px;display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{ docs }}" as="c" hint-placeholder-count="7">
+        <button onClick="{{ c.toggle }}" style="display:flex;align-items:center;gap:16px;width:100%;text-align:left;background:#fff;border:0;padding:18px 20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.05);font-family:'Zen Kaku Gothic New',sans-serif;font-size:13px;color:#2a2a2a">
+          <span style="flex:0 0 18px;height:18px;border:1px solid #2d3a78;background:{{ c.bg }};color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center">{{ c.mark }}</span>
+          <span style="flex:1;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px"><span>{{ c.label }}</span><span style="font-size:10.5px;color:#888;white-space:nowrap">{{ c.note }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="FAQ" style="padding:clamp(70px,8vw,160px) {{ padR }} clamp(80px,9vw,180px) {{ pad }};background:rgba(0,0,0,.035)">
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(30px,4vw,80px)">
+    <div style="flex:1 1 220px">
+      <p style="margin:0 0 10px;font-family:Marcellus,serif;font-size:11px;letter-spacing:.1em;color:#666">( FAQ )</p>
+      <h2 style="margin:0;font-family:Marcellus,serif;font-weight:400;font-size:clamp(32px,4vw,76px);line-height:1.1">Questions</h2>
+      <p style="margin:16px 0 0;font-size:12px;letter-spacing:.2em;color:#444">よくある質問</p>
+      <a href="Tuition.dc.html" style="display:flex;justify-content:space-between;align-items:center;width:200px;margin-top:40px;padding-bottom:8px;border-bottom:1px solid #cfcfcf;font-size:12px;letter-spacing:.12em">学費・奨学金へ<span>›</span></a>
+    </div>
+    <div style="flex:2 1 380px;border-top:1px solid #d2d2d2">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid #d2d2d2">
+          <button onClick="{{ q.toggle }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 4px;border:0;background:none;cursor:pointer;text-align:left;font-family:'Zen Kaku Gothic New',sans-serif;font-size:13.5px;font-weight:500;letter-spacing:.06em;color:#2a2a2a">
+            <span style="display:flex;gap:14px"><span style="font-family:Marcellus,serif;color:#2d3a78">Q.</span>{{ q.q }}</span><span style="font-size:16px;color:#777">{{ q.icon }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 4px 22px 34px;font-size:12px;line-height:2;color:#555">{{ q.a }}</p></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="Site Footer" cta-img="ad-cta" hint-size="100%,900px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: (document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth), ck: {}, faq: 0 };
+  componentDidMount() { this.r = () => this.setState({ w: (document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth) }); window.addEventListener('resize', this.r); this.r(); this.t = setTimeout(this.r, 300); this.ro = new ResizeObserver(this.r); this.ro.observe(document.documentElement); }
+  componentWillUnmount() { window.removeEventListener('resize', this.r); this.ro && this.ro.disconnect(); }
+  renderVals() {
+    const { w, ck, faq } = this.state; const mob = w < 820;
+    const flow = [
+      ['01', '情報収集', '大学案内・公式サイト・オープンキャンパスで志望校を比較します。'],
+      ['02', '募集要項の確認', '出願資格、試験科目、日程、必要書類、検定料を確認します。'],
+      ['03', '出願', 'Web出願が主流です。書類の郵送が必要な場合は締切の扱い（消印・必着）に注意。'],
+      ['04', '受験', '受験票・会場・持ち物を事前に確認。会場までの移動時間にも余裕を。'],
+      ['05', '合格発表', 'Webでの発表が一般的です。発表日と確認方法を控えておきましょう。'],
+      ['06', '入学手続き', '期限内に入学金等の納付と書類提出を行います。併願時は期限の管理が重要です。']
+    ].map(f => ({ no: f[0], title: f[1], body: f[2] }));
+    const schedule = [
+      ['高2 3月〜（例）', '大学案内・オープンキャンパス情報の収集', '春から夏にかけて各大学のイベントが増えます。'],
+      ['高3 6月〜（例）', '募集要項の公開', '総合型・推薦型の要項は早めに公開される傾向があります。'],
+      ['高3 9月〜（例）', '総合型選抜 出願・選考', '大学ごとに日程が大きく異なります。'],
+      ['高3 9〜10月（例）', '大学入学共通テスト 出願', '出願は試験の前年秋。高校経由で行う場合があります。'],
+      ['高3 11月〜（例）', '学校推薦型選抜 出願・選考', '校内選考を経て出願します。'],
+      ['高3 1月〜3月（例）', '共通テスト・一般選抜・合格発表', '入学手続きの締切は大学ごとに異なります。']
+    ].map(s => ({ when: s[0], title: s[1], note: s[2] }));
+    const docList = [['入学志願票（Web出願の登録）', '全方式'], ['調査書（高校が発行）', '発行に日数がかかる場合あり'], ['証明写真データ', 'サイズ規定を確認'], ['検定料の支払い', '支払い方法を確認'], ['志望理由書', '総合型・推薦型'], ['推薦書', '学校推薦型'], ['共通テスト成績請求票', '共通テスト利用時']];
+    const docs = docList.map((d, i) => ({ label: d[0], note: d[1], bg: ck[i] ? '#2d3a78' : '#fff', mark: ck[i] ? '✓' : '', toggle: () => this.setState(s => ({ ck: { ...s.ck, [i]: !s.ck[i] } })) }));
+    const faqData = [
+      ['入試方式は併願できますか？', '大学・方式によって異なります。総合型選抜や学校推薦型選抜には「専願」を条件とするものもあるため、募集要項で出願条件を必ずご確認ください。'],
+      ['Web出願だけで手続きは完了しますか？', 'Web上の登録と検定料の支払いに加えて、調査書などの書類郵送が必要な場合があります。「出願完了」の条件を募集要項で確認しましょう。'],
+      ['調査書はいつ依頼すればよいですか？', '発行に時間がかかることがあるため、出願期間が近づく前に在籍校へ依頼するのが安心です。必要通数も確認しておきましょう。'],
+      ['既卒生でも出願できますか？', '多くの一般選抜では既卒生も出願できますが、学校推薦型選抜などでは卒業年度に条件がある場合があります。'],
+      ['合格後、入学を辞退した場合の費用は？', '納付済みの入学金の扱いは大学ごとに異なります。手続き前に募集要項や入学手続き要項をご確認ください。']
+    ];
+    const faqs = faqData.map((d, i) => ({ q: d[0], a: d[1], open: faq === i, icon: faq === i ? '−' : '+', toggle: () => this.setState({ faq: faq === i ? -1 : i }) }));
+    return { pad: mob ? '20px' : '20.8vw', padR: mob ? '20px' : '10vw', schCols: mob ? 'minmax(0,1fr)' : 'minmax(90px,140px) minmax(0,1fr)', schGap: mob ? '8px' : '18px', flow, schedule, docs, done: docList.filter((_, i) => ck[i]).length, total: docList.length, faqs };
+  }
+}
+</script>
+</body>
+</html>

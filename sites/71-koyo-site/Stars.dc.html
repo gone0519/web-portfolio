@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div aria-hidden="true" style="position:relative;width:100%;height:100%;pointer-events:none;overflow:hidden">{{ field }}</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:600,&quot;height&quot;:400},&quot;seed&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:7,&quot;tsType&quot;:&quot;number&quot;},&quot;count&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:80,&quot;tsType&quot;:&quot;number&quot;},&quot;sparkles&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:12,&quot;tsType&quot;:&quot;number&quot;},&quot;shoot&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;},&quot;top&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:100,&quot;tsType&quot;:&quot;number&quot;},&quot;dot&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#fff6dc&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;glow&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;255,214,120&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;core&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ffffff&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;opacity&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:1,&quot;tsType&quot;:&quot;number&quot;},&quot;animate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, anim = p.animate ?? true;
+    const key = JSON.stringify([p.seed, p.count, p.sparkles, p.shoot, p.top, p.dot, p.glow, p.core, p.opacity, anim]);
+    if (this._k === key) return { field: this._f };
+    const seed = +(p.seed ?? 7), count = +(p.count ?? 80), sparkles = +(p.sparkles ?? 12), shoot = +(p.shoot ?? 0), top = +(p.top ?? 100);
+    const dot = p.dot ?? '#fff6dc', glow = p.glow ?? '255,214,120', core = p.core ?? '#fff', opacity = +(p.opacity ?? 1);
+    const h = React.createElement; let s = seed;
+    const r = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+    const a = (v) => anim ? v : 'none';
+    const els = [];
+    for (let i = 0; i < count; i++) {
+      const big = r() > 0.9, sz = big ? 8 + r() * 10 : 1.5 + r() * 2.5;
+      els.push(h('span', { key: 'd' + i, style: { position: 'absolute', left: `${r() * 100}%`, top: `${r() * top}%`, width: sz, height: sz, borderRadius: '50%',
+        background: big ? `radial-gradient(circle,${core} 0%,rgba(${glow},.6) 40%,rgba(${glow},0) 70%)` : dot,
+        animation: a(`twinkle ${2.5 + r() * 4}s ease-in-out ${r() * 4}s infinite`) } }));
+    }
+    const mask = 'radial-gradient(circle,#000 0%,rgba(0,0,0,.6) 35%,transparent 70%)';
+    for (let i = 0; i < sparkles; i++) {
+      const sz = 14 + r() * 26;
+      els.push(h('span', { key: 'k' + i, style: { position: 'absolute', left: `${r() * 100}%`, top: `${r() * 100}%`, width: sz, height: sz, opacity: anim ? 0 : 0.8,
+        background: `radial-gradient(circle,${core} 0 6%,rgba(${glow},.7) 12%,rgba(${glow},0) 30%),linear-gradient(90deg,rgba(${glow},0) 46%,rgba(${glow},.95) 50%,rgba(${glow},0) 54%),linear-gradient(0deg,rgba(${glow},0) 46%,rgba(${glow},.95) 50%,rgba(${glow},0) 54%)`,
+        WebkitMaskImage: mask, maskImage: mask, animation: a(`sparkle ${2.4 + r() * 3}s ease-in-out ${r() * 5}s infinite`) } }));
+    }
+    for (let i = 0; i < shoot; i++) {
+      els.push(h('span', { key: 's' + i, style: { position: 'absolute', left: `${55 + r() * 45}%`, top: `${r() * 30}%`, width: 140, height: 1.5, borderRadius: 2, opacity: 0,
+        background: `linear-gradient(90deg,${core},rgba(${glow},0))`, animation: a(`shoot ${7 + r() * 6}s ease-out ${1 + r() * 8}s infinite`) } }));
+    }
+    const kf = h('style', { key: 'kf' }, '@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}@keyframes sparkle{0%,100%{transform:scale(.15) rotate(0deg);opacity:0}50%{transform:scale(1) rotate(45deg);opacity:1}}@keyframes shoot{0%{transform:translate(0,0) rotate(-28deg);opacity:0}4%{opacity:1}14%{transform:translate(-520px,276px) rotate(-28deg);opacity:0}100%{opacity:0;transform:translate(-520px,276px) rotate(-28deg)}}@media (prefers-reduced-motion:reduce){span{animation:none!important}}');
+    this._k = key;
+    this._f = h('div', { style: { position: 'absolute', inset: 0, opacity } }, [kf, ...els]);
+    return { field: this._f };
+  }
+}
+</script>
+</body>
+</html>

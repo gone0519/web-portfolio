@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(16px,3vw,32px);background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid #eee;font-family:'Zen Kaku Gothic New',sans-serif">
+  <a href="Narumi%20Womens%20University.dc.html" aria-label="鳴海女子大学 トップへ" style="display:flex;flex-direction:column;gap:2px;color:#111;line-height:1;text-decoration:none">
+    <span style="font-size:10px;font-weight:700;letter-spacing:.12em">わたしの未来をひらく</span>
+    <span class="logo-mark" style="display:flex;align-items:center;gap:6px;font-size:22px;font-weight:900;letter-spacing:.08em">鳴海<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FFE100;border:2px solid #111"></span>女子大学</span>
+  </a>
+  <nav aria-label="メインナビゲーション" style="display:{{ navDisplay }};gap:24px;align-items:center;font-size:14px;font-weight:700">
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+      <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="color:#111;text-decoration:none;padding:6px 0;border-bottom:3px solid {{ n.line }}" style-hover="color:#0A6FB8">{{ n.label }}</a>
+    </sc-for>
+  </nav>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a href="OpenCampus.dc.html#reserve" class="hdr-cta" style="display:flex;align-items:center;gap:8px;background:#0A6FB8;color:#fff;font-weight:900;font-size:13px;padding:11px 18px;border-radius:999px;text-decoration:none" style-hover="background:#111;color:#fff">オープンキャンパス予約<span aria-hidden="true">→</span></a>
+    <button onClick="{{ toggleMenu }}" aria-label="メニューを開く" aria-expanded="{{ menuOpen }}" style="width:48px;height:48px;border:0;border-radius:6px;background:#FFE100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer" style-hover="background:#F2D400">
+      <span style="width:20px;height:2px;background:#111;display:block"></span>
+      <span style="width:20px;height:2px;background:#111;display:block"></span>
+      <span style="font-family:Montserrat;font-weight:800;font-size:8px;letter-spacing:.1em;color:#111">MENU</span>
+    </button>
+  </div>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-label="メニュー" style="position:fixed;inset:0;z-index:60;background:#FFE100;display:flex;flex-direction:column;padding:28px clamp(20px,6vw,80px);overflow:auto;font-family:'Zen Kaku Gothic New',sans-serif">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-family:Montserrat;font-weight:900;font-size:14px;letter-spacing:.2em">MENU</span>
+      <button onClick="{{ toggleMenu }}" aria-label="メニューを閉じる" style="width:48px;height:48px;border-radius:50%;border:2px solid #111;background:#fff;font-size:20px;cursor:pointer">×</button>
+    </div>
+    <nav aria-label="メニュー" style="display:flex;flex-direction:column;gap:6px;margin-top:40px">
+      <sc-for list="{{ menuItems }}" as="m" hint-placeholder-count="6">
+        <a href="{{ m.href }}" onClick="{{ closeMenu }}" style="display:flex;align-items:baseline;gap:18px;padding:16px 0;border-bottom:2px solid #111;color:#111;text-decoration:none;font-size:clamp(24px,4vw,40px);font-weight:900" style-hover="color:#0A6FB8">
+          <span style="font-family:Montserrat;font-size:13px;font-weight:800;color:#0A6FB8;min-width:28px">{{ m.no }}</span>{{ m.label }}
+        </a>
+      </sc-for>
+    </nav>
+    <a href="OpenCampus.dc.html#reserve" style="margin-top:36px;align-self:flex-start;background:#111;color:#fff;font-weight:900;padding:18px 32px;border-radius:999px;text-decoration:none">オープンキャンパスを予約する →</a>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;top&quot;,&quot;about&quot;,&quot;academics&quot;,&quot;campus&quot;,&quot;admissions&quot;,&quot;opencampus&quot;],&quot;default&quot;:&quot;top&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false, w: typeof window !== 'undefined' ? window.innerWidth : 1280 };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const cur = this.props.current ?? 'top';
+    const pages = [
+      { key: 'top', label: 'トップ', href: 'Narumi%20Womens%20University.dc.html' },
+      { key: 'about', label: '大学について', href: 'About.dc.html' },
+      { key: 'academics', label: '学部・学科', href: 'Academics.dc.html' },
+      { key: 'campus', label: 'キャンパスライフ', href: 'CampusLife.dc.html' },
+      { key: 'admissions', label: '入試情報', href: 'Admissions.dc.html' },
+      { key: 'opencampus', label: 'オープンキャンパス', href: 'OpenCampus.dc.html' },
+    ];
+    return {
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      navDisplay: this.state.w >= 1180 ? 'flex' : 'none',
+      nav: pages.slice(1, 5).map(p => ({ ...p, aria: p.key === cur ? 'page' : undefined, line: p.key === cur ? '#FFE100' : 'transparent' })),
+      menuItems: pages.map((p, i) => ({ ...p, no: String(i + 1).padStart(2, '0') })),
+    };
+  }
+}
+</script>
+</body>
+</html>

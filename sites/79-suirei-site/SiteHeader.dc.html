@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:relative;z-index:20;display:grid;grid-template-columns:{{ headerCols }};align-items:start;padding:20px clamp(16px,2.5vw,36px)">
+  <button onClick="{{ openMenu }}" aria-label="メニューを開く" style="justify-self:start;width:58px;height:58px;border-radius:50%;border:none;background:#2a2622;box-shadow:0 8px 20px rgba(0,0,0,.18);color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:transform .3s" style-hover="transform:scale(1.06)">
+    <span style="display:block;width:20px;height:1.5px;background:#fff"></span>
+    <span style="display:block;width:20px;height:1.5px;background:#fff"></span>
+    <span style="font-size:9px;letter-spacing:.12em;margin-top:2px">MENU</span>
+  </button>
+  <a href="University%20Admissions.dc.html" style="display:flex;align-items:center;gap:10px;padding-top:6px;margin-left:{{ logoGap }};color:#2a2622;text-decoration:none">
+    <span style="width:22px;height:22px;background:#2f6b47;transform:rotate(45deg);border-radius:3px 12px 3px 12px"></span>
+    <span style="display:flex;flex-direction:column;line-height:1.2">
+      <span style="font-family:'Noto Serif JP',serif;font-size:clamp(17px,1.6vw,22px);font-weight:600;letter-spacing:.14em">翠嶺大学</span>
+      <span style="font-size:10px;letter-spacing:.2em;color:#6b645c">入試情報サイト</span>
+    </span>
+  </a>
+  <nav style="justify-self:end;display:{{ navDisplay }};gap:clamp(12px,1.4vw,24px);margin:6px 60px 0 0;padding:12px 24px;background:#fff;border-radius:999px;box-shadow:0 8px 24px rgba(60,40,20,.1);font-size:13px;font-weight:500;letter-spacing:.08em;white-space:nowrap">
+    <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
+      <a href="{{ l.href }}" style="color:{{ l.color }};text-decoration:none;border-bottom:1px solid {{ l.line }};padding-bottom:4px" style-hover="color:#b9472f">{{ l.label }}</a>
+    </sc-for>
+  </nav>
+</header>
+<a href="CampusLife.dc.html#form" class="side-cta" style="position:fixed;right:0;top:20px;z-index:30;background:#b9472f;color:#fff;writing-mode:vertical-rl;font-family:'Noto Serif JP',serif;letter-spacing:.3em;font-size:14px;padding:22px 13px;border-radius:10px 0 0 10px;text-decoration:none;transition:padding .3s" style-hover="padding-right:18px">資料請求・オープンキャンパス</a>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:40;background:#1f4d36;display:flex;align-items:center;justify-content:center;padding:40px">
+    <button onClick="{{ closeMenu }}" aria-label="閉じる" style="position:absolute;top:20px;left:clamp(16px,2.5vw,36px);width:58px;height:58px;border-radius:50%;border:none;background:#b9472f;color:#fff;font-size:12px;letter-spacing:.1em;cursor:pointer">CLOSE</button>
+    <nav style="display:flex;flex-direction:row-reverse;gap:clamp(22px,4.5vw,60px);font-family:'Noto Serif JP',serif;font-size:clamp(17px,2.1vw,25px);letter-spacing:.3em">
+      <a href="University%20Admissions.dc.html" style="writing-mode:vertical-rl;color:#fff;text-decoration:none" style-hover="color:#b9472f">トップ</a>
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
+        <a href="{{ l.href }}" style="writing-mode:vertical-rl;color:{{ l.mcolor }};text-decoration:none" style-hover="color:#b9472f">{{ l.full }}</a>
+      </sc-for>
+    </nav>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1280px&quot;,&quot;height&quot;:&quot;120px&quot;},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;programs&quot;,&quot;prep&quot;,&quot;admissions&quot;,&quot;tuition&quot;,&quot;campus&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false, w: window.innerWidth };
+  componentDidMount() { this._r = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this._r); }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); }
+  renderVals() {
+    const cur = this.props.current;
+    const dark = true;
+    const links = [
+      ['programs','Programs.dc.html','学部・学科','学部・学科'],
+      ['prep','ExamPrep.dc.html','入試対策','入試対策'],
+      ['admissions','Admissions.dc.html','入試情報・出願','入試情報・出願'],
+      ['tuition','Tuition.dc.html','学費・奨学金','学費・奨学金'],
+      ['campus','CampusLife.dc.html','キャンパスライフ','キャンパスライフ']
+    ].map(([k,href,label,full]) => ({ href, label, full, color: k === cur ? '#b9472f' : '#2a2622', mcolor: k === cur ? '#c9a96e' : '#fff', line: k === cur ? '#b9472f' : 'transparent' }));
+    // ナビを表示する幅では、ロゴを中央ではなくメニューボタンの隣に置いて重なりを防ぐ
+    const wide = this.state.w >= 1180;
+    return {
+      links,
+      navDisplay: wide ? 'flex' : 'none',
+      headerCols: wide ? 'auto auto 1fr' : '1fr auto 1fr',
+      logoGap: wide ? '20px' : '0',
+      menuOpen: this.state.menuOpen,
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

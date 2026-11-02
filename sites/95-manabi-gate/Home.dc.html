@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="./responsive.css">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#EEEAE1;color:#17110F;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{opacity:.8}
+button{font-family:inherit;cursor:pointer}
+input,select{font-family:inherit}
+@keyframes mg-spin{to{transform:rotate(360deg)}}
+@keyframes mg-marquee{to{transform:translateX(-50%)}}
+@keyframes mg-marquee-r{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+</style>
+</helmet>
+
+<dc-import name="SiteHeader" current="home" tone="dark" hint-size="100%,1px"></dc-import>
+
+<main>
+<!-- 01 HERO -->
+<section id="top" data-screen-label="01 Hero" style="isolation:isolate;overflow-x:clip;position:relative;background:#EEEAE1">
+  <div class="mg-pc-only" aria-hidden="true" data-px="-0.06" style="position:absolute;right:3vw;top:62vh;width:180px;height:220px;background-image:radial-gradient(#17110F 1.6px,transparent 1.9px);background-size:16px 16px;z-index:-1;pointer-events:none"></div>
+  <div class="mg-pc-only" aria-hidden="true" data-px="0.1" style="overflow:hidden;position:absolute;left:42vw;top:66vh;width:130px;height:130px;border-radius:50%;background-image:repeating-linear-gradient(-45deg,#E2532F 0 2px,transparent 2px 10px);z-index:-1;pointer-events:none"><img src="_filled/04-two-students.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative;height:max(100vh,820px);overflow:hidden">
+      <div style="position:absolute;top:104px;left:4vw;right:4vw;display:grid;grid-template-columns:1fr 2fr 1fr;gap:20px;padding-bottom:14px;border-bottom:1px solid rgba(23,17,15,.25);font-family:'Instrument Sans',sans-serif;font-size:11px;letter-spacing:.16em">
+        <span>2027年度版</span><span style="text-align:center">大学入試・進学情報ナビ</span><span style="text-align:right">受験生と保護者のために</span>
+      </div>
+      <div data-px="0.12" style="position:absolute;right:31vw;top:17vh;width:22vw;height:22vw"><div data-rv="up" data-delay="200" style="width:100%;height:100%;border-radius:50%;background:#E2532F"></div></div>
+      <div style="position:absolute;right:5vw;top:19vh;width:34vw;height:72vh;border-radius:999px 999px 0 0;overflow:hidden"><div data-rv="clip" style="width:100%;height:100%;overflow:hidden"><div data-zoom="1" style="width:100%;height:100%"><image-slot id="hero-main" shape="rect" src="images/campus-path.jpg" placeholder="Hero photo — 受験生・キャンパス"></image-slot></div></div></div>
+      <div data-px="-0.18" style="position:absolute;right:33vw;bottom:6vh;width:12vw;height:16vw;z-index:2"><div data-rv="clip" data-delay="350" style="width:100%;height:100%;overflow:hidden;border:8px solid #EEEAE1"><image-slot id="hero-sub" shape="rect" src="images/students-notes.jpg" placeholder="ノート・勉強"></image-slot></div></div>
+      <div style="position:absolute;right:2.4vw;top:23vh;width:140px;height:140px;z-index:4">{{ heroBadge }}</div>
+      <span style="position:absolute;right:1.4vw;bottom:8vh;writing-mode:vertical-rl;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.5em">受験生と保護者のための進学情報</span>
+      <div data-sx="0.25" style="position:absolute;left:3.4vw;top:20vh;z-index:3;pointer-events:none;color:#fff;mix-blend-mode:difference;font-family:'Shippori Mincho',serif;font-size:13.4vw;line-height:1.15;letter-spacing:-.02em">
+        <div style="overflow:hidden;padding-bottom:.04em"><div data-rv="line">未来を</div></div>
+        <div style="overflow:hidden;padding:0 0 .08em 15vw"><div data-rv="line" data-delay="120" style="font-style:italic">選ぼう。</div></div>
+      </div>
+      <div style="position:absolute;left:4vw;bottom:7vh;width:min(30vw,440px);display:flex;flex-direction:column;gap:22px;z-index:3">
+        <h1 data-rv="up" data-delay="300" style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(28px,2.5vw,44px);line-height:1.4">{{ heroLine1 }}<br>{{ heroLine2 }}</h1>
+        <p data-rv="up" data-delay="400" style="margin:0;font-size:13px;line-height:2.1">志望校選びから入試対策、出願準備まで。大学進学に必要な情報を、受験生と保護者の方へわかりやすくお届けします。</p>
+        <div data-rv="up" data-delay="500" style="display:flex;flex-wrap:wrap;gap:14px">
+          <a href="#programs" style="display:inline-flex;align-items:center;gap:16px;height:56px;padding:0 10px 0 26px;border-radius:999px;background:#17110F;color:#EEEAE1;font-size:13px;letter-spacing:.08em;transition:background .3s" style-hover="background:#7A1020">大学・学部を探す<span style="width:38px;height:38px;border-radius:50%;background:#E2532F;color:#17110F;display:flex;align-items:center;justify-content:center">→</span></a>
+          <a href="#admissions" style="display:inline-flex;align-items:center;height:56px;padding:0 24px;border-radius:999px;border:1px solid #17110F;font-size:13px;letter-spacing:.08em;transition:background .3s" style-hover="background:rgba(23,17,15,.06)">入試情報</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}">
+    <div style="position:relative;overflow:hidden;padding:110px max(20px,4vw) 70px;display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;justify-content:space-between;font-family:'Instrument Sans',sans-serif;font-size:10px;letter-spacing:.16em;padding-bottom:12px;border-bottom:1px solid rgba(23,17,15,.25)"><span>2027年度版</span><span>大学入試ガイド</span></div>
+      <div style="font-family:'Shippori Mincho',serif;font-size:min(17vw,150px);line-height:1.15;letter-spacing:-.02em;white-space:nowrap"><div>未来を</div><div style="padding-left:6vw;color:#7A1020">選ぼう。</div></div>
+      <div class="mg-hero-split" style="display:flex;flex-direction:column;gap:28px">
+        <div class="mg-hero-img" style="position:relative;width:100%;aspect-ratio:4/5">
+          <div style="position:absolute;left:-12%;top:-6%;width:56%;aspect-ratio:1;border-radius:50%;background:#E2532F"></div>
+          <div style="position:absolute;inset:0 0 0 14%;border-radius:999px 999px 0 0;overflow:hidden"><image-slot id="hero-main" shape="rect" src="images/campus-path.jpg" placeholder="Hero photo — 受験生・キャンパス"></image-slot></div>
+          <div style="position:absolute;right:-6px;top:-30px;width:110px;height:110px">{{ heroBadge }}</div>
+        </div>
+        <div class="mg-hero-copy" style="display:flex;flex-direction:column;gap:28px">
+          <h1 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(28px,3.4vw,40px);line-height:1.45">{{ heroLine1 }}<br>{{ heroLine2 }}</h1>
+          <p style="margin:0;font-size:13px;line-height:2.1;max-width:440px">志望校選びから入試対策、出願準備まで。大学進学に必要な情報を、受験生と保護者の方へわかりやすくお届けします。</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px">
+            <a href="#programs" style="display:inline-flex;align-items:center;gap:16px;height:56px;padding:0 10px 0 24px;border-radius:999px;background:#17110F;color:#EEEAE1;font-size:13px">大学・学部を探す<span style="width:38px;height:38px;border-radius:50%;background:#E2532F;color:#17110F;display:flex;align-items:center;justify-content:center">→</span></a>
+            <a href="#admissions" style="display:inline-flex;align-items:center;height:56px;padding:0 22px;border-radius:999px;border:1px solid #17110F;font-size:13px">入試情報</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ showMarquee }}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative;z-index:5;height:0;overflow:visible">
+      <div style="position:absolute;left:-5%;width:110%;top:-44px;transform:rotate(-2.4deg);background:#7A1020;color:#fff;padding:20px 0;overflow:hidden;box-shadow:0 20px 40px rgba(23,17,15,.18)">{{ marquee }}</div>
+      <div style="position:absolute;left:-5%;width:110%;top:-30px;transform:rotate(1.6deg);background:#E2532F;color:#17110F;padding:10px 0;overflow:hidden;z-index:-1">{{ marquee2 }}</div>
+    </div>
+  </sc-if>
+</section>
+
+<!-- 02 PROGRAMS -->
+<section id="programs" data-screen-label="02 Programs" style="isolation:isolate;position:relative;overflow:hidden;background:#7A1020;color:#fff;padding:clamp(140px,14vw,240px) 4vw clamp(100px,10vw,200px)">
+  <div aria-hidden="true" data-px="0.08" style="position:absolute;right:6vw;top:120px;width:260px;height:260px;background-image:radial-gradient(rgba(255,255,255,.6) 1.6px,transparent 1.9px);background-size:16px 16px;z-index:-1;pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;left:0;bottom:0;width:34vw;height:70px;background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.4) 0 1.5px,transparent 1.5px 10px);z-index:-1;pointer-events:none"></div>
+  <div style="position:absolute;right:-12vw;top:30%;width:46vw;height:46vw;border-radius:50%;border:1px solid rgba(255,255,255,.18);pointer-events:none"></div>
+  <div style="position:relative;display:flex;flex-wrap:wrap;gap:6vw;align-items:flex-end;justify-content:space-between">
+    <div style="flex:1 1 560px;display:flex;flex-direction:column;gap:28px">
+      <div data-rv="up" style="display:flex;align-items:center;gap:14px;font-family:'Instrument Sans',sans-serif;font-size:12px;letter-spacing:.2em"><span style="width:36px;height:36px;border-radius:50%;border:1px solid #fff;display:flex;align-items:center;justify-content:center">01</span>大学・学部</div>
+      <div data-sx="-0.12" style="font-family:'Shippori Mincho',serif;font-size:clamp(84px,12vw,220px);line-height:1.15;letter-spacing:-.02em"><div style="overflow:hidden"><div data-rv="line">学びを</div></div><div style="overflow:hidden;padding-left:8vw"><div data-rv="line" data-delay="120" style="color:#F2B8A6">選ぶ。</div></div></div>
+      <h2 data-rv="up" style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(26px,2.4vw,42px);line-height:1.55">学びの本質と向き合い、<br>自分だけの未来を描く。</h2>
+    </div>
+    <div style="flex:0 1 380px;display:flex;flex-direction:column;gap:30px">
+      <div data-px="-0.08" style="width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden"><div data-rv="clip" style="width:100%;height:100%;overflow:hidden"><div data-zoom="1" style="width:100%;height:100%"><image-slot id="about-photo" shape="rect" src="images/seminar.jpg" placeholder="Photo — 講義・ゼミの様子"></image-slot></div></div></div>
+      <p data-rv="up" style="margin:0;font-size:14px;line-height:2.2">大学で何を学ぶかは、将来の選択肢を大きく広げます。学部・学科の特色や学べる分野を比較しながら、自分の興味と向き合うことが、志望校選びの第一歩です。</p>
+      <div data-rv="up"><a href="Programs.dc.html" style="display:inline-flex;align-items:center;gap:16px;height:56px;padding:0 10px 0 26px;border-radius:999px;background:#EEEAE1;color:#17110F;font-size:13px;letter-spacing:.08em;transition:background .3s" style-hover="background:#E2532F">大学・学部ページへ<span style="width:38px;height:38px;border-radius:50%;background:#17110F;color:#EEEAE1;display:flex;align-items:center;justify-content:center">→</span></a></div>
+    </div>
+  </div>
+
+  <div id="faculties" style="position:relative;margin-top:clamp(100px,10vw,180px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));column-gap:4vw;row-gap:90px">
+    <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="6">
+      <article data-rv="up" data-delay="{{ f.delay }}" style="margin-top:{{ f.mt }};display:flex;flex-direction:column;gap:18px">
+        <div style="position:relative">
+          <div style="width:100%;aspect-ratio:4/5;border-radius:{{ f.radius }};overflow:hidden;background:#5E0B17">
+            <div style="width:100%;height:100%;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.07)"><image-slot id="fac-{{ f.key }}" shape="rect" src="{{ f.img }}" placeholder="{{ f.ph }}"></image-slot></div>
+          </div>
+          <span style="position:absolute;left:-.08em;bottom:-.42em;font-family:'Shippori Mincho',serif;font-size:clamp(90px,8vw,140px);line-height:1;color:#F2B8A6;pointer-events:none">{{ f.no }}</span>
+          <span style="position:absolute;right:16px;top:16px;width:56px;height:56px;border-radius:50%;background:#EEEAE1;color:#7A1020;display:flex;align-items:center;justify-content:center;font-family:'Shippori Mincho',serif;font-size:24px;pointer-events:none">{{ f.kanji }}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.3)">
+          <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-size:26px;font-weight:500">{{ f.jp }}</h3>
+          
+        </div>
+        <p style="margin:0;font-size:13px;line-height:2;text-wrap:pretty">{{ f.desc }}</p>
+        <button onClick="{{ f.open }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:12px;background:none;border:none;color:#fff;padding:0;font-size:13px;letter-spacing:.08em">学びの特色を見る<span style="width:36px;height:36px;border-radius:50%;border:1px solid #fff;display:flex;align-items:center;justify-content:center;font-size:18px;transition:background .3s,color .3s" style-hover="background:#fff;color:#7A1020">+</span></button>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<!-- 03 PREPARE -->
+<section id="prepare" data-screen-label="03 Prepare" style="isolation:isolate;overflow-x:clip;position:relative;background:#17110F;color:#EEEAE1;padding:clamp(100px,10vw,180px) 4vw">
+  <div aria-hidden="true" data-px="0.1" style="overflow:hidden;position:absolute;right:4vw;top:60px;width:220px;height:220px;border-radius:50%;background-image:repeating-linear-gradient(-45deg,#E2532F 0 2px,transparent 2px 10px);z-index:-1;pointer-events:none"><img src="_filled/05-19.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div aria-hidden="true" style="position:absolute;left:4vw;bottom:80px;width:220px;height:140px;background-image:radial-gradient(rgba(255,255,255,.6) 1.6px,transparent 1.9px);background-size:16px 16px;z-index:-1;pointer-events:none"></div>
+  <div style="display:flex;flex-wrap:wrap;gap:6vw;align-items:flex-start">
+    <div class="mg-sticky" style="flex:1 1 420px;position:sticky;top:110px;display:flex;flex-direction:column;gap:30px">
+      <div data-rv="up" style="display:flex;align-items:center;gap:14px;font-family:'Instrument Sans',sans-serif;font-size:12px;letter-spacing:.2em"><span style="width:36px;height:36px;border-radius:50%;border:1px solid #EEEAE1;display:flex;align-items:center;justify-content:center">02</span>入試対策</div>
+      <div style="font-family:'Shippori Mincho',serif;font-size:clamp(84px,10vw,180px);line-height:1.15;letter-spacing:-.02em"><div style="overflow:hidden"><div data-rv="line">学習</div></div><div style="overflow:hidden;padding-left:5vw"><div data-rv="line" data-delay="120" style="color:#E2532F">計画。</div></div></div>
+      <h2 data-rv="up" style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(26px,2.4vw,42px);line-height:1.5">合格への道は、<br>毎日の積み重ねから。</h2>
+      <p data-rv="up" style="margin:0;font-size:14px;line-height:2.2;max-width:460px">入試対策で大切なのは、やみくもに勉強時間を増やすことではありません。志望校の出題傾向を知り、得意と苦手を把握したうえで、“いつ・何を・どれだけ”やるかを決めること。計画・実行・振り返りの繰り返しが、本番での自信につながります。</p>
+      <div data-rv="up"><a href="Prepare.dc.html" style="display:inline-flex;align-items:center;gap:16px;height:56px;padding:0 10px 0 26px;border-radius:999px;background:#EEEAE1;color:#17110F;font-size:13px;letter-spacing:.08em;transition:background .3s" style-hover="background:#E2532F">入試対策ページへ<span style="width:38px;height:38px;border-radius:50%;background:#17110F;color:#EEEAE1;display:flex;align-items:center;justify-content:center">→</span></a></div>
+    </div>
+    <div style="flex:1 1 460px;position:relative;padding-left:48px">
+      <div style="position:absolute;left:0;top:0;bottom:0;width:1px;background:rgba(238,234,225,.2)">
+        <div data-prog="1" style="position:absolute;inset:0;background:#E2532F;transform-origin:top;transform:scaleY(0)"></div>
+      </div>
+      <sc-for list="{{ plan }}" as="p" hint-placeholder-count="4">
+        <div class="mg-step" style="position:relative;min-height:min(56vh,520px);display:flex;flex-direction:column;justify-content:center;gap:16px;padding:40px 0;border-bottom:1px solid rgba(238,234,225,.14)">
+          <span style="position:absolute;left:-55px;top:56px;width:15px;height:15px;border-radius:50%;background:#17110F;border:1px solid #E2532F"></span>
+          <span data-rv="up" style="font-family:'Shippori Mincho',serif;font-size:clamp(100px,10vw,170px);line-height:1.15;color:transparent;-webkit-text-stroke:1px #EEEAE1">{{ p.num }}</span>
+          <span data-rv="up" style="font-family:'Instrument Sans',sans-serif;font-size:12px;letter-spacing:.16em;color:#E2532F">{{ p.step }}</span>
+          <h3 data-rv="up" style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(26px,2.2vw,36px)">{{ p.title }}</h3>
+          <p data-rv="up" style="margin:0;font-size:14px;line-height:2.1;max-width:480px">{{ p.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div id="methods" style="margin-top:clamp(120px,12vw,220px);display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+      <div style="font-family:'Shippori Mincho',serif;font-size:clamp(48px,7vw,120px);line-height:1.15;letter-spacing:-.02em"><div style="overflow:hidden"><div data-rv="line">入試<span style="color:#E2532F">方式</span></div></div></div>
+      <p data-rv="up" style="margin:0;font-size:13px;line-height:2;max-width:380px">大学入試には大きく3つの方式があります。それぞれの特徴を知り、自分に合った受け方を考えましょう。</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+      <sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+        <button onClick="{{ m.select }}" style="text-align:left;display:flex;flex-direction:column;gap:30px;padding:26px 28px;border-radius:20px;border:1px solid {{ m.tabBorder }};background:{{ m.tabBg }};color:{{ m.tabColor }};transition:background .4s,color .4s,border-color .4s">
+          <span style="display:flex;justify-content:space-between;width:100%;font-family:'Instrument Sans',sans-serif;font-size:12px;letter-spacing:.14em"><span>方式 {{ m.no }}</span><span>{{ m.arrow }}</span></span>
+          <span style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Shippori Mincho',serif;font-size:clamp(22px,1.8vw,30px);font-weight:500">{{ m.title }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+    <sc-for list="{{ methods }}" as="m" hint-placeholder-count="1">
+      <sc-if value="{{ m.active }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-wrap:wrap;gap:5vw;align-items:center;padding-top:20px">
+          <div style="flex:1 1 360px;max-width:620px;aspect-ratio:5/4;position:relative">
+            <div style="position:absolute;inset:0;border-radius:0 0 0 220px;overflow:hidden"><div data-rv="clip" style="width:100%;height:100%;overflow:hidden"><div data-zoom="1" style="width:100%;height:100%"><image-slot id="method-{{ m.key }}" shape="rect" src="{{ m.img }}" placeholder="{{ m.ph }}"></image-slot></div></div></div>
+            <span style="position:absolute;right:-20px;top:-50px;font-family:'Shippori Mincho',serif;font-size:clamp(110px,10vw,180px);line-height:1;color:#E2532F;pointer-events:none">{{ m.no }}</span>
+          </div>
+          <div style="flex:1 1 420px;display:flex;flex-direction:column;gap:22px">
+            <p data-rv="up" style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(18px,1.4vw,22px);line-height:1.9">{{ m.desc }}</p>
+            <dl style="margin:0;display:flex;flex-direction:column">
+              <sc-for list="{{ m.rows }}" as="r" hint-placeholder-count="3">
+                <div data-rv="up" style="display:grid;grid-template-columns:minmax(100px,140px) minmax(0,1fr);gap:16px;padding:18px 0;border-top:1px solid rgba(238,234,225,.2)">
+                  <dt style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#E2532F">{{ r.k }}</dt>
+                  <dd style="margin:0;font-size:13px;line-height:1.9">{{ r.v }}</dd>
+                </div>
+              </sc-for>
+            </dl>
+            <p style="margin:0;font-size:11px;opacity:.75">※時期は一般的な目安です。必ず各大学の募集要項をご確認ください。</p>
+            <div style="display:flex;flex-wrap:wrap;gap:12px">
+              <a href="#admissions" style="display:inline-flex;align-items:center;gap:16px;height:52px;padding:0 8px 0 24px;border-radius:999px;background:#EEEAE1;color:#17110F;font-size:13px;letter-spacing:.06em;transition:background .3s" style-hover="background:#E2532F">出願の流れを見る<span style="width:36px;height:36px;border-radius:50%;background:#17110F;color:#EEEAE1;display:flex;align-items:center;justify-content:center">→</span></a>
+              <button onClick="{{ openDocs }}" style="display:inline-flex;align-items:center;height:52px;padding:0 22px;border-radius:999px;border:1px solid #EEEAE1;background:none;color:#EEEAE1;font-size:13px;letter-spacing:.06em">対策ガイドを請求</button>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </sc-for>
+  </div>
+</section>
+
+<!-- 04 ADMISSIONS -->
+<section id="admissions" data-screen-label="04 Admissions" style="isolation:isolate;position:relative;overflow:hidden;background:#EEEAE1;color:#17110F;padding:clamp(100px,10vw,180px) 4vw">
+  <div aria-hidden="true" style="overflow:hidden;position:absolute;right:4vw;top:120px;width:300px;height:120px;background-image:repeating-linear-gradient(0deg,#7A1020 0 1.5px,transparent 1.5px 9px);z-index:-1;pointer-events:none"><img src="_filled/06-26.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div aria-hidden="true" data-px="0.06" style="position:absolute;left:2vw;bottom:40px;width:180px;height:180px;background-image:radial-gradient(#17110F 1.6px,transparent 1.9px);background-size:16px 16px;z-index:-1;pointer-events:none"></div>
+  <div style="position:absolute;left:-14vw;top:8%;width:40vw;height:40vw;border-radius:50%;background:#E8CFC4;pointer-events:none"></div>
+  <div style="position:relative;display:flex;flex-direction:column;gap:clamp(90px,9vw,160px)">
+    <div style="display:flex;flex-direction:column;gap:56px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <div style="display:flex;flex-direction:column;gap:26px">
+          <div data-rv="up" style="display:flex;align-items:center;gap:14px;font-family:'Instrument Sans',sans-serif;font-size:12px;letter-spacing:.2em"><span style="width:36px;height:36px;border-radius:50%;border:1px solid #17110F;display:flex;align-items:center;justify-content:center">03</span>出願・入学サポート</div>
+          <div data-sx="0.1" style="font-family:'Shippori Mincho',serif;font-size:clamp(60px,11vw,200px);line-height:1.15;letter-spacing:-.02em"><div style="overflow:hidden"><div data-rv="line">合格<span style="color:#7A1020">への</span></div></div><div style="overflow:hidden;padding-left:10vw"><div data-rv="line" data-delay="120">道のり。</div></div></div>
+        </div>
+        <p data-rv="up" style="margin:0;font-size:13px;line-height:2;max-width:360px">入試スケジュールの一般的な目安です。実際の日程は年度・大学・方式によって異なります。最新情報は各大学の募集要項でご確認ください。</p>
+        <div data-rv="up"><a href="Admissions.dc.html" style="display:inline-flex;align-items:center;gap:16px;height:56px;padding:0 10px 0 26px;border-radius:999px;background:#17110F;color:#EEEAE1;font-size:13px;letter-spacing:.08em;transition:background .3s" style-hover="background:#E2532F">出願・入学ページへ<span style="width:38px;height:38px;border-radius:50%;background:#E2532F;color:#17110F;display:flex;align-items:center;justify-content:center">→</span></a></div>
+      </div>
+      <div class="mg-tl" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:30px;padding-top:40px">
+        <div class="mg-tl-line" data-rv="draw" style="position:absolute;left:0;right:0;top:0;height:2px;background:#17110F"></div>
+        <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="4">
+          <div data-rv="up" data-delay="{{ s.delay }}" style="position:relative;display:flex;flex-direction:column;gap:14px">
+            <span class="mg-tl-dot" style="position:absolute;top:-49px;left:0;width:18px;height:18px;border-radius:50%;background:#E2532F;border:3px solid #EEEAE1"></span>
+            <span style="font-family:'Shippori Mincho',serif;font-size:clamp(54px,5vw,84px);line-height:1;letter-spacing:-.02em">{{ s.when }}</span>
+            <span style="font-family:'Shippori Mincho',serif;font-size:19px;line-height:1.6;font-weight:500">{{ s.title }}</span>
+            <span style="align-self:flex-start;font-size:11px;border:1px solid #17110F;border-radius:999px;padding:3px 12px;letter-spacing:.08em">目安</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;align-items:start">
+      <div data-rv="up" style="background:#7A1020;color:#fff;border-radius:28px;padding:44px 36px;display:flex;flex-direction:column;gap:20px;transition:transform .5s" style-hover="transform:translateY(-8px) rotate(-1deg)">
+        <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:26px">出願の流れ</h3>
+        <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
+          <sc-for list="{{ flow }}" as="fl" hint-placeholder-count="4">
+            <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:14px 0;border-top:1px solid rgba(255,255,255,.25);font-size:13px;line-height:1.8"><span style="font-family:'Shippori Mincho',serif;font-size:22px;line-height:1.2;color:#F2B8A6">{{ fl.n }}</span><span>{{ fl.t }}</span></li>
+          </sc-for>
+        </ol>
+      </div>
+      <div data-rv="up" data-delay="120" style="margin-top:{{ cardOffset }};background:#E8CFC4;color:#17110F;border-radius:28px;padding:44px 36px;display:flex;flex-direction:column;gap:20px;transition:transform .5s" style-hover="transform:translateY(-8px) rotate(1deg)">
+        <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:26px">学費・納付金</h3>
+        <div style="display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-top:1px solid rgba(23,17,15,.2);font-size:13px"><span>入学検定料</span><span style="font-family:'Instrument Sans',sans-serif">¥ ○○,○○○</span></div>
+          <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-top:1px solid rgba(23,17,15,.2);font-size:13px"><span>入学金</span><span style="font-family:'Instrument Sans',sans-serif">¥ ○○○,○○○</span></div>
+          <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-top:1px solid rgba(23,17,15,.2);border-bottom:1px solid rgba(23,17,15,.2);font-size:13px"><span>授業料（年額）</span><span style="font-family:'Instrument Sans',sans-serif">¥ ○○○,○○○</span></div>
+        </div>
+        <p style="margin:0;font-size:12px;line-height:1.9">※金額はサンプル表記です。国公立・私立、学部によって大きく異なるため、各大学の公表資料をご確認ください。</p>
+      </div>
+      <div data-rv="up" data-delay="240" style="background:#17110F;color:#EEEAE1;border-radius:28px;padding:44px 36px;display:flex;flex-direction:column;gap:20px;transition:transform .5s" style-hover="transform:translateY(-8px) rotate(-1deg)">
+        <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:26px">奨学金・支援制度</h3>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ support }}" as="sp" hint-placeholder-count="3">
+            <div style="padding:14px 0;border-top:1px solid rgba(238,234,225,.2);display:flex;flex-direction:column;gap:4px"><span style="font-size:14px;font-weight:500">{{ sp.t }}</span><span style="font-size:12px;line-height:1.8">{{ sp.d }}</span></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div id="faq" style="display:flex;flex-wrap:wrap;gap:6vw">
+      <div style="flex:0 1 380px;display:flex;flex-direction:column;gap:16px">
+        <div style="font-family:'Shippori Mincho',serif;font-size:clamp(110px,12vw,220px);line-height:1.15;letter-spacing:-.02em;color:#7A1020"><div style="overflow:hidden"><div data-rv="line">質<span style="color:#E2532F">問</span></div></div></div>
+        <span data-rv="up" style="font-size:13px;letter-spacing:.14em">よくあるご質問</span>
+      </div>
+      <div style="flex:1 1 520px;display:flex;flex-direction:column;border-top:1px solid #17110F">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+          <div style="border-bottom:1px solid rgba(23,17,15,.25)">
+            <button onClick="{{ q.toggle }}" style="width:100%;background:none;border:none;color:#17110F;display:grid;grid-template-columns:44px minmax(0,1fr) 40px;gap:12px;align-items:center;text-align:left;padding:26px 0;font-family:'Shippori Mincho',serif;font-size:18px;font-weight:500;line-height:1.6">
+              <span style="font-family:'Shippori Mincho',serif;font-size:22px;color:#7A1020">{{ q.no }}</span><span>{{ q.q }}</span>
+              <span style="width:40px;height:40px;border-radius:50%;background:{{ q.iconBg }};color:{{ q.iconColor }};display:flex;align-items:center;justify-content:center;font-family:'Instrument Sans',sans-serif;font-size:18px;transition:background .3s,transform .4s;transform:{{ q.rot }}">+</span>
+            </button>
+            <div style="display:grid;grid-template-rows:{{ q.rows }};transition:grid-template-rows .55s cubic-bezier(.2,.7,.2,1)">
+              <div style="overflow:hidden;min-height:0"><p class="mg-faq-a" style="margin:0;padding:0 56px 30px 56px;font-size:13px;line-height:2.1">{{ q.a }}</p></div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:5vw">
+      <div style="flex:1.4 1 420px;aspect-ratio:16/10;border-radius:0 240px 0 0;overflow:hidden"><div data-rv="clip" style="width:100%;height:100%;overflow:hidden"><div data-zoom="1" style="width:100%;height:100%"><image-slot id="parents-card" shape="rect" src="images/consult.jpg" placeholder="Photo — 保護者と受験生の面談"></image-slot></div></div></div>
+      <div style="flex:1 1 340px;display:flex;flex-direction:column;gap:24px">
+        <p data-rv="up" style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(24px,2.2vw,36px);line-height:1.6;font-weight:500">「一緒に考える」が、<br>いちばんの応援になる。</p>
+        <p data-rv="up" style="margin:0;font-size:13px;line-height:2.1">進路相談の進め方や費用の考え方など、ご家族で話し合うためのガイドをご用意しています。</p>
+        <button onClick="{{ openGuide }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:16px;height:56px;padding:0 10px 0 26px;border-radius:999px;border:none;background:#17110F;color:#EEEAE1;font-size:13px;letter-spacing:.08em;transition:background .3s" style-hover="background:#7A1020">保護者向けガイドを請求<span style="width:38px;height:38px;border-radius:50%;background:#E2532F;color:#17110F;display:flex;align-items:center;justify-content:center">→</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CAMPUS -->
+<section id="campus" data-screen-label="05 Campus" style="isolation:isolate;position:relative;overflow:hidden;background:#7A1020;color:#fff;padding:clamp(100px,10vw,180px) 4vw clamp(80px,8vw,140px)">
+  <div aria-hidden="true" style="position:absolute;right:4vw;bottom:80px;width:240px;height:180px;background-image:radial-gradient(rgba(255,255,255,.6) 1.6px,transparent 1.9px);background-size:16px 16px;z-index:-1;pointer-events:none"></div>
+  <div aria-hidden="true" data-px="0.12" style="overflow:hidden;position:absolute;left:-60px;top:42%;width:200px;height:200px;border-radius:50%;background-image:repeating-linear-gradient(-45deg,#E2532F 0 2px,transparent 2px 10px);z-index:-1;pointer-events:none"><img src="_filled/07-ac-p1.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div data-rv="up" style="display:flex;align-items:center;gap:14px;font-family:'Instrument Sans',sans-serif;font-size:12px;letter-spacing:.2em"><span style="width:36px;height:36px;border-radius:50%;border:1px solid #fff;display:flex;align-items:center;justify-content:center">04</span>キャンパスライフ・お問い合わせ</div>
+  <div data-sx="-0.15" style="margin-top:30px;font-family:'Shippori Mincho',serif;font-size:clamp(44px,14vw,260px);line-height:1.15;letter-spacing:-.02em;white-space:nowrap"><div style="overflow:hidden"><div data-rv="line">キャンパスで</div></div><div style="overflow:hidden;padding-left:14vw"><div data-rv="line" data-delay="120" style="color:#F2B8A6">会おう。</div></div></div>
+  <div style="position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2vw;margin-top:clamp(40px,5vw,80px)">
+    <div class="mg-hc-img1" data-px="0.08" style="grid-column:1 / span 5"><div style="aspect-ratio:4/5;border-radius:999px 999px 0 0;overflow:hidden"><div data-rv="clip" style="width:100%;height:100%;overflow:hidden"><div data-zoom="1" style="width:100%;height:100%"><image-slot id="campus-1" shape="rect" src="images/campus-outing.jpg" placeholder="Photo — サークル・課外活動"></image-slot></div></div></div></div>
+    <div class="mg-hc-img2" data-px="-0.12" style="grid-column:7 / span 3;align-self:end"><div style="aspect-ratio:3/4;overflow:hidden"><div data-rv="clip" data-delay="150" style="width:100%;height:100%;overflow:hidden"><image-slot id="campus-2" shape="rect" src="images/students-cheer.jpg" placeholder="Photo — オープンキャンパス"></image-slot></div></div></div>
+    <div class="mg-hc-img3" data-px="0.18" style="grid-column:10 / span 3;margin-top:-8vw"><div style="aspect-ratio:1;border-radius:50%;overflow:hidden"><div data-rv="clip" data-delay="300" style="width:100%;height:100%;overflow:hidden"><image-slot id="campus-3" shape="rect" src="images/friends.jpg" placeholder="Photo — 学食・友人"></image-slot></div></div></div>
+    <div class="mg-hc-badge" style="position:absolute;left:38%;top:12%;width:clamp(110px,11vw,170px);height:clamp(110px,11vw,170px);z-index:3;pointer-events:none">{{ ocBadge }}</div>
+  </div>
+  <div id="contact" style="display:flex;flex-wrap:wrap;gap:6vw;margin-top:clamp(80px,8vw,140px);align-items:flex-start">
+    <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:26px">
+      <h2 data-rv="up" style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(26px,3vw,52px);line-height:1.45">あなたの「学びたい」を、<br>ここから始めよう。</h2>
+      <p data-rv="up" style="margin:0;font-size:14px;line-height:2.1;max-width:520px">授業だけでなく、サークルやゼミ、留学、地域との連携など、大学には新しい出会いがあふれています。オープンキャンパスで、実際の雰囲気を確かめてみませんか。</p>
+      <div data-rv="up" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px">
+        <a href="Campus.dc.html" style="display:inline-flex;align-items:center;height:60px;padding:0 26px;border-radius:999px;border:1px solid #fff;color:#fff;font-size:14px;letter-spacing:.06em">キャンパスライフを見る</a>
+        <button onClick="{{ openOC }}" style="display:inline-flex;align-items:center;gap:16px;height:60px;padding:0 10px 0 28px;border-radius:999px;border:none;background:#EEEAE1;color:#17110F;font-size:14px;letter-spacing:.06em;transition:background .3s" style-hover="background:#E2532F">オープンキャンパスに申し込む<span style="width:40px;height:40px;border-radius:50%;background:#17110F;color:#EEEAE1;display:flex;align-items:center;justify-content:center">→</span></button>
+        <button onClick="{{ openDocs }}" style="display:inline-flex;align-items:center;height:60px;padding:0 26px;border-radius:999px;border:1px solid #fff;background:none;color:#fff;font-size:14px;letter-spacing:.06em;transition:background .3s" style-hover="background:rgba(255,255,255,.1)">資料を請求する</button>
+        <a href="Contact.dc.html" style="display:inline-flex;align-items:center;height:60px;padding:0 26px;border-radius:999px;border:1px solid #fff;color:#fff;font-size:14px;letter-spacing:.06em">お問い合わせ</a>
+      </div>
+    </div>
+    <div style="flex:1 1 360px;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.4)">
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+        <div data-rv="up" data-delay="{{ e.delay }}" style="display:grid;grid-template-columns:60px minmax(0,1fr);gap:16px;padding:24px 0;border-bottom:1px solid rgba(255,255,255,.25)">
+          <span style="font-family:'Shippori Mincho',serif;font-size:34px;line-height:1;color:#F2B8A6">{{ e.no }}</span>
+          <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Shippori Mincho',serif;font-size:19px;font-weight:500">{{ e.jp }}</span><span style="font-size:12px;line-height:1.8">{{ e.d }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+
+<dc-import name="SiteFooter" next-href="Programs.dc.html" next-en="Programs" next-jp="大学・学部" hint-size="100%,900px"></dc-import>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:70;background:rgba(23,17,15,.72);display:flex;align-items:center;justify-content:center;padding:20px">
+    <div onClick="{{ stop }}" style="position:relative;width:min(580px,100%);max-height:90vh;overflow:auto;background:#EEEAE1;color:#17110F;border-radius:28px;padding:52px clamp(24px,4vw,52px)">
+      <button onClick="{{ closeModal }}" aria-label="閉じる" style="position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:none;background:#17110F;color:#EEEAE1;font-size:16px">×</button>
+      <sc-if value="{{ isFaculty }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          
+          <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:34px">{{ fac.jp }}</h3>
+          <p style="margin:0;font-size:14px;line-height:2">{{ fac.desc }}</p>
+          <span style="margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.1em;color:#7A1020">学びのポイント</span>
+          <sc-for list="{{ fac.points }}" as="pt" hint-placeholder-count="3">
+            <div style="padding:12px 0;border-top:1px solid rgba(23,17,15,.2);font-size:13px;line-height:1.8">{{ pt }}</div>
+          </sc-for>
+          <span style="margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.1em;color:#7A1020">主な進路の例</span>
+          <p style="margin:0;font-size:13px;line-height:1.9">{{ fac.careers }}</p>
+          <button onClick="{{ openDocs }}" style="margin-top:14px;align-self:flex-start;height:52px;padding:0 26px;border-radius:999px;border:none;background:#7A1020;color:#fff;font-size:13px;letter-spacing:.06em">この分野の資料を請求する</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isForm }}" hint-placeholder-val="{{ false }}">
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:18px;padding:20px 0">
+            <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:26px">送信を受け付けました</h3>
+            <p style="margin:0;font-size:14px;line-height:2">ご入力いただいたメールアドレス宛に、確認のご連絡をお送りします。（デモのため実際には送信されません）</p>
+            <button onClick="{{ closeModal }}" style="align-self:flex-start;height:48px;padding:0 26px;border-radius:999px;border:1px solid #17110F;background:none;color:#17110F;font-size:13px">閉じる</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:20px">
+            
+            <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:30px">{{ formTitle }}</h3>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em">お名前<input required="required" name="name" placeholder="山田 花子" style="height:52px;border:1px solid rgba(23,17,15,.3);border-radius:14px;background:#fff;padding:0 16px;font-size:14px;color:#17110F"></input></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em">メールアドレス<input required="required" type="email" name="email" placeholder="example@mail.jp" style="height:52px;border:1px solid rgba(23,17,15,.3);border-radius:14px;background:#fff;padding:0 16px;font-size:14px;color:#17110F"></input></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em">ご区分<select name="type" style="height:52px;border:1px solid rgba(23,17,15,.3);border-radius:14px;background:#fff;padding:0 14px;font-size:14px;color:#17110F"><option>高校3年生</option><option>高校1・2年生</option><option>既卒生</option><option>保護者</option><option>高校教員</option></select></label>
+            <button type="submit" style="height:56px;border:none;border-radius:999px;background:#17110F;color:#EEEAE1;font-size:14px;letter-spacing:.08em;margin-top:6px">送信する</button>
+          </form>
+        </sc-if>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroHeadline&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;夢を、確かな一歩へ。&quot;,&quot;学びを、次のステージへ。&quot;,&quot;未来は、自分で選べる。&quot;],&quot;default&quot;:&quot;夢を、確かな一歩へ。&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;多め&quot;,&quot;控えめ&quot;],&quot;default&quot;:&quot;多め&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showMarquee&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, scrolled: false, menu: false, faq: 0, method: 0, modal: null, fac: null, submitted: false };
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onR);
+    const go = () => window.MGMotion ? (this.m = window.MGMotion.attach(() => this.props.motion === '控えめ'), this.forceUpdate()) : setTimeout(go, 50);
+    go();
+  }
+  componentDidUpdate() { if (this.m) { this.m.scan(); this.m.tick(); } }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); this.m && this.m.detach(); }
+  openForm(kind) { this.setState({ modal: kind, submitted: false, menu: false }); }
+  renderVals() {
+    const s = this.state, p = this.props, wide = s.w >= 1000;
+    const heroCopy = { '夢を、確かな一歩へ。': ['夢を、', '確かな一歩へ。'], '学びを、次のステージへ。': ['学びを、', '次のステージへ。'], '未来は、自分で選べる。': ['未来は、', '自分で選べる。'] }[p.heroHeadline] || ['夢を、', '確かな一歩へ。'];
+    const radii = ['999px 999px 0 0', '0', '50% 50% 50% 50% / 40% 40% 40% 40%', '0 0 0 180px', '999px 999px 0 0', '0 160px 0 0'];
+    const faculties = [
+      { key: 'hum', en: 'Humanities', jp: '文学部', ph: '文学・図書', desc: '言語・文学・歴史・哲学を通して、人と社会を深く読み解く力を養います。', points: ['文献を読み解く読解力と批判的思考', '少人数ゼミでの発表・討論', '外国語や文化理解を深める科目'], careers: '出版・メディア、教育、公務員、一般企業 など' },
+      { key: 'law', en: 'Law', jp: '法学部', ph: '講義室', desc: '法律や政治の仕組みを学び、社会の課題を論理的に解決する視点を身につけます。', points: ['憲法・民法・刑法などの基礎法学', '判例研究を通じた論理的思考', '模擬裁判や政策立案の演習'], careers: '法曹・公務員、金融、企業法務 など' },
+      { key: 'eco', en: 'Economics', jp: '経済・経営学部', ph: 'グループワーク', desc: '経済の動きや企業経営を理論とデータの両面から学び、社会を動かす力を育てます。', points: ['ミクロ・マクロ経済学の基礎', 'データ分析・統計の実践', '企業と連携したプロジェクト学習'], careers: '金融・商社、コンサルティング、起業 など' },
+      { key: 'sci', en: 'Engineering', jp: '理工学部', ph: '実験室', desc: '数学・物理・化学を土台に、ものづくりや技術開発に挑む実践的な学びがあります。', points: ['基礎科学から応用工学まで体系的に学ぶ', '実験・実習による実践力', '研究室での卒業研究'], careers: 'メーカー技術職、研究開発、大学院進学 など' },
+      { key: 'med', en: 'Health Sciences', jp: '医療・看護学部', ph: '実習風景', desc: '人の命と健康を支える専門職を目指し、知識と技術、そして思いやりを学びます。', points: ['基礎医学と専門分野の講義', '医療機関での臨地実習', '国家試験に向けた学習支援'], careers: '看護師・医療技術職、保健・福祉分野 など' },
+      { key: 'inf', en: 'Informatics', jp: '情報学部', ph: 'PC・研究', desc: 'プログラミングやAI、データサイエンスを学び、情報技術で新しい価値をつくります。', points: ['プログラミングとアルゴリズム', 'AI・データサイエンスの基礎', 'チーム開発による課題解決'], careers: 'IT・ソフトウェア、データ分析、研究職 など' }
+    ].map((f, i) => ({ ...f, img: 'images/' + ['campus-historic', 'students-laptops', 'group-work', 'campus-modern', 'lab', 'computer'][i] + '.jpg', no: String(i + 1).padStart(2, '0'), kanji: ['文', '法', '経', '理', '医', '情'][i], radius: radii[i], mt: wide ? ['0', '140px', '50px'][i % 3] : '0', delay: (i % 3) * 120, open: () => this.setState({ modal: 'faculty', fac: f }) }));
+    const methods = [
+      { key: 'gen', title: '一般選抜', en: 'General Admission', ph: 'Photo — 試験会場・自習', desc: '学力試験の結果を中心に合否が判定される方式です。大学入学共通テストと、各大学が実施する個別試験を組み合わせて評価されるのが一般的です。', rows: [{ k: '主な時期', v: '共通テスト：1月中旬／個別試験：2月〜3月' }, { k: '評価の観点', v: '教科・科目の学力試験' }, { k: '準備のポイント', v: '過去問演習で出題傾向をつかみ、科目ごとの配点に合わせて時間配分を決める' }] },
+      { key: 'rec', title: '学校推薦型選抜', en: 'School Recommendation', ph: 'Photo — 面接練習・先生との相談', desc: '出身高校の校長による推薦を受けて出願する方式です。調査書や推薦書に加え、面接・小論文などで総合的に評価されます。', rows: [{ k: '主な時期', v: '出願：11月以降' }, { k: '評価の観点', v: '調査書、推薦書、面接、小論文 など' }, { k: '準備のポイント', v: '日々の成績と活動の積み重ねが重要。校内選考の時期も早めに確認する' }] },
+      { key: 'com', title: '総合型選抜', en: 'Comprehensive Selection', ph: 'Photo — プレゼン・探究活動', desc: '大学が求める学生像（アドミッション・ポリシー）と、受験生の意欲や適性が合っているかを、書類や面接などで多面的に評価する方式です。', rows: [{ k: '主な時期', v: '出願：9月以降' }, { k: '評価の観点', v: '志望理由書、活動実績、面接、プレゼンテーション など' }, { k: '準備のポイント', v: '探究活動や志望理由を言語化し、大学の学びとのつながりを整理する' }] }
+    ].map((m, i) => { const a = s.method === i; return { ...m, img: 'images/' + ['lecture', 'discussion', 'presentation'][i] + '.jpg', no: String(i + 1).padStart(2, '0'), active: a, arrow: a ? '●' : '○', tabBg: a ? '#E2532F' : 'transparent', tabColor: a ? '#17110F' : '#EEEAE1', tabBorder: a ? '#E2532F' : 'rgba(238,234,225,.3)', select: () => this.setState({ method: i }) }; });
+    const faqData = [
+      { q: '志望校はいつまでに決めればよいですか？', a: '目安として高校3年生の夏までに第一志望を固めると、対策の方向性が定まりやすくなります。総合型選抜を検討する場合は、出願準備の時期が早いため、より早めの検討をおすすめします。' },
+      { q: '一般選抜と推薦・総合型選抜は併願できますか？', a: '多くの場合は可能ですが、専願（合格したら必ず入学する）を条件とする方式もあります。各大学の募集要項で条件をご確認ください。' },
+      { q: '共通テストの受験は必須ですか？', a: '国公立大学の一般選抜では多くの場合必要です。私立大学では、共通テストを利用する方式と利用しない方式があります。' },
+      { q: '奨学金はいつ申し込めばよいですか？', a: '高校在学中に申し込む「予約採用」と、大学入学後に申し込む「在学採用」があります。予約採用は高校を通じて案内されることが一般的です。' },
+      { q: '保護者も相談できますか？', a: 'はい。保護者の方からのご相談も受け付けています。ページ下部の問い合わせフォームからお気軽にご連絡ください。' }
+    ];
+    const faqs = faqData.map((f, i) => { const o = s.faq === i; return { ...f, no: String(i + 1).padStart(2, '0'), rows: o ? '1fr' : '0fr', iconBg: o ? '#E2532F' : '#17110F', iconColor: o ? '#17110F' : '#EEEAE1', rot: o ? 'rotate(45deg)' : 'rotate(0deg)', toggle: () => this.setState({ faq: o ? -1 : i }) }; });
+    const forms = { oc: ['Open campus', 'オープンキャンパス申し込み'], docs: ['Request', '資料請求'], inquiry: ['Contact', '入試に関するお問い合わせ'], guide: ['For parents', '保護者向けガイド請求'] };
+    const fm = forms[s.modal] || forms.docs;
+
+    const M = window.MGMotion, mq = ['未来を探そう', '志望校を見つけよう', '大学入試ガイド', '一歩ずつ、合格へ', 'オープンキャンパス'];
+    return {
+      // ヒーローは 1200px 未満で縦積みレイアウト（中間幅で見出しと本文が重なるのを防ぐ）
+      isDesktop: s.w >= 1200, isNarrow: s.w < 1200,
+      heroLine1: heroCopy[0], heroLine2: heroCopy[1],
+      showMarquee: p.showMarquee ?? true,
+      heroBadge: M && M.badge(React, 'bp1', '大学入試ガイド ✳ まなびゲート ✳ 2027 ✳ ', '#EEEAE1', '#17110F', '進'),
+      ocBadge: M && M.badge(React, 'bp3', 'オープンキャンパス ✳ 参加受付中 ✳ ', '#17110F', '#E2532F', '→'),
+      marquee: M && M.marquee(React, mq, 'clamp(26px,3.2vw,52px)', 'mg-marquee 46s linear infinite', 1),
+      marquee2: M && M.marquee(React, ['大学選び', '学部・学科', '入試対策', '出願準備', 'キャンパスライフ'], 'clamp(14px,1.2vw,18px)', 'mg-marquee-r 60s linear infinite', 0),
+      faculties, methods, faqs,
+      cardOffset: wide ? '60px' : '0',
+      plan: [
+        { num: '01', step: 'ステップ01 — 高校1・2年', title: '基礎を固める', text: '授業の復習を習慣にし、英語・数学など積み上げ型の科目の基礎を固めます。' },
+        { num: '02', step: 'ステップ02 — 高校3年 春', title: '志望校と現状を知る', text: '模試の結果から得意・苦手を把握し、志望校の入試科目と配点を確認します。' },
+        { num: '03', step: 'ステップ03 — 高校3年 夏', title: '弱点を集中的に克服', text: 'まとまった時間を使って苦手分野を克服。週単位で計画と振り返りを行います。' },
+        { num: '04', step: 'ステップ04 — 高校3年 秋〜冬', title: '実戦力を磨く', text: '過去問演習で時間配分を身につけ、本番を想定したリズムで仕上げます。' }
+      ],
+      schedule: [
+        { when: '9月〜', title: '総合型選抜 出願受付開始', delay: 0 },
+        { when: '11月〜', title: '学校推薦型選抜 出願受付開始', delay: 120 },
+        { when: '1月中旬', title: '大学入学共通テスト', delay: 240 },
+        { when: '2〜3月', title: '一般選抜 個別試験・合格発表', delay: 360 }
+      ],
+      flow: [{ n: '01', t: '募集要項を入手し、出願資格・試験科目を確認' }, { n: '02', t: '調査書など必要書類を高校に依頼・準備' }, { n: '03', t: 'インターネット出願・入学検定料の支払い' }, { n: '04', t: '受験票の確認・受験、合格発表後に入学手続き' }],
+      support: [{ t: '日本学生支援機構（JASSO）奨学金', d: '給付型・貸与型があり、高校在学中に予約申込が可能です。' }, { t: '高等教育の修学支援新制度', d: '対象となる世帯を対象に、授業料等の減免と給付型奨学金で支援する国の制度です。' }, { t: '大学独自の奨学金・特待生制度', d: '成績や家計状況に応じた制度を設ける大学があります。各大学でご確認ください。' }],
+      events: [
+        { no: '01', en: 'OPEN CAMPUS', jp: '来場型オープンキャンパス', d: '模擬授業・キャンパスツアー・個別相談／日程：調整中（サンプル）', delay: 0 },
+        { no: '02', en: 'ONLINE SESSION', jp: 'オンライン入試説明会', d: '自宅から参加できる入試方式の解説／日程：調整中（サンプル）', delay: 120 },
+        { no: '03', en: 'CAMPUS TOUR', jp: '個別キャンパス見学', d: '平日の見学を随時受付（要予約）／詳細：調整中（サンプル）', delay: 240 }
+      ],
+      modalOpen: !!s.modal, isFaculty: s.modal === 'faculty', isForm: !!s.modal && s.modal !== 'faculty',
+      fac: s.fac || faculties[0],
+      formEn: fm[0], formTitle: fm[1],
+      submitted: s.submitted, notSubmitted: !s.submitted,
+      submit: (e) => { e.preventDefault(); this.setState({ submitted: true }); },
+      closeModal: () => this.setState({ modal: null }),
+      stop: (e) => e.stopPropagation(),
+      openOC: () => this.openForm('oc'), openDocs: () => this.openForm('docs'),
+      openInquiry: () => this.openForm('inquiry'), openGuide: () => this.openForm('guide')
+    };
+  }
+}
+</script>
+</body>
+</html>

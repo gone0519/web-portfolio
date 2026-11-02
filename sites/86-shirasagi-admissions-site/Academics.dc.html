@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1f1f1f;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#1f1f1f;text-decoration:none;transition:color .25s,background .25s,border-color .25s}
+a:hover{color:#c22a2a}
+a:focus-visible,button:focus-visible{outline:2px solid #c22a2a;outline-offset:3px}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="academics" style="position:sticky;top:0;z-index:50" hint-size="100%,72px"></dc-import>
+<main>
+<dc-import name="PageHero" no="02" title="学部・学び" en="Academics" lead="4学部10学科。ことば、こころ、科学、世界。それぞれの入口から、自分の問いを深めていく学びがあります。" img-id="acad-hero" img-label="講義中の教室" hint-size="100%,560px"></dc-import>
+
+<nav aria-label="学部メニュー" style="border-top:1px solid #e4e2dd;border-bottom:1px solid #e4e2dd;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(50%,180px),1fr))">
+  <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="4">
+    <a href="#{{ f.key }}" style="padding:18px 16px;display:flex;align-items:center;justify-content:center;gap:12px;border-right:1px solid #e4e2dd" style-hover="background:#f6f5f2;color:#c22a2a">
+      <span style="font-family:'Noto Serif JP',serif;font-size:26px;line-height:1">{{ f.kanji }}</span>
+      <span style="font-size:13px;font-weight:700">{{ f.name }}</span>
+    </a>
+  </sc-for>
+</nav>
+
+<sc-for list="{{ faculties }}" as="f" hint-placeholder-count="4">
+  <section id="{{ f.key }}" data-screen-label="Faculty {{ f.name }}" style="scroll-margin-top:80px;background:{{ f.bg }}">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,112px) clamp(20px,4vw,40px);display:flex;flex-wrap:wrap;flex-direction:{{ f.dir }};gap:clamp(40px,6vw,80px);align-items:flex-start">
+      <div data-reveal="left" style="flex:1 1 400px;position:relative;padding:32px 34px 0 0">
+        <div style="aspect-ratio:5/4"><image-slot id="acad-{{ f.key }}" shape="rect" placeholder="{{ f.photo }}"></image-slot></div>
+        <div style="position:absolute;top:0;right:0;background:#fff;border:1px solid #ddd;border-right:5px solid #c22a2a;padding:16px 8px;writing-mode:vertical-rl;font-size:17px;font-weight:700;letter-spacing:0.14em;display:flex;gap:10px;align-items:center;box-shadow:0 4px 12px rgba(0,0,0,0.06)">{{ f.name }}<span style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.1em">{{ f.en }}</span></div>
+        <div style="position:absolute;left:-10px;bottom:-24px;display:flex;align-items:flex-end;gap:10px;width:100%">
+          <span data-anim="kanji" style="font-family:'Noto Serif JP',serif;font-size:clamp(60px,7vw,92px);line-height:1;text-shadow:0 0 16px #fff,0 0 4px #fff,0 0 2px #fff">{{ f.kanji }}</span>
+          <span data-anim="wave" style="flex:1;height:8px;margin-bottom:10px;background-image:url('data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22%3E%3Cpath d=%22M0 4 Q3 0 6 4 T12 4%22 fill=%22none%22 stroke=%22%23333%22 stroke-width=%221%22/%3E%3C/svg%3E');background-repeat:repeat-x"></span>
+        </div>
+      </div>
+      <div data-reveal="right" style="flex:1 1 360px;display:flex;flex-direction:column;gap:22px;padding-top:24px">
+        <span style="display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#c22a2a"><span style="width:24px;height:1px;background:#c22a2a"></span>Faculty of {{ f.enName }}</span>
+        <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(24px,2.8vw,34px);font-weight:400;letter-spacing:0.08em;line-height:1.6">{{ f.catch }}</h2>
+        <p style="margin:0;font-size:14px;line-height:2.1;color:#333;text-wrap:pretty">{{ f.desc }}</p>
+        <ul style="list-style:none;margin:0;padding:0;border-top:1px solid #1f1f1f">
+          <sc-for list="{{ f.depts }}" as="d" hint-placeholder-count="3">
+            <li style="border-bottom:1px solid #d8d5ce;padding:16px 4px;display:flex;flex-direction:column;gap:6px">
+              <span style="font-family:'Noto Serif JP',serif;font-size:17px;font-weight:500;letter-spacing:0.06em">{{ d.name }}</span>
+              <span style="font-size:12px;line-height:1.8;color:#555">{{ d.desc }}</span>
+            </li>
+          </sc-for>
+        </ul>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+          <span style="font-size:11px;font-weight:700;color:#666">めざす進路の例</span>
+          <sc-for list="{{ f.careers }}" as="c" hint-placeholder-count="3"><span style="font-size:11px;background:#fff;border:1px solid #d8d5ce;border-radius:999px;padding:5px 12px">{{ c }}</span></sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+</sc-for>
+
+<section id="system" data-screen-label="Academics System" style="scroll-margin-top:80px;max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(40px,6vw,64px)">
+  <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+    <span style="font-family:'Noto Serif JP',serif;font-size:12px;font-weight:700;letter-spacing:0.1em">4年間の</span>
+    <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.2vw,38px);font-weight:700;letter-spacing:0.24em">学びの流れ</h2>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic">Four Years of Learning</span>
+  </div>
+  <ol data-reveal="" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:0">
+    <sc-for list="{{ years }}" as="y" hint-placeholder-count="4">
+      <li style="position:relative;padding:28px 24px 28px 0;display:flex;flex-direction:column;gap:14px;border-top:1px solid #1f1f1f">
+        <span style="position:absolute;top:-7px;left:0;width:13px;height:13px;border-radius:50%;background:#c22a2a"></span>
+        <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#c22a2a">{{ y.en }}</span>
+        <span style="font-family:'Noto Serif JP',serif;font-size:22px;letter-spacing:0.1em">{{ y.year }}<span style="font-size:14px;margin-left:10px;color:#555">{{ y.theme }}</span></span>
+        <span style="font-size:13px;line-height:1.9;color:#444">{{ y.desc }}</span>
+      </li>
+    </sc-for>
+  </ol>
+  <div data-reveal="" style="background:#f6f5f2;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1px">
+    <sc-for list="{{ learning }}" as="l" hint-placeholder-count="4">
+      <div style="padding:30px 26px;display:flex;flex-direction:column;gap:10px;border-left:1px solid #e4e2dd">
+        <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#c22a2a;line-height:1">{{ l.no }}</span>
+        <span style="font-family:'Noto Serif JP',serif;font-size:17px;font-weight:500;letter-spacing:0.08em">{{ l.title }}</span>
+        <span style="font-size:12px;line-height:1.8;color:#555">{{ l.desc }}</span>
+      </div>
+    </sc-for>
+  </div>
+  <p style="margin:0;font-size:11px;color:#666;text-align:center">※ 学科構成・カリキュラムはデザイン用のサンプルです。</p>
+</section>
+<dc-import name="CtaBand" img-id="cta-acad" hint-size="100%,360px"></dc-import>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const F = [
+      { key: 'lit', kanji: '文', name: '文学部', en: 'LITERATURE', enName: 'Letters', photo: '古典籍を読む学生', catch: 'ことばと歴史から、人と社会を読み解く。', desc: '文学作品や史料、ことばそのものを丁寧に読み、人がどのように考え、表現し、生きてきたかを探ります。読む力と書く力は、どの進路でも生きる土台になります。', depts: [{ name: '日本文学科', desc: '古典から現代文学まで、日本語の表現を深く読む。' }, { name: '英語英米文学科', desc: '英語運用力と英語圏の文学・文化を学ぶ。' }, { name: '史学科', desc: '史料をもとに、日本と世界の歴史を考える。' }], careers: ['出版・編集', '教員', '学芸員'] },
+      { key: 'hum', kanji: '人', name: '人間科学部', en: 'HUMAN SCIENCES', enName: 'Human Sciences', photo: '心理学の実習風景', catch: '心・からだ・育ちを、科学の目で見つめる。', desc: '人の心の働きや成長の過程を、実験・観察・実習を通して学びます。人を理解し、支えるための専門的な知識と姿勢を身につけます。', depts: [{ name: '心理学科', desc: '実験と調査で、心の仕組みを科学的に探る。' }, { name: '教育学科', desc: '学びと教育のあり方を理論と実践から考える。' }, { name: '子ども学科', desc: '子どもの育ちと、それを支える環境を学ぶ。' }], careers: ['公認心理師（大学院進学）', '保育士', '教員'] },
+      { key: 'sci', kanji: '理', name: '理学部', en: 'SCIENCE', enName: 'Science', photo: '実験室で白衣を着た学生', catch: '実験とデータで、社会の課題に向き合う。', desc: '数理・情報と生命・環境の2つの領域で、基礎科学から応用までを学びます。少人数の実験・演習で、仮説を立てて確かめる科学的な思考を鍛えます。', depts: [{ name: '数理情報学科', desc: '数学とプログラミング、データサイエンスを学ぶ。' }, { name: '生命環境学科', desc: '生命の仕組みと環境の関わりを実験で探る。' }], careers: ['IT・データ分析', '研究職', '食品・化学'] },
+      { key: 'int', kanji: '国際', name: '国際教養学部', en: 'GLOBAL STUDIES', enName: 'Global Studies', photo: '留学生とのディスカッション', catch: '文化の違いを越えて、ともに考え、動く。', desc: '多言語での学びと、国内外の地域での実践を組み合わせ、異なる背景をもつ人々と協働する力を育てます。', depts: [{ name: 'グローバル教養学科', desc: '国際関係・文化・言語を横断して学ぶ。' }, { name: '地域共創学科', desc: '地域の課題に、住民や企業とともに取り組む。' }], careers: ['国際機関・NGO', '観光', '公務員'] }
+    ];
+    return {
+      faculties: F.map((f, i) => ({ ...f, dir: i % 2 ? 'row-reverse' : 'row', bg: i % 2 ? '#f6f5f2' : '#ffffff' })),
+      years: [
+        { en: '1st Year', year: '1年次', theme: '出会う', desc: '基礎ゼミで学び方を身につけ、幅広い教養科目に触れます。' },
+        { en: '2nd Year', year: '2年次', theme: '広げる', desc: '専門の基礎を学びながら、副専攻や留学を検討します。' },
+        { en: '3rd Year', year: '3年次', theme: '深める', desc: '専門ゼミに所属し、自分の研究テーマを見つけます。' },
+        { en: '4th Year', year: '4年次', theme: '形にする', desc: '卒業研究で、4年間の問いをひとつの成果にまとめます。' }
+      ],
+      learning: [
+        { no: '01', title: '少人数ゼミ', desc: '1年次から教員と近い距離で議論する演習科目。' },
+        { no: '02', title: '学部横断の副専攻', desc: '所属学部の外で、もうひとつの専門を学べます。' },
+        { no: '03', title: '地域・企業との実践', desc: 'フィールドワークやプロジェクト型授業を展開。' },
+        { no: '04', title: '海外留学・研修', desc: '短期研修から長期留学まで段階的に選べます。' }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

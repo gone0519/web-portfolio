@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="./responsive.css">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#7A1020;color:#fff;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{opacity:.8}
+button{font-family:inherit;cursor:pointer}
+@keyframes mg-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="programs" hint-size="100%,1px"></dc-import>
+<main>
+<section data-screen-label="Programs Hero" style="isolation:isolate;position:relative;overflow:hidden;background:#7A1020;padding:150px 4vw clamp(80px,8vw,140px)">
+  <div aria-hidden="true" style="position:absolute;right:2vw;bottom:40px;width:220px;height:130px;background-image:radial-gradient(rgba(255,255,255,.6) 1.6px,transparent 1.9px);background-size:16px 16px;z-index:-1;pointer-events:none"></div>
+  <div aria-hidden="true" data-px="0.14" style="overflow:hidden;position:absolute;right:30vw;top:42%;width:150px;height:150px;border-radius:50%;background-image:repeating-linear-gradient(-45deg,#E2532F 0 2px,transparent 2px 10px);z-index:-1;pointer-events:none"><img src="_filled/09-friends-view.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div style="display:flex;justify-content:space-between;gap:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.3);font-family:'Instrument Sans',sans-serif;font-size:11px;letter-spacing:.16em"><span><a href="Home.dc.html">トップ</a> / 大学・学部</span><span>01 / 05</span></div>
+  <div style="position:relative;display:flex;flex-wrap:wrap;gap:5vw;align-items:flex-end;margin-top:clamp(40px,5vw,80px)">
+    <div style="flex:1 1 560px;display:flex;flex-direction:column;gap:30px;position:relative;z-index:2">
+      <div style="font-family:'Shippori Mincho',serif;font-size:clamp(84px,14vw,260px);line-height:1.15;letter-spacing:-.02em"><div style="overflow:hidden"><div data-rv="line">大学</div></div><div style="overflow:hidden;padding-left:9vw"><div data-rv="line" data-delay="120" style="color:#F2B8A6">学部。</div></div></div>
+      <h1 data-rv="up" style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(28px,2.6vw,46px);line-height:1.5">大学・学部を知る</h1>
+      <p data-rv="up" style="margin:0;font-size:14px;line-height:2.2;max-width:520px">同じ「経済学部」でも、大学によって学び方や強みは異なります。分野ごとの特色を知り、比較しながら、自分に合う学びの場を見つけましょう。</p>
+    </div>
+    <div style="flex:0 1 420px;position:relative;width:100%">
+      <div data-px="0.1" style="position:absolute;left:-18%;top:-10%;width:60%;aspect-ratio:1;border-radius:50%;background:#E2532F"></div>
+      <div style="position:relative;aspect-ratio:4/5;border-radius:999px 999px 0 0;overflow:hidden"><div data-rv="clip" style="width:100%;height:100%;overflow:hidden"><div data-zoom="1" style="width:100%;height:100%"><image-slot id="pg-hero" shape="rect" src="images/campus-tower.jpg" placeholder="Photo — キャンパス・講義棟"></image-slot></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Programs Finder" style="isolation:isolate;position:relative;overflow-x:clip;background:#EEEAE1;color:#17110F;padding:clamp(90px,9vw,160px) 4vw">
+  <div aria-hidden="true" style="overflow:hidden;position:absolute;right:4vw;top:50px;width:160px;height:160px;border-radius:50%;background-image:repeating-linear-gradient(-45deg,#7A1020 0 2px,transparent 2px 10px);z-index:-1;pointer-events:none"><img src="_filled/10-life-global.jpg" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:30px">
+    <div style="font-family:'Shippori Mincho',serif;font-size:clamp(48px,7vw,120px);line-height:1.15;letter-spacing:-.02em"><div style="overflow:hidden"><div data-rv="line">分野から<span style="color:#7A1020">探す</span></div></div></div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <sc-for list="{{ filters }}" as="ft" hint-placeholder-count="4">
+        <button onClick="{{ ft.pick }}" style="height:46px;padding:0 22px;border-radius:999px;border:1px solid #17110F;background:{{ ft.bg }};color:{{ ft.color }};font-size:13px;letter-spacing:.06em;transition:background .3s,color .3s">{{ ft.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+  <div style="margin-top:60px;display:flex;flex-direction:column;border-top:1px solid #17110F">
+    <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="6">
+      <article style="border-bottom:1px solid rgba(23,17,15,.25)">
+        <button onClick="{{ f.toggle }}" style="width:100%;background:none;border:none;color:#17110F;display:grid;grid-template-columns:{{ rowCols }};gap:24px;align-items:center;text-align:left;padding:30px 0">
+          <span style="font-family:'Shippori Mincho',serif;font-size:clamp(44px,4vw,72px);line-height:1;color:#7A1020">{{ f.no }}</span>
+          <span style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Shippori Mincho',serif;font-size:clamp(24px,2.2vw,36px);font-weight:500">{{ f.jp }}</span></span>
+          <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><span style="font-size:13px;line-height:2">{{ f.desc }}</span></sc-if>
+          <span style="justify-self:end;width:48px;height:48px;border-radius:50%;background:{{ f.iconBg }};color:{{ f.iconColor }};display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform .4s,background .3s;transform:{{ f.rot }}">+</span>
+        </button>
+        <div style="display:grid;grid-template-rows:{{ f.rows }};transition:grid-template-rows .6s cubic-bezier(.2,.7,.2,1)">
+          <div style="overflow:hidden;min-height:0">
+            <div style="display:flex;flex-wrap:wrap;gap:4vw;padding:10px 0 50px">
+              <div style="flex:0 1 380px;width:100%;aspect-ratio:4/3;border-radius:{{ f.radius }};overflow:hidden"><image-slot id="pg-{{ f.key }}" shape="rect" src="{{ f.img }}" placeholder="{{ f.ph }}"></image-slot></div>
+              <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:14px">
+                <span style="font-size:12px;font-weight:700;letter-spacing:.12em;color:#7A1020">主な学科・コースの例</span>
+                <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ f.majors }}" as="mj" hint-placeholder-count="3"><span style="padding:6px 14px;border-radius:999px;background:#E8CFC4;font-size:12px">{{ mj }}</span></sc-for></div>
+                <span style="margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.12em;color:#7A1020">学びのポイント</span>
+                <sc-for list="{{ f.points }}" as="pt" hint-placeholder-count="3"><div style="display:flex;gap:12px;padding:10px 0;border-top:1px solid rgba(23,17,15,.15);font-size:13px;line-height:1.8"><span style="color:#E2532F">✳</span>{{ pt }}</div></sc-for>
+              </div>
+              <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:14px">
+                <span style="font-size:12px;font-weight:700;letter-spacing:.12em;color:#7A1020">主な進路の例</span>
+                <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:18px;line-height:1.8">{{ f.careers }}</p>
+                <a href="Contact.dc.html" style="margin-top:10px;align-self:flex-start;display:inline-flex;align-items:center;gap:14px;height:50px;padding:0 8px 0 22px;border-radius:999px;background:#17110F;color:#EEEAE1;font-size:13px">資料を請求する<span style="width:34px;height:34px;border-radius:50%;background:#E2532F;color:#17110F;display:flex;align-items:center;justify-content:center">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+  <p style="margin:20px 0 0;font-size:12px">※掲載内容は一般的な学部の例です。実際の学科構成は各大学の公式情報をご確認ください。</p>
+</section>
+
+<section data-screen-label="How to choose" style="isolation:isolate;position:relative;overflow:hidden;background:#17110F;color:#EEEAE1;padding:clamp(90px,9vw,160px) 4vw">
+  <div aria-hidden="true" style="position:absolute;left:4vw;bottom:50px;width:260px;height:120px;background-image:radial-gradient(rgba(255,255,255,.6) 1.6px,transparent 1.9px);background-size:16px 16px;z-index:-1;pointer-events:none"></div>
+  <span style="position:absolute;right:-2vw;top:2vw;font-family:'Shippori Mincho',serif;font-size:clamp(220px,26vw,460px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(238,234,225,.14);pointer-events:none">選</span>
+  <div style="position:relative;font-family:'Shippori Mincho',serif;font-size:clamp(60px,7vw,120px);line-height:1.15;letter-spacing:-.02em"><div style="overflow:hidden"><div data-rv="line">選び<span style="color:#E2532F">かた</span></div></div></div>
+  <h2 data-rv="up" style="position:relative;margin:24px 0 0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(24px,2.2vw,38px)">志望校選び、3つの視点</h2>
+  <div style="position:relative;margin-top:60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px">
+    <sc-for list="{{ tips }}" as="t" hint-placeholder-count="3">
+      <div data-rv="up" data-delay="{{ t.delay }}" style="border-radius:28px;background:{{ t.bg }};color:{{ t.color }};padding:44px 36px;display:flex;flex-direction:column;gap:18px;min-height:340px">
+        <span style="font-family:'Shippori Mincho',serif;font-size:90px;line-height:1.15">{{ t.no }}</span>
+        <h3 style="margin:auto 0 0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:26px">{{ t.title }}</h3>
+        <p style="margin:0;font-size:13px;line-height:2">{{ t.text }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" next-href="Prepare.dc.html" next-en="Prepare" next-jp="入試対策" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, open: 0, filter: 'all' };
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onR);
+    const go = () => window.MGMotion ? (this.m = window.MGMotion.attach(() => false)) : setTimeout(go, 50);
+    go();
+  }
+  componentDidUpdate() { if (this.m) { this.m.scan(); this.m.tick(); } }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); this.m && this.m.detach(); }
+  renderVals() {
+    const s = this.state, wide = s.w >= 900;
+    const radii = ['999px 999px 0 0', '0', '50%', '0 0 0 160px', '999px 999px 0 0', '0 160px 0 0'];
+    const data = [
+      { key: 'hum', cat: 'bun', en: 'Humanities', jp: '文学部', ph: '文学・図書', desc: '言語・文学・歴史・哲学を通して、人と社会を深く読み解く力を養います。', majors: ['日本文学', '英米文学', '史学', '哲学', '心理学'], points: ['文献を読み解く読解力と批判的思考', '少人数ゼミでの発表・討論', '外国語や文化理解を深める科目'], careers: '出版・メディア、教育、公務員、一般企業 など' },
+      { key: 'law', cat: 'bun', en: 'Law', jp: '法学部', ph: '講義室', desc: '法律や政治の仕組みを学び、社会の課題を論理的に解決する視点を身につけます。', majors: ['法律学', '政治学', '国際関係'], points: ['憲法・民法・刑法などの基礎法学', '判例研究を通じた論理的思考', '模擬裁判や政策立案の演習'], careers: '法曹・公務員、金融、企業法務 など' },
+      { key: 'eco', cat: 'bun', en: 'Economics', jp: '経済・経営学部', ph: 'グループワーク', desc: '経済の動きや企業経営を理論とデータの両面から学び、社会を動かす力を育てます。', majors: ['経済学', '経営学', '会計学', 'マーケティング'], points: ['ミクロ・マクロ経済学の基礎', 'データ分析・統計の実践', '企業と連携したプロジェクト学習'], careers: '金融・商社、コンサルティング、起業 など' },
+      { key: 'sci', cat: 'ri', en: 'Engineering', jp: '理工学部', ph: '実験室', desc: '数学・物理・化学を土台に、ものづくりや技術開発に挑む実践的な学びがあります。', majors: ['機械工学', '電気電子', '建築', '応用化学'], points: ['基礎科学から応用工学まで体系的に学ぶ', '実験・実習による実践力', '研究室での卒業研究'], careers: 'メーカー技術職、研究開発、大学院進学 など' },
+      { key: 'med', cat: 'med', en: 'Health Sciences', jp: '医療・看護学部', ph: '実習風景', desc: '人の命と健康を支える専門職を目指し、知識と技術、そして思いやりを学びます。', majors: ['看護学', '理学療法', '臨床検査', '栄養学'], points: ['基礎医学と専門分野の講義', '医療機関での臨地実習', '国家試験に向けた学習支援'], careers: '看護師・医療技術職、保健・福祉分野 など' },
+      { key: 'inf', cat: 'ri', en: 'Informatics', jp: '情報学部', ph: 'PC・研究', desc: 'プログラミングやAI、データサイエンスを学び、情報技術で新しい価値をつくります。', majors: ['情報科学', 'データサイエンス', 'メディアデザイン'], points: ['プログラミングとアルゴリズム', 'AI・データサイエンスの基礎', 'チーム開発による課題解決'], careers: 'IT・ソフトウェア、データ分析、研究職 など' }
+    ];
+    const imgs = ['library', 'students-desk', 'students-phones', 'campus-modern', 'lab', 'computer'];
+    const faculties = data.map((f, i) => ({ ...f, i, img: 'images/' + imgs[i] + '.jpg', no: String(i + 1).padStart(2, '0'), radius: radii[i] }))
+      .filter(f => s.filter === 'all' || f.cat === s.filter)
+      .map(f => { const o = s.open === f.i; return { ...f, rows: o ? '1fr' : '0fr', iconBg: o ? '#E2532F' : '#17110F', iconColor: o ? '#17110F' : '#EEEAE1', rot: o ? 'rotate(45deg)' : 'rotate(0)', toggle: () => this.setState({ open: o ? -1 : f.i }) }; });
+    const filters = [['all', 'すべて'], ['bun', '文系'], ['ri', '理系'], ['med', '医療・看護']].map(([k, label]) => ({ label, bg: s.filter === k ? '#17110F' : 'transparent', color: s.filter === k ? '#EEEAE1' : '#17110F', pick: () => this.setState({ filter: k }) }));
+    return {
+      wide, filters, faculties,
+      rowCols: wide ? '110px minmax(0,1.1fr) minmax(0,1.4fr) 60px' : '64px minmax(0,1fr) 50px',
+      tips: [
+        { no: '01', title: '何を学びたいか', text: '興味のある分野や、将来やってみたいことから考えます。学部名だけでなく、学科やゼミの内容まで確認しましょう。', bg: '#7A1020', color: '#fff', delay: 0 },
+        { no: '02', title: 'どう学べるか', text: '少人数教育、留学制度、実習やインターンシップなど、学び方の違いは大学ごとの大きな個性です。', bg: '#E8CFC4', color: '#17110F', delay: 120 },
+        { no: '03', title: 'どこで過ごすか', text: '立地や通学時間、キャンパスの雰囲気も4年間の満足度を左右します。オープンキャンパスで実際に確かめましょう。', bg: '#E2532F', color: '#17110F', delay: 240 }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

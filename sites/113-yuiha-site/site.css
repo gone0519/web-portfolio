@@ -1,0 +1,27 @@
+/* Shared responsive tweaks for all pages (layout itself stays inline in each .dc.html) */
+
+/* Japanese line breaking: keep phrases together in short lines, avoid one-character last lines */
+h1, h2, h3, blockquote, dt, dd, figcaption, button, .phrase { word-break: auto-phrase; }
+p, li, dd { text-wrap: pretty; }
+
+/* Line breaks that only make sense on wide screens */
+@media (max-width: 767px) {
+  br.pc { display: none; }
+}
+
+/* Top page hex mosaic: the small captions don't fit inside the tiles on phones */
+@media (max-width: 600px) {
+  .hm-hide { display: none !important; }
+}
+
+/* Student voice cards: stack portrait above text on phones */
+@media (max-width: 520px) {
+  .voice { grid-template-columns: 1fr !important; gap: 16px !important; padding: 24px 20px !important; }
+  .voice > div:first-child { width: 96px; }
+}
+
+/* Floating reserve badge: smaller on phones, and keep it off the footer's last line */
+@media (max-width: 600px) {
+  .reserve-badge { width: 76px !important; }
+  footer { padding-bottom: 104px !important; }
+}

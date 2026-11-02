@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#2a3b45;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0b7f88;text-decoration:none}
+a:hover{color:#1d4e89}
+a:focus-visible,button:focus-visible{outline:3px solid #1d4e89;outline-offset:3px}
+section[id]{scroll-margin-top:72px}
+</style>
+<script src="motion.js"></script>
+</helmet>
+<dc-import name="SiteHeader" current="academics" hint-size="100%,72px"></dc-import>
+<main>
+<section aria-labelledby="pg-h" style="background:#f3f5f6;padding:48px 0 72px;overflow:hidden">
+  <div style="max-width:1040px;margin:0 auto;padding:0 24px">
+    <nav aria-label="パンくず" style="font-size:11px;color:#5b6b73;display:flex;gap:8px"><a href="Asagi%20Womens%20University.dc.html" style="color:#5b6b73">トップ</a><span>/</span><span>学部・学科</span></nav>
+    <div style="margin-top:32px;background:#fff;border-radius:0 80px 0 0;box-shadow:-14px 14px 0 #e6f23c;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));overflow:hidden">
+      <div style="padding:clamp(28px,5vw,56px);display:flex;flex-direction:column;justify-content:center;gap:14px">
+        <h1 id="pg-h" style="margin:0;display:flex;flex-direction:column;gap:8px"><span style="font-family:'Josefin Sans';font-weight:600;font-size:clamp(40px,5.6vw,64px);letter-spacing:.1em;color:#22b3bb;line-height:1">ACADEMICS</span><span style="font-size:15px;font-weight:700">学部・学科</span></h1>
+        <p style="margin:0;font-size:14px;line-height:2;color:#4a5a62">5学部11学科。専門を深めながら、学部を越えて関心を広げられる学びの仕組みがあります。<sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}"><span style="display:block;font-size:11px;color:#5b6b73;margin-top:6px">※ 学部・学科構成はサンプルです</span></sc-if></p>
+      </div>
+      <div style="position:relative;overflow:hidden;min-height:260px;background:repeating-linear-gradient(135deg,#e3e8ea 0 8px,#edf1f2 8px 16px);display:flex;align-items:flex-end;padding:16px"><img src="images/09.jpg" alt="講義室" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="fac-h" style="padding:90px 0 100px">
+  <div style="max-width:1040px;margin:0 auto;padding:0 24px">
+    <h2 id="fac-h" style="margin:0;display:flex;align-items:baseline;gap:12px"><span style="font-family:'Josefin Sans';font-weight:600;font-size:clamp(30px,4vw,42px);color:#22b3bb;letter-spacing:.06em">Faculties</span><span style="font-size:12px;font-weight:700">学部を選ぶ</span></h2>
+    <div role="tablist" aria-label="学部" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:32px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <button role="tab" aria-selected="{{ t.active }}" onClick="{{ t.select }}" style="font-family:inherit;font-size:13px;font-weight:700;padding:10px 18px;border-radius:999px;cursor:pointer;border:1.5px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }}">{{ t.name }}</button>
+      </sc-for>
+    </div>
+    <div role="tabpanel" style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px;align-items:start">
+      <div style="position:relative;padding:20px 0 0 20px">
+        <div aria-hidden="true" style="position:absolute;left:0;top:0;width:60%;aspect-ratio:1;border-radius:50%;background-color:#e6f23c;background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);background-size:12px 12px"></div>
+        <div style="position:relative;overflow:hidden;position:relative;aspect-ratio:1;background:repeating-linear-gradient(135deg,#e3e8ea 0 8px,#edf1f2 8px 16px);box-shadow:0 14px 30px rgba(42,59,69,.1);display:flex;align-items:flex-end;padding:12px"><img src="{{ imgs[fac.img] }}" alt="{{ fac.img }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <span style="font-family:'Josefin Sans';font-size:12px;letter-spacing:.24em;color:#0b7f88">{{ fac.tag }} — {{ fac.en }}</span>
+        <h3 style="margin:0;font-size:clamp(22px,3vw,28px);font-weight:700">{{ fac.name }}</h3>
+        <p style="margin:0;font-size:14px;line-height:2;color:#4a5a62">{{ fac.text }}</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px">
+          <span style="font-size:12px;font-weight:700">学科</span>
+          <sc-for list="{{ fac.depts }}" as="d" hint-placeholder-count="2">
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e3e8ea"><span style="width:8px;height:8px;border-radius:50%;background:#22b3bb"></span><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:15px;font-weight:700">{{ d.name }}</span><span style="font-size:12px;color:#4a5a62;line-height:1.7">{{ d.text }}</span></span></div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px">
+          <span style="font-size:12px;font-weight:700">授業例</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ fac.courses }}" as="c" hint-placeholder-count="4"><span style="font-size:12px;background:#f3f5f6;padding:6px 12px;border-radius:3px">{{ c }}</span></sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="fl-h" style="position:relative;padding:0 0 100px">
+  <div aria-hidden="true" style="position:absolute;left:0;top:0;width:62%;height:240px;border-radius:0 60px 0 0;background:linear-gradient(120deg,#2bb7bf,#7fd6d9)"></div>
+  <div style="max-width:1040px;margin:0 auto;padding:120px 24px 0;position:relative">
+    <div style="background:#fff;padding:clamp(28px,5vw,56px)">
+      <h2 id="fl-h" style="margin:0;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font-family:'Josefin Sans';font-weight:600;font-size:clamp(30px,4vw,42px);color:#22b3bb;letter-spacing:.06em">4 Years</span><span style="font-size:12px;font-weight:700">4年間の学びの流れ</span></h2>
+      <ol style="list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+        <sc-for list="{{ years }}" as="y" hint-placeholder-count="4">
+          <li style="background:#f3f5f6;padding:24px 20px;display:flex;flex-direction:column;gap:10px;border-top:4px solid {{ y.color }}">
+            <span style="font-family:'Josefin Sans';font-weight:700;font-size:28px;color:#1d4e89">{{ y.no }}<span style="font-size:13px;margin-left:4px">年次</span></span>
+            <span style="font-size:15px;font-weight:700">{{ y.title }}</span>
+            <span style="font-size:12px;line-height:1.8;color:#4a5a62">{{ y.text }}</span>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="pg2-h" style="background:#f3f5f6;padding:90px 0">
+  <div style="max-width:1040px;margin:0 auto;padding:0 24px">
+    <h2 id="pg2-h" style="margin:0;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font-family:'Josefin Sans';font-weight:600;font-size:clamp(30px,4vw,42px);color:#22b3bb;letter-spacing:.06em">Programs</span><span style="font-size:12px;font-weight:700">学部を越えるプログラム</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;margin-top:40px">
+      <sc-for list="{{ programs }}" as="p" hint-placeholder-count="3">
+        <article style="background:#fff;padding:28px 24px;display:flex;flex-direction:column;gap:12px;border-radius:0 30px 0 0">
+          <span style="width:44px;height:44px;border-radius:50%;background:#e6f23c;display:flex;align-items:center;justify-content:center;font-family:'Josefin Sans';font-weight:700;color:#1d4e89">{{ p.no }}</span>
+          <h3 style="margin:0;font-size:16px;font-weight:700;color:#0b7f88">{{ p.title }}</h3>
+          <p style="margin:0;font-size:13px;line-height:1.9;color:#4a5a62">{{ p.text }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showPlaceholderNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { tab: 0 };
+  facs = [
+    { tag:'Faculty 01', en:'Humanities', name:'文学部', img:'写真：文学部', text:'ことば・文学・歴史を通じて、人間と文化を深く理解する力を養います。読む・書く・論じる力は、あらゆる分野の基盤になります。',
+      depts:[['日本文学科','古典から現代まで、日本語と日本文学を探究します。'],['英語英米文学科','英語運用力と英語圏の文学・文化を学びます。'],['歴史文化学科','史料に触れ、地域と世界の歴史を読み解きます。']], courses:['日本語学概論','英米文学講読','史料講読演習','創作ワークショップ'] },
+    { tag:'Faculty 02', en:'Global Communication', name:'国際コミュニケーション学部', img:'写真：国際', text:'多言語・多文化の中で、自分の考えを伝え、相手を理解する力を育てます。留学や海外研修を学びの中心に組み込んでいます。',
+      depts:[['国際教養学科','国際関係・異文化理解を英語で学びます。'],['観光・地域学科','観光を通じて地域の魅力と課題を考えます。']], courses:['異文化コミュニケーション論','Academic English','観光まちづくり実習','海外フィールドスタディ'] },
+    { tag:'Faculty 03', en:'Human Sciences', name:'人間科学部', img:'写真：人間科学', text:'こころ・発達・学びのしくみを科学的に捉え、人を支える専門性を身につけます。',
+      depts:[['心理学科','実験・調査を通じて人の心と行動を探ります。'],['教育学科','教育の理論と実践を学び、教員をめざします。'],['子ども学科','保育・幼児教育の専門家を育てます。']], courses:['心理学実験','教育方法論','保育内容演習','発達心理学'] },
+    { tag:'Faculty 04', en:'Living Environment', name:'生活環境学部', img:'写真：生活環境', text:'食と住まいの視点から、健やかで心地よい暮らしをデザインします。',
+      depts:[['食物栄養学科','栄養と健康の科学を学び、管理栄養士をめざします。'],['住環境デザイン学科','建築・インテリアの設計と計画を学びます。']], courses:['調理学実習','臨床栄養学','建築設計製図','インテリア計画'] },
+    { tag:'Faculty 05', en:'Information Design', name:'情報デザイン学部', img:'写真：情報デザイン', text:'データとデザインの両面から、情報を整理し、伝え、新しい価値をつくる力を育てます。',
+      depts:[['情報デザイン学科','プログラミング、データ分析、UI/UX、映像表現を横断的に学びます。']], courses:['プログラミング基礎','データ可視化','UIデザイン演習','映像メディア制作'] }
+  ];
+  renderVals() {
+    const t = this.state.tab, f = this.facs[t];
+    return {
+      imgs: {"写真：講義室": "images/09.jpg", "写真：文学部": "images/45.jpg", "写真：国際": "images/03.jpg", "写真：人間科学": "images/42.jpg", "写真：生活環境": "images/32.jpg", "写真：情報デザイン": "images/39.jpg"},
+      showNotes: this.props.showPlaceholderNotes ?? true,
+      tabs: this.facs.map((x,i) => ({ name: x.name, active: i===t, bg: i===t?'#22b3bb':'#fff', color: i===t?'#fff':'#2a3b45', border: i===t?'#22b3bb':'#cfd8db', select: () => this.setState({ tab: i }) })),
+      fac: { ...f, depts: f.depts.map(([name,text]) => ({ name, text })) },
+      years: [
+        ['1','学びの土台をつくる','少人数の基礎ゼミと共通科目で、大学での学び方を身につけます。','#e6f23c'],
+        ['2','専門の扉をひらく','学科の専門科目が本格化。副専攻の選択も始まります。','#7fd6d9'],
+        ['3','深め、社会とつながる','ゼミ所属、インターンシップ、留学など実践の機会が広がります。','#22b3bb'],
+        ['4','自分の答えをまとめる','卒業研究・卒業制作に取り組み、4年間の学びを形にします。','#1d4e89']
+      ].map(([no,title,text,color]) => ({ no, title, text, color })),
+      programs: [
+        { no:'01', title:'副専攻プログラム', text:'データサイエンス、ジェンダー論、地域デザインなど、所属学部以外の分野を体系的に学べます。' },
+        { no:'02', title:'留学・海外研修', text:'短期研修から協定校への長期留学まで、段階的に挑戦できます。' },
+        { no:'03', title:'PBL（課題解決型授業）', text:'企業・自治体と協働し、実社会の課題に取り組みます。' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

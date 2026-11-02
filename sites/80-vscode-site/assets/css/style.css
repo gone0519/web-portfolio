@@ -1,0 +1,160 @@
+/* =========================================================
+   光葉女子大学 入試情報サイト  共通スタイル
+   ※レイアウトや色は各HTMLの style 属性に直接書かれています。
+     ここには「style属性では書けないもの」だけをまとめています。
+   ========================================================= */
+
+/* ---------- ベース ---------- */
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #fff;
+  color: #141414;
+  font-family: 'Zen Kaku Gothic New', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+*, *::before, *::after { box-sizing: border-box; }
+a { color: #141414; }
+a:hover { color: #5a56d6; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid #5a56d6;
+  outline-offset: 3px;
+}
+[hidden] { display: none !important; }
+
+/* ---------- 画像枠（images/ フォルダに画像を置くと表示されます） ---------- */
+.slot {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: repeating-linear-gradient(135deg, #e4e4e0 0 10px, #dcdcd7 10px 20px);
+}
+.slot::before {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  text-align: center;
+  font: 600 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #6b6b66;
+}
+.slot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- レスポンシブ（PC / スマホ切替: 960px） ---------- */
+@media (max-width: 959px) {
+  .pc { display: none !important; }
+
+  /* トップ：キャンパスライフの「本」のタブを下側に並べる */
+  .js-bookPad { padding-right: 0 !important; }
+  .js-bookBackRight { right: -10px !important; }
+  .js-tabsWrap {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    flex-direction: row !important;
+    padding: 0 8px;
+  }
+  .js-tabStyle {
+    writing-mode: horizontal-tb !important;
+    min-height: 0 !important;
+    flex: 1;
+    justify-content: center;
+    padding: 10px 6px !important;
+    border-radius: 0 0 8px 8px !important;
+    border-left: 2px solid #141414 !important;
+    border-top: none !important;
+    font-size: 11px !important;
+    gap: 4px !important;
+    white-space: nowrap;
+  }
+
+  /* トップ：ヒーローのキャプションが画面左端で切れないように */
+  [aria-live="polite"][style*="left:-26px"] { left: -6px !important; }
+
+  /* 白い角丸パネル：縦書きの見出し・ラベルを横書きにして先頭へ */
+  h2[style*="writing-mode:vertical-rl"],
+  h2[style*="writing-mode:vertical-rl"] + p,
+  div[style*="border-radius:44px 0 0 44px"] > p[style*="writing-mode:vertical-rl"],
+  div[style*="border-radius:0 44px 44px 0"] > p[style*="writing-mode:vertical-rl"] {
+    writing-mode: horizontal-tb !important;
+  }
+  h2[style*="writing-mode:vertical-rl"] { font-size: clamp(38px, 11vw, 60px) !important; }
+  div:has(> h2[style*="writing-mode:vertical-rl"]) {
+    flex: 1 1 100% !important;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: baseline !important;
+    gap: 4px 12px !important;
+  }
+  div[style*="border-radius:44px 0 0 44px"] > p[style*="writing-mode:vertical-rl"],
+  div[style*="border-radius:0 44px 44px 0"] > p[style*="writing-mode:vertical-rl"] {
+    order: -1;
+    flex-basis: 100%;
+  }
+  /* 見出し(h3)があるパネルでは、同じ内容のラベルは省く */
+  div[style*="border-radius:0 44px 44px 0"]:has(h3) > p[style*="writing-mode:vertical-rl"] { display: none; }
+  /* 画像が先頭にあるパネルは、スマホでは画像を最後に */
+  div[style*="border-radius:0 44px 44px 0"][style*="wrap-reverse"] { flex-wrap: wrap !important; }
+  div[style*="border-radius:0 44px 44px 0"][style*="wrap-reverse"] > div:first-child { order: 2; }
+
+  /* 学部・学科：副専攻リストの説明文を名前の下に */
+  li:has(> strong + span[style*="color:#444"]) { flex-wrap: wrap; row-gap: 2px !important; }
+  li > strong + span[style*="color:#444"] { flex-basis: calc(100% - 26px); margin-left: 26px; }
+}
+
+/* タブレット：カードの端数（3枚＋1枚、2枚＋1枚）が出ないように列数をそろえる */
+@media (min-width: 480px) and (max-width: 959px) {
+  div[style*="display:grid"]:has(> :nth-child(4):last-child):not([style*="400px"]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (min-width: 640px) and (max-width: 959px) {
+  div[style*="display:grid"]:has(> :nth-child(3):last-child) {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  /* フッターのボタン4つを2×2に */
+  .h-50bvif { flex-basis: calc(50% - 5px) !important; }
+  /* オープンキャンパス：ヒーロー画像を中央に */
+  div[style*="flex:0 1 420px"] { margin: 0 auto; }
+}
+
+/* 大学について：特色カードは狭い画面で画像を上に */
+@media (max-width: 600px) {
+  article[style*="grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  article[style*="grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)"] > div:first-child {
+    min-height: 0 !important;
+    aspect-ratio: 16 / 10;
+  }
+}
+@media (min-width: 960px) {
+  .sp { display: none !important; }
+}
+
+/* ---------- ホバー（各要素の class="h-xxxx" と対応） ---------- */
+.h-1rj8x1s:hover{border-color:#141414 !important}
+.h-16tmrqu:hover{filter:brightness(1.05) !important}
+.h-18q0vjz:hover{background-size:100% 3px !important;color:#141414 !important}
+.h-ykarfs:hover{transform:translate(2px,3px) !important;box-shadow:2px 2px 0 #8f9596 !important;color:#fff !important}
+.h-21g4dj:hover{transform:translate(2px,3px) !important;box-shadow:2px 2px 0 #8f9596 !important;color:#141414 !important}
+.h-1drkqfv:hover{transform:translate(2px,3px) !important;box-shadow:2px 2px 0 #b5a23c !important;color:#fff !important}
+.h-mam5qn:hover{color:#5a56d6 !important}
+.h-1opdtu6:hover{transform:translate(2px,3px) !important;box-shadow:2px 2px 0 #a9aeaf !important;color:#fff !important}
+.h-1cga7pr:hover{transform:translate(2px,3px) !important;box-shadow:2px 2px 0 #0d2a63 !important;color:#fff !important}
+.h-eygyv7:hover{transform:translate(2px,3px) !important;box-shadow:2px 2px 0 #E3C536 !important;color:#141414 !important}
+.h-1uxqpqs:hover{transform:translate(2px,3px) !important;box-shadow:2px 2px 0 #b5a23c !important;color:#141414 !important}
+.h-txte3u:hover{color:#FFE24A !important}
+.h-1w2io1v:hover{background:#5a56d6 !important;color:#fff !important}
+.h-50bvif:hover{background:#FFE24A !important;color:#141414 !important}
+.h-14mmlc6:hover{transform:translate(2px,3px) !important;box-shadow:2px 2px 0 #0d2a63 !important}

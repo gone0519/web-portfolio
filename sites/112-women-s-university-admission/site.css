@@ -1,0 +1,38 @@
+/* 全ページ共通: 装飾イラストとレスポンシブ調整 */
+.deco{position:absolute;height:auto;pointer-events:none;user-select:none}
+img{max-width:100%}
+html,body{overflow-x:clip}
+/* 見出しは読点・文節で改行（「挑むこと/も、」のような分断を防ぐ） */
+h1 > span, h2, h3{word-break:keep-all;overflow-wrap:anywhere}
+
+@media (max-width:900px){
+  /* 縦書きの見出しブロックは横書きにして本文の上に置く（大きな空白を防ぐ） */
+  main [style*="writing-mode: vertical-rl; display: flex"]{
+    writing-mode:horizontal-tb !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:4px !important;
+    margin-left:0 !important;
+    width:100%;
+  }
+  main [style*="writing-mode: vertical-rl; display: flex"] > *{letter-spacing:.12em !important}
+  /* トップの入試・OCカード: 見出しをカードの上へ */
+  main [style^="display: flex; gap: 18px; align-items: flex-start"]{flex-direction:column-reverse}
+  .deco-sm-hide{display:none}
+}
+
+@media (max-width:520px){
+  /* ヘッダー: ロゴを1行に収め、右上の入試ボタンを小さく */
+  header{gap:10px !important}
+  header > a:first-child span[style*="font-size: 22px"]{font-size:17px !important;white-space:nowrap;letter-spacing:.08em !important}
+  header > a:first-child span[style*="font-size: 9px"]{font-size:7px !important;letter-spacing:.18em !important;white-space:nowrap}
+  header > a:first-child span[style*="font-size: 10px"]{font-size:9px !important}
+  header > a:first-child > div + div{display:none}
+  header a[href="OpenCampus.dc.html#reserve"]{min-width:104px !important;padding:0 8px 0 18px !important;border-bottom-left-radius:44px !important}
+  header a[href="OpenCampus.dc.html#reserve"] span:first-child{font-size:13px !important}
+  /* 見出し囲みの文字を少し詰め、読点で改行させる */
+  h1 > span, h2 > span, h3 > span{letter-spacing:.04em;word-break:keep-all;overflow-wrap:anywhere}
+  /* 日程表: 横スクロールさせずに画面幅へ収める */
+  main table{min-width:0 !important;font-size:12px !important}
+  main th, main td{padding:10px 6px !important}
+}

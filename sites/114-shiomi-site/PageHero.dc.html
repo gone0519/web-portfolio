@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<section aria-labelledby="page-title" style="position:relative;z-index:1">
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative;width:100%;aspect-ratio:1920/860;margin-top:-6vw">
+      <div style="position:absolute;left:9%;top:66%;width:21%;height:30%"><image-slot id="{{ slotSub }}" src="{{ srcSub }}" shape="rect" placeholder="{{ subPlaceholder }}"></image-slot></div>
+      <div style="position:absolute;left:36%;top:24%;width:57%;height:70%;background:#7ccbcd"></div>
+      <div style="position:absolute;left:36%;top:27.5%;width:54%;height:66.5%"><image-slot id="{{ slotMain }}" src="{{ srcMain }}" shape="rect" placeholder="{{ mainPlaceholder }}"></image-slot></div>
+      <div style="position:absolute;left:10.4%;top:30%;display:flex;flex-direction:column;gap:22px;pointer-events:none">
+        <p style="margin:0;display:flex;gap:10px;font-size:12px;letter-spacing:.1em;pointer-events:auto"><a href="Shiomi%20Womens%20University.dc.html" style="border-bottom:1px solid #1c1c1c">Top</a><span aria-hidden="true">/</span><span>{{ ja }}</span></p>
+        <h1 id="page-title" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:4.6vw;line-height:.92;letter-spacing:-.005em;white-space:pre-line;max-width:24vw">{{ en }}</h1>
+        <p style="margin:0;font-family:'Zen Old Mincho',serif;font-size:clamp(15px,1.05vw,20px);letter-spacing:.36em">{{ ja }}</p>
+      </div>
+    </div>
+    <div style="max-width:1180px;margin:0 auto;padding:clamp(32px,3vw,56px) 24px 0;display:flex;justify-content:flex-end">
+      <p style="margin:0;max-width:640px;font-family:'Zen Old Mincho',serif;font-size:clamp(16px,1.1vw,20px);line-height:2.2;letter-spacing:.16em;text-wrap:pretty">{{ lead }}</p>
+    </div>
+  </sc-if>
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:880px;margin:0 auto;padding:40px 20px 0;display:flex;flex-direction:column;gap:24px">
+      <p style="margin:0;display:flex;gap:10px;font-size:12px;letter-spacing:.1em"><a href="Shiomi%20Womens%20University.dc.html" style="border-bottom:1px solid #1c1c1c">Top</a><span aria-hidden="true">/</span><span>{{ ja }}</span></p>
+      <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:min(15vw,120px);line-height:.88;white-space:pre-line">{{ en }}</h1>
+      <p style="margin:0;font-family:'Zen Old Mincho',serif;font-size:15px;letter-spacing:.3em">{{ ja }}</p>
+      <div style="position:relative;padding:14px 14px 0 0"><div style="position:absolute;top:0;right:0;width:86%;height:70%;background:#7ccbcd"></div><div style="position:relative;aspect-ratio:4/3"><image-slot id="{{ slotMain }}" src="{{ srcMain }}" shape="rect" placeholder="{{ mainPlaceholder }}"></image-slot></div></div>
+      <p style="margin:0;font-family:'Zen Old Mincho',serif;font-size:16px;line-height:2.1;letter-spacing:.12em">{{ lead }}</p>
+    </div>
+  </sc-if>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;en&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;About&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;ja&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;大学について&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;lead&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;slotMain&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;hero-main&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;slotSub&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;hero-sub&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;srcMain&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;srcSub&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;mainPlaceholder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;メイン写真&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;subPlaceholder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;サブ写真&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440 };
+  componentDidMount() { this.onResize = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onResize); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const wide = this.state.w >= 1200;
+    return { wide, narrow: !wide };
+  }
+}
+</script>
+</body>
+</html>

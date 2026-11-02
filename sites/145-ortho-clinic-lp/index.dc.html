@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho+B1:wght@500;600;700&family=Klee+One:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#4b4544;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:.04em;overflow-x:clip}
+*{box-sizing:border-box}
+h1,h2,h3{font-family:'Shippori Mincho B1',serif;font-weight:600}
+a{color:#d9675b}
+a:hover{color:#b8503f}
+a:focus-visible,button:focus-visible{outline:3px solid #c8a43e;outline-offset:3px}
+@keyframes lpMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes lpFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes lpPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@keyframes lpBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes lpTwinkle{0%,100%{opacity:1;transform:scale(1) rotate(0)}50%{opacity:.3;transform:scale(.6) rotate(45deg)}}
+@keyframes lpShine{0%{left:-60%}60%,100%{left:130%}}
+@keyframes lpFadeDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes lpSlideIn{from{opacity:0;transform:translateY(30px) scale(.9)}to{opacity:1;transform:none}}
+@keyframes lpSpinSlow{to{transform:rotate(360deg)}}
+/* 日本語の改行を文節単位にし、見出しの行長をそろえる */
+body{word-break:auto-phrase}
+h1,h2,h3,p[data-anim=down]{text-wrap:balance}
+.bal{word-break:auto-phrase;text-wrap:balance}
+.ap{word-break:auto-phrase}
+.scroll-hint{display:none}
+.cmp-table th[scope=row],.cmp-table thead th:first-child{position:sticky;left:0;z-index:1}
+@media (max-width:700px){
+  .scroll-hint{display:block}
+}
+@media (max-width:600px){
+  .pc-br{display:none}
+  .hero-badges{gap:10px!important}
+  .hero-badges>div{width:92px!important;height:92px!important;font-size:13px!important}
+  .hero-ctas>a{flex:1 1 100%}
+  .price-table{min-width:0!important}
+  .price-table thead{display:none}
+  .price-table tr{display:block;padding:8px 0}
+  .price-table th[scope=row]{display:block;padding:6px 14px 2px!important}
+  .price-table td{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:4px 14px!important;font-size:18px!important;white-space:nowrap}
+  .price-table td::before{content:attr(data-label);font-size:12px;font-weight:700;color:#e2705f}
+  .flow-step{border-radius:24px!important;padding:18px 20px!important;gap:14px!important}
+  .flow-step>span{font-size:36px!important}
+  .note-end{text-align:left!important}
+}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid #efe7e3">
+  <div ref="{{ progressRef }}" aria-hidden="true" style="position:absolute;left:0;bottom:-1px;height:3px;width:0;background:linear-gradient(90deg,#e2705f,#c8a43e);transition:width .1s linear"></div>
+  <div style="max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="#top" style="display:flex;flex-direction:column;text-decoration:none;color:#5b6466;line-height:1.1">
+      <span style="font-family:'Klee One',cursive;font-size:24px;font-weight:600;letter-spacing:.04em">〇〇矯正歯科</span>
+      <span style="font-size:9px;letter-spacing:.32em;color:#9aa3a5">ORTHODONTIC CLINIC · LOGO</span>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="ページ内ナビゲーション" style="display:flex;align-items:center;gap:26px;font-size:14px;font-weight:500">
+        <a href="#concerns" style="color:#5b5452;text-decoration:none">お悩みと治療法</a>
+        <a href="#price" style="color:#5b5452;text-decoration:none">料金</a>
+        <a href="#flow" style="color:#5b5452;text-decoration:none">治療の流れ</a>
+        <a href="#faq" style="color:#5b5452;text-decoration:none">よくある質問</a>
+        <a href="{{ bookingUrl }}" style="display:flex;align-items:center;gap:6px;padding:11px 22px;border-radius:999px;background:linear-gradient(180deg,#43c062,#24a046);color:#fff;text-decoration:none;font-weight:700;box-shadow:0 3px 0 #1c7f37" style-hover="filter:brightness(1.06)">相談を予約する</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:10px">
+        <a href="{{ bookingUrl }}" style="padding:10px 16px;border-radius:999px;background:linear-gradient(180deg,#43c062,#24a046);color:#fff;text-decoration:none;font-weight:700;font-size:13px;min-height:44px;display:flex;align-items:center">予約</a>
+        <button onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-label="メニュー" style="width:44px;height:44px;border:1px solid #e3d9d5;border-radius:10px;background:#fff;color:#5b5452;font-size:20px;cursor:pointer">{{ menuIcon }}</button>
+      </div>
+    </sc-if>
+  </div>
+  <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+    <nav aria-label="モバイルメニュー" style="display:flex;flex-direction:column;border-top:1px solid #efe7e3;background:#fff">
+      <a href="#concerns" onClick="{{ closeMenu }}" style="padding:16px 24px;color:#5b5452;text-decoration:none;border-bottom:1px solid #f3eeec">お悩みと治療法</a>
+      <a href="#price" onClick="{{ closeMenu }}" style="padding:16px 24px;color:#5b5452;text-decoration:none;border-bottom:1px solid #f3eeec">料金</a>
+      <a href="#flow" onClick="{{ closeMenu }}" style="padding:16px 24px;color:#5b5452;text-decoration:none;border-bottom:1px solid #f3eeec">治療の流れ</a>
+      <a href="#faq" onClick="{{ closeMenu }}" style="padding:16px 24px;color:#5b5452;text-decoration:none;border-bottom:1px solid #f3eeec">よくある質問</a>
+      <a href="#booking" onClick="{{ closeMenu }}" style="padding:16px 24px;color:#d9675b;text-decoration:none;font-weight:700">ご予約・お問い合わせ</a>
+    </nav>
+  </sc-if>
+</header>
+
+<main id="top">
+<!-- ============ 01 HERO ============ -->
+<section id="hero" data-screen-label="01 Hero" aria-labelledby="hero-title" style="scroll-margin-top:72px">
+  <div>
+    <div style="position:relative;min-height:560px;background:linear-gradient(120deg,#eef1e8,#e5ece4 55%,#dfe7e2);overflow:hidden;display:flex;flex-wrap:wrap">
+      <div style="position:relative;z-index:2;flex:1 1 440px;padding:48px clamp(20px,4vw,56px) 40px max(clamp(20px,4vw,56px),calc((100vw - 1100px) / 2 + 56px));display:flex;flex-direction:column;gap:22px;justify-content:center">
+        <div data-anim="left" style="align-self:flex-start;background:#d8606e;color:#fff;font-weight:700;font-size:clamp(18px,2.2vw,26px);letter-spacing:.14em;padding:10px 26px;box-shadow:0 3px 0 rgba(0,0,0,.08)">矯正相談のご案内</div>
+        <h1 data-anim="up" id="hero-title" style="margin:0;font-size:clamp(27px,3.6vw,44px);line-height:1.45;font-weight:700;color:#4a4443;letter-spacing:.04em;text-wrap:pretty">あなたの歯並びに合う<br><span style="color:#e2705f">矯正のかたち</span>を、<br>一緒に考えます。</h1>
+        <p data-anim="up" class="ap" style="margin:0;font-size:15px;line-height:2;max-width:30em;text-wrap:pretty">マウスピース矯正やワイヤー矯正など、治療法にはそれぞれ特徴があります。検査・診断をもとに、選択肢と費用、治療期間の目安をご説明します。</p>
+        <div class="hero-badges" style="display:flex;flex-wrap:wrap;gap:12px">
+          <div data-anim="pop" data-loop="float" style="width:104px;height:104px;border-radius:50%;background:#fff;border:2px solid #ecd9a6;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:14px;line-height:1.4;color:#4a4443"><span data-loop="twinkle" style="color:#c8a43e;font-size:12px;display:inline-block">✦</span><span><span style="color:#e2705f">治療法</span>の<br>違い</span></div>
+          <div data-anim="pop" data-loop="float" style="width:104px;height:104px;border-radius:50%;background:#fff;border:2px solid #ecd9a6;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:14px;line-height:1.4;color:#4a4443"><span data-loop="twinkle" style="color:#c8a43e;font-size:12px;display:inline-block">✦</span><span><span style="color:#e2705f">費用</span>の<br>目安</span></div>
+          <div data-anim="pop" data-loop="float" style="width:104px;height:104px;border-radius:50%;background:#fff;border:2px solid #ecd9a6;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:14px;line-height:1.4;color:#4a4443"><span data-loop="twinkle" style="color:#c8a43e;font-size:12px;display:inline-block">✦</span><span><span style="color:#e2705f">治療</span>の<br>流れ</span></div>
+        </div>
+        <div class="hero-ctas" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+          <a href="{{ bookingUrl }}" data-shine="1" style="position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border-radius:8px;background:linear-gradient(180deg,#43c062,#24a046);color:#fff;font-weight:700;font-size:17px;letter-spacing:.08em;text-decoration:none;box-shadow:0 4px 0 #1c7f37;border:2px solid #fff" style-hover="filter:brightness(1.06)">矯正相談を予約する</a>
+          <a href="#price" style="display:flex;align-items:center;justify-content:center;min-height:56px;padding:0 24px;border-radius:8px;background:#fff;color:#4a4443;font-weight:700;font-size:15px;text-decoration:none;border:1px solid #e3d9d5" style-hover="background:#fffaf2">料金を見る →</a>
+        </div>
+      </div>
+      <div style="position:relative;flex:1 1 360px;min-height:420px">
+        <div data-anim="zoom" style="position:absolute;inset:0">
+          <img src="./img/hero-smile.jpg" alt="笑顔の女性" style="display:block;width:100%;height:100%;object-fit:cover;object-position:68% center">
+        </div>
+        <div data-anim="down" style="position:absolute;top:28px;left:clamp(14px,3vw,28px);writing-mode:vertical-rl;background:rgba(255,255,255,.88);padding:16px 8px;font-family:'Klee One',cursive;font-size:17px;letter-spacing:.22em;color:#5b6466;pointer-events:none">自分に合う矯正を、知ることから</div>
+      </div>
+    </div>
+  </div>
+  <div style="background:radial-gradient(circle at 20% 30%,#f4f4f4 0,transparent 30%),radial-gradient(circle at 80% 70%,#f2f2f2 0,transparent 30%),#dedede;padding:0 16px 48px">
+    <div data-anim="up" style="max-width:1000px;margin:0 auto;box-shadow:0 6px 18px rgba(0,0,0,.08)">
+      <div style="background:#2f5d57;color:#fff;text-align:center;padding:14px;font-weight:700;letter-spacing:.12em;font-size:16px">はじめての方へ ― 初診相談のご案内</div>
+      <div style="background:linear-gradient(180deg,#fbf7ee,#f4ecdc);padding:26px clamp(16px,3vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;align-items:stretch">
+        <div data-anim="left" style="background:#fff;border:2px solid #2f5d57;border-radius:6px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="background:#2f5d57;color:#fff;text-align:center;padding:8px;font-weight:700">初診相談料</div>
+          <div style="padding:18px;display:flex;flex-direction:column;align-items:center;gap:6px">
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;font-size:clamp(32px,9vw,42px);font-weight:700;color:#e2705f;line-height:1.1">¥〇,〇〇〇<span style="font-size:15px;color:#4a4443">（税込）</span></div>
+            <span style="background:#fff4c2;padding:2px 8px;border-radius:3px;font-size:12px;color:#8a6d1f">〔要確認：医院の実際の料金に差し替え〕</span>
+            <div style="font-size:13px;color:#6d6563">所要時間 約〇〇分〔要確認〕</div>
+          </div>
+        </div>
+        <div data-anim="right" style="background:#fff;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;border:2px solid #e08a95">
+          <div style="background:linear-gradient(90deg,#e8a0a8,#d8606e);color:#fff;text-align:center;padding:8px;font-weight:700;letter-spacing:.1em">初診相談でわかること</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);flex:1">
+            <div style="padding:14px 8px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;border-right:1px dashed #ecd2d5"><span data-anim="pop" style="width:24px;height:24px;border-radius:50%;background:#e2705f;color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center">1</span><span style="font-size:13px;font-weight:700;color:#e2705f;line-height:1.5">歯並びの<br>状態</span></div>
+            <div style="padding:14px 8px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;border-right:1px dashed #ecd2d5"><span data-anim="pop" style="width:24px;height:24px;border-radius:50%;background:#e2705f;color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center">2</span><span style="font-size:13px;font-weight:700;color:#e2705f;line-height:1.5">考えられる<br>治療法</span></div>
+            <div style="padding:14px 8px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px"><span data-anim="pop" style="width:24px;height:24px;border-radius:50%;background:#e2705f;color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center">3</span><span style="font-size:13px;font-weight:700;color:#e2705f;line-height:1.5">費用と<br>期間の目安</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="bal" style="background:linear-gradient(90deg,#c9a640,#e2c768,#c9a640);color:#fff;text-align:center;padding:10px 14px;font-size:13px;line-height:1.7;font-weight:700;letter-spacing:.08em">ご相談のみでもお受けしています。治療を始めるかどうかは、説明をお聞きになってからご検討ください。</div>
+    </div>
+    <div aria-hidden="true" style="overflow:hidden;margin:34px 0 26px;white-space:nowrap">
+      <div style="display:inline-block;animation:lpMarquee 40s linear infinite;font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,44px);letter-spacing:.06em;color:#fff">ORTHODONTIC CONSULTATION&nbsp;&nbsp; ORTHODONTIC CONSULTATION&nbsp;&nbsp; ORTHODONTIC CONSULTATION&nbsp;&nbsp; ORTHODONTIC CONSULTATION&nbsp;&nbsp; ORTHODONTIC CONSULTATION&nbsp;&nbsp; ORTHODONTIC CONSULTATION&nbsp;&nbsp; </div>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <a href="{{ bookingUrl }}" data-loop="pulse" data-shine="1" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:min(100%,380px);min-height:76px;padding:18px 24px 12px;border-radius:6px;background:linear-gradient(180deg,#43c062,#24a046);color:#fff;font-weight:700;font-size:20px;letter-spacing:.1em;text-decoration:none;box-shadow:0 5px 0 #1c7f37" style-hover="filter:brightness(1.06)">
+        <span data-loop="bob" style="position:absolute;top:-16px;background:#fff;color:#2f5d57;border:2px solid #2f5d57;border-radius:999px;padding:3px 16px;font-size:13px;letter-spacing:.04em">Web予約 〔受付時間 要確認〕</span>
+        相談の空き日程を確認する
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 CONCERNS & TREATMENTS ============ -->
+<section id="concerns" data-screen-label="02 Concerns & Treatments" aria-labelledby="concerns-title" style="scroll-margin-top:72px;background:linear-gradient(180deg,#fff 0%,#f1eeec 100%)">
+  <div style="max-width:960px;margin:0 auto;padding:88px 20px 100px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;position:relative">
+      <p data-anim="down" style="margin:0;font-family:'Klee One',cursive;font-size:15px;color:#6d6563">＼ 歯並び・噛み合わせ ／</p>
+      <h2 data-anim="up" id="concerns-title" style="margin:0;font-size:clamp(24px,3vw,32px);letter-spacing:.08em;color:#4a4443">こんなお悩み、ありませんか？</h2>
+    </div>
+    <div style="margin-top:44px;display:flex;flex-wrap:wrap;gap:36px;justify-content:center;align-items:center">
+      <div data-anim="left" style="flex:0 1 260px;height:320px;padding:0;border-radius:10px;box-shadow:0 10px 24px rgba(80,60,50,.16);overflow:hidden;transform:rotate(-2deg)">
+        <img src="./img/crooked-teeth.jpg" alt="歯並びを気にして口元を見せる女性" style="display:block;width:100%;height:100%;object-fit:cover;object-position:40% center">
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;flex:1 1 380px;max-width:460px;display:flex;flex-direction:column;gap:14px">
+        <li data-anim="right" style="background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);padding:14px 18px;display:flex;gap:12px;font-size:15px"><span style="color:#8aa3a5">✓</span><span>歯が重なって<b style="background:linear-gradient(transparent 60%,#fbeea0 60%)">でこぼこしている</b>（叢生）</span></li>
+        <li data-anim="right" style="background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);padding:14px 18px;display:flex;gap:12px;font-size:15px;margin-left:clamp(0px,3vw,28px)"><span style="color:#8aa3a5">✓</span><span>歯と歯の間に<b style="background:linear-gradient(transparent 60%,#fbeea0 60%)">すき間がある</b>（空隙歯列）</span></li>
+        <li data-anim="right" style="background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);padding:14px 18px;display:flex;gap:12px;font-size:15px;margin-left:clamp(0px,3vw,28px)"><span style="color:#8aa3a5">✓</span><span><b style="background:linear-gradient(transparent 60%,#fbeea0 60%)">出っ歯・受け口</b>が気になる（上顎前突・下顎前突）</span></li>
+        <li data-anim="right" style="background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);padding:14px 18px;display:flex;gap:12px;font-size:15px;margin-left:clamp(0px,6vw,56px)"><span style="color:#8aa3a5">✓</span><span>前歯が閉じないなど<b style="background:linear-gradient(transparent 60%,#fbeea0 60%)">噛み合わせ</b>が気になる</span></li>
+        <li data-anim="right" style="background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);padding:14px 18px;display:flex;gap:12px;font-size:15px;margin-left:clamp(0px,6vw,56px)"><span style="color:#8aa3a5">✓</span><span>どの矯正方法が<b style="background:linear-gradient(transparent 60%,#fbeea0 60%)">自分に向いているか</b>知りたい</span></li>
+      </ul>
+    </div>
+    <p class="bal" style="margin:32px auto 0;max-width:620px;text-align:center;font-size:14px;line-height:2;color:#6d6563">歯並びや噛み合わせの状態は一人ひとり異なります。上記以外のお悩みも、歯科医師が拝見したうえでご説明します。</p>
+  </div>
+  <div style="background:#fff;border-radius:0 0 clamp(48px,8vw,120px) clamp(48px,8vw,120px)">
+    <div style="max-width:1080px;margin:0 auto;padding:80px 20px 96px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+        <p data-anim="down" style="margin:0;font-family:'Klee One',cursive;font-size:15px;color:#6d6563">＼ 当院で取り扱う矯正治療 ／</p>
+        <h2 data-anim="up" style="margin:0;font-size:clamp(24px,3vw,32px);letter-spacing:.06em;color:#4a4443">治療法の<span style="color:#e2705f">特徴</span>と<span style="color:#e2705f">留意点</span></h2>
+        <p class="bal" style="margin:6px 0 0;font-size:14px;line-height:2;max-width:640px">それぞれの装置に利点と留意点があります。<br class="pc-br">掲載している治療法は、医院の実際の取り扱いに合わせて編集してください。<span style="background:#fff4c2;padding:2px 6px;border-radius:3px;font-size:12px;color:#8a6d1f">〔要確認〕</span></p>
+      </div>
+      <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px">
+        <article data-anim="up" style="background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(80,60,50,.12);padding:22px 20px 26px;display:flex;flex-direction:column;gap:12px">
+          <div style="height:130px;border-radius:8px;overflow:hidden"><img src="./img/aligner.jpg" alt="透明なマウスピース型矯正装置" style="display:block;width:100%;height:100%;object-fit:cover"></div>
+          <div style="display:flex;align-items:baseline;gap:8px"><span data-anim="pop" style="font-family:'Klee One',cursive;font-size:34px;color:#e2705f;line-height:1">1</span><h3 style="margin:0;font-size:18px;color:#4a4443">マウスピース矯正</h3></div>
+          <p style="margin:0;font-size:13px;line-height:1.9;color:#6d6563">透明な樹脂製の装置を段階的に交換し、歯を動かします。</p>
+          <ul style="margin:0;padding:0;list-style:none;font-size:13px;display:flex;flex-direction:column;gap:6px">
+            <li style="border-bottom:1px solid #ecd9a6;padding-bottom:4px"><span style="color:#c8a43e">＋</span> 目立ちにくく、取り外しができる</li>
+            <li style="border-bottom:1px solid #ecd9a6;padding-bottom:4px"><span style="color:#c8a43e">＋</span> 食事・歯みがきは装置を外して行える</li>
+            <li style="border-bottom:1px solid #f0c9c3;padding-bottom:4px;color:#b8503f"><span>！</span> 指示された装着時間を守る必要がある</li>
+            <li style="border-bottom:1px solid #f0c9c3;padding-bottom:4px;color:#b8503f"><span>！</span> 歯並びの状態によっては適さない場合がある</li>
+          </ul>
+        </article>
+        <article data-anim="up" style="background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(80,60,50,.12);padding:22px 20px 26px;display:flex;flex-direction:column;gap:12px">
+          <div style="height:130px;border-radius:8px;overflow:hidden"><img src="./img/metal-brackets.jpg" alt="金属のブラケットを用いたワイヤー矯正のイメージ" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center 45%"></div>
+          <div style="display:flex;align-items:baseline;gap:8px"><span data-anim="pop" style="font-family:'Klee One',cursive;font-size:34px;color:#e2705f;line-height:1">2</span><h3 style="margin:0;font-size:18px;color:#4a4443">表側ワイヤー矯正<span style="display:block;font-size:13px;font-weight:500">（メタル）</span></h3></div>
+          <p style="margin:0;font-size:13px;line-height:1.9;color:#6d6563">歯の表面に金属のブラケットを付け、ワイヤーの力で歯を動かします。</p>
+          <ul style="margin:0;padding:0;list-style:none;font-size:13px;display:flex;flex-direction:column;gap:6px">
+            <li style="border-bottom:1px solid #ecd9a6;padding-bottom:4px"><span style="color:#c8a43e">＋</span> 幅広い歯並びに用いられてきた方法</li>
+            <li style="border-bottom:1px solid #ecd9a6;padding-bottom:4px"><span style="color:#c8a43e">＋</span> 固定式のため着け忘れがない</li>
+            <li style="border-bottom:1px solid #f0c9c3;padding-bottom:4px;color:#b8503f"><span>！</span> 装置が目立ちやすい</li>
+            <li style="border-bottom:1px solid #f0c9c3;padding-bottom:4px;color:#b8503f"><span>！</span> 装置まわりの清掃に工夫が必要</li>
+          </ul>
+        </article>
+        <article data-anim="up" style="background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(80,60,50,.12);padding:22px 20px 26px;display:flex;flex-direction:column;gap:12px">
+          <div style="height:130px;border-radius:8px;overflow:hidden"><img src="./img/ceramic-closeup.jpg" alt="透明なブラケットを用いたワイヤー矯正のイメージ" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center 40%"></div>
+          <div style="display:flex;align-items:baseline;gap:8px"><span data-anim="pop" style="font-family:'Klee One',cursive;font-size:34px;color:#e2705f;line-height:1">3</span><h3 style="margin:0;font-size:18px;color:#4a4443">表側ワイヤー矯正<span style="display:block;font-size:13px;font-weight:500">（セラミック）</span></h3></div>
+          <p style="margin:0;font-size:13px;line-height:1.9;color:#6d6563">白や透明に近いブラケットを用いるワイヤー矯正です。</p>
+          <ul style="margin:0;padding:0;list-style:none;font-size:13px;display:flex;flex-direction:column;gap:6px">
+            <li style="border-bottom:1px solid #ecd9a6;padding-bottom:4px"><span style="color:#c8a43e">＋</span> 金属に比べて装置が目立ちにくい</li>
+            <li style="border-bottom:1px solid #ecd9a6;padding-bottom:4px"><span style="color:#c8a43e">＋</span> 固定式のため着け忘れがない</li>
+            <li style="border-bottom:1px solid #f0c9c3;padding-bottom:4px;color:#b8503f"><span>！</span> 費用がメタルより高くなる場合がある</li>
+            <li style="border-bottom:1px solid #f0c9c3;padding-bottom:4px;color:#b8503f"><span>！</span> 装置まわりの清掃に工夫が必要</li>
+          </ul>
+        </article>
+        <article data-anim="up" style="background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(80,60,50,.12);padding:22px 20px 26px;display:flex;flex-direction:column;gap:12px">
+          <div style="height:130px;border-radius:8px;overflow:hidden"><img src="./img/lingual.jpg" alt="歯の裏側に装置を付けた矯正のイメージ" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center 30%"></div>
+          <div style="display:flex;align-items:baseline;gap:8px"><span data-anim="pop" style="font-family:'Klee One',cursive;font-size:34px;color:#e2705f;line-height:1">4</span><h3 style="margin:0;font-size:18px;color:#4a4443">裏側（舌側）矯正</h3></div>
+          <p style="margin:0;font-size:13px;line-height:1.9;color:#6d6563">歯の裏側に装置を付けるワイヤー矯正です。</p>
+          <ul style="margin:0;padding:0;list-style:none;font-size:13px;display:flex;flex-direction:column;gap:6px">
+            <li style="border-bottom:1px solid #ecd9a6;padding-bottom:4px"><span style="color:#c8a43e">＋</span> 正面から装置が見えにくい</li>
+            <li style="border-bottom:1px solid #ecd9a6;padding-bottom:4px"><span style="color:#c8a43e">＋</span> 固定式のため着け忘れがない</li>
+            <li style="border-bottom:1px solid #f0c9c3;padding-bottom:4px;color:#b8503f"><span>！</span> 慣れるまで発音しにくい・舌に違和感が出ることがある</li>
+            <li style="border-bottom:1px solid #f0c9c3;padding-bottom:4px;color:#b8503f"><span>！</span> 表側に比べ費用が高くなる傾向がある</li>
+          </ul>
+        </article>
+      </div>
+      <div data-anim="zoom" style="margin:52px auto 0;max-width:620px;background:#fff;border:1px solid #e2705f;box-shadow:8px 8px 0 #f2b7ae;padding:22px 24px;text-align:center">
+        <p class="bal" style="margin:0;font-size:15px;color:#4a4443">「どの装置がいちばん良いか」ではなく、</p>
+        <p class="bal" style="margin:6px 0 0;font-size:clamp(18px,2.4vw,24px);font-weight:700;color:#e2705f;letter-spacing:.04em">検査・診断のうえで、あなたに合う方法を。</p>
+        <p class="bal" style="margin:12px 0 0;font-size:12px;color:#6d6563;line-height:1.8">適した治療法は、歯や顎の状態、生活スタイルなどを踏まえて歯科医師がご提案します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 PRICE ============ -->
+<section id="price" data-screen-label="03 Pricing" aria-labelledby="price-title" style="scroll-margin-top:72px;background:linear-gradient(160deg,#e7d3d6 0%,#dcc4ca 40%,#f1e2d6 100%);margin-top:-1px">
+  <div style="max-width:960px;margin:0 auto;padding:96px 20px 100px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+      <p data-anim="down" style="margin:0;font-family:'Klee One',cursive;font-size:15px;color:#6d6563">＼ 治療を始める前に、総額の目安をご説明します ／</p>
+      <h2 data-anim="up" id="price-title" style="margin:0;font-size:clamp(24px,3vw,32px);letter-spacing:.08em;color:#e2705f">料金プラン</h2>
+      <p style="margin:6px 0 0;font-size:13px;color:#6d6563">※掲載金額はすべて仮のものです。公開前に医院の正式な料金へ差し替えてください。<span style="background:#fff4c2;padding:2px 6px;border-radius:3px;font-size:12px;color:#8a6d1f">〔要確認〕</span></p>
+    </div>
+
+    <div data-anim="up" style="margin-top:40px;background:#fff;border-radius:16px;padding:clamp(20px,4vw,40px);box-shadow:0 6px 20px rgba(120,80,80,.1)">
+      <div style="background:#e9eef1;text-align:center;padding:12px;font-weight:700;font-size:17px;letter-spacing:.1em">相談・検査・診断</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:0;text-align:center">
+        <div data-anim="pop" style="padding:20px 12px;border-bottom:1px solid #eee"><div style="font-size:14px;color:#6d6563">初診相談料</div><div style="font-size:24px;font-weight:700;color:#2f5d57;margin-top:4px">¥〇,〇〇〇</div><div style="font-size:11px;color:#8a8280">（税込）</div></div>
+        <div data-anim="pop" style="padding:20px 12px;border-bottom:1px solid #eee"><div style="font-size:14px;color:#6d6563">精密検査料</div><div style="font-size:24px;font-weight:700;color:#2f5d57;margin-top:4px">¥〇〇,〇〇〇</div><div style="font-size:11px;color:#8a8280">（税込）レントゲン・口腔内写真・歯型など</div></div>
+        <div data-anim="pop" style="padding:20px 12px;border-bottom:1px solid #eee"><div style="font-size:14px;color:#6d6563">診断料</div><div style="font-size:24px;font-weight:700;color:#2f5d57;margin-top:4px">¥〇〇,〇〇〇</div><div style="font-size:11px;color:#8a8280">（税込）治療計画のご説明</div></div>
+      </div>
+      <div aria-hidden="true" data-anim="pop" data-loop="spin" style="text-align:center;font-size:40px;color:#8a9597;line-height:1;margin:18px 0">＋</div>
+      <div style="background:#e7796d;color:#fff;text-align:center;padding:12px;font-weight:700;font-size:17px;letter-spacing:.1em">矯正治療費（装置料）</div>
+      <div style="background:repeating-linear-gradient(135deg,#fdf5e2 0 10px,#fbefd4 10px 20px);overflow-x:auto">
+        <table class="price-table" style="width:100%;min-width:520px;border-collapse:collapse;font-size:14px;text-align:center">
+          <thead><tr><th scope="col" style="padding:14px 10px;text-align:left;font-weight:500;color:#6d6563">治療法</th><th scope="col" style="padding:14px 10px;color:#e2705f">全体矯正</th><th scope="col" style="padding:14px 10px;color:#e2705f">部分矯正</th></tr></thead>
+          <tbody>
+            <tr style="border-top:1px solid #efdcb5"><th scope="row" style="padding:14px 10px;text-align:left;font-weight:700">マウスピース矯正</th><td data-label="全体矯正" style="padding:14px 10px;font-size:20px;font-weight:700">¥〇〇〇,〇〇〇〜</td><td data-label="部分矯正" style="padding:14px 10px;font-size:20px;font-weight:700">¥〇〇〇,〇〇〇〜</td></tr>
+            <tr style="border-top:1px solid #efdcb5"><th scope="row" style="padding:14px 10px;text-align:left;font-weight:700">表側ワイヤー（メタル）</th><td data-label="全体矯正" style="padding:14px 10px;font-size:20px;font-weight:700">¥〇〇〇,〇〇〇〜</td><td data-label="部分矯正" style="padding:14px 10px;font-size:20px;font-weight:700">¥〇〇〇,〇〇〇〜</td></tr>
+            <tr style="border-top:1px solid #efdcb5"><th scope="row" style="padding:14px 10px;text-align:left;font-weight:700">表側ワイヤー（セラミック）</th><td data-label="全体矯正" style="padding:14px 10px;font-size:20px;font-weight:700">¥〇〇〇,〇〇〇〜</td><td data-label="部分矯正" style="padding:14px 10px;font-size:20px;font-weight:700">¥〇〇〇,〇〇〇〜</td></tr>
+            <tr style="border-top:1px solid #efdcb5"><th scope="row" style="padding:14px 10px;text-align:left;font-weight:700">裏側（舌側）矯正</th><td data-label="全体矯正" style="padding:14px 10px;font-size:20px;font-weight:700">¥〇〇〇,〇〇〇〜</td><td data-label="部分矯正" style="padding:14px 10px;font-size:20px;font-weight:700">¥〇〇〇,〇〇〇〜</td></tr>
+          </tbody>
+        </table>
+        <p style="margin:0;padding:10px 14px 14px;font-size:12px;color:#6d6563;line-height:1.8">すべて税込・自由診療（保険適用外）。部分矯正は対象となる歯並びが限られます。金額は症状や装置により異なり、診断後に確定します。</p>
+      </div>
+      <div aria-hidden="true" data-anim="pop" data-loop="spin" style="text-align:center;font-size:40px;color:#8a9597;line-height:1;margin:18px 0">＋</div>
+      <div style="background:#e9eef1;text-align:center;padding:12px;font-weight:700;font-size:17px;letter-spacing:.1em">通院・保定にかかる費用</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));text-align:center">
+        <div data-anim="pop" style="padding:20px 12px;border-bottom:1px solid #eee"><div style="font-size:14px;color:#6d6563">調整料（1回）</div><div style="font-size:24px;font-weight:700;color:#2f5d57;margin-top:4px">¥〇,〇〇〇</div><div style="font-size:11px;color:#8a8280">（税込）通院ごと</div></div>
+        <div data-anim="pop" style="padding:20px 12px;border-bottom:1px solid #eee"><div style="font-size:14px;color:#6d6563">保定装置料</div><div style="font-size:24px;font-weight:700;color:#2f5d57;margin-top:4px">¥〇〇,〇〇〇</div><div style="font-size:11px;color:#8a8280">（税込）上下・リテーナー</div></div>
+        <div data-anim="pop" style="padding:20px 12px;border-bottom:1px solid #eee"><div style="font-size:14px;color:#6d6563">保定観察料（1回）</div><div style="font-size:24px;font-weight:700;color:#2f5d57;margin-top:4px">¥〇,〇〇〇</div><div style="font-size:11px;color:#8a8280">（税込）治療後の定期確認</div></div>
+      </div>
+    </div>
+
+    <div data-anim="up" style="position:relative;margin-top:56px;background:#fff;border:2px solid #c8a43e;border-radius:16px;padding:48px clamp(18px,3vw,32px) 28px">
+      <div style="position:absolute;top:-20px;left:50%;transform:translateX(-50%);background:#c8a43e;color:#fff;font-weight:700;font-size:17px;letter-spacing:.1em;padding:8px 32px;border-radius:999px;white-space:nowrap">費用についての大切なこと</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px">
+        <div>
+          <div style="display:inline-block;background:#d9b955;color:#fff;font-size:14px;font-weight:700;padding:4px 10px">治療費に含まれるもの</div>
+          <ul style="margin:14px 0 0;padding-left:1.2em;font-size:14px;line-height:2">
+            <li>矯正装置の製作・装着</li>
+            <li>治療計画に基づく装置の交換・追加</li>
+            <li>〔医院の実際の内容に合わせて記載〕</li>
+          </ul>
+        </div>
+        <div>
+          <div style="display:inline-block;background:#d9b955;color:#fff;font-size:14px;font-weight:700;padding:4px 10px">別途かかる可能性のある費用</div>
+          <ul style="margin:14px 0 0;padding-left:1.2em;font-size:14px;line-height:2">
+            <li>調整料・保定観察料（通院ごと）</li>
+            <li>抜歯やむし歯・歯周病の治療</li>
+            <li>装置の紛失・破損による再製作</li>
+          </ul>
+        </div>
+        <div>
+          <div style="display:inline-block;background:#d9b955;color:#fff;font-size:14px;font-weight:700;padding:4px 10px">お支払い方法</div>
+          <ul style="margin:14px 0 0;padding-left:1.2em;font-size:14px;line-height:2">
+            <li>現金・クレジットカード〔要確認〕</li>
+            <li>デンタルローン・院内分割〔有無・条件 要確認〕</li>
+            <li>医療費控除の対象となる場合があります（目的・内容により対象外の場合あり）</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note-end" style="margin:20px 0 0;font-size:12px;color:#6d6563;text-align:right">最終的な治療計画と費用は、精密検査・診断後に書面でご説明します〔要確認〕</p>
+    </div>
+
+    <div style="margin-top:56px;display:flex;justify-content:center"><div style="background:#c8a43e;color:#fff;font-weight:700;font-size:17px;letter-spacing:.1em;padding:8px 32px;border-radius:999px">治療法ごとの違い</div></div>
+    <p class="scroll-hint" aria-hidden="true" style="margin:14px 0 0;text-align:center;font-size:12px;color:#8a6d1f">← 横にスクロールできます →</p>
+    <div data-anim="up" style="margin-top:10px;background:#fff;border:1px solid #e6e0dc;border-radius:12px;overflow-x:auto">
+      <table class="cmp-table" style="width:100%;min-width:680px;border-collapse:collapse;font-size:13px;line-height:1.7">
+        <thead><tr style="background:linear-gradient(180deg,#e6c967,#d0ae45);color:#fff"><th scope="col" style="padding:14px 10px;width:16%;background:#d9b955">項目</th><th scope="col" style="padding:14px 10px">マウスピース</th><th scope="col" style="padding:14px 10px">表側（メタル）</th><th scope="col" style="padding:14px 10px">表側（セラミック）</th><th scope="col" style="padding:14px 10px">裏側（舌側）</th></tr></thead>
+        <tbody>
+          <tr style="border-top:1px solid #eee"><th scope="row" style="padding:14px 10px;background:#faf8f6">見た目</th><td style="padding:14px 10px;text-align:center">透明で目立ちにくい</td><td style="padding:14px 10px;text-align:center">金属が見える</td><td style="padding:14px 10px;text-align:center">比較的目立ちにくい</td><td style="padding:14px 10px;text-align:center">正面からは見えにくい</td></tr>
+          <tr style="border-top:1px solid #eee"><th scope="row" style="padding:14px 10px;background:#faf8f6">取り外し</th><td style="padding:14px 10px;text-align:center">可能</td><td style="padding:14px 10px;text-align:center">不可（固定式）</td><td style="padding:14px 10px;text-align:center">不可（固定式）</td><td style="padding:14px 10px;text-align:center">不可（固定式）</td></tr>
+          <tr style="border-top:1px solid #eee"><th scope="row" style="padding:14px 10px;background:#faf8f6">日常の注意</th><td style="padding:14px 10px;text-align:center">装着時間の自己管理</td><td style="padding:14px 10px;text-align:center">装置まわりの清掃</td><td style="padding:14px 10px;text-align:center">装置まわりの清掃</td><td style="padding:14px 10px;text-align:center">発音・舌の違和感、清掃</td></tr>
+          <tr style="border-top:1px solid #eee"><th scope="row" style="padding:14px 10px;background:#faf8f6">通院間隔の目安</th><td style="padding:14px 10px;text-align:center">〔要確認〕</td><td style="padding:14px 10px;text-align:center">〔要確認〕</td><td style="padding:14px 10px;text-align:center">〔要確認〕</td><td style="padding:14px 10px;text-align:center">〔要確認〕</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 FLOW ============ -->
+<section id="flow" data-screen-label="04 Treatment Flow" aria-labelledby="flow-title" style="scroll-margin-top:72px;background:linear-gradient(160deg,#f1e2d6,#fbf3ee)">
+  <div style="background-color:#fffcf3;background-image:linear-gradient(#f3ebd8 1px,transparent 1px),linear-gradient(90deg,#f3ebd8 1px,transparent 1px);background-size:22px 22px;border-radius:clamp(48px,8vw,120px) clamp(48px,8vw,120px) clamp(48px,8vw,120px) clamp(48px,8vw,120px)">
+    <div style="max-width:900px;margin:0 auto;padding:92px 20px 100px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+        <p data-anim="down" style="margin:0;font-family:'Klee One',cursive;font-size:15px;color:#6d6563">＼ はじめての方も安心して進められるように ／</p>
+        <h2 data-anim="up" id="flow-title" style="margin:0;font-size:clamp(24px,3vw,32px);letter-spacing:.06em;color:#4a4443">矯正治療の<span style="color:#e2705f">流れ</span></h2>
+        <p class="bal" style="margin:6px 0 0;font-size:14px;line-height:2">ご相談から治療後の経過観察まで、一般的な流れです。〔医院の手順に合わせて編集〕</p>
+      </div>
+      <ol style="list-style:none;margin:44px 0 0;padding:0;display:flex;flex-direction:column;gap:18px">
+        <li data-anim="left" class="flow-step" style="max-width:600px;width:100%;margin-right:auto;background:#fffdf6;border:1.5px solid #ea8a7f;border-radius:999px;padding:22px clamp(24px,5vw,48px);display:flex;gap:18px;align-items:center"><span data-anim="pop" style="font-family:'Klee One',cursive;font-size:46px;color:#e2705f;line-height:1;flex:none">1</span><div><h3 style="margin:0;font-size:19px;color:#e2705f;letter-spacing:.12em">初診相談</h3><p style="margin:4px 0 0;font-size:13px;line-height:1.8">お悩みやご希望をうかがい、お口の状態を拝見します。</p></div></li>
+        <li data-anim="right" class="flow-step" style="max-width:600px;width:100%;margin-left:auto;background:#fffdf6;border:1.5px solid #ea8a7f;border-radius:999px;padding:22px clamp(24px,5vw,48px);display:flex;gap:18px;align-items:center"><span data-anim="pop" style="font-family:'Klee One',cursive;font-size:46px;color:#e2705f;line-height:1;flex:none">2</span><div><h3 style="margin:0;font-size:19px;color:#e2705f;letter-spacing:.12em">精密検査</h3><p style="margin:4px 0 0;font-size:13px;line-height:1.8">レントゲン撮影、口腔内・顔貌写真、歯型の採取などを行います。</p></div></li>
+        <li data-anim="left" class="flow-step" style="max-width:600px;width:100%;margin-right:auto;background:#fffdf6;border:1.5px solid #ea8a7f;border-radius:999px;padding:22px clamp(24px,5vw,48px);display:flex;gap:18px;align-items:center"><span data-anim="pop" style="font-family:'Klee One',cursive;font-size:46px;color:#e2705f;line-height:1;flex:none">3</span><div><h3 style="margin:0;font-size:19px;color:#e2705f;letter-spacing:.12em">診断・ご説明</h3><p style="margin:4px 0 0;font-size:13px;line-height:1.8">検査結果をもとに、治療法の選択肢、費用、期間の目安、リスクをご説明します。</p></div></li>
+        <li data-anim="right" class="flow-step" style="max-width:600px;width:100%;margin-left:auto;background:#fffdf6;border:1.5px solid #ea8a7f;border-radius:999px;padding:22px clamp(24px,5vw,48px);display:flex;gap:18px;align-items:center"><span data-anim="pop" style="font-family:'Klee One',cursive;font-size:46px;color:#e2705f;line-height:1;flex:none">4</span><div><h3 style="margin:0;font-size:19px;color:#e2705f;letter-spacing:.12em">治療計画の決定</h3><p style="margin:4px 0 0;font-size:13px;line-height:1.8">ご納得いただいたうえで、治療方法と計画を決定します。</p></div></li>
+        <li data-anim="left" class="flow-step" style="max-width:600px;width:100%;margin-right:auto;background:#fffdf6;border:1.5px solid #ea8a7f;border-radius:999px;padding:22px clamp(24px,5vw,48px);display:flex;gap:18px;align-items:center"><span data-anim="pop" style="font-family:'Klee One',cursive;font-size:46px;color:#e2705f;line-height:1;flex:none">5</span><div><h3 style="margin:0;font-size:19px;color:#e2705f;letter-spacing:.12em">矯正治療の開始</h3><p style="margin:4px 0 0;font-size:13px;line-height:1.8">装置を装着し、使い方やお手入れ方法をご案内します。</p></div></li>
+        <li data-anim="right" class="flow-step" style="max-width:600px;width:100%;margin-left:auto;background:#fffdf6;border:1.5px solid #ea8a7f;border-radius:999px;padding:22px clamp(24px,5vw,48px);display:flex;gap:18px;align-items:center"><span data-anim="pop" style="font-family:'Klee One',cursive;font-size:46px;color:#e2705f;line-height:1;flex:none">6</span><div><h3 style="margin:0;font-size:19px;color:#e2705f;letter-spacing:.12em">定期的な通院</h3><p style="margin:4px 0 0;font-size:13px;line-height:1.8">歯の動きを確認し、装置の調整や交換を行います。</p></div></li>
+        <li data-anim="left" class="flow-step" style="max-width:600px;width:100%;margin-right:auto;background:#fffdf6;border:1.5px solid #ea8a7f;border-radius:999px;padding:22px clamp(24px,5vw,48px);display:flex;gap:18px;align-items:center"><span data-anim="pop" style="font-family:'Klee One',cursive;font-size:46px;color:#e2705f;line-height:1;flex:none">7</span><div><h3 style="margin:0;font-size:19px;color:#e2705f;letter-spacing:.12em">保定・経過観察</h3><p style="margin:4px 0 0;font-size:13px;line-height:1.8">保定装置（リテーナー）で歯並びの後戻りを防ぎ、定期的に状態を確認します。</p></div></li>
+      </ol>
+
+      <h3 style="margin:72px 0 0;text-align:center;font-size:clamp(20px,2.4vw,26px);color:#4a4443;letter-spacing:.06em">治療中に<span style="color:#e2705f">知っておきたいこと</span></h3>
+      <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px">
+        <div data-anim="up" style="background:#fff;border:1px solid #f0c9c3;padding:18px 20px"><div style="display:inline-block;background:#fbe98f;padding:4px 16px;font-weight:700;font-size:15px;box-shadow:2px 2px 0 #e7d270">治療期間の目安</div><p style="margin:12px 0 0;font-size:13px;line-height:1.9">全体矯正：約〇年〜〇年／部分矯正：約〇か月〜〇か月〔要確認〕。歯の状態や治療法、歯の動き方によって個人差があります。</p></div>
+        <div data-anim="up" style="background:#fff;border:1px solid #f0c9c3;padding:18px 20px"><div style="display:inline-block;background:#fbe98f;padding:4px 16px;font-weight:700;font-size:15px;box-shadow:2px 2px 0 #e7d270">通院の頻度</div><p style="margin:12px 0 0;font-size:13px;line-height:1.9">治療中は〇週間〜〇か月に1回程度〔要確認〕。保定期間中は間隔をあけて経過を確認します。</p></div>
+        <div data-anim="up" style="background:#fff;border:1px solid #f0c9c3;padding:18px 20px"><div style="display:inline-block;background:#fbe98f;padding:4px 16px;font-weight:700;font-size:15px;box-shadow:2px 2px 0 #e7d270">歯みがき・お手入れ</div><p style="margin:12px 0 0;font-size:13px;line-height:1.9">装置があると汚れが残りやすくなります。歯ブラシの選び方やみがき方をご案内します。</p></div>
+        <div data-anim="up" style="background:#fff;border:1px solid #f0c9c3;padding:18px 20px"><div style="display:inline-block;background:#fbe98f;padding:4px 16px;font-weight:700;font-size:15px;box-shadow:2px 2px 0 #e7d270">痛み・違和感</div><p style="margin:12px 0 0;font-size:13px;line-height:1.9">装置の装着や調整の後、数日ほど痛みや違和感が出ることがあります。感じ方には個人差があります。</p></div>
+        <div data-anim="up" style="background:#fff;border:1px solid #f0c9c3;padding:18px 20px"><div style="display:inline-block;background:#fbe98f;padding:4px 16px;font-weight:700;font-size:15px;box-shadow:2px 2px 0 #e7d270">リテーナーの使用</div><p style="margin:12px 0 0;font-size:13px;line-height:1.9">歯は元の位置に戻ろうとするため、治療後も指示に沿ってリテーナーを使用します。</p></div>
+        <div data-anim="up" style="background:#fff;border:1px solid #f0c9c3;padding:18px 20px"><div style="display:inline-block;background:#fbe98f;padding:4px 16px;font-weight:700;font-size:15px;box-shadow:2px 2px 0 #e7d270">気になることがあれば</div><p style="margin:12px 0 0;font-size:13px;line-height:1.9">装置の破損や強い痛みなど、気になる症状があれば次回の予約を待たずにご連絡ください。</p></div>
+      </div>
+
+      <div id="risks" data-anim="up" style="margin-top:56px;background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(80,60,50,.1);padding:clamp(20px,4vw,36px)">
+        <h3 style="margin:0;font-size:18px;color:#4a4443;display:flex;align-items:center;gap:10px"><span style="width:6px;height:22px;background:#e2705f;display:inline-block"></span>矯正治療に伴う主なリスク・副作用</h3>
+        <ul style="margin:16px 0 0;padding-left:1.2em;font-size:13px;line-height:2;columns:2 260px;column-gap:32px">
+          <li>歯の移動に伴い、痛みや違和感が生じることがあります。</li>
+          <li>装置により口内炎や発音のしにくさが生じることがあります。</li>
+          <li>清掃が不十分な場合、むし歯や歯周病のリスクが高まります。</li>
+          <li>歯根が短くなる（歯根吸収）、歯ぐきが下がることがあります。</li>
+          <li>治療期間は個人差があり、予定より長くなる場合があります。</li>
+          <li>装置の装着時間や通院が守られない場合、計画どおりに進まないことがあります。</li>
+          <li>治療計画によっては抜歯が必要になる場合があります。</li>
+          <li>顎関節に痛みや音などの症状が出ることがあります。</li>
+          <li>保定装置を使用しない場合、後戻りが起こることがあります。</li>
+          <li>自由診療（保険適用外）です。</li>
+        </ul>
+        <div style="margin-top:18px;padding:14px 16px;background:#fff8e1;border:1px dashed #d9b955;font-size:12px;line-height:1.9;color:#6b5a2a">〔要確認・マウスピース型矯正装置を扱う場合〕使用する装置が医薬品医療機器等法上の承認を得ていない場合は、未承認医療機器である旨、入手経路、国内の承認医薬品等の有無、諸外国における安全性等の情報を記載してください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 FAQ & BOOKING ============ -->
+<section id="faq" data-screen-label="05 FAQ & Booking" aria-labelledby="faq-title" style="scroll-margin-top:72px">
+  <div style="background:#dce3e6;padding:88px 20px 96px">
+    <h2 data-anim="up" id="faq-title" style="margin:0;text-align:center;font-size:clamp(24px,3vw,32px);letter-spacing:.1em;color:#3f4648">よくある質問</h2>
+    <div style="max-width:780px;margin:40px auto 0;display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="10">
+        <div data-anim="up" style="background:#fff;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.06)">
+          <h3 style="margin:0;font-size:inherit">
+            <button onClick="{{ f.toggle }}" aria-expanded="{{ f.open }}" aria-controls="{{ f.panelId }}" style="width:100%;min-height:56px;display:flex;align-items:center;gap:12px;padding:14px 22px;background:none;border:0;cursor:pointer;text-align:left;font-family:inherit;font-size:15px;font-weight:700;color:#4a4443">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c8a43e;line-height:1">Q.</span>
+              <span style="flex:1">{{ f.q }}</span>
+              <span aria-hidden="true" style="color:#c8a43e;font-size:20px;width:20px;text-align:center">{{ f.icon }}</span>
+            </button>
+          </h3>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <div id="{{ f.panelId }}" style="animation:lpFadeDown .4s ease both;padding:0 22px 20px 56px;font-size:14px;line-height:2;color:#5b5452;display:flex;gap:10px"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#e2705f;line-height:1.2;margin-left:-34px">A.</span><span>{{ f.a }}</span></div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(160deg,#f6efe6,#eaf0f4 60%,#f7f3ee);padding:88px 20px">
+    <div style="max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px;align-items:center">
+      <div data-anim="left" style="flex:1 1 340px;height:340px;border-radius:14px;overflow:hidden"><img src="./img/consultation.jpg" alt="歯科医師が相談者に説明している様子" style="display:block;width:100%;height:100%;object-fit:cover;object-position:35% center"></div>
+      <div data-anim="right" class="ap" style="flex:1 1 340px;font-size:14px;line-height:2.2;color:#5b5452">
+        <p style="margin:0;font-size:clamp(20px,2.4vw,24px);font-weight:700;color:#4a4443;letter-spacing:.06em;line-height:1.7">まずは、知ることから。</p>
+        <p style="margin:16px 0 0">歯並びのことが気になっていても、<br class="pc-br">何から始めればよいか分からない方は少なくありません。</p>
+        <p style="margin:12px 0 0">初診相談では、今の状態と考えられる選択肢、<br class="pc-br">費用や期間の目安をお伝えします。</p>
+        <p style="margin:12px 0 0">治療を始めるかどうかは、<br class="pc-br">ご家族と相談するなど、ゆっくりご検討ください。</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="booking" style="scroll-margin-top:72px;background:radial-gradient(circle at 15% 25%,#fff 0,transparent 25%),radial-gradient(circle at 85% 80%,#fff 0,transparent 25%),linear-gradient(180deg,#e9ecef,#d9dfe3);padding:88px 20px 100px">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center">
+      <p data-anim="down" style="margin:0;font-family:'Klee One',cursive;font-size:15px;color:#6d6563">＼ ご予約・お問い合わせ ／</p>
+      <h2 data-anim="up" style="margin:-16px 0 0;font-size:clamp(24px,3vw,32px);letter-spacing:.06em;color:#4a4443"><span style="color:#e2705f">矯正相談</span>のご予約</h2>
+      <div style="width:100%;box-shadow:0 6px 18px rgba(0,0,0,.08)">
+        <div style="background:#2f5d57;color:#fff;padding:12px;font-weight:700;letter-spacing:.1em">ご予約方法</div>
+        <div style="background:linear-gradient(180deg,#fbf7ee,#f4ecdc);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;padding:24px">
+          <div data-anim="pop" style="background:#fff;border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:6px;align-items:center"><span style="font-weight:700;color:#e2705f">Web予約</span><span style="font-size:13px">24時間受付〔要確認〕</span><span style="font-size:12px;color:#8a8280">予約システムのURLを設定してください</span></div>
+          <div data-anim="pop" style="background:#fff;border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:6px;align-items:center"><span style="font-weight:700;color:#e2705f">お電話</span><a href="{{ telHref }}" style="font-size:24px;font-weight:700;color:#2f5d57;text-decoration:none;font-family:'Cormorant Garamond',serif;letter-spacing:.04em">TEL {{ telNumber }}</a><span style="font-size:12px;color:#8a8280">受付 〇:〇〇〜〇:〇〇〔要確認〕</span></div>
+        </div>
+      </div>
+      <a href="{{ bookingUrl }}" data-loop="pulse" data-shine="1" style="position:relative;display:flex;align-items:center;justify-content:center;width:min(100%,420px);min-height:80px;padding:18px 24px 12px;border-radius:6px;background:linear-gradient(180deg,#43c062,#24a046);color:#fff;font-weight:700;font-size:clamp(18px,2.2vw,22px);letter-spacing:.1em;text-decoration:none;box-shadow:0 5px 0 #1c7f37" style-hover="filter:brightness(1.06)">
+        <span data-loop="bob" style="position:absolute;top:-16px;background:#fff;color:#2f5d57;border:2px solid #2f5d57;border-radius:999px;padding:3px 16px;font-size:13px;letter-spacing:.04em">ご相談のみでも大丈夫です</span>
+        矯正相談を予約する
+      </a>
+      <a href="#concerns" style="font-size:14px;color:#5b6466">治療法をもう一度見る ↑</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:#8a9597;color:#fff;padding:56px 20px 110px">
+  <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:32px;font-size:13px;line-height:2">
+    <div>
+      <div style="font-family:'Klee One',cursive;font-size:26px;font-weight:600">〇〇矯正歯科</div>
+      <div style="font-size:9px;letter-spacing:.32em;opacity:.85">ORTHODONTIC CLINIC</div>
+      <p style="margin:16px 0 0">〒000-0000 〇〇県〇〇市〇〇 0-0-0<br>〇〇駅 〇〇口より徒歩〇分<br>TEL {{ telNumber }}</p>
+    </div>
+    <div>
+      <p style="margin:0;font-weight:700">診療時間</p>
+      <p style="margin:0">平日 〇:〇〇〜〇:〇〇／土曜 〇:〇〇〜〇:〇〇<br>休診日：〇曜・日曜・祝日</p>
+      <p style="margin:12px 0 0;font-weight:700">院長・担当歯科医師</p>
+      <p style="margin:0">〇〇 〇〇（経歴・所属は医院の確認済み情報を記載）</p>
+    </div>
+    <div>
+      <nav aria-label="フッターリンク" style="display:flex;flex-wrap:wrap;gap:8px 18px">
+        <a href="#privacy" style="color:#fff">プライバシーポリシー</a>
+        <a href="#terms" style="color:#fff">利用規約</a>
+        <a href="#risks" style="color:#fff">リスク・副作用について</a>
+      </nav>
+      <p style="margin:14px 0 0;font-size:12px;opacity:.95">本ページに掲載の治療は自由診療（保険適用外）です。治療内容・費用・期間は検査・診断の結果により異なります。</p>
+      <p style="margin:8px 0 0;font-size:11px;background:rgba(255,255,255,.15);padding:8px 10px;border-radius:4px">〔公開前確認〕医療法・医療広告ガイドライン等に照らした内容確認を行ってください。</p>
+    </div>
+  </div>
+  <p style="margin:40px 0 0;text-align:center;font-size:11px;opacity:.85">© 〇〇矯正歯科</p>
+</footer>
+
+<sc-if value="{{ showFloating }}" hint-placeholder-val="{{ false }}">
+  <a href="{{ bookingUrl }}" style="animation:lpSlideIn .5s cubic-bezier(.34,1.56,.64,1) both;position:fixed;right:16px;bottom:16px;z-index:60;display:flex;flex-direction:column;align-items:center;padding:14px 22px 10px;border-radius:6px;background:linear-gradient(180deg,#43c062,#24a046);color:#fff;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 4px 0 #1c7f37,0 6px 16px rgba(0,0,0,.2);border:2px solid #fff" style-hover="filter:brightness(1.06)">
+    <span style="position:absolute;top:-12px;background:#fff;color:#2f5d57;border:1.5px solid #2f5d57;border-radius:999px;padding:1px 12px;font-size:11px">初診相談</span>
+    相談を予約する
+  </a>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bookingUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#booking-placeholder&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;予約導線&quot;},&quot;telNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;00-0000-0000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;予約導線&quot;},&quot;showFloatingCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;予約導線&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false, open: { 0: true }, scrolled: false };
+  FAQ = [
+    ['自分に合う治療法はどれですか？', '歯並びや骨格、噛み合わせの状態、生活スタイルによって適した方法は異なります。精密検査の結果をもとに、考えられる選択肢と、それぞれの利点・留意点をご説明します。'],
+    ['マウスピース矯正とワイヤー矯正の違いは？', 'マウスピース矯正は取り外しができ目立ちにくい一方、指示どおりの装着時間を自分で管理する必要があります。ワイヤー矯正は固定式で着け忘れがありませんが、装置が見えやすく、清掃に工夫が必要です。歯並びによっては、どちらかが適さない場合もあります。'],
+    ['治療期間はどのくらいかかりますか？', '歯の状態や治療法、歯の動き方によって個人差があります。当院の目安は、全体矯正で約〇年〜〇年、部分矯正で約〇か月〜〇か月です〔要確認〕。治療後は保定期間が必要です。'],
+    ['矯正治療は痛いですか？', '装置の装着後や調整後に、数日ほど歯が浮くような感覚や痛みが出ることがあります。感じ方には個人差があります。痛みが強い場合はご相談ください。'],
+    ['費用はどのくらいかかりますか？', '治療法や治療範囲によって異なります。料金の目安は「料金プラン」をご覧ください。精密検査・診断のあと、治療費の総額と別途かかる費用を治療開始前にご説明します〔要確認〕。'],
+    ['分割払いはできますか？', 'デンタルローンや院内分割のご利用可否・条件は〔要確認〕です。詳しくはご相談時にお尋ねください。'],
+    ['大人になってからでも矯正できますか？', '歯や歯ぐき、骨の状態に問題がなければ、成人の方も矯正治療を受けられる場合があります。歯周病などがある場合は、その治療を優先することがあります。'],
+    ['初診相談では何をしますか？', 'お悩みやご希望をうかがい、お口の中を拝見したうえで、考えられる治療法や費用・期間の目安をお伝えします。所要時間は約〇〇分です〔要確認〕。治療を始めるかどうかは、説明をお聞きになってからご検討いただけます。'],
+    ['治療後にリテーナーは必要ですか？', 'はい。矯正治療で動かした歯は元の位置に戻ろうとする性質があるため、治療後は保定装置（リテーナー）を使用します。使用期間や方法は歯科医師が指示します。'],
+    ['矯正治療のリスクや限界はありますか？', '痛みや違和感、むし歯・歯周病のリスク、歯根吸収、歯肉退縮、後戻りなどがあります。また、治療結果や期間には個人差があります。詳しくは本ページの「リスク・副作用」をご覧ください。']
+  ];
+  progressRef = React.createRef();
+  setupAnim() {
+    if (typeof window === 'undefined') return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const init = { up:['0 40px','1'], down:['0 -24px','1'], left:['-60px 0','1'], right:['60px 0','1'], pop:['0 0','.6'], zoom:['0 0','1.08'] };
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target; el.style.opacity = '1'; el.style.translate = '0 0'; el.style.scale = '1'; this.io.unobserve(el);
+    }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('[data-anim]:not([data-anim-ready])').forEach(el => {
+      el.setAttribute('data-anim-ready', '');
+      if (reduce) return;
+      const [t, s] = init[el.dataset.anim] || init.up;
+      const sibs = Array.from(el.parentElement.children).filter(c => c.hasAttribute('data-anim'));
+      const d = Math.min(sibs.indexOf(el), 6) * 100;
+      el.style.opacity = '0'; el.style.translate = t; el.style.scale = s;
+      el.style.transition = 'opacity .8s ease ' + d + 'ms, translate .9s cubic-bezier(.2,.7,.2,1) ' + d + 'ms, scale .8s cubic-bezier(.34,1.56,.64,1) ' + d + 'ms';
+      this.io.observe(el);
+    });
+    if (reduce) return;
+    const loops = { float:'lpFloat 3.6s ease-in-out infinite', pulse:'lpPulse 2.4s ease-in-out infinite', bob:'lpBob 1.8s ease-in-out infinite', twinkle:'lpTwinkle 2.2s ease-in-out infinite', spin:'lpSpinSlow 12s linear infinite' };
+    document.querySelectorAll('[data-loop]:not([data-loop-ready])').forEach((el, i) => {
+      el.setAttribute('data-loop-ready', '');
+      el.style.animation = loops[el.dataset.loop]; el.style.animationDelay = (i % 5) * .35 + 's';
+    });
+    document.querySelectorAll('[data-shine]:not([data-shine-ready])').forEach(el => {
+      el.setAttribute('data-shine-ready', ''); el.style.overflow = 'hidden';
+      const s = document.createElement('span'); s.setAttribute('aria-hidden', 'true');
+      s.style.cssText = 'position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:lpShine 3.2s ease-in-out infinite;pointer-events:none';
+      el.appendChild(s);
+    });
+  }
+  componentDidUpdate() { this.setupAnim(); }
+  componentDidMount() {
+    setTimeout(() => this.setupAnim(), 50);
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onScroll = () => { const p = this.progressRef.current; if (p) { const m = document.documentElement.scrollHeight - innerHeight; p.style.width = (m > 0 ? scrollY / m * 100 : 0) + '%'; } const s = window.scrollY > 600; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onResize(); this.onScroll();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+  }
+  renderVals() {
+    const isMobile = this.state.w < 900;
+    const tel = this.props.telNumber ?? '00-0000-0000';
+    return {
+      progressRef: this.progressRef,
+      isMobile, isDesktop: !isMobile,
+      menuOpen: this.state.menuOpen,
+      showMobileMenu: isMobile && this.state.menuOpen,
+      menuIcon: this.state.menuOpen ? '×' : '≡',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      bookingUrl: this.props.bookingUrl ?? '#booking-placeholder',
+      telNumber: tel,
+      telHref: 'tel:' + tel.replace(/[^0-9+]/g, ''),
+      showFloating: (this.props.showFloatingCta ?? true) && this.state.scrolled,
+      faqs: this.FAQ.map(([q, a], i) => {
+        const open = !!this.state.open[i];
+        return { q, a, open, icon: open ? '−' : '＋', panelId: 'faq-panel-' + i,
+          toggle: () => this.setState(s => ({ open: { ...s.open, [i]: !s.open[i] } })) };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

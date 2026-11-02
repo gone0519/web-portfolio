@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:wght@300;400&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#3a4242;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased;word-break:auto-phrase;line-break:strict}
+img{max-width:100%}
+*{box-sizing:border-box}
+a{color:#4f5b5d;text-decoration:none}
+a:hover{color:#2f3838}
+</style>
+</helmet>
+
+<div style="font-family:'Zen Kaku Gothic New',sans-serif;color:#3a4242;overflow-x:hidden;padding-bottom:{{ bottomPad }}">
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid #e3e7e7">
+  <div style="max-width:1280px;margin:0 auto;display:flex;align-items:stretch;justify-content:space-between;gap:12px;padding:10px 16px">
+    <a href="#s1" style="display:flex;align-items:center;gap:12px;color:#3a4242">
+      <div style="width:48px;height:48px;flex:none;border:1px solid #8d9696;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.04em;color:#637070">LOGO</div>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <span style="font-family:'Shippori Mincho',serif;font-size:18px;letter-spacing:.12em">〇〇矯正歯科</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.18em;color:#5b6464">ORTHODONTIC CLINIC</span>
+      </div>
+    </a>
+    <div style="display:flex;align-items:stretch;gap:6px">
+      <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;align-items:center;gap:22px;padding-right:14px;font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.1em;white-space:nowrap">
+          <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+            <a href="{{ n.href }}" style="color:#3a4242" style-hover="color:#637070">{{ n.label }}</a>
+          </sc-for>
+        </nav>
+      </sc-if>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <a href="tel:00-0000-0000" style="display:flex;flex-direction:column;justify-content:center;align-items:center;padding:4px 16px;border:1px solid #d6dbdb;color:#3a4242;white-space:nowrap">
+          <span style="font-size:11px;letter-spacing:.15em">ご予約・お問い合わせ</span>
+          <span style="font-family:'Shippori Mincho',serif;font-size:19px;letter-spacing:.06em">00-0000-0000</span>
+        </a>
+        <a href="#contact" style="display:flex;flex-direction:column;justify-content:center;align-items:center;padding:4px 18px;background:#4f5b5d;color:#fff" style-hover="background:#3f494b;color:#fff">
+          <span style="font-size:11px;letter-spacing:.15em">24時間受付</span>
+          <span style="font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.15em">WEB予約</span>
+        </a>
+        <a href="#contact" style="display:flex;flex-direction:column;justify-content:center;align-items:center;padding:4px 18px;background:#06a54b;color:#fff" style-hover="background:#05913f;color:#fff">
+          <span style="font-size:11px;letter-spacing:.15em">LINE</span>
+          <span style="font-family:'Shippori Mincho',serif;font-size:15px;letter-spacing:.12em">相談予約</span>
+        </a>
+      </sc-if>
+      <button onClick="{{ toggleMenu }}" aria-label="メニューを開く" style="width:56px;min-height:48px;border:none;background:#3a4242;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.15em">
+        <span style="width:20px;height:1px;background:#fff"></span>
+        <span style="width:20px;height:1px;background:#fff"></span>
+        <span>MENU</span>
+      </button>
+    </div>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #d6dbdb;box-shadow:0 12px 30px rgba(40,50,50,.08)">
+      <nav style="max-width:1280px;margin:0 auto;padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 24px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 4px;border-bottom:1px solid #e3e7e7;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.12em;color:#3a4242">
+            <span>{{ n.label }}</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:13px;color:#7b8686;letter-spacing:.2em">{{ n.en }}</span>
+          </a>
+        </sc-for>
+      </nav>
+    </div>
+  </sc-if>
+</header>
+
+<main>
+
+<!-- SECTION 1 : HERO -->
+<section id="s1" data-screen-label="01 Hero" style="position:relative;background:{{ heroBg }};overflow:hidden">
+  <sc-if value="{{ !isWide }}" hint-placeholder-val="{{ false }}">
+    <img src="images/hero.jpg" alt="自然な笑顔の女性" style="display:block;width:100%;aspect-ratio:{{ heroRatio }};object-fit:cover;object-position:66% 30%">
+  </sc-if>
+  <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;top:24px;right:0;display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+      <div style="background:rgba(79,91,93,.9);color:#fff;padding:10px 20px;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.12em;line-height:1.7;text-align:center">〇〇の矯正歯科<br>所在地：〇〇県〇〇市〇〇【要差替】</div>
+      <div style="background:rgba(79,91,93,.9);color:#fff;padding:10px 20px;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.12em;line-height:1.7">〇〇駅 徒歩〇分【要差替】</div>
+    </div>
+  </sc-if>
+  <div style="position:relative;max-width:1280px;margin:0 auto;padding:{{ heroPad }};display:flex;flex-direction:column;gap:{{ heroGap }}">
+    <h1 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;color:#2f3838;line-height:1.55;letter-spacing:.14em;text-wrap:pretty">
+      <span style="display:block;font-size:clamp(17px,2.6vw,32px)">歯並びだけではなく、</span>
+      <span style="display:block;font-size:clamp(23px,4.2vw,52px)">口元から、笑顔に自信を。</span>
+    </h1>
+    <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.4vw,18px);letter-spacing:.32em;color:#4f5b5d">〇〇 ORTHODONTIC CLINIC</p>
+    <div style="display:flex;flex-wrap:wrap;gap:{{ tag.gap }}">
+      <sc-for list="{{ heroTags }}" as="t" hint-placeholder-count="3">
+        <div style="padding:{{ tag.outer }};background:rgba(255,255,255,.55);border:1px solid #8d9696">
+          <div style="padding:{{ tag.pad }};background:#637070;color:#fff;font-family:'Shippori Mincho',serif;font-size:{{ tag.font }};letter-spacing:{{ tag.ls }};white-space:nowrap">{{ t }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="max-width:640px;display:flex;flex-direction:column;gap:6px;padding-bottom:14px;border-bottom:1px solid #8d9696">
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(14px,1.4vw,17px);letter-spacing:.14em;line-height:1.9;color:#2f3838;text-wrap:pretty">精密な検査と診断をもとに、<br>ワイヤー矯正・マウスピース矯正から一人ひとりに合った治療をご提案します。</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:{{ badge.gap }};align-items:center">
+      <sc-for list="{{ heroBadges }}" as="b" hint-placeholder-count="4">
+        <div style="width:{{ badge.size }};height:{{ badge.size }};border-radius:50%;background:#fff;box-shadow:0 4px 16px rgba(40,50,50,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;padding:8px;border:1px dashed #b8c0c0">
+          <span style="font-family:'Shippori Mincho',serif;font-size:{{ badge.font }};letter-spacing:.06em;line-height:1.5;color:#3a4242">{{ b }}</span>
+          <span style="font-size:10px;color:#7b8686">【要差替】</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:6px">
+      <a href="#contact" style="flex:{{ ctaFlex }};display:flex;align-items:center;justify-content:center;gap:14px;padding:18px 34px;background:#4f5b5d;color:#fff;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.18em" style-hover="background:#3f494b;color:#fff">矯正相談を予約する<span style="font-family:'Cormorant Garamond',serif">→</span></a>
+      <a href="#s2" style="flex:{{ ctaFlex }};display:flex;align-items:center;justify-content:center;padding:18px 30px;background:rgba(255,255,255,.8);border:1px solid #8d9696;color:#3a4242;font-family:'Shippori Mincho',serif;font-size:15px;letter-spacing:.16em" style-hover="background:#fff">治療方法を見る</a>
+    </div>
+  </div>
+</section>
+
+<div style="position:relative;background:#f2f4f4;padding:clamp(56px,7vw,88px) 20px;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;top:18px;left:0;right:0;text-align:center;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(40px,8vw,104px);letter-spacing:.14em;color:#e3e8e8;white-space:nowrap;line-height:1">CONCEPT</div>
+  <div style="position:relative;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:32px">
+    <h2 style="margin:0;text-align:center;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(20px,2.4vw,28px);letter-spacing:.16em;line-height:1.7">〇〇矯正歯科の矯正治療コンセプト</h2>
+    <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px">
+      <sc-for list="{{ concepts }}" as="c" hint-placeholder-count="4">
+        <div style="padding:5px;border:1px solid #8d9696;background:#fff">
+          <div style="border:1px solid #d6dbdb;padding:18px 10px;display:flex;flex-direction:column;align-items:center;gap:8px">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;color:#637070">{{ c.no }}</span>
+            <span style="font-family:'Shippori Mincho',serif;font-size:clamp(14px,3.8vw,17px);letter-spacing:.12em;text-align:center">{{ c.t }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+<div style="position:relative;background:#637070;color:#fff;padding:clamp(40px,5vw,56px) 20px clamp(52px,6vw,72px);text-align:center">
+  <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(19px,2.6vw,30px);letter-spacing:.16em;line-height:1.8;text-wrap:pretty">矯正治療の結果は、<br>始める前の「診断」から変わります。</p>
+  <div style="position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);width:0;height:0;border-left:56px solid transparent;border-right:56px solid transparent;border-top:28px solid #637070"></div>
+</div>
+
+<!-- SECTION 2 : TROUBLE + TREATMENT OPTIONS -->
+<section id="s2" data-screen-label="02 Concerns & Options" style="position:relative">
+  <div style="position:relative;padding:clamp(80px,9vw,120px) 20px 0;text-align:center;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;top:clamp(56px,7vw,88px);left:0;right:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,10vw,128px);letter-spacing:.14em;color:#eef1f1;white-space:nowrap;line-height:1">TROUBLE</div>
+    <h2 style="position:relative;margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(20px,2.6vw,30px);letter-spacing:.16em;line-height:1.7">このような歯並び・お悩みはありませんか？</h2>
+    <div style="width:1px;height:64px;background:#3a4242;margin:28px auto 0"></div>
+  </div>
+  <div style="background:#555f60;padding:40px 20px">
+    <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:24px 12px">
+      <sc-for list="{{ troubles }}" as="t" hint-placeholder-count="7">
+        <div style="flex:0 0 {{ trouble.w }};min-width:0;display:flex;flex-direction:column;align-items:center;gap:12px;color:#fff;text-align:center">
+          <div style="width:{{ trouble.icon }};height:{{ trouble.icon }};border-radius:50%;border:1px solid rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#e6eaea;padding:12px">icon</div>
+          <span style="font-family:'Shippori Mincho',serif;font-size:{{ trouble.font }};letter-spacing:.1em;line-height:1.6">{{ t.t }}</span>
+          <span style="font-size:11px;letter-spacing:.08em;color:#dfe4e4;margin-top:-8px">{{ t.s }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="position:relative;background:linear-gradient(rgba(58,66,66,.74),rgba(58,66,66,.74)),url(images/trouble.jpg) center/cover no-repeat;padding:clamp(40px,5vw,64px) 20px">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:0 36px;padding-left:{{ checkPad }}">
+      <sc-for list="{{ checks }}" as="c" hint-placeholder-count="10">
+        <div style="display:flex;gap:10px;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.4);color:#fff;font-family:'Shippori Mincho',serif;font-size:15px;letter-spacing:.08em;line-height:1.6">
+          <span style="flex:none">✓</span><span>{{ c }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="position:relative;background:#637070;color:#fff;padding:clamp(40px,5vw,56px) 20px;text-align:center">
+    <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(18px,2.4vw,28px);letter-spacing:.14em;line-height:1.8;text-wrap:pretty">このようなお悩みをお持ちのかたは、<br>まずは一度、ご相談ください。</p>
+    <div style="position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);width:0;height:0;border-left:56px solid transparent;border-right:56px solid transparent;border-top:28px solid #637070"></div>
+  </div>
+
+  <div style="padding:clamp(80px,9vw,120px) 20px clamp(64px,8vw,100px);text-align:center">
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,8.4vw,108px);letter-spacing:.14em;color:#8d9a99;line-height:1">ORTHODONTICS</div>
+    <h2 style="margin:20px 0 0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(17px,2vw,24px);letter-spacing:.16em;line-height:1.8">お悩みに合わせて選べる、矯正治療の方法</h2>
+    <p style="max-width:720px;margin:24px auto 0;font-size:14px;line-height:2.1;letter-spacing:.06em;color:#4a5353;text-wrap:pretty">矯正治療にはいくつかの方法があり、それぞれに特徴があります。どの方法が適しているかは、歯並びや骨格、生活スタイルによって異なり、精密検査をもとに歯科医師が判断します。</p>
+  </div>
+  <div style="max-width:1160px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:20px">
+    <sc-for list="{{ treatments }}" as="t" hint-placeholder-count="4">
+      <article style="background:#fff;border:1px solid #d6dbdb;display:flex;flex-direction:column">
+        <img src="{{ t.img }}" alt="{{ t.t }}" loading="lazy" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover">
+        <div style="padding:22px 20px 26px;display:flex;flex-direction:column;gap:12px;flex:1">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#637070">{{ t.en }}</span>
+          <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:19px;letter-spacing:.12em;padding-bottom:12px;border-bottom:1px solid #d6dbdb">{{ t.t }}</h3>
+          <p style="margin:0;font-size:13.5px;line-height:2;color:#4a5353;letter-spacing:.04em;flex:1">{{ t.d }}</p>
+          <span style="font-size:11px;color:#7b8686">※当院での対応有無【要確認】</span>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+  <div style="max-width:1160px;margin:48px auto 0;padding:0 20px">
+    <div style="background:#fff;border:1px solid #d6dbdb;padding:clamp(20px,3vw,36px)">
+      <h3 style="margin:0 0 20px;text-align:center;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(17px,2vw,21px);letter-spacing:.14em">マウスピース矯正とワイヤー矯正の主な違い</h3>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:{{ tbl.font }};line-height:1.8">
+          <thead>
+            <tr>
+              <th style="width:22%;padding:12px;background:#f2f4f4;border:1px solid #d6dbdb;font-weight:500"></th>
+              <th style="padding:{{ tbl.pad }};background:#637070;color:#fff;border:1px solid #637070;font-family:'Shippori Mincho',serif;font-weight:500;letter-spacing:.08em">マウスピース矯正</th>
+              <th style="padding:{{ tbl.pad }};background:#4f5b5d;color:#fff;border:1px solid #4f5b5d;font-family:'Shippori Mincho',serif;font-weight:500;letter-spacing:.08em">ワイヤー矯正</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ compare }}" as="r" hint-placeholder-count="4">
+              <tr>
+                <th style="padding:{{ tbl.pad }};background:#f2f4f4;border:1px solid #d6dbdb;font-weight:500;text-align:left;letter-spacing:.06em">{{ r.k }}</th>
+                <td style="padding:{{ tbl.pad }};border:1px solid #d6dbdb;color:#4a5353">{{ r.a }}</td>
+                <td style="padding:{{ tbl.pad }};border:1px solid #d6dbdb;color:#4a5353">{{ r.b }}</td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin:16px 0 0;font-size:12px;color:#5b6464;line-height:1.9">※ 上記は一般的な特徴です。適応できる治療法は、精密検査・診断の結果によって異なります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 : REASONS / FEATURES -->
+<section id="s3" data-screen-label="03 Clinic Features" style="position:relative;margin-top:clamp(72px,8vw,110px);border-top:1px solid #d6dbdb">
+  <div style="position:relative;padding:clamp(64px,8vw,100px) 20px clamp(40px,5vw,64px);text-align:center;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;top:clamp(48px,6vw,76px);left:0;right:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,7vw,92px);letter-spacing:.1em;color:#eef1f1;white-space:nowrap;line-height:1">〇〇 ORTHODONTIC</div>
+    <p style="position:relative;margin:0;font-family:'Shippori Mincho',serif;font-size:clamp(17px,2vw,22px);letter-spacing:.16em;line-height:1.8">〇〇矯正歯科が</p>
+    <h2 style="position:relative;margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(22px,2.8vw,32px);letter-spacing:.16em;line-height:1.8">矯正治療で大切にしていること</h2>
+  </div>
+
+  <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="4">
+    <div style="position:relative;background:{{ r.bg }};padding:clamp(56px,7vw,96px) 20px;overflow:hidden">
+      <sc-if value="{{ !isMobile }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="position:absolute;top:clamp(16px,3vw,40px);left:20px;right:20px;max-width:1160px;margin:0 auto;text-align:{{ r.wmAlign }};font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,5.4vw,80px);letter-spacing:.12em;color:#e6eaea;white-space:nowrap;line-height:1">REASON {{ r.no }}</div>
+      </sc-if>
+      <div style="position:relative;max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;flex-direction:{{ r.dir }};gap:clamp(24px,4vw,56px);align-items:center">
+        <div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:20px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:#9aa6a5;line-height:1">{{ r.no }}</span>
+          <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(19px,2.2vw,26px);letter-spacing:.14em;line-height:1.8;text-wrap:pretty">{{ r.t }}</h3>
+          <div style="width:100%;height:1px;background:#3a4242"></div>
+          <p style="margin:0;font-size:14px;line-height:2.1;letter-spacing:.05em;color:#4a5353;text-wrap:pretty">{{ r.d }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ r.points }}" as="p" hint-placeholder-count="3">
+              <span style="padding:8px 14px;background:#fff;border:1px solid #d6dbdb;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.1em">{{ p }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="flex:1 1 340px;min-width:0;position:relative">
+          <img src="{{ r.img }}" alt="{{ r.t }}" loading="lazy" style="display:block;width:100%;aspect-ratio:3/2;object-fit:cover">
+        </div>
+      </div>
+    </div>
+  </sc-for>
+
+  <div style="background:#fff;padding:clamp(56px,7vw,96px) 20px">
+    <div style="max-width:960px;margin:0 auto;border:1px solid #d6dbdb;padding:5px">
+      <div style="border:1px solid #e3e7e7;padding:clamp(24px,4vw,44px);display:flex;flex-wrap:wrap;gap:32px;align-items:center">
+        <div style="position:relative;overflow:hidden;flex:0 0 220px;max-width:100%;margin:0 auto;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,#e6eaea 0 10px,#eef1f1 10px 20px);display:flex;align-items:flex-end;padding:10px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6b7676"><img src="_filled/01-photo-17.jpg" alt="photo：担当歯科医師" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">photo：担当歯科医師</div>
+        <div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#637070">DOCTOR</span>
+          <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:22px;letter-spacing:.16em">院長　〇〇 〇〇【要差替】</h3>
+          <p style="margin:0;font-size:14px;line-height:2;color:#4a5353">ごあいさつ文【要差替】<br>経歴・所属学会・資格は、確認できた情報のみを掲載してください。</p>
+          <dl style="margin:0;display:grid;grid-template-columns:88px 1fr;gap:8px 16px;font-size:13px;line-height:1.8">
+            <dt style="color:#5b6464">経歴</dt><dd style="margin:0">【要差替】</dd>
+            <dt style="color:#5b6464">所属学会</dt><dd style="margin:0">【要差替】</dd>
+            <dt style="color:#5b6464">資格</dt><dd style="margin:0">【要差替】</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 : FLOW -->
+<section id="s4" data-screen-label="04 Consultation Flow" style="position:relative;background:#f2f4f4;padding:clamp(72px,8vw,110px) 20px">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="position:relative;text-align:center;margin-bottom:clamp(40px,5vw,64px)">
+      <div aria-hidden="true" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,9vw,112px);letter-spacing:.16em;color:#e1e6e6;line-height:1">FLOW</div>
+      <h2 style="margin:-0.6em 0 0;position:relative;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(20px,2.6vw,30px);letter-spacing:.16em;line-height:1.7">ご相談から治療開始までの流れ</h2>
+      <p style="max-width:640px;margin:20px auto 0;font-size:14px;line-height:2;color:#4a5353;text-wrap:pretty">ご相談のあと、すぐに治療を始める必要はありません。検査結果と治療計画、費用の説明を受けてから、ご自身で判断していただけます。</p>
+    </div>
+    <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+        <li style="background:#fff;border:1px solid #d6dbdb;padding:clamp(18px,3vw,28px) 20px;display:flex;flex-direction:column;gap:clamp(10px,1.6vw,14px)">
+          <div style="display:flex;align-items:baseline;gap:10px;border-bottom:1px solid #d6dbdb;padding-bottom:12px">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#637070">STEP</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;line-height:1;color:#4f5b5d">{{ s.no }}</span>
+          </div>
+          <h3 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.12em;line-height:1.6">{{ s.t }}</h3>
+          <p style="margin:0;font-size:13px;line-height:2;color:#4a5353">{{ s.d }}</p>
+        </li>
+      </sc-for>
+    </ol>
+    <div style="margin-top:32px;background:#fff;border:1px solid #d6dbdb;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
+      <sc-for list="{{ consultInfo }}" as="c" hint-placeholder-count="4">
+        <div style="padding:22px 24px;border:1px solid #eef1f1;display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:12px;letter-spacing:.14em;color:#5b6464">{{ c.k }}</span>
+          <span style="font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.08em">{{ c.v }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 : FAQ + CONTACT -->
+<section id="s5" data-screen-label="05 FAQ & Booking" style="position:relative;padding:clamp(72px,8vw,110px) 20px">
+  <div style="max-width:960px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:40px">
+      <div aria-hidden="true" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,9vw,112px);letter-spacing:.16em;color:#eef1f1;line-height:1">Q&amp;A</div>
+      <h2 style="margin:-0.6em 0 0;position:relative;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(20px,2.6vw,30px);letter-spacing:.16em">よくあるご質問</h2>
+    </div>
+    <div style="border-top:1px solid #3a4242">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+        <div style="border-bottom:1px solid #d6dbdb">
+          <button onClick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="width:100%;display:flex;align-items:center;gap:16px;padding:22px 4px;background:none;border:none;cursor:pointer;text-align:left;color:#3a4242">
+            <span style="flex:none;font-family:'Cormorant Garamond',serif;font-size:26px;color:#637070;line-height:1">Q</span>
+            <span style="flex:1;font-family:'Shippori Mincho',serif;font-size:16px;letter-spacing:.08em;line-height:1.7">{{ f.q }}</span>
+            <span style="flex:none;font-size:20px;color:#637070;width:20px;text-align:center">{{ f.icon }}</span>
+          </button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:16px;padding:0 4px 24px">
+              <span style="flex:none;font-family:'Cormorant Garamond',serif;font-size:26px;color:#9aa6a5;line-height:1">A</span>
+              <p style="margin:0;font-size:14px;line-height:2;color:#4a5353;text-wrap:pretty">{{ f.a }}</p>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="margin-top:48px;background:#f2f4f4;padding:24px 28px">
+      <h3 style="margin:0 0 10px;font-family:'Shippori Mincho',serif;font-weight:500;font-size:16px;letter-spacing:.12em">矯正治療に伴う一般的なリスク・副作用</h3>
+      <p style="margin:0;font-size:12.5px;line-height:2;color:#4a5353">矯正治療は原則として自由診療（保険適用外）です。装置装着後しばらくは痛みや違和感が出ることがあります。歯磨きが不十分な場合、むし歯や歯周病のリスクが高まります。歯根吸収や歯肉退縮が起こる場合があります。治療後に保定装置を使用しないと、後戻りが起こる可能性があります。治療期間や結果には個人差があります。<br>費用・期間・回数の目安：【要差替】</p>
+    </div>
+  </div>
+
+  <div id="contact" style="max-width:1100px;margin:clamp(56px,7vw,88px) auto 0;border:1px solid #d6dbdb;scroll-margin-top:90px">
+    <div style="position:relative;padding:clamp(40px,5vw,56px) 20px 28px;text-align:center;overflow:hidden">
+      <div aria-hidden="true" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(44px,8vw,96px);letter-spacing:.16em;color:#e6eaea;line-height:1">CONTACT</div>
+      <h2 style="margin:-0.5em 0 0;position:relative;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(17px,2.2vw,24px);letter-spacing:.14em;line-height:1.8">〇〇矯正歯科への矯正相談のご予約</h2>
+    </div>
+    <div style="background:#8b9595;color:#fff;padding:18px 20px;text-align:center;font-size:13px;letter-spacing:.08em;line-height:2;background:#6f7a7a">歯並びや口元のお悩み、治療方法や費用についてのご質問にお答えします。<br>相談料：【要差替】／ご予約はお電話またはWEBから承ります。</div>
+    <div style="padding:28px 20px 36px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+      <a href="tel:00-0000-0000" style="flex:1 1 280px;max-width:320px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 18px;background:#ebeeee;color:#3a4242" style-hover="background:#e1e6e6">
+        <span style="width:100%;text-align:center;font-size:12px;letter-spacing:.16em;padding-bottom:6px;border-bottom:1px solid #8d9696">ご予約・お問い合わせ</span>
+        <span style="font-family:'Shippori Mincho',serif;font-size:26px;letter-spacing:.06em">00-0000-0000</span>
+      </a>
+      <a href="#contact" style="flex:1 1 280px;max-width:320px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 18px;background:#4f5b5d;color:#fff" style-hover="background:#3f494b;color:#fff">
+        <span style="width:100%;text-align:center;font-size:12px;letter-spacing:.16em;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.5)">24時間受付</span>
+        <span style="font-family:'Shippori Mincho',serif;font-size:24px;letter-spacing:.16em">WEB予約</span>
+      </a>
+      <a href="#contact" style="flex:1 1 280px;max-width:320px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 18px;background:#06a54b;color:#fff" style-hover="background:#05913f;color:#fff">
+        <span style="width:100%;text-align:center;font-size:12px;letter-spacing:.16em;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.5)">LINE</span>
+        <span style="font-family:'Shippori Mincho',serif;font-size:24px;letter-spacing:.14em">相談予約</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer style="background:#3a4242;color:#e6eaea;padding:clamp(48px,6vw,72px) 20px 28px">
+  <div style="max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between">
+    <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:14px">
+      <span style="font-family:'Shippori Mincho',serif;font-size:22px;letter-spacing:.16em;color:#fff">〇〇矯正歯科</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.24em">ORTHODONTIC CLINIC</span>
+      <p style="margin:0;font-size:13px;line-height:2">〒000-0000　〇〇県〇〇市〇〇 0-0-0【要差替】<br>〇〇駅より徒歩〇分【要差替】<br>TEL 00-0000-0000</p>
+    </div>
+    <div style="flex:1 1 360px;min-width:0">
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:12.5px;text-align:center">
+          <tr>
+            <th style="padding:8px 8px 8px 0;border-bottom:1px solid #5b6464;text-align:left;font-weight:500;white-space:nowrap">診療時間</th>
+            <sc-for list="{{ days }}" as="d" hint-placeholder-count="7"><th style="padding:8px 2px;border-bottom:1px solid #5b6464;font-weight:500">{{ d }}</th></sc-for>
+          </tr>
+          <tr>
+            <td style="padding:10px 8px 10px 0;text-align:left;border-bottom:1px solid #5b6464;white-space:nowrap">00:00〜00:00</td>
+            <sc-for list="{{ days }}" as="d" hint-placeholder-count="7"><td style="padding:10px 2px;border-bottom:1px solid #5b6464">―</td></sc-for>
+          </tr>
+        </table>
+      </div>
+      <p style="margin:10px 0 0;font-size:12px;color:#c9d0d0">※ 診療時間・休診日【要差替】</p>
+    </div>
+  </div>
+  <nav style="max-width:1160px;margin:40px auto 0;padding-top:20px;border-top:1px solid #5b6464;display:flex;flex-wrap:wrap;gap:12px 28px;font-size:13px">
+    <sc-for list="{{ footLinks }}" as="l" hint-placeholder-count="5">
+      <a href="{{ l.href }}" style="color:#e6eaea" style-hover="color:#fff">{{ l.label }}</a>
+    </sc-for>
+  </nav>
+  <p style="max-width:1160px;margin:24px auto 0;font-size:11px;color:#aeb7b7;letter-spacing:.1em">© 〇〇 Orthodontic Clinic</p>
+</footer>
+
+<sc-if value="{{ showBar }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr 1fr;box-shadow:0 -4px 16px rgba(40,50,50,.12)">
+    <a href="tel:00-0000-0000" style="min-height:56px;display:flex;align-items:center;justify-content:center;background:#ebeeee;color:#3a4242;font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.1em">電話予約</a>
+    <a href="#contact" style="min-height:56px;display:flex;align-items:center;justify-content:center;background:#4f5b5d;color:#fff;font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.1em">WEB予約</a>
+    <a href="#contact" style="min-height:56px;display:flex;align-items:center;justify-content:center;background:#06a54b;color:#fff;font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.1em">LINE</a>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;mobileBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;firstFaqOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menuOpen: false, open: null };
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onR);
+    this.ro = new ResizeObserver(this.onR);
+    this.ro.observe(document.documentElement);
+    this.onR();
+    requestAnimationFrame(this.onR); setTimeout(this.onR, 0); setTimeout(this.onR, 300);
+    window.addEventListener('load', this.onR);
+    if (this.props.firstFaqOpen ?? true) this.setState({ open: 0 });
+    this.reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches || (this.props.animations === false);
+    if (this.reduce) return;
+    this.seen = new WeakSet(); this.anims = [];
+    const finishAll = () => this.anims.forEach(a => { try { a.finish(); } catch (e) {} });
+    this.onPrint = finishAll;
+    window.addEventListener('beforeprint', finishAll);
+    if (!('IntersectionObserver' in window)) { this.reduce = true; return; }
+    this.onVis = () => { this.onR(); if (document.visibilityState === 'hidden') finishAll(); };
+    document.addEventListener('visibilitychange', this.onVis);
+    if (document.visibilityState === 'hidden') setTimeout(finishAll, 200);
+    setTimeout(() => this.anims.forEach(a => {
+      if (a.playState === 'paused') { const r = a.effect.target.getBoundingClientRect(); if (r.top < window.innerHeight) a.play(); }
+    }), 2500);
+    this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting && e.target.__anim) { e.target.__anim.play(); this.io.unobserve(e.target); }
+    }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    this.wms = [];
+    setTimeout(() => { this.scan(); this.loops(); }, 60);
+    this.onS = () => {
+      const h = document.documentElement, p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+      if (this.bar) this.bar.style.transform = `scaleX(${p})`;
+      const hd = document.querySelector('header');
+      if (hd) hd.style.boxShadow = h.scrollTop > 30 ? '0 6px 24px rgba(40,50,50,.08)' : 'none';
+      const vh = window.innerHeight;
+      this.wms.forEach((el, i) => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        const off = (r.top + r.height / 2 - vh / 2) * 0.18 * (i % 2 ? -1 : 1);
+        el.style.translate = `${off.toFixed(1)}px 0`;
+      });
+    };
+    window.addEventListener('scroll', this.onS, { passive: true });
+  }
+  componentDidUpdate() { if (!this.reduce && this.seen) requestAnimationFrame(() => this.scan()); }
+  reveal(el, type, delay = 0) {
+    if (this.seen.has(el)) return;
+    for (let a = el.parentElement; a; a = a.parentElement) if (this.seen.has(a) && a.__anim && a.__anim.playState !== 'finished') return;
+    this.seen.add(el);
+    const E = 'cubic-bezier(.2,.7,.2,1)';
+    const K = {
+      up: [[{ opacity: 0, transform: 'translateY(36px)' }, { opacity: 1, transform: 'none' }], 1000],
+      blur: [[{ opacity: 0, transform: 'translateY(24px)', filter: 'blur(10px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }], 1400],
+      wm: [[{ opacity: 0, letterSpacing: '.45em', filter: 'blur(8px)', offset: 0 }], 2000],
+      clip: [[{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }], 1400],
+      fade: [[{ opacity: 0 }, { opacity: 1 }], 1200],
+      zoom: [[{ opacity: 0, transform: 'scale(.8)' }, { opacity: 1, transform: 'none' }], 900],
+    }[type];
+    const a = el.animate(K[0], { duration: K[1], delay, easing: E, fill: 'both' });
+    a.pause(); el.__anim = a; this.anims.push(a);
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) a.play(); else this.io.observe(el);
+  }
+  scan() {
+    const root = document.querySelector('main'); if (!root) return;
+    const all = [...root.querySelectorAll('*')];
+    all.filter(el => el.tagName === 'IMG' || (el.style.aspectRatio && /repeating/.test(el.style.background))).forEach(el => this.reveal(el, 'clip'));
+    root.querySelectorAll('[aria-hidden="true"]').forEach(el => { if (!this.seen.has(el)) this.wms.push(el); this.reveal(el, 'wm'); });
+    root.querySelectorAll('h1 > span').forEach((el, i) => this.reveal(el, 'blur', 200 + i * 350));
+    all.forEach(el => {
+      const cs = getComputedStyle(el);
+      if (cs.display === 'grid' || (cs.display === 'flex' && cs.flexWrap === 'wrap') || el.tagName === 'TBODY') {
+        [...el.children].forEach((c, i) => {
+          const round = c.firstElementChild && getComputedStyle(c.firstElementChild).borderRadius === '50%';
+          this.reveal(c, round || c.style.borderRadius === '50%' ? 'zoom' : 'up', Math.min(i, 9) * 90);
+          if (el.tagName !== 'TBODY' && getComputedStyle(c).backgroundColor === 'rgb(255, 255, 255)' && !c.__hov) this.hover(c);
+        });
+      }
+    });
+    root.querySelectorAll('h2, h3, p, table, dl, footer *').forEach(el => this.reveal(el, 'up'));
+    all.filter(el => el.style.background === 'rgb(99, 112, 112)' || el.style.backgroundColor === 'rgb(99, 112, 112)').forEach(el => this.reveal(el, 'fade'));
+    document.querySelectorAll('footer > div > div, footer nav').forEach((el, i) => this.reveal(el, 'up', i * 120));
+  }
+  hover(el) {
+    el.__hov = true;
+    let a;
+    el.addEventListener('mouseenter', () => { a && a.cancel(); a = el.animate([{ translate: '0 0', boxShadow: '0 0 0 rgba(40,50,50,0)' }, { translate: '0 -6px', boxShadow: '0 16px 32px rgba(40,50,50,.12)' }], { duration: 350, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }); });
+    el.addEventListener('mouseleave', () => { a && a.reverse(); });
+  }
+  loops() {
+    const hero = document.getElementById('s1');
+    if (hero) [...hero.querySelectorAll('div')].filter(d => d.style.borderRadius === '50%').forEach((d, i) =>
+      d.animate([{ translate: '0 0' }, { translate: '0 -8px' }], { duration: 2600 + i * 300, delay: i * 400, direction: 'alternate', iterations: Infinity, easing: 'ease-in-out' }));
+    const cta = hero && hero.querySelector('a[href="#contact"]');
+    if (cta) cta.animate([{ boxShadow: '0 0 0 0 rgba(79,91,93,.45)' }, { boxShadow: '0 0 0 14px rgba(79,91,93,0)' }], { duration: 2200, iterations: Infinity, easing: 'ease-out' });
+    document.querySelectorAll('main div').forEach(d => {
+      if (d.style.borderTopWidth === '28px') d.animate([{ translate: '0 0' }, { translate: '0 8px' }], { duration: 1400, direction: 'alternate', iterations: Infinity, easing: 'ease-in-out' });
+      if (d.style.width === '1px' && d.style.height === '64px') { d.style.transformOrigin = 'top'; d.animate([{ scale: '1 0', opacity: 1 }, { scale: '1 1', opacity: 1, offset: .6 }, { scale: '1 1', opacity: 0 }], { duration: 2200, iterations: Infinity, easing: 'ease-in-out' }); }
+      if (d.style.width === '96px' && d.style.borderRadius === '50%') {
+        d.addEventListener('mouseenter', () => d.animate([{ scale: '1', background: 'rgba(255,255,255,0)' }, { scale: '1.08', background: 'rgba(255,255,255,.12)' }], { duration: 300, fill: 'forwards' }));
+        d.addEventListener('mouseleave', () => d.animate([{ scale: '1.08' }, { scale: '1', background: 'rgba(255,255,255,0)' }], { duration: 300, fill: 'forwards' }));
+      }
+    });
+    this.bar = document.createElement('div');
+    Object.assign(this.bar.style, { position: 'fixed', top: 0, left: 0, right: 0, height: '2px', background: '#637070', transformOrigin: 'left', transform: 'scaleX(0)', zIndex: 100, pointerEvents: 'none' });
+    document.body.appendChild(this.bar);
+    this.onS();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onR); this.ro && this.ro.disconnect();
+    this.onS && window.removeEventListener('scroll', this.onS); this.io && this.io.disconnect(); this.bar && this.bar.remove();
+    this.onPrint && window.removeEventListener('beforeprint', this.onPrint);
+    this.onVis && document.removeEventListener('visibilitychange', this.onVis);
+    window.removeEventListener('load', this.onR);
+  }
+  renderVals() {
+    const isWide = this.state.w >= 1280;
+    const isDesktop = this.state.w >= 1080;
+    const isMobile = this.state.w < 760;
+    const showBar = isMobile && (this.props.mobileBar ?? true);
+    const faqData = [
+      ['矯正治療の費用はどのくらいかかりますか？', '治療方法や歯並びの状態によって異なります。検査・診断のあと、治療計画とあわせて総額の目安をご説明します。費用の詳細【要差替】'],
+      ['治療期間はどのくらいですか？', '歯の移動量や治療方法によって個人差があります。一般的な目安と、診断にもとづく見込み期間をご説明します。期間の目安【要差替】'],
+      ['マウスピース矯正とワイヤー矯正は、どちらが良いですか？', 'どちらにも長所と注意点があり、歯並びによって適した方法が異なります。精密検査の結果をもとに、選択肢とそれぞれの特徴をご説明します。'],
+      ['大人になってからでも矯正治療はできますか？', '成人の方も矯正治療を受けることができます。ただし、歯周病の状態などによっては先に別の治療が必要になる場合があります。'],
+      ['初回の相談では何をしますか？', 'お悩みやご希望を伺い、お口の状態を拝見したうえで、考えられる治療方法や流れについてご説明します。相談内容・所要時間【要差替】'],
+      ['分割払いはできますか？', 'お支払い方法【要差替】（デンタルローン・分割払いの取り扱い有無を記載してください）'],
+    ];
+    const faqs = faqData.map(([q, a], i) => ({
+      q, a, open: this.state.open === i, icon: this.state.open === i ? '−' : '+',
+      toggle: () => this.setState(s => ({ open: s.open === i ? null : i })),
+    }));
+    return {
+      isWide, isDesktop, isMobile, showBar, menuOpen: this.state.menuOpen, faqs,
+      bottomPad: showBar ? '56px' : '0',
+      checkPad: isDesktop ? '26%' : '0',
+      // 1280px以上: 写真を背景に敷く / それ未満: 写真を上に置き、文字は白背景に
+      heroBg: isWide
+        ? 'linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.8) 38%,rgba(255,255,255,0) 62%),url(images/hero.jpg) 70% center/cover no-repeat'
+        : 'linear-gradient(#fff,#f5f7f7)',
+      heroRatio: isMobile ? '4/3' : '16/8',
+      heroPad: isWide ?'clamp(56px,9vw,110px) 48px 96px' : (isMobile ? '32px 20px 48px' : '48px 40px 64px'),
+      heroGap: isMobile ? '22px' : '28px',
+      tag: isMobile
+        ? { gap: '8px', outer: '3px', pad: '10px 12px', font: '12px', ls: '.08em' }
+        : { gap: '10px', outer: '4px', pad: '12px 22px', font: '15px', ls: '.2em' },
+      badge: isMobile ? { size: '76px', font: '11px', gap: '8px' } : { size: '110px', font: '12px', gap: '14px' },
+      ctaFlex: isMobile ? '1 1 100%' : '0 0 auto',
+      trouble: isDesktop
+        ? { w: 'calc((100% - 72px) / 7)', icon: '96px', font: '14px' }
+        : isMobile
+          ? { w: 'calc((100% - 24px) / 3)', icon: '72px', font: '13px' }
+          : { w: 'calc((100% - 36px) / 4)', icon: '88px', font: '14px' },
+      tbl: isMobile ? { font: '12.5px', pad: '10px 8px' } : { font: '13.5px', pad: '12px 16px' },
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      nav: [
+        { label: '矯正治療の種類', en: 'TREATMENT', href: '#s2' },
+        { label: '当院の特徴', en: 'REASON', href: '#s3' },
+        { label: '治療の流れ', en: 'FLOW', href: '#s4' },
+        { label: 'よくある質問', en: 'Q&A', href: '#s5' },
+        { label: 'ご予約', en: 'CONTACT', href: '#contact' },
+      ],
+      heroTags: ['整った横顔', '健康的な口元', '自然な笑顔'],
+      heroBadges: ['所属学会', '所属学会', '認定資格', '認定資格'],
+      concepts: [
+        { no: '01', t: 'バランスのよい横顔' },
+        { no: '02', t: '自然な口元' },
+        { no: '03', t: '健康的な歯並び' },
+        { no: '04', t: '噛み合わせの安定' },
+      ],
+      troubles: [
+        { t: '歯並びが\nガタガタ', s: '叢生' },
+        { t: '前歯が\n出ている', s: '上顎前突' },
+        { t: '受け口', s: '下顎前突' },
+        { t: 'すきっ歯', s: '空隙歯列' },
+        { t: '噛み合わせ\nが深い', s: '過蓋咬合' },
+        { t: '前歯が\n閉じない', s: '開咬' },
+        { t: '歯列の中心\nがずれている', s: '正中のずれ' },
+      ].map(x => ({ ...x, t: x.t.replace('\n', '') })),
+      checks: [
+        '歯並びが気になり、口元を隠して笑ってしまう',
+        '装置の見た目が気になり、矯正をためらっている',
+        '仕事や学校があり、目立ちにくい方法を知りたい',
+        'マウスピースとワイヤー、どちらが合うのかわからない',
+        '子どもの歯並びについて相談したい',
+        '費用や期間の目安を事前に知っておきたい',
+        '以前に矯正したが、後戻りが気になる',
+        '通院の頻度やスケジュールを確認したい',
+        '金属アレルギーがあり、装置の素材が気になる',
+        '他院の説明に加えて、別の意見も聞いてみたい',
+      ],
+      treatments: [
+        { en: 'CLEAR ALIGNER', t: 'マウスピース矯正', img: 'images/aligner.jpg', d: '透明なマウスピース型の装置を段階的に交換し、歯を少しずつ動かす方法です。取り外しができる一方で、1日あたりの装着時間を守る自己管理が必要です。' },
+        { en: 'METAL BRACES', t: 'ワイヤー矯正（表側）', img: 'images/metal-braces.jpg', d: '歯の表面にブラケットを付け、ワイヤーの力で歯を動かす方法です。幅広い歯並びに用いられてきた、一般的な矯正方法です。' },
+        { en: 'CERAMIC BRACES', t: '目立ちにくい装置', img: 'images/ceramic-braces.jpg', d: '白や透明のブラケットを使用し、金属の装置に比べて目立ちにくくしたワイヤー矯正です。' },
+        { en: 'LINGUAL BRACES', t: '裏側矯正（舌側矯正）', img: 'images/lingual.jpg', d: '歯の裏側に装置を付けるため、正面からは装置が見えにくい方法です。慣れるまで発音や舌の違和感が出ることがあります。' },
+      ],
+      compare: [
+        { k: '装置の見た目', a: '透明で目立ちにくい', b: '装置の種類によって異なる' },
+        { k: '取り外し', a: '食事・歯磨きの際に取り外せる', b: '原則として取り外せない' },
+        { k: '自己管理', a: '装着時間の管理が必要', b: '装置まわりの清掃が重要' },
+        { k: '適応範囲', a: '歯並びによっては適さない場合がある', b: '幅広い歯並びに用いられる' },
+      ],
+      reasons: [
+        { no: '01', bg: '#fff', dir: 'row', wmAlign: 'left', t: '精密な検査にもとづいて、治療方針を立てます', img: 'images/xray.jpg', points: ['口腔内検査', 'レントゲン撮影', '歯型・スキャン'], d: '歯並びだけでなく、噛み合わせや顎の骨格、口元のバランスまで確認したうえで診断を行います。実施する検査の内容【要差替】' },
+        { no: '02', bg: '#f2f4f4', dir: 'row-reverse', wmAlign: 'right', t: '治療方法の違いを、わかりやすくご説明します', img: 'images/explain-model.jpg', points: ['複数の選択肢', 'メリットと注意点', '費用の内訳'], d: '考えられる治療方法ごとに、期間の目安や注意点、費用をご説明します。ご納得いただけるまで、ご質問にお答えします。' },
+        { no: '03', bg: '#fff', dir: 'row', wmAlign: 'left', t: '定期的な調整で、治療の経過を確認します', img: 'images/consult.jpg', points: ['通院時の確認', '計画の見直し', '清掃のアドバイス'], d: '通院のたびに歯の動きや装置の状態を確認し、必要に応じて治療計画を見直します。通院頻度の目安【要差替】' },
+        { no: '04', bg: '#f2f4f4', dir: 'row-reverse', wmAlign: 'right', t: '治療が終わったあとも、保定期間をサポートします', img: 'images/retainer-model.jpg', points: ['保定装置', '定期チェック', 'メンテナンス'], d: '歯は動かしたあとに元の位置へ戻ろうとする性質があります。保定装置の使い方を確認しながら、定期的に経過をみていきます。' },
+      ],
+      steps: [
+        { no: '01', t: 'ご予約・お問い合わせ', d: 'お電話またはWEBからご予約ください。気になっていることを事前にお知らせいただいても構いません。' },
+        { no: '02', t: 'カウンセリング', d: 'お悩みやご希望を伺い、お口の状態を拝見します。考えられる治療の方向性をご説明します。' },
+        { no: '03', t: '精密検査', d: 'レントゲン撮影や歯型の採取などを行い、診断に必要な情報を集めます。' },
+        { no: '04', t: '診断・治療計画のご説明', d: '検査結果をもとに、治療方法・期間の目安・費用・リスクをご説明します。' },
+        { no: '05', t: '治療開始のご判断', d: '説明内容をご検討いただき、ご納得いただけた場合に治療を開始します。' },
+      ],
+      consultInfo: [
+        { k: '相談料', v: '【要差替】' },
+        { k: '所要時間の目安', v: '【要差替】' },
+        { k: 'ご予約方法', v: 'お電話・WEB・LINE' },
+        { k: 'オンライン相談', v: '実施有無【要確認】' },
+      ],
+      days: ['月', '火', '水', '木', '金', '土', '日'],
+      footLinks: [
+        { label: '医院案内', href: '#' },
+        { label: 'アクセス', href: '#' },
+        { label: '料金表', href: '#' },
+        { label: 'お問い合わせ', href: '#contact' },
+        { label: 'プライバシーポリシー', href: '#' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

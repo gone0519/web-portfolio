@@ -1,0 +1,68 @@
+/* レスポンシブ調整（全ページ共通） */
+
+/* 写真を指定した画像枠では、仮置き用の点線枠を出さない */
+image-slot[src]::part(ring) { display: none; }
+
+/* スマホ幅だけ表示する要素 */
+.mg-sp-only { display: none; }
+
+/* トップのヒーロー装飾（横並びレイアウト用の位置指定） */
+@media (max-width: 1199px) {
+  .mg-pc-only { display: none !important; }
+}
+
+/* トップのヒーロー（タブレット幅）：写真と本文を左右に並べる */
+@media (min-width: 700px) and (max-width: 1199px) {
+  .mg-hero-split { display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; gap: 6vw !important; }
+  .mg-hero-img { order: 2; max-width: 480px; justify-self: end; }
+  .mg-hero-copy { padding-bottom: 2vw; }
+}
+
+/* 背景の装飾パターン（ドット・斜線）は本文に重なりやすいので、タブレット以下では薄くする */
+@media (max-width: 1000px) {
+  [aria-hidden="true"][style*="z-index:-1"], [aria-hidden="true"][style*="z-index: -1"] { opacity: .35; }
+}
+
+/* 2カラムが縦積みになる幅では、見出しの追従（sticky）を解除して本文と重ならないようにする */
+@media (max-width: 900px) {
+  .mg-sticky { position: relative !important; top: auto !important; }
+}
+
+/* 日程タイムライン：スマホでは縦のタイムラインに切り替える */
+@media (max-width: 640px) {
+  .mg-tl { padding-top: 0 !important; padding-left: 32px; row-gap: 40px !important; }
+  .mg-tl-line { top: 0 !important; bottom: 0 !important; left: 7px !important; right: auto !important; width: 2px !important; height: auto !important; transform-origin: top !important; }
+  .mg-tl-line[data-rvs] { transform: none !important; }
+  .mg-tl-dot { top: 14px !important; left: -34px !important; }
+}
+
+@media (max-width: 760px) {
+  .mg-sp-only { display: block; }
+  /* お問い合わせ：種別カードを2列で収まる文字サイズに */
+  .mg-type { padding: 18px 16px !important; gap: 16px !important; border-radius: 18px !important; }
+  .mg-type-t { font-size: 16px !important; line-height: 1.5; }
+  .mg-scroll-x { margin-top: 16px !important; margin-right: -4vw; padding-right: 4vw; -webkit-overflow-scrolling: touch; }
+
+  /* ステップ一覧の余白を詰める */
+  .mg-step { min-height: 0 !important; }
+  /* FAQ 回答の右余白 */
+  .mg-faq-a { padding-right: 0 !important; }
+
+  /* キャンパスライフ ヒーロー（12カラム → 縦積み＋写真2枚並び） */
+  .mg-cp-text { grid-column: 1 / -1 !important; }
+  .mg-cp-img1 { grid-column: 1 / span 7 !important; margin-top: 24px; }
+  .mg-cp-img2 { grid-column: 8 / span 5 !important; margin-top: 0 !important; align-self: end; }
+  .mg-cp-badge { left: 50% !important; top: auto !important; bottom: -36px !important; width: 92px !important; height: 92px !important; }
+
+  /* トップ：キャンパスで会おう（写真3枚） */
+  .mg-hc-img1 { grid-column: 1 / span 7 !important; }
+  .mg-hc-img2 { grid-column: 8 / span 5 !important; }
+  .mg-hc-img3 { grid-column: 4 / span 6 !important; margin-top: 16px !important; }
+  .mg-hc-badge { left: auto !important; right: 0 !important; top: auto !important; bottom: 4% !important; width: 92px !important; height: 92px !important; }
+
+  /* 入試対策：科目カードを2列・コンパクトに */
+  .mg-subj-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important; }
+  .mg-subj { min-height: 0 !important; padding: 24px 20px !important; gap: 8px !important; border-radius: 20px !important; }
+  .mg-subj-k { font-size: 44px !important; }
+  .mg-subj-t { font-size: 18px !important; }
+}

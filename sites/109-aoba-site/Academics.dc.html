@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FFF8EA;color:#2B2B2B;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1D5641}
+a:hover{color:#2B2B2B}
+*:focus-visible{outline:3px solid #F2A93B;outline-offset:3px}
+body{word-break:auto-phrase;line-break:strict}
+h1,h2,h3,h4{text-wrap:balance}
+</style>
+<script src="motion.js"></script>
+</helmet>
+<dc-import name="Header" current="academics" style="position:sticky;top:0;z-index:50;display:block" hint-size="100%,66px"></dc-import>
+<main>
+<dc-import name="PageHero" title="学部・学科" en="faculties &amp; departments" lead="4学部6学科。学部の枠をこえて学べる仕組みで、あなたの「好き」をより深く、より広く育てます。" hint-size="100%,420px"></dc-import>
+
+<section data-screen-label="Academics 01 学部一覧" aria-labelledby="fa-h" style="background:#C5D97F;padding:56px 20px 64px">
+  <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:26px">
+    <h2 id="fa-h" style="margin:0;font-size:clamp(24px,3.4vw,30px);font-weight:900;letter-spacing:.12em;color:#fff;-webkit-text-stroke:1.4px #2B2B2B;paint-order:stroke fill;text-align:center">学部をえらぼう！</h2>
+    <nav aria-label="学部へ移動" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px">
+      <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="4">
+        <a href="#{{ f.id }}" style="display:flex;align-items:center;height:34px;padding:0 18px;border-radius:999px;border:2px solid #2B2B2B;background:#FBFAF6;color:#2B2B2B;font-size:12px;font-weight:700;text-decoration:none" style-hover="background:#2B2B2B;color:#fff">#{{ f.name }}</a>
+      </sc-for>
+    </nav>
+    <div style="display:flex;flex-direction:column;gap:22px;width:100%">
+      <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="4">
+        <section id="{{ f.id }}" aria-label="{{ f.name }}" style="scroll-margin-top:90px;background:#FBFAF6;border:2px solid #2B2B2B;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px">
+            <h3 style="margin:0;font-size:24px;font-weight:900;letter-spacing:.06em;color:#1D5641">{{ f.name }}</h3>
+            <span style="font-family:Quicksand,sans-serif;font-weight:700;font-size:12px;letter-spacing:.12em">{{ f.en }}</span>
+          </div>
+          <p style="margin:0;font-size:14px;line-height:1.9;text-wrap:pretty">{{ f.lead }}</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+            <sc-for list="{{ f.depts }}" as="d" hint-placeholder-count="2">
+              <article style="border:2px dashed #C9C2B2;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px">
+                <sc-if value="{{ d.photo }}" hint-placeholder-val="{{ false }}">
+                  <img src="{{ d.photo }}" alt="{{ d.name }}のイメージ" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;display:block">
+                </sc-if>
+                <sc-if value="{{ !d.photo }}" hint-placeholder-val="{{ true }}">
+                  <div style="aspect-ratio:16/9;border-radius:10px;background:repeating-linear-gradient(45deg,#F4EEDF 0 8px,#ECE4D1 8px 16px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-size:11px;color:#6B6455">{{ d.img }}</div>
+                </sc-if>
+                <h4 style="margin:0;font-size:18px;font-weight:900">{{ d.name }}</h4>
+                <p style="margin:0;font-size:13px;line-height:1.85;text-wrap:pretty">{{ d.body }}</p>
+                <p style="margin:0;font-size:12px;font-weight:700">学べること</p>
+                <div style="display:flex;flex-wrap:wrap;gap:6px">
+                  <sc-for list="{{ d.topics }}" as="t" hint-placeholder-count="3">
+                    <span style="padding:3px 10px;border-radius:999px;background:#89C2C1;border:1.5px solid #2B2B2B;font-size:11px;font-weight:700">{{ t }}</span>
+                  </sc-for>
+                </div>
+                <p style="margin:0;font-size:12px;line-height:1.7"><b>めざす進路の例：</b>{{ d.careers }}</p>
+              </article>
+            </sc-for>
+          </div>
+        </section>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Academics 02 学びのスタイル" aria-labelledby="st-h" style="background:#FCDCD0;padding:56px 20px 64px">
+  <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:26px">
+    <h2 id="st-h" style="margin:0;font-size:clamp(24px,3.4vw,30px);font-weight:900;letter-spacing:.12em;color:#fff;-webkit-text-stroke:1.4px #2B2B2B;paint-order:stroke fill;text-align:center">青葉の学びのスタイル</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:12px;width:100%">
+      <article style="background:#FBFAF6;border:2px solid #2B2B2B;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><p style="margin:0;font-size:12px;font-weight:700">先生との距離が近い</p><h3 style="margin:0;font-size:18px;font-weight:900">少人数ゼミ</h3><img src="images/30.jpg" alt="少人数ゼミで話し合う学生" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;display:block"><p style="margin:0;font-size:13px;line-height:1.8;text-align:left">1年次から少人数のゼミに所属し、発言し議論する経験を重ねます。</p></article>
+      <article style="background:#FBFAF6;border:2px solid #2B2B2B;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><p style="margin:0;font-size:12px;font-weight:700">学部の枠をこえて</p><h3 style="margin:0;font-size:18px;font-weight:900">学部横断プログラム</h3><img src="images/32.jpg" alt="ボードを見ながら考える学生" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;display:block"><p style="margin:0;font-size:13px;line-height:1.8;text-align:left">データサイエンスやジェンダー研究など、全学部から履修できる科目群です。</p></article>
+      <article style="background:#FBFAF6;border:2px solid #2B2B2B;border-radius:16px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><p style="margin:0;font-size:12px;font-weight:700">教室の外へ</p><h3 style="margin:0;font-size:18px;font-weight:900">研究・フィールドワーク</h3><img src="images/1.jpg" alt="街を見渡す高台でのフィールドワーク" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;display:block"><p style="margin:0;font-size:13px;line-height:1.8;text-align:left">地域や企業と連携した課題解決型の学びで、研究の楽しさを体験します。</p></article>
+    </div>
+  </div>
+</section>
+<dc-import name="CtaBand" hint-size="100%,340px"></dc-import>
+</main>
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return { faculties: [
+      { id: 'lit', name: '文学部', en: 'faculty of letters', lead: 'ことばや文学、文化をとおして人間を深く理解する学部です。',
+        depts: [
+          { name: '日本文学科', img: 'photo: 古典籍の演習', photo: 'images/14.jpg', body: '古典から現代文学、日本語学まで。原典にふれながら読む力と書く力をきたえます。', topics: ['古典文学', '近現代文学', '日本語学', '創作'], careers: '出版・編集、国語科教員、図書館司書' },
+          { name: '英語英米文学科', img: 'photo: 英語ディスカッション', photo: 'images/3.jpg', body: '文学・言語学・英語教育を横断して学び、実践的な英語運用力を身につけます。', topics: ['英米文学', '英語学', '英語教育', '通訳入門'], careers: '英語科教員、観光・ホテル、商社' },
+        ] },
+      { id: 'hum', name: '人間科学部', en: 'faculty of human sciences', lead: 'こころと育ちを科学的に理解し、人を支える専門性を育てます。',
+        depts: [
+          { name: '心理学科', img: 'photo: 心理学実験', photo: 'images/29.jpg', body: '実験や調査を通して、人の行動とこころを科学的に理解します。', topics: ['臨床心理', '発達心理', '社会心理', '統計'], careers: '一般企業の人事・企画、福祉施設、大学院進学' },
+          { name: '児童教育学科', img: 'photo: 附属園での実習', body: '保育・初等教育の理論と実習を4年間で積み上げ、教育の現場をめざします。', topics: ['保育学', '初等教育', '児童文化', '特別支援'], careers: '保育士、幼稚園・小学校教員' },
+        ] },
+      { id: 'life', name: '生活科学部', en: 'faculty of human life sciences', lead: '食と暮らしを科学の目で見つめ、健やかな生活を支えます。',
+        depts: [
+          { name: '食物栄養学科', img: 'photo: 調理実習室', body: '栄養学・食品学・調理学を実験と実習で学び、食で人を支える専門性を育てます。', topics: ['栄養学', '食品学', '調理学', '給食経営'], careers: '病院・福祉施設、食品メーカー、学校給食' },
+        ] },
+      { id: 'intl', name: '国際学部', en: 'faculty of global studies', lead: '語学と地域研究を組み合わせ、世界とつながる力を育てます。',
+        depts: [
+          { name: '国際コミュニケーション学科', img: 'photo: 留学生との交流', photo: 'images/18.jpg', body: '語学と地域研究を組み合わせ、留学プログラムで異文化を体験します。', topics: ['英語・中国語', '地域研究', '異文化理解', '留学'], careers: '航空・旅行、国際機関、外資系企業' },
+        ] },
+    ] };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+/* Shared responsive overrides. Inline styles carry the base design, so rules here use !important. */
+
+/* Two-column content beside a heading column: drop the span once the grid collapses to one column */
+@media (max-width: 640px) {
+  .rs-span2 { grid-column: auto !important; }
+}
+
+/* Vertical (tategaki) headings read as a tall sliver once they sit on their own row — set them horizontally */
+@media (max-width: 920px) {
+  .rs-vhead { align-items: baseline !important; gap: 12px !important; }
+  .rs-vhead > * { writing-mode: horizontal-tb !important; }
+  .rs-vhead > h2, .rs-vhead > h3 { font-size: 22px !important; letter-spacing: .08em !important; }
+  .rs-vhead > span { font-size: 11px !important; }
+}
+
+/* Display headline made of two spans with no break opportunity */
+@media (max-width: 600px) {
+  .rs-h1split > span { display: block; }
+}
+
+/* Six-card photo grids: keep rows even (6 → 3×2 → 2×3) instead of leaving one card orphaned */
+@media (min-width: 641px) {
+  .rs-grid2 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+}
+@media (min-width: 1100px) {
+  .rs-grid2 { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; }
+}
+
+/* Photo card grids: two columns on phones instead of one oversized column */
+@media (max-width: 640px) {
+  .rs-grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
+  .rs-grid2 > li { border-width: 2px !important; padding: 4px !important; }
+  .rs-grid2 h3 { font-size: 13px !important; line-height: 1.4; }
+  .rs-grid2 p { font-size: 11px !important; }
+}
+
+/* Schedule table becomes stacked cards */
+@media (max-width: 640px) {
+  .rs-sched { min-width: 0 !important; }
+  .rs-sched thead { display: none; }
+  .rs-sched tr { display: grid; gap: 6px; padding: 16px 0; border-bottom: 1px solid #2a5aaf; }
+  .rs-sched th, .rs-sched td { border: 0 !important; padding: 0 !important; }
+  .rs-sched th { font-size: 15px; }
+  .rs-sched td { display: flex; gap: 12px; }
+  .rs-sched td::before { content: attr(data-label); flex: none; width: 5.5em; color: #9fd3f7; font-size: 11px; font-weight: 700; line-height: 1.9; }
+}
+
+/* Academics: the numbered side rail eats a sixth of a phone screen */
+@media (max-width: 560px) {
+  .rs-rail { display: none !important; }
+}
+
+/* Home: filter list becomes a row of chips once it no longer has a column beside the entries */
+@media (max-width: 920px) {
+  .rs-chips { flex-direction: row !important; flex-wrap: wrap; gap: 6px !important; }
+  .rs-chips > button { background: #fff !important; border: 1px solid #b6d9f2 !important; border-radius: 20px !important; padding: 6px 12px !important; }
+  .rs-chips > button > span:first-child { display: none; }
+  .rs-chips > button[aria-pressed="true"] { background: #0b3a91 !important; border-color: #0b3a91 !important; color: #fff !important; }
+}
+
+/* Decorative illustrations that sit beside a column: drop them once the layout stacks */
+@media (max-width: 900px) {
+  .rs-deco-lg { display: none !important; }
+}
+
+/* Footer: keep the open-campus cards from ballooning when the footer is a single column */
+.rs-footcol { max-width: 560px; }
+
+/* Home: the faculty list duplicates the carousel card on phones */
+@media (max-width: 640px) {
+  .rs-hide-sm { display: none !important; }
+}

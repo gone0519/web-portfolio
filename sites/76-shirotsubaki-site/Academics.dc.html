@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#e4f4f0;color:#7a5f17;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#8a6a12;text-decoration:none}
+a:hover{color:#5f4808}
+a:focus-visible,button:focus-visible{outline:2px solid #8a6a12;outline-offset:3px}
+*{box-sizing:border-box}
+</style>
+<link rel="stylesheet" href="responsive.css">
+<script src="motion.js"></script>
+</helmet>
+<div id="top" style="min-height:100vh;background:#e4f4f0;overflow-x:hidden">
+<dc-import name="SiteHeader" current="academics" hint-size="100%,200px"></dc-import>
+<main>
+  <section data-screen-label="Academics 01 Title" style="padding:0 20px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px">
+    <nav aria-label="パンくず" style="display:flex;gap:8px;font-size:11px;letter-spacing:.1em;margin-bottom:18px"><a href="Shirotsubaki%20University.dc.html">トップ</a><span>›</span><span>学部・学科</span></nav>
+    <h1 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:clamp(44px,6vw,62px);color:#b0902e;line-height:1.1">Academics</h1>
+    <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.3em">学部・学科</p>
+    <p style="margin:26px 0 0;max-width:560px;font-family:'Shippori Mincho',serif;font-size:15px;letter-spacing:.12em;line-height:2.2;color:#6e5512;text-wrap:pretty">5学部9学科。専門を深めながら、学部の垣根を越えて学べます。</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px">
+      <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="5">
+        <a href="#{{ f.id }}" style="padding:8px 20px;border-radius:999px;background:#fff;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.12em;transition:background .3s,color .3s" style-hover="background:#a8862a;color:#fff">{{ f.ja }}</a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Academics 02 Faculties" style="padding:30px 20px 80px">
+    <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:30px">
+      <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="5">
+        <article id="{{ f.id }}" style="scroll-margin-top:20px;background:rgba(255,255,255,.82);border-radius:28px;padding:clamp(22px,3vw,36px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(22px,3vw,40px);align-items:center">
+          <div style="background:#fff;padding:5px;box-shadow:0 4px 14px rgba(120,150,140,.2)">
+            <div role="img" aria-label="{{ f.img }}" style="aspect-ratio:4/3;background:#eeeae2 url({{ f.photo }}) center/cover no-repeat"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'Parisienne',cursive;font-size:28px;color:#b0902e;line-height:1">{{ f.en }}</span>
+            <h2 style="margin:0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:22px;letter-spacing:.16em;color:#6e5512">{{ f.ja }}</h2>
+            <p style="margin:0;font-size:14px;line-height:2;color:#6f5a20;text-wrap:pretty">{{ f.text }}</p>
+            <div style="display:flex;flex-direction:column;border-top:1px dotted #e0d3a6;margin-top:6px">
+              <sc-for list="{{ f.depts }}" as="d" hint-placeholder-count="2">
+                <div class="dept-row" style="display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;padding:10px 0;border-bottom:1px dotted #e0d3a6"><span style="font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.1em;color:#6e5512;min-width:150px">{{ d.name }}</span><span style="font-size:12px;color:#7a6a3a">{{ d.kw }}</span></div>
+              </sc-for>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Academics 03 Learning" style="position:relative;padding:50px 0 90px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:40px;padding:0 20px">
+      <h2 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:44px;color:#b0902e;line-height:1.1">Learning</h2>
+      <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.3em">本学の学びの特色</p>
+    </div>
+    <div style="position:relative">
+      <div class="sh-band" style="position:absolute;left:max(20px,calc(50% - 490px));right:max(20px,calc(50% - 490px));top:28px;height:22px;background:#efd56a;clip-path:polygon(0 0,100% 0,98.5% 50%,100% 100%,0 100%,1.5% 50%)"></div>
+      <div style="position:relative;max-width:980px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:24px">
+        <sc-for list="{{ learning }}" as="l" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+            <span style="width:78px;height:78px;border-radius:50%;background:#fff;box-shadow:0 4px 14px rgba(150,130,60,.15);display:flex;align-items:center;justify-content:center;font-family:'Parisienne',cursive;font-size:32px;color:#b0902e">{{ l.no }}</span>
+            <h3 style="margin:8px 0 0;font-family:'Shippori Mincho',serif;font-weight:500;font-size:17px;letter-spacing:.12em;color:#6e5512">{{ l.title }}</h3>
+            <p style="margin:0;font-size:13px;line-height:2;color:#6f5a20;text-wrap:pretty">{{ l.text }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Academics 04 Career" style="background:#fbf1ef;padding:80px 20px 90px">
+    <div style="max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:44px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:14px"><h2 style="margin:0;font-family:'Parisienne',cursive;font-weight:400;font-size:40px;color:#b0902e;line-height:1.1">Career</h2><span style="font-family:'Shippori Mincho',serif;font-size:12px;letter-spacing:.24em">キャリア支援</span></div>
+        <p style="margin:0;font-size:14px;line-height:2.1;color:#6f5a20;text-wrap:pretty">1年次からのキャリア科目、卒業生との交流、個別面談まで。学びと将来をつなぐ支援を4年間を通して用意しています。</p>
+        <ol style="margin:10px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ career }}" as="c" hint-placeholder-count="4">
+            <li style="display:flex;gap:16px;align-items:center;background:#fff;padding:14px 18px"><span style="flex-shrink:0;font-family:'Parisienne',cursive;font-size:20px;color:#b0902e;width:64px">{{ c.yr }}</span><span style="font-family:'Shippori Mincho',serif;font-size:14px;letter-spacing:.08em;color:#6e5512">{{ c.t }}</span></li>
+          </sc-for>
+        </ol>
+      </div>
+      <div style="aspect-ratio:1;max-width:400px;width:100%;justify-self:center;border-radius:50%;background:#eeeae2 url(images/photo-49.jpg) center/cover no-repeat;box-shadow:0 0 30px 10px rgba(255,255,255,.8)" role="img" aria-label="キャリア面談の様子"></div>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:50px">
+      <a href="Admissions.dc.html" style="display:flex;gap:12px;align-items:center;padding:14px 32px;border-radius:999px;background:#a8862a;color:#fff;font-size:13px;letter-spacing:.2em;transition:background .3s" style-hover="background:#7a5f17;color:#fff">入試情報を見る <span>→</span></a>
+    </div>
+  </section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,560px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      faculties: [
+        { id: 'lit', en: 'Humanities', ja: '文学部', img: '文学部 講義', photo: 'images/photo-4.jpg', text: 'ことばと文化、歴史を手がかりに、人間と社会を深く読み解く力を養います。', depts: [{ name: '日本文学科', kw: '古典・近現代文学／日本語学' }, { name: '英語英米文学科', kw: '英米文学／英語学／翻訳' }, { name: '史学科', kw: '日本史／西洋史／アーカイブズ' }] },
+        { id: 'hum', en: 'Human Sciences', ja: '人間科学部', img: '心理学 実験', photo: 'images/photo-52.jpg', text: 'こころの仕組みと人の成長を科学的に学び、人を支える専門性を身につけます。', depts: [{ name: '心理学科', kw: '臨床心理／発達心理／認知科学' }, { name: '教育学科', kw: '初等教育／幼児教育' }] },
+        { id: 'glo', en: 'Global Studies', ja: '国際学部', img: '留学生との交流', photo: 'images/photo-23.jpg', text: '語学力と異文化理解を土台に、世界とつながり行動する力を育てます。', depts: [{ name: '国際コミュニケーション学科', kw: '英語運用／国際関係／留学' }] },
+        { id: 'life', en: 'Life Design', ja: '生活科学部', img: '調理実習', photo: 'images/photo-41.jpg', text: '食と住まい、暮らしを科学し、生活をより豊かにデザインする方法を学びます。', depts: [{ name: '食物栄養学科', kw: '栄養学／食品科学' }, { name: '住環境デザイン学科', kw: 'インテリア／建築／まちづくり' }] },
+        { id: 'nur', en: 'Nursing', ja: '看護学部', img: '看護 実習室', photo: 'images/photo-12.jpg', text: '確かな知識と技術、そして人に寄り添う心を備えた看護職をめざします。', depts: [{ name: '看護学科', kw: '基礎看護／地域看護／臨地実習' }] }
+      ],
+      learning: [
+        { no: '1', title: '1年次からの少人数ゼミ', text: '入学直後から、学びの土台となる読む・書く・話す力を対話の中で身につけます。' },
+        { no: '2', title: '学部を越える副専攻', text: '所属学部の専門に加え、データサイエンスやジェンダー論など他分野を体系的に学べます。' },
+        { no: '3', title: '社会とつながる実践', text: '地域や企業と連携したプロジェクト、インターンシップで学びを社会で試します。' }
+      ],
+      career: [
+        { yr: '1st', t: 'キャリアデザイン入門で将来を考える' },
+        { yr: '2nd', t: '卒業生との座談会・業界研究' },
+        { yr: '3rd', t: 'インターンシップ・個別面談' },
+        { yr: '4th', t: '就職活動・資格取得の個別サポート' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="./responsive.css">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f3f4f6;color:#232427;font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#0b3fd9;text-decoration:none}
+a:hover{color:#072fa6}
+*{box-sizing:border-box}
+</style>
+<script src="./motion.js"></script>
+</helmet>
+<div id="top" style="position:relative;overflow-x:hidden;background:#f3f4f6;min-height:100vh">
+<dc-import name="SiteHeader" current="prep" hint-size="100%,100px"></dc-import>
+
+<section data-screen-label="Preparation Hero" style="position:relative;max-width:1920px;margin:0 auto;padding:clamp(48px,5vw,90px) clamp(20px,7.8vw,150px) clamp(56px,5vw,90px)">
+  <div data-drift style="overflow:hidden;position:absolute;right:0;top:0;width:52%;height:100%;pointer-events:none;background:repeating-linear-gradient(to bottom,#2347e6 0 1.5px,transparent 1.5px 13px);-webkit-mask-image:radial-gradient(ellipse 60% 60% at 80% 50%,#000 0 30%,transparent 70%);mask-image:radial-gradient(ellipse 60% 60% at 80% 50%,#000 0 30%,transparent 70%);opacity:.6"><img src="_filled/04-teacher.png" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div data-reveal="fade" data-delay="250" style="position:relative;display:flex;gap:10px;font-size:13px;color:#6b7180"><a href="University Admissions.dc.html" style="color:#6b7180">TOP</a><span>/</span><span style="color:#232427">入試対策</span></div>
+  <div data-reveal="left" data-delay="350" style="position:relative;display:flex;align-items:center;gap:10px;margin-top:48px;color:#0b3fd9;font-size:15px;font-weight:700"><span style="width:13px;height:9px;background:#0b3fd9;border-radius:50% 50% 50% 50% / 100% 0 100% 0;transform:rotate(-30deg)"></span>入試対策</div>
+  <h1 data-reveal="mask" data-delay="450" style="position:relative;margin:10px 0 0;font-family:'Hanken Grotesk',sans-serif;font-size:clamp(60px,7vw,136px);font-weight:600;letter-spacing:-.015em;line-height:1">Preparation</h1>
+  <p class="rs-phrase" data-reveal="up" data-delay="600" style="position:relative;margin:36px 0 0;max-width:760px;font-size:clamp(18px,1.4vw,24px);font-weight:700;line-height:1.8;letter-spacing:.04em">自分に合った入試方式を知り、計画的に準備を進めよう。</p>
+  <div class="rs-anchors" data-stagger style="position:relative;display:flex;flex-wrap:wrap;gap:8px;margin-top:40px">
+    <sc-for list="{{ anchors }}" as="a" hint-placeholder-count="5">
+      <a href="{{ a.href }}" style="display:flex;align-items:center;gap:14px;height:48px;padding:0 20px;background:#fff;color:#232427;font-size:14px;font-weight:700;transition:background .2s" style-hover="background:#e5ecfb;color:#0b3fd9">{{ a.label }}<span style="color:#0b3fd9">↓</span></a>
+    </sc-for>
+  </div>
+</section>
+
+<section id="methods" style="max-width:1920px;margin:0 auto;padding:clamp(40px,4vw,70px) clamp(20px,7.8vw,150px) clamp(80px,8vw,140px)">
+  <div data-reveal="left" style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:700;color:#0b3fd9;letter-spacing:.1em">ADMISSION METHODS</div>
+  <h2 data-reveal="up" style="margin:8px 0 0;font-size:clamp(26px,2.2vw,38px);font-weight:700">入試方式の違いを知る</h2>
+  <div data-stagger style="display:flex;flex-direction:column;gap:20px;margin-top:40px">
+    <sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+      <div data-reveal="up" style="background:#fff;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;padding:clamp(28px,3.4vw,56px)">
+        <div>
+          <div data-reveal="left" style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:700;color:#0b3fd9;letter-spacing:.1em">{{ m.en }}</div>
+          <div style="margin-top:8px;font-size:clamp(22px,1.8vw,30px);font-weight:700">{{ m.name }}</div>
+          <p data-reveal="up" style="margin:16px 0 0;font-size:15px;line-height:2;color:#4a4e57;text-wrap:pretty">{{ m.desc }}</p>
+          <div style="margin-top:16px;font-size:13px;color:#6b7180">準備開始の目安：<span style="color:#232427;font-weight:700">{{ m.start }}</span></div>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:700;padding-bottom:12px;border-bottom:1px solid #d9dce2">主な評価のポイント</div>
+          <sc-for list="{{ m.eval }}" as="e" hint-placeholder-count="3"><div style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #eceef2;font-size:14px;line-height:1.7"><span style="color:#0b3fd9;font-weight:700">—</span>{{ e }}</div></sc-for>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:700;padding-bottom:12px;border-bottom:1px solid #d9dce2">準備のポイント</div>
+          <sc-for list="{{ m.tips }}" as="e" hint-placeholder-count="3"><div style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #eceef2;font-size:14px;line-height:1.7"><span style="color:#0b3fd9;font-weight:700">—</span>{{ e }}</div></sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="plan" style="background:#e5ecfb">
+  <div style="max-width:1920px;margin:0 auto;padding:clamp(80px,8vw,140px) clamp(20px,7.8vw,150px)">
+    <div data-reveal="left" style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:700;color:#0b3fd9;letter-spacing:.1em">STUDY PLAN</div>
+    <h2 data-reveal="up" style="margin:8px 0 0;font-size:clamp(26px,2.2vw,38px);font-weight:700">時期ごとの学習計画</h2>
+    <div data-stagger style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:2px;margin-top:40px">
+      <sc-for list="{{ timeline }}" as="s" hint-placeholder-count="6">
+        <div style="display:flex;flex-direction:column;gap:10px;background:#fff;padding:28px 24px">
+          <span style="font-family:'Hanken Grotesk',sans-serif;font-size:28px;font-weight:600;color:#0b3fd9">{{ s.n }}</span>
+          <span style="font-size:13px;font-weight:700;color:#0b3fd9">{{ s.when }}</span>
+          <span style="font-size:17px;font-weight:700">{{ s.title }}</span>
+          <span style="font-size:14px;line-height:1.85;color:#4a4e57">{{ s.desc }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div id="time" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,120px);margin-top:clamp(72px,7vw,120px)">
+      <div>
+        <div data-reveal="left" style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:700;color:#0b3fd9;letter-spacing:.1em">TIME MANAGEMENT</div>
+        <h2 data-reveal="up" style="margin:8px 0 0;font-size:clamp(26px,2.2vw,38px);font-weight:700">時間管理のコツ</h2>
+        <p data-reveal="up" style="margin:20px 0 0;font-size:15px;line-height:2;color:#4a4e57;text-wrap:pretty">勉強時間の長さよりも、計画と振り返りの習慣が成果を左右します。無理なく続けられるリズムをつくりましょう。</p>
+      </div>
+      <div data-stagger style="border-top:1px solid #c6d2ee">
+        <sc-for list="{{ tips }}" as="t" hint-placeholder-count="4">
+          <div style="display:flex;gap:24px;padding:22px 0;border-bottom:1px solid #c6d2ee">
+            <span style="flex:none;font-family:'Hanken Grotesk',sans-serif;font-size:20px;font-weight:600;color:#0b3fd9;width:32px">{{ t.n }}</span>
+            <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:17px;font-weight:700">{{ t.title }}</span><span style="font-size:14px;line-height:1.85;color:#4a4e57">{{ t.desc }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="subjects" style="max-width:1920px;margin:0 auto;padding:clamp(80px,8vw,140px) clamp(20px,7.8vw,150px)">
+  <div data-reveal="left" style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:700;color:#0b3fd9;letter-spacing:.1em">BY SUBJECT</div>
+  <h2 data-reveal="up" style="margin:8px 0 0;font-size:clamp(26px,2.2vw,38px);font-weight:700">科目別の対策ポイント</h2>
+  <div data-stagger style="margin-top:40px;border-top:1px solid #d1d5dd">
+    <sc-for list="{{ subjects }}" as="s" hint-placeholder-count="5">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px 40px;padding:28px 0;border-bottom:1px solid #d1d5dd">
+        <div style="display:flex;align-items:baseline;gap:14px"><span style="font-size:20px;font-weight:700">{{ s.name }}</span><span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:600;color:#0b3fd9">{{ s.en }}</span></div>
+        <span class="rs-span" style="grid-column:span 2;font-size:15px;line-height:1.9;color:#4a4e57;min-width:0">{{ s.desc }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div id="resources" style="margin-top:clamp(72px,7vw,120px)">
+    <div data-reveal="left" style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:700;color:#0b3fd9;letter-spacing:.1em">RESOURCES</div>
+    <h2 data-reveal="up" style="margin:8px 0 0;font-size:clamp(26px,2.2vw,38px);font-weight:700">受験生向けリソース</h2>
+    <div data-stagger style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px;margin-top:40px">
+      <sc-for list="{{ resources }}" as="r" hint-placeholder-count="4">
+        <a href="Contact.dc.html#form" style="display:flex;flex-direction:column;background:#e8ebf0;padding:16px;color:#232427;transition:background .25s" style-hover="background:#dfe6f6;color:#232427">
+          <div style="position:relative;aspect-ratio:16/10"><image-slot id="{{ r.img }}" src="{{ r.src }}" shape="rect" placeholder="{{ r.ph }}"></image-slot></div>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:20px 8px 8px">
+            <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:19px;font-weight:700">{{ r.title }}</span><span style="font-size:13px;line-height:1.7;color:#6b7180">{{ r.desc }}</span></div>
+            <span style="flex:none;display:flex;align-items:center;justify-content:center;width:48px;height:30px;background:#0b3fd9;color:#fff;font-size:15px">→</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      anchors: [
+        { label: '入試方式', href: '#methods' }, { label: '学習計画', href: '#plan' }, { label: '時間管理', href: '#time' },
+        { label: '科目別対策', href: '#subjects' }, { label: 'リソース', href: '#resources' },
+      ],
+      methods: [
+        { name: '一般選抜', en: 'GENERAL', start: '高2〜高3春', desc: '学力試験の得点を中心に合否を判定する方式です。大学独自の個別試験のほか、大学入学共通テストの成績を利用する方式もあります。', eval: ['教科・科目の学力試験', '共通テストの得点（利用方式のみ）', '一部学部で調査書を参考'], tips: ['志望学部の出題範囲と配点を確認する', '過去問題で時間配分を練習する', '苦手科目は基礎の反復から'] },
+        { name: '学校推薦型選抜', en: 'SCHOOL RECOMMENDATION', start: '高2秋〜高3春', desc: '出身高校の校長の推薦にもとづき、書類・面接・小論文などで総合的に評価する方式です。出願には評定平均などの条件があります。', eval: ['調査書・推薦書', '面接・小論文', '基礎学力の確認（学部による）'], tips: ['出願条件を高校の先生と早めに確認', '志望理由を自分の言葉で整理する', '小論文は添削を受けながら練習'] },
+        { name: '総合型選抜', en: 'COMPREHENSIVE', start: '高2〜高3春', desc: '学びへの意欲や適性、高校時代の活動などを、書類・面談・プレゼンテーションなどを通じて多面的に評価する方式です。', eval: ['志望理由書・活動報告書', '面談・プレゼンテーション', '学部ごとの課題'], tips: ['大学のアドミッション・ポリシーを読む', '探究活動や課外活動を記録しておく', 'オープンキャンパスで学部の学びを知る'] },
+      ],
+      timeline: [
+        { n: '01', when: '高1・高2', title: '基礎固め', desc: '授業内容を確実に理解し、英語・数学の基礎を固めます。' },
+        { n: '02', when: '高2 冬', title: '進路研究', desc: '興味のある分野や学部を調べ、志望校の候補を挙げます。' },
+        { n: '03', when: '高3 春', title: '方式と科目の決定', desc: '受験する入試方式と科目を決め、年間計画を立てます。' },
+        { n: '04', when: '高3 夏', title: '弱点の克服', desc: 'まとまった時間を使い、苦手分野を集中的に復習します。' },
+        { n: '05', when: '高3 秋', title: '実戦演習・出願', desc: '過去問題に取り組み、出願書類を準備します。' },
+        { n: '06', when: '高3 冬', title: '総仕上げ', desc: '本番の時間割で演習し、体調と生活リズムを整えます。' },
+      ],
+      tips: [
+        { n: '01', title: '週単位で計画を立てる', desc: '1日単位では崩れやすいため、週ごとの目標と予備日を決めておきます。' },
+        { n: '02', title: '学習記録をつける', desc: '何をどれだけ学んだかを書き出し、計画とのずれを毎週見直します。' },
+        { n: '03', title: 'すき間時間を活用する', desc: '通学時間は英単語や用語の暗記など、短時間でできる学習にあてます。' },
+        { n: '04', title: '睡眠時間を確保する', desc: '試験は午前から始まります。早めに本番に合わせた生活リズムへ移行しましょう。' },
+      ],
+      subjects: [
+        { name: '英語', en: 'English', desc: '長文読解の比重が大きいため、語彙と文法の基礎を固めたうえで、毎日一定量の英文を読む習慣をつけましょう。' },
+        { name: '国語', en: 'Japanese', desc: '現代文は論理の流れを図式化しながら読む練習を。古文・漢文は文法と句法を早めに仕上げます。' },
+        { name: '数学', en: 'Mathematics', desc: '解法を暗記するのではなく、なぜその方法を使うのかを説明できるようにすることが応用力につながります。' },
+        { name: '理科', en: 'Science', desc: '教科書の図や実験の手順を理解し、計算問題は単位を意識して解く練習を重ねましょう。' },
+        { name: '地歴・公民', en: 'Social Studies', desc: '出来事を年代順に並べるだけでなく、原因と結果のつながりで整理すると記述問題にも対応できます。' },
+      ],
+      resources: [
+        { title: '過去問題', desc: '過去の入試問題を学部・科目別に掲載（請求制）', img: 'res-1', ph: '過去問題', src: 'images/photo-33.jpg' },
+        { title: '出題傾向と対策', desc: '各科目の出題範囲と対策のポイントを解説', img: 'res-2', ph: '対策ガイド', src: 'images/photo-16.jpg' },
+        { title: '学習計画シート', desc: '週単位で使える計画・振り返りシート', img: 'res-3', ph: '学習計画', src: 'images/photo-20.jpg' },
+        { title: '入試説明動画', desc: '入試方式と出願方法を動画で解説', img: 'res-4', ph: '説明動画', src: 'images/photo-13.jpg' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

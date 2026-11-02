@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="position:relative;z-index:10">
+<a href="OpenCampus.dc.html#reserve" aria-label="オープンキャンパス来場予約" class="oc-badge" style="position:fixed;top:0;right:clamp(10px,3vw,40px);z-index:50;display:flex;flex-direction:column;align-items:center;text-decoration:none">
+  <span style="width:1px;height:28px;background:#c9ad5a"></span>
+  <span style="width:92px;height:92px;border-radius:50%;background:#fffdf3;box-shadow:0 0 0 3px #f3eab8,0 6px 18px rgba(150,130,60,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:transform .3s" style-hover="transform:rotate(-6deg)">
+    <span style="font-family:'Parisienne',cursive;font-size:15px;color:#b0902e;line-height:1">Open Campus</span>
+    <span style="font-family:'Shippori Mincho',serif;font-size:13px;color:#7a5f17;letter-spacing:.15em">来場予約</span>
+  </span>
+</a>
+<header style="background:radial-gradient(ellipse 62% 100% at 50% 0%,#ffffff 55%,rgba(255,255,255,0) 100%);padding:26px 20px 56px">
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div class="hdr-row" style="display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:760px;margin:0 auto;padding-right:100px">
+      <a href="Shirotsubaki%20University.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+        <span style="width:40px;height:40px;border-radius:50%;border:1px solid #c9ad5a;display:flex;align-items:center;justify-content:center;font-family:'Shippori Mincho',serif;color:#9b7b22;font-size:18px">椿</span>
+        <span style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Shippori Mincho',serif;font-size:19px;letter-spacing:.12em;color:#7a5f17;white-space:nowrap">白椿女子大学</span><span style="font-size:9px;letter-spacing:.14em;color:#a88a35;white-space:nowrap">SHIROTSUBAKI WOMEN'S UNIV.</span></span>
+      </a>
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" aria-expanded="{{ menuOpen }}" style="flex-shrink:0;width:50px;height:50px;border-radius:50%;border:1px solid #d8c78e;background:#fff;color:#8a6a12;font-size:10px;letter-spacing:.1em;cursor:pointer;font-family:'DM Mono',monospace">MENU</button>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <nav aria-label="メインメニュー" style="max-width:760px;margin:18px auto 0;background:#fff;border-radius:18px;padding:10px 22px;box-shadow:0 8px 24px rgba(120,150,140,.15);display:flex;flex-direction:column">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+          <a href="{{ n.href }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px dotted #e0d3a6;color:#7a5f17;text-decoration:none"><span style="font-family:'Shippori Mincho',serif;font-size:15px;letter-spacing:.12em">{{ n.ja }}</span><span style="font-family:'Parisienne',cursive;font-size:15px;color:#b0902e">{{ n.en }}</span></a>
+        </sc-for>
+      </nav>
+    </sc-if>
+  </sc-if>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav aria-label="メインメニュー" style="display:flex;justify-content:center;align-items:flex-start;gap:clamp(18px,3vw,48px);max-width:1100px;margin:0 auto">
+      <sc-for list="{{ navLeft }}" as="n" hint-placeholder-count="3">
+        <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="margin-top:{{ n.mt }};display:flex;flex-direction:column;align-items:center;gap:4px;color:#7a5f17;text-decoration:none;transition:color .3s" style-hover="color:#4f3c06">
+          <span style="font-size:9px;color:#c9ad5a">▾</span>
+          <span style="font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;white-space:nowrap">{{ n.ja }}</span>
+          <span style="font-family:'Parisienne',cursive;font-size:13px;color:#c2a24a;white-space:nowrap">{{ n.en }}</span>
+          <sc-if value="{{ n.active }}"><span style="width:5px;height:5px;border-radius:50%;background:#d79aa5"></span></sc-if>
+        </a>
+      </sc-for>
+      <a href="Shirotsubaki%20University.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 10px;text-decoration:none">
+        <span style="width:58px;height:58px;border-radius:50%;border:1px solid #c9ad5a;display:flex;align-items:center;justify-content:center;font-family:'Shippori Mincho',serif;color:#9b7b22;font-size:24px;box-shadow:inset 0 0 0 4px #fff,inset 0 0 0 5px #efe4bf">椿</span>
+        <span style="font-family:'Shippori Mincho',serif;font-size:24px;letter-spacing:.16em;color:#7a5f17;white-space:nowrap">白椿女子大学</span>
+        <span style="font-size:9px;letter-spacing:.2em;color:#a88a35;white-space:nowrap">SHIROTSUBAKI WOMEN'S UNIVERSITY</span>
+      </a>
+      <sc-for list="{{ navRight }}" as="n" hint-placeholder-count="3">
+        <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="margin-top:{{ n.mt }};display:flex;flex-direction:column;align-items:center;gap:4px;color:#7a5f17;text-decoration:none;transition:color .3s" style-hover="color:#4f3c06">
+          <span style="font-size:9px;color:#c9ad5a">▾</span>
+          <span style="font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:.14em;white-space:nowrap">{{ n.ja }}</span>
+          <span style="font-family:'Parisienne',cursive;font-size:13px;color:#c2a24a;white-space:nowrap">{{ n.en }}</span>
+          <sc-if value="{{ n.active }}"><span style="width:5px;height:5px;border-radius:50%;background:#d79aa5"></span></sc-if>
+        </a>
+      </sc-for>
+    </nav>
+  </sc-if>
+</header>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;about&quot;,&quot;academics&quot;,&quot;campus&quot;,&quot;admissions&quot;,&quot;opencampus&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const cur = this.props.current ?? 'home';
+    const isMobile = this.state.w < 1180;
+    const items = [
+      { key: 'about', ja: '大学について', en: 'About us', href: 'About.dc.html' },
+      { key: 'academics', ja: '学部・学科', en: 'Academics', href: 'Academics.dc.html' },
+      { key: 'campus', ja: 'キャンパスライフ', en: 'Campus Life', href: 'CampusLife.dc.html' },
+      { key: 'admissions', ja: '入試情報', en: 'Admissions', href: 'Admissions.dc.html' },
+      { key: 'opencampus', ja: 'オープンキャンパス', en: 'Open Campus', href: 'OpenCampus.dc.html' },
+      { key: 'access', ja: 'アクセス', en: 'Access', href: '#access' }
+    ];
+    const mts = ['72px', '50px', '30px', '30px', '50px', '72px'];
+    const nav = items.map((n, i) => ({ ...n, mt: mts[i], active: n.key === cur, aria: n.key === cur ? 'page' : undefined }));
+    return {
+      isMobile, isDesktop: !isMobile, menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      navItems: nav, navLeft: nav.slice(0, 3), navRight: nav.slice(3)
+    };
+  }
+}
+</script>
+</body>
+</html>

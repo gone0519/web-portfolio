@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#1f1f1f;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#1f1f1f;text-decoration:none;transition:color .25s,background .25s,border-color .25s}
+a:hover{color:#c22a2a}
+a:focus-visible,button:focus-visible{outline:2px solid #c22a2a;outline-offset:3px}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="campus" style="position:sticky;top:0;z-index:50" hint-size="100%,72px"></dc-import>
+<main>
+<dc-import name="PageHero" no="03" title="キャンパスライフ" en="Campus Life" lead="授業のあとのカフェ、サークルの仲間、季節ごとの行事。学びの外にも、ここで過ごす4年間を彩る時間があります。" img-id="life-hero" img-label="芝生で談笑する学生たち" hint-size="100%,560px"></dc-import>
+
+<nav aria-label="ページ内メニュー" style="border-top:1px solid #e4e2dd;border-bottom:1px solid #e4e2dd;display:flex;flex-wrap:wrap;justify-content:center">
+  <a href="#stories" style="padding:18px clamp(16px,3vw,36px);font-size:13px;font-weight:500;display:flex;gap:10px" style-hover="color:#c22a2a"><span style="font-family:'Cormorant Garamond',serif;color:#c22a2a">i</span>在学生の声</a>
+  <a href="#year" style="padding:18px clamp(16px,3vw,36px);font-size:13px;font-weight:500;display:flex;gap:10px" style-hover="color:#c22a2a"><span style="font-family:'Cormorant Garamond',serif;color:#c22a2a">ii</span>キャンパスの一年</a>
+  <a href="#clubs" style="padding:18px clamp(16px,3vw,36px);font-size:13px;font-weight:500;display:flex;gap:10px" style-hover="color:#c22a2a"><span style="font-family:'Cormorant Garamond',serif;color:#c22a2a">iii</span>クラブ・サークル</a>
+  <a href="#support" style="padding:18px clamp(16px,3vw,36px);font-size:13px;font-weight:500;display:flex;gap:10px" style-hover="color:#c22a2a"><span style="font-family:'Cormorant Garamond',serif;color:#c22a2a">iv</span>学生支援</a>
+</nav>
+
+<section id="stories" data-screen-label="Life Stories" style="scroll-margin-top:80px;max-width:1160px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(56px,8vw,96px)">
+  <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+    <span style="font-family:'Noto Serif JP',serif;font-size:12px;font-weight:700;letter-spacing:0.1em">白鷺で過ごす</span>
+    <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.2vw,38px);font-weight:700;letter-spacing:0.24em">在学生の声</h2>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic">Student Stories</span>
+  </div>
+  <sc-for list="{{ stories }}" as="s" hint-placeholder-count="3">
+    <article data-reveal="" style="display:flex;flex-wrap:wrap;flex-direction:{{ s.dir }};gap:clamp(32px,5vw,72px);align-items:center">
+      <div style="flex:0 1 340px;margin:0 auto;position:relative;width:100%;max-width:340px;aspect-ratio:1/1">
+        <span style="position:absolute;left:50%;top:-16px;transform:translateX(-50%);width:110px;height:20px;background:#1f1f1f;border-radius:50% 50% 4px 4px / 100% 100% 4px 4px;z-index:1"></span>
+        <image-slot id="story-{{ s.key }}" shape="circle" placeholder="{{ s.photo }}"></image-slot>
+        <span style="position:absolute;right:0;bottom:16px;width:76px;height:76px;border-radius:50%;background:#c22a2a;color:#fff;font-family:'Noto Serif JP',serif;font-size:13px;line-height:1.4;white-space:pre-line;display:flex;align-items:center;justify-content:center;text-align:center">{{ s.badge }}</span>
+      </div>
+      <div style="flex:1 1 380px;display:flex;gap:clamp(20px,3vw,40px)">
+        <p style="margin:0;writing-mode:vertical-rl;font-family:'Noto Serif JP',serif;font-size:clamp(20px,2.2vw,26px);letter-spacing:0.2em;line-height:1.8;color:#c22a2a;flex:none;max-height:360px">{{ s.catch }}</p>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px">{{ s.en }}</span>
+          <sc-for list="{{ s.qa }}" as="q" hint-placeholder-count="2">
+            <div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid #e4e2dd;padding-top:14px">
+              <span style="font-size:12px;font-weight:700;color:#c22a2a">Q. {{ q.q }}</span>
+              <span style="font-family:'Noto Serif JP',serif;font-size:14px;line-height:2;text-wrap:pretty">{{ q.a }}</span>
+            </div>
+          </sc-for>
+          <span style="font-size:11px;color:#666">{{ s.who }}</span>
+        </div>
+      </div>
+    </article>
+  </sc-for>
+</section>
+
+<section id="year" data-screen-label="Life Year" style="scroll-margin-top:80px;background:#f6f5f2">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(40px,6vw,64px)">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+      <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.2vw,38px);font-weight:700;letter-spacing:0.24em">キャンパスの一年</h2>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic">A Year on Campus</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px">
+      <sc-for list="{{ seasons }}" as="se" hint-placeholder-count="4">
+        <div data-reveal="" style="background:#fff;display:flex;flex-direction:column">
+          <div style="position:relative;aspect-ratio:1/1">
+            <image-slot id="season-{{ se.key }}" shape="rect" placeholder="{{ se.photo }}"></image-slot>
+            <span style="position:absolute;left:14px;top:14px;width:56px;height:56px;border-radius:50%;background:#fff;font-family:'Noto Serif JP',serif;font-size:24px;display:flex;align-items:center;justify-content:center;pointer-events:none">{{ se.kanji }}</span>
+          </div>
+          <div style="padding:20px;display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#c22a2a">{{ se.en }}</span>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ se.events }}" as="ev" hint-placeholder-count="3"><li style="font-size:13px;display:flex;gap:10px;align-items:center"><span style="width:5px;height:5px;border-radius:50%;background:#c22a2a;flex:none"></span>{{ ev }}</li></sc-for>
+            </ul>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="clubs" data-screen-label="Life Clubs" style="scroll-margin-top:80px;max-width:1160px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(40px,6vw,56px)">
+  <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+    <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.2vw,38px);font-weight:700;letter-spacing:0.24em">クラブ・サークル</h2>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic">Clubs &amp; Circles</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px">
+    <sc-for list="{{ clubs }}" as="c" hint-placeholder-count="3">
+      <div data-reveal="" style="display:grid;grid-template-columns:100px 1fr;align-items:center;gap:18px;padding:14px 22px 14px 14px;background:#f6f5f2;border-radius:999px">
+        <span style="width:100px;height:100px;display:block"><image-slot id="club-{{ c.key }}" shape="circle" placeholder="{{ c.title }}"></image-slot></span>
+        <span style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:15px;font-weight:700;letter-spacing:0.06em">{{ c.title }}</span>
+          <span style="font-size:12px;line-height:1.7;color:#555">{{ c.desc }}</span>
+        </span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="support" data-screen-label="Life Support" style="scroll-margin-top:80px;background:#f6f5f2">
+  <div style="max-width:1100px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:clamp(40px,6vw,56px)">
+    <div style="text-align:center;display:flex;flex-direction:column;gap:6px">
+      <h2 style="margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.2vw,38px);font-weight:700;letter-spacing:0.24em">学生支援</h2>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic">Student Support</span>
+    </div>
+    <ul data-reveal="" style="list-style:none;margin:0;padding:0;border-top:1px solid #1f1f1f;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));column-gap:48px">
+      <sc-for list="{{ support }}" as="sp" hint-placeholder-count="4">
+        <li style="border-bottom:1px solid #d8d5ce;padding:22px 4px;display:grid;grid-template-columns:auto 1fr;gap:6px 18px">
+          <span style="grid-row:span 2;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#c22a2a;line-height:1">{{ sp.no }}</span>
+          <span style="font-family:'Noto Serif JP',serif;font-size:17px;font-weight:500">{{ sp.title }}</span>
+          <span style="font-size:12px;line-height:1.8;color:#555">{{ sp.desc }}</span>
+        </li>
+      </sc-for>
+    </ul>
+    <p style="margin:0;font-size:11px;color:#666;text-align:center">※ 在学生の声・行事・制度はデザイン用のサンプルです。</p>
+  </div>
+</section>
+<dc-import name="CtaBand" img-id="cta-life" hint-size="100%,360px"></dc-import>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const S = [
+      { key: 's1', badge: '文学部\n3年', en: 'Study', catch: '自分の言葉で、考えを伝える', photo: '在学生ポートレート（図書館）', who: '文学部 日本文学科 3年（仮名）', qa: [{ q: '白鷺を選んだ理由は？', a: 'オープンキャンパスの模擬授業で、先生と学生の距離が近いと感じたからです。' }, { q: '大学で変わったことは？', a: 'ゼミで意見を交わすうちに、自分の考えを言葉にすることが楽しくなりました。' }] },
+      { key: 's2', badge: '人間科学\n2年', en: 'Activities', catch: '学部を越えた、仲間ができた', photo: '在学生ポートレート（サークル）', who: '人間科学部 心理学科 2年（仮名）', qa: [{ q: '授業以外で打ち込んでいることは？', a: '学園祭の実行委員です。企画から運営まで、他学部の友人と一緒に動いています。' }, { q: 'お気に入りの場所は？', a: '学生会館のカフェ。授業の合間に友人と集まる定番の場所です。' }] },
+      { key: 's3', badge: '理学部\n4年', en: 'Career', catch: '進みたい道が、見えてきた', photo: '在学生ポートレート（キャリア面談）', who: '理学部 数理情報学科 4年（仮名）', qa: [{ q: '進路はどう考えましたか？', a: '1年次から面談を重ね、学びと仕事のつながりを少しずつ整理できました。' }, { q: '受験生へひとこと', a: '理系の学びを、少人数でじっくり深められる環境です。' }] }
+    ];
+    return {
+      stories: S.map((s, i) => ({ ...s, dir: i % 2 ? 'row-reverse' : 'row' })),
+      seasons: [
+        { key: 'spring', kanji: '春', en: 'Spring', photo: '桜の並木道', events: ['入学式', '新入生オリエンテーション', 'サークル新歓'] },
+        { key: 'summer', kanji: '夏', en: 'Summer', photo: '夏のキャンパス', events: ['オープンキャンパス', '短期海外研修', 'フィールドワーク'] },
+        { key: 'autumn', kanji: '秋', en: 'Autumn', photo: '学園祭の様子', events: ['学園祭', 'ゼミ合同発表会', 'スポーツ大会'] },
+        { key: 'winter', kanji: '冬', en: 'Winter', photo: '冬の図書館', events: ['卒業研究発表', '卒業式', '春休みインターンシップ'] }
+      ],
+      clubs: [
+        { key: 'sports', title: '運動系', desc: 'テニス、バレーボール、ダンスなど。' },
+        { key: 'culture', title: '文化系', desc: '茶道、写真、合唱、文芸など。' },
+        { key: 'volunteer', title: 'ボランティア・地域', desc: '子ども支援や地域イベントの運営。' }
+      ],
+      support: [
+        { no: 'i', title: '学修サポート', desc: 'レポートの書き方や学習計画の相談ができる窓口。' },
+        { no: 'ii', title: '奨学金・経済支援', desc: '各種奨学金制度の案内と申請の相談。' },
+        { no: 'iii', title: '学生相談室', desc: '学生生活の悩みを専門スタッフに相談できます。' },
+        { no: 'iv', title: 'キャリアセンター', desc: '1年次からの面談、インターンシップの紹介。' }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

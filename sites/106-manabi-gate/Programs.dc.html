@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>学部・学科｜MANABI GATE</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Michroma&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<script src="./image-slot.js"></script>
+<script src="./images.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f5f4f1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");color:#2a2a2a;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#2a2a2a;text-decoration:none}
+a:hover{color:#2d3a78}
+</style>
+</helmet>
+<div style="overflow-x:hidden">
+<dc-import name="Site Header" current="programs" hint-size="100%,72px"></dc-import>
+
+<dc-import name="Page Hero" no="01" en="Academic Fields" ja="学部・学科" crumb-en="Programs" v1="興味の先に、" v2="学びの場所がある。" lead1="学びたいことから、" lead2="進む大学を選ぶ。" body="同じ名前の学部でも、大学によって学べる内容や雰囲気は異なります。まずは分野ごとの特徴を知り、気になる学部を見つけたら、各大学のカリキュラムやシラバスを比べてみましょう。" img1="pg-hero" img2="pg-hero-sub" ph1="講義棟とキャンパスの並木" ph2="ゼミで議論する学生" hint-size="100%,1300px"></dc-import>
+
+<section data-screen-label="Programs List" style="margin-top:clamp(80px,9vw,180px);padding:clamp(60px,7vw,140px) {{ padR }} clamp(60px,7vw,140px) {{ pad }};background:rgba(0,0,0,.035)">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+    <div>
+      <p style="margin:0 0 10px;font-family:Marcellus,serif;font-size:11px;letter-spacing:.1em;color:#666">( Faculties )</p>
+      <h2 style="margin:0;font-family:Marcellus,serif;font-weight:400;font-size:clamp(32px,4vw,76px);line-height:1.1">Programs</h2>
+      <p style="margin:16px 0 0;font-size:12px;letter-spacing:.2em;color:#444">分野から絞り込む</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="8">
+        <button onClick="{{ f.pick }}" style="border:1px solid {{ f.bd }};background:{{ f.bg }};color:{{ f.fg }};padding:8px 14px;font-family:'Zen Kaku Gothic New',sans-serif;font-size:11px;letter-spacing:.1em;cursor:pointer;transition:all .25s">{{ f.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:{{ gridCols }};grid-auto-flow:dense;gap:{{ gridGap }};margin-top:52px">
+    <sc-for list="{{ shown }}" as="p" hint-placeholder-count="8">
+      <button onClick="{{ p.open }}" style="display:block;text-align:left;border:0;background:none;padding:0;cursor:pointer;font-family:'Zen Kaku Gothic New',sans-serif;color:#2a2a2a">
+        <div style="aspect-ratio:306/300;background:#3a3836;overflow:hidden"><image-slot id="{{ p.id }}" shape="rect" placeholder="{{ p.ph }}"></image-slot></div>
+        <p style="margin:14px 0 4px;font-size:10px;letter-spacing:.06em;color:#777">{{ p.cat }}</p>
+        <p style="margin:0;font-size:14px;font-weight:500;letter-spacing:.08em">{{ p.name }}</p>
+        <p style="margin:8px 0 0;font-size:11.5px;line-height:1.9;color:#555">{{ p.desc }}</p>
+        <p style="margin:10px 0 0;display:flex;justify-content:space-between;font-size:11px;color:#2d3a78;border-bottom:1px solid #cfcfcf;padding-bottom:6px">詳しく見る<span>{{ p.mark }}</span></p>
+      </button>
+      <sc-if value="{{ p.isSel }}" hint-placeholder-val="{{ false }}">
+        <div style="grid-column:1/-1;background:#fff;padding:clamp(22px,3vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:24px">
+          <div>
+            <p style="margin:0 0 6px;font-size:10px;color:#777">{{ p.cat }}</p>
+            <p style="margin:0;font-family:'Shippori Mincho',serif;font-size:22px;letter-spacing:.12em;color:#2d3a78">{{ p.name }}</p>
+            <button onClick="{{ closeSel }}" style="margin-top:18px;border:0;background:none;padding:0;cursor:pointer;font-size:11px;color:#777;font-family:'Zen Kaku Gothic New'">閉じる ×</button>
+          </div>
+          <div><p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:.14em">主な学び</p><p style="margin:0;font-size:12px;line-height:2;color:#444">{{ p.learn }}</p></div>
+          <div><p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:.14em">身につく力</p><p style="margin:0;font-size:12px;line-height:2;color:#444">{{ p.skill }}</p></div>
+          <div><p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:.14em">卒業後の進路例</p><p style="margin:0;font-size:12px;line-height:2;color:#444">{{ p.career }}</p></div>
+        </div>
+      </sc-if>
+    </sc-for>
+  </div>
+</section>
+
+<dc-import name="Statement Band" words="Humanities,人を知る学び,Science,世界を解く学び,Design,未来を形にする学び" img="pg-sb" ph="研究室・実験風景" label="Discover" big="Field" q1="好きなことは、" q2="立派な進路の理由になる。" note="得意科目ではなく、時間を忘れて考えてしまうこと。その中に、4年間を懸けたいテーマが隠れています。" hint-size="100%,900px"></dc-import>
+<section data-screen-label="How to choose" style="padding:clamp(70px,8vw,160px) {{ padR }} clamp(80px,9vw,180px) {{ pad }}">
+  <p style="margin:0 0 10px;font-family:Marcellus,serif;font-size:11px;letter-spacing:.1em;color:#666">( Point )</p>
+  <h2 style="margin:0;font-family:Marcellus,serif;font-weight:400;font-size:clamp(32px,4vw,76px);line-height:1.1">How to Choose</h2>
+  <p style="margin:16px 0 0;font-size:12px;letter-spacing:.2em;color:#444">学部選びの3つの視点</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:48px">
+    <div style="background:#fff;padding:30px 22px">
+      <p style="margin:0;text-align:center;font-family:Michroma,sans-serif;font-size:28px;color:#2d3a78">01</p>
+      <p style="margin:12px 0 10px;background:#ececec;text-align:center;font-size:11px;padding:6px;color:#444">「好き」を言葉にする</p>
+      <p style="margin:0;font-size:11.5px;line-height:1.9;color:#444">得意な教科だけでなく、時間を忘れて取り組めることを書き出してみましょう。学びたいテーマが見えてきます。</p>
+    </div>
+    <div style="background:#fff;padding:30px 22px">
+      <p style="margin:0;text-align:center;font-family:Michroma,sans-serif;font-size:28px;color:#2d3a78">02</p>
+      <p style="margin:12px 0 10px;background:#ececec;text-align:center;font-size:11px;padding:6px;color:#444">カリキュラムを比べる</p>
+      <p style="margin:0;font-size:11.5px;line-height:1.9;color:#444">同じ学部名でも、必修科目やゼミの開始時期、実習の有無は大学ごとに異なります。公式サイトのシラバスを確認しましょう。</p>
+    </div>
+    <div style="background:#fff;padding:30px 22px">
+      <p style="margin:0;text-align:center;font-family:Michroma,sans-serif;font-size:28px;color:#2d3a78">03</p>
+      <p style="margin:12px 0 10px;background:#ececec;text-align:center;font-size:11px;padding:6px;color:#444">卒業後を想像する</p>
+      <p style="margin:0;font-size:11.5px;line-height:1.9;color:#444">取得できる資格や卒業生の進路は、学部を選ぶ大切な手がかりです。気になる職業から逆算するのも一つの方法です。</p>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:40px;margin-top:48px">
+    <a href="ExamPrep.dc.html" style="display:flex;justify-content:space-between;align-items:center;width:220px;padding-bottom:8px;border-bottom:1px solid #cfcfcf;font-size:12px;letter-spacing:.12em" style-hover="border-color:#2a2a2a">入試対策を見る<span>›</span></a>
+    <a href="CampusLife.dc.html#entry" style="display:flex;justify-content:space-between;align-items:center;width:220px;padding-bottom:8px;border-bottom:1px solid #cfcfcf;font-size:12px;letter-spacing:.12em" style-hover="border-color:#2a2a2a">オープンキャンパスへ<span>›</span></a>
+  </div>
+</section>
+
+<dc-import name="Site Footer" cta-img="pg-cta" hint-size="100%,900px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: (document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth), cat: 'すべて', sel: -1 };
+  componentDidMount() { this.r = () => this.setState({ w: (document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth) }); window.addEventListener('resize', this.r); this.r(); this.t = setTimeout(this.r, 300); this.ro = new ResizeObserver(this.r); this.ro.observe(document.documentElement); }
+  componentWillUnmount() { window.removeEventListener('resize', this.r); this.ro && this.ro.disconnect(); }
+  renderVals() {
+    const { w, cat, sel } = this.state; const mob = w < 820;
+    const data = [
+      ['人文科学', '文学部', '言語・文学・歴史・哲学を通して、人と社会を読み解きます。', '文学・史学・哲学・言語学など', '読解力、論理的な文章力、多角的な視点', '出版・教育・公務員・一般企業など'],
+      ['人文科学', '外国語学部', '語学力と地域文化の理解を土台に、国際的な視野を養います。', '外国語、地域研究、通訳・翻訳、異文化理解', '語学運用力、異文化コミュニケーション力', '商社・観光・航空・国際機関など'],
+      ['社会科学', '法学部', '法の仕組みと社会課題を結びつけ、論理的に考える力を養います。', '憲法・民法・刑法、政治学、国際関係', '論理的思考、課題分析、説明する力', '公務員・法曹・金融・一般企業など'],
+      ['社会科学', '経済学部・経営学部', '市場や企業の動きをデータから捉え、社会の仕組みを学びます。', 'ミクロ・マクロ経済、経営戦略、会計', '数量的分析、意思決定、企画力', '金融・メーカー・コンサル・起業など'],
+      ['理工', '理工学部', '数学・物理・化学を基盤に、実験を通して研究開発の基礎を学びます。', '機械・電気・化学・建築・数理など', '問題解決力、実験・検証の手法', '技術職・研究職・大学院進学など'],
+      ['情報', '情報学部', 'プログラミングやデータ科学で、技術による課題解決を学びます。', 'プログラミング、AI、データサイエンス', '情報技術、データ活用、設計力', 'IT・通信・各業界のDX部門など'],
+      ['医療・保健', '看護学部・医療系学部', '専門知識と臨地実習で、人の健康と暮らしを支える力を育てます。', '看護学、リハビリテーション、医療技術', '専門技術、対人援助、チーム医療の理解', '病院・福祉施設・行政など（国家資格）'],
+      ['教育', '教育学部', '子どもの発達と学びの仕組みを理解し、教える力を育てます。', '教育学、心理学、教科教育法、教育実習', '指導力、観察力、コミュニケーション力', '教員・教育関連企業・公務員など'],
+      ['芸術', '芸術学部', '技法と理論の両面から、自分だけの表現を探求します。', '美術、デザイン、音楽、映像、芸術理論', '表現力、構想力、制作スキル', 'デザイナー・クリエイター・学芸員など']
+    ].map((d, i) => ({ i, id: 'pg-fac-' + i, cat: d[0], name: d[1], desc: d[2], learn: d[3], skill: d[4], career: d[5], ph: d[1] + 'の学び' }));
+    const cats = ['すべて', '人文科学', '社会科学', '理工', '情報', '医療・保健', '教育', '芸術'];
+    const filters = cats.map(c => ({ label: c, bg: c === cat ? '#2d3a78' : 'transparent', fg: c === cat ? '#fff' : '#2a2a2a', bd: c === cat ? '#2d3a78' : '#cfcfcf', pick: () => this.setState({ cat: c, sel: -1 }) }));
+    const shown = data.filter(d => cat === 'すべて' || d.cat === cat).map(d => ({ ...d, isSel: sel === d.i, mark: sel === d.i ? '−' : '›', open: () => this.setState({ sel: sel === d.i ? -1 : d.i }) }));
+    return {
+      pad: mob ? '20px' : '20.8vw', padR: mob ? '20px' : '10vw', filters, shown, closeSel: () => this.setState({ sel: -1 }),
+      gridCols: mob ? 'repeat(2,minmax(0,1fr))' : 'repeat(auto-fill,minmax(min(100%,250px),1fr))', gridGap: mob ? '28px 12px' : '28px 16px'
+    };
+  }
+}
+</script>
+</body>
+</html>

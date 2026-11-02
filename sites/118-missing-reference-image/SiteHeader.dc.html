@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:sticky;top:0;z-index:50;background:rgba(246,243,238,0.94);backdrop-filter:blur(8px);border-bottom:1px solid #DCD6CC;font-family:'Zen Kaku Gothic New',sans-serif">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="Home.dc.html" aria-label="白鷺女子大学 トップへ" style="display:flex;flex-direction:column;gap:2px;color:#1B2235;text-decoration:none">
+      <span style="font-family:'Shippori Mincho',serif;font-size:22px;font-weight:600;letter-spacing:0.12em;white-space:nowrap">白鷺女子大学</span>
+      <span style="font-size:10px;letter-spacing:0.22em;color:#5A5F6E;white-space:nowrap">SHIRASAGI WOMEN'S UNIVERSITY</span>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:32px;font-size:14px;font-weight:500">
+        <sc-for list="{{ items }}" as="n" hint-placeholder-count="4">
+          <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="color:{{ n.color }};text-decoration:none;white-space:nowrap;padding:6px 0;border-bottom:1.5px solid {{ n.line }}" style-hover="color:#8A6D3B">{{ n.label }}</a>
+        </sc-for>
+        <a href="OpenCampus.dc.html" style="background:#1F2C4F;color:#F6F3EE;padding:12px 22px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:background .2s" style-hover="background:#2E3F6B;color:#F6F3EE">オープンキャンパス予約</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="メニュー" aria-expanded="{{ menuOpen }}" style="width:48px;height:48px;border:1px solid #DCD6CC;background:transparent;border-radius:999px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+        <span style="width:18px;height:1.5px;background:#1B2235"></span>
+        <span style="width:18px;height:1.5px;background:#1B2235"></span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav aria-label="モバイルナビゲーション" style="border-top:1px solid #DCD6CC;background:#F6F3EE;padding:8px clamp(20px,4vw,48px) 24px;display:flex;flex-direction:column">
+      <a href="Home.dc.html" style="padding:16px 0;border-bottom:1px solid #E6E1D8;font-size:16px;color:#1B2235;text-decoration:none">トップ</a>
+      <sc-for list="{{ items }}" as="n" hint-placeholder-count="4">
+        <a href="{{ n.href }}" aria-current="{{ n.aria }}" style="padding:16px 0;border-bottom:1px solid #E6E1D8;font-size:16px;color:{{ n.color }};text-decoration:none">{{ n.label }}</a>
+      </sc-for>
+      <a href="OpenCampus.dc.html" style="margin-top:20px;background:#1F2C4F;color:#F6F3EE;padding:16px;border-radius:999px;text-align:center;font-weight:500;text-decoration:none">オープンキャンパス予約</a>
+    </nav>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:120},&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;about&quot;,&quot;academics&quot;,&quot;campus&quot;,&quot;admissions&quot;,&quot;opencampus&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: window.innerWidth, menu: false };
+  componentDidMount() {
+    this.onResize = () => this.setState(s => ({ w: window.innerWidth, menu: window.innerWidth < 1120 && s.menu }));
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const m = this.state.w < 1120;
+    const cur = this.props.current ?? 'home';
+    const items = [
+      { key: 'about', label: '大学について', href: 'About.dc.html' },
+      { key: 'academics', label: '学びと学部', href: 'Academics.dc.html' },
+      { key: 'campus', label: 'キャンパスライフ', href: 'CampusLife.dc.html' },
+      { key: 'admissions', label: '入試情報', href: 'Admissions.dc.html' }
+    ].map(i => ({ ...i, color: i.key === cur ? '#8A6D3B' : '#1B2235', line: i.key === cur ? '#C9A66B' : 'transparent', aria: i.key === cur ? 'page' : undefined }));
+    return {
+      isMobile: m, isDesktop: !m, menuOpen: m && this.state.menu, items,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu }))
+    };
+  }
+}
+</script>
+</body>
+</html>

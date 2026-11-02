@@ -1,0 +1,107 @@
+/* 蒼稜大学 — レスポンシブ調整
+   各ページはインラインstyleで組まれているため、テンプレート側で rs-* クラスを付けた要素だけを
+   メディアクエリ内で !important 付きで上書きしています。 */
+
+/* 見出しは文節単位で折り返す（「踏み出そ／う。」のような泣き別れを防ぐ） */
+h1, h2, .rs-phrase { word-break: auto-phrase; overflow-wrap: break-word; }
+
+/* 写真ギャラリーは4枚1行（3+1の取り残しを防ぐ） */
+.rs-photos { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+
+/* ---------- 小さめのPC・タブレット（〜1100px） ---------- */
+@media (max-width: 1100px) {
+  /* トップのメインビジュアルを小さく */
+  .rs-blob { width: min(100%, 520px) !important; }
+
+  /* 学部紹介：写真を左、本文を右に */
+  .rs-fac { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr) !important; }
+  .rs-fac-img { align-self: start; }
+  .rs-fac .rs-dept { grid-template-columns: 1fr !important; gap: 2px !important; }
+
+  /* 入試日程（詳細ページ）：列が狭くなるので項目名と値を横並びの一覧に */
+  .rs-sched { grid-template-columns: 1fr !important; gap: 8px !important; }
+  .rs-sched > .rs-kv { flex-direction: row !important; justify-content: space-between; align-items: baseline; gap: 16px !important; }
+}
+
+/* ---------- タブレット以下（〜900px） ---------- */
+@media (max-width: 900px) {
+  /* span指定で暗黙の列が増えて右にはみ出すのを防ぐ */
+  .rs-span { grid-column: auto !important; }
+  .rs-stack { grid-template-columns: 1fr !important; }
+
+  /* 写真ギャラリーは2列 */
+  .rs-photos { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+
+  /* 入試日程の絞り込みタブを2×2の格子に（縦に長く積まない） */
+  .rs-schedtabs {
+    flex: 1 1 100% !important; display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px !important;
+  }
+  .rs-schedtabs > button { height: 46px !important; padding: 0 8px !important; text-align: center !important; white-space: nowrap; background-color: #fff !important; }
+  .rs-schedtabs > button[data-active="true"] { background-color: #0b3fd9 !important; color: #fff !important; }
+}
+
+/* ---------- スマホ（〜640px） ---------- */
+@media (max-width: 640px) {
+  /* iOSで入力時に画面がズームしないよう16px以上に */
+  input, textarea, select { font-size: 16px !important; }
+
+  /* トップ：ヒーロー */
+  .rs-hero-h1 { font-size: clamp(28px, 8.2vw, 40px) !important; letter-spacing: .04em !important; }
+  .rs-hero-lead { font-size: 14px !important; letter-spacing: .04em !important; }
+  .rs-hero-lead br { display: none; }
+  .rs-blob { width: min(92%, 360px) !important; }
+
+  .rs-schedtabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* ページ内リンク（↓）は2列の格子に */
+  .rs-anchors { display: grid !important; grid-template-columns: 1fr 1fr; }
+  .rs-anchors > a { justify-content: space-between; gap: 8px !important; height: 46px !important; padding: 0 12px 0 14px !important; font-size: 12.5px !important; white-space: nowrap; }
+
+  /* ボタンは幅いっぱいに */
+  .rs-btn-full { width: 100% !important; gap: 16px !important; }
+  .rs-btn-row { justify-content: stretch !important; }
+
+  /* 入試方式タブは3列横並び */
+  .rs-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  .rs-tabs > button { height: 56px !important; padding: 0 4px !important; font-size: 13px !important; line-height: 1.35; word-break: keep-all; }
+
+  /* 時期・時刻などの見出し列を詰める／縦積みにする */
+  .rs-timeline-row { grid-template-columns: 1fr !important; gap: 6px !important; }
+  .rs-dept { grid-template-columns: 1fr !important; gap: 2px !important; }
+  .rs-prog { grid-template-columns: 76px 1fr !important; gap: 12px !important; }
+
+  /* 受験生向けリソース（トップ）のサムネイルを小さく */
+  .rs-res { gap: 16px !important; }
+  .rs-res > div:first-child { width: 84px !important; height: 56px !important; }
+  .rs-res > div:nth-child(2) > span:first-child { font-size: 16px !important; }
+  .rs-res > span:last-child { padding-right: 4px !important; }
+
+  /* 入試日程（トップ）：装飾の矢印を隠し、日程を詰めて表示 */
+  .rs-meta { gap: 4px 20px !important; font-size: 13px !important; }
+  .rs-hide-sp { display: none !important; }
+
+  /* 学部紹介：写真を縦長にしすぎない */
+  .rs-fac { grid-template-columns: 1fr !important; }
+  .rs-fac-img { aspect-ratio: 16 / 10 !important; }
+
+  /* 写真ギャラリーは左右に余白をとる */
+  .rs-photos { gap: 10px !important; padding: 0 20px; }
+
+  /* 学費表：横スクロールの表をカード型に */
+  .rs-fees { overflow: visible !important; background: transparent !important; }
+  .rs-fees > div { min-width: 0 !important; display: flex; flex-direction: column; gap: 10px; }
+  .rs-fees-head { display: none !important; }
+  .rs-fees-row { display: flex !important; flex-direction: column; gap: 6px; background: #fff; padding: 18px 20px !important; border-bottom: 0 !important; }
+  .rs-fees-row > span:first-child { margin-bottom: 4px; }
+  .rs-fees-row > span[data-label] { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; }
+  .rs-fees-row > span[data-label]::before { content: attr(data-label); font-family: "Noto Sans JP", sans-serif; color: #4a4e57; }
+
+  /* お問い合わせ：種別カードを詰める */
+  .rs-types { gap: 10px !important; }
+  .rs-types > button { padding: 20px 22px !important; gap: 8px !important; }
+  .rs-types > button > span:nth-child(2) { font-size: 18px !important; }
+
+  /* フッター下段は左揃えに */
+  .rs-foot-legal { align-items: flex-start !important; }
+}

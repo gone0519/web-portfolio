@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>学部・学科｜奏女子大学</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Zen+Maru+Gothic:wght@500;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#23897a;color:#2b3a38;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#23897a;text-decoration:none}
+a:hover{color:#d9612a}
+*{box-sizing:border-box}
+:focus-visible{outline:3px solid #f3b23a;outline-offset:3px}
+</style>
+<script src="motion.js"></script>
+</helmet>
+<dc-import name="SiteNav" current="academics" hint-size="0px,0px"></dc-import>
+<main style="margin-left: {{ mainLeft }}; margin-right: {{ mainRight }}; padding-top: {{ mainTop }}; background:#eceeee; min-height:100vh; overflow:hidden">
+
+  <section data-screen-label="Academics header" style="padding:clamp(48px, 7vw, 88px) clamp(20px, 6vw, 80px) 0; display:flex; flex-direction:column; gap:24px">
+    <nav aria-label="パンくずリスト" style="font-size:11px; display:flex; gap:8px; font-weight:700"><a href="Kanade%20Womens%20University.dc.html">TOP</a><span>＞</span><span>学部・学科</span></nav>
+    <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:16px 32px">
+      <div>
+        <h1 style="margin:0; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(44px, 6vw, 72px); color:#23897a; line-height:1">ACADEMICS</h1>
+        <p style="margin:8px 0 0; font-size:14px; font-weight:700">学部・学科</p>
+      </div>
+      <p style="margin:0; font-size:13px; line-height:2; max-width:440px; text-wrap:pretty">4学部11学科。専門を深める学びと、学部をこえて広げる学びの両方を用意しています。</p>
+    </div>
+    <nav aria-label="学部一覧" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap:10px">
+      <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="4">
+        <a href="#{{ f.id }}" style="display:flex; justify-content:space-between; align-items:center; gap:8px; background:#dd6427; color:#fff; border-radius:6px; padding:16px 18px; font-weight:700; font-size:14px" style-hover="background:#c95620; color:#fff">
+          <span style="display:flex; flex-direction:column; gap:2px"><span style="font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:10px; letter-spacing:0.16em">{{ f.en }}</span>{{ f.name }}</span>
+          <span style="width:24px; height:24px; border-radius:50%; background:#fff; color:#dd6427; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0">↓</span>
+        </a>
+      </sc-for>
+    </nav>
+  </section>
+
+  <sc-for list="{{ faculties }}" as="f" hint-placeholder-count="4">
+    <section id="{{ f.id }}" data-screen-label="{{ f.name }}" style="padding:clamp(56px, 7vw, 88px) clamp(20px, 6vw, 80px) 0; scroll-margin-top:72px">
+      <div style="background:#fff; border-radius:8px; overflow:hidden; display:flex; flex-direction:column">
+        <div style="background:#dd6427; color:#fff; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:20px; padding:clamp(22px, 3vw, 32px); align-items:center">
+          <div style="display:flex; flex-direction:column; gap:10px">
+            <span style="font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:11px; letter-spacing:0.16em">{{ f.no }} / {{ f.en }}</span>
+            <h2 style="margin:0; font-size:clamp(22px, 2.6vw, 28px)">{{ f.name }}</h2>
+            <p style="margin:0; font-size:13px; line-height:1.9; text-wrap:pretty">{{ f.lead }}</p>
+          </div>
+          <img src="{{ f.src }}" alt="{{ f.alt }}" style="width:100%; aspect-ratio:16 / 9; object-fit:cover; border-radius:4px; display:block">
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap:0">
+          <sc-for list="{{ f.depts }}" as="d" hint-placeholder-count="3">
+            <div style="padding:22px clamp(20px, 3vw, 32px); display:flex; flex-direction:column; gap:8px; border-top:1px solid #e3e7e6">
+              <h3 style="margin:0; font-size:15px; display:flex; gap:8px; align-items:center; color:#23897a"><span style="width:6px; height:6px; background:#23897a; border-radius:50%"></span>{{ d.n }}</h3>
+              <p style="margin:0; font-size:12px; line-height:1.9; text-wrap:pretty">{{ d.t }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section data-screen-label="System" style="padding:clamp(64px, 8vw, 96px) clamp(20px, 6vw, 80px) 0; display:flex; flex-direction:column; gap:28px">
+    <div style="display:flex; flex-direction:column; align-items:center; gap:4px">
+      <h2 style="margin:0; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(30px, 3.4vw, 40px); color:#23897a; line-height:1">LEARNING</h2>
+      <p style="margin:0; font-size:12px; font-weight:700">学びのしくみ</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap:16px">
+      <div style="background:#fff; border-radius:8px; padding:24px; display:flex; flex-direction:column; gap:8px">
+        <span style="font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:11px; letter-spacing:0.14em; color:#dd6427">SEMINAR</span>
+        <h3 style="margin:0; font-size:16px">4年間のゼミ</h3>
+        <p style="margin:0; font-size:12px; line-height:1.9; text-wrap:pretty">1年次の基礎ゼミから4年次の卒業研究まで、少人数で学び続けます。</p>
+      </div>
+      <div style="background:#fff; border-radius:8px; padding:24px; display:flex; flex-direction:column; gap:8px">
+        <span style="font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:11px; letter-spacing:0.14em; color:#dd6427">MINOR</span>
+        <h3 style="margin:0; font-size:16px">副専攻プログラム</h3>
+        <p style="margin:0; font-size:12px; line-height:1.9; text-wrap:pretty">データ活用・文化政策・ジェンダー研究など、テーマ別に履修できます。</p>
+      </div>
+      <div style="background:#fff; border-radius:8px; padding:24px; display:flex; flex-direction:column; gap:8px">
+        <span style="font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:11px; letter-spacing:0.14em; color:#dd6427">FIELD</span>
+        <h3 style="margin:0; font-size:16px">地域・企業との協働</h3>
+        <p style="margin:0; font-size:12px; line-height:1.9; text-wrap:pretty">自治体や企業と連携したプロジェクトで、学んだことを現場で試します。</p>
+      </div>
+      <div style="background:#fff; border-radius:8px; padding:24px; display:flex; flex-direction:column; gap:8px">
+        <span style="font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:11px; letter-spacing:0.14em; color:#dd6427">ABROAD</span>
+        <h3 style="margin:0; font-size:16px">海外研修・留学</h3>
+        <p style="margin:0; font-size:12px; line-height:1.9; text-wrap:pretty">短期研修から交換留学まで、段階に合わせて選べます。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="career" data-screen-label="Career" style="padding:clamp(64px, 8vw, 96px) clamp(20px, 6vw, 80px) 0">
+    <div style="position:relative; background:#fff; border-radius:8px; padding:clamp(28px, 4vw, 44px); display:flex; flex-direction:column; gap:24px">
+      <span style="position:absolute; right:20px; top:-12px; background:#dd6427; color:#fff; border-radius:4px; padding:5px 12px; font-size:11px; font-weight:700">キャリア支援</span>
+      <div>
+        <h2 style="margin:0; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(26px, 2.8vw, 32px); color:#23897a; line-height:1">CAREER</h2>
+        <p style="margin:6px 0 0; font-size:13px; font-weight:700">1年次から始まるキャリアづくり</p>
+      </div>
+      <ol style="margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap:12px">
+        <li style="background:#eceeee; border-radius:6px; padding:18px; display:flex; flex-direction:column; gap:6px"><span style="font-family:'M PLUS Rounded 1c'; font-weight:800; color:#dd6427; font-size:13px">1年次</span><span style="font-size:12px; line-height:1.8">自己理解のワークショップ、卒業生との座談会</span></li>
+        <li style="background:#eceeee; border-radius:6px; padding:18px; display:flex; flex-direction:column; gap:6px"><span style="font-family:'M PLUS Rounded 1c'; font-weight:800; color:#dd6427; font-size:13px">2年次</span><span style="font-size:12px; line-height:1.8">業界研究、資格取得の講座</span></li>
+        <li style="background:#eceeee; border-radius:6px; padding:18px; display:flex; flex-direction:column; gap:6px"><span style="font-family:'M PLUS Rounded 1c'; font-weight:800; color:#dd6427; font-size:13px">3年次</span><span style="font-size:12px; line-height:1.8">インターンシップ、個別面談、卒業生メンター</span></li>
+        <li style="background:#eceeee; border-radius:6px; padding:18px; display:flex; flex-direction:column; gap:6px"><span style="font-family:'M PLUS Rounded 1c'; font-weight:800; color:#dd6427; font-size:13px">4年次</span><span style="font-size:12px; line-height:1.8">面接・書類対策、進学相談</span></li>
+      </ol>
+      <div style="display:flex; flex-direction:column; gap:10px">
+        <p style="margin:0; font-size:12px; font-weight:700">卒業生が活躍する分野（例）</p>
+        <div style="display:flex; flex-wrap:wrap; gap:8px">
+          <span style="border:1.5px solid #23897a; color:#23897a; border-radius:999px; padding:6px 14px; font-size:12px; font-weight:700">教育</span>
+          <span style="border:1.5px solid #23897a; color:#23897a; border-radius:999px; padding:6px 14px; font-size:12px; font-weight:700">出版・メディア</span>
+          <span style="border:1.5px solid #23897a; color:#23897a; border-radius:999px; padding:6px 14px; font-size:12px; font-weight:700">福祉・心理</span>
+          <span style="border:1.5px solid #23897a; color:#23897a; border-radius:999px; padding:6px 14px; font-size:12px; font-weight:700">観光・航空</span>
+          <span style="border:1.5px solid #23897a; color:#23897a; border-radius:999px; padding:6px 14px; font-size:12px; font-weight:700">食品・アパレル</span>
+          <span style="border:1.5px solid #23897a; color:#23897a; border-radius:999px; padding:6px 14px; font-size:12px; font-weight:700">公務員</span>
+          <span style="border:1.5px solid #23897a; color:#23897a; border-radius:999px; padding:6px 14px; font-size:12px; font-weight:700">大学院進学</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Next" style="padding:clamp(56px, 7vw, 88px) clamp(20px, 6vw, 80px)">
+    <div style="background:#23897a; color:#fff; border-radius:8px; padding:clamp(28px, 4vw, 44px); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px">
+      <p style="margin:0; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(18px, 2vw, 22px)">模擬授業で、学びを体験しよう。</p>
+      <div style="display:flex; flex-wrap:wrap; gap:10px">
+        <a href="OpenCampus.dc.html#reserve" style="display:flex; align-items:center; gap:10px; background:#fff; color:#23897a; border-radius:999px; padding:10px 22px 10px 10px; font-size:14px; font-weight:700; min-height:48px; box-shadow:0 4px 0 #165d54" style-hover="background:#fdf1e9; color:#d9612a"><span style="width:26px; height:26px; border-radius:50%; background:#dd6427; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px">→</span>オープンキャンパス予約</a>
+        <a href="Admissions.dc.html" style="display:flex; align-items:center; background:transparent; color:#fff; border:2px solid #fff; border-radius:999px; padding:8px 20px; font-size:14px; font-weight:700; min-height:48px" style-hover="background:#1c7065; color:#fff">入試情報</a>
+      </div>
+    </div>
+  </section>
+
+  <div data-marquee="" aria-hidden="true" style="overflow:hidden; padding:clamp(20px, 3vw, 36px) 0; border-top:2px solid #23897a; border-bottom:2px solid #23897a; margin-top:clamp(24px, 4vw, 48px); background:#eceeee">
+    <div style="display:flex; width:max-content; gap:48px; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(28px, 4vw, 52px); line-height:1; color:#23897a; white-space:nowrap">
+      <span>KANADE WOMEN'S UNIVERSITY</span><span style="color:#dd6427">●</span><span>学んで、出会って、わたしを、えらぶ。</span><span style="color:#dd6427">●</span><span>OPEN CAMPUS</span><span style="color:#dd6427">●</span>
+      <span>KANADE WOMEN'S UNIVERSITY</span><span style="color:#dd6427">●</span><span>学んで、出会って、わたしを、えらぶ。</span><span style="color:#dd6427">●</span><span>OPEN CAMPUS</span><span style="color:#dd6427">●</span>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,280px"></dc-import>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280 };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); this.onR(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const m = this.state.w < 900;
+    return {
+      mainLeft: m ? '0' : '160px', mainRight: m ? '0' : 'clamp(0px, 7vw, 140px)', mainTop: m ? '60px' : '0',
+      faculties: [
+        { id: 'lit', no: '01', en: 'LITERATURE', name: '文学部', src: 'images/discussion.jpg', alt: 'テーブルを囲んで話し合う学生', lead: 'ことば・物語・歴史を手がかりに、人間と文化を深く読み解く力を養います。', depts: [
+          { n: '日本文学科', t: '古典から現代文学まで。読む・書く・編む力を実践的に学びます。' },
+          { n: '英米文学科', t: '英語圏の文学と文化を原書で読み、英語での表現力も磨きます。' },
+          { n: '歴史文化学科', t: '史料や地域の文化財にふれながら、過去と現在をつなぎます。' } ] },
+        { id: 'global', no: '02', en: 'GLOBAL STUDIES', name: '国際コミュニケーション学部', src: 'images/students-glass-building.jpg', alt: 'ノートPCを手に話す学生たち', lead: '語学力と異文化理解を土台に、国境をこえて協働する力を育てます。', depts: [
+          { n: '国際英語学科', t: '少人数の英語授業と海外研修で、使える英語を身につけます。' },
+          { n: 'グローバル文化学科', t: 'アジアや欧米の社会と文化を比較し、多様な価値観を学びます。' } ] },
+        { id: 'human', no: '03', en: 'HUMAN SCIENCES', name: '人間科学部', src: 'images/board-work.jpg', alt: 'ボードの付箋を見ながら考える学生', lead: '人の心・学び・暮らしを科学的に理解し、支える専門性を身につけます。', depts: [
+          { n: '心理学科', t: '実験や調査を通じて、心のはたらきを科学的に探ります。' },
+          { n: '教育学科', t: '子どもの成長と学びを支える教育者をめざします。' },
+          { n: '社会福祉学科', t: '地域や施設での実習を重ね、福祉の現場を支える力を養います。' } ] },
+        { id: 'life', no: '04', en: 'LIFE DESIGN', name: '生活デザイン学部', src: 'images/laptop-group.jpg', alt: 'ノートPCを囲んで作業する学生', lead: '食・住まい・服飾を、科学とデザインの両面から学び、暮らしを提案します。', depts: [
+          { n: '食物栄養学科', t: '食と健康を科学的に学び、栄養の専門家をめざします。' },
+          { n: '住環境デザイン学科', t: '住まいやまちの空間を、使う人の視点で設計します。' },
+          { n: '服飾文化学科', t: '素材・歴史・デザインから、衣服と社会の関係を学びます。' } ] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

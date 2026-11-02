@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Jost:wght@500;600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FCF8F3;color:#2E2A27;font-family:'Zen Kaku Gothic New',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#D9482A;text-decoration:none}
+a:hover{color:#B8381E}
+:focus-visible{outline:2px solid #D9482A;outline-offset:3px}
+</style>
+<link rel="stylesheet" href="site.css">
+<script src="motion.js"></script>
+</helmet>
+<dc-import name="Site Nav" current="voices" hint-size="0px,0px"></dc-import>
+<div style="padding-left:min(176px,max(0px,calc((100vw - 899px) * 1000)));padding-top:min(60px,max(0px,calc((900px - 100vw) * 1000)))">
+<main>
+<section data-screen-label="Voices Hero" style="overflow:hidden;border-bottom:1px solid #EFE4D8;padding-bottom:48px">
+  <div data-anim="word" aria-hidden="true" style="font-family:Jost,sans-serif;font-weight:700;color:#E2502F;font-size:clamp(64px,10vw,150px);line-height:.78;margin-top:-.08em">VOICES</div>
+  <div style="max-width:880px;margin:0 auto;padding:44px clamp(18px,4vw,40px) 0">
+    <nav aria-label="パンくず" style="font-size:10.5px;color:#6E6259;display:flex;gap:8px"><a href="Kanade%20Womens%20University.dc.html" style="color:#6E6259">トップ</a><span>／</span><span>在学生の声</span></nav>
+    <h1 style="margin:18px 0 0;font-size:clamp(22px,2.6vw,28px);font-weight:500;letter-spacing:.24em;line-height:1.6">在学生の声</h1>
+    <p style="font-size:12.5px;line-height:2.1;letter-spacing:.04em;margin:18px 0 28px;max-width:44em;text-wrap:pretty">入学を決めた理由、いまの学び、受験生へのメッセージ。在学生と卒業生に話を聞きました。</p>
+    <div role="tablist" aria-label="学部で絞り込む" style="display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <button role="tab" aria-selected="{{ t.active }}" onClick="{{ t.onClick }}" style="height:40px;padding:0 18px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};font-family:inherit;font-size:12px;font-weight:500;letter-spacing:.06em;cursor:pointer">{{ t.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<div style="max-width:880px;margin:0 auto;padding:0 clamp(18px,4vw,40px)">
+<section style="padding:56px 0 64px;border-bottom:1px solid #EFE4D8">
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <sc-for list="{{ stories }}" as="s" hint-placeholder-count="3">
+      <article style="background:#fff;border:1px solid #EFE4D8;border-radius:10px;padding:clamp(18px,3vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div role="img" aria-label="{{ s.alt }}" style="aspect-ratio:4/3;border-radius:6px;background:#F1E5D8 url(images/{{ s.img }}.jpg) center/cover no-repeat"></div>
+          <span style="align-self:flex-start;font-size:10px;border:1px solid #2E2A27;border-radius:999px;padding:2px 10px">{{ s.dept }}</span>
+          <div style="font-size:11px;color:#6E6259">{{ s.name }}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <p style="margin:0;font-size:16px;font-weight:500;line-height:1.85;letter-spacing:.06em;text-wrap:pretty">{{ s.quote }}</p>
+          <sc-for list="{{ s.qa }}" as="q" hint-placeholder-count="3">
+            <div>
+              <div style="font-size:11px;color:#E2502F;font-weight:700;letter-spacing:.08em">{{ q.q }}</div>
+              <p style="margin:4px 0 0;font-size:12px;line-height:1.95;text-wrap:pretty">{{ q.a }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section style="padding:64px 0">
+  <div style="font-size:11px;color:#E2502F;letter-spacing:.12em;font-weight:500">卒業生の声</div>
+  <h2 style="margin:6px 0 28px;font-size:clamp(20px,2.4vw,24px);font-weight:500;letter-spacing:.24em">卒業後の道</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+    <sc-for list="{{ alumnae }}" as="a" hint-placeholder-count="2">
+      <article style="display:flex;gap:16px;align-items:flex-start">
+        <div role="img" aria-label="{{ a.alt }}" style="flex:0 0 88px;aspect-ratio:1;border-radius:50%;background:#F1E5D8 url(images/{{ a.img }}.jpg) {{ a.pos }} no-repeat"></div>
+        <div>
+          <div style="font-size:10.5px;color:#6E6259">{{ a.meta }}</div>
+          <p style="margin:6px 0 0;font-size:12.5px;line-height:1.95;text-wrap:pretty">{{ a.text }}</p>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+  <p style="font-size:10.5px;color:#9A4A33;margin:24px 0 0">※ 掲載している人物・コメントはサンプルです。</p>
+</section>
+</div>
+
+<a href="Kanade%20Admissions.dc.html#oc" style="display:flex;align-items:center;justify-content:space-between;gap:24px;background:#E2502F;color:#fff;margin-top:24px;padding:56px clamp(20px,8vw,120px)" style-hover="background:#C9401F;color:#fff">
+  <span><span style="display:block;font-size:clamp(18px,2.4vw,24px);font-weight:700;letter-spacing:.2em">在学生と直接話そう。</span><span style="display:block;font-size:12px;margin-top:10px;letter-spacing:.06em;font-weight:500">オープンキャンパスでは在学生スタッフに何でも質問できます</span></span>
+  <span data-arrow="1" aria-hidden="true" style="display:flex;align-items:center;flex:none"><span style="width:56px;height:1px;background:#fff"></span><span style="width:12px;height:12px;border-top:1px solid #fff;border-right:1px solid #fff;transform:rotate(45deg);margin-left:-10px"></span></span>
+</a>
+</main>
+<dc-import name="Site Footer" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 'all' };
+  renderVals() {
+    const S = [
+      { f: 'soc', dept: '人間社会学部 心理学科 3年', name: '在学生 Aさん（サンプル）', quote: '「なぜそう感じるのか」を、自分で確かめられるのが楽しい。', qa: [
+        { q: '入学の決め手', a: 'オープンキャンパスの模擬授業で、先生が一人ひとりの意見を丁寧に拾ってくれたことです。' },
+        { q: 'いまの学び', a: 'ゼミで、SNSの使い方と気分の関係を調べる調査を自分で設計しています。' },
+        { q: '受験生へ', a: '興味がはっきりしていなくても大丈夫。1年次のゼミで見つかります。' } ] },
+      { f: 'life', dept: '生活科学部 食物栄養学科 2年', name: '在学生 Bさん（サンプル）', quote: '実習のたびに、仲間と献立を考え直す時間が好きです。', qa: [
+        { q: '入学の決め手', a: '管理栄養士をめざせることと、実習設備が充実していたことです。' },
+        { q: 'いまの学び', a: '調理科学の実験で、加熱方法による栄養の変化を比べています。' },
+        { q: '受験生へ', a: '化学や生物は入学後もしっかりフォローがあるので、安心してください。' } ] },
+      { f: 'soc', dept: '人間社会学部 経営デザイン学科 4年', name: '在学生 Cさん（サンプル）', quote: '地域のお店と商品を企画した経験が、自分の軸になりました。', qa: [
+        { q: '入学の決め手', a: '企業や地域と一緒に取り組む授業が多いと知ったからです。' },
+        { q: 'いまの学び', a: '卒業研究で、商店街の来訪者データを分析しています。' },
+        { q: '受験生へ', a: '「やってみたい」と言えば、挑戦させてもらえる環境です。' } ] },
+      { f: 'lit', dept: '文学部 英語コミュニケーション学科 3年', name: '在学生 Dさん（サンプル）', quote: '英語より先に、「伝えたいことを持つ」大切さに気づきました。', qa: [
+        { q: '入学の決め手', a: '在学中に留学でき、単位も認定される制度があったことです。' },
+        { q: 'いまの学び', a: '翻訳演習で、絵本を日本語から英語に訳すプロジェクトに参加しています。' },
+        { q: '受験生へ', a: '英語が苦手でも、少人数のクラスで話す機会がたくさんあります。' } ] },
+      { f: 'lit', dept: '文学部 日本語日本文学科 2年', name: '在学生 Eさん（サンプル）', quote: '一つの和歌を、90分かけて読む授業が忘れられません。', qa: [
+        { q: '入学の決め手', a: '古典を専門に学べる先生が多かったことです。' },
+        { q: 'いまの学び', a: '国語の教員免許取得をめざして、教職科目も履修しています。' },
+        { q: '受験生へ', a: '好きなことを好きと言える仲間に、きっと出会えます。' } ] },
+      { f: 'life', dept: '生活科学部 住環境デザイン学科 2年', name: '在学生 Fさん（サンプル）', quote: '模型をつくりながら夜まで語り合える製図室が、いちばん好きな場所。', qa: [
+        { q: '入学の決め手', a: '住まいを「暮らす人の目線」で考える授業に惹かれました。' },
+        { q: 'いまの学び', a: '設計課題で、多世代が暮らす集合住宅を計画しています。' },
+        { q: '受験生へ', a: '絵が得意でなくても大丈夫。描き方は授業で一から学べます。' } ] }
+    ];
+    const IMG = ['three-students', 'two-students', 'students-glass', 'walk-bridge', 'classroom', 'tree-path'];
+    S.forEach((s, i) => { s.img = IMG[i]; });
+    const tab = this.state.tab;
+    const tabs = [['all', 'すべて'], ['lit', '文学部'], ['soc', '人間社会学部'], ['life', '生活科学部']].map(([id, label]) => {
+      const a = id === tab;
+      return { label, active: a, bg: a ? '#E2502F' : '#fff', color: a ? '#fff' : '#2E2A27', border: a ? '#E2502F' : '#DCCFC2', onClick: () => this.setState({ tab: id }) };
+    });
+    return {
+      tabs,
+      stories: (tab === 'all' ? S : S.filter(s => s.f === tab)).map(s => ({ ...s, alt: '写真：' + s.name })),
+      alumnae: [
+        { meta: '心理学科 卒業／自治体 福祉職（サンプル）', text: 'ゼミで学んだ「話を聴く」姿勢が、いまの相談業務の土台になっています。', alt: '写真：卒業生', img: 'student-portrait', pos: '60% 24%/240%' },
+        { meta: '食物栄養学科 卒業／病院 管理栄養士（サンプル）', text: '臨地実習でお世話になった現場に、いまは自分が実習生を迎える立場で立っています。', alt: '写真：卒業生', img: 'library-student', pos: '67% 30%/240%' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

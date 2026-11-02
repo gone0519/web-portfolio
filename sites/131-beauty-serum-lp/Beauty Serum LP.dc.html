@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#1d150d;color:#3a2c1e;font-family:'Shippori Mincho',serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#9a7330;text-decoration:none}
+a:hover{color:#c79a4a}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes sheen{0%{background-position:160% 0,0 0}60%,100%{background-position:-60% 0,0 0}}
+@keyframes orbPulse{0%,100%{transform:scale(1);box-shadow:0 6px 16px rgba(60,30,0,.4)}50%{transform:scale(1.06);box-shadow:0 0 28px rgba(255,226,150,.85)}}
+@keyframes rise{0%{transform:translateY(0) scale(.6);opacity:0}15%{opacity:.9}100%{transform:translateY(-110vh) scale(1.1);opacity:0}}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
+@keyframes ripple{0%{transform:translate(-50%,-50%) scale(.2);opacity:.7}100%{transform:translate(-50%,-50%) scale(2.4);opacity:0}}
+@keyframes spinIn{from{transform:translateX(-50%) rotate(-180deg) scale(.3);opacity:0}to{transform:translateX(-50%) rotate(0) scale(1);opacity:1}}
+@keyframes glowText{0%,100%{text-shadow:0 0 0 rgba(240,215,154,0)}50%{text-shadow:0 0 18px rgba(240,215,154,.9)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.nb{display:inline-block}
+@media (max-width:560px){
+  .lp-intro{grid-template-columns:1fr !important;padding:24px 20px 28px !important;gap:18px !important}
+  .lp-intro-img{aspect-ratio:4/3 !important}
+  .lp-ing{grid-template-columns:1fr !important;gap:18px !important}
+  .lp-ing-item{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:18px;align-items:center;text-align:left !important}
+  .lp-ing-item > div:first-child{width:96px !important;grid-row:span 2}
+  .lp-ing-item h3{margin-top:0 !important;align-self:end}
+  .lp-ing-item p{align-self:start}
+  .lp-tex{grid-template-columns:1fr !important;gap:18px !important;padding:20px !important}
+  .lp-tex-img{aspect-ratio:16/9 !important}
+  .lp-free{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+  .lp-free-wide{grid-column:span 3 !important}
+  .lp-stat-label{font-size:11px !important}
+}
+</style>
+</helmet>
+
+<div style="min-height:100vh;overflow-x:hidden">
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(22,16,10,.92);backdrop-filter:blur(6px);border-bottom:1px solid rgba(214,180,112,.35)">
+  <div style="max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="#top" style="display:flex;align-items:baseline;gap:10px;color:#ecd8a8">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.18em;font-weight:600">AURELIA</span>
+      <span style="font-size:11px;letter-spacing:.2em;color:#b99a62">美容液</span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:16px;font-size:13px;letter-spacing:.08em;min-width:0;white-space:nowrap">
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <a href="#concern" style="color:#d8c4a0">お悩み</a>
+      <a href="#ingredient" style="color:#d8c4a0">成分</a>
+      <a href="#howto" style="color:#d8c4a0">使い方</a>
+      <a href="#faq" style="color:#d8c4a0">よくある質問</a>
+      </sc-if>
+      <a href="#purchase" style="color:#2a1d0e;background:linear-gradient(180deg,#f1dca6,#c9a052 55%,#a77c33);padding:8px 16px;border-radius:2px;font-weight:600;white-space:nowrap">ご購入</a>
+    </nav>
+  </div>
+</header>
+
+<!-- 01 HERO -->
+<section id="top" data-screen-label="01 Hero" style="position:relative;background:radial-gradient(ellipse 60% 50% at 50% 45%,#f6e3ae 0%,#d9b366 30%,#8f6426 62%,#3b2810 100%);padding:44px 20px 0;overflow:hidden">
+  {{ heroFx }}
+  <div data-parallax="0.35" style="position:absolute;inset:0;background:repeating-radial-gradient(ellipse 120% 40% at 50% 78%,rgba(255,240,200,.0) 0 22px,rgba(255,240,200,.12) 24px 26px,rgba(255,240,200,0) 28px 48px);pointer-events:none"></div>
+  <div style="position:relative;max-width:640px;margin:0 auto;text-align:center">
+    <div style="display:flex;align-items:center;gap:14px;color:#fffaf0;text-shadow:0 1px 8px rgba(70,40,10,.5)">
+      <span style="flex:1;height:1px;background:rgba(255,248,230,.7)"></span>
+      <p style="margin:0;font-size:clamp(14px,3.6vw,24px);letter-spacing:.02em;white-space:nowrap"><span style="font-size:1.45em">12</span>種の美容成分<sup style="font-size:.45em">※1</sup>と<span style="font-size:1.45em">8</span>種のうるおい成分<sup style="font-size:.45em">※2</sup></p>
+      <span style="flex:1;height:1px;background:rgba(255,248,230,.7)"></span>
+    </div>
+    <div style="margin:22px auto 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 14px;background:linear-gradient(90deg,rgba(92,58,24,0),rgba(92,58,24,.92) 12%,rgba(92,58,24,.92) 88%,rgba(92,58,24,0));padding:16px 10px;color:#fbf3de">
+      <span style="font-size:clamp(20px,4.4vw,32px);letter-spacing:.06em">ヒト型セラミド<sup style="font-size:.4em">※3</sup></span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,6vw,44px);color:#f0d79a;line-height:1">×</span>
+      <span style="font-size:clamp(20px,4.4vw,32px);letter-spacing:.06em">ナイアシンアミド<sup style="font-size:.4em">※4</sup></span>
+    </div>
+    <div style="position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:12px;margin-top:26px">
+      <div style="justify-self:end;display:flex;gap:10px;align-self:center">
+        <p style="margin:0;writing-mode:vertical-rl;background:rgba(255,250,236,.9);color:#4a3420;padding:14px 8px;font-size:clamp(15px,3vw,22px);letter-spacing:.12em;font-weight:600">“うるおい”から始まる</p>
+        <p style="margin:56px 0 0;writing-mode:vertical-rl;background:rgba(255,250,236,.9);color:#4a3420;padding:14px 8px;font-size:clamp(15px,3vw,22px);letter-spacing:.12em;font-weight:600">年齢肌<sup style="font-size:.5em">※5</sup>のための美容液</p>
+      </div>
+      <div style="width:clamp(150px,28vw,210px);aspect-ratio:2/3.6;overflow:hidden;border:1px solid rgba(255,255,255,.8);box-shadow:0 30px 50px -20px rgba(40,20,0,.6)"><img src="images/product-bottle.jpg" alt="AURELIA SERUM 30mL" style="width:100%;height:100%;object-fit:cover;object-position:74% 50%;display:block"></div>
+      <div style="align-self:center;justify-self:start;display:flex;flex-direction:column;gap:10px;text-align:left">
+        <div style="width:clamp(70px,13vw,96px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff7dc,#e0bb6c 45%,#9b6d2a);display:flex;align-items:center;justify-content:center;color:#3e2a12;font-size:clamp(10px,1.9vw,13px);line-height:1.4;text-align:center;box-shadow:0 6px 16px rgba(60,30,0,.4)">無香料<br>無着色</div>
+        <div style="width:clamp(70px,13vw,96px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff7dc,#e0bb6c 45%,#9b6d2a);display:flex;align-items:center;justify-content:center;color:#3e2a12;font-size:clamp(10px,1.9vw,13px);line-height:1.4;text-align:center;box-shadow:0 6px 16px rgba(60,30,0,.4)">7つの<br>フリー処方</div>
+      </div>
+    </div>
+  </div>
+  <div style="position:relative;max-width:640px;margin:0 auto;background:linear-gradient(180deg,#fbf5ea,#f3e7d2);padding:30px 24px 34px;text-align:center;margin-top:-4px">
+    <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.4em;color:#a8823f">AURELIA SERUM</p>
+    <h1 style="margin:10px 0 0;font-size:clamp(24px,5.2vw,34px);font-weight:600;line-height:1.55;letter-spacing:.06em;color:#3a2a17">毎日のスキンケアに、<br>ひとさじの贅沢を。</h1>
+    <p style="margin:16px auto 0;max-width:440px;font-size:15px;line-height:2;color:#5a4630;text-wrap:pretty">とろけるように肌になじみ、角層<sup style="font-size:.6em">※6</sup>のすみずみまでうるおいで満たす美容液。ふっくらとしたハリとツヤを感じる肌へ導きます。</p>
+    <a href="#purchase" style="display:flex;align-items:center;justify-content:center;gap:10px;margin:24px auto 0;max-width:400px;padding:17px 20px;background:linear-gradient(180deg,#f3dfa8,#cfa65a 50%,#a87d34);color:#2b1d0c;font-size:18px;font-weight:600;letter-spacing:.12em;box-shadow:0 4px 0 #7d5a22,0 10px 20px -8px rgba(80,50,10,.6);border-radius:3px">ご購入はこちら<span style="font-family:'Cormorant Garamond',serif;font-size:22px">›</span></a>
+    <p style="margin:18px 0 0;font-family:'Noto Sans JP',sans-serif;font-size:10px;line-height:1.8;color:#8a7558;text-align:left">※1 美容成分の種類・名称はプレースホルダーです ※2 保湿成分 ※3 セラミドNP（保湿）※4 整肌成分 ※5 年齢に応じたうるおいケアのこと ※6 角層まで</p>
+  </div>
+</section>
+
+<!-- 02 CONCERNS & BENEFITS -->
+<section id="concern" data-screen-label="02 Concerns" style="background:linear-gradient(180deg,#efe9df 0%,#faf7f1 40%,#e9dcc4 100%);padding:0 20px 64px">
+  <div style="max-width:640px;margin:0 auto">
+    <div style="background:#2f2519;color:#f6ecd8;text-align:center;padding:30px 20px 24px">
+      <h2 style="margin:0;font-size:clamp(24px,5vw,32px);font-weight:500;letter-spacing:.1em">肌の悩みは<span style="font-size:1.3em;color:#e3c27d">1</span>つじゃない</h2>
+      <div style="margin-top:16px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
+        <span style="border:1px solid #c9a868;padding:5px 12px;font-size:14px;letter-spacing:.08em;border-radius:20px">✓ 乾燥</span>
+        <span style="border:1px solid #c9a868;padding:5px 12px;font-size:14px;letter-spacing:.08em;border-radius:20px">✓ ハリ不足</span>
+        <span style="border:1px solid #c9a868;padding:5px 12px;font-size:14px;letter-spacing:.08em;border-radius:20px">✓ くすみ<sup style="font-size:.6em">※7</sup></span>
+        <span style="border:1px solid #c9a868;padding:5px 12px;font-size:14px;letter-spacing:.08em;border-radius:20px">✓ ごわつき</span>
+      </div>
+    </div>
+    <div class="lp-intro" style="background:#fff;padding:32px 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:center">
+      <div class="lp-intro-img" style="aspect-ratio:3/4;overflow:hidden"><img src="images/concern-mirror.jpg" alt="鏡で肌を確かめる女性" style="width:100%;height:100%;object-fit:cover;object-position:62% 50%;display:block"></div>
+      <div>
+        <p style="margin:0;font-size:15px;line-height:2.1;color:#4a3824;text-wrap:pretty">朝はしっとりしていたのに、夕方にはつっぱる。メイクのりがいまひとつ。年齢を重ねるほど、肌の悩みは重なっていくもの。</p>
+        <p style="margin:14px 0 0;font-size:17px;line-height:1.9;color:#3a2a17;font-weight:600">だからこそ、<span style="background:linear-gradient(transparent 62%,#f0dcae 62%)">ひとつの美容液で</span><br><span style="background:linear-gradient(transparent 62%,#f0dcae 62%)">まとめて応えたい。</span></p>
+      </div>
+    </div>
+    <div style="text-align:center;margin:52px 0 26px">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:#a8823f;letter-spacing:.1em">Three Points</p>
+      <h2 style="margin:4px 0 0;font-size:clamp(24px,5vw,32px);font-weight:600;letter-spacing:.08em;color:#8a6326"><span class="nb">AURELIAの</span><span class="nb"><span style="font-size:1.2em">3</span>つのこだわり</span></h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:46px">
+      <article data-reveal="1" style="position:relative;background:#fff;box-shadow:0 10px 30px -12px rgba(90,60,20,.35);padding:52px 24px 28px">
+        <div style="position:absolute;top:-28px;left:50%;transform:translateX(-50%);width:76px;height:76px;border-radius:50%;background:#fff;border:1px solid #d6b878;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#b18a42;font-family:'Cormorant Garamond',serif;line-height:1"><span style="font-size:34px;font-weight:500">01</span><span style="font-size:10px;letter-spacing:.2em">POINT</span></div>
+        <div style="aspect-ratio:16/9;overflow:hidden"><img src="images/point1-skin.jpg" alt="うるおいのある肌" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block"></div>
+        <h3 style="margin:20px 0 0;text-align:center;font-size:22px;font-weight:600;color:#3a2a17;letter-spacing:.06em">うるおいを<span style="color:#a8823f">抱え込む</span></h3>
+        <p style="margin:12px 0 0;font-size:14.5px;line-height:2;color:#4a3824;text-wrap:pretty">3種のヒト型セラミド<sup style="font-size:.6em">※3</sup>が角層<sup style="font-size:.6em">※6</sup>になじみ、乾燥しがちな肌にうるおいを届けます。時間がたっても、しっとり感が続きます。</p>
+      </article>
+      <article data-reveal="1" style="position:relative;background:#fff;box-shadow:0 10px 30px -12px rgba(90,60,20,.35);padding:52px 24px 28px">
+        <div style="position:absolute;top:-28px;left:50%;transform:translateX(-50%);width:76px;height:76px;border-radius:50%;background:#fff;border:1px solid #d6b878;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#b18a42;font-family:'Cormorant Garamond',serif;line-height:1"><span style="font-size:34px;font-weight:500">02</span><span style="font-size:10px;letter-spacing:.2em">POINT</span></div>
+        <div style="aspect-ratio:16/9;overflow:hidden"><img src="images/point2-hands.jpg" alt="頬に手を添えて微笑む女性" style="width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:block"></div>
+        <h3 style="margin:20px 0 0;text-align:center;font-size:22px;font-weight:600;color:#3a2a17;letter-spacing:.06em">ハリと<span style="color:#a8823f">ツヤ</span>のある印象へ</h3>
+        <p style="margin:12px 0 0;font-size:14.5px;line-height:2;color:#4a3824;text-wrap:pretty">整肌成分ナイアシンアミド<sup style="font-size:.6em">※4</sup>を配合。キメを整え、内側から光を放つようなツヤ感のある肌印象に仕上げます。</p>
+      </article>
+      <article data-reveal="1" style="position:relative;background:#fff;box-shadow:0 10px 30px -12px rgba(90,60,20,.35);padding:52px 24px 28px">
+        <div style="position:absolute;top:-28px;left:50%;transform:translateX(-50%);width:76px;height:76px;border-radius:50%;background:#fff;border:1px solid #d6b878;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#b18a42;font-family:'Cormorant Garamond',serif;line-height:1"><span style="font-size:34px;font-weight:500">03</span><span style="font-size:10px;letter-spacing:.2em">POINT</span></div>
+        <div style="aspect-ratio:16/9;overflow:hidden"><img src="images/point3-dropper.jpg" alt="美容液のスポイト" style="width:100%;height:100%;object-fit:cover;object-position:50% 60%;display:block"></div>
+        <h3 style="margin:20px 0 0;text-align:center;font-size:22px;font-weight:600;color:#3a2a17;letter-spacing:.06em">導入美容液としても</h3>
+        <p style="margin:12px 0 0;font-size:14.5px;line-height:2;color:#4a3824;text-wrap:pretty">洗顔後すぐに使えば、次に使う化粧水のなじみをサポート。いつものお手入れに加えるだけで、肌の手ざわりの変化を感じていただけます。</p>
+      </article>
+    </div>
+    <p style="margin:20px 0 0;font-family:'Noto Sans JP',sans-serif;font-size:10px;color:#8a7558">※7 乾燥による</p>
+  </div>
+</section>
+
+<!-- 03 INGREDIENTS -->
+<section id="ingredient" data-screen-label="03 Ingredients" style="position:relative;background:linear-gradient(180deg,#4a3215 0%,#9b7232 28%,#e7cf98 55%,#f8efdc 100%);padding:64px 20px 72px">
+  <div style="max-width:640px;margin:0 auto">
+    <div style="text-align:center;color:#fbf2dc">
+      <div style="display:inline-block;border-top:1px solid rgba(240,215,154,.7);border-bottom:1px solid rgba(240,215,154,.7);padding:10px 26px">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.4em;color:#f0d79a">INGREDIENTS</p>
+        <h2 style="margin:6px 0 0;font-size:clamp(24px,5vw,32px);font-weight:500;letter-spacing:.1em">肌を想う、贅沢な処方</h2>
+      </div>
+    </div>
+    <div class="lp-ing" style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:22px 14px">
+      <div data-reveal="1" class="lp-ing-item" style="text-align:center">
+        <div style="width:132px;aspect-ratio:1;margin:0 auto;border-radius:50%;border:2px solid #e9cf8f;background:repeating-linear-gradient(135deg,rgba(255,250,235,.75) 0 7px,rgba(255,250,235,.5) 7px 14px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#6a5030;box-shadow:0 8px 20px -8px rgba(40,20,0,.5);overflow:hidden"><img src="images/ing-ceramide.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:48% 50%;display:block"></div>
+        <h3 style="margin:12px 0 0;font-size:17px;font-weight:600;color:#fffaf0;text-shadow:0 1px 6px rgba(60,35,5,.6)">ヒト型セラミド</h3>
+        <p style="margin:4px 0 0;font-size:12.5px;line-height:1.8;color:#fff4dc;text-shadow:0 1px 6px rgba(60,35,5,.6)">肌のうるおいを守る保湿成分</p>
+      </div>
+      <div data-reveal="1" class="lp-ing-item" style="text-align:center">
+        <div style="width:132px;aspect-ratio:1;margin:0 auto;border-radius:50%;border:2px solid #e9cf8f;background:repeating-linear-gradient(135deg,rgba(255,250,235,.75) 0 7px,rgba(255,250,235,.5) 7px 14px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#6a5030;box-shadow:0 8px 20px -8px rgba(40,20,0,.5);overflow:hidden"><img src="images/ing-niacinamide.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:block"></div>
+        <h3 style="margin:12px 0 0;font-size:17px;font-weight:600;color:#fffaf0;text-shadow:0 1px 6px rgba(60,35,5,.6)">ナイアシンアミド</h3>
+        <p style="margin:4px 0 0;font-size:12.5px;line-height:1.8;color:#fff4dc;text-shadow:0 1px 6px rgba(60,35,5,.6)">キメを整える整肌成分</p>
+      </div>
+      <div data-reveal="1" class="lp-ing-item" style="text-align:center">
+        <div style="width:132px;aspect-ratio:1;margin:0 auto;border-radius:50%;border:2px solid #e9cf8f;background:repeating-linear-gradient(135deg,rgba(255,250,235,.75) 0 7px,rgba(255,250,235,.5) 7px 14px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#6a5030;box-shadow:0 8px 20px -8px rgba(40,20,0,.5);overflow:hidden"><img src="images/ing-hyaluronic.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:62% 60%;display:block"></div>
+        <h3 style="margin:12px 0 0;font-size:17px;font-weight:600;color:#fffaf0;text-shadow:0 1px 6px rgba(60,35,5,.6)">ヒアルロン酸Na</h3>
+        <p style="margin:4px 0 0;font-size:12.5px;line-height:1.8;color:#fff4dc;text-shadow:0 1px 6px rgba(60,35,5,.6)">みずみずしさを与える保湿成分</p>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:44px;background:#fff;box-shadow:0 10px 30px -12px rgba(90,60,20,.35)">
+      <div style="background:linear-gradient(90deg,#7a5524,#b48a45,#7a5524);color:#fff8e6;text-align:center;padding:12px;font-size:17px;letter-spacing:.14em">テクスチャーと使い心地</div>
+      <div class="lp-tex" style="padding:26px 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px;align-items:center">
+        <div class="lp-tex-img" style="aspect-ratio:1;overflow:hidden"><img src="images/texture-drop.jpg" alt="美容液のテクスチャー" style="width:100%;height:100%;object-fit:cover;object-position:38% 40%;display:block"></div>
+        <div>
+          <p style="margin:0;font-size:19px;font-weight:600;color:#3a2a17;line-height:1.6"><span class="nb">とろみがあるのに、</span><br>すっと<span style="color:#a8823f">軽やか</span>。</p>
+          <p style="margin:10px 0 0;font-size:14px;line-height:2;color:#4a3824;text-wrap:pretty">手のひらで温めると、ほどけるように肌へなじむ美容液。べたつきが残りにくく、朝のメイク前にもお使いいただけます。</p>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:28px;background:#fff;box-shadow:0 10px 30px -12px rgba(90,60,20,.35);padding:28px 24px">
+      <h3 style="margin:0;text-align:center;font-size:22px;font-weight:600;color:#3a2a17;letter-spacing:.08em"><span style="font-size:1.4em;color:#a8823f">7</span>つのフリー</h3>
+      <div class="lp-free" style="margin-top:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px">
+        <span style="background:#f1e3c6;color:#5b4220;text-align:center;padding:12px 4px;font-size:13px;line-height:1.4">香料</span>
+        <span style="background:#f1e3c6;color:#5b4220;text-align:center;padding:12px 4px;font-size:13px;line-height:1.4">着色料</span>
+        <span style="background:#f1e3c6;color:#5b4220;text-align:center;padding:12px 4px;font-size:13px;line-height:1.4">パラベン</span>
+        <span style="background:#f1e3c6;color:#5b4220;text-align:center;padding:12px 4px;font-size:13px;line-height:1.4">鉱物油</span>
+        <span style="background:#f1e3c6;color:#5b4220;text-align:center;padding:12px 4px;font-size:13px;line-height:1.4">シリコン</span>
+        <span style="background:#f1e3c6;color:#5b4220;text-align:center;padding:12px 4px;font-size:13px;line-height:1.4">エタノール</span>
+        <span class="lp-free-wide" style="background:#f1e3c6;color:#5b4220;text-align:center;padding:12px 4px;font-size:13px;line-height:1.4;grid-column:span 2">石油系界面活性剤</span>
+      </div>
+      <p style="margin:16px 0 0;font-size:14px;line-height:2;color:#4a3824;text-wrap:pretty">毎日肌にふれるものだから、香りや使い心地にもこだわりました。肌へのやさしさを考え、7つの成分を配合していません。</p>
+      <div style="margin-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #e6d5b2">
+        <div style="text-align:center;padding:16px 4px 0"><p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:30px;color:#a8823f;line-height:1">30<span style="font-size:15px">mL</span></p><p style="margin:6px 0 0;font-size:12px;color:#6a5638">約1か月分</p></div>
+        <div style="text-align:center;padding:16px 4px 0;border-left:1px solid #e6d5b2"><p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:30px;color:#a8823f;line-height:1">pH<span style="font-size:15px"> ○.○</span></p><p style="margin:6px 0 0;font-size:12px;color:#6a5638">弱酸性</p></div>
+        <div style="text-align:center;padding:16px 4px 0;border-left:1px solid #e6d5b2"><p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:30px;color:#a8823f;line-height:1">GMP</p><p class="lp-stat-label" style="margin:6px 0 0;font-size:12px;color:#6a5638"><span class="nb">国内認証工場</span><span class="nb">で製造</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 HOW TO -->
+<section id="howto" data-screen-label="04 How to use" style="background:linear-gradient(180deg,#f8efdc 0%,#fffdf8 30%,#efe4d0 100%);padding:64px 20px 72px">
+  <div style="max-width:640px;margin:0 auto">
+    <div style="text-align:center">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#a8823f;letter-spacing:.12em">How to use</p>
+      <h2 style="margin:4px 0 0;font-size:clamp(26px,5.4vw,34px);font-weight:600;letter-spacing:.08em;color:#8a6326">おすすめの使い方</h2>
+    </div>
+    <div style="margin-top:28px;background:#fff;box-shadow:0 10px 30px -12px rgba(90,60,20,.3);padding:26px 22px 30px">
+      <p style="margin:0;text-align:center;font-size:20px;color:#3a2a17;letter-spacing:.1em">＼ 毎日の美肌時間 ／</p>
+      <div style="margin-top:22px;display:flex;flex-direction:column;gap:22px">
+        <div data-reveal="1" style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;align-items:start">
+          <div style="width:96px;aspect-ratio:1;border-radius:50%;background:repeating-linear-gradient(135deg,#f6efe2 0 7px,#ede2cf 7px 14px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:9px;color:#8a7558;text-align:center;overflow:hidden"><img src="images/step1-pump.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:55% 50%;display:block"></div>
+          <div><span style="display:inline-block;background:linear-gradient(90deg,#c9a052,#e5c987);color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;padding:2px 14px;letter-spacing:.06em">Step 01</span><p style="margin:8px 0 0;font-size:14.5px;line-height:1.9;color:#4a3824">洗顔後、清潔な手のひらに<span style="background:linear-gradient(transparent 62%,#f0dcae 62%)">1〜2プッシュ（約0.5mL）</span>を取ります。</p></div>
+        </div>
+        <div data-reveal="1" style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;align-items:start">
+          <div style="width:96px;aspect-ratio:1;border-radius:50%;background:repeating-linear-gradient(135deg,#f6efe2 0 7px,#ede2cf 7px 14px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:9px;color:#8a7558;text-align:center;overflow:hidden"><img src="images/step2-palms.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:52% 45%;display:block"></div>
+          <div><span style="display:inline-block;background:linear-gradient(90deg,#c9a052,#e5c987);color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;padding:2px 14px;letter-spacing:.06em">Step 02</span><p style="margin:8px 0 0;font-size:14.5px;line-height:1.9;color:#4a3824">手のひら全体に広げて軽く温めます。人肌程度に温めると、よりなじみやすくなります。</p></div>
+        </div>
+        <div data-reveal="1" style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;align-items:start">
+          <div style="width:96px;aspect-ratio:1;border-radius:50%;background:repeating-linear-gradient(135deg,#f6efe2 0 7px,#ede2cf 7px 14px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:9px;color:#8a7558;text-align:center;overflow:hidden"><img src="images/step3-press.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:40% 50%;display:block"></div>
+          <div><span style="display:inline-block;background:linear-gradient(90deg,#c9a052,#e5c987);color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;padding:2px 14px;letter-spacing:.06em">Step 03</span><p style="margin:8px 0 0;font-size:14.5px;line-height:1.9;color:#4a3824">顔の中心から外側へ、やさしく押さえるようになじませます。こすらず、ハンドプレスで包み込むのがポイントです。</p></div>
+        </div>
+        <div data-reveal="1" style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;align-items:start">
+          <div style="width:96px;aspect-ratio:1;border-radius:50%;background:repeating-linear-gradient(135deg,#f6efe2 0 7px,#ede2cf 7px 14px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:9px;color:#8a7558;text-align:center;overflow:hidden"><img src="images/step4-eye.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:52% 35%;display:block"></div>
+          <div><span style="display:inline-block;background:linear-gradient(90deg,#c9a052,#e5c987);color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;padding:2px 14px;letter-spacing:.06em">Step 04</span><p style="margin:8px 0 0;font-size:14.5px;line-height:1.9;color:#4a3824">乾燥が気になる目もとや口もとには、少量を重ねづけしてください。</p></div>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:28px;background:#2f2519;color:#f6ecd8;padding:26px 22px">
+      <p style="margin:0;text-align:center;font-size:18px;letter-spacing:.12em">お手入れの順番</p>
+      <div style="margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:6px;align-items:center;text-align:center">
+        <div style="border:1px solid rgba(214,180,112,.5);padding:12px 2px;font-size:13px">洗顔</div>
+        <span style="color:#c9a868">›</span>
+        <div style="background:linear-gradient(180deg,#f1dca6,#c9a052 60%,#a77c33);color:#2a1d0e;padding:12px 2px;font-size:13px;font-weight:600">美容液</div>
+        <span style="color:#c9a868">›</span>
+        <div style="border:1px solid rgba(214,180,112,.5);padding:12px 2px;font-size:13px">化粧水</div>
+        <span style="color:#c9a868">›</span>
+        <div style="border:1px solid rgba(214,180,112,.5);padding:12px 2px;font-size:13px">乳液・<br>クリーム</div>
+      </div>
+      <p style="margin:16px 0 0;font-size:13.5px;line-height:1.9;color:#e4d5b8;text-wrap:pretty">導入美容液として洗顔後すぐにお使いいただくのがおすすめです。化粧水のあとに使う場合も、同じようにお使いいただけます。朝晩2回のご使用で約1か月分です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 FAQ & PURCHASE -->
+<section id="faq" data-screen-label="05 FAQ / Purchase" style="background:linear-gradient(180deg,#efe4d0 0%,#fbf8f2 100%);padding:64px 20px 0">
+  <div style="max-width:640px;margin:0 auto">
+    <div style="text-align:center">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#a8823f;letter-spacing:.12em">Q &amp; A</p>
+      <h2 style="margin:4px 0 0;font-size:clamp(26px,5.4vw,34px);font-weight:600;letter-spacing:.08em;color:#8a6326">よくあるご質問</h2>
+    </div>
+    <div style="margin-top:26px;display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+        <div style="background:#fff;box-shadow:0 4px 14px -8px rgba(90,60,20,.35)">
+          <button onClick="{{ f.toggle }}" style="all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:32px minmax(0,1fr) 20px;gap:12px;align-items:center;padding:18px 18px;font-family:'Shippori Mincho',serif">
+            <span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(180deg,#e5c987,#b48a45);color:#fff;font-family:'Cormorant Garamond',serif;font-size:18px;display:flex;align-items:center;justify-content:center">Q</span>
+            <span style="font-size:15px;color:#3a2a17;line-height:1.6;font-weight:600">{{ f.q }}</span>
+            <span style="font-size:20px;color:#a8823f;text-align:center">{{ f.icon }}</span>
+          </button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;padding:0 18px 20px;border-top:1px dashed #e6d5b2;padding-top:16px">
+              <span style="width:32px;height:32px;border-radius:50%;border:1px solid #c9a052;color:#a8823f;font-family:'Cormorant Garamond',serif;font-size:18px;display:flex;align-items:center;justify-content:center">A</span>
+              <p style="margin:4px 0 0;font-size:14px;line-height:1.95;color:#4a3824">{{ f.a }}</p>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div id="purchase" style="position:relative;overflow:hidden;margin:64px -20px 0;background:radial-gradient(ellipse 80% 40% at 50% 0%,#7a5a2c 0%,#2e2113 55%,#16100a 100%);padding:56px 20px 64px">
+    {{ purchaseFx }}
+    <div style="position:relative;max-width:640px;margin:0 auto">
+      <div style="text-align:center;color:#fbf2dc">
+        <div style="display:inline-block;border-top:1px solid rgba(240,215,154,.6);border-bottom:1px solid rgba(240,215,154,.6);padding:10px 26px">
+          <p style="margin:0;font-size:15px;letter-spacing:.14em;color:#e6cf9d">AURELIAで始める</p>
+          <h2 style="margin:4px 0 0;font-size:clamp(24px,5vw,30px);font-weight:500;letter-spacing:.1em"><span class="nb">あなたらしい、</span><span class="nb">うるおい習慣</span></h2>
+        </div>
+        <p style="margin:18px auto 0;max-width:460px;font-size:14px;line-height:2;color:#e4d5b8;text-wrap:pretty">鏡を見るのが少し楽しみになる。そんな毎日のために。まずはご自身の肌で、使い心地をお確かめください。</p>
+      </div>
+
+      <div data-reveal="1" style="position:relative;margin-top:34px;background:linear-gradient(180deg,#fffdf8,#f4ead8);padding:0 0 24px;box-shadow:0 0 0 1px #d6b878,0 20px 40px -16px rgba(0,0,0,.6)">
+        <span style="display:inline-block;background:linear-gradient(90deg,#8a6326,#c9a052);color:#fff;padding:7px 28px 7px 18px;font-size:16px;letter-spacing:.1em;clip-path:polygon(0 0,100% 0,90% 100%,0 100%)">おトクな定期便</span>
+        <div style="padding:16px 22px 0;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:14px;align-items:center">
+          <div>
+            <div style="display:flex;gap:8px">
+              <div style="width:74px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff7dc,#e0bb6c 45%,#9b6d2a);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#3e2a12;line-height:1.1;text-align:center"><span style="font-size:10px">初回から</span><span style="font-size:22px;font-family:'Cormorant Garamond',serif;font-weight:600">10%</span><span style="font-size:10px">OFF</span></div>
+              <div style="width:74px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff7dc,#e0bb6c 45%,#9b6d2a);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#3e2a12;line-height:1.3;text-align:center;font-size:14px">送料<br>無料</div>
+            </div>
+            <p style="margin:14px 0 0;font-family:'Cormorant Garamond',serif;font-size:24px;color:#3a2a17;letter-spacing:.04em">AURELIA SERUM</p>
+            <p style="margin:0;font-size:12px;color:#6a5638">［30mL／約1か月分］</p>
+          </div>
+          <div style="width:100%;max-width:200px;justify-self:end;aspect-ratio:3/4;overflow:hidden"><img src="images/product-bottle.jpg" alt="AURELIA SERUM" style="width:100%;height:100%;object-fit:cover;object-position:74% 50%;display:block"></div>
+        </div>
+        <div style="padding:14px 22px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px">
+          <div style="background:#7a4d1c;color:#fff4dc;padding:9px 10px;font-size:13px;line-height:1.4;display:flex;gap:8px;align-items:center"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#f0d79a">1</span>定期縛り回数なし</div>
+          <div style="background:#7a4d1c;color:#fff4dc;padding:9px 10px;font-size:13px;line-height:1.4;display:flex;gap:8px;align-items:center"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#f0d79a">2</span><span><span class="nb">いつでも</span><span class="nb">休止・解約OK</span></span></div>
+        </div>
+        <div style="padding:14px 22px 0;display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap">
+          <p style="margin:0;font-size:13px;color:#6a5638">通常価格 <span style="text-decoration:line-through">○,○○○円</span></p>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(40px,11vw,58px);white-space:nowrap;line-height:1;font-weight:600;background:linear-gradient(180deg,#c9a052,#7a5524);-webkit-background-clip:text;background-clip:text;color:transparent">○,○○○<span style="font-family:'Shippori Mincho',serif;font-size:26px">円</span></p>
+          <span style="font-size:11px;color:#6a5638;margin-bottom:8px">（税込）</span>
+        </div>
+        <a href="#purchase" onClick="{{ onBuy }}" style="display:flex;align-items:center;justify-content:center;gap:10px;margin:18px 22px 0;padding:16px;background:linear-gradient(180deg,#f3dfa8,#cfa65a 50%,#a87d34);color:#2b1d0c;font-size:18px;font-weight:600;letter-spacing:.12em;box-shadow:0 4px 0 #7d5a22;border-radius:3px">定期便で購入する<span style="font-family:'Cormorant Garamond',serif;font-size:22px">›</span></a>
+      </div>
+
+      <div data-reveal="1" style="margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+        <div style="background:linear-gradient(180deg,#fffdf8,#f4ead8);box-shadow:0 0 0 1px #d6b878;padding-bottom:18px">
+          <span style="display:inline-block;background:linear-gradient(90deg,#8a6326,#c9a052);color:#fff;padding:5px 24px 5px 14px;font-size:14px;letter-spacing:.1em;clip-path:polygon(0 0,100% 0,90% 100%,0 100%)">トライアル</span>
+          <div style="padding:10px 18px 0"><p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:20px;color:#3a2a17">AURELIA SERUM</p><p style="margin:0;font-size:12px;color:#6a5638">［1mL×7包／約1週間分］</p><p style="margin:8px 0 0;font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;font-weight:600;color:#8a6326">○○○<span style="font-family:'Shippori Mincho',serif;font-size:18px">円</span><span style="font-family:'Shippori Mincho',serif;font-size:11px;color:#6a5638">（税込）</span></p></div>
+          <a href="#purchase" onClick="{{ onBuy }}" style="display:block;margin:14px 18px 0;padding:12px;text-align:center;background:linear-gradient(180deg,#f3dfa8,#cfa65a 50%,#a87d34);color:#2b1d0c;font-size:15px;font-weight:600;letter-spacing:.1em;box-shadow:0 3px 0 #7d5a22;border-radius:3px">まずはお試し ›</a>
+        </div>
+        <div style="background:linear-gradient(180deg,#fdfdfd,#e9e9e9);box-shadow:0 0 0 1px #bdbdbd;padding-bottom:18px">
+          <span style="display:inline-block;background:linear-gradient(90deg,#6e6e6e,#a8a8a8);color:#fff;padding:5px 24px 5px 14px;font-size:14px;letter-spacing:.1em;clip-path:polygon(0 0,100% 0,90% 100%,0 100%)">単品購入</span>
+          <div style="padding:10px 18px 0"><p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:20px;color:#3a2a17">AURELIA SERUM</p><p style="margin:0;font-size:12px;color:#6a5638">［30mL／約1か月分］</p><p style="margin:8px 0 0;font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;font-weight:600;color:#3a2a17">○,○○○<span style="font-family:'Shippori Mincho',serif;font-size:18px">円</span><span style="font-family:'Shippori Mincho',serif;font-size:11px;color:#6a5638">（税込）</span></p></div>
+          <a href="#purchase" onClick="{{ onBuy }}" style="display:block;margin:14px 18px 0;padding:12px;text-align:center;background:linear-gradient(180deg,#e6e6e6,#b5b5b5);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);font-size:15px;font-weight:600;letter-spacing:.1em;box-shadow:0 3px 0 #8a8a8a;border-radius:3px">ご購入はこちら ›</a>
+        </div>
+      </div>
+      <sc-if value="{{ bought }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:18px 0 0;text-align:center;font-size:14px;color:#f0d79a;border:1px solid rgba(240,215,154,.5);padding:12px">ありがとうございます。購入ページへ移動します（デモ表示）。</p>
+      </sc-if>
+      <p style="margin:18px 0 0;font-family:'Noto Sans JP',sans-serif;font-size:10.5px;line-height:1.8;color:#b9a684">※価格・内容量はプレースホルダーです。※お一人様おひとつまでとさせていただく場合がございます。※すべての方に肌トラブルが起こらないわけではありません。</p>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#120c07;color:#b9a684;padding:36px 20px 28px;text-align:center">
+  <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.24em;color:#e6cf9d">AURELIA</p>
+  <nav style="margin-top:16px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;font-family:'Noto Sans JP',sans-serif;font-size:12px">
+    <a href="#top" style="color:#b9a684">会社概要</a>
+    <a href="#top" style="color:#b9a684">特定商取引法に基づく表記</a>
+    <a href="#top" style="color:#b9a684">プライバシーポリシー</a>
+    <a href="#top" style="color:#b9a684">お問い合わせ</a>
+  </nav>
+  <p style="margin:20px 0 0;font-family:'Noto Sans JP',sans-serif;font-size:11px;color:#7d6c52">© AURELIA All Rights Reserved.</p>
+</footer>
+
+<sc-if value="{{ showSticky }}" hint-placeholder-val="{{ false }}">
+  <a href="#purchase" style="position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:center;gap:8px;padding:14px 20px;background:linear-gradient(180deg,#f3dfa8,#cfa65a 50%,#a87d34);color:#2b1d0c;font-weight:600;letter-spacing:.1em;font-size:15px;box-shadow:0 8px 24px -6px rgba(0,0,0,.5);border-radius:40px">ご購入はこちら ›</a>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;stickyCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { open: 0, bought: false, scrolled: false };
+  faqData = [
+    { q: '敏感肌でも使えますか？', a: '7つのフリー処方で、肌へのやさしさに配慮しています。ただし、すべての方に肌トラブルが起こらないわけではありません。ご心配な方は、腕の内側などで試してからお使いください。' },
+    { q: '妊娠中・授乳中でも使えますか？', a: 'お使いいただけますが、ホルモンバランスの変化により肌が敏感になる場合があります。ご心配な方はかかりつけの医師にご相談ください。' },
+    { q: 'いつ使うのがおすすめですか？', a: '朝晩の洗顔後すぐ、化粧水の前にお使いいただくのがおすすめです。化粧水のあとに使う場合も問題ありません。' },
+    { q: '1本でどのくらい使えますか？', a: '朝晩1回あたり1〜2プッシュのご使用で、約1か月分が目安です。' },
+    { q: '定期便はいつでも解約できますか？', a: 'お届け回数の縛りはありません。次回お届け予定日の○日前までにご連絡いただければ、休止・解約が可能です（条件はプレースホルダーです）。' }
+  ];
+  componentDidMount() {
+    this._onResize = () => this.forceUpdate();
+    window.addEventListener('resize', this._onResize);
+    this._onScroll = () => { const s = window.scrollY > 600; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    setTimeout(() => this.setupAnimations(), 60);
+  }
+  setupAnimations() {
+    const $ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const ease = 'cubic-bezier(.2,.7,.2,1)';
+    const hide = (el, from, delay = 0, dur = 1) => {
+      el.dataset.from = from; el.style.opacity = 0; el.style.transform = from;
+      el.style.transition = `opacity ${dur}s ${ease} ${delay}s, transform ${dur}s ${ease} ${delay}s, filter ${dur}s ${ease} ${delay}s`;
+      if (from.includes('blur')) { el.style.filter = 'blur(8px)'; el.style.transform = from.replace(/blur\([^)]*\)/, ''); }
+    };
+    const show = el => { el.style.opacity = 1; el.style.transform = 'none'; el.style.filter = 'none'; };
+    this._io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return; const el = e.target; this._io.unobserve(el);
+      if (el.dataset.marker) { el.style.backgroundSize = '100% 100%'; return; }
+      if (el.dataset.badge) { el.style.animation = `spinIn 1.1s ${ease} both`; return; }
+      show(el);
+    }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    const watch = (el, from, delay, dur) => { hide(el, from, delay, dur); this._io.observe(el); };
+
+    // Hero entrance
+    const hero = document.getElementById('top');
+    const hc = hero.children[2]; const card = hero.children[3];
+    if (hc) {
+      const [line, banner, stage] = hc.children;
+      [[line, 'translateY(-20px)', .1], [banner, 'scaleX(.6)', .4]].forEach(([el, f, d]) => { hide(el, f, d, 1.2); requestAnimationFrame(() => requestAnimationFrame(() => show(el))); });
+      if (stage) {
+        const [vt, bottle, orbs] = stage.children;
+        $('p', vt).forEach((p, i) => { p.style.clipPath = 'inset(0 0 100% 0)'; p.style.transition = `clip-path 1.4s ${ease} ${.9 + i * .5}s`; requestAnimationFrame(() => requestAnimationFrame(() => p.style.clipPath = 'inset(0 0 0 0)')); });
+        if (bottle) { hide(bottle, 'translateY(60px) scale(.9)', .6, 1.4); requestAnimationFrame(() => requestAnimationFrame(() => show(bottle))); setTimeout(() => { bottle.style.transition = ''; bottle.style.animation = 'floatY 5s ease-in-out infinite'; }, 2200); }
+        if (orbs) Array.from(orbs.children).forEach((o, i) => { hide(o, 'scale(0)', 1.3 + i * .2, .8); requestAnimationFrame(() => requestAnimationFrame(() => show(o))); setTimeout(() => { o.style.transition = ''; o.style.animation = `orbPulse 3.2s ease-in-out ${i * .8}s infinite`; }, 2600); });
+      }
+    }
+    if (card) Array.from(card.children).forEach((c, i) => watch(c, 'translateY(30px)', i * .12, 1));
+
+    // Section headings
+    $('section h2').forEach(h => { const box = h.parentElement.tagName === 'SECTION' ? h : h.parentElement; if (box.closest('#top')) return; watch(box, 'translateY(30px) blur', 0, 1.1); });
+    // Chips
+    $('#concern span[style*="border-radius:20px"]').forEach((c, i) => watch(c, 'translateY(16px) scale(.8)', .2 + i * .12, .7));
+    // Point cards alternate
+    $('#concern article').forEach((a, i) => {
+      a.removeAttribute('data-reveal'); watch(a, i % 2 ? 'translateX(60px)' : 'translateX(-60px)', 0, 1.1);
+      const badge = a.firstElementChild; badge.dataset.badge = 1; badge.style.opacity = 0; this._io.observe(badge);
+      const img = a.children[1]; img.style.overflow = 'hidden'; watch(img, 'scale(1.08) blur', .25, 1.4);
+    });
+    // Ingredient circles
+    const ing = $('#ingredient > div > div:nth-child(2) > div');
+    ing.forEach((d, i) => {
+      d.removeAttribute('data-reveal'); watch(d, 'translateY(40px) scale(.7)', i * .2, 1);
+      const c = d.firstElementChild; c.style.animation = `bob 4s ease-in-out ${i * .6}s infinite`;
+    });
+    // Free tags stagger
+    $('#ingredient span[style*="background:#f1e3c6"]').forEach((s, i) => watch(s, 'rotateX(90deg)', i * .08, .7));
+    // Steps
+    $('#howto [data-reveal]').forEach((s, i) => { s.removeAttribute('data-reveal'); watch(s, 'translateX(-40px)', (i % 4) * .15, .9); });
+    const flow = $('#howto div[style*="grid-template-columns:minmax(0,1fr) auto"] > *');
+    flow.forEach((f, i) => watch(f, 'translateY(14px)', i * .12, .6));
+    // FAQ items
+    $('#faq > div:first-child > div:nth-child(2) > div').forEach((f, i) => watch(f, 'translateY(24px)', i * .08, .8));
+    // Remaining generic reveals
+    $('[data-reveal]').forEach(el => watch(el, 'translateY(36px) scale(.97)', 0, 1));
+    // Highlight markers
+    $('span[style*="#f0dcae 62%"]').forEach(m => { m.dataset.marker = 1; m.style.backgroundRepeat = 'no-repeat'; m.style.backgroundSize = '0% 100%'; m.style.transition = `background-size 1.2s ${ease} .4s`; this._io.observe(m); });
+    // Gold button sheen + hover
+    $('a[style*="#cfa65a"], a[style*="#c9a052 55%"]').forEach((b, i) => {
+      const bg = getComputedStyle(b).backgroundImage;
+      b.style.backgroundImage = `linear-gradient(110deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%),${bg}`;
+      b.style.backgroundSize = '250% 100%,100% 100%'; b.style.backgroundRepeat = 'no-repeat';
+      b.style.animation = `sheen 3.6s ease-in-out ${(i % 3) * .5}s infinite`;
+      b.style.transition = (b.style.transition ? b.style.transition + ',' : '') + 'transform .25s ease, filter .25s ease';
+      b.addEventListener('mouseenter', () => { b.style.transform = 'translateY(-2px)'; b.style.filter = 'brightness(1.08)'; });
+      b.addEventListener('mouseleave', () => { b.style.transform = ''; b.style.filter = ''; });
+    });
+    // Price glow
+    $('#purchase p[style*="background-clip:text"]').forEach(p => p.parentElement.style.animation = 'glowText 3s ease-in-out infinite');
+    // Card hover lift
+    $('#concern article, #ingredient [style*="box-shadow:0 10px 30px"], #purchase [style*="box-shadow:0 0 0 1px"]').forEach(c => {
+      c.addEventListener('mouseenter', () => { c.style.transition = 'transform .4s ease, box-shadow .4s ease'; c.style.transform = 'translateY(-6px)'; });
+      c.addEventListener('mouseleave', () => { c.style.transform = 'none'; });
+    });
+    // Parallax
+    this._px = $('[data-parallax]');
+    this._onPx = () => { const y = window.scrollY; this._px.forEach(el => el.style.transform = `translateY(${y * +el.dataset.parallax}px)`); };
+    window.addEventListener('scroll', this._onPx, { passive: true });
+  }
+  makeFx(n, kind, seed) {
+    let s = seed; const r = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+    const kids = [];
+    for (let i = 0; i < n; i++) {
+      const size = kind === 'bubble' ? 6 + r() * 22 : 4 + r() * 8;
+      const style = kind === 'bubble'
+        ? { position: 'absolute', left: `${r() * 100}%`, bottom: '-40px', width: size, height: size, borderRadius: '50%', background: 'radial-gradient(circle at 30% 30%,rgba(255,255,255,.95),rgba(255,232,170,.45) 45%,rgba(255,220,140,.1) 70%)', border: '1px solid rgba(255,245,215,.6)', animation: `rise ${9 + r() * 10}s linear ${-r() * 18}s infinite` }
+        : { position: 'absolute', left: `${r() * 100}%`, top: `${r() * 100}%`, width: size, height: size, background: '#f6dc9a', clipPath: 'polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)', animation: `twinkle ${2 + r() * 3}s ease-in-out ${-r() * 4}s infinite` };
+      kids.push(React.createElement('span', { key: i, style }));
+    }
+    if (kind === 'bubble') [0, 1.6, 3.2].forEach((d, i) => kids.push(React.createElement('span', { key: 'r' + i, style: { position: 'absolute', left: '50%', top: '62%', width: 360, height: 120, borderRadius: '50%', border: '1px solid rgba(255,244,214,.55)', animation: `ripple 4.8s ease-out ${d}s infinite` } })));
+    return React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden', zIndex: kind === 'bubble' ? 1 : 0 } }, kids);
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this._onScroll); window.removeEventListener('resize', this._onResize); window.removeEventListener('scroll', this._onPx); this._io && this._io.disconnect(); }
+  renderVals() {
+    const sticky = this.props.stickyCta ?? true;
+    return {
+      faqs: this.faqData.map((f, i) => ({ ...f, open: this.state.open === i, icon: this.state.open === i ? '−' : '+', toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })) })),
+      bought: this.state.bought,
+      onBuy: () => this.setState({ bought: true }),
+      showSticky: sticky && this.state.scrolled,
+      heroFx: this._heroFx || (this._heroFx = this.makeFx(22, 'bubble', 7)),
+      purchaseFx: this._pFx || (this._pFx = this.makeFx(26, 'star', 3)),
+      wide: typeof window === 'undefined' || window.innerWidth >= 640
+    };
+  }
+}
+</script>
+</body>
+</html>

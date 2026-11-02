@@ -1,0 +1,16 @@
+/* Shared responsive overrides. Inline styles win over normal rules, so overrides use !important. */
+main h1,main h2,main h3{word-break:keep-all;overflow-wrap:anywhere}
+
+@media (max-width:560px){
+  /* header: the menu button already holds the Open Campus link */
+  header a[href*="OpenCampus"]{display:none!important}
+
+  /* decorative white chevron backgrounds: span the full width so text never straddles the edge */
+  main section>div:empty,#contact>div:empty{clip-path:polygon(0 0,calc(100% - 18px) 0,100% 50%,calc(100% - 18px) 100%,0 100%)!important;height:100%!important}
+
+  /* hero: stronger scrim so the title stays readable over the photo */
+  main section div:has(+ div>h1){background:linear-gradient(90deg,rgba(255,255,255,.9),rgba(255,255,255,.6) 70%,rgba(255,255,255,.25))!important}
+
+  .sm-hide{display:none!important}
+  .sm-wrap{flex-wrap:wrap!important}
+}

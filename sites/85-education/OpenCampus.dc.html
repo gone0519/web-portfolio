@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./anim.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Zen Kaku Gothic New',sans-serif;color:#4a2a36;background:#f8d3df;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#c24d76;text-decoration:none}
+a:hover{color:#a03a61}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #ffb84a;outline-offset:2px}
+h1,h2,h3,h4,p{margin:0}
+</style>
+</helmet>
+<dc-import name="SiteHeader" current="oc" hint-size="100%,0px"></dc-import>
+<main>
+<dc-import name="PageHero" en="Open Campus" ja="オープンキャンパス" lead="見て、ふれて、話してみる。看護を学ぶ日々を、ひと足先に体験してください。" img="oc-hero" ph="オープンキャンパスの様子" hint-size="100%,560px"></dc-import>
+
+<section data-screen-label="OC / Events" style="background:linear-gradient(180deg,#f8d3df,#fbe3ea);color:#8a3256;padding:clamp(64px,8vw,110px) clamp(16px,4vw,40px)">
+  <div style="max-width:1120px;margin:0 auto">
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em">✦ イベント一覧</p>
+    <h2 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(32px,4vw,46px);margin-top:6px">Event</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px 36px;margin-top:32px;padding-left:28px">
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="4">
+        <article style="position:relative;background:#fff6f8;color:#4a2a36;border-radius:0 0 0 48px;padding:24px 22px 26px 64px;display:flex;flex-direction:column;gap:6px">
+          <div style="position:absolute;left:-28px;top:28px;width:64px;height:64px;border-radius:50%;background:#e7a3b9;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1">
+            <span style="font-size:10px;font-family:Montserrat,sans-serif">2027</span>
+            <span style="font-size:16px;font-weight:700">{{ e.season }}</span>
+          </div>
+          <span style="align-self:flex-start;background:#c24d76;color:#fff;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:3px">{{ e.tag }}</span>
+          <h3 style="font-size:16px;line-height:1.55;margin-top:4px">{{ e.title }}</h3>
+          <p style="font-size:13px;line-height:1.8;text-wrap:pretty">{{ e.body }}</p>
+          <p style="font-size:12.5px;color:#c24d76;font-weight:700;margin-top:4px">開催日｜日程調整中（決定後に公開）</p>
+          <button onClick="{{ e.pick }}" style="align-self:flex-start;margin-top:8px;display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;font:inherit;font-size:13px;font-weight:700;color:#c24d76;cursor:pointer">このイベントを予約 <span style="width:26px;height:26px;border:1px solid #c24d76;border-radius:50%;display:grid;place-items:center;font-size:11px">↗</span></button>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="OC / Programs" style="background:#fff;padding:clamp(72px,9vw,120px) clamp(16px,4vw,40px)">
+  <div style="max-width:1120px;margin:0 auto">
+    <p style="font-size:12px;font-weight:700;color:#c24d76;letter-spacing:.08em">✦ 体験できるプログラム</p>
+    <h2 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(32px,4vw,46px);color:#c24d76;margin-top:6px">Program</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;margin-top:36px">
+      <sc-for list="{{ programs }}" as="p" hint-placeholder-count="6">
+        <a href="#reserve" style="position:relative;display:block;aspect-ratio:4/3;overflow:hidden;color:#fff">
+          <image-slot id="{{ p.id }}" shape="rect" placeholder="{{ p.name }}"></image-slot>
+          <span style="position:absolute;left:0;right:0;bottom:0;padding:48px 18px 16px;background:linear-gradient(0deg,rgba(110,40,65,.8),rgba(110,40,65,0));pointer-events:none">
+            <strong style="display:block;font-size:17px">{{ p.name }}</strong>
+            <span style="font-size:12.5px;line-height:1.7">{{ p.body }}</span>
+          </span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="OC / Schedule" style="background:#fff6f8;padding:clamp(72px,9vw,120px) clamp(16px,4vw,40px)">
+  <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px">
+    <div>
+      <p style="font-size:12px;font-weight:700;color:#c24d76;letter-spacing:.08em">✦ 当日の流れ（例）</p>
+      <h2 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(32px,4vw,46px);color:#c24d76;margin-top:6px">Schedule</h2>
+      <p style="font-size:14px;line-height:1.9;margin-top:16px;text-wrap:pretty">時間配分は回によって異なります。保護者の方向けの説明会も同時開催予定です。</p>
+    </div>
+    <ol style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;background:#fff">
+      <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="6">
+        <li style="display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;padding:18px 22px;border-bottom:1px solid #f3dde4;align-items:baseline">
+          <span style="font-family:Montserrat,sans-serif;font-size:18px;color:#d0628a">{{ s.t }}</span>
+          <span style="font-size:14.5px">{{ s.title }}</span>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section id="reserve" data-screen-label="OC / Reserve" style="background:linear-gradient(180deg,#f8d3df,#fdeef2);color:#8a3256;padding:clamp(72px,9vw,120px) clamp(16px,4vw,40px)">
+  <div style="max-width:880px;margin:0 auto">
+    <p style="font-size:12px;font-weight:700;letter-spacing:.08em">✦ 参加予約</p>
+    <h2 style="font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(32px,4vw,46px);margin-top:6px">Reservation</h2>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div role="status" style="background:#fff;color:#4a2a36;border-radius:0 0 0 64px;padding:48px 36px;margin-top:32px;text-align:center">
+        <p style="font-family:'Zen Old Mincho',serif;font-size:26px;color:#9b3560">ご予約を受け付けました</p>
+        <p style="font-size:14px;line-height:1.9;margin-top:16px">{{ form.name }} 様、「{{ form.event }}」へのお申し込みありがとうございます。<br>確認メールを {{ form.email }} にお送りします。</p>
+        <p style="font-size:11px;color:#85616d;margin-top:12px">※デモ画面のため、実際の送信・メール配信は行われません</p>
+        <button onClick="{{ reset }}" style="margin-top:24px;background:#c24d76;color:#fff;border:0;padding:12px 28px;font:inherit;font-weight:700;cursor:pointer" style-hover="background:#a03a61">別のイベントを予約する</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" novalidate="novalidate" style="background:#fff;color:#4a2a36;border-radius:0 0 0 64px;padding:clamp(24px,4vw,44px);margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px 28px">
+        <label style="display:flex;flex-direction:column;gap:8px;grid-column:1/-1;font-size:13.5px;font-weight:700">参加希望イベント <span style="color:#c4473a;font-size:11px">必須</span>
+          <select value="{{ form.event }}" onChange="{{ on.event }}" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #e8bfcd;background:#fffafb;color:#4a2a36">
+            <option value="">選択してください</option>
+            <sc-for list="{{ eventNames }}" as="n" hint-placeholder-count="4"><option value="{{ n }}">{{ n }}</option></sc-for>
+          </select>
+          <sc-if value="{{ err.event }}" hint-placeholder-val="{{ false }}"><span style="color:#c4473a;font-size:12px;font-weight:400">イベントを選択してください</span></sc-if>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;font-weight:700">お名前 <span style="color:#c4473a;font-size:11px">必須</span>
+          <input value="{{ form.name }}" onChange="{{ on.name }}" autocomplete="name" placeholder="白藍 花子" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #e8bfcd;background:#fffafb;color:#4a2a36">
+          <sc-if value="{{ err.name }}" hint-placeholder-val="{{ false }}"><span style="color:#c4473a;font-size:12px;font-weight:400">お名前を入力してください</span></sc-if>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;font-weight:700">ふりがな
+          <input value="{{ form.kana }}" onChange="{{ on.kana }}" placeholder="はくらん はなこ" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #e8bfcd;background:#fffafb;color:#4a2a36">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;font-weight:700">メールアドレス <span style="color:#c4473a;font-size:11px">必須</span>
+          <input type="email" value="{{ form.email }}" onChange="{{ on.email }}" autocomplete="email" placeholder="example@mail.jp" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #e8bfcd;background:#fffafb;color:#4a2a36">
+          <sc-if value="{{ err.email }}" hint-placeholder-val="{{ false }}"><span style="color:#c4473a;font-size:12px;font-weight:400">正しいメールアドレスを入力してください</span></sc-if>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;font-weight:700">学年・区分
+          <select value="{{ form.grade }}" onChange="{{ on.grade }}" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #e8bfcd;background:#fffafb;color:#4a2a36">
+            <option value="高校3年生">高校3年生</option><option value="高校2年生">高校2年生</option><option value="高校1年生">高校1年生</option><option value="既卒・社会人">既卒・社会人</option><option value="保護者">保護者</option>
+          </select>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;font-weight:700">同伴者の人数
+          <select value="{{ form.guests }}" onChange="{{ on.guests }}" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #e8bfcd;background:#fffafb;color:#4a2a36">
+            <option value="0">なし</option><option value="1">1名</option><option value="2">2名</option>
+          </select>
+        </label>
+        <label style="grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.7">
+          <input type="checkbox" checked="{{ form.agree }}" onChange="{{ on.agree }}" style="width:18px;height:18px;margin-top:3px;accent-color:#c24d76">
+          <span>個人情報の取り扱いに同意します <span style="color:#c4473a;font-size:11px;font-weight:700">必須</span>
+            <sc-if value="{{ err.agree }}" hint-placeholder-val="{{ false }}"><span style="display:block;color:#c4473a;font-size:12px">同意が必要です</span></sc-if>
+          </span>
+        </label>
+        <div style="grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+          <button type="submit" style="background:#d06a86;color:#fff;border:0;padding:16px 40px;font:inherit;font-size:16px;font-weight:700;letter-spacing:.06em;cursor:pointer;box-shadow:4px 4px 0 rgba(208,106,134,.25)" style-hover="background:#b85571">予約内容を送信する →</button>
+          <span style="font-size:11px;color:#85616d">※デモフォームです。送信は行われません。</span>
+        </div>
+      </form>
+    </sc-if>
+  </div>
+</section>
+</main>
+<dc-import name="SiteFooter" hint-size="100%,900px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  blank = { event: '', name: '', kana: '', email: '', grade: '高校3年生', guests: '0', agree: false };
+  state = { form: { ...this.blank }, err: {}, sent: false };
+  set(k, v) { this.setState(s => ({ form: { ...s.form, [k]: v }, err: { ...s.err, [k]: false } })); }
+  pickEvent(name) {
+    this.set('event', name);
+    this.setState({ sent: false });
+    const el = document.getElementById('reserve');
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
+  }
+  renderVals() {
+    const events = [
+      { season: '春', tag: '高校生・保護者', title: 'オープンキャンパス', body: '学科説明、模擬授業、シミュレーションラボ見学、在学生との個別相談。' },
+      { season: '夏', tag: '高校生', title: '看護体験ワークショップ', body: '血圧測定や沐浴など、看護技術の一部を在学生と一緒に体験。' },
+      { season: '秋', tag: '受験生', title: '入試対策説明会', body: '各選抜方式のポイントや出願の流れを入試担当者が解説。' },
+      { season: '随時', tag: '個別', title: 'キャンパス見学・個別相談', body: '平日に教職員がキャンパスをご案内し、個別の質問にお答えします。' }
+    ].map(e => ({ ...e, pick: () => this.pickEvent(e.title) }));
+    const keys = ['event', 'name', 'kana', 'email', 'grade', 'guests', 'agree'];
+    const on = {};
+    keys.forEach(k => { on[k] = e => this.set(k, k === 'agree' ? e.target.checked : e.target.value); });
+    return {
+      events,
+      eventNames: events.map(e => e.title),
+      programs: [
+        { id: 'op-1', name: '学科説明', body: '看護学科の学びと4年間の流れを紹介。' },
+        { id: 'op-2', name: '模擬授業', body: '教員による看護の授業を体験。' },
+        { id: 'op-3', name: '看護技術体験', body: '在学生と一緒に援助技術にふれる。' },
+        { id: 'op-4', name: 'キャンパスツアー', body: '実習室やライブラリーを在学生が案内。' },
+        { id: 'op-5', name: '入試相談', body: '選抜方式や出願の疑問に個別に回答。' },
+        { id: 'op-6', name: '在学生トーク', body: '実習や学生生活のリアルな話を聞く。' }
+      ],
+      schedule: [
+        { t: '10:00', title: '受付・開会' },
+        { t: '10:15', title: '学科説明・入試概要説明' },
+        { t: '11:00', title: '模擬授業／看護技術体験' },
+        { t: '12:00', title: 'ランチ（カフェテリア体験）' },
+        { t: '13:00', title: 'キャンパスツアー' },
+        { t: '13:45', title: '個別相談・在学生トーク' }
+      ],
+      form: this.state.form,
+      err: this.state.err,
+      on,
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      reset: () => this.setState({ form: { ...this.blank }, err: {}, sent: false }),
+      submit: (e) => {
+        e.preventDefault();
+        const f = this.state.form;
+        const err = { event: !f.event, name: !f.name.trim(), email: !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email), agree: !f.agree };
+        if (Object.values(err).some(Boolean)) this.setState({ err });
+        else this.setState({ sent: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

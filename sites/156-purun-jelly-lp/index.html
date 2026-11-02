@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Klee+One:wght@600&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:oklch(0.33 0.01 20);font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:oklch(0.58 0.14 8)}
+a:hover{color:oklch(0.48 0.14 8)}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid oklch(0.62 0.13 135);outline-offset:3px}
+details summary::-webkit-details-marker{display:none}
+details[open] .faq-plus{transform:rotate(45deg)}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ---- アニメーション ---- */
+@keyframes heroIn{from{opacity:0;translate:0 24px}to{opacity:1;translate:0 0}}
+@keyframes photoIn{from{opacity:0;scale:.92;translate:0 30px}to{opacity:1;scale:1;translate:0 0}}
+@keyframes stickIn{from{opacity:0;translate:60px 40px}to{opacity:1;translate:0 0}}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@keyframes bobSm{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@keyframes drift{0%,100%{translate:0 0}33%{translate:14px -18px}66%{translate:-10px 10px}}
+@keyframes popIn{0%{opacity:0;scale:.4}70%{opacity:1;scale:1.1}100%{opacity:1;scale:1}}
+@keyframes jelly{0%,100%{scale:1 1}30%{scale:1.06 .94}45%{scale:.96 1.05}60%{scale:1.02 .98}75%{scale:.99 1.01}}
+@keyframes pulse{0%,100%{scale:1}50%{scale:1.035}}
+@keyframes shine{0%{translate:-120% 0}55%,100%{translate:260% 0}}
+@keyframes tagBounce{0%,100%{translate:0 0}50%{translate:0 -4px}}
+@keyframes wobble{0%,100%{rotate:0deg}25%{rotate:-6deg}75%{rotate:6deg}}
+@keyframes spin{to{rotate:360deg}}
+@keyframes faqIn{from{opacity:0;translate:0 -6px}to{opacity:1;translate:0 0}}
+@keyframes progress{from{scale:0 1}to{scale:1 1}}
+
+.hero-in{animation:heroIn .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--d,0) * 140ms + 200ms)}
+.hero-photo{animation:photoIn 1s cubic-bezier(.2,.7,.2,1) both}
+.hero-stick{animation:stickIn .9s cubic-bezier(.2,.7,.2,1) .5s both,bob 4s ease-in-out 1.4s infinite}
+.jelly-text{transform-origin:50% 90%;animation:heroIn .8s cubic-bezier(.2,.7,.2,1) .35s both,jelly 2.8s ease-in-out 1.4s infinite}
+.badge-pop{animation:popIn .6s cubic-bezier(.3,1.4,.5,1) both,bobSm 3.2s ease-in-out infinite;animation-delay:calc(var(--d,0) * 120ms + 700ms),calc(var(--d,0) * 400ms + 1400ms)}
+.float-a{animation:drift 14s ease-in-out infinite}
+.float-b{animation:drift 18s ease-in-out -6s infinite reverse}
+.float-c{animation:bob 5s ease-in-out infinite}
+.cta-pulse{animation:pulse 2.4s ease-in-out infinite}
+.cta-pulse:hover{animation-play-state:paused}
+.shine{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none}
+.shine::before{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);animation:shine 3.2s ease-in-out infinite}
+.tag-bounce{animation:tagBounce 1.6s ease-in-out infinite}
+.squeeze{display:inline-block;transform-origin:50% 80%;animation:jelly 2.2s ease-in-out infinite}
+.bubble-float{animation:bobSm 3s ease-in-out infinite;animation-delay:calc(var(--d,0) * -0.7s)}
+.stamp-wobble{animation:wobble 2.6s ease-in-out infinite}
+.spin-slow{animation:spin 6s linear infinite}
+.kcal-bob{animation:bob 3.6s ease-in-out infinite}
+.num-drift{animation:drift 20s ease-in-out infinite}
+.zoom-wrap img{transition:scale .6s cubic-bezier(.2,.7,.2,1)}
+.zoom-wrap:hover img{scale:1.07}
+.lift{transition:translate .3s ease}
+.lift:hover,.reveal-on .lift[data-shown]:hover{translate:0 -6px;transition-delay:0s}
+@keyframes marquee{to{translate:calc(-50% - 8px) 0}}
+.marquee{animation:marquee 40s linear infinite}
+.marquee:hover{animation-play-state:paused}
+details[open] .faq-body{animation:faqIn .35s ease both}
+.progress{display:none;position:absolute;left:0;bottom:-1px;height:3px;width:100%;transform-origin:0 50%;background:linear-gradient(90deg,oklch(0.74 0.13 10),oklch(0.68 0.14 140))}
+@supports (animation-timeline: scroll()){.progress{display:block;animation:progress linear both;animation-timeline:scroll(root)}}
+
+/* スクロールで表示 */
+.reveal-on [data-reveal]{opacity:0;transition:opacity .8s cubic-bezier(.2,.7,.2,1),translate .8s cubic-bezier(.2,.7,.2,1),scale .8s cubic-bezier(.3,1.3,.5,1);transition-delay:calc(var(--d,0) * 110ms)}
+.reveal-on [data-reveal="up"]{translate:0 40px}
+.reveal-on [data-reveal="left"]{translate:-60px 0}
+.reveal-on [data-reveal="right"]{translate:60px 0}
+.reveal-on [data-reveal="pop"]{scale:.8}
+.reveal-on [data-reveal][data-shown]{opacity:1;translate:0 0;scale:1}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal-on [data-reveal]{opacity:1!important;translate:none!important;scale:none!important}
+  .progress{display:none!important}
+}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);border-bottom:1px solid oklch(0.92 0.03 10)">
+  <div style="max-width:1080px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="#top" style="text-decoration:none;color:oklch(0.58 0.14 8);font-family:'Shippori Mincho';font-weight:800;font-size:19px;letter-spacing:0.04em">【ブランド名】</a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="メイン" style="display:flex;align-items:center;gap:26px;font-size:14px;font-weight:500">
+        <a href="#needs" style="color:inherit;text-decoration:none" style-hover="color:oklch(0.58 0.14 8)">お悩み</a>
+        <a href="#point" style="color:inherit;text-decoration:none" style-hover="color:oklch(0.58 0.14 8)">こだわり</a>
+        <a href="#howto" style="color:inherit;text-decoration:none" style-hover="color:oklch(0.58 0.14 8)">楽しみ方</a>
+        <a href="#faq" style="color:inherit;text-decoration:none" style-hover="color:oklch(0.58 0.14 8)">よくある質問</a>
+        <a href="https://example.com/purchase" style="background:linear-gradient(180deg,oklch(0.74 0.13 10),oklch(0.62 0.15 8));color:#fff;text-decoration:none;padding:10px 22px;border-radius:999px;font-weight:700" style-hover="filter:brightness(1.06)">ご購入はこちら</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:10px">
+        <a href="https://example.com/purchase" style="background:linear-gradient(180deg,oklch(0.74 0.13 10),oklch(0.62 0.15 8));color:#fff;text-decoration:none;padding:9px 16px;border-radius:999px;font-weight:700;font-size:13px">購入する</a>
+        <button onClick="{{ toggleMenu }}" aria-label="メニュー" aria-expanded="{{ menuOpen }}" style="width:44px;height:44px;border-radius:50%;border:1px solid oklch(0.88 0.04 10);background:#fff;font-size:18px;color:inherit;cursor:pointer">{{ menuIcon }}</button>
+      </div>
+    </sc-if>
+  </div>
+  <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+    <nav aria-label="モバイル" style="display:flex;flex-direction:column;padding:4px 20px 16px;font-weight:500">
+      <a href="#needs" onClick="{{ closeMenu }}" style="color:inherit;text-decoration:none;padding:14px 4px;border-bottom:1px solid oklch(0.94 0.02 10)">お悩み</a>
+      <a href="#point" onClick="{{ closeMenu }}" style="color:inherit;text-decoration:none;padding:14px 4px;border-bottom:1px solid oklch(0.94 0.02 10)">こだわり</a>
+      <a href="#howto" onClick="{{ closeMenu }}" style="color:inherit;text-decoration:none;padding:14px 4px;border-bottom:1px solid oklch(0.94 0.02 10)">楽しみ方</a>
+      <a href="#faq" onClick="{{ closeMenu }}" style="color:inherit;text-decoration:none;padding:14px 4px">よくある質問</a>
+    </nav>
+  </sc-if>
+  <span class="progress" aria-hidden="true"></span>
+</header>
+
+<main id="top">
+  <!-- 01 HERO -->
+  <section data-screen-label="01 Hero" style="position:relative;overflow:hidden;background:linear-gradient(100deg,oklch(0.94 0.04 40),oklch(0.985 0.012 60) 48%,oklch(0.95 0.05 130))">
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none">
+      <span class="float-a" style="position:absolute;width:340px;height:340px;border-radius:50%;left:-120px;bottom:-80px;background:radial-gradient(circle at 35% 35%,oklch(0.92 0.06 40),oklch(0.84 0.09 30) 70%);opacity:0.85"></span>
+      <span class="float-b" style="position:absolute;width:180px;height:180px;border-radius:50%;left:8%;top:-60px;background:radial-gradient(circle at 35% 35%,oklch(0.95 0.04 45),oklch(0.88 0.07 35));opacity:0.7"></span>
+      <span class="float-b" style="position:absolute;width:420px;height:420px;border-radius:50%;right:-160px;top:-140px;background:radial-gradient(circle,oklch(0.9 0.09 130 / 0.7),transparent 70%)"></span>
+      <span class="float-c" style="position:absolute;width:90px;height:90px;border-radius:50%;right:12%;bottom:18%;background:radial-gradient(circle,rgba(255,255,255,0.9),transparent 70%)"></span>
+      <span class="float-c" style="animation-delay:-2.5s;position:absolute;width:60px;height:60px;border-radius:50%;left:46%;top:14%;background:radial-gradient(circle,rgba(255,255,255,0.9),transparent 70%)"></span>
+    </div>
+    <div style="position:relative;max-width:1120px;margin:0 auto;padding:clamp(40px,6vw,72px) 20px clamp(56px,7vw,88px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:20px;align-items:center">
+      <div class="hero-photo" style="position:relative;max-width:420px;width:100%;justify-self:center">
+        <div style="aspect-ratio:4/5;border-radius:999px 999px 24px 24px;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.6) 0 10px,rgba(255,255,255,0.25) 10px 20px);border:6px solid #fff;box-shadow:0 30px 60px -30px oklch(0.5 0.1 20 / 0.5);overflow:hidden">
+          <img src="./images/hero-woman.jpg" alt="自然の中で深呼吸する女性" style="width:100%;height:100%;object-fit:cover;object-position:38% 30%;display:block">
+        </div>
+        <div class="hero-stick" style="position:absolute;right:-6%;bottom:6%;width:34%;aspect-ratio:1/3;border-radius:10px;background:linear-gradient(180deg,oklch(0.9 0.06 10),oklch(0.8 0.1 10));transform:rotate(16deg);box-shadow:0 16px 30px -12px oklch(0.45 0.12 10 / 0.55);overflow:hidden;border:3px solid #fff">
+          <img src="./images/stick-hand.jpg" alt="スティックゼリーを開けたところ" style="width:100%;height:100%;object-fit:cover;object-position:55% 30%;display:block">
+        </div>
+      </div>
+      <div style="text-align:center;position:relative">
+        <p class="hero-in" style="margin:0 0 4px;display:flex;align-items:center;justify-content:center;gap:12px;font-family:'Klee One';font-size:clamp(16px,2vw,22px);color:oklch(0.6 0.14 8)"><span style="width:28px;height:1px;background:currentColor"></span>ぷるんと美味しく、毎日の酵素習慣<span style="width:28px;height:1px;background:currentColor"></span></p>
+        <h1 style="margin:0 0 6px;font-family:'Shippori Mincho';font-weight:800;line-height:1.2;letter-spacing:0.04em;filter:drop-shadow(0 2px 0 #fff) drop-shadow(0 0 12px rgba(255,255,255,0.9))">
+          <span class="hero-in" style="--d:1;display:block;font-size:clamp(26px,3.8vw,44px);color:oklch(0.6 0.14 8)"><span style="font-size:1.25em">【素材名】</span>と<span style="font-size:1.25em;color:oklch(0.52 0.13 135)">酵素</span>の</span>
+          <span class="jelly-text" style="display:block;white-space:nowrap;font-size:clamp(40px,6vw,80px);background:linear-gradient(180deg,oklch(0.78 0.13 14) 10%,oklch(0.6 0.16 6) 90%);-webkit-background-clip:text;background-clip:text;color:transparent">ぷるるんゼリー</span>
+        </h1>
+        <p class="hero-in" style="--d:3;margin:0 0 26px;font-family:'Cormorant Garamond';font-style:italic;font-size:18px;letter-spacing:0.12em;color:oklch(0.6 0.08 20)">Purun Enzyme Jelly</p>
+        <div style="display:grid;grid-template-columns:repeat(4,max-content);justify-content:center;gap:10px;margin-bottom:30px">
+          <sc-for list="{{ heroBadges }}" as="b" hint-placeholder-count="4">
+            <div class="badge-pop" style="--d:{{ $index }};width:clamp(70px,9vw,104px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 40%,oklch(0.95 0.035 10));box-shadow:0 0 0 4px rgba(255,255,255,0.7),0 0 0 5px oklch(0.85 0.07 10),0 10px 20px -8px oklch(0.6 0.1 10 / 0.45);display:grid;place-items:center;text-align:center;font-family:'Shippori Mincho';font-weight:700;font-size:clamp(12px,1.3vw,14px);line-height:1.35;color:oklch(0.55 0.14 8);padding:6px;white-space:pre-line">{{ b }}</div>
+          </sc-for>
+        </div>
+        <div class="hero-in" style="--d:6;display:flex;flex-direction:column;align-items:center;gap:12px">
+          <a href="https://example.com/purchase" class="cta-pulse" style="position:relative;width:min(100%,440px);background:linear-gradient(180deg,oklch(0.76 0.13 12),oklch(0.6 0.15 8));color:#fff;text-decoration:none;padding:20px 24px;border-radius:999px;font-weight:700;font-size:clamp(17px,1.8vw,20px);letter-spacing:0.06em;box-shadow:inset 0 2px 0 rgba(255,255,255,0.35),0 5px 0 oklch(0.5 0.13 8),0 14px 28px -10px oklch(0.55 0.14 8 / 0.6);display:flex;justify-content:center;gap:12px;align-items:center" style-hover="transform:translateY(2px);box-shadow:inset 0 2px 0 rgba(255,255,255,0.35),0 3px 0 oklch(0.5 0.13 8)"><span class="shine" aria-hidden="true"></span><span class="tag-bounce" style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:oklch(0.88 0.12 90);color:oklch(0.35 0.06 60);font-size:12px;padding:3px 14px;border-radius:999px;white-space:nowrap">【キャンペーン文言】</span>ご購入はこちら <span aria-hidden="true">▶</span></a>
+          <a href="#point" style="color:oklch(0.42 0.02 20);font-size:14px;font-weight:500" style-hover="color:oklch(0.58 0.14 8)">商品のこだわりを見る ↓</a>
+        </div>
+      </div>
+    </div>
+    <div aria-hidden="true" style="height:14px;background:linear-gradient(90deg,oklch(0.78 0.12 135),oklch(0.68 0.14 140),oklch(0.78 0.12 135))"></div>
+  </section>
+
+  <!-- 02 NEEDS -->
+  <section id="needs" data-screen-label="02 Needs" style="scroll-margin-top:64px">
+    <div style="background:radial-gradient(ellipse at 50% 40%,oklch(0.88 0.003 20),oklch(0.74 0.004 20));padding:clamp(48px,7vw,80px) 20px 0;position:relative">
+      <div style="max-width:880px;margin:0 auto;text-align:center">
+        <h2 data-reveal="up" style="margin:0 0 32px;font-family:'Shippori Mincho';font-weight:700;font-size:clamp(22px,3.2vw,32px);color:oklch(0.22 0.01 20);letter-spacing:0.06em">こんなことに<span style="font-size:1.2em">悩んで</span>いませんか？</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:18px;align-items:center;margin-bottom:28px">
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div data-reveal="pop" style="position:relative;background:oklch(0.28 0.005 20);color:#fff;border-radius:50%;aspect-ratio:1.6;display:grid;place-items:center;padding:16px;font-family:'Shippori Mincho';font-weight:500;font-size:15px;line-height:1.6;box-shadow:0 10px 20px -10px rgba(0,0,0,0.5)">朝はバタバタで<br>食事が手早くなりがち<span style="position:absolute;right:14%;bottom:-8px;width:18px;height:18px;background:oklch(0.28 0.005 20);transform:rotate(45deg)"></span></div>
+            <div data-reveal="pop" style="position:relative;background:oklch(0.28 0.005 20);color:#fff;border-radius:50%;aspect-ratio:1.6;display:grid;place-items:center;padding:16px;font-family:'Shippori Mincho';font-weight:500;font-size:15px;line-height:1.6;box-shadow:0 10px 20px -10px rgba(0,0,0,0.5);transform:translateX(10%)">外食やコンビニが<br>続いている<span style="position:absolute;right:14%;top:-8px;width:18px;height:18px;background:oklch(0.28 0.005 20);transform:rotate(45deg)"></span></div>
+          </div>
+          <div data-reveal="up" style="--d:2;aspect-ratio:3/4;background:repeating-linear-gradient(135deg,oklch(0.86 0.003 20) 0 12px,oklch(0.8 0.003 20) 12px 24px);border-radius:999px 999px 0 0;overflow:hidden">
+            <img src="./images/worry-woman.jpg" alt="悩む女性" style="width:100%;height:100%;object-fit:cover;object-position:45% 30%;display:block">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div data-reveal="pop" style="position:relative;background:oklch(0.28 0.005 20);color:#fff;border-radius:50%;aspect-ratio:1.6;display:grid;place-items:center;padding:16px;font-family:'Shippori Mincho';font-weight:500;font-size:15px;line-height:1.6;box-shadow:0 10px 20px -10px rgba(0,0,0,0.5)">粒のサプリは<br>飲むのが苦手<span style="position:absolute;left:14%;bottom:-8px;width:18px;height:18px;background:oklch(0.28 0.005 20);transform:rotate(45deg)"></span></div>
+            <div data-reveal="pop" style="position:relative;background:oklch(0.28 0.005 20);color:#fff;border-radius:50%;aspect-ratio:1.6;display:grid;place-items:center;padding:16px;font-family:'Shippori Mincho';font-weight:500;font-size:15px;line-height:1.6;box-shadow:0 10px 20px -10px rgba(0,0,0,0.5);transform:translateX(-10%)">出先でも手軽に<br>取り入れたい<span style="position:absolute;left:14%;top:-8px;width:18px;height:18px;background:oklch(0.28 0.005 20);transform:rotate(45deg)"></span></div>
+          </div>
+        </div>
+        <span data-reveal="pop" style="display:inline-block;background:oklch(0.28 0.005 20);color:#fff;font-size:12px;padding:3px 12px;margin-bottom:8px;letter-spacing:0.1em">その理由は…</span>
+        <p data-reveal="up" style="margin:0 0 14px;font-family:'Shippori Mincho';font-weight:700;font-size:clamp(20px,3vw,30px);color:oklch(0.22 0.01 20);line-height:1.8">忙しい毎日で<span style="background:oklch(0.28 0.005 20);color:#fff;padding:2px 14px;margin:0 6px;font-size:1.2em">食生活のバランス</span>が乱れがち<span style="font-size:0.8em">かも！？</span></p>
+        <p data-reveal="up" style="--d:2;position:relative;z-index:2;margin:0 auto;max-width:640px;background:#fff;padding:18px 22px;font-size:15px;line-height:1.8;transform:translateY(28px);box-shadow:0 12px 28px -12px rgba(0,0,0,0.35);outline:1px solid oklch(0.9 0.04 10);outline-offset:-6px">だからこそ、<span style="background:linear-gradient(transparent 55%,oklch(0.93 0.11 95) 55%);font-weight:700;color:oklch(0.55 0.14 8)">毎日つづけやすい形</span>で、食生活に取り入れることが大切です。</p>
+      </div>
+    </div>
+    <div style="position:relative;overflow:hidden;background:linear-gradient(180deg,oklch(0.84 0.08 22) 0,oklch(0.93 0.045 35) 180px,oklch(0.985 0.012 40) 420px,#fff);padding:64px 20px clamp(56px,8vw,96px);text-align:center">
+      <span aria-hidden="true" class="float-a" style="position:absolute;width:260px;height:260px;border-radius:50%;right:-70px;top:30px;background:radial-gradient(circle at 35% 35%,oklch(0.94 0.05 45),oklch(0.86 0.08 30));opacity:0.6"></span>
+      <span aria-hidden="true" class="float-b" style="position:absolute;width:160px;height:160px;border-radius:50%;left:-50px;top:120px;background:radial-gradient(circle at 35% 35%,oklch(0.95 0.04 45),oklch(0.88 0.07 30));opacity:0.5"></span>
+      <div style="position:relative">
+        <div data-reveal="pop" style="display:inline-flex;flex-direction:column;align-items:center;margin-bottom:22px">
+          <span style="background:linear-gradient(180deg,oklch(0.7 0.15 14),oklch(0.6 0.15 8));color:#fff;font-family:'Shippori Mincho';font-weight:700;font-size:20px;padding:10px 40px;letter-spacing:0.3em">そこで</span>
+          <span style="width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-top:12px solid oklch(0.6 0.15 8)"></span>
+        </div>
+        <h2 data-reveal="up" style="margin:0 0 40px;font-family:'Shippori Mincho';font-weight:700;font-size:clamp(19px,2.8vw,28px);line-height:2;color:oklch(0.3 0.01 20)">
+          <span style="border:1.5px solid oklch(0.65 0.15 12);background:#fff;color:oklch(0.6 0.15 10);padding:2px 14px;font-size:1.3em;box-shadow:4px 4px 0 oklch(0.9 0.05 10)">【◯】種の素材</span> と <span style="border:1.5px solid oklch(0.65 0.15 12);background:#fff;color:oklch(0.6 0.15 10);padding:2px 14px;font-size:1.3em;box-shadow:4px 4px 0 oklch(0.9 0.05 10)">酵素</span> を<br>ひと口サイズに<span class="squeeze" style="font-size:1.8em;font-weight:800;background:linear-gradient(180deg,oklch(0.76 0.14 14),oklch(0.58 0.16 6));-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 4px;letter-spacing:0.08em">ギュッ</span>と凝縮
+        </h2>
+        <div style="max-width:940px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:28px;align-items:center">
+          <div data-reveal="left" style="position:relative;padding:0 0 40px">
+            <div class="zoom-wrap" style="aspect-ratio:1;background:repeating-linear-gradient(135deg,oklch(0.97 0.02 40) 0 12px,oklch(0.94 0.03 40) 12px 24px);border-radius:50%;overflow:hidden;border:8px solid #fff;box-shadow:0 30px 50px -30px oklch(0.5 0.1 20 / 0.45)">
+              <img src="./images/smile-woman.jpg" alt="笑顔の女性" style="width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:block">
+            </div>
+            <div style="position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:8px">
+              <sc-for list="{{ bubbles }}" as="bb" hint-placeholder-count="4">
+                <span class="bubble-float" style="--d:{{ $index }};width:clamp(66px,8vw,80px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff 30%,oklch(0.93 0.04 10));box-shadow:inset 0 -6px 10px oklch(0.9 0.05 10),0 8px 16px -8px oklch(0.5 0.1 10 / 0.5);display:grid;place-items:center;font-family:'Shippori Mincho';font-weight:700;font-size:12px;color:oklch(0.55 0.14 8);text-align:center;line-height:1.3">{{ bb }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <div data-reveal="right" style="--d:2;display:flex;flex-direction:row-reverse;justify-content:center;gap:20px;min-height:340px">
+            <p style="writing-mode:vertical-rl;margin:0;border:1.5px solid oklch(0.65 0.15 12);color:oklch(0.58 0.15 8);background:#fff;font-family:'Shippori Mincho';font-weight:700;font-size:17px;padding:16px 8px;letter-spacing:0.14em;align-self:flex-start">【製造・原料のこだわり】</p>
+            <p style="writing-mode:vertical-rl;margin:0;font-family:'Shippori Mincho';font-weight:500;font-size:17px;line-height:2;letter-spacing:0.14em;padding-top:24px">開けてすぐ、<br>そのままひと口。</p>
+            <p style="writing-mode:vertical-rl;margin:0;font-family:'Shippori Mincho';font-weight:800;font-size:clamp(32px,4.2vw,44px);letter-spacing:0.16em;align-self:flex-end;background:linear-gradient(90deg,oklch(0.76 0.14 14),oklch(0.58 0.16 6));-webkit-background-clip:text;background-clip:text;color:transparent">毎日の、ひと口習慣へ</p>
+          </div>
+        </div>
+        <div style="max-width:940px;margin:48px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px">
+          <sc-for list="{{ benefits }}" as="bn" hint-placeholder-count="3">
+            <div data-reveal="up" class="lift" style="--d:{{ $index }};position:relative;background:#fff;padding:36px 22px 26px;box-shadow:0 14px 30px -18px oklch(0.5 0.1 10 / 0.45)">
+              <span style="position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:34px;line-height:1;color:oklch(0.72 0.12 12)">{{ bn.n }}</span>
+              <p style="margin:0 0 10px;font-family:'Shippori Mincho';font-weight:700;font-size:20px;color:oklch(0.55 0.14 8);border-bottom:1px solid oklch(0.9 0.04 10);padding-bottom:10px">{{ bn.t }}</p>
+              <p style="margin:0;font-size:14px;line-height:1.85;text-align:left">{{ bn.d }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 POINTS -->
+  <section id="point" data-screen-label="03 Points" style="scroll-margin-top:64px">
+    <div style="position:relative;background:repeating-linear-gradient(100deg,rgba(255,255,255,0.08) 0 3px,rgba(255,255,255,0) 3px 9px),linear-gradient(180deg,oklch(0.9 0.08 128 / 0.88),oklch(0.72 0.15 135 / 0.85) 45%,oklch(0.6 0.14 138 / 0.9)),url(./images/veggie-basket.jpg) center/cover;padding:clamp(88px,11vw,130px) 20px clamp(96px,12vw,140px);clip-path:polygon(0 4vw,100% 0,100% calc(100% - 4vw),0 100%)">
+      <div style="max-width:760px;margin:0 auto">
+        <div data-reveal="left" style="display:flex;align-items:center;gap:20px;margin-bottom:12px;color:oklch(0.2 0.04 135)">
+          <div style="text-align:center;line-height:1"><span style="display:block;font-size:11px;letter-spacing:0.2em;margin-bottom:4px;font-family:'Shippori Mincho'">POINT</span><span style="font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:72px">1</span></div>
+          <div style="border-left:1px solid currentColor;padding-left:20px">
+            <p style="margin:0 0 4px;font-family:'Shippori Mincho';font-weight:500;font-size:16px">そもそも</p>
+            <h2 style="margin:0;font-family:'Shippori Mincho';font-weight:700;font-size:clamp(26px,3.8vw,38px);letter-spacing:0.04em">酵素ってなに？</h2>
+          </div>
+        </div>
+        <p data-reveal="up" style="--d:1;margin:0 0 32px;font-size:14px;line-height:1.9;color:oklch(0.2 0.04 135);max-width:36em">酵素はたんぱく質の一種で、体の中でさまざまな化学反応を進めるはたらきを担っています。野菜や果物、発酵食品などの食材にも含まれています。<br><span style="font-size:11px">※酵素についての一般的な説明であり、本品の作用を示すものではありません。</span></p>
+        <div data-reveal="up" style="position:relative;background:#fff;padding:clamp(28px,4vw,44px);box-shadow:0 30px 60px -24px rgba(0,40,0,0.5)">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;flex-wrap:wrap">
+            <span class="stamp-wobble" style="flex:none;width:76px;height:76px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.95 0.08 95),oklch(0.86 0.12 85));display:grid;place-items:center;text-align:center;font-family:'Shippori Mincho';font-weight:700;font-size:13px;line-height:1.3;color:oklch(0.45 0.1 55);transform:rotate(-10deg);box-shadow:0 6px 12px -6px oklch(0.5 0.1 70 / 0.5)">ご存知<br>ですか？</span>
+            <h3 style="margin:0;font-family:'Shippori Mincho';font-weight:700;font-size:clamp(20px,2.8vw,26px);line-height:1.5"><span style="font-size:1.15em">【商品名】</span>には<br>こんな素材が入っています！</h3>
+            <div style="margin-left:auto;width:120px;aspect-ratio:1;border-radius:50%;overflow:hidden"><img src="./images/ingredients-flatlay.jpg" alt="野菜や果物" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px">
+            <sc-for list="{{ ingredients }}" as="ing" hint-placeholder-count="3">
+              <div data-reveal="pop" style="--d:{{ $index }};text-align:center">
+                <div class="zoom-wrap" style="width:96px;aspect-ratio:1;margin:0 auto -14px;position:relative;z-index:1;border-radius:50%;overflow:hidden;border:4px solid #fff;box-shadow:0 8px 16px -8px oklch(0.5 0.1 10 / 0.5)"><img src="{{ ing.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+                <div style="background:linear-gradient(180deg,oklch(0.78 0.11 14),oklch(0.66 0.14 10));color:#fff;font-family:'Shippori Mincho';font-weight:700;font-size:18px;padding:9px 4px;box-shadow:inset 0 0 0 2px rgba(255,255,255,0.35)">{{ ing.name }}</div>
+                <p style="margin:10px 0 0;font-family:'Shippori Mincho';font-weight:500;font-size:14px;line-height:1.6">{{ ing.note }}</p>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 6px;align-items:center">
+            <sc-for list="{{ subIngredients }}" as="si" hint-placeholder-count="4">
+              <span data-reveal="pop" style="--d:{{ $index }};background:oklch(0.88 0.05 10);color:oklch(0.38 0.08 10);font-size:12px;font-weight:700;padding:4px 14px">{{ si }}</span>
+            </sc-for>
+            <span style="font-size:12px;font-family:'Shippori Mincho'">など</span>
+          </div>
+          <div data-reveal="up" style="margin-top:28px;padding-top:24px;border-top:1px dashed oklch(0.85 0.05 10);display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <span style="background:oklch(0.3 0.01 20);color:#fff;font-size:12px;padding:3px 10px">さらに</span>
+            <p style="margin:0;font-family:'Shippori Mincho';font-weight:700;font-size:clamp(18px,2.4vw,22px);color:oklch(0.58 0.15 8)">【追加素材】を<span class="spin-slow" style="display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:oklch(0.62 0.13 135);color:#fff;font-size:18px;margin:0 6px;vertical-align:middle">＋</span>プラス！</p>
+          </div>
+          <p style="margin:14px 0 0;font-size:11px;color:oklch(0.48 0.01 20)">※原材料は確認済みの情報に差し替えてください。</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:relative;overflow:hidden;background:linear-gradient(90deg,oklch(0.95 0.005 20),#fff 70%);padding:clamp(56px,8vw,88px) 20px;margin-top:-4vw">
+      <span aria-hidden="true" class="num-drift" style="position:absolute;right:-2%;top:-6%;font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:clamp(160px,24vw,300px);line-height:1;color:oklch(0.95 0.02 10)">02</span>
+      <div style="position:relative;max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px;align-items:center">
+        <div>
+          <div data-reveal="up" style="display:flex;align-items:center;gap:20px;margin-bottom:18px">
+            <div style="text-align:center;line-height:1"><span style="display:block;font-size:11px;letter-spacing:0.2em;margin-bottom:4px;font-family:'Shippori Mincho'">POINT</span><span style="font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:64px;color:oklch(0.62 0.14 10)">2</span></div>
+            <div style="border-left:1px solid currentColor;padding-left:20px">
+              <p style="margin:0 0 4px;font-family:'Shippori Mincho';font-weight:500;font-size:16px">ひと口でさっと</p>
+              <h2 style="margin:0;font-family:'Shippori Mincho';font-weight:700;font-size:clamp(24px,3.6vw,34px);color:oklch(0.58 0.15 8)">ゼリーだから手軽</h2>
+            </div>
+          </div>
+          <p style="margin:0 0 18px;font-size:15px;line-height:1.9">水なしでそのまま食べられるゼリータイプ。粒や粉が苦手な方にも取り入れやすい形です。</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <span style="border:1.5px solid oklch(0.65 0.15 12);color:oklch(0.55 0.14 8);font-family:'Shippori Mincho';font-weight:700;font-size:15px;padding:6px 16px;background:#fff">水なしでOK</span>
+            <span style="border:1.5px solid oklch(0.65 0.15 12);color:oklch(0.55 0.14 8);font-family:'Shippori Mincho';font-weight:700;font-size:15px;padding:6px 16px;background:#fff">【包装形態】</span>
+          </div>
+        </div>
+        <div data-reveal="right" class="zoom-wrap" style="aspect-ratio:1;border-radius:50%;background:repeating-linear-gradient(135deg,oklch(0.97 0.02 10) 0 12px,oklch(0.94 0.035 10) 12px 24px);border:8px solid #fff;box-shadow:0 24px 50px -24px oklch(0.5 0.1 10 / 0.45);overflow:hidden">
+          <img src="./images/jelly-strawberry.jpg" alt="ぷるんとしたいちごのゼリー" style="width:100%;height:100%;object-fit:cover;object-position:32% 55%;display:block">
+        </div>
+      </div>
+    </div>
+
+    <div style="position:relative;overflow:hidden;background:linear-gradient(90deg,oklch(0.96 0.035 50),oklch(0.985 0.015 70));padding:clamp(56px,8vw,88px) 20px">
+      <span aria-hidden="true" class="num-drift" style="animation-direction:reverse;position:absolute;left:-2%;top:-6%;font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:clamp(160px,24vw,300px);line-height:1;color:oklch(0.93 0.04 50)">03</span>
+      <div style="position:relative;max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px;align-items:center">
+        <div style="position:relative">
+          <div data-reveal="left" class="zoom-wrap" style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,oklch(0.97 0.02 50) 0 12px,oklch(0.93 0.04 50) 12px 24px);border:8px solid #fff;box-shadow:0 24px 50px -24px oklch(0.5 0.1 40 / 0.45);overflow:hidden;transform:rotate(-2deg)">
+            <img src="./images/stick-packs.jpg" alt="スティック包装" style="width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div class="kcal-bob" style="position:absolute;right:-10px;bottom:-22px;width:108px;height:108px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.86 0.1 65),oklch(0.72 0.13 50));box-shadow:0 0 0 4px rgba(255,255,255,0.8),0 12px 20px -8px oklch(0.5 0.12 50 / 0.6);color:#fff;display:grid;place-items:center;text-align:center;font-family:'Shippori Mincho';font-weight:700;font-size:12px;line-height:1.3">1本あたり<br><span style="font-size:24px">【◯】</span>kcal</div>
+        </div>
+        <div>
+          <div data-reveal="up" style="display:flex;align-items:center;gap:20px;margin-bottom:18px">
+            <div style="text-align:center;line-height:1"><span style="display:block;font-size:11px;letter-spacing:0.2em;margin-bottom:4px;font-family:'Shippori Mincho'">POINT</span><span style="font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:64px;color:oklch(0.62 0.14 10)">3</span></div>
+            <div style="border-left:1px solid currentColor;padding-left:20px">
+              <p style="margin:0 0 4px;font-family:'Shippori Mincho';font-weight:500;font-size:16px">おやつ感覚で</p>
+              <h2 style="margin:0;font-family:'Shippori Mincho';font-weight:700;font-size:clamp(24px,3.6vw,34px);color:oklch(0.58 0.15 8)">【フレーバー】味</h2>
+            </div>
+          </div>
+          <p style="margin:0;font-size:15px;line-height:1.9">ぷるんとした食感と【フレーバー】のやさしい味わい。毎日でも楽しみやすいおいしさです。</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:relative;overflow:hidden;background:linear-gradient(90deg,oklch(0.93 0.01 240),#fff 75%);padding:clamp(56px,8vw,88px) 20px">
+      <span aria-hidden="true" class="num-drift" style="position:absolute;right:-2%;top:-6%;font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:clamp(160px,24vw,300px);line-height:1;color:oklch(0.94 0.01 240)">04</span>
+      <div style="position:relative;max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px;align-items:center">
+        <div>
+          <div data-reveal="up" style="display:flex;align-items:center;gap:20px;margin-bottom:18px">
+            <div style="text-align:center;line-height:1"><span style="display:block;font-size:11px;letter-spacing:0.2em;margin-bottom:4px;font-family:'Shippori Mincho'">POINT</span><span style="font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:64px;color:oklch(0.62 0.14 10)">4</span></div>
+            <div style="border-left:1px solid currentColor;padding-left:20px">
+              <p style="margin:0 0 4px;font-family:'Shippori Mincho';font-weight:500;font-size:16px">品質へのこだわり</p>
+              <h2 style="margin:0;font-family:'Shippori Mincho';font-weight:700;font-size:clamp(24px,3.6vw,34px);color:oklch(0.58 0.15 8)">【製造国】で製造</h2>
+            </div>
+          </div>
+          <p style="margin:0 0 8px;font-family:'Cormorant Garamond';font-style:italic;font-size:17px;letter-spacing:0.1em;color:oklch(0.5 0.03 240)">Made in 【Country】</p>
+          <p style="margin:0;font-size:15px;line-height:1.9">【製造工場・品質管理体制についての確認済み情報】</p>
+        </div>
+        <div data-reveal="right" style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,oklch(0.96 0.008 240) 0 12px,oklch(0.92 0.012 240) 12px 24px);border:8px solid #fff;box-shadow:0 24px 50px -24px oklch(0.4 0.03 240 / 0.45);overflow:hidden;transform:rotate(2deg)" class="zoom-wrap">
+          <img src="./images/quality-pouches.jpg" alt="アルミ包装" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section aria-label="ゼリーのイメージ" data-screen-label="Gallery" style="overflow:hidden;background:#fff;padding:36px 0">
+    <div class="marquee" style="display:flex;gap:16px;width:max-content">
+      <sc-for list="{{ galleryLoop }}" as="g" hint-placeholder-count="14">
+        <div class="zoom-wrap" style="flex:none;width:clamp(180px,22vw,260px);aspect-ratio:4/3;border-radius:18px;overflow:hidden;box-shadow:0 12px 24px -14px oklch(0.5 0.1 10 / 0.5)"><img src="{{ g }}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- 04 HOW TO -->
+  <section id="howto" data-screen-label="04 How to enjoy" style="scroll-margin-top:64px;position:relative;overflow:hidden;background:linear-gradient(180deg,oklch(0.95 0.03 10),oklch(0.985 0.012 10));padding:clamp(64px,9vw,104px) 20px">
+    <span aria-hidden="true" class="float-a" style="position:absolute;width:300px;height:300px;border-radius:50%;left:-110px;top:120px;background:radial-gradient(circle at 35% 35%,oklch(0.95 0.04 40),oklch(0.88 0.07 30));opacity:0.55"></span>
+    <span aria-hidden="true" class="float-b" style="position:absolute;width:200px;height:200px;border-radius:50%;right:-60px;bottom:200px;background:radial-gradient(circle at 35% 35%,oklch(0.96 0.04 130),oklch(0.9 0.07 130));opacity:0.6"></span>
+    <div style="position:relative;max-width:760px;margin:0 auto">
+      <p style="text-align:center;margin:0;font-family:'Cormorant Garamond';font-style:italic;font-size:22px;letter-spacing:0.12em;color:oklch(0.7 0.1 10)">How to enjoy</p>
+      <h2 data-reveal="up" style="text-align:center;margin:2px 0 40px;font-family:'Shippori Mincho';font-weight:700;font-size:clamp(24px,3.6vw,34px)">毎日の<span style="font-size:1.3em;background:linear-gradient(180deg,oklch(0.76 0.14 14),oklch(0.58 0.16 6));-webkit-background-clip:text;background-clip:text;color:transparent">楽しみ方</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:22px 18px;margin-bottom:48px">
+        <div data-reveal="up" class="lift zoom-wrap" style="position:relative;background:#fff;padding:24px 22px 22px;box-shadow:0 10px 24px -14px oklch(0.5 0.1 10 / 0.45);transform:rotate(-1deg);display:flex;gap:16px;align-items:center">
+          <span aria-hidden="true" style="position:absolute;top:-10px;left:50%;width:84px;height:20px;transform:translateX(-50%) rotate(-3deg);background:oklch(0.88 0.06 10 / 0.75)"></span>
+          <div style="flex:none;width:96px;aspect-ratio:1;border-radius:50%;background:repeating-linear-gradient(135deg,oklch(0.97 0.02 10) 0 8px,oklch(0.94 0.03 10) 8px 16px);overflow:hidden"><img src="./images/morning-woman.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block"></div>
+          <div><p style="margin:0 0 6px;font-family:'Klee One';font-weight:600;font-size:18px;color:oklch(0.56 0.14 8)">朝の支度のあいまに</p><p style="margin:0;font-family:'Klee One';font-weight:600;font-size:14px;line-height:1.8">時間のない朝も、身支度の合間にさっとひと口。</p></div>
+        </div>
+        <div data-reveal="up" class="lift zoom-wrap" style="position:relative;background:#fff;padding:24px 22px 22px;box-shadow:0 10px 24px -14px oklch(0.5 0.1 10 / 0.45);transform:rotate(1deg);display:flex;gap:16px;align-items:center">
+          <span aria-hidden="true" style="position:absolute;top:-10px;left:50%;width:84px;height:20px;transform:translateX(-50%) rotate(3deg);background:oklch(0.88 0.08 130 / 0.7)"></span>
+          <div style="flex:none;width:96px;aspect-ratio:1;border-radius:50%;background:repeating-linear-gradient(135deg,oklch(0.97 0.02 10) 0 8px,oklch(0.94 0.03 10) 8px 16px);overflow:hidden"><img src="./images/break-stretch.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:58% 35%;display:block"></div>
+          <div><p style="margin:0 0 6px;font-family:'Klee One';font-weight:600;font-size:18px;color:oklch(0.56 0.14 8)">仕事のひと休みに</p><p style="margin:0;font-family:'Klee One';font-weight:600;font-size:14px;line-height:1.8">デスクに置いておけば、ほっとひと息つくときのおともに。</p></div>
+        </div>
+        <div data-reveal="up" class="lift zoom-wrap" style="position:relative;background:#fff;padding:24px 22px 22px;box-shadow:0 10px 24px -14px oklch(0.5 0.1 10 / 0.45);transform:rotate(0.8deg);display:flex;gap:16px;align-items:center">
+          <span aria-hidden="true" style="position:absolute;top:-10px;left:50%;width:84px;height:20px;transform:translateX(-50%) rotate(2deg);background:oklch(0.9 0.09 90 / 0.75)"></span>
+          <div style="flex:none;width:96px;aspect-ratio:1;border-radius:50%;background:repeating-linear-gradient(135deg,oklch(0.97 0.02 10) 0 8px,oklch(0.94 0.03 10) 8px 16px);overflow:hidden"><img src="./images/kitchen-smoothie.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div><p style="margin:0 0 6px;font-family:'Klee One';font-weight:600;font-size:18px;color:oklch(0.56 0.14 8)">家事のすきま時間に</p><p style="margin:0;font-family:'Klee One';font-weight:600;font-size:14px;line-height:1.8">キッチンで手を止めずに、そのままひと口。</p></div>
+        </div>
+        <div data-reveal="up" class="lift zoom-wrap" style="position:relative;background:#fff;padding:24px 22px 22px;box-shadow:0 10px 24px -14px oklch(0.5 0.1 10 / 0.45);transform:rotate(-0.8deg);display:flex;gap:16px;align-items:center">
+          <span aria-hidden="true" style="position:absolute;top:-10px;left:50%;width:84px;height:20px;transform:translateX(-50%) rotate(-2deg);background:oklch(0.88 0.06 10 / 0.75)"></span>
+          <div style="flex:none;width:96px;aspect-ratio:1;border-radius:50%;background:repeating-linear-gradient(135deg,oklch(0.97 0.02 10) 0 8px,oklch(0.94 0.03 10) 8px 16px);overflow:hidden"><img src="./images/outing-woman.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:42% 35%;display:block"></div>
+          <div><p style="margin:0 0 6px;font-family:'Klee One';font-weight:600;font-size:18px;color:oklch(0.56 0.14 8)">おでかけ・旅行に</p><p style="margin:0;font-family:'Klee One';font-weight:600;font-size:14px;line-height:1.8">バッグに入れて、外出先でもいつもの習慣を。</p></div>
+        </div>
+      </div>
+      <div data-reveal="up" style="position:relative;background:#fff;padding:clamp(32px,5vw,52px);border:1px solid oklch(0.84 0.07 80);outline:1px solid oklch(0.84 0.07 80);outline-offset:-8px">
+        <span aria-hidden="true" style="position:absolute;left:-3px;top:-3px;width:34px;height:34px;border-left:3px solid oklch(0.72 0.1 80);border-top:3px solid oklch(0.72 0.1 80)"></span>
+        <span aria-hidden="true" style="position:absolute;right:-3px;top:-3px;width:34px;height:34px;border-right:3px solid oklch(0.72 0.1 80);border-top:3px solid oklch(0.72 0.1 80)"></span>
+        <span aria-hidden="true" style="position:absolute;left:-3px;bottom:-3px;width:34px;height:34px;border-left:3px solid oklch(0.72 0.1 80);border-bottom:3px solid oklch(0.72 0.1 80)"></span>
+        <span aria-hidden="true" style="position:absolute;right:-3px;bottom:-3px;width:34px;height:34px;border-right:3px solid oklch(0.72 0.1 80);border-bottom:3px solid oklch(0.72 0.1 80)"></span>
+        <h3 style="margin:0 0 28px;text-align:center;font-family:'Shippori Mincho';font-weight:700;font-size:24px;color:oklch(0.58 0.15 8);display:flex;align-items:center;justify-content:center;gap:14px"><span style="width:40px;height:1px;background:oklch(0.72 0.1 80)"></span>召し上がり方<span style="width:40px;height:1px;background:oklch(0.72 0.1 80)"></span></h3>
+        <ol style="list-style:none;padding:0;margin:0 0 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:18px;text-align:center">
+          <li data-reveal="pop" style="--d:3"><span style="display:grid;place-items:center;width:52px;height:52px;margin:0 auto 12px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.12 14),oklch(0.6 0.15 8));box-shadow:0 0 0 4px oklch(0.95 0.03 10);color:#fff;font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:28px">1</span><span style="font-size:15px;line-height:1.7">【開封方法】で<br>袋を開ける</span></li>
+          <li data-reveal="pop" style="--d:3"><span style="display:grid;place-items:center;width:52px;height:52px;margin:0 auto 12px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.12 14),oklch(0.6 0.15 8));box-shadow:0 0 0 4px oklch(0.95 0.03 10);color:#fff;font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:28px">2</span><span style="font-size:15px;line-height:1.7">そのまま<br>お召し上がりください</span></li>
+          <li data-reveal="pop" style="--d:3"><span style="display:grid;place-items:center;width:52px;height:52px;margin:0 auto 12px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.12 14),oklch(0.6 0.15 8));box-shadow:0 0 0 4px oklch(0.95 0.03 10);color:#fff;font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:28px">3</span><span style="font-size:15px;line-height:1.7">目安量：<br>【1日あたりの目安量】</span></li>
+        </ol>
+        <dl style="margin:0;display:grid;grid-template-columns:max-content 1fr;font-size:14px;line-height:1.7;border-top:1px solid oklch(0.92 0.03 10)">
+          <dt style="padding:12px 18px 12px 0;font-weight:700;color:oklch(0.55 0.14 8);border-bottom:1px solid oklch(0.92 0.03 10)">保存方法</dt><dd style="margin:0;padding:12px 0;border-bottom:1px solid oklch(0.92 0.03 10)">【保存方法】</dd>
+          <dt style="padding:12px 18px 12px 0;font-weight:700;color:oklch(0.55 0.14 8);border-bottom:1px solid oklch(0.92 0.03 10)">持ち運び</dt><dd style="margin:0;padding:12px 0;border-bottom:1px solid oklch(0.92 0.03 10)">【持ち運び時の注意事項】</dd>
+        </dl>
+        <p style="margin:18px 0 0;font-size:11px;line-height:1.7;color:oklch(0.48 0.01 20);text-align:center">※本品は食事の代わりになるものではありません。主食、主菜、副菜を基本に、食事のバランスを。</p>
+      </div>
+      <div data-reveal="up" style="text-align:center;margin-top:40px">
+        <a href="https://example.com/product" style="display:inline-block;background:#fff;color:oklch(0.55 0.14 8);border:1.5px solid oklch(0.65 0.15 12);text-decoration:none;padding:16px 44px;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 4px 0 oklch(0.9 0.05 10)" style-hover="background:oklch(0.97 0.02 10)">商品詳細をもっと見る ▶</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 FAQ & CTA -->
+  <section id="faq" data-screen-label="05 FAQ & CTA" style="scroll-margin-top:64px;padding:clamp(64px,9vw,104px) 20px 0">
+    <div style="max-width:760px;margin:0 auto">
+      <p style="text-align:center;margin:0;font-family:'Cormorant Garamond';font-style:italic;font-size:22px;letter-spacing:0.12em;color:oklch(0.7 0.1 10)">Q &amp; A</p>
+      <h2 data-reveal="up" style="text-align:center;margin:2px 0 36px;font-family:'Shippori Mincho';font-weight:700;font-size:clamp(24px,3.6vw,34px)">よくある<span style="font-size:1.2em;color:oklch(0.58 0.15 8)">ご質問</span></h2>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+          <details data-reveal="up" style="--d:{{ $index }};border:1px solid oklch(0.88 0.05 10);background:#fff;box-shadow:0 6px 14px -10px oklch(0.5 0.1 10 / 0.35)">
+            <summary style="list-style:none;cursor:pointer;padding:16px 20px;display:flex;gap:14px;align-items:center;font-weight:700;font-size:15px;line-height:1.6" style-hover="background:oklch(0.985 0.01 10)">
+              <span style="flex:none;width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.78 0.12 14),oklch(0.6 0.15 8));color:#fff;display:grid;place-items:center;font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:22px">Q</span>
+              <span style="flex:1">{{ f.q }}</span>
+              <span class="faq-plus" aria-hidden="true" style="flex:none;font-size:22px;line-height:1;color:oklch(0.6 0.15 10);transition:transform .2s">+</span>
+            </summary>
+            <div class="faq-body" style="padding:16px 20px 18px;border-top:1px dashed oklch(0.9 0.04 10);display:flex;gap:14px;font-size:15px;line-height:1.85;background:oklch(0.985 0.008 10)">
+              <span style="flex:none;width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 35% 30%,oklch(0.8 0.11 130),oklch(0.6 0.13 138));color:#fff;display:grid;place-items:center;font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:22px">A</span>
+              <span style="padding-top:6px">{{ f.a }}</span>
+            </div>
+          </details>
+        </sc-for>
+      </div>
+    </div>
+    <div id="buy" style="position:relative;overflow:hidden;margin-top:clamp(64px,9vw,96px);background:linear-gradient(100deg,oklch(0.93 0.045 25),oklch(0.98 0.015 60) 55%,oklch(0.94 0.055 130));padding:clamp(56px,8vw,96px) 20px">
+      <span aria-hidden="true" class="float-a" style="position:absolute;width:320px;height:320px;border-radius:50%;left:-110px;top:-80px;background:radial-gradient(circle at 35% 35%,oklch(0.93 0.05 40),oklch(0.84 0.09 30));opacity:0.7"></span>
+      <span aria-hidden="true" class="float-b" style="position:absolute;width:380px;height:380px;border-radius:50%;right:-150px;bottom:-140px;background:radial-gradient(circle,oklch(0.9 0.09 130 / 0.7),transparent 70%)"></span>
+      <div data-reveal="pop" style="position:relative;max-width:760px;margin:0 auto;background:rgba(255,255,255,0.94);padding:clamp(32px,5vw,56px);text-align:center;box-shadow:0 30px 60px -30px oklch(0.5 0.1 10 / 0.45);outline:1px solid oklch(0.84 0.07 80);outline-offset:-10px">
+        <p style="margin:0 0 6px;display:flex;align-items:center;justify-content:center;gap:12px;font-family:'Klee One';font-size:18px;color:oklch(0.6 0.14 8)"><span style="width:28px;height:1px;background:currentColor"></span>きょうから、ひと口の習慣を<span style="width:28px;height:1px;background:currentColor"></span></p>
+        <h2 style="margin:0 0 28px;font-family:'Shippori Mincho';font-weight:800;font-size:clamp(26px,4vw,42px);line-height:1.4;background:linear-gradient(180deg,oklch(0.76 0.14 14),oklch(0.56 0.16 6));-webkit-background-clip:text;background-clip:text;color:transparent">「【素材名】と酵素の<br>ぷるるんゼリー」</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px;align-items:center;margin-bottom:32px">
+          <div class="kcal-bob zoom-wrap" style="aspect-ratio:1;max-width:300px;width:100%;margin:0 auto;border-radius:50%;background:repeating-linear-gradient(135deg,oklch(0.97 0.02 10) 0 12px,oklch(0.94 0.035 10) 12px 24px);border:8px solid #fff;box-shadow:0 20px 40px -20px oklch(0.5 0.1 10 / 0.45);overflow:hidden">
+            <img src="./images/package-pouch.jpg" alt="商品パッケージ" style="width:100%;height:100%;object-fit:cover;transform:scale(1.18);display:block">
+          </div>
+          <div>
+            <p style="margin:0 0 12px"><span style="background:oklch(0.3 0.01 20);color:#fff;font-size:13px;padding:4px 14px">【内容量（◯本入り）】</span></p>
+            <p style="margin:0;font-family:'Shippori Mincho';font-weight:800;color:oklch(0.56 0.16 8);line-height:1.1"><span style="font-size:clamp(40px,5.6vw,58px)">【価格】</span><span style="font-size:16px">円（税込）</span></p>
+            <p style="margin:12px 0 0;font-size:12px;color:oklch(0.45 0.01 20)">【送料・お支払い方法】</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+          <a href="https://example.com/purchase" class="cta-pulse" style="position:relative;width:min(100%,500px);background:linear-gradient(180deg,oklch(0.76 0.13 12),oklch(0.6 0.15 8));color:#fff;text-decoration:none;padding:24px 24px;border-radius:999px;font-weight:700;font-size:clamp(18px,2vw,22px);letter-spacing:0.06em;box-shadow:inset 0 2px 0 rgba(255,255,255,0.35),0 5px 0 oklch(0.5 0.13 8),0 14px 28px -10px oklch(0.55 0.14 8 / 0.6);display:flex;justify-content:center;gap:12px;align-items:center" style-hover="transform:translateY(2px);box-shadow:inset 0 2px 0 rgba(255,255,255,0.35),0 3px 0 oklch(0.5 0.13 8)"><span class="shine" aria-hidden="true"></span><span class="tag-bounce" style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:oklch(0.88 0.12 90);color:oklch(0.35 0.06 60);font-size:12px;padding:3px 14px;border-radius:999px;white-space:nowrap">【キャンペーン文言】</span>商品を購入する <span aria-hidden="true">▶</span></a>
+          <a href="https://example.com/product" style="color:oklch(0.42 0.02 20);font-size:14px;font-weight:500" style-hover="color:oklch(0.58 0.14 8)">商品詳細を見る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="background:oklch(0.96 0.02 10);border-top:4px solid oklch(0.78 0.1 10);padding:48px 20px 28px;font-size:13px">
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px">
+    <div>
+      <p style="margin:0 0 10px;font-family:'Shippori Mincho';font-weight:800;font-size:19px;color:oklch(0.58 0.14 8)">【ブランド名】</p>
+      <p style="margin:0;line-height:1.9">販売者：【会社名】<br>所在地：【住所】<br>TEL：【電話番号】（受付 【受付時間】）<br>MAIL：【メールアドレス】</p>
+    </div>
+    <nav aria-label="商品情報" style="display:flex;flex-direction:column;gap:10px">
+      <span style="font-weight:700;color:oklch(0.55 0.14 8)">商品について</span>
+      <a href="#point" style="color:inherit;text-decoration:none" style-hover="text-decoration:underline">商品情報・原材料</a>
+      <a href="#howto" style="color:inherit;text-decoration:none" style-hover="text-decoration:underline">召し上がり方</a>
+      <a href="#faq" style="color:inherit;text-decoration:none" style-hover="text-decoration:underline">よくあるご質問</a>
+      <a href="https://example.com/contact" style="color:inherit;text-decoration:none" style-hover="text-decoration:underline">お問い合わせ</a>
+    </nav>
+    <nav aria-label="規約" style="display:flex;flex-direction:column;gap:10px">
+      <span style="font-weight:700;color:oklch(0.55 0.14 8)">規約・ポリシー</span>
+      <a href="https://example.com/privacy" style="color:inherit;text-decoration:none" style-hover="text-decoration:underline">プライバシーポリシー</a>
+      <a href="https://example.com/terms" style="color:inherit;text-decoration:none" style-hover="text-decoration:underline">利用規約</a>
+      <a href="https://example.com/tokushoho" style="color:inherit;text-decoration:none" style-hover="text-decoration:underline">特定商取引法に基づく表記</a>
+    </nav>
+  </div>
+  <div style="max-width:1080px;margin:36px auto 0;padding-top:20px;border-top:1px solid oklch(0.88 0.04 10);font-size:11px;line-height:1.8;color:oklch(0.42 0.01 20)">
+    <p style="margin:0 0 6px">※本品は食品です。疾病の診断、治療、予防を目的としたものではありません。食物アレルギーのある方は原材料表示をご確認ください。体質や体調にあわない場合はお召し上がりをお控えください。</p>
+    <p style="margin:0">© 【年】 【会社名】 All rights reserved.</p>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const GALLERY = ['gallery-orange', 'gallery-clear', 'gallery-cups', 'gallery-red', 'gallery-clear-spoon', 'gallery-blue', 'gallery-pink'].map(n => './images/' + n + '.jpg');
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth, menuOpen: window.innerWidth < 860 && this.state.menuOpen });
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
+    // スクロールで [data-reveal] に data-shown を付けて表示する
+    if ('IntersectionObserver' in window) {
+      document.documentElement.classList.add('reveal-on');
+      this.io = new IntersectionObserver(entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.setAttribute('data-shown', ''); this.io.unobserve(e.target); }
+      }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      this.observeReveals();
+    }
+  }
+  componentDidUpdate() { this.observeReveals(); }
+  observeReveals() {
+    if (!this.io) return;
+    document.querySelectorAll('[data-reveal]:not([data-shown])').forEach(el => this.io.observe(el));
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    if (this.io) this.io.disconnect();
+  }
+  renderVals() {
+    const narrow = this.state.w < 860;
+    return {
+      wide: !narrow, narrow,
+      menuOpen: this.state.menuOpen,
+      showMobileMenu: narrow && this.state.menuOpen,
+      menuIcon: this.state.menuOpen ? '✕' : '☰',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      heroBadges: ['ゼリー\nタイプ', '【主原料】', '【成分】', '持ち運び\nやすい'],
+      bubbles: ['酵素', '【素材A】', '【素材B】', '【素材C】'],
+      benefits: [
+        { n: '01', t: 'さっと手軽に', d: '開けてそのまま食べられるので、思い立ったときにすぐ取り入れられます。' },
+        { n: '02', t: '持ち運びやすい', d: 'バッグやポーチに入れて、職場やおでかけ先でも。' },
+        { n: '03', t: 'おいしく続けやすい', d: '【フレーバー】味のぷるんとした食感で、おやつ感覚で楽しめます。' }
+      ],
+      ingredients: [
+        { name: '【原材料A】', note: '【確認済みの説明】', img: './images/ing-koji.jpg' },
+        { name: '【原材料B】', note: '【確認済みの説明】', img: './images/ing-honey.jpg' },
+        { name: '【原材料C】', note: '【確認済みの説明】', img: './images/ing-hibiscus.jpg' }
+      ],
+      // 2周分並べて、半分ずらすとつなぎ目なくループする
+      galleryLoop: [...GALLERY, ...GALLERY],
+      subIngredients:['【成分D】', '【成分E】', '【成分F】', '【成分G】'],
+      faqs: [
+        { q: 'どのように食べればよいですか？', a: '【召し上がり方・1日あたりの目安量】' },
+        { q: 'どんな原材料が入っていますか？', a: '【原材料名】。詳しくは商品パッケージの原材料表示をご確認ください。' },
+        { q: '保存方法を教えてください。', a: '【保存方法】' },
+        { q: '1箱に何本入っていますか？', a: '【内容量（◯本入り）】' },
+        { q: '価格はいくらですか？', a: '【価格】円（税込）です。【送料・定期購入の有無】' },
+        { q: 'どこで購入できますか？', a: '公式オンラインショップからご購入いただけます。【その他の販売チャネル】' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

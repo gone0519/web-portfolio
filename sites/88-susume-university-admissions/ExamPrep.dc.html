@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Libre+Caslon+Text:wght@400;700&family=Kaushan+Script&display=swap">
+<script src="./image-slot.js"></script>
+<script src="./motion.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#f2f2ef;color:#1c2633;font-family:"Zen Kaku Gothic New",sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0b2b4c;text-decoration:none}
+a:hover{color:#e5531c}
+</style>
+</helmet>
+<div style="position:relative;overflow:hidden;background-color:#f2f2ef;background-image:radial-gradient(#dcdcd6 1px,transparent 1px);background-size:14px 14px">
+<dc-import name="SiteHeader" current="prep" hint-size="100%,140px"></dc-import>
+<dc-import name="PageHero" en="Exam Preparation" title="受験対策" lead="入試方式を知り、計画を立て、振り返る。合格までの準備を、時期ごとにわかりやすく整理しました。" img-id="prep-hero" img-label="自習室で勉強する受験生" hint-size="100%,520px"></dc-import>
+
+<section data-screen-label="Prep / Methods" style="padding:70px 20px 80px">
+  <div style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:30px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:'Libre Caslon Text',serif;font-size:14px;display:flex;align-items:center;gap:8px"><span style="width:7px;height:7px;background:#e5531c"></span>Admission Methods</span>
+      <h2 style="margin:0;font-size:24px;font-weight:700">3つの入試方式と対策のポイント</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;align-items:start">
+      <sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+        <article style="background:#fff;border-radius:4px;box-shadow:0 8px 24px rgba(11,43,76,.08);padding:24px 22px;display:flex;flex-direction:column;gap:14px;margin-top:{{ m.offset }}">
+          <div style="text-align:right"><div style="font-size:19px;font-weight:900">{{ m.name }}</div><div style="font-family:'Libre Caslon Text',serif;font-size:11px;color:#e5531c">{{ m.en }}</div></div>
+          <p style="margin:0;font-size:13px;line-height:1.8;font-weight:500">{{ m.desc }}</p>
+          <div style="background:#f2f2ef;border-radius:4px;padding:12px 14px;font-size:12px"><span style="font-weight:700">主な評価：</span>{{ m.eval }}</div>
+          <ul style="margin:0;padding-left:18px;font-size:13px;line-height:1.9">
+            <sc-for list="{{ m.tips }}" as="t" hint-placeholder-count="3"><li>{{ t }}</li></sc-for>
+          </ul>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Prep / Timeline" style="padding:0 20px">
+  <div style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:end">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'Libre Caslon Text',serif;font-size:14px;display:flex;align-items:center;gap:8px"><span style="width:7px;height:7px;background:#e5531c"></span>Study Timeline</span>
+        <h2 style="margin:0;font-size:24px;font-weight:700">時期別・受験までの過ごし方</h2>
+      </div>
+      <p style="margin:0;font-size:13px;line-height:1.9">試験日から逆算して計画を立てるのが基本です。以下は一般選抜を想定した目安です。</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;align-items:end">
+      <sc-for list="{{ timeline }}" as="st" hint-placeholder-count="6">
+        <div style="position:relative;background:#0b2b4c;color:#fff;padding:22px 16px;margin-bottom:{{ st.lift }};border-radius:2px 2px 0 0;display:flex;flex-direction:column;gap:8px">
+          <span style="position:absolute;right:12px;top:-14px;width:30px;height:30px;background:#e5531c;display:grid;place-items:center;font-weight:900">{{ st.n }}</span>
+          <span style="font-size:14px;font-weight:700">{{ st.when }}</span>
+          <span style="font-size:12px;line-height:1.7;opacity:.9">{{ st.desc }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+<div style="height:8px;background:#0b2b4c"></div>
+
+<section data-screen-label="Prep / Checklist" style="padding:80px 20px">
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:50px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-family:'Libre Caslon Text',serif;font-size:14px;display:flex;align-items:center;gap:8px"><span style="width:7px;height:7px;background:#e5531c"></span>Checklist</span>
+      <h2 style="margin:0;font-size:24px;line-height:1.6;font-weight:700">時間管理と学習計画の<br>セルフチェック</h2>
+      <p style="margin:0;font-size:13px;line-height:1.9">できている項目にチェックを入れてみましょう。</p>
+      <div style="display:flex;align-items:baseline;gap:8px"><span style="font-family:'Libre Caslon Text',serif;font-size:44px;color:#e5531c">{{ done }}</span><span style="font-size:14px;font-weight:700">/ {{ total }} 項目</span></div>
+      <div style="position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden;max-width:360px"><image-slot src="_filled/02-study-desk.png" id="prep-plan" shape="rounded" radius="6" placeholder="学習計画ノート"></image-slot></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{ checks }}" as="c" hint-placeholder-count="6">
+        <button onClick="{{ c.toggle }}" style="border:0;cursor:pointer;font:inherit;text-align:left;background:#fff;border-radius:4px;box-shadow:0 6px 18px rgba(11,43,76,.06);padding:16px 18px;display:grid;grid-template-columns:24px 1fr;gap:14px;align-items:start;color:#1c2633">
+          <span style="width:22px;height:22px;border:2px solid #0b2b4c;background:{{ c.box }};color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900">{{ c.mark }}</span>
+          <span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:14px;font-weight:700">{{ c.t }}</span><span style="font-size:12px;line-height:1.7;color:#4a5462">{{ c.d }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Prep / Resources" style="padding:0 20px 80px">
+  <div style="max-width:1080px;margin:0 auto;background:#e5531c;border-radius:16px;padding:44px clamp(20px,5vw,60px);display:flex;flex-direction:column;gap:24px;color:#fff">
+    <div style="display:flex;align-items:center;gap:14px"><span style="width:7px;height:7px;background:#fff"></span><span style="font-family:'Libre Caslon Text',serif;font-size:14px">Resources</span><span style="font-size:22px;font-weight:700">受験対策ガイド</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+      <sc-for list="{{ guides }}" as="g" hint-placeholder-count="3">
+        <a href="Contact.dc.html#request" style="background:#fff;color:#1c2633;padding:20px;display:flex;flex-direction:column;gap:10px;transition:transform .2s" style-hover="transform:translateY(-3px);color:#1c2633">
+          <span style="font-size:10px;font-weight:700;color:#e5531c">{{ g.type }}</span>
+          <span style="font-size:15px;font-weight:700;line-height:1.5">{{ g.t }}</span>
+          <span style="font-size:12px;font-weight:700;color:#0b2b4c">無料で受け取る →</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+<dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { checked: {} };
+  renderVals() {
+    const list = [
+      { t: '志望校の入試科目と配点を把握している', d: '募集要項で科目・配点・出題範囲を確認する。' },
+      { t: '試験日から逆算した年間計画がある', d: '月ごとの到達目標を書き出しておく。' },
+      { t: '1週間の学習時間を記録している', d: '科目ごとの時間配分を見える化する。' },
+      { t: '模試の結果を復習に活かしている', d: '間違えた問題を分析し、弱点リストを作る。' },
+      { t: '過去問を本番と同じ時間で解いた', d: '時間配分と解く順番を事前に決めておく。' },
+      { t: '睡眠と食事のリズムを整えている', d: '試験時間帯に頭が働く生活リズムをつくる。' }
+    ];
+    const c = this.state.checked;
+    return {
+      methods: [
+        { name: '一般選抜', en: 'General Entrance Examination', desc: '学力試験の得点を中心に合否が決まる方式。共通テストと個別試験を組み合わせる場合が多い。', eval: '学力試験の得点', tips: ['基礎を早めに固める', '出題傾向に合わせた過去問演習', '本番を想定した時間配分の練習'], offset: '0px' },
+        { name: '学校推薦型選抜', en: 'School Recommendation', desc: '高校長の推薦をもとに、調査書・面接・小論文などで評価する方式。', eval: '調査書・面接・小論文など', tips: ['日々の定期テストで評定を維持', '志望理由を具体的な言葉にする', '面接・小論文の練習を重ねる'], offset: '24px' },
+        { name: '総合型選抜', en: 'Comprehensive Selection', desc: '志望理由書や面談、課題などで意欲や適性を多面的に評価する方式。', eval: '書類・面談・課題など', tips: ['大学の求める学生像を読み込む', '探究活動の経験を整理する', 'オープンキャンパスに参加する'], offset: '48px' }
+      ],
+      timeline: [
+        { n: '1', when: '高校1年', desc: '学習習慣をつくり、基礎科目の土台を固める。', lift: '0px' },
+        { n: '2', when: '高校2年', desc: '興味分野を探り、志望校の候補を絞り始める。', lift: '20px' },
+        { n: '3', when: '高3・春', desc: '志望校を決め、年間計画を立てる。', lift: '40px' },
+        { n: '4', when: '高3・夏', desc: '苦手分野の克服と総復習に時間を使う。', lift: '60px' },
+        { n: '5', when: '高3・秋', desc: '過去問演習で実戦力をつける。', lift: '80px' },
+        { n: '6', when: '直前期', desc: '本番と同じ時間で解き、体調を整える。', lift: '100px' }
+      ],
+      checks: list.map((x, i) => ({ ...x, box: c[i] ? '#0b2b4c' : '#fff', mark: c[i] ? '✓' : '', toggle: () => this.setState(s => ({ checked: { ...s.checked, [i]: !s.checked[i] } })) })),
+      done: list.filter((_, i) => c[i]).length,
+      total: list.length,
+      guides: [
+        { type: 'GUIDE', t: '入試方式の違いがわかる基本ガイド' },
+        { type: 'TEMPLATE', t: '年間学習計画シート' },
+        { type: 'GUIDE', t: '志望理由書の書き方ガイド' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+/* レスポンシブ調整（各ページの helmet から読み込み） */
+html{word-break:auto-phrase}
+[style*="text-align: center"],[style*="text-align:center"]{text-wrap:balance}
+
+/* カードグリッド：最後の1枚だけ取り残されないよう列数を固定 */
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.g5{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+@media (max-width:900px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media (max-width:640px){
+  .g3,.g5,.g4.g4-1{grid-template-columns:1fr!important}
+}
+
+/* ボタン下のサブリンク：単語の途中で折り返さない */
+.sublinks{display:flex!important;flex-wrap:wrap;justify-content:center;gap:8px 28px!important}
+.sublinks a{white-space:nowrap}
+
+/* カード内のタグが狭い列ではみ出さないよう折り返す */
+.g3 span{min-width:0;overflow-wrap:anywhere}

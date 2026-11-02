@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>キャンパスライフ｜奏女子大学</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Zen+Maru+Gothic:wght@500;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#23897a;color:#2b3a38;font-family:'Zen Maru Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#23897a;text-decoration:none}
+a:hover{color:#d9612a}
+*{box-sizing:border-box}
+:focus-visible{outline:3px solid #f3b23a;outline-offset:3px}
+</style>
+<script src="motion.js"></script>
+</helmet>
+<dc-import name="SiteNav" current="campus" hint-size="0px,0px"></dc-import>
+<main style="margin-left: {{ mainLeft }}; margin-right: {{ mainRight }}; padding-top: {{ mainTop }}; background:#eceeee; min-height:100vh; overflow:hidden">
+
+  <section data-screen-label="Campus header" style="padding:clamp(48px, 7vw, 88px) clamp(20px, 6vw, 80px) 0; display:flex; flex-direction:column; gap:24px">
+    <nav aria-label="パンくずリスト" style="font-size:11px; display:flex; gap:8px; font-weight:700"><a href="Kanade%20Womens%20University.dc.html">TOP</a><span>＞</span><span>キャンパスライフ</span></nav>
+    <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:16px 32px">
+      <div>
+        <h1 style="margin:0; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(44px, 6vw, 72px); color:#23897a; line-height:1">CAMPUS LIFE</h1>
+        <p style="margin:8px 0 0; font-size:14px; font-weight:700">キャンパスライフ</p>
+      </div>
+      <p style="margin:0; font-size:13px; line-height:2; max-width:440px; text-wrap:pretty">授業のあいだも、放課後も。仲間と過ごす時間が、大学生活をかたちづくります。</p>
+    </div>
+    <div style="position:relative; aspect-ratio:16 / 6; min-height:300px; border-radius:6px; background:#d9e6e3 url(images/walkway-two.jpg) center 45% / cover no-repeat">
+      <span style="position:absolute; left:clamp(16px, 4vw, 48px); top:16px; max-height:calc(100% - 32px); writing-mode:vertical-rl; background:#fff; color:#dd6427; padding:14px 10px; font-weight:700; font-size:clamp(15px, 1.8vw, 22px); letter-spacing:0.14em">放課後も、ここにいたい。</span>
+    </div>
+  </section>
+
+  <section data-screen-label="Facilities" style="padding:clamp(64px, 8vw, 96px) clamp(20px, 6vw, 80px) 0">
+    <div style="position:relative; background:#fff; border-radius:8px; padding:clamp(28px, 4vw, 44px); display:flex; flex-direction:column; gap:24px">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:4px; margin-top:-60px">
+        <h2 style="margin:0; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(30px, 3.4vw, 40px); color:#23897a; line-height:1">FACILITIES</h2>
+        <p style="margin:0; font-size:12px; font-weight:700">キャンパス施設</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap:clamp(16px, 2.4vw, 24px)">
+        <sc-for list="{{ facilities }}" as="f" hint-placeholder-count="6">
+          <div style="display:flex; flex-direction:column; gap:8px">
+            <sc-if value="{{ f.src }}" hint-placeholder-val="{{ false }}">
+              <img src="{{ f.src }}" alt="{{ f.n }}" style="width:100%; aspect-ratio:4 / 3; object-fit:cover; border-radius:4px; display:block">
+            </sc-if>
+            <sc-if value="{{ !f.src }}" hint-placeholder-val="{{ true }}">
+              <div style="aspect-ratio:4 / 3; border-radius:4px; background:repeating-linear-gradient(135deg, #d9e6e3 0 12px, #e3ece9 12px 24px); display:flex; align-items:center; justify-content:center; font-family:'DM Mono',monospace; font-size:11px; color:#4c6a65">PHOTO — {{ f.n }}</div>
+            </sc-if>
+            <h3 style="margin:0; font-size:14px; display:flex; gap:8px; align-items:center"><span style="width:6px; height:6px; background:#23897a; border-radius:50%"></span>{{ f.n }}</h3>
+            <p style="margin:0; font-size:12px; line-height:1.9; text-wrap:pretty">{{ f.t }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Clubs" style="padding:clamp(56px, 7vw, 88px) clamp(20px, 6vw, 80px) 0; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:clamp(24px, 4vw, 48px); align-items:start">
+    <div style="display:flex; flex-direction:column; gap:10px">
+      <h2 style="margin:0; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(26px, 2.8vw, 32px); line-height:1">CLUBS</h2>
+      <p style="margin:0; font-size:13px; font-weight:700">クラブ・サークル</p>
+      <p style="margin:0; font-size:13px; line-height:2; text-wrap:pretty">新入生歓迎期間には各団体の体験会があります。団体名は掲載例です。</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:18px">
+      <sc-for list="{{ clubs }}" as="c" hint-placeholder-count="3">
+        <div style="display:flex; flex-direction:column; gap:8px">
+          <p style="margin:0; font-size:12px; font-weight:700; color:#dd6427">{{ c.k }}</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px">
+            <sc-for list="{{ c.items }}" as="i" hint-placeholder-count="4">
+              <span style="background:#fff; border-radius:999px; padding:7px 14px; font-size:12px; font-weight:700">{{ i }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Events" style="padding:clamp(56px, 7vw, 88px) clamp(20px, 6vw, 80px) 0; display:flex; flex-direction:column; gap:28px">
+    <div style="display:flex; flex-direction:column; align-items:center; gap:4px">
+      <h2 style="margin:0; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(30px, 3.4vw, 40px); color:#23897a; line-height:1">EVENTS</h2>
+      <p style="margin:0; font-size:12px; font-weight:700">1年の行事</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:14px">
+      <sc-for list="{{ seasons }}" as="s" hint-placeholder-count="4">
+        <div style="background:#dd6427; color:#fff; border-radius:6px; padding:22px; display:flex; flex-direction:column; gap:10px">
+          <span style="font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:11px; letter-spacing:0.16em">{{ s.en }}</span>
+          <h3 style="margin:0; font-size:22px">{{ s.jp }}</h3>
+          <ul style="margin:0; padding:0 0 0 1.1em; font-size:13px; line-height:1.9">
+            <sc-for list="{{ s.items }}" as="i" hint-placeholder-count="2"><li>{{ i }}</li></sc-for>
+          </ul>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="stories" data-screen-label="Stories" style="padding:clamp(64px, 8vw, 96px) clamp(20px, 6vw, 80px) 0; display:flex; flex-direction:column; gap:28px">
+    <div>
+      <h2 style="margin:0; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(26px, 2.8vw, 32px); line-height:1">STORIES</h2>
+      <p style="margin:6px 0 0; font-size:13px; font-weight:700">在学生の声（内容は掲載例です）</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap:18px">
+      <sc-for list="{{ stories }}" as="s" hint-placeholder-count="3">
+        <article style="position:relative; background:#fff; border-radius:8px; overflow:hidden; display:flex; flex-direction:column">
+          <span style="position:absolute; left:12px; top:12px; background:#dd6427; color:#fff; border-radius:4px; padding:4px 10px; font-size:11px; font-weight:700">{{ s.tag }}</span>
+          <img src="{{ s.src }}" alt="{{ s.alt }}" style="width:100%; aspect-ratio:4 / 3; object-fit:cover; display:block">
+          <div style="padding:20px; display:flex; flex-direction:column; gap:10px">
+            <p style="margin:0; font-family:'M PLUS Rounded 1c'; font-weight:700; font-size:15px; line-height:1.7; text-wrap:pretty">“{{ s.quote }}”</p>
+            <p style="margin:0; font-size:12px; line-height:1.9; text-wrap:pretty">{{ s.body }}</p>
+            <span style="font-size:12px; font-weight:700; color:#23897a">{{ s.who }}</span>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Support" style="padding:clamp(64px, 8vw, 96px) clamp(20px, 6vw, 80px) 0">
+    <div style="position:relative; background:#fff; border-radius:8px; padding:clamp(28px, 4vw, 44px); display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap:24px">
+      <span style="position:absolute; right:20px; top:-12px; background:#dd6427; color:#fff; border-radius:4px; padding:5px 12px; font-size:11px; font-weight:700">SUPPORT</span>
+      <div>
+        <h2 style="margin:0; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(26px, 2.8vw, 32px); color:#23897a; line-height:1">学生サポート</h2>
+        <p style="margin:10px 0 0; font-size:13px; line-height:2; text-wrap:pretty">安心して学べるよう、学修・生活・心の相談窓口を用意しています。</p>
+      </div>
+      <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column">
+        <li style="padding:12px 0; border-bottom:1px dashed #c9d1cf; font-size:13px"><strong>学修サポートデスク</strong>　レポートや履修の相談</li>
+        <li style="padding:12px 0; border-bottom:1px dashed #c9d1cf; font-size:13px"><strong>学生相談室</strong>　カウンセラーによる個別相談</li>
+        <li style="padding:12px 0; border-bottom:1px dashed #c9d1cf; font-size:13px"><strong>奨学金窓口</strong>　学内外の奨学金の案内</li>
+        <li style="padding:12px 0; font-size:13px"><strong>住まいの紹介</strong>　学生寮・提携マンションの案内</li>
+      </ul>
+    </div>
+  </section>
+
+  <section data-screen-label="Next" style="padding:clamp(56px, 7vw, 88px) clamp(20px, 6vw, 80px)">
+    <div style="background:#23897a; color:#fff; border-radius:8px; padding:clamp(28px, 4vw, 44px); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px">
+      <p style="margin:0; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(18px, 2vw, 22px)">在学生と話せる日、あります。</p>
+      <a href="OpenCampus.dc.html#reserve" style="display:flex; align-items:center; gap:10px; background:#fff; color:#23897a; border-radius:999px; padding:10px 22px 10px 10px; font-size:14px; font-weight:700; min-height:48px; box-shadow:0 4px 0 #165d54" style-hover="background:#fdf1e9; color:#d9612a"><span style="width:26px; height:26px; border-radius:50%; background:#dd6427; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px">→</span>オープンキャンパス予約</a>
+    </div>
+  </section>
+
+  <div data-marquee="" aria-hidden="true" style="overflow:hidden; padding:clamp(20px, 3vw, 36px) 0; border-top:2px solid #23897a; border-bottom:2px solid #23897a; margin-top:clamp(24px, 4vw, 48px); background:#eceeee">
+    <div style="display:flex; width:max-content; gap:48px; font-family:'M PLUS Rounded 1c'; font-weight:800; font-size:clamp(28px, 4vw, 52px); line-height:1; color:#23897a; white-space:nowrap">
+      <span>KANADE WOMEN'S UNIVERSITY</span><span style="color:#dd6427">●</span><span>学んで、出会って、わたしを、えらぶ。</span><span style="color:#dd6427">●</span><span>OPEN CAMPUS</span><span style="color:#dd6427">●</span>
+      <span>KANADE WOMEN'S UNIVERSITY</span><span style="color:#dd6427">●</span><span>学んで、出会って、わたしを、えらぶ。</span><span style="color:#dd6427">●</span><span>OPEN CAMPUS</span><span style="color:#dd6427">●</span>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,280px"></dc-import>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280 };
+  componentDidMount() { this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR); this.onR(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const m = this.state.w < 900;
+    return {
+      mainLeft: m ? '0' : '160px', mainRight: m ? '0' : 'clamp(0px, 7vw, 140px)', mainTop: m ? '60px' : '0',
+      facilities: [
+        { n: '図書館', t: 'グループ学習室や、夜まで使える自習スペースを備えています。', src: 'images/library.jpg' },
+        { n: 'ラーニングコモンズ', t: '授業の合間にPCや大型モニターを使って共同作業ができます。', src: 'images/laptop-group.jpg' },
+        { n: '学生食堂・カフェ', t: '日替わりメニューのある食堂と、中庭に面したカフェ。', src: 'images/courtyard-cafe.jpg' },
+        { n: '実習室', t: '調理・被服・心理実験など、学部ごとの専門設備。' },
+        { n: '体育館・トレーニング室', t: '授業と部活動のほか、個人利用もできます。' },
+        { n: '中庭', t: '季節の木々に囲まれた、学生の憩いの場所です。', src: 'images/campus-quad.jpg' }
+      ],
+      clubs: [
+        { k: '文化系', items: ['合唱部', '茶道部', '写真部', '演劇部', '文芸サークル'] },
+        { k: '体育会系', items: ['バスケットボール部', 'テニス部', 'ダンス部', '弓道部'] },
+        { k: 'ボランティア・その他', items: ['地域ボランティア', '学園祭実行委員会', 'キャンパスガイド'] }
+      ],
+      seasons: [
+        { en: 'SPRING', jp: '春', items: ['入学式', '新入生歓迎会'] },
+        { en: 'SUMMER', jp: '夏', items: ['オープンキャンパス', '海外短期研修'] },
+        { en: 'AUTUMN', jp: '秋', items: ['学園祭', 'スポーツ大会'] },
+        { en: 'WINTER', jp: '冬', items: ['卒業研究発表会', '卒業式'] }
+      ],
+      stories: [
+        { tag: '文学部 2年', who: 'Aさん（文学部 日本文学科）', quote: '好きな作家の話を、こんなに深くできる友だちに出会えた。', body: 'ゼミで読む力と書く力が鍛えられている実感があります。', src: 'images/discussion.jpg', alt: 'テーブルで話し合う学生' },
+        { tag: '国際コミュニケーション学部 3年', who: 'Bさん（国際コミュニケーション学部）', quote: '1年生の夏の短期研修が、留学を決めたきっかけでした。', body: '少人数の授業で話す機会が多く、少しずつ自信がつきました。', src: 'images/students-glass-building.jpg', alt: 'ノートPCを手に話す学生たち' },
+        { tag: '生活デザイン学部 4年', who: 'Cさん（生活デザイン学部）', quote: '卒業制作は、祖母の暮らしから生まれたテーマです。', body: '身近な暮らしを研究の題材にできるのが魅力です。', src: 'images/laptop-group.jpg', alt: 'ノートPCを囲んで作業する学生' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
